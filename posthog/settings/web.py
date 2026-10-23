@@ -24,6 +24,15 @@ from posthog.utils_cors import CORS_ALLOWED_TRACING_HEADERS
 
 logger = structlog.get_logger(__name__)
 
+# Flind-only multi-region redirects are opt-in. Never inherit vendor cloud hosts.
+# Values are bare DNS hostnames, not URLs. The cookie is independently checked
+# against these configured hosts before a browser redirect may be generated.
+FLIND_APP_HOST: str = os.getenv("FLIND_APP_HOST", "")
+FLIND_REGION_HOST_US: str = os.getenv("FLIND_REGION_HOST_US", "")
+FLIND_REGION_HOST_EU: str = os.getenv("FLIND_REGION_HOST_EU", "")
+FLIND_REDIRECT_TO_PRIMARY: bool = get_from_env("FLIND_REDIRECT_TO_PRIMARY", False, type_cast=str_to_bool)
+
+
 ####
 # Deprecated insight `dashboards` field: session-authenticated callers always need to opt in with
 # `include_dashboards`. While False, API-token callers still receive the field; flipping to True

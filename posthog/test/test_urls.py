@@ -22,7 +22,6 @@ from posthog.frontend_views import (
     public_page_metadata_context,
     region_host_from_current_instance,
 )
-from posthog.models.instance_setting import override_instance_config
 from posthog.temporal.codec_server import decode_payloads
 from posthog.views import handler500, metrics_view
 
@@ -54,34 +53,64 @@ class TestUrls(APIBaseTest):
 
     @parameterized.expand(
         [
-            ("eu", "https://eu.posthog.com", "https://eu.posthog.com/organization/billing"),
-            ("us", "https://us.posthog.com", "https://us.posthog.com/organization/billing"),
+            ("eu", "https://eu.flind.example", "https://eu.flind.example/organization/billing"),
+            ("us", "https://us.flind.example", "https://us.flind.example/organization/billing"),
         ]
     )
-    def test_app_host_deep_link_redirects_to_logged_in_region(self, _name, cookie_value, expected_location):
-        # /organization/billing is behind login_required; the region redirect must fire first,
-        # so a logged-out EU user reaches EU instead of the US login page.
+    @override_settings(
+        ALLOWED_HOSTS=["app.flind.example"],
+        FLIND_APP_HOST="app.flind.example",
+        FLIND_REGION_HOST_US="us.flind.example",
+        FLIND_REGION_HOST_EU="eu.flind.example",
+    )
+    def test_flind_host_deep_link_redirects_only_to_owned_region(self, _name, cookie_value, expected_location):
         self.client.logout()
         self.client.cookies["ph_current_instance"] = cookie_value
-        response = self.client.get("/organization/billing", HTTP_HOST="app.posthog.com", follow=False)
+        response = self.client.get("/organization/billing", HTTP_HOST="app.flind.example", follow=False)
         self.assertEqual(response.status_code, status.HTTP_302_FOUND)
         self.assertEqual(response["Location"], expected_location)
 
-    def test_app_host_deep_link_without_region_cookie_falls_through_to_login(self):
+    @override_settings(
+        ALLOWED_HOSTS=["app.flind.example"],
+        FLIND_APP_HOST="app.flind.example",
+        FLIND_REGION_HOST_US="us.flind.example",
+        FLIND_REGION_HOST_EU="eu.flind.example",
+    )
+    def test_flind_host_rejects_unconfigured_cookie_destination(self):
         self.client.logout()
-        self.client.cookies.pop("ph_current_instance", None)
-        response = self.client.get("/organization/billing", HTTP_HOST="app.posthog.com", follow=False)
+        self.client.cookies["ph_current_instance"] = "https://unapproved.example.com"
+        response = self.client.get("/organization/billing", HTTP_HOST="app.flind.example", follow=False)
         self.assertEqual(response.status_code, status.HTTP_302_FOUND)
-        self.assertIn("/login", response["Location"])
+        self.assertTrue(response["Location"].startswith("/login"))
+        self.assertNotIn("unapproved.example.com", response["Location"])
 
-    def test_app_host_deep_link_without_region_cookie_falls_back_to_us_when_redirect_app_to_us(self):
-        # With no region cookie, REDIRECT_APP_TO_US routes app.posthog.com to US before the auth gate.
+    @override_settings(
+        ALLOWED_HOSTS=["testserver"],
+        FLIND_APP_HOST="",
+        FLIND_REGION_HOST_US="",
+        FLIND_REGION_HOST_EU="",
+    )
+    def test_unconfigured_flind_does_not_redirect_to_vendor_region(self):
+        self.client.logout()
+        self.client.cookies["ph_current_instance"] = "https://unapproved.example.com"
+        with override_settings(FLIND_REDIRECT_TO_PRIMARY=True):
+            response = self.client.get("/organization/billing", HTTP_HOST="testserver", follow=False)
+        self.assertEqual(response.status_code, status.HTTP_302_FOUND)
+        self.assertTrue(response["Location"].startswith("/login"))
+
+    @override_settings(
+        ALLOWED_HOSTS=["app.flind.example"],
+        FLIND_APP_HOST="app.flind.example",
+        FLIND_REGION_HOST_US="us.flind.example",
+        FLIND_REGION_HOST_EU="eu.flind.example",
+    )
+    def test_flind_can_opt_in_to_primary_region_fallback(self):
         self.client.logout()
         self.client.cookies.pop("ph_current_instance", None)
-        with override_instance_config("REDIRECT_APP_TO_US", True):
-            response = self.client.get("/organization/billing", HTTP_HOST="app.posthog.com", follow=False)
+        with override_settings(FLIND_REDIRECT_TO_PRIMARY=True):
+            response = self.client.get("/organization/billing", HTTP_HOST="app.flind.example", follow=False)
         self.assertEqual(response.status_code, status.HTTP_302_FOUND)
-        self.assertEqual(response["Location"], "https://us.posthog.com/organization/billing")
+        self.assertEqual(response["Location"], "https://us.flind.example/organization/billing")
 
     @parameterized.expand([("slack",), ("mcp",)])
     def test_integration_connect_redirect_authenticated(self, connect_from: str):
@@ -201,18 +230,21 @@ class TestUrls(APIBaseTest):
         # )
 
 
+@override_settings(FLIND_REGION_HOST_US="us.flind.example", FLIND_REGION_HOST_EU="eu.flind.example")
 class TestRegionHostFromCurrentInstance(SimpleTestCase):
     @parameterized.expand(
         [
-            ("eu", "https://eu.posthog.com", "eu.posthog.com"),
-            ("us", "https://us.posthog.com", "us.posthog.com"),
-            ("with_port", "https://eu.posthog.com:8123", "eu.posthog.com"),
-            ("wrapping_quotes", '"https://eu.posthog.com"', "eu.posthog.com"),
-            ("app_is_not_a_region", "https://app.posthog.com", None),
-            ("unknown_host_is_rejected", "https://evil.example.com", None),
+            ("eu", "https://eu.flind.example", "eu.flind.example"),
+            ("us", "https://us.flind.example", "us.flind.example"),
+            ("wrapping_quotes", '"https://eu.flind.example"', "eu.flind.example"),
+            ("unknown_host_rejected", "https://unapproved.example.com", None),
+            ("userinfo_rejected", "https://eu.flind.example@evil.example.com", None),
+            ("port_rejected", "https://eu.flind.example:8123", None),
+            ("query_rejected", "https://eu.flind.example/?next=external", None),
+            ("not_https", "http://eu.flind.example", None),
             ("none", None, None),
             ("empty", "", None),
-            ("not_a_url", "yo ho ho", None),
+            ("invalid_url", "yo ho ho", None),
         ]
     )
     def test_region_host_from_current_instance(self, _name, cookie_value, expected):
