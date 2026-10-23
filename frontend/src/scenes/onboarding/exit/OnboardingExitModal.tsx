@@ -1,17 +1,13 @@
 import { useActions, useValues } from 'kea'
 import { useRef, useState } from 'react'
 
-import * as mailboxPng from '@posthog/brand/hoggies/png/mailbox'
 import { IconArrowRight } from '@posthog/icons'
 import { LemonButton, LemonInput, LemonTextArea } from '@posthog/lemon-ui'
 
-import { pngHoggie } from 'lib/brand/hoggies'
 import { LemonModal } from 'lib/lemon-ui/LemonModal'
 import { userLogic } from 'scenes/userLogic'
 
 import { onboardingExitLogic } from './onboardingExitLogic'
-
-const HedgehogMailbox = pngHoggie(mailboxPng)
 
 // Keep in sync with `OrganizationInviteDelegateSerializer.message.max_length` on the backend
 // (posthog/api/organization_invite.py). Client-side limit mirrors the server cap so users
@@ -123,7 +119,7 @@ export function OnboardingExitModal(): JSX.Element {
                     />
                     <div className="flex items-start justify-between gap-2 mt-1">
                         <p className="text-secondary text-xs m-0">
-                            They'll be added as an admin so they can finish setting up PostHog.
+                            They'll be added as an admin so they can finish setting up Flind.
                         </p>
                         <p
                             className={
@@ -166,15 +162,15 @@ export function OnboardingExitModal(): JSX.Element {
                     <p className="m-0 text-xs text-muted uppercase tracking-wide font-semibold">Preview</p>
                     <div className="rounded-lg border border-primary bg-surface-primary overflow-hidden">
                         <div className="flex items-center gap-2 px-3 py-2 border-b border-primary bg-surface-secondary">
-                            <HedgehogMailbox className="h-9 -my-1.5 shrink-0" />
-                            <span className="text-xs font-semibold">PostHog invitation</span>
+                            <span className="text-sm font-bold tracking-tight">Flind</span>
+                            <span className="text-xs font-semibold">Flind invitation</span>
                         </div>
                         <div className="p-3 flex flex-col gap-2">
                             <p className="m-0 text-xs text-muted">To: {recipientDisplay}</p>
                             {/* Match the real email's H1 (see posthog/templates/email/delegation_invite.html)
                                 so the live preview reflects what the recipient will actually see. */}
                             <p className="m-0 text-sm font-semibold">
-                                {senderName} asked you to finish setting up PostHog for {orgName}
+                                {senderName} asked you to finish setting up Flind for {orgName}
                             </p>
                             {hasMessage ? (
                                 <div className="rounded bg-surface-secondary px-2 py-2 text-xs italic text-default whitespace-pre-line">

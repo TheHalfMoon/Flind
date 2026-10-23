@@ -2,11 +2,11 @@
 {% block section %}
     <h1 class="invite-header">
         <strong>{{ inviter_first_name }}</strong> has invited you to join
-        <strong>{{ org_name }}</strong> on PostHog
+        <strong>{{ org_name }}</strong> on Flind
     </h1>
     <p class="text-center">
         <strong>{{ inviter_first_name }}</strong> ({{ inviter_email }}) has invited you to join
-        <strong>{{ org_name }}</strong> on PostHog. PostHog is a product analytics suite that helps you
+        <strong>{{ org_name }}</strong> on Flind. Flind is a product analytics suite that helps you
         better understand your users. Build the best product <i>together</i>.
     </p>
     {% if invite_message %}
@@ -23,12 +23,5 @@
         <a href="{{ invite }}" class="invite-link"><b>{{ invite }}</b></a>
     </div>
     <p class="invite-bottom">This invitation will expire on {{ expiry_date }}.</p>
-    <p class="text-center">
-        <a target="_blank" href="https://posthog.com"><b>https://posthog.com</b></a>
-    </p>
-    <div class="text-center">
-        <img src="{% absolute_asset_url 'email/invite-email-welcome.png' %}"
-             alt="Welcome to PostHog" />
-    </div>
     {% block footer %}{% endblock %}
 {% endblock %}

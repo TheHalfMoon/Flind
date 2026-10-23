@@ -26,9 +26,9 @@ export function OnboardingWelcome(): JSX.Element {
         <SceneContent>
             <div className="flex flex-wrap items-end justify-between gap-x-4 gap-y-2">
                 <div>
-                    <h1 className="m-0 text-2xl font-semibold">Welcome to PostHog</h1>
+                    <h1 className="m-0 text-2xl font-semibold">Welcome to Flind</h1>
                     <p className="m-0 mt-1 text-secondary">
-                        Tell PostHog AI what you want to do, or set up a product yourself.
+                        Tell Flind AI what you want to do, or set up a product yourself.
                     </p>
                 </div>
                 <ProjectTokenSnippet />
@@ -46,7 +46,7 @@ export function OnboardingWelcome(): JSX.Element {
                         onClick={() => selectAi()}
                         data-attr="onboarding-welcome-ai"
                     >
-                        Ask PostHog AI
+                        Ask Flind AI
                     </LemonButton>
                     <div className="w-full px-2 pb-1 pt-3 text-xxs font-semibold uppercase tracking-wide text-tertiary">
                         Or install a specific product

@@ -1,14 +1,9 @@
 import { useActions, useValues } from 'kea'
 
-import * as robotPng from '@posthog/brand/hoggies/png/robot'
 import { IconSparkles } from '@posthog/icons'
 import { LemonButton, LemonTextArea } from '@posthog/lemon-ui'
 
-import { pngHoggie } from 'lib/brand/hoggies'
-
 import { onboardingWelcomeLogic } from './onboardingWelcomeLogic'
-
-const HedgehogRobot = pngHoggie(robotPng)
 
 const SUGGESTIONS = [
     'Find where people drop off in my signup flow',
@@ -22,11 +17,11 @@ export function WelcomeAiPanel(): JSX.Element {
 
     return (
         <div className="mx-auto flex max-w-xl flex-col items-center gap-4 py-8 text-center">
-            <HedgehogRobot className="w-28" />
+            <IconSparkles className="size-12 text-secondary" />
             <div className="flex flex-col gap-1">
-                <h2 className="m-0 text-xl font-semibold">Tell PostHog AI what you want to do</h2>
+                <h2 className="m-0 text-xl font-semibold">Tell Flind AI what you want to do</h2>
                 <p className="m-0 text-secondary">
-                    Describe what you're building or what you want to learn. PostHog AI picks the right tools and gets
+                    Describe what you're building or what you want to learn. Flind AI picks the right tools and gets
                     you started.
                 </p>
             </div>

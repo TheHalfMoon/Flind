@@ -17,11 +17,7 @@
                         {% block header %}
                             <h1 class="text-center">
                                 <a href="{% absolute_uri %}">
-                                    <img src="{% absolute_asset_url 'posthog-logo.png' %}"
-                                         width="160px"
-                                         height="28px"
-                                         alt="PostHog"
-                                         class="logo" />
+                                    <span class="logo">Flind</span>
                                 </a>
                             </h1>
                         {% endblock %}
@@ -45,10 +41,7 @@
                     <div class="container">
                         <div class="footer">
                             {% block footer %}
-                                Need help?
-                                <a href="https://posthog.com/questions?{{ utm_tags }}" target="_blank"><b>Visit support</b></a>
-                                or
-                                <a href="https://posthog.com/docs?{{ utm_tags }}" target="_blank"><b>read our documentation</b></a>
+                                This is an automated message from your Flind workspace.
                             {% endblock %}
                         </div>
                     </div>

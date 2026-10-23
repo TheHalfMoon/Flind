@@ -39,7 +39,7 @@ const descriptions: Record<string, string> = {
     'Core events':
         'Choose the events that signal meaningful use of your product. Give your team a shared starting point for understanding customer activity.',
     'Revenue definitions':
-        'Tell PostHog which events represent revenue and where to find their amounts and currencies. Use consistent revenue measures across your analyses.',
+        'Tell Flind which events represent revenue and where to find their amounts and currencies. Use consistent revenue measures across your analyses.',
     'Property groups':
         'Organize related properties into reusable groups. Make a large tracking schema easier to navigate and understand.',
     'Event definitions':
@@ -50,11 +50,11 @@ const descriptions: Record<string, string> = {
         'Set up collections of warehouse views built for a particular kind of analysis. Reuse prepared data models instead of starting each query from scratch.',
     Annotations:
         'Add context to changes in your metrics. Mark releases, campaigns, and other milestones so your team can connect a chart with what happened.',
-    ETL: 'Watch the data moving into PostHog and out to your own warehouses. See what is running, what is stale, and what has stopped.',
+    ETL: 'Watch the data moving into Flind and out to your own warehouses. See what is running, what is stale, and what has stopped.',
     Sources:
-        'Bring data from your other tools into PostHog. Combine it with product events to answer questions that span your business.',
+        'Bring data from your other tools into Flind. Combine it with product events to answer questions that span your business.',
     Destinations:
-        'Send events from PostHog to the tools that need them. Connect product activity with the rest of your workflows.',
+        'Send events from Flind to the tools that need them. Connect product activity with the rest of your workflows.',
     Transformations:
         'Reshape incoming events before they reach your analyses. Keep event names and properties consistent across your tracking.',
     Models: 'Turn SQL queries into reusable views and materialized views. Build on shared data models instead of repeating the same preparation in every analysis.',
@@ -137,7 +137,7 @@ const examples: Record<string, string> = {
     'Event definitions': 'Check what an event means before adding it to an insight.',
     'Event ingestion filtering': 'Filter unwanted events before they enter your project.',
     'Event ingestion warnings': 'Investigate events that were not ingested as expected.',
-    'Managed migrations': 'Bring historical events into PostHog.',
+    'Managed migrations': 'Bring historical events into Flind.',
     'Managed viewsets': 'Set up a collection of warehouse views for analysis.',
     Models: 'Save a reusable query as a view for other analyses.',
     'Property definitions': 'Check the meaning and format of an event property.',

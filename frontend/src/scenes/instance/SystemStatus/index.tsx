@@ -75,7 +75,7 @@ export function SystemStatus(): JSX.Element {
                 }}
             />
             <p>
-                Here you can find all the critical runtime details and settings of your PostHog instance. You have
+                Here you can find all the critical runtime details and settings of your Flind instance. You have
                 access to this because you're a <b>staff user</b>.{' '}
                 <Link
                     target="_blank"
@@ -110,7 +110,7 @@ export function SystemStatus(): JSX.Element {
                     <b>
                         <code>{window.location.origin}</code>
                     </b>
-                    . In order for PostHog to work properly, please set this to the origin where your instance is
+                    . In order for Flind to work properly, please set this to the origin where your instance is
                     hosted.
                 </LemonBanner>
             )}
