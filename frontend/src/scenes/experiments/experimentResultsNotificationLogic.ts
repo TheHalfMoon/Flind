@@ -119,7 +119,7 @@ export const experimentResultsNotificationLogic = kea<experimentResultsNotificat
             if (values.notifyWhenResultsReady && 'Notification' in window && Notification.permission === 'granted') {
                 const notification = new Notification('Experiment results ready', {
                     body: `Results for "${props.experiment.name}" are now available.`,
-                    icon: '/static/posthog-icon.svg',
+                    icon: '/static/flind-icon.svg',
                     tag: `experiment-results-${props.experiment.id}`,
                 })
                 notification.onclick = () => {

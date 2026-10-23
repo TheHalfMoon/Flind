@@ -3,16 +3,17 @@
     "short_name": "Flind",
     "icons": [
         {
-            "src": "/static/icons/android-chrome-192x192.png?v=2023-07-07",
+            "src": "/static/icons/android-chrome-192x192.png?v=2026-10-24",
             "sizes": "192x192",
             "type": "image/png"
         },
         {
-            "src": "/static/icons/android-chrome-512x512.png?v=2023-07-07",
+            "src": "/static/icons/android-chrome-512x512.png?v=2026-10-24",
             "sizes": "512x512",
             "type": "image/png"
         }
     ],
-    "theme_color": "#ffffff",
-    "background_color": "#ffffff"
+    "theme_color": "#202936",
+    "background_color": "#FAFBFE",
+    "description": "Flind \u2014 product intelligence and observability"
 }
