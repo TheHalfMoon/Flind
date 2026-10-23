@@ -1,6 +1,6 @@
 # Domain Connect
 
-Automates DNS configuration for PostHog features that require users to add DNS records
+Automates DNS configuration for Flind features that require users to add DNS records
 (email sending, managed reverse proxy). Instead of manually copy-pasting records at their
 DNS provider, users click a button and get redirected to approve pre-filled records.
 
@@ -24,7 +24,7 @@ Backend builds signed apply URL → returns to frontend
 Frontend opens URL in new tab → DNS provider shows pre-filled records
         │
         ▼
-User approves → provider redirects back to PostHog with ?domain_connect=<context>
+User approves → provider redirects back to Flind with ?domain_connect=<context>
         │
         ▼
 Frontend detects redirect param, cleans URL, parent component re-verifies
@@ -47,9 +47,9 @@ Single module with all Domain Connect logic:
 - **URL building**: `build_sync_apply_url()` — constructs the redirect URL
 - **Signing**: `sign_query_string()` — RSA-SHA256 signs the query string (required by Cloudflare)
 - **Domain parsing**: `extract_root_domain_and_host()` — splits FQDNs handling multi-part TLDs
-- **Context resolvers**: `resolve_email_context()` / `resolve_proxy_context()` — extract template variables from the relevant PostHog resource.
+- **Context resolvers**: `resolve_email_context()` / `resolve_proxy_context()` — extract template variables from the relevant Flind resource.
   Both return a `DomainConnectContext`, which also carries the root domain that discovery runs against and the host that scopes the records to a subdomain.
-- **Provider allowlist**: `DOMAIN_CONNECT_PROVIDERS` dict — empty until providers accept our templates
+- **Provider allowlist**: `DOMAIN_CONNECT_PROVIDERS` dict — visible only after Flind provider registration
 
 ### API endpoints (`posthog/api/integration.py`)
 
@@ -69,8 +69,10 @@ Two endpoints on `IntegrationViewSet`:
 
 ### Settings
 
-Two env vars in `posthog/settings/web.py`:
+Settings in `posthog/settings/web.py` (internal module path pending migration):
 
+- `FLIND_DOMAIN_CONNECT_ENABLED` — false by default; enable only after template registration is confirmed
+- `FLIND_DOMAIN_CONNECT_PROVIDER_ID` — Flind-owned DNS provider identity, blank by default
 - `DOMAIN_CONNECT_PRIVATE_KEY` — PEM-encoded RSA private key for signing apply URLs
 - `DOMAIN_CONNECT_KEY_ID` — Key identifier published via DNS (default: `_dcpubkeyv1`)
 
@@ -116,17 +118,24 @@ To use Domain Connect for a new feature:
 
 ## Templates
 
-The `templates/` directory contains backup copies of the JSON files submitted to
-[Domain-Connect/Templates](https://github.com/Domain-Connect/Templates). DNS providers
-pull from that external repo — they do not read these files. We keep them here so the
-canonical definitions live alongside the code.
+The `templates/` directory contains **Flind draft examples**, not published
+Domain Connect templates. They use the reserved `.example` domain and must never
+be used as real provider endpoints. DNS providers cannot apply them until Flind
+owns a real provider domain, publishes the corresponding keys and hosts, and
+registers the templates with the participating providers. Automatic setup stays
+disabled by default; manual DNS configuration remains available.
 
-| File                                     | Purpose                |
-| ---------------------------------------- | ---------------------- |
-| `posthog.com.email-verification-us.json` | Email DNS records (US) |
-| `posthog.com.email-verification-eu.json` | Email DNS records (EU) |
-| `posthog.com.reverse-proxy-us.json`      | Proxy CNAME (US)       |
-| `posthog.com.reverse-proxy-eu.json`      | Proxy CNAME (EU)       |
+| Draft file                              | Purpose                |
+| --------------------------------------- | ---------------------- |
+| `flind.example.email-verification-us.json` | Email DNS records (US) |
+| `flind.example.email-verification-eu.json` | Email DNS records (EU) |
+| `flind.example.reverse-proxy-us.json` | Proxy CNAME (US)       |
+| `flind.example.reverse-proxy-eu.json` | Proxy CNAME (EU)       |
+
+Before setting `FLIND_DOMAIN_CONNECT_ENABLED=true`, deploy working DNS
+identity, publish the exact same Flind provider ID and templates, confirm
+provider approval, configure a signing key, and qualify full integration
+tests against a domain under Flind's control.
 
 ## Tests
 

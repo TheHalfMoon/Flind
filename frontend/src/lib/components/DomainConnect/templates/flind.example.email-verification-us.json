@@ -1,17 +1,23 @@
 {
-    "providerId": "posthog.com",
-    "providerName": "PostHog",
-    "serviceId": "email-verification-eu",
-    "serviceName": "PostHog Email Sending (EU)",
+    "providerId": "flind.example",
+    "providerName": "Flind",
+    "serviceId": "email-verification-us",
+    "serviceName": "Flind Email Sending (US)",
     "version": 1,
     "syncBlock": false,
-    "logoUrl": "https://posthog.com/brand/posthog-logo.svg",
-    "description": "Configures DNS records for PostHog email sending (domain verification, DKIM, SPF, MAIL FROM)",
+    "logoUrl": "https://flind.example/flind-logo.svg",
+    "description": "Configures DNS records for Flind email sending (domain verification, DKIM, SPF, MAIL FROM)",
     "variableDescription": "verifyToken: SES domain verification token. dkim1/dkim2/dkim3: DKIM selector tokens. mailFromSub: MAIL FROM subdomain. sesRegion: AWS SES region.",
-    "syncPubKeyDomain": "domainconnect.posthog.com",
-    "syncRedirectDomain": "eu.posthog.com",
+    "syncPubKeyDomain": "domainconnect.flind.example",
+    "syncRedirectDomain": "us.flind.example",
     "records": [
-        { "groupId": "verification", "type": "TXT", "host": "_amazonses", "data": "%verifyToken%", "ttl": 3600 },
+        {
+            "groupId": "verification",
+            "type": "TXT",
+            "host": "_amazonses",
+            "data": "%verifyToken%",
+            "ttl": 3600
+        },
         {
             "groupId": "dkim",
             "type": "CNAME",
@@ -33,7 +39,13 @@
             "pointsTo": "%dkim3%.dkim.amazonses.com",
             "ttl": 3600
         },
-        { "groupId": "spf", "type": "SPFM", "host": "@", "spfRules": "include:amazonses.com", "ttl": 3600 },
+        {
+            "groupId": "spf",
+            "type": "SPFM",
+            "host": "@",
+            "spfRules": "include:amazonses.com",
+            "ttl": 3600
+        },
         {
             "groupId": "mailfrom",
             "type": "MX",

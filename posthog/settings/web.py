@@ -965,6 +965,13 @@ CLOUDFLARE_PROXY_BASE_CNAME = get_from_env("CLOUDFLARE_PROXY_BASE_CNAME", "")
 DOMAIN_CONNECT_PRIVATE_KEY: str | None = os.getenv("DOMAIN_CONNECT_PRIVATE_KEY", "").replace("\\n", "\n") or None
 DOMAIN_CONNECT_KEY_ID: str = os.getenv("DOMAIN_CONNECT_KEY_ID", "_dcpubkeyv1")
 
+# Flind has NOT registered automatic DNS templates with any provider by default.
+# No third-party template identity may be inherited. Both values are required
+# after independent Flind template publication and DNS-provider approval.
+FLIND_DOMAIN_CONNECT_ENABLED: bool = get_from_env("FLIND_DOMAIN_CONNECT_ENABLED", False, type_cast=str_to_bool)
+FLIND_DOMAIN_CONNECT_PROVIDER_ID: str = get_from_env("FLIND_DOMAIN_CONNECT_PROVIDER_ID", "")
+
+
 ####
 # CDP
 

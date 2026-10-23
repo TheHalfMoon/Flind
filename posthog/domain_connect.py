@@ -22,6 +22,8 @@ from cryptography.hazmat.primitives.asymmetric import padding
 from cryptography.hazmat.primitives.asymmetric.rsa import RSAPrivateKey
 from dns.rdtypes.txtbase import TXTBase
 
+from flind.domain_connect_identity import allowed_flind_callback, valid_provider_id
+
 from posthog.schema import DomainConnectProviderName
 
 from posthog.dataclasses import frozen
@@ -50,6 +52,14 @@ PROVIDERS_REQUIRING_SIGNING: set[str] = {
 }
 
 
+def flind_domain_connect_provider_id() -> str | None:
+    """Only an explicitly enabled and registered Flind identity can issue DNS templates."""
+    if not getattr(settings, "FLIND_DOMAIN_CONNECT_ENABLED", False):
+        return None
+    provider_id = getattr(settings, "FLIND_DOMAIN_CONNECT_PROVIDER_ID", "")
+    return provider_id if valid_provider_id(provider_id) else None
+
+
 class DomainConnectSigningKeyMissing(Exception):
     """Raised when a provider requires request signing but no key is configured."""
 
@@ -66,6 +76,11 @@ def discover_domain_connect(domain: str) -> dict | None:
     or None if the domain's provider is not supported.
     Results are cached for 1 hour per domain.
     """
+    # Do not perform external DNS or HTTP discovery for an unregistered Flind
+    # identity. Manual DNS setup remains available through the existing UI.
+    if flind_domain_connect_provider_id() is None:
+        return None
+
     cache_key = f"domain_connect:discovery:{domain}"
     cached = cache.get(cache_key)
     if cached is not None:
@@ -206,6 +221,8 @@ def get_available_providers() -> list[dict[str, str]]:
 
     Used when auto-detection fails so the user can manually select their provider.
     """
+    if flind_domain_connect_provider_id() is None:
+        return []
     return [{"endpoint": endpoint, "name": str(name)} for endpoint, name in DOMAIN_CONNECT_PROVIDERS.items()]
 
 
@@ -328,6 +345,12 @@ def generate_apply_url(
 
     Handles signing automatically if a private key is configured.
     """
+    provider_id = flind_domain_connect_provider_id()
+    if provider_id is None:
+        raise ValueError("Flind automatic DNS setup requires independent template registration and configuration")
+    if redirect_uri is not None and not allowed_flind_callback(redirect_uri, settings.SITE_URL):
+        raise ValueError("Invalid Flind Domain Connect callback origin")
+
     # 1. Resolve the provider endpoint
     if provider_endpoint:
         endpoint = provider_endpoint
@@ -357,7 +380,7 @@ def generate_apply_url(
 
     return build_sync_apply_url(
         url_sync_ux=provider_settings["urlSyncUX"],
-        provider_id="posthog.com",
+        provider_id=provider_id,
         service_id=service_id,
         domain=domain,
         variables=variables,

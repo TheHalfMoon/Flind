@@ -8,7 +8,7 @@ from posthog.test.base import BaseTest
 from unittest.mock import MagicMock, patch
 
 from django.core.cache import cache
-from django.test import SimpleTestCase
+from django.test import SimpleTestCase, override_settings
 
 import dns.resolver
 from cryptography.hazmat.primitives import hashes as crypto_hashes
@@ -92,22 +92,22 @@ class TestBuildSyncApplyUrl(SimpleTestCase):
     def test_basic_url(self) -> None:
         url = build_sync_apply_url(
             url_sync_ux="https://dns.provider.example/sync",
-            provider_id="posthog.com",
+            provider_id="flind.example",
             service_id="reverse-proxy-us",
             domain="example.com",
-            variables={"target": "abc123.proxy.posthog.com"},
+            variables={"target": "abc123.proxy.flind.example"},
             host="ph",
         )
 
-        self.assertIn("/v2/domainTemplates/providers/posthog.com/services/reverse-proxy-us/apply?", url)
+        self.assertIn("/v2/domainTemplates/providers/flind.example/services/reverse-proxy-us/apply?", url)
         self.assertIn("domain=example.com", url)
         self.assertIn("host=ph", url)
-        self.assertIn("target=abc123.proxy.posthog.com", url)
+        self.assertIn("target=abc123.proxy.flind.example", url)
 
     def test_url_without_host(self) -> None:
         url = build_sync_apply_url(
             url_sync_ux="https://dns.provider.example/sync",
-            provider_id="posthog.com",
+            provider_id="flind.example",
             service_id="email-verification-us",
             domain="example.com",
             variables={"verifyToken": "abc123"},
@@ -120,12 +120,12 @@ class TestBuildSyncApplyUrl(SimpleTestCase):
     def test_url_with_redirect(self) -> None:
         url = build_sync_apply_url(
             url_sync_ux="https://dns.provider.example/sync",
-            provider_id="posthog.com",
+            provider_id="flind.example",
             service_id="reverse-proxy-us",
             domain="example.com",
-            variables={"target": "abc.proxy.posthog.com"},
+            variables={"target": "abc.proxy.flind.example"},
             host="ph",
-            redirect_uri="https://us.posthog.com/settings?domain_connect=proxy",
+            redirect_uri="https://us.flind.example/settings?domain_connect=proxy",
         )
 
         self.assertIn("redirect_uri=", url)
@@ -135,10 +135,10 @@ class TestBuildSyncApplyUrl(SimpleTestCase):
 
         url = build_sync_apply_url(
             url_sync_ux="https://dns.provider.example/sync",
-            provider_id="posthog.com",
+            provider_id="flind.example",
             service_id="reverse-proxy-us",
             domain="example.com",
-            variables={"target": "abc.proxy.posthog.com"},
+            variables={"target": "abc.proxy.flind.example"},
             host="ph",
             private_key=private_key,
             key_id="_dcpubkeyv1",
@@ -159,10 +159,10 @@ class TestBuildSyncApplyUrl(SimpleTestCase):
     def test_url_without_signing_key_has_no_sig(self) -> None:
         url = build_sync_apply_url(
             url_sync_ux="https://dns.provider.example/sync",
-            provider_id="posthog.com",
+            provider_id="flind.example",
             service_id="reverse-proxy-us",
             domain="example.com",
-            variables={"target": "abc.proxy.posthog.com"},
+            variables={"target": "abc.proxy.flind.example"},
             host="ph",
         )
 
@@ -175,7 +175,7 @@ class TestSignQueryString(SimpleTestCase):
         private_key = rsa.generate_private_key(public_exponent=65537, key_size=2048)
         public_key = private_key.public_key()
 
-        query = "domain=example.com&host=ph&target=abc.proxy.posthog.com"
+        query = "domain=example.com&host=ph&target=abc.proxy.flind.example"
         signature_b64 = sign_query_string(query, private_key)
 
         signature_bytes = base64.b64decode(signature_b64)
@@ -188,6 +188,7 @@ class TestSignQueryString(SimpleTestCase):
         )
 
 
+@override_settings(FLIND_DOMAIN_CONNECT_ENABLED=True, FLIND_DOMAIN_CONNECT_PROVIDER_ID="flind.example")
 class TestDiscoverDomainConnect(SimpleTestCase):
     def setUp(self) -> None:
         super().setUp()
@@ -236,6 +237,7 @@ class TestDiscoverDomainConnect(SimpleTestCase):
         self.assertIsNone(result)
 
 
+@override_settings(FLIND_DOMAIN_CONNECT_ENABLED=True, FLIND_DOMAIN_CONNECT_PROVIDER_ID="flind.example")
 class TestGetAvailableProviders(SimpleTestCase):
     def test_returns_all_providers(self) -> None:
         with patch.dict(
@@ -257,13 +259,14 @@ class TestGetAvailableProviders(SimpleTestCase):
         self.assertEqual(providers, [])
 
 
+@override_settings(FLIND_DOMAIN_CONNECT_ENABLED=True, FLIND_DOMAIN_CONNECT_PROVIDER_ID="flind.example")
 class TestGenerateApplyUrl(SimpleTestCase):
     def test_rejects_unknown_provider_endpoint(self) -> None:
         with self.assertRaises(ValueError, msg="Unsupported provider endpoint"):
             generate_apply_url(
                 domain="example.com",
                 service_id="reverse-proxy-us",
-                variables={"target": "abc.proxy.posthog.com"},
+                variables={"target": "abc.proxy.flind.example"},
                 provider_endpoint="evil.internal.service",
             )
 
@@ -276,7 +279,7 @@ class TestGenerateApplyUrl(SimpleTestCase):
         url = generate_apply_url(
             domain="example.com",
             service_id="reverse-proxy-us",
-            variables={"target": "abc.proxy.posthog.com"},
+            variables={"target": "abc.proxy.flind.example"},
             provider_endpoint="api.cloudflare.com/client/v4/dns/domainconnect",
         )
 
@@ -291,7 +294,7 @@ class TestGenerateApplyUrl(SimpleTestCase):
             generate_apply_url(
                 domain="example.com",
                 service_id="reverse-proxy-us",
-                variables={"target": "abc.proxy.posthog.com"},
+                variables={"target": "abc.proxy.flind.example"},
                 provider_endpoint="api.cloudflare.com/client/v4/dns/domainconnect",
             )
 
@@ -311,8 +314,30 @@ class TestGenerateApplyUrl(SimpleTestCase):
             generate_apply_url(
                 domain="example.com",
                 service_id="reverse-proxy-us",
-                variables={"target": "abc.proxy.posthog.com"},
+                variables={"target": "abc.proxy.flind.example"},
             )
+
+
+@override_settings(FLIND_DOMAIN_CONNECT_ENABLED=False, FLIND_DOMAIN_CONNECT_PROVIDER_ID="")
+class TestFlindDomainConnectDisabledByDefault(SimpleTestCase):
+    @patch("posthog.domain_connect._lookup_domain_connect_endpoint")
+    def test_discovery_does_not_call_dns(self, mock_lookup: MagicMock) -> None:
+        self.assertIsNone(discover_domain_connect("example.com"))
+        mock_lookup.assert_not_called()
+
+    def test_no_providers_are_advertised(self) -> None:
+        self.assertEqual(get_available_providers(), [])
+
+    @patch("posthog.domain_connect._fetch_provider_settings")
+    def test_apply_url_fails_without_provider_identity(self, mock_fetch: MagicMock) -> None:
+        with self.assertRaisesRegex(ValueError, "requires independent template registration"):
+            generate_apply_url(
+                domain="example.com",
+                service_id="reverse-proxy-us",
+                variables={"target": "proxy.flind.example"},
+                provider_endpoint="api.cloudflare.com/client/v4/dns/domainconnect",
+            )
+        mock_fetch.assert_not_called()
 
 
 class TestTemplateResolverAlignment(BaseTest):
@@ -320,8 +345,8 @@ class TestTemplateResolverAlignment(BaseTest):
 
     @parameterized.expand(
         [
-            ("posthog.com.reverse-proxy-us.json", "US"),
-            ("posthog.com.reverse-proxy-eu.json", "EU"),
+            ("flind.example.reverse-proxy-us.json", "US"),
+            ("flind.example.reverse-proxy-eu.json", "EU"),
         ]
     )
     @patch("posthog.models.ProxyRecord")
@@ -333,7 +358,7 @@ class TestTemplateResolverAlignment(BaseTest):
 
         mock_record = MagicMock()
         mock_record.domain = "ph.example.com"
-        mock_record.target_cname = "abc.proxy.posthog.com"
+        mock_record.target_cname = "abc.proxy.flind.example"
         mock_proxy_cls.objects.get.return_value = mock_record
 
         with self.settings(CLOUD_DEPLOYMENT=region):
@@ -350,7 +375,7 @@ class TestTemplateResolverAlignment(BaseTest):
         [
             (
                 "subdomain sender without a dmarc record",
-                "posthog.com.email-verification-us.json",
+                "flind.example.email-verification-us.json",
                 "US",
                 "news.example.com",
                 "news",
@@ -359,7 +384,7 @@ class TestTemplateResolverAlignment(BaseTest):
             ),
             (
                 "root sender without a dmarc record",
-                "posthog.com.email-verification-eu.json",
+                "flind.example.email-verification-eu.json",
                 "EU",
                 "example.com",
                 "",
@@ -368,7 +393,7 @@ class TestTemplateResolverAlignment(BaseTest):
             ),
             (
                 "sender with an existing dmarc record",
-                "posthog.com.email-verification-us.json",
+                "flind.example.email-verification-us.json",
                 "US",
                 "news.example.com",
                 "news",
@@ -377,7 +402,7 @@ class TestTemplateResolverAlignment(BaseTest):
             ),
             (
                 "sender whose dmarc lookup times out",
-                "posthog.com.email-verification-eu.json",
+                "flind.example.email-verification-eu.json",
                 "EU",
                 "example.com",
                 "",
@@ -386,7 +411,7 @@ class TestTemplateResolverAlignment(BaseTest):
             ),
             (
                 "sender whose dmarc record is not utf-8",
-                "posthog.com.email-verification-us.json",
+                "flind.example.email-verification-us.json",
                 "US",
                 "news.example.com",
                 "news",

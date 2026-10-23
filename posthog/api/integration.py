@@ -2677,6 +2677,12 @@ class IntegrationViewSet(
         if not domain:
             raise ValidationError("domain query parameter is required")
 
+        # Default-disabled Flind must not resolve DNS or initialize tldextract.
+        from posthog.domain_connect import flind_domain_connect_provider_id
+
+        if flind_domain_connect_provider_id() is None:
+            return Response({"supported": False, "provider_name": None, "available_providers": []})
+
         # Extract root domain so subdomains (e.g. ph.example.com) resolve correctly
         domain_parts = extract_root_domain_and_host(domain)
         result = discover_domain_connect(domain_parts.root_domain)
@@ -2700,14 +2706,27 @@ class IntegrationViewSet(
         from posthog.domain_connect import (
             DOMAIN_CONNECT_PROVIDERS,
             DomainConnectSigningKeyMissing,
+            flind_domain_connect_provider_id,
             generate_apply_url,
             resolve_email_context,
             resolve_proxy_context,
         )
 
+        # Refuse before SES verification, proxy lookups or external DNS traffic.
+        # A draft JSON template is not a registered Domain Connect provider.
+        if flind_domain_connect_provider_id() is None:
+            raise ValidationError(
+                "Automatic DNS configuration is not enabled for this Flind instance. "
+                "Please configure DNS records manually."
+            )
+
+        from flind.domain_connect_identity import allowed_flind_callback
+
         context = request.data.get("context")
         redirect_uri = request.data.get("redirect_uri")
         provider_endpoint = request.data.get("provider_endpoint")
+        if redirect_uri is not None and not allowed_flind_callback(redirect_uri, settings.SITE_URL):
+            raise ValidationError("Domain Connect callback must stay on this Flind instance")
 
         if provider_endpoint and provider_endpoint not in DOMAIN_CONNECT_PROVIDERS:
             raise ValidationError("Unsupported provider endpoint")
