@@ -33,7 +33,9 @@ claim DNS provider partnerships or a functioning automated DNS flow.
 1. Choose and prove control of a Flind-owned DNS provider domain.
 2. Publish approved Flind provider templates with verified logo, signing
    public-key domain and callback domains; all draft `.example` metadata
-   must be replaced.
+   must be replaced. The provider-ID validator rejects reserved and non-public
+suffixes (including `.example`, `.test`, `.invalid`, `.local` and
+`.internal`) so a draft cannot be activated accidentally.
 3. Arrange actual registration/approval with intended DNS providers.
 4. Configure the RSA signing key, key ID, Flind SITE_URL, and real provider ID.
 5. Run integration tests with a disposable owned domain and validate every

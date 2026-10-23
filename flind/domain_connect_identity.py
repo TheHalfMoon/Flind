@@ -9,6 +9,7 @@ import re
 from urllib.parse import urlsplit
 
 _LABEL = re.compile(r"^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?$")
+_NONPUBLIC_SUFFIXES = frozenset({"example", "test", "invalid", "localhost", "local", "internal", "onion"})
 
 
 def valid_provider_id(value: str | None) -> bool:
@@ -16,7 +17,9 @@ def valid_provider_id(value: str | None) -> bool:
     if not value or not isinstance(value, str) or len(value) > 253 or value.lower() != value:
         return False
     labels = value.split(".")
-    if len(labels) < 2 or labels[-1].isdigit():
+    # Draft fixtures use .example. Reserved and non-public names cannot be
+    # activated as production provider identities by a misconfigured operator.
+    if len(labels) < 2 or labels[-1].isdigit() or labels[-1] in _NONPUBLIC_SUFFIXES:
         return False
     return all(_LABEL.fullmatch(label) is not None for label in labels)
 

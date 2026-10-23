@@ -25,11 +25,13 @@ TEMPLATES = (
 
 class FlindDomainConnectIdentityTests(unittest.TestCase):
     def test_domain_provider_ids_validate_without_runtime_deps(self) -> None:
-        for value in ("flind.example", "flind.si", "dns.flind.example"):
+        for value in ("flind-provider.fixture.org", "flind.si", "dns.flind-provider.fixture.org"):
             with self.subTest(value=value):
                 self.assertTrue(valid_provider_id(value))
         for value in (
             "", None, "localhost", "https://flind.example", "FLIND.EXAMPLE",
+            "flind.example", "flind.test", "flind.invalid", "flind.internal",
+            "flind.local", "flind.localhost", "flind.onion",
             "flind.example:443", "user@flind.example", "flind..example",
             "-flind.example", "flind-.example", "flind.example/path", "127.0.0.1",
         ):
@@ -47,6 +49,7 @@ class FlindDomainConnectIdentityTests(unittest.TestCase):
             with self.subTest(name=name):
                 data = json.loads((DIRECTORY / name).read_text())
                 self.assertEqual(data["providerId"], "flind.example")
+                self.assertFalse(valid_provider_id(data["providerId"]), "a draft must not be activatable")
                 self.assertEqual(data["providerName"], "Flind")
                 self.assertEqual(data["syncPubKeyDomain"], "domainconnect.flind.example")
                 self.assertEqual(data["logoUrl"], "https://flind.example/flind-logo.svg")

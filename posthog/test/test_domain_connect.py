@@ -188,7 +188,7 @@ class TestSignQueryString(SimpleTestCase):
         )
 
 
-@override_settings(FLIND_DOMAIN_CONNECT_ENABLED=True, FLIND_DOMAIN_CONNECT_PROVIDER_ID="flind.example")
+@override_settings(FLIND_DOMAIN_CONNECT_ENABLED=True, FLIND_DOMAIN_CONNECT_PROVIDER_ID="flind-provider.fixture.org")
 class TestDiscoverDomainConnect(SimpleTestCase):
     def setUp(self) -> None:
         super().setUp()
@@ -237,7 +237,7 @@ class TestDiscoverDomainConnect(SimpleTestCase):
         self.assertIsNone(result)
 
 
-@override_settings(FLIND_DOMAIN_CONNECT_ENABLED=True, FLIND_DOMAIN_CONNECT_PROVIDER_ID="flind.example")
+@override_settings(FLIND_DOMAIN_CONNECT_ENABLED=True, FLIND_DOMAIN_CONNECT_PROVIDER_ID="flind-provider.fixture.org")
 class TestGetAvailableProviders(SimpleTestCase):
     def test_returns_all_providers(self) -> None:
         with patch.dict(
@@ -259,7 +259,7 @@ class TestGetAvailableProviders(SimpleTestCase):
         self.assertEqual(providers, [])
 
 
-@override_settings(FLIND_DOMAIN_CONNECT_ENABLED=True, FLIND_DOMAIN_CONNECT_PROVIDER_ID="flind.example")
+@override_settings(FLIND_DOMAIN_CONNECT_ENABLED=True, FLIND_DOMAIN_CONNECT_PROVIDER_ID="flind-provider.fixture.org")
 class TestGenerateApplyUrl(SimpleTestCase):
     def test_rejects_unknown_provider_endpoint(self) -> None:
         with self.assertRaises(ValueError, msg="Unsupported provider endpoint"):
