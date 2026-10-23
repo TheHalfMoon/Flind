@@ -5,7 +5,7 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { router, Stack, usePathname } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { useColorScheme } from "nativewind";
-import { PostHogProvider } from "posthog-react-native";
+import { PostHogProvider as FlindAnalyticsProvider } from "posthog-react-native";
 import { useEffect, useRef } from "react";
 import { ActivityIndicator, View } from "react-native";
 import { KeyboardProvider } from "react-native-keyboard-controller";
@@ -21,12 +21,12 @@ import { usePreferencesStore } from "@/features/preferences/stores/preferencesSt
 import { PendingPromptRecovery } from "@/features/tasks/components/PendingPromptRecovery";
 import { useNetworkStatus } from "@/hooks/useNetworkStatus";
 import {
-  POSTHOG_API_KEY,
-  POSTHOG_OPTIONS,
+  FLIND_ANALYTICS_API_KEY,
+  FLIND_ANALYTICS_OPTIONS,
   useIdentifyUser,
   useRegisterSuperProperties,
   useScreenTracking,
-} from "@/lib/posthog";
+} from "@/lib/flindAnalytics";
 import { queryClient } from "@/lib/queryClient";
 import { darkTheme, lightTheme, useThemeColors } from "@/lib/theme";
 
@@ -188,26 +188,31 @@ export default function RootLayout() {
   const themeVars = colorScheme === "dark" ? darkTheme : lightTheme;
   const { isConnected } = useNetworkStatus();
 
+  const appContent = (
+    <QueryClientProvider client={queryClient}>
+      <View style={themeVars} className="flex-1">
+        <RootLayoutNav isConnected={isConnected} />
+        <OfflineBanner isConnected={isConnected} />
+        <PendingPromptRecovery />
+      </View>
+      <StatusBar style={colorScheme === "dark" ? "light" : "dark"} />
+    </QueryClientProvider>
+  );
+
   return (
     <SafeAreaProvider>
       <KeyboardProvider>
-        <PostHogProvider
-          apiKey={POSTHOG_API_KEY}
-          options={POSTHOG_OPTIONS}
-          autocapture={{
-            captureTouches: true,
-            captureScreens: false, // We handle screen tracking manually for expo-router
-          }}
-        >
-          <QueryClientProvider client={queryClient}>
-            <View style={themeVars} className="flex-1">
-              <RootLayoutNav isConnected={isConnected} />
-              <OfflineBanner isConnected={isConnected} />
-              <PendingPromptRecovery />
-            </View>
-            <StatusBar style={colorScheme === "dark" ? "light" : "dark"} />
-          </QueryClientProvider>
-        </PostHogProvider>
+        {FLIND_ANALYTICS_API_KEY && process.env.EXPO_PUBLIC_FLIND_ANALYTICS_HOST ? (
+          <FlindAnalyticsProvider
+            apiKey={FLIND_ANALYTICS_API_KEY}
+            options={FLIND_ANALYTICS_OPTIONS}
+            autocapture={{ captureTouches: true, captureScreens: false }}
+          >
+            {appContent}
+          </FlindAnalyticsProvider>
+        ) : (
+          appContent
+        )}
       </KeyboardProvider>
     </SafeAreaProvider>
   );

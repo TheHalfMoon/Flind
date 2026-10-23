@@ -222,10 +222,10 @@ class TestRegionHostFromCurrentInstance(SimpleTestCase):
 class TestPublicPageMetadata(SimpleTestCase):
     @parameterized.expand(
         [
-            ("login_with_next", "/login?next=/insights", "Log in • PostHog", "/login"),
-            ("signup_with_email", "/signup/?email=someone%40example.com", "Sign up • PostHog", "/signup"),
-            ("preflight", "/preflight", "PostHog", None),
-            ("invite_signup", "/signup/0b8e1f2a-1111-4c2d-9e3f-123456789abc", "PostHog", None),
+            ("login_with_next", "/login?next=/insights", "Log in • Flind", "/login"),
+            ("signup_with_email", "/signup/?email=someone%40example.com", "Sign up • Flind", "/signup"),
+            ("preflight", "/preflight", "Flind", None),
+            ("invite_signup", "/signup/0b8e1f2a-1111-4c2d-9e3f-123456789abc", "Flind", None),
         ]
     )
     @override_settings(SITE_URL="https://us.example.com", CLOUD_DEPLOYMENT="US")
@@ -243,8 +243,8 @@ class TestPublicPageMetadata(SimpleTestCase):
             self.assertIn(f'<link rel="canonical" href="{canonical_url}">', html)
             self.assertIn(f'<meta property="og:url" content="{canonical_url}">', html)
             self.assertIn('<meta name="description" content="', html)
-            self.assertIn('<meta property="og:image" content="https://posthog.com/images/og/default.png">', html)
-            self.assertIn('<meta name="twitter:site" content="@PostHog">', html)
+            self.assertNotIn('<meta property="og:image"', html)
+            self.assertNotIn('<meta name="twitter:site"', html)
             structured_data = json.loads(html.split('<script type="application/ld+json">')[1].split("</script>")[0])
             self.assertEqual(structured_data["@type"], "WebPage")
             self.assertEqual(structured_data["url"], canonical_url)

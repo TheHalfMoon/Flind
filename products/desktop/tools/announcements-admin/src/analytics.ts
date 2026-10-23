@@ -1,12 +1,13 @@
-import posthog from "posthog-js";
+import client from "posthog-js";
 
-const apiKey = import.meta.env.VITE_POSTHOG_API_KEY;
+const apiKey = import.meta.env.VITE_FLIND_ANALYTICS_API_KEY;
+const apiHost = import.meta.env.VITE_FLIND_ANALYTICS_HOST;
 
 export function initAnalytics(): void {
-  if (!apiKey) return;
-  posthog.init(apiKey, {
-    api_host: import.meta.env.VITE_POSTHOG_API_HOST,
-    ui_host: import.meta.env.VITE_POSTHOG_UI_HOST,
+  if (!apiKey || !apiHost) return;
+  client.init(apiKey, {
+    api_host: apiHost,
+    ui_host: import.meta.env.VITE_FLIND_ANALYTICS_UI_HOST || apiHost,
     autocapture: false,
     capture_pageview: false,
     capture_pageleave: false,
@@ -18,16 +19,16 @@ export function capture(
   event: string,
   properties?: Record<string, unknown>,
 ): void {
-  if (!apiKey) return;
-  posthog.capture(event, properties);
+  if (!apiKey || !apiHost) return;
+  client.capture(event, properties);
 }
 
 export function captureException(error: unknown): void {
-  if (!apiKey) return;
-  posthog.captureException(error);
+  if (!apiKey || !apiHost) return;
+  client.captureException(error);
 }
 
 export function identify(distinctId: string, label?: string): void {
-  if (!apiKey) return;
-  posthog.identify(distinctId, label ? { name: label } : undefined);
+  if (!apiKey || !apiHost) return;
+  client.identify(distinctId, label ? { name: label } : undefined);
 }

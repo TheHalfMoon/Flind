@@ -6,7 +6,7 @@ image:
 
 posthog:
     # PostHog ingestion origin. EU cloud: https://eu.i.posthog.com
-    host: https://us.i.posthog.com
+    host: http://localhost:8010
     # Per-signal ingest path. Defaults to PostHog's public metrics route;
     # override only for a proxy or a test sink (e.g. /v1/metrics).
     ingestPath: ''

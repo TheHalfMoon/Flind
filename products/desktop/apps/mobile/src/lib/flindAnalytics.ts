@@ -1,21 +1,21 @@
 import * as Application from "expo-application";
 import Constants from "expo-constants";
 import { usePathname, useSegments } from "expo-router";
-import { usePostHog } from "posthog-react-native";
+import { usePostHog as useFlindAnalytics } from "posthog-react-native";
 import { useEffect, useRef } from "react";
 import { useUserQuery } from "@/features/auth/hooks/useUserQuery";
 import { useAuthStore } from "@/features/auth/stores/authStore";
 
 /**
- * PostHog configuration - used by PostHogProvider in _layout.tsx
+ * Flind analytics configuration - used by FlindAnalyticsProvider in _layout.tsx
  */
-export const POSTHOG_API_KEY = process.env.EXPO_PUBLIC_POSTHOG_API_KEY ?? "";
-export const POSTHOG_OPTIONS = {
-  host: process.env.EXPO_PUBLIC_POSTHOG_HOST ?? "https://us.i.posthog.com",
+export const FLIND_ANALYTICS_API_KEY = process.env.EXPO_PUBLIC_FLIND_ANALYTICS_API_KEY ?? "";
+export const FLIND_ANALYTICS_OPTIONS = {
+  host: process.env.EXPO_PUBLIC_FLIND_ANALYTICS_HOST || "http://localhost:8010",
   captureAppLifecycleEvents: true,
   enableSessionReplay: true,
   sessionReplayConfig: {
-    // Recordings land in the shared posthog.com project; the auth flow takes
+    // Recordings are restricted to the explicitly configured Flind instance; auth takes
     // credentials, so text inputs must stay masked.
     maskAllTextInputs: true,
     maskAllImages: false,
@@ -44,64 +44,64 @@ export function getAppVersion(): string | null {
   );
 }
 
-type PostHogRegisterClient = {
+type FlindRegisterClient = {
   register: (properties: Record<string, string>) => unknown;
 };
 
 /**
  * Register the super properties attached to every event the client emits:
  * `team` (mirrors the desktop app so mobile and desktop events are segmentable
- * in the shared posthog.com project) and `app_version` when one is available.
+ * in the configured Flind instance) and `app_version` when one is available.
  * No-op if the client is not yet ready.
  */
 export function registerPersistentSuperProperties(
-  client: PostHogRegisterClient | null | undefined,
+  client: FlindRegisterClient | null | undefined,
   version: string | null = getAppVersion(),
 ) {
   if (!client) return;
   client.register({
-    team: "posthog-code",
+    team: "flind",
     ...(version !== null ? { app_version: version } : {}),
   });
 }
 
 /**
  * Hook variant of `registerPersistentSuperProperties`. Runs once per client
- * instance so the super properties are re-applied if the PostHog client is
+ * instance so the super properties are re-applied if the Flind analytics client is
  * recreated.
  */
 export function useRegisterSuperProperties() {
-  const posthog = usePostHog();
+  const analyticsClient = useFlindAnalytics();
 
   useEffect(() => {
-    registerPersistentSuperProperties(posthog);
-  }, [posthog]);
+    registerPersistentSuperProperties(analyticsClient);
+  }, [analyticsClient]);
 }
 
 /**
  * Screen tracking hook for expo-router.
- * Must be used inside PostHogProvider.
+ * Must be used inside FlindAnalyticsProvider.
  */
 export function useScreenTracking() {
   const pathname = usePathname();
   const segments = useSegments();
-  const posthog = usePostHog();
+  const analyticsClient = useFlindAnalytics();
   const previousPathname = useRef<string | null>(null);
 
   useEffect(() => {
-    if (posthog && pathname && pathname !== previousPathname.current) {
+    if (analyticsClient && pathname && pathname !== previousPathname.current) {
       const screenName =
         segments.filter((segment) => !segment.startsWith("(")).join("/") ||
         "index";
 
-      posthog.screen(screenName, {
+      analyticsClient.screen(screenName, {
         pathname,
         segments: segments.join("/"),
       });
 
       previousPathname.current = pathname;
     }
-  }, [pathname, segments, posthog]);
+  }, [pathname, segments, analyticsClient]);
 }
 
 /**
@@ -109,10 +109,10 @@ export function useScreenTracking() {
  * Re-identifies whenever the user's identifying properties change (email, name,
  * staff status, organization) so mid-session updates are forwarded, and resets
  * on logout so the next session starts anonymous and events don't bleed across
- * accounts. Must be used inside PostHogProvider.
+ * accounts. Must be used inside FlindAnalyticsProvider.
  */
 export function useIdentifyUser() {
-  const posthog = usePostHog();
+  const analyticsClient = useFlindAnalytics();
   const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
   const { data: user } = useUserQuery();
   // Signature of the last forwarded payload, so we re-identify on real changes
@@ -120,15 +120,15 @@ export function useIdentifyUser() {
   const lastIdentity = useRef<string | null>(null);
 
   useEffect(() => {
-    if (!posthog) return;
+    if (!analyticsClient) return;
 
     if (!isAuthenticated) {
       // Reset only if we previously identified, otherwise we'd churn the
       // anonymous distinct id on every render before sign-in.
       if (lastIdentity.current) {
-        posthog.reset();
+        analyticsClient.reset();
         // reset() wipes super properties.
-        registerPersistentSuperProperties(posthog);
+        registerPersistentSuperProperties(analyticsClient);
         lastIdentity.current = null;
       }
       return;
@@ -149,18 +149,18 @@ export function useIdentifyUser() {
 
     if (lastIdentity.current === signature) return;
 
-    posthog.identify(user.uuid, {
+    analyticsClient.identify(user.uuid, {
       email: user.email,
       name,
       is_staff: isStaff,
     });
 
     if (user.organization) {
-      posthog.group("organization", user.organization.id, {
+      analyticsClient.group("organization", user.organization.id, {
         name: user.organization.name,
       });
     }
 
     lastIdentity.current = signature;
-  }, [posthog, isAuthenticated, user]);
+  }, [analyticsClient, isAuthenticated, user]);
 }

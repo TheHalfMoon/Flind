@@ -65,7 +65,7 @@ export function App() {
     case "signed-out":
       return (
         <div className="gate">
-          <span className="eyebrow">PostHog Desktop · internal</span>
+          <span className="eyebrow">Flind Desktop · internal</span>
           <h1>Announcements</h1>
           <p>
             Compose and publish in-app announcements. Everything here edits one

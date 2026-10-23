@@ -591,8 +591,7 @@ SPECTACULAR_SETTINGS = {
     "SWAGGER_UI_FAVICON_HREF": "SIDECAR",
     "REDOC_DIST": "SIDECAR",
     "SERVERS": [
-        {"url": "https://us.posthog.com", "description": "PostHog Cloud US"},
-        {"url": "https://eu.posthog.com", "description": "PostHog Cloud EU"},
+        {"url": os.getenv("SITE_URL", "http://localhost:8010").rstrip("/"), "description": "Flind instance"},
     ],
     "AUTHENTICATION_WHITELIST": ["posthog.auth.PersonalAPIKeyAuthentication"],
     "GET_MOCK_REQUEST": "posthog.api.documentation.build_openapi_mock_request",

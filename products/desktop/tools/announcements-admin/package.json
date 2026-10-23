@@ -1,8 +1,8 @@
 {
-  "name": "@posthog/announcements-admin",
+  "name": "@flind/announcements-admin",
   "version": "0.0.0",
   "private": true,
-  "description": "Internal admin for PostHog Desktop in-app announcements — edits the posthog-desktop-announcements flag payload",
+  "description": "Internal admin for Flind Desktop in-app announcements — edits the posthog-desktop-announcements flag payload",
   "type": "module",
   "scripts": {
     "dev": "vite",

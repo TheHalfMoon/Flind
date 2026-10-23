@@ -1,13 +1,6 @@
-export const POSTHOG_HOST = "https://us.posthog.com";
-export const PROJECT_ID = 2;
-// The CIMD client_id is the URL of the metadata document, published from
-// PostHog/posthog.com (static/.well-known/oauth/desktop-announcements-admin/). It registers
-// only the deployed origin's callback, so that origin is baked in rather than
-// read from window.location.
-const APP_ORIGIN = "https://desktop-announcements-admin.hosthog.dev";
-export const CLIENT_ID =
-  "https://posthog.com/.well-known/oauth/desktop-announcements-admin/client-metadata.json";
-export const REDIRECT_URI = `${APP_ORIGIN}/oauth/callback`;
-// user:read covers /api/users/@me/ for analytics identify. Also declared in
-// the metadata document — keep the two lists in sync.
+// Configure these values for a Flind-owned deployment before using this admin tool.
+export const FLIND_HOST = import.meta.env.VITE_FLIND_HOST || "http://localhost:8010";
+export const PROJECT_ID = Number(import.meta.env.VITE_FLIND_PROJECT_ID || "0");
+export const CLIENT_ID = import.meta.env.VITE_FLIND_OAUTH_CLIENT_ID || "";
+export const REDIRECT_URI = `${window.location.origin}/oauth/callback`;
 export const OAUTH_SCOPES = "feature_flag:read feature_flag:write user:read";

@@ -26,23 +26,20 @@ class _PageMetadata:
     self_hosted_description: str
 
 
-# Same share image as posthog.com, so links to the app and the website preview alike.
-_PREVIEW_IMAGE_URL = "https://posthog.com/images/og/default.png"
-
 # Each title matches the document title the SPA sets for the scene, so the tab title doesn't change when the app boots.
 _PUBLIC_PAGE_METADATA: dict[str, _PageMetadata] = {
     "/login": _PageMetadata(
-        title="Log in • PostHog",
-        description="Log in to PostHog, the single platform for engineers to analyze, test, observe, and deploy new features.",
-        self_hosted_description="Log in to your self-hosted PostHog instance.",
+        title="Log in • Flind",
+        description="Log in to Flind, the single platform for engineers to analyze, test, observe, and deploy new features.",
+        self_hosted_description="Log in to your self-hosted Flind instance.",
     ),
     "/signup": _PageMetadata(
-        title="Sign up • PostHog",
+        title="Sign up • Flind",
         description=(
-            "Create a free PostHog account to analyze, test, observe, and deploy new features. "
-            "Every product has a monthly free tier, and no credit card is required."
+            "Create your Flind account to analyze, test, observe, and deploy new features. "
+            "Configure analytics, experimentation, and observability for your workspace."
         ),
-        self_hosted_description="Create an account on your self-hosted PostHog instance.",
+        self_hosted_description="Create an account on your self-hosted Flind instance.",
     ),
 }
 
@@ -54,27 +51,15 @@ def _structured_data_json(metadata: _PageMetadata, canonical_url: str) -> str:
         "name": metadata.title,
         "description": metadata.description,
         "url": canonical_url,
-        "isPartOf": {"@type": "WebSite", "name": "PostHog", "url": settings.SITE_URL},
+        "isPartOf": {"@type": "WebSite", "name": "Flind", "url": settings.SITE_URL},
         "about": {
             "@type": "SoftwareApplication",
-            "name": "PostHog",
+            "name": "Flind",
             "applicationCategory": "BusinessApplication",
             "operatingSystem": "Web",
-            "url": "https://posthog.com",
-            "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+            "url": settings.SITE_URL,
         },
-        # Matches the Organization that posthog.com publishes, so search engines tie the app to the same entity.
-        "publisher": {
-            "@type": "Organization",
-            "name": "PostHog",
-            "url": "https://posthog.com",
-            "logo": "https://posthog.com/brand/posthog-logo-stacked.png",
-            "sameAs": [
-                "https://twitter.com/PostHog",
-                "https://github.com/PostHog",
-                "https://www.linkedin.com/company/posthog",
-            ],
-        },
+        "publisher": {"@type": "Organization", "name": "Flind", "url": settings.SITE_URL},
     }
     # The template renders this inside <script> with |safe, so no character may close the element.
     return json.dumps(structured_data).replace("<", "\\u003c").replace(">", "\\u003e").replace("&", "\\u0026")
@@ -99,8 +84,6 @@ def public_page_metadata_context(request: HttpRequest) -> dict[str, str]:
         "page_title": metadata.title,
         "page_description": metadata.description,
         "canonical_url": canonical_url,
-        "preview_image_url": _PREVIEW_IMAGE_URL,
-        "twitter_site": "@PostHog",
         "structured_data_json": _structured_data_json(metadata, canonical_url),
     }
 

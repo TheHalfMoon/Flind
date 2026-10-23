@@ -31,7 +31,7 @@ vi.mock("expo-constants", () => ({
   },
 }));
 
-// posthog.ts imports the auth store and user query for useIdentifyUser. Their
+// flindAnalytics.ts imports the auth store and user query for useIdentifyUser. Their
 // real modules transitively pull in native expo modules (expo-secure-store,
 // expo-auth-session) that can't load under the node test environment, so mock
 // them — these app-version tests don't exercise identification.
@@ -54,7 +54,7 @@ describe("getAppVersion", () => {
     expoApplication.nativeApplicationVersion = "9.8.7";
     expoConstants.expoConfig = { version: "0.0.0-test" };
 
-    const { getAppVersion } = await import("./posthog");
+    const { getAppVersion } = await import("./flindAnalytics");
 
     expect(getAppVersion()).toBe("9.8.7");
   });
@@ -63,7 +63,7 @@ describe("getAppVersion", () => {
     expoApplication.nativeApplicationVersion = null;
     expoConstants.expoConfig = { version: "1.2.3" };
 
-    const { getAppVersion } = await import("./posthog");
+    const { getAppVersion } = await import("./flindAnalytics");
 
     expect(getAppVersion()).toBe("1.2.3");
   });
@@ -72,28 +72,28 @@ describe("getAppVersion", () => {
     expoApplication.nativeApplicationVersion = null;
     expoConstants.expoConfig = null;
 
-    const { getAppVersion } = await import("./posthog");
+    const { getAppVersion } = await import("./flindAnalytics");
 
     expect(getAppVersion()).toBeNull();
   });
 });
 
 describe("registerPersistentSuperProperties", () => {
-  it("registers team and app_version as super properties on the PostHog client", async () => {
+  it("registers team and app_version as super properties on the Flind analytics client", async () => {
     const register = vi.fn();
-    const { registerPersistentSuperProperties } = await import("./posthog");
+    const { registerPersistentSuperProperties } = await import("./flindAnalytics");
 
     registerPersistentSuperProperties({ register }, "1.2.3");
 
     expect(register).toHaveBeenCalledTimes(1);
     expect(register).toHaveBeenCalledWith({
-      team: "posthog-code",
+      team: "flind",
       app_version: "1.2.3",
     });
   });
 
-  it("does nothing when the PostHog client is not yet available", async () => {
-    const { registerPersistentSuperProperties } = await import("./posthog");
+  it("does nothing when the Flind analytics client is not yet available", async () => {
+    const { registerPersistentSuperProperties } = await import("./flindAnalytics");
 
     expect(() =>
       registerPersistentSuperProperties(null, "1.2.3"),
@@ -102,23 +102,23 @@ describe("registerPersistentSuperProperties", () => {
 
   it("still registers team when no app version can be resolved", async () => {
     const register = vi.fn();
-    const { registerPersistentSuperProperties } = await import("./posthog");
+    const { registerPersistentSuperProperties } = await import("./flindAnalytics");
 
     registerPersistentSuperProperties({ register }, null);
 
     expect(register).toHaveBeenCalledTimes(1);
-    expect(register).toHaveBeenCalledWith({ team: "posthog-code" });
+    expect(register).toHaveBeenCalledWith({ team: "flind" });
   });
 
   it("resolves the version from getAppVersion when none is provided", async () => {
     expoApplication.nativeApplicationVersion = "4.5.6";
     const register = vi.fn();
-    const { registerPersistentSuperProperties } = await import("./posthog");
+    const { registerPersistentSuperProperties } = await import("./flindAnalytics");
 
     registerPersistentSuperProperties({ register });
 
     expect(register).toHaveBeenCalledWith({
-      team: "posthog-code",
+      team: "flind",
       app_version: "4.5.6",
     });
   });

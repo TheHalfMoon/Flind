@@ -3,7 +3,7 @@ import {
   type AnnouncementsPayload,
   announcementsPayloadSchema,
 } from "@posthog/shared/announcements";
-import { POSTHOG_HOST, PROJECT_ID } from "./config";
+import { FLIND_HOST, PROJECT_ID } from "./config";
 
 export interface FlagRecord {
   id: number;
@@ -16,7 +16,7 @@ export interface FlagRecord {
 }
 
 async function request(token: string, path: string, init?: RequestInit) {
-  const response = await fetch(`${POSTHOG_HOST}${path}`, {
+  const response = await fetch(`${FLIND_HOST}${path}`, {
     ...init,
     headers: {
       Authorization: `Bearer ${token}`,
@@ -25,7 +25,7 @@ async function request(token: string, path: string, init?: RequestInit) {
     },
   });
   if (!response.ok) {
-    throw new Error(`PostHog API ${response.status}: ${await response.text()}`);
+    throw new Error(`Flind API ${response.status}: ${await response.text()}`);
   }
   return response.json();
 }
@@ -73,7 +73,7 @@ export function readPayload(flag: FlagRecord): unknown {
 /**
  * Writes only filters.payloads["true"], spreading the rest of `filters` —
  * PATCH replaces the filters object wholesale, and clobbering `groups` would
- * change the rollout. The release condition stays managed in the PostHog UI.
+ * change the rollout. The release condition stays managed in the Flind UI.
  */
 export async function savePayload(
   token: string,

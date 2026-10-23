@@ -12,7 +12,7 @@ Exemplars survive the trip: counters and histograms scraped with OpenMetrics exe
 ```sh
 docker run -d --name posthog-metrics-agent \
   -e POSTHOG_API_KEY=<your project API key> \
-  -e POSTHOG_HOST=https://us.i.posthog.com \
+  -e POSTHOG_HOST=http://localhost:8010 \
   -e SCRAPE_TARGETS=your-app:9090,your-worker:9091 \
   posthog/metrics-agent:latest
 ```
@@ -24,7 +24,7 @@ EU cloud: set `POSTHOG_HOST=https://eu.i.posthog.com`.
 | Variable                         | Required | Default                    | Meaning                                                                          |
 | -------------------------------- | -------- | -------------------------- | -------------------------------------------------------------------------------- |
 | `POSTHOG_API_KEY`                | yes      | —                          | Project API key, sent as `Authorization: Bearer`                                 |
-| `POSTHOG_HOST`                   | no       | `https://us.i.posthog.com` | PostHog ingestion origin                                                         |
+| `POSTHOG_HOST`                   | no       | `http://localhost:8010` | PostHog ingestion origin                                                         |
 | `SCRAPE_TARGETS`                 | yes\*    | —                          | Comma-separated `host:port` list to scrape                                       |
 | `SCRAPE_INTERVAL`                | no       | `15s`                      | Scrape interval                                                                  |
 | `SCRAPE_METRICS_PATH`            | no       | `/metrics`                 | Metrics path on the targets                                                      |

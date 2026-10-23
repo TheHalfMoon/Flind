@@ -255,6 +255,6 @@ POSTHOG_CONNECT_OAUTH_CLIENT_ID_DEV = get_from_env("POSTHOG_CONNECT_OAUTH_CLIENT
 POSTHOG_CONNECT_OAUTH_CLIENT_SECRET_DEV = get_from_env("POSTHOG_CONNECT_OAUTH_CLIENT_SECRET_DEV", "")
 # Public base URL of each target cell's OAuth server. DEV points at the local instance so the flow
 # is exercisable end to end against a single dev stack; override via env for a custom dev host.
-POSTHOG_CONNECT_BASE_URL_US = get_from_env("POSTHOG_CONNECT_BASE_URL_US", "https://us.posthog.com")
-POSTHOG_CONNECT_BASE_URL_EU = get_from_env("POSTHOG_CONNECT_BASE_URL_EU", "https://eu.posthog.com")
+POSTHOG_CONNECT_BASE_URL_US = get_from_env("POSTHOG_CONNECT_BASE_URL_US", "")
+POSTHOG_CONNECT_BASE_URL_EU = get_from_env("POSTHOG_CONNECT_BASE_URL_EU", "")
 POSTHOG_CONNECT_BASE_URL_DEV = get_from_env("POSTHOG_CONNECT_BASE_URL_DEV", "http://localhost:8000")

@@ -19,7 +19,7 @@ TEMPLATE_ID = "12345678-1234-5678-9abc-123456789abc"
 
 
 @override_settings(
-    POSTHOG_HOST="https://us.posthog.com/",
+    FLIND_HOST="https://flind.example.com/",
     POSTHOG_PROJECT_ID=2,
     POSTHOG_TRANSACTIONAL_EMAIL_API_KEY="phs_fake_transactional_key",
 )
@@ -40,7 +40,7 @@ class TestTransactionalEmail(SimpleTestCase):
 
         assert result.result == "example-message-id"
         post.assert_called_once_with(
-            f"https://us.posthog.com/api/projects/2/messaging_templates/{TEMPLATE_ID}/send/",
+            f"https://flind.example.com/api/projects/2/messaging_templates/{TEMPLATE_ID}/send/",
             headers={"Authorization": "Bearer phs_fake_transactional_key"},
             json={
                 "to": "recipient@example.com",
@@ -51,24 +51,24 @@ class TestTransactionalEmail(SimpleTestCase):
             allow_redirects=False,
         )
 
-    @override_settings(POSTHOG_HOST="https://eu.posthog.com", POSTHOG_PROJECT_ID=123)
+    @override_settings(FLIND_HOST="https://flind-eu.example.com", POSTHOG_PROJECT_ID=123)
     def test_supports_a_different_sending_region_without_identifiers(self) -> None:
         response = Mock(status_code=202)
         response.json.return_value = {"message_id": "example-message-id"}
         with patch("posthog.transactional_email.requests.post", return_value=response) as post:
             send_transactional_email(TEMPLATE_ID, to="recipient@example.com")
 
-        assert post.call_args.args[0].startswith("https://eu.posthog.com/api/projects/123/")
+        assert post.call_args.args[0].startswith("https://flind-eu.example.com/api/projects/123/")
         assert post.call_args.kwargs["json"] == {"to": "recipient@example.com", "message_data": {}}
 
     @parameterized.expand(
         [
             ("POSTHOG_TRANSACTIONAL_EMAIL_API_KEY", ""),
             ("POSTHOG_PROJECT_ID", 0),
-            ("POSTHOG_HOST", ""),
-            ("POSTHOG_HOST", "http://example.com"),
-            ("POSTHOG_HOST", "https://example.com/path"),
-            ("POSTHOG_HOST", "https://user:password@example.com"),
+            ("FLIND_HOST", ""),
+            ("FLIND_HOST", "http://example.com"),
+            ("FLIND_HOST", "https://example.com/path"),
+            ("FLIND_HOST", "https://user:password@example.com"),
         ]
     )
     def test_invalid_configuration_does_not_send(self, setting: str, value: str | int) -> None:

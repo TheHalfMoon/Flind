@@ -25,15 +25,15 @@ class TransactionalEmailDeliveryUncertain(Exception):
 
 def is_transactional_email_configured() -> bool:
     return bool(
-        settings.POSTHOG_HOST and settings.POSTHOG_PROJECT_ID > 0 and settings.POSTHOG_TRANSACTIONAL_EMAIL_API_KEY
+        settings.FLIND_HOST and settings.POSTHOG_PROJECT_ID > 0 and settings.POSTHOG_TRANSACTIONAL_EMAIL_API_KEY
     )
 
 
 def _send_url(template_id: str) -> str:
     if not is_transactional_email_configured():
-        raise ImproperlyConfigured("PostHog transactional email settings are missing")
+        raise ImproperlyConfigured("Flind transactional email settings are missing")
 
-    host = settings.POSTHOG_HOST.rstrip("/")
+    host = settings.FLIND_HOST.rstrip("/")
     parsed_host = urlsplit(host)
     if (
         parsed_host.scheme != "https"
@@ -44,7 +44,7 @@ def _send_url(template_id: str) -> str:
         or parsed_host.query
         or parsed_host.fragment
     ):
-        raise ImproperlyConfigured("POSTHOG_HOST must be an HTTPS origin")
+        raise ImproperlyConfigured("FLIND_HOST must be an HTTPS origin")
     try:
         template_uuid = UUID(template_id)
     except ValueError:

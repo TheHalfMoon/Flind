@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { z } from "zod";
 import { capture, captureException } from "./analytics";
 import { type FlagRecord, readPayload, savePayload } from "./api";
-import { POSTHOG_HOST, PROJECT_ID } from "./config";
+import { FLIND_HOST, PROJECT_ID } from "./config";
 import {
   blankItem,
   type EditableItem,
@@ -154,7 +154,7 @@ export function Editor({
   const [confirming, setConfirming] = useState(false);
   const [jsonDraft, setJsonDraft] = useState<string | null>(null);
 
-  const flagUrl = `${POSTHOG_HOST}/project/${PROJECT_ID}/feature_flags/${flag.id}`;
+  const flagUrl = `${FLIND_HOST}/project/${PROJECT_ID}/feature_flags/${flag.id}`;
   const rollout = rolloutLabel(flag);
   const selIndex = Math.min(selected, items.length - 1);
   const selectedItem = items[selIndex] ?? null;
@@ -329,7 +329,7 @@ export function Editor({
     <div className="console">
       <header className="masthead">
         <div>
-          <span className="eyebrow">PostHog Desktop · internal</span>
+          <span className="eyebrow">Flind Desktop · internal</span>
           <h1>Announcements</h1>
         </div>
         <div className="masthead-status">

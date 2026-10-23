@@ -40,7 +40,7 @@ Otherwise the live site keeps the old hoggies and defaults.
 # @posthog/shared links @posthog/agent-contracts from outside this workspace,
 # so the recursive build below does not reach it.
 (cd ../../packages/agent && pnpm install --frozen-lockfile && pnpm --filter @posthog/agent-contracts build)
-pnpm --filter "@posthog/announcements-admin..." build
+pnpm --filter "@flind/announcements-admin..." build
 # HostHog defaults the target slug to the zip name, so name it after the slug.
 cd tools/announcements-admin/dist && zip -r ../desktop-announcements-admin.zip . && cd -
 # publish desktop-announcements-admin.zip (MCP `publish` tool or `hosthog

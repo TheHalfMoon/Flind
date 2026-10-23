@@ -1,4 +1,4 @@
-import { CLIENT_ID, OAUTH_SCOPES, POSTHOG_HOST, REDIRECT_URI } from "./config";
+import { CLIENT_ID, OAUTH_SCOPES, FLIND_HOST, REDIRECT_URI } from "./config";
 
 // Tokens live in localStorage so the session survives closing the tab; the
 // site itself is employee-gated. Verifier/state are per-login-attempt only.
@@ -62,7 +62,7 @@ export async function restoreSession(): Promise<string | null> {
   const refreshToken = localStorage.getItem(REFRESH_KEY);
   if (!refreshToken) return null;
 
-  const response = await fetch(`${POSTHOG_HOST}/oauth/token`, {
+  const response = await fetch(`${FLIND_HOST}/oauth/token`, {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: new URLSearchParams({
@@ -91,7 +91,7 @@ export async function beginLogin(): Promise<void> {
   sessionStorage.setItem(VERIFIER_KEY, verifier);
   sessionStorage.setItem(STATE_KEY, state);
 
-  const url = new URL(`${POSTHOG_HOST}/oauth/authorize`);
+  const url = new URL(`${FLIND_HOST}/oauth/authorize`);
   url.searchParams.set("client_id", CLIENT_ID);
   url.searchParams.set("response_type", "code");
   url.searchParams.set("redirect_uri", REDIRECT_URI);
@@ -120,7 +120,7 @@ export async function handleCallback(): Promise<boolean> {
     throw new Error("OAuth state mismatch — start the login again.");
   }
 
-  const response = await fetch(`${POSTHOG_HOST}/oauth/token`, {
+  const response = await fetch(`${FLIND_HOST}/oauth/token`, {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: new URLSearchParams({
