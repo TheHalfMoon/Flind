@@ -13,24 +13,28 @@ describe('arrivedFromWebsiteLogic', () => {
     })
 
     it.each([
-        ['https://posthog.com/', true],
-        ['https://posthog.com/pricing', true],
-        ['https://www.posthog.com/docs/getting-started', true],
+        ['https://flind.example/', true],
+        ['https://flind.example/pricing', true],
+        ['https://flind.example/docs/getting-started', true],
         ['', false],
-        ['https://app.posthog.com/login', false],
-        ['https://eu.posthog.com/signup', false],
-        ['https://posthog.com.phishing.example/', false],
-        ['https://example.com/?ref=https://posthog.com/', false],
+        ['http://flind.example/', false],
+        ['https://otherproduct.example/', false],
+        ['https://flind.example.phishing.example/', false],
+        ['https://example.com/?ref=https://flind.example/', false],
         ['not-a-url', false],
-    ])('reads %p as arrived-from-website %p', (referrer, expected) => {
-        expect(isWebsiteReferrer(referrer)).toBe(expected)
+    ])('reads %p as arrived-from-website %p for an explicitly configured Flind host', (referrer, expected) => {
+        expect(isWebsiteReferrer(referrer, 'flind.example')).toBe(expected)
     })
 
-    it('answers from the referrer the document was opened with', async () => {
-        setDocumentReferrer('https://posthog.com/pricing')
+    it('has no trusted marketing website unless explicitly configured', () => {
+        expect(isWebsiteReferrer('https://flind.example/', '')).toBe(false)
+        expect(isWebsiteReferrer('https://flind.example/', 'evil@flind.example')).toBe(false)
+    })
+
+    it('defaults to untrusted for website referrers on an unconfigured Flind instance', async () => {
+        setDocumentReferrer('https://flind.example/pricing')
         const logic = arrivedFromWebsiteLogic()
         logic.mount()
-
-        await expectLogic(logic).toMatchValues({ arrivedFromWebsite: true })
+        await expectLogic(logic).toMatchValues({ arrivedFromWebsite: false })
     })
 })

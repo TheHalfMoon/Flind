@@ -1,14 +1,20 @@
 import { LogicWrapper, MakeLogicType, actions, afterMount, kea, path, reducers } from 'kea'
 
-// Only arrives when the website keeps the referrer, which it does for app links alone.
-const WEBSITE_HOSTNAMES = new Set(['posthog.com', 'www.posthog.com'])
-
-export function isWebsiteReferrer(referrer: string): boolean {
-    if (!referrer) {
+// Website origin is configured by the Flind operator; no inherited third-party
+// marketing domain is ever trusted by default.
+export function isWebsiteReferrer(
+    referrer: string,
+    websiteHostname: string = import.meta.env.VITE_FLIND_WEBSITE_HOST || ''
+): boolean {
+    if (!referrer || !websiteHostname || !/^[a-z0-9][a-z0-9.-]*[a-z0-9]$/.test(websiteHostname)) {
+        return false
+    }
+    if (websiteHostname.includes('..') || websiteHostname.split('.').some((label) => label.startsWith('-') || label.endsWith('-'))) {
         return false
     }
     try {
-        return WEBSITE_HOSTNAMES.has(new URL(referrer).hostname)
+        const url = new URL(referrer)
+        return url.protocol === 'https:' && !url.username && !url.password && !url.port && url.hostname === websiteHostname
     } catch {
         return false
     }
