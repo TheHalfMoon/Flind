@@ -1,96 +1,50 @@
-// The app-facing entry point for the PostHog logo. Always import from `lib/brand` — never
-// `@posthog/brand/logo` directly. The raw package is presentation-only (its gradient wordmark
-// is hard-coded `#111`, so it is neither theme- nor holiday-aware); this module is the single
-// choke point that adapts it to dark mode and to the holiday season, so those behaviors can't
-// drift per-consumer.
-import { Logo as BrandLogo } from '@posthog/brand/logo'
+// App-wide Flind identity entrypoint. Visual branding stays under Flind control.
+// The type contract is retained until first-party UI packages are fully migrated.
 import type { LogoProps, LogomarkProps } from '@posthog/brand/logo'
 
-import { currentHoliday } from 'lib/holidays'
 import { cn } from 'lib/utils/css-classes'
 
-/**
- * Named logo sizes. Callers pick one of these instead of hand-tuning pixel dimensions per surface —
- * `md` is the standard logo (the landscape mark renders at the ubiquitous 160px width). A token sets
- * the rendered **height**; width always follows from the mark's aspect ratio, so call sites never
- * set width and height themselves. Omit `size` to fill the container (`width: 100%`, e.g. the toolbar).
- */
 export type LogoSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 
 const LOGO_SIZE_HEIGHTS: Record<LogoSize, number> = {
-    xs: 20, // minimal: exporter chrome, where the logo is a byline rather than a header
-    sm: 24, // compact: watermarks, inline marks
-    md: 28, // default: the standard logo — landscape renders at 160px wide (player, most surfaces)
-    lg: 32, // prominent: page headers users linger on (login, onboarding)
-    xl: 48, // hero: emphasis surfaces (coupon campaigns, splash screens)
+    xs: 20,
+    sm: 24,
+    md: 28,
+    lg: 32,
+    xl: 48,
 }
 
-// Package props are width-driven (`size`/`width` set width, height follows). We drive by height
-// instead, so one token scales any layout consistently — hide the raw dimension props from callers.
 type WithLogoSize<P> = Omit<P, 'size' | 'width' | 'height'> & { size?: LogoSize }
 export type AppLogoProps = WithLogoSize<LogoProps>
 export type AppLogomarkProps = WithLogoSize<LogomarkProps>
 
-/**
- * The PostHog logo, adapted to the app's theme. With no explicit `variant` it renders the
- * gradient mark in light mode and a white mono mark in dark mode (the package gradient wordmark
- * is hard-coded dark, so it can't invert on its own). Pin a `variant` for always-light surfaces.
- */
-export function Logo({ variant, className, size, ...props }: AppLogoProps): JSX.Element {
-    const height = size ? LOGO_SIZE_HEIGHTS[size] : undefined
-    if (variant) {
-        return <BrandLogo variant={variant} height={height} className={className} {...props} />
-    }
+// This text-only mark is a temporary first-party replacement for imported
+// artwork; production brand assets still require visual review.
+export function Logo({ className, size, layout, ...props }: AppLogoProps): JSX.Element {
+    const height = LOGO_SIZE_HEIGHTS[size ?? 'md']
     return (
-        <>
-            <BrandLogo height={height} className={cn('dark:hidden', className)} {...props} />
-            <BrandLogo
-                variant="mono"
-                color="white"
-                height={height}
-                className={cn('hidden dark:block', className)}
-                {...props}
-            />
-        </>
+        <span
+            role="img"
+            aria-hidden={props['aria-hidden']}
+            aria-label={props['aria-hidden'] ? undefined : 'Flind'}
+            className={cn('inline-flex items-center whitespace-nowrap font-bold tracking-tight text-current', className)}
+            style={{ height, fontSize: Math.round(height * 0.8), lineHeight: 1 }}
+        >
+            {layout === 'logomark' ? 'F' : 'Flind'}
+        </span>
     )
 }
 
-/**
- * The hedgehog logomark, theme-aware like {@link Logo}, and dressed for the current holiday
- * unless a `holiday` is passed explicitly (stories pass one to keep snapshots deterministic).
- * `size` sets the height (see {@link LogoSize}); `jumpOnClick` and other package props pass through.
- */
-export function Logomark({ variant, className, holiday, size, ...props }: AppLogomarkProps): JSX.Element {
-    const resolvedHoliday = holiday ?? currentHoliday()
-    const height = size ? LOGO_SIZE_HEIGHTS[size] : undefined
-    if (variant) {
-        return (
-            <BrandLogo.Logomark
-                variant={variant}
-                holiday={resolvedHoliday}
-                height={height}
-                className={className}
-                {...props}
-            />
-        )
-    }
-
+export function Logomark({ className, size }: AppLogomarkProps): JSX.Element {
+    const height = LOGO_SIZE_HEIGHTS[size ?? 'md']
     return (
-        <>
-            <BrandLogo.Logomark
-                holiday={resolvedHoliday}
-                height={height}
-                className={cn('dark:hidden', className)}
-                {...props}
-            />
-            <BrandLogo.Logomark
-                variant="mono"
-                color="white"
-                holiday={resolvedHoliday}
-                height={height}
-                className={cn('hidden dark:block', className)}
-                {...props}
-            />
-        </>
+        <span
+            role="img"
+            aria-label="Flind"
+            className={cn('inline-flex shrink-0 items-center justify-center rounded-md border border-current font-bold text-current', className)}
+            style={{ height, width: height, fontSize: Math.round(height * 0.6), lineHeight: 1 }}
+        >
+            F
+        </span>
     )
 }

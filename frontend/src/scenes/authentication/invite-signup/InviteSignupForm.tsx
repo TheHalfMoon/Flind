@@ -2,10 +2,8 @@ import { useActions, useValues } from 'kea'
 import { Form } from 'kea-forms'
 import { type ReactNode, useEffect } from 'react'
 
-import * as judgePng from '@posthog/brand/hoggies/png/judge'
 
 import { Logomark } from 'lib/brand'
-import { pngHoggie } from 'lib/brand/hoggies'
 import PasswordStrength from 'lib/components/PasswordStrength'
 import SignupRoleSelect from 'lib/components/SignupRoleSelect'
 import passkeyLogo from 'lib/components/SocialLoginButton/passkey.svg'
@@ -32,7 +30,6 @@ import { PrevalidatedInvite, SSOProvider } from '~/types'
 
 import { ErrorCodes, inviteSignupLogic } from './inviteSignupLogic'
 
-const HedgehogJudge = pngHoggie(judgePng)
 
 /**
  * Invite-signup alternatives row: social/SSO icons plus an optional passkey signup icon.
@@ -127,7 +124,7 @@ function InviteNewUser({ invite }: { invite: PrevalidatedInvite }): JSX.Element 
                 <p className="pb-1.5 mt-0.5 mb-0 font-title text-3xl font-extrabold text-primary tracking-tight border-b border-dashed border-[#c5c6bd]">
                     {org}
                 </p>
-                <p className="m-0 mt-1.5 text-sm text-secondary">on PostHog</p>
+                <p className="m-0 mt-1.5 text-sm text-secondary">on Flind</p>
             </div>
         </div>
     )
@@ -135,15 +132,7 @@ function InviteNewUser({ invite }: { invite: PrevalidatedInvite }): JSX.Element 
     const footer = (
         <>
             <p className="AuthScene__terms mt-5 mb-0 text-xs leading-relaxed text-tertiary text-center">
-                By continuing you agree to our{' '}
-                <Link to="https://posthog.com/terms" target="_blank">
-                    terms
-                </Link>{' '}
-                and{' '}
-                <Link to="https://posthog.com/privacy" target="_blank">
-                    privacy policy
-                </Link>
-                .
+                This invitation belongs to your Flind workspace. Ask your workspace administrator about its policies.
             </p>
             <p className="mt-5 mb-0 text-sm text-secondary text-center">
                 Already have an account?{' '}
@@ -303,7 +292,7 @@ function InviteExistingAccount({ invite }: { invite: PrevalidatedInvite }): JSX.
                 </div>
                 <AuthCardTitle
                     title={`Join ${org}`}
-                    sub="You'll accept this invite with your existing PostHog account:"
+                    sub="You'll accept this invite with your existing Flind account:"
                     className="mb-4"
                 />
                 {user && (
@@ -356,7 +345,7 @@ function InviteExistingAccount({ invite }: { invite: PrevalidatedInvite }): JSX.
                                 window.location.href = '/'
                             }}
                         >
-                            Not now, back to PostHog
+                            Not now, back to Flind
                         </LemonButton>
                     </div>
                 )}
@@ -434,11 +423,10 @@ function InviteInvalid(): JSX.Element {
                 </>
             )}
             <Link
-                to="https://posthog.com"
-                target="_blank"
+                to={urls.default()}
                 className="font-semibold no-underline cursor-pointer hover:underline hover:underline-offset-2 text-warning"
             >
-                posthog.com ↗
+                Flind home
             </Link>
         </p>
     )
@@ -447,7 +435,7 @@ function InviteInvalid(): JSX.Element {
         <AuthScene notes={['// hmm', "// this invite isn't right"]}>
             <AuthSceneCard footer={footer}>
                 <div className="flex flex-col items-center text-center">
-                    <HedgehogJudge className="block w-auto mx-auto h-28" />
+                    <Logomark size="xl" className="mx-auto" />
                     <h1 className="m-0 mt-3 font-title text-2xl font-extrabold leading-tight text-primary text-center tracking-tight">
                         {titles[code]}
                     </h1>
@@ -457,7 +445,7 @@ function InviteInvalid(): JSX.Element {
                     <div className="flex flex-col gap-2.5 w-full">
                         {user ? (
                             <LemonButton size="large" center fullWidth type="primary" to={urls.default()}>
-                                Go back to PostHog
+                                Go back to Flind
                             </LemonButton>
                         ) : code === ErrorCodes.InvalidRecipient ? (
                             <LemonButton
