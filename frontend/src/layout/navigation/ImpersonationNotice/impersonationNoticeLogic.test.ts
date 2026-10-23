@@ -174,37 +174,17 @@ describe('impersonationNoticeLogic', () => {
                 await expectLogic(logic).toMatchValues({ adminLoginUrls: [] })
             })
 
-            it('returns a single region url when the region is known', async () => {
+            it('does not expose an admin URL for an unconfigured region', async () => {
                 logic.actions.setTicketContext({ ticketId: '1', email: 'a+b@example.com', region: Region.EU })
-
-                await expectLogic(logic).toMatchValues({
-                    adminLoginUrls: [
-                        {
-                            region: Region.EU,
-                            url: 'https://eu.posthog.com/admin/posthog/user/?q=a%2Bb%40example.com',
-                        },
-                    ],
-                })
+                await expectLogic(logic).toMatchValues({ adminLoginUrls: [] })
             })
 
-            it('falls back to both production regions when the region is unknown', async () => {
+            it('does not expose either unconfigured production region', async () => {
                 logic.actions.setTicketContext({ ticketId: '1', email: 'slack@example.com' })
-
-                await expectLogic(logic).toMatchValues({
-                    adminLoginUrls: [
-                        {
-                            region: Region.US,
-                            url: 'https://us.posthog.com/admin/posthog/user/?q=slack%40example.com',
-                        },
-                        {
-                            region: Region.EU,
-                            url: 'https://eu.posthog.com/admin/posthog/user/?q=slack%40example.com',
-                        },
-                    ],
-                })
+                await expectLogic(logic).toMatchValues({ adminLoginUrls: [] })
             })
 
-            it('looks up a verified widget ticket by its signed distinct ID, not by the typed email', async () => {
+            it('does not use ticket identity to construct an unconfigured remote URL', async () => {
                 logic.actions.setTicketContext({
                     ticketId: '1',
                     email: 'other-account@example.com',
@@ -212,15 +192,7 @@ describe('impersonationNoticeLogic', () => {
                     isEmailUnverified: true,
                     verifiedDistinctId: 'signed/distinct id',
                 })
-
-                await expectLogic(logic).toMatchValues({
-                    adminLoginUrls: [
-                        {
-                            region: Region.US,
-                            url: 'https://us.posthog.com/admin/posthog/user/?q=signed%2Fdistinct%20id',
-                        },
-                    ],
-                })
+                await expectLogic(logic).toMatchValues({ adminLoginUrls: [] })
             })
         })
     })
@@ -377,7 +349,7 @@ describe('impersonationNoticeLogic', () => {
         })
     })
 
-    describe('returnToPostHog listener', () => {
+    describe('returnToFlind listener', () => {
         it('navigates to the loginas logout endpoint with next pointing back to the app', async () => {
             // Drain mount-time requests first: while window.location.href holds the relative
             // logout URL below, MSW can't resolve request URLs against it and errors out
@@ -392,7 +364,7 @@ describe('impersonationNoticeLogic', () => {
 
             try {
                 await expectLogic(logic, () => {
-                    logic.actions.returnToPostHog()
+                    logic.actions.returnToFlind()
                 }).toFinishAllListeners()
 
                 expect(window.location.href).toBe('/admin/logout/?next=%2F')

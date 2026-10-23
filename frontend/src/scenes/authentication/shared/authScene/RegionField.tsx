@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { IconCheckCircle } from '@posthog/icons'
 import { LemonLabel, LemonModal, LemonSelect, LemonSelectOptions } from '@posthog/lemon-ui'
 
-import { CLOUD_HOSTNAMES } from 'lib/constants'
+import { flindRegionHost, flindRegionUrl } from 'lib/flindRegionHosts'
 import { countryCodeToFlag } from 'lib/utils/country'
 import { pendingOAuthConnectionLogic } from 'scenes/authentication/shared/pendingOAuthConnectionLogic'
 import { preflightLogic } from 'scenes/PreflightCheck/preflightLogic'
@@ -17,16 +17,16 @@ const REGION_SECTIONS = [
         title: 'US hosting',
         features: [
             'Faster if you and your users are based in the US',
-            'Easier to comply with some US regulations',
-            'Hosted in Virginia, USA',
+            'Region selection depends on your Flind operator',
+            'Choose this Flind region only if your operator has enabled it',
         ],
     },
     {
         title: 'EU hosting',
         features: [
             'Faster if you and your users are based in Europe',
-            'Keeps data in the EU to comply with GDPR requirements',
-            'Hosted in Frankfurt, Germany',
+            'Choose an appropriate region for your data-handling requirements',
+            'Choose this Flind region only if your operator has enabled it',
         ],
     },
 ]
@@ -89,7 +89,8 @@ export function RegionField(): JSX.Element | null {
     const [devRegion, setDevRegion] = useState<Region>(Region.US)
     const [modalOpen, setModalOpen] = useState(false)
 
-    if (!preflight?.cloud && !preflight?.is_debug) {
+    // A pair of first-party region origins is required before showing choices.
+    if ((!preflight?.cloud && !preflight?.is_debug) || !flindRegionHost(Region.US) || !flindRegionHost(Region.EU)) {
         return null
     }
 
@@ -101,7 +102,10 @@ export function RegionField(): JSX.Element | null {
         }
         if (preflight?.cloud) {
             const { pathname, search, hash } = router.values.currentLocation
-            window.location.href = `https://${CLOUD_HOSTNAMES[region]}${pathname}${search}${hash}`
+            const destination = flindRegionUrl(region, `${pathname}${search}${hash}`)
+            if (destination) {
+                window.location.href = destination
+            }
             return
         }
         setDevRegion(region)

@@ -680,12 +680,6 @@ export const SSO_PROVIDER_NAMES: Record<SSOProvider, string> = {
 export const DOMAIN_REGEX = /^([a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]{2,}$/
 export const SECURE_URL_REGEX = /^(?:http(s)?:\/\/)[\w.-]+(?:\.[\w.-]+)+[\w\-._~:/?#[\]@!$&'()*+,;=]+$/gi
 
-export const CLOUD_HOSTNAMES = {
-    [Region.US]: 'us.posthog.com',
-    [Region.EU]: 'eu.posthog.com',
-    [Region.DEV]: 'app.dev.posthog.dev',
-}
-
 export const SESSION_RECORDINGS_PLAYLIST_FREE_COUNT = 5
 export const SESSION_RECORDINGS_TTL_WARNING_THRESHOLD_DAYS = 10 // days
 

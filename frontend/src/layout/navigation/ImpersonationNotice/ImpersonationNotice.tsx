@@ -111,7 +111,7 @@ function LoginAsContent({
 
 function ImpersonationExpiredOverlay({ expiredSessionInfo }: { expiredSessionInfo: ExpiredSessionInfo }): JSX.Element {
     const { isReImpersonating } = useValues(impersonationNoticeLogic)
-    const { reImpersonate, returnToPostHog } = useActions(impersonationNoticeLogic)
+    const { reImpersonate, returnToFlind } = useActions(impersonationNoticeLogic)
 
     const [readOnly, setReadOnly] = useState(true)
 
@@ -135,7 +135,7 @@ function ImpersonationExpiredOverlay({ expiredSessionInfo }: { expiredSessionInf
                     dropdown: {
                         placement: 'top-end',
                         overlay: (
-                            <LemonButton fullWidth onClick={() => returnToPostHog()}>
+                            <LemonButton fullWidth onClick={() => returnToFlind()}>
                                 Return to PostHog
                             </LemonButton>
                         ),
@@ -165,7 +165,7 @@ function ImpersonationNoticeContent(): JSX.Element {
         upgradeImpersonation,
         openUpgradeModal,
         setSessionExpired,
-        returnToPostHog,
+        returnToFlind,
         changeUser,
         ensureAllMembersLoaded,
     } = useActions(impersonationNoticeLogic)
@@ -269,7 +269,7 @@ function ImpersonationNoticeContent(): JSX.Element {
                         dropdown: {
                             placement: 'top-end',
                             overlay: (
-                                <LemonButton fullWidth size="small" onClick={() => returnToPostHog()}>
+                                <LemonButton fullWidth size="small" onClick={() => returnToFlind()}>
                                     Log out to PostHog
                                 </LemonButton>
                             ),

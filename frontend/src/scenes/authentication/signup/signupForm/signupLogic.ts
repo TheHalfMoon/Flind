@@ -9,7 +9,8 @@ import { lemonToast } from '@posthog/lemon-ui'
 
 import api from 'lib/api'
 import { ValidatedPasswordResult, validatePassword } from 'lib/components/PasswordStrength'
-import { CLOUD_HOSTNAMES, FEATURE_FLAGS } from 'lib/constants'
+import { FEATURE_FLAGS } from 'lib/constants'
+import { flindRegionUrl } from 'lib/flindRegionHosts'
 import { featureFlagLogic } from 'lib/logic/featureFlagLogic'
 import { splitFullName } from 'lib/utils/strings'
 import { getRelativeNextPath } from 'lib/utils/url'
@@ -22,6 +23,8 @@ import { preflightLogic } from 'scenes/PreflightCheck/preflightLogic'
 import { getPasskeyErrorMessage, isWebAuthnCancellation } from 'scenes/settings/user/passkeys/utils'
 import { RegistrationBeginResponse } from 'scenes/settings/user/passkeySettingsLogic'
 import { urls } from 'scenes/urls'
+
+import { Region } from '~/types'
 
 import type { FeatureFlagsSet } from '../../../../lib/logic/featureFlagLogic'
 import type { PreflightStatus } from '../../../../types'
@@ -754,11 +757,15 @@ export const signupLogic = kea<signupLogicType>([
                     isPreflightRegionValid &&
                     regionOverrideFlag !== values.preflight?.region?.toLowerCase()
                 ) {
-                    window.location.href = `https://${
-                        CLOUD_HOSTNAMES[regionOverrideFlag.toUpperCase() as keyof typeof CLOUD_HOSTNAMES]
-                    }${urls.signup()}?maintenanceRedirect=true`
+                    const destination = flindRegionUrl(
+                        regionOverrideFlag.toUpperCase() as Region,
+                        `${urls.signup()}?maintenanceRedirect=true`
+                    )
+                    if (destination) {
+                        window.location.href = destination
+                    }
                 }
-                if (maintenanceRedirect && isRegionOverrideValid) {
+                if (maintenanceRedirect && isRegionOverrideValid && flindRegionUrl(regionOverrideFlag.toUpperCase() as Region, urls.signup())) {
                     lemonToast.info(
                         `You've been redirected to signup on our ${regionOverrideFlag.toUpperCase()} instance while we perform maintenance on our other instance.`
                     )
