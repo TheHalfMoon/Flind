@@ -1,0 +1,209 @@
+import os
+import uuid
+import signal
+import socket
+import asyncio
+import contextlib
+from concurrent.futures import ThreadPoolExecutor
+
+import pytest
+
+import pytest_asyncio
+from temporalio.client import Client, WorkflowFailureError
+from temporalio.common import RetryPolicy
+from temporalio.exceptions import ActivityError, ApplicationError
+from temporalio.worker import UnsandboxedWorkflowRunner, Worker
+
+from posthog.temporal.common.shutdown import ShutdownSignalListener
+from posthog.temporal.tests.utils.workflow import Waiter, WaitInputs, WaitMode, WaitWorkflow
+
+
+@pytest.mark.asyncio
+async def test_shutdown_monitor_async(temporal_client: Client):
+    """Test `ShutdownMonitor` behavior with a test workflow.
+
+    The test workflow `WaitWorkflow` will wait for 30s, but before that, we will
+    issue a cancellation to the worker running the Workflow.
+
+    `ShutdownMonitor` should set the appropriate shutdown event. After re-starting
+    the worker (simulating what would happen in production), the Workflow should
+    fail with an exception raised from `ShutdownWorkflow`.
+    """
+    task_queue = "TEST-TASK-QUEUE"
+    waiter = Waiter()
+    inputs = WaitInputs(wait_for=30, mode=WaitMode.ASYNC)
+    workflow_id = str(uuid.uuid4())
+
+    worker = Worker(
+        temporal_client,
+        task_queue=task_queue,
+        workflows=[WaitWorkflow],
+        activities=[waiter.wait_for_activity],
+        workflow_runner=UnsandboxedWorkflowRunner(),
+    )
+    worker_run_task = asyncio.create_task(worker.run())
+
+    handle = await temporal_client.start_workflow(
+        WaitWorkflow.run,
+        inputs,
+        id=workflow_id,
+        task_queue=task_queue,
+        retry_policy=RetryPolicy(maximum_attempts=1),
+    )
+
+    _ = await waiter.is_waiting.wait()
+
+    assert waiter.shutdown_monitor is not None
+
+    wait_for_shutdown_task = asyncio.create_task(waiter.shutdown_monitor.wait_for_worker_shutdown())
+    shutdown_task = asyncio.create_task(worker.shutdown())
+
+    # Generous bound: shutdown propagation is the thing under test and can take
+    # longer than a few seconds on loaded CI runners.
+    _ = await asyncio.wait([wait_for_shutdown_task], timeout=15)
+    assert waiter.shutdown_monitor.is_worker_shutdown()
+    assert waiter.shutdown_callback_ran.is_set()
+
+    _ = await asyncio.wait([shutdown_task, worker_run_task], timeout=5)
+    # Need to start a new worker to pick-up the workflow again and set the failure.
+    # Otherwise the workflow will never end.
+    with pytest.raises(WorkflowFailureError) as exc_info:
+        async with Worker(
+            temporal_client,
+            task_queue=task_queue,
+            workflows=[WaitWorkflow],
+            activities=[waiter.wait_for_activity],
+            workflow_runner=UnsandboxedWorkflowRunner(),
+        ):
+            await handle.result()
+
+    err = exc_info.value
+    assert hasattr(err, "__cause__"), "Workflow failure missing cause"
+    assert isinstance(err.__cause__, ActivityError)
+    assert isinstance(err.__cause__.__cause__, ApplicationError)
+    # We expect "WorkerShuttingDownError" to be raised, but depending on the timing
+    # of threads, "WorkerShutdown" could be raised by temporal instead.
+    assert err.__cause__.__cause__.type == "WorkerShuttingDownError" or err.__cause__.__cause__.type == "WorkerShutdown"
+
+
+@pytest.fixture
+def task_queue():
+    return "TEST-TASK-QUEUE-SYNC"
+
+
+@pytest.fixture
+def waiter() -> Waiter:
+    return Waiter()
+
+
+@pytest_asyncio.fixture
+async def worker(temporal_client: Client, waiter: Waiter, task_queue: str):
+    with ThreadPoolExecutor(max_workers=50) as executor:
+        worker = Worker(
+            temporal_client,
+            task_queue=task_queue,
+            workflows=[WaitWorkflow],
+            activities=[waiter.wait_for_activity_sync],
+            activity_executor=executor,
+            workflow_runner=UnsandboxedWorkflowRunner(),
+            max_concurrent_activities=50,
+        )
+        worker_run_task = asyncio.create_task(worker.run())
+
+        yield worker
+
+        if not worker_run_task.done():
+            _ = worker_run_task.cancel()
+
+        _ = await asyncio.wait([worker_run_task])
+
+
+@pytest.mark.asyncio
+async def test_shutdown_monitor_sync(temporal_client: Client, task_queue: str, worker: Worker, waiter: Waiter):
+    """Test `ShutdownMonitor` behavior with a test workflow.
+
+    The test workflow `WaitWorkflow` will wait for 30s, but before that, we will
+    issue a cancellation to the worker running the Workflow.
+
+    `ShutdownMonitor` should set the appropriate shutdown event. After re-starting
+    the worker (simulating what would happen in production), the Workflow should
+    fail with an exception raised from `ShutdownWorkflow`.
+    """
+    inputs = WaitInputs(wait_for=30, mode=WaitMode.SYNC)
+    workflow_id = str(uuid.uuid4())
+
+    handle = await temporal_client.start_workflow(
+        WaitWorkflow.run,
+        inputs,
+        id=workflow_id,
+        task_queue=task_queue,
+        retry_policy=RetryPolicy(maximum_attempts=1),
+    )
+
+    _ = await asyncio.to_thread(waiter.is_waiting_sync.wait)
+    shutdown_task = asyncio.create_task(worker.shutdown())
+
+    assert waiter.shutdown_monitor is not None
+    # Wait on the monitor's own event: worker.shutdown() completing within a fixed
+    # window is neither necessary nor sufficient for the sync event to be set, and
+    # propagation can take longer than a few seconds on loaded CI runners.
+    assert await asyncio.to_thread(waiter.shutdown_monitor.wait_for_worker_shutdown_sync, 15)
+
+    _ = await asyncio.wait([shutdown_task], timeout=5)
+
+    with ThreadPoolExecutor(max_workers=50) as executor:
+        # Need to start a new worker to pick-up the workflow again and set the failure.
+        # Otherwise the workflow will never end.
+        with pytest.raises(WorkflowFailureError) as exc_info:
+            async with Worker(
+                temporal_client,
+                task_queue=task_queue,
+                workflows=[WaitWorkflow],
+                activities=[waiter.wait_for_activity_sync],
+                activity_executor=executor,
+                workflow_runner=UnsandboxedWorkflowRunner(),
+                max_concurrent_activities=50,
+            ):
+                await handle.result()
+
+        err = exc_info.value
+        assert hasattr(err, "__cause__"), "Workflow failure missing cause"
+        assert isinstance(err.__cause__, ActivityError)
+        assert isinstance(err.__cause__.__cause__, ApplicationError)
+        # We expect "WorkerShuttingDownError" to be raised, but depending on the timing
+        # of threads, "WorkerShutdown" could be raised by temporal instead.
+        assert (
+            err.__cause__.__cause__.type == "WorkerShuttingDownError"
+            or err.__cause__.__cause__.type == "WorkerShutdown"
+        )
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("wakeup_fd_full", [False, True])
+async def test_shutdown_signal_listener_keeps_the_first_signal(wakeup_fd_full: bool):
+    previous_handlers = {sig: signal.getsignal(sig) for sig in (signal.SIGTERM, signal.SIGINT)}
+    read_sock, write_sock = socket.socketpair()
+    write_sock.setblocking(False)
+    previous_wakeup_fd = signal.set_wakeup_fd(write_sock.fileno()) if wakeup_fd_full else None
+    try:
+        if wakeup_fd_full:
+            with contextlib.suppress(BlockingIOError):
+                while True:
+                    write_sock.send(b"\0" * 4096)
+
+        listener = ShutdownSignalListener(poll_interval_seconds=0.01)
+        listener.install()
+
+        os.kill(os.getpid(), signal.SIGTERM)
+        assert await asyncio.wait_for(listener.wait(), timeout=5) == signal.SIGTERM
+
+        os.kill(os.getpid(), signal.SIGINT)
+        await asyncio.sleep(0.05)
+        assert listener.received == signal.SIGTERM
+    finally:
+        if previous_wakeup_fd is not None:
+            signal.set_wakeup_fd(previous_wakeup_fd)
+        for sig, handler in previous_handlers.items():
+            signal.signal(sig, handler)
+        read_sock.close()
+        write_sock.close()

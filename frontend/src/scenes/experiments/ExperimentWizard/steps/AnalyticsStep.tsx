@@ -1,0 +1,177 @@
+import { useActions, useValues } from 'kea'
+import { useState } from 'react'
+
+import { IconInfo, IconSparkles } from '@posthog/icons'
+import { LemonButton, LemonCheckbox, Tooltip } from '@posthog/lemon-ui'
+
+import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'
+import { aiConsentLogic } from 'scenes/settings/organization/aiConsentLogic'
+import { AIConsentPopoverWrapper } from 'scenes/settings/organization/AIConsentPopoverWrapper'
+
+import { DEFAULT_MODEL, OBSERVATION_CREDITS_BY_MODEL } from 'products/replay_vision/frontend/replay_scanners/types'
+import { getReplayVisionEditDisabledReason } from 'products/replay_vision/frontend/utils/accessControl'
+import { formatCredits } from 'products/replay_vision/frontend/utils/credits'
+
+import { ExposureCriteriaPanel } from '../../ExperimentForm/ExposureCriteriaPanel'
+import { MetricsPanel } from '../../ExperimentForm/MetricsPanel'
+import { flagAggregatesByGroup } from '../../replayVisionScanner'
+import { experimentWizardLogic } from '../experimentWizardLogic'
+
+export function AnalyticsStep(): JSX.Element {
+    const { experiment, sharedMetrics } = useValues(experimentWizardLogic)
+    const { setExperiment, setExposureCriteria, setSharedMetrics } = useActions(experimentWizardLogic)
+    const experimentScanners = useFeatureFlag('VISION_EXPERIMENT_SCANNER')
+
+    return (
+        <div className="space-y-6">
+            <div className="space-y-4">
+                <div>
+                    <h3 className="text-lg font-semibold mb-1">Who is included in the analysis?</h3>
+                    <ExposureCriteriaPanel experiment={experiment} onChange={setExposureCriteria} compact />
+                </div>
+
+                <div className="mt-10">
+                    <h3 className="text-lg font-semibold mb-1 flex items-center gap-1">
+                        How to measure impact?
+                        <Tooltip title="Add metrics to measure your experiment's impact. You can add them before or after launching.">
+                            <LemonButton
+                                size="xsmall"
+                                noPadding
+                                icon={<IconInfo className="text-base text-secondary" />}
+                                aria-label="About measuring impact"
+                                data-attr="experiment-analytics-metrics-help"
+                            />
+                        </Tooltip>
+                    </h3>
+                    <MetricsPanel
+                        experiment={experiment}
+                        sharedMetrics={sharedMetrics}
+                        compact
+                        onSaveMetric={(metric, context) => {
+                            const isNew = !experiment[context.field].some((m) => m.uuid === metric.uuid)
+                            setExperiment({
+                                ...experiment,
+                                [context.field]: isNew
+                                    ? [...experiment[context.field], metric]
+                                    : experiment[context.field].map((m) => (m.uuid === metric.uuid ? metric : m)),
+                            })
+                        }}
+                        onDeleteMetric={(metric, context) => {
+                            if (metric.isSharedMetric) {
+                                setExperiment({
+                                    ...experiment,
+                                    saved_metrics: (experiment.saved_metrics ?? []).filter(
+                                        (sm) => sm.saved_metric !== metric.sharedMetricId
+                                    ),
+                                })
+                                setSharedMetrics({
+                                    ...sharedMetrics,
+                                    [context.type]: sharedMetrics[context.type].filter((m) => m.uuid !== metric.uuid),
+                                })
+                                return
+                            }
+                            setExperiment({
+                                ...experiment,
+                                [context.field]: experiment[context.field].filter(({ uuid }) => uuid !== metric.uuid),
+                            })
+                        }}
+                        onSaveSharedMetrics={(metrics, context) => {
+                            setExperiment({
+                                ...experiment,
+                                saved_metrics: [
+                                    ...(experiment.saved_metrics ?? []),
+                                    ...metrics.map((metric) => ({
+                                        saved_metric: metric.sharedMetricId,
+                                    })),
+                                ],
+                            })
+                            setSharedMetrics({
+                                ...sharedMetrics,
+                                [context.type]: [...sharedMetrics[context.type], ...metrics],
+                            })
+                        }}
+                        onSaveExposureCriteria={setExposureCriteria}
+                    />
+                </div>
+            </div>
+
+            {experimentScanners && <ReplayVisionScannerCheckbox />}
+        </div>
+    )
+}
+
+/** Ticking this opts the experiment into a Replay Vision scanner, created at save. The scanner
+ * endpoint refuses without org AI approval, so an unconsented tick opens the consent popover
+ * instead of letting the experiment save and the scanner fail after the fact. */
+function ReplayVisionScannerCheckbox(): JSX.Element {
+    const { createReplayVisionScanner, linkedFeatureFlag } = useValues(experimentWizardLogic)
+    const { setCreateReplayVisionScanner } = useActions(experimentWizardLogic)
+    const { dataProcessingAccepted } = useValues(aiConsentLogic)
+    const [consentRequested, setConsentRequested] = useState(false)
+    const groupAggregated = flagAggregatesByGroup(linkedFeatureFlag)
+
+    const checkbox = (
+        <LemonCheckbox
+            bordered
+            fullWidth
+            checked={createReplayVisionScanner && !groupAggregated}
+            onChange={(checked) => {
+                if (checked && !dataProcessingAccepted) {
+                    setConsentRequested(true)
+                } else {
+                    setCreateReplayVisionScanner(checked)
+                }
+            }}
+            disabledReason={
+                getReplayVisionEditDisabledReason() ??
+                (groupAggregated
+                    ? "This experiment's feature flag aggregates by group. Replay Vision can only watch experiments that aggregate by person."
+                    : undefined)
+            }
+            data-attr="experiment-create-replay-vision-scanner"
+            label={
+                <div className="py-3">
+                    <div className="flex items-center gap-2 font-semibold">
+                        <IconSparkles className="text-ai" />
+                        Compare what users do in each variant
+                    </div>
+                    <div className="mt-1 font-normal text-sm text-muted">
+                        Set up an experiment scanner. It uses Replay vision to summarize the recordings of exposed users
+                        and shows each variant side by side. It turns on when you launch the experiment and stops when
+                        the experiment ends. Until launch, nothing is scanned and no credits are used.
+                    </div>
+                    {/* Per-session price only: a monthly projection needs the 30-day recording history the
+                     * estimate endpoint reads, and an unstarted experiment has no exposed sessions yet, so
+                     * any monthly figure computed here would be a misleading zero. The scanner page shows
+                     * the projection once participant sessions exist. Priced at the model
+                     * experimentScannerBody pins, so this matches the scanner the save path creates. */}
+                    <div className="font-normal text-sm text-muted mt-1">
+                        Each scanned session costs {formatCredits(OBSERVATION_CREDITS_BY_MODEL[DEFAULT_MODEL])}. The
+                        scanner shows a projected monthly cost once the experiment has participants.
+                    </div>
+                </div>
+            }
+        />
+    )
+
+    if (dataProcessingAccepted) {
+        return checkbox
+    }
+
+    return (
+        <AIConsentPopoverWrapper
+            placement="top"
+            showArrow
+            ignoreDismissal
+            hideTrainingDisclaimer
+            hidden={!consentRequested}
+            onApprove={() => {
+                setConsentRequested(false)
+                setCreateReplayVisionScanner(true)
+            }}
+            onDismiss={() => setConsentRequested(false)}
+        >
+            {checkbox}
+        </AIConsentPopoverWrapper>
+    )
+}

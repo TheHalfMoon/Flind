@@ -1,0 +1,431 @@
+import { Meta, StoryObj } from '@storybook/react'
+import { waitFor } from '@testing-library/dom'
+import userEvent from '@testing-library/user-event'
+
+import { FEATURE_FLAGS } from 'lib/constants'
+import { App } from 'scenes/App'
+import { urls } from 'scenes/urls'
+
+import { mswDecorator } from '~/mocks/browser'
+import { toPaginatedResponse } from '~/mocks/handlers'
+
+import featureFlags from './__mocks__/feature_flags.json'
+import { featureFlagLogic } from './featureFlagLogic'
+
+const STALE_FLAG_ID = 1498
+const RULES_V2_FLAG_ID = 1802
+const DELETED_FLAG_ID = 1526
+const DELETED_COHORT_FLAG_ID = 1803
+
+const meta: Meta = {
+    component: App,
+    tags: ['ff'],
+    title: 'Scenes-App/Feature Flags',
+    parameters: {
+        layout: 'fullscreen',
+        viewMode: 'story',
+        mockDate: '2023-01-28', // To stabilize relative dates
+        pageUrl: urls.featureFlags(),
+        testOptions: { viewport: { width: 1300, height: 2000 } },
+        featureFlags: [FEATURE_FLAGS.REALTIME_COHORT_FLAG_TARGETING],
+    },
+    decorators: [
+        mswDecorator({
+            get: {
+                '/api/projects/:team_id/integrations': {},
+                '/api/projects/:team_id/cohorts/': toPaginatedResponse([
+                    {
+                        id: 1,
+                        name: 'Viewed pricing this week',
+                        count: 4321,
+                        is_static: false,
+                        filters: { properties: { type: 'AND', values: [] } },
+                        realtime: { state: 'ready', ready_at: '2023-01-27T09:40:00Z', build: null },
+                    },
+                ]),
+
+                '/api/projects/:team_id/feature_flags': featureFlags,
+                '/api/projects/:team_id/feature_flags/1111111111111/': [
+                    404,
+                    {
+                        type: 'invalid',
+                        code: 'not_found',
+                        detail: 'Not found.',
+                    },
+                ],
+                '/api/projects/:team_id/feature_flags/2222222222222/': [
+                    500,
+                    {
+                        type: 'server_error',
+                        code: 'error',
+                        detail: 'Something went wrong.',
+                    },
+                ],
+                '/api/projects/:team_id/feature_flags/:flagId/': ({ params }) => {
+                    const flag = featureFlags.results.find((r) => r.id === Number(params['flagId']))
+                    if (flag?.id === DELETED_FLAG_ID) {
+                        return [200, { ...flag, deleted: true, can_edit: true }]
+                    }
+                    if (flag?.id !== STALE_FLAG_ID) {
+                        return [200, flag]
+                    }
+                    // A flag that stopped being called but still gates 40% of users. That is the
+                    // case the stale banner exists for, because "stale" reads most easily as "safe
+                    // to delete" when the flag is still live for real users.
+                    return [
+                        200,
+                        {
+                            ...flag,
+                            last_called_at: '2022-12-14T00:00:00Z',
+                            filters: { ...flag.filters, groups: [{ properties: [], rollout_percentage: 40 }] },
+                        },
+                    ]
+                },
+                '/api/projects/:team_id/feature_flags/:flagId/status': ({ params }) =>
+                    Number(params['flagId']) === STALE_FLAG_ID
+                        ? [
+                              200,
+                              {
+                                  status: 'stale',
+                                  reason: 'Flag has not been called in 45 days',
+                                  rollout: {
+                                      effectively_full_rollout: false,
+                                      has_targeting_conditions: false,
+                                      max_rollout_percentage: 40,
+                                      is_multivariate: false,
+                                  },
+                              },
+                          ]
+                        : [
+                              200,
+                              {
+                                  status: 'active',
+                                  reason: 'Feature flag is active',
+                                  rollout: {
+                                      effectively_full_rollout: false,
+                                      has_targeting_conditions: false,
+                                      max_rollout_percentage: 50,
+                                      is_multivariate: false,
+                                  },
+                              },
+                          ],
+                '/api/environments/:team_id/default_evaluation_contexts/': {
+                    default_evaluation_contexts: [],
+                    available_contexts: [],
+                    hidden_contexts: [],
+                    enabled: false,
+                },
+            },
+            post: {
+                '/api/environments/:team_id/query/:kind': {},
+                // flag targeting has loaders, make sure they don't keep loading
+                '/api/projects/:team_id/feature_flags/user_blast_radius/': () => [200, { affected: 120, total: 2000 }],
+            },
+        }),
+    ],
+}
+export default meta
+
+type Story = StoryObj<{}>
+export const FeatureFlagsList: Story = {}
+
+export const NewFeatureFlag: Story = {
+    parameters: {
+        pageUrl: urls.featureFlag('new'),
+    },
+}
+
+export const EditFeatureFlag: Story = {
+    parameters: {
+        pageUrl: urls.featureFlag(1779),
+    },
+}
+
+export const EditFeatureFlagConditionsWithRealtimeCohort: Story = {
+    parameters: {
+        pageUrl: `${urls.featureFlag(1779)}?edit=true`,
+        testOptions: { waitForLoadersToDisappear: false },
+    },
+    play: async ({ canvasElement }) => {
+        // Condition sets start collapsed, and the realtime tag sits on the expanded cohort row.
+        const expandAll = await waitFor(
+            () => {
+                const button = canvasElement.querySelector<HTMLButtonElement>('[data-attr="expand-all-conditions"]')
+                if (!button) {
+                    throw new Error('release conditions for flag 1779 not yet rendered')
+                }
+                return button
+            },
+            // The flag scene is a lazy chunk, so give a cold bundle time to arrive.
+            { timeout: 30000 }
+        )
+        expandAll.click()
+        await waitFor(
+            () => {
+                if (!canvasElement.querySelector('[data-attr="collapse-all-conditions"]')) {
+                    throw new Error('condition sets not expanded yet')
+                }
+            },
+            { timeout: 5000 }
+        )
+    },
+}
+
+export const EditMultiVariateFeatureFlag: Story = {
+    parameters: {
+        pageUrl: urls.featureFlag(1502),
+    },
+}
+
+export const EditExperimentFeatureFlag: Story = {
+    parameters: {
+        pageUrl: `${urls.featureFlag(1801)}?edit=true`,
+    },
+}
+
+export const EditRemoteConfigFeatureFlag: Story = {
+    parameters: {
+        pageUrl: urls.featureFlag(1738),
+    },
+}
+
+export const EditEncryptedRemoteConfigFeatureFlag: Story = {
+    parameters: {
+        pageUrl: urls.featureFlag(1739),
+    },
+}
+
+export const StaleFeatureFlag: Story = {
+    parameters: {
+        pageUrl: urls.featureFlag(STALE_FLAG_ID),
+    },
+}
+
+export const FeatureFlagsListWithRulesV2Flag: Story = {
+    parameters: {
+        pageUrl: `${urls.featureFlags()}?search=rules-v2`,
+    },
+}
+
+export const RulesV2FeatureFlag: Story = {
+    parameters: {
+        pageUrl: urls.featureFlag(RULES_V2_FLAG_ID),
+    },
+}
+
+// Without the editor flag, `?edit=true` must still show the read-only view, because the v1 form's full save would
+// rewrite the document.
+export const RulesV2FeatureFlagEditDeepLink: Story = {
+    parameters: {
+        pageUrl: `${urls.featureFlag(RULES_V2_FLAG_ID)}?edit=true`,
+    },
+}
+
+export const NewRulesV2FeatureFlag: Story = {
+    parameters: {
+        pageUrl: urls.featureFlagNew({ format: 'rules_v2' }),
+        featureFlags: [FEATURE_FLAGS.REALTIME_COHORT_FLAG_TARGETING, FEATURE_FLAGS.FEATURE_FLAG_RULES_V2_EDITOR],
+    },
+}
+
+export const EditRulesV2FeatureFlag: Story = {
+    parameters: {
+        pageUrl: `${urls.featureFlag(RULES_V2_FLAG_ID)}?edit=true`,
+        featureFlags: [FEATURE_FLAGS.REALTIME_COHORT_FLAG_TARGETING, FEATURE_FLAGS.FEATURE_FLAG_RULES_V2_EDITOR],
+    },
+}
+
+export const StaleFeatureFlagWithAiAssessment: Story = {
+    parameters: {
+        pageUrl: urls.featureFlag(STALE_FLAG_ID),
+        featureFlags: [
+            FEATURE_FLAGS.REALTIME_COHORT_FLAG_TARGETING,
+            FEATURE_FLAGS.PHAI_SANDBOX_MODE,
+            FEATURE_FLAGS.FEATURE_FLAG_CLEANUP_ASSESSMENT,
+        ],
+    },
+    play: async ({ canvasElement }) => {
+        await waitFor(
+            () => {
+                if (!canvasElement.querySelector('[data-attr="feature-flag-stale-banner-review-cleanup"]')) {
+                    throw new Error('AI assessment action not rendered')
+                }
+            },
+            { timeout: 30000 }
+        )
+    },
+}
+
+export const DeletedFeatureFlag: Story = {
+    parameters: {
+        pageUrl: urls.featureFlag(DELETED_FLAG_ID),
+    },
+}
+
+export const FeatureFlagTargetingDeletedCohort: Story = {
+    parameters: {
+        pageUrl: urls.featureFlag(DELETED_COHORT_FLAG_ID),
+    },
+}
+
+// The banner has no Restore button, because the server refuses to restore a flag in another config version.
+export const DeletedRulesV2FeatureFlag: Story = {
+    parameters: {
+        pageUrl: urls.featureFlag(RULES_V2_FLAG_ID),
+    },
+    decorators: [
+        mswDecorator({
+            get: {
+                [`/api/projects/:team_id/feature_flags/${RULES_V2_FLAG_ID}/`]: () => [
+                    200,
+                    {
+                        ...featureFlags.results.find((r) => r.id === RULES_V2_FLAG_ID),
+                        deleted: true,
+                        active: false,
+                        can_edit: true,
+                    },
+                ],
+            },
+        }),
+    ],
+}
+
+export const FeatureFlagNotFound: Story = {
+    parameters: {
+        pageUrl: urls.featureFlag(1111111111111),
+    },
+}
+
+export const FeatureFlagLoadFailed: Story = {
+    parameters: {
+        pageUrl: urls.featureFlag(2222222222222),
+    },
+}
+
+const waitForMountedFeatureFlagLogic = async (): Promise<ReturnType<typeof featureFlagLogic.build>> => {
+    return waitFor(
+        () => {
+            const logic = featureFlagLogic.findMounted({ id: 'new' })
+            if (!logic) {
+                throw new Error('featureFlagLogic({ id: "new" }) not yet mounted')
+            }
+            // The new-flag loader awaits default release conditions, so wait for it to settle —
+            // otherwise loadFeatureFlagSuccess resets the flag to NEW_FLAG after a play function
+            // configures it below.
+            if (logic.values.featureFlagLoading) {
+                throw new Error('feature flag loader still pending')
+            }
+            return logic
+        },
+        { timeout: 5000 }
+    )
+}
+
+const assertErrorTextVisible = (canvasElement: HTMLElement, expectedText: string): void => {
+    const errors = Array.from(canvasElement.querySelectorAll('.Field--error'))
+    const match = errors.some((el) => el.textContent?.includes(expectedText))
+    if (!match) {
+        const seen = errors.map((el) => el.textContent?.trim()).join(' | ') || '(no .Field--error elements)'
+        throw new Error(`Expected error "${expectedText}" not visible. Found: ${seen}`)
+    }
+}
+
+const waitForErrorText = async (canvasElement: HTMLElement, expectedText: string): Promise<void> => {
+    await waitFor(() => assertErrorTextVisible(canvasElement, expectedText), { timeout: 5000 })
+}
+
+// These stories drive the form into a known validation-failure state via the logic so visual
+// snapshots reliably capture the rendered error UI, instead of relying on brittle UI clicks.
+
+export const NewMultivariateFlagVariantKeyError: Story = {
+    parameters: {
+        pageUrl: urls.featureFlag('new'),
+        testOptions: { waitForLoadersToDisappear: false },
+    },
+    play: async ({ canvasElement }) => {
+        const logic = await waitForMountedFeatureFlagLogic()
+
+        // Set filters.multivariate directly with three variants — the third has an empty key so
+        // validation will fail. Going via setFeatureFlagValue('filters', …) avoids racing with
+        // the setMultivariateEnabled listener, which dispatches setMultivariateOptions in a
+        // microtask and would otherwise overwrite variants added before it ran.
+        logic.actions.setFeatureFlagValue('key', 'demo-flag-with-variant-error')
+        logic.actions.setFeatureFlagValue('filters', {
+            ...logic.values.featureFlag.filters,
+            multivariate: {
+                variants: [
+                    { key: 'control', name: '', rollout_percentage: 50 },
+                    { key: 'test', name: '', rollout_percentage: 25 },
+                    { key: '', name: '', rollout_percentage: 25 },
+                ],
+            },
+        })
+        // kea-forms validators run, submitFeatureFlagFailure fires, the listener auto-expands the
+        // variant panel with the empty key, and the inline error is rendered.
+        logic.actions.submitFeatureFlag()
+
+        await waitForErrorText(canvasElement, 'Please set a key')
+    },
+}
+
+export const NewFeatureFlagKeyTaken: Story = {
+    parameters: {
+        pageUrl: urls.featureFlag('new'),
+        testOptions: { waitForLoadersToDisappear: false },
+    },
+    play: async ({ canvasElement }) => {
+        await waitForMountedFeatureFlagLogic()
+        const keyInput = await waitFor(
+            () => {
+                const input = canvasElement.querySelector<HTMLInputElement>('input[data-attr="feature-flag-key"]')
+                if (!input) {
+                    throw new Error('flag key input not yet rendered')
+                }
+                return input
+            },
+            { timeout: 5000 }
+        )
+        await userEvent.type(keyInput, 'session-recording-console')
+        await waitFor(
+            () => {
+                if (!canvasElement.querySelector('[data-attr="feature-flag-key-conflict-link"]')) {
+                    throw new Error('key conflict message not yet visible')
+                }
+            },
+            { timeout: 5000 }
+        )
+    },
+}
+
+export const NewRemoteConfigFlagPayloadError: Story = {
+    parameters: {
+        pageUrl: urls.featureFlag('new'),
+        testOptions: { waitForLoadersToDisappear: false },
+    },
+    play: async ({ canvasElement }) => {
+        const logic = await waitForMountedFeatureFlagLogic()
+
+        // Submit with empty payload: validatePayloadRequired fails, submitFeatureFlagFailure fires,
+        // the listener expands the payload section, and the inline error is rendered.
+        const submitRemoteConfigFlagWithoutPayload = (): void => {
+            logic.actions.setFeatureFlagValue('key', 'demo-remote-config-flag')
+            logic.actions.setFeatureFlagValue('is_remote_configuration', true)
+            logic.actions.submitFeatureFlag()
+        }
+        submitRemoteConfigFlagWithoutPayload()
+
+        // A late second new-flag load replaces the form with NEW_FLAG and turns remote config off.
+        // Resubmit a bounded number of times, so a product bug that keeps resetting the form still fails.
+        let resubmitsLeft = 2
+        await waitFor(
+            () => {
+                if (!logic.values.featureFlag.is_remote_configuration && resubmitsLeft > 0) {
+                    resubmitsLeft--
+                    submitRemoteConfigFlagWithoutPayload()
+                }
+                assertErrorTextVisible(canvasElement, 'Payload is required')
+            },
+            { timeout: 10000 }
+        )
+    },
+}
