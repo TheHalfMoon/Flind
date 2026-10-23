@@ -2,13 +2,12 @@ import { useActions, useValues } from 'kea'
 import { Form } from 'kea-forms'
 import { useEffect } from 'react'
 
-import * as magnifyingGlassPng from '@posthog/brand/hoggies/png/magnifying-glass'
 import { IconCheckCircle } from '@posthog/icons'
 
-import { pngHoggie } from 'lib/brand/hoggies'
 import { SocialLoginButtons, SSOEnforcedLoginButton } from 'lib/components/SocialLoginButton/SocialLoginButton'
 import { supportLogic } from 'lib/components/Support/supportLogic'
 import { SSO_PROVIDER_NAMES } from 'lib/constants'
+import { Logomark } from 'lib/brand'
 import { usePrevious } from 'lib/hooks/usePrevious'
 import { LemonButton } from 'lib/lemon-ui/LemonButton'
 import { LemonField } from 'lib/lemon-ui/LemonField'
@@ -33,7 +32,6 @@ import { LoginMethod, Region, SSOProvider } from '~/types'
 import { loginLogic } from './loginLogic'
 import { SessionRiskBanner } from './SessionRiskBanner'
 
-const HedgehogMagnifyingGlass = pngHoggie(magnifyingGlassPng)
 
 function loginGreeting(isReturning: boolean): { note: string; sub: string } {
     return isReturning
@@ -143,7 +141,7 @@ export function LoginForm(): JSX.Element {
 
     const footer = (
         <p className="mt-5 mb-0 text-sm text-secondary text-center">
-            <span>New to PostHog?</span>{' '}
+            <span>New to Flind?</span>{' '}
             <Link
                 to={[signupUrl, { email: login.email }]}
                 data-attr="signup"
@@ -155,9 +153,9 @@ export function LoginForm(): JSX.Element {
     )
 
     return (
-        <AuthScene notes={[greeting.note, '// 500,000+ teams ship here']}>
+        <AuthScene notes={[greeting.note, '// your workspace, your data']}>
             <AuthSceneCard footer={footer}>
-                {isCodeSent && <HedgehogMagnifyingGlass className="block w-auto mx-auto mb-3 h-28" />}
+                {isCodeSent && <Logomark size="xl" className="mx-auto mb-3" />}
                 <AuthCardTitle
                     className={isCodeSent ? 'mb-2' : undefined}
                     title={
@@ -169,7 +167,7 @@ export function LoginForm(): JSX.Element {
                                     string, so even the separator space lives inside an element */}
                                 <span>{pendingConnection ? 'Log in to connect ' : 'Log in to '}</span>
                                 <span className="px-1 rounded-md bg-[color-mix(in_srgb,var(--color-blue-500)_10%,transparent)] text-[var(--color-blue-500)]">
-                                    {pendingConnection ? pendingConnection.clientName : '@PostHog'}
+                                    {pendingConnection ? pendingConnection.clientName : '@Flind'}
                                 </span>
                             </>
                         )

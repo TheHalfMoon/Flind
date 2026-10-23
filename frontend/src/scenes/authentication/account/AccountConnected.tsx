@@ -106,10 +106,10 @@ export const scene: SceneExport<AccountConnectedProps> = {
 }
 
 /**
- * Unified return page for PostHog Desktop / web: social SSO link (`github-login`), personal GitHub
+ * Unified return page for Flind Desktop / web: social SSO link (`github-login`), personal GitHub
  * integration (`github-integration`), or team Slack integration (`slack-integration`). Navigates
  * to the matching `posthog-code://…` deep link so the desktop app refreshes its integrations —
- * except when started from Slack (`connect_from=slack`) or from an AI chat through the PostHog MCP
+ * except when started from Slack (`connect_from=slack`) or from an AI chat through the Flind MCP
  * (`connect_from=mcp`), where it shows a terminal state and the user returns there manually.
  */
 function isValidKind(kind: AccountConnectedKind | undefined): kind is Exclude<AccountConnectedKind, 'invalid'> {
@@ -123,9 +123,9 @@ export function AccountConnected({ kind }: AccountConnectedProps): JSX.Element {
     const errorCode = getGithubSetupErrorCode(searchParams)
     const isError = errorCode.length > 0
     // The Slack flow has no deep link back — the user just returns to Slack themselves, so we only
-    // show the success state. PostHog Desktop refreshes its integrations via a desktop deep link.
+    // show the success state. Flind Desktop refreshes its integrations via a desktop deep link.
     const startedFromSlack = searchParams.connect_from === 'slack'
-    // pinned: `mcp` is the `connect_from` value in the GitHub connect URL the PostHog MCP hands out.
+    // pinned: `mcp` is the `connect_from` value in the GitHub connect URL the Flind MCP hands out.
     const startedFromChat = searchParams.connect_from === 'mcp'
     const opensDesktopApp = !startedFromSlack && !startedFromChat
     const isPending = errorCode === 'github_install_pending'
@@ -145,7 +145,7 @@ export function AccountConnected({ kind }: AccountConnectedProps): JSX.Element {
             <BridgePage view="account-connected">
                 <div className="flex flex-col items-center gap-4 text-center max-w-lg mx-auto">
                     <p className="text-muted mb-0">
-                        This link is not valid. Return to PostHog from the product you started from.
+                        This link is not valid. Return to Flind from the product you started from.
                     </p>
                 </div>
             </BridgePage>
@@ -167,7 +167,7 @@ export function AccountConnected({ kind }: AccountConnectedProps): JSX.Element {
                 <h2 className="text-xl font-semibold m-0">
                     {startedFromChat && isPending ? `${label} install needs approval` : headline(kind, label, isError)}
                 </h2>
-                {showLoginLine && <p className="text-muted mb-0">You can now log into PostHog using {label}.</p>}
+                {showLoginLine && <p className="text-muted mb-0">You can now log into Flind using {label}.</p>}
                 {startedFromChat ? (
                     <p className="text-muted mb-0">
                         {chatReturnMessage(
@@ -183,9 +183,9 @@ export function AccountConnected({ kind }: AccountConnectedProps): JSX.Element {
                     </p>
                 ) : (
                     <p className="text-muted mb-0">
-                        <strong>Returning to PostHog Desktop…</strong>
+                        <strong>Returning to Flind Desktop…</strong>
                         <br />
-                        <em>If this hasn't happened automatically, get back to the PostHog Desktop app manually.</em>
+                        <em>If this hasn't happened automatically, get back to the Flind Desktop app manually.</em>
                     </p>
                 )}
             </div>

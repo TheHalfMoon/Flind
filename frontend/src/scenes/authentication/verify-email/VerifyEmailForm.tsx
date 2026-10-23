@@ -1,11 +1,8 @@
 import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
-import * as explorerPng from '@posthog/brand/hoggies/png/explorer'
-import * as jackDawsonPng from '@posthog/brand/hoggies/png/jack-dawson'
-import * as magnifyingGlassPng from '@posthog/brand/hoggies/png/magnifying-glass'
 
-import { pngHoggie } from 'lib/brand/hoggies'
+import { Logomark } from 'lib/brand'
 import { supportLogic } from 'lib/components/Support/supportLogic'
 import { LemonBanner } from 'lib/lemon-ui/LemonBanner'
 import { LemonButton } from 'lib/lemon-ui/LemonButton'
@@ -18,9 +15,6 @@ import { urls } from 'scenes/urls'
 
 import { type VerifyEmailReason, verifyEmailLogic } from './verifyEmailLogic'
 
-const HedgehogExplorer = pngHoggie(explorerPng)
-const HedgehogJackDawson = pngHoggie(jackDawsonPng)
-const HedgehogMagnifyingGlass = pngHoggie(magnifyingGlassPng)
 
 const NOTES: Record<string, string[]> = {
     pending: ['// one email away', '// we just hit send'],
@@ -32,12 +26,12 @@ const NOTES: Record<string, string[]> = {
 const CHECKLIST = [
     'Wait 5 minutes, some email providers take a beat',
     'Check spam and any firewalls you run',
-    'Channel your inner hedgehog and peek again',
+    'Double-check the inbox and spam folders',
 ]
 
 const DEEP_LINK_NOTICE: Record<VerifyEmailReason, string> = {
     stripe_deep_link:
-        "Stripe sent you to PostHog to set up analytics. Verify your email and we'll open your new project.",
+        "Stripe sent you to Flind to set up analytics. Verify your email and we'll open your new project.",
     partner_deep_link: "Your sign-in link needs a verified email. Verify it and we'll take you where you were going.",
 }
 
@@ -190,7 +184,7 @@ function CheckYourInbox(): JSX.Element {
                     We couldn't send your code just now. Open "Not seeing it?" below to send a new one.
                 </LemonBanner>
             )}
-            <HedgehogMagnifyingGlass className="block w-auto mx-auto h-28" />
+            <Logomark size="xl" className="mx-auto" />
             <h1 className="m-0 mt-3 font-title text-2xl font-extrabold leading-tight text-primary text-center tracking-tight">
                 {verificationEmailSent ? 'Check your inbox' : 'Enter your code'}
             </h1>
@@ -233,7 +227,7 @@ export function VerifyEmailForm(): JSX.Element {
             <AuthScene notes={notes}>
                 <AuthSceneCard>
                     <div className="flex flex-col items-center text-center">
-                        <HedgehogExplorer className="block w-auto mx-auto h-32" />
+                        <Logomark size="xl" className="mx-auto" />
                         <h1 className="m-0 mt-3 font-title text-2xl font-extrabold leading-tight text-primary text-center tracking-tight">
                             {pendingConnection ? "You're verified" : "You're verified, go explore!"}
                         </h1>
@@ -245,7 +239,7 @@ export function VerifyEmailForm(): JSX.Element {
                         <div className="AuthScene__progress mb-4 w-full h-1.5 overflow-hidden bg-[#e0e1d9] rounded-sm">
                             <div className="AuthScene__progress-fill w-full h-full bg-warning rounded-sm" />
                         </div>
-                        <p className="m-0 text-sm text-secondary text-center">Taking you to PostHog…</p>
+                        <p className="m-0 text-sm text-secondary text-center">Taking you to Flind…</p>
                     </div>
                 </AuthSceneCard>
             </AuthScene>
@@ -269,7 +263,7 @@ export function VerifyEmailForm(): JSX.Element {
                     }
                 >
                     <div className="flex flex-col items-center text-center">
-                        <HedgehogJackDawson className="block w-auto mx-auto h-28" />
+                        <Logomark size="xl" className="mx-auto" />
                         <h1 className="m-0 mt-3 font-title text-2xl font-extrabold leading-tight text-primary text-center tracking-tight">
                             We don't know who to verify
                         </h1>

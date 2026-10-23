@@ -165,7 +165,7 @@ function PendingInvitePanel(): JSX.Element {
                     <span>
                         <b className="text-primary">{org}</b> <span>invited</span>{' '}
                         <span className="AuthScene__mono">{signupPanelEmail.email}</span>{' '}
-                        <span>to join them on PostHog. The invite link is in your inbox.</span>
+                        <span>to join them on Flind. The invite link is in your inbox.</span>
                     </span>
                 }
                 className="mb-5"
@@ -218,15 +218,7 @@ function SignupAuthPanel(): JSX.Element {
     const footer = (
         <>
             <p className="AuthScene__terms mt-5 mb-0 text-xs leading-relaxed text-tertiary text-center">
-                <span>By creating an account, you agree to our</span>{' '}
-                <Link to="https://posthog.com/terms" target="_blank">
-                    Terms of Service ↗
-                </Link>{' '}
-                <span>and</span>{' '}
-                <Link to="https://posthog.com/privacy" target="_blank">
-                    Privacy Policy ↗
-                </Link>
-                <span>.</span>
+                Review the policies provided by your Flind workspace administrator before continuing.
             </p>
             <p className="mt-3 mb-0 text-sm text-secondary text-center">
                 <Link
@@ -350,17 +342,7 @@ function SignupProfilePanel(): JSX.Element {
     const footer = (
         <>
             <p className="AuthScene__terms mt-5 mb-0 text-xs leading-relaxed text-tertiary text-center">
-                <span>
-                    By {preflight?.demo ? 'entering the demo environment' : 'creating an account'}, you agree to our
-                </span>{' '}
-                <Link to="https://posthog.com/terms" target="_blank">
-                    Terms of Service ↗
-                </Link>{' '}
-                <span>and</span>{' '}
-                <Link to="https://posthog.com/privacy" target="_blank">
-                    Privacy Policy ↗
-                </Link>
-                <span>.</span>
+                Review the policies provided by your Flind workspace administrator before continuing.
             </p>
             {!preflight?.demo && (
                 <p className="mt-5 mb-0 text-sm text-secondary text-center">

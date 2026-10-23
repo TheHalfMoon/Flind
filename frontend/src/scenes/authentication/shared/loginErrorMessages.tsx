@@ -1,5 +1,4 @@
 import { SSO_PROVIDER_NAMES } from 'lib/constants'
-import { Link } from 'lib/lemon-ui/Link'
 
 import { SSOProvider } from '~/types'
 
@@ -7,25 +6,10 @@ import { SSOProvider } from '~/types'
 export const ERROR_MESSAGES: Record<string, string | JSX.Element> = {
     no_new_organizations:
         'Your email address is not associated with an account. Please ask your administrator for an invite.',
-    invalid_sso_provider: (
-        <>
-            The SSO provider you specified is invalid. Visit{' '}
-            <Link to="https://posthog.com/sso" target="_blank">
-                https://posthog.com/sso
-            </Link>{' '}
-            for details.
-        </>
-    ),
-    improperly_configured_sso: (
-        <>
-            Cannot login with SSO provider because the provider is not configured, or your instance does not have the
-            required license. Please visit{' '}
-            <Link to="https://posthog.com/sso" target="_blank">
-                https://posthog.com/sso
-            </Link>{' '}
-            for details.
-        </>
-    ),
+    invalid_sso_provider:
+        'The specified SSO provider is not configured for this Flind instance. Contact your workspace administrator.',
+    improperly_configured_sso:
+        'Single sign-on is unavailable or requires additional configuration. Contact your Flind instance administrator.',
     jit_not_enabled:
         'We could not find an account with your email address and your organization does not support automatic enrollment. Please contact your administrator for an invite.',
     saml_sso_enforced:

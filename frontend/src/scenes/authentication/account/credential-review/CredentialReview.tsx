@@ -1,9 +1,8 @@
 import { useActions, useValues } from 'kea'
 
-import * as heartPng from '@posthog/brand/hoggies/png/heart'
 import { LemonButton } from '@posthog/lemon-ui'
 
-import { pngHoggie } from 'lib/brand/hoggies'
+import { Logomark } from 'lib/brand'
 import { BridgePage } from 'lib/components/BridgePage/BridgePage'
 import { SceneExport } from 'scenes/sceneTypes'
 
@@ -15,7 +14,6 @@ export const scene: SceneExport = {
     logic: credentialReviewLogic,
 }
 
-const HedgehogHeart = pngHoggie(heartPng)
 
 export function CredentialReview(): JSX.Element {
     const { markComplete } = useActions(credentialReviewLogic)
@@ -24,10 +22,10 @@ export function CredentialReview(): JSX.Element {
     return (
         <BridgePage view="credential-review" fixedWidth={false}>
             <div className="px-12 py-8 flex flex-col items-center max-w-3xl w-full text-center">
-                <h2 className="text-lg">Welcome to PostHog!</h2>
+                <h2 className="text-lg">Welcome to Flind!</h2>
                 <h1 className="text-3xl font-bold">One more thing.</h1>
                 <div className="max-w-60 my-8">
-                    <HedgehogHeart className="w-full h-full" />
+                    <Logomark size="xl" />
                 </div>
                 <p className="mb-6 max-w-xl">
                     Your account was set up with the credentials and connected apps listed below. Review them and revoke
@@ -44,7 +42,7 @@ export function CredentialReview(): JSX.Element {
                     disabledReason={continueDisabledReason}
                     data-attr="credential-review-continue"
                 >
-                    Continue to PostHog
+                    Continue to Flind
                 </LemonButton>
             </div>
         </BridgePage>

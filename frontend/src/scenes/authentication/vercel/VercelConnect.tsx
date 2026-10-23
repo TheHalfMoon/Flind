@@ -159,7 +159,7 @@ export function VercelConnect(): JSX.Element {
             <BridgePage view="vercel-connect">
                 <h2 className="text-center">Account linked</h2>
                 <p className="text-center mb-6">
-                    Your PostHog organization <strong>{linkedOrgName}</strong> is now connected to Vercel.
+                    Your Flind organization <strong>{linkedOrgName}</strong> is now connected to Vercel.
                 </p>
                 {redirectUrl ? (
                     <LemonButton
@@ -174,7 +174,7 @@ export function VercelConnect(): JSX.Element {
                     </LemonButton>
                 ) : (
                     <LemonButton fullWidth type="primary" center to="/">
-                        Go to PostHog
+                        Go to Flind
                     </LemonButton>
                 )}
             </BridgePage>
@@ -201,7 +201,7 @@ export function VercelConnect(): JSX.Element {
     return (
         <BridgePage view="vercel-connect">
             <h2 className="text-center">Connect to Vercel</h2>
-            <p className="text-center mb-6">Select which PostHog organization to link to your Vercel account.</p>
+            <p className="text-center mb-6">Select which Flind organization to link to your Vercel account.</p>
 
             {error && <p className="text-danger text-center mb-4">{error}</p>}
 

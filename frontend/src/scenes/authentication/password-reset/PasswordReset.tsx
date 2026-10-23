@@ -82,10 +82,7 @@ function EmailUnavailable(): JSX.Element {
                     <ul>
                         <li>
                             Password reset is unavailable because email service is not configured.{' '}
-                            <Link to="https://posthog.com/docs/self-host/configure/email?utm_medium=in-product&utm_campaign=password-reset">
-                                Read the docs
-                            </Link>{' '}
-                            on how to set this up.
+                            Ask your Flind instance administrator to configure outgoing email.
                         </li>
                         <li>To reset the password manually, run the following command in your instance.</li>
                     </ul>

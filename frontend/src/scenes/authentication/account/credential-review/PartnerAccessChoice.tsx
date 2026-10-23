@@ -22,7 +22,7 @@ export function PartnerAccessChoice({ app }: { app: ConnectedAppApi }): JSX.Elem
             <div className="grow basis-60 min-w-0">
                 <div className="font-semibold">{name}</div>
                 <p className="text-secondary mb-0">
-                    {`${name} set up your PostHog organization and has access to your account. Keep it connected only if you asked ${name} to do this.`}
+                    {`${name} set up your Flind organization and has access to your account. Keep it connected only if you asked ${name} to do this.`}
                 </p>
             </div>
             <div className="flex flex-wrap gap-2">
