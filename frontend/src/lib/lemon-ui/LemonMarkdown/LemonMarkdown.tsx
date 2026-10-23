@@ -9,7 +9,7 @@ import remarkGfm from 'remark-gfm'
 import { CodeSnippet, getLanguage, Language } from 'lib/components/CodeSnippet'
 import { RichContentMention } from 'lib/components/RichContentEditor/RichContentNodeMention'
 import { LemonCheckbox } from 'lib/lemon-ui/LemonCheckbox'
-import { isTrustedPostHogUrl } from 'lib/utils/trustedUrl'
+import { isTrustedFlindUrl } from 'lib/utils/trustedUrl'
 
 import { Link } from '../Link'
 import remarkMentions from './mention'
@@ -260,7 +260,7 @@ const LemonMarkdownRenderer = memo(function LemonMarkdownRenderer({
             ...(disableImages
                 ? {
                       img: ({ src, alt }: any): JSX.Element => {
-                          if (disableImages !== 'all' && isTrustedPostHogUrl(src)) {
+                          if (disableImages !== 'all' && isTrustedFlindUrl(src)) {
                               return <img src={src} alt={alt} loading="lazy" />
                           }
                           // The click-to-open fallback is an anchor, so it answers to `disableLinks` too.

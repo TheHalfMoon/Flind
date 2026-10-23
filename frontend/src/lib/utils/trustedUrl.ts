@@ -1,20 +1,16 @@
 /**
- * Whether a URL is trusted enough to load or link to from within untrusted content.
- * Trusted = served from PostHog itself: same-origin (incl. relative URLs) or any `posthog.com` host.
- * Anything else (including `data:`/`blob:` URIs) is untrusted.
+ * URLs embedded in untrusted data may be automatically loaded or linkified only
+ * when their origin exactly matches this Flind frontend. A provider website,
+ * sibling subdomain, different scheme, or a port change is NOT first-party.
  */
-export function isTrustedPostHogUrl(url: string | undefined): boolean {
+export function isTrustedFlindUrl(url: string | undefined): boolean {
     if (!url) {
         return false
     }
-    let parsed: URL
     try {
-        parsed = new URL(url, window.location.origin)
+        const parsed = new URL(url, window.location.origin)
+        return (parsed.protocol === 'https:' || parsed.protocol === 'http:') && parsed.origin === window.location.origin
     } catch {
         return false
     }
-    if (parsed.protocol !== 'https:' && parsed.protocol !== 'http:') {
-        return false
-    }
-    return parsed.hostname === window.location.hostname || /(^|\.)posthog\.com$/i.test(parsed.hostname)
 }

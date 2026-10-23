@@ -1,28 +1,28 @@
-import { isTrustedPostHogUrl } from './trustedUrl'
+import { isTrustedFlindUrl } from './trustedUrl'
 
-describe('isTrustedPostHogUrl', () => {
-    // jsdom serves tests from http://localhost, so same-origin checks resolve against localhost.
+describe('isTrustedFlindUrl', () => {
     it.each([
         ['/static/screenshot.png'],
         ['http://localhost/img.png'],
-        ['https://posthog.com/img.png'],
-        ['https://us.posthog.com/img.png'],
-        ['https://app.posthog.com/a/b/c.png'],
-    ])('trusts %s', (url) => {
-        expect(isTrustedPostHogUrl(url)).toBe(true)
+        ['http://localhost/settings'],
+    ])('trusts same-origin %s', (url) => {
+        expect(isTrustedFlindUrl(url)).toBe(true)
     })
 
     it.each([
-        ['https://evil.com/img.png'],
-        ['https://notposthog.com/img.png'],
-        ['https://evil.posthog.com.attacker.com/img.png'],
-        ['https://posthog.com.attacker.com/img.png'],
+        ['https://outside.example/img.png'],
+        ['https://us.flind.example/img.png'],
+        ['https://not-flind.example/img.png'],
+        ['https://flind.example.attacker.example/img.png'],
+        ['https://localhost/img.png'],
+        ['http://localhost:9000/img.png'],
+        ['//evil.example/img.png'],
         ['data:image/png;base64,iVBORw0KGgo='],
-        ['blob:https://posthog.com/abc'],
+        ['blob:http://localhost/abc'],
         ['javascript:alert(1)'],
         [''],
         [undefined],
-    ])('distrusts %s', (url) => {
-        expect(isTrustedPostHogUrl(url)).toBe(false)
+    ])('rejects cross-origin or unsafe %s', (url) => {
+        expect(isTrustedFlindUrl(url)).toBe(false)
     })
 })
