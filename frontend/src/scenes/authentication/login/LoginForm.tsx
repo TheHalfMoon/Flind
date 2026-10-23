@@ -23,7 +23,6 @@ import { useLastLoginMethod } from 'scenes/authentication/shared/lastLoginMethod
 import { ERROR_MESSAGES } from 'scenes/authentication/shared/loginErrorMessages'
 import { OtherRegionHint } from 'scenes/authentication/shared/OtherRegionHint'
 import { pendingOAuthConnectionLogic, reviewAccessCopy } from 'scenes/authentication/shared/pendingOAuthConnectionLogic'
-import { RedirectIfLoggedInOtherInstance } from 'scenes/authentication/shared/RedirectToLoggedInInstance'
 import { isValidVerificationCode, normalizeVerificationCode } from 'scenes/authentication/shared/verificationCode'
 import { VerificationCodeInput } from 'scenes/authentication/shared/VerificationCodeInput'
 import { preflightLogic } from 'scenes/PreflightCheck/preflightLogic'
@@ -157,7 +156,6 @@ export function LoginForm(): JSX.Element {
 
     return (
         <AuthScene notes={[greeting.note, '// 500,000+ teams ship here']}>
-            {preflight?.cloud && <RedirectIfLoggedInOtherInstance />}
             <AuthSceneCard footer={footer}>
                 {isCodeSent && <HedgehogMagnifyingGlass className="block w-auto mx-auto mb-3 h-28" />}
                 <AuthCardTitle
