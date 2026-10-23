@@ -26,6 +26,11 @@ class FirstPartyTrustedUrlTests(unittest.TestCase):
                 self.assertIn("isTrustedFlindUrl(", source)
                 self.assertNotIn("isTrustedPost" + "HogUrl", source)
 
+    def test_detail_link_tests_agree_with_new_trust_boundary(self) -> None:
+        source = (ROOT / "frontend/src/lib/utils/renderDetailWithLinks.test.tsx").read_text()
+        self.assertIn("Flind same-origin", source)
+        self.assertIn("inherited provider links as untrusted", source)
+
     def test_cross_origin_and_port_change_covered_by_frontend_tests(self) -> None:
         source = (ROOT / "frontend/src/lib/utils/trustedUrl.test.ts").read_text()
         self.assertIn("http://localhost:9000", source)

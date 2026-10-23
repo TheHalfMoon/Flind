@@ -93,7 +93,7 @@ def login_required(view):
     def handler(request, *args, **kwargs):
         # Dev-only: in cloud-OAuth mode the session is client-side, so serve without a local login
         # (the SPA uses its bearer token). DEBUG-gated, so prod gating is unchanged.
-        if settings.DEBUG and request.COOKIES.get("ph_oauth_mode"):
+        if settings.DEBUG and request.COOKIES.get("flind_oauth_mode"):
             return view(request, *args, **kwargs)
         if not User.objects.exists():
             return redirect("/preflight")

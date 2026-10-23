@@ -9,20 +9,17 @@ describe('renderDetailWithLinks', () => {
             .map((el) => (el.props as { to: string }).to)
 
     it.each([
-        ['links a PostHog docs URL', 'see https://posthog.com/docs/x for help', ['https://posthog.com/docs/x']],
-        ['links a PostHog subdomain URL', 'visit https://eu.posthog.com/foo now', ['https://eu.posthog.com/foo']],
+        ['links a Flind same-origin path', 'see http://localhost/docs/x for help', ['http://localhost/docs/x']],
+        ['does not link a different Flind region', 'visit https://eu.flind.example/foo now', []],
         [
-            'strips trailing punctuation from the href',
-            'read https://posthog.com/docs/x.',
-            ['https://posthog.com/docs/x'],
+            'strips trailing punctuation from a same-origin href',
+            'read http://localhost/docs/x.',
+            ['http://localhost/docs/x'],
         ],
-        [
-            'links the production memory-limit docs URL including its fragment',
-            'see our docs for more ways to speed it up: https://posthog.com/docs/product-analytics/troubleshooting#how-do-i-speed-up-my-insights-and-queries',
-            ['https://posthog.com/docs/product-analytics/troubleshooting#how-do-i-speed-up-my-insights-and-queries'],
-        ],
+        ['leaves inherited provider links as untrusted plain text', 'visit https://posthog.com/docs/x', []],
         ['leaves an external URL as plain text', 'go to https://evil.example.com/phish', []],
-        ['leaves a lookalike host as plain text', 'open https://posthog.com.evil.com/x here', []],
+        ['leaves a lookalike host as plain text', 'open http://localhost.evil.com/x here', []],
+        ['does not link a different port', 'open http://localhost:8010/details', []],
         ['renders plain detail with no links', 'This query ran out of memory.', []],
     ])('%s', (_name, detail, expected) => {
         expect(linkedUrls(detail)).toEqual(expected)

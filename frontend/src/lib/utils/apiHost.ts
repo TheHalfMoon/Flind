@@ -18,26 +18,14 @@ export function backendAssetUrl(path: string): string {
 }
 
 export function apiHostOrigin(): string {
-    const appOrigin = window.location.origin
-    if (appOrigin === 'https://us.posthog.com') {
-        return 'https://us.i.posthog.com'
-    } else if (appOrigin === 'https://eu.posthog.com') {
-        return 'https://eu.i.posthog.com'
-    }
-    return appOrigin
+    // Flind never redirects ingestion to a provider's inherited cloud URL.
+    return window.location.origin
 }
 
 export function liveEventsHostOrigin(): string | null {
-    const appOrigin = window.location.origin
     const appContext = getAppContext()
 
-    if (appOrigin === 'https://us.posthog.com') {
-        return 'https://live.us.posthog.com'
-    } else if (appOrigin === 'https://eu.posthog.com') {
-        return 'https://live.eu.posthog.com'
-    } else if (appOrigin === 'https://app.dev.posthog.dev') {
-        return 'https://live.dev.posthog.dev'
-    } else if (inStorybook() || inStorybookTestRunner()) {
+    if (inStorybook() || inStorybookTestRunner()) {
         return 'http://localhost:6006'
     }
 
@@ -45,15 +33,5 @@ export function liveEventsHostOrigin(): string | null {
 }
 
 export function publicWebhooksHostOrigin(): string | null {
-    const appOrigin = window.location.origin
-
-    if (appOrigin === 'https://us.posthog.com') {
-        return 'https://webhooks.us.posthog.com'
-    } else if (appOrigin === 'https://eu.posthog.com') {
-        return 'https://webhooks.eu.posthog.com'
-    } else if (appOrigin === 'https://app.dev.posthog.dev') {
-        return 'https://app.dev.posthog.dev'
-    }
-
-    return appOrigin
+    return window.location.origin
 }

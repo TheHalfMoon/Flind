@@ -7,7 +7,7 @@ import { dayjs } from 'lib/dayjs'
 import { LemonButton } from 'lib/lemon-ui/LemonButton'
 import { Lettermark } from 'lib/lemon-ui/Lettermark'
 import { Spinner } from 'lib/lemon-ui/Spinner'
-import { OAUTH_REGIONS } from 'lib/oauth/oauthClient'
+import { configuredOAuthRegion, OAUTH_REGIONS } from 'lib/oauth/oauthClient'
 import { oauthLogic } from 'lib/oauth/oauthLogic'
 import { hashCodeForString } from 'lib/utils/strings'
 import { preflightLogic } from 'scenes/PreflightCheck/preflightLogic'
@@ -93,26 +93,30 @@ export function DevLoginPanel(): JSX.Element | null {
                         Create fresh demo account
                     </LemonButton>
                 )}
-                <div>
-                    <p className="text-xs font-medium text-muted mb-1">Log in via OAuth</p>
-                    <div className="grid grid-cols-2 gap-1">
-                        {([Region.US, Region.EU] as const).map((region) => (
-                            <LemonButton
-                                key={region}
-                                type="secondary"
-                                size="small"
-                                fullWidth
-                                center
-                                disabledReason={loginInProgress ? 'Login in progress' : undefined}
-                                onClick={() => beginLogin(region)}
-                                data-attr={`dev-oauth-${region.toLowerCase()}`}
-                                icon={<span className="text-base leading-none">{OAUTH_REGIONS[region].flag}</span>}
-                            >
-                                {region === Region.US ? 'US Cloud' : 'EU Cloud'}
-                            </LemonButton>
-                        ))}
+                {([Region.US, Region.EU] as const).some((region) => configuredOAuthRegion(region) !== null) && (
+                    <div>
+                        <p className="text-xs font-medium text-muted mb-1">Log in via Flind OAuth</p>
+                        <div className="grid grid-cols-2 gap-1">
+                            {([Region.US, Region.EU] as const)
+                                .filter((region) => configuredOAuthRegion(region) !== null)
+                                .map((region) => (
+                                    <LemonButton
+                                        key={region}
+                                        type="secondary"
+                                        size="small"
+                                        fullWidth
+                                        center
+                                        disabledReason={loginInProgress ? 'Login in progress' : undefined}
+                                        onClick={() => beginLogin(region)}
+                                        data-attr={`dev-oauth-${region.toLowerCase()}`}
+                                        icon={<span className="text-base leading-none">{OAUTH_REGIONS[region].flag}</span>}
+                                    >
+                                        {region === Region.US ? 'Flind US' : 'Flind EU'}
+                                    </LemonButton>
+                                ))}
+                        </div>
                     </div>
-                </div>
+                )}
             </div>
         </div>
     )

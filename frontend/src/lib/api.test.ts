@@ -4,12 +4,13 @@ import posthog from 'posthog-js'
 import api, { ApiConfig, ApiError, ApiRequest, NetworkError, ResponseBodyReadError } from 'lib/api'
 import { shouldReportApiFailure } from 'lib/api-error'
 import { apiStatusLogic } from 'lib/logic/apiStatusLogic'
+import { OAUTH_REGIONS } from 'lib/oauth/oauthClient'
 
 import { NodeKind } from '~/queries/schema/schema-general'
-import { PropertyFilterType, PropertyOperator } from '~/types'
+import { PropertyFilterType, PropertyOperator, Region } from '~/types'
 
 // Mirrors SESSION_KEY in lib/oauth/oauthClient — the localStorage key its real getStoredSession reads.
-const OAUTH_SESSION_KEY = 'ph_oauth_session'
+const OAUTH_SESSION_KEY = 'flind_oauth_session'
 
 describe('API helper', () => {
     let fakeFetch: jest.Mock<any, any>
@@ -331,12 +332,17 @@ describe('API helper', () => {
     })
 
     describe('OAuth mode auth headers', () => {
+        const previousConfig = { ...OAUTH_REGIONS[Region.US] }
         beforeEach(() => {
+            // Only an explicitly configured first-party OAuth region can receive
+            // stored credentials. The default build has no OAuth destination.
+            OAUTH_REGIONS[Region.US].host = 'https://us.flind.example'
+            OAUTH_REGIONS[Region.US].clientId = 'flind-test-client'
             window.localStorage.setItem(
                 OAUTH_SESSION_KEY,
                 JSON.stringify({
-                    backendHost: 'https://us.posthog.com',
-                    clientId: 'client',
+                    backendHost: 'https://us.flind.example',
+                    clientId: 'flind-test-client',
                     accessToken: 'oauth-token',
                     refreshToken: 'refresh',
                     expiresAt: 9999999999999,
@@ -346,16 +352,17 @@ describe('API helper', () => {
 
         afterEach(() => {
             window.localStorage.removeItem(OAUTH_SESSION_KEY)
+            Object.assign(OAUTH_REGIONS[Region.US], previousConfig)
         })
 
-        it('attaches the bearer token to requests routed to the OAuth backend host', async () => {
+        it('attaches bearer credentials only to a configured Flind region', async () => {
             await api.get('/api/projects/2/insights/')
             const [url, options] = fakeFetch.mock.calls[0]
-            expect(url).toEqual('https://us.posthog.com/api/projects/2/insights/')
+            expect(url).toEqual('https://us.flind.example/api/projects/2/insights/')
             expect(options.headers.Authorization).toEqual('Bearer oauth-token')
         })
 
-        it('does not attach the bearer token to same-origin requests left on the local instance', async () => {
+        it('does not send the token to same-origin endpoints', async () => {
             await api.get('/some/local/path')
             const [url, options] = fakeFetch.mock.calls[0]
             expect(url).toEqual('/some/local/path/')
@@ -502,9 +509,9 @@ describe('API helper', () => {
         })
 
         it('still classifies the failure when the request URL cannot be parsed', async () => {
-            // `backendHost` comes straight from localStorage, so an out-of-range port reaches the
-            // request URL, and `fetch` rejects it with a TypeError. Deriving the pathname must not
-            // throw on the same URL, which would replace the classified failure with a crash.
+            // A malformed stored OAuth host must be ignored rather than used as a
+            // remote request destination. Fetch failures remain classified and
+            // must not throw while trying to derive a URL pathname.
             window.localStorage.setItem(
                 OAUTH_SESSION_KEY,
                 JSON.stringify({

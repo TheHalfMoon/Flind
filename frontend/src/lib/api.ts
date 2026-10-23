@@ -2014,7 +2014,18 @@ const prepareUrl = (url: string): string => {
  */
 function oauthAuthHeaders(url: string): Record<string, string> {
     const session = getStoredSession()
-    return session && url.startsWith(session.backendHost) ? { Authorization: `Bearer ${session.accessToken}` } : {}
+    if (!session) {
+        return {}
+    }
+    try {
+        // A string prefix is not an origin boundary: https://flind.example.evil
+        // must never receive bearer credentials for https://flind.example.
+        return new URL(url, window.location.origin).origin === session.backendHost
+            ? { Authorization: `Bearer ${session.accessToken}` }
+            : {}
+    } catch {
+        return {}
+    }
 }
 
 /**
