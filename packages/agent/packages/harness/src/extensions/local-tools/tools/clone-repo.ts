@@ -5,8 +5,8 @@ import {
   execGit,
   execGitWithRetry,
   type GitExecResult,
-} from "@posthog/git/git-exec";
-import { parseGithubUrl } from "@posthog/git/utils";
+} from "@flind/git/git-exec";
+import { parseGithubUrl } from "@flind/git/utils";
 import { z } from "zod";
 import { resolveGithubToken } from "../github-token";
 import { defineLocalTool, type LocalToolResult } from "../registry";

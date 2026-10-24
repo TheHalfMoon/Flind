@@ -11,7 +11,7 @@ import {
   SelectTrigger,
   SelectValue,
   Text,
-} from "@posthog/quill";
+} from "@flind/quill";
 import type { ReactElement } from "react";
 import { useState } from "react";
 import { UsageCard } from "./UsageCard";

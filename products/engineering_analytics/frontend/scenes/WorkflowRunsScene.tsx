@@ -12,7 +12,7 @@ import {
     Link,
     Tooltip,
 } from '@posthog/lemon-ui'
-import { Button } from '@posthog/quill'
+import { Button } from '@flind/quill'
 
 import { TZLabel } from 'lib/components/TZLabel'
 import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'

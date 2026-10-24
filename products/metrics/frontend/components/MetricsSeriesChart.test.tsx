@@ -7,7 +7,7 @@ import {
     ensureJsdom,
     getHogChart,
     hoverUntilTooltip,
-} from '@posthog/quill-charts/testing'
+} from '@flind/quill-charts/testing'
 
 import type { MetricsDisplaySettings } from '~/queries/schema/schema-general'
 import { initKeaTests } from '~/test/init'

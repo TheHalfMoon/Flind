@@ -4,7 +4,7 @@ import posthog from 'posthog-js'
 import { useCallback, useMemo } from 'react'
 
 import { LemonButton, LemonModal, LemonTabs, Link } from '@posthog/lemon-ui'
-import { Button } from '@posthog/quill'
+import { Button } from '@flind/quill'
 
 import { FEATURE_FLAGS } from 'lib/constants'
 import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'

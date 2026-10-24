@@ -2,7 +2,7 @@ import { BindLogic, useActions, useValues } from 'kea'
 
 import { IconRefresh } from '@posthog/icons'
 import { LemonButton } from '@posthog/lemon-ui'
-import { Button } from '@posthog/quill'
+import { Button } from '@flind/quill'
 
 import { CopyToClipboardInline } from 'lib/components/CopyToClipboard'
 import { NotFound } from 'lib/components/NotFound'

@@ -4,10 +4,10 @@ import type { ChartTheme } from './types'
 
 /**
  * Fallback categorical palette, used only when the `--data-color-*` CSS vars
- * aren't loaded (no `@posthog/quill-tokens` stylesheet, or SSR with no DOM).
+ * aren't loaded (no `@flind/quill-tokens` stylesheet, or SSR with no DOM).
  *
  * Charts are headless — colors normally come from the host's design tokens via
- * {@link themeFromCssVars}. `@posthog/quill-tokens` is the source of truth for
+ * {@link themeFromCssVars}. `@flind/quill-tokens` is the source of truth for
  * these values (`dataColorPalette`); this literal copy keeps the package's
  * runtime dependency-free so a missing stylesheet degrades to a visible palette
  * instead of black. `theme.test.ts` asserts it stays equal to the token palette,

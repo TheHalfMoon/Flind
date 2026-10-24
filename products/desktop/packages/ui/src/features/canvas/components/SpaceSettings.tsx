@@ -1,4 +1,4 @@
-import { Text } from "@posthog/quill";
+import { Text } from "@flind/quill";
 import { ChannelHeader } from "@posthog/ui/features/canvas/components/ChannelHeader";
 import { SpaceMembersSettings } from "@posthog/ui/features/canvas/components/SpaceMembersSettings";
 import { SpaceRepositories } from "@posthog/ui/features/canvas/components/SpaceRepositories";

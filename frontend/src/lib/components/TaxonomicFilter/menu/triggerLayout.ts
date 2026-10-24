@@ -1,4 +1,4 @@
-import { cn } from '@posthog/quill'
+import { cn } from '@flind/quill'
 
 /**
  * Single source of truth for the layout of any taxonomic-filter trigger

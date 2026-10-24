@@ -1,4 +1,4 @@
-import type { PointClickData, TooltipConfig, ValueLabelFormatter } from '@posthog/quill-charts'
+import type { PointClickData, TooltipConfig, ValueLabelFormatter } from '@flind/quill-charts'
 
 import { percentage } from 'lib/utils/numbers'
 

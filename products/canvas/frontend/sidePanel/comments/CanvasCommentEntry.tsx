@@ -11,7 +11,7 @@ import {
     ThreadItemGutter,
     ThreadItemHeader,
     ThreadItemTimestamp,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import { dayjs } from 'lib/dayjs'
 import { fullNameOrEmail } from 'lib/utils/strings'

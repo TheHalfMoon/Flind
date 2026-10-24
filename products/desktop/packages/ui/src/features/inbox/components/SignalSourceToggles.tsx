@@ -11,7 +11,7 @@ import type {
   SignalSourceConfig,
 } from "@posthog/api-client/posthog-client";
 import { formatRepoPreview } from "@posthog/core/settings/githubRepoSummary";
-import { Button, Switch } from "@posthog/quill";
+import { Button, Switch } from "@flind/quill";
 import {
   EXTERNAL_INBOX_SOURCES,
   type ToggleableSourceProduct,

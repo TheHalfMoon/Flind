@@ -12,7 +12,7 @@ import {
     DropdownMenuSubContent,
     DropdownMenuSubTrigger,
     DropdownMenuTrigger,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import { FEATURE_FLAGS } from 'lib/constants'
 import { LinkPrimitive } from 'lib/lemon-ui/Link'

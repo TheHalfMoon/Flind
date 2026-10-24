@@ -1,5 +1,5 @@
-import { TooltipFooter, TooltipSurface, TooltipSwatch } from '@posthog/quill-charts'
-import type { ScatterPointDatum } from '@posthog/quill-charts'
+import { TooltipFooter, TooltipSurface, TooltipSwatch } from '@flind/quill-charts'
+import type { ScatterPointDatum } from '@flind/quill-charts'
 
 import { clusterItemFooter, clusterItemLabel, fallbackItemLabel } from './clusterScatter'
 import type { ClusterScatterMeta } from './clusterScatter'

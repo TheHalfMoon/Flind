@@ -14,7 +14,7 @@ import {
     TimeSeriesBarChart,
     type TimeSeriesBarChartConfig,
     type TooltipContext,
-} from '@posthog/quill-charts'
+} from '@flind/quill-charts'
 
 import { useChartConfig, useChartTheme } from 'lib/charts/hooks'
 import { getColorVar } from 'lib/colors'

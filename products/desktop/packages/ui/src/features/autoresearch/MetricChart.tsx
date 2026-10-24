@@ -7,7 +7,7 @@ import {
   ReferenceLine,
   type Series,
   useChartTheme,
-} from "@posthog/quill-charts";
+} from "@flind/quill-charts";
 import { Text } from "@radix-ui/themes";
 import { useMemo } from "react";
 import { formatChartValue, withMetricUnit } from "./metricFormat";

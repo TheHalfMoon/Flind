@@ -9,7 +9,7 @@ const mockCaptureRun = vi.hoisted(() => vi.fn());
 const mockDeleteCheckpoint = vi.hoisted(() => vi.fn());
 const mockCheckoutLocalBranch = vi.hoisted(() => vi.fn());
 
-vi.mock("@posthog/git/worktree", () => ({
+vi.mock("@flind/git/worktree", () => ({
   WorktreeManager: class {
     createWorktreeForExistingBranch =
       mockManager.createWorktreeForExistingBranch;
@@ -17,7 +17,7 @@ vi.mock("@posthog/git/worktree", () => ({
   },
 }));
 
-vi.mock("@posthog/git/sagas/checkpoint", () => ({
+vi.mock("@flind/git/sagas/checkpoint", () => ({
   RevertCheckpointSaga: class {
     run = mockRevertRun;
   },
@@ -27,7 +27,7 @@ vi.mock("@posthog/git/sagas/checkpoint", () => ({
   deleteCheckpoint: mockDeleteCheckpoint,
 }));
 
-vi.mock("@posthog/git/client", () => ({
+vi.mock("@flind/git/client", () => ({
   createGitClient: vi.fn(() => ({
     checkoutLocalBranch: mockCheckoutLocalBranch,
   })),

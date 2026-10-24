@@ -1,4 +1,4 @@
-import { Skeleton, Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@posthog/quill'
+import { Skeleton, Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@flind/quill'
 
 import type { AnalyticsListColumns } from './AnalyticsListColumns'
 

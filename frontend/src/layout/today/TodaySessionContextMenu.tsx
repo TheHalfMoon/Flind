@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { ReactNode, useState } from 'react'
 
-import { ContextMenu, ContextMenuContent, ContextMenuTrigger } from '@posthog/quill'
+import { ContextMenu, ContextMenuContent, ContextMenuTrigger } from '@flind/quill'
 
 import { CONTEXT_PARTS, SHEET_PARTS } from './todayMenuParts'
 import { useTodayPreviewMenuReport } from './todayPreviewCardContext'

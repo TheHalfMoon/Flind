@@ -1,6 +1,6 @@
 import { memo, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 
-import { useChartLayout } from '@posthog/quill-charts'
+import { useChartLayout } from '@flind/quill-charts'
 
 import { buildTimePositioner } from './buildTimePositioner'
 import { spreadLabels } from './spreadLabels'

@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react'
 
-import { type ChartTheme } from '@posthog/quill-charts'
+import { type ChartTheme } from '@flind/quill-charts'
 
 import { buildTheme } from 'lib/charts/utils/theme'
 

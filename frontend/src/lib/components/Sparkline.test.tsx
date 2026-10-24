@@ -8,7 +8,7 @@ import {
     hoverUntilTooltip,
     setupJsdom,
     setupSyncRaf,
-} from '@posthog/quill-charts/testing'
+} from '@flind/quill-charts/testing'
 
 import { initKeaTests } from '~/test/init'
 

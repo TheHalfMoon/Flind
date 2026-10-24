@@ -3,21 +3,21 @@ import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
 
 /**
- * Builds the JavaScript entry for @posthog/quill. The CSS pipeline is
+ * Builds the JavaScript entry for @flind/quill. The CSS pipeline is
  * handled separately by `scripts/build-css.ts` which just emits the
  * tokens / base / tailwind.css metadata files — vite never runs
  * Tailwind. It only bundles the thin re-export layer that ties
  * primitives + components + blocks together.
  *
- * IMPORTANT: `@posthog/quill-primitives`, `@posthog/quill-components`,
- * and `@posthog/quill-blocks` are **not** externalized. They are
+ * IMPORTANT: `@flind/quill-primitives`, `@flind/quill-components`,
+ * and `@flind/quill-blocks` are **not** externalized. They are
  * `private: true` workspace packages that never ship to npm, so the
  * aggregate has to inline their code at build time — otherwise the
- * published dist would have `import from '@posthog/quill-primitives'`
+ * published dist would have `import from '@flind/quill-primitives'`
  * statements pointing at a package that does not exist in the registry
  * and consumers would get ERR_MODULE_NOT_FOUND on first import.
  *
- * `@posthog/quill-tokens` stays external because it is independently
+ * `@flind/quill-tokens` stays external because it is independently
  * published. Actual runtime deps (@base-ui/react, lucide-react, etc.)
  * are kept external too — they are redeclared as real
  * `dependencies` on the aggregate's package.json so pnpm/npm pulls
@@ -31,12 +31,12 @@ export default defineConfig({
             // definitions re-exported from the private sub-packages have
             // to be inlined into dist/index.d.ts, otherwise consumers get
             // TypeScript resolution errors trying to find types in
-            // @posthog/quill-primitives / -components / -blocks (which
+            // @flind/quill-primitives / -components / -blocks (which
             // are not published to npm). `bundledPackages` tells
             // api-extractor to follow and inline their .d.ts trees
             // instead of treating them as externals.
             rollupTypes: true,
-            bundledPackages: ['@posthog/quill-primitives', '@posthog/quill-components', '@posthog/quill-blocks'],
+            bundledPackages: ['@flind/quill-primitives', '@flind/quill-components', '@flind/quill-blocks'],
         }),
     ],
     build: {
@@ -50,7 +50,7 @@ export default defineConfig({
                 'react',
                 'react-dom',
                 'react/jsx-runtime',
-                '@posthog/quill-tokens',
+                '@flind/quill-tokens',
                 '@base-ui/react',
                 /^@base-ui\/react\//,
                 'class-variance-authority',

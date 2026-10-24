@@ -4,7 +4,7 @@ import {
   withEnvironmentName,
   withRepositories,
 } from "@posthog/core/settings/environmentSetup";
-import { Checkbox, Input, Label, Text } from "@posthog/quill";
+import { Checkbox, Input, Label, Text } from "@flind/quill";
 import { RepositoriesField } from "@posthog/ui/features/integrations/components/RepositoriesField";
 import { SettingsSelect } from "@posthog/ui/features/settings/components/SettingsSelect";
 import { StepBody } from "@posthog/ui/features/settings/sections/environments/setup/StepBody";

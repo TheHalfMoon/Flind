@@ -2,7 +2,7 @@ import { act, cleanup, fireEvent, render, screen } from '@testing-library/react'
 import { BindLogic } from 'kea'
 import { router } from 'kea-router'
 
-import { dimensions, ensureJsdom } from '@posthog/quill-charts/testing'
+import { dimensions, ensureJsdom } from '@flind/quill-charts/testing'
 
 import { MultipleChoiceQuestionViz } from 'scenes/surveys/components/question-visualizations/MultipleChoiceQuestionViz'
 import { surveyLogic } from 'scenes/surveys/surveyLogic'

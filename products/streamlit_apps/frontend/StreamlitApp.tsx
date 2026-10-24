@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 
 import { IconPencil } from '@posthog/icons'
 import { LemonBanner, LemonButton } from '@posthog/lemon-ui'
-import { Button } from '@posthog/quill'
+import { Button } from '@flind/quill'
 
 import { NotFound } from 'lib/components/NotFound'
 import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'

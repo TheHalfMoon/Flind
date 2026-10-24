@@ -1,5 +1,5 @@
 import { IconInfo } from '@posthog/icons'
-import { Item, ItemContent, ItemMedia } from '@posthog/quill'
+import { Item, ItemContent, ItemMedia } from '@flind/quill'
 
 import { CommandKRow } from './commandKSections'
 

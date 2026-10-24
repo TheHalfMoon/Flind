@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { Text } from '@posthog/quill'
+import { Text } from '@flind/quill'
 
 import { NavProductIcon } from '~/layout/panel-layout/navbar/tabs/NavProductIcon'
 import { productsItemName } from '~/layout/panel-layout/navbar/tabs/productsCatalog'

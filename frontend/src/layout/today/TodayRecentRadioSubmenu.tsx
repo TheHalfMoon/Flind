@@ -1,4 +1,4 @@
-import { DropdownMenuRadioGroup, DropdownMenuRadioItem, ItemRadio, cn } from '@posthog/quill'
+import { DropdownMenuRadioGroup, DropdownMenuRadioItem, ItemRadio, cn } from '@flind/quill'
 
 import { TodayRecentFilterSubmenu } from './TodayRecentFilterSubmenu'
 import { useTodaySheetMenu } from './todaySheetMenuContext'

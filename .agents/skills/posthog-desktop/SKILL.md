@@ -6,7 +6,7 @@ description: >
   source of truth for PRs, CI and publishing, and not part of the root frontend or Django build.
   Use when the user says /posthog-desktop, or works on the Electron desktop app, apps/code, apps/web,
   apps/mobile, packages/core, packages/ui, packages/workspace-server, @posthog/api-client,
-  @posthog/agent, or the agent framework. Pins the working directory to products/desktop, swaps
+  @flind/agent, or the agent framework. Pins the working directory to products/desktop, swaps
   in that tree's toolchain and conventions in place of the monorepo's, and defines the few paths
   outside the tree that may be touched (Django APIs the app calls, desktop-* CI at the root).
 ---
@@ -42,7 +42,7 @@ Step outside only when one of these is true:
    `.dockerignore`, `.oxlintrc.json`, `.oxfmtrc.json`, `.config/.markdownlint-cli2.jsonc`,
    `.github/workflows/ci-{frontend,storybook}.yml`, `.depot/workflows/ci-backend.yml`.
    Touch these only to keep an exclusion correct; say so when you do.
-4. **The agent runtime changes.** `@posthog/agent`, `agent-contracts`, `enricher`, `git` and
+4. **The agent runtime changes.** `@flind/agent`, `agent-contracts`, `enricher`, `git` and
    `harness` live in a sibling workspace at `packages/agent/` (same toolchain, own lockfile),
    because cloud sandboxes boot the agent without the desktop app. Work there, then run
    `pnpm build:agent` from `products/desktop/` so desktop's turbo cache sees the change.
@@ -58,7 +58,7 @@ Anything else outside the tree: stop and ask.
 | Jest, `hogli test`                                    | Vitest (`pnpm test`), Playwright (`pnpm test:e2e`)            |
 | `pnpm --filter=@flind/frontend typescript:check`    | `pnpm typecheck` (turbo, all packages)                        |
 | Kea logics, `typegen:write`                           | Zustand stores + InversifyJS services; no kea, no typegen     |
-| LemonUI in `frontend/` and `products/*/frontend/`     | `@posthog/quill` + Tailwind + Radix Themes                    |
+| LemonUI in `frontend/` and `products/*/frontend/`     | `@flind/quill` + Tailwind + Radix Themes                    |
 | `hogli build:openapi` → generated frontend types      | `packages/api-client/src/generated.ts` (hand-maintained here) |
 | 4-space / repo Prettier habits                        | Biome, 2-space, double quotes                                 |
 

@@ -11,7 +11,7 @@ import {
     Tabs,
     TabsList,
     TabsTrigger,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import { PayGateMini } from 'lib/components/PayGateMini/PayGateMini'
 import { FEATURE_FLAGS } from 'lib/constants'

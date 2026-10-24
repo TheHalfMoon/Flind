@@ -1,4 +1,4 @@
-import { buildYTickFormatter } from '@posthog/quill-charts'
+import { buildYTickFormatter } from '@flind/quill-charts'
 
 import { dayjs } from 'lib/dayjs'
 

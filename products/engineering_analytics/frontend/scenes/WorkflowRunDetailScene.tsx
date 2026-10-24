@@ -3,7 +3,7 @@ import { router } from 'kea-router'
 
 import { IconCheckCircle, IconExternal, IconHourglass, IconPause, IconXCircle } from '@posthog/icons'
 import { LemonButton, LemonSkeleton, Link } from '@posthog/lemon-ui'
-import { Button } from '@posthog/quill'
+import { Button } from '@flind/quill'
 
 import { TZLabel } from 'lib/components/TZLabel'
 import { dayjs } from 'lib/dayjs'

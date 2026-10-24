@@ -6,11 +6,11 @@ import type { ModelInfo } from "@earendil-works/pi-coding-agent";
 import {
   type CloudRegion,
   formatGatewayModelName,
-} from "@posthog/agent-contracts";
+} from "@flind/agent-contracts";
 import {
   isOfferedModel,
   labelForModel,
-} from "@posthog/agent-contracts/model-catalog";
+} from "@flind/agent-contracts/model-catalog";
 import {
   fetchPosthogGatewayModels,
   type GatewayModel,

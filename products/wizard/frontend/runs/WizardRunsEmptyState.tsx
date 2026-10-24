@@ -7,7 +7,7 @@ import {
     EmptyHeader,
     EmptyMedia,
     EmptyTitle,
-} from '@posthog/quill-primitives'
+} from '@flind/quill-primitives'
 
 export function WizardRunsEmptyState({ onOpenLibrary }: { onOpenLibrary: () => void }): JSX.Element {
     return (

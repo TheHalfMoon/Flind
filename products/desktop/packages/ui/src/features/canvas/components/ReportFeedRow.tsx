@@ -4,7 +4,7 @@ import {
   deriveHeadline,
   humanizeReportTitle,
 } from "@posthog/core/inbox/reportPresentation";
-import { Button, Card, CardContent } from "@posthog/quill";
+import { Button, Card, CardContent } from "@flind/quill";
 import { formatRelativeTimeShort } from "@posthog/shared";
 import type { SignalReport } from "@posthog/shared/types";
 import { ReportRestoreButton } from "@posthog/ui/features/inbox/components/ReportRestoreButton";

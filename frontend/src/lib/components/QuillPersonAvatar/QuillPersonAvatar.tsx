@@ -1,5 +1,5 @@
 import { IconLogomark } from '@posthog/icons'
-import { Avatar, AvatarFallback, AvatarImage } from '@posthog/quill'
+import { Avatar, AvatarFallback, AvatarImage } from '@flind/quill'
 
 import { gravatarUrl } from 'lib/utils/gravatar'
 

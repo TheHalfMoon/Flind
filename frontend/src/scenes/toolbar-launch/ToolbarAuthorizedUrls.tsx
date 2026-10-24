@@ -36,7 +36,7 @@ import {
     Tooltip,
     TooltipContent,
     TooltipTrigger,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import { AuthorizedUrlListType, authorizedUrlListLogic } from 'lib/components/AuthorizedUrlList/authorizedUrlListLogic'
 import { LinkPrimitive } from 'lib/lemon-ui/Link'

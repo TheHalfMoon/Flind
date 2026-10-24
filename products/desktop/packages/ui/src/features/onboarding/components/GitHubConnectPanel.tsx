@@ -48,7 +48,7 @@ import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import type { OnboardingGithubConnectFlow } from "@posthog/shared/analytics-events";
 import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
 import { useAuthStateValue } from "@posthog/ui/features/auth/store";

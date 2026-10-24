@@ -58,7 +58,7 @@ Use this file as a backlog. Check things off as they land.
       consumer's Tailwind theme at all.
 
 - [x] **7. Pre-compile Tailwind in the library build** ⭐ DONE
-      A new `@posthog/quill` aggregate package at
+      A new `@flind/quill` aggregate package at
       `packages/quill/packages/quill` owns the CSS pipeline. Its
       `src/index.css` is the Tailwind input (imports tokens,
       shadcn/tailwind.css, tw-animate-css, and `@source`s primitives /
@@ -83,25 +83,25 @@ Use this file as a backlog. Check things off as they land.
       `--background`, etc.) which consumers can override at `:root` if
       they want a recoloured build.
 
-- [x] **9. Collapse to one published package: `@posthog/quill`** ✅
+- [x] **9. Collapse to one published package: `@flind/quill`** ✅
       Option B from the design discussion: a new
       `packages/quill/packages/quill` workspace member holds the public
       surface and re-exports primitives / components / blocks through a
       single `src/index.ts`. Consumers `import { Button } from
-'@posthog/quill'`. The old `packages/quill/package.json` umbrella
-      was renamed from `@posthog/quill` to `@posthog/quill-workspace`
+'@flind/quill'`. The old `packages/quill/package.json` umbrella
+      was renamed from `@flind/quill` to `@flind/quill-workspace`
       (private) so the name is free for the aggregate. The
-      `@posthog/quill-primitives`, `@posthog/quill-components`, and
-      `@posthog/quill-blocks` packages are now `private: true` workspace
-      members that ship nowhere. `@posthog/quill-tokens` stays
+      `@flind/quill-primitives`, `@flind/quill-components`, and
+      `@flind/quill-blocks` packages are now `private: true` workspace
+      members that ship nowhere. `@flind/quill-tokens` stays
       independently published for consumers who want programmatic
       access to the typed semantic-color exports. The publish workflow
       at `.github/workflows/publish-quill-npm.yml` was collapsed to
-      publish only `@posthog/quill-tokens` and `@posthog/quill`.
+      publish only `@flind/quill-tokens` and `@flind/quill`.
 
 - [x] **10. Drop `shadcn` as a peer dependency** ✅
-      Removed from `@posthog/quill-primitives` peer dependencies and
-      declared as a `devDependency` of the `@posthog/quill` aggregate
+      Removed from `@flind/quill-primitives` peer dependencies and
+      declared as a `devDependency` of the `@flind/quill` aggregate
       instead. `shadcn/tailwind.css` is only a collection of
       `@custom-variant` definitions (`data-open`, `data-closed`,
       `data-checked`, etc.) plus keyframes — all compile-time macros. At
@@ -111,17 +111,17 @@ Use this file as a backlog. Check things off as they land.
 
 - [x] **11. Drop `tw-animate-css` as a peer dependency** ✅
       Same treatment as #10. `tw-animate-css` moved from
-      `@posthog/quill-primitives` peer dependencies into the aggregate's
+      `@flind/quill-primitives` peer dependencies into the aggregate's
       `devDependencies`. Its utilities (`animate-in`, `fade-in`,
       `slide-in-from-*`, etc.) expand at build time and end up in the
       pre-compiled output. Zero runtime footprint for consumers.
 
 - [x] **12. Stop shipping `src/` in the tarball** ✅
-      `files` on `@posthog/quill-primitives`, `@posthog/quill-components`,
-      and `@posthog/quill-blocks` dropped from `["src", "dist"]` to
+      `files` on `@flind/quill-primitives`, `@flind/quill-components`,
+      and `@flind/quill-blocks` dropped from `["src", "dist"]` to
       `["dist"]`. Those packages are now also `private: true` so they
       are never published anyway; the only package that goes to the
-      registry is `@posthog/quill`, which was configured with
+      registry is `@flind/quill`, which was configured with
       `files: ["dist"]` from the start.
 
 ---
@@ -129,15 +129,15 @@ Use this file as a backlog. Check things off as they land.
 ## Smaller DX + hygiene issues
 
 - [x] **13. Declare `sideEffects` in every published package** ✅
-      `@posthog/quill` declares `sideEffects: ["*.css"]` so bundlers
+      `@flind/quill` declares `sideEffects: ["*.css"]` so bundlers
       preserve the compiled stylesheet import. The internal
-      `@posthog/quill-primitives`, `@posthog/quill-components`, and
-      `@posthog/quill-blocks` packages declare `sideEffects: false`
+      `@flind/quill-primitives`, `@flind/quill-components`, and
+      `@flind/quill-blocks` packages declare `sideEffects: false`
       (pure JS re-exports, no CSS side effects).
 
 - [x] **14. Add `"./package.json": "./package.json"` to exports** ✅
-      Added to `@posthog/quill`, `@posthog/quill-primitives`,
-      `@posthog/quill-components`, and `@posthog/quill-blocks`.
+      Added to `@flind/quill`, `@flind/quill-primitives`,
+      `@flind/quill-components`, and `@flind/quill-blocks`.
 
 - [ ] **15. Pin `tailwindcss` peer dep more tightly**
       `"tailwindcss": "^4.0.0"` accepts v4 betas which had different
@@ -145,7 +145,7 @@ Use this file as a backlog. Check things off as they land.
       stable release was that matches quill's current syntax.
 
 - [x] **16. Add an `engines` field** ✅
-      Added `"engines": { "node": ">=20" }` to the `@posthog/quill`
+      Added `"engines": { "node": ">=20" }` to the `@flind/quill`
       aggregate (the only runtime-installable public package).
 
 - [ ] **17. The README has five different ways to import CSS**
@@ -153,7 +153,7 @@ Use this file as a backlog. Check things off as they land.
       entries. Great DS libraries have **one**. Every "here's another way"
       paragraph is a sign the library isn't opinionated enough yet. Once
       #6 and #7 land, this collapses to a two-line setup
-      (`@import 'tailwindcss';` followed by `@import '@posthog/quill';`).
+      (`@import 'tailwindcss';` followed by `@import '@flind/quill';`).
       **Fix:** rewrite the README around a single import story. Move
       granular controls to an "Advanced" section at the bottom.
 
@@ -163,7 +163,7 @@ Use this file as a backlog. Check things off as they land.
 
 - [ ] **18. Contrast tests at the token level**
       Parameterized unit test that iterates known foreground/background
-      pairs and asserts WCAG AA. Lives in `@posthog/quill-tokens`. Ten
+      pairs and asserts WCAG AA. Lives in `@flind/quill-tokens`. Ten
       lines of test code, catches every "someone tweaked `--primary`"
       regression at the source before any component rebuilds.
 
@@ -178,7 +178,7 @@ Use this file as a backlog. Check things off as they land.
       looks broken" class of bug.
 
 - [ ] **21. Pack-and-install smoke test**
-      Run `pnpm --filter @posthog/quill pack`, install the resulting
+      Run `pnpm --filter @flind/quill pack`, install the resulting
       tarball into a disposable temp app, and render `<Button />`. Hook
       it up in CI. Catches every `exports` resolution failure, missing
       `dist` file, missing peer dep, and "works in the monorepo but
@@ -219,7 +219,7 @@ If tackling one at a time, recommended order:
    pipeline now owns all `@import` chaining. Verify and close.
 2. **#18** (token contrast tests) — 30 minutes, protects the whole palette.
 3. **#21** (pack-and-install smoke test) — protects the new
-   `@posthog/quill` aggregate against future regressions.
+   `@flind/quill` aggregate against future regressions.
 4. **#4 + #5** (rem base audit + version bump) — blocks a real release.
 5. **#17** (README rewrite around a single import story) — now that
    there's only one public entry, the README should reflect it.

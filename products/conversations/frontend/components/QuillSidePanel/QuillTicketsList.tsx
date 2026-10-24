@@ -18,7 +18,7 @@ import {
     SelectValue,
     Skeleton,
     Text,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import {
     type ConversationTicket,

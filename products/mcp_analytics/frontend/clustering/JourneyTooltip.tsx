@@ -1,5 +1,5 @@
-import { TooltipSurface, TooltipSwatch } from '@posthog/quill-charts'
-import type { SankeyTooltipContext } from '@posthog/quill-charts'
+import { TooltipSurface, TooltipSwatch } from '@flind/quill-charts'
+import type { SankeyTooltipContext } from '@flind/quill-charts'
 
 import type { JourneyLinkMeta, JourneyNodeMeta } from './clusterJourneyGraph'
 

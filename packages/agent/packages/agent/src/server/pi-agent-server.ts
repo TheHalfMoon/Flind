@@ -17,14 +17,14 @@ import {
   type StoredLogEntry,
   serializeError,
   type TaskRunArtifact,
-} from "@posthog/agent-contracts";
-import type { TaskContext } from "@posthog/agent-contracts/task-context";
-import { AgentInstructionFiles } from "@posthog/harness/extensions/agent-instructions";
-import { resolveContextWikiPath } from "@posthog/harness/extensions/context-wiki";
+} from "@flind/agent-contracts";
+import type { TaskContext } from "@flind/agent-contracts/task-context";
+import { AgentInstructionFiles } from "@flind/harness/extensions/agent-instructions";
+import { resolveContextWikiPath } from "@flind/harness/extensions/context-wiki";
 import {
   buildStoreSkillsInstructions,
   syncStoreSkills,
-} from "@posthog/harness/extensions/skills-store";
+} from "@flind/harness/extensions/skills-store";
 import { Hono } from "hono";
 import { z } from "zod/v4";
 import packageJson from "../../package.json" with { type: "json" };

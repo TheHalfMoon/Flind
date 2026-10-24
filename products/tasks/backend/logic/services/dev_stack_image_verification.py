@@ -71,7 +71,7 @@ def verify_dev_stack_image(attempt: DevStackImageAttempt | None, image_id: str) 
             )
         ):
             raise DevStackImageVerificationError("Candidate inputs do not match the requested generation")
-        agent = sandbox.execute("node -p \"require('/scripts/node_modules/@posthog/agent/package.json').version\"")
+        agent = sandbox.execute("node -p \"require('/scripts/node_modules/@flind/agent/package.json').version\"")
         version = agent.stdout.strip()
         if (
             agent.exit_code != 0

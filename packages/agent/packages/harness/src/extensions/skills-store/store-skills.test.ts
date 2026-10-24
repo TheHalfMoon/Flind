@@ -8,7 +8,7 @@ import {
 } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import type { StoreSkillStub } from "@posthog/agent-contracts";
+import type { StoreSkillStub } from "@flind/agent-contracts";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import {
   buildStoreSkillsInstructions,

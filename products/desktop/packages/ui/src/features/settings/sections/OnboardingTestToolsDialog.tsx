@@ -20,7 +20,7 @@ import {
   QuestionnaireProgress,
   QuestionnaireSubmit,
   QuestionnaireTitle,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { useAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
 import { leaveSettings } from "@posthog/ui/features/settings/hooks/useOpenSettings";
 import { toast } from "@posthog/ui/primitives/toast";

@@ -2,7 +2,7 @@ import { MOCK_USER_UUID } from 'lib/api.mock'
 
 import { expectLogic } from 'kea-test-utils'
 
-import { toast } from '@posthog/quill'
+import { toast } from '@flind/quill'
 
 import { userLogic } from 'scenes/userLogic'
 

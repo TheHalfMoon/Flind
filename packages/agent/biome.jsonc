@@ -73,7 +73,7 @@
                 "patterns": [
                   {
                     "group": ["@posthog/shared", "@posthog/shared/*"],
-                    "message": "The agent runtime must not depend on desktop code. Import from @posthog/agent-contracts."
+                    "message": "The agent runtime must not depend on desktop code. Import from @flind/agent-contracts."
                   }
                 ]
               }
@@ -99,7 +99,7 @@
                 "patterns": [
                   {
                     "group": ["@posthog/shared", "@posthog/shared/*"],
-                    "message": "The agent runtime must not depend on desktop code. Import from @posthog/agent-contracts."
+                    "message": "The agent runtime must not depend on desktop code. Import from @flind/agent-contracts."
                   },
                   {
                     "group": ["**/products/**"],

@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconGear, IconPlus } from '@posthog/icons'
-import { Button } from '@posthog/quill'
+import { Button } from '@flind/quill'
 
 import { FEATURE_FLAGS } from 'lib/constants'
 import { featureFlagLogic } from 'lib/logic/featureFlagLogic'

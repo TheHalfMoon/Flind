@@ -18,49 +18,49 @@ import {
   isNotification,
   POSTHOG_METHODS,
   POSTHOG_NOTIFICATIONS,
-} from "@posthog/agent";
-import { machineClaudeAuth } from "@posthog/agent/adapters/claude/machine-auth";
-import type { McpToolApprovals } from "@posthog/agent/adapters/claude/mcp/tool-metadata";
-import { hydrateSessionJsonl } from "@posthog/agent/adapters/claude/session/jsonl-hydration";
+} from "@flind/agent";
+import { machineClaudeAuth } from "@flind/agent/adapters/claude/machine-auth";
+import type { McpToolApprovals } from "@flind/agent/adapters/claude/mcp/tool-metadata";
+import { hydrateSessionJsonl } from "@flind/agent/adapters/claude/session/jsonl-hydration";
 import {
   type ClaudeAuthAction,
   claudeAuthTerminalCommand,
   hasClaudeLogin,
-} from "@posthog/agent/adapters/claude/subscription-login";
+} from "@flind/agent/adapters/claude/subscription-login";
 import {
   type CodexLoginSession,
   codexCloudAuthTerminalCommand,
   hasCodexChatgptLogin,
   signOutCodexChatgpt,
   startCodexChatgptLogin,
-} from "@posthog/agent/adapters/codex-app-server/subscription-login";
+} from "@flind/agent/adapters/codex-app-server/subscription-login";
 import {
   getContextWindowOptions,
   getFastModeOptions,
   getReasoningEffortOptions,
-} from "@posthog/agent/adapters/reasoning-effort";
-import { Agent } from "@posthog/agent/agent";
+} from "@flind/agent/adapters/reasoning-effort";
+import { Agent } from "@flind/agent/agent";
 import {
   getAvailableCodexModes,
   getAvailableModes,
-} from "@posthog/agent/execution-mode";
-import { fetchGatewayModels } from "@posthog/agent/gateway-models";
-import { getLlmGatewayUrl } from "@posthog/agent/posthog-api";
+} from "@flind/agent/execution-mode";
+import { fetchGatewayModels } from "@flind/agent/gateway-models";
+import { getLlmGatewayUrl } from "@flind/agent/posthog-api";
 import {
   findPrUrls,
   wasCreatedByLogin,
   wasCreatedRecently,
-} from "@posthog/agent/pr-url-detector";
+} from "@flind/agent/pr-url-detector";
 import {
   formatConversationForResume,
   resumeFromLog,
-} from "@posthog/agent/resume";
-import type * as AgentTypes from "@posthog/agent/types";
-import { execGh } from "@posthog/git/gh";
-import { getCurrentBranch } from "@posthog/git/queries";
-import type { ContextWikiEnv } from "@posthog/harness/extensions/context-wiki";
-import { fetchPosthogPiModelCatalog } from "@posthog/harness/extensions/posthog-provider/model-catalog";
-import { buildTaskSystemPrompt } from "@posthog/harness/extensions/task-system-prompt";
+} from "@flind/agent/resume";
+import type * as AgentTypes from "@flind/agent/types";
+import { execGh } from "@flind/git/gh";
+import { getCurrentBranch } from "@flind/git/queries";
+import type { ContextWikiEnv } from "@flind/harness/extensions/context-wiki";
+import { fetchPosthogPiModelCatalog } from "@flind/harness/extensions/posthog-provider/model-catalog";
+import { buildTaskSystemPrompt } from "@flind/harness/extensions/task-system-prompt";
 import { APP_META_SERVICE, type IAppMeta } from "@posthog/platform/app-meta";
 import {
   BUNDLED_RESOURCES_SERVICE,

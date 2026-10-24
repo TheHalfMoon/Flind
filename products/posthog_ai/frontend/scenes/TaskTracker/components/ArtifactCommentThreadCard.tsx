@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { useEffect, useRef } from 'react'
 
 import { IconPin } from '@posthog/icons'
-import { Badge, Button, Text, cn } from '@posthog/quill-primitives'
+import { Badge, Button, Text, cn } from '@flind/quill-primitives'
 
 import { ArtifactCommentThread, threadAnchorLabel } from '../artifactComments'
 import { TaskArtifactCommentsLogicProps, taskArtifactCommentsLogic } from '../taskArtifactCommentsLogic'

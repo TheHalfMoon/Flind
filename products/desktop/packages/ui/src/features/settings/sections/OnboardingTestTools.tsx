@@ -1,4 +1,4 @@
-import { Button } from "@posthog/quill";
+import { Button } from "@flind/quill";
 import { useAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
 import {
   SettingsCard,

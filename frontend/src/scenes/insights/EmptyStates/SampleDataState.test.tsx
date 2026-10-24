@@ -2,7 +2,7 @@ import '@testing-library/jest-dom'
 
 import { cleanup, render, waitFor } from '@testing-library/react'
 
-import { getHogChart, getHogChartTooltip, hoverAtIndex, setupJsdom, setupSyncRaf } from '@posthog/quill-charts/testing'
+import { getHogChart, getHogChartTooltip, hoverAtIndex, setupJsdom, setupSyncRaf } from '@flind/quill-charts/testing'
 
 import { useMocks } from '~/mocks/jest'
 import { initKeaTests } from '~/test/init'

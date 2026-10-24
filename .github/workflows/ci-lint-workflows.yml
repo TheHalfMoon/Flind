@@ -62,7 +62,7 @@ jobs:
 
             - uses: ./.github/actions/pnpm-install
               with:
-                  install-command: pnpm install --frozen-lockfile --filter @posthog/workflow-plan
+                  install-command: pnpm install --frozen-lockfile --filter @flind/workflow-plan
 
             - name: Check job and step conditions against the pinned run plans
-              run: pnpm --filter @posthog/workflow-plan test
+              run: pnpm --filter @flind/workflow-plan test

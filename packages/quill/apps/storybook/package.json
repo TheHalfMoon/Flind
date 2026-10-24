@@ -1,20 +1,20 @@
 {
-    "name": "@posthog/quill-storybook",
+    "name": "@flind/quill-storybook",
     "version": "0.0.1",
     "private": true,
     "type": "module",
     "scripts": {
-        "storybook": "pnpm --filter @posthog/quill-tokens build && storybook dev -p 6006",
-        "build-storybook": "pnpm --filter @posthog/quill-tokens build && storybook build",
+        "storybook": "pnpm --filter @flind/quill-tokens build && storybook dev -p 6006",
+        "build-storybook": "pnpm --filter @flind/quill-tokens build && storybook build",
         "test:visual:ci:update": "pnpm exec test-storybook -u --junit --no-index-json --maxWorkers=1",
         "test:visual:ci:verify": "pnpm exec test-storybook --ci --junit --no-index-json --maxWorkers=1",
         "test:visual:debug": "PWDEBUG=1 pnpm exec test-storybook --browsers chromium --no-index-json"
     },
     "dependencies": {
         "@fontsource-variable/inter": "^5.2.8",
-        "@posthog/quill": "workspace:^",
-        "@posthog/quill-charts": "workspace:^",
-        "@posthog/quill-tokens": "workspace:^",
+        "@flind/quill": "workspace:^",
+        "@flind/quill-charts": "workspace:^",
+        "@flind/quill-tokens": "workspace:^",
         "lucide-react": "^0.577.0",
         "mockdate": "^3.0.5",
         "react": "^19.2.0",

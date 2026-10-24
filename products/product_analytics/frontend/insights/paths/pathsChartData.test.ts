@@ -1,4 +1,4 @@
-import type { SankeyChartLayout, SankeyLinkDatum, SankeyNodeDatum } from '@posthog/quill-charts'
+import type { SankeyChartLayout, SankeyLinkDatum, SankeyNodeDatum } from '@flind/quill-charts'
 
 import { PathsLink } from '~/queries/schema/schema-general'
 

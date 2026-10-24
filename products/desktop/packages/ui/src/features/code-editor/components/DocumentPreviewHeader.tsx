@@ -4,7 +4,7 @@ import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { ChromeBar } from "@posthog/ui/primitives/ChromeBar";
 import { type ReactElement, type ReactNode, useState } from "react";
 

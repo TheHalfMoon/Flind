@@ -8,7 +8,7 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { useProjectTimezone } from "@posthog/ui/features/projects/useProjectTimezone";
 import { formatTimezoneAbbreviation } from "@posthog/ui/primitives/timezone";
 import { projectTimezoneSettingsUrl } from "@posthog/ui/utils/posthogLinks";

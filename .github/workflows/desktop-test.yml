@@ -265,7 +265,7 @@ jobs:
               run: exit 1
 
     e2e:
-        # Live-model e2e for the @posthog/agent adapters (claude + codex). Runs only
+        # Live-model e2e for the @flind/agent adapters (claude + codex). Runs only
         # after the unit + Electron jobs pass — a red tree never reaches the
         # gateway — and only when a products/desktop/packages/ file changed. Each arm still
         # self-skips unless the POSTHOG_CODE_E2E_GATEWAY_PERSONAL_API_KEY secret is
@@ -338,7 +338,7 @@ jobs:
 
             - name: Build agent dependencies
               working-directory: packages/agent
-              run: pnpm install --frozen-lockfile && node scripts/turbo.mjs build --filter=@posthog/agent^...
+              run: pnpm install --frozen-lockfile && node scripts/turbo.mjs build --filter=@flind/agent^...
 
             - name: Download native codex binary
               # Non-fatal at the STEP so a failure surfaces as the fail-loud binary guard

@@ -1,8 +1,8 @@
 import type { ReactElement } from 'react'
 
 import { emptyStateIllustration } from '@posthog/mcp-ui'
-import { Empty, EmptyDescription, EmptyHeader, EmptyMedia } from '@posthog/quill'
-import { BarChart, TooltipSurface, type TooltipContext } from '@posthog/quill-charts'
+import { Empty, EmptyDescription, EmptyHeader, EmptyMedia } from '@flind/quill'
+import { BarChart, TooltipSurface, type TooltipContext } from '@flind/quill-charts'
 
 import {
     buildFunnelStepsBarConfig,

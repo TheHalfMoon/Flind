@@ -3,7 +3,7 @@ import {
   ChatCircleIcon,
   GitPullRequestIcon,
 } from "@phosphor-icons/react";
-import { Button, cn } from "@posthog/quill";
+import { Button, cn } from "@flind/quill";
 import { iconForTemplate } from "@posthog/ui/features/canvas/components/canvasTemplateIcon";
 import type {
   SourceKind,

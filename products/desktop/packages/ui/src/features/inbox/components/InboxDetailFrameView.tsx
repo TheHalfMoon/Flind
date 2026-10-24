@@ -3,7 +3,7 @@ import {
   humanizeReportTitle,
   parseConventionalCommitTitle,
 } from "@posthog/core/inbox/reportPresentation";
-import { Tabs, TabsList, TabsTrigger } from "@posthog/quill";
+import { Tabs, TabsList, TabsTrigger } from "@flind/quill";
 import type { SignalReport } from "@posthog/shared/types";
 import { ConventionalCommitScopeTag } from "@posthog/ui/features/inbox/components/ConventionalCommitScopeTag";
 import { InboxMetaRow } from "@posthog/ui/features/inbox/components/InboxMetaRow";

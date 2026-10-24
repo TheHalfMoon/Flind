@@ -125,7 +125,7 @@ DIAGNOSTIC_SCOPES_PRESET: Literal["read_only"] = "read_only"
 
 # Sandbox agent model for the draft step. Must be in the LLM gateway `conversations`
 # product allowlist (services/llm-gateway/src/llm_gateway/products/config.py) — support-reply
-# sandbox tasks route through that product via @posthog/agent's resolveGatewayProduct().
+# sandbox tasks route through that product via @flind/agent's resolveGatewayProduct().
 DRAFT_MODEL = "claude-sonnet-5"
 DRAFT_RUNTIME_ADAPTER = "claude"
 

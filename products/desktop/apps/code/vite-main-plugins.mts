@@ -191,10 +191,10 @@ export function copyPiRpcHost(): Plugin {
     name: "copy-pi-rpc-host",
     writeBundle() {
       const candidates = [
-        join(__dirname, "node_modules/@posthog/agent/dist/pi/rpc-host.js"),
+        join(__dirname, "node_modules/@flind/agent/dist/pi/rpc-host.js"),
         join(
           __dirname,
-          "../../node_modules/@posthog/agent/dist/pi/rpc-host.js",
+          "../../node_modules/@flind/agent/dist/pi/rpc-host.js",
         ),
         join(
           __dirname,
@@ -204,7 +204,7 @@ export function copyPiRpcHost(): Plugin {
       const source = candidates.find((candidate) => existsSync(candidate));
       if (!source) {
         throw new Error(
-          `[copy-pi-rpc-host] Unable to find Pi RPC host, required at runtime by createPiRpcClient. Build @posthog/agent first. Checked:\n  ${candidates.join("\n  ")}`,
+          `[copy-pi-rpc-host] Unable to find Pi RPC host, required at runtime by createPiRpcClient. Build @flind/agent first. Checked:\n  ${candidates.join("\n  ")}`,
         );
       }
       const buildDirectory = join(__dirname, ".vite/build");
@@ -220,22 +220,22 @@ export function copyPiRpcHost(): Plugin {
       );
       if (!existsSync(productEngineerResources)) {
         throw new Error(
-          `[copy-pi-rpc-host] Unable to find product engineer resources at ${productEngineerResources}. Build @posthog/agent first.`,
+          `[copy-pi-rpc-host] Unable to find product engineer resources at ${productEngineerResources}. Build @flind/agent first.`,
         );
       }
       if (!existsSync(bundledAgents)) {
         throw new Error(
-          `[copy-pi-rpc-host] Unable to find bundled agents at ${bundledAgents}. Build @posthog/agent first.`,
+          `[copy-pi-rpc-host] Unable to find bundled agents at ${bundledAgents}. Build @flind/agent first.`,
         );
       }
       if (!existsSync(orchestrationSkills)) {
         throw new Error(
-          `[copy-pi-rpc-host] Unable to find orchestration skills at ${orchestrationSkills}. Build @posthog/agent first.`,
+          `[copy-pi-rpc-host] Unable to find orchestration skills at ${orchestrationSkills}. Build @flind/agent first.`,
         );
       }
       if (!existsSync(localToolsMcpServer)) {
         throw new Error(
-          `[copy-pi-rpc-host] Unable to find local tools MCP server at ${localToolsMcpServer}. Build @posthog/agent first.`,
+          `[copy-pi-rpc-host] Unable to find local tools MCP server at ${localToolsMcpServer}. Build @flind/agent first.`,
         );
       }
 
@@ -284,10 +284,10 @@ export function copyClaudeExecutable(): Plugin {
       const packageCandidates = [
         ...nativeBinaryCandidates(join(__dirname, "node_modules")),
         ...nativeBinaryCandidates(join(__dirname, "../../node_modules")),
-        join(__dirname, "node_modules/@posthog/agent/dist/claude-cli", binName),
+        join(__dirname, "node_modules/@flind/agent/dist/claude-cli", binName),
         join(
           __dirname,
-          "../../node_modules/@posthog/agent/dist/claude-cli",
+          "../../node_modules/@flind/agent/dist/claude-cli",
           binName,
         ),
         join(
@@ -660,8 +660,8 @@ export function copyEnricherGrammars(): Plugin {
       }
 
       const candidates = [
-        join(__dirname, "node_modules/@posthog/enricher/grammars"),
-        join(__dirname, "../../node_modules/@posthog/enricher/grammars"),
+        join(__dirname, "node_modules/@flind/enricher/grammars"),
+        join(__dirname, "../../node_modules/@flind/enricher/grammars"),
         join(
           __dirname,
           "../../../../packages/agent/packages/enricher/grammars",

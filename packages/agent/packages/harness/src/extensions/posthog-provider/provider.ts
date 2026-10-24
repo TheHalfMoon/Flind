@@ -8,7 +8,7 @@ import type {
   ProviderConfig,
   ProviderModelConfig,
 } from "@earendil-works/pi-coding-agent";
-import type { CloudRegion } from "@posthog/agent-contracts";
+import type { CloudRegion } from "@flind/agent-contracts";
 import {
   getLlmGatewayUrl,
   resolveExplicitRegion,

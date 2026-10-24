@@ -1,5 +1,5 @@
 import { IconPlus } from '@posthog/icons'
-import { Button, Popover, PopoverContent, PopoverTrigger } from '@posthog/quill'
+import { Button, Popover, PopoverContent, PopoverTrigger } from '@flind/quill'
 
 import { AccessControlAction } from 'lib/components/AccessControlAction'
 import { Shortcut } from 'lib/components/Shortcuts/Shortcut'

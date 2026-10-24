@@ -5,7 +5,7 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 
 export function DryRunBadge({ config }: { config: ScoutConfig }) {
   if (config.emit) return null;

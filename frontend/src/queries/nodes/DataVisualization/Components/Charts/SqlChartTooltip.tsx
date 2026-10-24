@@ -1,4 +1,4 @@
-import { DefaultTooltip, TooltipConfig, TooltipContext } from '@posthog/quill-charts'
+import { DefaultTooltip, TooltipConfig, TooltipContext } from '@flind/quill-charts'
 
 import { SqlChartProps } from './SqlChart'
 import { SqlLineSeriesMeta, formatSqlSeriesValue } from './sqlLineGraphAdapter'

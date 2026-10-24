@@ -1,7 +1,7 @@
 import { CaretRightIcon, ClockIcon } from "@phosphor-icons/react";
 import type { ScoutScratchpadEntry } from "@posthog/api-client/posthog-client";
 import { splitScratchpadKey } from "@posthog/core/scouts/scoutScratchpad";
-import { Badge } from "@posthog/quill";
+import { Badge } from "@flind/quill";
 import { MarkdownRenderer } from "@posthog/ui/features/editor/components/MarkdownRenderer";
 import { RelativeTimestamp } from "@posthog/ui/primitives/RelativeTimestamp";
 

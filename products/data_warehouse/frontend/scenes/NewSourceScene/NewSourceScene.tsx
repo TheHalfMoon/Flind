@@ -13,7 +13,7 @@ import {
     Link,
     Tooltip,
 } from '@posthog/lemon-ui'
-import { Button } from '@posthog/quill'
+import { Button } from '@flind/quill'
 
 import { AccessControlAction } from 'lib/components/AccessControlAction'
 import { CodeSnippet } from 'lib/components/CodeSnippet'

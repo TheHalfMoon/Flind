@@ -9,7 +9,7 @@ import {
     Switch,
     ToggleGroup,
     ToggleGroupItem,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import type { DataAttributeProps } from 'lib/components/DateFilter/DateRangePresetsPanel'
 

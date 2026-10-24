@@ -36,7 +36,7 @@ export const SECTIONS = [
     { id: 'django-migration-risk', title: 'Django migration risk' },
     { id: 'ch-migration-sql', title: 'ClickHouse migration SQL' },
     { id: 'hogql-parser-py', title: 'hogql-parser version' },
-    { id: 'hogql-parser-npm', title: '@posthog/hogql-parser version' },
+    { id: 'hogql-parser-npm', title: '@flind/query-parser version' },
     { id: 'hogql-parser-rs', title: 'hogql-parser-rs version' },
     { id: 'replay-anonymizer-crate', title: 'posthog-replay-anonymizer version' },
     { id: 'generated-docs', title: 'Generated docs' },

@@ -11,7 +11,7 @@ import {
   PopoverContent,
   PopoverTrigger,
   Progress,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { BILLING_FLAG } from "@posthog/shared";
 import {
   ANALYTICS_EVENTS,

@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconGridMasonry } from '@posthog/icons'
-import { Button } from '@posthog/quill'
+import { Button } from '@flind/quill'
 
 import { Shortcut } from 'lib/components/Shortcuts/Shortcut'
 import { keyBinds } from 'lib/components/Shortcuts/shortcuts'

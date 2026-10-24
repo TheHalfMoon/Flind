@@ -1,6 +1,6 @@
 import { PreviewCard } from "@base-ui/react/preview-card";
 import type { ScoutConfig } from "@posthog/api-client/posthog-client";
-import { Card } from "@posthog/quill";
+import { Card } from "@flind/quill";
 import type { ReactElement } from "react";
 
 const OPEN_DELAY_MS = 400;

@@ -33,7 +33,7 @@ const mockGitQueries = vi.hoisted(() => ({
   getDefaultBranch: vi.fn(async () => "main"),
 }));
 
-vi.mock("@posthog/git/queries", () => mockGitQueries);
+vi.mock("@flind/git/queries", () => mockGitQueries);
 
 import { OUTPUT_FLUSH_MS, ShellService } from "./shell";
 

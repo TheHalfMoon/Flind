@@ -1,4 +1,4 @@
-import { execGh } from "@posthog/git/gh";
+import { execGh } from "@flind/git/gh";
 import { z } from "zod";
 import { resolveGithubToken } from "../github-token";
 import { defineLocalTool, type LocalToolResult } from "../registry";

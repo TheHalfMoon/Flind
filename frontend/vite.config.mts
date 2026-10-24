@@ -86,7 +86,7 @@ export default defineConfig(({ mode }) => {
                 public: resolve(__dirname, 'src/assets'),
                 // Required for production builds — @posthog/icons is in the pnpm store, not node_modules root
                 '@posthog/icons': resolve(__dirname, 'node_modules/@posthog/icons'),
-                '@posthog/quill-charts': resolve(__dirname, 'node_modules/@posthog/quill-charts'),
+                '@flind/quill-charts': resolve(__dirname, 'node_modules/@flind/quill-charts'),
                 // Source-only workspace package (exports map points at src/*.ts) — Vite can't resolve
                 // it by default when imported from products/*/frontend, like the @posthog/icons case above.
                 // Alias each export explicitly, subpath first: a lone package-root alias would rewrite the
@@ -96,7 +96,7 @@ export default defineConfig(({ mode }) => {
                     'node_modules/@flind/llm-normalizer/src/types.ts'
                 ),
                 '@flind/llm-normalizer': resolve(__dirname, 'node_modules/@flind/llm-normalizer/src/index.ts'),
-                '@posthog/agent-contracts': resolve(__dirname, '../packages/agent/packages/agent-contracts/src'),
+                '@flind/agent-contracts': resolve(__dirname, '../packages/agent/packages/agent-contracts/src'),
                 // These @tiptap packages live only in frontend/node_modules, which products/*/frontend
                 // files can't reach by walking up from their own directory. Alias each package
                 // individually: a blanket '@tiptap' prefix would also rewrite the imports *inside*

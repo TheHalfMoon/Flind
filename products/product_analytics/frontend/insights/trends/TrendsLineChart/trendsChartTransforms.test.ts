@@ -1,5 +1,5 @@
-import { DEFAULT_Y_AXIS_ID } from '@posthog/quill-charts'
-import type { TooltipConfig, YAxisConfig } from '@posthog/quill-charts'
+import { DEFAULT_Y_AXIS_ID } from '@flind/quill-charts'
+import type { TooltipConfig, YAxisConfig } from '@flind/quill-charts'
 
 import { ciRanges } from 'lib/statistics'
 

@@ -1,4 +1,4 @@
-import { Badge, cn } from "@posthog/quill";
+import { Badge, cn } from "@flind/quill";
 import type { ComponentProps } from "react";
 
 const INBOX_BADGE_RADIUS_CLASS =

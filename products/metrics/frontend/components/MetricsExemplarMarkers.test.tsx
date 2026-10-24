@@ -2,7 +2,7 @@ import '@testing-library/jest-dom'
 
 import { cleanup, fireEvent, screen } from '@testing-library/react'
 
-import { dimensions, makeOverlayContext, renderOverlayInChart } from '@posthog/quill-charts/testing'
+import { dimensions, makeOverlayContext, renderOverlayInChart } from '@flind/quill-charts/testing'
 
 import { MetricsExemplarMarkers } from './MetricsExemplarMarkers'
 

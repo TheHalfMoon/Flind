@@ -1,5 +1,5 @@
 import { ChatCircleIcon } from "@phosphor-icons/react";
-import { Button } from "@posthog/quill";
+import { Button } from "@flind/quill";
 import { type RefObject, useCallback, useEffect, useState } from "react";
 
 /** A text selection turned into a markdown blockquote for the chat composer. */

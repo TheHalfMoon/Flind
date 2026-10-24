@@ -1,5 +1,5 @@
 import { InfoIcon } from "@phosphor-icons/react";
-import { Input, Text } from "@posthog/quill";
+import { Input, Text } from "@flind/quill";
 import { DEV_CALLBACK_PORT } from "@posthog/shared";
 import { Tooltip } from "@posthog/ui/primitives/Tooltip";
 import type { CustomCloudDraft } from "./useCustomCloud";

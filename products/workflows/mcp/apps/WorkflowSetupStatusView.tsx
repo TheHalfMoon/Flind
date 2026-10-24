@@ -1,7 +1,7 @@
 import { CheckCircle2, Circle } from 'lucide-react'
 import { type ReactElement } from 'react'
 
-import { Badge, Button, Card, CardContent } from '@posthog/quill'
+import { Badge, Button, Card, CardContent } from '@flind/quill'
 
 export interface WorkflowSetupStep {
     key: string

@@ -1,4 +1,4 @@
-import type { TimeInterval, ValueLabelContext } from '@posthog/quill-charts'
+import type { TimeInterval, ValueLabelContext } from '@flind/quill-charts'
 
 import type { CurrencyCode, TrendsFilter as SchemaTrendsFilter } from '~/queries/schema/schema-general'
 import type { IntervalType } from '~/types'

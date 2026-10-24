@@ -1,4 +1,4 @@
-import { type Series } from '@posthog/quill-charts'
+import { type Series } from '@flind/quill-charts'
 
 import { getSeriesColor } from 'lib/colors'
 import { MAX_DEFAULT_PROPORTION_LEGEND_PARTS } from 'lib/constants'

@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { Button } from '@posthog/quill'
+import { Button } from '@flind/quill'
 
 import { getAccessControlDisabledReason } from 'lib/utils/accessControlUtils'
 import { eventUsageLogic } from 'lib/utils/eventUsageLogic'

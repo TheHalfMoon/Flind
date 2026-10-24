@@ -5,7 +5,7 @@ import { disposablesPlugin } from 'kea-disposables'
 import { loadersPlugin } from 'kea-loaders'
 import { createRoot } from 'react-dom/client'
 
-import { ThemeProvider } from '@posthog/quill'
+import { ThemeProvider } from '@flind/quill'
 
 import { InfrastructureAdmin } from './InfrastructureAdmin'
 

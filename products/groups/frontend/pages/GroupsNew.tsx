@@ -4,7 +4,7 @@ import { router } from 'kea-router'
 
 import { IconPlus, IconTrash } from '@posthog/icons'
 import { LemonButton, LemonDivider, LemonInput, LemonSegmentedButton } from '@posthog/lemon-ui'
-import { Button } from '@posthog/quill'
+import { Button } from '@flind/quill'
 
 import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'
 import { LemonField } from 'lib/lemon-ui/LemonField'

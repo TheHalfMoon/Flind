@@ -1,5 +1,5 @@
 import { GitDiff } from "@phosphor-icons/react";
-import { Button } from "@posthog/quill";
+import { Button } from "@flind/quill";
 import { Flex, Text } from "@radix-ui/themes";
 
 export interface DiffStatsBadgeProps {

@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react'
 import { useState } from 'react'
 
-import { Button } from '@posthog/quill-primitives'
+import { Button } from '@flind/quill-primitives'
 
 import { cn } from 'lib/utils/css-classes'
 

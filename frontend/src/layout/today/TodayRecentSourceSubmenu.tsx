@@ -1,4 +1,4 @@
-import { DropdownMenuCheckboxItem, DropdownMenuSeparator, ItemCheckbox } from '@posthog/quill'
+import { DropdownMenuCheckboxItem, DropdownMenuSeparator, ItemCheckbox } from '@flind/quill'
 
 import { recentSourceLabel } from './todayRecentFilters'
 import { TodayRecentFilterSubmenu } from './TodayRecentFilterSubmenu'

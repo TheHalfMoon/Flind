@@ -7,7 +7,7 @@
  * item with `matchedOn: 'value'` and the `matchedValue`. Surfacing it tells
  * the user why an attribute appears for a query that isn't in its name.
  */
-import { Badge, cn, Tooltip, TooltipContent, TooltipTrigger } from '@posthog/quill'
+import { Badge, cn, Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill'
 
 import { MenuFilterEntry } from './types'
 

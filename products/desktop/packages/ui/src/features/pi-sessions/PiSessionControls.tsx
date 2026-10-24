@@ -16,7 +16,7 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
   MenuLabel,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { customModelMeta } from "@posthog/shared";
 import {
   type AgentHarness,

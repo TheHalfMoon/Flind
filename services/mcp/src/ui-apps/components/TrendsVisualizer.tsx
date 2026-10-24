@@ -1,7 +1,7 @@
 import { type ReactElement, useState } from 'react'
 
 import { emptyStateIllustration } from '@posthog/mcp-ui'
-import { Empty, EmptyDescription, EmptyHeader, EmptyMedia } from '@posthog/quill'
+import { Empty, EmptyDescription, EmptyHeader, EmptyMedia } from '@flind/quill'
 import {
     BarChart as BarValueChart,
     buildYTickFormatter,
@@ -13,7 +13,7 @@ import {
     TimeSeriesBarChart,
     TimeSeriesLineChart,
     type TooltipContext,
-} from '@posthog/quill-charts'
+} from '@flind/quill-charts'
 
 import { trendsFilterToYFormatterConfig } from 'products/product_analytics/frontend/insights/trends/shared/trendsAxisFormat'
 import { buildTrendsBarChartModel } from 'products/product_analytics/frontend/insights/trends/TrendsBarChart/trendsBarChartTransforms'

@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 
 import { IconPeople } from '@posthog/icons'
 import { LemonButton, LemonTag, LemonTagType, Spinner } from '@posthog/lemon-ui'
-import { BarChart } from '@posthog/quill-charts'
+import { BarChart } from '@flind/quill-charts'
 
 import { useChartConfig, useChartTheme } from 'lib/charts/hooks'
 import { LemonProgress } from 'lib/lemon-ui/LemonProgress'

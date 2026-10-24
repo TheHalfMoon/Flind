@@ -5,7 +5,7 @@
         "backend:test": "echo 'No backend tests'"
     },
     "dependencies": {
-        "@posthog/quill": "workspace:*",
+        "@flind/quill": "workspace:*",
         "kea": "catalog:",
         "kea-loaders": "catalog:",
         "kea-router": "catalog:"

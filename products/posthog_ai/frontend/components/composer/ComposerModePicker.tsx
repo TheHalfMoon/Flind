@@ -1,7 +1,7 @@
 import { forwardRef, useEffect, useState, type HTMLAttributes } from 'react'
 
 import { IconEye, IconLock, IconPause, IconPencil, IconShield, IconUnlock } from '@posthog/icons'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@posthog/quill-primitives'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@flind/quill-primitives'
 
 import {
     getModeOption,

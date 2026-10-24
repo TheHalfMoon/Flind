@@ -7,7 +7,7 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 const mockSelectAttachments = vi.hoisted(() => vi.fn());
 const mockDownscaleImageFile = vi.hoisted(() => vi.fn());
 
-vi.mock("@posthog/quill", () => ({
+vi.mock("@flind/quill", () => ({
   Button: ({
     children,
     ...props

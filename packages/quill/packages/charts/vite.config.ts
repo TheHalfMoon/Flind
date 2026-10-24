@@ -4,7 +4,7 @@ import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
 
 /**
- * Builds @posthog/quill-charts for npm. Charts is pure JS/canvas — no CSS
+ * Builds @flind/quill-charts for npm. Charts is pure JS/canvas — no CSS
  * pipeline. The runtime deps (d3-*, dayjs, @floating-ui/react,
  * simple-statistics) stay external and are redeclared as real
  * `dependencies` so the consumer's package manager installs them; react /

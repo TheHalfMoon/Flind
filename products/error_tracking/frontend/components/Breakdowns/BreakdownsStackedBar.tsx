@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 
-import { BarChart } from '@posthog/quill-charts'
-import type { BarChartConfig, PointClickData, Series } from '@posthog/quill-charts'
+import { BarChart } from '@flind/quill-charts'
+import type { BarChartConfig, PointClickData, Series } from '@flind/quill-charts'
 
 import { useChartConfig, useChartTheme } from 'lib/charts/hooks'
 import { humanFriendlyLargeNumber } from 'lib/utils/numbers'

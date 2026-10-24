@@ -3,7 +3,7 @@ import {
   type GridPlacement,
   pinnedComponentVersion,
 } from "@posthog/core/canvas/gridLayoutSchemas";
-import { Button, Text } from "@posthog/quill";
+import { Button, Text } from "@flind/quill";
 import type { CanvasCapabilities } from "@posthog/shared";
 import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
 import { useCanvasBuilds } from "@posthog/ui/features/canvas/hooks/useCanvasBuilds";

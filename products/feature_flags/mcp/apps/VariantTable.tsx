@@ -1,7 +1,7 @@
 import type { ReactElement } from 'react'
 
 import { DataTable, type DataTableColumn } from '@posthog/mcp-ui'
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@posthog/quill'
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@flind/quill'
 
 import { RolloutBar } from './RolloutBar'
 

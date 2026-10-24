@@ -31,7 +31,7 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import {
   type ContextSources,
   useContextSources,

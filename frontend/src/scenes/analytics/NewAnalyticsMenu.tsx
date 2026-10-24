@@ -10,7 +10,7 @@ import {
     ItemContent,
     ItemDescription,
     ItemTitle,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import { AnalyticsTypeIcon } from './AnalyticsTypeIcon'
 import { ANALYTICS_TYPES } from './analyticsUtils'

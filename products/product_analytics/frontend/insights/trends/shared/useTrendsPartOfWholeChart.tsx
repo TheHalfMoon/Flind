@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { useCallback, useMemo } from 'react'
 
-import type { ChartLegendConfig, ChartTheme, RadialSlicePayload, Series, TooltipContext } from '@posthog/quill-charts'
+import type { ChartLegendConfig, ChartTheme, RadialSlicePayload, Series, TooltipContext } from '@flind/quill-charts'
 
 import { useChartTheme } from 'lib/charts/hooks'
 import {

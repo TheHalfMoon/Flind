@@ -2,7 +2,7 @@ import type {
   ArtifactSource,
   ArtifactType,
   TaskRunArtifact,
-} from "@posthog/agent-contracts";
+} from "@flind/agent-contracts";
 import {
   type TaskToolsApiClient,
   transferTimeoutMs,

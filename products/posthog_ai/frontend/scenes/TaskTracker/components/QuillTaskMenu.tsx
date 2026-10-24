@@ -2,7 +2,7 @@ import { useValues } from 'kea'
 import { useState } from 'react'
 
 import { IconEllipsis } from '@posthog/icons'
-import { Button, DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from '@posthog/quill-primitives'
+import { Button, DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from '@flind/quill-primitives'
 
 import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'
 

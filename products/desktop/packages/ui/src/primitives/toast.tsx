@@ -1,4 +1,4 @@
-import { toast as quillToast } from "@posthog/quill";
+import { toast as quillToast } from "@flind/quill";
 import { showErrorDetails } from "@posthog/ui/features/notifications/errorDetailsStore";
 import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
 

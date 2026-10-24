@@ -13,7 +13,7 @@ const useEvidenceUrl = vi.hoisted(() =>
   ),
 );
 
-vi.mock("@posthog/quill-charts", () => ({
+vi.mock("@flind/quill-charts", () => ({
   BarChart: () => <div data-testid="chart-plot" />,
   LineChart: () => <div data-testid="chart-plot" />,
   TimeSeriesBarChart: () => <div data-testid="chart-plot" />,

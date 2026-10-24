@@ -1,13 +1,13 @@
 import { useMemo } from 'react'
 
-import { SankeyChart } from '@posthog/quill-charts'
+import { SankeyChart } from '@flind/quill-charts'
 import type {
     ChartTheme,
     SankeyChartConfig,
     SankeyLinkInput,
     SankeyNodeInput,
     SankeyTooltipContext,
-} from '@posthog/quill-charts'
+} from '@flind/quill-charts'
 
 import { useChartTheme } from 'lib/charts/hooks'
 

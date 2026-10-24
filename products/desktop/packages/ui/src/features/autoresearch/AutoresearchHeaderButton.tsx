@@ -2,7 +2,7 @@ import { ChartLineUp } from "@phosphor-icons/react";
 import type { AutoresearchService } from "@posthog/core/autoresearch/autoresearch";
 import { AUTORESEARCH_SERVICE } from "@posthog/core/autoresearch/identifiers";
 import { useServiceOptional } from "@posthog/di/react";
-import { Button } from "@posthog/quill";
+import { Button } from "@flind/quill";
 import { useEffect } from "react";
 import { Tooltip } from "../../primitives/Tooltip";
 import { usePanelLayoutStore } from "../panels/panelLayoutStore";

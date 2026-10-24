@@ -1,5 +1,5 @@
 /* eslint-disable react/forbid-dom-props -- chart scales determine label positions */
-import { ReferenceLines, useChartLayout, type ReferenceLineProps } from '@posthog/quill-charts'
+import { ReferenceLines, useChartLayout, type ReferenceLineProps } from '@flind/quill-charts'
 
 export function ReportChartMarkers({ markers }: { markers: ReferenceLineProps[] }): JSX.Element {
     const { scales, dimensions } = useChartLayout()

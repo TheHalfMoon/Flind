@@ -1,4 +1,4 @@
-import { dataColorPalette } from '@posthog/quill-tokens'
+import { dataColorPalette } from '@flind/quill-tokens'
 
 import { DEFAULT_CHART_COLORS, themeFromCssVars } from './theme'
 

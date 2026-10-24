@@ -1,5 +1,5 @@
 import { Check } from "@phosphor-icons/react";
-import { Text } from "@posthog/quill";
+import { Text } from "@flind/quill";
 
 interface StepperProps {
   labels: readonly string[];

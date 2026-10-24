@@ -49,7 +49,7 @@ import {
   Heading,
   Skeleton,
   Text,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { ArrowLeft, ArrowRight, Bot, BookOpen, Check, Hash, LayoutDashboard, PartyPopper, Radar } from "lucide-react";
 import dayjs from "dayjs";
 import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";

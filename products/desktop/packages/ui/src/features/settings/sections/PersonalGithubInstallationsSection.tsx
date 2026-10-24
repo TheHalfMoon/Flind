@@ -7,7 +7,7 @@ import {
   formatGithubAccountLabel,
   githubInstallationSettingsUrl,
 } from "@posthog/core/settings/githubRepoSummary";
-import { Button, Text } from "@posthog/quill";
+import { Button, Text } from "@flind/quill";
 import { formatRelativeTimeLong } from "@posthog/shared";
 import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
 import { useAuthStateValue } from "@posthog/ui/features/auth/store";

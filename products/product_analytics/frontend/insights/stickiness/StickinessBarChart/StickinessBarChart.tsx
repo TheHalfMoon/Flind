@@ -1,8 +1,8 @@
 import { useValues } from 'kea'
 import { useCallback, useMemo } from 'react'
 
-import { TimeSeriesBarChart } from '@posthog/quill-charts'
-import type { PointClickData, Series, TimeSeriesBarChartConfig, TooltipContext } from '@posthog/quill-charts'
+import { TimeSeriesBarChart } from '@flind/quill-charts'
+import type { PointClickData, Series, TimeSeriesBarChartConfig, TooltipContext } from '@flind/quill-charts'
 
 import { useChartConfig, useChartTheme } from 'lib/charts/hooks'
 import { InsightEmptyState } from 'scenes/insights/EmptyStates'

@@ -10,7 +10,7 @@ import type { Plugin, ViteDevServer } from 'vite'
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 /**
- * Regenerates @posthog/quill-tokens dist CSS whenever the tokens source
+ * Regenerates @flind/quill-tokens dist CSS whenever the tokens source
  * (colors.ts, spacing.ts, typography.ts, …) changes, then triggers a
  * full page reload. Without this plugin the tokens package only rebuilds
  * on explicit `pnpm build`, so runtime CSS custom properties stay stale

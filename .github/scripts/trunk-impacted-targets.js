@@ -1502,7 +1502,7 @@ const RUST_DETERMINATOR = 'rust:determinator'
 
 // The lanes that import a native module built from the cargo workspace.
 // nodejs/package.json is the only dependent of the three binding packages
-// (@posthog/hogvm-node, @posthog/replay-anonymizer, @posthog/ai-research-v4-native) today,
+// (@flind/logicvm-node, @flind/replay-anonymizer, @flind/ai-research-v4-native) today,
 // and the test suite re-derives that from pnpm-workspace.yaml so a second
 // dependent fails there rather than silently going unclaimed here. The
 // image-scrub sidecar under nodejs/src/ingestion loads the replay-anonymizer
@@ -2036,7 +2036,7 @@ function computeTargets(changedFiles, context) {
             continue
         }
         // docs/ is prose, which the markdown rule above has already taken, with
-        // one exception: docs/onboarding is the @posthog/docs-onboarding
+        // one exception: docs/onboarding is the @flind/docs-onboarding
         // workspace package that frontend/package.json depends on, so its
         // sources compile into the app. Anything else non-prose under docs/ is
         // unclassified and falls through to ALL at the end of the loop.

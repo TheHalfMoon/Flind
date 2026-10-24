@@ -1,4 +1,4 @@
-import { Autocomplete, Button } from "@posthog/quill";
+import { Autocomplete, Button } from "@flind/quill";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { SidebarSearchHeader } from "./SidebarSearchHeader";
 

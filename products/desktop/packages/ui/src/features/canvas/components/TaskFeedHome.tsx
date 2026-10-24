@@ -3,7 +3,7 @@ import {
   PencilSimpleIcon,
   TrashIcon,
 } from "@phosphor-icons/react";
-import { Button, Heading, Skeleton, Text } from "@posthog/quill";
+import { Button, Heading, Skeleton, Text } from "@flind/quill";
 import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
 import type { Task } from "@posthog/shared/domain-types";
 import { ChannelFeedView } from "@posthog/ui/features/canvas/components/ChannelFeedView";

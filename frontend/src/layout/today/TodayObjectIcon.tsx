@@ -1,4 +1,4 @@
-import { IconStack, IconStackItem } from '@posthog/quill'
+import { IconStack, IconStackItem } from '@flind/quill'
 
 import { getIconColor, iconForType } from '~/layout/panel-layout/ProjectTree/defaultTree'
 import { FileSystemIconType } from '~/queries/schema/schema-general'

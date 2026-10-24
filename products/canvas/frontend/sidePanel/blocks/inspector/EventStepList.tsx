@@ -1,5 +1,5 @@
 import { IconPlus, IconX } from '@posthog/icons'
-import { Button, Text, Tooltip, TooltipContent, TooltipTrigger } from '@posthog/quill'
+import { Button, Text, Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill'
 
 import { EventPicker } from './EventPicker'
 import { InspectorField } from './InspectorField'

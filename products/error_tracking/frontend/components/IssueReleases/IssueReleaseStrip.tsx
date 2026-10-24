@@ -1,8 +1,8 @@
 import { useValues } from 'kea'
 import { useMemo } from 'react'
 
-import { BarChart } from '@posthog/quill-charts'
-import type { BarChartConfig, Series } from '@posthog/quill-charts'
+import { BarChart } from '@flind/quill-charts'
+import type { BarChartConfig, Series } from '@flind/quill-charts'
 
 import { useChartConfig, useChartTheme } from 'lib/charts/hooks'
 import { dayjs } from 'lib/dayjs'

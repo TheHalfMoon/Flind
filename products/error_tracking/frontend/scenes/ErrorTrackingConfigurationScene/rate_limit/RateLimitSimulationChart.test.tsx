@@ -1,13 +1,13 @@
 import { cleanup, render } from '@testing-library/react'
 
-import { TimeSeriesBarChart } from '@posthog/quill-charts'
+import { TimeSeriesBarChart } from '@flind/quill-charts'
 
 import { dayjs } from 'lib/dayjs'
 
 import { RateLimitSimulationChart } from './RateLimitSimulationChart'
 
-jest.mock('@posthog/quill-charts', () => ({
-    ...jest.requireActual('@posthog/quill-charts'),
+jest.mock('@flind/quill-charts', () => ({
+    ...jest.requireActual('@flind/quill-charts'),
     TimeSeriesBarChart: jest.fn(() => <div data-testid="rate-limit-chart" />),
 }))
 

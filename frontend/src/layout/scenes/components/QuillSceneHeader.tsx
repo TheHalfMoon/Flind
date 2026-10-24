@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 
-import { cn } from '@posthog/quill'
+import { cn } from '@flind/quill'
 
 export interface QuillSceneHeaderProps {
     back?: ReactNode

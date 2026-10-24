@@ -8,7 +8,7 @@ import {
     type LineChartConfig,
     TimeSeriesLineChart,
     type TimeSeriesLineChartConfig,
-} from '@posthog/quill-charts'
+} from '@flind/quill-charts'
 
 import { useChartConfig, useChartTheme } from 'lib/charts/hooks'
 import { humanFriendlyLargeNumber, humanFriendlyNumber } from 'lib/utils/numbers'

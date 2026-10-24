@@ -10,7 +10,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   Button,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
 import { useEffect } from "react";
 import { track } from "../../shell/analytics";

@@ -7,7 +7,7 @@ import {
     ScatterAreaSelection,
     ScatterPointDatum,
     ChartLegendConfig,
-} from '@posthog/quill-charts'
+} from '@flind/quill-charts'
 
 import { useChartConfig, useChartTheme } from 'lib/charts/hooks'
 
@@ -35,7 +35,7 @@ export interface SqlScatterGraphProps {
     onAreaSelect?: (selection: ScatterAreaSelection) => void
 }
 
-/** SQL scatter plot on @posthog/quill-charts' {@link ScatterChart} — one series per selected Y
+/** SQL scatter plot on @flind/quill-charts' {@link ScatterChart} — one series per selected Y
  *  column, one marker per result row. */
 export const SqlScatterGraph = ({
     xData,

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 import { IconCalendar, IconX } from '@posthog/icons'
-import { Button, cn, DatePicker as QuillDatePicker, Popover, PopoverContent, PopoverTrigger } from '@posthog/quill'
+import { Button, cn, DatePicker as QuillDatePicker, Popover, PopoverContent, PopoverTrigger } from '@flind/quill'
 
 import { dayjs } from 'lib/dayjs'
 import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'

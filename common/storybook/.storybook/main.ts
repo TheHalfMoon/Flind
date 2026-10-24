@@ -109,9 +109,9 @@ const config: StorybookConfig = {
                     '@posthog/lemon-ui': path.resolve(FRONTEND, '@posthog', 'lemon-ui', 'src'),
                     '@posthog/mcp-ui': path.resolve(REPO_ROOT, 'services', 'mcp', 'src', 'ui-apps', 'lib'),
                     '@posthog/shared-onboarding': path.resolve(REPO_ROOT, 'docs', 'onboarding'),
-                    '@posthog/quill': path.resolve(REPO_ROOT, 'packages', 'quill', 'packages', 'quill', 'src'),
-                    '@posthog/quill-charts': path.resolve(REPO_ROOT, 'packages', 'quill', 'packages', 'charts', 'src'),
-                    '@posthog/agent-contracts': path.resolve(
+                    '@flind/quill': path.resolve(REPO_ROOT, 'packages', 'quill', 'packages', 'quill', 'src'),
+                    '@flind/quill-charts': path.resolve(REPO_ROOT, 'packages', 'quill', 'packages', 'charts', 'src'),
+                    '@flind/agent-contracts': path.resolve(
                         REPO_ROOT,
                         'packages',
                         'agent',

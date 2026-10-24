@@ -846,7 +846,7 @@ def _pin_governs_sandbox_agent(ctx: TaskProcessingContext, config: SandboxConfig
 def _persist_sandbox_agent_version(run_id: str, sandbox: SandboxBase, *, compare_with_pin: bool) -> None:
     version: str | None = None
     try:
-        result = sandbox.execute("cat /scripts/node_modules/@posthog/agent/package.json", timeout_seconds=10)
+        result = sandbox.execute("cat /scripts/node_modules/@flind/agent/package.json", timeout_seconds=10)
         if result.exit_code == 0:
             manifest = json.loads(result.stdout)
             candidate = manifest.get("version") if isinstance(manifest, dict) else None

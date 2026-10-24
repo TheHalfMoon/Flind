@@ -1,6 +1,6 @@
 import { DateTime } from 'luxon'
 
-import type { AnonymizeKafkaPayloadResult, AnonymizeMeta } from '@posthog/replay-anonymizer'
+import type { AnonymizeKafkaPayloadResult, AnonymizeMeta } from '@flind/replay-anonymizer'
 
 import { parseJSON } from '~/common/utils/json-parse'
 import { logger } from '~/common/utils/logger'
@@ -94,7 +94,7 @@ export interface ImageCollectionConfig {
 }
 
 /**
- * Fused parse + anonymize through the native Rust addon (`@posthog/replay-anonymizer`): the
+ * Fused parse + anonymize through the native Rust addon (`@flind/replay-anonymizer`): the
  * decompressed Kafka payload bytes go in, scrubbed JSONL block lines plus the envelope/per-event
  * metadata come out — no per-event JS objects are ever built, and no JSON crosses the FFI boundary
  * as a string.

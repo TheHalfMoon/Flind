@@ -5,7 +5,7 @@ import {
   humanizeReportTitle,
   parsePrUrl,
 } from "@posthog/core/inbox/reportPresentation";
-import { AutocompleteItem, Button, cn } from "@posthog/quill";
+import { AutocompleteItem, Button, cn } from "@flind/quill";
 import { formatRelativeAge } from "@posthog/shared";
 import type { SignalReport } from "@posthog/shared/types";
 import { InboxReportContextMenu } from "@posthog/ui/features/inbox/components/InboxReportContextMenu";

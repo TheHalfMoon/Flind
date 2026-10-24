@@ -2,11 +2,11 @@ import { type ChildProcess, execFileSync, spawn } from "node:child_process";
 import { existsSync } from "node:fs";
 import { delimiter, dirname } from "node:path";
 import type { Readable, Writable } from "node:stream";
-import { tomlBasicString } from "@posthog/agent-contracts";
+import { tomlBasicString } from "@flind/agent-contracts";
 import {
   applyContextWikiEnv,
   type ContextWikiEnv,
-} from "@posthog/harness/extensions/context-wiki";
+} from "@flind/harness/extensions/context-wiki";
 import { isTaskRunSandbox } from "../../server/memory-watchdog";
 import type { ProcessSpawnedCallback } from "../../types";
 import { Logger } from "../../utils/logger";

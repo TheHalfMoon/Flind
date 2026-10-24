@@ -1,5 +1,5 @@
 import { IconLock } from '@posthog/icons'
-import { cn } from '@posthog/quill'
+import { cn } from '@flind/quill'
 
 /** A lock for a space only some people can see, a `#` for the rest. */
 export function TodaySpaceGlyph({ locked, className }: { locked: boolean; className?: string }): JSX.Element {

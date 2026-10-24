@@ -2,7 +2,7 @@ import { ArrowRight, Check } from "@phosphor-icons/react";
 import type { CostChecklistItem } from "@posthog/core/billing/costChecklist";
 import { leanSkillById } from "@posthog/core/billing/leanSkills";
 import { modelCostInfo } from "@posthog/core/billing/modelPricing";
-import { Button, Text } from "@posthog/quill";
+import { Button, Text } from "@flind/quill";
 import { formatModelId } from "@posthog/shared";
 import { modelCostTitle } from "@posthog/ui/features/sessions/components/ModelCostChip";
 import type { ReactNode } from "react";

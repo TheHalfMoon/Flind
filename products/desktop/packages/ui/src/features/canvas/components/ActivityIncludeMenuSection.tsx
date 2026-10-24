@@ -3,7 +3,7 @@ import {
   DropdownMenuCheckboxItem,
   DropdownMenuSeparator,
   MenuLabel,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { useAuthStateValue } from "@posthog/ui/features/auth/store";
 import {
   type ActivityInboxScope,

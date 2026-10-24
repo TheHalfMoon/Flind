@@ -39,7 +39,7 @@ import {
     SpinnerOverlay,
     Tooltip,
 } from '@posthog/lemon-ui'
-import { Button } from '@posthog/quill'
+import { Button } from '@flind/quill'
 
 import { AccessControlAction } from 'lib/components/AccessControlAction'
 import { JSONViewer } from 'lib/components/JSONViewer'

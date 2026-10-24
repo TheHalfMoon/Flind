@@ -6,7 +6,7 @@ import {
   isNotification,
   POSTHOG_NOTIFICATIONS,
   type ProcessKilledParams,
-} from "@posthog/agent/acp-extensions";
+} from "@flind/agent/acp-extensions";
 import { extractPromptDisplayContent } from "@posthog/core/sessions/promptContent";
 import { isSteerPromptParams } from "@posthog/core/sessions/sessionEvents";
 import { isSessionStartupPhase } from "@posthog/core/sessions/sessionStartup";

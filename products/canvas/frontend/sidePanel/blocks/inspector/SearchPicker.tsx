@@ -11,7 +11,7 @@ import {
     ComboboxList,
     ComboboxTrigger,
     Text,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 const CUSTOM_PREFIX = '__custom__:'
 const NONE_VALUE = '__none__'

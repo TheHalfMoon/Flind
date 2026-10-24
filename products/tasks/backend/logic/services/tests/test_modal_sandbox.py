@@ -384,7 +384,7 @@ class TestAttachLocalPackageMounts:
         (source_path / "package.json").write_text(
             json.dumps(
                 {
-                    "name": "@posthog/agent",
+                    "name": "@flind/agent",
                     "bin": {"agent-server": "./dist/server/bin.js"},
                     "dependencies": {
                         "@openai/codex": "0.140.0",
@@ -398,7 +398,7 @@ class TestAttachLocalPackageMounts:
         package = LocalPackage(
             name="agent",
             source_path=source_path,
-            sandbox_install_path="/scripts/node_modules/@posthog/agent",
+            sandbox_install_path="/scripts/node_modules/@flind/agent",
         )
         shared_source_path = tmp_path / "shared"
         shared_build_output_path = shared_source_path / "dist"
@@ -442,11 +442,11 @@ class TestAttachLocalPackageMounts:
         assert "custom-runtime@github:" not in command
         assert "@posthog/shared" not in command
         dependency_image.run_commands.assert_called_once_with(
-            "ln -sfn ../@posthog/agent/dist/server/bin.js /scripts/node_modules/.bin/agent-server"
+            "ln -sfn ../@flind/agent/dist/server/bin.js /scripts/node_modules/.bin/agent-server"
         )
         linked_image.add_local_dir.assert_called_once_with(
             str(build_output_path),
-            "/scripts/node_modules/@posthog/agent/dist",
+            "/scripts/node_modules/@flind/agent/dist",
             copy=False,
         )
         mounted_image.add_local_dir.assert_called_once_with(
@@ -470,7 +470,7 @@ class TestAttachLocalPackageMounts:
         package = LocalPackage(
             name="agent",
             source_path=source_path,
-            sandbox_install_path="/scripts/node_modules/@posthog/agent",
+            sandbox_install_path="/scripts/node_modules/@flind/agent",
         )
         snapshot_image = MagicMock()
         mounted_image = MagicMock()
@@ -486,7 +486,7 @@ class TestAttachLocalPackageMounts:
         snapshot_image.run_commands.assert_not_called()
         snapshot_image.add_local_dir.assert_called_once_with(
             str(build_output_path),
-            "/scripts/node_modules/@posthog/agent/dist",
+            "/scripts/node_modules/@flind/agent/dist",
             copy=False,
         )
         assert result is mounted_image

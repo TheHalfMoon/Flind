@@ -1,7 +1,7 @@
 import { Popover } from '@base-ui/react/popover'
 import { type ReactNode, useCallback, useState } from 'react'
 
-import { Card, cn } from '@posthog/quill'
+import { Card, cn } from '@flind/quill'
 
 import { pointerMovedRecently, trackPointer } from '~/layout/today/todayPointer'
 

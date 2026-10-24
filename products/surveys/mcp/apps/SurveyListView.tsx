@@ -1,7 +1,7 @@
 import { type ReactElement, type ReactNode } from 'react'
 
 import { DataTable, type DataTableColumn, ListDetailView, formatDate } from '@posthog/mcp-ui'
-import { Badge, Button } from '@posthog/quill'
+import { Badge, Button } from '@flind/quill'
 
 import { SurveyView, type SurveyData } from './SurveyView'
 import { STATUS_VARIANTS, SURVEY_TYPE_LABELS } from './utils'

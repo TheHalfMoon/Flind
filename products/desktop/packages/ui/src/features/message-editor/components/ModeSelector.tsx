@@ -12,7 +12,7 @@ import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { flattenSelectOptions } from "@posthog/ui/features/sessions/sessionStore";
 import { useRetainedConfigOption } from "@posthog/ui/features/sessions/useRetainedConfigOption";
 import { useRef, useState } from "react";

@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
 import { IconFilter } from '@posthog/icons'
-import { Button, DropdownMenu, DropdownMenuContent, Tooltip, TooltipContent, TooltipTrigger, cn } from '@posthog/quill'
+import { Button, DropdownMenu, DropdownMenuContent, Tooltip, TooltipContent, TooltipTrigger, cn } from '@flind/quill'
 
 import { TodayFilterMenuTrigger } from './TodayFilterMenuTrigger'
 import { todayListAppearanceLogic } from './todayListAppearanceLogic'

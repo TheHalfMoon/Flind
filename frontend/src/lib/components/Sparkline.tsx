@@ -1,8 +1,8 @@
 import clsx from 'clsx'
 import { useCallback, useMemo } from 'react'
 
-import { DefaultTooltip, Sparkline as QuillSparklineChart, useChartTheme } from '@posthog/quill-charts'
-import type { Series, TooltipContext, ValueDomain } from '@posthog/quill-charts'
+import { DefaultTooltip, Sparkline as QuillSparklineChart, useChartTheme } from '@flind/quill-charts'
+import type { Series, TooltipContext, ValueDomain } from '@flind/quill-charts'
 
 import { getColorVar } from 'lib/colors'
 import { humanFriendlyNumber } from 'lib/utils/numbers'

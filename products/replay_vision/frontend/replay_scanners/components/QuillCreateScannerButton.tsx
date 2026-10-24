@@ -3,7 +3,7 @@ import { router } from 'kea-router'
 import { useState } from 'react'
 
 import { IconPlus } from '@posthog/icons'
-import { Button } from '@posthog/quill'
+import { Button } from '@flind/quill'
 
 import { aiConsentLogic } from 'scenes/settings/organization/aiConsentLogic'
 import { AIConsentPopoverWrapper } from 'scenes/settings/organization/AIConsentPopoverWrapper'

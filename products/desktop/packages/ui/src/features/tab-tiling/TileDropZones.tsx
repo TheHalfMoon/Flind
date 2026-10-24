@@ -1,6 +1,6 @@
 import { useDroppable } from "@dnd-kit/react";
 import { useService } from "@posthog/di/react";
-import { cn } from "@posthog/quill";
+import { cn } from "@flind/quill";
 import {
   BROWSER_TABS_CLIENT,
   type BrowserTabsClient,

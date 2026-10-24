@@ -5,7 +5,7 @@ import {
   ItemDescription,
   ItemMedia,
   ItemTitle,
-} from "@posthog/quill";
+} from "@flind/quill";
 import type { GithubRefKind, GithubRefState } from "../types";
 
 export interface IssueRowData {

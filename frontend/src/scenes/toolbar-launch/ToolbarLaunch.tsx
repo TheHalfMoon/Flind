@@ -22,7 +22,7 @@ import {
     ItemTitle,
     Text,
     TooltipProvider,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import { userHasAccess } from 'lib/utils/accessControlUtils'
 import { inStorybook, inStorybookTestRunner } from 'lib/utils/dom'

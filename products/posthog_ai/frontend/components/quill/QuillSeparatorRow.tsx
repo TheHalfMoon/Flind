@@ -1,4 +1,4 @@
-import { ChatMarker, ChatMarkerContent } from '@posthog/quill-primitives'
+import { ChatMarker, ChatMarkerContent } from '@flind/quill-primitives'
 
 import { humanFriendlyNumber } from 'lib/utils/numbers'
 

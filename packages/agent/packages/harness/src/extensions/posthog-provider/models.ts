@@ -1,8 +1,8 @@
 import type { ThinkingLevelMap } from "@earendil-works/pi-ai";
 import { getBuiltinModels } from "@earendil-works/pi-ai/providers/all";
 import type { ProviderModelConfig } from "@earendil-works/pi-coding-agent";
-import { type CloudRegion, isModalModelId } from "@posthog/agent-contracts";
-import { buildPosthogProjectHeaderRecord } from "@posthog/agent-contracts/posthog-property-headers";
+import { type CloudRegion, isModalModelId } from "@flind/agent-contracts";
+import { buildPosthogProjectHeaderRecord } from "@flind/agent-contracts/posthog-property-headers";
 import { getLlmGatewayUrl } from "./gateway";
 
 export const DEFAULT_MODEL = "claude-opus-5-5";

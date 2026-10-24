@@ -2,9 +2,9 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 
 const createSignedMerge = vi.fn();
 
-vi.mock("@posthog/git/signed-commit", async (importOriginal) => {
+vi.mock("@flind/git/signed-commit", async (importOriginal) => {
   const actual =
-    await importOriginal<typeof import("@posthog/git/signed-commit")>();
+    await importOriginal<typeof import("@flind/git/signed-commit")>();
   return {
     ...actual,
     createSignedMerge: (...args: unknown[]) => createSignedMerge(...args),

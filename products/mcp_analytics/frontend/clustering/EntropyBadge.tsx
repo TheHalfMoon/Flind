@@ -1,5 +1,5 @@
 import { Tooltip } from '@posthog/lemon-ui'
-import { Badge } from '@posthog/quill-primitives'
+import { Badge } from '@flind/quill-primitives'
 
 // Shared thresholds for reading a routing-entropy-scaled score: below 0.3 one
 // tool dominates, above 0.6 calls spread across many tools. Used for both a

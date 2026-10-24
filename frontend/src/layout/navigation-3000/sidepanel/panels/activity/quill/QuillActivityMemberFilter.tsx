@@ -11,7 +11,7 @@ import {
     ComboboxList,
     SelectTriggerIcon,
     Spinner,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import { QuillPersonAvatar } from 'lib/components/QuillPersonAvatar/QuillPersonAvatar'
 import { fullName } from 'lib/utils/strings'

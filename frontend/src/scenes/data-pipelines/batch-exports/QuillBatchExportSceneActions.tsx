@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconEllipsis } from '@posthog/icons'
-import { Button, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@posthog/quill'
+import { Button, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@flind/quill'
 
 import { batchExportConfigFormLogic, getDefaultConfiguration } from './batchExportConfigFormLogic'
 

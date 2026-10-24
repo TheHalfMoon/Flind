@@ -1,8 +1,8 @@
 import type { ReactElement, ReactNode } from 'react'
 
-// TODO(quill): delete this file once @posthog/quill ships a `DescriptionList`
+// TODO(quill): delete this file once @flind/quill ships a `DescriptionList`
 // (a.k.a. `KeyValueList` / `MetadataList`) primitive. Migration is then a
-// single-line import swap to `@posthog/quill`.
+// single-line import swap to `@flind/quill`.
 //
 // What's needed from Quill:
 //   - A two-column read-only key/value layout. The label column is muted and
@@ -27,7 +27,7 @@ import type { ReactElement, ReactNode } from 'react'
 // In the meantime this file is built on Quill's `cn()` and design tokens
 // (`text-muted-foreground`, `text-foreground`, `--text-sm`) so the visual
 // language already matches what a future Quill primitive would ship.
-import { cn } from '@posthog/quill'
+import { cn } from '@flind/quill'
 
 export interface DescriptionListItem {
     label: string

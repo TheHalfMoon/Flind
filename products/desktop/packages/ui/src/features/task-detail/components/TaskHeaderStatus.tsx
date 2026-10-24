@@ -1,5 +1,5 @@
 import { PushPin } from "@phosphor-icons/react";
-import { Button } from "@posthog/quill";
+import { Button } from "@flind/quill";
 import type { WorkspaceMode } from "@posthog/shared";
 import { getErrorMessage } from "@posthog/shared";
 import type { Task } from "@posthog/shared/domain-types";

@@ -3,7 +3,7 @@ import { loaders } from 'kea-loaders'
 import { router, urlToAction } from 'kea-router'
 import posthog from 'posthog-js'
 
-import { toast } from '@posthog/quill'
+import { toast } from '@flind/quill'
 
 import api from 'lib/api'
 import { FEATURE_FLAGS } from 'lib/constants'

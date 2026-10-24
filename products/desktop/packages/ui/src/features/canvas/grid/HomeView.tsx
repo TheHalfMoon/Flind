@@ -9,7 +9,7 @@ import {
   EmptyMedia,
   EmptyTitle,
   Heading,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { AUTH_SCOPED_QUERY_META } from "@posthog/ui/features/auth/useCurrentUser";
 import { useCanvasChatPanelStore } from "@posthog/ui/features/canvas/stores/canvasChatPanelStore";
 import { LoadingState } from "@posthog/ui/primitives/LoadingState";

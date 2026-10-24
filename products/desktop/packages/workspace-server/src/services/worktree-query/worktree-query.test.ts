@@ -7,7 +7,7 @@ vi.mock("node:fs/promises", async () => {
 });
 
 const listWorktrees = vi.fn();
-vi.mock("@posthog/git/queries", () => ({
+vi.mock("@flind/git/queries", () => ({
   listWorktrees: (...args: unknown[]) => listWorktrees(...args),
 }));
 

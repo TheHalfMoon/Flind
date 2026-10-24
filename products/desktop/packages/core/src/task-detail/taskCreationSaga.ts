@@ -1,4 +1,4 @@
-import { PI_THINKING_LEVELS } from "@posthog/agent/pi/types";
+import { PI_THINKING_LEVELS } from "@flind/agent/pi/types";
 import {
   buildChannelContextBlock,
   buildChannelContextText,

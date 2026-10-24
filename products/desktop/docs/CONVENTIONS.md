@@ -37,7 +37,7 @@ export function AgentMessage({ content }: AgentMessageProps) {
 }
 ```
 
-Components come from `@posthog/quill`; layout is plain elements plus Tailwind. **Never import `@radix-ui/themes` or `@radix-ui/react-*`** — see [UI Components](../AGENTS.md#ui-components) for the full replacement mapping, including the layout primitives (`Box`, `Flex`, `Grid`) that become `div`s.
+Components come from `@flind/quill`; layout is plain elements plus Tailwind. **Never import `@radix-ui/themes` or `@radix-ui/react-*`** — see [UI Components](../AGENTS.md#ui-components) for the full replacement mapping, including the layout primitives (`Box`, `Flex`, `Grid`) that become `div`s.
 
 Keep render functions short. Extract named components for distinct UI concerns instead of long inline conditionals.
 
@@ -178,7 +178,7 @@ Default line heights are set in [packages/ui/src/styles/globals.css](../packages
 Loading indicators are `Spinner` from [packages/ui/src/primitives/Spinner.tsx](../packages/ui/src/primitives/Spinner.tsx) and `LoadingState` from [packages/ui/src/primitives/LoadingState.tsx](../packages/ui/src/primitives/LoadingState.tsx).
 `LoadingState` is the centered pane or section loader.
 `Spinner` is the inline one: leave `size` off inside quill buttons and media slots, which size it like the icons beside it, and use `xs` (badges), `sm` (12px text), `md` (default rows) or `lg` (a pane) elsewhere.
-Biome rejects `Spinner` imports from `@posthog/quill` and `@radix-ui/themes`, and the phosphor spinner glyphs.
+Biome rejects `Spinner` imports from `@flind/quill` and `@radix-ui/themes`, and the phosphor spinner glyphs.
 It carries `role="status"` and a "Loading" label. Pass `aria-hidden="true"` where visible text or a wrapping live region already says the same thing, so a screen reader reads it once.
 An icon that has to rotate for another reason (a refresh arrow while refreshing) goes through `Spin` from the same file.
 Never put `animate-spin` on an `<svg>`: Chromium animates SVG transforms on the main thread, so one visible spinner costs a style recalc and a layerize pass on every frame.

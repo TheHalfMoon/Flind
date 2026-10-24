@@ -6,7 +6,7 @@ import {
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
   DropdownMenuTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 
 interface SettingsOptionSelectOption {
   value: string;

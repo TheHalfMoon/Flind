@@ -10,7 +10,7 @@ import {
   stepError,
 } from "@posthog/core/settings/environmentSetup";
 import { isDirectlyInstallable } from "@posthog/core/settings/imagePreset";
-import { Button, Card, Text } from "@posthog/quill";
+import { Button, Card, Text } from "@flind/quill";
 import type { SandboxCustomImage } from "@posthog/shared/domain-types";
 import { AccessStep } from "@posthog/ui/features/settings/sections/environments/setup/steps/AccessStep";
 import { BaseImageStep } from "@posthog/ui/features/settings/sections/environments/setup/steps/BaseImageStep";

@@ -8,7 +8,7 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import {
   DOT_TONE_VAR,
   type TaskDot,

@@ -1,4 +1,4 @@
-export { detectRtkBinary } from "@posthog/harness/extensions/rtk";
+export { detectRtkBinary } from "@flind/harness/extensions/rtk";
 export {
   isNotification,
   POSTHOG_METHODS,

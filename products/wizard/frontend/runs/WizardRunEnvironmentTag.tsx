@@ -1,5 +1,5 @@
 import { IconCloud, IconLaptop } from '@posthog/icons'
-import { Badge } from '@posthog/quill-primitives'
+import { Badge } from '@flind/quill-primitives'
 
 import type { RunEnvironmentEnumApi } from '../generated/api.schemas'
 

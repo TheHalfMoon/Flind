@@ -1,6 +1,6 @@
 import { ChangeEvent, KeyboardEvent, useEffect, useState } from 'react'
 
-import { Input } from '@posthog/quill'
+import { Input } from '@flind/quill'
 
 /** A text input that changes the source only on blur or Enter, so typing does not publish a version per key. */
 export function DraftInput({

@@ -9,7 +9,7 @@ import {
     DropdownMenuItem,
     DropdownMenuSeparator,
     DropdownMenuTrigger,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import { useExperimentActions } from 'scenes/experiments/ExperimentView/useExperimentActions'
 

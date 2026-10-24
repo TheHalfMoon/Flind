@@ -122,7 +122,7 @@ class InfrastructureStatus:
         return cast(dict[str, JsonValue], response.json())
 
     def package(self) -> JsonValue:
-        package = self._json("https://registry.npmjs.org/@posthog/agent/latest").json()
+        package = self._json("https://registry.npmjs.org/@flind/agent/latest").json()
         return {"version": package["version"], "revision": package.get("gitHead")}
 
     def build_jobs(self, run_id: JsonValue) -> list[JsonValue]:

@@ -10,7 +10,7 @@ import {
     type MetricChange,
     type Series,
     type TooltipContext,
-} from '@posthog/quill-charts'
+} from '@flind/quill-charts'
 import {
     Metric,
     MetricDelta,
@@ -18,8 +18,8 @@ import {
     MetricSparkline,
     MetricTitle,
     MetricValue,
-} from '@posthog/quill-components/metric'
-import { cn, Skeleton, Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@posthog/quill-primitives'
+} from '@flind/quill-components/metric'
+import { cn, Skeleton, Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@flind/quill-primitives'
 
 import { getColorVar } from 'lib/colors'
 import { AppMetricsTimeSeriesResponse } from 'lib/components/AppMetrics/appMetricsLogic'

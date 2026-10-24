@@ -12,7 +12,7 @@ import {
     ComboboxListFooter,
     ComboboxTrigger,
     Spinner,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import { integrationsLogic } from 'lib/integrations/integrationsLogic'
 import { LinkPrimitive } from 'lib/lemon-ui/Link'

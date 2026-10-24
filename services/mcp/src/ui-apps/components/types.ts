@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 
-import type { YAxisFormat } from '@posthog/quill-charts'
+import type { YAxisFormat } from '@flind/quill-charts'
 
 // ============================================================================
 // Query-based visualizations

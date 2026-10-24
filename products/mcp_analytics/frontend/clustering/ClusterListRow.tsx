@@ -1,6 +1,6 @@
 import { memo, useEffect, useRef } from 'react'
 
-import { Badge } from '@posthog/quill-primitives'
+import { Badge } from '@flind/quill-primitives'
 
 import { cn } from 'lib/utils/css-classes'
 import { humanFriendlyNumber } from 'lib/utils/numbers'

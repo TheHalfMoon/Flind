@@ -7,7 +7,7 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
     Separator,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 export function QuillMessageTemplateActions({
     isNew,

@@ -1,7 +1,7 @@
 import { type ReactElement, type ReactNode, useMemo } from 'react'
 
 import { DataTable, type DataTableColumn } from '@posthog/mcp-ui'
-import { Badge, Button } from '@posthog/quill'
+import { Badge, Button } from '@flind/quill'
 
 import { type ActorRow, type InsightActorsData, isRetentionActorsData, toActorRows } from './insightActorsTransforms'
 import { RetentionActorsView } from './RetentionActorsView'

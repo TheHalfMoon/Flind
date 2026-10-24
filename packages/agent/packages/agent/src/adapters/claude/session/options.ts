@@ -17,19 +17,19 @@ import type {
 import {
   BEDROCK_LLM_GATEWAY_FLAG,
   type BedrockGatewayVariant,
-} from "@posthog/agent-contracts";
+} from "@flind/agent-contracts";
 import {
   buildPosthogProjectHeaderLines,
   buildPosthogPropertyHeaderLines,
-} from "@posthog/agent-contracts/posthog-property-headers";
-import { buildAppendedInstructions } from "@posthog/harness/extensions/agent-instructions";
+} from "@flind/agent-contracts/posthog-property-headers";
+import { buildAppendedInstructions } from "@flind/harness/extensions/agent-instructions";
 import {
   applyContextWikiEnv,
   type ContextWikiEnv,
   resolveContextWikiPath,
-} from "@posthog/harness/extensions/context-wiki";
-import type { FileEnrichmentDeps } from "@posthog/harness/extensions/enrichment";
-import { resolveRtkPrefix } from "@posthog/harness/extensions/rtk";
+} from "@flind/harness/extensions/context-wiki";
+import type { FileEnrichmentDeps } from "@flind/harness/extensions/enrichment";
+import { resolveRtkPrefix } from "@flind/harness/extensions/rtk";
 import { IS_ROOT } from "../../../utils/common";
 import type { Logger } from "../../../utils/logger";
 import type { TaskState } from "../conversion/task-state";

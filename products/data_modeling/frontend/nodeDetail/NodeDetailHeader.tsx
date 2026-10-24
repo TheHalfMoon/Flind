@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { LemonSkeleton, LemonTag } from '@posthog/lemon-ui'
-import { Skeleton } from '@posthog/quill'
+import { Skeleton } from '@flind/quill'
 
 import { SceneActivityIndicator } from 'lib/components/Scenes/SceneUpdateActivityInfo'
 import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'

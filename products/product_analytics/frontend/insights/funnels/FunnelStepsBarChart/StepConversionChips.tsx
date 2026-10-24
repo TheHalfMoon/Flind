@@ -2,7 +2,7 @@
 import { useMemo } from 'react'
 
 import { IconArrowRight } from '@posthog/icons'
-import { RATE_TO_PERCENT, useChartLayout } from '@posthog/quill-charts'
+import { RATE_TO_PERCENT, useChartLayout } from '@flind/quill-charts'
 
 import { humanFriendlyLargeNumber } from 'lib/utils/numbers'
 

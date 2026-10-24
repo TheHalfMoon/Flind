@@ -9,7 +9,7 @@ import {
     EmptyHeader,
     EmptyMedia,
     EmptyTitle,
-} from '@posthog/quill-primitives'
+} from '@flind/quill-primitives'
 
 import { isPiTaskRuntime } from '../../../types/taskTypes'
 import { taskDetailSceneLogic } from '../taskDetailSceneLogic'

@@ -4,7 +4,7 @@ import { useActions, useValues } from 'kea'
 import { combineUrl, router } from 'kea-router'
 
 import { LemonBanner, LemonInput, LemonSelect } from '@posthog/lemon-ui'
-import { Button } from '@posthog/quill'
+import { Button } from '@flind/quill'
 
 import { MemberSelect } from 'lib/components/MemberSelect'
 import { Shortcut } from 'lib/components/Shortcuts/Shortcut'

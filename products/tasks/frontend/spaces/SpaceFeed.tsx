@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { Fragment } from 'react'
 
-import { Button, Separator, Text, cn } from '@posthog/quill'
+import { Button, Separator, Text, cn } from '@flind/quill'
 
 import { todaySpacesLogic } from '~/layout/today/todaySpacesLogic'
 

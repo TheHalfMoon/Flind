@@ -1,6 +1,6 @@
 import { type ReactElement } from 'react'
 
-import { Button, Card, CardContent } from '@posthog/quill'
+import { Button, Card, CardContent } from '@flind/quill'
 
 import { WorkflowDataSuggestionBuildView } from './WorkflowDataSuggestionBuildView'
 

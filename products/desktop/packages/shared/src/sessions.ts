@@ -6,13 +6,13 @@ import type {
   SessionConfigSelectOption,
   SessionConfigSelectOptions,
 } from "@agentclientprotocol/sdk";
-import type { Adapter, ModelAccess } from "@posthog/agent-contracts/adapter";
+import type { Adapter, ModelAccess } from "@flind/agent-contracts/adapter";
 import type {
   TaskRunArtifact,
   TaskRunStatus,
-} from "@posthog/agent-contracts/domain-types";
-import type { ExecutionMode } from "@posthog/agent-contracts/exec-types";
-import type { AcpMessage } from "@posthog/agent-contracts/session-events";
+} from "@flind/agent-contracts/domain-types";
+import type { ExecutionMode } from "@flind/agent-contracts/exec-types";
+import type { AcpMessage } from "@flind/agent-contracts/session-events";
 import type { SkillButtonId } from "./analytics-events";
 
 export type { Adapter };
@@ -299,7 +299,7 @@ export function sessionSupportsNativeSteer(
  *
  * Cloud runs never complete the ACP `initialize` handshake with this client, so
  * the capability is inferred from the adapter instead: the sandbox runs the same
- * `@posthog/agent` build, and the fork happens there against its own transcript.
+ * `@flind/agent` build, and the fork happens there against its own transcript.
  * A sandbox predating the `side_question` command rejects it, which surfaces as
  * an error on the card rather than a missing command.
  */

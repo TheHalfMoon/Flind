@@ -3,7 +3,7 @@ import { Fragment } from 'react'
 
 import { IconFlask } from '@posthog/icons'
 import { LemonButton, LemonDivider, LemonSwitch, Tooltip } from '@posthog/lemon-ui'
-import { Button } from '@posthog/quill'
+import { Button } from '@flind/quill'
 
 import { useHogfetti } from 'lib/components/Hogfetti/Hogfetti'
 import { superpowersLogic } from 'lib/components/Superpowers/superpowersLogic'

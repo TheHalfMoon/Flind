@@ -2,7 +2,7 @@ import { useActions } from 'kea'
 import type { ReactNode } from 'react'
 
 import { IconArrowRight, IconExternal, IconPlay, IconTrends } from '@posthog/icons'
-import { Button, Text } from '@posthog/quill'
+import { Button, Text } from '@flind/quill'
 
 import { dayjs } from 'lib/dayjs'
 import { LinkPrimitive } from 'lib/lemon-ui/Link'

@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 
-import { useSankeyLayout } from '@posthog/quill-charts'
+import { useSankeyLayout } from '@flind/quill-charts'
 
 const DROPOFF_WIDTH = 30
 const DROPOFF_MAX_RADIUS = 25

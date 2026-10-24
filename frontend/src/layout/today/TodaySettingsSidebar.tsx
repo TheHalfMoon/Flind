@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { router } from 'kea-router'
 
 import { IconChevronDown, IconChevronRight } from '@posthog/icons'
-import { MenuLabel, Tabs, TabsList, TabsTrigger, Text } from '@posthog/quill'
+import { MenuLabel, Tabs, TabsList, TabsTrigger, Text } from '@flind/quill'
 
 import { removeProjectIdIfPresent } from 'lib/utils/kea-router'
 import { settingsLogic } from 'scenes/settings/settingsLogic'

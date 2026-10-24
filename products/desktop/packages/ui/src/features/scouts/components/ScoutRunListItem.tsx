@@ -10,7 +10,7 @@ import {
   scoutRunOutputCount,
   scoutSummarySentence,
 } from "@posthog/core/scouts/scoutPresentation";
-import { Badge } from "@posthog/quill";
+import { Badge } from "@flind/quill";
 import { ANALYTICS_EVENTS } from "@posthog/shared";
 import { MarkdownRenderer } from "@posthog/ui/features/editor/components/MarkdownRenderer";
 import { RelativeTimestamp } from "@posthog/ui/primitives/RelativeTimestamp";

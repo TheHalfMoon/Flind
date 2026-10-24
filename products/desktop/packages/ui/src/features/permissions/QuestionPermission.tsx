@@ -2,7 +2,7 @@ import {
   type QuestionItem,
   type QuestionMeta,
   QuestionMetaSchema,
-} from "@posthog/agent/adapters/claude/questions/utils";
+} from "@flind/agent/adapters/claude/questions/utils";
 import {
   ActionSelector,
   CANCEL_OPTION_ID,

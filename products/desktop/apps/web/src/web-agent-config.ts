@@ -2,11 +2,11 @@ import type {
   SessionConfigOption,
   SessionConfigSelectOption,
 } from "@agentclientprotocol/sdk";
-import { getReasoningEffortOptions } from "@posthog/agent/adapters/reasoning-effort";
+import { getReasoningEffortOptions } from "@flind/agent/adapters/reasoning-effort";
 import {
   getAvailableCodexModes,
   getAvailableModes,
-} from "@posthog/agent/execution-mode";
+} from "@flind/agent/execution-mode";
 import {
   buildProviderModelGroups,
   DEFAULT_CODEX_MODEL,
@@ -18,8 +18,8 @@ import {
   isAnthropicModel,
   isCloudflareModel,
   isOpenAIModel,
-} from "@posthog/agent/gateway-models";
-import { getLlmGatewayUrl } from "@posthog/agent/posthog-api";
+} from "@flind/agent/gateway-models";
+import { getLlmGatewayUrl } from "@flind/agent/posthog-api";
 import { type Adapter, customModelMeta } from "@posthog/shared";
 
 // Web port of AgentService.getPreviewConfigOptions (workspace-server). The

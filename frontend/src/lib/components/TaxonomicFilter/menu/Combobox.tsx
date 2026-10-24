@@ -33,7 +33,7 @@ import {
     SelectValue,
     Separator,
     Skeleton,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import type { SeriesRename } from 'lib/components/EntityFilterInfo'
 import { LemonInput } from 'lib/lemon-ui/LemonInput'

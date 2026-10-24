@@ -1,5 +1,5 @@
 import { buildPostHogUrl } from "@posthog/core/settings/posthogUrl";
-import { Switch, Textarea } from "@posthog/quill";
+import { Switch, Textarea } from "@flind/quill";
 import { ANALYTICS_EVENTS } from "@posthog/shared";
 import { useAuthStateValue } from "@posthog/ui/features/auth/store";
 import {

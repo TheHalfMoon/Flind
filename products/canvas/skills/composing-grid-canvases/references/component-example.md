@@ -17,7 +17,7 @@ Start from it when building a checklist, settings, or any state-carrying widget,
   "dependencies": {
     "react": "<pinned>",
     "react-dom": "<pinned>",
-    "@posthog/quill": "<pinned>",
+    "@flind/quill": "<pinned>",
     "lucide-react": "<pinned>"
   },
   "capabilities": {
@@ -28,7 +28,7 @@ Start from it when building a checklist, settings, or any state-carrying widget,
 }
 ```
 
-- `index.html` must load `/src/canvas.tsx` as a module and every imported package must be in `dependencies` — the retrieved shell and dependency map already satisfy both. Improvising a comment-only entry fails the build with `no_entry_module`; dropping the `@posthog/quill` or `lucide-react` entries fails it with `import_not_declared`.
+- `index.html` must load `/src/canvas.tsx` as a module and every imported package must be in `dependencies` — the retrieved shell and dependency map already satisfy both. Improvising a comment-only entry fails the build with `no_entry_module`; dropping the `@flind/quill` or `lucide-react` entries fails it with `import_not_declared`.
 - Declare the full `capabilities.posthog` shape (`insights`, `inlineQueries`, `captureEvents`, `state`, `actions`) even when a field is empty, as this example does — the build freezes the declared capabilities into the artifact manifest, which older clients read expecting every field. `insights`, `inlineQueries`, and `captureEvents` are also required by the API: a partial `posthog` object is rejected with a 400 before source validation runs. Populate only what the code calls and leave the rest empty.
 - `capabilities.posthog.state` must name every scope the code passes to `ph.state.*` — validation rejects an undeclared scope.
 - `component.size` is in grid units and advisory; the component still has to render at any size the user drags.
@@ -37,7 +37,7 @@ Start from it when building a checklist, settings, or any state-carrying widget,
 
 ```tsx
 import { useEffect, useState } from 'react'
-import { Checkbox, SkeletonText, Text, Tooltip, TooltipContent, TooltipTrigger } from '@posthog/quill'
+import { Checkbox, SkeletonText, Text, Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill'
 import { Info } from 'lucide-react'
 
 const ITEMS = [
@@ -139,7 +139,7 @@ export default function WelcomeChecklist() {
 ## The rules the example encodes
 
 - One file, one `export default` React component, no props, no `createRoot` — the host mounts it.
-- Imports only from the platform allowlist (`react`, `@posthog/quill`, `lucide-react`, `recharts`, `dayjs`).
+- Imports only from the platform allowlist (`react`, `@flind/quill`, `lucide-react`, `recharts`, `dayjs`).
 - `ph` is a host-injected global — never import it, and feature-detect optional surfaces like `ph.state` so the widget degrades instead of crashing on an older runtime.
 - Loading state renders a skeleton, never a blank; every async access has a `.catch` that lands in a renderable state.
 - Fill the placement iframe viewport with `min-h-screen` and let the iframe document scroll.

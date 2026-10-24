@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { useValues } from 'kea'
 
-import { useChartTheme } from '@posthog/quill-charts'
+import { useChartTheme } from '@flind/quill-charts'
 import {
     Metric,
     MetricDelta,
@@ -9,7 +9,7 @@ import {
     MetricSparkline,
     MetricSubtitle,
     MetricValue,
-} from '@posthog/quill-components/metric'
+} from '@flind/quill-components/metric'
 
 import { hexToRGBA } from 'lib/utils/colors'
 import {

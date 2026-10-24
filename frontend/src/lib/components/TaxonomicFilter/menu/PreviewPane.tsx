@@ -13,7 +13,7 @@ import { useValues } from 'kea'
 import posthog from 'posthog-js'
 
 import { IconPin } from '@posthog/icons'
-import { Button, cn, ScrollArea, Separator } from '@posthog/quill'
+import { Button, cn, ScrollArea, Separator } from '@flind/quill'
 
 import { FlagCalledMoveNotice } from 'lib/components/FlagCalledMoveNotice/FlagCalledMoveNotice'
 import { resolvePropertyDefinitionId } from 'lib/components/PropertyFilters/utils'

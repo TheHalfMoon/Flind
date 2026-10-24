@@ -1,6 +1,6 @@
 import { ArrowSquareOutIcon } from "@phosphor-icons/react";
 import { GITHUB_CODE_CONTEXT_MESSAGE } from "@posthog/core/integrations/connectErrors";
-import { Button } from "@posthog/quill";
+import { Button } from "@flind/quill";
 import { useAuthStateValue } from "@posthog/ui/features/auth/store";
 import { PersonalGithubInstallationsSection } from "@posthog/ui/features/settings/sections/PersonalGithubInstallationsSection";
 import { ProjectGithubConnectionSection } from "@posthog/ui/features/settings/sections/ProjectGithubConnectionSection";

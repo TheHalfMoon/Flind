@@ -10,7 +10,7 @@ import {
     Tooltip,
     TooltipContent,
     TooltipTrigger,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import { TODAY_LIST_ITEM_FIELD_LABELS, TodayListItemField } from './todayListAppearance'
 import { TodaySpaceGlyph } from './TodaySpaceGlyph'

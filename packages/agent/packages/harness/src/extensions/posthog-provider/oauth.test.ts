@@ -4,7 +4,7 @@ import {
   getCloudUrlFromRegion,
   getOauthClientIdFromRegion,
   OAUTH_SCOPES,
-} from "@posthog/agent-contracts";
+} from "@flind/agent-contracts";
 import {
   afterEach,
   beforeEach,

@@ -57,7 +57,7 @@ async function imageSourceMetricValue(source: string, property: string, kind: st
 // assembly — not the scrub itself (that's covered by the Rust suite + shared fixtures).
 const mockAnonymizeKafkaPayload = jest.fn()
 const mockMaxImageBytes = jest.fn()
-jest.mock('@posthog/replay-anonymizer', () => ({
+jest.mock('@flind/replay-anonymizer', () => ({
     anonymizeKafkaPayload: (
         payload: Buffer,
         contentEncoding?: string | null,

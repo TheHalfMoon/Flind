@@ -1,6 +1,6 @@
 import { PreviewCard } from "@base-ui/react/preview-card";
 import type { ChannelItemModel } from "@posthog/core/canvas/channelItems";
-import { Card } from "@posthog/quill";
+import { Card } from "@flind/quill";
 import {
   ChannelItemPreview,
   type ChannelItemPreviewPayload,

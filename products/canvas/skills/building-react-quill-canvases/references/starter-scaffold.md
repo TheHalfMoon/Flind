@@ -36,7 +36,7 @@ import {
   PopoverTrigger,
   quickRanges,
   SkeletonText,
-} from '@posthog/quill'
+} from '@flind/quill'
 import { RefreshCw } from 'lucide-react'
 import { editable, ph } from '@posthog/canvas-sdk'
 import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'

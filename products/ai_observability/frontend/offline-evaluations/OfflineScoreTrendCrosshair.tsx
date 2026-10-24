@@ -2,7 +2,7 @@ import { scaleLinear } from 'd3'
 import { useActions, useValues, type BuiltLogic } from 'kea'
 import { useEffect, useId, useMemo } from 'react'
 
-import { useChartHover, useChartLayout } from '@posthog/quill-charts'
+import { useChartHover, useChartLayout } from '@flind/quill-charts'
 
 import type { offlineExperimentsLogicType } from './offlineExperimentsLogic'
 

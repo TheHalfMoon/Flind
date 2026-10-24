@@ -141,7 +141,7 @@ export interface HogQLParser {
  *
  * @example
  * ```typescript
- * import createHogQLParser from '@posthog/hogql-parser';
+ * import createHogQLParser from '@flind/query-parser';
  *
  * const parser = await createHogQLParser();
  * const result = parser.parseExpr('1 + 2');

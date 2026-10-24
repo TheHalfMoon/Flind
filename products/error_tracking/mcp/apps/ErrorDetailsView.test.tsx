@@ -13,7 +13,7 @@ jest.mock(
 )
 
 jest.mock(
-    '@posthog/quill',
+    '@flind/quill',
     () => ({
         Badge: ({ children }: { children: ReactElement }): ReactElement => <span>{children}</span>,
         Card: ({ children }: { children: ReactElement }): ReactElement => <div>{children}</div>,

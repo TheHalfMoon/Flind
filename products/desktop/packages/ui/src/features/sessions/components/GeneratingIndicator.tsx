@@ -3,7 +3,7 @@ import {
   pickNextThinkingActivity,
   pickThinkingActivity,
 } from "@posthog/core/sessions/thinkingActivities";
-import { Text } from "@posthog/quill";
+import { Text } from "@flind/quill";
 import { useEffect, useRef, useState } from "react";
 
 function getRandomThinkingMessage(): string {

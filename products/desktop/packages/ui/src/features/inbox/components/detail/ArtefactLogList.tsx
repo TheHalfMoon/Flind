@@ -10,7 +10,7 @@ import {
   formatRankingProbability,
   rankingLiftBarPercent,
 } from "@posthog/core/inbox/rankingFormat";
-import { Badge } from "@posthog/quill";
+import { Badge } from "@flind/quill";
 import { dismissalReasonLabel } from "@posthog/shared/dismissalReasons";
 import type {
   ActionabilityJudgmentContent,

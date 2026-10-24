@@ -10,7 +10,7 @@ import {
     ComboboxItem,
     ComboboxList,
     ComboboxTrigger,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import { ComboboxLoadMoreFooter, ComboboxSearchField } from './ComboboxSearchChrome'
 import { githubBranchSearchLogic } from './githubBranchSearchLogic'

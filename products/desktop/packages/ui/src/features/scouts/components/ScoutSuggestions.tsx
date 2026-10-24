@@ -7,7 +7,7 @@ import {
   suggestionActionLabel,
   suggestionMetaLine,
 } from "@posthog/core/scouts/scoutSuggestions";
-import { Badge, Button } from "@posthog/quill";
+import { Badge, Button } from "@flind/quill";
 import { ANALYTICS_EVENTS } from "@posthog/shared";
 import { useProjectTimezone } from "@posthog/ui/features/projects/useProjectTimezone";
 import { formatTimezoneAbbreviation } from "@posthog/ui/primitives/timezone";

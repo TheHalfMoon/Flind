@@ -1,6 +1,6 @@
 import { DownloadSimpleIcon, UsersThreeIcon } from "@phosphor-icons/react";
 import type { TeamSkillInfo } from "@posthog/core/skills/teamSkillsService";
-import { Button } from "@posthog/quill";
+import { Button } from "@flind/quill";
 import { stripFrontmatter } from "@posthog/shared";
 import { CodeMirrorEditor } from "@posthog/ui/features/code-editor/components/CodeMirrorEditor";
 import { MarkdownRenderer } from "@posthog/ui/features/editor/components/MarkdownRenderer";

@@ -3,7 +3,7 @@ import './Today.scss'
 import { useMountedLogic, useValues } from 'kea'
 import { Suspense } from 'react'
 
-import { Skeleton } from '@posthog/quill'
+import { Skeleton } from '@flind/quill'
 
 import { lazyWithRetry } from 'lib/utils/retryImport'
 

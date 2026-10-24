@@ -7,7 +7,7 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "@posthog/quill";
+} from "@flind/quill";
 import {
   type CreateSurface,
   trackAndCreateCanvas,

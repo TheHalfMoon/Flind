@@ -2,7 +2,7 @@ import '@testing-library/jest-dom'
 
 import { cleanup, render, screen, waitFor } from '@testing-library/react'
 
-import type { BoxPlotConfig, BoxPlotSeries } from '@posthog/quill-charts'
+import type { BoxPlotConfig, BoxPlotSeries } from '@flind/quill-charts'
 
 import { BoxPlotSettings, ChartSettings } from '~/queries/schema/schema-general'
 import { initKeaTests } from '~/test/init'
@@ -17,8 +17,8 @@ jest.mock('posthog-js', () => ({
     default: { capture: jest.fn(), get_session_id: jest.fn(() => 'session-1') },
 }))
 
-jest.mock('@posthog/quill-charts', () => ({
-    ...jest.requireActual('@posthog/quill-charts'),
+jest.mock('@flind/quill-charts', () => ({
+    ...jest.requireActual('@flind/quill-charts'),
     BoxPlot: (props: { labels: string[]; series: BoxPlotSeries[]; config?: BoxPlotConfig }): JSX.Element => {
         latestBoxPlotProps = props
         return <div data-attr="mock-sql-box-plot" />

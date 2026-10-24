@@ -8,13 +8,13 @@ import {
   isClaudeImageMimeType,
   isImageFile,
   MAX_CLAUDE_IMAGE_BYTES,
-} from "@posthog/agent-contracts";
+} from "@flind/agent-contracts";
 import { isLocalSkillCommandChunk } from "../../local-skill";
 
 const PDF_EXTENSIONS = new Set(["pdf"]);
 
 // Video-only on purpose: audio formats get the default "large text" hint.
-// Do not replace with AUDIO_VIDEO_EXTENSIONS from @posthog/agent-contracts.
+// Do not replace with AUDIO_VIDEO_EXTENSIONS from @flind/agent-contracts.
 const VIDEO_EXTENSIONS = new Set([
   "mp4",
   "mov",

@@ -3,12 +3,12 @@ import {
   OPTION_DOCS_URL_META_KEY,
   supports1MContext,
   supportsFastMode,
-} from "@posthog/agent-contracts";
+} from "@flind/agent-contracts";
 import {
   EFFORT_LEVEL_DOCS_URLS,
   EFFORT_LEVEL_LABELS,
-} from "@posthog/agent-contracts/domain-types";
-import { reasoningEffortsForModel } from "@posthog/agent-contracts/model-catalog";
+} from "@flind/agent-contracts/domain-types";
+import { reasoningEffortsForModel } from "@flind/agent-contracts/model-catalog";
 import type { EffortLevel } from "../types";
 
 export const DEFAULT_MODEL = "opus";

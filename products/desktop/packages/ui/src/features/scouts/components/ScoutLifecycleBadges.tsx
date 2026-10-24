@@ -11,7 +11,7 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { RelativeTimestamp } from "@posthog/ui/primitives/RelativeTimestamp";
 import type { ScoutConfigUpdate } from "../hooks/useScoutConfigMutations";
 

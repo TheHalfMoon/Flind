@@ -3,7 +3,7 @@ import * as path from "node:path";
 import { Readable, Transform } from "node:stream";
 import { pipeline } from "node:stream/promises";
 import type { ReadableStream as WebReadableStream } from "node:stream/web";
-import { execGit } from "@posthog/git/git-exec";
+import { execGit } from "@flind/git/git-exec";
 import type { AgentScopedLogger } from "./ports";
 
 const API_TIMEOUT_MS = 10_000;

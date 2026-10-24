@@ -10,7 +10,7 @@ import {
   type TaskService,
 } from "@posthog/core/task-detail/taskService";
 import { useService } from "@posthog/di/react";
-import { Button } from "@posthog/quill";
+import { Button } from "@flind/quill";
 import {
   ANALYTICS_EVENTS,
   defaultEligibleModel,

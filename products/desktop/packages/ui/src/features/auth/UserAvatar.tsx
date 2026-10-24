@@ -1,6 +1,6 @@
 import { avatarColor } from "@posthog/core/auth/avatarColor";
 import type { UserLike } from "@posthog/core/auth/userInitials";
-import { Avatar, AvatarFallback, AvatarImage } from "@posthog/quill";
+import { Avatar, AvatarFallback, AvatarImage } from "@flind/quill";
 import {
   rememberAvatarImageStatus,
   rememberedAvatarImageStatus,

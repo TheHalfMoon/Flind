@@ -1,4 +1,4 @@
-import { Skeleton } from '@posthog/quill-primitives'
+import { Skeleton } from '@flind/quill-primitives'
 
 export function QuillTaskComposerSkeleton(): JSX.Element {
     return (

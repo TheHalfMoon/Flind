@@ -16,18 +16,18 @@ for GLM 5.3 Flash, the shared traps live in `../2026-08-model-glm53-flash/FINDIN
    for the new model+effort, and `bin.ts` **hard-errors at startup** → the TaskRun ends
    `status=failed, error_message="Agent-server failed to start"` (seen here: 780 s, 33 agent-log
    lines, no turn produced). Fix, in the monorepo (`$LOCAL_POSTHOG_CODE_MONOREPO_ROOT`):
-   `pnpm --filter @posthog/agent build`, then confirm `grep moonshotai/kimi-k3
+   `pnpm --filter @flind/agent build`, then confirm `grep moonshotai/kimi-k3
 packages/agent/dist/server/agent-server.js` hits. The overlay covers **agent, shared, git** — all
    three need a `dist/`.
 2. **The monorepo needs `pnpm install` first, and the agent build `rimraf`s `dist` before it runs —
    so a FAILED build leaves NO `dist/` at all.** After a `posthog` master pull the monorepo's
-   `node_modules` were stale: `pnpm --filter @posthog/agent build` died on
+   `node_modules` were stale: `pnpm --filter @flind/agent build` died on
    `Could not resolve "@opentelemetry/exporter-trace-otlp-http"` (and `packages/harness` warned
    "node_modules missing"). Because the build script is `rimraf dist && tsup && …`, that failure
    deleted the previously-working `dist/`, which makes `get_local_posthog_code_packages` return
    `None` and silently fall back to the **npm-published** agent (which also lacks the new model).
    Always `pnpm install --prefer-offline` in the monorepo first, then build. Do **not** build with
-   the recursive `@posthog/agent...` filter — it drags in `packages/harness`, whose own deps
+   the recursive `@flind/agent...` filter — it drags in `packages/harness`, whose own deps
    (`@earendil-works/pi-*`) may be missing and fail the whole run; the overlay only needs `agent`
    (its workspace deps `shared`/`git` already have a `dist/`).
 
@@ -63,7 +63,7 @@ ak-…"}`. The GLM-era `LLM_GATEWAY_MODAL_KEY`/`SECRET` (the `wk-`/`ws-` pair) a
 
 7. **A codex reviewer built through the local overlay runs at `low`, NOT the pinned `xhigh` — but this
    is LOCAL-ONLY (a stale monorepo), NOT a prod bug.** Because kimi-k3 is not in the published npm
-   `@posthog/agent`, the V arm must build the agent from the local monorepo overlay (FINDINGS 1). That
+   `@flind/agent`, the V arm must build the agent from the local monorepo overlay (FINDINGS 1). That
    local checkout is **stale**: HEAD is `a4c32dfdc` dated **2026-08-01**, predating the codex-effort fix
    (#88893) that landed ~**2026-08-26**. So the locally-built agent lacks the fix and its Sol reviewer
    runs at codex's default (`low`). GLM (08-31) used the _released_ npm agent, which already had the fix,
@@ -95,7 +95,7 @@ ak-…"}`. The GLM-era `LLM_GATEWAY_MODAL_KEY`/`SECRET` (the `wk-`/`ws-` pair) a
    settings: { model: this._model, reasoning_effort: this._effort }
    ```
 
-   Then rebuild with `pnpm --filter @posthog/agent build` (the same build the overlay needs for kimi,
+   Then rebuild with `pnpm --filter @flind/agent build` (the same build the overlay needs for kimi,
    FINDINGS 1). Verify on the first Codex call via `kafka_ai_usage.py`: the effort must read `xhigh`,
    and Sol's review plus blind-spot cost and volume should jump to ~$26 / ~22 findings (vs low's
    ~$3-6 / 8-11). The clean alternative is to update the monorepo past 2026-08-26 for #88893 itself

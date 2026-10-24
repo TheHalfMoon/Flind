@@ -3,7 +3,7 @@ import { router } from 'kea-router'
 
 import { IconPlus, IconPlusSmall, IconRefresh, IconTrash } from '@posthog/icons'
 import { LemonButton, LemonDialog, LemonInput, LemonSelect, LemonTable, LemonTag } from '@posthog/lemon-ui'
-import { Button } from '@posthog/quill'
+import { Button } from '@flind/quill'
 
 import { NotFound } from 'lib/components/NotFound'
 import { TZLabel } from 'lib/components/TZLabel'

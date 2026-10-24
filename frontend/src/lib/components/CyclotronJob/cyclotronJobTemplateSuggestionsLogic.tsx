@@ -1,7 +1,7 @@
 import FuseClass from 'fuse.js'
 import { MakeLogicType, actions, kea, key, path, props, reducers, selectors } from 'kea'
 
-import { STL as HOG_STL } from '@posthog/hogvm'
+import { STL as HOG_STL } from '@flind/logicvm'
 
 import { createFuse } from 'lib/utils/fuseSearch'
 

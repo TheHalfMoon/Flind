@@ -1,4 +1,4 @@
-import type { PiUsageStats } from "@posthog/agent/pi/types";
+import type { PiUsageStats } from "@flind/agent/pi/types";
 import type { ContextUsage } from "../sessions/contextUsage";
 
 export function toPiContextUsage(

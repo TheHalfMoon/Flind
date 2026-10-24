@@ -1,4 +1,4 @@
-import { type CloudRegion, getCustomCloud } from "@posthog/agent-contracts";
+import { type CloudRegion, getCustomCloud } from "@flind/agent-contracts";
 
 export const GATEWAY_PRODUCT = "posthog_code";
 

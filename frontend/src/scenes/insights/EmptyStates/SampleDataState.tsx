@@ -6,14 +6,14 @@ import { useEffect, useState, type ReactNode } from 'react'
 import { TextMorph } from 'torph/react'
 
 import { LemonButton, LemonTag, Spinner, Tooltip } from '@posthog/lemon-ui'
-import { BarChart, LineChart, PieChart, ProportionBar } from '@posthog/quill-charts'
+import { BarChart, LineChart, PieChart, ProportionBar } from '@flind/quill-charts'
 import type {
     BarChartConfig,
     LineChartConfig,
     PieChartConfig,
     ProportionBarConfig,
     Series,
-} from '@posthog/quill-charts'
+} from '@flind/quill-charts'
 
 import { useChartTheme } from 'lib/charts/hooks'
 import { CommandBlock } from 'lib/components/CommandBlock/CommandBlock'

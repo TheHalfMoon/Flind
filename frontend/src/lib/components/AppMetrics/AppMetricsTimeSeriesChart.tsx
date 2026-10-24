@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { useMemo } from 'react'
 
-import { type Series, TimeSeriesLineChart, type TimeSeriesLineChartConfig } from '@posthog/quill-charts'
+import { type Series, TimeSeriesLineChart, type TimeSeriesLineChartConfig } from '@flind/quill-charts'
 
 import { useChartConfig, useChartTheme } from 'lib/charts/hooks'
 

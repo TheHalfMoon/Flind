@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { useEffect } from 'react'
 
-import { ScrollArea } from '@posthog/quill'
+import { ScrollArea } from '@flind/quill'
 
 import { CommandKSearchFooter } from './CommandKSearchFooter'
 import { COMMAND_K_LISTBOX_ID, CommandKSearchInput } from './CommandKSearchInput'

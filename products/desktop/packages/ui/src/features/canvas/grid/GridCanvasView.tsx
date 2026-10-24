@@ -3,7 +3,7 @@ import type {
   GridPlacement,
   LayoutOperation,
 } from "@posthog/core/canvas/gridLayoutSchemas";
-import { Button, Text } from "@posthog/quill";
+import { Button, Text } from "@flind/quill";
 import { canvasCommentTaskId } from "@posthog/ui/features/canvas/freeform/canvasCommentTask";
 import { useChannels } from "@posthog/ui/features/canvas/hooks/useChannels";
 import {

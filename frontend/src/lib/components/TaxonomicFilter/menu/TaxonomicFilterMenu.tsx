@@ -37,7 +37,7 @@ import {
     Popover,
     PopoverContent,
     PopoverTrigger,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import type { SeriesRename } from 'lib/components/EntityFilterInfo'
 import { formatPropertyLabel } from 'lib/components/PropertyFilters/utils'

@@ -21,7 +21,7 @@ import {
     Tooltip,
     TooltipContent,
     TooltipTrigger,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import { NotFound } from 'lib/components/NotFound'
 import { dayjs } from 'lib/dayjs'

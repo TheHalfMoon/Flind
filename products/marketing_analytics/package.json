@@ -5,7 +5,7 @@
         "backend:test": "pytest -c ../../pytest.ini --rootdir ../.. backend/ -v --tb=short"
     },
     "dependencies": {
-        "@posthog/quill-charts": "workspace:*",
+        "@flind/quill-charts": "workspace:*",
         "kea": "catalog:",
         "kea-loaders": "catalog:",
         "kea-subscriptions": "catalog:"

@@ -1,5 +1,5 @@
 import { IconCheckCircle, IconCircleDashed } from '@posthog/icons'
-import { Badge, Spinner } from '@posthog/quill'
+import { Badge, Spinner } from '@flind/quill'
 
 import { ProductTour, ProgressStatus } from '~/types'
 

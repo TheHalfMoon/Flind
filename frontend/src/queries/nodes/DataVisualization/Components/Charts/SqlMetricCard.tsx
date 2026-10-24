@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 
-import { MetricCard } from '@posthog/quill-charts'
+import { MetricCard } from '@flind/quill-charts'
 
 import { useChartTheme } from 'lib/charts/hooks'
 import {

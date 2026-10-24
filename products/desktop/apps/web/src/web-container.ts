@@ -1,10 +1,10 @@
 import "reflect-metadata";
 import { TypedContainer } from "@inversifyjs/strongly-typed";
-import { DEFAULT_GATEWAY_MODEL } from "@posthog/agent/gateway-models";
+import { DEFAULT_GATEWAY_MODEL } from "@flind/agent/gateway-models";
 import {
   getGatewayUsageUrl,
   getLlmGatewayUrl,
-} from "@posthog/agent/posthog-api";
+} from "@flind/agent/posthog-api";
 import { archiveModule } from "@posthog/core/archive/archive.module";
 import {
   ARCHIVE_CLIENT,

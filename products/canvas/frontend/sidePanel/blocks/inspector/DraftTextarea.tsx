@@ -1,6 +1,6 @@
 import { ChangeEvent, KeyboardEvent, useEffect, useState } from 'react'
 
-import { Textarea } from '@posthog/quill'
+import { Textarea } from '@flind/quill'
 
 /** A multi-line text field that changes the source on blur or Cmd+Enter. */
 export function DraftTextarea({

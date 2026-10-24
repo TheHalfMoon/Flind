@@ -1,4 +1,4 @@
-import { DEFAULT_Y_AXIS_ID } from '@posthog/quill-charts'
+import { DEFAULT_Y_AXIS_ID } from '@flind/quill-charts'
 
 const MAGNITUDE_GAP = 1
 const MAX_Y_AXES = 4

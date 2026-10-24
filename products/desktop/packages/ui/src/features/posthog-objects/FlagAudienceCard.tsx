@@ -16,7 +16,7 @@ import type {
   FlagValue,
   FlagVariant,
 } from "@posthog/api-client/flag-audience";
-import { Card, CardContent, Text } from "@posthog/quill";
+import { Card, CardContent, Text } from "@flind/quill";
 import { useEvidenceUrl } from "@posthog/ui/features/editor/components/EvidenceRefChip";
 import { openExternalUrl } from "@posthog/ui/shell/openExternal";
 import type { ReactNode } from "react";

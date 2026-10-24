@@ -10,7 +10,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { isRasterImageFile } from "@posthog/shared";
 import { useAddDirectoryDialogStore } from "@posthog/ui/features/folder-picker/addDirectoryDialogStore";
 import { toast } from "@posthog/ui/primitives/toast";

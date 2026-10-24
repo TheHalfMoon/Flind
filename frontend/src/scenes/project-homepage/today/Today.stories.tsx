@@ -3,7 +3,7 @@ import { fireEvent, waitFor, within } from '@testing-library/dom'
 import userEvent from '@testing-library/user-event'
 import { ReactNode } from 'react'
 
-import { Card } from '@posthog/quill'
+import { Card } from '@flind/quill'
 
 import { FEATURE_FLAGS } from 'lib/constants'
 import { dayjs } from 'lib/dayjs'

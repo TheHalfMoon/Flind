@@ -6,7 +6,7 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { useChannels } from "@posthog/ui/features/canvas/hooks/useChannels";
 import { useTaskFeedSelection } from "@posthog/ui/features/canvas/stores/taskFeedSelectionStore";
 import { OpenSidebarButton } from "@posthog/ui/features/sidebar/components/OpenSidebarButton";

@@ -1,1 +1,1 @@
-export * from "@posthog/agent-contracts/rich-output-prompt";
+export * from "@flind/agent-contracts/rich-output-prompt";

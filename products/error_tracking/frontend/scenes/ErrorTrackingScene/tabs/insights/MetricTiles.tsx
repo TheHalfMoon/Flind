@@ -1,7 +1,7 @@
 import './MetricTiles.scss'
 
 import { LemonSkeleton } from '@posthog/lemon-ui'
-import { type ChartTheme } from '@posthog/quill-charts'
+import { type ChartTheme } from '@flind/quill-charts'
 import {
     Metric,
     MetricDelta,
@@ -10,7 +10,7 @@ import {
     MetricSubtitle,
     MetricTitle,
     MetricValue,
-} from '@posthog/quill-components/metric'
+} from '@flind/quill-components/metric'
 
 import { useChartTheme } from 'lib/charts/hooks'
 import { Card } from 'lib/ui/quill'

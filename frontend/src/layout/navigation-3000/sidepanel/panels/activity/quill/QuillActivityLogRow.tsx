@@ -12,7 +12,7 @@ import {
     Tooltip,
     TooltipContent,
     TooltipTrigger,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import { ActivityClientTag } from 'lib/components/ActivityLog/ActivityClientTag'
 import { ActivityLogDiff } from 'lib/components/ActivityLog/ActivityLogDiff'

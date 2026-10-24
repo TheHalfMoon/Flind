@@ -6,7 +6,7 @@ import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { GithubRefChipLink } from "@posthog/ui/features/editor/components/GithubRefChip";
 import { getPrVisualIcon } from "@posthog/ui/features/git-interaction/prIcon";
 import { PR_TONE_TEXT } from "@posthog/ui/features/git-interaction/prTone";

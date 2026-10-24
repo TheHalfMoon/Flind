@@ -6,7 +6,7 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { isRestrictedModel } from "@posthog/ui/features/billing/modelGate";
 import { ModelCostChip } from "@posthog/ui/features/sessions/components/ModelCostChip";
 

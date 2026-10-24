@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 
 import { IconExternal, IconTrash } from '@posthog/icons'
 import { LemonButton, LemonDialog, LemonSkeleton, LemonSwitch, LemonTag, Tooltip } from '@posthog/lemon-ui'
-import { Badge, Button } from '@posthog/quill'
+import { Badge, Button } from '@flind/quill'
 
 import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'
 import { slackIntegrationLogic } from 'lib/integrations/slackIntegrationLogic'

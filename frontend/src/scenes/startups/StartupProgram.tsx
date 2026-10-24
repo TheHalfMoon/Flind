@@ -28,7 +28,7 @@ import {
     Tooltip,
     TooltipContent,
     TooltipTrigger,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import { useOnMountEffect } from 'lib/hooks/useOnMountEffect'

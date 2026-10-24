@@ -5,7 +5,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 // quill-charts is canvas-backed and does not load in the test environment;
 // the tag-to-card dispatch around it is what these tests exercise.
-vi.mock("@posthog/quill-charts", () => ({
+vi.mock("@flind/quill-charts", () => ({
   BarChart: () => <div data-testid="chart-plot" />,
   LineChart: () => <div data-testid="chart-plot" />,
   TimeSeriesBarChart: () => <div data-testid="chart-plot" />,

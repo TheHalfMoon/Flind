@@ -8,7 +8,7 @@ import {
     DropdownMenuItem,
     DropdownMenuSeparator,
     DropdownMenuTrigger,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import { hogFunctionConfigurationLogic } from './configuration/hogFunctionConfigurationLogic'
 

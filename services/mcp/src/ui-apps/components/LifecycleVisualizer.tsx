@@ -1,8 +1,8 @@
 import { type ReactElement, useMemo } from 'react'
 
 import { emptyStateIllustration } from '@posthog/mcp-ui'
-import { Empty, EmptyDescription, EmptyHeader, EmptyMedia } from '@posthog/quill'
-import { Legend, TimeSeriesBarChart, legendItemsFromSeries } from '@posthog/quill-charts'
+import { Empty, EmptyDescription, EmptyHeader, EmptyMedia } from '@flind/quill'
+import { Legend, TimeSeriesBarChart, legendItemsFromSeries } from '@flind/quill-charts'
 
 import { buildLifecycleChartModel } from 'products/product_analytics/frontend/insights/trends/TrendsLifecycleChart/trendsLifecycleChartTransforms'
 

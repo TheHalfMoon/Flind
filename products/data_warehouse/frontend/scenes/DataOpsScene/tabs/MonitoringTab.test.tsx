@@ -3,7 +3,7 @@ import '@testing-library/jest-dom'
 import { act, cleanup, render, screen, waitFor } from '@testing-library/react'
 import { Provider } from 'kea'
 
-import { TimeSeriesLineChart } from '@posthog/quill-charts'
+import { TimeSeriesLineChart } from '@flind/quill-charts'
 
 import { resumeKeaLoadersErrors, silenceKeaLoadersErrors } from '~/initKea'
 import { initKeaTests } from '~/test/init'
@@ -20,8 +20,8 @@ import type {
 import { managedWarehouseMonitoringLogic } from './managedWarehouseMonitoringLogic'
 import { MonitoringTab } from './MonitoringTab'
 
-jest.mock('@posthog/quill-charts', () => ({
-    ...jest.requireActual('@posthog/quill-charts'),
+jest.mock('@flind/quill-charts', () => ({
+    ...jest.requireActual('@flind/quill-charts'),
     TimeSeriesLineChart: jest.fn(({ series }: { series: Array<{ key: string }> }) => (
         <div data-testid="monitoring-chart">{series.map(({ key }) => key).join(',')}</div>
     )),

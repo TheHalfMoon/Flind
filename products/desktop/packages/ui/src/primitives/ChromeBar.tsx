@@ -1,4 +1,4 @@
-import { cn } from "@posthog/quill";
+import { cn } from "@flind/quill";
 import type { ReactElement, ReactNode } from "react";
 
 /** A leading button carries its own padding; leading text does not. */

@@ -870,11 +870,11 @@ const NODE_CONTEXT = {
         ]),
         packageLanes: new Map([
             ['@flind/replay-headless', new Set([RASTERIZER_LANE])],
-            ['@posthog/hogvm', new Set([CDP_LANE, 'node:ingestion'])],
+            ['@flind/logicvm', new Set([CDP_LANE, 'node:ingestion'])],
         ]),
     },
     nodeWorkspaceDependencies: new Map([
-        ['common/hogvm/typescript', new Set(['@posthog/hogvm'])],
+        ['common/hogvm/typescript', new Set(['@flind/logicvm'])],
         ['common/replay-headless', new Set(['@flind/replay-headless'])],
         ['common/replay-shared', new Set(['@flind/replay-headless'])],
     ]),
@@ -931,7 +931,7 @@ test('the node lane map follows imports in both directions and fails closed', ()
         'nodejs/src/common/types.ts': "import type { HogFunction } from '../cdp/types'\nexport type T = HogFunction\n",
         'nodejs/src/cdp/types.ts': 'export type HogFunction = {}\n',
         'nodejs/src/cdp/executor.ts':
-            "import { config } from '~/common/config'\nimport { exec } from '@posthog/hogvm'\n",
+            "import { config } from '~/common/config'\nimport { exec } from '@flind/logicvm'\n",
         'nodejs/src/ingestion/step.ts': "import type { T } from '~/common/types'\nimport fs from 'node:fs'\n",
         'nodejs/src/cdp/executor.test.ts': "import { seed } from '~/tests/helpers/seed'\n",
         'nodejs/tests/helpers/seed.ts': "import { rows } from '~/ingestion/rows'\n",
@@ -957,11 +957,11 @@ test('the node lane map follows imports in both directions and fails closed', ()
     assert.deepEqual(lanesOf(`${RASTERIZER_DIR}/player.ts`), [RASTERIZER_LANE])
     assert.deepEqual(lanesOf('nodejs/src/servers/cdp-server.ts'), [])
     assert.deepEqual([...map.packageLanes.get('@flind/replay-headless')], [RASTERIZER_LANE])
-    assert.deepEqual([...map.packageLanes.get('@posthog/hogvm')], [CDP_LANE])
+    assert.deepEqual([...map.packageLanes.get('@flind/logicvm')], [CDP_LANE])
     assert.deepEqual([...map.packageLanes.get('kafka-client')].sort(), [CDP_LANE, 'node:ingestion'].sort())
     assert.deepEqual([...map.packageLanes.get('ultimate-express')].sort(), ALL_NODE_LANES)
     assert.deepEqual([...map.packageLanes.keys()].sort(), [
-        '@posthog/hogvm',
+        '@flind/logicvm',
         '@flind/replay-headless',
         'kafka-client',
         'ultimate-express',
@@ -2283,7 +2283,7 @@ test('a non-markdown skill file still claims both halves', () => {
     assert.equal(script.includes('fe:product:beta'), true)
 })
 
-// docs/onboarding is the @posthog/docs-onboarding workspace package that
+// docs/onboarding is the @flind/docs-onboarding workspace package that
 // frontend/package.json depends on, so its sources compile into the app. On the
 // old docs lane it was disjoint from fe:core and could merge in parallel with
 // the frontend PR that consumes it.

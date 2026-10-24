@@ -11,7 +11,7 @@ import {
   describeGithubRepoAccess,
   formatGithubAccountLabel,
 } from "@posthog/core/settings/githubRepoSummary";
-import { Button, Text } from "@posthog/quill";
+import { Button, Text } from "@flind/quill";
 import { useAuthStateValue } from "@posthog/ui/features/auth/store";
 import { useIsOrgAdmin } from "@posthog/ui/features/auth/useOrgRole";
 import { GithubInstallRequestsBanner } from "@posthog/ui/features/integrations/components/GithubInstallRequestsBanner";

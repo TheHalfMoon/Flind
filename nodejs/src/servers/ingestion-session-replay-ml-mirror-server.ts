@@ -40,7 +40,7 @@ import { MlMirrorConsumerServer } from './ml-mirror-consumer-server'
 export { type IngestionSessionReplayMlMirrorServerConfig, buildMlMirrorServerConfig } from './ml-mirror-server-config'
 
 /** Boot-time smoke test so a broken addon crashes startup instead of dropping all traffic later. */
-export async function assertAnonymizerHealthy(anonymizer: typeof import('@posthog/replay-anonymizer')): Promise<void> {
+export async function assertAnonymizerHealthy(anonymizer: typeof import('@flind/replay-anonymizer')): Promise<void> {
     const inner = JSON.stringify({
         event: '$snapshot_items',
         properties: {
@@ -118,7 +118,7 @@ export class IngestionSessionReplayMlMirrorServer extends MlMirrorConsumerServer
         const allow = await loadAllowLists(this.buildAllowListFetcher(s3Client, bucket))
         // Lazy require so only ml-mirror deployments load (and need to ship) the native addon; the
         // addon holds its own copy of the immutable allow lists, set once at startup.
-        const anonymizer = require('@posthog/replay-anonymizer') as typeof import('@posthog/replay-anonymizer')
+        const anonymizer = require('@flind/replay-anonymizer') as typeof import('@flind/replay-anonymizer')
         anonymizer.initAnonymizer(allow.entries())
         // The addon's scrub runs on the libuv threadpool (UV_THREADPOOL_SIZE, default 4) shared
         // with the recorder's snappy compression — size it for the deployment if scrub backs up.

@@ -16,7 +16,7 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@posthog/quill";
+} from "@flind/quill";
 import type { Signal, SignalFindingContent } from "@posthog/shared/types";
 import { useAuthStateValue } from "@posthog/ui/features/auth/store";
 import { MarkdownRenderer } from "@posthog/ui/features/editor/components/MarkdownRenderer";

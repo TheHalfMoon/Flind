@@ -10,7 +10,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   Button,
-} from "@posthog/quill";
+} from "@flind/quill";
 import type { ReactElement } from "react";
 
 interface BulkArchiveConfirmDialogProps {

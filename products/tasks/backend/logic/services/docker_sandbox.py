@@ -84,7 +84,7 @@ SLIM_IMAGE_NAME = "posthog-sandbox-slim"
 STAMPHOG_REVIEW_IMAGE_NAME = "posthog-sandbox-stamphog-review"
 
 # Stamped on the base image so a later run can tell whether it must rebuild: the sha of
-# the Dockerfile that produced it, and the @posthog/agent version baked into the npm layer.
+# the Dockerfile that produced it, and the @flind/agent version baked into the npm layer.
 _DOCKERFILE_SHA_LABEL = "com.posthog.sandbox.dockerfile-sha"
 _AGENT_VERSION_LABEL = "com.posthog.sandbox.agent-version"
 AGENT_SERVER_PORT = 47821  # Arbitrary high port unlikely to conflict with dev servers

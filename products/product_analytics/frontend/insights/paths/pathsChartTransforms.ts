@@ -1,5 +1,5 @@
-import { MAX_SANKEY_COLUMN } from '@posthog/quill-charts'
-import type { SankeyLinkInput, SankeyNodeInput } from '@posthog/quill-charts'
+import { MAX_SANKEY_COLUMN } from '@flind/quill-charts'
+import type { SankeyLinkInput, SankeyNodeInput } from '@flind/quill-charts'
 
 // This module imports nothing from `~/` or `lib/`, so the MCP UI app bundle, which only resolves
 // `products/*` and `@posthog/*`, shares it with the paths insight.

@@ -1,6 +1,6 @@
 import { humanizeReportTitle } from "@posthog/core/inbox/reportPresentation";
 import { prettifyScoutSkillName } from "@posthog/core/scouts/scoutPresentation";
-import { cn } from "@posthog/quill";
+import { cn } from "@flind/quill";
 import type { SignalReport } from "@posthog/shared/types";
 import { useChannels } from "@posthog/ui/features/canvas/hooks/useChannels";
 import {

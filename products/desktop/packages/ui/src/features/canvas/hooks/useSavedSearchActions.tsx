@@ -7,7 +7,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   Button,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
 import { TaskFeedModal } from "@posthog/ui/features/canvas/components/TaskFeedModal";
 import { useTaskFeedSelectionStore } from "@posthog/ui/features/canvas/stores/taskFeedSelectionStore";

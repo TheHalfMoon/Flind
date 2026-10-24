@@ -6,7 +6,7 @@ import { type EmailTemplateData, EmailTemplateView } from './EmailTemplateView'
 // quill is a workspace package that isn't transformed under the frontend jest harness — stub it
 // so this stays a unit test of EmailTemplateView's own logic (preview iframe + conditional rendering).
 jest.mock(
-    '@posthog/quill',
+    '@flind/quill',
     () => ({
         Card: ({ children }: { children: ReactElement }) => <div>{children}</div>,
         CardContent: ({ children }: { children: ReactElement }) => <div>{children}</div>,

@@ -1,7 +1,7 @@
 import { MakeLogicType, actions, afterMount, connect, kea, key, listeners, path, props, reducers, selectors } from 'kea'
 import { loaders } from 'kea-loaders'
 
-import { toast } from '@posthog/quill'
+import { toast } from '@flind/quill'
 
 import api from 'lib/api'
 import { FEATURE_FLAGS } from 'lib/constants'

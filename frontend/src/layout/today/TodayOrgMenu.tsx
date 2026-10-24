@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconGear, IconPlusSmall, IconReceipt } from '@posthog/icons'
-import { Button } from '@posthog/quill'
+import { Button } from '@flind/quill'
 
 import { newAccountMenuLogic } from 'lib/components/Account/newAccountMenuLogic'
 import { PendingInviteDot } from 'lib/components/Account/ProjectMenu'

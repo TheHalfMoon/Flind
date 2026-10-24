@@ -1,8 +1,8 @@
 import { useActions, useValues } from 'kea'
 import { useEffect, useMemo } from 'react'
 
-import { ScatterChart, TooltipFooter, TooltipSurface, TooltipSwatch } from '@posthog/quill-charts'
-import type { ScatterChartConfig, ScatterPoint, ScatterSeries } from '@posthog/quill-charts'
+import { ScatterChart, TooltipFooter, TooltipSurface, TooltipSwatch } from '@flind/quill-charts'
+import type { ScatterChartConfig, ScatterPoint, ScatterSeries } from '@flind/quill-charts'
 
 import { useChartTheme } from 'lib/charts/hooks'
 

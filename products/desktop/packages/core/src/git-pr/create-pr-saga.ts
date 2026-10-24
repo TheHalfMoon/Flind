@@ -30,7 +30,7 @@ export interface CreatePrSagaOutput {
 }
 
 // Host git operations the saga orchestrates. The host (apps/code GitService)
-// binds these to @posthog/git CLI calls; the saga itself stays host-agnostic.
+// binds these to @flind/git CLI calls; the saga itself stays host-agnostic.
 export interface CreatePrDeps {
   getCurrentBranch(dir: string): Promise<string | null>;
   createBranch(dir: string, name: string): Promise<void>;

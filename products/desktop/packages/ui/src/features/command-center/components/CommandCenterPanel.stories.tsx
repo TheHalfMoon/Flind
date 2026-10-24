@@ -1,6 +1,6 @@
 import type { SessionConfigOption } from "@agentclientprotocol/sdk";
 import { Plus, X } from "@phosphor-icons/react";
-import { Button } from "@posthog/quill";
+import { Button } from "@flind/quill";
 import type { TaskChannel } from "@posthog/shared/domain-types";
 import { SpaceSelect } from "@posthog/ui/features/canvas/components/SpaceSelect";
 import { TaskRepositoryChip } from "@posthog/ui/features/canvas/components/TaskRepositoryChip";

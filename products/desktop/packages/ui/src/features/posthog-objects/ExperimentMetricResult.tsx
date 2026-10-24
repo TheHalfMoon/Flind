@@ -14,7 +14,7 @@ import {
   TableHeader,
   TableRow,
   Text,
-} from "@posthog/quill";
+} from "@flind/quill";
 import type { ReactElement } from "react";
 import {
   ExperimentDeltaAxis,

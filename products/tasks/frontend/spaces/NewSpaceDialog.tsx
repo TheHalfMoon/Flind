@@ -15,7 +15,7 @@ import {
     FieldError,
     FieldLabel,
     Input,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import { NEW_SPACE_NAME_MAX_LENGTH, newSpaceLogic } from './newSpaceLogic'
 

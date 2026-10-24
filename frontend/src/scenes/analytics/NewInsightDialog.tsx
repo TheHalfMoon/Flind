@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { router } from 'kea-router'
 
-import { Dialog, DialogBody, DialogContent, DialogHeader, DialogTitle } from '@posthog/quill'
+import { Dialog, DialogBody, DialogContent, DialogHeader, DialogTitle } from '@flind/quill'
 
 import { NewInsightMenuContent } from 'products/product_analytics/frontend/insights/newInsightMenu/NewInsightMenu'
 

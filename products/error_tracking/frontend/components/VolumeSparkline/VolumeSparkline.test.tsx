@@ -1,6 +1,6 @@
 import { cleanup, fireEvent, render } from '@testing-library/react'
 
-import { dragSelection, getHogChart, hoverAtIndex, setupJsdom, setupSyncRaf } from '@posthog/quill-charts/testing'
+import { dragSelection, getHogChart, hoverAtIndex, setupJsdom, setupSyncRaf } from '@flind/quill-charts/testing'
 
 import { initKeaTests } from '~/test/init'
 

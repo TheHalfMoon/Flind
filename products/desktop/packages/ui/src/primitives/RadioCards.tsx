@@ -5,7 +5,7 @@ import {
   ItemTitle,
   RadioGroup,
   RadioIndicator,
-} from "@posthog/quill";
+} from "@flind/quill";
 
 export interface RadioCardOption<T extends string> {
   value: T;

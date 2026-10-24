@@ -10,7 +10,7 @@ import {
 } from "@phosphor-icons/react";
 import type { MentionChip } from "@posthog/core/message-editor/content";
 import { xmlToContent } from "@posthog/core/message-editor/content";
-import { Chip } from "@posthog/quill";
+import { Chip } from "@flind/quill";
 import { splitMentionSegments } from "@posthog/shared";
 import { splitLinkSegments } from "@posthog/ui/features/canvas/utils/linkify";
 import { GithubRefChip } from "@posthog/ui/features/editor/components/GithubRefChip";

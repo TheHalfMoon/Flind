@@ -1,4 +1,4 @@
-import { Button, cn } from "@posthog/quill";
+import { Button, cn } from "@flind/quill";
 import { LOOPS_FLAG } from "@posthog/shared";
 import { CHANNEL_SECTIONS } from "@posthog/ui/features/canvas/channelSections";
 import { ChannelPinnedMenu } from "@posthog/ui/features/canvas/components/ChannelPinnedMenu";

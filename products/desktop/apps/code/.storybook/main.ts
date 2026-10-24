@@ -77,38 +77,38 @@ const config: StorybookConfig = {
             replacement: path.resolve(__dirname, "../src/renderer/utils"),
           },
           { find: "@", replacement: path.resolve(__dirname, "../src") },
-          // Keep @posthog/agent on its prebuilt, browser-safe dist bundle. These
+          // Keep @flind/agent on its prebuilt, browser-safe dist bundle. These
           // must precede the workspace source aliases below so they win.
           {
-            find: "@posthog/agent/adapters/claude/permissions/permission-options",
+            find: "@flind/agent/adapters/claude/permissions/permission-options",
             replacement: path.resolve(
               __dirname,
               "../../../../../packages/agent/packages/agent/dist/adapters/claude/permissions/permission-options.js",
             ),
           },
           {
-            find: "@posthog/agent/adapters/claude/conversion/tool-use-to-acp",
+            find: "@flind/agent/adapters/claude/conversion/tool-use-to-acp",
             replacement: path.resolve(
               __dirname,
               "../../../../../packages/agent/packages/agent/dist/adapters/claude/conversion/tool-use-to-acp.js",
             ),
           },
           {
-            find: "@posthog/agent/adapters/claude/questions/utils",
+            find: "@flind/agent/adapters/claude/questions/utils",
             replacement: path.resolve(
               __dirname,
               "../../../../../packages/agent/packages/agent/dist/adapters/claude/questions/utils.js",
             ),
           },
           {
-            find: "@posthog/agent/adapters/reasoning-effort",
+            find: "@flind/agent/adapters/reasoning-effort",
             replacement: path.resolve(
               __dirname,
               "../../../../../packages/agent/packages/agent/dist/adapters/reasoning-effort.js",
             ),
           },
           {
-            find: "@posthog/agent/gateway-models",
+            find: "@flind/agent/gateway-models",
             replacement: path.resolve(
               __dirname,
               "../../../../../packages/agent/packages/agent/dist/gateway-models.js",

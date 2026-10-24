@@ -3,8 +3,8 @@ import { useValues } from 'kea'
 import posthog from 'posthog-js'
 import { useMemo, type ErrorInfo } from 'react'
 
-import { PieChart } from '@posthog/quill-charts'
-import type { PieChartConfig } from '@posthog/quill-charts'
+import { PieChart } from '@flind/quill-charts'
+import type { PieChartConfig } from '@flind/quill-charts'
 
 import { InsightEmptyState } from 'scenes/insights/EmptyStates'
 import { insightLogic } from 'scenes/insights/insightLogic'

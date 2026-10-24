@@ -5,7 +5,7 @@ import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { ComposerWidth } from "@posthog/ui/features/sessions/components/ComposerWidth";
 import {
   usePermissionDockHeight,

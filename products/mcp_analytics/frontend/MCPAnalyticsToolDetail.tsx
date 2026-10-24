@@ -10,7 +10,7 @@ import {
     type TimeInterval,
     TimeSeriesLineChart,
     type TimeSeriesLineChartConfig,
-} from '@posthog/quill-charts'
+} from '@flind/quill-charts'
 import {
     Card,
     CardDescription,
@@ -24,7 +24,7 @@ import {
     TableHead,
     TableHeader,
     TableRow,
-} from '@posthog/quill-primitives'
+} from '@flind/quill-primitives'
 
 import { useChartConfig, useChartTheme } from 'lib/charts/hooks'
 import { TZLabel } from 'lib/components/TZLabel'

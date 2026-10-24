@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { Item, ItemContent, ItemDescription, ItemTitle, Skeleton, Text } from '@posthog/quill'
+import { Item, ItemContent, ItemDescription, ItemTitle, Skeleton, Text } from '@flind/quill'
 
 import { humanizeScope } from 'lib/components/ActivityLog/humanizeActivity'
 import { metalyticsLogic } from 'lib/components/Metalytics/metalyticsLogic'

@@ -1,6 +1,6 @@
 import { useDraggable } from "@dnd-kit/react";
 import { DotsSixVerticalIcon, XIcon } from "@phosphor-icons/react";
-import { Button, cn, Text } from "@posthog/quill";
+import { Button, cn, Text } from "@flind/quill";
 import type { BrowserTab } from "@posthog/shared";
 import {
   isTabAppView,

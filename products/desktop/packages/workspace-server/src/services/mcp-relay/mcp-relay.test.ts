@@ -1,6 +1,6 @@
 import type { Transport } from "@modelcontextprotocol/sdk/shared/transport.js";
 import type { JSONRPCMessage } from "@modelcontextprotocol/sdk/types.js";
-import type { ClaudeJsonMcpServerEntry } from "@posthog/agent/adapters/claude/session/mcp-config";
+import type { ClaudeJsonMcpServerEntry } from "@flind/agent/adapters/claude/session/mcp-config";
 import type { RootLogger } from "@posthog/di/logger";
 import { describe, expect, it } from "vitest";
 import { McpRelayServiceImpl } from "./mcp-relay";

@@ -1,5 +1,5 @@
 import { CaretDown } from "@phosphor-icons/react";
-import { cn } from "@posthog/quill";
+import { cn } from "@flind/quill";
 import { ChatMarkdown } from "@posthog/ui/features/sessions/components/chat-thread/ChatMarkdown";
 import {
   hasFileMentions,

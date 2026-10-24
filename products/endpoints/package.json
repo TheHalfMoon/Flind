@@ -6,8 +6,8 @@
         "backend:contract-check": "echo 'Contract files unchanged'"
     },
     "dependencies": {
-        "@posthog/quill": "workspace:*",
-        "@posthog/quill-charts": "workspace:*",
+        "@flind/quill": "workspace:*",
+        "@flind/quill-charts": "workspace:*",
         "kea": "catalog:",
         "kea-forms": "catalog:",
         "kea-loaders": "catalog:",

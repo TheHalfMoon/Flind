@@ -6,7 +6,7 @@ import { createPortal } from 'react-dom'
 
 import { IconGear } from '@posthog/icons'
 import { LemonBanner, LemonButton, LemonDivider } from '@posthog/lemon-ui'
-import { createXAxisTickCallback } from '@posthog/quill-charts'
+import { createXAxisTickCallback } from '@flind/quill-charts'
 
 import { ExportButton } from 'lib/components/ExportButton/ExportButton'
 import { PART_OF_WHOLE_DISPLAY_TYPES } from 'lib/constants'

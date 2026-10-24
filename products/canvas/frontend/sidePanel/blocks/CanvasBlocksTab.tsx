@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { PointerEvent } from 'react'
 
 import { IconChevronLeft, IconSparkles } from '@posthog/icons'
-import { Button, Item, ItemContent, ItemDescription, ItemMedia, ItemTitle, Skeleton } from '@posthog/quill'
+import { Button, Item, ItemContent, ItemDescription, ItemMedia, ItemTitle, Skeleton } from '@flind/quill'
 
 import { canvasEditLogic } from '../../editing/canvasEditLogic'
 import { isRootSelection } from '../../editing/canvasSourceSnapshots'

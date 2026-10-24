@@ -8,7 +8,7 @@ import {
     AlertDialogHeader,
     AlertDialogTitle,
     Button,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import { todaySessionMenuLogic } from './todaySessionMenuLogic'
 

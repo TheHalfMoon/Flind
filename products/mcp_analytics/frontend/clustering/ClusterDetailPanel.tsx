@@ -11,7 +11,7 @@ import {
     TableHead,
     TableHeader,
     TableRow,
-} from '@posthog/quill-primitives'
+} from '@flind/quill-primitives'
 
 import { humanFriendlyNumber } from 'lib/utils/numbers'
 

@@ -9,7 +9,7 @@ import {
     TooltipSurface,
     TooltipSwatch,
     useChartTheme,
-} from '@posthog/quill-charts'
+} from '@flind/quill-charts'
 
 import { humanFriendlyNumber } from 'lib/utils/numbers'
 import { pluralize } from 'lib/utils/strings'

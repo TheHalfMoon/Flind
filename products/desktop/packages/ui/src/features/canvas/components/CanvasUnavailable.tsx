@@ -5,7 +5,7 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
 import { useCanvasAvailability } from "@posthog/ui/features/canvas/hooks/useDashboards";
 import { LoadingState } from "@posthog/ui/primitives/LoadingState";

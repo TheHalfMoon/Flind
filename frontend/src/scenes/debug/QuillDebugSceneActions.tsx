@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Toggle } from '@posthog/quill'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Toggle } from '@flind/quill'
 
 import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'
 

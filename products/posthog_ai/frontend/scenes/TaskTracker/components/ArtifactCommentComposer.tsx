@@ -1,6 +1,6 @@
 import { ChangeEvent, KeyboardEvent, useId, useState } from 'react'
 
-import { Button, Checkbox, Label, Textarea, Tooltip, TooltipContent, TooltipTrigger } from '@posthog/quill-primitives'
+import { Button, Checkbox, Label, Textarea, Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill-primitives'
 
 import { isMac } from 'lib/utils/dom'
 

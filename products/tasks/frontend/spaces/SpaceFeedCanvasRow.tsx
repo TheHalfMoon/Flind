@@ -1,4 +1,4 @@
-import { Badge, Card, Text, cn } from '@posthog/quill'
+import { Badge, Card, Text, cn } from '@flind/quill'
 
 import { LinkPrimitive } from 'lib/lemon-ui/Link'
 import { urls } from 'scenes/urls'

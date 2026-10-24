@@ -1,9 +1,9 @@
 import { ArrowSquareOut } from "@phosphor-icons/react";
-import type { PiThinkingLevel } from "@posthog/agent/pi/types";
+import type { PiThinkingLevel } from "@flind/agent/pi/types";
 import type { TaskRunPreferences } from "@posthog/api-client/posthog-client";
 import { buildPostHogUrl } from "@posthog/core/settings/posthogUrl";
 import { syntheticPiModelSelection } from "@posthog/core/task-detail/configOptions";
-import { Button } from "@posthog/quill";
+import { Button } from "@flind/quill";
 import {
   type Adapter,
   formatModelId,

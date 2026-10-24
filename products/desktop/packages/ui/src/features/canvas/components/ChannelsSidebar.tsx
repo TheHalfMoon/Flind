@@ -1,5 +1,5 @@
 import { ArchiveIcon } from "@phosphor-icons/react";
-import { cn, Separator } from "@posthog/quill";
+import { cn, Separator } from "@flind/quill";
 import { useArchivedTaskIds } from "@posthog/ui/features/archive/useArchivedTaskIds";
 import { usePendingTabViewState } from "@posthog/ui/features/browser-tabs/usePendingTabViewState";
 import { ActivityFeedList } from "@posthog/ui/features/canvas/components/ActivityFeedList";

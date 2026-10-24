@@ -1,7 +1,7 @@
 import { DateTime } from 'luxon'
 import { Counter, Histogram } from 'prom-client'
 
-import { ExecResult } from '@posthog/hogvm'
+import { ExecResult } from '@flind/logicvm'
 
 import { HogFlow } from '~/cdp/schema/hogflow'
 import { parseJSON } from '~/common/utils/json-parse'

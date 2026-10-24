@@ -1,4 +1,4 @@
-import { isBinaryFile } from "@posthog/agent-contracts/binary";
+import { isBinaryFile } from "@flind/agent-contracts/binary";
 import { describe, expect, it } from "vitest";
 import {
   getVideoMimeType,

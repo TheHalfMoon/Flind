@@ -5,7 +5,7 @@ import {
     type ValueLabelContext,
     type ValueLabelsConfig,
     type YAxisConfig,
-} from '@posthog/quill-charts'
+} from '@flind/quill-charts'
 
 import { compactNumber } from 'lib/utils/numbers'
 

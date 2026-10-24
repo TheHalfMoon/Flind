@@ -11,7 +11,7 @@ import {
   summarizeStackList,
   unstack,
   validateStackChain,
-} from "@posthog/git/stacks";
+} from "@flind/git/stacks";
 import { z } from "zod";
 import { qualifiedLocalToolName } from "../registry";
 import type {

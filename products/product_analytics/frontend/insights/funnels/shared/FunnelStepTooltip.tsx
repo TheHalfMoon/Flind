@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { TooltipSurface, TooltipSwatch } from '@posthog/quill-charts'
+import { TooltipSurface, TooltipSwatch } from '@flind/quill-charts'
 
 import { humanFriendlyDuration } from 'lib/utils/durations'
 import { humanFriendlyNumber, percentage } from 'lib/utils/numbers'

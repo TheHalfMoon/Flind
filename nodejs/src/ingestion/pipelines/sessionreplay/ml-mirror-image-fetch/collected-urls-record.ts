@@ -1,4 +1,4 @@
-import type { UrlPolicyDecline } from '@posthog/replay-anonymizer'
+import type { UrlPolicyDecline } from '@flind/replay-anonymizer'
 
 import { parseJSON } from '~/common/utils/json-parse'
 import { parseImageRef } from '~/ingestion/pipelines/sessionreplay/ml-mirror-image-scrub/content-ref'

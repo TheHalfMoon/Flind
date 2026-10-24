@@ -24,7 +24,7 @@ import {
   ItemMenuItem,
   ItemTitle,
   MenuLabel,
-} from "@posthog/quill";
+} from "@flind/quill";
 import type { Adapter, WorkspaceMode } from "@posthog/shared";
 import { useAdapterSubscription } from "@posthog/ui/features/settings/adapterSubscription";
 import { openSettings } from "@posthog/ui/features/settings/hooks/useOpenSettings";

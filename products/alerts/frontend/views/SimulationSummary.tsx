@@ -8,7 +8,7 @@ import {
     type Series,
     TimeSeriesLineChart,
     useChartTheme,
-} from '@posthog/quill-charts'
+} from '@flind/quill-charts'
 
 import { dayjs } from 'lib/dayjs'
 import { LemonButton } from 'lib/lemon-ui/LemonButton'

@@ -8,7 +8,7 @@ import {
   EmptyMedia,
   EmptyTitle,
   Kbd,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { useTriageFocusEnabled } from "@posthog/ui/features/feature-flags/useTriageFocusEnabled";
 import { useInboxSectionedReports } from "@posthog/ui/features/inbox/hooks/useInboxSectionedReports";
 import { useInboxTriageHotkey } from "@posthog/ui/features/inbox/hooks/useInboxTriageHotkey";

@@ -20,7 +20,7 @@ import { maxMocks } from '../testUtils'
 import { QuestionInput } from './QuestionInput'
 
 jest.mock(
-    '@posthog/hogvm',
+    '@flind/logicvm',
     () => ({
         exec: jest.fn(),
         execAsync: jest.fn(),

@@ -4,7 +4,7 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 
 const OPTIONS: { id: McpAgentGrantScope; label: string; hint: string }[] = [
   {

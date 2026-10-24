@@ -12,7 +12,7 @@ import {
     ComboboxValue,
     Spinner,
     useComboboxAnchor,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 type TagsComboboxProps = {
     value: string[]

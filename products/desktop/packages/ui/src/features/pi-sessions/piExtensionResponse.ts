@@ -1,4 +1,4 @@
-import type { RpcExtensionUIResponse } from "@posthog/agent/pi/types";
+import type { RpcExtensionUIResponse } from "@flind/agent/pi/types";
 import type { PiExtensionDialogRequest } from "@posthog/core/pi-runtime/piExtensionStore";
 
 export function buildPiExtensionResponse(

@@ -7,7 +7,7 @@ import type {
 import {
   appendRichOutputPrompt,
   getProjectWebUrl,
-} from "@posthog/agent-contracts/rich-output-prompt";
+} from "@flind/agent-contracts/rich-output-prompt";
 import { createEnrichment, enrichFileForAgent } from "./file-enricher";
 
 type ReadToolResultEvent = Extract<ToolResultEvent, { toolName: "read" }>;

@@ -1,4 +1,4 @@
-import type { ChartLegendConfig } from '@posthog/quill-charts'
+import type { ChartLegendConfig } from '@flind/quill-charts'
 
 /** Returns the base `{ show, position, interactive }` legend shape shared by all chart types that
  *  build their config inline (lifecycle, funnel). Call sites own the `show` expression — e.g. funnel

@@ -1,4 +1,4 @@
-import { politenessKey } from '@posthog/replay-anonymizer'
+import { politenessKey } from '@flind/replay-anonymizer'
 
 /**
  * The crate owns the rule and tests it. This file tests only that the fetch lane reaches that

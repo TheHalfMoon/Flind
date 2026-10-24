@@ -5,7 +5,7 @@
 # context-mill skills.
 #
 # Skills are copied to three locations:
-#   /scripts/plugins/posthog/skills/  — Claude Code (@posthog/agent plugin discovery)
+#   /scripts/plugins/posthog/skills/  — Claude Code (@flind/agent plugin discovery)
 #   ~/.agents/skills/                 — Codex agent discovery
 #   ~/.claude/skills/                 — Claude Code CLI skill discovery
 

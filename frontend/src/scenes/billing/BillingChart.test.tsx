@@ -5,7 +5,7 @@ import {
     ensureJsdom,
     getHogChart,
     hoverUntilTooltip,
-} from '@posthog/quill-charts/testing'
+} from '@flind/quill-charts/testing'
 
 import { dayjs } from 'lib/dayjs'
 

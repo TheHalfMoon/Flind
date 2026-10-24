@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { useMemo } from 'react'
 
-import { TimeSeriesLineChart, type TimeSeriesLineChartConfig } from '@posthog/quill-charts'
+import { TimeSeriesLineChart, type TimeSeriesLineChartConfig } from '@flind/quill-charts'
 
 import { useChartConfig, useChartTheme } from 'lib/charts/hooks'
 import { teamLogic } from 'scenes/teamLogic'

@@ -7,8 +7,8 @@ changing breadcrumbs, canvas naming, or the canvas generation harness. The root
 
 ## Components & styling
 
-- **Use `@posthog/quill`, never Radix.** All UI in this space pulls components from
-  `@posthog/quill` (`Button`, `Dialog*`, `AlertDialog*`, `DropdownMenu*`,
+- **Use `@flind/quill`, never Radix.** All UI in this space pulls components from
+  `@flind/quill` (`Button`, `Dialog*`, `AlertDialog*`, `DropdownMenu*`,
   `ContextMenu*`, `Tooltip*`, `Collapsible*`, …). Adding a `@radix-ui/themes` or
   `@radix-ui/react-*` import is banned — see [UI Components](../../../../../AGENTS.md#ui-components)
   in the root `AGENTS.md` for the full mapping. Some older code here still imports

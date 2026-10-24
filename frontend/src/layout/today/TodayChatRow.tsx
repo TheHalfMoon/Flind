@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { router } from 'kea-router'
 import { useMemo, useState } from 'react'
 
-import { ContextMenu, ContextMenuContent, ContextMenuTrigger } from '@posthog/quill'
+import { ContextMenu, ContextMenuContent, ContextMenuTrigger } from '@flind/quill'
 
 import { urls } from 'scenes/urls'
 

@@ -1,11 +1,11 @@
 # Primitives — Agent Reference
 
-Quick-reference for AI agents using `@posthog/quill-primitives`. Show composition, not API docs.
+Quick-reference for AI agents using `@flind/quill-primitives`. Show composition, not API docs.
 
 ## Setup
 
 ```tsx
-import { ThemeProvider, ToastProvider, TooltipProvider } from '@posthog/quill-primitives'
+import { ThemeProvider, ToastProvider, TooltipProvider } from '@flind/quill-primitives'
 
 function App() {
   return (
@@ -258,7 +258,7 @@ A list of clickable rows is a `CardGroup` of `Card size="sm"`, each holding one 
 </Card>
 ```
 
-For a stat tile (headline number + change pill + sparkline), don't hand-build one in a `Card` — wrap `Metric` (from `@posthog/quill-components/metric`) in `<Card flush>`. See its section in `../components/AGENTS.md`.
+For a stat tile (headline number + change pill + sparkline), don't hand-build one in a `Card` — wrap `Metric` (from `@flind/quill-components/metric`) in `<Card flush>`. See its section in `../components/AGENTS.md`.
 
 ### Field (forms)
 
@@ -1203,7 +1203,7 @@ MenubarItem wraps DropdownMenuItem, so the same item API applies — including `
 Add `<ToastProvider />` once at app root (see Setup), then call `toast` with an options object — not a string:
 
 ```tsx
-import { toast } from '@posthog/quill-primitives'
+import { toast } from '@flind/quill-primitives'
 
 toast({ title: 'Hello world' })
 toast.success({ title: 'Saved successfully' })
@@ -1226,7 +1226,7 @@ options plus an anchor. An anchored toast with an action also gets a close butto
 when the user needs time to decide:
 
 ```tsx
-import { anchoredToast } from '@posthog/quill-primitives'
+import { anchoredToast } from '@flind/quill-primitives'
 
 anchoredToast({ description: 'Copied!', anchor: buttonRef.current })
 anchoredToast({
@@ -1240,7 +1240,7 @@ anchoredToast({
 ### Theme Toggle
 
 ```tsx
-import { useTheme } from '@posthog/quill-primitives'
+import { useTheme } from '@flind/quill-primitives'
 
 function ThemeToggle() {
   const { theme, setTheme } = useTheme()
@@ -1358,7 +1358,7 @@ Each container's CSS handles `flex-shrink: 0` and the per-context size via `svg:
 5. **DropdownMenuItem has variants** — use `variant="destructive"` for dangerous actions; default is `"default"`
 6. **Alert dialog footers confirm with `destructive-outline`** — `destructive` is for the trigger that opens the confirmation and for destructive menu items; inside an AlertDialog footer the confirm button is `destructive-outline` beside an `outline` Cancel
 7. **Prefer composition over props** — use CardHeader > CardTitle instead of `<Card title="...">`
-8. **Use `cn()` for class overrides** — import from `@posthog/quill-primitives` to merge Tailwind classes safely
+8. **Use `cn()` for class overrides** — import from `@flind/quill-primitives` to merge Tailwind classes safely
 9. **Follow the spacing conventions** — see Spacing and layout above; `gap-2` between related siblings, `gap-4` between sections, never re-pad primitive internals
 10. **Use `loading` on submit buttons** — any Button that triggers a network request must pass `loading` while the request is in flight; it blocks activation (guarding double-submission) and overlays a spinner without changing the button's width, while staying focusable for screen readers (`aria-disabled` + `aria-busy`, not the native `disabled` attribute)
 11. **Don't size or color icons inside primitives** — see Icons above; component CSS sizes bare svg children per context, and `currentColor` handles tinting

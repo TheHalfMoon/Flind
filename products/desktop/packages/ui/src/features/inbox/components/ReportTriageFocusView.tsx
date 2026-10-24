@@ -13,7 +13,7 @@ import {
   parseConventionalCommitTitle,
   splitReportSummary,
 } from "@posthog/core/inbox/reportPresentation";
-import { Button } from "@posthog/quill";
+import { Button } from "@flind/quill";
 import type { SignalReport } from "@posthog/shared/types";
 import { ConventionalCommitScopeTag } from "@posthog/ui/features/inbox/components/ConventionalCommitScopeTag";
 import { DetailSection } from "@posthog/ui/features/inbox/components/DetailSection";

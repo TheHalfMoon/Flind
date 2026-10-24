@@ -1,4 +1,4 @@
-import type { ChartTheme } from '@posthog/quill-charts'
+import type { ChartTheme } from '@flind/quill-charts'
 
 /**
  * Indices into the shared series palette, so the clustering tab draws data in the same

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { shadow } from '@posthog/quill-tokens'
+import { shadow } from '@flind/quill-tokens'
 
 const meta = {
     title: 'Tokens/Shadows',
@@ -46,7 +46,7 @@ export const AllShadows: Story = {
         <div className="space-y-8 p-8">
             <div>
                 <p className="text-sm text-muted-foreground">
-                    Shadow tokens from <code className="text-xs">@posthog/quill-tokens</code>. Toggle the theme in the
+                    Shadow tokens from <code className="text-xs">@flind/quill-tokens</code>. Toggle the theme in the
                     toolbar to check that every shadow resolves correctly in both light and dark mode — no dangling{' '}
                     <code className="text-xs">var(--*)</code> references should fall back to transparent.
                 </p>

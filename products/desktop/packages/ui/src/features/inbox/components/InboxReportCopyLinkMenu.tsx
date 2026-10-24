@@ -4,7 +4,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import type { SignalReport } from "@posthog/shared/types";
 import { copyInboxReportLink } from "@posthog/ui/features/inbox/utils/copyInboxReportLink";
 import type { ReactElement } from "react";

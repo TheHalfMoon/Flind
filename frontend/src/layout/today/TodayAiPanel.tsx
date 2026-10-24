@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 
 import { IconExternal, IconLock } from '@posthog/icons'
-import { Button, Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from '@posthog/quill'
+import { Button, Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from '@flind/quill'
 
 import { useOnMountEffect } from 'lib/hooks/useOnMountEffect'
 import { PhaiSidePanelChat } from 'scenes/max/components/PhaiSidePanelChat'

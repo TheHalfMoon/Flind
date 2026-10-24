@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { Kbd, cn } from '@posthog/quill'
+import { Kbd, cn } from '@flind/quill'
 
 import { todayShellLogic } from '~/layout/today/todayShellLogic'
 

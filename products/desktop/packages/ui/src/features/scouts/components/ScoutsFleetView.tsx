@@ -14,7 +14,7 @@ import {
 } from "@posthog/core/scouts/scoutPresentation";
 import { SCOUT_RUNS_WINDOW_LABEL } from "@posthog/core/scouts/scoutRunsWindow";
 import { suggestionBrief } from "@posthog/core/scouts/scoutSuggestions";
-import { Button, Skeleton, Tabs, TabsList, TabsTrigger } from "@posthog/quill";
+import { Button, Skeleton, Tabs, TabsList, TabsTrigger } from "@flind/quill";
 import { ANALYTICS_EVENTS } from "@posthog/shared";
 import { leaveSettings } from "@posthog/ui/features/settings/hooks/useOpenSettings";
 import { SettingsOptionSelect } from "@posthog/ui/features/settings/SettingsOptionSelect";

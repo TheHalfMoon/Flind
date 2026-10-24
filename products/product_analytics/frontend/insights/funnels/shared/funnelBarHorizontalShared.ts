@@ -1,4 +1,4 @@
-import type { Series, ValueDomain } from '@posthog/quill-charts'
+import type { Series, ValueDomain } from '@flind/quill-charts'
 
 // Dependency-neutral primitives for the horizontal funnel bars, shared by the web container
 // (funnelBarHorizontalTransforms.ts) and the MCP UI app. Deliberately free of `~/`, `lib/`, and

@@ -4,7 +4,7 @@ import { createExampleInvocation } from '../_tests/fixtures'
 import { resetHogvmNodeModuleCacheForTests } from './rust-vm'
 import { MAX_REGISTERED_PROGRAMS, RustVmExecutor } from './rust-vm-executor'
 
-jest.mock('@posthog/hogvm-node', () => ({
+jest.mock('@flind/logicvm-node', () => ({
     init: jest.fn(),
     executeSync: jest.fn(),
     executeBatch: jest.fn(),
@@ -14,7 +14,7 @@ jest.mock('@posthog/hogvm-node', () => ({
     executeRegisteredBatch: jest.fn(),
 }))
 
-const mockHogvmNode = jest.mocked(jest.requireMock<typeof import('@posthog/hogvm-node')>('@posthog/hogvm-node'))
+const mockHogvmNode = jest.mocked(jest.requireMock<typeof import('@flind/logicvm-node')>('@flind/logicvm-node'))
 
 const rustResult = (overrides: Partial<ReturnType<typeof mockHogvmNode.executeSync>> = {}) => ({
     result: { properties: { a: 1 } },

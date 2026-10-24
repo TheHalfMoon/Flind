@@ -12,7 +12,7 @@ import {
   XIcon,
 } from "@phosphor-icons/react";
 import { useHostTRPC } from "@posthog/host-router/react";
-import { Button } from "@posthog/quill";
+import { Button } from "@flind/quill";
 import { DetailSection } from "@posthog/ui/features/inbox/components/DetailSection";
 import { InboxDetailFrameView } from "@posthog/ui/features/inbox/components/InboxDetailFrameView";
 import {

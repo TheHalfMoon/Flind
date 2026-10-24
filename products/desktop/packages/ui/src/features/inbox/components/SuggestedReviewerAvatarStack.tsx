@@ -5,7 +5,7 @@ import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import type { InboxReportActionSurface } from "@posthog/shared";
 import type {
   SignalReport,

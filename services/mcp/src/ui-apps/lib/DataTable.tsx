@@ -12,7 +12,7 @@ import {
     Empty,
     EmptyDescription,
     EmptyHeader,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 export interface DataTableColumn<T> {
     key: string

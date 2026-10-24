@@ -8,7 +8,7 @@ import {
   AutocompleteItem,
   AutocompleteList,
   AutocompleteStatus,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { type ReactNode, useMemo, useState } from "react";
 
 export type MenuFlyoutItem = {

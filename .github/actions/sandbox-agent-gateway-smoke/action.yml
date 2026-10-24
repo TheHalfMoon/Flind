@@ -13,7 +13,7 @@ inputs:
         description: 'Token that can pull the image from ghcr.io'
         required: true
     agent-version:
-        description: 'The @posthog/agent version the image must contain'
+        description: 'The @flind/agent version the image must contain'
         required: false
         default: ''
     gateway-url:
@@ -62,16 +62,16 @@ runs:
               docker run --rm "$IMAGE" test -x /scripts/node_modules/.bin/agent-smoke
               probe=$?
               if [ "$probe" = 1 ]; then
-                echo "The image's @posthog/agent has no \`agent-smoke\` bin, so the gateway smoke did not run." >> "$summary"
+                echo "The image's @flind/agent has no \`agent-smoke\` bin, so the gateway smoke did not run." >> "$summary"
                 finish unavailable
               elif [ "$probe" != 0 ]; then
                 echo "Could not run the image." >> "$summary"
                 finish infra
               fi
               if [ -n "$AGENT_VERSION" ]; then
-                installed=$(docker run --rm "$IMAGE" node -p "require('/scripts/node_modules/@posthog/agent/package.json').version")
+                installed=$(docker run --rm "$IMAGE" node -p "require('/scripts/node_modules/@flind/agent/package.json').version")
                 if [ "$installed" != "$AGENT_VERSION" ]; then
-                  echo "The image has @posthog/agent ${installed:-unknown}, not ${AGENT_VERSION}." >> "$summary"
+                  echo "The image has @flind/agent ${installed:-unknown}, not ${AGENT_VERSION}." >> "$summary"
                   finish infra
                 fi
               fi

@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 
 import { IconClock, IconHome, IconLaptop } from '@posthog/icons'
-import { TooltipFooter, TooltipSurface, TooltipSwatch } from '@posthog/quill-charts'
+import { TooltipFooter, TooltipSurface, TooltipSwatch } from '@flind/quill-charts'
 
 import { dayjs } from 'lib/dayjs'
 import { IconWeb } from 'lib/lemon-ui/icons'

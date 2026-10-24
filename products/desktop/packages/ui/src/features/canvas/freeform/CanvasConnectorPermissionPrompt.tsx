@@ -8,7 +8,7 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { useRef } from "react";
 
 export function CanvasConnectorPermissionPrompt({

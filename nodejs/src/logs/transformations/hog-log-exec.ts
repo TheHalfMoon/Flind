@@ -1,4 +1,4 @@
-import { convertHogToJS } from '@posthog/hogvm'
+import { convertHogToJS } from '@flind/logicvm'
 
 import type { HogFunctionType } from '~/cdp/types'
 import { sanitizeLogMessage } from '~/cdp/utils'

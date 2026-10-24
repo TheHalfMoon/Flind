@@ -1,7 +1,7 @@
 import type { MutableRefObject } from 'react'
 
 import { IconDownload } from '@posthog/icons'
-import { Button } from '@posthog/quill'
+import { Button } from '@flind/quill'
 
 import { appEditorUrl } from 'lib/components/AuthorizedUrlList/authorizedUrlListLogic'
 import { LinkPrimitive } from 'lib/lemon-ui/Link'

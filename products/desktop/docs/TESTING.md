@@ -11,7 +11,7 @@
 
 ## Live agent tests
 
-Before running `pnpm --filter @posthog/agent test:e2e`, build its workspace dependencies with `pnpm exec turbo build --filter=@posthog/agent^...` from `products/desktop`.
+Before running `pnpm --filter @flind/agent test:e2e`, build its workspace dependencies with `pnpm exec turbo build --filter=@flind/agent^...` from `products/desktop`.
 This includes the harness extensions imported by the agent source.
 Desktop CI uses the same dependency graph so new workspace dependencies are built before the live tests start.
 The suite requires `POSTHOG_CODE_E2E_GATEWAY_PERSONAL_API_KEY`, a reachable `POSTHOG_CODE_E2E_GATEWAY_URL`, and the bundled Codex binary.

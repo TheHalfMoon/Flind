@@ -17,7 +17,7 @@ import {
     QuestionnaireItem,
     QuestionnaireSubmit,
     QuestionnaireTitle,
-} from '@posthog/quill-primitives'
+} from '@flind/quill-primitives'
 
 import {
     FEEDBACK_PLACEHOLDER,

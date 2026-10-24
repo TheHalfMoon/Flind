@@ -24,7 +24,7 @@ import { createSessionResourcesTracker } from "./accumulateSessionResources";
 
 /**
  * Icon per PostHog product. `Record<PostHogProductId, …>` keeps this exhaustive:
- * adding a product id in `@posthog/agent` forces an icon here at compile time.
+ * adding a product id in `@flind/agent` forces an icon here at compile time.
  */
 const PRODUCT_ICON: Record<PostHogProductId, ComponentType<IconProps>> = {
   product_analytics: ChartLineIcon,

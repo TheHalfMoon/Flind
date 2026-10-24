@@ -1,4 +1,4 @@
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@posthog/quill'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@flind/quill'
 
 export interface InspectorOption<T extends string = string> {
     value: T

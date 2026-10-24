@@ -2,7 +2,7 @@ import { useValues } from 'kea'
 import { useState } from 'react'
 
 import { IconPlus } from '@posthog/icons'
-import { Button, Heading, ItemGroup, Skeleton, Text, Tooltip, TooltipContent, TooltipTrigger } from '@posthog/quill'
+import { Button, Heading, ItemGroup, Skeleton, Text, Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill'
 
 import { upgradeModalLogic } from 'lib/components/UpgradeModal/upgradeModalLogic'
 

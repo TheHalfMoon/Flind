@@ -4,7 +4,7 @@ import type {
     TimeSeriesBarChartConfig,
     ValueLabelFormatter,
     YAxisConfig,
-} from '@posthog/quill-charts'
+} from '@flind/quill-charts'
 
 import { buildTrendsYAxisConfig } from '../shared/trendsAxisFormat'
 import type { YFormatterFields } from '../shared/trendsChartDisplayOptions'

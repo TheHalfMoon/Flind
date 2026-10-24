@@ -1,4 +1,4 @@
-import { Button } from '@posthog/quill'
+import { Button } from '@flind/quill'
 
 export function QuillSurveyFeedbackButton(): JSX.Element {
     return (

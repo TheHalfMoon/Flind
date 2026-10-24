@@ -12,7 +12,7 @@ import {
     IconSidePanel,
 } from '@posthog/icons'
 import { LemonBanner, Link, Spinner, Tooltip } from '@posthog/lemon-ui'
-import { Button, Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from '@posthog/quill'
+import { Button, Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from '@flind/quill'
 
 import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'
 import { LemonButton } from 'lib/lemon-ui/LemonButton'

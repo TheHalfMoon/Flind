@@ -1,6 +1,6 @@
 import { FileTextIcon } from "@phosphor-icons/react";
 import { isAgentRunReport } from "@posthog/core/inbox/reportMembership";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@posthog/quill";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@flind/quill";
 import type { SignalReport } from "@posthog/shared/types";
 import {
   resolveRunVariant,

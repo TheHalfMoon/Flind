@@ -2,8 +2,8 @@ import { execFile } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 import { promisify } from "node:util";
-import { execGh } from "@posthog/git/gh";
-import { getGitOperationManager } from "@posthog/git/operation-manager";
+import { execGh } from "@flind/git/gh";
+import { getGitOperationManager } from "@flind/git/operation-manager";
 import {
   type DiffStats,
   type GitBusyState,
@@ -30,15 +30,15 @@ import {
   stageFiles as gitStageFiles,
   unstageFiles as gitUnstageFiles,
   isGitRepository,
-} from "@posthog/git/queries";
-import { CreateBranchSaga, SwitchBranchSaga } from "@posthog/git/sagas/branch";
-import { CleanWorkingTreeSaga } from "@posthog/git/sagas/clean";
-import { CloneSaga } from "@posthog/git/sagas/clone";
-import { CommitSaga } from "@posthog/git/sagas/commit";
-import { DiscardFileChangesSaga } from "@posthog/git/sagas/discard";
-import { PullSaga } from "@posthog/git/sagas/pull";
-import { PushSaga } from "@posthog/git/sagas/push";
-import { parseGithubUrl } from "@posthog/git/utils";
+} from "@flind/git/queries";
+import { CreateBranchSaga, SwitchBranchSaga } from "@flind/git/sagas/branch";
+import { CleanWorkingTreeSaga } from "@flind/git/sagas/clean";
+import { CloneSaga } from "@flind/git/sagas/clone";
+import { CommitSaga } from "@flind/git/sagas/commit";
+import { DiscardFileChangesSaga } from "@flind/git/sagas/discard";
+import { PullSaga } from "@flind/git/sagas/pull";
+import { PushSaga } from "@flind/git/sagas/push";
+import { parseGithubUrl } from "@flind/git/utils";
 import { TypedEventEmitter } from "@posthog/shared";
 import { injectable } from "inversify";
 import type { SidebarPrState } from "../workspace/schemas";

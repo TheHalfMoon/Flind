@@ -3,7 +3,7 @@ import { router } from 'kea-router'
 
 import { IconEllipsis } from '@posthog/icons'
 import { LemonButton, LemonMenu } from '@posthog/lemon-ui'
-import { Button } from '@posthog/quill'
+import { Button } from '@flind/quill'
 
 import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'
 import { LemonSwitch } from 'lib/lemon-ui/LemonSwitch'

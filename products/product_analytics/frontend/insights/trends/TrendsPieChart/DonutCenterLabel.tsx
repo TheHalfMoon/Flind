@@ -1,4 +1,4 @@
-import { useRadialLayout } from '@posthog/quill-charts'
+import { useRadialLayout } from '@flind/quill-charts'
 
 const MIN_FONT_SIZE = 12
 const MAX_FONT_SIZE = 64

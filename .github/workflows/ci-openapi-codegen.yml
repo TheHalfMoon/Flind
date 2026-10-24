@@ -27,7 +27,7 @@ jobs:
             - name: Install pnpm dependencies
               uses: ./.github/actions/pnpm-install
               with:
-                  install-command: pnpm --filter=@posthog/openapi-codegen install --frozen-lockfile
+                  install-command: pnpm --filter=@flind/openapi-codegen install --frozen-lockfile
 
             - name: Run tests
-              run: pnpm --filter=@posthog/openapi-codegen test
+              run: pnpm --filter=@flind/openapi-codegen test

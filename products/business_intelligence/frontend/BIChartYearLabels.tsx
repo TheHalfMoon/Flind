@@ -1,4 +1,4 @@
-import { useChartLayout } from '@posthog/quill-charts'
+import { useChartLayout } from '@flind/quill-charts'
 
 import { getBIChartYearGroups } from './biChartDateAxis'
 

@@ -1,7 +1,7 @@
 import {
   isBenjaminEnabled,
   SIMPLIFIED_TECHNICAL_ENGLISH_INSTRUCTION,
-} from "@posthog/harness/extensions/benjamin";
+} from "@flind/harness/extensions/benjamin";
 import { z } from "zod";
 import type {
   AgentProduct,

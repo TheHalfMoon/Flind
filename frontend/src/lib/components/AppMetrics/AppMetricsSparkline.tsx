@@ -3,7 +3,7 @@ import { useEffect, useMemo } from 'react'
 import { useInView } from 'react-intersection-observer'
 
 import { LemonSkeleton } from '@posthog/lemon-ui'
-import { createTooltipDateFormatter } from '@posthog/quill-charts'
+import { createTooltipDateFormatter } from '@flind/quill-charts'
 
 import { Sparkline, SparklineTimeSeries } from 'lib/components/Sparkline'
 import { inStorybookTestRunner } from 'lib/utils/dom'

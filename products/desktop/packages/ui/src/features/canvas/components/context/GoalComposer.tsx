@@ -19,7 +19,7 @@ import {
   Input,
   Kbd,
   Text,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
 import type { GoalMeasureTask } from "@posthog/ui/features/canvas/goalMeasureTasks";
 import { Spinner } from "@posthog/ui/primitives/Spinner";

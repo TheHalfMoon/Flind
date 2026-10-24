@@ -30,7 +30,7 @@ rollout gate.
 
 ## Components & styling
 
-Components come from `@posthog/quill`; layout is `div`s with Tailwind. **Radix is
+Components come from `@flind/quill`; layout is `div`s with Tailwind. **Radix is
 banned** — do not add `@radix-ui/themes` or `@radix-ui/react-*` to any file here. See
 [UI Components](../../../../../AGENTS.md#ui-components) in the root `AGENTS.md` for the
 mapping. The tab strip's remaining `Flex`/`Box`/`Text` imports are legacy; when your

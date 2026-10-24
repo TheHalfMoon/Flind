@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconList, IconStack } from '@posthog/icons'
-import { ToggleGroup, ToggleGroupItem, Tooltip, TooltipContent, TooltipTrigger } from '@posthog/quill'
+import { ToggleGroup, ToggleGroupItem, Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill'
 
 import { SPACE_FEED_TYPES, SpaceFeedType, SpaceFeedView } from './spaceFeedEntries'
 import { SpaceFeedFilterMenu } from './SpaceFeedFilterMenu'

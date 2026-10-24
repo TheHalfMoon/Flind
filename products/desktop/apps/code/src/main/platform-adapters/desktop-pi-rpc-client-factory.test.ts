@@ -1,5 +1,5 @@
-import type { PiRpcClient } from "@posthog/agent/pi/rpc-client";
-import { getLlmGatewayUrl } from "@posthog/agent/posthog-api";
+import type { PiRpcClient } from "@flind/agent/pi/rpc-client";
+import { getLlmGatewayUrl } from "@flind/agent/posthog-api";
 import type { RootLogger } from "@posthog/di/logger";
 import { ROOT_LOGGER } from "@posthog/di/logger";
 import { getCloudUrlFromRegion } from "@posthog/shared";
@@ -45,7 +45,7 @@ const createRuntimeMcpServers = vi.hoisted(() =>
   })),
 );
 
-vi.mock("@posthog/agent/pi/rpc-client", () => ({
+vi.mock("@flind/agent/pi/rpc-client", () => ({
   createLocalRuntimeMcpServers,
   createPiRpcClient,
   createRuntimeMcpServers,

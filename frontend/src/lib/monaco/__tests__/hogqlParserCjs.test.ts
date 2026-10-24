@@ -1,8 +1,8 @@
-// Regression test: the @posthog/hogql-parser package works in Jest without mocks
+// Regression test: the @flind/query-parser package works in Jest without mocks
 import fs from 'fs'
 import path from 'path'
 
-import createHogQLParser from '@posthog/hogql-parser'
+import createHogQLParser from '@flind/query-parser'
 
 // The app's CSP has no 'unsafe-eval', so the published glue must be linked with
 // DYNAMIC_EXECUTION=0. Emscripten does not fail the build without it: the default embind emits a
@@ -10,7 +10,7 @@ import createHogQLParser from '@posthog/hogql-parser'
 // abort. Both leave a fixed string in the output, so the check runs on the pinned package.
 const GLUE_FILES = ['hogql_parser_wasm_browser.js', 'hogql_parser_wasm.js', 'hogql_parser_wasm.cjs']
 
-describe('@posthog/hogql-parser', () => {
+describe('@flind/query-parser', () => {
     it('exports a factory function', () => {
         expect(typeof createHogQLParser).toBe('function')
     })
@@ -27,7 +27,7 @@ describe('@posthog/hogql-parser', () => {
     })
 
     it.each(GLUE_FILES)('%s is built without dynamic execution', (file) => {
-        const distDir = path.dirname(require.resolve('@posthog/hogql-parser'))
+        const distDir = path.dirname(require.resolve('@flind/query-parser'))
         const glue = fs.readFileSync(path.join(distDir, file), 'utf8')
         expect(glue).not.toContain('new Function(')
         expect(glue).not.toContain('DYNAMIC_EXECUTION=0 was set')

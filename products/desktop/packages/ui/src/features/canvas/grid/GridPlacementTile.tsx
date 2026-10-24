@@ -1,5 +1,5 @@
 import type { GridPlacement } from "@posthog/core/canvas/gridLayoutSchemas";
-import { Button, Text } from "@posthog/quill";
+import { Button, Text } from "@flind/quill";
 import { isTerminalStatus } from "@posthog/shared/domain-types";
 import { PromptInput } from "@posthog/ui/features/message-editor/components/PromptInput";
 import { useSessionStore } from "@posthog/ui/features/sessions/sessionStore";

@@ -9,7 +9,7 @@ import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import type { SignalReport, SuggestedReviewer } from "@posthog/shared/types";
 import { DetailSection } from "@posthog/ui/features/inbox/components/DetailSection";
 import { ReviewerSearchList } from "@posthog/ui/features/inbox/components/ReviewerSearchList";

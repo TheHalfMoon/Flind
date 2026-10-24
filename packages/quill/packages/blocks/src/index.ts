@@ -1,4 +1,4 @@
-// @posthog/quill-blocks
+// @flind/quill-blocks
 //
 // Top layer of the quill design system: product-level patterns composed
 // from components and primitives. Think PageHeader (title + breadcrumb +
@@ -8,11 +8,11 @@
 // surface.
 //
 // None of these are implemented yet. This file is an empty module so
-// TypeScript treats it as one and downstream packages (the @posthog/quill
-// aggregate in particular) can `export * from '@posthog/quill-blocks'`
+// TypeScript treats it as one and downstream packages (the @flind/quill
+// aggregate in particular) can `export * from '@flind/quill-blocks'`
 // without hitting a "not a module" error while the layer is still empty.
 // Each new block should be added here as a named export and will flow
-// through to the public @posthog/quill surface automatically on the next
+// through to the public @flind/quill surface automatically on the next
 // build.
 
 export {}

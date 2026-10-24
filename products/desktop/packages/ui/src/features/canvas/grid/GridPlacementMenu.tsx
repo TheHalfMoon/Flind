@@ -14,7 +14,7 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { useState } from "react";
 import type { PlacementActions } from "./placementActions";
 

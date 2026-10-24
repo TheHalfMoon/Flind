@@ -5,7 +5,7 @@ import type {
 import type {
   AgentToolCallContent,
   AgentToolCallLocation,
-} from "@posthog/agent-contracts";
+} from "@flind/agent-contracts";
 import type { PiToolTranslator } from "../toolTranslator";
 
 export const editTranslator: PiToolTranslator = ({

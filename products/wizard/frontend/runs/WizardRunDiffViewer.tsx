@@ -4,7 +4,7 @@ import { FileDiff } from '@pierre/diffs/react'
 import { useValues } from 'kea'
 import { useMemo } from 'react'
 
-import { Button, Card, Item, ItemContent, ItemDescription } from '@posthog/quill-primitives'
+import { Button, Card, Item, ItemContent, ItemDescription } from '@flind/quill-primitives'
 
 import { LinkPrimitive } from 'lib/lemon-ui/Link'
 

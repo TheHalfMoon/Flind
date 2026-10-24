@@ -1,4 +1,4 @@
-import { Saga } from "@posthog/agent-contracts";
+import { Saga } from "@flind/agent-contracts";
 import type { GitClient } from "./client";
 import { getGitOperationManager } from "./operation-manager";
 

@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import type { ReactNode } from 'react'
 
-import { MenuLabel, Separator, cn } from '@posthog/quill-primitives'
+import { MenuLabel, Separator, cn } from '@flind/quill-primitives'
 
 import { dayjs } from 'lib/dayjs'
 

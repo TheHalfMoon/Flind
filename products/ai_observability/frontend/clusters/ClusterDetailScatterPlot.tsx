@@ -1,8 +1,8 @@
 import { useValues } from 'kea'
 import { useEffect, useMemo, useState } from 'react'
 
-import { ScatterChart } from '@posthog/quill-charts'
-import type { ScatterAreaSelection, ScatterChartConfig, ScatterPointDatum } from '@posthog/quill-charts'
+import { ScatterChart } from '@flind/quill-charts'
+import type { ScatterAreaSelection, ScatterChartConfig, ScatterPointDatum } from '@flind/quill-charts'
 
 import { useChartTheme } from 'lib/charts/hooks'
 

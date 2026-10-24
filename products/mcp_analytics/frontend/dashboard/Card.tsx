@@ -1,4 +1,4 @@
-import { Card as QuillCard, CardContent, CardHeader, CardTitle } from '@posthog/quill-primitives'
+import { Card as QuillCard, CardContent, CardHeader, CardTitle } from '@flind/quill-primitives'
 
 export function Card({
     children,

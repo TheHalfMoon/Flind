@@ -2,7 +2,7 @@ import '@testing-library/jest-dom'
 
 import { cleanup, render, screen } from '@testing-library/react'
 
-import { ensureJsdom } from '@posthog/quill-charts/testing'
+import { ensureJsdom } from '@flind/quill-charts/testing'
 
 import type { MetricsHistogramQueryResponse } from '~/queries/schema/schema-general'
 import { initKeaTests } from '~/test/init'

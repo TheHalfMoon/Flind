@@ -65,7 +65,7 @@ import {
     TooltipTrigger,
     cn,
     toast,
-} from '@posthog/quill-primitives'
+} from '@flind/quill-primitives'
 
 import { objectKindLink } from 'lib/components/AgentObjectTags/rewriteAgentObjectTags'
 import { dayjs } from 'lib/dayjs'

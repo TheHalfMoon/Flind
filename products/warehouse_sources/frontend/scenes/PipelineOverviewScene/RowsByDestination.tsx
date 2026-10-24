@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 
 import { LemonSkeleton } from '@posthog/lemon-ui'
-import { TimeSeriesLineChart } from '@posthog/quill-charts'
+import { TimeSeriesLineChart } from '@flind/quill-charts'
 
 import { useChartTheme } from 'lib/charts/hooks'
 import { teamLogic } from 'scenes/teamLogic'

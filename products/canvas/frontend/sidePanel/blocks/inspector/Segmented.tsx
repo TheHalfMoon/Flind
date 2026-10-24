@@ -1,4 +1,4 @@
-import { ToggleGroup, ToggleGroupItem } from '@posthog/quill'
+import { ToggleGroup, ToggleGroupItem } from '@flind/quill'
 
 import type { InspectorOption } from './OptionSelect'
 

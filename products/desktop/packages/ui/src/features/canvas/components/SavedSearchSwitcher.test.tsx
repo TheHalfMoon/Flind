@@ -11,8 +11,8 @@ vi.mock("@posthog/ui/features/canvas/components/FeedQueryHighlight", () => ({
 vi.mock("@posthog/ui/features/canvas/hooks/useProjectTaskFeeds", () => ({
   useProjectTaskFeeds: () => useTaskFeedsStore.getState().feeds,
 }));
-vi.mock("@posthog/quill", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@posthog/quill")>();
+vi.mock("@flind/quill", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@flind/quill")>();
   return {
     ...actual,
     DropdownMenu: ({ children }: { children: ReactNode }) => <>{children}</>,

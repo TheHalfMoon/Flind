@@ -6,7 +6,7 @@ import {
   ItemDescription,
   ItemMedia,
   ItemTitle,
-} from "@posthog/quill";
+} from "@flind/quill";
 
 export function GithubApprovalNotice({
   state,

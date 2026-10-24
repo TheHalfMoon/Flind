@@ -1,6 +1,6 @@
 import { Folder, X } from "@phosphor-icons/react";
 import { useHostTRPCClient } from "@posthog/host-router/react";
-import { Button } from "@posthog/quill";
+import { Button } from "@flind/quill";
 import {
   SettingsCard,
   SettingsCardRow,

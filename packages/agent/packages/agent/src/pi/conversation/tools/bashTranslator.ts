@@ -1,4 +1,4 @@
-import type { AgentToolCallContent } from "@posthog/agent-contracts";
+import type { AgentToolCallContent } from "@flind/agent-contracts";
 import type { PiToolTranslator } from "../toolTranslator";
 
 export const bashTranslator: PiToolTranslator = ({ resultContent }) => {

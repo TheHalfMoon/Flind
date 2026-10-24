@@ -12,7 +12,7 @@ import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import type { SkillInfo, SkillSource } from "@posthog/shared";
 import { useEffect, useRef } from "react";
 import { SkillListCard } from "./SkillListCard";

@@ -7,7 +7,7 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { useConnectCodexCloudAccount } from "@posthog/ui/features/settings/codexCloudAccount";
 import {
   AuthTerminalPanel,

@@ -6,7 +6,7 @@ import type {
 import type {
   AgentContent,
   AgentConversationEvent,
-} from "@posthog/agent-contracts";
+} from "@flind/agent-contracts";
 import {
   createPiConversationTranslator,
   type PiConversationTranslator,

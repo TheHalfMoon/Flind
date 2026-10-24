@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react'
 
-import type { ChartTheme } from '@posthog/quill-charts'
-import { setupJsdom, setupSyncRaf } from '@posthog/quill-charts/testing'
+import type { ChartTheme } from '@flind/quill-charts'
+import { setupJsdom, setupSyncRaf } from '@flind/quill-charts/testing'
 
 import { Metric, MetricSubtitle } from './metric'
 

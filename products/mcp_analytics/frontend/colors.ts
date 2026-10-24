@@ -1,4 +1,4 @@
-import type { ChartTheme } from '@posthog/quill-charts'
+import type { ChartTheme } from '@flind/quill-charts'
 
 import { RGBToHex, hexToRGB, lightenDarkenColor, toOpaqueHex } from 'lib/utils/colors'
 import { hashCodeForString } from 'lib/utils/strings'

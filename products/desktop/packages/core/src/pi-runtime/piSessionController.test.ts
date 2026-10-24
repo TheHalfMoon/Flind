@@ -1,4 +1,4 @@
-import type { PiRemoteRpcClient } from "@posthog/agent/pi/remote-rpc-client";
+import type { PiRemoteRpcClient } from "@flind/agent/pi/remote-rpc-client";
 import type { AuthService } from "@posthog/core/auth/auth";
 import type { AgentSessionNotifier } from "@posthog/core/notification/agentSessionNotifications";
 import type { TaskService } from "@posthog/core/task-detail/taskService";

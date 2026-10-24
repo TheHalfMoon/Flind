@@ -5,7 +5,7 @@ import {
 } from "@posthog/core/integrations/connectErrors";
 import { slackInvalidationKeys } from "@posthog/core/integrations/connectMachine";
 import { SLACK_DISCONNECT_DESCRIPTION } from "@posthog/core/integrations/disconnectCopy";
-import { Button, Text } from "@posthog/quill";
+import { Button, Text } from "@flind/quill";
 import { formatRelativeTimeLong } from "@posthog/shared";
 import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
 import { useAuthStateValue } from "@posthog/ui/features/auth/store";

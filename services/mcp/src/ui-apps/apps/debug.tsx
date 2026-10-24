@@ -38,7 +38,7 @@ import {
     TooltipContent,
     TooltipProvider,
     TooltipTrigger,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import { AppErrorState } from '../components/AppErrorState'
 import { AppLoadingState } from '../components/AppLoadingState'
@@ -516,7 +516,7 @@ function ShowcaseTab(): JSX.Element {
                     <CardHeader>
                         <CardTitle>Buttons</CardTitle>
                         <CardDescription>
-                            Variants, sizes, and states from <code className="font-mono">@posthog/quill</code>'s{' '}
+                            Variants, sizes, and states from <code className="font-mono">@flind/quill</code>'s{' '}
                             <code className="font-mono">Button</code>.
                         </CardDescription>
                     </CardHeader>

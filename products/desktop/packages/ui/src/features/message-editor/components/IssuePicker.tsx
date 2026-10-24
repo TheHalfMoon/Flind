@@ -10,7 +10,7 @@ import {
   ComboboxInput,
   ComboboxItem,
   ComboboxList,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { useDebounce } from "@posthog/ui/primitives/hooks/useDebounce";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";

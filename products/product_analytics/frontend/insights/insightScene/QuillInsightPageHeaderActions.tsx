@@ -8,7 +8,7 @@ import {
     DropdownMenuSub,
     DropdownMenuSubContent,
     DropdownMenuSubTrigger,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import { AccessControlAction } from 'lib/components/AccessControlAction'
 import { InsightSubscribeProminentButton } from 'lib/components/Scenes/InsightSubscribeProminentButton'

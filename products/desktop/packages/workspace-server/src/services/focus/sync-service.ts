@@ -5,8 +5,8 @@ import {
   getStagedDiff,
   getUnstagedDiff,
   listUntrackedFiles,
-} from "@posthog/git/queries";
-import { ApplyPatchSaga } from "@posthog/git/sagas/patch";
+} from "@flind/git/queries";
+import { ApplyPatchSaga } from "@flind/git/sagas/patch";
 import ignore, { type Ignore } from "ignore";
 import { injectable } from "inversify";
 

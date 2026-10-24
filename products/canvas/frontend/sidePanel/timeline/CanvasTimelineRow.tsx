@@ -1,6 +1,6 @@
 import { ReactNode, useEffect, useRef } from 'react'
 
-import { Item, ItemActions, ItemContent, ItemDescription, ItemTitle, Text, cn } from '@posthog/quill'
+import { Item, ItemActions, ItemContent, ItemDescription, ItemTitle, Text, cn } from '@flind/quill'
 
 export interface CanvasTimelineRowProps {
     title: string

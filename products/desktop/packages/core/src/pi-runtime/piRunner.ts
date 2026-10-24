@@ -1,4 +1,4 @@
-import type { PiThinkingLevel } from "@posthog/agent/pi/types";
+import type { PiThinkingLevel } from "@flind/agent/pi/types";
 import type { TaskContextInput } from "@posthog/shared/task-context";
 
 export interface PiRunInput {

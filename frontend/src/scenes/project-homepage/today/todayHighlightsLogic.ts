@@ -2,7 +2,7 @@ import { MakeLogicType, actions, afterMount, connect, kea, listeners, path, redu
 import { loaders } from 'kea-loaders'
 import posthog from 'posthog-js'
 
-import { toast } from '@posthog/quill'
+import { toast } from '@flind/quill'
 
 import { ApiError } from 'lib/api'
 import { FEATURE_FLAGS } from 'lib/constants'

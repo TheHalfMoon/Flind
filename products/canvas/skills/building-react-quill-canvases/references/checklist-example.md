@@ -102,7 +102,7 @@ import {
   Label,
   Skeleton,
   Textarea,
-} from '@posthog/quill'
+} from '@flind/quill'
 import { Check, ChevronDown, ChevronRight, Copy, RotateCcw } from 'lucide-react'
 import { SECTIONS, TOTAL_STEPS } from './plan'
 

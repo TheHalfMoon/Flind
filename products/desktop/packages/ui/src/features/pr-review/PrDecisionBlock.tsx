@@ -14,7 +14,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { Spinner } from "@posthog/ui/primitives/Spinner";
 import { useState } from "react";
 import { PrChecksSection } from "./PrChecksSection";

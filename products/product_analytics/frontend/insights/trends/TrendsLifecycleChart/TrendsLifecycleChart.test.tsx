@@ -2,7 +2,7 @@ import '@testing-library/jest-dom'
 
 import { cleanup, screen, waitFor } from '@testing-library/react'
 
-import { dragSelection, setupJsdom, setupSyncRaf } from '@posthog/quill-charts/testing'
+import { dragSelection, setupJsdom, setupSyncRaf } from '@flind/quill-charts/testing'
 
 import { FEATURE_FLAGS } from 'lib/constants'
 

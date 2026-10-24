@@ -12,7 +12,7 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { toast } from "@posthog/ui/primitives/toast";
 import {
   type ReactElement,

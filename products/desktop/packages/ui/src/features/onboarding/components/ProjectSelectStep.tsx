@@ -14,7 +14,7 @@ import {
   Heading,
   Skeleton,
   Text,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
 import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
 import { OAuthControls } from "@posthog/ui/features/auth/OAuthControls";

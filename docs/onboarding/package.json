@@ -1,5 +1,6 @@
 {
-    "name": "@posthog/docs-onboarding",
+    "name": "@flind/docs-onboarding",
+    "private": true,
     "peerDependencies": {
         "@types/react": "*",
         "react": "*"

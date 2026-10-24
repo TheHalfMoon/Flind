@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { ChangeEvent, KeyboardEvent, useState } from 'react'
 
-import { Button, Input, Tooltip, TooltipContent, TooltipTrigger } from '@posthog/quill'
+import { Button, Input, Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill'
 
 import { canvasSceneLogic } from './canvasSceneLogic'
 

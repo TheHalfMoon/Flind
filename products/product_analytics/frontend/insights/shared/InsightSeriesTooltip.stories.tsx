@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { TimeSeriesLineChart } from '@posthog/quill-charts'
-import { Stage, playHoverAtFraction } from '@posthog/quill-charts/story-helpers'
+import { TimeSeriesLineChart } from '@flind/quill-charts'
+import { Stage, playHoverAtFraction } from '@flind/quill-charts/story-helpers'
 
 import { useChartTheme } from 'lib/charts/hooks'
 

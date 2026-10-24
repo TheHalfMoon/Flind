@@ -6,7 +6,7 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { CodeBlock } from "@posthog/ui/primitives/CodeBlock";
 import { openTaskInput } from "@posthog/ui/router/useOpenTask";
 import { formatCapturedLogs } from "@posthog/ui/shell/logCapture";

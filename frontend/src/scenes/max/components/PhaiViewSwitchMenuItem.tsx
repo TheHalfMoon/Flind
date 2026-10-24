@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconRevert, IconSparkles } from '@posthog/icons'
-import { DropdownMenuItem } from '@posthog/quill'
+import { DropdownMenuItem } from '@flind/quill'
 
 import { PhaiViewMode, maxGlobalLogic } from '../maxGlobalLogic'
 

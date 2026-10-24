@@ -1,5 +1,5 @@
 import { LemonSkeleton } from '@posthog/lemon-ui'
-import { Skeleton } from '@posthog/quill-primitives'
+import { Skeleton } from '@flind/quill-primitives'
 
 import { ScenePanelInfoSection } from '~/layout/scenes/SceneLayout'
 

@@ -28,7 +28,7 @@ import {
     TooltipContent,
     TooltipTrigger,
     useComboboxAnchor,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import { QuillPersonAvatar } from 'lib/components/QuillPersonAvatar/QuillPersonAvatar'
 

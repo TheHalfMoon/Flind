@@ -7,7 +7,7 @@ import {
   ItemMenuItem,
   ItemTitle,
   Kbd,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { FileIcon } from "@posthog/ui/primitives/FileIcon";
 import {
   forwardRef,

@@ -1,13 +1,13 @@
 import posthog from 'posthog-js'
 
-import type { HogQLParser } from '@posthog/hogql-parser'
+import type { HogQLParser } from '@flind/query-parser'
 
 let parserPromise: Promise<HogQLParser> | null = null
 let initFailureReported = false
 
 function getParser(): Promise<HogQLParser> {
     if (!parserPromise) {
-        parserPromise = import('@posthog/hogql-parser')
+        parserPromise = import('@flind/query-parser')
             .then((mod) => mod.default())
             .catch((error) => {
                 // Reset so next call retries initialization

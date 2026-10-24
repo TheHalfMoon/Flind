@@ -12,12 +12,12 @@ import {
   qualifiedLocalToolName,
   SHOW_ACTIONS_TOOL_NAME,
   SPEAK_TOOL_NAME,
-} from "@posthog/harness/extensions/local-tools";
+} from "@flind/harness/extensions/local-tools";
 import {
   extractPostHogSubTool,
   isPostHogExecTool,
   matchesPostHogExecPermission,
-} from "@posthog/harness/extensions/posthog-mcp-policy";
+} from "@flind/harness/extensions/posthog-mcp-policy";
 import { text } from "../../../utils/acp-content";
 import type { Logger } from "../../../utils/logger";
 import { toolInfoFromToolUse } from "../conversion/tool-use-to-acp";

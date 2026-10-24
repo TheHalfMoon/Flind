@@ -10,7 +10,7 @@ import {
     EmptyMedia,
     EmptyTitle,
     Skeleton,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import { NotFound } from 'lib/components/NotFound'
 import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'

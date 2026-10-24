@@ -1,7 +1,7 @@
 import {
   CODEX_MODE_PRESETS,
   type ExecutionMode,
-} from "@posthog/agent-contracts";
+} from "@flind/agent-contracts";
 import { ALLOW_BYPASS } from "./utils/common";
 
 export interface ModeInfo {
@@ -77,7 +77,7 @@ export function isCodexNativeMode(mode: string): mode is CodexNativeMode {
   return (CODEX_NATIVE_MODES as readonly string[]).includes(mode);
 }
 
-// The preset literals live in @posthog/agent-contracts (one copy for every picker and
+// The preset literals live in @flind/agent-contracts (one copy for every picker and
 // the app-server adapter's CODEX_MODES); this module only owns the gating.
 export function getAvailableCodexModes(): ModeInfo[] {
   return ALLOW_BYPASS

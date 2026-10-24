@@ -12,7 +12,7 @@ import {
     Dot,
     Heading,
     Text,
-} from '@posthog/quill-primitives'
+} from '@flind/quill-primitives'
 
 import { cn } from 'lib/utils/css-classes'
 

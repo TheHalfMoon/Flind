@@ -9,7 +9,7 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { GridCardChrome } from "./GridCardChrome";
 import { GridPlacementTile } from "./GridPlacementTile";

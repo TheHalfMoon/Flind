@@ -6,7 +6,7 @@ import {
   SOUND_SETTINGS,
 } from "@posthog/core/settings/settingsBackup";
 import { useService } from "@posthog/di/react";
-import { Button } from "@posthog/quill";
+import { Button } from "@flind/quill";
 import { ANALYTICS_EVENTS } from "@posthog/shared";
 import {
   SettingsCard,

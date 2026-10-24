@@ -6,7 +6,7 @@ import {
     RATE_TO_PERCENT,
     type Series,
     funnelConversionRate,
-} from '@posthog/quill-charts'
+} from '@flind/quill-charts'
 
 import { useChartTheme } from 'lib/charts/hooks'
 import { LemonCard } from 'lib/lemon-ui/LemonCard'

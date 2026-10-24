@@ -7,7 +7,7 @@ import {
   AlertDialogTitle,
   Button,
   AlertDialog as ConfirmDialog,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { AutoArchiveSettingsDialog } from "@posthog/ui/features/canvas/components/AutoArchiveSettingsDialog";
 import type { useChannelActions } from "@posthog/ui/features/canvas/components/ChannelsList";
 import { RenameChannelModal } from "@posthog/ui/features/canvas/components/RenameChannelModal";

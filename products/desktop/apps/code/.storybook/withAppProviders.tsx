@@ -8,7 +8,7 @@ import {
 } from "@posthog/host-router/client";
 import { HostTRPCProvider } from "@posthog/host-router/react";
 import type { HostRouter } from "@posthog/host-router/router";
-import { ToastProvider } from "@posthog/quill";
+import { ToastProvider } from "@flind/quill";
 import {
   FEATURE_FLAGS,
   type FeatureFlags,

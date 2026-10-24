@@ -24,7 +24,7 @@ import {
     Popover,
     PopoverContent,
     PopoverTrigger,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import { SetupReminderContext } from 'lib/components/ProductEmptyState/setupReminderContext'
 import { IconBlank } from 'lib/lemon-ui/icons'

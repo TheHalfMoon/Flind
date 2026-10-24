@@ -1,4 +1,4 @@
-import type { ProducedRefDedup, RefDedupCache } from '@posthog/replay-anonymizer'
+import type { ProducedRefDedup, RefDedupCache } from '@flind/replay-anonymizer'
 
 import { registerNativeRefDedupCache } from '~/ingestion/pipelines/sessionreplay/shared/ref-dedup-cache'
 

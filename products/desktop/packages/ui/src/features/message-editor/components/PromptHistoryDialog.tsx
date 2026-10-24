@@ -10,7 +10,7 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { formatRelativeTimeLong } from "@posthog/shared";
 import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
 import { useTaskInputHistoryStore } from "@posthog/ui/features/message-editor/taskInputHistoryStore";

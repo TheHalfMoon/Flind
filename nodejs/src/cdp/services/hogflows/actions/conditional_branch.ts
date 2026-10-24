@@ -233,7 +233,7 @@ function retryOrFailCohortLookup(
     throw error
 }
 
-// Operation.CALL_GLOBAL from @posthog/hogvm, which is a const enum and can't be imported
+// Operation.CALL_GLOBAL from @flind/logicvm, which is a const enum and can't be imported
 // under isolatedModules
 const CALL_GLOBAL = 2
 

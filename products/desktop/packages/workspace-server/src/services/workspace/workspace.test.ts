@@ -9,7 +9,7 @@ import {
   getDefaultBranch,
   hasTrackedFiles,
   remoteBranchExists,
-} from "@posthog/git/queries";
+} from "@flind/git/queries";
 import type { IAnalytics } from "@posthog/platform/analytics";
 import type { IWorkspaceSettings } from "@posthog/platform/workspace-settings";
 import { ANALYTICS_EVENTS } from "@posthog/shared";
@@ -33,8 +33,8 @@ import type {
 import type { CreateWorkspaceInput } from "./schemas";
 import { WorkspaceService, WorkspaceServiceEvent } from "./workspace";
 
-vi.mock("@posthog/git/queries", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@posthog/git/queries")>();
+vi.mock("@flind/git/queries", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@flind/git/queries")>();
   return {
     ...actual,
     getDefaultBranch: vi.fn(),
@@ -68,7 +68,7 @@ const mockWorktreeManager = {
   createWorktreeForRemoteBranch: vi.fn(),
 };
 
-vi.mock("@posthog/git/worktree", () => ({
+vi.mock("@flind/git/worktree", () => ({
   WorktreeManager: class {
     createWorktree = mockWorktreeManager.createWorktree;
     createWorktreeForExistingBranch =

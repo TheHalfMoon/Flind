@@ -6,7 +6,7 @@ Visual regression baseline for the quill refactor (Tailwind → CSS/BEM migratio
 
 ```sh
 # one-off: build static + run capture
-pnpm --filter @posthog/quill-storybook build-storybook
+pnpm --filter @flind/quill-storybook build-storybook
 cd packages/quill/apps/storybook/storybook-static
 python3 -m http.server 6006 --bind 127.0.0.1 &
 cd ../..
@@ -22,7 +22,7 @@ Outputs: `baseline/light/<story-id>.png`, `baseline/dark/<story-id>.png`, `basel
 
 ```sh
 # 1. rebuild storybook from the refactored branch
-pnpm --filter @posthog/quill-storybook build-storybook
+pnpm --filter @flind/quill-storybook build-storybook
 # 2. serve again on :6006 (same as above)
 # 3. run compare: captures into candidate/ and diffs vs baseline/
 CHROME_EXECUTABLE_PATH="..." node apps/storybook/scripts/compare-screenshots.mjs

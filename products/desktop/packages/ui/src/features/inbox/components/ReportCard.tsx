@@ -11,7 +11,7 @@ import {
   isStatusRedundantWithActionability,
   parseConventionalCommitTitle,
 } from "@posthog/core/inbox/reportPresentation";
-import { Button } from "@posthog/quill";
+import { Button } from "@flind/quill";
 import { dismissalReasonLabel } from "@posthog/shared/dismissalReasons";
 import type {
   SignalReport,

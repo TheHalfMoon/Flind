@@ -1,7 +1,7 @@
 import { useActions } from 'kea'
 
 import { IconSearch } from '@posthog/icons'
-import { Button, Kbd } from '@posthog/quill'
+import { Button, Kbd } from '@flind/quill'
 
 import { commandLogic } from 'lib/components/Command/commandLogic'
 import { isMac } from 'lib/utils/dom'

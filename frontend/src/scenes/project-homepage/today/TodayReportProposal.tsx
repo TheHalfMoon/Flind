@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { Text } from '@posthog/quill'
+import { Text } from '@flind/quill'
 
 import { hasActiveReportPullRequest } from 'products/signals/frontend/inbox/utils/reportPullRequests'
 

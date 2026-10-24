@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { Button, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Skeleton, Text } from '@posthog/quill'
+import { Button, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Skeleton, Text } from '@flind/quill'
 
 import { canvasSpaceLabel } from '../canvasTasksApi'
 import { canvasNewLogic } from './canvasNewLogic'

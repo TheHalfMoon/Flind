@@ -2,13 +2,13 @@ import type {
   SessionConfigSelectOption,
   SessionConfigSelectOptions,
 } from "@agentclientprotocol/sdk";
-import { compareModelsForPicker } from "@posthog/agent/gateway-models";
+import { compareModelsForPicker } from "@flind/agent/gateway-models";
 import {
   DropdownMenuGroup,
   DropdownMenuLabel,
   DropdownMenuRadioGroup,
   DropdownMenuSeparator,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { isSelectGroup } from "@posthog/shared";
 import { gateRestrictedModelPick } from "@posthog/ui/features/billing/modelGate";
 import { ModelCostFooter } from "@posthog/ui/features/sessions/components/ModelCostChip";

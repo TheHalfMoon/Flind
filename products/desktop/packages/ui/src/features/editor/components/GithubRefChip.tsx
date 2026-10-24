@@ -1,6 +1,6 @@
 import type { Icon } from "@phosphor-icons/react";
 import { GithubLogoIcon, GitPullRequestIcon } from "@phosphor-icons/react";
-import { Button, cn } from "@posthog/quill";
+import { Button, cn } from "@flind/quill";
 import type { ComponentProps, ReactElement, ReactNode } from "react";
 import { forwardRef } from "react";
 

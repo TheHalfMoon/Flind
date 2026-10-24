@@ -1,7 +1,7 @@
 import type { ReactElement } from 'react'
 
 import { DataTable, type DataTableColumn } from '@posthog/mcp-ui'
-import { Badge, Card, CardContent, Progress } from '@posthog/quill'
+import { Badge, Card, CardContent, Progress } from '@flind/quill'
 
 export interface ExperimentVariantStats {
     key: string

@@ -1,5 +1,5 @@
 import { IconExternal } from '@posthog/icons'
-import { Button, Skeleton, Text } from '@posthog/quill'
+import { Button, Skeleton, Text } from '@flind/quill'
 
 import { LinkPrimitive } from 'lib/lemon-ui/Link'
 

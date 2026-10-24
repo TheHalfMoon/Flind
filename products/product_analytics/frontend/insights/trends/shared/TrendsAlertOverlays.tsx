@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import React, { useMemo } from 'react'
 
-import { AnomalyPointsLayer, ReferenceLines } from '@posthog/quill-charts'
+import { AnomalyPointsLayer, ReferenceLines } from '@flind/quill-charts'
 
 import type { InsightLogicProps } from '~/types'
 

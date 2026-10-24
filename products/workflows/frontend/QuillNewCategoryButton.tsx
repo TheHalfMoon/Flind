@@ -1,7 +1,7 @@
 import { useActions } from 'kea'
 
 import { IconPlus } from '@posthog/icons'
-import { Button } from '@posthog/quill'
+import { Button } from '@flind/quill'
 
 import { optOutCategoriesLogic } from './OptOuts/optOutCategoriesLogic'
 

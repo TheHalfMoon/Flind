@@ -1,5 +1,5 @@
 import type { CodexCloudTerminal } from "@posthog/core/integrations/codexCloudAccountService";
-import { Button, Switch } from "@posthog/quill";
+import { Button, Switch } from "@flind/quill";
 import { ANALYTICS_EVENTS } from "@posthog/shared";
 import { setCloudSubscriptionOn } from "@posthog/ui/features/settings/adapterSubscription";
 import {

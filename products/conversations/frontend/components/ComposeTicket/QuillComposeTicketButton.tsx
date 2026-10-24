@@ -4,7 +4,7 @@ import { useState } from 'react'
 
 import { IconLetter } from '@posthog/icons'
 import { LemonButtonProps } from '@posthog/lemon-ui'
-import { Button, Popover, PopoverContent, PopoverTrigger } from '@posthog/quill'
+import { Button, Popover, PopoverContent, PopoverTrigger } from '@flind/quill'
 
 import { AccessControlAction } from 'lib/components/AccessControlAction'
 import { quillButtonVariant } from 'lib/lemon-ui/LemonButton/quillButtonVariant'

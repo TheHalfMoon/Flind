@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 
-import { useChartLayout } from '@posthog/quill-charts'
+import { useChartLayout } from '@flind/quill-charts'
 
 import { cn } from 'lib/utils/css-classes'
 

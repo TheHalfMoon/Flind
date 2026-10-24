@@ -16,7 +16,7 @@ import {
   Heading,
   Skeleton,
   Text,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { getCloudUrlFromRegion } from "@posthog/shared";
 import { useAuthStateValue } from "@posthog/ui/features/auth/store";
 import { useEvidenceUrl } from "@posthog/ui/features/editor/components/EvidenceRefChip";

@@ -16,7 +16,7 @@ import {
     TableHead,
     TableHeader,
     TableRow,
-} from '@posthog/quill-primitives'
+} from '@flind/quill-primitives'
 
 import { formatPercentage } from 'lib/utils/numbers'
 

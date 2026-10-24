@@ -36,9 +36,9 @@ const mockCreateParseHeadersStep = createParseHeadersStep as jest.Mock
 const mockCreateApplyEventRestrictionsStep = createApplyEventRestrictionsStep as jest.Mock
 
 // The pipeline's parse+anonymize step runs inside the native addon; scrub-dependent tests need it built.
-let rustAddon: typeof import('@posthog/replay-anonymizer') | null = null
+let rustAddon: typeof import('@flind/replay-anonymizer') | null = null
 try {
-    rustAddon = require('@posthog/replay-anonymizer')
+    rustAddon = require('@flind/replay-anonymizer')
     rustAddon!.initAnonymizer(defaultAllowLists().entries())
 } catch (e) {
     if (process.env.CI) {

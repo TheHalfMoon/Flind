@@ -1,5 +1,5 @@
 import { IconFilter } from '@posthog/icons'
-import { Button, DropdownMenuTrigger, Tooltip, TooltipContent, TooltipTrigger, cn } from '@posthog/quill'
+import { Button, DropdownMenuTrigger, Tooltip, TooltipContent, TooltipTrigger, cn } from '@flind/quill'
 
 /** The funnel button that opens a list's filter menu. A dot says a filter narrows the list. */
 export function TodayFilterMenuTrigger({ active, dataAttr }: { active: boolean; dataAttr: string }): JSX.Element {

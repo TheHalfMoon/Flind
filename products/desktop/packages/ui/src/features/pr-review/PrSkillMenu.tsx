@@ -9,7 +9,7 @@ import {
   ComboboxItem,
   ComboboxList,
   ComboboxTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
 import {
   getAuthIdentity,

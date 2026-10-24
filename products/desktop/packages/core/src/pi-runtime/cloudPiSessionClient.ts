@@ -1,11 +1,11 @@
 import {
   type PiRemoteRpcClient,
   RemotePiRpcClient,
-} from "@posthog/agent/pi/remote-rpc-client";
+} from "@flind/agent/pi/remote-rpc-client";
 import type {
   PiMcpPermissionResponseCommand,
   RpcCommand,
-} from "@posthog/agent/pi/rpc-transport";
+} from "@flind/agent/pi/rpc-transport";
 import {
   type PiExtensionSessionEvent,
   type PiPersistedSessionConfig,
@@ -14,7 +14,7 @@ import {
   piExtensionSessionEventSchema,
   piExtensionUIResponseSchema,
   type RpcExtensionUIResponse,
-} from "@posthog/agent/pi/types";
+} from "@flind/agent/pi/types";
 import {
   type AgentConversationEvent,
   acpNotificationToAgentConversationEvent,

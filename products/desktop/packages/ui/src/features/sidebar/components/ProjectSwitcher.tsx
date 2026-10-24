@@ -29,7 +29,7 @@ import {
   ItemContent,
   ItemDescription,
   ItemTitle,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { EXTERNAL_LINKS } from "@posthog/shared";
 import {
   ANALYTICS_EVENTS,

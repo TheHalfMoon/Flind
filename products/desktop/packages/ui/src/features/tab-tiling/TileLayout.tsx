@@ -1,4 +1,4 @@
-import { cn } from "@posthog/quill";
+import { cn } from "@flind/quill";
 import type { BrowserTab } from "@posthog/shared";
 import { usePinnedTabsStore } from "@posthog/ui/features/browser-tabs/pinnedTabsStore";
 import { useTabReorderStore } from "@posthog/ui/features/browser-tabs/tabReorderStore";

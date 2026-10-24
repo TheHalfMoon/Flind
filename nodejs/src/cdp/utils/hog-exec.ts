@@ -1,6 +1,6 @@
 import crypto from 'crypto'
 
-import { DEFAULT_TIMEOUT_MS, ExecOptions, ExecResult, exec } from '@posthog/hogvm'
+import { DEFAULT_TIMEOUT_MS, ExecOptions, ExecResult, exec } from '@flind/logicvm'
 
 import { instrumentFn } from '~/common/tracing/tracing-utils'
 import { yieldEventLoopIfNeeded } from '~/common/utils/event-loop-yield'

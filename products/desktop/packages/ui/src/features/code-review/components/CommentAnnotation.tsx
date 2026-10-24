@@ -7,7 +7,7 @@ import {
   InputGroupAddon,
   InputGroupButton,
   InputGroupTextarea,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { Text, Tooltip } from "@radix-ui/themes";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { isSendMessageSubmitKey } from "../../../utils/sendMessageKey";

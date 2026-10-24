@@ -2,7 +2,7 @@ import '@testing-library/jest-dom'
 
 import { cleanup, fireEvent, screen, waitFor } from '@testing-library/react'
 
-import { dimensions, setupJsdom, setupSyncRaf } from '@posthog/quill-charts/testing'
+import { dimensions, setupJsdom, setupSyncRaf } from '@flind/quill-charts/testing'
 
 import { ExportType } from '~/exporter/types'
 import { NodeKind } from '~/queries/schema/schema-general'

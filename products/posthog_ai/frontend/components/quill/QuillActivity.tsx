@@ -1,4 +1,4 @@
-import { cn } from '@posthog/quill-primitives'
+import { cn } from '@flind/quill-primitives'
 
 import { ActivitySubsteps } from '../ActivitySubsteps'
 import type { ActivityProps } from '../activityTypes'

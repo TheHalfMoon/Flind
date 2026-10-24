@@ -1,6 +1,6 @@
 import type { ReactElement } from 'react'
 
-import { Badge, Card, CardContent, CardHeader, CardTitle, CardDescription } from '@posthog/quill'
+import { Badge, Card, CardContent, CardHeader, CardTitle, CardDescription } from '@flind/quill'
 
 import { PropertyFilterList, type PropertyFilter } from './PropertyFilterList'
 

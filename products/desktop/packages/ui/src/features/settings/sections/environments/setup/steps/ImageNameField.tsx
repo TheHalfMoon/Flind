@@ -4,7 +4,7 @@ import {
   withImageName,
 } from "@posthog/core/settings/environmentSetup";
 import { randomImageName } from "@posthog/core/settings/imagePreset";
-import { Button, Input, Label, Text } from "@posthog/quill";
+import { Button, Input, Label, Text } from "@flind/quill";
 import { StepFieldError } from "@posthog/ui/features/settings/sections/environments/setup/StepFieldError";
 import { useId } from "react";
 

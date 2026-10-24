@@ -8,8 +8,8 @@ import {
     type Series,
     type TooltipContext,
     ValueLabels,
-} from '@posthog/quill-charts'
-import { Skeleton } from '@posthog/quill-primitives'
+} from '@flind/quill-charts'
+import { Skeleton } from '@flind/quill-primitives'
 
 import { useChartConfig } from 'lib/charts/hooks'
 import { formatPercentage } from 'lib/utils/numbers'

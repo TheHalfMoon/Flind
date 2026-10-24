@@ -5,16 +5,16 @@ import {
   parseSessionEntries,
   type SessionEntry,
 } from "@earendil-works/pi-coding-agent";
-import type { PiRpcClient } from "@posthog/agent/pi/rpc-client";
-import type { RpcCommand, RpcResponse } from "@posthog/agent/pi/rpc-transport";
-import type { PiRuntime } from "@posthog/agent/pi/runtime";
+import type { PiRpcClient } from "@flind/agent/pi/rpc-client";
+import type { RpcCommand, RpcResponse } from "@flind/agent/pi/rpc-transport";
+import type { PiRuntime } from "@flind/agent/pi/runtime";
 import {
   PI_THINKING_LEVELS,
   type PiExtensionEvent,
   type PiPersistedSessionConfig,
   type PiQueueSnapshot,
   type RpcExtensionUIResponse,
-} from "@posthog/agent/pi/types";
+} from "@flind/agent/pi/types";
 import { ROOT_LOGGER, type RootLogger } from "@posthog/di/logger";
 import {
   type AgentConversationEvent,

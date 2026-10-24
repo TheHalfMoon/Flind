@@ -13,7 +13,7 @@ import {
 import { Clock } from 'lucide-react'
 import * as React from 'react'
 
-import { Button, Popover, PopoverContent, PopoverTrigger } from '@posthog/quill-primitives'
+import { Button, Popover, PopoverContent, PopoverTrigger } from '@flind/quill-primitives'
 
 import { DateTimePicker, type DateTimeValue } from './date-time-picker'
 import { CUSTOM_RANGE, type DateTimeRange } from './date-time-ranges'

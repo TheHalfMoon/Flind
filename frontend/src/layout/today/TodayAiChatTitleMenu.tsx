@@ -14,7 +14,7 @@ import {
     TooltipContent,
     TooltipTrigger,
     cn,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import { todayAiChatLogic } from './todayAiChatLogic'
 import { TodaySessionIcon } from './TodaySessionIcon'

@@ -1,5 +1,6 @@
 {
-    "name": "@posthog/openapi-codegen",
+    "name": "@flind/openapi-codegen",
+    "private": true,
     "version": "0.0.0",
     "description": "Shared OpenAPI schema utilities for Orval-based code generation",
     "license": "MIT",

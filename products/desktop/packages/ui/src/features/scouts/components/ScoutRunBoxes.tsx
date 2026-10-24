@@ -11,7 +11,7 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { formatRelativeTimeLong } from "@posthog/shared";
 import { getPostHogUrl } from "@posthog/ui/utils/urls";
 

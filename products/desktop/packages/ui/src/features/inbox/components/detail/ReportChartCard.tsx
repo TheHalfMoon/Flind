@@ -7,7 +7,7 @@ import {
   reportChartHeightClass,
   reportChartOpenTarget,
 } from "@posthog/core/inbox/reportCharts";
-import { cn } from "@posthog/quill";
+import { cn } from "@flind/quill";
 import {
   BarChart,
   LineChart,
@@ -15,7 +15,7 @@ import {
   TimeSeriesBarChart,
   TimeSeriesLineChart,
   useChartTheme,
-} from "@posthog/quill-charts";
+} from "@flind/quill-charts";
 import { getCloudUrlFromRegion } from "@posthog/shared";
 import type { SignalReportChart } from "@posthog/shared/types";
 import { useAuthStateValue } from "@posthog/ui/features/auth/store";

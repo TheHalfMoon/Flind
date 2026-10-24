@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { Button, ButtonGroup, Skeleton, Spinner, Text } from '@posthog/quill-primitives'
+import { Button, ButtonGroup, Skeleton, Spinner, Text } from '@flind/quill-primitives'
 
 import { urls } from 'scenes/urls'
 

@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconWarning } from '@posthog/icons'
-import { Text } from '@posthog/quill-primitives'
+import { Text } from '@flind/quill-primitives'
 
 import { CodeEditor } from 'lib/monaco/CodeEditor'
 

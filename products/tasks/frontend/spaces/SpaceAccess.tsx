@@ -14,7 +14,7 @@ import {
     ItemDescription,
     ItemTitle,
     Text,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import { spaceSceneLogic } from './spaceSceneLogic'
 import { SpaceSettingsSection } from './SpaceSettingsSection'

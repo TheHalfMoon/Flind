@@ -3,7 +3,7 @@ import { router } from 'kea-router'
 import type { LocationChangedPayload } from 'kea-router/lib/types'
 import posthog from 'posthog-js'
 
-import { toast } from '@posthog/quill'
+import { toast } from '@flind/quill'
 
 import { removeProjectIdIfPresent } from 'lib/utils/kea-router'
 import { newDashboardLogic } from 'scenes/dashboard/newDashboardLogic'

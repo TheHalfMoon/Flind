@@ -3,7 +3,7 @@ import '@testing-library/jest-dom'
 import { cleanup, render, screen, waitFor } from '@testing-library/react'
 import { BindLogic } from 'kea'
 
-import { clickAtIndex, ensureJsdom, hoverUntilTooltip } from '@posthog/quill-charts/testing'
+import { clickAtIndex, ensureJsdom, hoverUntilTooltip } from '@flind/quill-charts/testing'
 
 import { insightLogic } from 'scenes/insights/insightLogic'
 

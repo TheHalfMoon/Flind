@@ -2,7 +2,7 @@ import { useActions, useMountedLogic, useValues } from 'kea'
 
 import { IconHeart, IconHeartFilled, IconPlus } from '@posthog/icons'
 import { LemonBanner, LemonButton, LemonInput, LemonSegmentedButton, LemonTable, Link } from '@posthog/lemon-ui'
-import { Button } from '@posthog/quill'
+import { Button } from '@flind/quill'
 
 import { MemberSelectMultiplePopover } from 'lib/components/MemberSelectMultiplePopover'
 import { NotFound } from 'lib/components/NotFound'

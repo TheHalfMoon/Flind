@@ -1,4 +1,4 @@
-import type { YAxisFormat } from '@posthog/quill-charts'
+import type { YAxisFormat } from '@flind/quill-charts'
 
 // Dependency-neutral types shared by the web trends container and the MCP UI app when they call
 // the trends chart transforms. Deliberately free of `~/` and `lib/` imports (and kea) so they

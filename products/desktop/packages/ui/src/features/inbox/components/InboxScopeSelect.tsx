@@ -20,7 +20,7 @@ import {
   ComboboxItem,
   ComboboxList,
   ComboboxTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { ReviewerAvatar } from "@posthog/ui/features/inbox/components/ReviewerAvatar";
 import { getSuggestedReviewerDisplayName } from "@posthog/ui/features/inbox/filterOptions";
 import { useInboxScopeOptions } from "@posthog/ui/features/inbox/hooks/useInboxScopeOptions";

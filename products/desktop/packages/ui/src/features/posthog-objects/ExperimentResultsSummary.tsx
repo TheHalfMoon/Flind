@@ -1,5 +1,5 @@
 import type { ExperimentResultsPresentation } from "@posthog/api-client/evidence-previews";
-import { Accordion, Skeleton, Text } from "@posthog/quill";
+import { Accordion, Skeleton, Text } from "@flind/quill";
 import type { ReactElement } from "react";
 import { ExperimentMetricResult } from "./ExperimentMetricResult";
 import { ExperimentResultNotice } from "./ExperimentResultNotice";

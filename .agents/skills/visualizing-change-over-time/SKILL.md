@@ -3,7 +3,7 @@ name: visualizing-change-over-time
 description: >
   Helps PostHog engineers and agents pick the right chart when a request is about
   visualizing change over time, before/after comparisons, or period-over-period
-  movement while building UI with @posthog/quill-charts (dashboards, reports, the
+  movement while building UI with @flind/quill-charts (dashboards, reports, the
   mcp_analytics frontend, custom visualizations). Use when a user asks how something
   "changed", "moved", "grew", "dropped", "improved", or "regressed" between two
   points or periods, or mentions "before/after", "period over period", "week over
@@ -18,7 +18,7 @@ When a request is about **how something changed**, the default reach is a line/a
 trend — and that is usually right for a continuous series with many x points. But for
 some change-over-time shapes a different chart reads far better. This skill is the
 menu to offer, including the **slope graph**, when building visualizations with
-[`@posthog/quill-charts`](../../../packages/quill/packages/charts/AGENTS.md).
+[`@flind/quill-charts`](../../../packages/quill/packages/charts/AGENTS.md).
 
 Present the fitting option(s) and let the user choose — none of these is mandatory.
 
@@ -39,9 +39,9 @@ grouped bar or a 2-point line chart.
 ## Using the SlopeChart
 
 ```tsx
-import { SlopeChart } from '@posthog/quill-charts'
-import type { Series } from '@posthog/quill-charts'
-import type { SlopeSeriesMeta } from '@posthog/quill-charts'
+import { SlopeChart } from '@flind/quill-charts'
+import type { Series } from '@flind/quill-charts'
+import type { SlopeSeriesMeta } from '@flind/quill-charts'
 
 // One series per entity; `data` is exactly [start, end].
 const series: Series<SlopeSeriesMeta>[] = [
@@ -78,7 +78,7 @@ charts AGENTS.md for theme wiring and sizing.
 
 There are **two** ways to render a slope graph; which you reach for depends on the surface:
 
-- **`SlopeChart`** — the `@posthog/quill-charts` component. Use it when building UI
+- **`SlopeChart`** — the `@flind/quill-charts` component. Use it when building UI
   directly: dashboards, reports, the `mcp_analytics` frontend, custom visualizations.
   It backs the **Slope** view toggle on Max's inline trends result card
   (`services/mcp/src/ui-apps/components/TrendsVisualizer.tsx`).

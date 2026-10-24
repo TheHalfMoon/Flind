@@ -1,5 +1,5 @@
 import { GearSix, Lifebuoy, SignOut } from "@phosphor-icons/react";
-import { Button } from "@posthog/quill";
+import { Button } from "@flind/quill";
 import { useLogoutMutation } from "@posthog/ui/features/auth/useAuthMutations";
 import { useIsOrgAdmin } from "@posthog/ui/features/auth/useOrgRole";
 import { SHORTCUTS } from "@posthog/ui/features/command/keyboard-shortcuts";

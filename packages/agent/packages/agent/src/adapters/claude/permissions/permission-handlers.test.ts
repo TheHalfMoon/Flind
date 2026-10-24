@@ -4,7 +4,7 @@ import * as path from "node:path";
 import {
   compilePostHogExecPermissionRegex,
   DEFAULT_POSTHOG_EXEC_PERMISSION_REGEX_SOURCE,
-} from "@posthog/harness/extensions/posthog-mcp-policy";
+} from "@flind/harness/extensions/posthog-mcp-policy";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import {
   clearMcpToolMetadataCache,

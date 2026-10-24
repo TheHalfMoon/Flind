@@ -1,12 +1,12 @@
 import { useMemo } from 'react'
 
-import { TimeSeriesBarChart, TimeSeriesComboChart, TimeSeriesLineChart } from '@posthog/quill-charts'
+import { TimeSeriesBarChart, TimeSeriesComboChart, TimeSeriesLineChart } from '@flind/quill-charts'
 import type {
     Series,
     TimeSeriesBarChartConfig,
     TimeSeriesComboChartConfig,
     TimeSeriesLineChartConfig,
-} from '@posthog/quill-charts'
+} from '@flind/quill-charts'
 
 import { useChartConfig, useChartTheme } from 'lib/charts/hooks'
 import { getColorVar, getSeriesColor } from 'lib/colors'

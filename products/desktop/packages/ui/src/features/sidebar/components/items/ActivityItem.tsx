@@ -1,5 +1,5 @@
 import { BellIcon } from "@phosphor-icons/react";
-import { Popover, PopoverTrigger } from "@posthog/quill";
+import { Popover, PopoverTrigger } from "@flind/quill";
 import { ActivityHoverCard } from "@posthog/ui/features/canvas/components/ActivityHoverCard";
 import { useTaskActivity } from "@posthog/ui/features/canvas/hooks/useTaskActivity";
 import { type MouseEventHandler, useRef, useState } from "react";

@@ -14,8 +14,8 @@ import type { ManagedWarehouseTrinoMonitoringSnapshotResponseApi } from 'product
 
 import { TrinoMonitoringTab } from './TrinoMonitoringTab'
 
-jest.mock('@posthog/quill-charts', () => ({
-    ...jest.requireActual('@posthog/quill-charts'),
+jest.mock('@flind/quill-charts', () => ({
+    ...jest.requireActual('@flind/quill-charts'),
     TimeSeriesLineChart: jest.fn(() => <div data-testid="monitoring-chart" />),
 }))
 

@@ -11,7 +11,7 @@ import {
     Skeleton,
     Spinner,
     Text,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import { humanFriendlyNumber } from 'lib/utils/numbers'
 import { pluralize } from 'lib/utils/strings'

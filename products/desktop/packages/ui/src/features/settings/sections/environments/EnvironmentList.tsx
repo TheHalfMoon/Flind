@@ -1,5 +1,5 @@
 import { PencilSimple } from "@phosphor-icons/react";
-import { Badge, Button, Text } from "@posthog/quill";
+import { Badge, Button, Text } from "@flind/quill";
 import type {
   NetworkAccessLevel,
   SandboxEnvironment,

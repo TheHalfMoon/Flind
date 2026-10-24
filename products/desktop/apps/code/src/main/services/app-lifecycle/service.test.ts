@@ -105,7 +105,7 @@ vi.mock("@posthog/workspace-server/services/agent/codex-home", () => ({
   cleanupAllCodexHomes: mockCleanupAllCodexHomes,
 }));
 
-vi.mock("@posthog/agent/adapters/claude/session/pinned-settings", () => ({
+vi.mock("@flind/agent/adapters/claude/session/pinned-settings", () => ({
   cleanupAllPinnedSettings: mockCleanupAllPinnedSettings,
 }));
 

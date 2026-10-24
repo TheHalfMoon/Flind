@@ -1,5 +1,5 @@
 import { IconCrown } from '@posthog/icons'
-import { AvatarGroup, Tooltip, TooltipContent, TooltipTrigger } from '@posthog/quill'
+import { AvatarGroup, Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill'
 
 import { SpacePresence } from './spacePresence'
 import { TaskUserAvatar, taskUserName } from './TaskUserAvatar'

@@ -8,7 +8,7 @@ import {
   Textarea,
   ToggleGroup,
   ToggleGroupItem,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { MarkdownRenderer } from "@posthog/ui/features/editor/components/MarkdownRenderer";
 import { LoadingState } from "@posthog/ui/primitives/LoadingState";
 import { RelativeTimestamp } from "@posthog/ui/primitives/RelativeTimestamp";

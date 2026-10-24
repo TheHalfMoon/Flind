@@ -1,4 +1,4 @@
-import { LOCAL_TOOLS_MCP_NAME } from "@posthog/harness/extensions/local-tools";
+import { LOCAL_TOOLS_MCP_NAME } from "@flind/harness/extensions/local-tools";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { buildLocalToolsServer } from "./local-tools-mcp";
 

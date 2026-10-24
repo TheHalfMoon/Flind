@@ -1,5 +1,5 @@
 import { IconEllipsis, IconTrash } from '@posthog/icons'
-import { Button, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@posthog/quill'
+import { Button, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@flind/quill'
 
 import { AccessControlAction } from 'lib/components/AccessControlAction'
 

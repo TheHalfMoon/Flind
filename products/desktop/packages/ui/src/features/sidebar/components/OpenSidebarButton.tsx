@@ -1,5 +1,5 @@
 import { SidebarSimpleIcon } from "@phosphor-icons/react";
-import { Button, Kbd } from "@posthog/quill";
+import { Button, Kbd } from "@flind/quill";
 import {
   formatHotkey,
   SHORTCUTS,

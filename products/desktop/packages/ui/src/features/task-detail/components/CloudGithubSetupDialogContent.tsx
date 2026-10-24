@@ -5,7 +5,7 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { GithubConnectionIcon } from "@posthog/ui/features/integrations/components/GithubConnectionIcon";
 import type { ReactElement } from "react";
 

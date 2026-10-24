@@ -6,7 +6,7 @@ import { useState } from 'react'
 import * as explorerPng from '@posthog/brand/hoggies/png/explorer'
 import { IconDocument, IconGear, IconHeadset } from '@posthog/icons'
 import { LemonButton, Link } from '@posthog/lemon-ui'
-import { Button } from '@posthog/quill'
+import { Button } from '@flind/quill'
 import { PostHogCaptureOnViewed } from '@posthog/react'
 
 import { isAccessDeniedError, shouldReportApiFailure } from 'lib/api-error'

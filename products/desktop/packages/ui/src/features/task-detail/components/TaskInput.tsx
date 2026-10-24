@@ -18,7 +18,7 @@ import {
 import { preferredRunsOnPi } from "@posthog/core/task-detail/previewConfig";
 import { useServiceOptional } from "@posthog/di/react";
 import { useHostTRPC, useHostTRPCClient } from "@posthog/host-router/react";
-import { ButtonGroup } from "@posthog/quill";
+import { ButtonGroup } from "@flind/quill";
 import {
   type AgentRuntime,
   ANALYTICS_EVENTS,

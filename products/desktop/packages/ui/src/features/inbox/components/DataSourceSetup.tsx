@@ -1,6 +1,6 @@
 import { GITHUB_INSTALL_PENDING_MESSAGE } from "@posthog/core/integrations/connectErrors";
 import { githubIssuesSchemaNames } from "@posthog/core/integrations/githubSourceRepos";
-import { Button } from "@posthog/quill";
+import { Button } from "@flind/quill";
 import {
   EXTERNAL_INBOX_SOURCE_BY_PRODUCT,
   type ToggleableSourceProduct,

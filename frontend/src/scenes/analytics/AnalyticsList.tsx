@@ -26,7 +26,7 @@ import {
     EmptyTitle,
     Spinner,
     Text,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import { NotFound } from 'lib/components/NotFound'
 import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'

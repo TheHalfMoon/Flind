@@ -6,8 +6,8 @@ const getStack = vi.fn();
 const fetchPullRequestRefs = vi.fn();
 const unstack = vi.fn();
 
-vi.mock("@posthog/git/stacks", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@posthog/git/stacks")>();
+vi.mock("@flind/git/stacks", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@flind/git/stacks")>();
   return {
     ...actual,
     createStack: (...args: unknown[]) => createStack(...args),

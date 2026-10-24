@@ -2,7 +2,7 @@ import type {
   BaseImageChoice,
   EnvironmentSetupPlan,
 } from "@posthog/core/settings/environmentSetup";
-import { Button, Label, Text } from "@posthog/quill";
+import { Button, Label, Text } from "@flind/quill";
 import type { SandboxCustomImage } from "@posthog/shared/domain-types";
 import { SettingsSelect } from "@posthog/ui/features/settings/components/SettingsSelect";
 import { StepBody } from "@posthog/ui/features/settings/sections/environments/setup/StepBody";

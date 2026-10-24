@@ -2,7 +2,7 @@ import { endOfDay, format, getMonth, getYear, startOfDay, subMonths } from 'date
 import { ArrowRight, SettingsIcon } from 'lucide-react'
 import * as React from 'react'
 
-import { Badge, Button, ScrollArea, Separator, cn } from '@posthog/quill-primitives'
+import { Badge, Button, ScrollArea, Separator, cn } from '@flind/quill-primitives'
 
 import { Calendar } from './calendar-grid'
 import { CUSTOM_RANGE, type DateTimeRange, quickRanges } from './date-time-ranges'

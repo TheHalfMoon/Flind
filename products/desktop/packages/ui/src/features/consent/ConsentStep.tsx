@@ -1,5 +1,5 @@
 import { ArrowLeft, ArrowRight } from "@phosphor-icons/react";
-import { Button } from "@posthog/quill";
+import { Button } from "@flind/quill";
 import { useIsOrgAdmin } from "@posthog/ui/features/auth/useOrgRole";
 import { StepActions } from "@posthog/ui/features/onboarding/components/StepActions";
 import { LoadingState } from "@posthog/ui/primitives/LoadingState";

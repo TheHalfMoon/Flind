@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 
-import { type Series, TimeSeriesBarChart } from '@posthog/quill-charts'
+import { type Series, TimeSeriesBarChart } from '@flind/quill-charts'
 
 import { useChartConfig, useChartTheme } from 'lib/charts/hooks'
 import { getColorVar } from 'lib/colors'

@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useCallback, useMemo } from 'react'
 
-import { Skeleton } from '@posthog/quill-primitives'
+import { Skeleton } from '@flind/quill-primitives'
 
 import { useChartTheme } from 'lib/charts/hooks'
 import { FEATURE_FLAGS } from 'lib/constants'

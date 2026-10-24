@@ -1,6 +1,6 @@
 import type { ReactElement } from 'react'
 
-import { Badge, Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@posthog/quill'
+import { Badge, Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@flind/quill'
 
 export interface PropertyFilter {
     key: string

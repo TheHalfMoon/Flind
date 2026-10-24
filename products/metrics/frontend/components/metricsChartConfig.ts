@@ -4,7 +4,7 @@ import type {
     TimeSeriesLineChartConfig,
     XAxisConfig,
     YAxisConfig,
-} from '@posthog/quill-charts'
+} from '@flind/quill-charts'
 
 import type { GoalLine, MetricsDisplaySettings, MetricsYAxisSettings } from '~/queries/schema/schema-general'
 

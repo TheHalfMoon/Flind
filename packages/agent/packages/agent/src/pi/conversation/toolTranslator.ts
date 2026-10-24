@@ -2,7 +2,7 @@ import type { ImageContent, TextContent } from "@earendil-works/pi-ai";
 import type {
   AgentToolCallContent,
   AgentToolCallLocation,
-} from "@posthog/agent-contracts";
+} from "@flind/agent-contracts";
 
 export interface PiToolTranslatorInput {
   toolCallId: string;

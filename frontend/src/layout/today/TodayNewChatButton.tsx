@@ -2,7 +2,7 @@ import { useValues } from 'kea'
 import { router } from 'kea-router'
 
 import { IconPlus } from '@posthog/icons'
-import { Button, Tooltip, TooltipContent, TooltipTrigger, cn } from '@posthog/quill'
+import { Button, Tooltip, TooltipContent, TooltipTrigger, cn } from '@flind/quill'
 
 import { LinkPrimitive } from 'lib/lemon-ui/Link'
 import { maxGlobalLogic } from 'scenes/max/maxGlobalLogic'

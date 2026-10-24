@@ -15,8 +15,8 @@ import {
 } from 'kea'
 import posthog from 'posthog-js'
 
-import { agentConversationEventToAcpNotification } from '@posthog/agent-contracts/acp-conversation'
-import type { AgentConversationEvent } from '@posthog/agent-contracts/agent-conversation'
+import { agentConversationEventToAcpNotification } from '@flind/agent-contracts/acp-conversation'
+import type { AgentConversationEvent } from '@flind/agent-contracts/agent-conversation'
 
 import api from 'lib/api'
 import { lemonToast } from 'lib/lemon-ui/LemonToast'

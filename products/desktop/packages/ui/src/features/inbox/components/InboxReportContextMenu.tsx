@@ -1,4 +1,4 @@
-import { ContextMenu, ContextMenuTrigger } from "@posthog/quill";
+import { ContextMenu, ContextMenuTrigger } from "@flind/quill";
 import type { SignalReport } from "@posthog/shared/types";
 import { InboxReportContextMenuContent } from "@posthog/ui/features/inbox/components/InboxReportContextMenuContent";
 import { type ReactNode, useState } from "react";

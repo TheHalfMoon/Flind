@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconExternal, IconFeatures } from '@posthog/icons'
-import { Button, Heading, Skeleton, Text, cn } from '@posthog/quill'
+import { Button, Heading, Skeleton, Text, cn } from '@flind/quill'
 
 import { flindPublicUrl } from 'lib/flindPublicLinks'
 import { FEATURE_FLAGS } from 'lib/constants'

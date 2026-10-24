@@ -1,4 +1,4 @@
-import { cn } from "@posthog/quill";
+import { cn } from "@flind/quill";
 import { motion } from "framer-motion";
 import type { ReactElement, ReactNode } from "react";
 import { useLayoutEffect, useRef, useState } from "react";

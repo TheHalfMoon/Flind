@@ -1,7 +1,7 @@
 import { cleanup, render, screen } from '@testing-library/react'
 import type { ComponentProps } from 'react'
 
-import { type HogChart, ensureJsdom, getHogChart } from '@posthog/quill-charts/testing'
+import { type HogChart, ensureJsdom, getHogChart } from '@flind/quill-charts/testing'
 
 import { dayjs } from 'lib/dayjs'
 

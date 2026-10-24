@@ -1,4 +1,4 @@
-import { cn } from "@posthog/quill";
+import { cn } from "@flind/quill";
 import { useReducedMotion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 

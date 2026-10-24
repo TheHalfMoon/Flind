@@ -1,4 +1,4 @@
-import { Card } from '@posthog/quill'
+import { Card } from '@flind/quill'
 
 import {
     Sources,

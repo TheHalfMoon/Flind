@@ -3,7 +3,7 @@ import { type ReactNode } from 'react'
 
 import { IconArchive, IconChevronLeft } from '@posthog/icons'
 import { LemonDivider } from '@posthog/lemon-ui'
-import { Button } from '@posthog/quill-primitives'
+import { Button } from '@flind/quill-primitives'
 
 import { dayjs } from 'lib/dayjs'
 import { LinkPrimitive } from 'lib/lemon-ui/Link'

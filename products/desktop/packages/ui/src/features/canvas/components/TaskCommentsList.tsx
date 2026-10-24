@@ -8,7 +8,7 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@posthog/quill";
+} from "@flind/quill";
 import type {
   Task,
   TaskThreadMessage,

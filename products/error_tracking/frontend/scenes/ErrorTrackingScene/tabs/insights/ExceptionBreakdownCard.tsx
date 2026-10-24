@@ -1,4 +1,4 @@
-import { type ChartTheme } from '@posthog/quill-charts'
+import { type ChartTheme } from '@flind/quill-charts'
 
 import { Text } from 'lib/ui/quill'
 

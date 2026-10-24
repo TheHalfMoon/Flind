@@ -1,4 +1,4 @@
-import { SIMPLIFIED_TECHNICAL_ENGLISH_INSTRUCTION } from "@posthog/harness/extensions/benjamin";
+import { SIMPLIFIED_TECHNICAL_ENGLISH_INSTRUCTION } from "@flind/harness/extensions/benjamin";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import type {
   ProductServices,

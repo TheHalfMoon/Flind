@@ -3,7 +3,7 @@ import { router } from 'kea-router'
 
 import { IconWrench } from '@posthog/icons'
 import { LemonButton, Link } from '@posthog/lemon-ui'
-import { Button } from '@posthog/quill'
+import { Button } from '@flind/quill'
 
 import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'
 import { useOnMountEffect } from 'lib/hooks/useOnMountEffect'

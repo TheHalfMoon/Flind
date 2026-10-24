@@ -1,6 +1,6 @@
 import * as path from "node:path";
-import type { PostHogAPIConfig } from "@posthog/agent-contracts";
-import { enrichSource, PostHogEnricher } from "@posthog/enricher";
+import type { PostHogAPIConfig } from "@flind/agent-contracts";
+import { enrichSource, PostHogEnricher } from "@flind/enricher";
 
 export interface FileEnrichmentDeps {
   enricher: PostHogEnricher;

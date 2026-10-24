@@ -1,4 +1,4 @@
-import { Button, Switch } from "@posthog/quill";
+import { Button, Switch } from "@flind/quill";
 import { useMeQuery } from "@posthog/ui/features/auth/useMeQuery";
 import {
   SettingsCard,

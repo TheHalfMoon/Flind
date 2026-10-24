@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@posthog/quill'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@flind/quill'
 
 import { customerJourneysLogic } from './customerJourneysLogic'
 

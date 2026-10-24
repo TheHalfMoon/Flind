@@ -1,4 +1,4 @@
-import { MenuLabel, Spinner, cn } from '@posthog/quill'
+import { MenuLabel, Spinner, cn } from '@flind/quill'
 
 import { CommandKSearchNotice } from './CommandKSearchNotice'
 import { CommandKSearchRow } from './CommandKSearchRow'

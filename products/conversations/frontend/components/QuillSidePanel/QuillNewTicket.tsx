@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconArrowLeft } from '@posthog/icons'
-import { Button, Heading, Tooltip, TooltipContent, TooltipTrigger } from '@posthog/quill'
+import { Button, Heading, Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill'
 
 import { sidepanelTicketsLogic } from '../SidePanel/sidepanelTicketsLogic'
 import { QuillTicketComposer } from './QuillTicketComposer'

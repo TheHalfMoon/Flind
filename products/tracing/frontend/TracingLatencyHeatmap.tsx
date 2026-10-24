@@ -1,7 +1,7 @@
 import { useCallback, useMemo } from 'react'
 
 import { SpinnerOverlay } from '@posthog/lemon-ui'
-import { Heatmap, type HeatmapBrushData, useChartTheme } from '@posthog/quill-charts'
+import { Heatmap, type HeatmapBrushData, useChartTheme } from '@flind/quill-charts'
 
 import { dayjs } from 'lib/dayjs'
 import { shortTimeZone } from 'lib/utils/timezones'

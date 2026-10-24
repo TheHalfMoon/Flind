@@ -4,7 +4,7 @@ import '@testing-library/jest-dom'
 
 import { cleanup, waitFor } from '@testing-library/react'
 
-import { setupJsdom, setupSyncRaf } from '@posthog/quill-charts/testing'
+import { setupJsdom, setupSyncRaf } from '@flind/quill-charts/testing'
 
 import { renderWithInsights } from '~/test/insight-testing'
 import { InsightModel } from '~/types'

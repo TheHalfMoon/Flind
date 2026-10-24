@@ -94,10 +94,10 @@ const MAX_POLL_INTERVAL_MS = 86_400_000
 const REVOKED_PARTITION_CODES = new Set([-172, -190, -142, -144])
 
 /** The addon is a native library and `index.ts` imports every server, so it loads on first use. */
-let urlPolicy: typeof import('@posthog/ai-research-v4-native') | undefined
-function getUrlPolicy(): typeof import('@posthog/ai-research-v4-native') {
+let urlPolicy: typeof import('@flind/ai-research-v4-native') | undefined
+function getUrlPolicy(): typeof import('@flind/ai-research-v4-native') {
     if (!urlPolicy) {
-        urlPolicy = require('@posthog/ai-research-v4-native') as typeof import('@posthog/ai-research-v4-native')
+        urlPolicy = require('@flind/ai-research-v4-native') as typeof import('@flind/ai-research-v4-native')
         if (typeof urlPolicy.isPublicHost !== 'function') {
             throw new Error('the ai-research-v4-native addon has no isPublicHost: rebuild index.node')
         }

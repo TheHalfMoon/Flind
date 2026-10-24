@@ -8,7 +8,7 @@ import {
     ValueLabels,
     type PointClickData,
     type ValueLabelContext,
-} from '@posthog/quill-charts'
+} from '@flind/quill-charts'
 
 import { AnnotationsLayer } from 'lib/components/AnnotationsOverlay/AnnotationsLayer'
 

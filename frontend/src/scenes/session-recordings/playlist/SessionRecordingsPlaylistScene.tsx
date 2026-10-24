@@ -4,7 +4,7 @@ import { useEffect, useMemo } from 'react'
 
 import { IconCopy, IconPlus, IconTrash } from '@posthog/icons'
 import { LemonButton } from '@posthog/lemon-ui'
-import { Button } from '@posthog/quill'
+import { Button } from '@flind/quill'
 
 import { NotFound } from 'lib/components/NotFound'
 import { SceneDuplicate } from 'lib/components/Scenes/SceneDuplicate'

@@ -1,4 +1,4 @@
-import { toast } from '@posthog/quill'
+import { toast } from '@flind/quill'
 
 import { tasksPartialUpdate, tasksPinCreate, tasksRunsCancelCreate } from 'products/tasks/frontend/generated/api'
 

@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconApple, IconAndroid, IconLetter, IconPlus } from '@posthog/icons'
-import { Button, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@posthog/quill'
+import { Button, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@flind/quill'
 
 import api from 'lib/api'
 import { RestrictionScope, useRestrictedArea } from 'lib/components/RestrictedArea'

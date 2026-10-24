@@ -1,5 +1,5 @@
 import { IconChat, IconDocument, IconPlus } from '@posthog/icons'
-import { Badge, Button, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@posthog/quill'
+import { Badge, Button, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@flind/quill'
 
 export interface QuillScoutNewMenuProps {
     creationDisabledReason: string | null

@@ -1,4 +1,4 @@
-import { Badge, Card, Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@posthog/quill'
+import { Badge, Card, Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@flind/quill'
 
 import { dayjs } from 'lib/dayjs'
 

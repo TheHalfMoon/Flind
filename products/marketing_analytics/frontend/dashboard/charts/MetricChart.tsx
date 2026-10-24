@@ -1,7 +1,7 @@
 import { ReactNode, useMemo } from 'react'
 
 import { LemonButton, LemonSegmentedButton, LemonSkeleton } from '@posthog/lemon-ui'
-import { Series, TimeSeriesLineChart, TimeSeriesLineChartConfig } from '@posthog/quill-charts'
+import { Series, TimeSeriesLineChart, TimeSeriesLineChartConfig } from '@flind/quill-charts'
 
 import { useChartConfig, useChartTheme } from 'lib/charts/hooks'
 import { humanFriendlyDuration } from 'lib/utils/durations'

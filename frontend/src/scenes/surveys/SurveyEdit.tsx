@@ -21,7 +21,7 @@ import {
     Link,
     Popover,
 } from '@posthog/lemon-ui'
-import { Button } from '@posthog/quill'
+import { Button } from '@flind/quill'
 
 import api from 'lib/api'
 import { FlagSelector } from 'lib/components/FlagSelector'

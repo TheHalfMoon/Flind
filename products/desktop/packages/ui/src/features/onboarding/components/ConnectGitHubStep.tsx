@@ -1,6 +1,6 @@
 import { ArrowLeft, ArrowRight } from "@phosphor-icons/react";
 import { isAnyIntegrationStale } from "@posthog/core/onboarding/githubConnectPanel";
-import { Button, Heading, Text } from "@posthog/quill";
+import { Button, Heading, Text } from "@flind/quill";
 import type { OnboardingStepCompletedProperties } from "@posthog/shared/analytics-events";
 import { GithubConnectionEmpty } from "@posthog/ui/features/integrations/components/GithubConnectionEmpty";
 import {

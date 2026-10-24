@@ -6,7 +6,7 @@ import {
   CollapsibleTrigger,
   Heading,
   Text,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { hoggiePng } from "@posthog/shared/hoggies";
 import {
   buildErrorReport,

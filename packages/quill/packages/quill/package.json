@@ -1,5 +1,6 @@
 {
-    "name": "@posthog/quill",
+    "name": "@flind/quill",
+    "private": true,
     "version": "0.3.0-beta.16",
     "description": "PostHog's unified design system — primitives, components, and blocks designed to be compiled by the consumer's Tailwind v4.",
     "license": "MIT",
@@ -52,10 +53,10 @@
     },
     "devDependencies": {
         "@base-ui/react": "catalog:",
-        "@posthog/quill-blocks": "workspace:*",
-        "@posthog/quill-components": "workspace:*",
-        "@posthog/quill-primitives": "workspace:*",
-        "@posthog/quill-tokens": "workspace:*",
+        "@flind/quill-blocks": "workspace:*",
+        "@flind/quill-components": "workspace:*",
+        "@flind/quill-primitives": "workspace:*",
+        "@flind/quill-tokens": "workspace:*",
         "@types/react": "catalog:",
         "tsx": "^4.19.0",
         "vite": "catalog:",

@@ -1,4 +1,4 @@
-import { cleanupAllPinnedSettings } from "@posthog/agent/adapters/claude/session/pinned-settings";
+import { cleanupAllPinnedSettings } from "@flind/agent/adapters/claude/session/pinned-settings";
 import {
   APP_LIFECYCLE_SERVICE,
   type IAppLifecycle,

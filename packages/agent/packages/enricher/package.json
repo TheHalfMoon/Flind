@@ -1,5 +1,6 @@
 {
-  "name": "@posthog/enricher",
+  "name": "@flind/enricher",
+    "private": true,
   "version": "1.0.0",
   "description": "Detect and enrich PostHog SDK usage in source code",
   "type": "module",
@@ -18,7 +19,7 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@posthog/agent-contracts": "workspace:*",
+    "@flind/agent-contracts": "workspace:*",
     "web-tree-sitter": "^0.24.7"
   },
   "devDependencies": {

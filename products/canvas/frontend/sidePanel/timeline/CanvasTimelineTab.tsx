@@ -12,7 +12,7 @@ import {
     EmptyTitle,
     Skeleton,
     Text,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import type { CanvasBuildApi } from '../../generated/api.schemas'
 import {

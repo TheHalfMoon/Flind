@@ -8,7 +8,7 @@ import {
   DialogHeader,
   DialogTitle,
   FieldError,
-} from "@posthog/quill";
+} from "@flind/quill";
 
 export function SpaceSetupRetryDialog({
   open,

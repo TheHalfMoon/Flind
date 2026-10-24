@@ -19,7 +19,7 @@ import {
 import { RustVmBatchScheduler } from './rust-vm-batch-scheduler'
 
 /**
- * Executes transformation invocations on the Rust HogVM (via the `@posthog/hogvm-node` napi
+ * Executes transformation invocations on the Rust HogVM (via the `@flind/logicvm-node` napi
  * addon) as the primary executor, producing the same `CyclotronJobInvocationResult` shape the
  * Node executor does. Invocations the Rust VM can't run — the addon isn't built, or the program
  * calls a host function the binding doesn't implement — return null so the caller falls back to

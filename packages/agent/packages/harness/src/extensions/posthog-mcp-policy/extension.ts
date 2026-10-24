@@ -7,7 +7,7 @@ import type {
   McpToolPermissionDecision,
   McpToolPermissionRequest,
   McpToolPolicy,
-} from "@posthog/agent-contracts";
+} from "@flind/agent-contracts";
 import { buildToolName } from "../mcp/tool-name";
 
 export interface PosthogMcpPolicyOptions {

@@ -1,6 +1,6 @@
 import { type ReactElement, useCallback, useMemo, useState } from 'react'
 
-import { Badge, Button, Card, CardContent } from '@posthog/quill'
+import { Badge, Button, Card, CardContent } from '@flind/quill'
 
 import type { ArtifactApi, PaginatedSnapshotListApi, SnapshotApi } from '../../frontend/generated/api.schemas'
 

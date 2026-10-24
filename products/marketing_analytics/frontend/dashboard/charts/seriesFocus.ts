@@ -1,4 +1,4 @@
-import { ChartTheme } from '@posthog/quill-charts'
+import { ChartTheme } from '@flind/quill-charts'
 
 /** Low enough to recede, high enough that the line is still traceable. */
 const DIMMED_ALPHA = 0.18

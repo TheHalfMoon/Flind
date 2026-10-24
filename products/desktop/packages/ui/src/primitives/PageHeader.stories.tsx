@@ -5,7 +5,7 @@ import {
   Tabs,
   TabsList,
   TabsTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import {
   PageHeader,
   PageHeaderActions,

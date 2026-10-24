@@ -1,4 +1,4 @@
-import { Button, cn } from "@posthog/quill";
+import { Button, cn } from "@flind/quill";
 import type { FeedQueryKeyChip } from "@posthog/ui/features/command/useFeedQueryCommands";
 import { useState } from "react";
 

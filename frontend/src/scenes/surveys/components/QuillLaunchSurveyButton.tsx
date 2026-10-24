@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { ReactNode } from 'react'
 
-import { Button } from '@posthog/quill'
+import { Button } from '@flind/quill'
 
 import { AccessControlAction } from 'lib/components/AccessControlAction'
 import { surveyLogic } from 'scenes/surveys/surveyLogic'

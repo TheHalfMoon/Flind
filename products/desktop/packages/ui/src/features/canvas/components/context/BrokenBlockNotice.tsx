@@ -1,5 +1,5 @@
 import { WarningCircleIcon } from "@phosphor-icons/react";
-import { Text } from "@posthog/quill";
+import { Text } from "@flind/quill";
 
 export function BrokenBlockNotice({
   section,

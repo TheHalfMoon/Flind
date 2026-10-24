@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { useMemo } from 'react'
 
-import { type MetricChange } from '@posthog/quill-charts'
+import { type MetricChange } from '@flind/quill-charts'
 
 import {
     METRIC_COLOR_BY_DIRECTION_DEFAULT,

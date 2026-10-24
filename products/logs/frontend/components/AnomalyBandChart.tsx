@@ -10,7 +10,7 @@ import {
     type Series,
     type TimeSeriesLineChartConfig,
     type TooltipContext,
-} from '@posthog/quill-charts'
+} from '@flind/quill-charts'
 
 import { useChartConfig, useChartTheme } from 'lib/charts/hooks'
 import { dayjs } from 'lib/dayjs'

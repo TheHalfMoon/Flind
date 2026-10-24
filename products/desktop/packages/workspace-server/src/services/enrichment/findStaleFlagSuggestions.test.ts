@@ -3,7 +3,7 @@ import * as fs from "node:fs/promises";
 import * as os from "node:os";
 import * as path from "node:path";
 import type { RootLogger } from "@posthog/di/logger";
-import { listFilesContainingText } from "@posthog/git/queries";
+import { listFilesContainingText } from "@flind/git/queries";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { EnrichmentService } from "./enrichment";
 import type { EnrichmentAuth, EnrichmentFileReader } from "./ports";

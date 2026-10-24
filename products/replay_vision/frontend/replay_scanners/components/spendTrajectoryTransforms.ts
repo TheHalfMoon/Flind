@@ -1,4 +1,4 @@
-import type { Series } from '@posthog/quill-charts'
+import type { Series } from '@flind/quill-charts'
 
 import { dayjs } from 'lib/dayjs'
 import { clamp } from 'lib/utils/numbers'

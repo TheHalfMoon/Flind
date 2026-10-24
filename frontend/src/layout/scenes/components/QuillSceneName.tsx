@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react'
 
 import { IconSparkles } from '@posthog/icons'
-import { Button, Input, SkeletonText, Tooltip, TooltipContent, TooltipTrigger, cn } from '@posthog/quill'
+import { Button, Input, SkeletonText, Tooltip, TooltipContent, TooltipTrigger, cn } from '@flind/quill'
 
 import { useSceneNameEditing } from './useSceneNameEditing'
 

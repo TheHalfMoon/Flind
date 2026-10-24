@@ -2,8 +2,8 @@ import clsx from 'clsx'
 import posthog from 'posthog-js'
 import { useEffect, useMemo } from 'react'
 
-import { BoxPlot } from '@posthog/quill-charts'
-import type { BoxPlotConfig } from '@posthog/quill-charts'
+import { BoxPlot } from '@flind/quill-charts'
+import type { BoxPlotConfig } from '@flind/quill-charts'
 
 import { useChartConfig, useChartTheme } from 'lib/charts/hooks'
 

@@ -20,7 +20,7 @@ import {
     Tooltip,
     TooltipContent,
     TooltipTrigger,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import api from 'lib/api'
 import { GitHubRepositoryCombobox } from 'lib/integrations/GitHubRepositoryCombobox'

@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconRefresh, IconSparkles } from '@posthog/icons'
-import { Button, Skeleton, Spinner } from '@posthog/quill-primitives'
+import { Button, Skeleton, Spinner } from '@flind/quill-primitives'
 
 import { TagsCombobox } from 'lib/components/Scenes/TagsCombobox'
 import { TZLabel } from 'lib/components/TZLabel'

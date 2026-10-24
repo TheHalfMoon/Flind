@@ -18,7 +18,7 @@ import {
   InputGroupAddon,
   InputGroupButton,
   Text,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { Spin, Spinner } from "@posthog/ui/primitives/Spinner";
 import { Tooltip } from "@posthog/ui/primitives/Tooltip";
 import { defaultFilter } from "cmdk";

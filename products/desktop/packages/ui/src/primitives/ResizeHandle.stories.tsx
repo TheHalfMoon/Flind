@@ -1,4 +1,4 @@
-import { Kbd } from "@posthog/quill";
+import { Kbd } from "@flind/quill";
 import { ResizeHandle } from "@posthog/ui/primitives/ResizeHandle";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useRef, useState } from "react";

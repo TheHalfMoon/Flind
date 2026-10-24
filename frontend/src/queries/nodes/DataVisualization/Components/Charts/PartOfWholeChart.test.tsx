@@ -2,7 +2,7 @@ import '@testing-library/jest-dom'
 
 import { cleanup, render, screen } from '@testing-library/react'
 
-import { setupJsdom, setupSyncRaf } from '@posthog/quill-charts/testing'
+import { setupJsdom, setupSyncRaf } from '@flind/quill-charts/testing'
 
 import { initKeaTests } from '~/test/init'
 import { ChartDisplayType } from '~/types'

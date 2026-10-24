@@ -1,7 +1,7 @@
 import { ChangeEvent, KeyboardEvent, useEffect, useState } from 'react'
 
 import { IconPlay } from '@posthog/icons'
-import { Button, Kbd, KbdGroup, Text, Textarea } from '@posthog/quill'
+import { Button, Kbd, KbdGroup, Text, Textarea } from '@flind/quill'
 
 import { SQL_COLUMN_HINTS } from '../../../editing/blockLibrary/blockSql'
 import { InspectorField } from './InspectorField'

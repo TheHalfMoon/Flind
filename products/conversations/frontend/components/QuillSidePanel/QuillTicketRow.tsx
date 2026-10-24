@@ -1,4 +1,4 @@
-import { Badge, Card, Text } from '@posthog/quill'
+import { Badge, Card, Text } from '@flind/quill'
 
 import { TZLabel } from 'lib/components/TZLabel'
 import { stripMarkdown } from 'lib/utils/markdown'

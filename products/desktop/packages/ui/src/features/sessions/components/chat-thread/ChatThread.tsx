@@ -35,7 +35,7 @@ import {
   useChatMessageScroller,
   useChatMessageScrollerScrollable,
   useChatMessageScrollerVisibility,
-} from "@posthog/quill";
+} from "@flind/quill";
 import type {
   AcpMessage,
   AgentConversationEvent,

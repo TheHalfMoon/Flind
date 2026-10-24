@@ -5,7 +5,7 @@ import {
   ItemDescription,
   ItemMedia,
   ItemTitle,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { EXTERNAL_LINKS, getLocalDayDiff } from "@posthog/shared";
 import type { TaskChannel } from "@posthog/shared/domain-types";
 import { mentionChipClass } from "@posthog/ui/features/canvas/components/MentionText";

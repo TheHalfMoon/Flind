@@ -27,7 +27,7 @@
  * ## Using in TypeScript (CSS-in-JS, React Native, Figma)
  *
  * ```ts
- * import { spacing, spacingPx } from '@posthog/quill-tokens'
+ * import { spacing, spacingPx } from '@flind/quill-tokens'
  * spacing(4)    // '1rem'  — for CSS-in-JS
  * spacingPx(4)  // 16      — for React Native / Figma plugins
  * ```

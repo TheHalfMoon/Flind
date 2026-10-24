@@ -10,7 +10,7 @@ import {
   DialogHeader,
   DialogTitle,
   Textarea,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { useMemo, useState } from "react";
 import { useScoutChatTask } from "../hooks/useScoutChatTask";
 

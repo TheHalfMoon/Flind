@@ -1,5 +1,6 @@
 {
-  "name": "@posthog/agent",
+  "name": "@flind/agent",
+    "private": true,
   "version": "0.0.0-dev",
   "repository": {
     "type": "git",
@@ -167,9 +168,9 @@
     "node": ">=20.0.0"
   },
   "devDependencies": {
-    "@posthog/agent-contracts": "workspace:*",
-    "@posthog/git": "workspace:*",
-    "@posthog/harness": "workspace:*",
+    "@flind/agent-contracts": "workspace:*",
+    "@flind/git": "workspace:*",
+    "@flind/harness": "workspace:*",
     "@types/bun": "1.3.14",
     "msw": "^2.12.7",
     "tsup": "^8.5.1",

@@ -18,7 +18,7 @@ import {
     ItemMedia,
     ItemTitle,
     Text,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import { LIBRARY, LIBRARY_GROUPS, LibraryEntry } from '../../editing/libraryCatalog'
 import { CanvasBlocksLibraryItem } from './CanvasBlocksLibraryItem'

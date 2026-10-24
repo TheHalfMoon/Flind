@@ -2,7 +2,7 @@ import { format, getHours, getMinutes, getMonth, getYear, startOfDay } from 'dat
 import { SettingsIcon } from 'lucide-react'
 import * as React from 'react'
 
-import { Badge, Button, Separator, Switch, cn } from '@posthog/quill-primitives'
+import { Badge, Button, Separator, Switch, cn } from '@flind/quill-primitives'
 
 import { Calendar } from './calendar-grid'
 import { SegmentedDateInput, type DateFormatOrder } from './segmented-date-input'

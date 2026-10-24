@@ -14,7 +14,7 @@ import {
     Field,
     FieldLabel,
     Input,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import { todayAnalyticsLogic } from './todayAnalyticsLogic'
 

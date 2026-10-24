@@ -10,7 +10,7 @@ import {
     type HeatmapCellDatum,
     type HeatmapCellStyle,
     type HeatmapTooltipContext,
-} from '@posthog/quill-charts'
+} from '@flind/quill-charts'
 
 import { useChartTheme } from 'lib/charts/hooks'
 import { Tooltip } from 'lib/lemon-ui/Tooltip'

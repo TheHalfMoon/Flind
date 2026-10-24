@@ -5,7 +5,7 @@ import {
   FieldLabel,
   Input,
   Textarea,
-} from "@posthog/quill";
+} from "@flind/quill";
 
 export function SpaceFeatureFields({
   value,

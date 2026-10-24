@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { type RefObject, Suspense, lazy, useLayoutEffect, useRef } from 'react'
 
-import { Skeleton } from '@posthog/quill'
+import { Skeleton } from '@flind/quill'
 
 import { dayjs } from 'lib/dayjs'
 import { LinkPrimitive } from 'lib/lemon-ui/Link'

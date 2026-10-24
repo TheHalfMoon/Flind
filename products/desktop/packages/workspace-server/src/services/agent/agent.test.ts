@@ -111,7 +111,7 @@ vi.mock("electron", () => ({
   app: mockApp,
 }));
 
-vi.mock("@posthog/agent/agent", () => ({
+vi.mock("@flind/agent/agent", () => ({
   Agent: mockAgentConstructor,
 }));
 
@@ -121,7 +121,7 @@ vi.mock("@agentclientprotocol/sdk", () => ({
   PROTOCOL_VERSION: 1,
 }));
 
-vi.mock("@posthog/agent", () => ({
+vi.mock("@flind/agent", () => ({
   isMcpToolReadOnly: vi.fn(() => false),
   POSTHOG_METHODS: {
     SIDE_QUESTION: "_posthog/side_question",
@@ -129,16 +129,16 @@ vi.mock("@posthog/agent", () => ({
   },
 }));
 
-vi.mock("@posthog/agent/posthog-api", () => ({
+vi.mock("@flind/agent/posthog-api", () => ({
   getLlmGatewayUrl: vi.fn(() => "https://gateway.example.com"),
 }));
 
-vi.mock("@posthog/agent/resume", () => ({
+vi.mock("@flind/agent/resume", () => ({
   resumeFromLog: mockResumeFromLog,
   formatConversationForResume: mockFormatConversationForResume,
 }));
 
-vi.mock("@posthog/agent/gateway-models", () => ({
+vi.mock("@flind/agent/gateway-models", () => ({
   DEFAULT_GATEWAY_MODEL: "claude-opus-4-8",
   DEFAULT_CODEX_MODEL: "gpt-5.5",
   fetchGatewayModels: vi.fn().mockResolvedValue([]),
@@ -153,7 +153,7 @@ vi.mock("@posthog/agent/gateway-models", () => ({
   pickAllowedModel: vi.fn((_models, preferredModelId) => preferredModelId),
 }));
 
-vi.mock("@posthog/agent/adapters/claude/session/jsonl-hydration", () => ({
+vi.mock("@flind/agent/adapters/claude/session/jsonl-hydration", () => ({
   hydrateSessionJsonl: mockHydrateSessionJsonl,
 }));
 
@@ -187,7 +187,7 @@ vi.mock("node:fs", async (importOriginal) => {
 });
 
 // --- Import after mocks ---
-import { fetchGatewayModels } from "@posthog/agent/gateway-models";
+import { fetchGatewayModels } from "@flind/agent/gateway-models";
 import { PRODUCT_ENGINEER_PROMPT } from "@posthog/shared/product-engineer-prompt";
 import { RICH_OUTPUT_PROMPT_LEAD } from "@posthog/shared/rich-output-prompt";
 import {

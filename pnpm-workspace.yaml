@@ -2,6 +2,7 @@ packages:
     - '.'
     - common/esbuilder
     - common/hogvm/typescript
+    - common/hogql_parser
     - common/plugin_transpiler
     - common/storybook
     - common/replay-shared

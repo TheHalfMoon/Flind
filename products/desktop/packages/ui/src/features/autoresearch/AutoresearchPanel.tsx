@@ -19,8 +19,8 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@posthog/quill";
-import { MetricCard } from "@posthog/quill-charts";
+} from "@flind/quill";
+import { MetricCard } from "@flind/quill-charts";
 import type { AcpMessage } from "@posthog/shared";
 import { Badge, Button, Callout, Flex, Select, Text } from "@radix-ui/themes";
 import { useEffect, useMemo, useState } from "react";

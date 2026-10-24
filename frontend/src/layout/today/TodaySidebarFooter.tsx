@@ -2,7 +2,7 @@ import { useValues } from 'kea'
 import { ComponentProps } from 'react'
 
 import { IconGear } from '@posthog/icons'
-import { Button, Tooltip, TooltipContent, TooltipTrigger, cn } from '@posthog/quill'
+import { Button, Tooltip, TooltipContent, TooltipTrigger, cn } from '@flind/quill'
 
 import { NewAccountMenu } from 'lib/components/Account/NewAccountMenu'
 import { pendingInvitesLogic } from 'lib/components/Account/pendingInvitesLogic'

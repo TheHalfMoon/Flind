@@ -6,7 +6,7 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { ActivityIncludeMenuSection } from "@posthog/ui/features/canvas/components/ActivityIncludeMenuSection";
 import { markLoadedReadLabel } from "@posthog/ui/features/canvas/components/activityFeed";
 import type { ReactElement } from "react";

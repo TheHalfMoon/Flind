@@ -21,13 +21,13 @@ import type { HogTransformerServiceConfig } from './hog-transformer.service'
 import { HogTransformerService, createHogTransformerService } from './hog-transformer.service'
 import { resetHogvmNodeModuleCacheForTests } from './rust-vm'
 
-jest.mock('@posthog/hogvm-node', () => ({
+jest.mock('@flind/logicvm-node', () => ({
     init: jest.fn(),
     executeSync: jest.fn(),
     executeBatch: jest.fn(),
 }))
 
-const mockHogvmNode = jest.mocked(jest.requireMock<typeof import('@posthog/hogvm-node')>('@posthog/hogvm-node'))
+const mockHogvmNode = jest.mocked(jest.requireMock<typeof import('@flind/logicvm-node')>('@flind/logicvm-node'))
 
 const createPluginEvent = (event: Partial<PluginEvent> = {}, teamId: number = 1): PluginEvent => {
     return {

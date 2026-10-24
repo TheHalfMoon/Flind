@@ -3,7 +3,7 @@ import {
   hasMentionTags,
   SLASH_COMMAND_START,
 } from "@posthog/core/sessions/promptContent";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@posthog/quill";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@flind/quill";
 import { unescapeXmlAttr } from "@posthog/shared";
 import { Text } from "@radix-ui/themes";
 import type { ReactNode } from "react";

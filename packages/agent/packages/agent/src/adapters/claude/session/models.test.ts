@@ -1,7 +1,7 @@
 import {
   isDefaultSelectOption,
   selectOptionDocsUrl,
-} from "@posthog/agent-contracts";
+} from "@flind/agent-contracts";
 import { describe, expect, it } from "vitest";
 import {
   DEFAULT_EFFORT,

@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { Text } from '@posthog/quill'
+import { Text } from '@flind/quill'
 
 import { CanvasComposer } from '../../scene/CanvasComposer'
 import { canvasSceneLogic } from '../../scene/canvasSceneLogic'

@@ -3,7 +3,7 @@ import './TodayShell.scss'
 import { useActions, useValues } from 'kea'
 import { Suspense, useEffect, useRef } from 'react'
 
-import { Skeleton, ToastProvider } from '@posthog/quill'
+import { Skeleton, ToastProvider } from '@flind/quill'
 
 import 'scenes/project-homepage/today/Today.scss'
 import { Resizer } from 'lib/components/Resizer/Resizer'

@@ -9,8 +9,8 @@ import {
     ReferenceLines,
     TimeSeriesBarChart,
     ValueLabels,
-} from '@posthog/quill-charts'
-import type { BarChartConfig, PointClickData, TimeSeriesBarChartConfig, TooltipContext } from '@posthog/quill-charts'
+} from '@flind/quill-charts'
+import type { BarChartConfig, PointClickData, TimeSeriesBarChartConfig, TooltipContext } from '@flind/quill-charts'
 
 import { useChartTheme, useChartConfig, useDateRangeZoom } from 'lib/charts/hooks'
 import { AnnotationsLayer } from 'lib/components/AnnotationsOverlay/AnnotationsLayer'

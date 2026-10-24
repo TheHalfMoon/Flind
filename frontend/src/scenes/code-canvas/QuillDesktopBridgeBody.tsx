@@ -1,5 +1,5 @@
 import { IconLaptop } from '@posthog/icons'
-import { Button, Heading, Text } from '@posthog/quill'
+import { Button, Heading, Text } from '@flind/quill'
 
 import { LinkPrimitive } from 'lib/lemon-ui/Link'
 

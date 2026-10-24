@@ -1,7 +1,7 @@
 import type { ReactElement } from 'react'
 
 import { DescriptionList, formatDate } from '@posthog/mcp-ui'
-import { Badge, Button, Card, CardContent } from '@posthog/quill'
+import { Badge, Button, Card, CardContent } from '@flind/quill'
 
 import type {
     ErrorTrackingIssueSummaryApi,

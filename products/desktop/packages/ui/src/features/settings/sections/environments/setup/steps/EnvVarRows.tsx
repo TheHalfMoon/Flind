@@ -4,7 +4,7 @@ import {
   envVarError,
   splitPastedEnvVars,
 } from "@posthog/core/settings/environmentSetup";
-import { Button, Input, Text } from "@posthog/quill";
+import { Button, Input, Text } from "@flind/quill";
 import { type ClipboardEvent, type ReactNode, useState } from "react";
 
 interface EnvVarRowsProps {

@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { Badge, Button, Card } from '@posthog/quill'
+import { Badge, Button, Card } from '@flind/quill'
 
 import { CustomImageInventory } from './CustomImageInventory'
 import { infrastructureLogic } from './infrastructureLogic'

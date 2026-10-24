@@ -19,7 +19,7 @@ import {
   ComboboxTrigger,
   InputGroupAddon,
   InputGroupButton,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { getFileName } from "@posthog/shared";
 import type {
   GitBusyOperation,

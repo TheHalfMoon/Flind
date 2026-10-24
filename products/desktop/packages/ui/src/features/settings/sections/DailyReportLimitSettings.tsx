@@ -3,7 +3,7 @@ import {
   describeDailyReportLimit,
   parseDailyReportLimit,
 } from "@posthog/core/inbox/dailyReportLimit";
-import { Button, Input, Text } from "@posthog/quill";
+import { Button, Input, Text } from "@flind/quill";
 import type { SignalTeamConfig } from "@posthog/shared/types";
 import { useState } from "react";
 

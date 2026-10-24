@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 
-import { computeVisibleXLabels, useChartLayout } from '@posthog/quill-charts'
+import { computeVisibleXLabels, useChartLayout } from '@flind/quill-charts'
 
 import { AnnotationsOverlay } from './AnnotationsOverlay'
 import type { AnnotationsChartGeometry } from './useAnnotationsPositioning'

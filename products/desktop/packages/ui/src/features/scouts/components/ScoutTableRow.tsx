@@ -35,7 +35,7 @@ import {
   Skeleton,
   TableCell,
   TableRow,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { ANALYTICS_EVENTS } from "@posthog/shared";
 import { useAgentsPageActions } from "@posthog/ui/features/agents/agentsPageStore";
 import { RelativeTimestamp } from "@posthog/ui/primitives/RelativeTimestamp";

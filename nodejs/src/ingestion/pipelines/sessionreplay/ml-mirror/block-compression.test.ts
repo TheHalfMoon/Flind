@@ -7,7 +7,7 @@ import { ML_BLOCK_COMPRESSION } from './block-compression'
 
 let addonLoaded = false
 try {
-    require('@posthog/replay-anonymizer')
+    require('@flind/replay-anonymizer')
     addonLoaded = true
 } catch (e) {
     if (process.env.CI) {

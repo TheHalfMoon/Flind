@@ -1,5 +1,5 @@
 import { IconX } from '@posthog/icons'
-import { Spinner, Tooltip, TooltipContent, TooltipTrigger } from '@posthog/quill-primitives'
+import { Spinner, Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill-primitives'
 
 import { formatFileSize } from '../../utils/attachments'
 import type { ComposerAttachmentProps } from '../composer/ComposerAttachment'

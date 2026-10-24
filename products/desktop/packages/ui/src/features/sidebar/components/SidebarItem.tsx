@@ -1,4 +1,4 @@
-import { Button, cn } from "@posthog/quill";
+import { Button, cn } from "@flind/quill";
 import type { SidebarItemAction } from "@posthog/ui/features/sidebar/types";
 import {
   OverflowTickerText,

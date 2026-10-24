@@ -1,7 +1,7 @@
 import { MultiFileDiff } from "@pierre/diffs/react";
 import { requestErrorStatus } from "@posthog/api-client/fetcher";
 import type { ContextWikiPageProposal } from "@posthog/api-client/posthog-client";
-import { Button } from "@posthog/quill";
+import { Button } from "@flind/quill";
 import { DIFFS_HIGHLIGHTER_OPTIONS } from "@posthog/ui/features/sessions/diffHighlighterOptions";
 import { useThemeStore } from "@posthog/ui/shell/themeStore";
 import { type ReactElement, useMemo } from "react";

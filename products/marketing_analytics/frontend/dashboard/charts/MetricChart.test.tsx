@@ -3,7 +3,7 @@ import {
     createDefaultTooltipAccessor,
     hoverUntilTooltip,
     renderHogChart,
-} from '@posthog/quill-charts/testing'
+} from '@flind/quill-charts/testing'
 
 import { MetricChart, MetricChartProps } from './MetricChart'
 

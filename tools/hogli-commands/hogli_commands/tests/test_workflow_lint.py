@@ -1882,14 +1882,14 @@ _MCP_TSCONFIG = """
     "compilerOptions": {
         "paths": {
             "products/*": ["../../products/*"],
-            "@posthog/quill-charts": ["../../packages/quill/packages/charts/dist/index.d.ts"]
+            "@flind/quill-charts": ["../../packages/quill/packages/charts/dist/index.d.ts"]
         }
     }
 }
 """
 
 _UI_APP_SOURCE = (
-    "import { Chart } from '@posthog/quill-charts'\n"
+    "import { Chart } from '@flind/quill-charts'\n"
     "import { transform } from 'products/product_analytics/frontend/insights/trends/transforms'\n"
 )
 
@@ -1971,9 +1971,9 @@ class TestMcpAliasResolution:
         assert _resolve(specifier, {alias: ["products/*"]}) == [target]
 
     def test_an_alias_without_a_wildcard_matches_whole(self) -> None:
-        aliases = {"@posthog/quill": ["packages/quill/dist/index.d.ts"]}
-        assert _resolve("@posthog/quill", aliases) == ["packages/quill/dist/index.d.ts"]
-        assert _resolve("@posthog/quill/extra", aliases) == []
+        aliases = {"@flind/quill": ["packages/quill/dist/index.d.ts"]}
+        assert _resolve("@flind/quill", aliases) == ["packages/quill/dist/index.d.ts"]
+        assert _resolve("@flind/quill/extra", aliases) == []
 
 
 class TestMcpFilterCoverageCheck:

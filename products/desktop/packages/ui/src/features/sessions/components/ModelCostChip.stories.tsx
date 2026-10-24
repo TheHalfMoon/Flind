@@ -5,7 +5,7 @@ import {
   DropdownMenuContent,
   DropdownMenuRadioGroup,
   DropdownMenuTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { customModelMeta } from "@posthog/shared";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { ModelCostFooter } from "./ModelCostChip";

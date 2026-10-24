@@ -1,6 +1,6 @@
 import { createHash } from 'crypto'
 
-import { ASYNC_STL, BYTECODE_STL, STL } from '@posthog/hogvm'
+import { ASYNC_STL, BYTECODE_STL, STL } from '@flind/logicvm'
 
 import { ClickHouseTimestamp, ProjectId, RawClickHouseEvent } from '../../types'
 import { HogFunctionInvocationGlobals, HogFunctionInvocationGlobalsWithInputs } from '../types'

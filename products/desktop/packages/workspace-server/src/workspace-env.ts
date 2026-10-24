@@ -1,5 +1,5 @@
 import path from "node:path";
-import { getCurrentBranch, getDefaultBranch } from "@posthog/git/queries";
+import { getCurrentBranch, getDefaultBranch } from "@flind/git/queries";
 import type { WorkspaceMode } from "@posthog/shared";
 
 export interface WorkspaceEnvContext {

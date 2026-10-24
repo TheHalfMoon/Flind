@@ -1,6 +1,6 @@
 import { type ReactElement, useEffect, useId, useRef, useState } from 'react'
 
-import { Button, Label, Switch } from '@posthog/quill'
+import { Button, Label, Switch } from '@flind/quill'
 
 import { type ChartConfig, Y_UNIT_OPTIONS, type YUnit } from './chartSettingsConfig'
 

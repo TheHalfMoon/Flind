@@ -1,4 +1,4 @@
-import type { UrlPolicyDecline } from '@posthog/ai-research-v4-native'
+import type { UrlPolicyDecline } from '@flind/ai-research-v4-native'
 
 import { parseJSON } from '~/common/utils/json-parse'
 

@@ -1,5 +1,5 @@
 import type { HookCallback, HookInput } from "@anthropic-ai/claude-agent-sdk";
-import { rewriteBashForRtk } from "@posthog/harness/extensions/rtk";
+import { rewriteBashForRtk } from "@flind/harness/extensions/rtk";
 import type { Logger } from "../../../utils/logger";
 
 export const createRtkRewriteHook =

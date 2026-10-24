@@ -1,7 +1,7 @@
 import type { MouseEvent } from 'react'
 
 import { Tooltip } from '@posthog/lemon-ui'
-import { useChartLayout } from '@posthog/quill-charts'
+import { useChartLayout } from '@flind/quill-charts'
 
 import { getColorVar } from 'lib/colors'
 import { dayjs } from 'lib/dayjs'

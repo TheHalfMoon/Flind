@@ -1,6 +1,6 @@
 import type { ComponentProps, ReactNode } from 'react'
 
-import { AutocompleteItem, Button, cn } from '@posthog/quill'
+import { AutocompleteItem, Button, cn } from '@flind/quill'
 
 import { LinkPrimitive } from 'lib/lemon-ui/Link'
 

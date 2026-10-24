@@ -19,7 +19,7 @@ import {
   AlertDialogTitle,
   Badge,
   Button,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { getCloudUrlFromRegion } from "@posthog/shared";
 import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
 import { UserAvatar } from "@posthog/ui/features/auth/UserAvatar";

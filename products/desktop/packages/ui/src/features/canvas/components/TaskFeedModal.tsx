@@ -10,7 +10,7 @@ import {
   DialogHeader,
   DialogTitle,
   Input,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { formatRelativeTimeShort } from "@posthog/shared";
 import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
 import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";

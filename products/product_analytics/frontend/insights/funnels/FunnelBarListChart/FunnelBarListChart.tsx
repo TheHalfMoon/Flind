@@ -3,7 +3,7 @@ import { useActions, useValues } from 'kea'
 import posthog from 'posthog-js'
 import { type ErrorInfo, useMemo } from 'react'
 
-import { type PointClickData, StackedBarList, type TooltipContext } from '@posthog/quill-charts'
+import { type PointClickData, StackedBarList, type TooltipContext } from '@flind/quill-charts'
 
 import { useChartTheme } from 'lib/charts/hooks'
 import { insightLogic } from 'scenes/insights/insightLogic'

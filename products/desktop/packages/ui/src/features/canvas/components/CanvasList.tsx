@@ -12,7 +12,7 @@ import {
   EmptyMedia,
   EmptyTitle,
   MenuLabel,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { formatAbsoluteDateTime, formatRelativeAge } from "@posthog/shared";
 import { LoadingState } from "@posthog/ui/primitives/LoadingState";
 import { defaultRangeExtractor, useVirtualizer } from "@tanstack/react-virtual";

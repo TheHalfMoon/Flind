@@ -20,7 +20,7 @@ import {
     Tooltip,
     TooltipContent,
     TooltipTrigger,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import { useOnMountEffect } from 'lib/hooks/useOnMountEffect'
 import { fullName } from 'lib/utils/strings'

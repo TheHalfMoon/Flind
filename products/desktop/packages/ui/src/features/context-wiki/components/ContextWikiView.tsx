@@ -12,7 +12,7 @@ import {
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { useSetHeaderContent } from "@posthog/ui/hooks/useSetHeaderContent";
 import { FileExplorer } from "@posthog/ui/primitives/FileExplorer";
 import { LoadingState } from "@posthog/ui/primitives/LoadingState";

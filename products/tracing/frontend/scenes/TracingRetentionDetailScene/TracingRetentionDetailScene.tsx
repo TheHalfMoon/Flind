@@ -2,7 +2,7 @@ import { BindLogic, useActions, useValues } from 'kea'
 import { Form } from 'kea-forms'
 
 import { LemonButton, LemonDialog } from '@posthog/lemon-ui'
-import { Button } from '@posthog/quill'
+import { Button } from '@flind/quill'
 
 import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'
 import { SceneExport } from 'scenes/sceneTypes'

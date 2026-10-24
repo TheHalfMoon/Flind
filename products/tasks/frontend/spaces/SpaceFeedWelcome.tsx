@@ -22,7 +22,7 @@ import {
     ItemMedia,
     ItemTitle,
     Text,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import { spaceSceneLogic } from './spaceSceneLogic'
 

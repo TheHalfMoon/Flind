@@ -2,7 +2,7 @@ import { BindLogic, useActions, useValues } from 'kea'
 import posthog from 'posthog-js'
 
 import { LemonButton, LemonTab, LemonTabs } from '@posthog/lemon-ui'
-import { Button } from '@posthog/quill'
+import { Button } from '@flind/quill'
 
 import api from 'lib/api'
 import { AccessDenied } from 'lib/components/AccessDenied'

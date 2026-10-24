@@ -7,7 +7,7 @@ import {
     Tooltip,
     TooltipContent,
     TooltipTrigger,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 export function PhaiQuillOverflowMenu({ children }: { children: React.ReactNode }): JSX.Element {
     return (

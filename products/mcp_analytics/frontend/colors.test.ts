@@ -1,4 +1,4 @@
-import { DEFAULT_CHART_COLORS } from '@posthog/quill-charts'
+import { DEFAULT_CHART_COLORS } from '@flind/quill-charts'
 
 import { AI_LAB_SHADES, labColor, modelColors } from './colors'
 

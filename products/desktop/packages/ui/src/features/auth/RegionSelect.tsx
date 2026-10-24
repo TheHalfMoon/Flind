@@ -5,7 +5,7 @@ import {
   SelectTrigger,
   SelectValue,
   Text,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { type CloudRegion, describeRegion } from "@posthog/shared";
 import { Tooltip } from "@posthog/ui/primitives/Tooltip";
 import { getSelectableRegions } from "./selectableRegions";

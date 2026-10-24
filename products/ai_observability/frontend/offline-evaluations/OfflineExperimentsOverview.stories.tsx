@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { fireEvent, waitFor, within } from '@testing-library/dom'
 
-import { playHoverAtFraction } from '@posthog/quill-charts/story-helpers'
+import { playHoverAtFraction } from '@flind/quill-charts/story-helpers'
 
 import { FEATURE_FLAGS } from 'lib/constants'
 import { cn } from 'lib/utils/css-classes'

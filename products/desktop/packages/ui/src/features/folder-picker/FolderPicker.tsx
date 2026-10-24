@@ -24,7 +24,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
   MenuLabel,
-} from "@posthog/quill";
+} from "@flind/quill";
 import type { RegisteredFolder } from "@posthog/ui/features/folders/types";
 import { useFolders } from "@posthog/ui/features/folders/useFolders";
 import { Spinner } from "@posthog/ui/primitives/Spinner";

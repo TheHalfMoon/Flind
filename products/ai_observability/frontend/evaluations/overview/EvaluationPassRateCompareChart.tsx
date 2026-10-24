@@ -1,8 +1,8 @@
 import { useValues } from 'kea'
 import { Fragment, useMemo } from 'react'
 
-import { TimeSeriesLineChart, TooltipSurface, TooltipSwatch } from '@posthog/quill-charts'
-import type { Series, TimeSeriesLineChartConfig, TooltipContext } from '@posthog/quill-charts'
+import { TimeSeriesLineChart, TooltipSurface, TooltipSwatch } from '@flind/quill-charts'
+import type { Series, TimeSeriesLineChartConfig, TooltipContext } from '@flind/quill-charts'
 
 import { useChartTheme } from 'lib/charts/hooks'
 import { getColorVar } from 'lib/colors'

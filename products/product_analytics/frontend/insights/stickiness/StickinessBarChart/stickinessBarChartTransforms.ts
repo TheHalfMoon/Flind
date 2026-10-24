@@ -1,4 +1,4 @@
-import type { TimeSeriesBarChartConfig, TooltipConfig, YAxisConfig } from '@posthog/quill-charts'
+import type { TimeSeriesBarChartConfig, TooltipConfig, YAxisConfig } from '@flind/quill-charts'
 
 import {
     buildStickinessSeries,

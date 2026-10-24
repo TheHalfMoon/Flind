@@ -5,7 +5,7 @@ import { logger } from '~/common/utils/logger'
 import { KNOWN_BOT_IP_LIST, KNOWN_BOT_UA_LIST } from './bots/bots'
 
 /**
- * Shared access to the `@posthog/hogvm-node` napi addon (the Rust HogVM). The addon is optional —
+ * Shared access to the `@flind/logicvm-node` napi addon (the Rust HogVM). The addon is optional —
  * when it isn't built for this environment, `loadHogvmNodeModule` returns null and callers fall
  * back to the Node VM.
  */
@@ -106,7 +106,7 @@ export function loadHogvmNodeModule(options: { mmdbPath: string }): HogvmNodeMod
         return cachedModule
     }
     try {
-        const module_: HogvmNodeModule = require('@posthog/hogvm-node')
+        const module_: HogvmNodeModule = require('@flind/logicvm-node')
         module_.init({
             mmdbPath: options.mmdbPath,
             knownBotUaList: KNOWN_BOT_UA_LIST,

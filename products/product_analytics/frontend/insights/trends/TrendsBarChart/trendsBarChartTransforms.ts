@@ -1,5 +1,5 @@
-import { DEFAULT_Y_AXIS_ID, normalizeAxisLabel } from '@posthog/quill-charts'
-import type { Series, TimeInterval, TimeSeriesBarChartConfig, TooltipContext, YAxisConfig } from '@posthog/quill-charts'
+import { DEFAULT_Y_AXIS_ID, normalizeAxisLabel } from '@flind/quill-charts'
+import type { Series, TimeInterval, TimeSeriesBarChartConfig, TooltipContext, YAxisConfig } from '@flind/quill-charts'
 
 import { COMPARE_PREVIOUS_DIM_OPACITY, dimHexColor } from '../shared/compareDimming'
 import { schemaGoalLinesToConfigs } from '../shared/goalLinesAdapter'

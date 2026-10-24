@@ -34,5 +34,5 @@ keep the dependency map returned by `canvas-source-retrieve` unchanged.
   for external stylesheets, images, fonts, media, and frames.
 - Three.js owns its `<canvas>` element. React can own the surrounding Quill application shell.
 
-The standard imports remain `react`, `react-dom`, `react-dom/client`, `@posthog/quill`, `recharts`,
+The standard imports remain `react`, `react-dom`, `react-dom/client`, `@flind/quill`, `recharts`,
 `lucide-react`, and `dayjs`.

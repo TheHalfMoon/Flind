@@ -1,6 +1,6 @@
 import { Span, SpanStatusCode, context, trace } from '@opentelemetry/api'
 
-import type { AnonymizeTimings } from '@posthog/replay-anonymizer'
+import type { AnonymizeTimings } from '@flind/replay-anonymizer'
 
 import { defaultConfig } from '~/common/config/config'
 

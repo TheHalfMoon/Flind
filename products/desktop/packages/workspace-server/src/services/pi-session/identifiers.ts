@@ -1,8 +1,8 @@
 import type {
   PiRpcClient,
   PiRpcClientOptions,
-} from "@posthog/agent/pi/rpc-client";
-import type { PiRuntime } from "@posthog/agent/pi/runtime";
+} from "@flind/agent/pi/rpc-client";
+import type { PiRuntime } from "@flind/agent/pi/runtime";
 import type { TaskContextInput } from "@posthog/shared/task-context";
 
 export interface PiRpcClientFactory {

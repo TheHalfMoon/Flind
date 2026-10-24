@@ -6,7 +6,7 @@ import {
     DropdownMenuItem,
     DropdownMenuSeparator,
     DropdownMenuTrigger,
-} from '@posthog/quill-primitives'
+} from '@flind/quill-primitives'
 
 import type { WizardRunApi } from '../generated/api.schemas'
 import { wizardRunCanCancel } from '../wizardRunDisplay'

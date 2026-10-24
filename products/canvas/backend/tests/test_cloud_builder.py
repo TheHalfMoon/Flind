@@ -56,7 +56,7 @@ class TestCanvasCloudBuilder(SimpleTestCase):
 
     def test_legacy_canvas_build_compiles_tailwind_and_quill_styles(self) -> None:
         payload = synthetic_source_project(
-            'import { Button } from "@posthog/quill"; '
+            'import { Button } from "@flind/quill"; '
             'export default function Canvas() { return <div className="grid gap-4 p-6 md:grid-cols-2">'
             "<Button>Save</Button></div> }"
         )

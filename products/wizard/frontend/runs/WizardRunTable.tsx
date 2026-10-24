@@ -1,6 +1,6 @@
 import { IconFolder, IconGithub } from '@posthog/icons'
-import type { DataTableProps } from '@posthog/quill-components'
-import { DataTable } from '@posthog/quill-components'
+import type { DataTableProps } from '@flind/quill-components'
+import { DataTable } from '@flind/quill-components'
 import {
     Avatar,
     AvatarFallback,
@@ -17,7 +17,7 @@ import {
     ItemTitle,
     Skeleton,
     Text,
-} from '@posthog/quill-primitives'
+} from '@flind/quill-primitives'
 
 import { TZLabel } from 'lib/components/TZLabel'
 import { LinkPrimitive } from 'lib/lemon-ui/Link'

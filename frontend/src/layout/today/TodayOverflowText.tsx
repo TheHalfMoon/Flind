@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
-import { cn } from '@posthog/quill'
+import { cn } from '@flind/quill'
 
 const TICKER_SPEED_PX_PER_SECOND = 50
 const TICKER_FADE_PX = 24

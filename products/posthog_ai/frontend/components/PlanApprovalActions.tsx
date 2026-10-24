@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
-import { Spinner } from '@posthog/quill-primitives'
+import { Spinner } from '@flind/quill-primitives'
 
 import { cn } from 'lib/utils/css-classes'
 

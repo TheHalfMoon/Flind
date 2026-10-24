@@ -4,7 +4,7 @@ import {
   summarizePrChecks,
 } from "@posthog/core/git-interaction/prStatus";
 import { taskStarter } from "@posthog/core/tasks/taskStatusPresentation";
-import { Badge, Card, CardContent } from "@posthog/quill";
+import { Badge, Card, CardContent } from "@flind/quill";
 import { formatRelativeTimeShort } from "@posthog/shared";
 import { ActivityPresenceAvatar } from "@posthog/ui/features/canvas/components/ChannelItemPresence";
 import type { SpacePullRequest } from "@posthog/ui/features/canvas/components/work/useSpacePullRequests";

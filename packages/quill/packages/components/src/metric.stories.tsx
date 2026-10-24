@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import * as React from 'react'
 
-import { DefaultTooltip, useChartTheme } from '@posthog/quill-charts'
-import { Card, TooltipProvider } from '@posthog/quill-primitives'
+import { DefaultTooltip, useChartTheme } from '@flind/quill-charts'
+import { Card, TooltipProvider } from '@flind/quill-primitives'
 
 import { Metric, MetricDelta, MetricHeader, MetricSparkline, MetricSubtitle, MetricTitle, MetricValue } from './metric'
 

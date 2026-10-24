@@ -17,7 +17,7 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { type ReactElement, type ReactNode, useState } from "react";
 
 export interface FilterOption<Value extends string> {

@@ -3,8 +3,8 @@ import { loaders } from 'kea-loaders'
 import { useMemo, useState } from 'react'
 
 import { IconCodeInsert, IconCopy, IconRefresh } from '@posthog/icons'
-import { TimeSeriesComboChart } from '@posthog/quill-charts'
-import type { Series } from '@posthog/quill-charts'
+import { TimeSeriesComboChart } from '@flind/quill-charts'
+import type { Series } from '@flind/quill-charts'
 
 import api from 'lib/api'
 import { useChartTheme } from 'lib/charts/hooks'

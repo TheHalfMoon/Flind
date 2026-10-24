@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 
-import { BarChart } from '@posthog/quill-charts'
+import { BarChart } from '@flind/quill-charts'
 
 import { useChartTheme } from 'lib/charts/hooks'
 import { getColorVar } from 'lib/colors'

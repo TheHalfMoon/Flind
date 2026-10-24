@@ -1,4 +1,4 @@
-import { Button, Text } from "@posthog/quill";
+import { Button, Text } from "@flind/quill";
 import {
   ARTIFACT_HTML_BRIDGE_MARKER,
   type ArtifactHtmlFrameProps,

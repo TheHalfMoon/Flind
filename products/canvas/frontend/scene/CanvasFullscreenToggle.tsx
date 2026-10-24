@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconExpand45 } from '@posthog/icons'
-import { Button, Tooltip, TooltipContent, TooltipTrigger } from '@posthog/quill'
+import { Button, Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill'
 
 import { canvasEditLogic } from '../editing/canvasEditLogic'
 import { canvasHistoryLogic } from '../history/canvasHistoryLogic'

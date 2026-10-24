@@ -1,5 +1,5 @@
 import { IconCopy, IconSparkles, IconTrash } from '@posthog/icons'
-import { Button, Item, ItemContent, ItemDescription, ItemMedia, ItemTitle } from '@posthog/quill'
+import { Button, Item, ItemContent, ItemDescription, ItemMedia, ItemTitle } from '@flind/quill'
 
 import { BlockPropsRecord, blockDefinition } from '../../../editing/blockLibrary/blockDefinitions'
 import { SQL_BLOCK_TYPES } from '../../../editing/blockLibrary/blockSql'

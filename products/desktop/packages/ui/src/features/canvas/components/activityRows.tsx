@@ -39,7 +39,7 @@ import {
   ChatBubbleContent,
   cn,
   Skeleton,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { splitMentionSegments } from "@posthog/shared";
 import type {
   TaskCommentThreadSummary,

@@ -1,4 +1,4 @@
-import type { BarChartConfig, Series } from '@posthog/quill-charts'
+import type { BarChartConfig, Series } from '@flind/quill-charts'
 
 // ActionsBarValue renders aggregated totals as a horizontal bar per series/breakdown — a single
 // quill series whose per-bar entries carry the color and label. Kept dependency-neutral (quill

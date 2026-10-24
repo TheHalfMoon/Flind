@@ -79,7 +79,7 @@ _CODE_EXTENSIONS = (".ts", ".tsx", ".js", ".jsx")
 # strings.
 _STYLE_EXTENSIONS = (".css", ".html", *_CODE_EXTENSIONS)
 
-# Quill design tokens that the bundled platform stylesheet (@posthog/quill
+# Quill design tokens that the bundled platform stylesheet (@flind/quill
 # color-system.css) declares on the universal selector `*`, not on `:root`.
 # Every element then gets Quill's value directly, so an author's `:root` or
 # `html.dark` declaration of the same name never reaches any descendant and

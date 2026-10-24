@@ -12,7 +12,7 @@ import {
   WarningIcon,
   XIcon,
 } from "@phosphor-icons/react";
-import { Chip, cn } from "@posthog/quill";
+import { Chip, cn } from "@flind/quill";
 import { Tooltip } from "@posthog/ui/primitives/Tooltip";
 import { getObjectKind } from "@posthog/ui/utils/objectKinds";
 import { type NodeViewProps, NodeViewWrapper } from "@tiptap/react";

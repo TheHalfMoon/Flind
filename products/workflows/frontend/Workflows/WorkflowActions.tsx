@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 
 import { IconTrash } from '@posthog/icons'
 import { LemonButton, LemonDivider } from '@posthog/lemon-ui'
-import { Button, Separator } from '@posthog/quill'
+import { Button, Separator } from '@flind/quill'
 
 import { AccessControlAction } from 'lib/components/AccessControlAction'
 import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'

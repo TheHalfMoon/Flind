@@ -1,6 +1,6 @@
 // Unblocks vite-plugin-dts under TS 6.0. Without these declarations the
 // dts emit aborts before producing dist/index.d.ts and the failure cascades
-// up through quill-components, quill-blocks, and @posthog/quill itself.
+// up through quill-components, quill-blocks, and @flind/quill itself.
 
 // TS2882: side-effect `.css` imports require a module declaration.
 declare module '*.css'

@@ -1,4 +1,4 @@
-import type { PiRemoteRpcClient } from "@posthog/agent/pi/remote-rpc-client";
+import type { PiRemoteRpcClient } from "@flind/agent/pi/remote-rpc-client";
 import { describe, expect, it, vi } from "vitest";
 import type { CloudTaskClient } from "../cloud-task/cloudTaskClient";
 import type { TaskService } from "../task-detail/taskService";

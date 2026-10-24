@@ -38,7 +38,7 @@ origins are allowed; remote scripts remain blocked, so bundle code with the canv
 
 ## Quill component rules
 
-A PostHog data board must be built entirely from `@posthog/quill` components — never a native
+A PostHog data board must be built entirely from `@flind/quill` components — never a native
 control or a styled `<div>` standing in for one:
 
 - Dropdown/picker → `Select` (never a native `<select>`); button → `Button` (never `<button>`);

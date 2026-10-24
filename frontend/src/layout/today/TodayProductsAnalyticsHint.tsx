@@ -7,7 +7,7 @@ import {
     EmptyTitle,
     IconStack,
     IconStackItem,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import { LinkPrimitive } from 'lib/lemon-ui/Link'
 import { AnalyticsTypeIcon } from 'scenes/analytics/AnalyticsTypeIcon'

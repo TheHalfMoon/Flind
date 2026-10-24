@@ -39,7 +39,7 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
 import { useCurrentUser } from "@posthog/ui/features/auth/useCurrentUser";
 import {

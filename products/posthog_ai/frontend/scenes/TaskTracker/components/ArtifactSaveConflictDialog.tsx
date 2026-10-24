@@ -9,7 +9,7 @@ import {
     AlertDialogHeader,
     AlertDialogTitle,
     Button,
-} from '@posthog/quill-primitives'
+} from '@flind/quill-primitives'
 
 import { taskRunArtifactsLogic } from '../taskRunArtifactsLogic'
 

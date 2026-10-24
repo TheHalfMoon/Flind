@@ -27,7 +27,7 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@posthog/quill";
+} from "@flind/quill";
 import {
   AvatarStack,
   gatewayUserName,

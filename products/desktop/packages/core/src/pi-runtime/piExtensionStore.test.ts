@@ -1,4 +1,4 @@
-import type { PiExtensionEvent } from "@posthog/agent/pi/types";
+import type { PiExtensionEvent } from "@flind/agent/pi/types";
 import { describe, expect, it } from "vitest";
 import {
   createEmptyPiExtensionTaskState,

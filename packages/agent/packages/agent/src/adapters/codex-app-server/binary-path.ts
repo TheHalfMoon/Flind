@@ -38,7 +38,7 @@ const CODEX_NATIVE_TARGETS: Record<
 
 /**
  * Resolve the native codex binary vendored by `@openai/codex`'s platform sub-package,
- * so the adapter works from a plain `npm install @posthog/agent` with no download.
+ * so the adapter works from a plain `npm install @flind/agent` with no download.
  * Returns undefined when the dep or this platform's sub-package isn't installed.
  */
 function vendoredCodexBinary(): string | undefined {

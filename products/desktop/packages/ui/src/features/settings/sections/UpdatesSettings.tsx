@@ -4,7 +4,7 @@ import {
   resolveCheckResultAction,
 } from "@posthog/core/settings/updateStatus";
 import { useHostTRPC } from "@posthog/host-router/react";
-import { Button, Switch } from "@posthog/quill";
+import { Button, Switch } from "@flind/quill";
 import { ANALYTICS_EVENTS } from "@posthog/shared";
 import {
   SettingsCard,

@@ -4,7 +4,7 @@ import {
     TooltipSurface,
     TooltipSwatch,
     funnelConversionRate,
-} from '@posthog/quill-charts'
+} from '@flind/quill-charts'
 
 import { humanFriendlyNumber, percentage } from 'lib/utils/numbers'
 

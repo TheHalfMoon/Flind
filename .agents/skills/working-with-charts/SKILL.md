@@ -1,7 +1,7 @@
 ---
 name: working-with-charts
 description: >
-  Guides consumers of @posthog/quill-charts through chart selection, data, themes, sizing, and composition.
+  Guides consumers of @flind/quill-charts through chart selection, data, themes, sizing, and composition.
   Use when adding or changing a chart built with the package, including its axes, tooltips, legend, overlays, or interactions.
   Links to package examples and API docs. Does not cover product integration or library internals.
 ---
@@ -16,7 +16,7 @@ For changes inside the library, use [CONTRIBUTING.md](../../../packages/quill/pa
 
 Use the [chart-selection table](../../../packages/quill/packages/charts/AGENTS.md#choosing-a-chart), then read a matching [package story](../../../packages/quill/packages/charts/src/charts/).
 For a date axis, start with `DateAxis` in [TimeSeriesLineChart stories](../../../packages/quill/packages/charts/src/charts/TimeSeriesLineChart/TimeSeriesLineChart.stories.tsx).
-Import components and types from `@posthog/quill-charts`, not internal source paths.
+Import components and types from `@flind/quill-charts`, not internal source paths.
 
 ## Supply data, theme, and dimensions
 

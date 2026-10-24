@@ -13,7 +13,7 @@ import {
     preprocessSchema,
     resolveNestedRefs,
     runOrvalParallel,
-} from '@posthog/openapi-codegen'
+} from '@flind/openapi-codegen'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const frontendRoot = path.resolve(__dirname, '..')

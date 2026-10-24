@@ -20,7 +20,7 @@ const quill = vi.hoisted(() => {
   };
 });
 
-vi.mock("@posthog/quill", () => ({ toast: quill }));
+vi.mock("@flind/quill", () => ({ toast: quill }));
 
 const settings = vi.hoisted(() => ({ toastNotifications: true }));
 

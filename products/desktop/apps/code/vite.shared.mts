@@ -78,7 +78,7 @@ export const workspaceAliases: Alias[] = [
     ),
   },
   {
-    find: "@posthog/agent",
+    find: "@flind/agent",
     replacement: path.resolve(
       __dirname,
       "../../../../packages/agent/packages/agent/src/index.ts",
@@ -93,7 +93,7 @@ export const workspaceAliases: Alias[] = [
     replacement: path.resolve(__dirname, "../../packages/shared/src/index.ts"),
   },
   {
-    find: "@posthog/enricher",
+    find: "@flind/enricher",
     replacement: path.resolve(
       __dirname,
       "../../../../packages/agent/packages/enricher/src/index.ts",

@@ -2,7 +2,7 @@ import { MakeLogicType, actions, afterMount, connect, kea, key, listeners, path,
 import { loaders } from 'kea-loaders'
 import { router, urlToAction } from 'kea-router'
 
-import { toast } from '@posthog/quill'
+import { toast } from '@flind/quill'
 
 import { OrganizationMembershipLevel } from 'lib/constants'
 import { writeToClipboard } from 'lib/utils/writeToClipboard'

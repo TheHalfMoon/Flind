@@ -4,8 +4,8 @@ import * as path from "node:path";
 import {
   encodeCwdToProjectKey,
   getSessionJsonlPath,
-} from "@posthog/agent/adapters/claude/session/jsonl-hydration";
-import { mapWithConcurrency } from "@posthog/git/concurrency";
+} from "@flind/agent/adapters/claude/session/jsonl-hydration";
+import { mapWithConcurrency } from "@flind/git/concurrency";
 import { inject, injectable } from "inversify";
 import { CLAUDE_SESSION_IMPORT_REPOSITORY } from "../../db/identifiers";
 import type { IClaudeSessionImportRepository } from "../../db/repositories/claude-session-import-repository";

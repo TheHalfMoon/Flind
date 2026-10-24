@@ -15,7 +15,7 @@ import {
     InputGroup,
     InputGroupAddon,
     InputGroupInput,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import { AccessControlAction } from 'lib/components/AccessControlAction'
 import { useNotebookNode } from 'scenes/notebooks/Nodes/NotebookNodeContext'

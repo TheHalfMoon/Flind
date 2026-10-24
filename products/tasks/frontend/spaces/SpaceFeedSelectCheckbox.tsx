@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { ReactNode } from 'react'
 
-import { Checkbox, cn } from '@posthog/quill'
+import { Checkbox, cn } from '@flind/quill'
 
 import { spaceFeedSelectionLogic } from './spaceFeedSelectionLogic'
 

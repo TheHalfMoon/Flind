@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 
 import { IconInfo } from '@posthog/icons'
-import { useChartLayout } from '@posthog/quill-charts'
+import { useChartLayout } from '@flind/quill-charts'
 
 import { Dayjs, dayjs } from 'lib/dayjs'
 import { Tooltip } from 'lib/lemon-ui/Tooltip'

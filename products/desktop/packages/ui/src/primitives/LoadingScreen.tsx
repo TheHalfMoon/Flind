@@ -1,4 +1,4 @@
-import { cn } from "@posthog/quill";
+import { cn } from "@flind/quill";
 import { AnimatedLogo } from "@posthog/ui/primitives/AnimatedLogo";
 
 interface LoadingScreenProps {

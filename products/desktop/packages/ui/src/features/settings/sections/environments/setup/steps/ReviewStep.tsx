@@ -11,7 +11,7 @@ import {
   buildImageSpec,
   imageSpecToYaml,
 } from "@posthog/core/settings/imageSpec";
-import { Text } from "@posthog/quill";
+import { Text } from "@flind/quill";
 import { StepBody } from "@posthog/ui/features/settings/sections/environments/setup/StepBody";
 
 interface ReviewStepProps {

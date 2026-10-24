@@ -6,7 +6,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   Button,
-} from "@posthog/quill";
+} from "@flind/quill";
 import {
   type Channel,
   useChannelMutations,

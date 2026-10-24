@@ -9,7 +9,7 @@ import { ATTR_SERVICE_NAME } from "@opentelemetry/semantic-conventions";
 import {
   redactSecrets,
   secretHeaderReplacer,
-} from "@posthog/agent/utils/redact-secrets";
+} from "@flind/agent/utils/redact-secrets";
 import type ElectronLog from "electron-log";
 import { getAppVersion } from "./env";
 

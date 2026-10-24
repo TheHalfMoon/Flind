@@ -28,7 +28,7 @@ import {
   EmptyHeader,
   EmptyTitle,
   Skeleton,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { MCP_TOOL_PERMISSION_OPTIONS } from "@posthog/shared";
 import type { Task } from "@posthog/shared/domain-types";
 import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";

@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { ReactNode, useEffect, useState } from 'react'
 
 import { IconPin, IconPinFilled, IconRefresh, IconX } from '@posthog/icons'
-import { Badge, Button, Spinner, Tooltip, TooltipContent, TooltipTrigger } from '@posthog/quill'
+import { Badge, Button, Spinner, Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill'
 
 import {
     activeCanvasBuild,

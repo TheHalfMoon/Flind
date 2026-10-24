@@ -1,5 +1,5 @@
 import { LemonButtonProps } from '@posthog/lemon-ui'
-import { Button } from '@posthog/quill'
+import { Button } from '@flind/quill'
 
 import { quillButtonVariant } from 'lib/lemon-ui/LemonButton/quillButtonVariant'
 import posthog from 'lib/posthog-typed'

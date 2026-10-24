@@ -1,5 +1,6 @@
 {
-  "name": "@posthog/agent-contracts",
+  "name": "@flind/agent-contracts",
+    "private": true,
   "version": "1.0.0",
   "description": "Types, schemas and helpers the agent runtime and its hosts share",
   "type": "module",

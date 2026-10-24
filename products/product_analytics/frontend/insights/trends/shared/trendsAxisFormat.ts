@@ -1,4 +1,4 @@
-import type { YAxisConfig, YFormatterConfig } from '@posthog/quill-charts'
+import type { YAxisConfig, YFormatterConfig } from '@flind/quill-charts'
 
 import type { YFormatterFields } from './trendsChartDisplayOptions'
 

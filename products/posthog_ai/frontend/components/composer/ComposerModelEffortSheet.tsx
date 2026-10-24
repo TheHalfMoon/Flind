@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { Button, ItemRadio, MenuLabel, ToggleGroup, ToggleGroupItem } from '@posthog/quill-primitives'
+import { Button, ItemRadio, MenuLabel, ToggleGroup, ToggleGroupItem } from '@flind/quill-primitives'
 
 import { SHEET_PARTS } from '~/layout/today/todayMenuParts'
 import { TodaySheetMenu } from '~/layout/today/TodaySheetMenu'

@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 
-import { Button } from '@posthog/quill'
+import { Button } from '@flind/quill'
 
 import { useGroupList } from '../hooks/useGroupList'
 import { TaxonomicFilterGroup } from '../types'

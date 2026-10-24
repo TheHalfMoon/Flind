@@ -16,7 +16,7 @@ import {
   TabsTrigger,
   ToggleGroup,
   ToggleGroupItem,
-} from "@posthog/quill";
+} from "@flind/quill";
 import type { SkillInfo, SkillSource } from "@posthog/shared";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { ResizableSidebar } from "../../primitives/ResizableSidebar";

@@ -1,6 +1,6 @@
 import { useLayoutEffect, useRef, useState } from 'react'
 
-import { useChartLayout } from '@posthog/quill-charts'
+import { useChartLayout } from '@flind/quill-charts'
 
 import { SpendReferenceCaption } from './SpendReferenceCaption'
 import { type CaptionLefts, LABEL_INSET, measureCaptionLefts } from './spendTrajectoryCaptionLayout'

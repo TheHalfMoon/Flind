@@ -1,5 +1,5 @@
 import { CaretDownIcon, CaretRightIcon } from "@phosphor-icons/react";
-import { cn, MenuLabel } from "@posthog/quill";
+import { cn, MenuLabel } from "@flind/quill";
 import type { WorkSectionResizer } from "@posthog/ui/features/canvas/hooks/useWorkSectionLayout";
 import type { ReactNode, RefCallback } from "react";
 

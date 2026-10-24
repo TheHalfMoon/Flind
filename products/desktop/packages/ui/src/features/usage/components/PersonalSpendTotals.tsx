@@ -1,6 +1,6 @@
 import { formatUsd } from "@posthog/core/billing/spendAnalysisFormat";
-import { Text } from "@posthog/quill";
-import { MetricCard, useChartTheme } from "@posthog/quill-charts";
+import { Text } from "@flind/quill";
+import { MetricCard, useChartTheme } from "@flind/quill-charts";
 import type { SpendSnapshot } from "@posthog/ui/features/billing/useSpendTotals";
 import { LoadingState } from "@posthog/ui/primitives/LoadingState";
 

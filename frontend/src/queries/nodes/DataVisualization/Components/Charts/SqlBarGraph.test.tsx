@@ -2,7 +2,7 @@ import '@testing-library/jest-dom'
 
 import { cleanup, configure, fireEvent, screen, waitFor } from '@testing-library/react'
 
-import { clickAtIndex, setupJsdom, setupSyncRaf } from '@posthog/quill-charts/testing'
+import { clickAtIndex, setupJsdom, setupSyncRaf } from '@flind/quill-charts/testing'
 
 import { BIConfig } from '~/queries/schema/schema-business-intelligence'
 import { NodeKind, ChartSettings } from '~/queries/schema/schema-general'

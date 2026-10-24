@@ -50,7 +50,7 @@ See [legend.md](./legend.md).
 
 ## Testing interactions
 
-`hoverAtIndex`, `clickAtIndex`, `hoverUntilTooltip`, and `dragSelection` from `@posthog/quill-charts/testing` drive these gestures in jsdom.
+`hoverAtIndex`, `clickAtIndex`, `hoverUntilTooltip`, and `dragSelection` from `@flind/quill-charts/testing` drive these gestures in jsdom.
 `hoverUntilTooltip` and `clickAtIndex` re-dispatch until the tooltip portal mounts, because the chart drops events fired before it commits its scales.
 Both default to a 3000ms budget.
 Pass an explicit `timeout` whenever the call sits behind another wait in the same test; two full-length waits chained together exceed Jest's 5000ms per-test budget, so give the pair one shared deadline.

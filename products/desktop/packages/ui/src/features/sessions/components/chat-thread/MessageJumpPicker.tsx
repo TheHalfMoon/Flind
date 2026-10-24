@@ -11,7 +11,7 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { CommandKeyHints } from "@posthog/ui/features/command/CommandKeyHints";
 import type { ConversationItem } from "@posthog/ui/features/sessions/components/buildConversationItems";
 import { userMessageDisplayText } from "@posthog/ui/features/sessions/components/session-update/userMessageDisplay";

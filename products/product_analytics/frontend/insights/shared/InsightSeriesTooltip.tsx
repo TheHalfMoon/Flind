@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { useCallback, useMemo } from 'react'
 
-import { DefaultTooltip, type TooltipContext } from '@posthog/quill-charts'
+import { DefaultTooltip, type TooltipContext } from '@flind/quill-charts'
 
 import { SeriesGlyph } from 'lib/components/SeriesGlyph'
 import { parseDateInTimezone } from 'lib/utils/datetime'

@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 
-import type { XAxisConfig, ChartMargins, ValueDomain } from '@posthog/quill-charts'
+import type { XAxisConfig, ChartMargins, ValueDomain } from '@flind/quill-charts'
 
 import { ChartSettings, GoalLine } from '~/queries/schema/schema-general'
 import { ChartDisplayType } from '~/types'
@@ -49,7 +49,7 @@ export type SqlChartProps = {
 }
 
 /**
- * Picks the @posthog/quill-charts renderer for a SQL insight: combo for mixed bar + line/area
+ * Picks the @flind/quill-charts renderer for a SQL insight: combo for mixed bar + line/area
  * series, bar for bar-only, line/area otherwise. (Pie, donut and proportion bar have their own wrapper — see PartOfWholeChart.)
  */
 export function sqlChartComponentFor(props: SqlChartProps): (props: SqlChartProps) => JSX.Element {
@@ -64,7 +64,7 @@ export function sqlChartComponentFor(props: SqlChartProps): (props: SqlChartProp
 }
 
 /** Entry point for rendering a non-pie SQL (DataVisualization) chart: dispatches line, area, bar,
- *  stacked-bar, and combo series to the matching @posthog/quill-charts renderer. */
+ *  stacked-bar, and combo series to the matching @flind/quill-charts renderer. */
 export const SqlChart = (props: SqlChartProps): JSX.Element => {
     const Component = sqlChartComponentFor(props)
     return <Component {...props} />

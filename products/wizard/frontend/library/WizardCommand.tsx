@@ -1,5 +1,5 @@
 import { IconCheck } from '@posthog/icons'
-import { Button, Card, CardContent, CardHeader, Text } from '@posthog/quill-primitives'
+import { Button, Card, CardContent, CardHeader, Text } from '@flind/quill-primitives'
 
 export function WizardCommand({
     command,

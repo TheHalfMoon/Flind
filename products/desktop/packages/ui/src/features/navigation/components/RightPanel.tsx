@@ -5,7 +5,7 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import type { Task } from "@posthog/shared/domain-types";
 import { ActivityPanelBody } from "@posthog/ui/features/canvas/components/ActivityPanelBody";
 import {

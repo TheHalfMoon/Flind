@@ -1,4 +1,4 @@
-import { Card, CardContent, Skeleton, ToggleGroup, ToggleGroupItem } from '@posthog/quill-primitives'
+import { Card, CardContent, Skeleton, ToggleGroup, ToggleGroupItem } from '@flind/quill-primitives'
 
 import { TileDecorations } from 'lib/components/TileDecorations/TileDecorations'
 import { formatPercentage } from 'lib/utils/numbers'

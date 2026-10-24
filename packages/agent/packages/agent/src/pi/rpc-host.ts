@@ -6,15 +6,15 @@ import {
 import type {
   McpToolPermissionDecision,
   McpToolPermissionRequest,
-} from "@posthog/agent-contracts";
-import { createHarnessRuntime, runRpcMode } from "@posthog/harness";
-import { createAutoPublishExtension } from "@posthog/harness/extensions/auto-publish";
-import { createPiContextWikiExtension } from "@posthog/harness/extensions/context-wiki";
-import { createPiEnrichmentExtension } from "@posthog/harness/extensions/enrichment";
+} from "@flind/agent-contracts";
+import { createHarnessRuntime, runRpcMode } from "@flind/harness";
+import { createAutoPublishExtension } from "@flind/harness/extensions/auto-publish";
+import { createPiContextWikiExtension } from "@flind/harness/extensions/context-wiki";
+import { createPiEnrichmentExtension } from "@flind/harness/extensions/enrichment";
 import {
   createPiTaskSystemPromptExtension,
   resolvePiTaskContext,
-} from "@posthog/harness/extensions/task-system-prompt";
+} from "@flind/harness/extensions/task-system-prompt";
 import {
   POSTHOG_PI_QUEUE_ENTRY_TYPE,
   readPersistedPiQueue,

@@ -1,5 +1,5 @@
 import { useHostTRPC } from "@posthog/host-router/react";
-import { Button, Progress } from "@posthog/quill";
+import { Button, Progress } from "@flind/quill";
 import {
   ANALYTICS_EVENTS,
   type AnnouncementProperties,

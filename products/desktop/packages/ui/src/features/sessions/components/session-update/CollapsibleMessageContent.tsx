@@ -1,5 +1,5 @@
 import { CaretDown, CaretUp } from "@phosphor-icons/react";
-import { cn } from "@posthog/quill";
+import { cn } from "@flind/quill";
 import { Box } from "@radix-ui/themes";
 import {
   type CSSProperties,

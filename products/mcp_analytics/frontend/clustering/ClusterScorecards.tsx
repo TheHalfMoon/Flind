@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { Card, CardContent } from '@posthog/quill-primitives'
+import { Card, CardContent } from '@flind/quill-primitives'
 
 import { cn } from 'lib/utils/css-classes'
 

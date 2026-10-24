@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { Button, Text } from '@posthog/quill'
+import { Button, Text } from '@flind/quill'
 
 import { LinkPrimitive } from 'lib/lemon-ui/Link'
 import { urls } from 'scenes/urls'

@@ -6,7 +6,7 @@ import { Suspense, lazy, useEffect, useMemo, useState } from 'react'
 
 import { IconArchive, IconCopy, IconPlusSmall, IconRewind, IconSend, IconTrash } from '@posthog/icons'
 import { LemonSkeleton } from '@posthog/lemon-ui'
-import { Badge, Button } from '@posthog/quill'
+import { Badge, Button } from '@flind/quill'
 
 import { AccessControlAction } from 'lib/components/AccessControlAction'
 import { AccessDenied } from 'lib/components/AccessDenied'

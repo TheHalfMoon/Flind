@@ -1,5 +1,5 @@
 import { IconArrowLeft, IconArrowRight } from '@posthog/icons'
-import { Button } from '@posthog/quill'
+import { Button } from '@flind/quill'
 
 import { KeyboardShortcut } from 'lib/components/KeyboardShortcut/KeyboardShortcut'
 import { LinkPrimitive } from 'lib/lemon-ui/Link'

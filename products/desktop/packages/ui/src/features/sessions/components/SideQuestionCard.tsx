@@ -5,7 +5,7 @@ import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { useSideQuestionStore } from "@posthog/ui/features/sessions/sideQuestionStore";
 import { Spinner } from "@posthog/ui/primitives/Spinner";
 import { MarkdownRenderer } from "../../editor/components/MarkdownRenderer";

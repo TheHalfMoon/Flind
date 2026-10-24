@@ -1,4 +1,4 @@
-import { DEFAULT_Y_AXIS_ID, movingAverageKey, normalizeAxisLabel } from '@posthog/quill-charts'
+import { DEFAULT_Y_AXIS_ID, movingAverageKey, normalizeAxisLabel } from '@flind/quill-charts'
 import type {
     ConfidenceIntervalConfig,
     MovingAverageConfig,
@@ -7,7 +7,7 @@ import type {
     TimeSeriesLineChartConfig,
     TooltipConfig,
     TrendLineConfig,
-} from '@posthog/quill-charts'
+} from '@flind/quill-charts'
 
 import { schemaGoalLinesToConfigs } from '../shared/goalLinesAdapter'
 import { humanizeSeriesLabel } from '../shared/humanizeSeriesLabel'

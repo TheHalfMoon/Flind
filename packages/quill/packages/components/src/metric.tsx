@@ -14,9 +14,9 @@ import {
     type TooltipContext,
     useAnimatedNumber,
     useHoverIntent,
-} from '@posthog/quill-charts'
-import type { ChartTheme } from '@posthog/quill-charts'
-import { Badge, cn, Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@posthog/quill-primitives'
+} from '@flind/quill-charts'
+import type { ChartTheme } from '@flind/quill-charts'
+import { Badge, cn, Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@flind/quill-primitives'
 
 export type { ChangeColor, MetricChange }
 

@@ -9,7 +9,7 @@ import {
   TableHeader,
   TableRow,
   Text,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { buildImageDataUrl } from "@posthog/shared";
 import { useWorkspaceFileAsBase64 } from "@posthog/ui/features/code-editor/hooks/useFileContent";
 import { ArtifactRefChip } from "@posthog/ui/features/editor/components/ArtifactRefChip";

@@ -1,6 +1,6 @@
 import { Robot } from "@phosphor-icons/react";
 import type { McpGatewayUser } from "@posthog/api-client/posthog-client";
-import { Avatar, AvatarFallback, AvatarGroup, cn } from "@posthog/quill";
+import { Avatar, AvatarFallback, AvatarGroup, cn } from "@flind/quill";
 import { UserAvatar } from "@posthog/ui/features/auth/UserAvatar";
 
 export function gatewayUserName(user: McpGatewayUser): string {

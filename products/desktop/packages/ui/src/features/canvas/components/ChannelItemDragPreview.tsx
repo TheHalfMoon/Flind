@@ -1,5 +1,5 @@
 import type { ChannelItemModel } from "@posthog/core/canvas/channelItems";
-import { cn } from "@posthog/quill";
+import { cn } from "@flind/quill";
 import { ChannelItemRowView } from "@posthog/ui/features/canvas/components/ChannelItemRow";
 import { useChannelTaskStatus } from "@posthog/ui/features/canvas/hooks/useChannelTaskStatus";
 import { DragBatchLabel } from "@posthog/ui/features/sidebar/components/DragBatchLabel";

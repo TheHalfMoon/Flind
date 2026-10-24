@@ -1,5 +1,5 @@
 import { DownloadSimpleIcon } from "@phosphor-icons/react";
-import { Button, buttonGroupVariants, cn } from "@posthog/quill";
+import { Button, buttonGroupVariants, cn } from "@flind/quill";
 import { FileIcon } from "@posthog/ui/primitives/FileIcon";
 import { Tooltip } from "@posthog/ui/primitives/Tooltip";
 import type { ReactNode } from "react";

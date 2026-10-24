@@ -6,4 +6,4 @@ export {
   RESOLVE_REASON_OPTIONS,
   type ReportStateReason,
   type ResolveReasonOptionValue,
-} from "@posthog/agent-contracts/dismissal-reasons";
+} from "@flind/agent-contracts/dismissal-reasons";

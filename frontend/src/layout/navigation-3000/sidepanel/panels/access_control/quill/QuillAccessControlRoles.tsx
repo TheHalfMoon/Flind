@@ -1,6 +1,6 @@
 import { useAsyncActions, useValues } from 'kea'
 
-import { Item, ItemActions, ItemContent, ItemDescription, ItemTitle } from '@posthog/quill'
+import { Item, ItemActions, ItemContent, ItemDescription, ItemTitle } from '@flind/quill'
 
 import { Link } from 'lib/lemon-ui/Link'
 import { fullName } from 'lib/utils/strings'

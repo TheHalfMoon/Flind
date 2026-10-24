@@ -1,4 +1,4 @@
-import { AvatarGroup, Text, Tooltip, TooltipContent, TooltipTrigger } from '@posthog/quill'
+import { AvatarGroup, Text, Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill'
 
 import { QuillPersonAvatar } from 'lib/components/QuillPersonAvatar/QuillPersonAvatar'
 

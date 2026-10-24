@@ -9,8 +9,8 @@ import {
   type ExecutionMode,
   resolveCloudInitialPermissionMode,
   restrictedModelMeta,
-} from "@posthog/agent-contracts";
-import { EFFORT_LEVEL_LABELS } from "@posthog/agent-contracts/domain-types";
+} from "@flind/agent-contracts";
+import { EFFORT_LEVEL_LABELS } from "@flind/agent-contracts/domain-types";
 import {
   type GatewayModel,
   isOpenAIModel,
@@ -70,7 +70,7 @@ function editableSandboxPolicy(platform: string): CodexSandboxPolicy {
 }
 
 // Flattened Claude-style presets: the `{id, name, description}` literals live
-// in @posthog/agent-contracts (one copy for every picker); this map owns the behavior.
+// in @flind/agent-contracts (one copy for every picker); this map owns the behavior.
 // Restriction is driven by approvalPolicy + sandboxPolicy: plan/read-only block
 // edits, auto/full-access restore the platform's editable sandbox.
 function modePolicies(

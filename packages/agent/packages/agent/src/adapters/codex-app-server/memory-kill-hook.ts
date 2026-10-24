@@ -1,7 +1,7 @@
 import type { ServerOptions } from "@modelcontextprotocol/sdk/server/index.js";
 import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-import { tomlBasicString } from "@posthog/agent-contracts";
-import { LOCAL_TOOLS_MCP_NAME } from "@posthog/harness/extensions/local-tools";
+import { tomlBasicString } from "@flind/agent-contracts";
+import { LOCAL_TOOLS_MCP_NAME } from "@flind/harness/extensions/local-tools";
 import { z } from "zod";
 import { Logger } from "../../utils/logger";
 import {

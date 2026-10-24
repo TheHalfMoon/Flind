@@ -7,7 +7,7 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import type { UserBasic } from "@posthog/shared/domain-types";
 import {
   type AvatarPerson,

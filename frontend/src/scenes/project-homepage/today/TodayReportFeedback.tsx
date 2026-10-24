@@ -3,7 +3,7 @@ import { useActions, useValues } from 'kea'
 import { type ChangeEvent, type KeyboardEvent, useState } from 'react'
 
 import { IconThumbsDown, IconThumbsDownFilled, IconThumbsUp, IconThumbsUpFilled, IconX } from '@posthog/icons'
-import { Button, Text, Textarea } from '@posthog/quill'
+import { Button, Text, Textarea } from '@flind/quill'
 
 import { useReportFeedbackCelebration } from 'products/signals/frontend/inbox/components/detail/ReportFeedbackCelebration'
 import { inboxReportDetailLogic } from 'products/signals/frontend/inbox/logics/inboxReportDetailLogic'

@@ -1,7 +1,7 @@
 import {
   getRemotePiConversation,
   RemotePiRpcClient,
-} from "@posthog/agent/pi/remote-rpc-client";
+} from "@flind/agent/pi/remote-rpc-client";
 import type {
   PiSession,
   PiSessionFactory,

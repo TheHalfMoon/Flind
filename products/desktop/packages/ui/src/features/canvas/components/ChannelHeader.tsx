@@ -1,4 +1,4 @@
-import { Button, cn } from "@posthog/quill";
+import { Button, cn } from "@flind/quill";
 import { ChannelBreadcrumb } from "@posthog/ui/features/canvas/components/ChannelBreadcrumb";
 import { ChannelTabs } from "@posthog/ui/features/canvas/components/ChannelTabs";
 import { channelGlyph } from "@posthog/ui/features/canvas/components/channelGlyph";

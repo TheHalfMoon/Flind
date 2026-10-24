@@ -4,7 +4,7 @@ import {
   PopoverContent,
   PopoverTrigger,
   Text,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { TASK_COST_VISIBLE_FLAG } from "@posthog/shared";
 import { useFeatureFlag } from "@posthog/ui/features/feature-flags/useFeatureFlag";
 import {

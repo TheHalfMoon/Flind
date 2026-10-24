@@ -11,7 +11,7 @@ import {
     SelectValue,
     Skeleton,
     Spinner,
-} from '@posthog/quill-primitives'
+} from '@flind/quill-primitives'
 
 import { Resizer } from 'lib/components/Resizer/Resizer'
 import { ResizerLogicProps, resizerLogic } from 'lib/components/Resizer/resizerLogic'

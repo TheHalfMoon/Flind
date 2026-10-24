@@ -1,5 +1,5 @@
-import { TooltipSurface, TooltipSwatch } from '@posthog/quill-charts'
-import type { TooltipContext } from '@posthog/quill-charts'
+import { TooltipSurface, TooltipSwatch } from '@flind/quill-charts'
+import type { TooltipContext } from '@flind/quill-charts'
 
 import { ChoiceQuestionResponseData } from '~/types'
 

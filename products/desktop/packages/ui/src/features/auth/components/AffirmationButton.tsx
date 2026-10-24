@@ -1,5 +1,5 @@
 import { Heart, Lifebuoy } from "@phosphor-icons/react";
-import { Button } from "@posthog/quill";
+import { Button } from "@flind/quill";
 import { useState } from "react";
 
 const AFFIRMATIONS = [

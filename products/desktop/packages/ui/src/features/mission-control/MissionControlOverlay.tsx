@@ -1,4 +1,4 @@
-import { Badge } from "@posthog/quill";
+import { Badge } from "@flind/quill";
 import LogosLandscape from "@posthog/ui/primitives/Logo";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";

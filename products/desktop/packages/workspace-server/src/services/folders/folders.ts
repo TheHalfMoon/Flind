@@ -9,10 +9,10 @@ import {
   getLinkedWorktreeMainPath,
   getRemoteUrl,
   isGitRepository,
-} from "@posthog/git/queries";
-import { InitRepositorySaga } from "@posthog/git/sagas/init";
-import { parseGithubUrl } from "@posthog/git/utils";
-import { WorktreeManager } from "@posthog/git/worktree";
+} from "@flind/git/queries";
+import { InitRepositorySaga } from "@flind/git/sagas/init";
+import { parseGithubUrl } from "@flind/git/utils";
+import { WorktreeManager } from "@flind/git/worktree";
 import { DIALOG_SERVICE, type IDialog } from "@posthog/platform/dialog";
 import {
   type IWorkspaceSettings,

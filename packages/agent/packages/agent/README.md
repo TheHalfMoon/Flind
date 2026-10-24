@@ -1,4 +1,4 @@
-# @posthog/agent
+# @flind/agent
 
 The core runtime for PostHog cloud runs. Provides two things: an **Agent SDK** for running AI agents against PostHog tasks, and an **AgentServer** CLI that hosts the agent inside cloud sandboxes. Both are built on the [Agent Client Protocol (ACP)](https://github.com/anthropics/agent-client-protocol) for standardized agent ↔ client communication.
 
@@ -167,7 +167,7 @@ Optional behavior toggles:
 
 - `AI_GATEWAY_TOKEN_CAP_USD` — the per-run spend cap of the gateway token the cloud worker minted for the sandbox. When set on a cloud run, the Claude adapter arms the run budget guard: it prices every assistant message, snaps to the SDK's cumulative cost at turn end, steers the live turn at 50% (ship what is on disk, skip polish) and 70% (commit and stop) of the cap, and denies new `Agent`, `Task`, `Workflow`, `WebFetch` and `WebSearch` calls once critical. At 90% of the cap it denies every tool, cancels the running turn with the interrupt reason `budget_exhausted`, and refuses new and queued prompts the same way, so no model call reaches the gateway refusal. The stages sit well below the cap because the estimate trails the gateway ledger and the finishing work needs budget of its own. Unset or invalid means no guard.
 - `AI_GATEWAY_MODEL_PRICES_JSON` — optional override of the guard's per-million-token price table, a JSON object of `{ "<model id regex>": { input, output, cacheRead, cacheWrite } }` in USD. Defaults cover the Anthropic, GLM, Kimi and DeepSeek families the adapter serves.
-- `POSTHOG_BENJAMIN` — `1` or `true` appends the vendored Benjamin-Plus token-efficiency instruction (`@posthog/harness/extensions/benjamin`, source at `packages/harness/src/extensions/benjamin/instruction.ts`) to the Claude system prompt and the Codex instructions, and stamps the pinned upstream commit into run state as `benjamin_version` at session start. Any other value leaves prompts unchanged.
+- `POSTHOG_BENJAMIN` — `1` or `true` appends the vendored Benjamin-Plus token-efficiency instruction (`@flind/harness/extensions/benjamin`, source at `packages/harness/src/extensions/benjamin/instruction.ts`) to the Claude system prompt and the Codex instructions, and stamps the pinned upstream commit into run state as `benjamin_version` at session start. Any other value leaves prompts unchanged.
 
 Optional run telemetry (the logs pair must both be set, otherwise telemetry stays off):
 
@@ -193,7 +193,7 @@ Resolve the hexadecimal IDs within the telemetry project, after the root span ex
 The `Agent` class (`src/agent.ts`) is the entrypoint for local/programmatic usage. It handles LLM gateway configuration, log writer setup, and model filtering — then delegates to `createAcpConnection()`.
 
 ```typescript
-import { Agent } from "@posthog/agent/agent"
+import { Agent } from "@flind/agent/agent"
 
 const agent = new Agent({
   posthog: {

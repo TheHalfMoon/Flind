@@ -6,7 +6,7 @@ import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
 import { channelGlyph } from "@posthog/ui/features/canvas/components/channelGlyph";
 import { useChannelStarToggle } from "@posthog/ui/features/canvas/hooks/useChannelStars";

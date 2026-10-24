@@ -18,7 +18,7 @@ import {
     ItemTitle,
     MenuLabel,
     Spinner,
-} from '@posthog/quill-primitives'
+} from '@flind/quill-primitives'
 
 import { CloudEnvironmentModal } from 'scenes/settings/environment/CloudEnvironmentModal'
 import { cloudEnvironmentsLogic } from 'scenes/settings/environment/cloudEnvironmentsLogic'

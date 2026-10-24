@@ -1,6 +1,6 @@
 import type { ReactElement } from 'react'
 
-import { Badge } from '@posthog/quill'
+import { Badge } from '@flind/quill'
 
 import { SURVEY_QUESTION_TYPE_LABELS } from './utils'
 

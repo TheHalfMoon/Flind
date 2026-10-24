@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 
-import { BarList, type Series } from '@posthog/quill-charts'
+import { BarList, type Series } from '@flind/quill-charts'
 
 import { useChartTheme } from 'lib/charts/hooks'
 

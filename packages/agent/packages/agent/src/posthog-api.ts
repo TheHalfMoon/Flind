@@ -8,7 +8,7 @@ import {
   type StoredLogEntry,
   type TaskRunUpdate,
   taskRunStateSchema,
-} from "@posthog/agent-contracts";
+} from "@flind/agent-contracts";
 import packageJson from "../package.json" with { type: "json" };
 import {
   type ContextSelectionResponse,

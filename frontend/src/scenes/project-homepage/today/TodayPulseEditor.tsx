@@ -12,7 +12,7 @@ import {
     PopoverTrigger,
     Text,
     cn,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import type { PulsePinApi } from 'products/today/frontend/generated/api.schemas'
 

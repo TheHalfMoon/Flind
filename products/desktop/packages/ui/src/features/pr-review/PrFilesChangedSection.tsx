@@ -1,5 +1,5 @@
 import { CheckIcon, GitBranchIcon, GitDiffIcon } from "@phosphor-icons/react";
-import { Button, ToggleGroup, ToggleGroupItem } from "@posthog/quill";
+import { Button, ToggleGroup, ToggleGroupItem } from "@flind/quill";
 import {
   useDiffViewerStore,
   type ViewMode,

@@ -15,7 +15,7 @@ import {
   buildChatAboutPrCommentPrompt,
   buildFixPrCommentPrompt,
 } from "@posthog/core/code-review/reviewPrompts";
-import { Button } from "@posthog/quill";
+import { Button } from "@flind/quill";
 import type { PrReviewComment } from "@posthog/shared";
 import { formatRelativeTimeShort } from "@posthog/shared";
 import { cachedImageUrl } from "@posthog/ui/shell/cachedImageUrl";

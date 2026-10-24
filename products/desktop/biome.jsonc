@@ -332,7 +332,7 @@
               "level": "error",
               "options": {
                 "paths": {
-                  "@posthog/quill": {
+                  "@flind/quill": {
                     "importNames": ["Spinner"],
                     "message": "Use Spinner or LoadingState from @posthog/ui/primitives so every loading indicator shares one glyph, size scale and compositor-only animation."
                   },
@@ -366,8 +366,8 @@
                       "!@posthog/workspace-client/client",
                       "!@posthog/platform",
                       "!@posthog/platform/*",
-                      "!@posthog/quill",
-                      "!@posthog/quill-charts"
+                      "!@flind/quill",
+                      "!@flind/quill-charts"
                     ],
                     "message": "ui must run in any JS environment."
                   }

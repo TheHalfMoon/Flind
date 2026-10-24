@@ -1,8 +1,8 @@
 import { useValues } from 'kea'
 import { useMemo } from 'react'
 
-import { SlopeChart, createXAxisTickCallback } from '@posthog/quill-charts'
-import type { Series, SlopeChartConfig, SlopeSeriesMeta } from '@posthog/quill-charts'
+import { SlopeChart, createXAxisTickCallback } from '@flind/quill-charts'
+import type { Series, SlopeChartConfig, SlopeSeriesMeta } from '@flind/quill-charts'
 
 import { useChartTheme } from 'lib/charts/hooks'
 import { formatAggregationAxisValue } from 'scenes/insights/aggregationAxisFormat'

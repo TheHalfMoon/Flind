@@ -1,11 +1,11 @@
-# @posthog/enricher
+# @flind/enricher
 
 Detect and enrich PostHog SDK usage in source code. Uses tree-sitter AST analysis to find `capture()` calls, feature flag checks, `init()` calls, and variant branches across JavaScript, TypeScript, Python, Go, and Ruby.
 
 ## Quick start
 
 ```typescript
-import { PostHogEnricher } from "@posthog/enricher";
+import { PostHogEnricher } from "@flind/enricher";
 
 const enricher = new PostHogEnricher();
 
@@ -171,7 +171,7 @@ interface EnrichedEvent {
 The lower-level detection API is also exported for direct use (this is the same API used by the PostHog VSCode extension):
 
 ```typescript
-import { PostHogDetector } from "@posthog/enricher";
+import { PostHogDetector } from "@flind/enricher";
 
 const detector = new PostHogDetector();
 
@@ -187,7 +187,7 @@ detector.dispose();
 ### Flag classification utilities
 
 ```typescript
-import { classifyFlagType, classifyStaleness } from "@posthog/enricher";
+import { classifyFlagType, classifyStaleness } from "@flind/enricher";
 
 classifyFlagType(flag);                           // "boolean" | "multivariate" | "remote_config"
 classifyStaleness(key, flag, experiments, opts);   // StalenessReason | null
@@ -198,7 +198,7 @@ classifyStaleness(key, flag, experiments, opts);   // StalenessReason | null
 Warnings are silenced by default. To receive them:
 
 ```typescript
-import { setLogger } from "@posthog/enricher";
+import { setLogger } from "@flind/enricher";
 
 setLogger({ warn: console.warn });
 ```

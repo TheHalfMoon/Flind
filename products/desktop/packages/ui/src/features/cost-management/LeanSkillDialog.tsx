@@ -13,7 +13,7 @@ import {
   DialogHeader,
   DialogTitle,
   Text,
-} from "@posthog/quill";
+} from "@flind/quill";
 import type React from "react";
 
 interface LeanSkillDialogProps {

@@ -1,4 +1,4 @@
-import { IMAGE_TOOLS_ENV_KEY } from "@posthog/agent-contracts/sandbox-env";
+import { IMAGE_TOOLS_ENV_KEY } from "@flind/agent-contracts/sandbox-env";
 import { describe, expect, it, vi } from "vitest";
 import {
   appendRepositoryConventionsForCodex,

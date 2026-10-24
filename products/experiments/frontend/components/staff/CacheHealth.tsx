@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { LemonButton } from '@posthog/lemon-ui'
-import { TimeSeriesBarChart } from '@posthog/quill-charts'
+import { TimeSeriesBarChart } from '@flind/quill-charts'
 
 import { useChartTheme } from 'lib/charts/hooks'
 import { dayjs } from 'lib/dayjs'

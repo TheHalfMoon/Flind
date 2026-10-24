@@ -1,7 +1,7 @@
 import type { ReactElement } from 'react'
 
 import { formatDate } from '@posthog/mcp-ui'
-import { Badge, Card, CardContent, Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@posthog/quill'
+import { Badge, Card, CardContent, Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@flind/quill'
 
 import { PropertyFilterList, type PropertyFilter } from './PropertyFilterList'
 import { RolloutBar } from './RolloutBar'

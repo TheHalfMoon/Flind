@@ -22,20 +22,20 @@ Principle: logic is portable; hosts are thin.
 | Package | Owns | Must not contain |
 | --- | --- | --- |
 | `@posthog/platform` | Host-capability interfaces and DI tokens. Host-neutral, zero runtime dependencies. | Implementations, Node, DOM, tRPC, Electron |
-| `@posthog/agent-contracts` | Types, schemas and helpers the agent runtime shares with its hosts: task and run domain types, model catalog, Saga pattern, cloud-prompt encoding. Depends on published packages only. | Internal package imports, I/O, desktop-only code |
-| `@posthog/shared` | Host-neutral desktop primitives and types. Re-exports `@posthog/agent-contracts`, so desktop code imports both through `@posthog/shared`. | Internal package imports other than `agent-contracts`, I/O |
+| `@flind/agent-contracts` | Types, schemas and helpers the agent runtime shares with its hosts: task and run domain types, model catalog, Saga pattern, cloud-prompt encoding. Depends on published packages only. | Internal package imports, I/O, desktop-only code |
+| `@posthog/shared` | Host-neutral desktop primitives and types. Re-exports `@flind/agent-contracts`, so desktop code imports both through `@posthog/shared`. | Internal package imports other than `agent-contracts`, I/O |
 | `@posthog/api-client` | PostHog/Django HTTPS client. Constructed by factory, not DI. | UI, Node-only host syscalls |
 | `@posthog/workspace-client` | Thin tRPC client for local or sandbox workspace-server. Runs in any JS environment. | Business logic, UI |
 | `@posthog/workspace-server` | Node backend services and colocated tRPC routers for git, fs, watchers, processes. | UI, core, Electron |
 | `@posthog/core` | Portable Inversify services, domain schemas/types, domain stores (`zustand/vanilla`). Injects platform, workspace-client, api-client. | React, `trpcClient`, Node syscalls, Electron, host-router runtime |
-| `@posthog/ui` | React components, hooks, contributions, view-state stores. Built on `@posthog/quill`. | Business logic, `trpcClient`, Node |
+| `@posthog/ui` | React components, hooks, contributions, view-state stores. Built on `@flind/quill`. | Business logic, `trpcClient`, Node |
 | `@posthog/host-trpc` | Shared `initTRPC` base with container-bearing context for Electron main routers. | Feature logic |
 | `@posthog/host-router` | Electron host tRPC routers that resolve services from request context and forward calls. Exposes `HostRouter` type and renderer `useHostTRPC`. | Service implementations |
 | `@posthog/di` | DI and boot primitives: `CONTRIBUTION`, `boot()`, `ROOT_LOGGER`, `setRootContainer()`, `useService`. | Feature code |
 | `@posthog/electron-trpc` | tRPC-over-Electron-IPC transport. | Feature code |
-| `@posthog/git`, `@posthog/enricher`, `@posthog/agent` | Reusable domain implementation packages. | Host-specific code |
+| `@flind/git`, `@flind/enricher`, `@flind/agent` | Reusable domain implementation packages. | Host-specific code |
 
-`@posthog/agent`, `@posthog/agent-contracts`, `@posthog/enricher`, `@posthog/git` and `@posthog/harness` live in their own workspace at `packages/agent` in the repo root, because cloud sandboxes boot the agent without the desktop app.
+`@flind/agent`, `@flind/agent-contracts`, `@flind/enricher`, `@flind/git` and `@flind/harness` live in their own workspace at `packages/agent` in the repo root, because cloud sandboxes boot the agent without the desktop app.
 This workspace links them by path, so turbo cannot see their files: `pnpm build`, `pnpm typecheck` and `pnpm test` build that workspace first and write `.agent-workspace-stamp`, which turbo hashes.
 After changing that workspace, run `pnpm build:agent` before calling `turbo` directly, or turbo serves stale cached results.
 
@@ -59,7 +59,7 @@ Hosts:
 10. Boot side effects are `Contribution`s bound in feature modules and started by `boot()`.
 11. tRPC routers are one-line forwards over services. No inline business logic.
 12. Use Inversify with `@inversifyjs/strongly-typed`. Define each token as a standalone `export const TOKEN = Symbol.for("posthog.<area>.<thing>")` beside its `interface`/service — never an object-literal token bag (`TOKENS = { X: Symbol.for(...) }`), because object properties are not `unique symbol` and cannot key a binding map. Every composition root declares a `BindingMap` interface (token → bound type) and constructs `new TypedContainer<BindingMap>()`, so a mistyped bind or a resolve of an unbound token fails at compile time. Bind in the feature module. Do not use `@provide` or `*Port` naming.
-13. Use `@posthog/quill` for rendering-layer primitives. Never import Radix — see [UI Components](#ui-components). Routing is TanStack Router contributed per feature.
+13. Use `@flind/quill` for rendering-layer primitives. Never import Radix — see [UI Components](#ui-components). Routing is TanStack Router contributed per feature.
 
 Hard boundary: `@posthog/core` and `@posthog/ui` never import host transports. No `trpcClient`, `electron`, or `node:*`.
 
@@ -74,7 +74,7 @@ Enforced by Biome `noRestrictedImports`.
 - `api-client` and `workspace-client` may import `shared` and relevant `platform` contracts. No UI or Node host syscalls.
 - `workspace-server` may import `shared`, `platform` contracts, Node modules, and workspace-server code. Never `core` or `ui`.
 - `core` may import `shared`, `platform`, `workspace-client`, `api-client`, and other core code. Never `ui`, `workspace-server`, `electron`, `node:*`, `trpcClient`, or host-router runtime.
-- `ui` may import `core`, `api-client`, `workspace-client`, `platform`, `shared`, `@posthog/quill`, `@posthog/quill-charts`, and UI feature public files. Never `workspace-server`, `electron`, `node:*`, or `trpcClient`.
+- `ui` may import `core`, `api-client`, `workspace-client`, `platform`, `shared`, `@flind/quill`, `@flind/quill-charts`, and UI feature public files. Never `workspace-server`, `electron`, `node:*`, or `trpcClient`.
 - `apps/<host>` may import any package and its own host adapters.
 
 ## Core Eligibility
@@ -86,7 +86,7 @@ Enforced by Biome `noRestrictedImports`.
 | `node:fs`, `node:path`, `node:child_process`, `process.*` | `workspace-server`, or an injected platform/environment interface |
 | `node:crypto` for ids, hashes, PKCE, random | injected platform crypto/random interface |
 | `node:events` emitters or async iterators | shared event abstraction, or keep source in `workspace-server` |
-| `@posthog/enricher`, git/file/AST repo scans | `workspace-server` owns the scan; `core` owns result decisions |
+| `@flind/enricher`, git/file/AST repo scans | `workspace-server` owns the scan; `core` owns result decisions |
 | `process.platform`, `process.arch` | typed host-info interface supplied by host |
 
 Split host-tangled algorithms: pure decision in `core`, host access in `workspace-server` or a platform adapter.
@@ -108,7 +108,7 @@ For each new file or meaningful change:
 
 ## Forbidden Patterns
 
-- Any new `@radix-ui/*` import (`@radix-ui/themes`, `@radix-ui/react-*`). Use `@posthog/quill` plus `div` + Tailwind.
+- Any new `@radix-ui/*` import (`@radix-ui/themes`, `@radix-ui/react-*`). Use `@flind/quill` plus `div` + Tailwind.
 - Radix layout primitives (`Box`, `Flex`, `Grid`, `Section`, `Container`) in code you touch; replace them with `div`s.
 - Business logic in store actions.
 - Domain stores in `@posthog/ui`.
@@ -277,7 +277,7 @@ exception for matching surrounding code: the ~500 files that still import Radix 
 legacy awaiting migration, not a pattern to copy. If a file you are editing already
 imports Radix, that is a reason to remove those imports, not to add more.
 
-Rendering primitives come from `@posthog/quill`. Layout comes from plain HTML elements
+Rendering primitives come from `@flind/quill`. Layout comes from plain HTML elements
 plus Tailwind.
 
 ### Replace Radix as you go
@@ -302,7 +302,7 @@ Layout primitives become `div`s (or the right semantic element) with Tailwind cl
 | `<VisuallyHidden>` | `className="sr-only"` |
 | `<Link>` | TanStack Router `Link` (in quill, `render={<Link … />}`) |
 
-Everything else has a quill equivalent — import it from `@posthog/quill`:
+Everything else has a quill equivalent — import it from `@flind/quill`:
 
 | Radix Themes | quill |
 | --- | --- |
@@ -322,7 +322,7 @@ Pulling in a Radix package is not the fallback.
 
 ### Design tokens
 
-- Use the semantic design tokens from `@posthog/quill-tokens` by default.
+- Use the semantic design tokens from `@flind/quill-tokens` by default.
 - Do not add raw color utilities such as `text-(--gray-11)` or `bg-(--gray-2)`.
 - Use `text-foreground` for important or high-contrast text.
 - Use `text-muted-foreground` for less important or low-contrast text.
@@ -347,9 +347,9 @@ New tests must not need it.
 - Use path aliases and package public exports. Avoid deep relative imports.
 - No barrel files (`index.ts`).
 - Use Tailwind first. Keep classes sorted. Use inline `style` only for runtime values, library configuration, or CSS variables.
-- Empty/placeholder/loading screens (canvas and elsewhere) are a `@posthog/quill` `<Empty>` (`EmptyHeader` → `EmptyMedia variant="icon"` → `EmptyTitle` → `EmptyDescription`, then `EmptyContent` for CTAs). Don't hand-roll the centered Flex + dashed icon box. CTAs are quill `Button`s: primary action `variant="primary"`, secondary `variant="outline"`, `size="default"`. For a link CTA use `render={<Link … />}` (Base UI), not `asChild`.
+- Empty/placeholder/loading screens (canvas and elsewhere) are a `@flind/quill` `<Empty>` (`EmptyHeader` → `EmptyMedia variant="icon"` → `EmptyTitle` → `EmptyDescription`, then `EmptyContent` for CTAs). Don't hand-roll the centered Flex + dashed icon box. CTAs are quill `Button`s: primary action `variant="primary"`, secondary `variant="outline"`, `size="default"`. For a link CTA use `render={<Link … />}` (Base UI), not `asChild`.
 - The bar across the top of a pane, a column or a side panel is `ChromeBar` (`packages/ui/src/primitives`), never a hand-written row. It fixes the height at 40px, the border and the colour; the caller supplies the breadcrumb, title or search header inside it and the controls through `actions`. `inset` says how far from the edges the contents sit: `control` when the bar starts with a button, `text` when it starts with a label, `even` for a bar with the same padding both ends, `title` for a pane's own title bar. A title bar holds its contents on `PANE_INSET`, the same inset as the body under it, so the title starts on the line of the page it names; title content that starts with a `size="sm"` button adds `LEADING_BUTTON_PULL` to cancel that button's own padding. A title that pads itself instead drifts from every other pane. Fifteen copies of this row had drifted into three border colours and four paddings before it existed.
-- Loading indicators are `Spinner` and `LoadingState` from `packages/ui/src/primitives`. `LoadingState` fills a pane or section while its data loads (24px spinner, optional label). `Spinner` sits inline in a button, row or badge; omit `size` inside quill buttons and media slots so it matches the icons beside it, and pick `xs`/`sm`/`md`/`lg` elsewhere. Do not import `Spinner` from `@posthog/quill` or `@radix-ui/themes`, and do not spin phosphor's `CircleNotch` or `SpinnerGap`: Biome rejects those imports. Pass `aria-hidden="true"` when the spinner sits next to visible loading text or inside an element that already announces the loading state, so the label is not read twice. The braille `DotsCircleSpinner` and `DotRingSpinner` mark agent activity (a running tool call, a working task), not data loading.
+- Loading indicators are `Spinner` and `LoadingState` from `packages/ui/src/primitives`. `LoadingState` fills a pane or section while its data loads (24px spinner, optional label). `Spinner` sits inline in a button, row or badge; omit `size` inside quill buttons and media slots so it matches the icons beside it, and pick `xs`/`sm`/`md`/`lg` elsewhere. Do not import `Spinner` from `@flind/quill` or `@radix-ui/themes`, and do not spin phosphor's `CircleNotch` or `SpinnerGap`: Biome rejects those imports. Pass `aria-hidden="true"` when the spinner sits next to visible loading text or inside an element that already announces the loading state, so the label is not read twice. The braille `DotsCircleSpinner` and `DotRingSpinner` mark agent activity (a running tool call, a working task), not data loading.
 - Abort controllers before awaiting cleanup that depends on them.
 
 See [docs/CONVENTIONS.md](./docs/CONVENTIONS.md).
@@ -362,7 +362,7 @@ See [docs/CONVENTIONS.md](./docs/CONVENTIONS.md).
 
 ## Key Libraries
 
-- React 19, Tailwind CSS, `@posthog/quill` (components), and `@posthog/quill-tokens` (design tokens).
+- React 19, Tailwind CSS, `@flind/quill` (components), and `@flind/quill-tokens` (design tokens).
   Radix is banned in new code.
   See [UI Components](#ui-components).
   Existing Radix imports await migration.

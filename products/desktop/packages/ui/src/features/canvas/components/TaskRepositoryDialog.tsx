@@ -9,7 +9,7 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { FolderPicker } from "@posthog/ui/features/folder-picker/FolderPicker";
 import { RepositoriesField } from "@posthog/ui/features/integrations/components/RepositoriesField";
 import { useState } from "react";

@@ -131,7 +131,7 @@ jobs:
             - name: Install pnpm dependencies
               uses: ./.github/actions/pnpm-install
               with:
-                  install-command: pnpm --filter=@posthog/hogvm install --frozen-lockfile
+                  install-command: pnpm --filter=@flind/logicvm install --frozen-lockfile
                   token: ${{ steps.setup-gh-token.outputs.token || github.token }}
 
             - name: Check if ANTLR definitions are up to date
@@ -171,14 +171,14 @@ jobs:
 
             - name: Run HogVM TypeScript tests
               run: |
-                  pnpm --filter=@posthog/hogvm install --frozen-lockfile
-                  pnpm --filter=@posthog/hogvm test
+                  pnpm --filter=@flind/logicvm install --frozen-lockfile
+                  pnpm --filter=@flind/logicvm test
 
             - name: Run Hog tests
               run: |
-                  pnpm --filter=@posthog/hogvm install --frozen-lockfile
-                  pnpm --filter=@posthog/hogvm compile:stl
-                  bin/turbo --filter=@posthog/hogvm build
+                  pnpm --filter=@flind/logicvm install --frozen-lockfile
+                  pnpm --filter=@flind/logicvm compile:stl
+                  bin/turbo --filter=@flind/logicvm build
                   cd common/hogvm
                   ./test.sh && git diff --exit-code
               env:

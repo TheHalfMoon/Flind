@@ -21,7 +21,7 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { Badge } from "@posthog/ui/primitives/Badge";
 import { openUrlInBrowser } from "@posthog/ui/utils/browser";
 import { Fragment, useRef, useState } from "react";

@@ -21,7 +21,7 @@ import {
   SelectTrigger,
   SelectValue,
   Switch,
-} from "@posthog/quill";
+} from "@flind/quill";
 import type { Channel } from "@posthog/ui/features/canvas/hooks/useChannels";
 import { useEffect, useState } from "react";
 

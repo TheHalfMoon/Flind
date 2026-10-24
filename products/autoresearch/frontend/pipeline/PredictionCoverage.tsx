@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { useMemo } from 'react'
 
 import { LemonBanner, LemonButton, LemonSkeleton } from '@posthog/lemon-ui'
-import { type Series, TimeSeriesLineChart, type TimeSeriesLineChartConfig } from '@posthog/quill-charts'
+import { type Series, TimeSeriesLineChart, type TimeSeriesLineChartConfig } from '@flind/quill-charts'
 
 import { useChartConfig, useChartTheme } from 'lib/charts/hooks'
 import { dayjs } from 'lib/dayjs'

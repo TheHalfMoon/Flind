@@ -1,4 +1,4 @@
-import { Label, Switch } from "@posthog/quill";
+import { Label, Switch } from "@flind/quill";
 import {
   ANALYTICS_EVENTS,
   type ChannelsSurface,

@@ -4281,7 +4281,7 @@ plan's mechanism analysis still held; only the target stage flipped (find, not j
 
 **How the sandbox picks a model (the mechanism — fully in place and used in prod).**
 
-- The in-sandbox agent is `@posthog/agent` (`products/tasks/scripts/runAgent.mjs`; installed in
+- The in-sandbox agent is `@flind/agent` (`products/tasks/scripts/runAgent.mjs`; installed in
   `products/tasks/backend/sandbox/images/Dockerfile.sandbox-base`). It reads three env vars set by
   `build_agent_runtime_env_prefix` (`products/tasks/backend/logic/services/sandbox.py:148-150`):
   **`POSTHOG_CODE_PROVIDER` / `POSTHOG_CODE_MODEL` / `POSTHOG_CODE_REASONING_EFFORT`**.
@@ -4333,7 +4333,7 @@ review sandbox parks on an approval prompt no headless run can answer, and the w
 Codex equivalent of Claude's `bypassPermissions`) auto-approves every tool kind. This threads through the SAME path as
 the model pins: `CustomPromptSandboxContext.initial_permission_mode` → `create_task_and_trigger` → `_build_task` →
 `extra_state` → agent env. **Any future headless Codex stage (e.g. moving dedup to Codex) must also pass
-`"full-access"`.** The mode lives in `@posthog/agent` `codex-client.ts` (`AUTO_APPROVED_KINDS` / `shouldAutoApprove`).
+`"full-access"`.** The mode lives in `@flind/agent` `codex-client.ts` (`AUTO_APPROVED_KINDS` / `shouldAutoApprove`).
 
 **Tests (4; each guards a distinct real regression; `/writing-tests` gate).**
 
@@ -4365,7 +4365,7 @@ end-to-end routing chain to `POSTHOG_CODE_*` was verified real, not cosmetic.
    thing e2e must prove._
 2. **Codex skill-get over MCP** — the review pulls the enabled `review-hog-perspective-*` skills via `skill-get`; the
    sandbox installs the Codex skills dir + MCP serves live, so it should work, but confirm under the codex adapter.
-3. **End-turn detection under the codex adapter** — `@posthog/agent` normalizes `stopReason == "end_turn"` across
+3. **End-turn detection under the codex adapter** — `@flind/agent` normalizes `stopReason == "end_turn"` across
    adapters; single-turn only, so no multi-turn agent-stop work is needed here (that's the deferred item).
 
 **e2e ✅ (2026-07-01, no-publish, PR #67371).** All three perspective-review sandboxes launched + `completed` under
@@ -4384,7 +4384,7 @@ constants, one activity wiring) + 4 tests + this doc. **No DB migration.**
 ##### 📍 Reference — where the sandbox model + reasoning-effort switch lives (both repos)
 
 > **Read this before testing another model (Sonnet, a new Codex model, a different effort). It's a two-repo path:
-> `posthog/posthog` _sets_ the knobs, the `@posthog/agent` package _applies_ them.** Verified end-to-end 2026-07-01.
+> `posthog/posthog` _sets_ the knobs, the `@flind/agent` package _applies_ them.** Verified end-to-end 2026-07-01.
 
 **A pinned run is three values — `runtime_adapter` + `model` + `reasoning_effort`.** `provider` is _derived_ from the
 adapter (`claude → anthropic`, `codex → openai`), never set by hand.
@@ -4408,9 +4408,9 @@ reasoning_effort}]` → `get_task_processing_context` reads it back → `start_a
   `build_agent_runtime_env_prefix` (`logic/services/sandbox.py`) emits `env POSTHOG_CODE_{RUNTIME_ADAPTER,PROVIDER,MODEL,
 REASONING_EFFORT}=…` prefixed onto the agent launch command (guarded by `test_agentsh.py`).
 
-**`@posthog/agent` — where they are consumed + applied (the PostHog Desktop monorepo, _not_ this repo).** Clone via
+**`@flind/agent` — where they are consumed + applied (the PostHog Desktop monorepo, _not_ this repo).** Clone via
 `LOCAL_POSTHOG_CODE_MONOREPO_ROOT` (legacy alias `LOCAL_TWIG_MONOREPO_ROOT`); package `packages/agent`
-(npm `@posthog/agent`, baked into `Dockerfile.sandbox-base`).
+(npm `@flind/agent`, baked into `Dockerfile.sandbox-base`).
 
 - **Entry `src/server/bin.ts`:** reads + zod-validates `POSTHOG_CODE_{RUNTIME_ADAPTER,MODEL,REASONING_EFFORT}`, guards
   with `isSupportedReasoningEffort` (`src/adapters/reasoning-effort.ts` — the agent-side mirror of the Python registry;
@@ -4431,7 +4431,7 @@ reasoningEffort})`.
 effort flows through the Claude session path. For a new Codex model: `runtime_adapter = "codex"`, `model` in
 `CODEX_MODELS`, effort in `CODEX_REASONING_EFFORTS` (`xhigh` only if the model is in `CODEX_XHIGH_REASONING_MODELS`). If
 the model/effort is brand-new, add it to the registry in **both** repos (`utils.py` here + `reasoning-effort.ts` / the
-gateway model list in `@posthog/agent`) or startup validation rejects it on one side.
+gateway model list in `@flind/agent`) or startup validation rejects it on one side.
 
 ---
 

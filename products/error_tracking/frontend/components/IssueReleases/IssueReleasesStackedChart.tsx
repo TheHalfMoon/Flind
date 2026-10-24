@@ -1,8 +1,8 @@
 import { useValues } from 'kea'
 import { useMemo } from 'react'
 
-import { DefaultTooltip, TimeSeriesBarChart } from '@posthog/quill-charts'
-import type { PointClickData, Series, TimeSeriesBarChartConfig } from '@posthog/quill-charts'
+import { DefaultTooltip, TimeSeriesBarChart } from '@flind/quill-charts'
+import type { PointClickData, Series, TimeSeriesBarChartConfig } from '@flind/quill-charts'
 
 import { useChartConfig, useChartTheme } from 'lib/charts/hooks'
 import { dayjs } from 'lib/dayjs'

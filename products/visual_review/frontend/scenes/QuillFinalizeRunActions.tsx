@@ -1,5 +1,5 @@
 import { IconInfo } from '@posthog/icons'
-import { Button, Checkbox, Label, Tooltip, TooltipContent, TooltipTrigger } from '@posthog/quill'
+import { Button, Checkbox, Label, Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill'
 
 export interface QuillFinalizeRunActionsProps {
     addImagesToComment: boolean

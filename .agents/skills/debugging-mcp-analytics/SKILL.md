@@ -265,7 +265,7 @@ carries the property reference and worked query examples.
    - **Tool quality** and the per-tool **tool report** (`MCPAnalyticsToolDetail.tsx`, its own
      registered scene): shared date filter, failure-occurrence drill-down with copyable error
      context, and "create fix task" straight into `products/tasks`.
-   - **Dashboard**: quill composable `Metric` tiles and `@posthog/quill-primitives`, plus
+   - **Dashboard**: quill composable `Metric` tiles and `@flind/quill-primitives`, plus
      **notable sessions** selected by a `NotableRule` — so that table can legitimately be
      short or empty.
    - **Notifications**: first-party destinations for MCP events and recurring AI reports

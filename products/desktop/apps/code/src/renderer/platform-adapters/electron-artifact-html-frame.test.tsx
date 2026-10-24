@@ -13,7 +13,7 @@ import {
   ElectronArtifactHtmlFrame,
 } from "./electron-artifact-html-frame";
 
-vi.mock("@posthog/quill", () => ({
+vi.mock("@flind/quill", () => ({
   Button: ({ children, ...props }: ButtonHTMLAttributes<HTMLButtonElement>) => (
     <button {...props}>{children}</button>
   ),

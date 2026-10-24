@@ -1,4 +1,4 @@
-import type { SankeyLinkInput, SankeyNodeInput } from '@posthog/quill-charts'
+import type { SankeyLinkInput, SankeyNodeInput } from '@flind/quill-charts'
 
 import type { MCPIntentClusterJourneyPathApi } from '../generated/api.schemas'
 

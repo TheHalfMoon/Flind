@@ -17,7 +17,7 @@ import os from 'node:os'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
-import { preprocessSchema, runOrvalParallel } from '@posthog/openapi-codegen'
+import { preprocessSchema, runOrvalParallel } from '@flind/openapi-codegen'
 
 import { resolveSchemaPath } from './lib/definitions.mjs'
 

@@ -1,4 +1,4 @@
-import type { PieChartConfig, YAxisFormat, YFormatterConfig } from '@posthog/quill-charts'
+import type { PieChartConfig, YAxisFormat, YFormatterConfig } from '@flind/quill-charts'
 
 import { trendsFilterToYFormatterConfig } from 'products/product_analytics/frontend/insights/trends/shared/trendsAxisFormat'
 

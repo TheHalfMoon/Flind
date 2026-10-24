@@ -1,4 +1,4 @@
-import { Text, Tooltip, TooltipContent, TooltipTrigger } from '@posthog/quill'
+import { Text, Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill'
 
 import { pluralize } from 'lib/utils/strings'
 

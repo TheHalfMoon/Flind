@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { Stage, playHoverAtFraction } from '@posthog/quill-charts/story-helpers'
+import { Stage, playHoverAtFraction } from '@flind/quill-charts/story-helpers'
 
 import type { ProcessedChartData, ProcessedTimeseriesDataPoint } from '../../experimentTimeseriesLogic'
 import { VariantTimeseriesChart } from './VariantTimeseriesChart'

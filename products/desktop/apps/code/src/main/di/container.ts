@@ -6,11 +6,11 @@ import "reflect-metadata";
 import { readFile as fsReadFile, stat as fsStat } from "node:fs/promises";
 import { join } from "node:path";
 import { TypedContainer } from "@inversifyjs/strongly-typed";
-import { DEFAULT_GATEWAY_MODEL } from "@posthog/agent/gateway-models";
+import { DEFAULT_GATEWAY_MODEL } from "@flind/agent/gateway-models";
 import {
   getGatewayUsageUrl,
   getLlmGatewayUrl,
-} from "@posthog/agent/posthog-api";
+} from "@flind/agent/posthog-api";
 import { AuthService } from "@posthog/core/auth/auth";
 import { AUTH_SERVICE } from "@posthog/core/auth/auth.module";
 import {
@@ -106,7 +106,7 @@ import { updatesCoreModule } from "@posthog/core/updates/updates.module";
 import { USAGE_HOST } from "@posthog/core/usage/identifiers";
 import { usageMonitorModule } from "@posthog/core/usage/usage-monitor.module";
 import { ROOT_LOGGER, type RootLogger } from "@posthog/di/logger";
-import { listFilesContainingText } from "@posthog/git/queries";
+import { listFilesContainingText } from "@flind/git/queries";
 import { CONNECTIVITY_CLIENT } from "@posthog/host-router/ports/connectivity-client";
 import {
   GIT_PR_STATUS_PROVIDER,

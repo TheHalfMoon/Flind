@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { Text } from '@posthog/quill'
+import { Text } from '@flind/quill'
 
 import { RestrictionScope, useRestrictedArea } from 'lib/components/RestrictedArea'
 import { TestAccountFilterSwitch } from 'lib/components/TestAccountFiltersSwitch'

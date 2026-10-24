@@ -1,7 +1,7 @@
 import { useActions, useMountedLogic, useValues } from 'kea'
 
 import { IconArrowLeft, IconChevronDown } from '@posthog/icons'
-import { Button, Tooltip, TooltipContent, TooltipTrigger } from '@posthog/quill'
+import { Button, Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill'
 
 import { type HotkeyInterface, useKeyboardHotkeys } from 'lib/hooks/useKeyboardHotkeys'
 import { LinkPrimitive } from 'lib/lemon-ui/Link'

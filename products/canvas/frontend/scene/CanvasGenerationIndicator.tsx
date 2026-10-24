@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { Spinner, Text } from '@posthog/quill'
+import { Spinner, Text } from '@flind/quill'
 
 import { canvasSceneLogic } from './canvasSceneLogic'
 

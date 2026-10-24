@@ -10,7 +10,7 @@ import {
     Tooltip,
     TooltipContent,
     TooltipTrigger,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 /** Keep the combobox from reading a control press as picking an item or as a dismiss. */
 function swallowEvent(event: MouseEvent): void {

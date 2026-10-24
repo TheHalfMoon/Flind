@@ -1,4 +1,4 @@
-import { listWorktrees } from "@posthog/git/queries";
+import { listWorktrees } from "@flind/git/queries";
 
 /**
  * Resolves the primary worktree (main repository) path for a given cwd.

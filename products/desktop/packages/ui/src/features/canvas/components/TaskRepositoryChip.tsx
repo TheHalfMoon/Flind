@@ -17,7 +17,7 @@ import {
   InputGroupAddon,
   InputGroupButton,
   Text,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { MAX_REPOSITORIES } from "@posthog/ui/features/integrations/components/RepositoriesField";
 import { useGithubRepositories } from "@posthog/ui/features/integrations/useIntegrations";
 import { Spinner } from "@posthog/ui/primitives/Spinner";

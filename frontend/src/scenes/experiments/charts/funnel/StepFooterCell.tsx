@@ -1,4 +1,4 @@
-import { funnelConversionRate } from '@posthog/quill-charts'
+import { funnelConversionRate } from '@flind/quill-charts'
 
 import { IconTrendingFlat, IconTrendingFlatDown } from 'lib/lemon-ui/icons'
 import { Lettermark, LettermarkColor } from 'lib/lemon-ui/Lettermark'

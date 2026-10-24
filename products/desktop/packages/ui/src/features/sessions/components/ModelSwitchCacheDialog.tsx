@@ -12,7 +12,7 @@ import {
   DialogBody,
   Label,
   Text,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { formatCostUsd } from "@posthog/ui/features/sessions/contextColors";
 import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
 import { type ReactElement, useEffect, useId, useRef, useState } from "react";

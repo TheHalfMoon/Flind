@@ -7,7 +7,7 @@ import type {
   LocalMcpServerDescriptor,
   LocalMcpServerScope,
   LocalMcpTransport,
-} from "@posthog/agent-contracts";
+} from "@flind/agent-contracts";
 import type { Logger } from "../../../utils/logger";
 
 export interface ClaudeJsonMcpServerEntry {
@@ -163,7 +163,7 @@ function toTransport(config: McpServerConfig): LocalMcpTransport {
 
 /**
  * The user's ~/.claude.json MCP servers as host-agnostic descriptors
- * (`@posthog/agent-contracts`), with the raw config normalized per transport and stdio
+ * (`@flind/agent-contracts`), with the raw config normalized per transport and stdio
  * `env` values dropped — they routinely hold secrets consumers of the
  * descriptor shape have no use for.
  */

@@ -1,4 +1,4 @@
-import { Badge, DropdownMenuItem } from '@posthog/quill'
+import { Badge, DropdownMenuItem } from '@flind/quill'
 
 import { QuillPersonAvatar } from 'lib/components/QuillPersonAvatar/QuillPersonAvatar'
 import { TZLabel } from 'lib/components/TZLabel'

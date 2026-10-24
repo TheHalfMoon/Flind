@@ -16,7 +16,7 @@ import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import type { SignalReport } from "@posthog/shared/types";
 import { Spinner } from "@posthog/ui/primitives/Spinner";
 import type { ReactNode } from "react";

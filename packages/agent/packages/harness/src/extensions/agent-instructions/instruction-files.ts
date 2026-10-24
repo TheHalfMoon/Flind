@@ -1,7 +1,7 @@
 import { mkdir, readFile, rename, rm, writeFile } from "node:fs/promises";
 import { homedir } from "node:os";
 import { dirname, join } from "node:path";
-import type { TaskRunState } from "@posthog/agent-contracts";
+import type { TaskRunState } from "@flind/agent-contracts";
 
 // The sandbox image may ship these files, so only the text between the markers is ever replaced.
 const BLOCK_START = "<!-- posthog -->";

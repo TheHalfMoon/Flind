@@ -7,7 +7,7 @@ import {
     DropdownMenuItem,
     DropdownMenuSeparator,
     DropdownMenuTrigger,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import { helpMenuLogic } from 'lib/components/HelpMenu/helpMenuLogic'
 import { flindPublicUrl } from 'lib/flindPublicLinks'

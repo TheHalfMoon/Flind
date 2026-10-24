@@ -1,1 +1,1 @@
-export * from "@posthog/agent-contracts/posthog-property-headers";
+export * from "@flind/agent-contracts/posthog-property-headers";

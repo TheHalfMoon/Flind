@@ -89,13 +89,13 @@ jobs:
                   latest="$REQUESTED_VERSION"
                   for attempt in 1 2 3; do
                     if [ -n "$latest" ]; then break; fi
-                    latest=$(npm view @posthog/agent version 2>/dev/null || true)
+                    latest=$(npm view @flind/agent version 2>/dev/null || true)
                     if [ -n "$latest" ]; then break; fi
                     echo "npm view returned nothing (attempt $attempt)"
                     sleep $((attempt * 5))
                   done
                   if ! printf '%s' "$latest" | grep -qE '^[0-9]+\.[0-9]+\.[0-9]+$'; then
-                    echo "could not resolve a version for @posthog/agent (got '$latest')" >&2
+                    echo "could not resolve a version for @flind/agent (got '$latest')" >&2
                     exit 1
                   fi
                   echo "latest=$latest" >> "$GITHUB_OUTPUT"
@@ -132,7 +132,7 @@ jobs:
                   while read -r number head; do
                     if [ -z "$number" ]; then continue; fi
                     if [ "$head" = "$BRANCH" ]; then current_pr="$number"; else stale_prs="$stale_prs $number"; fi
-                  done <<< "$(gh pr list --state open --search '"bump sandbox @posthog/agent to" in:title' \
+                  done <<< "$(gh pr list --state open --search '"bump sandbox @flind/agent to" in:title' \
                     --json number,headRefName,isCrossRepository \
                     --jq ".[] | select(.isCrossRepository == false and (.headRefName | startswith(\"${BRANCH_PREFIX}\"))) | \"\(.number) \(.headRefName)\"")"
 
@@ -145,7 +145,7 @@ jobs:
                           headRepository { nameWithOwner }
                           timelineItems(last: 1, itemTypes: [CLOSED_EVENT]) { nodes { ... on ClosedEvent { actor { __typename login } } } }
                         } } } }' \
-                      -f q="repo:${REPO} is:pr is:closed is:unmerged head:${BRANCH} in:title \"bump sandbox @posthog/agent to ${LATEST}\"" \
+                      -f q="repo:${REPO} is:pr is:closed is:unmerged head:${BRANCH} in:title \"bump sandbox @flind/agent to ${LATEST}\"" \
                       --jq ".data.search.nodes[] | select(.headRepository.nameWithOwner == \"${REPO}\") | .timelineItems.nodes[0].actor | select(.__typename == \"User\") | .login" | head -1)
                     if [ -n "$declined_by" ]; then
                       action=declined
@@ -283,7 +283,7 @@ jobs:
               if: steps.state.outputs.action == 'bump'
               uses: planetscale/ghcommit-action@25309d8005ac7c3bcd61d3fe19b69e0fe47dbdde # v0.2.20
               with:
-                  commit_message: 'chore(tasks): bump sandbox @posthog/agent to ${{ steps.resolve.outputs.latest }}'
+                  commit_message: 'chore(tasks): bump sandbox @flind/agent to ${{ steps.resolve.outputs.latest }}'
                   repo: ${{ github.repository }}
                   branch: ${{ env.BRANCH }}
                   file_pattern: products/tasks/backend/sandbox/images/Dockerfile.sandbox-base
@@ -308,7 +308,7 @@ jobs:
                     cat <<BODY
                   ## Problem
 
-                  The sandbox base image pins \`@posthog/agent\` so a published release reaches production sandboxes only through a commit on \`master\`. That pin is at \`${PINNED}\`; the release published \`${LATEST}\`.
+                  The sandbox base image pins \`@flind/agent\` so a published release reaches production sandboxes only through a commit on \`master\`. That pin is at \`${PINNED}\`; the release published \`${LATEST}\`.
 
                   ## Changes
 
@@ -322,11 +322,11 @@ jobs:
 
                   ## How did you test this code?
 
-                  The sandbox image CD workflow builds this PR's image on both architectures, checks that the installed \`@posthog/agent\` matches the pin, and runs the \`agent-server\` entrypoint. That covers packaging and dependency resolution. This workflow then drives one Claude turn and one Codex turn from the image through the US Go ai-gateway, on the default models and efforts, and needs both to read a file with a tool. The agent's own test suite ran before the release was published.
+                  The sandbox image CD workflow builds this PR's image on both architectures, checks that the installed \`@flind/agent\` matches the pin, and runs the \`agent-server\` entrypoint. That covers packaging and dependency resolution. This workflow then drives one Claude turn and one Codex turn from the image through the US Go ai-gateway, on the default models and efforts, and needs both to read a file with a tool. The agent's own test suite ran before the release was published.
                   BODY
                   } > body.md
                   pr_url=$(gh pr create \
-                    --title "chore(tasks): bump sandbox @posthog/agent to ${LATEST}" \
+                    --title "chore(tasks): bump sandbox @flind/agent to ${LATEST}" \
                     --body-file body.md \
                     --base master \
                     --head "$BRANCH" \
@@ -363,7 +363,7 @@ jobs:
                   payload: |
                       channel: "${{ env.SLACK_CHANNEL }}"
                       unfurl_links: false
-                      text: ":twisted_rightwards_arrows: *@posthog/agent ${{ steps.resolve.outputs.latest }}*: sandbox bump PR <${{ steps.pr.outputs.url }}|#${{ steps.pr.outputs.number }}> opened, from `${{ steps.resolve.outputs.pinned }}`. It merges on its own once the image smoke passes."
+                      text: ":twisted_rightwards_arrows: *@flind/agent ${{ steps.resolve.outputs.latest }}*: sandbox bump PR <${{ steps.pr.outputs.url }}|#${{ steps.pr.outputs.number }}> opened, from `${{ steps.resolve.outputs.pinned }}`. It merges on its own once the image smoke passes."
 
             - name: Resolve the Slack thread
               id: thread
@@ -484,7 +484,7 @@ jobs:
                   payload: |
                       channel: "${{ env.SLACK_CHANNEL }}"
                       unfurl_links: false
-                      text: ":red_circle: The nightly Go ai-gateway smoke reported `${{ steps.nightly-smoke.outputs.result || 'no result' }}` for @posthog/agent ${{ steps.resolve.outputs.pinned }} on `posthog-sandbox-base:master`. <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View run>"
+                      text: ":red_circle: The nightly Go ai-gateway smoke reported `${{ steps.nightly-smoke.outputs.result || 'no result' }}` for @flind/agent ${{ steps.resolve.outputs.pinned }} on `posthog-sandbox-base:master`. <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View run>"
 
             - name: Fail when the nightly smoke did not pass
               if: ${{ !cancelled() && github.event_name == 'schedule' && contains(fromJSON('["noop", "declined", "current"]'), steps.state.outputs.action) && steps.nightly-smoke.outputs.result != 'pass' && steps.nightly-smoke.outputs.result != 'unavailable' }}
@@ -770,19 +770,19 @@ jobs:
                     text=":red_circle: ${pr} did not merge within 75 minutes, so \`posthog-sandbox-base:master\` still runs the previous agent. <${RUN_URL}|View run>"
                   elif [ "$LIVE" = true ] || [ "$REPAIR" = live ]; then
                     outcome=live
-                    text=":rocket: \`posthog-sandbox-base:master\` now runs @posthog/agent ${LATEST} (merged in ${commit})."
+                    text=":rocket: \`posthog-sandbox-base:master\` now runs @flind/agent ${LATEST} (merged in ${commit})."
                   elif [ "$REPAIR" = repaired ]; then
                     outcome=repaired
-                    text=":rocket: \`posthog-sandbox-base:master\` now runs @posthog/agent ${LATEST} (merged in ${commit}) after a manual rebuild, because the merge run did not build it. <${REPAIR_URL:-$RUN_URL}|View rebuild>"
+                    text=":rocket: \`posthog-sandbox-base:master\` now runs @flind/agent ${LATEST} (merged in ${commit}) after a manual rebuild, because the merge run did not build it. <${REPAIR_URL:-$RUN_URL}|View rebuild>"
                   elif [ "$PUBLISHES_IMAGES" != true ]; then
                     outcome=failed
-                    text=":red_circle: \`posthog-sandbox-base:master\` still does not run @posthog/agent ${LATEST} 30 minutes after ${commit} merged. This repo does not publish images, so no rebuild was attempted: run \`cd-sandbox-base-image.yml\` on master where the images are built. <${RUN_URL}|View run>"
+                    text=":red_circle: \`posthog-sandbox-base:master\` still does not run @flind/agent ${LATEST} 30 minutes after ${commit} merged. This repo does not publish images, so no rebuild was attempted: run \`cd-sandbox-base-image.yml\` on master where the images are built. <${RUN_URL}|View run>"
                   else
                     outcome=failed
-                    text=":red_circle: \`posthog-sandbox-base:master\` still does not run @posthog/agent ${LATEST} after ${commit} merged, and a manual rebuild did not fix it. <${RUN_URL}|View run>"
+                    text=":red_circle: \`posthog-sandbox-base:master\` still does not run @flind/agent ${LATEST} after ${commit} merged, and a manual rebuild did not fix it. <${RUN_URL}|View run>"
                   fi
                   if [ -z "$THREAD_TS" ]; then
-                    text="*@posthog/agent ${LATEST}*: ${text}"
+                    text="*@flind/agent ${LATEST}*: ${text}"
                   fi
                   {
                     echo "outcome=$outcome"
@@ -821,5 +821,5 @@ jobs:
               env:
                   OUTCOME: ${{ steps.outcome.outputs.outcome }}
               run: |
-                  echo "::error::The @posthog/agent $LATEST rollout ended as $OUTCOME"
+                  echo "::error::The @flind/agent $LATEST rollout ended as $OUTCOME"
                   exit 1

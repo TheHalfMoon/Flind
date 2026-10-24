@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 
-import { ChatMarker, ChatMarkerContent, ChatMarkerIcon, Spinner, cn } from '@posthog/quill-primitives'
+import { ChatMarker, ChatMarkerContent, ChatMarkerIcon, Spinner, cn } from '@flind/quill-primitives'
 
 /**
  * The row chrome every quill thread row shares, matching PostHog Desktop's tool rows. Quill's interactive row

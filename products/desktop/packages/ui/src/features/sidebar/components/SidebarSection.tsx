@@ -1,5 +1,5 @@
 import { CaretDownIcon, CaretRightIcon, Plus } from "@phosphor-icons/react";
-import { Button } from "@posthog/quill";
+import { Button } from "@flind/quill";
 import { INDENT_SIZE } from "@posthog/ui/features/sidebar/components/SidebarItem";
 import { Tooltip } from "@posthog/ui/primitives/Tooltip";
 import * as Collapsible from "@radix-ui/react-collapsible";

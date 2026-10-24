@@ -13,7 +13,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
   Input,
-} from "@posthog/quill";
+} from "@flind/quill";
 import type { SignalReportPriority } from "@posthog/shared/types";
 import { cnHeaderButton } from "@posthog/ui/features/canvas/components/channelHeaderButton";
 import type { ChannelReportsFilters } from "@posthog/ui/features/canvas/hooks/useChannelReports";

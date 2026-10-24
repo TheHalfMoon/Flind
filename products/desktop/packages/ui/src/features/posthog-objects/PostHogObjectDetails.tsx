@@ -2,12 +2,12 @@ import {
   compactCount,
   type EvidencePreview,
 } from "@posthog/api-client/evidence-previews";
-import { Card, CardContent, Text } from "@posthog/quill";
+import { Card, CardContent, Text } from "@flind/quill";
 import {
   TimeSeriesBarChart,
   TimeSeriesLineChart,
   useChartTheme,
-} from "@posthog/quill-charts";
+} from "@flind/quill-charts";
 import { EvidenceSparkline } from "@posthog/ui/features/editor/components/EvidenceRefChip";
 
 /**

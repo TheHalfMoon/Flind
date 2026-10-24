@@ -13,7 +13,7 @@ import {
     Tooltip,
     TooltipContent,
     TooltipTrigger,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import { PayGateMini } from 'lib/components/PayGateMini/PayGateMini'
 import { getAccessControlTooltip } from 'lib/utils/accessControlUtils'

@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { CSSProperties, useEffect, useRef } from 'react'
 
-import { cn } from '@posthog/quill-primitives'
+import { cn } from '@flind/quill-primitives'
 
 import { fullNameOrEmail } from 'lib/utils/strings'
 

@@ -5,8 +5,8 @@ import {
   createPiRpcClient,
   createRuntimeMcpServers,
   type PiRpcClient,
-} from "@posthog/agent/pi/rpc-client";
-import { getLlmGatewayUrl } from "@posthog/agent/posthog-api";
+} from "@flind/agent/pi/rpc-client";
+import { getLlmGatewayUrl } from "@flind/agent/posthog-api";
 import { ROOT_LOGGER, type RootLogger } from "@posthog/di/logger";
 import {
   type CloudRegion,

@@ -1,6 +1,6 @@
 import fs from "node:fs/promises";
 import path from "node:path";
-import { getChangedFiles, listAllFiles } from "@posthog/git/queries";
+import { getChangedFiles, listAllFiles } from "@flind/git/queries";
 import { injectable } from "inversify";
 import type { BoundedReadResult, DirectoryEntry, FileEntry } from "./schemas";
 

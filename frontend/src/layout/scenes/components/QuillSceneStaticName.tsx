@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 
-import { Button, Tooltip, TooltipContent, TooltipTrigger, cn } from '@posthog/quill'
+import { Button, Tooltip, TooltipContent, TooltipTrigger, cn } from '@flind/quill'
 
 export interface QuillSceneStaticNameProps {
     name: ReactNode

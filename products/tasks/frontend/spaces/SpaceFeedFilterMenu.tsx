@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator } from '@posthog/quill'
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator } from '@flind/quill'
 
 import { TodayFilterMenuTrigger } from '~/layout/today/TodayFilterMenuTrigger'
 import { RECENT_CREATED_BY_OPTIONS, RECENT_STATUS_OPTIONS } from '~/layout/today/todayRecentFilters'

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { semanticColors } from '@posthog/quill-tokens'
+import { semanticColors } from '@flind/quill-tokens'
 
 const meta = {
     title: 'Tokens/Colors Comparison',

@@ -1,5 +1,5 @@
 import { MagnifyingGlassIcon } from "@phosphor-icons/react";
-import { Input } from "@posthog/quill";
+import { Input } from "@flind/quill";
 import type { ReactNode, Ref } from "react";
 
 export function SkillsToolbar({

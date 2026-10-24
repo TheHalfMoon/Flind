@@ -15,7 +15,7 @@ import {
   type AgentRunState,
   createPiToolCallRecord,
   type PiSubagentToolCall,
-} from "@posthog/agent-contracts";
+} from "@flind/agent-contracts";
 import { POSTHOG_PROVIDER_NAME } from "../posthog-provider/provider";
 import { createWebAccessExtension } from "../web-access/extension";
 import type { AgentConfig } from "./agents";

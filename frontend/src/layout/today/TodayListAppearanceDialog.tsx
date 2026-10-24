@@ -14,7 +14,7 @@ import {
     DialogTitle,
     ItemGroup,
     Text,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import { dayjs } from 'lib/dayjs'
 import { urls } from 'scenes/urls'

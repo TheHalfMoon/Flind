@@ -1,5 +1,5 @@
 import { ArrowSquareOutIcon } from "@phosphor-icons/react";
-import { Button } from "@posthog/quill";
+import { Button } from "@flind/quill";
 import { useAuthStateValue } from "@posthog/ui/features/auth/store";
 import { useIntegrationSelectors } from "@posthog/ui/features/integrations/store";
 import { useIntegrations } from "@posthog/ui/features/integrations/useIntegrations";

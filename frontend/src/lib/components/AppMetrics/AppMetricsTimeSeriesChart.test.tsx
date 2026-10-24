@@ -2,7 +2,7 @@ import '@testing-library/jest-dom'
 
 import { cleanup, render, waitFor } from '@testing-library/react'
 
-import { ensureJsdom, getHogChart, hoverAtIndex, hoverUntilTooltip } from '@posthog/quill-charts/testing'
+import { ensureJsdom, getHogChart, hoverAtIndex, hoverUntilTooltip } from '@flind/quill-charts/testing'
 
 import { AppMetricsTimeSeriesChart } from './AppMetricsTimeSeriesChart'
 

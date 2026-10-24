@@ -1,5 +1,5 @@
 import { IconPlus } from '@posthog/icons'
-import { Button, ButtonGroup } from '@posthog/quill'
+import { Button, ButtonGroup } from '@flind/quill'
 
 import { AccessControlAction } from 'lib/components/AccessControlAction'
 import { FeedbackSurveyButton } from 'lib/components/FeedbackSurveyButton/FeedbackSurveyButton'

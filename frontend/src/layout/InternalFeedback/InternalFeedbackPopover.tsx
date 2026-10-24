@@ -16,7 +16,7 @@ import {
     TooltipContent,
     TooltipTrigger,
     cn,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import { INTERNAL_FEEDBACK_IGNORE_ATTR } from './captureFeedbackScreenshot'
 import { internalFeedbackLogic } from './internalFeedbackLogic'

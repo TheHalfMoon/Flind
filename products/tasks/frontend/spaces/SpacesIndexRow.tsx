@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconStar, IconStarFilled } from '@posthog/icons'
-import { Button, Text, Tooltip, TooltipContent, TooltipTrigger } from '@posthog/quill'
+import { Button, Text, Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill'
 
 import { LinkPrimitive } from 'lib/lemon-ui/Link'
 import { urls } from 'scenes/urls'

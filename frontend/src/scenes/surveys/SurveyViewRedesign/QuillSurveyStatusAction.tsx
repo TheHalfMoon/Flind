@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { Button } from '@posthog/quill'
+import { Button } from '@flind/quill'
 
 import { AccessControlAction } from 'lib/components/AccessControlAction'
 import { QuillLaunchSurveyButton } from 'scenes/surveys/components/QuillLaunchSurveyButton'

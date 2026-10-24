@@ -5,7 +5,7 @@ import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { fileExtensionLabel } from "@posthog/ui/features/message-editor/fileKind";
 import { Spinner } from "@posthog/ui/primitives/Spinner";
 import type { ReactNode } from "react";

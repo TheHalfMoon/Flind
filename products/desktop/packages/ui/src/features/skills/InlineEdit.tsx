@@ -1,5 +1,5 @@
 import { CheckIcon, PencilSimpleIcon, XIcon } from "@phosphor-icons/react";
-import { Button } from "@posthog/quill";
+import { Button } from "@flind/quill";
 import { useState } from "react";
 
 const CLAMP_AT_CHARS = 190;

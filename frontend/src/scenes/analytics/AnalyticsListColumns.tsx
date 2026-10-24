@@ -23,8 +23,8 @@ import {
     Tooltip,
     TooltipContent,
     TooltipTrigger,
-} from '@posthog/quill'
-import type { DataTableProps } from '@posthog/quill-components'
+} from '@flind/quill'
+import type { DataTableProps } from '@flind/quill-components'
 
 import { TZLabel } from 'lib/components/TZLabel'
 import { LinkPrimitive } from 'lib/lemon-ui/Link'

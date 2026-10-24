@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { useRef } from 'react'
 
 import { IconCursorClick, IconDrag, IconMessage, IconX } from '@posthog/icons'
-import { Button, Text, Tooltip, TooltipContent, TooltipTrigger, cn } from '@posthog/quill'
+import { Button, Text, Tooltip, TooltipContent, TooltipTrigger, cn } from '@flind/quill'
 
 import { INTERNAL_FEEDBACK_IGNORE_ATTR } from './captureFeedbackScreenshot'
 import { clampToViewport, internalFeedbackLogic } from './internalFeedbackLogic'

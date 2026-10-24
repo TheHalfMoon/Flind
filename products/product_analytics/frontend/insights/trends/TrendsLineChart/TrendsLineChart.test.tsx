@@ -3,7 +3,7 @@ import '@testing-library/jest-dom'
 import { cleanup, configure, screen, waitFor } from '@testing-library/react'
 import { router } from 'kea-router'
 
-import { dimensions, dragSelection, rawDrag, setupJsdom, setupSyncRaf } from '@posthog/quill-charts/testing'
+import { dimensions, dragSelection, rawDrag, setupJsdom, setupSyncRaf } from '@flind/quill-charts/testing'
 
 import { FEATURE_FLAGS } from 'lib/constants'
 import { removeProjectIdIfPresent } from 'lib/utils/kea-router'

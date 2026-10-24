@@ -5,7 +5,7 @@
  * dropdown menu).
  */
 
-import { Button, cn, Kbd } from '@posthog/quill'
+import { Button, cn, Kbd } from '@flind/quill'
 
 export interface MenuFilterHeaderProps {
     title: string

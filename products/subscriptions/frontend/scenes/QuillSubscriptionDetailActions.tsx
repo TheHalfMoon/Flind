@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { router } from 'kea-router'
 
-import { Button, Label, Switch } from '@posthog/quill'
+import { Button, Label, Switch } from '@flind/quill'
 
 import { deleteWithUndo } from 'lib/utils/deleteWithUndo'
 import { getCurrentTeamId } from 'lib/utils/getAppContext'

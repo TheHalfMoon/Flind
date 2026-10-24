@@ -1,5 +1,5 @@
 {
-    "name": "@posthog/workflow-plan",
+    "name": "@flind/workflow-plan",
     "version": "0.0.0",
     "private": true,
     "description": "Evaluates GitHub Actions job and step conditions against PR, push, and schedule scenarios",

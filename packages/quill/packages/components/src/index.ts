@@ -1,4 +1,4 @@
-// @posthog/quill-components
+// @flind/quill-components
 //
 // Middle layer of the quill design system: higher-level compositions of
 // primitives that wire several together with sensible defaults. Think
@@ -13,6 +13,6 @@ export { DateTimePicker, type DateTimePickerProps, type DateTimeValue, type Date
 export { DatePicker, type DatePickerProps } from './date-picker'
 export { quickRanges, CUSTOM_RANGE, type DateTimeRange, type DateTimeRangeName } from './date-time-ranges'
 export { useCalendar, Day, Month, type UseCalendarOptions, type UseCalendarReturn } from './use-calendar'
-// `Metric` is intentionally NOT re-exported here: it pulls `@posthog/quill-charts` (d3), and this
-// barrel is inlined into the always-eager `@posthog/quill` bundle. Import it from its own entry —
-// `@posthog/quill-components/metric` — so charts only loads where a metric tile is actually used.
+// `Metric` is intentionally NOT re-exported here: it pulls `@flind/quill-charts` (d3), and this
+// barrel is inlined into the always-eager `@flind/quill` bundle. Import it from its own entry —
+// `@flind/quill-components/metric` — so charts only loads where a metric tile is actually used.

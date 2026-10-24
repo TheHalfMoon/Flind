@@ -15,7 +15,7 @@ import {
     TabsList,
     TabsTrigger,
     Text,
-} from '@posthog/quill-primitives'
+} from '@flind/quill-primitives'
 
 import { LinkPrimitive } from 'lib/lemon-ui/Link'
 

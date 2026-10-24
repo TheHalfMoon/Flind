@@ -1,6 +1,6 @@
 import { Prec } from "@codemirror/state";
 import { EditorView, keymap } from "@codemirror/view";
-import { cn } from "@posthog/quill";
+import { cn } from "@flind/quill";
 import { formatHogQL } from "@posthog/ui/features/canvas/formatHogQL";
 import { useCodeMirror } from "@posthog/ui/features/code-editor/hooks/useCodeMirror";
 import { useEditorExtensions } from "@posthog/ui/features/code-editor/hooks/useEditorExtensions";

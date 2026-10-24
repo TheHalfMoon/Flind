@@ -151,7 +151,7 @@ jobs:
                       printf 'nodesource nodejs\t%s\n' "$nodejs_version"
                     } | LC_ALL=C sort | sha256sum | cut -d' ' -f1
                   )
-                  echo "HEAD wants @posthog/agent $agent_version and nodejs $nodejs_version from inputs $inputs_digest"
+                  echo "HEAD wants @flind/agent $agent_version and nodejs $nodejs_version from inputs $inputs_digest"
                   {
                     echo "agent_version=$agent_version"
                     echo "nodejs_version=$nodejs_version"
@@ -265,14 +265,14 @@ jobs:
                       echo "GitHub serves $tarball (attempt $attempt)"
                       exit 0
                     fi
-                    if [ "$(npm view "@posthog/agent@${pinned}" version 2>/dev/null)" = "$pinned" ]; then
-                      echo "npm serves @posthog/agent@${pinned} (attempt $attempt)"
+                    if [ "$(npm view "@flind/agent@${pinned}" version 2>/dev/null)" = "$pinned" ]; then
+                      echo "npm serves @flind/agent@${pinned} (attempt $attempt)"
                       exit 0
                     fi
-                    echo "neither GitHub nor npm serves @posthog/agent@${pinned} yet (attempt $attempt)"
+                    echo "neither GitHub nor npm serves @flind/agent@${pinned} yet (attempt $attempt)"
                     sleep 10
                   done
-                  echo "::error::@posthog/agent@${pinned} was not published within 20 minutes"
+                  echo "::error::@flind/agent@${pinned} was not published within 20 minutes"
                   exit 1
 
     build_skills:
@@ -884,14 +884,14 @@ jobs:
                   if [ -f .sandbox-agent-slack-thread ]; then ts=$(cat .sandbox-agent-slack-thread); fi
                   commit="<${COMMIT_URL}|${SHA:0:7}>"
                   if [ -z "$FAILED" ]; then
-                    text=":rocket: Merged in ${commit}. \`posthog-sandbox-base:master\` now runs @posthog/agent ${VERSION}."
+                    text=":rocket: Merged in ${commit}. \`posthog-sandbox-base:master\` now runs @flind/agent ${VERSION}."
                   elif [ "$PROMOTED" = "success" ]; then
-                    text=":warning: Merged in ${commit}. \`posthog-sandbox-base:master\` now runs @posthog/agent ${VERSION}, but ${FAILED} failed. <${RUN_URL}|View run>"
+                    text=":warning: Merged in ${commit}. \`posthog-sandbox-base:master\` now runs @flind/agent ${VERSION}, but ${FAILED} failed. <${RUN_URL}|View run>"
                   else
                     text=":red_circle: ${FAILED^} for ${commit} failed, so \`posthog-sandbox-base:master\` still runs the previous agent. <${RUN_URL}|View run>"
                   fi
                   if [ -z "$ts" ]; then
-                    text="*@posthog/agent ${VERSION}*: ${text}"
+                    text="*@flind/agent ${VERSION}*: ${text}"
                   fi
                   {
                     echo "ts=$ts"
@@ -939,7 +939,7 @@ jobs:
               run: |
                   commit="<${COMMIT_URL}|${SHA:0:7}>"
                   if [ -z "$FAILED" ]; then
-                    text=":large_green_circle: Rebuilt the sandbox images from ${commit} because ${REASON}. \`posthog-sandbox-base:master\` now runs @posthog/agent ${VERSION}."
+                    text=":large_green_circle: Rebuilt the sandbox images from ${commit} because ${REASON}. \`posthog-sandbox-base:master\` now runs @flind/agent ${VERSION}."
                   else
                     text=":red_circle: The sandbox image rebuild from ${commit} failed at ${FAILED}. It was needed because ${REASON}. <${RUN_URL}|View run>"
                   fi

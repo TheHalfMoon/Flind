@@ -5,7 +5,7 @@ import {
   MCP_TOOL_PERMISSION_OPTIONS,
   PI_EXTENSION_META_KEY,
   type StoredLogEntry,
-} from "@posthog/agent-contracts";
+} from "@flind/agent-contracts";
 import { POSTHOG_NOTIFICATIONS } from "../acp-extensions";
 import type { RpcExtensionUIResponse } from "./types";
 

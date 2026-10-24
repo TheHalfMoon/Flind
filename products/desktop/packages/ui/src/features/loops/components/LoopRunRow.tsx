@@ -7,7 +7,7 @@ import {
   Warning,
   X,
 } from "@phosphor-icons/react";
-import { Button, cn } from "@posthog/quill";
+import { Button, cn } from "@flind/quill";
 import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
 import type { LoopSchemas } from "@posthog/ui/features/loops/loopSchemas";
 import { StopCloudRunDialog } from "@posthog/ui/features/sessions/components/StopCloudRunDialog";

@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 
-import { TimeSeriesLineChart } from '@posthog/quill-charts'
-import type { TimeSeriesLineChartConfig } from '@posthog/quill-charts'
+import { TimeSeriesLineChart } from '@flind/quill-charts'
+import type { TimeSeriesLineChartConfig } from '@flind/quill-charts'
 
 import { useChartConfig, useChartTheme } from 'lib/charts/hooks'
 import { LemonCard } from 'lib/lemon-ui/LemonCard'

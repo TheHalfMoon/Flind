@@ -1,6 +1,6 @@
 import { cleanup, render } from '@testing-library/react'
 
-import { clickAtIndex, getHogChart, setupJsdom, setupSyncRaf } from '@posthog/quill-charts/testing'
+import { clickAtIndex, getHogChart, setupJsdom, setupSyncRaf } from '@flind/quill-charts/testing'
 
 import { initKeaTests } from '~/test/init'
 

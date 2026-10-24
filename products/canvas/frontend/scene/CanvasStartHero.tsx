@@ -1,5 +1,5 @@
 import { IconPalette } from '@posthog/icons'
-import { EmptyMedia, Heading, Text } from '@posthog/quill'
+import { EmptyMedia, Heading, Text } from '@flind/quill'
 
 /** The centered start of a canvas with nothing in it yet, like PostHog Desktop: a heading, a line of help, and the composer. */
 export function CanvasStartHero({

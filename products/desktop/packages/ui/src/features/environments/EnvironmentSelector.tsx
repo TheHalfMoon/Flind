@@ -9,7 +9,7 @@ import {
   ComboboxList,
   ComboboxListFooter,
   ComboboxTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { useRef, useState } from "react";
 import { useEnvironments } from "./useEnvironments";
 

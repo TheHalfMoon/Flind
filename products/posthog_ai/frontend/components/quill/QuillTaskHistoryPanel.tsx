@@ -1,7 +1,7 @@
 import { useActions } from 'kea'
 
 import { IconArrowLeft } from '@posthog/icons'
-import { Button } from '@posthog/quill-primitives'
+import { Button } from '@flind/quill-primitives'
 
 import { taskTrackerSceneLogic } from '../../scenes/TaskTracker/taskTrackerSceneLogic'
 import { QuillTaskHistoryList } from './QuillTaskHistoryList'

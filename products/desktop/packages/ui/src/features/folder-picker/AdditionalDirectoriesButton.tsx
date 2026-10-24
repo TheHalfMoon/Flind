@@ -10,7 +10,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
   MenuLabel,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { useFolders } from "@posthog/ui/features/folders/useFolders";
 import { useMemo } from "react";
 

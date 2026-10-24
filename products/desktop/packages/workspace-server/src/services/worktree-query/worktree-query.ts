@@ -2,9 +2,9 @@ import { execFile } from "node:child_process";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { promisify } from "node:util";
-import { createGitClient } from "@posthog/git/client";
-import { listWorktrees } from "@posthog/git/queries";
-import { WorktreeManager } from "@posthog/git/worktree";
+import { createGitClient } from "@flind/git/client";
+import { listWorktrees } from "@flind/git/queries";
+import { WorktreeManager } from "@flind/git/worktree";
 
 const execFileAsync = promisify(execFile);
 

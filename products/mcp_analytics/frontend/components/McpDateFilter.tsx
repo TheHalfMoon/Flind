@@ -7,8 +7,8 @@ import {
     type DateTimeRangeName,
     type DateTimeValue,
     quickRanges,
-} from '@posthog/quill-components'
-import { Button, Popover, PopoverContent, PopoverTrigger } from '@posthog/quill-primitives'
+} from '@flind/quill-components'
+import { Button, Popover, PopoverContent, PopoverTrigger } from '@flind/quill-primitives'
 
 import { dayjs } from 'lib/dayjs'
 

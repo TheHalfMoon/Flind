@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 
-import { type ChartTheme, type TooltipContext } from '@posthog/quill-charts'
+import { type ChartTheme, type TooltipContext } from '@flind/quill-charts'
 
 import { LemonButton } from 'lib/lemon-ui/LemonButton'
 import { LemonCard } from 'lib/lemon-ui/LemonCard'

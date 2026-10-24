@@ -2,7 +2,7 @@ import posthog from 'posthog-js'
 import { useState } from 'react'
 
 import { IconBell } from '@posthog/icons'
-import { Button } from '@posthog/quill'
+import { Button } from '@flind/quill'
 
 import { AccountsEvents } from '../Accounts/constants'
 import { TaskDigestModal } from './TaskDigestModal'

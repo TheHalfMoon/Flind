@@ -20,7 +20,7 @@ import type {
   ParamSchema,
   ParamSpec,
 } from "@posthog/core/canvas/blockLibrary/params";
-import { Button, Slider } from "@posthog/quill";
+import { Button, Slider } from "@flind/quill";
 import type { CanvasEditSelection } from "@posthog/ui/features/canvas/blocks/canvasSourceStore";
 import {
   ControlNote,

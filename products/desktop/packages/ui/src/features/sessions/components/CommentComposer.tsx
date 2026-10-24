@@ -4,7 +4,7 @@ import {
   InputGroupAddon,
   InputGroupButton,
   Label,
-} from "@posthog/quill";
+} from "@flind/quill";
 import type { UserBasic } from "@posthog/shared/domain-types";
 import { MentionComposer } from "@posthog/ui/features/canvas/components/MentionComposer";
 import { useMentionsDisabledReason } from "@posthog/ui/features/sessions/mentionAvailability";

@@ -16,7 +16,7 @@ import {
     Tooltip,
     TooltipContent,
     TooltipTrigger,
-} from '@posthog/quill-primitives'
+} from '@flind/quill-primitives'
 
 import { taskRunArtifactsLogic } from '../taskRunArtifactsLogic'
 

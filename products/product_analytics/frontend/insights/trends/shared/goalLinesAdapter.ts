@@ -1,5 +1,5 @@
-import { buildGoalLineReferenceLines } from '@posthog/quill-charts'
-import type { GoalLineConfig, ReferenceLineProps, Series } from '@posthog/quill-charts'
+import { buildGoalLineReferenceLines } from '@flind/quill-charts'
+import type { GoalLineConfig, ReferenceLineProps, Series } from '@flind/quill-charts'
 
 import type { GoalLineLike as SchemaGoalLine } from './trendsChartDisplayOptions'
 

@@ -20,7 +20,7 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
   Input,
-} from "@posthog/quill";
+} from "@flind/quill";
 import type { SkillInfo } from "@posthog/shared";
 import { stripFrontmatter } from "@posthog/shared";
 import { CodeMirrorEditor } from "@posthog/ui/features/code-editor/components/CodeMirrorEditor";

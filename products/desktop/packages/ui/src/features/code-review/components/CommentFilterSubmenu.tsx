@@ -6,7 +6,7 @@ import {
   DropdownMenuSub,
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import type { CommentFileFilter } from "../commentFileFilter";
 
 interface CommentFilterSubmenuProps {

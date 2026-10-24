@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useRef } from 'react'
 
-import { Popover, PopoverContent } from '@posthog/quill'
+import { Popover, PopoverContent } from '@flind/quill'
 
 import { SidePanelTab } from '~/types'
 

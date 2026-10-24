@@ -8,7 +8,7 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { GithubConnectionIcon } from "@posthog/ui/features/integrations/components/GithubConnectionIcon";
 import { openUrlInBrowser } from "@posthog/ui/utils/browser";
 import type { ReactNode } from "react";

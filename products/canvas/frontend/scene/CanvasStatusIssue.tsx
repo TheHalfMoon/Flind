@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 
 import { IconChevronDown } from '@posthog/icons'
-import { Badge, Button, Heading, Popover, PopoverContent, PopoverTrigger, Text } from '@posthog/quill'
+import { Badge, Button, Heading, Popover, PopoverContent, PopoverTrigger, Text } from '@flind/quill'
 
 export interface CanvasStatusIssueProps {
     /** The status, for example "Build failed". */

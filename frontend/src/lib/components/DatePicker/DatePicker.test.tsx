@@ -20,10 +20,10 @@ jest.mock('lib/hooks/useFeatureFlag', () => ({
 
 const QUILL_STUB_DATE = new Date(2023, 0, 20)
 const mockQuillPanelProps: { maxDate?: Date; showTime?: boolean; showTimeToggle?: boolean } = {}
-jest.mock('@posthog/quill', () => {
+jest.mock('@flind/quill', () => {
     const react = require('react')
     return {
-        ...jest.requireActual('@posthog/quill'),
+        ...jest.requireActual('@flind/quill'),
         DatePicker: ({
             onApply,
             onCancel,

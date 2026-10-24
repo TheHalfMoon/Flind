@@ -1,5 +1,5 @@
 import type { ChannelItemModel } from "@posthog/core/canvas/channelItems";
-import { Autocomplete, AutocompleteList } from "@posthog/quill";
+import { Autocomplete, AutocompleteList } from "@flind/quill";
 import { formatRelativeTimeShort } from "@posthog/shared";
 import type { Task } from "@posthog/shared/domain-types";
 import { useArchiveShortcut } from "@posthog/ui/features/archive/useArchiveShortcut";

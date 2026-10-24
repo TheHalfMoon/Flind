@@ -26,7 +26,7 @@ import {
     TooltipContent,
     TooltipTrigger,
     cn,
-} from '@posthog/quill-primitives'
+} from '@flind/quill-primitives'
 
 import { dayjs } from 'lib/dayjs'
 import { fullNameOrEmail } from 'lib/utils/strings'

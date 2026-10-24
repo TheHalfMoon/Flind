@@ -3,7 +3,7 @@ import {
   buildOrgOwnerMessage,
   unlinkedApprovedRequests,
 } from "@posthog/core/integrations/installRequests";
-import { Button, Text } from "@posthog/quill";
+import { Button, Text } from "@flind/quill";
 import { useDismissGithubInstallRequest } from "@posthog/ui/features/integrations/useDismissGithubInstallRequest";
 import { useGithubInstallRequests } from "@posthog/ui/features/integrations/useGithubInstallRequests";
 import { useUserGithubIntegrations } from "@posthog/ui/features/integrations/useIntegrations";

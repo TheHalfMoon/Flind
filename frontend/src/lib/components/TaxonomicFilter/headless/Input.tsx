@@ -1,6 +1,6 @@
 import { InputHTMLAttributes, forwardRef } from 'react'
 
-import { InputGroup, InputGroupInput } from '@posthog/quill'
+import { InputGroup, InputGroupInput } from '@flind/quill'
 
 import { useTaxonomicFilterContext } from './context'
 

@@ -3,7 +3,7 @@ import '@testing-library/jest-dom'
 import { cleanup, render, screen, waitFor, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
-import { setupJsdom, setupSyncRaf } from '@posthog/quill-charts/testing'
+import { setupJsdom, setupSyncRaf } from '@flind/quill-charts/testing'
 
 import { BIField } from '~/queries/schema/schema-business-intelligence'
 import { ChartSettings, NodeKind } from '~/queries/schema/schema-general'

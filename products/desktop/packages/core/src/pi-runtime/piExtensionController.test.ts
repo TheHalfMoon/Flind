@@ -1,5 +1,5 @@
-import type { PiRemoteRpcClient } from "@posthog/agent/pi/remote-rpc-client";
-import type { PiExtensionSessionEvent } from "@posthog/agent/pi/types";
+import type { PiRemoteRpcClient } from "@flind/agent/pi/remote-rpc-client";
+import type { PiExtensionSessionEvent } from "@flind/agent/pi/types";
 import { describe, expect, it, vi } from "vitest";
 import { PiExtensionController } from "./piExtensionController";
 import type { PiSession, PiSessionProvider } from "./piSessionController";

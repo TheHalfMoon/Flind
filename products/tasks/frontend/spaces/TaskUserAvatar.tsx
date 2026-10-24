@@ -1,4 +1,4 @@
-import { Avatar, AvatarFallback, AvatarImage } from '@posthog/quill'
+import { Avatar, AvatarFallback, AvatarImage } from '@flind/quill'
 
 import { NUM_LETTERMARK_STYLES } from 'lib/lemon-ui/Lettermark/Lettermark'
 import { inStorybookTestRunner } from 'lib/utils/dom'

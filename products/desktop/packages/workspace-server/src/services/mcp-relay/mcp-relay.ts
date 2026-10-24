@@ -10,7 +10,7 @@ import {
   type ClaudeJsonMcpServerEntry,
   loadUserClaudeJsonMcpServerEntries,
   parseClaudeJsonTransport,
-} from "@posthog/agent/adapters/claude/session/mcp-config";
+} from "@flind/agent/adapters/claude/session/mcp-config";
 import {
   ROOT_LOGGER,
   type RootLogger,

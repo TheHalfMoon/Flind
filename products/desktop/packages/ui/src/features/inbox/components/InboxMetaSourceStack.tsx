@@ -1,4 +1,4 @@
-import { Tooltip, TooltipContent, TooltipTrigger } from "@posthog/quill";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@flind/quill";
 import { InboxMetaText } from "@posthog/ui/features/inbox/components/InboxMetaRow";
 import { getSourceProductMeta } from "@posthog/ui/features/inbox/components/utils/source-product-icons";
 

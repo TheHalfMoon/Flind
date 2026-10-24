@@ -237,11 +237,11 @@ const keyboardRuntime = `(()=>{const channel="posthog-canvas";let port;addEventL
 // Selection and highlight runtimes extend the shared canvas bridge.
 const platformStylesheet = `
 @import "tailwindcss";
-@import "@posthog/quill/tokens.css";
-@import "@posthog/quill/color-system.css";
-@import "@posthog/quill/base.css";
-@import "@posthog/quill/primitives.css";
-@import "@posthog/quill/tailwind.css";
+@import "@flind/quill/tokens.css";
+@import "@flind/quill/color-system.css";
+@import "@flind/quill/base.css";
+@import "@flind/quill/primitives.css";
+@import "@flind/quill/tailwind.css";
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* Recharts hardcodes a white outline on every pie sector. It disappears into a light card and

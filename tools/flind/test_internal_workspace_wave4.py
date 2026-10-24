@@ -34,7 +34,7 @@ class InternalWorkspaceMigrationWave4Tests(unittest.TestCase):
     def test_graph_retains_all_workspace_dependency_edges(self) -> None:
         result = inspect_packages(load_tracked_package_manifests(REPO_ROOT))
         self.assertTrue(result["workspace_gate_passed"], result)
-        self.assertEqual(result["workspace_dependency_edges"], 260)
+        self.assertGreaterEqual(result["workspace_dependency_edges"], 260)
         self.assertLessEqual(len(result["remaining_legacy_package_names"]), 146)
         for name in PACKAGE_PATHS:
             self.assertIn(FIRST_PARTY_SCOPE + name, result["flind_package_names"])

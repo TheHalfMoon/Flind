@@ -1,4 +1,4 @@
-import { Kbd } from "@posthog/quill";
+import { Kbd } from "@flind/quill";
 import { formatHotkey } from "@posthog/ui/features/command/keyboard-shortcuts";
 
 interface SidebarKbdHintProps {

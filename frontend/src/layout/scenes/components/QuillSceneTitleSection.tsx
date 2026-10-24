@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { useMemo, useState } from 'react'
 
 import { IconCollapse, IconExpand } from '@posthog/icons'
-import { Button, cn } from '@posthog/quill'
+import { Button, cn } from '@flind/quill'
 
 import { releaseStageProductForScene } from 'lib/components/ReleaseStageTag/releaseStage'
 import { ReleaseStageTag } from 'lib/components/ReleaseStageTag/ReleaseStageTag'

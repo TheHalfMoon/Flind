@@ -5,7 +5,7 @@ import {
   type SpendLimitsPatch,
   STARTER_SPEND_LINES,
 } from "@posthog/core/billing/spendLimits";
-import { Switch, Text } from "@posthog/quill";
+import { Switch, Text } from "@flind/quill";
 import {
   clampSpendLine,
   SpendLimitSlider,

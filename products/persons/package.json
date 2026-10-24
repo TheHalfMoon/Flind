@@ -2,7 +2,7 @@
     "name": "@flind/products-persons",
     "private": true,
     "dependencies": {
-        "@posthog/quill": "workspace:*",
+        "@flind/quill": "workspace:*",
         "fast-equals": "catalog:",
         "kea": "catalog:",
         "kea-loaders": "catalog:",

@@ -1,8 +1,8 @@
 import { useActions, useValues } from 'kea'
 import { useMemo } from 'react'
 
-import { PieChart } from '@posthog/quill-charts'
-import type { PieChartConfig, Series } from '@posthog/quill-charts'
+import { PieChart } from '@flind/quill-charts'
+import type { PieChartConfig, Series } from '@flind/quill-charts'
 
 import { useChartTheme } from 'lib/charts/hooks'
 import { Button, Dialog, DialogBody, DialogContent, DialogHeader, DialogTitle, Skeleton, Text } from 'lib/ui/quill'

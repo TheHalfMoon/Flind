@@ -30,7 +30,7 @@ export default defineConfig({
       deps: {
         // Process quill-charts through Vite instead of Node so the dayjs
         // aliases above apply to its imports too.
-        inline: ["@posthog/quill-charts"],
+        inline: ["@flind/quill-charts"],
       },
     },
     globals: true,

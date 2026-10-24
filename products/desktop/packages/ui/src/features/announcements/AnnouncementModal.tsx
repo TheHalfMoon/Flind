@@ -6,7 +6,7 @@ import {
   DialogDescription,
   DialogFooter,
   DialogTitle,
-} from "@posthog/quill";
+} from "@flind/quill";
 import {
   ANALYTICS_EVENTS,
   type AnnouncementProperties,

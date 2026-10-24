@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { normalizeAxisLabel } from '@posthog/quill-charts'
+import { normalizeAxisLabel } from '@flind/quill-charts'
 
 import { smoothingOptions } from 'lib/components/SmoothingFilter/smoothings'
 import { PART_OF_WHOLE_DISPLAY_TYPES, PIE_DISPLAY_TYPES } from 'lib/constants'

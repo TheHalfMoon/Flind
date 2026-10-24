@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconCheck, IconRefresh } from '@posthog/icons'
-import { ThreadItemAction, ThreadItemGroup } from '@posthog/quill-primitives'
+import { ThreadItemAction, ThreadItemGroup } from '@flind/quill-primitives'
 
 import { ArtifactCommentThread } from '../artifactComments'
 import { TaskArtifactCommentsLogicProps, taskArtifactCommentsLogic } from '../taskArtifactCommentsLogic'

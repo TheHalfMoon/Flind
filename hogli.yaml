@@ -813,7 +813,7 @@ tests:
         bin_script: e2e-test-runner
         description: Set up test databases and run Playwright E2E tests
     test:workflows:
-        cmd: pnpm --filter @posthog/workflow-plan test
+        cmd: pnpm --filter @flind/workflow-plan test
         description: Check which jobs of .github/workflows run per PR/push/schedule scenario against the pinned expectations
     test:quarantine:
         click: hogli_commands.quarantine.cli:quarantine
@@ -1091,7 +1091,7 @@ tools:
         click: hogli_commands.ci_preflight:ci_preflight
         description: Catch deterministic CI failures reachable from your diff before you push (advisory; --fix, --strict)
     ci:plan:
-        cmd: pnpm --filter @posthog/workflow-plan --silent plan
+        cmd: pnpm --filter @flind/workflow-plan --silent plan
         description: Show which jobs (or --steps <job>) of a workflow file run on a draft, ready, or fork PR, the merge queue, a master push, schedule, and dispatch
 desktop:
     desktop:dev:

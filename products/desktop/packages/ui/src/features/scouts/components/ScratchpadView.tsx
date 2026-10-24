@@ -16,7 +16,7 @@ import {
   Tabs,
   TabsList,
   TabsTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { RelativeTimestamp } from "@posthog/ui/primitives/RelativeTimestamp";
 import { SearchInput } from "@posthog/ui/primitives/SearchInput";
 import { useMemo, useState } from "react";

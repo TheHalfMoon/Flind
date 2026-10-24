@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { MetricCard } from '@posthog/quill-charts'
+import { MetricCard } from '@flind/quill-charts'
 
 import { useChartTheme } from 'lib/charts/hooks'
 import { getColorVar } from 'lib/colors'

@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useEffect, useLayoutEffect, useRef } from 'react'
 
-import { Button, Heading, Skeleton, Text } from '@posthog/quill'
+import { Button, Heading, Skeleton, Text } from '@flind/quill'
 
 import { LinkPrimitive } from 'lib/lemon-ui/Link'
 import { urls } from 'scenes/urls'

@@ -1,7 +1,7 @@
 import { ArrowSquareOutIcon } from "@phosphor-icons/react";
 import { reportAgeHours } from "@posthog/core/inbox/engagement";
 import { sourceSuggestionTarget } from "@posthog/core/inbox/sourceSuggestion";
-import { Button } from "@posthog/quill";
+import { Button } from "@flind/quill";
 import { ANALYTICS_EVENTS } from "@posthog/shared";
 import type {
   SignalReport,

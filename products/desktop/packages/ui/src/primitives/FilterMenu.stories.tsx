@@ -1,4 +1,4 @@
-import { DropdownMenu, DropdownMenuContent } from "@posthog/quill";
+import { DropdownMenu, DropdownMenuContent } from "@flind/quill";
 import {
   FilterMenuTrigger,
   FilterRadioSubMenu,

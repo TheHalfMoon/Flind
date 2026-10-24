@@ -1,6 +1,6 @@
 import { ArrowSquareOutIcon, type IconProps } from "@phosphor-icons/react";
 import type { SignalSourceConfig } from "@posthog/api-client/posthog-client";
-import { Button } from "@posthog/quill";
+import { Button } from "@flind/quill";
 import {
   RESPONDER_AGENT_GROUPS,
   type ResponderAgentDefinition,

@@ -3,12 +3,12 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
-vi.mock("@posthog/git/queries", () => ({
+vi.mock("@flind/git/queries", () => ({
   getChangedFiles: vi.fn(async () => new Set<string>()),
   listAllFiles: vi.fn(async () => []),
 }));
 
-import { getChangedFiles, listAllFiles } from "@posthog/git/queries";
+import { getChangedFiles, listAllFiles } from "@flind/git/queries";
 import { FsService } from "./service";
 
 describe("FsService.listRepoFiles", () => {

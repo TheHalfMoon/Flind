@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useEffect, useMemo } from 'react'
 
-import { useChartLayout, useSankeyLayout } from '@posthog/quill-charts'
+import { useChartLayout, useSankeyLayout } from '@flind/quill-charts'
 
 import { PathsLink } from '~/queries/schema/schema-general'
 import { InsightLogicProps } from '~/types'

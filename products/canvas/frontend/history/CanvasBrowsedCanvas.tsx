@@ -10,7 +10,7 @@ import {
     EmptyMedia,
     EmptyTitle,
     Skeleton,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import { CanvasRenderer } from '../scene/CanvasRenderer'
 import { canvasSceneLogic } from '../scene/canvasSceneLogic'

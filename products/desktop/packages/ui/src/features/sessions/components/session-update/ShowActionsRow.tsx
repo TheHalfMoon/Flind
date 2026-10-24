@@ -7,7 +7,7 @@ import {
 } from "@phosphor-icons/react";
 import { readShowActions } from "@posthog/core/sessions/showActions";
 import { useHostTRPC } from "@posthog/host-router/react";
-import { Button, Text } from "@posthog/quill";
+import { Button, Text } from "@flind/quill";
 import type { ShowActionButton } from "@posthog/shared";
 import type { ToolViewProps } from "@posthog/ui/features/sessions/components/session-update/toolCallUtils";
 import { toast } from "@posthog/ui/primitives/toast";

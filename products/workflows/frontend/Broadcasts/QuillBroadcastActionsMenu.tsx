@@ -1,5 +1,5 @@
 import { IconChevronDown } from '@posthog/icons'
-import { Button, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@posthog/quill'
+import { Button, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@flind/quill'
 
 export interface QuillBroadcastActionItem {
     label: string

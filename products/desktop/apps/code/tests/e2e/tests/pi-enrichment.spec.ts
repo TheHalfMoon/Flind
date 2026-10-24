@@ -6,7 +6,7 @@ import {
   type ServerResponse,
 } from "node:http";
 import path from "node:path";
-import type { PiRpcClient } from "@posthog/agent/pi/rpc-client";
+import type { PiRpcClient } from "@flind/agent/pi/rpc-client";
 import { expect, test } from "../fixtures/electron";
 
 const HOME_ENVIRONMENT_KEYS = [
@@ -218,7 +218,7 @@ test.describe("Pi enrichment", () => {
     let client: PiRpcClient | undefined;
     try {
       const { createPiRpcClient } = await import(
-        "@posthog/agent/pi/rpc-client"
+        "@flind/agent/pi/rpc-client"
       );
       client = createPiRpcClient({
         cliPath: rpcHostPath,

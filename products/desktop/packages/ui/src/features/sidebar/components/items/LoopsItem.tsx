@@ -1,4 +1,4 @@
-import { Badge } from "@posthog/quill";
+import { Badge } from "@flind/quill";
 import { LoopIcon } from "@posthog/ui/primitives/LoopIcon";
 import type { MouseEventHandler } from "react";
 import { SidebarItem } from "../SidebarItem";

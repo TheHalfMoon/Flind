@@ -6,8 +6,8 @@ import { defineTool } from "@earendil-works/pi-coding-agent";
 import {
   enabledLocalTools,
   type LocalToolCtx,
-} from "@posthog/harness/extensions/local-tools";
-import { convertJsonSchemaToTypebox } from "@posthog/harness/extensions/mcp/schema";
+} from "@flind/harness/extensions/local-tools";
+import { convertJsonSchemaToTypebox } from "@flind/harness/extensions/mcp/schema";
 import { z } from "zod";
 
 const REPOSITORY_TOOL_NAMES = new Set(["list_repos", "clone_repo"]);

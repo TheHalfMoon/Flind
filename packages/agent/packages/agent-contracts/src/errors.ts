@@ -138,7 +138,7 @@ const REQUEST_SIZE_ERROR_REGEX = /API Error:\s*413\b/i;
 /**
  * Transient upstream provider failures, as surfaced by agent adapters in
  * "API Error: …" result strings (kept in sync with classifyAgentError in
- * @posthog/agent). The agent process and session are healthy — a single
+ * @flind/agent). The agent process and session are healthy — a single
  * provider request timed out, dropped, or returned a retryable status — so
  * these must not count as fatal session errors: the fix is re-sending the
  * prompt, never tearing the session down. Checked before the fatal patterns

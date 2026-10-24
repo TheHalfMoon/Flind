@@ -6,7 +6,7 @@ import {
   TabsList,
   TabsTrigger,
   Text,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { TaskCommentsList } from "@posthog/ui/features/canvas/components/TaskCommentsList";
 import { useGenerateFreeformCanvas } from "@posthog/ui/features/canvas/hooks/useGenerateFreeformCanvas";
 import { useCanvasChatPanelStore } from "@posthog/ui/features/canvas/stores/canvasChatPanelStore";

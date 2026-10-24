@@ -1,4 +1,4 @@
-import { cn } from "@posthog/quill";
+import { cn } from "@flind/quill";
 import { cachedImageUrl } from "@posthog/ui/shell/cachedImageUrl";
 import posthogIcon from "../../assets/posthog-icon.svg";
 

@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 
 import { IconGitBranch, IconGithub } from '@posthog/icons'
 import { LemonButton, LemonMenu } from '@posthog/lemon-ui'
-import { Button, ButtonGroup } from '@posthog/quill-primitives'
+import { Button, ButtonGroup } from '@flind/quill-primitives'
 
 import api from 'lib/api'
 import { GitHubBranchCombobox } from 'lib/integrations/GitHubBranchCombobox'

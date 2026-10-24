@@ -1,7 +1,7 @@
 import { type ChildProcess, execFile, spawn } from "node:child_process";
 import * as fs from "node:fs/promises";
 import * as path from "node:path";
-import type { SagaLogger } from "@posthog/agent-contracts";
+import type { SagaLogger } from "@flind/agent-contracts";
 import {
   matchesExcludePatterns,
   parseExcludePatterns,

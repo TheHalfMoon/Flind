@@ -1,5 +1,5 @@
 import { ChatCircleTextIcon } from "@phosphor-icons/react";
-import { cn } from "@posthog/quill";
+import { cn } from "@flind/quill";
 import { WEB_PAGE_BACKGROUND } from "@posthog/ui/features/task-preview/pageBackground";
 import { useLocalImage } from "./useLocalImage";
 

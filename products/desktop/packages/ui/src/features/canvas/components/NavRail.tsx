@@ -15,7 +15,7 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import {
   DESKTOP_HOME_FLAG,
   LOOPS_FLAG,

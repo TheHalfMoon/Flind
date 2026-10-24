@@ -6,7 +6,7 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { formatRelativeAge } from "@posthog/shared";
 import { useCanvasVersions } from "@posthog/ui/features/canvas/hooks/useDashboards";
 import { LoadingState } from "@posthog/ui/primitives/LoadingState";

@@ -12,7 +12,7 @@ import {
   RadioGroup,
   RadioGroupItem,
   Textarea,
-} from "@posthog/quill";
+} from "@flind/quill";
 import {
   RESOLVE_REASON_OPTIONS,
   type ResolveReasonOptionValue,

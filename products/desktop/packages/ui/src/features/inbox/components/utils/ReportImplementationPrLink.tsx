@@ -1,6 +1,6 @@
 import { GitMergeIcon, GitPullRequestIcon } from "@phosphor-icons/react";
 import { parsePrUrl } from "@posthog/core/inbox/reportPresentation";
-import { cn } from "@posthog/quill";
+import { cn } from "@flind/quill";
 import { usePrDetails } from "@posthog/ui/features/git-interaction/usePrDetails";
 import { usePrDiffStatsFromBatch } from "@posthog/ui/features/inbox/context/PrDiffStatsBatchContext";
 import { Tooltip } from "@radix-ui/themes";

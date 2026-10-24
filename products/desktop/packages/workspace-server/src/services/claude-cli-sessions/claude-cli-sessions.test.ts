@@ -1,7 +1,7 @@
 import * as fs from "node:fs";
 import * as os from "node:os";
 import * as path from "node:path";
-import { encodeCwdToProjectKey } from "@posthog/agent/adapters/claude/session/jsonl-hydration";
+import { encodeCwdToProjectKey } from "@flind/agent/adapters/claude/session/jsonl-hydration";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import { createMockClaudeSessionImportRepository } from "../../db/repositories/claude-session-import-repository.mock";
 import { ClaudeCliSessionsServiceImpl } from "./claude-cli-sessions";

@@ -7,7 +7,7 @@ import {
   Hash,
   User,
 } from "@phosphor-icons/react";
-import { Checkbox, cn, Label } from "@posthog/quill";
+import { Checkbox, cn, Label } from "@flind/quill";
 import {
   LIST_ITEM_METADATA_LABELS,
   type ListItemMetadataField,

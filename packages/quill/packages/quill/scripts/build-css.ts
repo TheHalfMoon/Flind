@@ -19,7 +19,7 @@
  *   dist/tailwind.css A single `@source "./**\/*.js"` directive. When
  *                     consumer `@import`s this file, Tailwind resolves
  *                     paths relative to this file's location inside
- *                     node_modules/@posthog/quill/dist, so it scans our
+ *                     node_modules/@flind/quill/dist, so it scans our
  *                     compiled library JS for class-name strings and
  *                     compiles them into the consumer's output — no
  *                     brittle `../node_modules/...` paths required.
@@ -35,10 +35,10 @@ const distDir = resolve(packageRoot, 'dist')
 
 mkdirSync(distDir, { recursive: true })
 
-const tokensSource = resolve(packageRoot, 'node_modules/@posthog/quill-tokens/dist/tailwind-lib.css')
-const colorsSource = resolve(packageRoot, 'node_modules/@posthog/quill-tokens/dist/color-system.css')
-const tokensScopedSource = resolve(packageRoot, 'node_modules/@posthog/quill-tokens/dist/tailwind-lib.scoped.css')
-const colorsScopedSource = resolve(packageRoot, 'node_modules/@posthog/quill-tokens/dist/color-system.scoped.css')
+const tokensSource = resolve(packageRoot, 'node_modules/@flind/quill-tokens/dist/tailwind-lib.css')
+const colorsSource = resolve(packageRoot, 'node_modules/@flind/quill-tokens/dist/color-system.css')
+const tokensScopedSource = resolve(packageRoot, 'node_modules/@flind/quill-tokens/dist/tailwind-lib.scoped.css')
+const colorsScopedSource = resolve(packageRoot, 'node_modules/@flind/quill-tokens/dist/color-system.scoped.css')
 /*
  * Primitive BEM CSS. Primitives build with `cssCodeSplit: false` so every
  * `.quill-*` rule across every primitive lands in this single file. It MUST
@@ -47,15 +47,15 @@ const colorsScopedSource = resolve(packageRoot, 'node_modules/@posthog/quill-tok
  */
 const primitivesSource = resolve(
     packageRoot,
-    'node_modules/@posthog/quill-primitives/dist/quill-primitives.css'
+    'node_modules/@flind/quill-primitives/dist/quill-primitives.css'
 )
 
 for (const path of [tokensSource, colorsSource, tokensScopedSource, colorsScopedSource, primitivesSource]) {
     if (!existsSync(path)) {
         throw new Error(
-            `Cannot build quill CSS: ${path} missing. Run @posthog/quill-tokens and ` +
-                `@posthog/quill-primitives builds first ` +
-                `(\`pnpm --filter '@posthog/quill...' build\`).`
+            `Cannot build quill CSS: ${path} missing. Run @flind/quill-tokens and ` +
+                `@flind/quill-primitives builds first ` +
+                `(\`pnpm --filter '@flind/quill...' build\`).`
         )
     }
 }
@@ -110,14 +110,14 @@ if (themeWithDefaults === theme) {
     throw new Error(
         'build-css: failed to inject Tailwind defaults into tailwind-lib.css — ' +
             'expected the file to end with a closing brace. Check the output of ' +
-            '`@posthog/quill-tokens build` and update the regex if the format changed.'
+            '`@flind/quill-tokens build` and update the regex if the format changed.'
     )
 }
 
 writeFileSync(
     resolve(distDir, 'tokens.css'),
     [
-        '/* @posthog/quill — design tokens.',
+        '/* @flind/quill — design tokens.',
         ' * Import from your Tailwind entry after `@import "tailwindcss"`.',
         ' * Provides:',
         ' *   1. light / dark CSS custom property values (:root + .dark)',
@@ -135,7 +135,7 @@ writeFileSync(
 writeFileSync(
     resolve(distDir, 'base.css'),
     [
-        '/* @posthog/quill — base reset.',
+        '/* @flind/quill — base reset.',
         ' *',
         ' * Load-bearing single rule: primitives author plain `border` (no',
         ' * colour modifier) expecting the current border colour to resolve',
@@ -157,13 +157,13 @@ writeFileSync(
 writeFileSync(
     resolve(distDir, 'tailwind.css'),
     [
-        '/* @posthog/quill — Tailwind source directive.',
+        '/* @flind/quill — Tailwind source directive.',
         ' *',
         ' * Consumer imports this file from their Tailwind v4 entry. The',
         ' * glob path is relative to THIS file\'s on-disk location (inside',
-        ' * node_modules/@posthog/quill/dist after install), so it works',
+        ' * node_modules/@flind/quill/dist after install), so it works',
         ' * under pnpm, hoisted, and Docker layouts without needing',
-        ' * consumer-side `../node_modules/@posthog/quill/...` paths.',
+        ' * consumer-side `../node_modules/@flind/quill/...` paths.',
         ' *',
         ' * Tailwind scans the compiled library JS for literal class',
         ' * strings (cva variants, `cn(...)` calls, template-less className',
@@ -181,7 +181,7 @@ writeFileSync(
 copyFileSync(colorsSource, resolve(distDir, 'color-system.css'))
 
 // Ship the primitive BEM CSS alongside tokens/base — consumers import
-// `@posthog/quill/primitives.css` to register the `.quill-*` component rules.
+// `@flind/quill/primitives.css` to register the `.quill-*` component rules.
 copyFileSync(primitivesSource, resolve(distDir, 'primitives.css'))
 
 // ── Scoped variants ──────────────────────────────────────
@@ -199,7 +199,7 @@ if (themeScopedWithDefaults === themeScoped) {
 writeFileSync(
     resolve(distDir, 'tokens.scoped.css'),
     [
-        '/* @posthog/quill — scoped design tokens.',
+        '/* @flind/quill — scoped design tokens.',
         ' * All CSS vars are gated behind [data-quill] so they do not clash',
         ' * with existing consumer CSS custom properties.',
         ' * Dark mode uses [theme="dark"] instead of .dark.',
@@ -214,7 +214,7 @@ writeFileSync(
 writeFileSync(
     resolve(distDir, 'base.scoped.css'),
     [
-        '/* @posthog/quill — scoped base reset.',
+        '/* @flind/quill — scoped base reset.',
         ' * Same as base.css but only applies inside [data-quill] boundaries.',
         ' */',
         '@layer base {',

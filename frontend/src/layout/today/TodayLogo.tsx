@@ -1,4 +1,4 @@
-import { Avatar, AvatarFallback, AvatarImage } from '@posthog/quill'
+import { Avatar, AvatarFallback, AvatarImage } from '@flind/quill'
 
 import { lettermarkColorIndex } from 'lib/lemon-ui/Lettermark/Lettermark'
 import { backendAssetUrl } from 'lib/utils/apiHost'

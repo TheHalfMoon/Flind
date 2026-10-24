@@ -2,7 +2,7 @@ import './infrastructureAdmin.css'
 
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { ThemeProvider } from '@posthog/quill'
+import { ThemeProvider } from '@flind/quill'
 
 import { CustomImageInventory } from './CustomImageInventory'
 import { Sources, imageNames } from './infrastructureTypes'

@@ -15,7 +15,7 @@ import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { formatRelativeTimeShort } from "@posthog/shared";
 import { useCurrentUser } from "@posthog/ui/features/auth/useCurrentUser";
 import { writeCanvasDragData } from "@posthog/ui/features/canvas/canvasDrag";

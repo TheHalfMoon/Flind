@@ -2,7 +2,7 @@ import { BuiltLogic, LogicWrapper, useValues } from 'kea'
 import { useMemo, useState } from 'react'
 
 import { LemonSkeleton } from '@posthog/lemon-ui'
-import { TimeSeriesLineChart, type TimeSeriesLineChartConfig } from '@posthog/quill-charts'
+import { TimeSeriesLineChart, type TimeSeriesLineChartConfig } from '@flind/quill-charts'
 
 import { useChartConfig, useChartTheme } from 'lib/charts/hooks'
 import { useAttachedLogic } from 'lib/logic/scenes/useAttachedLogic'

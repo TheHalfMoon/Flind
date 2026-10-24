@@ -2,7 +2,7 @@ import type { ContentBlock } from "@agentclientprotocol/sdk";
 import {
   deserializeCloudPrompt,
   promptBlocksToText,
-} from "@posthog/agent-contracts";
+} from "@flind/agent-contracts";
 
 export { promptBlocksToText };
 

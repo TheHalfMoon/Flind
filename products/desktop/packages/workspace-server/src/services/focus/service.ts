@@ -6,15 +6,15 @@ import {
   branchExists as gitBranchExists,
   getCurrentBranch as gitGetCurrentBranch,
   hasChanges,
-} from "@posthog/git/queries";
-import { SwitchBranchSaga } from "@posthog/git/sagas/branch";
-import { CleanWorkingTreeSaga } from "@posthog/git/sagas/clean";
-import { DetachHeadSaga, ReattachBranchSaga } from "@posthog/git/sagas/head";
+} from "@flind/git/queries";
+import { SwitchBranchSaga } from "@flind/git/sagas/branch";
+import { CleanWorkingTreeSaga } from "@flind/git/sagas/clean";
+import { DetachHeadSaga, ReattachBranchSaga } from "@flind/git/sagas/head";
 import {
   StashApplySaga,
   StashPopSaga,
   StashPushSaga,
-} from "@posthog/git/sagas/stash";
+} from "@flind/git/sagas/stash";
 import { TypedEventEmitter } from "@posthog/shared";
 import { injectable } from "inversify";
 import type {

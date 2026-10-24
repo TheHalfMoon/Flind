@@ -1,6 +1,6 @@
 # Charts — Agent Reference
 
-Quick-reference for agents using `@posthog/quill-charts`. Canvas-rendered charts, D3 scales, React DOM overlays, themed via quill design tokens. Ships no CSS — colors come from CSS variables at runtime.
+Quick-reference for agents using `@flind/quill-charts`. Canvas-rendered charts, D3 scales, React DOM overlays, themed via quill design tokens. Ships no CSS — colors come from CSS variables at runtime.
 
 This file is the map. Prop-level semantics live in the JSDoc on the config and props types (`src/core/types.ts`, `src/utils/use-axis-formatters.ts`, each chart's `*Props`), and behavior that spans several fields lives in [`src/docs/`](./src/docs/). Read the type, then the topic doc, in that order.
 
@@ -35,7 +35,7 @@ Behavior notes per chart: [docs/chart-types.md](./src/docs/chart-types.md).
 ## Theme wiring
 
 ```tsx
-import { useChartTheme } from '@posthog/quill-charts'
+import { useChartTheme } from '@flind/quill-charts'
 
 const theme = useChartTheme() // reads CSS vars, tracks light/dark switches
 <LineChart series={series} labels={labels} theme={theme} />
@@ -105,7 +105,7 @@ Charts fill their container and need a parent with real dimensions — a zero-he
 
 ## Testing
 
-Import helpers from `@posthog/quill-charts/testing` (jsdom only): `getHogChart` reads rendered overlays through stable `data-attr` hooks, `renderHogChart` adds tooltip-context capture for library tests, `hoverAtIndex` / `clickAtIndex` / `hoverUntilTooltip` / `dragSelection` drive gestures, and `createDefaultTooltipAccessor` reads the built-in tooltip. The `data-attr` selectors are a public contract. [docs/TESTING.md](./src/docs/TESTING.md)
+Import helpers from `@flind/quill-charts/testing` (jsdom only): `getHogChart` reads rendered overlays through stable `data-attr` hooks, `renderHogChart` adds tooltip-context capture for library tests, `hoverAtIndex` / `clickAtIndex` / `hoverUntilTooltip` / `dragSelection` drive gestures, and `createDefaultTooltipAccessor` reads the built-in tooltip. The `data-attr` selectors are a public contract. [docs/TESTING.md](./src/docs/TESTING.md)
 
 ## Docs index
 

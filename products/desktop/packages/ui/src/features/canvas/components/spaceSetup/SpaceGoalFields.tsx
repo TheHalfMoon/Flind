@@ -6,7 +6,7 @@ import {
   Input,
   Text,
   Textarea,
-} from "@posthog/quill";
+} from "@flind/quill";
 import type {
   SpaceGoalDirection,
   SpaceGoalPeriod,

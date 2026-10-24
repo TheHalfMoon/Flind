@@ -1,6 +1,6 @@
 import { useActions } from 'kea'
 
-import { ResizeGrip, Tooltip, TooltipContent, TooltipTrigger } from '@posthog/quill'
+import { ResizeGrip, Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill'
 
 import { ResizerLogicProps, resizerLogic } from 'lib/components/Resizer/resizerLogic'
 

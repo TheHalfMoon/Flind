@@ -1,5 +1,5 @@
 import { IconCopy, IconWarning } from '@posthog/icons'
-import { Button, Card, CardContent, CardFooter, CardHeader, CardTitle } from '@posthog/quill-primitives'
+import { Button, Card, CardContent, CardFooter, CardHeader, CardTitle } from '@flind/quill-primitives'
 
 import { copyToClipboard } from 'lib/utils/copyToClipboard'
 

@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { router } from 'kea-router'
 
 import { IconBell, IconBox, IconList, IconNotification, IconPerson, IconPinFilled } from '@posthog/icons'
-import { Button, Tooltip, TooltipContent, TooltipTrigger } from '@posthog/quill'
+import { Button, Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill'
 
 import { Logomark } from 'lib/brand'
 import { removeProjectIdIfPresent } from 'lib/utils/kea-router'

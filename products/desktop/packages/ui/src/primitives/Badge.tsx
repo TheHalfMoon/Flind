@@ -1,4 +1,4 @@
-import { cn } from "@posthog/quill";
+import { cn } from "@flind/quill";
 import { Badge as RadixBadge } from "@radix-ui/themes";
 import type { ComponentPropsWithoutRef } from "react";
 

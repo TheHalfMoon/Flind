@@ -1,7 +1,7 @@
-import type { PiRpcClient } from "@posthog/agent/pi/rpc-client";
-import type { RpcCommand, RpcResponse } from "@posthog/agent/pi/rpc-transport";
-import type { PiRuntime } from "@posthog/agent/pi/runtime";
-import type { PiExtensionEvent } from "@posthog/agent/pi/types";
+import type { PiRpcClient } from "@flind/agent/pi/rpc-client";
+import type { RpcCommand, RpcResponse } from "@flind/agent/pi/rpc-transport";
+import type { PiRuntime } from "@flind/agent/pi/runtime";
+import type { PiExtensionEvent } from "@flind/agent/pi/types";
 import type { RootLogger } from "@posthog/di/logger";
 import { describe, expect, it, vi } from "vitest";
 import type { ITaskMetadataRepository } from "../../db/repositories/task-metadata-repository";

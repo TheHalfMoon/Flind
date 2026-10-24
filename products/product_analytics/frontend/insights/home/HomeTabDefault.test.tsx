@@ -6,7 +6,7 @@ import '@testing-library/jest-dom'
 
 import { act, cleanup, render, screen, waitFor, within } from '@testing-library/react'
 
-import { ensureJsdom } from '@posthog/quill-charts/testing'
+import { ensureJsdom } from '@flind/quill-charts/testing'
 
 import { promiseResolveReject } from 'lib/utils/async'
 import { savedInsightsLogic } from 'scenes/saved-insights/savedInsightsLogic'

@@ -1,4 +1,4 @@
-import { Tabs, TabsList, TabsTrigger } from "@posthog/quill";
+import { Tabs, TabsList, TabsTrigger } from "@flind/quill";
 
 /** An underlined tab strip, on the design system's own sizing. */
 export function TabStrip<T extends string>({

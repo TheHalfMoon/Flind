@@ -3,7 +3,7 @@ import { writeFileSync } from "node:fs";
 import fs from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
-import { WorktreeManager } from "@posthog/git/worktree";
+import { WorktreeManager } from "@flind/git/worktree";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 const { recoverArchiveDetailsFromLogs } = vi.hoisted(() => ({

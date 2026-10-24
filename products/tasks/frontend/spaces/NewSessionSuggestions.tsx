@@ -10,7 +10,7 @@ import {
     ItemMedia,
     ItemTitle,
     Text,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import type { NewSessionSuggestion, NewSessionSuggestionIcon } from './newSessionSuggestionDefaults'
 

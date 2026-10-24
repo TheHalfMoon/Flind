@@ -1,4 +1,4 @@
-import { HogVMException } from '@posthog/hogvm'
+import { HogVMException } from '@flind/logicvm'
 
 import { compileHog } from '../templates/compiler'
 import { HogFunctionFilterGlobals } from '../types'

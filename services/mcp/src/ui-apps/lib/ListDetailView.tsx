@@ -1,7 +1,7 @@
 import { ChevronLeft } from 'lucide-react'
 import { type ReactElement, type ReactNode, useCallback, useState } from 'react'
 
-import { Button, Empty, EmptyDescription, EmptyHeader, EmptyMedia, Spinner } from '@posthog/quill'
+import { Button, Empty, EmptyDescription, EmptyHeader, EmptyMedia, Spinner } from '@flind/quill'
 
 export interface ListDetailViewProps<TItem, TDetail = TItem> {
     onItemClick: ((item: TItem) => Promise<TDetail | null>) | undefined

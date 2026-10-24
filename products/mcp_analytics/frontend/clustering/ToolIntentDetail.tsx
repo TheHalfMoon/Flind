@@ -9,7 +9,7 @@ import {
     TableHead,
     TableHeader,
     TableRow,
-} from '@posthog/quill-primitives'
+} from '@flind/quill-primitives'
 
 import { LinkPrimitive } from 'lib/lemon-ui/Link/Link'
 import { humanFriendlyNumber } from 'lib/utils/numbers'

@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { router } from 'kea-router'
 
 import { IconGridMasonry, IconShare } from '@posthog/icons'
-import { Badge, Button, Popover, PopoverContent, PopoverTrigger } from '@posthog/quill'
+import { Badge, Button, Popover, PopoverContent, PopoverTrigger } from '@flind/quill'
 
 import { Shortcut } from 'lib/components/Shortcuts/Shortcut'
 import { keyBinds } from 'lib/components/Shortcuts/shortcuts'

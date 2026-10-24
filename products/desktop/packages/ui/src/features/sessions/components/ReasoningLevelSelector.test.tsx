@@ -50,8 +50,8 @@ vi.mock(
 // content unconditionally and assert on it directly (see TaskHeaderActions
 // tests for the same trick). Triggers keep honoring their `render` prop —
 // children are merged into the rendered element, as real Base UI does.
-vi.mock("@posthog/quill", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@posthog/quill")>();
+vi.mock("@flind/quill", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@flind/quill")>();
   const passthrough = ({ children }: { children: React.ReactNode }) => children;
   const renderPassthrough = ({
     children,

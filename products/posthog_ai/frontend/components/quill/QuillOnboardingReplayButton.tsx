@@ -1,7 +1,7 @@
 import { useActions } from 'kea'
 
 import { IconInfo } from '@posthog/icons'
-import { Button, Tooltip, TooltipContent, TooltipTrigger } from '@posthog/quill-primitives'
+import { Button, Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill-primitives'
 
 import { aiOnboardingLogic } from '../../logics/aiOnboardingLogic'
 

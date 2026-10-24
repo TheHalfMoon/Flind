@@ -4,7 +4,7 @@ import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { copyChannelLink } from "@posthog/ui/features/canvas/utils/copyChannelLink";
 
 // Header affordance on a thread (channel-filed task): copies the thread's

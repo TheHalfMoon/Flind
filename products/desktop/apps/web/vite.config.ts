@@ -36,7 +36,7 @@ function manualChunks(id: string): string | undefined {
   if (inPkg("@tiptap", "prosemirror")) return "tiptap";
   if (inPkg("@xterm", "xterm")) return "xterm";
   if (inPkg("@tanstack")) return "tanstack";
-  if (inPkg("@radix-ui", "@posthog/quill", "@base-ui", "@floating-ui"))
+  if (inPkg("@radix-ui", "@flind/quill", "@base-ui", "@floating-ui"))
     return "ui-vendor";
   if (inPkg("@anthropic-ai", "@agentclientprotocol")) return "agent-sdk";
   return undefined;

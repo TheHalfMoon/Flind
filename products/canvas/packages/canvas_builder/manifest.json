@@ -5,9 +5,9 @@
     "dependencies": {
         "react": { "version": "19.0.0", "url": "https://esm.sh/react@19.0.0" },
         "react-dom": { "version": "19.0.0", "url": "https://esm.sh/react-dom@19.0.0?external=react" },
-        "@posthog/quill": {
+        "@flind/quill": {
             "version": "0.3.0-beta.18",
-            "url": "https://esm.sh/@posthog/quill@0.3.0-beta.18?external=react,react-dom"
+            "url": "https://esm.sh/@flind/quill@0.3.0-beta.18?external=react,react-dom"
         },
         "recharts": { "version": "2.15.0", "url": "https://esm.sh/recharts@2.15.0?external=react,react-dom" },
         "lucide-react": { "version": "1.21.0", "url": "https://esm.sh/lucide-react@1.21.0?external=react" },
@@ -41,7 +41,7 @@
         "react",
         "react-dom",
         "react-dom/client",
-        "@posthog/quill",
+        "@flind/quill",
         "recharts",
         "lucide-react",
         "dayjs",

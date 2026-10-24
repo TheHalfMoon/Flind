@@ -1,6 +1,6 @@
 import { forwardRef } from 'react'
 
-import { cn } from '@posthog/quill'
+import { cn } from '@flind/quill'
 
 import { LinkPrimitive } from 'lib/lemon-ui/Link'
 

@@ -14,7 +14,7 @@ import {
   type SerializedEnrichment,
   setLogger as setEnricherLogger,
   toSerializable,
-} from "@posthog/enricher";
+} from "@flind/enricher";
 import { inject, injectable } from "inversify";
 import { ENRICHMENT_AUTH, ENRICHMENT_FILE_READER } from "./identifiers";
 import type { EnrichmentAuth, EnrichmentFileReader } from "./ports";

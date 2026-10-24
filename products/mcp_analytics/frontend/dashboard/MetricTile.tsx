@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 
-import { type ChartTheme } from '@posthog/quill-charts'
+import { type ChartTheme } from '@flind/quill-charts'
 import {
     Metric,
     type MetricChange,
@@ -10,8 +10,8 @@ import {
     MetricSubtitle,
     MetricTitle,
     MetricValue,
-} from '@posthog/quill-components/metric'
-import { Card, CardContent, cn, Skeleton } from '@posthog/quill-primitives'
+} from '@flind/quill-components/metric'
+import { Card, CardContent, cn, Skeleton } from '@flind/quill-primitives'
 
 import { formatBucketLabel } from 'lib/utils/timeBuckets'
 

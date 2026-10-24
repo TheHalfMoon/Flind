@@ -1,7 +1,7 @@
 import { router } from 'kea-router'
 import { expectLogic } from 'kea-test-utils'
 
-import { toast } from '@posthog/quill'
+import { toast } from '@flind/quill'
 
 import { urls } from 'scenes/urls'
 

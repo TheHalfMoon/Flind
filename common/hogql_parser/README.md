@@ -8,23 +8,23 @@ available as both a Python C++ extension and a WebAssembly module for JavaScript
 | Package                 | Runtime                          | Registry                                                   |
 | ----------------------- | -------------------------------- | ---------------------------------------------------------- |
 | `hogql_parser`          | CPython (native C++ extension)   | [PyPI](https://pypi.org/project/hogql-parser/)             |
-| `@posthog/hogql-parser` | Any JS environment (WebAssembly) | [npm](https://www.npmjs.com/package/@posthog/hogql-parser) |
+| `@flind/query-parser` | Any JS environment (WebAssembly) | [npm](https://www.npmjs.com/package/@flind/query-parser) |
 
 Both packages share the same C++ parser core and ANTLR4 grammar,
 so they produce identical ASTs.
 
-## npm package (`@posthog/hogql-parser`)
+## npm package (`@flind/query-parser`)
 
 ### Installation
 
 ```bash
-npm install @posthog/hogql-parser
+npm install @flind/query-parser
 ```
 
 ### Usage
 
 ```typescript
-import createHogQLParser from '@posthog/hogql-parser'
+import createHogQLParser from '@flind/query-parser'
 
 const parser = await createHogQLParser()
 

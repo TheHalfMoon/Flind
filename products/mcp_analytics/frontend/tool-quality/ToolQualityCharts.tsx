@@ -9,7 +9,7 @@ import {
     TimeSeriesLineChart,
     type TimeSeriesLineChartConfig,
     legendItemsFromSeries,
-} from '@posthog/quill-charts'
+} from '@flind/quill-charts'
 
 import { useChartConfig } from 'lib/charts/hooks'
 import { formatPercentage } from 'lib/utils/numbers'

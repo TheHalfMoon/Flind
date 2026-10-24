@@ -1,7 +1,7 @@
 import type { BuiltLogic } from 'kea'
 import { useMemo } from 'react'
 
-import { ReferenceLine, ScatterChart, TooltipFooter, TooltipSurface, TooltipSwatch } from '@posthog/quill-charts'
+import { ReferenceLine, ScatterChart, TooltipFooter, TooltipSurface, TooltipSwatch } from '@flind/quill-charts'
 
 import { useChartTheme } from 'lib/charts/hooks'
 import { dayjs } from 'lib/dayjs'

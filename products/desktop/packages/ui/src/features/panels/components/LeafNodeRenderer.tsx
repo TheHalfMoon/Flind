@@ -5,7 +5,7 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@posthog/quill";
+} from "@flind/quill";
 import type { Task } from "@posthog/shared/domain-types";
 import type React from "react";
 import { useMemo } from "react";

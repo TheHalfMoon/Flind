@@ -1,6 +1,6 @@
 import { inboxReportKeys } from "@posthog/core/inbox/inboxQuery";
 import { deriveReportImplementationState } from "@posthog/core/inbox/reportImplementation";
-import { Button } from "@posthog/quill";
+import { Button } from "@flind/quill";
 import type { SignalReport } from "@posthog/shared/types";
 import {
   ANONYMOUS_AUTH_STATE,

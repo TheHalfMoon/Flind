@@ -1,7 +1,7 @@
 import {
   getErrorMessage,
   isUpstreamRequestRejected,
-} from "@posthog/agent-contracts";
+} from "@flind/agent-contracts";
 
 export type AgentErrorClassification =
   | "upstream_stream_terminated"

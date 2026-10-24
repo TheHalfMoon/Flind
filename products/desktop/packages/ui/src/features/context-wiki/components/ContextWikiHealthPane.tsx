@@ -9,7 +9,7 @@ import {
   EmptyTitle,
   Heading,
   Text,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { LoadingState } from "@posthog/ui/primitives/LoadingState";
 import { useMemo } from "react";
 import { useContextWikiHealthReport } from "../hooks/useContextWiki";

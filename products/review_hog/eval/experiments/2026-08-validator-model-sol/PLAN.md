@@ -85,7 +85,7 @@ LABEL=K-sol-validator-1 RUN_SECONDS=<s> RUN_START_EPOCH=<epoch> OUT_DIR=$PWD/run
 - **Effort never reached Codex (00:10, 2026-08-26).** Every `gpt-5.6-sol` call in K1, K2 and K3 carries `$ai_effort=low`
   (the gateway reads it from the request's `reasoning.effort`); the Sonnet one-shots carry `xhigh`. Same in prod: 100% `low`
   for `background_agents` every day since at least 2026-08-04. See FINAL_REPORT.md "The effort pin never reached Codex".
-- **Fix smoke (2026-08-26 00:30–00:38):** patched the installed `@posthog/agent` 2.4.86 inside the local sandbox image (one
+- **Fix smoke (2026-08-26 00:30–00:38):** patched the installed `@flind/agent` 2.4.86 inside the local sandbox image (one
   `sed` in `Dockerfile.sandbox-base`, local-only hack) so `collaborationModeForTurn()` carries `reasoning_effort: this._effort`,
   then ran `scripts/codex_mts_smoke.py` (codex / gpt-5.6-sol / xhigh). All 3 turns passed; the gateway saw `$ai_effort=xhigh` on
   all 12 Codex calls (`runs/fix-smoke.gateway_events.json`). Before the patch every Codex call in K1–K3 carried `low`.
@@ -93,7 +93,7 @@ LABEL=K-sol-validator-1 RUN_SECONDS=<s> RUN_START_EPOCH=<epoch> OUT_DIR=$PWD/run
 ## Run log — runs at real `xhigh` (2026-08-26, after the effort fix)
 
 Harness additions for these runs (local hacks, on top of the three above): the sandbox image carries the effort
-fix (`Dockerfile.sandbox-base` sed on the installed `@posthog/agent`, now 2.4.87), a second sed that gives codex
+fix (`Dockerfile.sandbox-base` sed on the installed `@flind/agent`, now 2.4.87), a second sed that gives codex
 `stream_max_retries=10` / `request_max_retries=10` and a 300 s stream idle timeout, and `MAX_CONCURRENT_SANDBOXES`
 10 → 4. Arm L = prod validator pins (`claude` / `claude-opus-5` / `xhigh`), arm M = `codex` / `gpt-5.6-sol` /
 `xhigh` / `full-access`. Reviewer = Sol at `xhigh` in both arms. The effort guard (`scripts/kafka_ai_usage.py` on

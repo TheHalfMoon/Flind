@@ -4,11 +4,11 @@ import {
   type RootLogger,
   type ScopedLogger,
 } from "@posthog/di/logger";
-import { createGitClient } from "@posthog/git/client";
-import { isGitRepository } from "@posthog/git/queries";
-import { deleteCheckpoint } from "@posthog/git/sagas/checkpoint";
-import { forceRemove } from "@posthog/git/utils";
-import { WorktreeManager } from "@posthog/git/worktree";
+import { createGitClient } from "@flind/git/client";
+import { isGitRepository } from "@flind/git/queries";
+import { deleteCheckpoint } from "@flind/git/sagas/checkpoint";
+import { forceRemove } from "@flind/git/utils";
+import { WorktreeManager } from "@flind/git/worktree";
 import {
   type IWorkspaceSettings,
   WORKSPACE_SETTINGS_SERVICE,

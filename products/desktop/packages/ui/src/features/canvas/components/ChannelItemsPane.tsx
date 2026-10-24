@@ -25,7 +25,7 @@ import {
   MenuLabel,
   Skeleton,
   SkeletonText,
-} from "@posthog/quill";
+} from "@flind/quill";
 import {
   ANALYTICS_EVENTS,
   type TaskListSurface,

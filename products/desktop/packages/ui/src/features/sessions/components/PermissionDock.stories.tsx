@@ -2,7 +2,7 @@ import {
   buildQuestionOptions,
   buildQuestionToolCallData,
   type QuestionItem,
-} from "@posthog/agent/adapters/claude/questions/utils";
+} from "@flind/agent/adapters/claude/questions/utils";
 import { PermissionSelector } from "@posthog/ui/features/permissions/PermissionSelector";
 import { PermissionDock } from "@posthog/ui/features/sessions/components/PermissionDock";
 import type { Meta, StoryObj } from "@storybook/react-vite";

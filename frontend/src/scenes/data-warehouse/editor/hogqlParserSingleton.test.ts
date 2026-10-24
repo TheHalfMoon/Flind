@@ -6,7 +6,7 @@
 const parseSelectMock = jest.fn()
 const initMock = jest.fn()
 
-jest.mock('@posthog/hogql-parser', () => ({
+jest.mock('@flind/query-parser', () => ({
     __esModule: true,
     default: () => {
         initMock()

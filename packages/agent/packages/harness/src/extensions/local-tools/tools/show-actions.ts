@@ -1,4 +1,4 @@
-import { showActionSchema } from "@posthog/agent-contracts";
+import { showActionSchema } from "@flind/agent-contracts";
 import { z } from "zod";
 import { defineLocalTool, type LocalToolResult } from "../registry";
 

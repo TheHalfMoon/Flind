@@ -9,7 +9,7 @@ import {
     TooltipProvider,
     TooltipTrigger,
     type DateTimeValue,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import { dayjs, type Dayjs } from 'lib/dayjs'
 import { startOfWeek } from 'lib/utils/dateFilters'

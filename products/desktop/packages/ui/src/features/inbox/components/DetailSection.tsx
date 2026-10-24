@@ -1,5 +1,5 @@
 import { CaretDownIcon, type IconProps } from "@phosphor-icons/react";
-import { cn } from "@posthog/quill";
+import { cn } from "@flind/quill";
 import { type ComponentType, type ReactNode, useState } from "react";
 
 export interface DetailSectionProps {

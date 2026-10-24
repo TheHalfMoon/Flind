@@ -212,7 +212,7 @@ UA, UB, SA (`findings/<S>.score.md`): Luna low ≈ $0.30, 14–16 min, 2/9 and 4
   `POSTHOG_CODE_REASONING_EFFORT 'high' is not supported for claude model 'zai-org/glm-5.3-flash'`. Cause: the local
   image was built from `LOCAL_POSTHOG_CODE_MONOREPO_ROOT=~/Documents/Code/code`, the pre-migration agent checkout
   (last commit 2026-08-01), whose registry predates GLM 5.3 Flash. Not a prod problem: the published
-  `@posthog/agent@2.4.187` (2026-09-16) lists `["high", "max"]` for the model, and so does this repo's generated
+  `@flind/agent@2.4.187` (2026-09-16) lists `["high", "max"]` for the model, and so does this repo's generated
   catalog. Fix for the local run: the `.env` line is commented out (published agent in the local image), the
   workflow was terminated, the worker restarted, and the run relaunched as L2.
 

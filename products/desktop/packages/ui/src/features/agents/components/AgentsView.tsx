@@ -1,5 +1,5 @@
 import { PlusIcon } from "@phosphor-icons/react";
-import { Button } from "@posthog/quill";
+import { Button } from "@flind/quill";
 import { ANALYTICS_EVENTS } from "@posthog/shared";
 import {
   useAgentsTab,

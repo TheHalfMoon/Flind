@@ -3,7 +3,7 @@ import { mkdir, mkdtemp, rm, symlink, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
-import { execGit } from "@posthog/git/git-exec";
+import { execGit } from "@flind/git/git-exec";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 vi.mock("../github-token", () => ({

@@ -1,6 +1,6 @@
 # Components — Agent Reference
 
-Quick-reference for AI agents using `@posthog/quill-components` — composed components built on quill primitives. For primitive-level guidance (choosing a component, spacing, the `render` prop), read `../primitives/AGENTS.md` first.
+Quick-reference for AI agents using `@flind/quill-components` — composed components built on quill primitives. For primitive-level guidance (choosing a component, spacing, the `render` prop), read `../primitives/AGENTS.md` first.
 
 ## Exports
 
@@ -8,13 +8,13 @@ Quick-reference for AI agents using `@posthog/quill-components` — composed com
 - `DateTimePicker` — calendar range picker with quick-range presets (`quickRanges`, `CUSTOM_RANGE`)
 - `DatePicker` — single-date picker (one calendar, optional time, no quick ranges)
 - `useCalendar` — headless calendar grid hook (`Day`, `Month` enums)
-- `Metric` — composable stat tile (`Card` + `Badge` pill + `Sparkline`); marries primitives with `@posthog/quill-charts`. Import from the `@posthog/quill-components/metric` subpath (not the main barrel)
+- `Metric` — composable stat tile (`Card` + `Badge` pill + `Sparkline`); marries primitives with `@flind/quill-charts`. Import from the `@flind/quill-components/metric` subpath (not the main barrel)
 
 ## DataTable
 
 ```tsx
 import { type ColumnDef } from '@tanstack/react-table'
-import { DataTable } from '@posthog/quill-components'
+import { DataTable } from '@flind/quill-components'
 
 const columns: ColumnDef<Person>[] = [
   { accessorKey: 'name', header: 'Name', meta: { expand: true } },
@@ -48,7 +48,7 @@ Rules:
 ## DateTimePicker
 
 ```tsx
-import { CUSTOM_RANGE, DateTimePicker, quickRanges } from '@posthog/quill-components'
+import { CUSTOM_RANGE, DateTimePicker, quickRanges } from '@flind/quill-components'
 ;<DateTimePicker
   value={{ start, end, range: CUSTOM_RANGE }}
   onApply={(value) => setRange(value)}
@@ -75,7 +75,7 @@ Rules:
 Single-date sibling of `DateTimePicker` — one calendar, no quick ranges, value is a plain `Date`.
 
 ```tsx
-import { DatePicker } from '@posthog/quill-components'
+import { DatePicker } from '@flind/quill-components'
 ;<DatePicker
   value={date}
   onApply={(next) => setDate(next)}
@@ -103,7 +103,7 @@ Headless month-grid state for building custom calendar UIs: returns `calendar` (
 
 ## Metric
 
-A composable stat tile: a headline number, a `Badge` change pill, and an optional `Sparkline`. `Metric` is **content, not a surface** — wrap it in `<Card flush>` for the border. It's the one component here that depends on `@posthog/quill-charts` (for `Sparkline` + the headless metric math), which pulls d3 — so it lives behind its own `@posthog/quill-components/metric` entry point, **not** the main barrel (and not the `@posthog/quill` umbrella). That keeps charts/d3 out of the always-eager app-shell graph: only code that imports the metric subpath pays for it. The `MetricCard` in `@posthog/quill-charts` is the older, self-contained (prop-driven, primitives-free) tile; use `Metric` when you want to compose the layout or lean on quill's `Card`/`Badge`.
+A composable stat tile: a headline number, a `Badge` change pill, and an optional `Sparkline`. `Metric` is **content, not a surface** — wrap it in `<Card flush>` for the border. It's the one component here that depends on `@flind/quill-charts` (for `Sparkline` + the headless metric math), which pulls d3 — so it lives behind its own `@flind/quill-components/metric` entry point, **not** the main barrel (and not the `@flind/quill` umbrella). That keeps charts/d3 out of the always-eager app-shell graph: only code that imports the metric subpath pays for it. The `MetricCard` in `@flind/quill-charts` is the older, self-contained (prop-driven, primitives-free) tile; use `Metric` when you want to compose the layout or lean on quill's `Card`/`Badge`.
 
 ```tsx
 import {
@@ -114,9 +114,9 @@ import {
   MetricValue,
   MetricSubtitle,
   MetricSparkline,
-} from '@posthog/quill-components/metric'
-import { Card } from '@posthog/quill-primitives'
-import { useChartTheme } from '@posthog/quill-charts'
+} from '@flind/quill-components/metric'
+import { Card } from '@flind/quill-primitives'
+import { useChartTheme } from '@flind/quill-charts'
 
 const theme = useChartTheme()
 ;<Card flush className="h-40">

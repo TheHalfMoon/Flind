@@ -1,6 +1,6 @@
 import { SparkleIcon } from "@phosphor-icons/react";
 import { SCOUT_FLEET_OVERVIEW_PROMPT } from "@posthog/core/scouts/scoutPrompts";
-import { Button } from "@posthog/quill";
+import { Button } from "@flind/quill";
 import { useScoutChatTask } from "../hooks/useScoutChatTask";
 
 /** Starts a cloud task that reviews the whole fleet and opens it. */

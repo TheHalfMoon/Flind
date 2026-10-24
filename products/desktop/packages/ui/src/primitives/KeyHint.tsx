@@ -1,4 +1,4 @@
-import { Kbd } from "@posthog/quill";
+import { Kbd } from "@flind/quill";
 import type React from "react";
 
 interface KeyHintProps {

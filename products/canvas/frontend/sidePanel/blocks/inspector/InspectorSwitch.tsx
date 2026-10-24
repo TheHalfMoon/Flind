@@ -1,6 +1,6 @@
 import { useId } from 'react'
 
-import { Field, FieldContent, FieldDescription, FieldLabel, Switch } from '@posthog/quill'
+import { Field, FieldContent, FieldDescription, FieldLabel, Switch } from '@flind/quill'
 
 /** An on or off inspector setting that applies at once, with its label on the left. */
 export function InspectorSwitch({

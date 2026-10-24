@@ -1,4 +1,4 @@
-import type { ReferenceLineLabelPosition } from '@posthog/quill-charts'
+import type { ReferenceLineLabelPosition } from '@flind/quill-charts'
 
 import { humanFriendlyNumber } from 'lib/utils/numbers'
 

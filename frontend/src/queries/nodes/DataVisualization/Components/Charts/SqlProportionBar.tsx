@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 
-import { ProportionBar } from '@posthog/quill-charts'
-import type { ProportionBarConfig } from '@posthog/quill-charts'
+import { ProportionBar } from '@flind/quill-charts'
+import type { ProportionBarConfig } from '@flind/quill-charts'
 
 import { useChartConfig } from 'lib/charts/hooks'
 

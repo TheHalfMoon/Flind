@@ -13,7 +13,7 @@ import {
   Tabs,
   TabsList,
   TabsTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { LOOPS_FLAG } from "@posthog/shared";
 import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
 import { ChannelBackRow } from "@posthog/ui/features/canvas/components/ChannelBackRow";

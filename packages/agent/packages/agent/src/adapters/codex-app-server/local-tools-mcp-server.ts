@@ -14,12 +14,12 @@
 
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
-import { readGithubTokenFromEnv } from "@posthog/git/signed-commit";
+import { readGithubTokenFromEnv } from "@flind/git/signed-commit";
 import {
   LOCAL_TOOLS,
   LOCAL_TOOLS_MCP_NAME,
   type LocalToolCtx,
-} from "@posthog/harness/extensions/local-tools";
+} from "@flind/harness/extensions/local-tools";
 import {
   MEMORY_KILL_HOOK_SERVER_OPTIONS,
   MEMORY_KILL_HOOK_TOOL_NAME,

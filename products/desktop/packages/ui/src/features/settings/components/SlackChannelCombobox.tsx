@@ -14,7 +14,7 @@ import {
   ComboboxItem,
   ComboboxList,
   ComboboxTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { useSlackChannels } from "@posthog/ui/features/inbox/hooks/useSlackChannels";
 import { ModalInlineComboboxContent } from "@posthog/ui/features/settings/ModalInlineComboboxContent";
 import { useDebouncedValue } from "@posthog/ui/primitives/hooks/useDebouncedValue";

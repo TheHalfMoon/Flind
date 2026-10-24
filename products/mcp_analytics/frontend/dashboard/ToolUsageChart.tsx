@@ -6,8 +6,8 @@ import {
     type TimeInterval,
     TimeSeriesBarChart,
     type TimeSeriesBarChartConfig,
-} from '@posthog/quill-charts'
-import { Skeleton } from '@posthog/quill-primitives'
+} from '@flind/quill-charts'
+import { Skeleton } from '@flind/quill-primitives'
 
 import { useChartConfig } from 'lib/charts/hooks'
 

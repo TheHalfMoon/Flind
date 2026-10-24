@@ -2,7 +2,7 @@ import '@testing-library/jest-dom'
 
 import { cleanup, fireEvent, render } from '@testing-library/react'
 
-import { ensureJsdom, getHogChart, waitForHogChartTooltip } from '@posthog/quill-charts/testing'
+import { ensureJsdom, getHogChart, waitForHogChartTooltip } from '@flind/quill-charts/testing'
 
 import { StackedBar, type StackedBarSegment } from './StackedBar'
 

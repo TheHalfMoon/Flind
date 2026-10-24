@@ -5,7 +5,7 @@ import {
   SelectTrigger,
   SelectValue,
   Text,
-} from "@posthog/quill";
+} from "@flind/quill";
 import type { NetworkAccessLevel } from "@posthog/shared/domain-types";
 
 const NETWORK_ACCESS_OPTIONS: {

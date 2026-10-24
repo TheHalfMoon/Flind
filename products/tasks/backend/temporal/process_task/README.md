@@ -40,7 +40,7 @@ User ─────────────────────────
                               │  ┌──────────────────────┐  │
                               │  │  agent-server (npx)  │  │
                               │  │  ┌────────────────┐  │  │
-                              │  │  │ @posthog/agent │  │  │
+                              │  │  │ @flind/agent │  │  │
                               │  │  │  (runAgent.mjs)│  │  │
                               │  │  └────────────────┘  │  │
                               │  └──────────────────────┘  │
@@ -94,7 +94,7 @@ detector (`[TMPRL1101]`). Two mechanisms bound this:
 
 ### Agent server and runner
 
-Inside the sandbox, `npx agent-server` starts an HTTP server on the configured port. The server uses `@posthog/agent` SDK to execute the task. `scripts/runAgent.mjs` is the entrypoint that initializes the `Agent` class and calls `agent.runTaskCloud(taskId, runId, ...)`.
+Inside the sandbox, `npx agent-server` starts an HTTP server on the configured port. The server uses `@flind/agent` SDK to execute the task. `scripts/runAgent.mjs` is the entrypoint that initializes the `Agent` class and calls `agent.runTaskCloud(taskId, runId, ...)`.
 
 Environment variables consumed inside the sandbox:
 
@@ -279,9 +279,9 @@ Set `SANDBOX_API_URL` to the ngrok URL. `SITE_URL` stays as `http://localhost:80
 
 ### Images
 
-- `Dockerfile.sandbox-base` — Base image with Node.js, `@posthog/agent` from npm, git
+- `Dockerfile.sandbox-base` — Base image with Node.js, `@flind/agent` from npm, git
 - `Dockerfile.sandbox-notebook` — Extends base with Jupyter/notebook support
-- `Dockerfile.sandbox-local` — Dev overlay that replaces npm `@posthog/agent` with local packages
+- `Dockerfile.sandbox-local` — Dev overlay that replaces npm `@flind/agent` with local packages
 
 ## Frontend
 

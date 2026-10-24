@@ -1,4 +1,4 @@
-const METRIC = `import { Card, CardContent } from "@posthog/quill";
+const METRIC = `import { Card, CardContent } from "@flind/quill";
 import { Area, AreaChart, ResponsiveContainer } from "recharts";
 import {
   sqlNode,
@@ -79,7 +79,7 @@ export function Metric(props: MetricProps) {
 }
 `;
 
-const TREND = `import { Card, CardContent, CardHeader, CardTitle } from "@posthog/quill";
+const TREND = `import { Card, CardContent, CardHeader, CardTitle } from "@flind/quill";
 import { Area, AreaChart, Bar, BarChart, CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import {
   BlockDescription,
@@ -215,7 +215,7 @@ export function Trend(props: TrendProps) {
 }
 `;
 
-const TOP_LIST = `import { Card, CardContent, CardHeader, CardTitle } from "@posthog/quill";
+const TOP_LIST = `import { Card, CardContent, CardHeader, CardTitle } from "@flind/quill";
 import {
   BlockDescription,
   sqlNode,
@@ -304,7 +304,7 @@ export function TopList(props: TopListProps) {
 }
 `;
 
-const FUNNEL = `import { Card, CardContent, CardHeader, CardTitle } from "@posthog/quill";
+const FUNNEL = `import { Card, CardContent, CardHeader, CardTitle } from "@flind/quill";
 import {
   BlockDescription,
   sqlNode,
@@ -404,7 +404,7 @@ export function Funnel(props: FunnelProps) {
 }
 `;
 
-const SQL_TABLE = `import { Card, CardContent, CardHeader, CardTitle } from "@posthog/quill";
+const SQL_TABLE = `import { Card, CardContent, CardHeader, CardTitle } from "@flind/quill";
 import {
   BlockDescription,
   type BlockProps,
@@ -446,7 +446,7 @@ export function SqlTable(props: SqlTableProps) {
 }
 `;
 
-const DATE_RANGE = `import { Button } from "@posthog/quill";
+const DATE_RANGE = `import { Button } from "@flind/quill";
 import { type BlockProps, DATE_RANGES, blockRoot, setCanvasFilters, useCanvasFilters } from "./runtime";
 
 export function DateRange(props: BlockProps) {
@@ -468,7 +468,7 @@ export function DateRange(props: BlockProps) {
 }
 `;
 
-const INTERVAL = `import { Button } from "@posthog/quill";
+const INTERVAL = `import { Button } from "@flind/quill";
 import { type BlockProps, type CanvasInterval, blockRoot, setCanvasFilters, useCanvasFilters } from "./runtime";
 
 const OPTIONS: Array<{ value: CanvasInterval; label: string }> = [
@@ -538,7 +538,7 @@ export function PropertyFilter(props: PropertyFilterProps) {
 `;
 
 const FILTERS = `import { useEffect, useMemo, useState } from "react";
-import { Button, Input, Popover, PopoverContent, PopoverTrigger } from "@posthog/quill";
+import { Button, Input, Popover, PopoverContent, PopoverTrigger } from "@flind/quill";
 import { CaretLeftIcon, FunnelIcon, PlusIcon, XIcon } from "./icons";
 import {
   type BlockProps,
@@ -801,7 +801,7 @@ export function Filters(props: FiltersProps) {
 }
 `;
 
-const GOAL = `import { Card, CardContent } from "@posthog/quill";
+const GOAL = `import { Card, CardContent } from "@flind/quill";
 import { sqlNode, type BlockProps, BlockDescription, BlockState, QueryButton, blockRoot, eventName, eventsNode, filterFields, formatNumber, formatValue, scopeLabel, useBlockQuery, useCanvasFilters } from "./runtime";
 
 type GoalProps = BlockProps & {
@@ -889,7 +889,7 @@ export function Goal(props: GoalProps) {
 `;
 
 const RECENT_EVENTS = `import { useEffect, useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@posthog/quill";
+import { Card, CardContent, CardHeader, CardTitle } from "@flind/quill";
 import { BlockDescription, sqlNode, type BlockProps, BlockState, QueryButton, blockRoot, eventName, filterFields, useBlockQuery, useCanvasFilters } from "./runtime";
 
 type RecentEventsProps = BlockProps & {
@@ -1020,7 +1020,7 @@ export function Callout(props: CalloutProps) {
 }
 `;
 
-const INSIGHT = `import { Card, CardContent, CardHeader, CardTitle } from "@posthog/quill";
+const INSIGHT = `import { Card, CardContent, CardHeader, CardTitle } from "@flind/quill";
 import { Area, AreaChart, Bar, BarChart, CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import {
   type BlockProps,
@@ -1174,7 +1174,7 @@ export function Insight(props: InsightProps) {
 }
 `;
 
-const RETENTION = `import { Card, CardContent, CardHeader, CardTitle } from "@posthog/quill";
+const RETENTION = `import { Card, CardContent, CardHeader, CardTitle } from "@flind/quill";
 import { type BlockProps, BlockDescription, BlockState, QueryButton, RetentionGrid, blockRoot, eventName, filterFields, scopeLabel, useBlockQuery, useCanvasFilters } from "./runtime";
 
 type RetentionProps = BlockProps & {

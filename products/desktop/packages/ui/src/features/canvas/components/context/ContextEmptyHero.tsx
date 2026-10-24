@@ -1,5 +1,5 @@
 import { PencilSimpleIcon, SparkleIcon } from "@phosphor-icons/react";
-import { Button, Text } from "@posthog/quill";
+import { Button, Text } from "@flind/quill";
 
 interface ContextEmptyHeroProps {
   channelName: string;

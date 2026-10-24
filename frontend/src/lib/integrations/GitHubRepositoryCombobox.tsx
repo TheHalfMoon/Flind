@@ -10,7 +10,7 @@ import {
     ComboboxItem,
     ComboboxList,
     ComboboxTrigger,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import type { GitHubRepoApi } from 'products/integrations/frontend/generated/api.schemas'
 

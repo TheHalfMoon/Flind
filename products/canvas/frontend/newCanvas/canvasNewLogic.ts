@@ -3,7 +3,7 @@ import { loaders } from 'kea-loaders'
 import { router, urlToAction } from 'kea-router'
 import posthog from 'posthog-js'
 
-import { toast } from '@posthog/quill'
+import { toast } from '@flind/quill'
 
 import { removeProjectIdIfPresent } from 'lib/utils/kea-router'
 import { withBackLink } from 'scenes/analytics/analyticsBackLink'

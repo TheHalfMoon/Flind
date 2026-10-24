@@ -1,4 +1,4 @@
-import { Button, Switch } from "@posthog/quill";
+import { Button, Switch } from "@flind/quill";
 import { NotificationDeliveryCard } from "@posthog/ui/features/settings/components/NotificationDeliveryCard";
 import {
   SettingsCard,

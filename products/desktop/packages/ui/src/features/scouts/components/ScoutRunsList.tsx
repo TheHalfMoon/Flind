@@ -1,5 +1,5 @@
 import type { ScoutRun } from "@posthog/api-client/posthog-client";
-import { Skeleton } from "@posthog/quill";
+import { Skeleton } from "@flind/quill";
 import { ScoutRunListItem } from "./ScoutRunListItem";
 
 export function ScoutRunsList({

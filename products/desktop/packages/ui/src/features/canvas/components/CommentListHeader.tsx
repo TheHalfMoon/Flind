@@ -4,7 +4,7 @@ import {
   Tabs,
   TabsList,
   TabsTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { SourceIcon } from "@posthog/ui/features/canvas/components/CommentThreadGroups";
 import type { ThreadSourceOption } from "@posthog/ui/features/canvas/components/taskCommentThreads";
 import { ChromeBar } from "@posthog/ui/primitives/ChromeBar";

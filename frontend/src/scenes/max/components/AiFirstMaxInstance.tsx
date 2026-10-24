@@ -3,7 +3,7 @@ import { router } from 'kea-router'
 
 import { IconOpenSidebar, IconShare, IconSidePanel } from '@posthog/icons'
 import { LemonBanner } from '@posthog/lemon-ui'
-import { DropdownMenuItem, DropdownMenuSeparator } from '@posthog/quill'
+import { DropdownMenuItem, DropdownMenuSeparator } from '@flind/quill'
 
 import { LemonButton } from 'lib/lemon-ui/LemonButton'
 import { copyToClipboard } from 'lib/utils/copyToClipboard'

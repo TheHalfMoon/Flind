@@ -11,7 +11,7 @@ import {
   Progress,
   Skeleton,
   Text,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { useBlockingAnnouncementVisible } from "@posthog/ui/features/announcements/useAnnouncementVisible";
 import { ReleaseNotesSections } from "@posthog/ui/features/updates/ReleaseNotesSections";
 import { parseReleaseNotes } from "@posthog/ui/features/updates/releaseNotes";

@@ -1,4 +1,4 @@
-import type { PiSessionStats } from "@posthog/agent/pi/types";
+import type { PiSessionStats } from "@flind/agent/pi/types";
 import { describe, expect, it } from "vitest";
 import { toPiContextUsage } from "./piSessionUsage";
 

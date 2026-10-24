@@ -2,7 +2,7 @@ import { useActions, useMountedLogic, useValues } from 'kea'
 import posthog from 'posthog-js'
 
 import { LemonBanner, LemonButton, LemonTabs } from '@posthog/lemon-ui'
-import { Button } from '@posthog/quill'
+import { Button } from '@flind/quill'
 
 import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'
 import { useOnMountEffect } from 'lib/hooks/useOnMountEffect'

@@ -1,4 +1,4 @@
-import { cn, MenuLabel } from "@posthog/quill";
+import { cn, MenuLabel } from "@flind/quill";
 import type { ReactNode, RefObject } from "react";
 
 export function PinnedRun({

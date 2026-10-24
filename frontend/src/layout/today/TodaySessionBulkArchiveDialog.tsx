@@ -6,7 +6,7 @@ import {
     AlertDialogHeader,
     AlertDialogTitle,
     Button,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import { bulkArchiveWarning, sessionsLabel } from './todaySessionSelection'
 import { TodayBulkArchiveConfirm } from './todaySessionSelectionLogic'

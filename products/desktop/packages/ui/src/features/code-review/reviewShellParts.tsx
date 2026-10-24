@@ -16,7 +16,7 @@ import {
   splitFilePath,
   sumHunkStats,
 } from "@posthog/core/code-review/reviewShellGeometry";
-import { Badge } from "@posthog/quill";
+import { Badge } from "@flind/quill";
 import type { ChangedFile, Task } from "@posthog/shared/domain-types";
 import { type ReactNode, useCallback, useMemo, useState } from "react";
 import { FileIcon } from "../../primitives/FileIcon";

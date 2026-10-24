@@ -1,4 +1,4 @@
-import { cn } from "@posthog/quill";
+import { cn } from "@flind/quill";
 import { useNavRailMetrics } from "@posthog/ui/features/sidebar/navRailSize";
 import type { ComponentPropsWithRef, ReactNode } from "react";
 

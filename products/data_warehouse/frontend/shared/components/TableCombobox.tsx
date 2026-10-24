@@ -12,7 +12,7 @@ import {
     ComboboxLabel,
     ComboboxList,
     ComboboxTrigger,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import { TableOptionGroup } from '../logics/viewLinkLogic'
 

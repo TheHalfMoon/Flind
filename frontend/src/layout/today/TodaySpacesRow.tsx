@@ -1,6 +1,6 @@
 import { Fragment, useState } from 'react'
 
-import { cn } from '@posthog/quill'
+import { cn } from '@flind/quill'
 
 import { TodayListItemDetail } from './todayListAppearance'
 import { TodayOverflowText } from './TodayOverflowText'

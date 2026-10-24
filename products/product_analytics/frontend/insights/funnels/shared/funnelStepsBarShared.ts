@@ -1,4 +1,4 @@
-import type { BarChartConfig, ChartMargins, Series, TooltipConfig } from '@posthog/quill-charts'
+import type { BarChartConfig, ChartMargins, Series, TooltipConfig } from '@flind/quill-charts'
 
 import { funnelConversionRate, RATE_TO_PERCENT } from './funnelBarHorizontalShared'
 

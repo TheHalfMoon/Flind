@@ -1,4 +1,4 @@
-import { Button, Text } from "@posthog/quill";
+import { Button, Text } from "@flind/quill";
 
 interface ConsentErrorContentProps {
   onRetry: () => void;

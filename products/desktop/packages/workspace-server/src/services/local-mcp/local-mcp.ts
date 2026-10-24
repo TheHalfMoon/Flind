@@ -1,4 +1,4 @@
-import { loadUserClaudeJsonMcpServerDescriptors } from "@posthog/agent/adapters/claude/session/mcp-config";
+import { loadUserClaudeJsonMcpServerDescriptors } from "@flind/agent/adapters/claude/session/mcp-config";
 import type { LocalMcpServerDescriptor } from "@posthog/shared";
 import { injectable } from "inversify";
 import type { LocalMcpService } from "./identifiers";

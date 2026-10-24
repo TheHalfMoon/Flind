@@ -15,7 +15,7 @@
 import {
   POSTHOG_PRODUCTS,
   type PostHogProductId,
-} from "@posthog/agent-contracts";
+} from "@flind/agent-contracts";
 
 export { POSTHOG_PRODUCTS, type PostHogProductId };
 

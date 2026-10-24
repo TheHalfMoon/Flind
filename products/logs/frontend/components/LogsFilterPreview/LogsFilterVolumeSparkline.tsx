@@ -2,8 +2,8 @@ import { useActions, useValues } from 'kea'
 import { useEffect, useId, useMemo } from 'react'
 
 import { LemonButton, LemonSkeleton } from '@posthog/lemon-ui'
-import type { GoalLineConfig, Series, TimeInterval, TimeSeriesBarChartConfig } from '@posthog/quill-charts'
-import { TimeSeriesBarChart } from '@posthog/quill-charts'
+import type { GoalLineConfig, Series, TimeInterval, TimeSeriesBarChartConfig } from '@flind/quill-charts'
+import { TimeSeriesBarChart } from '@flind/quill-charts'
 
 import { useChartConfig, useChartTheme } from 'lib/charts/hooks'
 import { resolveVariableColor } from 'lib/charts/utils/color'

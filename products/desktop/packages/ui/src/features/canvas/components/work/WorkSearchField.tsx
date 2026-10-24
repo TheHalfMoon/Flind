@@ -1,5 +1,5 @@
 import { XIcon } from "@phosphor-icons/react";
-import { AutocompleteInput, InputGroupButton } from "@posthog/quill";
+import { AutocompleteInput, InputGroupButton } from "@flind/quill";
 import type { Ref } from "react";
 
 export function WorkSearchField({

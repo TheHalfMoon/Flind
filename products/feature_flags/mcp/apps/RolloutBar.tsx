@@ -1,6 +1,6 @@
 import type { ReactElement } from 'react'
 
-import { cn, Progress, Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@posthog/quill'
+import { cn, Progress, Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@flind/quill'
 
 export interface RolloutBarProps {
     percentage: number

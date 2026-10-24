@@ -1,4 +1,4 @@
-import { cn } from "@posthog/quill";
+import { cn } from "@flind/quill";
 
 // Must match the `ph-dot-ring` animation duration in styles/globals.css: the
 // keyframe lives in CSS (so the spinner costs no JS timers) while the per-dot

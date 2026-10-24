@@ -17,8 +17,8 @@ const mocks = vi.hoisted(() => ({
   unreadCount: 0,
 }));
 
-vi.mock("@posthog/quill", async (importOriginal) => ({
-  ...(await importOriginal<typeof import("@posthog/quill")>()),
+vi.mock("@flind/quill", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@flind/quill")>()),
   cn: (...args: unknown[]) => args.filter(Boolean).join(" "),
   Button: ({
     children,

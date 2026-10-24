@@ -1,4 +1,4 @@
-import { type ScatterChartConfig, type ScatterSeries } from '@posthog/quill-charts'
+import { type ScatterChartConfig, type ScatterSeries } from '@flind/quill-charts'
 
 import { ChartSettings } from '~/queries/schema/schema-general'
 

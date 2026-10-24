@@ -4,7 +4,7 @@ import {
   CaretRightIcon,
 } from "@phosphor-icons/react";
 import { useHostTRPC, useHostTRPCClient } from "@posthog/host-router/react";
-import { Button, ButtonGroup, cn } from "@posthog/quill";
+import { Button, ButtonGroup, cn } from "@flind/quill";
 import { BILLING_FLAG } from "@posthog/shared";
 import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
 import { isContentlessTask } from "@posthog/shared/domain-types";

@@ -13,7 +13,7 @@ import {
     ItemRadio,
     ItemTitle,
     MenuLabel,
-} from '@posthog/quill-primitives'
+} from '@flind/quill-primitives'
 
 import { TodaySheetMenu } from '~/layout/today/TodaySheetMenu'
 import { todayShellLogic } from '~/layout/today/todayShellLogic'

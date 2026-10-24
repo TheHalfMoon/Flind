@@ -1,6 +1,6 @@
 import { ArrowSquareOutIcon } from "@phosphor-icons/react";
 import { useService } from "@posthog/di/react";
-import { Switch } from "@posthog/quill";
+import { Switch } from "@flind/quill";
 import { ANALYTICS_EVENTS } from "@posthog/shared";
 import {
   DISCORD_PRESENCE_CLIENT,

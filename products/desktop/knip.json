@@ -33,7 +33,7 @@
         "node-pty",
         "@parcel/watcher",
         "better-sqlite3",
-        "@posthog/enricher"
+        "@flind/enricher"
       ]
     },
     "packages/api-client": {

@@ -102,26 +102,26 @@ jobs:
                     node -p "require('./package.json').version"
                   }
                   cd packages/quill/packages/tokens
-                  TOKENS_V=$(bump "@posthog/quill-tokens")
-                  echo "Bumped @posthog/quill-tokens to $TOKENS_V ($BUMP_TYPE)"
+                  TOKENS_V=$(bump "@flind/quill-tokens")
+                  echo "Bumped @flind/quill-tokens to $TOKENS_V ($BUMP_TYPE)"
                   cd ../quill
-                  QUILL_V=$(bump "@posthog/quill")
-                  echo "Bumped @posthog/quill to $QUILL_V ($BUMP_TYPE)"
+                  QUILL_V=$(bump "@flind/quill")
+                  echo "Bumped @flind/quill to $QUILL_V ($BUMP_TYPE)"
                   cd ../charts
-                  CHARTS_V=$(bump "@posthog/quill-charts")
-                  echo "Bumped @posthog/quill-charts to $CHARTS_V ($BUMP_TYPE)"
+                  CHARTS_V=$(bump "@flind/quill-charts")
+                  echo "Bumped @flind/quill-charts to $CHARTS_V ($BUMP_TYPE)"
 
             - name: Install dependencies
-              run: pnpm install --frozen-lockfile --filter "@posthog/quill..." --filter "@posthog/quill-tokens" --filter "@posthog/quill-charts..."
+              run: pnpm install --frozen-lockfile --filter "@flind/quill..." --filter "@flind/quill-tokens" --filter "@flind/quill-charts..."
 
             - name: Build quill packages
               run: pnpm quill:build
 
-            # Only the public packages get published: -tokens, the @posthog/quill
+            # Only the public packages get published: -tokens, the @flind/quill
             # facade, and -charts (an independent canvas charting library, not
             # bundled into the facade). The internal workspace members
             # (-primitives, -components, -blocks) have `private: true` and are
-            # bundled into @posthog/quill at build time. Each public package gets
+            # bundled into @flind/quill at build time. Each public package gets
             # its own publish + version-capture step so a failure shows up on the
             # exact step that broke.
             # `pnpm pack` (not `npm publish` directly) so pnpm's `catalog:` /
@@ -131,7 +131,7 @@ jobs:
             # provenance. Publishing the package dir with plain `npm publish`
             # would leak literal `catalog:` strings into the registry and make
             # the package uninstallable.
-            - name: Publish @posthog/quill-tokens
+            - name: Publish @flind/quill-tokens
               id: publish-tokens
               working-directory: packages/quill/packages/tokens
               run: |
@@ -151,7 +151,7 @@ jobs:
                   NPM_CONFIG_PROVENANCE: true
                   NPM_TAG: ${{ inputs.tag }}
 
-            - name: Publish @posthog/quill
+            - name: Publish @flind/quill
               id: publish-quill
               working-directory: packages/quill/packages/quill
               run: |
@@ -164,7 +164,7 @@ jobs:
                   NPM_CONFIG_PROVENANCE: true
                   NPM_TAG: ${{ inputs.tag }}
 
-            - name: Publish @posthog/quill-charts
+            - name: Publish @flind/quill-charts
               id: publish-charts
               working-directory: packages/quill/packages/charts
               run: |
@@ -188,7 +188,7 @@ jobs:
                   QUILL_VERSION: ${{ steps.publish-quill.outputs.version }}
                   CHARTS_VERSION: ${{ steps.publish-charts.outputs.version }}
               run: |
-                  echo "summary=@posthog/quill-tokens@${TOKENS_VERSION}, @posthog/quill@${QUILL_VERSION}, @posthog/quill-charts@${CHARTS_VERSION}" >> $GITHUB_OUTPUT
+                  echo "summary=@flind/quill-tokens@${TOKENS_VERSION}, @flind/quill@${QUILL_VERSION}, @flind/quill-charts@${CHARTS_VERSION}" >> $GITHUB_OUTPUT
 
             # No commit-back to master: it's branch-protected with no bypass
             # actor, and a package.json bump trips the PR-approval agent's

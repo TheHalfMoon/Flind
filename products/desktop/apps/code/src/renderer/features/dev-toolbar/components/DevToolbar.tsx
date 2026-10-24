@@ -10,7 +10,7 @@ import {
   ItemContent,
   ItemDescription,
   ItemTitle,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { REGION_LABELS } from "@posthog/shared";
 import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
 import {

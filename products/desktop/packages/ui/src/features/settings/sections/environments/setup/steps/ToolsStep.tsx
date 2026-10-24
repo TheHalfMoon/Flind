@@ -20,7 +20,7 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { StepBody } from "@posthog/ui/features/settings/sections/environments/setup/StepBody";
 import { useId, useState } from "react";
 

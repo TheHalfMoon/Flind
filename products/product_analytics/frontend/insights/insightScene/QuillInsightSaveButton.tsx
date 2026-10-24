@@ -6,7 +6,7 @@ import {
     DropdownMenuContent,
     DropdownMenuItem,
     DropdownMenuTrigger,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 export function QuillInsightSaveButton({
     saveAs,

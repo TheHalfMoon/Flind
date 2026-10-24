@@ -1,4 +1,4 @@
-import { Skeleton } from '@posthog/quill'
+import { Skeleton } from '@flind/quill'
 
 /** The repository picker, the input and the control row at their loaded sizes, so the page does not jump when the composer chunk lands. */
 export function SpaceTaskComposerSkeleton(): JSX.Element {

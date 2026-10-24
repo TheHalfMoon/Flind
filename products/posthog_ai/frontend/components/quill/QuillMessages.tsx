@@ -8,7 +8,7 @@ import {
     ChatMessageContent,
     ChatMessageFooter,
     cn,
-} from '@posthog/quill-primitives'
+} from '@flind/quill-primitives'
 
 import { MarkdownMessage } from '../../messages/MarkdownMessage'
 import type { ThreadItem } from '../../types/streamTypes'

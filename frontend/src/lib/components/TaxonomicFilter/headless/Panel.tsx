@@ -1,7 +1,7 @@
 import { ReactNode, useCallback, useEffect, useRef, useState } from 'react'
 
 import { IconWarning } from '@posthog/icons'
-import { Button, Empty, EmptyHeader, EmptyTitle, ItemMenuItem, Spinner } from '@posthog/quill'
+import { Button, Empty, EmptyHeader, EmptyTitle, ItemMenuItem, Spinner } from '@flind/quill'
 
 import { formatPropertyLabel } from 'lib/components/PropertyFilters/utils'
 

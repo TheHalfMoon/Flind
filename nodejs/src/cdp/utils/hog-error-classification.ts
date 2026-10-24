@@ -1,4 +1,4 @@
-import { HogVMErrorKind, HogVMException } from '@posthog/hogvm'
+import { HogVMErrorKind, HogVMException } from '@flind/logicvm'
 
 /**
  * Who has to act on a failed filter or input.

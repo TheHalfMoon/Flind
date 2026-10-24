@@ -11,7 +11,7 @@ import {
   getCustomCloud,
   getOauthClientIdFromRegion,
   OAUTH_SCOPES,
-} from "@posthog/agent-contracts";
+} from "@flind/agent-contracts";
 
 const OAUTH_TIMEOUT_MS = 180_000;
 const TOKEN_FETCH_TIMEOUT_MS = 30_000;

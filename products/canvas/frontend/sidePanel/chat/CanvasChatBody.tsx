@@ -13,7 +13,7 @@ import {
     Skeleton,
     Spinner,
     Text,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import { ReadonlyRunSurface } from 'products/posthog_ai/frontend/api/readableRun'
 

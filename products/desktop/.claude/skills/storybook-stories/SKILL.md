@@ -25,7 +25,7 @@ should **not** add its own providers or `<Theme>`:
   "must be used within a Provider".
 - A `<Theme>` (Radix) bound to the dark/light toolbar global. This root provider is
   the one sanctioned Radix usage — it supplies the CSS tokens. Radix *components*
-  are banned: build stories and components from `@posthog/quill` plus `div` +
+  are banned: build stories and components from `@flind/quill` plus `div` +
   Tailwind (see [UI Components](../../../AGENTS.md#ui-components)).
 
 Add a per-story decorator only to constrain layout (e.g. wrap in a

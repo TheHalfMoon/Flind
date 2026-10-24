@@ -1,7 +1,7 @@
 import { type ReactElement, useEffect } from 'react'
 
 import { emptyStateIllustration } from '@posthog/mcp-ui'
-import { Card, CardContent, Empty, EmptyDescription, EmptyHeader, EmptyMedia } from '@posthog/quill'
+import { Card, CardContent, Empty, EmptyDescription, EmptyHeader, EmptyMedia } from '@flind/quill'
 
 import { captureInsightViewed } from '../analytics/posthog'
 import { ChartHeader } from './ChartHeader'

@@ -4,7 +4,7 @@ import {
   type ScoutAttention,
   type ScoutAttentionKind,
 } from "@posthog/core/scouts/scoutPresentation";
-import { Badge, Button } from "@posthog/quill";
+import { Badge, Button } from "@flind/quill";
 import { useAgentsPageActions } from "@posthog/ui/features/agents/agentsPageStore";
 import type { ScoutConfigUpdate } from "../hooks/useScoutConfigMutations";
 import { AgentNameLink } from "./AgentNameLink";

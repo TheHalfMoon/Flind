@@ -1,8 +1,8 @@
 import { type ReactElement, useMemo, useState } from 'react'
 
 import { emptyStateIllustration } from '@posthog/mcp-ui'
-import { Empty, EmptyDescription, EmptyHeader, EmptyMedia } from '@posthog/quill'
-import { TimeSeriesBarChart, TimeSeriesLineChart, type TooltipConfig } from '@posthog/quill-charts'
+import { Empty, EmptyDescription, EmptyHeader, EmptyMedia } from '@flind/quill'
+import { TimeSeriesBarChart, TimeSeriesLineChart, type TooltipConfig } from '@flind/quill-charts'
 
 import { buildRetentionChartModel } from 'products/product_analytics/frontend/insights/retention/shared/retentionChartTransforms'
 

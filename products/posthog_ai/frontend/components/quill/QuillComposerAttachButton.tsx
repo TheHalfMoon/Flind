@@ -1,7 +1,7 @@
 import type { RefObject } from 'react'
 
 import { IconPlus } from '@posthog/icons'
-import { Button, Tooltip, TooltipContent, TooltipTrigger } from '@posthog/quill-primitives'
+import { Button, Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill-primitives'
 
 import { useComposerFilePicker } from '../composer/useComposerFilePicker'
 

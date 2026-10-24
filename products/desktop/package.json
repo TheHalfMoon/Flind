@@ -17,7 +17,7 @@
     "dev:mprocs": "node scripts/dev-with-skills.mjs pnpm dev:app:mprocs",
     "dev:app:mprocs": "pnpm build:deps && mprocs",
     "dev:agent": "pnpm --dir ../../packages/agent --filter agent dev",
-    "dev:git": "pnpm --dir ../../packages/agent --filter @posthog/git dev",
+    "dev:git": "pnpm --dir ../../packages/agent --filter @flind/git dev",
     "dev:code": "node scripts/dev-with-skills.mjs pnpm --filter code start",
     "app:cdp": "node scripts/electron-cdp.mjs",
     "build:agent": "node scripts/build-agent-workspace.mjs",

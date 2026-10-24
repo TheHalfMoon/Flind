@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { Spinner, cn } from '@posthog/quill-primitives'
+import { Spinner, cn } from '@flind/quill-primitives'
 
 import { EMBEDDED_PAGE_FRAME_NAME } from 'lib/utils/embeddedPageFrame'
 

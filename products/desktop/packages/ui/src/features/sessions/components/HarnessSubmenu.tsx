@@ -4,7 +4,7 @@ import {
   DropdownMenuSub,
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { RUNTIME_OPTIONS } from "@posthog/shared/model-catalog";
 import type { AgentAdapter } from "@posthog/ui/features/settings/settingsStore";
 

@@ -12,7 +12,7 @@ import {
 // quill is a workspace package that isn't transformed under the frontend jest harness — stub it
 // so this stays a unit test of FeatureFlagTestingView's own logic (matched-condition label + guard).
 jest.mock(
-    '@posthog/quill',
+    '@flind/quill',
     () => ({
         Card: ({ children }: { children: ReactElement }) => <div>{children}</div>,
         CardHeader: ({ children }: { children: ReactElement }) => <div>{children}</div>,

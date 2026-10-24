@@ -7,7 +7,7 @@ import {
   InputGroup,
   InputGroupAddon,
   TooltipProvider,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { SHORTCUTS } from "@posthog/ui/features/command/keyboard-shortcuts";
 import type { PromptRecallHandler } from "@posthog/ui/features/sessions/components/chat-thread/composerPromptRecall";
 import { cycleModeOption } from "@posthog/ui/features/sessions/sessionStore";

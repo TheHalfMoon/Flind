@@ -1,4 +1,4 @@
-import { Text } from "@posthog/quill";
+import { Text } from "@flind/quill";
 import type { ReactNode } from "react";
 
 export function StepFieldError({

@@ -133,10 +133,10 @@ const sharedOptions = {
   outDir: "dist",
   target: "node20",
   noExternal: [
-    "@posthog/agent-contracts",
-    "@posthog/git",
-    "@posthog/enricher",
-    "@posthog/harness",
+    "@flind/agent-contracts",
+    "@flind/git",
+    "@flind/enricher",
+    "@flind/harness",
     /^@opentelemetry\//,
     "fflate",
   ],
@@ -166,7 +166,7 @@ export default defineConfig([
     outDir: "dist",
     target: "es2022",
     platform: "browser",
-    external: ["@earendil-works/pi-ai", "@posthog/agent-contracts", "zod"],
+    external: ["@earendil-works/pi-ai", "@flind/agent-contracts", "zod"],
   },
   {
     entry: [
@@ -208,7 +208,7 @@ export default defineConfig([
     format: ["esm"],
     dts: false,
     clean: false,
-    // noExternal inlines CJS deps (e.g. simple-git via @posthog/git) whose
+    // noExternal inlines CJS deps (e.g. simple-git via @flind/git) whose
     // dynamic `require(...)` calls throw in ESM output unless a real require
     // exists. Entries spawned directly by node (local-tools-mcp-server.js)
     // crash at import time without this shim.

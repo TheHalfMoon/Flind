@@ -21,7 +21,7 @@ import type {
   PiSubagentToolCall,
   PiWorkflowToolDetails,
   WorkflowAgentState,
-} from "@posthog/agent-contracts";
+} from "@flind/agent-contracts";
 import {
   extractWorkflowName,
   type WorkflowInputs,

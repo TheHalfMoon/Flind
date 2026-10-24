@@ -5,7 +5,7 @@ import {
     DialogDescription,
     DialogHeader,
     DialogTitle,
-} from '@posthog/quill-primitives'
+} from '@flind/quill-primitives'
 
 import type { RunEnvironmentEnumApi, WizardProgramApi } from '../generated/api.schemas'
 import { WizardProgramDetails } from './WizardProgramDetails'

@@ -23,7 +23,7 @@ import {
     filterSchemaByOperationIds,
     preprocessSchema,
     runOrvalParallel,
-} from '@posthog/openapi-codegen'
+} from '@flind/openapi-codegen'
 
 import { discoverDefinitions, resolveSchemaPath } from './lib/definitions.mjs'
 import { lazifyZodSchemas } from './lib/lazy-zod-schemas.mjs'

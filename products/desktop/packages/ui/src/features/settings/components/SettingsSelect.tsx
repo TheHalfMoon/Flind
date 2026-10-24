@@ -4,7 +4,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@posthog/quill";
+} from "@flind/quill";
 
 export interface SettingsSelectOption {
   value: string | null;

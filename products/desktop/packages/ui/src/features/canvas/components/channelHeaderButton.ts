@@ -1,4 +1,4 @@
-import { cn } from "@posthog/quill";
+import { cn } from "@flind/quill";
 
 /**
  * The sessions header's icon buttons: quill's ghost button at the 20px scale.

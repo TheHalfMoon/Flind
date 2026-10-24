@@ -1,5 +1,5 @@
 import type { ChannelPresence } from "@posthog/core/canvas/presence";
-import { Autocomplete, AutocompleteList, MenuLabel } from "@posthog/quill";
+import { Autocomplete, AutocompleteList, MenuLabel } from "@flind/quill";
 import type { Task, UserBasic } from "@posthog/shared/domain-types";
 import { ChannelItemPreviewCardProvider } from "@posthog/ui/features/canvas/components/ChannelItemHoverCard";
 import type { Channel } from "@posthog/ui/features/canvas/hooks/useChannels";

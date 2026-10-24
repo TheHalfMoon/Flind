@@ -12,7 +12,7 @@ import {
   DropdownMenuShortcut,
   DropdownMenuTrigger,
   Button as QuillButton,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { sessionSupportsSideQuestion } from "@posthog/shared";
 import type { Task } from "@posthog/shared/domain-types";
 import { TaskArchiveMenuItem } from "@posthog/ui/features/archive/TaskArchiveMenuItem";

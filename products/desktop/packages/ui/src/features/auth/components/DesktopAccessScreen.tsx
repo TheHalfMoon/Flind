@@ -26,7 +26,7 @@ import {
   EmptyTitle,
   Field,
   FieldLabel,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
 import { FullScreenLayout } from "@posthog/ui/primitives/FullScreenLayout";
 import { Spinner } from "@posthog/ui/primitives/Spinner";

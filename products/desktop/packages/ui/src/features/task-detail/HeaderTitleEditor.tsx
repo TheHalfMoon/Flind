@@ -1,4 +1,4 @@
-import { cn } from "@posthog/quill";
+import { cn } from "@flind/quill";
 import { useEffect, useRef, useState } from "react";
 
 interface HeaderTitleEditorProps {

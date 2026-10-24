@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconX } from '@posthog/icons'
-import { Button } from '@posthog/quill-primitives'
+import { Button } from '@flind/quill-primitives'
 
 import { useChartTheme } from 'lib/charts/hooks'
 import { TagsCombobox } from 'lib/components/Scenes/TagsCombobox'

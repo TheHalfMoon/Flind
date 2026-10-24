@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { ComponentType, Suspense, memo, useState } from 'react'
 
-import { Spinner } from '@posthog/quill'
+import { Spinner } from '@flind/quill'
 
 import { lazyWithRetry } from 'lib/utils/retryImport'
 import { ChunkLoadErrorBoundary } from 'scenes/ChunkLoadErrorBoundary'

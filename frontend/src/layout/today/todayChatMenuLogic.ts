@@ -1,6 +1,6 @@
 import { MakeLogicType, actions, kea, listeners, path } from 'kea'
 
-import { toast } from '@posthog/quill'
+import { toast } from '@flind/quill'
 
 import { writeToClipboard } from 'lib/utils/writeToClipboard'
 import { urls } from 'scenes/urls'

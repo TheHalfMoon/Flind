@@ -4,7 +4,7 @@ import type {
   PiThinkingLevel,
 } from "@posthog/core/pi-runtime/piSessionController";
 import type { PiControllerSessionState } from "@posthog/core/pi-runtime/piSessionStore";
-import { Skeleton } from "@posthog/quill";
+import { Skeleton } from "@flind/quill";
 import { isTerminalStatus } from "@posthog/shared/domain-types";
 import { isOfferedModel } from "@posthog/shared/model-catalog";
 import { useCallback } from "react";

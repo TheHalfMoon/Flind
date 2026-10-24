@@ -2,7 +2,7 @@ import {
   type EnvironmentSetupPlan,
   withRepositories,
 } from "@posthog/core/settings/environmentSetup";
-import { Checkbox, Label, Text } from "@posthog/quill";
+import { Checkbox, Label, Text } from "@flind/quill";
 import { RepositoriesField } from "@posthog/ui/features/integrations/components/RepositoriesField";
 import { StepBody } from "@posthog/ui/features/settings/sections/environments/setup/StepBody";
 import { ImageNameField } from "@posthog/ui/features/settings/sections/environments/setup/steps/ImageNameField";

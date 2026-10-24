@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 
-import { Text } from '@posthog/quill'
+import { Text } from '@flind/quill'
 
 export interface SpaceSettingsSectionProps {
     label: string

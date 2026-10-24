@@ -11,7 +11,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { useDiffViewerStore } from "@posthog/ui/features/code-editor/diffViewerStore";
 
 interface DiffSourceSelectorProps {

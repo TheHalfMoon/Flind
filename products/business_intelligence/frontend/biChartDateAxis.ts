@@ -1,4 +1,4 @@
-import { createXAxisTickCallback, type XAxisConfig } from '@posthog/quill-charts'
+import { createXAxisTickCallback, type XAxisConfig } from '@flind/quill-charts'
 
 import { dayjs } from 'lib/dayjs'
 

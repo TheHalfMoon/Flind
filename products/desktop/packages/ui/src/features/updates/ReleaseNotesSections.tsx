@@ -1,4 +1,4 @@
-import { Text } from "@posthog/quill";
+import { Text } from "@flind/quill";
 import type { CategorizedNotes } from "@posthog/ui/features/updates/releaseNotes";
 import type { ReactElement } from "react";
 

@@ -1,4 +1,4 @@
-import { cn } from "@posthog/quill";
+import { cn } from "@flind/quill";
 import type { ReactNode } from "react";
 
 // Purely visual switch mirroring quill Switch's tokens: the whole card is the

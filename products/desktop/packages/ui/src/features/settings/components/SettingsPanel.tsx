@@ -24,7 +24,7 @@ import {
   Wrench,
   X,
 } from "@phosphor-icons/react";
-import { Button, Input, MenuLabel } from "@posthog/quill";
+import { Button, Input, MenuLabel } from "@flind/quill";
 import { SettingsPageContent } from "@posthog/ui/features/settings/components/SettingsPageContent";
 import { closeSettings } from "@posthog/ui/features/settings/hooks/useOpenSettings";
 import { useSettingsBackupAvailable } from "@posthog/ui/features/settings/hooks/useSettingsBackupAvailable";

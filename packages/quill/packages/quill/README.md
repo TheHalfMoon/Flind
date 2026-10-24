@@ -1,4 +1,4 @@
-# @posthog/quill
+# @flind/quill
 
 PostHog's UI primitives, components, and design tokens, bundled as one
 publishable package. Built on [base-ui](https://base-ui.com/),
@@ -7,7 +7,7 @@ publishable package. Built on [base-ui](https://base-ui.com/),
 ## Install
 
 ```sh
-pnpm add @posthog/quill
+pnpm add @flind/quill
 ```
 
 Peer deps (already declared on this package, your package manager will
@@ -21,10 +21,10 @@ your Tailwind entry stylesheet, in order:
 ```css
 @import 'tailwindcss';
 
-@import '@posthog/quill/tokens.css'; /* design tokens — :root + .dark CSS vars + @theme inline */
-@import '@posthog/quill/base.css'; /* one-line preflight reset (`* { @apply border-border outline-ring/50 }`) */
-@import '@posthog/quill/primitives.css'; /* BEM component styles (.quill-popover__content, .quill-menu__content, …) */
-@import '@posthog/quill/tailwind.css'; /* @source directive — tells Tailwind to scan quill's compiled JS */
+@import '@flind/quill/tokens.css'; /* design tokens — :root + .dark CSS vars + @theme inline */
+@import '@flind/quill/base.css'; /* one-line preflight reset (`* { @apply border-border outline-ring/50 }`) */
+@import '@flind/quill/primitives.css'; /* BEM component styles (.quill-popover__content, .quill-menu__content, …) */
+@import '@flind/quill/tailwind.css'; /* @source directive — tells Tailwind to scan quill's compiled JS */
 ```
 
 Each file is small and load-bearing in a different way. Skipping any one
@@ -40,7 +40,7 @@ package.
 | `tokens.css`     | `:root { --background, --foreground, --card, …, --radius, --shadow-* }` and dark-mode overrides under `.dark`/`[theme="dark"]`. Plus `@theme inline { --color-background: var(--background); … }` so Tailwind utilities like `bg-background`, `text-foreground`, `rounded-md` resolve. | Components fall back to `currentColor` / `transparent`. Theme variants (`dark:`) don't switch.                                                                                                                       |
 | `base.css`       | A single `@layer base { * { @apply border-border outline-ring/50 } }` rule.                                                                                                                                                                                                            | Primitives that author plain `border` (no color modifier) end up with `currentColor` borders → most bordered components look broken.                                                                                 |
 | `primitives.css` | All BEM component styles — `.quill-popover__content`, `.quill-menu__content`, `.quill-tabs__indicator`, `.quill-combobox__item`, `.quill-toggle-group__item`, etc. About 80kb of pre-compiled CSS.                                                                                     | Components mount correct DOM but appear unstyled — popups have no border/shadow, menus have no padding, toggles have no pressed state, etc.                                                                          |
-| `tailwind.css`   | An `@source "./**/*.js"` directive (relative to its on-disk location in `node_modules/@posthog/quill/dist`) that tells your Tailwind v4 instance to scan quill's compiled JS for class-name strings (cva variants, `cn()` calls, etc.).                                                | Tailwind utilities used inside quill primitives (e.g. `aria-selected:bg-fill-selected` on combobox items, `data-highlighted:ring-2` on autocomplete items) don't get generated → conditional states have no styling. |
+| `tailwind.css`   | An `@source "./**/*.js"` directive (relative to its on-disk location in `node_modules/@flind/quill/dist`) that tells your Tailwind v4 instance to scan quill's compiled JS for class-name strings (cva variants, `cn()` calls, etc.).                                                | Tailwind utilities used inside quill primitives (e.g. `aria-selected:bg-fill-selected` on combobox items, `data-highlighted:ring-2` on autocomplete items) don't get generated → conditional states have no styling. |
 
 ### Workaround for Tailwind v4 + `@config` legacy mode
 
@@ -52,8 +52,8 @@ dist:
 
 ```css
 /* Adjust the relative path so it resolves from THIS file's location to
- * your app's `node_modules/@posthog/quill/dist`. */
-@source "../../../../node_modules/@posthog/quill/dist/**/*.js";
+ * your app's `node_modules/@flind/quill/dist`. */
+@source "../../../../node_modules/@flind/quill/dist/**/*.js";
 ```
 
 If you're not using `@config`, the `@source` inside `tailwind.css` runs
@@ -72,10 +72,10 @@ so the third-party layer doesn't get pushed to the front:
 @import '@radix-ui/themes/styles.css' layer(radix);
 @import 'tailwindcss';
 
-@import '@posthog/quill/tokens.css';
-@import '@posthog/quill/base.css';
-@import '@posthog/quill/primitives.css';
-@import '@posthog/quill/tailwind.css';
+@import '@flind/quill/tokens.css';
+@import '@flind/quill/base.css';
+@import '@flind/quill/primitives.css';
+@import '@flind/quill/tailwind.css';
 ```
 
 This ensures Tailwind preflight (`base`) loads before radix's component
@@ -104,9 +104,9 @@ If you can't load quill globally (e.g. embedding in a page that already
 has its own design system), import the `.scoped.css` variants instead:
 
 ```css
-@import '@posthog/quill/tokens.scoped.css';
-@import '@posthog/quill/base.scoped.css';
-@import '@posthog/quill/color-system.scoped.css';
+@import '@flind/quill/tokens.scoped.css';
+@import '@flind/quill/base.scoped.css';
+@import '@flind/quill/color-system.scoped.css';
 ```
 
 These variants gate every selector behind `[data-quill]` so quill's
@@ -119,7 +119,7 @@ locality-scoped via descendant selectors.
 ## Usage
 
 ```tsx
-import { Button, Combobox, Dialog, Tabs } from '@posthog/quill'
+import { Button, Combobox, Dialog, Tabs } from '@flind/quill'
 
 function App() {
   return <Button variant="outline">Click me</Button>
@@ -136,10 +136,10 @@ underlying props pass through.
 
 ## Tokens
 
-`@posthog/quill-tokens` is published independently and re-exported from
+`@flind/quill-tokens` is published independently and re-exported from
 this package (under `tokens.css` and `color-system.css`). If you only
 need the design tokens (e.g. for a non-React renderer), depend on
-`@posthog/quill-tokens` directly.
+`@flind/quill-tokens` directly.
 
 ## Theming
 

@@ -209,7 +209,7 @@ async function dirExists(p: string): Promise<boolean> {
 }
 
 // The git-worktree slice moved the worktree add/list/remove/prune commands into
-// ws-server services that consume @posthog/git WorktreeManager. This is the
+// ws-server services that consume @flind/git WorktreeManager. This is the
 // real-git headless smoke for that command lifecycle (acceptance: "smoke test
 // the moved commands").
 describe("WorktreeManager lifecycle (add / exists / list / remove / prune)", () => {

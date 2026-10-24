@@ -11,7 +11,7 @@ import {
     Tooltip as QuillTooltip,
     TooltipContent,
     TooltipTrigger,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import 'scenes/saved-insights/SavedInsights.scss'
 import { AccessControlAction } from 'lib/components/AccessControlAction'

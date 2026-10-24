@@ -1,5 +1,6 @@
 {
-    "name": "@posthog/quill-charts",
+    "name": "@flind/quill-charts",
+    "private": true,
     "version": "0.3.0-beta.16",
     "description": "Canvas-based charting library for trends, dashboards, and any chart that needs to render thousands of points smoothly. D3 (scale/shape/color/array sub-packages) powers the scales; the canvas does the drawing; React handles overlays.",
     "license": "MIT",
@@ -42,7 +43,7 @@
         "simple-statistics": "^7.8.3"
     },
     "devDependencies": {
-        "@posthog/quill-tokens": "workspace:*",
+        "@flind/quill-tokens": "workspace:*",
         "@storybook/react": "catalog:",
         "@testing-library/dom": ">=9.3.4",
         "@testing-library/react": "^14.3.1",

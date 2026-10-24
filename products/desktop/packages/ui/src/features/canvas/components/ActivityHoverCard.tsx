@@ -1,4 +1,4 @@
-import { PopoverContent } from "@posthog/quill";
+import { PopoverContent } from "@flind/quill";
 import { ActivityFeedList } from "@posthog/ui/features/canvas/components/ActivityFeedList";
 
 interface ActivityHoverCardProps {

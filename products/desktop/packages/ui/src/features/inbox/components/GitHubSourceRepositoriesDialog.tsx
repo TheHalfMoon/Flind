@@ -16,7 +16,7 @@ import {
   DialogHeader,
   DialogTitle,
   Text,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
 import { useAuthStateValue } from "@posthog/ui/features/auth/store";
 import { GitHubRepoMultiPicker } from "@posthog/ui/features/folder-picker/GitHubRepoMultiPicker";

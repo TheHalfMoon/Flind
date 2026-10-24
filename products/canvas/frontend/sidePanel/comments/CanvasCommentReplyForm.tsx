@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { ChangeEvent, KeyboardEvent } from 'react'
 
-import { Button, Textarea } from '@posthog/quill'
+import { Button, Textarea } from '@flind/quill'
 
 import { canvasCommentsLogic } from './canvasCommentsLogic'
 

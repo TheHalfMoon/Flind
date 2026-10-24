@@ -1,7 +1,7 @@
 import { PreviewCard } from '@base-ui/react/preview-card'
 import { ReactNode, Suspense, useCallback, useMemo, useRef, useState } from 'react'
 
-import { Card, Skeleton } from '@posthog/quill'
+import { Card, Skeleton } from '@flind/quill'
 
 import { lazyWithRetry } from 'lib/utils/retryImport'
 

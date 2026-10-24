@@ -10,7 +10,7 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { AgentRunCard } from "@posthog/ui/features/inbox/components/AgentRunCard";
 import { CardSkeleton } from "@posthog/ui/features/inbox/components/CardSkeleton";
 import { useInboxAllReports } from "@posthog/ui/features/inbox/hooks/useInboxAllReports";

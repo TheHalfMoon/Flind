@@ -13,7 +13,7 @@ import {
     Skeleton,
     Text,
     cn,
-} from '@posthog/quill-primitives'
+} from '@flind/quill-primitives'
 
 import type { WizardProgramApi } from '../generated/api.schemas'
 import { WIZARD_LOCAL_RUNS_VISIBLE } from '../wizardRunDisplay'

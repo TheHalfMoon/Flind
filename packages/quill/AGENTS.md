@@ -12,10 +12,10 @@ This guide covers the **primitives** layer — the foundational UI components th
 ```text
 packages/quill/
 ├── packages/
-│   ├── tokens/       @posthog/quill-tokens      — Design tokens (JS + generated CSS)
-│   ├── primitives/   @posthog/quill-primitives   — Base UI components (this guide)
-│   ├── components/   @posthog/quill-components   — Composed primitives
-│   └── blocks/       @posthog/quill-blocks       — Product-level patterns
+│   ├── tokens/       @flind/quill-tokens      — Design tokens (JS + generated CSS)
+│   ├── primitives/   @flind/quill-primitives   — Base UI components (this guide)
+│   ├── components/   @flind/quill-components   — Composed primitives
+│   └── blocks/       @flind/quill-blocks       — Product-level patterns
 └── apps/
     └── storybook/    — Component documentation
 ```
@@ -183,8 +183,8 @@ function Parent({ children }) {
 ## Commands
 
 - Dev storybook: `pnpm --filter storybook dev`
-- Build primitives: `pnpm --filter @posthog/quill-primitives build`
-- Build tokens: `pnpm --filter @posthog/quill-tokens build`
+- Build primitives: `pnpm --filter @flind/quill-primitives build`
+- Build tokens: `pnpm --filter @flind/quill-tokens build`
 - Format: use prettier via the quill root config
 
 ## Key dependencies
@@ -204,7 +204,7 @@ They use Tailwind classes (`bg-primary`, `text-foreground`) which reference CSS 
 
 The token flow:
 
-1. `@posthog/quill-tokens` defines colors as JS objects
+1. `@flind/quill-tokens` defines colors as JS objects
 2. Build script generates `color-system.css` (actual values) and `styles.css` (`@theme` mappings)
 3. Primitives ship only the `@theme` mappings — the consuming app provides `color-system.css`
 

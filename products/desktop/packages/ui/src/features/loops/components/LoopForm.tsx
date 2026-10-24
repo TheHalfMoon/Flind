@@ -7,7 +7,7 @@ import {
 import { requestErrorStatus } from "@posthog/api-client/fetcher";
 import { hogFlowRequestDetail } from "@posthog/api-client/hogFlowLoops";
 import { channelDisplayLabel } from "@posthog/core/canvas/channelName";
-import { Button, cn, Input, Textarea } from "@posthog/quill";
+import { Button, cn, Input, Textarea } from "@flind/quill";
 import { ANALYTICS_EVENTS } from "@posthog/shared";
 import { useChannelsLayout } from "@posthog/ui/features/canvas/hooks/useChannelsLayout";
 import type { LoopSchemas } from "@posthog/ui/features/loops/loopSchemas";

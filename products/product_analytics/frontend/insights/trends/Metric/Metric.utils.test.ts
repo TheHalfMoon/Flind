@@ -1,4 +1,4 @@
-import { type MetricChange } from '@posthog/quill-charts'
+import { type MetricChange } from '@flind/quill-charts'
 
 import { IntervalType } from '~/types'
 

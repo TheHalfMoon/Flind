@@ -1,5 +1,6 @@
 {
-    "name": "@posthog/tailwind",
+    "name": "@flind/tailwind",
+    "private": true,
     "exports": {
         "./tailwind.css": "./tailwind.css",
         "./tailwind.config.js": "./tailwind.config.js"

@@ -1,5 +1,5 @@
 import { readFileSync } from "node:fs";
-import type { SignedCommitResult } from "@posthog/git/signed-commit";
+import type { SignedCommitResult } from "@flind/git/signed-commit";
 import { TaskToolsApiClient } from "./task-tools-client";
 
 const SANDBOX_ENV_FILE = "/tmp/agent-env";

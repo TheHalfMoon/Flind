@@ -1,7 +1,7 @@
 import type { ReactElement } from 'react'
 
 import { DataTable, type DataTableColumn } from '@posthog/mcp-ui'
-import { Card, CardContent, Empty, EmptyDescription, EmptyHeader, EmptyTitle } from '@posthog/quill'
+import { Card, CardContent, Empty, EmptyDescription, EmptyHeader, EmptyTitle } from '@flind/quill'
 
 export interface LLMCostSeries {
     label: string

@@ -2,7 +2,7 @@ import { MakeLogicType, actions, afterMount, connect, kea, listeners, path, redu
 import { loaders } from 'kea-loaders'
 import posthog from 'posthog-js'
 
-import type { Series } from '@posthog/quill-charts'
+import type { Series } from '@flind/quill-charts'
 
 import { FEATURE_FLAGS } from 'lib/constants'
 import { featureFlagLogic, FeatureFlagsSet } from 'lib/logic/featureFlagLogic'

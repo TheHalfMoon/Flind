@@ -1,7 +1,7 @@
 import type { SpendAnalysisFilledDay } from "@posthog/core/billing/spendAnalysisTypes";
 import { describe, expect, it, vi } from "vitest";
 
-vi.mock("@posthog/quill-charts", () => ({
+vi.mock("@flind/quill-charts", () => ({
   DefaultTooltip: () => null,
   TimeSeriesComboChart: () => null,
   useChartTheme: () => ({}),

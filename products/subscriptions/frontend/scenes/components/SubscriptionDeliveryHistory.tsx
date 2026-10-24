@@ -252,7 +252,7 @@ const DELIVERY_STATUS_FILTER_OPTIONS: { label: string; value: DeliveryListStatus
     { label: 'Skipped', value: SubscriptionDeliveriesListStatusByValue.Skipped },
 ]
 
-/** Mirrors `@posthog/quill-primitives` Empty layout (no table chrome). Icon tile uses app tokens (`bg-bg-light`) instead of `bg-muted`, which reads as a dark slab in this theme. */
+/** Mirrors `@flind/quill-primitives` Empty layout (no table chrome). Icon tile uses app tokens (`bg-bg-light`) instead of `bg-muted`, which reads as a dark slab in this theme. */
 function SubscriptionDeliveryHistoryQuillEmpty({
     onTestDelivery,
     testDeliveryLoading = false,

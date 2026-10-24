@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconTrends } from '@posthog/icons'
-import { Button, ToggleGroup, ToggleGroupItem } from '@posthog/quill'
+import { Button, ToggleGroup, ToggleGroupItem } from '@flind/quill'
 
 import { fullName } from 'lib/utils/strings'
 import { membersLogic } from 'scenes/organization/membersLogic'

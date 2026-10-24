@@ -4,7 +4,7 @@ import {
   relativeTime,
   stalenessLabel,
 } from "@posthog/core/code-editor/enrichmentPresenters";
-import { Badge, Button, Card } from "@posthog/quill";
+import { Badge, Button, Card } from "@flind/quill";
 import type { SerializedEvent, SerializedFlag } from "@posthog/shared";
 import {
   eventDefinitionUrl,

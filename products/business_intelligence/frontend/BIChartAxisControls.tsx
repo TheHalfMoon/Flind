@@ -1,6 +1,6 @@
 import { CSSProperties } from 'react'
 
-import { useChartLayout } from '@posthog/quill-charts'
+import { useChartLayout } from '@flind/quill-charts'
 
 export type BIChartAxis = 'x' | 'left' | 'right'
 

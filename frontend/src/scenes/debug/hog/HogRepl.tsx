@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import React, { useState } from 'react'
 
-import { printHogStringOutput } from '@posthog/hogvm'
+import { printHogStringOutput } from '@flind/logicvm'
 import { LemonButton, LemonTable, LemonTabs } from '@posthog/lemon-ui'
 
 import { JSONViewer } from 'lib/components/JSONViewer'

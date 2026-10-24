@@ -1,4 +1,4 @@
-import { HogVMErrorKind, HogVMException, convertHogToJS } from '@posthog/hogvm'
+import { HogVMErrorKind, HogVMException, convertHogToJS } from '@flind/logicvm'
 
 import { CyclotronInputType } from '~/cdp/schema/cyclotron'
 import { ACCESS_TOKEN_PLACEHOLDER } from '~/common/config/constants'

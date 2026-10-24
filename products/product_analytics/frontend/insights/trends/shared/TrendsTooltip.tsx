@@ -1,6 +1,6 @@
 import { useCallback, useMemo } from 'react'
 
-import type { TooltipContext } from '@posthog/quill-charts'
+import type { TooltipContext } from '@flind/quill-charts'
 
 import { SeriesLetter } from 'lib/components/SeriesGlyph'
 import { toOpaqueHex } from 'lib/utils/colors'

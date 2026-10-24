@@ -4,7 +4,7 @@ import {
   getExpandedLayout,
   getExpansionCellIndex,
 } from "@posthog/core/command-center/grid";
-import { Button } from "@posthog/quill";
+import { Button } from "@flind/quill";
 import {
   CANVAS_DRAG_TYPE,
   readCanvasDragData,

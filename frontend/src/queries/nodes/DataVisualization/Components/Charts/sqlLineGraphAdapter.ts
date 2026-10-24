@@ -16,7 +16,7 @@ import {
     type ValueLabelsConfig,
     type XAxisConfig,
     type YAxisConfig,
-} from '@posthog/quill-charts'
+} from '@flind/quill-charts'
 
 import { dayjs } from 'lib/dayjs'
 

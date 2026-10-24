@@ -1,4 +1,4 @@
-import type { AnomalyMarker as BaseAnomalyMarker } from '@posthog/quill-charts'
+import type { AnomalyMarker as BaseAnomalyMarker } from '@flind/quill-charts'
 
 import type { AnomalyPoint } from 'products/alerts/frontend/types'
 import type { IndexedTrendResult } from 'products/product_analytics/frontend/insights/trends/types'

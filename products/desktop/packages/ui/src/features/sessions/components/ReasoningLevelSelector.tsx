@@ -3,7 +3,7 @@ import { ArrowCounterClockwise, Gear, Lightning } from "@phosphor-icons/react";
 import {
   getCapabilityLadder,
   getReasoningEffortOptions,
-} from "@posthog/agent/adapters/reasoning-effort";
+} from "@flind/agent/adapters/reasoning-effort";
 import {
   Button,
   DropdownMenu,
@@ -18,7 +18,7 @@ import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import {
   adapterForModelId,
   FAST_MODE_FLAG,

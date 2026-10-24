@@ -4,7 +4,7 @@ import {
   getContextWindowOptions,
   getFastModeOptions,
   getReasoningEffortOptions,
-} from "@posthog/agent/adapters/reasoning-effort";
+} from "@flind/agent/adapters/reasoning-effort";
 import {
   flattenConfigValues,
   harnessForModelValue,

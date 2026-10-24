@@ -27,7 +27,7 @@ import {
     Link,
     LemonDivider,
 } from '@posthog/lemon-ui'
-import { Button, Spinner as QuillSpinner } from '@posthog/quill'
+import { Button, Spinner as QuillSpinner } from '@flind/quill'
 
 import { AccessControlAction } from 'lib/components/AccessControlAction'
 import { AnimatedCollapsible } from 'lib/components/AnimatedCollapsible'

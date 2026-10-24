@@ -247,8 +247,8 @@ Before producing the source, privately plan the visual composition, implementati
 
 The source must:
 - Default-export one React component that takes no props. Do not import `react-dom` or call `createRoot`.
-- Use only static imports from `react`, `@posthog/quill`, `recharts`, `lucide-react`, `dayjs`, `d3`, `three`, or `framer-motion`. Do not import package subpaths.
-- Do not import `usePostHog` or any other analytics hook from `@posthog/quill`. Use React state and the provided `ph` bridge only.
+- Use only static imports from `react`, `@flind/quill`, `recharts`, `lucide-react`, `dayjs`, `d3`, `three`, or `framer-motion`. Do not import package subpaths.
+- Do not import `usePostHog` or any other analytics hook from `@flind/quill`. Use React state and the provided `ph` bridge only.
 - Read notebook data only with `await ph.readFrame("literal_name", {{ offset, limit }})`, using one of {json.dumps(input_names)}.
 - Read only the available frames that help answer the request. Do not read every frame by default, and use none when the request does not need notebook data.
 - Treat `ph.readFrame` as returning {json.dumps(read_frame_contract, separators=(",", ":"))}.

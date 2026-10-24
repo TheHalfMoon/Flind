@@ -1,9 +1,9 @@
 import { type ReactElement, useMemo } from 'react'
 
 import { emptyStateIllustration } from '@posthog/mcp-ui'
-import { Empty, EmptyDescription, EmptyHeader, EmptyMedia } from '@posthog/quill'
-import { SankeyChart } from '@posthog/quill-charts'
-import type { SankeyChartConfig } from '@posthog/quill-charts'
+import { Empty, EmptyDescription, EmptyHeader, EmptyMedia } from '@flind/quill'
+import { SankeyChart } from '@flind/quill-charts'
+import type { SankeyChartConfig } from '@flind/quill-charts'
 
 import { parsePathNodeKey } from 'products/product_analytics/frontend/insights/paths/pathsChartTransforms'
 

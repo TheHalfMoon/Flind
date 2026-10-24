@@ -1,5 +1,5 @@
 import { ChatCircleDotsIcon } from "@phosphor-icons/react";
-import { Text } from "@posthog/quill";
+import { Text } from "@flind/quill";
 import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
 import { useChannels } from "@posthog/ui/features/canvas/hooks/useChannels";
 import type { LoopSchemas } from "@posthog/ui/features/loops/loopSchemas";

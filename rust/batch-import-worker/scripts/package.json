@@ -1,5 +1,6 @@
 {
-  "name": "@posthog/batch-import-worker-scripts",
+  "name": "@flind/batch-import-worker-scripts",
+    "private": true,
   "version": "1.0.0",
   "description": "Test scripts and utilities for PostHog batch import worker",
   "main": "amplitude-test-generator.js",

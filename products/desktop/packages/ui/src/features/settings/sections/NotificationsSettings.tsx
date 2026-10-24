@@ -24,7 +24,7 @@ import {
   Switch,
   ToggleGroup,
   ToggleGroupItem,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { ANALYTICS_EVENTS, SPOKEN_NARRATION_FLAG } from "@posthog/shared";
 import type { Task } from "@posthog/shared/domain-types";
 import { useFeatureFlag } from "@posthog/ui/features/feature-flags/useFeatureFlag";

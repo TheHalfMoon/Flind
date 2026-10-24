@@ -2,7 +2,7 @@ import {
   estimateBase64Bytes,
   isClaudeImageMimeType,
   MAX_CLAUDE_IMAGE_BYTES,
-} from "@posthog/agent-contracts";
+} from "@flind/agent-contracts";
 
 function unprocessableImageReason(value: unknown): string | null {
   if (!value || typeof value !== "object") return null;

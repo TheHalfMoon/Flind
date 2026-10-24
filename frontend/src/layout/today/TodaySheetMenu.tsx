@@ -1,7 +1,7 @@
 import { ReactNode, useMemo, useState } from 'react'
 
 import { IconChevronLeft } from '@posthog/icons'
-import { Button, Drawer, DrawerContent, DrawerDescription, DrawerHeader, DrawerTitle } from '@posthog/quill'
+import { Button, Drawer, DrawerContent, DrawerDescription, DrawerHeader, DrawerTitle } from '@flind/quill'
 
 import { TodaySheetMenuContext, TodaySheetMenuControls } from './todaySheetMenuContext'
 

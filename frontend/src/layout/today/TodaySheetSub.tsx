@@ -2,7 +2,7 @@ import { ReactNode, useId } from 'react'
 import { createPortal } from 'react-dom'
 
 import { IconChevronRight } from '@posthog/icons'
-import { ItemMenuItem, cn } from '@posthog/quill'
+import { ItemMenuItem, cn } from '@flind/quill'
 
 import { useTodaySheetMenu } from './todaySheetMenuContext'
 

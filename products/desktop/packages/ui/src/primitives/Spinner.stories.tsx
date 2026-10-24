@@ -1,4 +1,4 @@
-import { Button } from "@posthog/quill";
+import { Button } from "@flind/quill";
 import { Spinner } from "@posthog/ui/primitives/Spinner";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 

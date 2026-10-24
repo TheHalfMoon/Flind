@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 
-import { Button, cn } from '@posthog/quill'
+import { Button, cn } from '@flind/quill'
 
 import { LinkPrimitive } from 'lib/lemon-ui/Link'
 

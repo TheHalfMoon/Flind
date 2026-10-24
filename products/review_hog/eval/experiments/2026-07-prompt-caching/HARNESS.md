@@ -7,11 +7,11 @@
 
 ## How the agent reaches sandboxes (no Docker image in the code repo)
 
-The artifact is the npm package `@posthog/agent` (bin `agent-server`, `packages/agent/package.json:92-94`),
-built by tsup (bundles `@posthog/shared`, `@posthog/git`, `@posthog/enricher`; also vendors the Claude CLI binary
+The artifact is the npm package `@flind/agent` (bin `agent-server`, `packages/agent/package.json:92-94`),
+built by tsup (bundles `@posthog/shared`, `@flind/git`, `@flind/enricher`; also vendors the Claude CLI binary
 into `dist/claude-cli/`). CI auto-tags `agent-v*` on main pushes and publishes to npm; the sandbox base image in
 THIS repo (`products/tasks/backend/sandbox/images/Dockerfile.sandbox-base:109-115`) does
-`npm install @posthog/agent@latest` at image build, and the workflow starts `./node_modules/.bin/agent-server --port 47821`.
+`npm install @flind/agent@latest` at image build, and the workflow starts `./node_modules/.bin/agent-server --port 47821`.
 
 ## The local dev loop for a PATCHED agent (documented, already half-configured on this machine)
 
@@ -188,7 +188,7 @@ Reading of the evidence:
 - `.env`: `SANDBOX_PROVIDER=MODAL_DOCKER` + `SANDBOX_LLM_GATEWAY_URL` set; `LOCAL_POSTHOG_CODE_MONOREPO_ROOT` added 2026-07-06
   (line 212) and picked up after a full stack restart — the flox hook sources `.env` at ACTIVATION, so a nodemon respawn or
   phrocs process toggle does NOT re-read it; only a stack restart (or an export in the launching shell) does.
-- Code repo: clean on `main`, agent built via `pnpm turbo build --filter=@posthog/agent...` (~10s), SDK 0.3.170 pinned.
+- Code repo: clean on `main`, agent built via `pnpm turbo build --filter=@flind/agent...` (~10s), SDK 0.3.170 pinned.
 
 ## Smoke-run lessons (2026-07-06)
 

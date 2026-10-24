@@ -5,7 +5,7 @@ import {
   inboxScopeTriggerLabel,
 } from "@posthog/core/inbox/reportMembership";
 import { parsePrUrl } from "@posthog/core/inbox/reportPresentation";
-import { Button } from "@posthog/quill";
+import { Button } from "@flind/quill";
 import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
 import type { SignalReport } from "@posthog/shared/types";
 import { ReportChatSidebar } from "@posthog/ui/features/inbox/components/ReportChatSidebar";

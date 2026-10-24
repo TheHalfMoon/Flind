@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 
-import { Tabs, TabsList, TabsTrigger } from '@posthog/quill'
+import { Tabs, TabsList, TabsTrigger } from '@flind/quill'
 
 import { TodayWorkSectionId } from './todaySpacesLogic'
 

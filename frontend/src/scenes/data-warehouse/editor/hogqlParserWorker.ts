@@ -1,4 +1,4 @@
-import type { ASTNode } from '@posthog/hogql-parser'
+import type { ASTNode } from '@flind/query-parser'
 
 import { type AstRange, innermostSelectRangeFromAst, tablesAndColumnsFromAst } from './hogqlAst'
 
@@ -21,7 +21,7 @@ let parserPromise: Promise<{ parseSelect: (input: string, isInternal?: boolean) 
 
 function getParser(): Promise<{ parseSelect: (input: string, isInternal?: boolean) => string }> {
     if (!parserPromise) {
-        parserPromise = import('@posthog/hogql-parser')
+        parserPromise = import('@flind/query-parser')
             .then((mod) => mod.default())
             .catch((error) => {
                 parserPromise = null // let the next request retry initialization

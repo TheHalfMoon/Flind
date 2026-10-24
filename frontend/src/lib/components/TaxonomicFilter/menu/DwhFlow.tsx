@@ -55,7 +55,7 @@ import {
     Tabs,
     TabsList,
     TabsTrigger,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import { HogQLEditor } from 'lib/components/HogQLEditor/HogQLEditor'
 import { DatabaseTablePreview } from 'lib/components/TablePreview/DatabaseTablePreview'

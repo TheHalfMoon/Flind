@@ -1,5 +1,5 @@
 import { X } from "@phosphor-icons/react";
-import { Button } from "@posthog/quill";
+import { Button } from "@flind/quill";
 import { GitHubRepoPicker } from "@posthog/ui/features/folder-picker/GitHubRepoPicker";
 import { BranchSelector } from "@posthog/ui/features/git-interaction/components/BranchSelector";
 import {

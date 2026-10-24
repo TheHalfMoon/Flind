@@ -5,7 +5,7 @@ import {
 } from "@posthog/core/canvas/channelItems";
 import { isPersonalChannel } from "@posthog/core/canvas/channelName";
 import { insertTaskDedup } from "@posthog/core/tasks/taskDelete";
-import { cn } from "@posthog/quill";
+import { cn } from "@flind/quill";
 import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
 import type { Task } from "@posthog/shared/domain-types";
 import { isTerminalStatus } from "@posthog/shared/domain-types";

@@ -1,4 +1,4 @@
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@posthog/quill-primitives'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@flind/quill-primitives'
 
 import { type IntervalOption } from 'lib/utils/timeBuckets'
 

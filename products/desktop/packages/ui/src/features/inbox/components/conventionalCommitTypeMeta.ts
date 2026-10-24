@@ -13,7 +13,7 @@ import {
   SparkleIcon,
   WrenchIcon,
 } from "@phosphor-icons/react";
-import type { badgeVariants } from "@posthog/quill";
+import type { badgeVariants } from "@flind/quill";
 import type { VariantProps } from "class-variance-authority";
 
 type ConventionalCommitBadgeVariant = NonNullable<

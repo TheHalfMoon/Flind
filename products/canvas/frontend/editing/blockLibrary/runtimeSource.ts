@@ -7,7 +7,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { CodeIcon } from "./icons";
 
 export type CanvasInterval = "hour" | "day" | "week" | "month";

@@ -8,7 +8,7 @@ import {
     DropdownMenuContent,
     DropdownMenuItem,
     DropdownMenuTrigger,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import { supportLogic } from 'lib/components/Support/supportLogic'
 import { LinkPrimitive } from 'lib/lemon-ui/Link'

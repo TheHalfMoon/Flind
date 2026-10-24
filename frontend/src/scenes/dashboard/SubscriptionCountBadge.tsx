@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { Badge } from '@posthog/quill'
+import { Badge } from '@flind/quill'
 
 import { subscriptionsLogic } from 'products/subscriptions/frontend/components/Subscriptions/subscriptionsLogic'
 

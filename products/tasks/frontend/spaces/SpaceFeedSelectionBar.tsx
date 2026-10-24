@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconArchive, IconPin, IconPinFilled, IconX } from '@posthog/icons'
-import { Button, Checkbox, Text, Tooltip, TooltipContent, TooltipTrigger } from '@posthog/quill'
+import { Button, Checkbox, Text, Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill'
 
 import { TodaySessionBulkArchiveDialog } from '~/layout/today/TodaySessionBulkArchiveDialog'
 import { sessionsLabel } from '~/layout/today/todaySessionSelection'

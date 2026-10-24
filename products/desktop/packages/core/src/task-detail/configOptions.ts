@@ -1,5 +1,5 @@
 import type { SessionConfigOption } from "@agentclientprotocol/sdk";
-import type { PiThinkingLevel } from "@posthog/agent/pi/types";
+import type { PiThinkingLevel } from "@flind/agent/pi/types";
 import {
   type Adapter,
   adapterForModelId,

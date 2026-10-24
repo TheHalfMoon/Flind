@@ -1,1 +1,1 @@
-export * from "@posthog/agent-contracts/task-context";
+export * from "@flind/agent-contracts/task-context";

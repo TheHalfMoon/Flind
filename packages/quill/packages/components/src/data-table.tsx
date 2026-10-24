@@ -40,7 +40,7 @@ import {
     TableHead,
     TableHeader,
     TableRow,
-} from '@posthog/quill-primitives'
+} from '@flind/quill-primitives'
 
 // Per-column extras read off `columnDef.meta`. `align` drives intra-cell
 // alignment on both the header and its body cells; `expand` makes the column

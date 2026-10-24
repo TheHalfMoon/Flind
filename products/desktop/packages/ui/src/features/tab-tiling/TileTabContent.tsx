@@ -1,4 +1,4 @@
-import { Button, Text } from "@posthog/quill";
+import { Button, Text } from "@flind/quill";
 import type { BrowserTab } from "@posthog/shared";
 import { WebsiteDashboard } from "@posthog/ui/features/canvas/components/WebsiteDashboard";
 import { TaskDetail } from "@posthog/ui/features/task-detail/components/TaskDetail";

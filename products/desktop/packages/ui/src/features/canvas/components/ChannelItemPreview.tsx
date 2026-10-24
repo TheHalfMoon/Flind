@@ -14,7 +14,7 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { formatAbsoluteDateTime, formatRelativeAge } from "@posthog/shared";
 import { UserAvatar } from "@posthog/ui/features/auth/UserAvatar";
 import { iconForTemplate } from "@posthog/ui/features/canvas/components/canvasTemplateIcon";

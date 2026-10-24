@@ -4,7 +4,7 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import type { ReactNode } from "react";
 import { InlineEdit } from "./InlineEdit";
 

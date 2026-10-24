@@ -183,10 +183,10 @@ function copyClaudeExecutable(): Plugin {
       }
 
       const packageCandidates = [
-        join(__dirname, "node_modules/@posthog/agent/dist/claude-cli", binName),
+        join(__dirname, "node_modules/@flind/agent/dist/claude-cli", binName),
         join(
           __dirname,
-          "../../node_modules/@posthog/agent/dist/claude-cli",
+          "../../node_modules/@flind/agent/dist/claude-cli",
           binName,
         ),
         join(
@@ -554,8 +554,8 @@ function copyEnricherGrammars(): Plugin {
       }
 
       const candidates = [
-        join(__dirname, "node_modules/@posthog/enricher/grammars"),
-        join(__dirname, "../../node_modules/@posthog/enricher/grammars"),
+        join(__dirname, "node_modules/@flind/enricher/grammars"),
+        join(__dirname, "../../node_modules/@flind/enricher/grammars"),
         join(
           __dirname,
           "../../../../packages/agent/packages/enricher/grammars",

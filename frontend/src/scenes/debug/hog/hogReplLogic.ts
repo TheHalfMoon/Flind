@@ -1,7 +1,7 @@
 import { MakeLogicType, actions, kea, listeners, path, reducers, selectors } from 'kea'
 import { actionToUrl, urlToAction } from 'kea-router'
 
-import { VMState, newHogCallable, newHogClosure } from '@posthog/hogvm'
+import { VMState, newHogCallable, newHogClosure } from '@flind/logicvm'
 
 import api from 'lib/api'
 import { execHogAsync } from 'lib/hog'

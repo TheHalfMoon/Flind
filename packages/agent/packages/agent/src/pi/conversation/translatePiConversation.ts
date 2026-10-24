@@ -3,7 +3,7 @@ import type { JsonAgentSessionEvent } from "@earendil-works/pi-coding-agent";
 import type {
   AgentConversationEvent,
   AgentTurnUsage,
-} from "@posthog/agent-contracts";
+} from "@flind/agent-contracts";
 import { createPiMessageTranslator } from "./translatePiMessage";
 
 type AgentMessage = Extract<

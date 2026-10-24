@@ -20,7 +20,7 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { Flex } from "@radix-ui/themes";
 import { type ReactNode, useState } from "react";
 import { STRIP_DROP_TYPE, type StripDropData } from "./stripDrop";

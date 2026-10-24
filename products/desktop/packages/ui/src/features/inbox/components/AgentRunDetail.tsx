@@ -19,7 +19,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
   Text,
-} from "@posthog/quill";
+} from "@flind/quill";
 import {
   isTerminalStatus,
   type SignalReport,

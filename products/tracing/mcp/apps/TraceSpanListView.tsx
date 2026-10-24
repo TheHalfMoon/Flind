@@ -1,7 +1,7 @@
 import { type ReactElement, type ReactNode } from 'react'
 
 import { DataTable, type DataTableColumn, ListDetailView } from '@posthog/mcp-ui'
-import { Badge, Button } from '@posthog/quill'
+import { Badge, Button } from '@flind/quill'
 
 import { TraceSpanView, type TraceSpanData } from './TraceSpanView'
 

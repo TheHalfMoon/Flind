@@ -2,7 +2,7 @@ import '@testing-library/jest-dom'
 
 import { cleanup, configure, fireEvent, screen, waitFor } from '@testing-library/react'
 
-import { setupJsdom, setupSyncRaf } from '@posthog/quill-charts/testing'
+import { setupJsdom, setupSyncRaf } from '@flind/quill-charts/testing'
 
 import { ChartSettings, ChartSettingsFormatting, VisualizationNode } from '~/queries/schema/schema-general'
 import {

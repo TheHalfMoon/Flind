@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useMemo } from 'react'
 
-import type { ChartLegendConfig } from '@posthog/quill-charts'
+import type { ChartLegendConfig } from '@flind/quill-charts'
 
 import { useChartLegendSeriesMenu } from 'lib/components/ChartLegendSeriesMenu/useChartLegendSeriesMenu'
 import { insightLogic } from 'scenes/insights/insightLogic'

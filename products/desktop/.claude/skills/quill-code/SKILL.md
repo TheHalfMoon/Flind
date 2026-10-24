@@ -1,11 +1,11 @@
 ---
 name: quill-code
-description: Edit the @posthog/quill design system locally and consume the change in products/desktop before it is published to npm. Use when changing quill components/primitives/tokens, when a quill change must be tested inside the Code app, or when the user mentions quill, the design system, the .local-quill tarball, or the @posthog/quill pnpm override.
+description: Edit the @flind/quill design system locally and consume the change in products/desktop before it is published to npm. Use when changing quill components/primitives/tokens, when a quill change must be tested inside the Code app, or when the user mentions quill, the design system, the .local-quill tarball, or the @flind/quill pnpm override.
 ---
 
 # quill-code
 
-`@posthog/quill`'s source lives in this monorepo at `packages/quill` (repo root, two
+`@flind/quill`'s source lives in this monorepo at `packages/quill` (repo root, two
 levels up from products/desktop). Desktop still consumes the **published npm package**
 via its nested workspace catalog — products/desktop is excluded from the root pnpm
 workspace, so `workspace:` linking cannot reach it. To test an unpublished quill change
@@ -19,16 +19,16 @@ workspace's install, so run `pnpm install` at the monorepo root once first.
 ## Quill layout (where to edit)
 
 `packages/quill` (from the monorepo root) is the **workspace**
-(`@posthog/quill-workspace`). It contains sub-packages, each a layer of the design
+(`@flind/quill-workspace`). It contains sub-packages, each a layer of the design
 system:
 
 - `packages/primitives/src` — base components (Card, Badge, Button, Progress, …)
 - `packages/components/src` — composed components (DataTable, DateTimePicker, Metric)
 - `packages/blocks/src` — **product-level blocks** (e.g. `ExperimentCard`). Add the
   file here and export it from `packages/blocks/src/index.ts`.
-- `packages/quill/src` — the **aggregate** that re-exports all layers as `@posthog/quill`.
+- `packages/quill/src` — the **aggregate** that re-exports all layers as `@flind/quill`.
 
-A new export in any sub-package flows to `@posthog/quill` automatically on build.
+A new export in any sub-package flows to `@flind/quill` automatically on build.
 
 ## The loop (every quill change)
 
@@ -55,7 +55,7 @@ A new export in any sub-package flows to `@posthog/quill` automatically on build
    mv .local-quill/posthog-quill-[0-9]*.tgz ".local-quill/posthog-quill-local-$(git rev-parse --short HEAD)-$$.tgz"
 
    # c. Point the override at the new tarball, then reinstall.
-   #    Edit pnpm-workspace.yaml so overrides['@posthog/quill'] = file:./.local-quill/<new file>
+   #    Edit pnpm-workspace.yaml so overrides['@flind/quill'] = file:./.local-quill/<new file>
    pnpm install
    ```
 
@@ -85,13 +85,13 @@ filename gets cached stale across re-syncs.
 In `pnpm-workspace.yaml`, under `overrides:`:
 
 ```yaml
-'@posthog/quill': file:./.local-quill/posthog-quill-local-<hash>.tgz
+'@flind/quill': file:./.local-quill/posthog-quill-local-<hash>.tgz
 ```
 
 There is also a permanent pin you should leave alone:
 
 ```yaml
-'@posthog/quill>@base-ui/react': ^1.3.0   # quill ships a broken catalog: dep; do not remove
+'@flind/quill>@base-ui/react': ^1.3.0   # quill ships a broken catalog: dep; do not remove
 ```
 
 ## Reverting (before merge)
@@ -99,7 +99,7 @@ There is also a permanent pin you should leave alone:
 The override is local-dev only. Once the quill change is published to npm (quill
 publishes from this monorepo via the manual `publish-quill-npm` workflow dispatch):
 
-1. Bump the catalog version in `pnpm-workspace.yaml` (`'@posthog/quill': 0.3.0-beta.x`)
+1. Bump the catalog version in `pnpm-workspace.yaml` (`'@flind/quill': 0.3.0-beta.x`)
    to the published version.
 2. Restore the override line to point back at the catalog, or remove the `file:` override.
 3. `pnpm install`.

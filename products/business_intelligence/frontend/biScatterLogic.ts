@@ -1,6 +1,6 @@
 import { LogicWrapper, MakeLogicType, actions, kea, key, path, props, reducers } from 'kea'
 
-import { ScatterAreaSelection } from '@posthog/quill-charts'
+import { ScatterAreaSelection } from '@flind/quill-charts'
 
 interface BIScatterProps {
     chartKey: string

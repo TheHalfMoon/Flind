@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 
-import { type ChartTheme, type TooltipContext } from '@posthog/quill-charts'
-import { Skeleton } from '@posthog/quill-primitives'
+import { type ChartTheme, type TooltipContext } from '@flind/quill-charts'
+import { Skeleton } from '@flind/quill-primitives'
 
 import { formatPercentage } from 'lib/utils/numbers'
 

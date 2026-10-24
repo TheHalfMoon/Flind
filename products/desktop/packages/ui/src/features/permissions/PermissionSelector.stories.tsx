@@ -1,13 +1,13 @@
-import { toolInfoFromToolUse } from "@posthog/agent/adapters/claude/conversion/tool-use-to-acp";
+import { toolInfoFromToolUse } from "@flind/agent/adapters/claude/conversion/tool-use-to-acp";
 import {
   buildExitPlanModePermissionOptions,
   buildPermissionOptions,
-} from "@posthog/agent/adapters/claude/permissions/permission-options";
+} from "@flind/agent/adapters/claude/permissions/permission-options";
 import {
   buildQuestionOptions,
   buildQuestionToolCallData,
   type QuestionItem,
-} from "@posthog/agent/adapters/claude/questions/utils";
+} from "@flind/agent/adapters/claude/questions/utils";
 import { PermissionSelector } from "@posthog/ui/features/permissions/PermissionSelector";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 

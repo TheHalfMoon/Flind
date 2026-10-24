@@ -1,4 +1,4 @@
-import type { SankeyChartLayout, SankeyLinkInput, SankeyNodeInput } from '@posthog/quill-charts'
+import type { SankeyChartLayout, SankeyLinkInput, SankeyNodeInput } from '@flind/quill-charts'
 
 import { FunnelPathsFilter, PathsFilter, PathsLink } from '~/queries/schema/schema-general'
 

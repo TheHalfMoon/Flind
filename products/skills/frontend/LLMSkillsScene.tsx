@@ -4,7 +4,7 @@ import { useMemo, useRef } from 'react'
 
 import { IconDownload, IconPlus, IconPlusSmall, IconUpload } from '@posthog/icons'
 import { LemonDivider, LemonModal, LemonSwitch, LemonTag, Link } from '@posthog/lemon-ui'
-import { Button } from '@posthog/quill'
+import { Button } from '@flind/quill'
 
 import { AccessControlAction } from 'lib/components/AccessControlAction'
 import { CodeSnippet, Language } from 'lib/components/CodeSnippet/CodeSnippet'

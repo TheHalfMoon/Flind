@@ -1,6 +1,6 @@
 import { mkdirSync } from "node:fs";
 import path from "node:path";
-import { setMachineClaudeConfigDir } from "@posthog/agent/adapters/claude/machine-auth";
+import { setMachineClaudeConfigDir } from "@flind/agent/adapters/claude/machine-auth";
 
 function requireEnv(name: string): string {
   const value = process.env[name];

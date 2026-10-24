@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 
-import { type ChartTheme, useChartTheme } from '@posthog/quill-charts'
+import { type ChartTheme, useChartTheme } from '@flind/quill-charts'
 
 import type { LifecycleStatus } from '../types'
 

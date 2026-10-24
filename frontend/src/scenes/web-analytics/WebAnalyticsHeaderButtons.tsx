@@ -3,7 +3,7 @@ import posthog from 'posthog-js'
 import { useState } from 'react'
 
 import { IconBolt, IconPerson } from '@posthog/icons'
-import { Button, Switch } from '@posthog/quill'
+import { Button, Switch } from '@flind/quill'
 
 import { LiveUserCount } from 'lib/components/LiveUserCount'
 import { FEATURE_FLAGS } from 'lib/constants'

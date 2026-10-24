@@ -10,7 +10,7 @@ import {
     Tooltip,
     TooltipContent,
     TooltipTrigger,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import { DROPDOWN_PARTS } from './todayMenuParts'
 import { useTodayPreviewMenuReport } from './todayPreviewCardContext'

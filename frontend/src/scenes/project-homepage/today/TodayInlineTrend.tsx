@@ -1,4 +1,4 @@
-import { cn } from '@posthog/quill'
+import { cn } from '@flind/quill'
 
 const MIN_BAR_PERCENT = 22
 const MIN_PARTIAL_PERCENT = 30

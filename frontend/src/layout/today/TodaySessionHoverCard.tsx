@@ -14,7 +14,7 @@ import {
     TooltipContent,
     TooltipTrigger,
     cn,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import { LinkPrimitive } from 'lib/lemon-ui/Link'
 

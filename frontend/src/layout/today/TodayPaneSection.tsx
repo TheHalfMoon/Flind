@@ -1,7 +1,7 @@
 import { ReactNode, RefCallback } from 'react'
 
 import { IconChevronRight } from '@posthog/icons'
-import { MenuLabel, cn } from '@posthog/quill'
+import { MenuLabel, cn } from '@flind/quill'
 
 import { TodayPaneSectionResizeHandle } from './TodayPaneSectionResizeHandle'
 import { TodaySectionResizer } from './useTodaySectionLayout'

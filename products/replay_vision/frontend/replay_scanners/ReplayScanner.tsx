@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { Suspense, useEffect } from 'react'
 
 import { LemonBanner, LemonButton, LemonTag, Spinner } from '@posthog/lemon-ui'
-import { Button } from '@posthog/quill'
+import { Button } from '@flind/quill'
 
 import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'
 import { LemonTabs } from 'lib/lemon-ui/LemonTabs'

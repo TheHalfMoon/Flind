@@ -23,7 +23,7 @@ import {
   ContextMenuSub,
   ContextMenuSubContent,
   ContextMenuSubTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import {
   DISMISSAL_REASON_OPTIONS,
   type DismissalReasonOptionValue,

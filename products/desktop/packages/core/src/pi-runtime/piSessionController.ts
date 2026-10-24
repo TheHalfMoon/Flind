@@ -1,4 +1,4 @@
-import type { PiRemoteRpcClient } from "@posthog/agent/pi/remote-rpc-client";
+import type { PiRemoteRpcClient } from "@flind/agent/pi/remote-rpc-client";
 import type {
   PiExtensionSessionEvent,
   PiNativeModelInfo,
@@ -7,7 +7,7 @@ import type {
   PiThinkingLevel,
   PiUsageStats,
   RpcExtensionUIResponse,
-} from "@posthog/agent/pi/types";
+} from "@flind/agent/pi/types";
 import {
   ROOT_LOGGER,
   type RootLogger,
@@ -45,7 +45,7 @@ export type {
   PiNativeModelInfo,
   PiQueueSnapshot,
   PiThinkingLevel,
-} from "@posthog/agent/pi/types";
+} from "@flind/agent/pi/types";
 
 export type PiModelSelection = Pick<PiNativeModelInfo, "provider" | "id">;
 

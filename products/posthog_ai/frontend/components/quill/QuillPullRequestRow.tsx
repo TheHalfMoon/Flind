@@ -1,5 +1,5 @@
 import { IconExternal, IconPullRequest } from '@posthog/icons'
-import { Button, ChatMarkerValue } from '@posthog/quill-primitives'
+import { Button, ChatMarkerValue } from '@flind/quill-primitives'
 
 import { LinkPrimitive } from 'lib/lemon-ui/Link'
 

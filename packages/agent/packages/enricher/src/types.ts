@@ -167,7 +167,7 @@ export interface EventDefinition {
 
 // ── Stale flag types ──
 
-import type { FlagType, StalenessReason } from "@posthog/agent-contracts";
+import type { FlagType, StalenessReason } from "@flind/agent-contracts";
 export type { FlagType, StalenessReason };
 
 // ── Enricher types ──

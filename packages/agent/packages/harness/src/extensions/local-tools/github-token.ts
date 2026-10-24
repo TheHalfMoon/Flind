@@ -2,7 +2,7 @@ import { readFileSync } from "node:fs";
 import {
   GITHUB_TOKEN_ENV_VARS,
   readGithubTokenFromEnv,
-} from "@posthog/git/signed-commit";
+} from "@flind/git/signed-commit";
 
 // helpers for resolving the in-sandbox GitHub token
 // Dedicated agentsh credential file (NUL-delimited `key=value` pairs) that the

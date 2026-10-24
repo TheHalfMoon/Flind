@@ -1,5 +1,5 @@
 import { publishedCanvasBuild } from "@posthog/core/canvas/canvasBuildSchemas";
-import { Text } from "@posthog/quill";
+import { Text } from "@flind/quill";
 import { BuiltCanvas } from "@posthog/ui/features/canvas/freeform/BuiltCanvas";
 import { useCanvasBuilds } from "@posthog/ui/features/canvas/hooks/useCanvasBuilds";
 import { useInView } from "@posthog/ui/primitives/hooks/useInView";

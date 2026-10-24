@@ -31,7 +31,7 @@ import {
   PopoverContent,
   PopoverTrigger,
   Textarea,
-} from "@posthog/quill";
+} from "@flind/quill";
 import type { InboxReportActionSurface } from "@posthog/shared/analytics-events";
 import type { SignalReport, Task } from "@posthog/shared/types";
 import { useTaskChannels } from "@posthog/ui/features/canvas/hooks/useTaskChannels";

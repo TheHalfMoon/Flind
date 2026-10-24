@@ -65,7 +65,7 @@ Place view components in `products/{product}/mcp/apps/`.
 ```tsx
 import { type ReactElement } from 'react'
 import { DescriptionList } from '@posthog/mcp-ui'
-import { Card, CardHeader, CardTitle, CardContent } from '@posthog/quill'
+import { Card, CardHeader, CardTitle, CardContent } from '@flind/quill'
 
 export interface MyEntityData {
   id: number

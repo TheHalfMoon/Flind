@@ -8,7 +8,7 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import type { Adapter, ModelAccess } from "@posthog/shared";
 import {
   applyModelAccess,

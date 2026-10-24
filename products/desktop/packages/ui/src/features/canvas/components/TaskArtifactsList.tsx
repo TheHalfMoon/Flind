@@ -28,7 +28,7 @@ import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { formatRelativeTimeShort } from "@posthog/shared";
 import type { Task, TaskThreadMessage } from "@posthog/shared/domain-types";
 import { useMeQuery } from "@posthog/ui/features/auth/useMeQuery";

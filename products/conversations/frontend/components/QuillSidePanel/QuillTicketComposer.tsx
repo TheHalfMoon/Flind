@@ -1,7 +1,7 @@
 import { JSONContent } from '@tiptap/core'
 import { useRef, useState } from 'react'
 
-import { Button, Kbd, KbdGroup, Tooltip, TooltipContent, TooltipTrigger } from '@posthog/quill'
+import { Button, Kbd, KbdGroup, Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill'
 
 import { RichContentEditorType } from 'lib/components/RichContentEditor/types'
 

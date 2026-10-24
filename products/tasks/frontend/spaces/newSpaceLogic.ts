@@ -1,7 +1,7 @@
 import { MakeLogicType, actions, connect, kea, listeners, path, reducers, selectors } from 'kea'
 import { router } from 'kea-router'
 
-import { toast } from '@posthog/quill'
+import { toast } from '@flind/quill'
 
 import { teamLogic } from 'scenes/teamLogic'
 import { urls } from 'scenes/urls'

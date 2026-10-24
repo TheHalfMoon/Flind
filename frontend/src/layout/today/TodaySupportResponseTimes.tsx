@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { Table, TableBody, TableCell, TableRow, Text } from '@posthog/quill'
+import { Table, TableBody, TableCell, TableRow, Text } from '@flind/quill'
 
 import { DEFAULT_PAID_RESPONSE_TIME, getSupportPlanRows } from 'lib/components/Support/supportResponseTime'
 import { dayjs } from 'lib/dayjs'

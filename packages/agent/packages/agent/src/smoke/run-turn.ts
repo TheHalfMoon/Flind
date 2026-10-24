@@ -7,7 +7,7 @@ import {
   ClientSideConnection,
   ndJsonStream,
 } from "@agentclientprotocol/sdk";
-import type { Adapter } from "@posthog/agent-contracts";
+import type { Adapter } from "@flind/agent-contracts";
 import {
   type AcpConnection,
   createAcpConnection,

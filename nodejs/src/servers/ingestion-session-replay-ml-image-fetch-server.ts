@@ -80,10 +80,10 @@ const BLOCKED_IMAGE_FETCH_DEAD_LETTER_TOPICS = [
 ]
 
 /** The addon holds a 15 MB native library and `index.ts` imports every server, so it loads on first use. */
-let anonymizer: typeof import('@posthog/replay-anonymizer') | undefined
-function getAnonymizer(): typeof import('@posthog/replay-anonymizer') {
+let anonymizer: typeof import('@flind/replay-anonymizer') | undefined
+function getAnonymizer(): typeof import('@flind/replay-anonymizer') {
     if (!anonymizer) {
-        anonymizer = require('@posthog/replay-anonymizer') as typeof import('@posthog/replay-anonymizer')
+        anonymizer = require('@flind/replay-anonymizer') as typeof import('@flind/replay-anonymizer')
         if (typeof anonymizer.isPublicHost !== 'function') {
             throw new Error('the replay-anonymizer addon has no isPublicHost: rebuild index.node')
         }

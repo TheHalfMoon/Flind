@@ -14,7 +14,7 @@ import {
     SelectTrigger,
     SelectValue,
     Text,
-} from '@posthog/quill-primitives'
+} from '@flind/quill-primitives'
 
 import { NotFound } from 'lib/components/NotFound'
 import { dayjs } from 'lib/dayjs'

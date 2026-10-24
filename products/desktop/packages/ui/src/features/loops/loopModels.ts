@@ -1,5 +1,5 @@
 import type { SessionConfigOption } from "@agentclientprotocol/sdk";
-import { getReasoningEffortOptions } from "@posthog/agent/adapters/reasoning-effort";
+import { getReasoningEffortOptions } from "@flind/agent/adapters/reasoning-effort";
 import {
   flattenSelectOptions,
   formatModelId,

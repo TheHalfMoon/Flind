@@ -7,7 +7,7 @@ import {
     sankeyLinkHorizontal,
     type SankeyLink,
     type SankeyLayout,
-} from '@posthog/quill-charts'
+} from '@flind/quill-charts'
 
 import { D3Selector } from 'lib/hooks/useD3'
 import { stripHTTP } from 'lib/utils/url'

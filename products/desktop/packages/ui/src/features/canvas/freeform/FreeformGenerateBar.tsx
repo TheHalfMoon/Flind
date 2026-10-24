@@ -1,4 +1,4 @@
-import { Tooltip, TooltipContent, TooltipTrigger } from "@posthog/quill";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@flind/quill";
 import { useGenerateFreeformCanvas } from "@posthog/ui/features/canvas/hooks/useGenerateFreeformCanvas";
 import { PromptInput } from "@posthog/ui/features/message-editor/components/PromptInput";
 import type { EditorHandle } from "@posthog/ui/features/message-editor/types";

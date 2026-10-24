@@ -1,4 +1,4 @@
-import type { BoxPlotDatum, BoxPlotSeries } from '@posthog/quill-charts'
+import type { BoxPlotDatum, BoxPlotSeries } from '@flind/quill-charts'
 
 import { BoxPlotSettings } from '~/queries/schema/schema-general'
 

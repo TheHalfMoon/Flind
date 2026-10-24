@@ -12,7 +12,7 @@ import {
     Tooltip,
     TooltipContent,
     TooltipTrigger,
-} from '@posthog/quill-primitives'
+} from '@flind/quill-primitives'
 
 import { taskHistoryLogic } from '../../logics/taskHistoryLogic'
 import { tasksLogic } from '../../logics/tasksLogic'

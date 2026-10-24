@@ -10,7 +10,7 @@ import {
     ComboboxList,
     Spinner,
     Text,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 export interface AnalyticsFilterOption {
     value: string

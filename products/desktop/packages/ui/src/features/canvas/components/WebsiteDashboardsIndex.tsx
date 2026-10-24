@@ -17,7 +17,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
   Text,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { formatRelativeTimeShort } from "@posthog/shared";
 import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
 import { CanvasPreviewFrame } from "@posthog/ui/features/canvas/components/CanvasPreviewFrame";

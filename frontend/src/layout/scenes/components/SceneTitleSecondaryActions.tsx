@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react'
 
 import { IconEllipsis } from '@posthog/icons'
-import { Button, DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from '@posthog/quill'
+import { Button, DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from '@flind/quill'
 
 interface SceneTitleSecondaryActionsProps {
     /** The secondary actions as buttons, for a wide scene */

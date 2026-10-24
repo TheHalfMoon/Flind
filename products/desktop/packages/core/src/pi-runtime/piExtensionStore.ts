@@ -1,7 +1,7 @@
 import type {
   PiExtensionSessionEvent,
   RpcExtensionUIRequest,
-} from "@posthog/agent/pi/types";
+} from "@flind/agent/pi/types";
 import { createStore, type StoreApi } from "zustand/vanilla";
 
 export type PiExtensionDialogRequest = Extract<

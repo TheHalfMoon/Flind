@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { useMemo } from 'react'
 
-import { Heatmap } from '@posthog/quill-charts'
+import { Heatmap } from '@flind/quill-charts'
 
 import { useChartTheme } from 'lib/charts/hooks'
 import { dayjs } from 'lib/dayjs'

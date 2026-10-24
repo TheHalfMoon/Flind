@@ -204,7 +204,7 @@ is happening with a background cloud run and for debugging. You can also use Pos
 
 ## Testing with local agent packages (you only need to do this if you are making changes to the agent package, otherwise ignore this)
 
-To test changes to `@posthog/agent` before publishing:
+To test changes to `@flind/agent` before publishing:
 
 ### Modal credentials
 
@@ -421,7 +421,7 @@ It does not inspect script files: invoke validation directly or through a suppor
 
 ### Local agent packages
 
-Cloud tasks use the published `@posthog/agent` package by default. Set `LOCAL_POSTHOG_CODE_MONOREPO_ROOT` only when you need to test local agent changes.
+Cloud tasks use the published `@flind/agent` package by default. Set `LOCAL_POSTHOG_CODE_MONOREPO_ROOT` only when you need to test local agent changes.
 
 For local Docker, the worker builds the packages inside the sandbox image. The first build installs the workspace dependencies. Later source changes reuse those dependencies from the Docker build cache.
 
@@ -444,7 +444,7 @@ pnpm --dir packages/agent build
 
 | Provider          | `.env` value                    | When to use                                                                                                                                                                                                                                                                                                                                           |
 | ----------------- | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `modal` (default) | `SANDBOX_PROVIDER=modal`        | Production. Uses the published `@posthog/agent` npm package from the GHCR image.                                                                                                                                                                                                                                                                      |
+| `modal` (default) | `SANDBOX_PROVIDER=modal`        | Production. Uses the published `@flind/agent` npm package from the GHCR image.                                                                                                                                                                                                                                                                      |
 | `MODAL_DOCKER`    | `SANDBOX_PROVIDER=MODAL_DOCKER` | **Local development with Modal.** Same as `modal` but uses a separate Modal app (`posthog-sandbox-modal-docker-*`) so local image builds don't pollute the production app cache. When `LOCAL_POSTHOG_CODE_MONOREPO_ROOT` is set, each local package's external runtime dependencies are installed and its compiled output is overlaid onto the image. |
 | `docker`          | `SANDBOX_PROVIDER=docker`       | Local-only Docker containers (`DEBUG=True` required). No Modal account needed. Uses the published agent by default and builds local agent packages when `LOCAL_POSTHOG_CODE_MONOREPO_ROOT` is set. This is the recommended option for local development.                                                                                              |
 

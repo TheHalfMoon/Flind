@@ -1,5 +1,5 @@
 import { useService } from "@posthog/di/react";
-import { cn } from "@posthog/quill";
+import { cn } from "@flind/quill";
 import type { Task } from "@posthog/shared/domain-types";
 import { useArchivedTaskIds } from "@posthog/ui/features/archive/useArchivedTaskIds";
 import { useCloudPrUrl } from "@posthog/ui/features/git-interaction/useCloudPrUrl";

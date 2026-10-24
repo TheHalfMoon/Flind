@@ -53,7 +53,7 @@ Purpose: record every end-to-end `run_review` so we can tell whether a prompt/co
 
 - **Purpose:** NOT a quality run — verify the two-repo harness dev loop for the prompt-caching program
   (`eval/experiments/2026-07-prompt-caching/HARNESS.md`): `LOCAL_POSTHOG_CODE_MONOREPO_ROOT` overlay ->
-  locally built `@posthog/agent` (clean, unpatched `main`) runs the review sandboxes. Quality not comparable
+  locally built `@flind/agent` (clean, unpatched `main`) runs the review sandboxes. Quality not comparable
   to the log above (different PR).
 - **Run 1 (#63625): environmental failure** — the frozen sample PR merged 2026-07-03, branch deleted, all
   units died at checkout (see the ⚠️ note in the header). **Run 2 (live #68735, +74/-12, no-publish): exit 0**,

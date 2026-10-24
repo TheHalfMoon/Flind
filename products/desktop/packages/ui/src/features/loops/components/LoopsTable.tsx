@@ -7,7 +7,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { channelGlyph } from "@posthog/ui/features/canvas/components/channelGlyph";
 import type { LoopSchemas } from "@posthog/ui/features/loops/loopSchemas";
 import { Badge } from "@posthog/ui/primitives/Badge";

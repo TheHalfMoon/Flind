@@ -7,7 +7,7 @@ import {
   EmptyMedia,
   EmptyTitle,
   Skeleton,
-} from "@posthog/quill";
+} from "@flind/quill";
 import type { SignalReport } from "@posthog/shared/types";
 import { ReportRow } from "@posthog/ui/features/canvas/components/ReportRow";
 import {

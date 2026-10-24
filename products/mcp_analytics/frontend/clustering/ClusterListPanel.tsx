@@ -12,7 +12,7 @@ import {
     SelectItem,
     SelectTrigger,
     SelectValue,
-} from '@posthog/quill-primitives'
+} from '@flind/quill-primitives'
 
 import { useChartTheme } from 'lib/charts/hooks'
 

@@ -1,4 +1,4 @@
-import { isPublicHost, politenessKey, tryCanonicalizeUrl } from '@posthog/ai-research-v4-native'
+import { isPublicHost, politenessKey, tryCanonicalizeUrl } from '@flind/ai-research-v4-native'
 
 /**
  * The crate owns the rule and tests it. This file tests only that the fetch lane reaches that

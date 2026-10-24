@@ -1,5 +1,5 @@
 import { IconArrowRightDown, IconLaptop, IconPinFilled, IconPullRequest } from '@posthog/icons'
-import { Avatar, AvatarFallback, AvatarGroup, Tooltip, TooltipContent, TooltipTrigger, cn } from '@posthog/quill'
+import { Avatar, AvatarFallback, AvatarGroup, Tooltip, TooltipContent, TooltipTrigger, cn } from '@flind/quill'
 
 import { IconSlack } from 'lib/lemon-ui/icons'
 import { LinkPrimitive } from 'lib/lemon-ui/Link'

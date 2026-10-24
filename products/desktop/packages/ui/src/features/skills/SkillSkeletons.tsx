@@ -1,4 +1,4 @@
-import { Skeleton } from "@posthog/quill";
+import { Skeleton } from "@flind/quill";
 
 export function SkillListSkeleton({ rows = 8 }: { rows?: number }) {
   return (

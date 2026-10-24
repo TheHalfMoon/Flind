@@ -2,7 +2,7 @@ import { BindLogic, useActions, useValues } from 'kea'
 import { useEffect, useMemo } from 'react'
 
 import { IconGithub } from '@posthog/icons'
-import { Badge, Button, Text } from '@posthog/quill-primitives'
+import { Badge, Button, Text } from '@flind/quill-primitives'
 
 import api from 'lib/api'
 import { urls } from 'scenes/urls'

@@ -6,7 +6,7 @@
  */
 import { useValues } from 'kea'
 
-import { Separator } from '@posthog/quill'
+import { Separator } from '@flind/quill'
 
 import { genericOperatorToHumanName, propertyValueToHumanName } from 'lib/components/DefinitionPopover/utils'
 

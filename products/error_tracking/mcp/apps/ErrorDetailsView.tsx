@@ -1,7 +1,7 @@
 import type { ReactElement } from 'react'
 
 import { DescriptionList, formatDate } from '@posthog/mcp-ui'
-import { Badge, Card, CardContent, Empty, EmptyDescription, EmptyHeader, EmptyTitle } from '@posthog/quill'
+import { Badge, Card, CardContent, Empty, EmptyDescription, EmptyHeader, EmptyTitle } from '@flind/quill'
 
 import { resolveStackReferences } from './stackReferences'
 import { type ExceptionData, StackTraceView } from './StackTraceView'

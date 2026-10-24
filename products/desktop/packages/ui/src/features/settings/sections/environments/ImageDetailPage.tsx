@@ -11,7 +11,7 @@ import {
   Input,
   Label,
   Text,
-} from "@posthog/quill";
+} from "@flind/quill";
 import {
   isImageBuildFailed,
   isImageBuildInProgress,

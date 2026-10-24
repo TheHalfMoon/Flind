@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { useId } from 'react'
 
-import { Badge, Spinner, Text, Tooltip, TooltipContent, TooltipTrigger, cn } from '@posthog/quill'
+import { Badge, Spinner, Text, Tooltip, TooltipContent, TooltipTrigger, cn } from '@flind/quill'
 
 import { LinkPrimitive } from 'lib/lemon-ui/Link'
 import { urls } from 'scenes/urls'

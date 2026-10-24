@@ -30,7 +30,7 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { cnHeaderButton } from "@posthog/ui/features/canvas/components/channelHeaderButton";
 import { getOriginProductMeta } from "@posthog/ui/features/sidebar/components/items/TaskIcon";
 import {

@@ -3,7 +3,7 @@ import {
   ChatMarkerContent,
   ChatMarkerIcon,
   cn,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { readAgentToolName } from "@posthog/shared";
 import type { ToolCall } from "@posthog/ui/features/sessions/types";
 import { Spinner } from "@posthog/ui/primitives/Spinner";

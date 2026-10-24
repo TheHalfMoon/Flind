@@ -43,7 +43,7 @@ nativeWindConfig.resolver = {
   sourceExts: [...nativeWindConfig.resolver.sourceExts, "svg"],
 };
 
-// Resolve @posthog/shared, and the @posthog/agent-contracts package it
+// Resolve @posthog/shared, and the @flind/agent-contracts package it
 // re-exports, to their TypeScript source so Babel transpiles them.
 // Their package.json `exports` point at `dist/`, which is only present after a
 // `pnpm build` -- EAS Build never runs one, so bundling there fails outright.
@@ -53,7 +53,7 @@ nativeWindConfig.resolver = {
 // imports like `@posthog/shared/domain-types`.
 const SOURCE_RESOLVED_PACKAGES = {
   "@posthog/shared": path.resolve(monorepoRoot, "packages/shared/src"),
-  "@posthog/agent-contracts": path.resolve(agentContractsRoot, "src"),
+  "@flind/agent-contracts": path.resolve(agentContractsRoot, "src"),
 };
 const upstreamResolveRequest = nativeWindConfig.resolver.resolveRequest;
 

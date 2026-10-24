@@ -1,4 +1,4 @@
-import type { Series, TooltipContext } from '@posthog/quill-charts'
+import type { Series, TooltipContext } from '@flind/quill-charts'
 
 import type { BreakdownFilter } from '~/queries/schema/schema-general'
 import { type FunnelStepWithConversionMetrics } from '~/types'

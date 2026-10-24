@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 
 import { IconPeople } from '@posthog/icons'
 import { LemonBanner, LemonSkeleton, LemonTable, LemonTableColumns, LemonTag, Tooltip } from '@posthog/lemon-ui'
-import { TimeSeriesLineChart, useChartTheme } from '@posthog/quill-charts'
+import { TimeSeriesLineChart, useChartTheme } from '@flind/quill-charts'
 
 import { TZLabel } from 'lib/components/TZLabel'
 import { humanFriendlyNumber } from 'lib/utils/numbers'

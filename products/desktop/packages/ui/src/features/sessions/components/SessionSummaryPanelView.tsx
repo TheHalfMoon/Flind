@@ -1,5 +1,5 @@
 import { TextAlignLeft } from "@phosphor-icons/react";
-import { Button, Text } from "@posthog/quill";
+import { Button, Text } from "@flind/quill";
 import { Spinner } from "@posthog/ui/primitives/Spinner";
 import { MarkdownRenderer } from "../../editor/components/MarkdownRenderer";
 

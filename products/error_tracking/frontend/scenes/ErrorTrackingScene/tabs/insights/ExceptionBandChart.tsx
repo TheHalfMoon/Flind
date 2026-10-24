@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 
-import { DefaultTooltip, TimeSeriesBarChart, type TimeSeriesBarChartConfig } from '@posthog/quill-charts'
-import type { ChartTheme, PointClickData, Series } from '@posthog/quill-charts'
+import { DefaultTooltip, TimeSeriesBarChart, type TimeSeriesBarChartConfig } from '@flind/quill-charts'
+import type { ChartTheme, PointClickData, Series } from '@flind/quill-charts'
 
 import { useChartConfig } from 'lib/charts/hooks'
 import { Skeleton } from 'lib/ui/quill'

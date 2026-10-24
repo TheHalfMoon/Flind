@@ -30,7 +30,7 @@ import {
     TableRow,
     Text,
     getPaginationRange,
-} from '@posthog/quill-primitives'
+} from '@flind/quill-primitives'
 
 import { TZLabel } from 'lib/components/TZLabel'
 import { LinkPrimitive } from 'lib/lemon-ui/Link/Link'

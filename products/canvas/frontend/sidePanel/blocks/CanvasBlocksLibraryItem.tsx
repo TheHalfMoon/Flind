@@ -1,6 +1,6 @@
 import { KeyboardEvent, PointerEvent } from 'react'
 
-import { Item, ItemContent, ItemDescription, ItemMedia, ItemTitle } from '@posthog/quill'
+import { Item, ItemContent, ItemDescription, ItemMedia, ItemTitle } from '@flind/quill'
 
 import type { LibraryEntry } from '../../editing/libraryCatalog'
 

@@ -1,5 +1,5 @@
 import { RobotIcon } from "@phosphor-icons/react";
-import { Avatar, AvatarFallback, InputGroup } from "@posthog/quill";
+import { Avatar, AvatarFallback, InputGroup } from "@flind/quill";
 import type { UserBasic } from "@posthog/shared/domain-types";
 import { UserAvatar } from "@posthog/ui/features/auth/UserAvatar";
 import {

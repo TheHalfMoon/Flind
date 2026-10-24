@@ -1,6 +1,6 @@
 import { ReactNode, useId } from 'react'
 
-import { Field, FieldDescription, FieldTitle } from '@posthog/quill'
+import { Field, FieldDescription, FieldTitle } from '@flind/quill'
 
 /** A labeled inspector control, with an optional hint under it. */
 export function InspectorField({

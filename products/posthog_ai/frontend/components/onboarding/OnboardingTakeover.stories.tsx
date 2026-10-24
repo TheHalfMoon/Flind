@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { useState } from 'react'
 
 import { IconGithub } from '@posthog/icons'
-import { Button } from '@posthog/quill-primitives'
+import { Button } from '@flind/quill-primitives'
 
 import { DEFAULT_ONBOARDING_STEPS, DEFAULT_STARTER_PROMPTS } from './onboardingSteps'
 import { OnboardingTakeover, type OnboardingTakeoverProps } from './OnboardingTakeover'

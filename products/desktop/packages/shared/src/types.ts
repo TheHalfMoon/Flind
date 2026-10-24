@@ -1,6 +1,6 @@
-export * from "@posthog/agent-contracts/domain-types";
-export * from "@posthog/agent-contracts/inbox-types";
+export * from "@flind/agent-contracts/domain-types";
+export * from "@flind/agent-contracts/inbox-types";
 export type {
   SignalReportOrderingField,
   SignalReportStatus,
-} from "@posthog/agent-contracts/signal-types";
+} from "@flind/agent-contracts/signal-types";

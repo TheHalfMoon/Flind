@@ -11,7 +11,7 @@ import {
     TimeSeriesComboChart,
     TimeSeriesLineChart,
     legendItemsFromSeries,
-} from '@posthog/quill-charts'
+} from '@flind/quill-charts'
 
 import { useChartConfig, useChartTheme } from 'lib/charts/hooks'
 import { useAttachedLogic } from 'lib/logic/scenes/useAttachedLogic'
@@ -197,7 +197,7 @@ function BillingComboChart({
 }
 
 /**
- * Renders a saved billing insight's chart directly via @posthog/quill-charts instead of the
+ * Renders a saved billing insight's chart directly via @flind/quill-charts instead of the
  * embedded DataVisualization, so Customer analytics owns the per-series show/hide chips without
  * touching shared data-viz code. `dataVisualizationLogic` is still reused read-only for fetch +
  * SQL-results→series parsing, and the series/config builders come from `sqlLineGraphAdapter`'s

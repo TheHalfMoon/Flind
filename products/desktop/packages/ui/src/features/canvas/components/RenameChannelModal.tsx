@@ -1,6 +1,6 @@
 import { XIcon } from "@phosphor-icons/react";
 import { validateChannelName } from "@posthog/core/canvas/channelName";
-import { Button } from "@posthog/quill";
+import { Button } from "@flind/quill";
 import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
 import { channelGlyph } from "@posthog/ui/features/canvas/components/channelGlyph";
 import type { Channel } from "@posthog/ui/features/canvas/hooks/useChannels";

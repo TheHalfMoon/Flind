@@ -2,7 +2,7 @@ import type {
   ReportVerdict,
   ReportVerdictTone,
 } from "@posthog/core/inbox/reportVerdict";
-import { cn } from "@posthog/quill";
+import { cn } from "@flind/quill";
 import { Spinner } from "@posthog/ui/primitives/Spinner";
 import type { ReactNode } from "react";
 

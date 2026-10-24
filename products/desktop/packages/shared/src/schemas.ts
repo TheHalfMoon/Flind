@@ -1,1 +1,1 @@
-export * from "@posthog/agent-contracts/schemas";
+export * from "@flind/agent-contracts/schemas";

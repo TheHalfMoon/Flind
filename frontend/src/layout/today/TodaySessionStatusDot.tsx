@@ -1,4 +1,4 @@
-import { Spinner, Tooltip, TooltipContent, TooltipTrigger, cn } from '@posthog/quill'
+import { Spinner, Tooltip, TooltipContent, TooltipTrigger, cn } from '@flind/quill'
 
 import { TodaySessionDot } from './todaySessionDot'
 

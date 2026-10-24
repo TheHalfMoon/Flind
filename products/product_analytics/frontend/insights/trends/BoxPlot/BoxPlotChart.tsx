@@ -1,8 +1,8 @@
 import { useValues } from 'kea'
 import { useCallback, useMemo } from 'react'
 
-import { BoxPlot } from '@posthog/quill-charts'
-import type { BoxPlotClickData, BoxPlotConfig, BoxPlotSeries } from '@posthog/quill-charts'
+import { BoxPlot } from '@flind/quill-charts'
+import type { BoxPlotClickData, BoxPlotConfig, BoxPlotSeries } from '@flind/quill-charts'
 
 import { useChartConfig, useChartTheme } from 'lib/charts/hooks'
 import { getSeriesColor } from 'lib/colors'

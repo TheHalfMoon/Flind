@@ -31,7 +31,7 @@ import {
   DropdownMenuSub,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import type { Task } from "@posthog/shared/domain-types";
 import {
   TaskArchiveMenuItem,

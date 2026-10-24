@@ -10,7 +10,7 @@ import {
   Link,
 } from "@phosphor-icons/react";
 import { getPrVisualConfig } from "@posthog/core/git-interaction/prStatus";
-import { parseGithubUrl } from "@posthog/git/utils";
+import { parseGithubUrl } from "@flind/git/utils";
 import {
   ButtonGroup,
   ButtonGroupSeparator,
@@ -27,7 +27,7 @@ import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import type { PrActionType } from "@posthog/shared";
 import { Spinner } from "@posthog/ui/primitives/Spinner";
 import { ChevronDown } from "lucide-react";

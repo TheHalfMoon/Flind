@@ -1,11 +1,11 @@
-import type { Adapter, ModelAccess } from "@posthog/agent-contracts/adapter";
-import type { AgentRuntime } from "@posthog/agent-contracts/agent-runtime";
-import type { Task } from "@posthog/agent-contracts/domain-types";
-import type { ExecutionMode } from "@posthog/agent-contracts/exec-types";
+import type { Adapter, ModelAccess } from "@flind/agent-contracts/adapter";
+import type { AgentRuntime } from "@flind/agent-contracts/agent-runtime";
+import type { Task } from "@flind/agent-contracts/domain-types";
+import type { ExecutionMode } from "@flind/agent-contracts/exec-types";
 import type {
   CloudMcpServerRelayDesignation,
   McpServerConnection,
-} from "@posthog/agent-contracts/local-mcp-domain";
+} from "@flind/agent-contracts/local-mcp-domain";
 import type { CloudRunSource, PrAuthorshipMode } from "./cloud";
 import type { WorkspaceMode } from "./workspace";
 import type { Workspace } from "./workspace-domain";

@@ -77,7 +77,7 @@ In that case run commands from [this step](https://github.com/PostHog/posthog/bl
 
 ## WebAssembly (JavaScript/TypeScript) build
 
-The HogQL parser also compiles to WebAssembly. The `@posthog/hogql-parser` npm package wraps it for JavaScript and TypeScript.
+The HogQL parser also compiles to WebAssembly. The `@flind/query-parser` npm package wraps it for JavaScript and TypeScript.
 
 ### Prerequisites
 
@@ -110,7 +110,7 @@ grep -a -c 'new Function(' dist/hogql_parser_wasm_browser.js   # must print 0
 The frontend pins the published npm package in `frontend/package.json`. To release a new version, bump `version` in `common/hogql_parser/package.json` in your PR. The `Release hogql-parser npm` workflow then builds the package, publishes it to npm, and commits the new pin to your branch.
 
 ```typescript
-import createHogQLParser from '@posthog/hogql-parser'
+import createHogQLParser from '@flind/query-parser'
 
 createHogQLParser().then((parser) => {
   const ast = JSON.parse(parser.parseExpr('1 + 2'))

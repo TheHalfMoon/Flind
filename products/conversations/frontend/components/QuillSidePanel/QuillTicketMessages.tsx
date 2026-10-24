@@ -10,7 +10,7 @@ import {
     ChatMessageHeader,
     Skeleton,
     Text,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import { TZLabel } from 'lib/components/TZLabel'
 

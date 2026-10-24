@@ -1,14 +1,14 @@
 import { type ReactElement } from 'react'
 
 import { emptyStateIllustration } from '@posthog/mcp-ui'
-import { Empty, EmptyDescription, EmptyHeader, EmptyMedia } from '@posthog/quill'
+import { Empty, EmptyDescription, EmptyHeader, EmptyMedia } from '@flind/quill'
 import {
     DefaultTooltip,
     type Series,
     TimeSeriesLineChart,
     type TimeSeriesLineChartConfig,
     type TooltipContext,
-} from '@posthog/quill-charts'
+} from '@flind/quill-charts'
 
 import { ChartHeader } from './ChartHeader'
 import { colorAt, useMcpChartTheme } from './charts/theme'

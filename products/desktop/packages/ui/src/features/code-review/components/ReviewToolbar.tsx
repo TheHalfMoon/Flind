@@ -6,7 +6,7 @@ import {
   X,
 } from "@phosphor-icons/react";
 import type { ResolvedDiffSource } from "@posthog/core/code-review/resolveDiffSource";
-import { Button } from "@posthog/quill";
+import { Button } from "@flind/quill";
 import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
 import { useDiffViewerStore } from "@posthog/ui/features/code-editor/diffViewerStore";
 import {

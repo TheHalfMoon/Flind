@@ -2,7 +2,7 @@ import { useValues } from 'kea'
 import { useEffect } from 'react'
 
 import { IconLock } from '@posthog/icons'
-import { Empty, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from '@posthog/quill'
+import { Empty, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from '@flind/quill'
 
 import { captureAccessControlEvent, resourceTypeToString } from 'lib/utils/accessControlUtils'
 

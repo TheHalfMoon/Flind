@@ -1,6 +1,6 @@
 import posthog, { DisplaySurveyType } from 'posthog-js'
 
-import { Button } from '@posthog/quill'
+import { Button } from '@flind/quill'
 
 import type { FeedbackSurveyButtonProps } from './FeedbackSurveyButton'
 

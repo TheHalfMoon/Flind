@@ -1,6 +1,6 @@
 import posthog from 'posthog-js'
 
-import { toast } from '@posthog/quill'
+import { toast } from '@flind/quill'
 
 import { CANVAS_EVENTS, CanvasSurface } from '../canvasAnalytics'
 import { canvasesDestroy } from '../generated/api'

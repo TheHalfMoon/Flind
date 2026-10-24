@@ -1,6 +1,6 @@
 import { ArrowSquareOutIcon } from "@phosphor-icons/react";
 import { groupRunArtifactVersions } from "@posthog/core/canvas/runArtifactSchemas";
-import { Button } from "@posthog/quill";
+import { Button } from "@flind/quill";
 import { openPrInReview } from "@posthog/ui/features/code-review/openPrInReview";
 import { usePrArtifact } from "@posthog/ui/features/git-interaction/usePrArtifact";
 import { openRightPanelSide } from "@posthog/ui/features/navigation/rightPanelSide";

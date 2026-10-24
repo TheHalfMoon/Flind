@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { router } from 'kea-router'
 import { useLayoutEffect, useRef } from 'react'
 
-import { Skeleton, Text } from '@posthog/quill'
+import { Skeleton, Text } from '@flind/quill'
 
 import { TodayExplore } from './TodayExplore'
 import { TodayForYou } from './TodayForYou'

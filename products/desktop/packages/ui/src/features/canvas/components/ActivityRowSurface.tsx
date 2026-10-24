@@ -1,4 +1,4 @@
-import { AutocompleteItem, Button, cn } from "@posthog/quill";
+import { AutocompleteItem, Button, cn } from "@flind/quill";
 import type { ComponentProps, ReactElement } from "react";
 
 type ActivityRowSurfaceProps = ComponentProps<typeof Button> & {

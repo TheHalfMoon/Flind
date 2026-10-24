@@ -1,6 +1,6 @@
 import type { ReactElement } from 'react'
 
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, Badge, Card, CardContent } from '@posthog/quill'
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, Badge, Card, CardContent } from '@flind/quill'
 
 export interface StackFrame {
     raw_id?: string

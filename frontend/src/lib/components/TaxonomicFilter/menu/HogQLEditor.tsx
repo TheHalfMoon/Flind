@@ -12,7 +12,7 @@
  */
 import { Suspense, useEffect, useRef, useState } from 'react'
 
-import { Button, DialogFooter, Field, FieldContent, FieldDescription, FieldLabel, Skeleton } from '@posthog/quill'
+import { Button, DialogFooter, Field, FieldContent, FieldDescription, FieldLabel, Skeleton } from '@flind/quill'
 
 import { Link } from 'lib/lemon-ui/Link'
 import { lazyWithRetry } from 'lib/utils/retryImport'

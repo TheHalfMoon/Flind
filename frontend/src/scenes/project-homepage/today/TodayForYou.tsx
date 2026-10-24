@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconArrowRight, IconChevronDown } from '@posthog/icons'
-import { Button, Skeleton } from '@posthog/quill'
+import { Button, Skeleton } from '@flind/quill'
 
 import { LinkPrimitive } from 'lib/lemon-ui/Link'
 import { urls } from 'scenes/urls'

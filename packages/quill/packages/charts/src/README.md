@@ -3,8 +3,8 @@
 PostHog's canvas-based charting library, used for trends, dashboards, and any in-app chart that needs to render thousands of points smoothly. D3 powers the scales; the canvas does the drawing; React handles overlays.
 
 ```tsx
-import { LineChart } from '@posthog/quill-charts'
-import type { ChartTheme, Series } from '@posthog/quill-charts'
+import { LineChart } from '@flind/quill-charts'
+import type { ChartTheme, Series } from '@flind/quill-charts'
 
 const SERIES: Series[] = [{ key: 'a', label: 'A', data: [10, 20, 30] }]
 const LABELS = ['Mon', 'Tue', 'Wed']
@@ -15,7 +15,7 @@ const THEME: ChartTheme = { colors: ['#1f77b4'], backgroundColor: '#ffffff' }
 
 ## Setup
 
-**Tokens (optional but recommended)** — load `@posthog/quill-tokens/color-system.css`
+**Tokens (optional but recommended)** — load `@flind/quill-tokens/color-system.css`
 so `useChartTheme()` resolves the real quill palette and chrome. Without it you get
 a sensible built-in fallback palette (see below), not the brand colors.
 
@@ -30,12 +30,12 @@ Charts are **headless about color** — every chart takes a `ChartTheme` (`color
 plus axis/grid/tooltip colors) and owns no palette of its own. Supply it however
 you like, but the intended source is quill's design tokens.
 
-`@posthog/quill-tokens` defines the data-viz palette as CSS vars
+`@flind/quill-tokens` defines the data-viz palette as CSS vars
 (`--data-color-1..15`, `--color-graph-*`). Read them into a `ChartTheme` with the
 built-in helpers instead of hand-rolling per consumer:
 
 ```tsx
-import { useChartTheme, BarChart } from '@posthog/quill-charts'
+import { useChartTheme, BarChart } from '@flind/quill-charts'
 
 function MyChart() {
   const theme = useChartTheme() // re-reads on light/dark toggle
@@ -48,7 +48,7 @@ function MyChart() {
 - `themeFromCssVars(opts?)` — one-shot, non-React read.
 - `DEFAULT_CHART_COLORS` — fallback palette used when the token vars aren't loaded
   (no quill-tokens stylesheet, or SSR). Without tokens loaded you get this palette,
-  not black. Load `@posthog/quill-tokens/color-system.css` to get the real tokens.
+  not black. Load `@flind/quill-tokens/color-system.css` to get the real tokens.
 
 Both helpers read from `document.body` by default. If you use the **scoped** token
 build (vars gated behind `[data-quill]`) and quill isn't mounted on `<body>`, pass
@@ -126,7 +126,7 @@ tooltip, draws the area with a vertical gradient fill, and exposes
 without subscribing to `useChartHover` directly.
 
 ```tsx
-import { Sparkline } from '@posthog/quill-charts'
+import { Sparkline } from '@flind/quill-charts'
 ;<Sparkline data={[4200, 5100, 4700, /* … */ 8800]} theme={THEME} />
 ```
 

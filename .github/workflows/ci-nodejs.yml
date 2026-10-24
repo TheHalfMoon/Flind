@@ -940,7 +940,7 @@ jobs:
               run: pnpm --filter=@posthog/nodejs setup:test
 
             # The Node ingestion API worker runs as a real subprocess (tsx src/index.ts), so it
-            # needs the compiled workspace dependencies (e.g. @posthog/hogvm/dist) on disk. The
+            # needs the compiled workspace dependencies (e.g. @flind/logicvm/dist) on disk. The
             # regular Jest job gets these via `bin/turbo run test` (^build); here we build them
             # explicitly since we invoke the test directly.
             - name: Build Node.js workspace dependencies

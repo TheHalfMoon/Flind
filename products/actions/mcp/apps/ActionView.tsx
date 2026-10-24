@@ -1,7 +1,7 @@
 import type { ReactElement } from 'react'
 
 import { DescriptionList, formatDate } from '@posthog/mcp-ui'
-import { Badge, Card, CardContent } from '@posthog/quill'
+import { Badge, Card, CardContent } from '@flind/quill'
 
 export interface ActionStepData {
     event?: string | null

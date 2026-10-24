@@ -94,7 +94,7 @@ the authed author, frozen + scoped + closed for public viewers.
 - **esm.sh CDN packages in edit mode only.** Public artifacts are self-hosted/bundled.
 - **Whitelist (curated, PostHog-anchored)** — start with:
   - `react`, `react-dom`
-  - `@posthog/quill` (own design system, already self-hosted → on-brand shared canvases)
+  - `@flind/quill` (own design system, already self-hosted → on-brand shared canvases)
   - `recharts` (viz)
   - `dayjs` (format)
   - Expand only on real, observed demand.

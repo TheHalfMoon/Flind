@@ -8,7 +8,7 @@ import {
     getHogChartTooltip,
     hoverUntilTooltip,
     waitForHogChartTooltip,
-} from '@posthog/quill-charts/testing'
+} from '@flind/quill-charts/testing'
 
 import { insightVizDataLogic } from 'scenes/insights/insightVizDataLogic'
 

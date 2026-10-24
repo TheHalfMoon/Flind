@@ -10,7 +10,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { useMinuteNow } from "@posthog/ui/hooks/useMinuteNow";
 import { useVirtualizer } from "@tanstack/react-virtual";
 import { useRef } from "react";

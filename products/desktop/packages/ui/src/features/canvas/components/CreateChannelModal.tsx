@@ -33,7 +33,7 @@ import {
   Label,
   Switch,
   Textarea,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { SPACE_SETUP_FLAG } from "@posthog/shared";
 import {
   ANALYTICS_EVENTS,

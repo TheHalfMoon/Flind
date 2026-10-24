@@ -9,7 +9,7 @@ import {
     AlertDialogHeader,
     AlertDialogTitle,
     Button,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import { teamLogic } from 'scenes/teamLogic'
 

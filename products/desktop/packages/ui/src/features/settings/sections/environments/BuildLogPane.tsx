@@ -1,4 +1,4 @@
-import { Button, Text } from "@posthog/quill";
+import { Button, Text } from "@flind/quill";
 import type { SandboxCustomImage } from "@posthog/shared/domain-types";
 import { useSandboxCustomImageDetail } from "@posthog/ui/features/settings/sections/environments/useSandboxCustomImages";
 import { useCallback, useEffect, useRef } from "react";

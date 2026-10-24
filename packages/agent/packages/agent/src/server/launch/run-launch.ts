@@ -1,4 +1,4 @@
-import { getProjectWebUrl } from "@posthog/agent-contracts/rich-output-prompt";
+import { getProjectWebUrl } from "@flind/agent-contracts/rich-output-prompt";
 import type { PermissionMode } from "../../execution-mode";
 import type { ProductLaunchConfiguration, TaskSource } from "../../sdk/product";
 import type { Task, TaskRun, TaskRunState } from "../../types";

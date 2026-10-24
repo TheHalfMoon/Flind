@@ -574,7 +574,7 @@ The recorder sends each remote image URL that the URL policy accepts to the `ai_
 It collects URLs from image sources, `srcset`, SVG image links, CSS `url(...)` values and attribute mutations, and skips hidden or 1×1 images as v3 does.
 The topics hold jobs for 24 hours, because jobs carry raw URLs.
 The v4 image fetcher is its own copy of the v3 fetcher under `ai-research/image-fetch-v4/`, with the v3 fetch policy, its own consumer groups, its own `AI_RESEARCH_V4_IMAGE_FETCH_*` settings and a share of the v3 per-host limits. It shares no code or table with v3.
-It applies the recorder's URL policy through `@posthog/ai-research-v4-native`, an addon over `replay_core_v4::url_policy`, so it canonicalizes a URL, groups it by registrable domain and refuses private hosts exactly as the recorder does.
+It applies the recorder's URL policy through `@flind/ai-research-v4-native`, an addon over `replay_core_v4::url_policy`, so it canonicalizes a URL, groups it by registrable domain and refuses private hosts exactly as the recorder does.
 It stores each image, sealed and unscrubbed, under `images/url/`, and it does not send images to the scrub lane.
 
 The fetcher keeps a crawl history per URL reference, so per team and month, in its own DynamoDB table `ai-research-v4-image-fetch-history`, with the v3 fetch interval and conditional requests. The table also holds its robots.txt and tdmrep cache:

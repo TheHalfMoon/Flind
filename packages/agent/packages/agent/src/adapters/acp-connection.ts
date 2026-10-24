@@ -1,6 +1,6 @@
 import { AgentSideConnection, ndJsonStream } from "@agentclientprotocol/sdk";
-import type { Adapter } from "@posthog/agent-contracts";
-import type { ContextWikiEnv } from "@posthog/harness/extensions/context-wiki";
+import type { Adapter } from "@flind/agent-contracts";
+import type { ContextWikiEnv } from "@flind/harness/extensions/context-wiki";
 import { withTurnTraceId } from "../acp-extensions";
 import type { ModelInfo } from "../gateway-models";
 import type { SessionLogWriter } from "../session-log-writer";

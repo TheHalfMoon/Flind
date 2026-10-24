@@ -1,5 +1,5 @@
 import { CaretDown } from "@phosphor-icons/react";
-import { Button, cn } from "@posthog/quill";
+import { Button, cn } from "@flind/quill";
 import { useProvisioningStore } from "@posthog/ui/features/provisioning/store";
 import { useEffect, useRef, useState } from "react";
 import { SessionStartupStatus, startupLabel } from "./SessionStartupStatus";

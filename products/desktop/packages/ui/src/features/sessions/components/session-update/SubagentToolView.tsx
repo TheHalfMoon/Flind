@@ -1,5 +1,5 @@
 import { Robot } from "@phosphor-icons/react";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@posthog/quill";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@flind/quill";
 import {
   LoadingIcon,
   type ToolViewProps,

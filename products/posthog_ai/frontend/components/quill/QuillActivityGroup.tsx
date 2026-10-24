@@ -1,5 +1,5 @@
 import { IconWrench } from '@posthog/icons'
-import { Button, cn } from '@posthog/quill-primitives'
+import { Button, cn } from '@flind/quill-primitives'
 
 import type { ToolInvocation } from '../../types/streamTypes'
 import { resolveToolCall } from '../../utils/toolResolver'

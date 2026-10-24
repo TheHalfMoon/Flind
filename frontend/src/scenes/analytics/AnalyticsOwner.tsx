@@ -1,4 +1,4 @@
-import { Avatar, AvatarFallback, Text, cn } from '@posthog/quill'
+import { Avatar, AvatarFallback, Text, cn } from '@flind/quill'
 
 import { fullName } from 'lib/utils/strings'
 

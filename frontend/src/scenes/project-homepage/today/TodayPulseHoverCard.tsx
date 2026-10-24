@@ -1,6 +1,6 @@
 import { type FocusEvent, type ReactNode, useCallback, useEffect, useRef, useState } from 'react'
 
-import { Popover, PopoverContent, PopoverTrigger } from '@posthog/quill'
+import { Popover, PopoverContent, PopoverTrigger } from '@flind/quill'
 
 import { pointerMovedRecently, trackPointer } from '~/layout/today/todayPointer'
 

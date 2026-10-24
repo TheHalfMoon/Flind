@@ -1,4 +1,4 @@
-import { Card, Separator, Skeleton, cn } from '@posthog/quill'
+import { Card, Separator, Skeleton, cn } from '@flind/quill'
 
 const CARD_FADES = [
     { wide: true, className: undefined },

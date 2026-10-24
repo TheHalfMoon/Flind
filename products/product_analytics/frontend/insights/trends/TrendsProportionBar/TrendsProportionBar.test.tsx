@@ -2,7 +2,7 @@ import '@testing-library/jest-dom'
 
 import { cleanup, waitFor } from '@testing-library/react'
 
-import { getHogChart, setupJsdom, setupSyncRaf } from '@posthog/quill-charts/testing'
+import { getHogChart, setupJsdom, setupSyncRaf } from '@flind/quill-charts/testing'
 
 import { NodeKind } from '~/queries/schema/schema-general'
 import { buildTrendsQuery, renderInsight } from '~/test/insight-testing'

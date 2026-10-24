@@ -1,7 +1,7 @@
 import { Popover } from "@base-ui/react/popover";
 import { CheckIcon, CopyIcon } from "@phosphor-icons/react";
 import { isPostHogObjectKind } from "@posthog/core/message-editor/content";
-import { Button } from "@posthog/quill";
+import { Button } from "@flind/quill";
 import { useOpenInboxReport } from "@posthog/ui/features/inbox/hooks/useOpenInboxReport";
 import { useQueryClient } from "@tanstack/react-query";
 import {

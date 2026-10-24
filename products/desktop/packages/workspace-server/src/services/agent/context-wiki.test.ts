@@ -6,7 +6,7 @@ import { type AuthenticatedFetch, prepareContextWiki } from "./context-wiki";
 
 const mockExecGit = vi.hoisted(() => vi.fn());
 
-vi.mock("@posthog/git/git-exec", () => ({
+vi.mock("@flind/git/git-exec", () => ({
   execGit: mockExecGit,
 }));
 

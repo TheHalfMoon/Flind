@@ -21,7 +21,7 @@ import {
   isAnthropicModelId,
   isRetiredModel,
   restrictedModelMeta,
-} from "@posthog/agent-contracts";
+} from "@flind/agent-contracts";
 import {
   compareModelsForPicker,
   DEFAULT_GATEWAY_MODEL,

@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { LemonButton, LemonSegmentedButton, LemonTable, LemonTag } from '@posthog/lemon-ui'
-import { Button } from '@posthog/quill'
+import { Button } from '@flind/quill'
 
 import { TZLabel } from 'lib/components/TZLabel'
 import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'

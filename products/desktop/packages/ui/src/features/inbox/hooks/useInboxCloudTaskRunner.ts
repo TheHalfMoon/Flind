@@ -1,4 +1,4 @@
-import { isSupportedReasoningEffort } from "@posthog/agent/adapters/reasoning-effort";
+import { isSupportedReasoningEffort } from "@flind/agent/adapters/reasoning-effort";
 import {
   REPORT_MODEL_RESOLVER,
   type ReportModelResolver,

@@ -1,4 +1,4 @@
-import { AutocompleteItem, type Button, cn } from "@posthog/quill";
+import { AutocompleteItem, type Button, cn } from "@flind/quill";
 import type { ComponentProps } from "react";
 
 /**

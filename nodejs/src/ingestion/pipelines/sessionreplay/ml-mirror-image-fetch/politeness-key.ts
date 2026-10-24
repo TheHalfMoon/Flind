@@ -6,11 +6,11 @@
  * runs. This loads the addon on first use rather than at import, so only a pod in this lane pays for
  * it. The mirror server defers it the same way.
  */
-let cached: typeof import('@posthog/replay-anonymizer') | undefined
+let cached: typeof import('@flind/replay-anonymizer') | undefined
 
-function addon(): typeof import('@posthog/replay-anonymizer') {
+function addon(): typeof import('@flind/replay-anonymizer') {
     if (!cached) {
-        const loaded = require('@posthog/replay-anonymizer') as typeof import('@posthog/replay-anonymizer')
+        const loaded = require('@flind/replay-anonymizer') as typeof import('@flind/replay-anonymizer')
         if (
             typeof loaded.politenessKey !== 'function' ||
             typeof loaded.isPublicHost !== 'function' ||
@@ -50,10 +50,10 @@ export function isPublicHost(host: string): boolean {
     return addon().isPublicHost(host)
 }
 
-export function canonicalizeUrl(url: string): import('@posthog/replay-anonymizer').CanonicalUrl | null {
+export function canonicalizeUrl(url: string): import('@flind/replay-anonymizer').CanonicalUrl | null {
     return addon().canonicalizeUrl(url)
 }
 
-export function tryCanonicalizeUrl(url: string): import('@posthog/replay-anonymizer').UrlPolicyVerdict {
+export function tryCanonicalizeUrl(url: string): import('@flind/replay-anonymizer').UrlPolicyVerdict {
     return addon().tryCanonicalizeUrl(url)
 }

@@ -1,4 +1,4 @@
-import { Badge, Button, Card, Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@posthog/quill'
+import { Badge, Button, Card, Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@flind/quill'
 
 import { Sources, customState, fresh, labels, variants } from './infrastructureTypes'
 

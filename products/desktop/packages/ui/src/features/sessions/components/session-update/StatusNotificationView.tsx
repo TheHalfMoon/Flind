@@ -1,5 +1,5 @@
 import { ArrowsClockwise, ShieldWarning } from "@phosphor-icons/react";
-import { ChatMarker, ChatMarkerContent } from "@posthog/quill";
+import { ChatMarker, ChatMarkerContent } from "@flind/quill";
 import { Spin, Spinner } from "@posthog/ui/primitives/Spinner";
 import { Box, Callout, Flex, Text } from "@radix-ui/themes";
 import { useEffect, useState } from "react";

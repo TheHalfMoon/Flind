@@ -1,6 +1,6 @@
 import { useCallback } from 'react'
 
-import type { ChartLegendConfig } from '@posthog/quill-charts'
+import type { ChartLegendConfig } from '@flind/quill-charts'
 
 import { captureLegendMenuAction } from './captureLegendMenuAction'
 import { ChartLegendSeriesMenu } from './ChartLegendSeriesMenu'

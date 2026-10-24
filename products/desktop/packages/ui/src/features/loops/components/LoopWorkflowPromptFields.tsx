@@ -1,4 +1,4 @@
-import { Textarea } from "@posthog/quill";
+import { Textarea } from "@flind/quill";
 import type { LoopFormValues } from "../loopFormTypes";
 import { Field } from "./LoopFormPrimitives";
 import { LoopTeamSkillsFields } from "./LoopTeamSkillsFields";

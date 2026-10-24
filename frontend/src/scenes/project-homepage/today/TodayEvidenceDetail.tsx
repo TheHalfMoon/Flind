@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 
 import { IconArrowRight, IconExternal } from '@posthog/icons'
-import { Button, Text, cn } from '@posthog/quill'
+import { Button, Text, cn } from '@flind/quill'
 
 import { dayjs } from 'lib/dayjs'
 import { LinkPrimitive } from 'lib/lemon-ui/Link'

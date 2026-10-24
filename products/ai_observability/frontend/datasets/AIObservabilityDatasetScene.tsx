@@ -5,7 +5,7 @@ import { useEffect } from 'react'
 
 import { IconArchive, IconArrowLeft, IconDownload, IconInfo } from '@posthog/icons'
 import { LemonBanner, LemonButton, LemonTag } from '@posthog/lemon-ui'
-import { Button } from '@posthog/quill'
+import { Button } from '@flind/quill'
 
 import { AccessControlAction } from 'lib/components/AccessControlAction'
 import { AccessDenied } from 'lib/components/AccessDenied'

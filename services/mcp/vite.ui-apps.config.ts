@@ -39,8 +39,8 @@ export default defineConfig({
             { find: '@posthog/mcp-ui', replacement: resolve(__dirname, 'src/ui-apps/lib') },
             // Resolve Quill explicitly so files imported via the `products` alias
             // (which live outside this package's node_modules tree) can find it.
-            // Match exact import (`@posthog/quill`) -> dist/index.js, but leave
-            // subpath imports (`@posthog/quill/tokens.css`, etc.) to fall through
+            // Match exact import (`@flind/quill`) -> dist/index.js, but leave
+            // subpath imports (`@flind/quill/tokens.css`, etc.) to fall through
             // to the package's exports map.
             {
                 find: /^@posthog\/quill$/,

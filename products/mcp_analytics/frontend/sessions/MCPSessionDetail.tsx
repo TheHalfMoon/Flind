@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 
 import { IconBolt, IconClock, IconSparkles, IconUser, IconWarning } from '@posthog/icons'
 import { LemonButton, LemonSkeleton, LemonTag } from '@posthog/lemon-ui'
-import { Button, Spinner } from '@posthog/quill-primitives'
+import { Button, Spinner } from '@flind/quill-primitives'
 
 import { AccessControlAction } from 'lib/components/AccessControlAction'
 import { CopyToClipboardInline } from 'lib/components/CopyToClipboard'

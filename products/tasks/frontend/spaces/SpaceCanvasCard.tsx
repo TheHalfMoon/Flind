@@ -1,4 +1,4 @@
-import { Card, ContextMenu, ContextMenuContent, ContextMenuTrigger, Text } from '@posthog/quill'
+import { Card, ContextMenu, ContextMenuContent, ContextMenuTrigger, Text } from '@flind/quill'
 
 import { LinkPrimitive } from 'lib/lemon-ui/Link'
 import { urls } from 'scenes/urls'

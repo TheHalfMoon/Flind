@@ -37,7 +37,7 @@ import {
   DialogTitle,
   Input,
   Text,
-} from "@posthog/quill";
+} from "@flind/quill";
 import type {
   ContextSourceState,
   ContextSources,

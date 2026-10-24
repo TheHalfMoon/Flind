@@ -23,7 +23,7 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
   MenuLabel,
-} from "@posthog/quill";
+} from "@flind/quill";
 import type { WorkspaceMode } from "@posthog/shared";
 import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
 import { useMeQuery } from "@posthog/ui/features/auth/useMeQuery";

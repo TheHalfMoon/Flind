@@ -1,6 +1,6 @@
 import type { ReactElement } from 'react'
 
-import { Badge, Button, Card, CardContent } from '@posthog/quill'
+import { Badge, Button, Card, CardContent } from '@flind/quill'
 
 export interface EmailTemplateEmail {
     subject?: string

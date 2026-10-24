@@ -1,4 +1,4 @@
-export { cn } from '@posthog/quill'
+export { cn } from '@flind/quill'
 
 export function formatDate(iso: string, includeTime = false): string {
     try {

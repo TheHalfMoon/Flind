@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 
-import { Autocomplete, AutocompleteClear, AutocompleteInput, AutocompleteList, cn } from '@posthog/quill'
+import { Autocomplete, AutocompleteClear, AutocompleteInput, AutocompleteList, cn } from '@flind/quill'
 
 export interface TodayPaneSearchListProps {
     query: string

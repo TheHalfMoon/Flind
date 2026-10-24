@@ -16,7 +16,7 @@ import {
   type SessionService,
 } from "@posthog/core/sessions/sessionService";
 import { useService } from "@posthog/di/react";
-import { Button } from "@posthog/quill";
+import { Button } from "@flind/quill";
 import type { TaskRun, TaskRunArtifact } from "@posthog/shared";
 import {
   getAuthIdentity,

@@ -7,7 +7,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
   Text,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { useProjectTaskFeeds } from "@posthog/ui/features/canvas/hooks/useProjectTaskFeeds";
 import { useNavigate } from "@tanstack/react-router";
 import type { ReactElement } from "react";

@@ -149,13 +149,13 @@ jobs:
                   errors: true
                   payload: |
                       channel: "${{ env.SLACK_CHANNEL }}"
-                      text: "${{ steps.meta.outputs.emoji }} @posthog/agent ${{ steps.meta.outputs.version }}: ${{ steps.meta.outputs.status }}"
+                      text: "${{ steps.meta.outputs.emoji }} @flind/agent ${{ steps.meta.outputs.version }}: ${{ steps.meta.outputs.status }}"
                       unfurl_links: false
                       blocks:
                         - type: "section"
                           text:
                             type: "mrkdwn"
-                            text: "${{ steps.meta.outputs.emoji }} *<https://www.npmjs.com/package/@posthog/agent/v/${{ steps.meta.outputs.version }}|@posthog/agent ${{ steps.meta.outputs.version }}>*"
+                            text: "${{ steps.meta.outputs.emoji }} *<https://www.npmjs.com/package/@flind/agent/v/${{ steps.meta.outputs.version }}|@flind/agent ${{ steps.meta.outputs.version }}>*"
                         - type: "section"
                           fields:
                             - type: "mrkdwn"
@@ -210,8 +210,8 @@ jobs:
                     done
                   else
                     gh release create "$TAG" "$tarball" "$checksum" --repo "$GITHUB_REPOSITORY" \
-                      --title "@posthog/agent ${AGENT_VERSION}" \
-                      --notes "https://www.npmjs.com/package/@posthog/agent/v/${AGENT_VERSION}" \
+                      --title "@flind/agent ${AGENT_VERSION}" \
+                      --notes "https://www.npmjs.com/package/@flind/agent/v/${AGENT_VERSION}" \
                       --latest=false
                   fi
                   echo "tarball_sha256=$TARBALL_SHA256" >> "$GITHUB_OUTPUT"

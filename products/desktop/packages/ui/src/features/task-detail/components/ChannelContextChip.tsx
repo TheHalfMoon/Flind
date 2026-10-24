@@ -6,7 +6,7 @@ import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 
 /**
  * The channel CONTEXT.md riding along with the prompt, pinned inside the

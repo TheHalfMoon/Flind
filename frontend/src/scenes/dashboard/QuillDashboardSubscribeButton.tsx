@@ -3,7 +3,7 @@ import { router } from 'kea-router'
 import posthog from 'posthog-js'
 
 import { IconBell } from '@posthog/icons'
-import { Button } from '@posthog/quill'
+import { Button } from '@flind/quill'
 
 import { subscriptionsLogic } from 'products/subscriptions/frontend/components/Subscriptions/subscriptionsLogic'
 import { urlForSubscriptions } from 'products/subscriptions/frontend/components/Subscriptions/utils'

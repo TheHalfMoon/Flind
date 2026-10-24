@@ -59,9 +59,9 @@ function load<T>(name: string): T[] {
     return loadDocument<T[]>(name)
 }
 
-let rustAddon: typeof import('@posthog/replay-anonymizer') | null = null
+let rustAddon: typeof import('@flind/replay-anonymizer') | null = null
 try {
-    rustAddon = require('@posthog/replay-anonymizer')
+    rustAddon = require('@flind/replay-anonymizer')
 } catch (e) {
     if (process.env.CI) {
         throw new Error(`replay-anonymizer addon failed to load; native parity cannot run in CI: ${String(e)}`)

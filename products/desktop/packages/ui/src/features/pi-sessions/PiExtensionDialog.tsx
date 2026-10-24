@@ -1,4 +1,4 @@
-import type { RpcExtensionUIResponse } from "@posthog/agent/pi/types";
+import type { RpcExtensionUIResponse } from "@flind/agent/pi/types";
 import type { PiExtensionDialogRequest } from "@posthog/core/pi-runtime/piExtensionStore";
 import {
   Button,
@@ -12,7 +12,7 @@ import {
   Input,
   Label,
   Textarea,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { type FormEvent, useId, useRef, useState } from "react";
 import { buildPiExtensionResponse } from "./piExtensionResponse";
 

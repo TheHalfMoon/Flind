@@ -1,4 +1,4 @@
-import { cn } from "@posthog/quill";
+import { cn } from "@flind/quill";
 
 /**
  * Unread counts read in the brand's primary — yellow in dark, orange in light —

@@ -9,7 +9,7 @@ import {
     ItemMedia,
     ItemTitle,
     Skeleton,
-} from '@posthog/quill-primitives'
+} from '@flind/quill-primitives'
 
 import { LinkPrimitive } from 'lib/lemon-ui/Link'
 

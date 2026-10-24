@@ -31,44 +31,44 @@ import {
   readPrUrls,
   sleepWithBackoff,
   toAcpMcpServers,
-} from "@posthog/agent-contracts";
-import { prependProductEngineerPrompt } from "@posthog/agent-contracts/product-engineer-prompt";
+} from "@flind/agent-contracts";
+import { prependProductEngineerPrompt } from "@flind/agent-contracts/product-engineer-prompt";
 import {
   appendRichOutputPrompt,
   getProjectWebUrl,
-} from "@posthog/agent-contracts/rich-output-prompt";
-import { execGh } from "@posthog/git/gh";
-import { getCurrentBranch, getRemoteUrl } from "@posthog/git/queries";
-import { ghTokenEnv } from "@posthog/git/signed-commit";
+} from "@flind/agent-contracts/rich-output-prompt";
+import { execGh } from "@flind/git/gh";
+import { getCurrentBranch, getRemoteUrl } from "@flind/git/queries";
+import { ghTokenEnv } from "@flind/git/signed-commit";
 import {
   AgentInstructionFiles,
   appendRepositoryConventionsForCodex,
-} from "@posthog/harness/extensions/agent-instructions";
+} from "@flind/harness/extensions/agent-instructions";
 import {
   appendBenjaminGuidance,
   BENJAMIN_UPSTREAM_COMMIT,
   isBenjaminEnabled,
-} from "@posthog/harness/extensions/benjamin";
-import { resolveGithubToken } from "@posthog/harness/extensions/local-tools";
+} from "@flind/harness/extensions/benjamin";
+import { resolveGithubToken } from "@flind/harness/extensions/local-tools";
 import {
   compilePostHogExecPermissionRegex,
   DEFAULT_POSTHOG_EXEC_PERMISSION_REGEX_SOURCE,
   extractPostHogSubTool,
   isPostHogExecDescriptor,
   matchesPostHogExecPermission,
-} from "@posthog/harness/extensions/posthog-mcp-policy";
-import { appendRtkGuidanceForCodex } from "@posthog/harness/extensions/rtk";
+} from "@flind/harness/extensions/posthog-mcp-policy";
+import { appendRtkGuidanceForCodex } from "@flind/harness/extensions/rtk";
 import {
   buildStoreSkillsInstructions,
   syncStoreSkills,
-} from "@posthog/harness/extensions/skills-store";
+} from "@flind/harness/extensions/skills-store";
 import {
   buildAttachedSkillsPrompt,
   buildCompactionContinuationPrompt,
   buildInstalledSkillPrompt,
   CloudTaskPrompt,
   parseLocalSkillInvocation,
-} from "@posthog/harness/extensions/task-system-prompt";
+} from "@flind/harness/extensions/task-system-prompt";
 import { unzipSync } from "fflate";
 import { Hono } from "hono";
 import { z } from "zod";

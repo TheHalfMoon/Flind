@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { Fragment } from 'react'
 
-import { Button, Skeleton, Text, TooltipProvider, cn } from '@posthog/quill'
+import { Button, Skeleton, Text, TooltipProvider, cn } from '@flind/quill'
 
 import { TodayChatRow } from './TodayChatRow'
 import { TodayListAppearanceDialog } from './TodayListAppearanceDialog'

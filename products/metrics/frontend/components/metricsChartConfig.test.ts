@@ -1,4 +1,4 @@
-import type { XAxisConfig, YAxisConfig } from '@posthog/quill-charts'
+import type { XAxisConfig, YAxisConfig } from '@flind/quill-charts'
 
 import type { MetricsDisplaySettings } from '~/queries/schema/schema-general'
 

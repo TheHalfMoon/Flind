@@ -8,8 +8,8 @@ export default defineConfig({
     plugins: [react(), tailwindcss(), dts({ tsconfigPath: resolve(__dirname, 'tsconfig.build.json') })],
     build: {
         lib: {
-            // `metric` is a separate entry (not part of the main barrel) so its `@posthog/quill-charts`
-            // dependency only loads for consumers that import `@posthog/quill-components/metric`.
+            // `metric` is a separate entry (not part of the main barrel) so its `@flind/quill-charts`
+            // dependency only loads for consumers that import `@flind/quill-components/metric`.
             entry: {
                 index: resolve(__dirname, 'src/index.ts'),
                 metric: resolve(__dirname, 'src/metric.tsx'),
@@ -22,9 +22,9 @@ export default defineConfig({
                 'react',
                 'react-dom',
                 'react/jsx-runtime',
-                '@posthog/quill-tokens',
-                '@posthog/quill-primitives',
-                '@posthog/quill-charts',
+                '@flind/quill-tokens',
+                '@flind/quill-primitives',
+                '@flind/quill-charts',
             ],
         },
         cssCodeSplit: false,

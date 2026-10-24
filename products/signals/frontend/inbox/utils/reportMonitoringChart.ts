@@ -1,4 +1,4 @@
-import type { GoalLineConfig, ReferenceLineProps } from '@posthog/quill-charts'
+import type { GoalLineConfig, ReferenceLineProps } from '@flind/quill-charts'
 
 import { dayjs } from 'lib/dayjs'
 

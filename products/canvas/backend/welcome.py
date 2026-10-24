@@ -37,7 +37,7 @@ import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { Info } from "lucide-react";
 
 const ITEMS = [

@@ -7,7 +7,7 @@ import type {
   SpendAnalysisFilledDay,
   SpendAnalysisResponse,
 } from "@posthog/core/billing/spendAnalysisTypes";
-import { MetricCard, useChartTheme } from "@posthog/quill-charts";
+import { MetricCard, useChartTheme } from "@flind/quill-charts";
 import type { ReactNode } from "react";
 import { spendDayLabel } from "./spendDayLabel";
 

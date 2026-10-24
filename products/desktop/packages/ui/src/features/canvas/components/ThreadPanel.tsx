@@ -38,7 +38,7 @@ import {
   ThreadItemGroup,
   ThreadItemGutter,
   ThreadItemHeader,
-} from "@posthog/quill";
+} from "@flind/quill";
 import type {
   Task,
   TaskThreadMessage,

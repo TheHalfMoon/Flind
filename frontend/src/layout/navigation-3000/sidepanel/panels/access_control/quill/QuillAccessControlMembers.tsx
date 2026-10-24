@@ -1,6 +1,6 @@
 import { useAsyncActions, useValues } from 'kea'
 
-import { Item, ItemActions, ItemContent, ItemDescription, ItemMedia, ItemTitle } from '@posthog/quill'
+import { Item, ItemActions, ItemContent, ItemDescription, ItemMedia, ItemTitle } from '@flind/quill'
 
 import { QuillPersonAvatar } from 'lib/components/QuillPersonAvatar/QuillPersonAvatar'
 import { fullName } from 'lib/utils/strings'

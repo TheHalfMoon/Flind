@@ -1,5 +1,5 @@
 import { ThumbsDownIcon, ThumbsUpIcon } from "@phosphor-icons/react";
-import { Button } from "@posthog/quill";
+import { Button } from "@flind/quill";
 import type { InboxReportFeedbackSentiment } from "@posthog/shared";
 import type { SignalReport } from "@posthog/shared/types";
 import {

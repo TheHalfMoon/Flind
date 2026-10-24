@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { Skeleton } from '@posthog/quill'
+import { Skeleton } from '@flind/quill'
 
 import { upgradeModalLogic } from 'lib/components/UpgradeModal/upgradeModalLogic'
 

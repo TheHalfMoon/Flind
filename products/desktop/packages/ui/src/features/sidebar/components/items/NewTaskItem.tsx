@@ -1,5 +1,5 @@
 import { Plus } from "@phosphor-icons/react";
-import { Badge } from "@posthog/quill";
+import { Badge } from "@flind/quill";
 import { SHORTCUTS } from "@posthog/ui/features/command/keyboard-shortcuts";
 import { isContentEmpty } from "@posthog/ui/features/message-editor/content";
 import { useDraftStore } from "@posthog/ui/features/message-editor/draftStore";

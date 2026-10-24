@@ -27,19 +27,19 @@ import {
   mcpToolKey,
   posthogToolMeta,
   serializeError,
-} from "@posthog/agent-contracts";
+} from "@flind/agent-contracts";
 import {
   buildContextWikiInstructions,
   type ContextWikiEnv,
   resolveContextWikiPath,
-} from "@posthog/harness/extensions/context-wiki";
-import { LOCAL_TOOLS_MCP_NAME } from "@posthog/harness/extensions/local-tools";
+} from "@flind/harness/extensions/context-wiki";
+import { LOCAL_TOOLS_MCP_NAME } from "@flind/harness/extensions/local-tools";
 import {
   extractPostHogSubTool,
   isPostHogExecDescriptor,
   matchesPostHogExecPermission,
   resolvePostHogExecPermissionRegex,
-} from "@posthog/harness/extensions/posthog-mcp-policy";
+} from "@flind/harness/extensions/posthog-mcp-policy";
 import {
   isMethod,
   type NativeGoalState,

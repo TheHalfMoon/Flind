@@ -4,7 +4,7 @@ import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { copyCanvasLink } from "@posthog/ui/features/canvas/utils/copyCanvasLink";
 import type { ReactElement } from "react";
 

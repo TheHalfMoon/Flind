@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { LemonBanner, LemonButton, Spinner } from '@posthog/lemon-ui'
-import { Button } from '@posthog/quill'
+import { Button } from '@flind/quill'
 
 import { CodeSnippet, Language } from 'lib/components/CodeSnippet'
 import { NotFound } from 'lib/components/NotFound'

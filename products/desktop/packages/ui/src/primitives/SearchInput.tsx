@@ -1,5 +1,5 @@
 import { MagnifyingGlassIcon } from "@phosphor-icons/react";
-import { Input } from "@posthog/quill";
+import { Input } from "@flind/quill";
 
 /** A search field with the glass on the left. One offset, one height, one place. */
 export function SearchInput({

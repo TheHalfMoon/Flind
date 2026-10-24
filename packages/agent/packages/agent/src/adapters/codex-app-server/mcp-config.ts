@@ -1,5 +1,5 @@
 import type { McpServer } from "@agentclientprotocol/sdk";
-import { isPostHogExecDescriptor } from "@posthog/harness/extensions/posthog-mcp-policy";
+import { isPostHogExecDescriptor } from "@flind/harness/extensions/posthog-mcp-policy";
 import { sanitizeMcpServerName } from "../claude/mcp/tool-metadata";
 
 interface CodexMcpServerToolConfig {

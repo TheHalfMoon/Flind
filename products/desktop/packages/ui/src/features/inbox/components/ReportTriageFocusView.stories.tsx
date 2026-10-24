@@ -1,5 +1,5 @@
 import { FileTextIcon } from "@phosphor-icons/react";
-import { Button } from "@posthog/quill";
+import { Button } from "@flind/quill";
 import { useRailSurface } from "@posthog/ui/features/canvas/hooks/useRailSurface";
 import { InboxDetailFrameView } from "@posthog/ui/features/inbox/components/InboxDetailFrameView";
 import { InboxPanePresentation } from "@posthog/ui/features/inbox/components/InboxPanePresentation";

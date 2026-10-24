@@ -13,7 +13,7 @@ import {
     DropdownMenuSubContent,
     DropdownMenuSubTrigger,
     DropdownMenuTrigger,
-} from '@posthog/quill-primitives'
+} from '@flind/quill-primitives'
 
 import {
     getCapabilityLadder,

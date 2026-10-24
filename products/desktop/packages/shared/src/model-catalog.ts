@@ -1,1 +1,1 @@
-export * from "@posthog/agent-contracts/model-catalog";
+export * from "@flind/agent-contracts/model-catalog";

@@ -1,5 +1,5 @@
 import { Lock } from "@phosphor-icons/react";
-import { Badge, Button, Text } from "@posthog/quill";
+import { Badge, Button, Text } from "@flind/quill";
 import {
   isImageBuildFailed,
   isImageBuildInProgress,

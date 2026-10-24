@@ -1,6 +1,6 @@
 import { useId } from 'react'
 
-import { useChartLayout } from '@posthog/quill-charts'
+import { useChartLayout } from '@flind/quill-charts'
 
 import { dayjs } from 'lib/dayjs'
 

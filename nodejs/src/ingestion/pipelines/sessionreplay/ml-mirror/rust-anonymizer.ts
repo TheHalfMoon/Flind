@@ -1,4 +1,4 @@
-type RustAnonymizer = typeof import('@posthog/replay-anonymizer')
+type RustAnonymizer = typeof import('@flind/replay-anonymizer')
 
 let rustAnonymizer: RustAnonymizer | undefined
 
@@ -6,7 +6,7 @@ let rustAnonymizer: RustAnonymizer | undefined
 // missing addon only breaks the native path, not every import of this module).
 export function getRustAnonymizer(): RustAnonymizer {
     if (!rustAnonymizer) {
-        rustAnonymizer = require('@posthog/replay-anonymizer') as RustAnonymizer
+        rustAnonymizer = require('@flind/replay-anonymizer') as RustAnonymizer
     }
     return rustAnonymizer
 }

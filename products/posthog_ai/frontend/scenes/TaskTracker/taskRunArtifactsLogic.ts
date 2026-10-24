@@ -16,7 +16,7 @@ import { loaders } from 'kea-loaders'
 import { actionToUrl, beforeUnload, router, urlToAction } from 'kea-router'
 import posthog from 'posthog-js'
 
-import { toast } from '@posthog/quill-primitives'
+import { toast } from '@flind/quill-primitives'
 
 import api from 'lib/api'
 import { projectLogic } from 'scenes/projectLogic'

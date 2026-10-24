@@ -1,4 +1,4 @@
-import { themeDefaultsFromCssVars } from '@posthog/quill-charts'
+import { themeDefaultsFromCssVars } from '@flind/quill-charts'
 
 import { getGraphColors, getSeriesColorPalette } from 'lib/colors'
 

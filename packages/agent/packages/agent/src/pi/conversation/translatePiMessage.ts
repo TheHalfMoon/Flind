@@ -16,11 +16,11 @@ import {
   type PiToolName,
   parsePiMcpCallDetails,
   posthogToolMeta,
-} from "@posthog/agent-contracts";
+} from "@flind/agent-contracts";
 import type {
   McpCallDetails,
   McpResultMeta,
-} from "@posthog/harness/extensions/mcp/tool-bridge";
+} from "@flind/harness/extensions/mcp/tool-bridge";
 import { z } from "zod";
 import { bashTranslator } from "./tools/bashTranslator";
 import { editTranslator } from "./tools/editTranslator";

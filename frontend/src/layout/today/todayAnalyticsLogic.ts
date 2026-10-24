@@ -2,7 +2,7 @@ import { MakeLogicType, actions, connect, kea, listeners, path, reducers, select
 import { subscriptions } from 'kea-subscriptions'
 import posthog from 'posthog-js'
 
-import { toast } from '@posthog/quill'
+import { toast } from '@flind/quill'
 
 import api from 'lib/api'
 import { FeatureFlagsSet, featureFlagLogic } from 'lib/logic/featureFlagLogic'

@@ -4,7 +4,7 @@ import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { useCloseReport } from "@posthog/ui/features/inbox/hooks/useCloseReport";
 import type { ReactElement } from "react";
 

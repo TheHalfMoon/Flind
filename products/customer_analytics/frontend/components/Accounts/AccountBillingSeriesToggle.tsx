@@ -1,5 +1,5 @@
 import { LemonButton, LemonSnack } from '@posthog/lemon-ui'
-import type { LegendItem } from '@posthog/quill-charts'
+import type { LegendItem } from '@flind/quill-charts'
 
 import { LemonColorGlyph } from 'lib/lemon-ui/LemonColor/LemonColorGlyph'
 import { cn } from 'lib/utils/css-classes'

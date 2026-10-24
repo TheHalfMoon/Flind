@@ -1,5 +1,5 @@
 import { IconBug } from '@posthog/icons'
-import { Button, Label, Switch, Tooltip, TooltipContent, TooltipTrigger } from '@posthog/quill'
+import { Button, Label, Switch, Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill'
 
 import { AccessControlAction } from 'lib/components/AccessControlAction'
 

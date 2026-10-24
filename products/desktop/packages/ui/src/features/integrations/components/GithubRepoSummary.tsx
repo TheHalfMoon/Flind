@@ -7,7 +7,7 @@ import {
 } from "@phosphor-icons/react";
 import type { GithubRepoAccessSummary } from "@posthog/core/settings/githubRepoSummary";
 import { formatRepoPreview } from "@posthog/core/settings/githubRepoSummary";
-import { Button, Text } from "@posthog/quill";
+import { Button, Text } from "@flind/quill";
 import { Spinner } from "@posthog/ui/primitives/Spinner";
 import type { ReactNode } from "react";
 import { useState } from "react";

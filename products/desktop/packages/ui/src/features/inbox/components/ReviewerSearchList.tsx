@@ -1,7 +1,7 @@
 import { CheckIcon, MagnifyingGlassIcon } from "@phosphor-icons/react";
 import { toSuggestedReviewerWriteContent } from "@posthog/core/inbox/artefacts";
 import { selectSuggestedReviewersArtefact } from "@posthog/core/inbox/reportArtefacts";
-import { Button } from "@posthog/quill";
+import { Button } from "@flind/quill";
 import type { InboxReportActionSurface } from "@posthog/shared/analytics-events";
 import type {
   AvailableSuggestedReviewer,

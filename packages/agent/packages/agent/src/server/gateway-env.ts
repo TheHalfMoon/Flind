@@ -7,7 +7,7 @@ import {
   buildPosthogScopedPropertyHeaderRecord,
   buildPosthogSessionHeaderLines,
   buildPosthogSessionHeaderRecord,
-} from "@posthog/agent-contracts/posthog-property-headers";
+} from "@flind/agent-contracts/posthog-property-headers";
 import type { GatewayEnv } from "../adapters/claude/session/options";
 import type { Task } from "../types";
 import {

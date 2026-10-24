@@ -1,12 +1,12 @@
 import {
   piRpcCommandSchema,
   piRpcResponseSchema,
-} from "@posthog/agent/pi/rpc-transport";
+} from "@flind/agent/pi/rpc-transport";
 import {
   PI_THINKING_LEVELS,
   piExtensionEventSchema,
   type RpcExtensionUIResponse,
-} from "@posthog/agent/pi/types";
+} from "@flind/agent/pi/types";
 import { z } from "zod";
 
 export { piExtensionEventSchema, piRpcResponseSchema };

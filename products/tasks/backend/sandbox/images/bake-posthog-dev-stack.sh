@@ -366,7 +366,7 @@ chmod +x /usr/local/bin/bootstrap-dev-stack
 /usr/bin/python3 -I /opt/posthog/task-filesystem.py seed-home
 
 mkdir -p "$(dirname "$BAKE_MANIFEST")"
-BAKED_AGENT_VERSION=$(node -p "require('/scripts/node_modules/@posthog/agent/package.json').version")
+BAKED_AGENT_VERSION=$(node -p "require('/scripts/node_modules/@flind/agent/package.json').version")
 export BAKED_SHA BAKE_MANIFEST BAKED_AGENT_VERSION
 python3 -c 'import json, os; from datetime import datetime, timezone; json.dump({"baked_at": datetime.now(timezone.utc).isoformat(), "posthog_sha": os.environ["BAKED_SHA"], "agent_version": os.environ["BAKED_AGENT_VERSION"], "base_reference": os.environ.get("DEV_STACK_BASE_REFERENCE"), "recipe_sha": os.environ.get("DEV_STACK_RECIPE_SHA"), "bootstrap": "bootstrap-dev-stack"}, open(os.environ["BAKE_MANIFEST"], "w"))'
 log "bake complete at $BAKED_SHA"

@@ -94,7 +94,7 @@ A browser-style tab strip across the top of the Channels space, rendered in the 
 
 ### UI (matches the mockup, quill primitives)
 - Tab strip renders in the title bar: traffic-light region, a history/clock control, `< >` back/forward, the pill tab row, and a `+` button.
-- All controls are `@posthog/quill` `Button`s — icon buttons use `size="icon-sm"` with an outline/ghost variant for the `< >`, clock, and `+`; the `< >` reuse the existing disabled-when-unavailable logic. Channel-on-hover uses quill `Tooltip`. Active vs inactive pill styling (elevated white vs muted gray) is applied via className on the tab element. Icons come from `@phosphor-icons/react` (same set as `iconForTemplate`).
+- All controls are `@flind/quill` `Button`s — icon buttons use `size="icon-sm"` with an outline/ghost variant for the `< >`, clock, and `+`; the `< >` reuse the existing disabled-when-unavailable logic. Channel-on-hover uses quill `Tooltip`. Active vs inactive pill styling (elevated white vs muted gray) is applied via className on the tab element. Icons come from `@phosphor-icons/react` (same set as `iconForTemplate`).
 
 ## Testing Decisions
 

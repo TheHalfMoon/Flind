@@ -1,7 +1,7 @@
 /**
  * PostHog Design System — Data-visualization tokens
  *
- * Two kinds of token live here, both consumed by `@posthog/quill-charts`
+ * Two kinds of token live here, both consumed by `@flind/quill-charts`
  * (charts ship no CSS — they read these vars into a `ChartTheme` at runtime):
  *
  *  1. A **categorical palette** (`--data-color-1..N`) — an ordered, qualitative

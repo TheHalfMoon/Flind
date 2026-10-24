@@ -20,7 +20,7 @@ import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import type { SignalReport } from "@posthog/shared/types";
 import { RefundReportDialog } from "@posthog/ui/features/inbox/components/RefundReportDialog";
 import { ReportChatToggle } from "@posthog/ui/features/inbox/components/ReportChatToggle";

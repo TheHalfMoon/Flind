@@ -3,7 +3,7 @@ import posthog from 'posthog-js'
 
 import { IconBell, IconRefresh } from '@posthog/icons'
 import { LemonBanner, LemonButton, LemonTag, Link } from '@posthog/lemon-ui'
-import { Button } from '@posthog/quill'
+import { Button } from '@flind/quill'
 
 import { dayjs } from 'lib/dayjs'
 import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'

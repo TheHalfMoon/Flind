@@ -11,7 +11,7 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
     Spinner,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'
 import { getAccessControlDisabledReason } from 'lib/utils/accessControlUtils'

@@ -5,7 +5,7 @@ import type {
   PiSessionStatus,
   PiThinkingLevel,
   PiUsageStats,
-} from "@posthog/agent/pi/types";
+} from "@flind/agent/pi/types";
 import type {
   AgentConversationEvent,
   GatewayLimitCause,

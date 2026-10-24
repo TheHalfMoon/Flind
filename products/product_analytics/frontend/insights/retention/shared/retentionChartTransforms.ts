@@ -8,7 +8,7 @@ import type {
     TrendLineConfig,
     XAxisConfig,
     YAxisConfig,
-} from '@posthog/quill-charts'
+} from '@flind/quill-charts'
 
 import { schemaGoalLinesToConfigs } from 'products/product_analytics/frontend/insights/trends/shared/goalLinesAdapter'
 import type { GoalLineLike } from 'products/product_analytics/frontend/insights/trends/shared/trendsChartDisplayOptions'

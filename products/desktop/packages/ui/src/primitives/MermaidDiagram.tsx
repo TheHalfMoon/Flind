@@ -1,4 +1,4 @@
-import { cn } from "@posthog/quill";
+import { cn } from "@flind/quill";
 import { CodeBlock } from "@posthog/ui/primitives/CodeBlock";
 import { LoadingState } from "@posthog/ui/primitives/LoadingState";
 import { useThemeStore } from "@posthog/ui/shell/themeStore";

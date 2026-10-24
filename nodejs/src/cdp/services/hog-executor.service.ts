@@ -1,7 +1,7 @@
 import { DateTime } from 'luxon'
 import { Histogram } from 'prom-client'
 
-import { ExecResult, convertHogToJS } from '@posthog/hogvm'
+import { ExecResult, convertHogToJS } from '@flind/logicvm'
 
 import { instrumented } from '~/common/tracing/tracing-utils'
 import { logger } from '~/common/utils/logger'

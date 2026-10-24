@@ -1,4 +1,4 @@
-import { ChatMarker, ChatMarkerContent } from "@posthog/quill";
+import { ChatMarker, ChatMarkerContent } from "@flind/quill";
 
 export function ConversationClearedView() {
   return (

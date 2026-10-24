@@ -1,6 +1,6 @@
 import { type ReactElement, type ReactNode } from 'react'
 
-import { Button, Card, CardContent, Switch } from '@posthog/quill'
+import { Button, Card, CardContent, Switch } from '@flind/quill'
 
 export interface WorkflowSendingRulesData {
     project_id: number

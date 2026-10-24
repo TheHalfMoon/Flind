@@ -2,7 +2,7 @@ import { useValues } from 'kea'
 import { useMemo } from 'react'
 
 import { LemonSkeleton } from '@posthog/lemon-ui'
-import { TimeSeriesBarChart, useChartTheme, type TimeInterval } from '@posthog/quill-charts'
+import { TimeSeriesBarChart, useChartTheme, type TimeInterval } from '@flind/quill-charts'
 
 import { Section } from '../components/Section'
 import { doraLogic } from './doraLogic'

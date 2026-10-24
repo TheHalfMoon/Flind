@@ -2,7 +2,7 @@ import type {
   ExtensionAPI,
   ToolCallEvent,
 } from "@earendil-works/pi-coding-agent";
-import type { McpToolPermissionDecision } from "@posthog/agent-contracts";
+import type { McpToolPermissionDecision } from "@flind/agent-contracts";
 import { describe, expect, it, vi } from "vitest";
 import { createPosthogMcpPolicyExtension } from "./extension";
 

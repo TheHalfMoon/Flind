@@ -1,6 +1,6 @@
 import { cleanup, render, screen, waitFor } from '@testing-library/react'
 
-import { getHogChart, setupJsdom, setupSyncRaf } from '@posthog/quill-charts/testing'
+import { getHogChart, setupJsdom, setupSyncRaf } from '@flind/quill-charts/testing'
 
 import { useMocks } from '~/mocks/jest'
 import { initKeaTests } from '~/test/init'

@@ -15,7 +15,7 @@ import {
     Tooltip,
     TooltipContent,
     TooltipTrigger,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import { DateFilter } from 'lib/components/DateFilter/DateFilter'
 

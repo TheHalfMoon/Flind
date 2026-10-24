@@ -1,10 +1,10 @@
-import { createGitClient } from "@posthog/git/client";
+import { createGitClient } from "@flind/git/client";
 import {
   CaptureCheckpointSaga,
   deleteCheckpoint,
   RevertCheckpointSaga,
-} from "@posthog/git/sagas/checkpoint";
-import { type WorktreeInfo, WorktreeManager } from "@posthog/git/worktree";
+} from "@flind/git/sagas/checkpoint";
+import { type WorktreeInfo, WorktreeManager } from "@flind/git/worktree";
 import type { SagaLogger } from "@posthog/shared";
 
 export interface RestoreWorktreeFromCheckpointParams {

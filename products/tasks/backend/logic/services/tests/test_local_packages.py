@@ -66,8 +66,8 @@ class TestGetLocalPosthogCodePackages:
             packages = get_local_posthog_code_packages()
         assert packages is not None
         assert [p.name for p in packages] == list(PACKAGE_NAMES)
-        assert packages[0].sandbox_install_path == "/scripts/node_modules/@posthog/agent"
-        assert packages[0].sandbox_build_output_path == "/scripts/node_modules/@posthog/agent/dist"
+        assert packages[0].sandbox_install_path == "/scripts/node_modules/@flind/agent"
+        assert packages[0].sandbox_build_output_path == "/scripts/node_modules/@flind/agent/dist"
         assert packages[0].build_output_path == fake_monorepo / "packages" / "agent" / "dist"
 
 
@@ -92,7 +92,7 @@ def test_resolves_default_catalog_runtime_dependencies(fake_monorepo: Path) -> N
     package = LocalPackage(
         name="agent",
         source_path=agent_source_path,
-        sandbox_install_path="/scripts/node_modules/@posthog/agent",
+        sandbox_install_path="/scripts/node_modules/@flind/agent",
     )
 
     assert get_local_package_runtime_dependencies((package,)) == {
@@ -113,7 +113,7 @@ def test_keeps_registry_versions_and_skips_workspace_dependencies(fake_monorepo:
     package = LocalPackage(
         name="agent",
         source_path=agent_source_path,
-        sandbox_install_path="/scripts/node_modules/@posthog/agent",
+        sandbox_install_path="/scripts/node_modules/@flind/agent",
     )
 
     assert get_local_package_runtime_dependencies((package,)) == {"agent": {"registry-runtime": "^4.5.6"}}
@@ -125,7 +125,7 @@ def test_rejects_manifest_with_non_object_dependencies(fake_monorepo: Path) -> N
     package = LocalPackage(
         name="agent",
         source_path=agent_source_path,
-        sandbox_install_path="/scripts/node_modules/@posthog/agent",
+        sandbox_install_path="/scripts/node_modules/@flind/agent",
     )
 
     with pytest.raises(ValueError, match="Expected dependencies to be an object"):

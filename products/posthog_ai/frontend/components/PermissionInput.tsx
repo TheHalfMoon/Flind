@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { Suspense, useEffect, useRef, useState } from 'react'
 
 import { IconWarning } from '@posthog/icons'
-import { Button } from '@posthog/quill-primitives'
+import { Button } from '@flind/quill-primitives'
 import { PostHogErrorBoundary } from '@posthog/react'
 
 import { CodeSnippet, Language } from 'lib/components/CodeSnippet'

@@ -45,26 +45,26 @@ import {
   type SDKUserMessage,
   type SlashCommand,
 } from "@anthropic-ai/claude-agent-sdk";
-import { leadingSlashCommand, serializeError } from "@posthog/agent-contracts";
-import type { ContextWikiEnv } from "@posthog/harness/extensions/context-wiki";
+import { leadingSlashCommand, serializeError } from "@flind/agent-contracts";
+import type { ContextWikiEnv } from "@flind/harness/extensions/context-wiki";
 import {
   createEnrichment,
   type Enrichment,
   type FileEnrichmentDeps,
-} from "@posthog/harness/extensions/enrichment";
+} from "@flind/harness/extensions/enrichment";
 import {
   isCloudRun,
   LOCAL_TOOLS_MCP_NAME,
   type LocalToolCtx,
   resolveGithubToken,
-} from "@posthog/harness/extensions/local-tools";
+} from "@flind/harness/extensions/local-tools";
 import {
   classifyPostHogExecCall,
   isUnclassifiedPostHogSubTool,
   POSTHOG_PRODUCTS,
   type PostHogProductId,
   resolvePostHogExecPermissionRegex,
-} from "@posthog/harness/extensions/posthog-mcp-policy";
+} from "@flind/harness/extensions/posthog-mcp-policy";
 import { v7 as uuidv7 } from "uuid";
 import packageJson from "../../../package.json" with { type: "json" };
 import {

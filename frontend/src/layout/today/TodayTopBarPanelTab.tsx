@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { ComponentType, useState } from 'react'
 
 import { IconPulse, IconSparkles } from '@posthog/icons'
-import { Button, Kbd, Tooltip, TooltipContent, TooltipTrigger } from '@posthog/quill'
+import { Button, Kbd, Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill'
 
 import { sidePanelNotificationsLogic } from '~/layout/navigation-3000/sidepanel/panels/activity/sidePanelNotificationsLogic'
 import { SIDE_PANEL_TABS } from '~/layout/navigation-3000/sidepanel/sidePanelTabs'

@@ -2,7 +2,7 @@ import {
   type FeedQuerySegment,
   lexFeedQuery,
 } from "@posthog/core/tasks/feedQuery";
-import { cn, Kbd } from "@posthog/quill";
+import { cn, Kbd } from "@flind/quill";
 import {
   FeedQueryMatchedLabel,
   useFeedQuerySuggestions,

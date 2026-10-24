@@ -10,7 +10,7 @@ import {
     DropdownMenuLabel,
     DropdownMenuSeparator,
     DropdownMenuTrigger,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import { newAccountMenuLogic } from 'lib/components/Account/newAccountMenuLogic'
 import { ProfilePicture } from 'lib/lemon-ui/ProfilePicture/ProfilePicture'

@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 
 import { IconPlus, IconPlusSmall, IconRefresh } from '@posthog/icons'
 import { LemonButton, LemonSelect } from '@posthog/lemon-ui'
-import { Button } from '@posthog/quill'
+import { Button } from '@flind/quill'
 
 import { NotFound } from 'lib/components/NotFound'
 import { TZLabel } from 'lib/components/TZLabel'

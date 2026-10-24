@@ -156,7 +156,7 @@ via Kafka, cost)_
   (master's `llm_skill:read` + `user:read`; no `project:read`). All PR-75215 report rows deleted; DB clean.
 - Local state left in place: the monorepo (`$LOCAL_POSTHOG_CODE_MONOREPO_ROOT`) still carries the
   kimi `models.ts` entry + rebuilt `dist/` (separate repo, not in the posthog commit; harmless — revert
-  `models.ts` + `pnpm --filter @posthog/agent build` to make it pristine). `.env` kimi Modal creds kept.
+  `models.ts` + `pnpm --filter @flind/agent build` to make it pristine). `.env` kimi Modal creds kept.
 - Cost: **~$80 total** (R1 $27.2, R2 $34.9, V1 $7.2, V2 $10.9).
 
 ## Follow-up runs (2026-09-02) — a 3rd reviewer sample + the Sol@xhigh question

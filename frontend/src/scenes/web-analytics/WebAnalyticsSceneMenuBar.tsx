@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { router } from 'kea-router'
 
 import { IconBolt, IconDownload, IconGear, IconSearch, IconSparkles, IconStar, IconTarget, IconX } from '@posthog/icons'
-import { Badge, Tooltip, TooltipContent, TooltipTrigger } from '@posthog/quill'
+import { Badge, Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill'
 
 import { sceneFileLogic } from 'lib/components/Scenes/sceneFileLogic'
 import { SceneMenuBarFileItems } from 'lib/components/Scenes/SceneMenuBarFileItems'

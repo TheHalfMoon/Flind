@@ -20,7 +20,7 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
   ThreadItemGroup,
-} from "@posthog/quill";
+} from "@flind/quill";
 import type {
   Task,
   TaskCommentThreadSummary,

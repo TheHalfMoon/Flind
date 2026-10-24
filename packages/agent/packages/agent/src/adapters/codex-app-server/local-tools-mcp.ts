@@ -6,14 +6,14 @@
  */
 
 import type { McpServerStdio } from "@agentclientprotocol/sdk";
-import { ghTokenEnv } from "@posthog/git/signed-commit";
+import { ghTokenEnv } from "@flind/git/signed-commit";
 import {
   enabledLocalTools,
   LOCAL_TOOLS_MCP_NAME,
   type LocalToolCtx,
   type LocalToolGateMeta,
   resolveGithubToken,
-} from "@posthog/harness/extensions/local-tools";
+} from "@flind/harness/extensions/local-tools";
 import { isTaskRunSandbox } from "../../server/memory-watchdog";
 import { resolveBundledMcpScript } from "../../utils/resolve-bundled-script";
 import { resolveTaskId } from "../session-meta";

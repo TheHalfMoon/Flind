@@ -10,7 +10,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@posthog/quill";
+} from "@flind/quill";
 import {
   INBOX_PRIORITY_OPTIONS,
   INBOX_REPORT_STATE_OPTIONS,

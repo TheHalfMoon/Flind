@@ -1,6 +1,6 @@
 import { type ReactNode, useCallback, useMemo } from 'react'
 
-import { BarList, type BarListConfig, type ChartTheme, type Series, type TooltipContext } from '@posthog/quill-charts'
+import { BarList, type BarListConfig, type ChartTheme, type Series, type TooltipContext } from '@flind/quill-charts'
 
 import { Link } from 'lib/lemon-ui/Link'
 

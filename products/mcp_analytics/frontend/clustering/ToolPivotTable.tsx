@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { Tooltip } from '@posthog/lemon-ui'
-import { Button, Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@posthog/quill-primitives'
+import { Button, Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@flind/quill-primitives'
 
 import { humanFriendlyNumber } from 'lib/utils/numbers'
 

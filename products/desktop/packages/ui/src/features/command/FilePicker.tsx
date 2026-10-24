@@ -9,7 +9,7 @@ import {
   AutocompleteStatus,
   Dialog,
   DialogContent,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { CommandKeyHints } from "@posthog/ui/features/command/CommandKeyHints";
 import {
   buildRecentFileSections,

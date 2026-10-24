@@ -1,4 +1,4 @@
-import { Button } from "@posthog/quill";
+import { Button } from "@flind/quill";
 import type { ReactNode } from "react";
 
 /**

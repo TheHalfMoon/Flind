@@ -1,8 +1,8 @@
 import { useValues } from 'kea'
 import { useMemo } from 'react'
 
-import { TimeSeriesLineChart } from '@posthog/quill-charts'
-import type { Series, TimeSeriesLineChartConfig } from '@posthog/quill-charts'
+import { TimeSeriesLineChart } from '@flind/quill-charts'
+import type { Series, TimeSeriesLineChartConfig } from '@flind/quill-charts'
 
 import { useChartTheme } from 'lib/charts/hooks'
 

@@ -1,4 +1,4 @@
-import { Tooltip, TooltipContent, TooltipTrigger } from "@posthog/quill";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@flind/quill";
 import type { SignalReportActionability } from "@posthog/shared/domain-types";
 import { InboxBadge } from "@posthog/ui/features/inbox/components/utils/InboxBadge";
 import type { ReactNode } from "react";

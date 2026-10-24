@@ -165,7 +165,7 @@ class TestDetectTestType:
 
     @parameterized.expand(
         [
-            ("common/hogvm/typescript/src/__tests__/execute.test.ts", "@posthog/hogvm"),
+            ("common/hogvm/typescript/src/__tests__/execute.test.ts", "@flind/logicvm"),
             ("common/replay-shared/src/replay.test.ts", "@flind/replay-shared"),
             ("common/replay-headless/src/render.test.ts", "@flind/replay-headless"),
         ]

@@ -3,7 +3,7 @@ import {
   GitPullRequestIcon,
   TextAlignLeftIcon,
 } from "@phosphor-icons/react";
-import { parseGithubUrl } from "@posthog/git/utils";
+import { parseGithubUrl } from "@flind/git/utils";
 import {
   Button,
   Empty,
@@ -11,7 +11,7 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { MarkdownRenderer } from "@posthog/ui/features/editor/components/MarkdownRenderer";
 import { DetailSection } from "@posthog/ui/features/inbox/components/DetailSection";
 import { Spinner } from "@posthog/ui/primitives/Spinner";

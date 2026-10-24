@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 
 import { IconWarning } from '@posthog/icons'
-import { Button, Item, ItemContent, ItemDescription, ItemMedia, ItemTitle } from '@posthog/quill'
+import { Button, Item, ItemContent, ItemDescription, ItemMedia, ItemTitle } from '@flind/quill'
 
 import { incidentStatusLogic } from 'lib/components/HelpMenu/incidentStatusLogic'
 

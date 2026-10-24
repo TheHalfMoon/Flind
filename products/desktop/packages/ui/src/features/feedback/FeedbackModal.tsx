@@ -21,7 +21,7 @@ import {
   SelectValue,
   Text,
   Textarea,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { formatHotkey } from "@posthog/ui/features/command/keyboard-shortcuts";
 import { FEEDBACK_SOURCE_BY_MODE } from "@posthog/ui/features/feedback/feedbackSurvey";
 import { toast } from "@posthog/ui/primitives/toast";

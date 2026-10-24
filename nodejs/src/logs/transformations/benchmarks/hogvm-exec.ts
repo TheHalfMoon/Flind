@@ -1,4 +1,4 @@
-import { ExecResult, convertHogToJS } from '@posthog/hogvm'
+import { ExecResult, convertHogToJS } from '@flind/logicvm'
 
 import { execHogImmediate } from '~/cdp/utils/hog-exec'
 

@@ -23,7 +23,7 @@ import {
   EmptyMedia,
   EmptyTitle,
   Text as QuillText,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { ANALYTICS_EVENTS, type WorkspaceMode } from "@posthog/shared";
 import type { Task } from "@posthog/shared/domain-types";
 import { FreeformCanvasView } from "@posthog/ui/features/canvas/freeform/FreeformCanvasView";

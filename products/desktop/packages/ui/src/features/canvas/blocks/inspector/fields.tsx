@@ -9,7 +9,7 @@ import {
   Textarea,
   ToggleGroup,
   ToggleGroupItem,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { settingsToggleItemClassName } from "@posthog/ui/features/settings/components/SettingsSegmented";
 import { type ReactNode, useEffect, useId, useState } from "react";
 

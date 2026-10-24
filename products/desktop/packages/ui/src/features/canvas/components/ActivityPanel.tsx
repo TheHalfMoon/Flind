@@ -3,7 +3,7 @@ import {
   CaretRightIcon,
   XIcon,
 } from "@phosphor-icons/react";
-import { Button, Tabs, TabsList, TabsTrigger } from "@posthog/quill";
+import { Button, Tabs, TabsList, TabsTrigger } from "@flind/quill";
 import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
 import type { Task } from "@posthog/shared/domain-types";
 import {

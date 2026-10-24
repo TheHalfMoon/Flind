@@ -9,7 +9,7 @@ import {
   activityCanvasId,
   type TaskActivityItem,
 } from "@posthog/core/canvas/taskActivity";
-import { Avatar, AvatarFallback, Badge, Button, cn } from "@posthog/quill";
+import { Avatar, AvatarFallback, Badge, Button, cn } from "@flind/quill";
 import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
 import type { UserBasic } from "@posthog/shared/domain-types";
 import { UserAvatar } from "@posthog/ui/features/auth/UserAvatar";

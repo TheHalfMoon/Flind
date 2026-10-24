@@ -7,7 +7,7 @@ import {
   type SignedCommitResult,
   type SignedMergeInput,
   type SignedRewriteInput,
-} from "@posthog/git/signed-commit";
+} from "@flind/git/signed-commit";
 import { z } from "zod";
 import { qualifiedLocalToolName } from "./registry";
 import { reportSignedCommitActivity } from "./signed-commit-artefacts";

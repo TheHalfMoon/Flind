@@ -38,7 +38,7 @@ IN_FLIGHT_TURN_IDLE_TIMEOUT_SECONDS = 10 * 60  # 10 minutes
 # follows up within a couple of minutes or walks away. Holding the sandbox for the full
 # background window bills idle compute for the walk-away case, and a follow-up that lands
 # after the window is cheap now that a fresh sandbox rebuilds the prior session from the
-# run log (`@posthog/agent` hydrates it and resumes natively) rather than replaying a
+# run log (`@flind/agent` hydrates it and resumes natively) rather than replaying a
 # summary of the conversation.
 POSTHOG_AI_IDLE_TIMEOUT_SECONDS = 10 * 60  # 10 minutes
 

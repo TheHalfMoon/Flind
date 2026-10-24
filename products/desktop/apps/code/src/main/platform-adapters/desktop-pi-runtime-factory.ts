@@ -1,4 +1,4 @@
-import { PiRuntime } from "@posthog/agent/pi/runtime";
+import { PiRuntime } from "@flind/agent/pi/runtime";
 import {
   PI_RPC_CLIENT_FACTORY,
   type PiRpcClientFactory,

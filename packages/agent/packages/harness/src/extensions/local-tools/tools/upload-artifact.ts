@@ -1,6 +1,6 @@
 import { readFile, realpath, stat } from "node:fs/promises";
 import path from "node:path";
-import type { TaskRunArtifact } from "@posthog/agent-contracts";
+import type { TaskRunArtifact } from "@flind/agent-contracts";
 import { z } from "zod";
 import { defineLocalTool, type LocalToolResult } from "../registry";
 import { createSandboxPosthogClient } from "../signed-commit-artefacts";

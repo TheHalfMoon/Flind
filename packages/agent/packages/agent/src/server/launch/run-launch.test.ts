@@ -1,4 +1,4 @@
-import { taskRunStateSchema } from "@posthog/agent-contracts";
+import { taskRunStateSchema } from "@flind/agent-contracts";
 import { describe, expect, it } from "vitest";
 import { createTask, createTaskRun } from "../../test/fixtures/api";
 import type { Task, TaskRun } from "../../types";

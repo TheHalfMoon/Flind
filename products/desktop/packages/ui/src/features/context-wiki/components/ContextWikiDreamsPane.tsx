@@ -17,7 +17,7 @@ import {
   EmptyMedia,
   EmptyTitle,
   Text,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { MarkdownRenderer } from "@posthog/ui/features/editor/components/MarkdownRenderer";
 import { DIFFS_HIGHLIGHTER_OPTIONS } from "@posthog/ui/features/sessions/diffHighlighterOptions";
 import { LoadingState } from "@posthog/ui/primitives/LoadingState";

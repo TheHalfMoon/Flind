@@ -7,7 +7,7 @@ import type { Plugin } from 'vite'
 // absent from the importer's own node_modules yet present up an installed package's
 // chain — e.g. `lucide-react` imported from services/mcp source (aliased in via
 // `@posthog/mcp-ui`, and services/mcp is not in the closure) is installed under
-// `@posthog/quill`, which the app depends on. The old webpack config papered over
+// `@flind/quill`, which the app depends on. The old webpack config papered over
 // this with `resolve.modules: [frontend/node_modules, <root>/node_modules,
 // 'node_modules']`; Vite/Rollup resolves relative to the importer only.
 //
@@ -17,7 +17,7 @@ import type { Plugin } from 'vite'
 // the importer's own node_modules, as in a full local install), return null and let
 // Vite's normal importer-relative resolution handle it.
 //
-// Source packages aliased to their checkout (e.g. `@posthog/quill`, `@posthog/mcp-ui`)
+// Source packages aliased to their checkout (e.g. `@flind/quill`, `@posthog/mcp-ui`)
 // never reach this plugin — Vite's alias plugin runs first.
 export function frontendResolvePlugin(repoRoot: string): Plugin {
     // Real files on disk — Vite's resolver falls back to the wrong root for a

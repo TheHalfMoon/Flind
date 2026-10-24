@@ -7,9 +7,9 @@ runs:
         - name: Build agent and workspace dependencies
           shell: bash
           working-directory: packages/agent
-          run: pnpm --filter @posthog/agent... run build
+          run: pnpm --filter @flind/agent... run build
 
         - name: Run agent tests
           shell: bash
           working-directory: packages/agent
-          run: pnpm --filter @posthog/agent run test
+          run: pnpm --filter @flind/agent run test

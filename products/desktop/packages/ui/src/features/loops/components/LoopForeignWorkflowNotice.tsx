@@ -1,5 +1,5 @@
 import { ArrowSquareOut } from "@phosphor-icons/react";
-import { Button } from "@posthog/quill";
+import { Button } from "@flind/quill";
 import { openExternalUrl } from "@posthog/ui/shell/openExternal";
 
 /**

@@ -3,7 +3,7 @@ import './SourceDragOverlay.scss'
 import { useValues } from 'kea'
 import { createPortal } from 'react-dom'
 
-import { Item, ItemContent, ItemDescription, ItemMedia, ItemTitle } from '@posthog/quill'
+import { Item, ItemContent, ItemDescription, ItemMedia, ItemTitle } from '@flind/quill'
 
 import { canvasSourceDragLogic } from './canvasSourceDragLogic'
 import { libraryIcon } from './libraryCatalog'

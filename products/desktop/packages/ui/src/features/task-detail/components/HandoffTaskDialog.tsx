@@ -18,7 +18,7 @@ import {
   Field,
   FieldLabel,
   InputGroupAddon,
-} from "@posthog/quill";
+} from "@flind/quill";
 import type { Task, UserBasic } from "@posthog/shared/domain-types";
 import { UserAvatar } from "@posthog/ui/features/auth/UserAvatar";
 import { useCurrentUser } from "@posthog/ui/features/auth/useCurrentUser";

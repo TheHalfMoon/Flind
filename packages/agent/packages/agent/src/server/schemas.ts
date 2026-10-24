@@ -1,7 +1,7 @@
-import type { McpServerConnection } from "@posthog/agent-contracts";
+import type { McpServerConnection } from "@flind/agent-contracts";
 import { z } from "zod/v4";
 
-export { posthogExecPermissionRegexSchema } from "@posthog/harness/extensions/posthog-mcp-policy";
+export { posthogExecPermissionRegexSchema } from "@flind/harness/extensions/posthog-mcp-policy";
 
 const httpHeaderSchema = z.object({
   name: z.string(),

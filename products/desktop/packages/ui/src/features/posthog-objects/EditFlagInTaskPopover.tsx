@@ -5,7 +5,7 @@ import {
   PopoverTrigger,
   Text,
   Textarea,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { sendPromptToAgent } from "@posthog/ui/features/sessions/sendPromptToAgent";
 import { toast } from "@posthog/ui/primitives/toast";
 import { isSendMessageSubmitKey } from "@posthog/ui/utils/sendMessageKey";

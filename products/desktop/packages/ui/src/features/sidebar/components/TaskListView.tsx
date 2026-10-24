@@ -11,7 +11,7 @@ import type {
   TaskData,
   TaskGroup,
 } from "@posthog/core/sidebar/sidebarData.types";
-import { cn, MenuLabel, Text } from "@posthog/quill";
+import { cn, MenuLabel, Text } from "@flind/quill";
 import { hoggiePng } from "@posthog/shared/hoggies";
 import { useFilingTasksStore } from "@posthog/ui/features/canvas/stores/filingTasksStore";
 import { useFolders } from "@posthog/ui/features/folders/useFolders";

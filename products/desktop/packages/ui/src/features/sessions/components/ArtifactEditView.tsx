@@ -7,7 +7,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   Button,
-} from "@posthog/quill";
+} from "@flind/quill";
 import type { ReactElement } from "react";
 import { CodeMirrorEditor } from "../../code-editor/components/CodeMirrorEditor";
 import { DocumentPreviewHeader } from "../../code-editor/components/DocumentPreviewHeader";

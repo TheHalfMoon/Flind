@@ -12,7 +12,7 @@ import {
   RadioGroup,
   RadioGroupItem,
   Textarea,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { REFUND_REASON_OPTIONS } from "@posthog/shared";
 import type {
   SignalReport,

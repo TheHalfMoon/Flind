@@ -1,4 +1,4 @@
-import { DEFAULT_GATEWAY_MODEL } from "@posthog/agent/gateway-models";
+import { DEFAULT_GATEWAY_MODEL } from "@flind/agent/gateway-models";
 import { getIsOnline } from "@posthog/core/connectivity/connectivityStore";
 import {
   AGENT_SESSION_NOTIFIER,

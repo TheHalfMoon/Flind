@@ -1,6 +1,6 @@
 import { useCallback, useMemo, useState } from 'react'
 
-import type { ChartLegendConfig, ChartTheme, Series } from '@posthog/quill-charts'
+import type { ChartLegendConfig, ChartTheme, Series } from '@flind/quill-charts'
 
 import { useChartTheme } from 'lib/charts/hooks'
 import { useChartLegendSeriesMenu } from 'lib/components/ChartLegendSeriesMenu/useChartLegendSeriesMenu'

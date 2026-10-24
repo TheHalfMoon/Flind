@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { useLayoutEffect, useRef } from 'react'
 
 import { IconSearch, IconSparkles, IconX } from '@posthog/icons'
-import { Button, InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput, cn } from '@posthog/quill'
+import { Button, InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput, cn } from '@flind/quill'
 
 import { todayShellLogic } from '~/layout/today/todayShellLogic'
 

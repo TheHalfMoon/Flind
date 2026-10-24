@@ -1,7 +1,7 @@
 import { useCallback, useMemo } from 'react'
 
-import { BarChart, ValueLabels } from '@posthog/quill-charts'
-import type { BarChartConfig, Series, TooltipContext } from '@posthog/quill-charts'
+import { BarChart, ValueLabels } from '@flind/quill-charts'
+import type { BarChartConfig, Series, TooltipContext } from '@flind/quill-charts'
 
 import { useChartConfig, useChartTheme } from 'lib/charts/hooks'
 import { NpsBucketMeta, RatingTooltip } from 'scenes/surveys/components/question-visualizations/questionVizTooltips'

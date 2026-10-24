@@ -4,7 +4,7 @@ import '@testing-library/jest-dom'
 
 import { cleanup, render, screen, waitFor, within } from '@testing-library/react'
 
-import { ensureJsdom, getHogChart } from '@posthog/quill-charts/testing'
+import { ensureJsdom, getHogChart } from '@flind/quill-charts/testing'
 
 import { useMocks } from '~/mocks/jest'
 import { NodeKind } from '~/queries/schema/schema-general'

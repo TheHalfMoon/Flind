@@ -2,7 +2,7 @@ import '@testing-library/jest-dom'
 
 import { cleanup, screen, waitFor } from '@testing-library/react'
 
-import { getHogChart, hoverAtIndex, setupJsdom, setupSyncRaf } from '@posthog/quill-charts/testing'
+import { getHogChart, hoverAtIndex, setupJsdom, setupSyncRaf } from '@flind/quill-charts/testing'
 
 import { buildDataVisualizationQuery, renderDataVisualization } from '~/test/insight-testing'
 import { ChartDisplayType } from '~/types'

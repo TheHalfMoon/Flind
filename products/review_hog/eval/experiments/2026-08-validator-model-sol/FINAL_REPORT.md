@@ -102,7 +102,7 @@ tokens per call on average. Over 21 days, since at least 2026-08-04, 100% of `gp
 day. So the Sol arm of the prod 50/50 A/B (live since 2026-08-03) and every Sol experiment (the July 7-way reviewer
 experiment, K1–K3) ran at Codex's low effort.
 
-**Mechanism.** The Codex adapter in `@posthog/agent` (2.4.86 in the sandbox image, bundling `@openai/codex` 0.144.0)
+**Mechanism.** The Codex adapter in `@flind/agent` (2.4.86 in the sandbox image, bundling `@openai/codex` 0.144.0)
 sends two things on every `turn/start`: an `effort` param and a `collaborationMode` object built by
 `collaborationModeForTurn()` in `products/desktop/packages/agent/src/adapters/codex-app-server/session-config.ts`,
 whose settings hold only `{ model }`. Codex takes a provided collaboration mode as is and applies the separate

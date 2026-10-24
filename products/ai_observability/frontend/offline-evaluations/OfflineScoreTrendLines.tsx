@@ -1,7 +1,7 @@
 import { curveMonotoneX, line } from 'd3'
 import { useId, useMemo } from 'react'
 
-import { useChartLayout } from '@posthog/quill-charts'
+import { useChartLayout } from '@flind/quill-charts'
 
 export function OfflineScoreTrendLines(): JSX.Element {
     const clipId = useId()

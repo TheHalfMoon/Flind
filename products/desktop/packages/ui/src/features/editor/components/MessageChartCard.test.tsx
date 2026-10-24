@@ -4,7 +4,7 @@ import { describe, expect, it, vi } from "vitest";
 
 // quill-charts is canvas-backed and does not load in the test environment;
 // the card chrome around it is what this test exercises.
-vi.mock("@posthog/quill-charts", () => ({
+vi.mock("@flind/quill-charts", () => ({
   BarChart: () => <div data-testid="chart-plot" />,
   LineChart: () => <div data-testid="chart-plot" />,
   TimeSeriesBarChart: () => <div data-testid="chart-plot" />,

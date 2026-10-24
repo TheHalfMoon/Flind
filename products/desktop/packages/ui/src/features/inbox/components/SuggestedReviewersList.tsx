@@ -10,7 +10,7 @@ import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import type { SuggestedReviewer } from "@posthog/shared/types";
 import { ReviewerAvatar } from "@posthog/ui/features/inbox/components/ReviewerAvatar";
 import { InboxBadge } from "@posthog/ui/features/inbox/components/utils/InboxBadge";

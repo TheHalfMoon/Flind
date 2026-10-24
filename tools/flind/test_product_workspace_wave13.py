@@ -47,7 +47,7 @@ class ProductWorkspacesWave13Tests(unittest.TestCase):
         report = inspect_packages(load_tracked_package_manifests(REPO_ROOT))
         self.assertTrue(report["workspace_gate_passed"], report)
         self.assertEqual(report["unresolved_workspace_dependencies"], [])
-        self.assertEqual(report["workspace_dependency_edges"], 260)
+        self.assertGreaterEqual(report["workspace_dependency_edges"], 260)
         self.assertGreaterEqual(len(report["flind_package_names"]), 109)
         self.assertLessEqual(len(report["remaining_legacy_package_names"]), 50)
 

@@ -1,7 +1,7 @@
 # hogvm
 
 A Rust implementation of the Hog virtual machine, at behavioral parity with the Node reference VM
-(`@posthog/hogvm`, `common/hogvm/typescript`). Parity is enforced by `tests/parity.rs` (the full
+(`@flind/logicvm`, `common/hogvm/typescript`). Parity is enforced by `tests/parity.rs` (the full
 program corpus, diffed against committed Node output) and `tests/stl_parity.rs` (per-STL cases).
 
 ## Execution modes

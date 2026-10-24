@@ -1,4 +1,4 @@
-import { Badge, Card } from '@posthog/quill'
+import { Badge, Card } from '@flind/quill'
 
 import { Evidence, ReleaseBadge, labels, variants } from './infrastructureTypes'
 

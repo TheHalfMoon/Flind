@@ -1,5 +1,6 @@
 {
-    "name": "@posthog/ai-research-v4-native",
+    "name": "@flind/ai-research-v4-native",
+    "private": true,
     "version": "0.0.1",
     "description": "Node bindings for the v4 AI research replay URL policy",
     "main": "dist/index.js",
@@ -15,7 +16,7 @@
         "build:typescript": "tsc",
         "typecheck": "tsc --noEmit",
         "clean": "rm -rf index.node dist",
-        "package": "NODE_ENV=development pnpm --filter=@posthog/ai-research-v4-native run build"
+        "package": "NODE_ENV=development pnpm --filter=@flind/ai-research-v4-native run build"
     },
     "author": "",
     "license": "MIT",

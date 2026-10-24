@@ -9,7 +9,7 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuSeparator,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { CanvasFilterMultiSelectSubmenu } from "@posthog/ui/features/canvas/components/CanvasFilterMultiSelectSubmenu";
 import {
   type CanvasFilterOption,

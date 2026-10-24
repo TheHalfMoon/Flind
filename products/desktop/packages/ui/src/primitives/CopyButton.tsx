@@ -4,7 +4,7 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { useEffect, useRef, useState } from "react";
 
 /** How long either confirmation stays up before the button goes back. */

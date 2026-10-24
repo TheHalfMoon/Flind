@@ -10,7 +10,7 @@ import {
     Tooltip,
     TooltipContent,
     TooltipTrigger,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import { IconOpenFullScreen, IconUndockPanel } from 'lib/lemon-ui/icons'
 import { PhaiViewSwitchMenuItem } from 'scenes/max/components/PhaiViewSwitchMenuItem'

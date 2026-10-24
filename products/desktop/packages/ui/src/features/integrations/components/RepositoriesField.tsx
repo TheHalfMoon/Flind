@@ -6,7 +6,7 @@ import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { GitHubRepoPicker } from "@posthog/ui/features/folder-picker/GitHubRepoPicker";
 import { useIntegrationSelectors } from "@posthog/ui/features/integrations/store";
 import { useGithubRepositories } from "@posthog/ui/features/integrations/useIntegrations";

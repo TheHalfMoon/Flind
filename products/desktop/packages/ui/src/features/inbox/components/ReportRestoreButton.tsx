@@ -1,6 +1,6 @@
 import { ArrowCounterClockwiseIcon } from "@phosphor-icons/react";
 import { isRestorableReport } from "@posthog/core/inbox/reportMembership";
-import { Button } from "@posthog/quill";
+import { Button } from "@flind/quill";
 import type { SignalReport } from "@posthog/shared/types";
 import { useInboxRestoreReport } from "@posthog/ui/features/inbox/hooks/useInboxRestoreReport";
 import { Spinner } from "@posthog/ui/primitives/Spinner";

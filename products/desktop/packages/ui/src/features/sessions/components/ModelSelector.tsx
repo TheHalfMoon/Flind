@@ -11,7 +11,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
   MenuLabel,
-} from "@posthog/quill";
+} from "@flind/quill";
 import type { Adapter } from "@posthog/shared";
 import { gateRestrictedModelPick } from "@posthog/ui/features/billing/modelGate";
 import { ModelCostFooter } from "@posthog/ui/features/sessions/components/ModelCostChip";

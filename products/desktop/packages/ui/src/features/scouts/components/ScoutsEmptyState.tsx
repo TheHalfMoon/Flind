@@ -7,7 +7,7 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { ScoutHelperSkillLinks } from "./ScoutHelperSkillLinks";
 
 export function ScoutsEmptyState({ onNewAgent }: { onNewAgent: () => void }) {

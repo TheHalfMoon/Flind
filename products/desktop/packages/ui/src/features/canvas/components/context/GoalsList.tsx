@@ -21,7 +21,7 @@ import {
   DialogHeader,
   DialogTitle,
   Text,
-} from "@posthog/quill";
+} from "@flind/quill";
 import {
   statusColor,
   useGoalPalette,

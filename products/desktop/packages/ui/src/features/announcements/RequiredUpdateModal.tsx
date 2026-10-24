@@ -5,7 +5,7 @@ import {
   DialogDescription,
   DialogFooter,
   DialogTitle,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
 import type { Announcement } from "@posthog/shared/announcements";
 import { track } from "@posthog/ui/shell/analytics";

@@ -9,7 +9,7 @@ description: Use when building or changing UI in PostHog Desktop, MCP apps, or w
 
 - Web app scope (`frontend/src/`, `products/*/frontend/`): the `today-rail-nav` feature flag gates a Quill redesign of the whole web app UI, built alongside the current UI and kept behind the flag for months before it reaches users. This guide governs all UI on that flag path. The current, flag-off UI stays on LemonUI: never add Quill to it or convert it in place.
 - Identify surface: web app | PostHog Desktop (Electron) | MCP app → apply matching section in §7
-- Use Quill (`@posthog/quill`). Never add a parallel component or token layer; the only exceptions are listed in §2.
+- Use Quill (`@flind/quill`). Never add a parallel component or token layer; the only exceptions are listed in §2.
 - Deeper component reference: `packages/quill/packages/primitives/AGENTS.md`; charts: `packages/quill/packages/charts/AGENTS.md`. This file wins where they disagree.
 
 ## 1. Priority order
@@ -22,25 +22,25 @@ description: Use when building or changing UI in PostHog Desktop, MCP apps, or w
 
 ## 2. Public API (closed list)
 
-<!-- TODO: generate from @posthog/quill, quill-components and quill-charts exports in CI so it can't drift; emit full part names -->
+<!-- TODO: generate from @flind/quill, quill-components and quill-charts exports in CI so it can't drift; emit full part names -->
 
 ### Setup
 
-- Import components from `@posthog/quill` only, never from the `quill-*` sub-packages (exceptions: Metric, charts, see below)
+- Import components from `@flind/quill` only, never from the `quill-*` sub-packages (exceptions: Metric, charts, see below)
 - CSS, once, in the app's entry stylesheet, in this order:
 
   ```css
   @import 'tailwindcss';
-  @import '@posthog/quill/tokens.css';
-  @import '@posthog/quill/base.css';
-  @import '@posthog/quill/primitives.css';
-  @import '@posthog/quill/tailwind.css';
+  @import '@flind/quill/tokens.css';
+  @import '@flind/quill/base.css';
+  @import '@flind/quill/primitives.css';
+  @import '@flind/quill/tailwind.css';
   ```
 
 - Scoped variants (`tokens.scoped.css`, `base.scoped.css`, `color-system.scoped.css`) apply tokens only under `[data-quill]`, for incremental migration (see §7 Web app)
 - App root: `ThemeProvider` > `ToastProvider` > `TooltipProvider`
 
-### Primitives (`@posthog/quill`)
+### Primitives (`@flind/quill`)
 
 Compose from the listed parts only. Part names are shown without their prefix (e.g. `Trigger` = `AlertDialogTrigger`).
 
@@ -95,7 +95,7 @@ Compose from the listed parts only. Part names are shown without their prefix (e
 - Providers/hooks: ThemeProvider, useTheme, DirectionProvider, useDirection
 - Utility: `cn`
 
-### Chat primitives (`@posthog/quill`; agent/conversation surfaces only)
+### Chat primitives (`@flind/quill`; agent/conversation surfaces only)
 
 - ChatBubbleGroup, ChatBubble (Content, Reactions)
 - ChatMessageGroup, ChatMessage (Avatar, Header, Content, Footer)
@@ -108,14 +108,14 @@ Compose from the listed parts only. Part names are shown without their prefix (e
 - Questionnaire (Item, Title, Description, Choices, Choice, ChoiceDescription, Input, Error, Progress, Actions, Previous, Next, Skip, Submit)
 - ThreadItemGroup, ThreadItem (Gutter, Header, Author, Timestamp, Content, Body, Mention, Link, Attachment*, Reactions, Reaction, ReactionEmoji, Actions, Action, Replies*)
 
-### Components (`@posthog/quill`)
+### Components (`@flind/quill`)
 
 - DataTable
 - DatePicker, DateTimePicker (quickRanges, CUSTOM_RANGE)
 - useCalendar
-- Metric → import from `@posthog/quill-components/metric` only (pulls in charts)
+- Metric → import from `@flind/quill-components/metric` only (pulls in charts)
 
-### Charts (`@posthog/quill-charts`)
+### Charts (`@flind/quill-charts`)
 
 - Read `packages/quill/packages/charts/AGENTS.md` ("Choosing a chart") before using
 - LineChart, BarChart, ScatterChart, ComboChart, FunnelChart, Sparkline
@@ -331,7 +331,7 @@ Use via Tailwind utilities (`bg-primary text-primary-foreground`, `border-border
 - Behavior is shared, never copied. A handler, dialog or menu item list that both branches need lives in one function or kea action that both call. Only the view forks
 - A shared Lemon component gets a `Quill<Name>.tsx` sibling, and returns it after its last hook when the flag is on. Flags load after the first render, so a return before a hook changes the hook order and crashes. If the component also renders on surfaces outside the migration, leave it alone and let the migrated caller pick the quill sibling
 - Keep every `data-attr`, handler and string. `data-attr` values are frozen
-- A product that imports quill declares `"@posthog/quill": "workspace:*"` in its `package.json`, or Vite cannot resolve it
+- A product that imports quill declares `"@flind/quill": "workspace:*"` in its `package.json`, or Vite cannot resolve it
 - Lemon to quill mapping:
 
   | Lemon                                  | Quill                                                                                                        |

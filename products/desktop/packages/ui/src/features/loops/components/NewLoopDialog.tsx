@@ -5,7 +5,7 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { navigateToLoopDetail } from "@posthog/ui/router/navigationBridge";
 import { useThemeStore } from "@posthog/ui/shell/themeStore";
 import { Theme } from "@radix-ui/themes";

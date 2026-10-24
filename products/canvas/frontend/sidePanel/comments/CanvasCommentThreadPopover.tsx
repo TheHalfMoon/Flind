@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useEffect, useRef } from 'react'
 
-import { cn } from '@posthog/quill'
+import { cn } from '@flind/quill'
 
 import { canvasCommentsLogic } from './canvasCommentsLogic'
 import { CanvasCommentThreadCard } from './CanvasCommentThreadCard'

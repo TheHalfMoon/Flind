@@ -1,4 +1,4 @@
-import { Badge } from '@posthog/quill-primitives'
+import { Badge } from '@flind/quill-primitives'
 
 import { Tooltip } from 'lib/lemon-ui/Tooltip'
 import { pluralize } from 'lib/utils/strings'

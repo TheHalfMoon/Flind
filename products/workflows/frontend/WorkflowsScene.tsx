@@ -2,7 +2,7 @@ import { MakeLogicType, actions, kea, path, props, reducers, selectors, useActio
 import { router, urlToAction } from 'kea-router'
 
 import { LemonButton } from '@posthog/lemon-ui'
-import { Button } from '@posthog/quill'
+import { Button } from '@flind/quill'
 
 import { AccessControlAction } from 'lib/components/AccessControlAction'
 import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'

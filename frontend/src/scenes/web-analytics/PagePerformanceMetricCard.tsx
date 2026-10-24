@@ -2,8 +2,8 @@ import { memo } from 'react'
 
 import { IconInfo, IconTrending } from '@posthog/icons'
 import { LemonTag, SpinnerOverlay, Tooltip } from '@posthog/lemon-ui'
-import { Sparkline } from '@posthog/quill-charts'
-import type { ChartTheme } from '@posthog/quill-charts'
+import { Sparkline } from '@flind/quill-charts'
+import type { ChartTheme } from '@flind/quill-charts'
 
 import { IconTrendingDown, IconTrendingFlat } from 'lib/lemon-ui/icons'
 import { formatPercentage, humanFriendlyLargeNumber } from 'lib/utils/numbers'

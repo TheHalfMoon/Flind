@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 
-import { BarList } from '@posthog/quill-charts'
-import type { Series } from '@posthog/quill-charts'
+import { BarList } from '@flind/quill-charts'
+import type { Series } from '@flind/quill-charts'
 
 import { useChartTheme } from 'lib/charts/hooks'
 import { getColorVar } from 'lib/colors'

@@ -2,8 +2,8 @@ import { useValues } from 'kea'
 import posthog from 'posthog-js'
 import { useMemo, type ErrorInfo } from 'react'
 
-import { BarChart, ValueLabels } from '@posthog/quill-charts'
-import type { BarChartConfig } from '@posthog/quill-charts'
+import { BarChart, ValueLabels } from '@flind/quill-charts'
+import type { BarChartConfig } from '@flind/quill-charts'
 
 import { useChartConfig, useChartTheme } from 'lib/charts/hooks'
 import { hexToRGBA } from 'lib/utils/colors'

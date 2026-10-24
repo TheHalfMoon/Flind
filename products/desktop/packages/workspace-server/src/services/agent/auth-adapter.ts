@@ -2,8 +2,8 @@ import {
   type McpToolApprovalState,
   type McpToolApprovals,
   sanitizeMcpServerName,
-} from "@posthog/agent/adapters/claude/mcp/tool-metadata";
-import { getLlmGatewayUrl } from "@posthog/agent/posthog-api";
+} from "@flind/agent/adapters/claude/mcp/tool-metadata";
+import { getLlmGatewayUrl } from "@flind/agent/posthog-api";
 import {
   isCustomCloudHost,
   type McpServerConnection,

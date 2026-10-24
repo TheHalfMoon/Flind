@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconCheckCircle } from '@posthog/icons'
-import { Button, Spinner, Text } from '@posthog/quill'
+import { Button, Spinner, Text } from '@flind/quill'
 
 import { CanvasStatusIssue } from '../scene/CanvasStatusIssue'
 import { canvasEditLogic } from './canvasEditLogic'

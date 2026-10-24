@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { useCallback, useMemo } from 'react'
 
-import { BarChart, type BarChartConfig, type Series, ValueLabels } from '@posthog/quill-charts'
+import { BarChart, type BarChartConfig, type Series, ValueLabels } from '@flind/quill-charts'
 
 import { useChartConfig, useChartTheme } from 'lib/charts/hooks'
 import { getColorVar } from 'lib/colors'

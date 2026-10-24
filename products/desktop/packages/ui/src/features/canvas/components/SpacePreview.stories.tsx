@@ -1,5 +1,5 @@
 import { LinkIcon, StarIcon, TrashIcon } from "@phosphor-icons/react";
-import { Card } from "@posthog/quill";
+import { Card } from "@flind/quill";
 import type { UserBasic } from "@posthog/shared/domain-types";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import type { ChannelActionItem } from "./channelActions";

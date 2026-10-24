@@ -1,5 +1,5 @@
 import { Check } from "@phosphor-icons/react";
-import { cn } from "@posthog/quill";
+import { cn } from "@flind/quill";
 import type { ThemePreference } from "@posthog/ui/shell/themeStore";
 import type { CSSProperties } from "react";
 

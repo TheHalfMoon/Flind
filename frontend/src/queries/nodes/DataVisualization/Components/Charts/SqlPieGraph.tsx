@@ -1,8 +1,8 @@
 import clsx from 'clsx'
 import { useCallback, useMemo } from 'react'
 
-import { ChartLegend, PieChart, TooltipSurface, TooltipSwatch, useChartLegend } from '@posthog/quill-charts'
-import type { PieChartConfig, TooltipContext } from '@posthog/quill-charts'
+import { ChartLegend, PieChart, TooltipSurface, TooltipSwatch, useChartLegend } from '@flind/quill-charts'
+import type { PieChartConfig, TooltipContext } from '@flind/quill-charts'
 
 import { ChartDisplayType } from '~/types'
 
@@ -16,7 +16,7 @@ import { useSqlPartOfWholeChart } from './useSqlPartOfWholeChart'
 const handleChartError = makeChartErrorHandler('sql-pie-chart')
 
 /**
- * SQL pie graph on @posthog/quill-charts' {@link PieChart}. The chart core and the legend are
+ * SQL pie graph on @flind/quill-charts' {@link PieChart}. The chart core and the legend are
  * quill's; the aggregation total stays here as chrome. The legend is driven from here rather than
  * through `config.legend` so a pie total sits in the layout's chart slot, centered under the pie
  * instead of under the pie-plus-legend pair.

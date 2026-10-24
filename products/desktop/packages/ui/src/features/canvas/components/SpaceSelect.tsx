@@ -13,7 +13,7 @@ import {
   ComboboxSeparator,
   ComboboxTrigger,
   cn,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { channelGlyph } from "@posthog/ui/features/canvas/components/channelGlyph";
 import { useChannels } from "@posthog/ui/features/canvas/hooks/useChannels";
 import { useMemo, useRef } from "react";

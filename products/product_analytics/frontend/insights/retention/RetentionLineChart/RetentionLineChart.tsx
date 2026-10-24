@@ -2,8 +2,8 @@ import { useActions, useValues } from 'kea'
 import posthog from 'posthog-js'
 import { useCallback, useMemo, type ErrorInfo } from 'react'
 
-import { TimeSeriesLineChart } from '@posthog/quill-charts'
-import type { PointClickData, TooltipContext } from '@posthog/quill-charts'
+import { TimeSeriesLineChart } from '@flind/quill-charts'
+import type { PointClickData, TooltipContext } from '@flind/quill-charts'
 
 import { useChartConfig, useChartTheme } from 'lib/charts/hooks'
 import { getColorVar } from 'lib/colors'

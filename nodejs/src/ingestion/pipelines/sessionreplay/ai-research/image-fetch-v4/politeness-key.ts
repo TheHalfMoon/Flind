@@ -6,11 +6,11 @@
  * This loads the addon on first use rather than at import, so only a pod in this lane pays for it.
  * The fetch server defers it the same way.
  */
-let cached: typeof import('@posthog/ai-research-v4-native') | undefined
+let cached: typeof import('@flind/ai-research-v4-native') | undefined
 
-function addon(): typeof import('@posthog/ai-research-v4-native') {
+function addon(): typeof import('@flind/ai-research-v4-native') {
     if (!cached) {
-        const loaded = require('@posthog/ai-research-v4-native') as typeof import('@posthog/ai-research-v4-native')
+        const loaded = require('@flind/ai-research-v4-native') as typeof import('@flind/ai-research-v4-native')
         if (
             typeof loaded.politenessKey !== 'function' ||
             typeof loaded.isPublicHost !== 'function' ||
@@ -50,10 +50,10 @@ export function isPublicHost(host: string): boolean {
     return addon().isPublicHost(host)
 }
 
-export function canonicalizeUrl(url: string): import('@posthog/ai-research-v4-native').CanonicalUrl | null {
+export function canonicalizeUrl(url: string): import('@flind/ai-research-v4-native').CanonicalUrl | null {
     return addon().canonicalizeUrl(url)
 }
 
-export function tryCanonicalizeUrl(url: string): import('@posthog/ai-research-v4-native').UrlPolicyVerdict {
+export function tryCanonicalizeUrl(url: string): import('@flind/ai-research-v4-native').UrlPolicyVerdict {
     return addon().tryCanonicalizeUrl(url)
 }

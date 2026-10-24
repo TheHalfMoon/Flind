@@ -1,4 +1,4 @@
-import { AutocompleteClear, AutocompleteInput, Kbd } from "@posthog/quill";
+import { AutocompleteClear, AutocompleteInput, Kbd } from "@flind/quill";
 import { useSidebarSearchFocus } from "@posthog/ui/features/canvas/hooks/useSidebarSearchFocus";
 import {
   formatHotkey,

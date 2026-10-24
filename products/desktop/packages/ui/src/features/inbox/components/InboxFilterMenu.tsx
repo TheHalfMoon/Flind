@@ -5,7 +5,7 @@ import {
   parseTeammateInboxScope,
   teammateInboxScope,
 } from "@posthog/core/inbox/reportMembership";
-import { DropdownMenu, DropdownMenuContent } from "@posthog/quill";
+import { DropdownMenu, DropdownMenuContent } from "@flind/quill";
 import {
   getSuggestedReviewerDisplayName,
   INBOX_PRIORITY_MENU_OPTIONS,

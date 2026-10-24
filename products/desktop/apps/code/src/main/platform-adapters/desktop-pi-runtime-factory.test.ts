@@ -1,4 +1,4 @@
-import { PiRuntime } from "@posthog/agent/pi/runtime";
+import { PiRuntime } from "@flind/agent/pi/runtime";
 import type { PiRpcClientFactory } from "@posthog/workspace-server/services/pi-session/identifiers";
 import { describe, expect, it, vi } from "vitest";
 import { DesktopPiRuntimeFactory } from "./desktop-pi-runtime-factory";

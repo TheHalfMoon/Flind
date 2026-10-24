@@ -1,7 +1,7 @@
 import type {
   PiExtensionSessionEvent,
   RpcExtensionUIResponse,
-} from "@posthog/agent/pi/types";
+} from "@flind/agent/pi/types";
 import { inject, injectable } from "inversify";
 import {
   createEmptyPiExtensionTaskState,

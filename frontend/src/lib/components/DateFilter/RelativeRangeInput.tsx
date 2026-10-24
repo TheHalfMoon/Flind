@@ -10,7 +10,7 @@ import {
     SelectItem,
     SelectTrigger,
     SelectValue,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 export type RelativeRangeUnit = 'minutes' | 'hours' | 'days' | 'weeks' | 'months' | 'years'
 

@@ -1,8 +1,8 @@
 import { existsSync } from "node:fs";
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
-import type { PiRpcClient } from "@posthog/agent/pi/rpc-client";
-import type { PiExtensionEvent } from "@posthog/agent/pi/types";
+import type { PiRpcClient } from "@flind/agent/pi/rpc-client";
+import type { PiExtensionEvent } from "@flind/agent/pi/types";
 import { expect, test } from "../fixtures/electron";
 
 const EXTENSION_SOURCE = `
@@ -73,7 +73,7 @@ test.describe("Pi extensions", () => {
 
     try {
       const { createPiRpcClient } = await import(
-        "@posthog/agent/pi/rpc-client"
+        "@flind/agent/pi/rpc-client"
       );
       client = createPiRpcClient({
         cliPath: rpcHostPath,

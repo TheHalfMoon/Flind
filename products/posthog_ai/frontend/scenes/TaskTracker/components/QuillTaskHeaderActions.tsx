@@ -1,5 +1,5 @@
 import { IconExternal, IconGithub, IconPlay } from '@posthog/icons'
-import { Button } from '@posthog/quill-primitives'
+import { Button } from '@flind/quill-primitives'
 
 import { LinkPrimitive } from 'lib/lemon-ui/Link'
 

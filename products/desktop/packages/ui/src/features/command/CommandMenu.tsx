@@ -45,7 +45,7 @@ import {
   DialogContent,
   Kbd,
   KbdGroup,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { LOOPS_FLAG, singleLineTitle } from "@posthog/shared";
 import {
   ANALYTICS_EVENTS,

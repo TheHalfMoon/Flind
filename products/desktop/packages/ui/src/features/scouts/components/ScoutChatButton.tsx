@@ -1,7 +1,7 @@
 import { SparkleIcon } from "@phosphor-icons/react";
 import { prettifyScoutSkillName } from "@posthog/core/scouts/scoutPresentation";
 import { buildScoutCheckinPrompt } from "@posthog/core/scouts/scoutPrompts";
-import { Button } from "@posthog/quill";
+import { Button } from "@flind/quill";
 import type { ScoutSurface } from "@posthog/shared";
 import { Tooltip } from "@posthog/ui/primitives/Tooltip";
 import { useMemo } from "react";

@@ -11,7 +11,7 @@ import {
     LemonSelect,
     LemonTextArea,
 } from '@posthog/lemon-ui'
-import { Button } from '@posthog/quill'
+import { Button } from '@flind/quill'
 
 import { ObjectTags } from 'lib/components/ObjectTags/ObjectTags'
 import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'

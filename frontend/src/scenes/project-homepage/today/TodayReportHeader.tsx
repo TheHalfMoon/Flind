@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
 import { IconCheckCircle, IconDocument, IconEllipsis, IconHide } from '@posthog/icons'
-import { Badge, Button, Heading, IconStack, IconStackItem, Text, cn } from '@posthog/quill'
+import { Badge, Button, Heading, IconStack, IconStackItem, Text, cn } from '@flind/quill'
 
 import { dayjs } from 'lib/dayjs'
 import { LinkPrimitive } from 'lib/lemon-ui/Link'

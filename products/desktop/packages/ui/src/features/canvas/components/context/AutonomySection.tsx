@@ -1,5 +1,5 @@
 import type { AutonomyLevel } from "@posthog/core/canvas/contextDocument";
-import { Text } from "@posthog/quill";
+import { Text } from "@flind/quill";
 import { SettingsSegmented } from "@posthog/ui/features/settings/components/SettingsSegmented";
 import { SectionHeader } from "./SectionHeader";
 

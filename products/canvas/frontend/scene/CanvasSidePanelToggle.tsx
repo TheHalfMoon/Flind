@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconSidePanel } from '@posthog/icons'
-import { Button, Tooltip, TooltipContent, TooltipTrigger } from '@posthog/quill'
+import { Button, Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill'
 
 import { canvasPanelTab } from '../sidePanel/canvasPanelTabs'
 import { canvasSidePanelLogic } from '../sidePanel/canvasSidePanelLogic'

@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 
-import { DropdownMenuSub, DropdownMenuSubContent, DropdownMenuSubTrigger, cn } from '@posthog/quill'
+import { DropdownMenuSub, DropdownMenuSubContent, DropdownMenuSubTrigger, cn } from '@flind/quill'
 
 import { useTodaySheetMenu } from './todaySheetMenuContext'
 import { TodaySheetSub } from './TodaySheetSub'

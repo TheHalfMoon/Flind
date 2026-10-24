@@ -5,7 +5,7 @@ import {
   type RootLogger,
   type ScopedLogger,
 } from "@posthog/di/logger";
-import { createGitClient } from "@posthog/git/client";
+import { createGitClient } from "@flind/git/client";
 import {
   anyBranchRefExists,
   branchExists,
@@ -13,10 +13,10 @@ import {
   getDefaultBranch,
   hasTrackedFiles,
   remoteBranchExists,
-} from "@posthog/git/queries";
-import { CreateOrSwitchBranchSaga } from "@posthog/git/sagas/branch";
-import { DetachHeadSaga } from "@posthog/git/sagas/head";
-import { WorktreeManager } from "@posthog/git/worktree";
+} from "@flind/git/queries";
+import { CreateOrSwitchBranchSaga } from "@flind/git/sagas/branch";
+import { DetachHeadSaga } from "@flind/git/sagas/head";
+import { WorktreeManager } from "@flind/git/worktree";
 import {
   ANALYTICS_SERVICE,
   type IAnalytics,

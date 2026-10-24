@@ -1,4 +1,4 @@
-import { cn } from "@posthog/quill";
+import { cn } from "@flind/quill";
 import { Spinner } from "@posthog/ui/primitives/Spinner";
 import type { ComponentProps } from "react";
 

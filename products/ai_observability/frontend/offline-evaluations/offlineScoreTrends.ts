@@ -1,4 +1,4 @@
-import type { ScatterSeries } from '@posthog/quill-charts'
+import type { ScatterSeries } from '@flind/quill-charts'
 
 import { dayjs } from 'lib/dayjs'
 import { componentsToDayJs, dateStringToComponents } from 'lib/utils/dateFilters'

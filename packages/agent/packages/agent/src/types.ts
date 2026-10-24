@@ -2,9 +2,9 @@ import type {
   Adapter,
   ModelAccess,
   PostHogAPIConfig,
-} from "@posthog/agent-contracts";
-import type { EffortLevel } from "@posthog/agent-contracts/domain-types";
-import type { ContextWikiEnv } from "@posthog/harness/extensions/context-wiki";
+} from "@flind/agent-contracts";
+import type { EffortLevel } from "@flind/agent-contracts/domain-types";
+import type { ContextWikiEnv } from "@flind/harness/extensions/context-wiki";
 
 export type {
   ArtifactSource,
@@ -17,7 +17,7 @@ export type {
   TaskRunState,
   TaskRunStateField,
   TaskRunStatus,
-} from "@posthog/agent-contracts";
+} from "@flind/agent-contracts";
 
 /**
  * Stored custom notification following ACP extensibility model.
@@ -141,7 +141,7 @@ export interface FileChange {
 }
 
 /**
- * Keeps the emitted `@posthog/agent/types` entrypoint as a runtime ESM module.
+ * Keeps the emitted `@flind/agent/types` entrypoint as a runtime ESM module.
  *
  * `export {}` is stripped by tsup in this package, which leaves `dist/types.js`
  * empty and breaks downstream type resolution for the exported subpath.

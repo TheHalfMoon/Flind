@@ -1,6 +1,6 @@
 import type { ReactNode, RefObject } from 'react'
 
-import { InputGroup, InputGroupAddon } from '@posthog/quill-primitives'
+import { InputGroup, InputGroupAddon } from '@flind/quill-primitives'
 
 export interface QuillComposerLayoutProps {
     groupRef: RefObject<HTMLDivElement>

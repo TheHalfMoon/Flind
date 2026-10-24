@@ -5,7 +5,7 @@ import {
   WarningCircle,
 } from "@phosphor-icons/react";
 import { blockReferencePrompt } from "@posthog/core/canvas/blockLibrary/blockReference";
-import { Button } from "@posthog/quill";
+import { Button } from "@flind/quill";
 import {
   isRootSelection,
   isSourceDirty,

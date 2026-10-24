@@ -1,7 +1,7 @@
 import { useActions } from 'kea'
 import { ChangeEvent, KeyboardEvent, useRef, useState } from 'react'
 
-import { Input } from '@posthog/quill'
+import { Input } from '@flind/quill'
 
 import { todaySessionMenuLogic } from './todaySessionMenuLogic'
 

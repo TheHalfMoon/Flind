@@ -36,7 +36,7 @@ export default defineConfig({
                 'react',
                 'react-dom',
                 'react/jsx-runtime',
-                '@posthog/quill-tokens',
+                '@flind/quill-tokens',
                 '@base-ui/react',
                 /^@base-ui\/react\//,
                 'lucide-react',

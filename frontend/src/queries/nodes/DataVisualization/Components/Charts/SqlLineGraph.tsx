@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { useCallback } from 'react'
 
-import { TimeSeriesLineChart, type PointClickData, type TooltipContext } from '@posthog/quill-charts'
+import { TimeSeriesLineChart, type PointClickData, type TooltipContext } from '@flind/quill-charts'
 
 import { AnnotationsLayer } from 'lib/components/AnnotationsOverlay/AnnotationsLayer'
 
@@ -15,7 +15,7 @@ import { useSqlChartModel } from './useSqlChartModel'
 const handleChartError = makeChartErrorHandler('sql-line-chart')
 
 /**
- * SQL line/area graph rendered via @posthog/quill-charts. The default SQL chart renderer (see
+ * SQL line/area graph rendered via @flind/quill-charts. The default SQL chart renderer (see
  * {@link sqlChartComponentFor}); bar-only and mixed series route to their own components. Handles
  * line, area, goal lines, and trend lines. Tooltip content (per-column formatting, total row) is
  * configured in {@link buildLineChartConfig}.

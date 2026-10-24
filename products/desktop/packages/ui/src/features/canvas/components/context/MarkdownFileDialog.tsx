@@ -16,7 +16,7 @@ import {
   DialogTitle,
   Kbd,
   Text,
-} from "@posthog/quill";
+} from "@flind/quill";
 import type { ContextDocumentStore } from "@posthog/ui/features/canvas/hooks/useContextDocumentStore";
 import { CodeMirrorEditor } from "@posthog/ui/features/code-editor/components/CodeMirrorEditor";
 import { LoadingState } from "@posthog/ui/primitives/LoadingState";

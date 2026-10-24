@@ -12,7 +12,7 @@ import {
     Tooltip,
     TooltipContent,
     TooltipTrigger,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import { AccessControlLevel } from '~/types'
 

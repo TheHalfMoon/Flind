@@ -1,4 +1,4 @@
-import type { Series, TimeSeriesLineChartConfig, TooltipConfig } from '@posthog/quill-charts'
+import type { Series, TimeSeriesLineChartConfig, TooltipConfig } from '@flind/quill-charts'
 
 import type { GoalLine as SchemaGoalLine, TrendsFilter } from '~/queries/schema/schema-general'
 import type { FunnelStepWithNestedBreakdown, IntervalType } from '~/types'

@@ -1,9 +1,9 @@
-import type { GhExecResult } from "@posthog/git/gh";
+import type { GhExecResult } from "@flind/git/gh";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 const execGhMock = vi.hoisted(() => vi.fn());
 
-vi.mock("@posthog/git/gh", () => ({ execGh: execGhMock }));
+vi.mock("@flind/git/gh", () => ({ execGh: execGhMock }));
 
 import { GitService } from "./service";
 

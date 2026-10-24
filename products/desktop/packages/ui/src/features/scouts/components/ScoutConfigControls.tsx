@@ -20,7 +20,7 @@ import {
   timeToDailyCron,
   weeklyCronToDayTime,
 } from "@posthog/core/scouts/scoutPresentation";
-import { Button, Input, Switch } from "@posthog/quill";
+import { Button, Input, Switch } from "@flind/quill";
 import { ANALYTICS_EVENTS } from "@posthog/shared";
 import { SettingsOptionSelect } from "@posthog/ui/features/settings/SettingsOptionSelect";
 import { RadioCards } from "@posthog/ui/primitives/RadioCards";

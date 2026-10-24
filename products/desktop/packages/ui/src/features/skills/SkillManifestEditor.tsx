@@ -1,4 +1,4 @@
-import { Button } from "@posthog/quill";
+import { Button } from "@flind/quill";
 import type { SkillInfo } from "@posthog/shared";
 import { toast } from "@posthog/ui/primitives/toast";
 import { useRef, useState } from "react";

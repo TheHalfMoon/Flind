@@ -1,6 +1,6 @@
 import { Plus } from "@phosphor-icons/react";
 import type { SetupScope } from "@posthog/core/settings/environmentSetup";
-import { Button, Text } from "@posthog/quill";
+import { Button, Text } from "@flind/quill";
 import type {
   SandboxCustomImage,
   SandboxEnvironment,

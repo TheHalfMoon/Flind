@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 
 import { IconComment, IconGear, IconSparkles } from '@posthog/icons'
 import { LemonBanner, LemonButton, LemonSwitch, LemonTabs, LemonSkeleton, Spinner, Link } from '@posthog/lemon-ui'
-import { Button } from '@posthog/quill'
+import { Button } from '@flind/quill'
 
 import { supportLogic } from 'lib/components/Support/supportLogic'
 import { FEATURE_FLAGS } from 'lib/constants'

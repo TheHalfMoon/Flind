@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 
-import { BoxPlot, TooltipSurface, useChartTheme } from '@posthog/quill-charts'
-import type { BoxPlotDatum, BoxPlotSeries, BoxPlotTooltipContext } from '@posthog/quill-charts'
+import { BoxPlot, TooltipSurface, useChartTheme } from '@flind/quill-charts'
+import type { BoxPlotDatum, BoxPlotSeries, BoxPlotTooltipContext } from '@flind/quill-charts'
 
 import { cn } from 'lib/utils/css-classes'
 

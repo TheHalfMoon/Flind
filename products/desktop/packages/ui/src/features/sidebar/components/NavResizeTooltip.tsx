@@ -1,4 +1,4 @@
-import { Kbd } from "@posthog/quill";
+import { Kbd } from "@flind/quill";
 import {
   formatHotkey,
   SHORTCUTS,

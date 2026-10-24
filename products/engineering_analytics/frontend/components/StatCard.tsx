@@ -1,6 +1,6 @@
 import { IconFilter } from '@posthog/icons'
 import { LemonSkeleton, Tooltip } from '@posthog/lemon-ui'
-import { MetricCard } from '@posthog/quill-charts'
+import { MetricCard } from '@flind/quill-charts'
 
 import { cn } from 'lib/utils/css-classes'
 import { humanFriendlyNumber } from 'lib/utils/numbers'

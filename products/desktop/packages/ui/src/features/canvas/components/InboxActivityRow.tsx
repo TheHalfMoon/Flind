@@ -1,5 +1,5 @@
 import { humanizeReportTitle } from "@posthog/core/inbox/reportPresentation";
-import { Avatar, AvatarFallback } from "@posthog/quill";
+import { Avatar, AvatarFallback } from "@flind/quill";
 import { formatRelativeAge } from "@posthog/shared";
 import type { SignalReport } from "@posthog/shared/types";
 import { ActivityRowSurface } from "@posthog/ui/features/canvas/components/ActivityRowSurface";

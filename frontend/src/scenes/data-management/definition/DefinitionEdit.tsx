@@ -4,7 +4,7 @@ import { createRef } from 'react'
 
 import { IconImage } from '@posthog/icons'
 import { LemonSkeleton, LemonTag } from '@posthog/lemon-ui'
-import { Button } from '@posthog/quill'
+import { Button } from '@flind/quill'
 
 import { PropertyStatusControl } from 'lib/components/DefinitionPopover/DefinitionPopoverContents'
 import { FlaggedFeature } from 'lib/components/FlaggedFeature'

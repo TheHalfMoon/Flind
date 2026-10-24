@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconDownload, IconEllipsis, IconPencil } from '@posthog/icons'
-import { Button, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@posthog/quill'
+import { Button, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@flind/quill'
 
 import { AccessControlAction } from 'lib/components/AccessControlAction'
 import { openPublishToCommunityDialog } from 'lib/components/openPublishToCommunityDialog'

@@ -15,9 +15,9 @@ export const CANVAS_PLATFORM_MANIFEST = {
       version: "19.0.0",
       url: "https://esm.sh/react-dom@19.0.0?external=react",
     },
-    "@posthog/quill": {
+    "@flind/quill": {
       version: "0.3.0-beta.18",
-      url: "https://esm.sh/@posthog/quill@0.3.0-beta.18?external=react,react-dom",
+      url: "https://esm.sh/@flind/quill@0.3.0-beta.18?external=react,react-dom",
     },
     recharts: {
       version: "2.15.0",
@@ -72,7 +72,7 @@ export const CANVAS_PLATFORM_MANIFEST = {
     "react",
     "react-dom",
     "react-dom/client",
-    "@posthog/quill",
+    "@flind/quill",
     "recharts",
     "lucide-react",
     "dayjs",

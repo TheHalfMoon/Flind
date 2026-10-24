@@ -47,7 +47,7 @@ import {
   Tabs,
   TabsList,
   TabsTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import {
   formatRelativeTimeShort,
   mergePrUrls,

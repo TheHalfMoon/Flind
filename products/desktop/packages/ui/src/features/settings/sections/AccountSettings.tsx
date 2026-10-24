@@ -2,7 +2,7 @@ import { ArrowSquareOut, ArrowsClockwise, Camera } from "@phosphor-icons/react";
 import { avatarColor } from "@posthog/core/auth/avatarColor";
 import { getGravatarRefresh } from "@posthog/core/auth/gravatarRefresh";
 import { buildPostHogUrl } from "@posthog/core/settings/posthogUrl";
-import { Avatar, AvatarFallback, Button, cn } from "@posthog/quill";
+import { Avatar, AvatarFallback, Button, cn } from "@flind/quill";
 import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
 import { useGravatarRefreshStore } from "@posthog/ui/features/auth/gravatarRefreshStore";
 import { useAuthStateValue } from "@posthog/ui/features/auth/store";

@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { Text } from '@posthog/quill'
+import { Text } from '@flind/quill'
 
 import { SignalReport } from 'products/signals/frontend/inbox/types'
 

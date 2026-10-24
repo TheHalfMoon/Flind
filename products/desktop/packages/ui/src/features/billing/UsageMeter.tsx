@@ -1,5 +1,5 @@
 import { formatUsdAmount } from "@posthog/core/billing/usageDisplay";
-import { cn } from "@posthog/quill";
+import { cn } from "@flind/quill";
 import { Flex, Progress, Text } from "@radix-ui/themes";
 
 interface UsageMeterBreakdown {

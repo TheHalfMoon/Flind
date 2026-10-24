@@ -9,7 +9,7 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
   Text,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
 import { useAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
 import {

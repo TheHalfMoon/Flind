@@ -69,7 +69,7 @@ vi.mock("./SlotMachineSubmit", () => ({
   ),
 }));
 
-vi.mock("@posthog/quill", () => ({
+vi.mock("@flind/quill", () => ({
   // Mirrors quill's Button: `loading` swaps the label for a spinner and blocks
   // activation.
   Button: ({

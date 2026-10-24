@@ -2,8 +2,8 @@ import { useCallback, useMemo } from 'react'
 
 import { IconChevronDown } from '@posthog/icons'
 import { LemonButton, SpinnerOverlay } from '@posthog/lemon-ui'
-import { DefaultTooltip, HighlightedRange, TimeSeriesBarChart } from '@posthog/quill-charts'
-import type { DateRangeZoomData, Series, TimeSeriesBarChartConfig, TooltipContext } from '@posthog/quill-charts'
+import { DefaultTooltip, HighlightedRange, TimeSeriesBarChart } from '@flind/quill-charts'
+import type { DateRangeZoomData, Series, TimeSeriesBarChartConfig, TooltipContext } from '@flind/quill-charts'
 
 import { useChartConfig, useChartTheme } from 'lib/charts/hooks'
 import { getColorVar } from 'lib/colors'

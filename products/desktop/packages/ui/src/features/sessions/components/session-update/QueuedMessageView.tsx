@@ -5,7 +5,7 @@ import {
   Trash,
   X,
 } from "@phosphor-icons/react";
-import { Button } from "@posthog/quill";
+import { Button } from "@flind/quill";
 import { Box, Flex, IconButton, Text, Tooltip } from "@radix-ui/themes";
 import clsx from "clsx";
 import type { Ref } from "react";

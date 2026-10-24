@@ -7,8 +7,8 @@
     },
     "dependencies": {
         "@pierre/diffs": "1.2.11",
-        "@posthog/quill-components": "workspace:*",
-        "@posthog/quill-primitives": "workspace:*",
+        "@flind/quill-components": "workspace:*",
+        "@flind/quill-primitives": "workspace:*",
         "kea": "catalog:",
         "kea-loaders": "catalog:",
         "posthog-js": "catalog:"

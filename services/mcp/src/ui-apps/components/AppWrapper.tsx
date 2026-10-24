@@ -2,7 +2,7 @@ import type { App } from '@modelcontextprotocol/ext-apps'
 import { Maximize2, Minimize2 } from 'lucide-react'
 import { type ReactElement, type ReactNode, useCallback, useEffect, useState } from 'react'
 
-import { Button } from '@posthog/quill'
+import { Button } from '@flind/quill'
 
 import { useToolResult, type UseToolResultOptions, type UseToolResultReturn } from '../hooks/useToolResult'
 import { PostHogLogo } from './PostHogLogo'

@@ -15,10 +15,10 @@ import type {
   McpToolPermissionDecision,
   McpToolPermissionRequest,
   McpToolPolicy,
-} from "@posthog/agent-contracts";
-import type { TaskContext } from "@posthog/agent-contracts/task-context";
-import type { PiEnrichmentConfig } from "@posthog/harness/extensions/enrichment";
-import type { McpConfig } from "@posthog/harness/extensions/mcp/config";
+} from "@flind/agent-contracts";
+import type { TaskContext } from "@flind/agent-contracts/task-context";
+import type { PiEnrichmentConfig } from "@flind/harness/extensions/enrichment";
+import type { McpConfig } from "@flind/harness/extensions/mcp/config";
 import { buildLocalToolsServer } from "../adapters/codex-app-server/local-tools-mcp";
 import { safePiEnvironment } from "./rpc-environment";
 import type {

@@ -1,5 +1,5 @@
 import type { ChannelItemModel } from "@posthog/core/canvas/channelItems";
-import { Card } from "@posthog/quill";
+import { Card } from "@flind/quill";
 import type { Task, TaskRun } from "@posthog/shared/domain-types";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { ChannelItemPreview } from "./ChannelItemPreview";

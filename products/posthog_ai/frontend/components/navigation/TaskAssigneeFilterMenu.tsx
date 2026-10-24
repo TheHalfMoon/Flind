@@ -9,7 +9,7 @@ import {
     DropdownMenuRadioItem,
     DropdownMenuTrigger,
     MenuLabel,
-} from '@posthog/quill-primitives'
+} from '@flind/quill-primitives'
 
 import { tasksLogic } from '../../logics/tasksLogic'
 import type { TaskAssigneeFilter } from '../../types/taskTypes'

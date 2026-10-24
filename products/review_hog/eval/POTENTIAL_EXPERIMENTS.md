@@ -110,7 +110,7 @@ Ordering logic: 1 and 2 are archive/offline work that runs today while the tree 
 **Impact:** −$2–4/run (naive cap-at-12 ceiling = 24.2% of review-stage cost) and −2–4 min (wave gated by slowest unit); rider up to ~$3/run more if it pans out.
 **Cost:** ~$120–135 + judge (fresh baselines are the default, not the contingency).
 **Sequencing:** run AFTER the tier round (#3) settles effort, and on frozen skills — new item-5 skills may legitimately need more turns.
-**Kill:** valid <5 or old #3 lost; median turns don't drop ≥20% (soft budgets ignored → only a hard cap helps, and that's a two-repo @posthog/agent change — park it); saving <$1/run.
+**Kill:** valid <5 or old #3 lost; median turns don't drop ≥20% (soft budgets ignored → only a hard cap helps, and that's a two-repo @flind/agent change — park it); saving <$1/run.
 
 #### 7. Sandbox-free dedup and chunking (time + reliability — origins: explore-cost + explore-time "reclaim" Arm A, merged)
 

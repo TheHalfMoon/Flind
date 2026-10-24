@@ -4,7 +4,7 @@ import {
   ChatMarkerContent,
   ChatMarkerIcon,
   cn,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { Spinner } from "@posthog/ui/primitives/Spinner";
 import type { ReactNode } from "react";
 import { StatusIndicators, ToolTitle } from "./toolCallUtils";

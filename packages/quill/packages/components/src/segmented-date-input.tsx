@@ -8,7 +8,7 @@ import {
     TooltipContent,
     TooltipProvider,
     TooltipTrigger,
-} from '@posthog/quill-primitives'
+} from '@flind/quill-primitives'
 
 export type DateFormatOrder = 'MDY' | 'DMY' | 'YMD'
 

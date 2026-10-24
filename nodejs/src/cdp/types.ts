@@ -1,6 +1,6 @@
 import { DateTime } from 'luxon'
 
-import { VMState } from '@posthog/hogvm'
+import { VMState } from '@flind/logicvm'
 
 import { CyclotronInputType, CyclotronInvocationQueueParametersType } from '~/cdp/schema/cyclotron'
 import { HogFlow } from '~/cdp/schema/hogflow'

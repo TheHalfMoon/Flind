@@ -1,5 +1,5 @@
 import { EnvelopeSimple } from "@phosphor-icons/react";
-import { Badge } from "@posthog/quill";
+import { Badge } from "@flind/quill";
 import { SHORTCUTS } from "@posthog/ui/features/command/keyboard-shortcuts";
 import { Tooltip } from "@posthog/ui/primitives/Tooltip";
 import type { MouseEventHandler } from "react";

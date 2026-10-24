@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { Slider, Text } from '@posthog/quill'
+import { Slider, Text } from '@flind/quill'
 
 import type { ParamSpec } from '../../../editing/blockLibrary/params'
 

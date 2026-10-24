@@ -2,7 +2,7 @@ import { useValues } from 'kea'
 import { combineUrl, router } from 'kea-router'
 
 import { Link } from '@posthog/lemon-ui'
-import { type ChartTheme } from '@posthog/quill-charts'
+import { type ChartTheme } from '@flind/quill-charts'
 
 import { formatPercentage } from 'lib/utils/numbers'
 import { urls } from 'scenes/urls'

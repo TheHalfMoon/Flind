@@ -15,7 +15,7 @@ import {
     IconWarning,
 } from '@posthog/icons'
 import { LemonBanner, LemonDivider, LemonSnack, LemonTabs, Link, Tooltip } from '@posthog/lemon-ui'
-import { Button } from '@posthog/quill'
+import { Button } from '@flind/quill'
 
 import { ActivityLog } from 'lib/components/ActivityLog/ActivityLog'
 import { cohortReadsFlagCalls } from 'lib/components/FlagCalledRebuildBanner/flagCalledDependencies'

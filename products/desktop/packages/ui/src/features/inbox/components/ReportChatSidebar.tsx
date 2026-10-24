@@ -7,7 +7,7 @@ import {
   isContentEmpty,
   textToContent,
 } from "@posthog/core/message-editor/content";
-import { Button, Textarea } from "@posthog/quill";
+import { Button, Textarea } from "@flind/quill";
 import type { InboxReportActionSurface } from "@posthog/shared";
 import type { SignalReport } from "@posthog/shared/types";
 import { useTaskChannels } from "@posthog/ui/features/canvas/hooks/useTaskChannels";

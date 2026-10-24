@@ -21,7 +21,7 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import type { AcpMessage } from "@posthog/shared";
 import { Badge, Progress, Text } from "@radix-ui/themes";
 import { useEffect, useMemo, useState } from "react";

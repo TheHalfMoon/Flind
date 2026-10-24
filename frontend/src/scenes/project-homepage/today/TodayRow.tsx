@@ -2,7 +2,7 @@ import { Collapsible } from '@base-ui/react/collapsible'
 import type { MouseEvent, ReactNode } from 'react'
 
 import { IconArrowRight, IconChevronDown } from '@posthog/icons'
-import { IconStack, IconStackItem } from '@posthog/quill'
+import { IconStack, IconStackItem } from '@flind/quill'
 
 import { LinkPrimitive } from 'lib/lemon-ui/Link'
 

@@ -1,5 +1,5 @@
 import { getAuthIdentity } from "@posthog/core/auth/authIdentity";
-import { ToastProvider } from "@posthog/quill";
+import { ToastProvider } from "@flind/quill";
 import { EXTERNAL_LINKS, isNotAuthenticatedError } from "@posthog/shared";
 import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
 import { useAuthStateValue } from "@posthog/ui/features/auth/authQueries";

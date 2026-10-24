@@ -1,4 +1,4 @@
-import { Skeleton } from "@posthog/quill";
+import { Skeleton } from "@flind/quill";
 import { EXTERNAL_LINKS } from "@posthog/shared";
 import { Button } from "@posthog/ui/primitives/Button";
 import { openExternalUrl } from "@posthog/ui/shell/openExternal";

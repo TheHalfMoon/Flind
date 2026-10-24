@@ -10,7 +10,7 @@ import {
     convertHogToJS,
     exec as hogExec,
     execAsync as hogExecAsync,
-} from '@posthog/hogvm'
+} from '@flind/logicvm'
 
 export { convertHogToJS }
 

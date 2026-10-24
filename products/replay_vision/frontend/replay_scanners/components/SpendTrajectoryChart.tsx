@@ -1,6 +1,6 @@
 import { memo, useMemo } from 'react'
 
-import { TimeSeriesLineChart } from '@posthog/quill-charts'
+import { TimeSeriesLineChart } from '@flind/quill-charts'
 
 import { useChartConfig, useChartTheme } from 'lib/charts/hooks'
 import { getColorVar } from 'lib/colors'

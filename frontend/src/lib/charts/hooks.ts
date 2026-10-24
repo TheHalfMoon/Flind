@@ -1,8 +1,8 @@
 import { useValues } from 'kea'
 import { type DependencyList, useCallback, useEffect, useMemo, useState } from 'react'
 
-import { DEFAULT_CHART_CONFIG } from '@posthog/quill-charts'
-import type { ChartTheme, DateRangeZoomData } from '@posthog/quill-charts'
+import { DEFAULT_CHART_CONFIG } from '@flind/quill-charts'
+import type { ChartTheme, DateRangeZoomData } from '@flind/quill-charts'
 
 import { FEATURE_FLAGS } from 'lib/constants'
 import { featureFlagLogic } from 'lib/logic/featureFlagLogic'

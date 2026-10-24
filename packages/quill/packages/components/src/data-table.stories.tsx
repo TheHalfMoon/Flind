@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { type ColumnDef } from '@tanstack/react-table'
 import * as React from 'react'
 
-import { Badge, Checkbox, Field, Label } from '@posthog/quill-primitives'
+import { Badge, Checkbox, Field, Label } from '@flind/quill-primitives'
 
 import { DataTable } from './data-table'
 

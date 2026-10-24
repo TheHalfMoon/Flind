@@ -1,5 +1,5 @@
 import { ArrowDownIcon } from "@phosphor-icons/react";
-import { Button } from "@posthog/quill";
+import { Button } from "@flind/quill";
 import type { Task } from "@posthog/shared/domain-types";
 import { ActivityTimeline } from "@posthog/ui/features/canvas/components/ActivityTimeline";
 import { ActivityLoadingState } from "@posthog/ui/features/canvas/components/activityRows";

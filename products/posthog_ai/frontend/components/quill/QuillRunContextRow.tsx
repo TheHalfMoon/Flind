@@ -1,5 +1,5 @@
 import { IconGitBranch } from '@posthog/icons'
-import { ChatMarkerValue } from '@posthog/quill-primitives'
+import { ChatMarkerValue } from '@flind/quill-primitives'
 
 import { ThreadMarker } from './ThreadMarker'
 

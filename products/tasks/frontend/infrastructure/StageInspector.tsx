@@ -1,4 +1,4 @@
-import { Badge, Button, Card } from '@posthog/quill'
+import { Badge, Button, Card } from '@flind/quill'
 
 import {
     ImageName,

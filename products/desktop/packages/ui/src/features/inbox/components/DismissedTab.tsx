@@ -5,7 +5,7 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { CardSkeleton } from "@posthog/ui/features/inbox/components/CardSkeleton";
 import { InboxLoadMore } from "@posthog/ui/features/inbox/components/InboxLoadMore";
 import { ReportCard } from "@posthog/ui/features/inbox/components/ReportCard";

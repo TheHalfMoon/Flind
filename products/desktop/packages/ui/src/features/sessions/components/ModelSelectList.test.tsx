@@ -1,4 +1,4 @@
-import { DropdownMenu, DropdownMenuContent } from "@posthog/quill";
+import { DropdownMenu, DropdownMenuContent } from "@flind/quill";
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { ModelSelectList } from "./ModelSelectList";

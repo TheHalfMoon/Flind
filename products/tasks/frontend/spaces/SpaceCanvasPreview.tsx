@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useEffect, useRef } from 'react'
 
-import { Skeleton } from '@posthog/quill'
+import { Skeleton } from '@flind/quill'
 
 import { themeLogic } from 'lib/logic/themeLogic'
 

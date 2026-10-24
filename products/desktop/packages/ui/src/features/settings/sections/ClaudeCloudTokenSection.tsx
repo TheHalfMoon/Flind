@@ -1,5 +1,5 @@
 import { useServiceOptional } from "@posthog/di/react";
-import { Button, Input, Switch } from "@posthog/quill";
+import { Button, Input, Switch } from "@flind/quill";
 import { ANALYTICS_EVENTS } from "@posthog/shared";
 import { setCloudSubscriptionOn } from "@posthog/ui/features/settings/adapterSubscription";
 import {

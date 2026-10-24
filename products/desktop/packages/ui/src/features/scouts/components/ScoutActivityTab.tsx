@@ -6,7 +6,7 @@ import {
   summarizeRunWindow,
 } from "@posthog/core/scouts/scoutPresentation";
 import { SCOUT_RUNS_WINDOW_LABEL } from "@posthog/core/scouts/scoutRunsWindow";
-import { Skeleton, Tabs, TabsList, TabsTrigger } from "@posthog/quill";
+import { Skeleton, Tabs, TabsList, TabsTrigger } from "@flind/quill";
 import { ANALYTICS_EVENTS } from "@posthog/shared";
 import { useMinuteNow } from "@posthog/ui/hooks/useMinuteNow";
 import { track } from "@posthog/ui/shell/analytics";

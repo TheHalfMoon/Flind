@@ -17,7 +17,7 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { CanvasBlocksPanel } from "@posthog/ui/features/canvas/blocks/CanvasBlocksPanel";
 import { TaskCommentsList } from "@posthog/ui/features/canvas/components/TaskCommentsList";
 import { CanvasTimeline } from "@posthog/ui/features/canvas/freeform/CanvasTimeline";

@@ -14,7 +14,7 @@ import {
   TooltipSurface,
   TooltipSwatch,
   useChartTheme,
-} from "@posthog/quill-charts";
+} from "@flind/quill-charts";
 import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
 import { UsageCard } from "./UsageCard";
 

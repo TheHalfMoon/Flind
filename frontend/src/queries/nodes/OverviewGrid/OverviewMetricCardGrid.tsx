@@ -3,7 +3,7 @@ import type React from 'react'
 
 import { IconWarning } from '@posthog/icons'
 import { Link } from '@posthog/lemon-ui'
-import { type ChartTheme, type MetricChange } from '@posthog/quill-charts'
+import { type ChartTheme, type MetricChange } from '@flind/quill-charts'
 
 import { AnalyticsMetricCard } from 'lib/components/AnalyticsMetricCard/AnalyticsMetricCard'
 import { PreAggregatedBadge } from 'lib/components/PreAggregatedBadge'

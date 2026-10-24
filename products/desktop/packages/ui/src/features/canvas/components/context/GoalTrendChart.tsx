@@ -11,7 +11,7 @@ import {
   type TooltipContext,
   useChartLayout,
   useChartTheme,
-} from "@posthog/quill-charts";
+} from "@flind/quill-charts";
 import { useGoalPalette } from "@posthog/ui/features/canvas/goalColors";
 import type { GoalTrendPoint } from "@posthog/ui/features/canvas/hooks/useGoalMeasure";
 import { useCallback, useId, useMemo } from "react";

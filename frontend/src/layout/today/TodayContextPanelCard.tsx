@@ -1,6 +1,6 @@
 import { forwardRef } from 'react'
 
-import { Card, CardContent, cn } from '@posthog/quill'
+import { Card, CardContent, cn } from '@flind/quill'
 
 import { SidePanelTab } from '~/types'
 

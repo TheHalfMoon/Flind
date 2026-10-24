@@ -9,7 +9,7 @@
  *                  (`item.verified`). Badge reads "Verified".
  */
 import { IconBadge, IconLogomark } from '@posthog/icons'
-import { Badge, cn, Tooltip, TooltipContent, TooltipTrigger } from '@posthog/quill'
+import { Badge, cn, Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill'
 
 import { isCoreFilter } from '~/taxonomy/helpers'
 

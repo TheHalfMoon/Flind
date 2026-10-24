@@ -7,7 +7,7 @@ import {
   ItemGroup,
   ItemSeparator,
   ItemTitle,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { formatRelativeAge } from "@posthog/shared";
 import type { UserBasic } from "@posthog/shared/domain-types";
 import {

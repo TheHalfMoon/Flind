@@ -3,7 +3,7 @@ import {
   ChatMessageScrollerButton,
   ChatMessageScrollerContent,
   ChatMessageScrollerViewport,
-} from "@posthog/quill";
+} from "@flind/quill";
 import type { ConversationItem } from "@posthog/ui/features/sessions/components/buildConversationItems";
 import { MessageMinimap } from "@posthog/ui/features/sessions/components/chat-thread/MessageMinimap";
 import {

@@ -5,7 +5,7 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@posthog/quill";
+} from "@flind/quill";
 import type { Task } from "@posthog/shared/domain-types";
 import { LoadingState } from "@posthog/ui/primitives/LoadingState";
 import { type ReactNode, useEffect } from "react";

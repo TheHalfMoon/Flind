@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 
-import { DateTimePicker, Label, Switch } from '@posthog/quill'
+import { DateTimePicker, Label, Switch } from '@flind/quill'
 
 import { dayjs } from 'lib/dayjs'
 

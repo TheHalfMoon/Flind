@@ -12,7 +12,7 @@ import {
   EmptyMedia,
   EmptyTitle,
   MenuLabel,
-} from "@posthog/quill";
+} from "@flind/quill";
 import type { SignalReport } from "@posthog/shared/types";
 import { SidebarSearchHeader } from "@posthog/ui/features/canvas/components/SidebarSearchHeader";
 import { LoadingState } from "@posthog/ui/primitives/LoadingState";

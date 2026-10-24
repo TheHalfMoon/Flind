@@ -1,4 +1,4 @@
-import { Skeleton } from "@posthog/quill";
+import { Skeleton } from "@flind/quill";
 import { useWorkLayout } from "@posthog/ui/features/canvas/hooks/useWorkLayout";
 import type { ReactElement } from "react";
 import { yieldToPaint } from "./yieldToPaint";

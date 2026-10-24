@@ -29,7 +29,7 @@ import {
   Switch,
   ToggleGroup,
   ToggleGroupItem,
-} from "@posthog/quill";
+} from "@flind/quill";
 import type { LoopSchemas } from "@posthog/ui/features/loops/loopSchemas";
 import { SettingsOptionSelect } from "@posthog/ui/features/settings/SettingsOptionSelect";
 import { TimezonePicker } from "@posthog/ui/primitives/TimezonePicker";

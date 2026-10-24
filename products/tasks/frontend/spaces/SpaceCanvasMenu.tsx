@@ -10,7 +10,7 @@ import {
     TooltipContent,
     TooltipTrigger,
     cn,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import { DROPDOWN_PARTS } from '~/layout/today/todayMenuParts'
 

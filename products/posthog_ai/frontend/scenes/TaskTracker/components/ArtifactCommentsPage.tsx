@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconChevronLeft, IconComment } from '@posthog/icons'
-import { Button, Label, Switch, Text, Tooltip, TooltipContent, TooltipTrigger } from '@posthog/quill-primitives'
+import { Button, Label, Switch, Text, Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill-primitives'
 
 import { TaskArtifactCommentsLogicProps, taskArtifactCommentsLogic } from '../taskArtifactCommentsLogic'
 import { taskRunArtifactsLogic } from '../taskRunArtifactsLogic'

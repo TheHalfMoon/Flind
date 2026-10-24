@@ -1,14 +1,14 @@
 import { useValues } from 'kea'
 import { useMemo } from 'react'
 
-import { TimeSeriesBarChart, TimeSeriesLineChart } from '@posthog/quill-charts'
+import { TimeSeriesBarChart, TimeSeriesLineChart } from '@flind/quill-charts'
 import type {
     GoalLineConfig,
     ReferenceLineProps,
     Series,
     TimeSeriesBarChartConfig,
     TimeSeriesLineChartConfig,
-} from '@posthog/quill-charts'
+} from '@flind/quill-charts'
 
 import { useChartConfig, useChartTheme } from 'lib/charts/hooks'
 import { teamLogic } from 'scenes/teamLogic'

@@ -4,7 +4,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { SessionManager } from "@earendil-works/pi-coding-agent";
-import type { TaskContext } from "@posthog/agent-contracts/task-context";
+import type { TaskContext } from "@flind/agent-contracts/task-context";
 import { build } from "tsup";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import { createPiRpcClient, createRuntimeMcpStdioServers } from "./rpc-client";

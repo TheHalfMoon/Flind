@@ -9,7 +9,7 @@ import {
   withAutonomy,
 } from "@posthog/core/canvas/contextDocument";
 import { spaceFilesFolder } from "@posthog/core/canvas/contextFiles";
-import { Button, cn, Text } from "@posthog/quill";
+import { Button, cn, Text } from "@flind/quill";
 import { SPACE_SETUP_FLAG } from "@posthog/shared";
 import { CreateChannelModal } from "@posthog/ui/features/canvas/components/CreateChannelModal";
 import {

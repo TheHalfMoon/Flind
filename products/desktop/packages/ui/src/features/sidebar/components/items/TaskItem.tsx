@@ -1,6 +1,6 @@
 import { Archive, GitPullRequest, PushPin } from "@phosphor-icons/react";
 import type { RunMode } from "@posthog/core/sidebar/buildSidebarData";
-import { parseGithubUrl } from "@posthog/git/utils";
+import { parseGithubUrl } from "@flind/git/utils";
 import type { WorkspaceMode } from "@posthog/shared";
 import { formatRelativeTimeShort } from "@posthog/shared";
 import type { TaskRunStatus } from "@posthog/shared/domain-types";

@@ -1,8 +1,8 @@
-import type { Adapter, McpServerConnection } from "@posthog/agent-contracts";
+import type { Adapter, McpServerConnection } from "@flind/agent-contracts";
 import type {
   EffortLevel,
   ServiceTier,
-} from "@posthog/agent-contracts/domain-types";
+} from "@flind/agent-contracts/domain-types";
 import type { ProductSelector } from "../sdk/product";
 import type { AgentMode } from "../types";
 import type { RtkSavingsSummary } from "./rtk-savings";

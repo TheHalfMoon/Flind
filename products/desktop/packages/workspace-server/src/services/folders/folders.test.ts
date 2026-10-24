@@ -49,7 +49,7 @@ vi.mock("node:fs", () => ({
   },
 }));
 
-vi.mock("@posthog/git/worktree", () => ({
+vi.mock("@flind/git/worktree", () => ({
   WorktreeManager: class MockWorktreeManager {
     deleteWorktree = mockWorktreeManager.deleteWorktree;
     cleanupOrphanedWorktrees = mockWorktreeManager.cleanupOrphanedWorktrees;
@@ -57,13 +57,13 @@ vi.mock("@posthog/git/worktree", () => ({
   },
 }));
 
-vi.mock("@posthog/git/queries", () => ({
+vi.mock("@flind/git/queries", () => ({
   isGitRepository: vi.fn(() => Promise.resolve(true)),
   getRemoteUrl: vi.fn(() => Promise.resolve(null)),
   getLinkedWorktreeMainPath: vi.fn(() => null),
 }));
 
-vi.mock("@posthog/git/sagas/init", () => ({
+vi.mock("@flind/git/sagas/init", () => ({
   InitRepositorySaga: class {
     run = mockInitRepositorySaga.run;
   },
@@ -74,7 +74,7 @@ import {
   getLinkedWorktreeMainPath,
   getRemoteUrl,
   isGitRepository,
-} from "@posthog/git/queries";
+} from "@flind/git/queries";
 import type { IDialog } from "@posthog/platform/dialog";
 import type { IWorkspaceSettings } from "@posthog/platform/workspace-settings";
 import type { IRepositoryRepository } from "../../db/repositories/repository-repository";

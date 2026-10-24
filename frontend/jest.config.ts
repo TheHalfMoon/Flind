@@ -11,7 +11,7 @@ const esmModules = [
     'query-selector-shadow-dom',
     // @posthog/brand is ESM-only (ships .mjs); let Sucrase transpile it so its import/export parses.
     '@posthog/brand',
-    // @shadcn/react ships ESM-only; @posthog/quill-primitives chat components re-export its
+    // @shadcn/react ships ESM-only; @flind/quill-primitives chat components re-export its
     // message-scroller, pulling it into frontend test module graphs via the quill barrel.
     '@shadcn/react',
     '@react-hook',
@@ -126,11 +126,11 @@ const config: Config = {
         '^(.+)\\.yaml\\?raw$': '$1.yaml',
         '^(.+)\\.md\\?raw$': '$1.md',
         '^~/(.*)$': '<rootDir>/src/$1',
-        '^@posthog/hogql-parser$': '<rootDir>/node_modules/@posthog/hogql-parser/dist/index.cjs',
-        // @posthog/hogvm ships as ESM-only; map to the TS source so Jest (Sucrase) can handle it.
+        '^@flind/query-parser$': '<rootDir>/node_modules/@flind/query-parser/dist/index.cjs',
+        // @flind/logicvm ships as ESM-only; map to the TS source so Jest (Sucrase) can handle it.
         // Required for sidePanelNotificationsLogic.test.ts and other tests with a transitive
         // import chain through src/lib/hog.ts.
-        '^@posthog/hogvm$': '<rootDir>/node_modules/@posthog/hogvm/src/index.ts',
+        '^@flind/logicvm$': '<rootDir>/node_modules/@flind/logicvm/src/index.ts',
         '^@posthog/lemon-ui(|/.*)$': '<rootDir>/@posthog/lemon-ui/src/$1',
         '^lib/(.*)$': '<rootDir>/src/lib/$1',
         '^react-markdown$': '<rootDir>/src/test/mocks/reactMarkdownMock.js',
@@ -154,16 +154,16 @@ const config: Config = {
         '^@flind/replay-shared/(.*)$': '<rootDir>/../common/replay-shared/src/$1',
         '^@flind/llm-normalizer$': '<rootDir>/../packages/llm-normalizer/src/index.ts',
         '^@flind/llm-normalizer/(.*)$': '<rootDir>/../packages/llm-normalizer/src/$1',
-        '^@posthog/agent-contracts/(.*)$': '<rootDir>/../packages/agent/packages/agent-contracts/src/$1',
-        '^@posthog/quill$': '<rootDir>/../packages/quill/packages/quill/src/index.ts',
-        '^@posthog/quill-blocks$': '<rootDir>/../packages/quill/packages/blocks/src/index.ts',
-        '^@posthog/quill-charts$': '<rootDir>/../packages/quill/packages/charts/src/index.ts',
-        '^@posthog/quill-charts/testing$': '<rootDir>/../packages/quill/packages/charts/src/testing/index.ts',
-        '^@posthog/quill-charts/story-helpers$': '<rootDir>/../packages/quill/packages/charts/src/story-helpers.tsx',
-        '^@posthog/quill-components$': '<rootDir>/../packages/quill/packages/components/src/index.ts',
-        '^@posthog/quill-components/metric$': '<rootDir>/../packages/quill/packages/components/src/metric.tsx',
-        '^@posthog/quill-primitives$': '<rootDir>/../packages/quill/packages/primitives/src/index.ts',
-        '^@posthog/quill-tokens$': '<rootDir>/../packages/quill/packages/tokens/src/index.ts',
+        '^@flind/agent-contracts/(.*)$': '<rootDir>/../packages/agent/packages/agent-contracts/src/$1',
+        '^@flind/quill$': '<rootDir>/../packages/quill/packages/quill/src/index.ts',
+        '^@flind/quill-blocks$': '<rootDir>/../packages/quill/packages/blocks/src/index.ts',
+        '^@flind/quill-charts$': '<rootDir>/../packages/quill/packages/charts/src/index.ts',
+        '^@flind/quill-charts/testing$': '<rootDir>/../packages/quill/packages/charts/src/testing/index.ts',
+        '^@flind/quill-charts/story-helpers$': '<rootDir>/../packages/quill/packages/charts/src/story-helpers.tsx',
+        '^@flind/quill-components$': '<rootDir>/../packages/quill/packages/components/src/index.ts',
+        '^@flind/quill-components/metric$': '<rootDir>/../packages/quill/packages/components/src/metric.tsx',
+        '^@flind/quill-primitives$': '<rootDir>/../packages/quill/packages/primitives/src/index.ts',
+        '^@flind/quill-tokens$': '<rootDir>/../packages/quill/packages/tokens/src/index.ts',
         '^@posthog/shared-onboarding/(.*)$': '<rootDir>/../docs/onboarding/$1',
         d3: '<rootDir>/node_modules/d3/dist/d3.min.js',
         '^d3-(.*)$': `d3-$1/dist/d3-$1`,

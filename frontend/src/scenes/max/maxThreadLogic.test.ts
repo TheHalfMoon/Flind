@@ -62,7 +62,7 @@ import {
 } from './testUtils'
 
 jest.mock(
-    '@posthog/hogvm',
+    '@flind/logicvm',
     () => ({
         exec: jest.fn(),
         execAsync: jest.fn(),

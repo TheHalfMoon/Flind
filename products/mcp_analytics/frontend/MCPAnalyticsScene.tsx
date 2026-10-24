@@ -2,7 +2,7 @@ import { useValues } from 'kea'
 import { router, combineUrl } from 'kea-router'
 
 import { LemonButton, LemonTab, LemonTabs, LemonTag } from '@posthog/lemon-ui'
-import { Button } from '@posthog/quill'
+import { Button } from '@flind/quill'
 
 import { NotFound } from 'lib/components/NotFound'
 import { FEATURE_FLAGS } from 'lib/constants'

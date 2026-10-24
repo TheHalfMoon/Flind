@@ -14,7 +14,7 @@ import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { StepBody } from "@posthog/ui/features/settings/sections/environments/setup/StepBody";
 import { SetupCommandList } from "@posthog/ui/features/settings/sections/environments/setup/steps/SetupCommandList";
 import {

@@ -1,5 +1,6 @@
 {
-    "name": "@posthog/replay-anonymizer",
+    "name": "@flind/replay-anonymizer",
+    "private": true,
     "version": "0.0.1",
     "description": "Node bindings for the session-replay anonymizer",
     "main": "dist/index.js",
@@ -15,7 +16,7 @@
         "build:typescript": "tsc",
         "typecheck": "tsc --noEmit",
         "clean": "rm -rf index.node dist",
-        "package": "NODE_ENV=development pnpm --filter=@posthog/replay-anonymizer run build"
+        "package": "NODE_ENV=development pnpm --filter=@flind/replay-anonymizer run build"
     },
     "author": "",
     "license": "MIT",

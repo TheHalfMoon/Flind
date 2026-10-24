@@ -3,8 +3,8 @@ import './Paths.scss'
 import { useActions, useValues } from 'kea'
 import { useCallback, useMemo, useRef } from 'react'
 
-import { SankeyChart } from '@posthog/quill-charts'
-import type { SankeyChartConfig, SankeyHighlight, SankeyTooltipHit } from '@posthog/quill-charts'
+import { SankeyChart } from '@flind/quill-charts'
+import type { SankeyChartConfig, SankeyHighlight, SankeyTooltipHit } from '@flind/quill-charts'
 
 import { useChartTheme } from 'lib/charts/hooks'
 import { useResizeObserver } from 'lib/hooks/useResizeObserver'

@@ -1,5 +1,5 @@
 import { useHostTRPC } from "@posthog/host-router/react";
-import { Switch } from "@posthog/quill";
+import { Switch } from "@flind/quill";
 import { ANALYTICS_EVENTS } from "@posthog/shared";
 import {
   EFFORT_LEVEL_DOCS_URLS,

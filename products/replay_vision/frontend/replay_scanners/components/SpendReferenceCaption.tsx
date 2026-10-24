@@ -1,5 +1,5 @@
 /* eslint-disable react/forbid-dom-props -- dynamic pixel positions from the chart scales */
-import { useChartLayout } from '@posthog/quill-charts'
+import { useChartLayout } from '@flind/quill-charts'
 
 import { LABEL_INSET, SPEND_TONE_CLASS } from './spendTrajectoryCaptionLayout'
 import type { SpendReferenceLabel } from './spendTrajectoryTransforms'

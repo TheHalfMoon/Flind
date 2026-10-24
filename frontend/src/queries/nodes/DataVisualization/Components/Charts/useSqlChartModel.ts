@@ -10,7 +10,7 @@ import {
     type YAxisConfig,
     type ValueDomain,
     type BarsConfig,
-} from '@posthog/quill-charts'
+} from '@flind/quill-charts'
 
 import { useChartTheme, useChartConfig } from 'lib/charts/hooks'
 import { useChartLegendSeriesMenu } from 'lib/components/ChartLegendSeriesMenu/useChartLegendSeriesMenu'

@@ -18,7 +18,7 @@ import {
   scoutRunOutcomeLabel,
   scoutSummarySentence,
 } from "@posthog/core/scouts/scoutPresentation";
-import { Button, Skeleton } from "@posthog/quill";
+import { Button, Skeleton } from "@flind/quill";
 import { RelativeTimestamp } from "@posthog/ui/primitives/RelativeTimestamp";
 import { TabStrip } from "@posthog/ui/primitives/TabStrip";
 import { Fragment, type ReactNode } from "react";

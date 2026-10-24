@@ -7,7 +7,7 @@ import type {
   SourceFieldOauthConfig,
 } from "@posthog/api-client/posthog-client";
 import { useHostTRPC } from "@posthog/host-router/react";
-import { Button } from "@posthog/quill";
+import { Button } from "@flind/quill";
 import { useAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
 import { useAuthStateValue } from "@posthog/ui/features/auth/store";
 import { useSourceConfig } from "@posthog/ui/features/inbox/hooks/useSourceConfig";

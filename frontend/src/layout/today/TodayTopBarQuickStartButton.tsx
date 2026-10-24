@@ -1,5 +1,5 @@
 import { IconTarget } from '@posthog/icons'
-import { Button } from '@posthog/quill'
+import { Button } from '@flind/quill'
 
 import { ProductSetupPopover } from 'lib/components/ProductSetup'
 import { useProductSetupButton } from 'lib/components/ProductSetup/useProductSetupButton'

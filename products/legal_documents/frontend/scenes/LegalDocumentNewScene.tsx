@@ -3,7 +3,7 @@ import { Form } from 'kea-forms'
 
 import { IconBalance, IconSend } from '@posthog/icons'
 import { LemonBanner, LemonButton, LemonInput, LemonSelect, Link } from '@posthog/lemon-ui'
-import { Button } from '@posthog/quill'
+import { Button } from '@flind/quill'
 
 import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'
 import { LemonField } from 'lib/lemon-ui/LemonField'

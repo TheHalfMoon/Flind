@@ -2,7 +2,7 @@ import type {
   ReadToolDetails,
   ReadToolInput,
 } from "@earendil-works/pi-coding-agent";
-import type { AgentToolCallContent } from "@posthog/agent-contracts";
+import type { AgentToolCallContent } from "@flind/agent-contracts";
 import type { PiToolTranslator } from "../toolTranslator";
 
 export const readTranslator: PiToolTranslator = ({

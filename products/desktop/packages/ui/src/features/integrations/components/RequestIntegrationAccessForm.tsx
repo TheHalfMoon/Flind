@@ -1,4 +1,4 @@
-import { Button, Text, Textarea } from "@posthog/quill";
+import { Button, Text, Textarea } from "@flind/quill";
 import { useAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
 import { toast } from "@posthog/ui/primitives/toast";
 import { useMutation } from "@tanstack/react-query";

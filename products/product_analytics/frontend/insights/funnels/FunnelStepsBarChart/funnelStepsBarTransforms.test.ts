@@ -1,4 +1,4 @@
-import type { PointClickData, Series } from '@posthog/quill-charts'
+import type { PointClickData, Series } from '@flind/quill-charts'
 
 import { EntityTypes, FunnelStepReference, type FunnelStepWithConversionMetrics } from '~/types'
 

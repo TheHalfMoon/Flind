@@ -1,6 +1,6 @@
 import { max, mean, median, min } from 'd3'
 
-import type { Series } from '@posthog/quill-charts'
+import type { Series } from '@flind/quill-charts'
 
 import type { GoalLine } from '~/queries/schema/schema-general'
 

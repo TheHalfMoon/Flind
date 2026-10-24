@@ -7,7 +7,7 @@ import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import { Badge, Table, Text } from "@radix-ui/themes";
 import { useMemo } from "react";
 import {

@@ -1,7 +1,7 @@
 import { useActions, useAsyncActions, useValues } from 'kea'
 
 import { IconEllipsis, IconPencil, IconPlay } from '@posthog/icons'
-import { Button, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@posthog/quill'
+import { Button, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@flind/quill'
 
 import { AccessControlAction } from 'lib/components/AccessControlAction'
 import { LinkPrimitive } from 'lib/lemon-ui/Link'

@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { Text } from '@posthog/quill'
+import { Text } from '@flind/quill'
 
 import { humanizeScope } from 'lib/components/ActivityLog/humanizeActivity'
 

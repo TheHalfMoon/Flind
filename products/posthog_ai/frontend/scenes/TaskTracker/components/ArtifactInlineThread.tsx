@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { CSSProperties, useEffect, useRef } from 'react'
 
-import { cn } from '@posthog/quill-primitives'
+import { cn } from '@flind/quill-primitives'
 
 import { threadAnchorLabel } from '../artifactComments'
 import { TaskArtifactCommentsLogicProps, taskArtifactCommentsLogic } from '../taskArtifactCommentsLogic'

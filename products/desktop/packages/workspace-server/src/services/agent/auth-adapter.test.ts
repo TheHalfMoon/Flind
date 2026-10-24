@@ -2,7 +2,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 const mockFetch = vi.hoisted(() => vi.fn());
 
-vi.mock("@posthog/agent/posthog-api", () => ({
+vi.mock("@flind/agent/posthog-api", () => ({
   getLlmGatewayUrl: vi.fn(() => "https://gateway.example.com"),
 }));
 

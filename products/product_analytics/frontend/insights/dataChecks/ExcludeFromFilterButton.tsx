@@ -11,7 +11,7 @@ import {
     AlertDialogTrigger,
     Button,
     Text,
-} from '@posthog/quill'
+} from '@flind/quill'
 
 import { TaxonomicFilterGroupType } from 'lib/components/TaxonomicFilter/types'
 import { LinkPrimitive } from 'lib/lemon-ui/Link'

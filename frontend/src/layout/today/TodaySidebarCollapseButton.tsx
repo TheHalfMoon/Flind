@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { Button, Kbd, Tooltip, TooltipContent, TooltipTrigger, cn } from '@posthog/quill'
+import { Button, Kbd, Tooltip, TooltipContent, TooltipTrigger, cn } from '@flind/quill'
 
 import { IconHideSidebar, TODAY_PANES, todaySidebarShortcutLabel } from './todayRailItems'
 import { todayShellLogic } from './todayShellLogic'

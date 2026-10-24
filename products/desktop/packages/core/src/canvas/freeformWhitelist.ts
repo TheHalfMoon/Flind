@@ -43,14 +43,14 @@ export const FREEFORM_WHITELIST: WhitelistEntry[] = [
   // PostHog's own design system — already built + self-hosted, so it's the
   // cheapest dependency and keeps shared canvases visually on-brand.
   {
-    name: "@posthog/quill",
+    name: "@flind/quill",
     version: QUILL_VERSION,
     // `deps` pins quill's Base UI to the version the canvas builder bundles.
     // Left floating (quill declares ^1.4.0), esm.sh resolves the newest Base
     // UI, and its 1.7.0 build emits literal `#prehydration/...` specifiers
     // that browsers read as URL fragments — the esm.sh homepage comes back as
     // text/html and the whole quill module graph fails to load.
-    esm: `${ESM}/@posthog/quill@${QUILL_VERSION}?external=react,react-dom&deps=@base-ui/react@1.6.0`,
+    esm: `${ESM}/@flind/quill@${QUILL_VERSION}?external=react,react-dom&deps=@base-ui/react@1.6.0`,
   },
   // One charting library (the conventional React pick).
   {
@@ -109,10 +109,10 @@ export const FREEFORM_ESM_HOST = ESM;
 // agents to inline raw hex). Order matters: tokens + colors define the CSS vars,
 // then the component styles consume them. CSP `style-src` already allows the CDN.
 export const FREEFORM_QUILL_CSS_URLS = [
-  `${ESM}/@posthog/quill@${QUILL_VERSION}/tokens.css`,
-  `${ESM}/@posthog/quill@${QUILL_VERSION}/color-system.css`,
-  `${ESM}/@posthog/quill@${QUILL_VERSION}/base.css`,
-  `${ESM}/@posthog/quill@${QUILL_VERSION}/primitives.css`,
+  `${ESM}/@flind/quill@${QUILL_VERSION}/tokens.css`,
+  `${ESM}/@flind/quill@${QUILL_VERSION}/color-system.css`,
+  `${ESM}/@flind/quill@${QUILL_VERSION}/base.css`,
+  `${ESM}/@flind/quill@${QUILL_VERSION}/primitives.css`,
 ];
 
 // The in-browser transpiler (Q2), imported as ESM so egress stays on one host.

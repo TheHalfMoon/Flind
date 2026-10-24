@@ -1,1 +1,1 @@
-export * from "@posthog/agent-contracts/product-engineer-prompt";
+export * from "@flind/agent-contracts/product-engineer-prompt";

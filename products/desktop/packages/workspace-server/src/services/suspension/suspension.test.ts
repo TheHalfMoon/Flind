@@ -14,10 +14,10 @@ const mockWorktreeManagerProto = vi.hoisted(() => ({
   createDetachedWorktreeAtCommit: vi.fn(),
 }));
 
-vi.mock("@posthog/git/client", () => ({
+vi.mock("@flind/git/client", () => ({
   createGitClient: mockCreateGitClient,
 }));
-vi.mock("@posthog/git/sagas/checkpoint", () => ({
+vi.mock("@flind/git/sagas/checkpoint", () => ({
   CaptureCheckpointSaga: class {
     run = mockCaptureRun;
   },
@@ -26,7 +26,7 @@ vi.mock("@posthog/git/sagas/checkpoint", () => ({
   },
   deleteCheckpoint: mockDeleteCheckpoint,
 }));
-vi.mock("@posthog/git/worktree", () => ({
+vi.mock("@flind/git/worktree", () => ({
   WorktreeManager: class {
     deleteWorktree = mockWorktreeManagerProto.deleteWorktree;
     createWorktreeForExistingBranch =

@@ -7,7 +7,7 @@ import {
   FieldLabel,
   Text,
   Textarea,
-} from "@posthog/quill";
+} from "@flind/quill";
 import {
   type Dispatch,
   type ReactNode,

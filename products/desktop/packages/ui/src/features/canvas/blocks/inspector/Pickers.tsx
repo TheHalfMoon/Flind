@@ -9,7 +9,7 @@ import {
   ComboboxItem,
   ComboboxList,
   ComboboxTrigger,
-} from "@posthog/quill";
+} from "@flind/quill";
 import {
   TOP_EVENT_PROPERTIES_HOGQL,
   TOP_EVENTS_HOGQL,

@@ -193,7 +193,7 @@ The Inbox reads from PostHog Cloud's Self-driving backend, currently implemented
 
 The shared renderer type for the report is `SignalReport` in `packages/agent/packages/agent-contracts/src/domain-types.ts`. If the backend serializer changes, update that type and the client methods in `packages/api-client/src/posthog-client.ts` together.
 
-Report charts: `SignalReport.charts` carries scout-authored chart definitions (`chart_id`, `title`, `query`, `caption?`, `size?`). The desktop app renders them natively in the detail views: `packages/core/src/inbox/reportCharts.ts` classifies the stored query (runnable HogQL/trends vs saved-insight vs link-out fallback), `PostHogAPIClient.runQuery` executes runnable sources against `/api/projects/{teamId}/query/`, and `components/detail/ReportChartCard.tsx` draws the result with `@posthog/quill-charts`. Query kinds the app can't draw degrade to a card that links out to PostHog. Summary prose references charts as `[label](chart:<chart_id>)` links; `SignalReportSummaryMarkdown` turns those into in-page jumps to the chart card (plain text on list rows).
+Report charts: `SignalReport.charts` carries scout-authored chart definitions (`chart_id`, `title`, `query`, `caption?`, `size?`). The desktop app renders them natively in the detail views: `packages/core/src/inbox/reportCharts.ts` classifies the stored query (runnable HogQL/trends vs saved-insight vs link-out fallback), `PostHogAPIClient.runQuery` executes runnable sources against `/api/projects/{teamId}/query/`, and `components/detail/ReportChartCard.tsx` draws the result with `@flind/quill-charts`. Query kinds the app can't draw degrade to a card that links out to PostHog. Summary prose references charts as `[label](chart:<chart_id>)` links; `SignalReportSummaryMarkdown` turns those into in-page jumps to the chart card (plain text on list rows).
 
 PR refunds: `POST /api/projects/{teamId}/signals/reports/{id}/refund/` refunds a billed PR and archives the report (`PostHogAPIClient.refundSignalReport`). The action is gated behind the `signals-pr-refunds` flag (`SIGNALS_PR_REFUNDS_FLAG`) and `@posthog/core/inbox/refundEligibility`'s `computeRefundEligibility` (shared with the mobile host), which reads `implementation_pr_url`, `refund` (one `SignalReportRefund` per report, ever), `billing_exempt_reason`, and the backend-owned `refund_ineligibility_reason`. The server enforces the same rules, so the gate is display-only; `ReportDetailActions` shows no refund action when the report is ineligible.
 
@@ -232,11 +232,11 @@ Shared primitives exist to keep the surfaces consistent:
 
 When adding or changing UI, reuse those primitives first. Avoid encoding one-off layout systems inside a tab component.
 
-Components come from `@posthog/quill`; layout is `div`s with Tailwind. Radix is banned — see [UI Components](../../../../../AGENTS.md#ui-components) in the root `AGENTS.md`. Inbox files that still import `@radix-ui/themes` are legacy: when you edit one, drop the Radix import rather than extending it (`Flex`/`Box` → `div` + Tailwind, `Text`/`Button`/`Badge`/`Tooltip` → the quill component of the same name).
+Components come from `@flind/quill`; layout is `div`s with Tailwind. Radix is banned — see [UI Components](../../../../../AGENTS.md#ui-components) in the root `AGENTS.md`. Inbox files that still import `@radix-ui/themes` are legacy: when you edit one, drop the Radix import rather than extending it (`Flex`/`Box` → `div` + Tailwind, `Text`/`Button`/`Badge`/`Tooltip` → the quill component of the same name).
 
 ## Things to Avoid
 
-- Do not add any `@radix-ui/*` import. Use `@posthog/quill` plus `div` + Tailwind.
+- Do not add any `@radix-ui/*` import. Use `@flind/quill` plus `div` + Tailwind.
 - Do not reuse the deleted legacy `ReportListRow`, `ReportDetailPane`, or old list/detail stores.
 - The Inbox title is a breadcrumb row, not a page header. `InboxView` pushes it into the header store and `ContentHeader` draws it, the same tight row task detail and the loop scenes use. Do not add a second in-page title above the list. Beside the rail's list the pane draws no row at all, because an empty pane and triage name nothing the column's own title does not already say. The row comes back for the report a row opens, which pushes its own crumb and actions.
 - Responder configuration stays in Settings (`/settings/agents`). The Inbox header carries a "Configure agents" link toward it, but do not embed configuration UI in the Inbox itself.

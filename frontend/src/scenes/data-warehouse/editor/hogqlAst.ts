@@ -1,4 +1,4 @@
-import type { ASTNode } from '@posthog/hogql-parser'
+import type { ASTNode } from '@flind/query-parser'
 
 // Walks over an already-parsed HogQL AST. Kept free of any parsing so the same code can run in
 // the parser worker and in the main-thread fallback — the worker returns these small results

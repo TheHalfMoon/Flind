@@ -1,4 +1,4 @@
-import { useSankeyLayout } from '@posthog/quill-charts'
+import { useSankeyLayout } from '@flind/quill-charts'
 
 /** Chart overlay: a divider before each step once the chart is wide enough to scroll, so the eye
  *  keeps its place in a long path. */

@@ -1,4 +1,4 @@
-import { Skeleton } from "@posthog/quill";
+import { Skeleton } from "@flind/quill";
 import { Text } from "@radix-ui/themes";
 import type { ReactNode } from "react";
 

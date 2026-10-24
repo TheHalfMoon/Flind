@@ -7,7 +7,7 @@ import {
   ComboboxList,
   DropdownMenuSub,
   DropdownMenuSubContent,
-} from "@posthog/quill";
+} from "@flind/quill";
 import type { CanvasMultiSelectOption } from "@posthog/ui/features/canvas/components/canvasFilterSelection";
 import { FilterSubMenuTrigger } from "@posthog/ui/primitives/FilterMenu";
 import type { ReactElement, SyntheticEvent } from "react";
