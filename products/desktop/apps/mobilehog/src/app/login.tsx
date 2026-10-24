@@ -8,6 +8,7 @@ import {
   ScrollView,
   StyleSheet,
   Text,
+  TextInput,
   useWindowDimensions,
   View,
 } from "react-native";
@@ -18,7 +19,6 @@ import Animated, {
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Glass } from "@/components/Glass";
 import { Logomark } from "@/components/Icons";
-import { DEV_EMAIL, DEV_PASSWORD } from "@/config";
 import { useAuth } from "@/lib/auth";
 import type { CloudRegion } from "@/lib/oauth";
 import { colors, fonts, radius } from "@/lib/theme";
@@ -102,7 +102,7 @@ function RegionSegment({
 }
 
 // The landing carousel: three things the app is for, then straight into
-// PostHog's own login sheet, which handles passwords, Google, GitHub and SSO.
+// the configured Flind login flow, which handles passwords, Google, GitHub and SSO.
 export default function LandingScreen() {
   const insets = useSafeAreaInsets();
   const { width } = useWindowDimensions();
@@ -113,6 +113,8 @@ export default function LandingScreen() {
   const [busy, setBusy] = useState<"cloud" | "local" | null>(null);
   const loginPending = useRef(false);
   const [error, setError] = useState<string | null>(null);
+  const [localEmail, setLocalEmail] = useState("");
+  const [localPassphrase, setLocalPassphrase] = useState("");
 
   const run = async (
     kind: "cloud" | "local",
@@ -127,6 +129,7 @@ export default function LandingScreen() {
     } catch (err) {
       setError(err instanceof Error ? err.message : String(err));
     } finally {
+      if (kind === "local") setLocalPassphrase("");
       loginPending.current = false;
       setBusy(null);
     }
@@ -139,7 +142,7 @@ export default function LandingScreen() {
     <View style={styles.root}>
       <View style={[styles.brand, { paddingTop: insets.top + 24 }]}>
         <Logomark size={36} />
-        <Text style={styles.wordmark}>PostHog</Text>
+        <Text style={styles.wordmark}>Flind Studio</Text>
       </View>
       <ScrollView
         horizontal
@@ -188,17 +191,43 @@ export default function LandingScreen() {
           </Glass>
         </Pressable>
         {__DEV__ ? (
-          <Pressable
-            onPress={() => run("local", () => login(DEV_EMAIL, DEV_PASSWORD))}
-            disabled={!!busy}
-            style={styles.devLink}
-          >
-            {busy === "local" ? (
-              <ActivityIndicator size="small" color={colors.inkMute} />
-            ) : (
-              <Text style={styles.link}>Sign in to localhost</Text>
-            )}
-          </Pressable>
+          <View style={styles.devFields}>
+            <TextInput
+              autoCapitalize="none"
+              autoCorrect={false}
+              keyboardType="email-address"
+              accessibilityLabel="Local Flind email"
+              placeholder="Local email"
+              placeholderTextColor={colors.inkMute}
+              style={styles.devInput}
+              value={localEmail}
+              onChangeText={setLocalEmail}
+            />
+            <TextInput
+              autoCapitalize="none"
+              autoCorrect={false}
+              secureTextEntry
+              accessibilityLabel="Local Flind passphrase"
+              placeholder="Local passphrase"
+              placeholderTextColor={colors.inkMute}
+              style={styles.devInput}
+              value={localPassphrase}
+              onChangeText={setLocalPassphrase}
+            />
+            <Pressable
+              onPress={() =>
+                run("local", () => login(localEmail.trim(), localPassphrase))
+              }
+              disabled={!!busy || !localEmail.trim() || !localPassphrase}
+              style={styles.devLink}
+            >
+              {busy === "local" ? (
+                <ActivityIndicator size="small" color={colors.inkMute} />
+              ) : (
+                <Text style={styles.link}>Sign in to local Flind</Text>
+              )}
+            </Pressable>
+          </View>
         ) : null}
       </View>
     </View>
@@ -285,6 +314,17 @@ const styles = StyleSheet.create({
     color: colors.inkMute,
   },
   segmentTextActive: { color: colors.ink },
-  devLink: { alignItems: "center", marginTop: -6 },
+  devFields: { gap: 8 },
+  devInput: {
+    borderWidth: 1,
+    borderColor: colors.line,
+    color: colors.ink,
+    backgroundColor: colors.fill,
+    borderRadius: 10,
+    paddingHorizontal: 12,
+    paddingVertical: 10,
+    fontFamily: fonts.sans,
+  },
+  devLink: { alignItems: "center", marginTop: 2 },
   link: { fontFamily: fonts.sansMedium, fontSize: 14, color: colors.inkMute },
 });
