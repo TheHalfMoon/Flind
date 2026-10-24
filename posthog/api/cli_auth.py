@@ -1,7 +1,7 @@
 """
 CLI Authentication API using OAuth2 Device Flow
 
-This implements the device authorization flow (RFC 8628) for the PostHog CLI.
+This implements the device authorization flow (RFC 8628) for the Flind CLI.
 Users can authenticate without copying/pasting API keys.
 
 Flow:
@@ -64,6 +64,16 @@ def get_device_cache_key(device_code: str) -> str:
 def get_user_code_cache_key(user_code: str) -> str:
     """Get cache key for user code"""
     return f"cli_user_code:{user_code}"
+
+
+def get_device_authorization_claim_key(device_code: str) -> str:
+    """Atomic one-time claim while a CLI device request is minting its API key."""
+    return f"cli_authorize_claim:{device_code}"
+
+
+def get_device_poll_claim_key(device_code: str) -> str:
+    """Atomic one-time claim before an authorized API key is returned."""
+    return f"cli_poll_claim:{device_code}"
 
 
 def get_validation_error_description(error: serializers.ValidationError) -> str:
@@ -153,23 +163,35 @@ class CLIAuthViewSet(viewsets.ViewSet):
         Returns device code for polling and user code for browser authorization.
         """
         device_code = generate_device_code()
-        user_code = generate_user_code()
 
-        # Store in cache with expiry
+        # A human-readable code has much less entropy than the device code.
+        # Reserve its reverse lookup atomically so a collision cannot silently
+        # redirect a browser's consent to another device.
+        for _ in range(8):
+            user_code = generate_user_code()
+            user_code_cache_key = get_user_code_cache_key(user_code)
+            if cache.add(user_code_cache_key, device_code, timeout=DEVICE_CODE_EXPIRY_SECONDS):
+                break
+        else:
+            return Response(
+                {"error": "temporarily_unavailable", "error_description": "Could not allocate a unique user code"},
+                status=status.HTTP_503_SERVICE_UNAVAILABLE,
+            )
+
         device_cache_key = get_device_cache_key(device_code)
-        cache.set(
-            device_cache_key,
-            {
-                "user_code": user_code,
-                "status": "pending",
-                "created_at": timezone.now().isoformat(),
-            },
-            timeout=DEVICE_CODE_EXPIRY_SECONDS,
-        )
-
-        # Also create reverse lookup (user_code -> device_code) for authorization
-        user_code_cache_key = get_user_code_cache_key(user_code)
-        cache.set(user_code_cache_key, device_code, timeout=DEVICE_CODE_EXPIRY_SECONDS)
+        try:
+            cache.set(
+                device_cache_key,
+                {
+                    "user_code": user_code,
+                    "status": "pending",
+                    "created_at": timezone.now().isoformat(),
+                },
+                timeout=DEVICE_CODE_EXPIRY_SECONDS,
+            )
+        except Exception:
+            cache.delete(user_code_cache_key)
+            raise
 
         # Get the base URL for verification
         # In production this would be the actual domain
@@ -265,9 +287,26 @@ class CLIAuthViewSet(viewsets.ViewSet):
         team_name_truncated = team.name[:max_team_name_len] if len(team.name) > max_team_name_len else team.name
         label = f"CLI - {team_name_truncated} - {timestamp}"
 
-        had_prior_pat = PersonalAPIKey.objects.filter(user=user).exists()
+        # cache.get() followed by minting is not atomic: two concurrent
+        # consent requests can both observe "pending" and create two PATs.
+        # cache.add() is atomic on supported shared cache backends. Keep the
+        # successful claim until the device code expires to forbid replays.
+        authorization_claim_key = get_device_authorization_claim_key(device_code)
+        if not cache.add(authorization_claim_key, True, timeout=DEVICE_CODE_EXPIRY_SECONDS):
+            return Response(
+                {"error": "already_authorizing", "error_description": "This device authorization is already in progress"},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
 
-        minted = mint_personal_api_key(user, label=label, scopes=scopes, teams=teams)
+        had_prior_pat = PersonalAPIKey.objects.filter(user=user).exists()
+        try:
+            minted = mint_personal_api_key(user, label=label, scopes=scopes, teams=teams)
+        except Exception:
+            # No key was returned: allow a new consent attempt after a
+            # transient mint failure. Other post-mint errors leave the claim
+            # intact rather than risking a duplicate credential.
+            cache.delete(authorization_claim_key)
+            raise
 
         # User explicitly authorized this CLI via SessionAuthentication (see
         # CLIAuthViewSet.get_authenticators - authorize is session-only). If they
@@ -334,7 +373,13 @@ class CLIAuthViewSet(viewsets.ViewSet):
             )
 
         if device_data["status"] == "authorized":
-            # Success! Return the API key
+            # Two polls can both read "authorized" before either deletes the
+            # cache entry. Make the credential delivery one-time atomically.
+            if not cache.add(get_device_poll_claim_key(device_code), True, timeout=DEVICE_CODE_EXPIRY_SECONDS):
+                return Response(
+                    {"status": "expired", "error": "expired_token", "error_description": "Device code already consumed"},
+                    status=status.HTTP_400_BAD_REQUEST,
+                )
             response_data = {
                 "status": "authorized",
                 "personal_api_key": device_data["personal_api_key"],

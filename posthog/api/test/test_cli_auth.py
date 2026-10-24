@@ -10,7 +10,14 @@ from django.utils import timezone
 from parameterized import parameterized
 from rest_framework import status
 
-from posthog.api.cli_auth import CLI_SCOPES, DEVICE_CODE_EXPIRY_SECONDS, get_device_cache_key, get_user_code_cache_key
+from posthog.api.cli_auth import (
+    CLI_SCOPES,
+    DEVICE_CODE_EXPIRY_SECONDS,
+    get_device_authorization_claim_key,
+    get_device_cache_key,
+    get_device_poll_claim_key,
+    get_user_code_cache_key,
+)
 from posthog.constants import AvailableFeature
 from posthog.models import PersonalAPIKey, Team, User
 from posthog.models.organization import Organization, OrganizationMembership
@@ -74,6 +81,29 @@ class TestCLIAuthDeviceCodeEndpoint(APIBaseTest):
         user_code_cache_key = get_user_code_cache_key(user_code)
         cached_device_code = cache.get(user_code_cache_key)
         self.assertEqual(cached_device_code, device_code)
+
+    @patch("posthog.api.cli_auth.generate_user_code", side_effect=["ABCD-1234", "WXYZ-9876"])
+    def test_device_code_collision_does_not_override_existing_device(self, _generator):
+        prior_key = get_user_code_cache_key("ABCD-1234")
+        cache.set(prior_key, "already-registered-device", timeout=DEVICE_CODE_EXPIRY_SECONDS)
+
+        response = self.client.post("/api/cli-auth/device-code/")
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.json()["user_code"], "WXYZ-9876")
+        self.assertEqual(cache.get(prior_key), "already-registered-device")
+        self.assertEqual(cache.get(get_user_code_cache_key("WXYZ-9876")), response.json()["device_code"])
+
+    @patch("posthog.api.cli_auth.generate_user_code", return_value="ABCD-1234")
+    def test_device_code_exhaustion_fails_without_clobbering_cache(self, _generator):
+        key = get_user_code_cache_key("ABCD-1234")
+        cache.set(key, "already-registered-device", timeout=DEVICE_CODE_EXPIRY_SECONDS)
+
+        response = self.client.post("/api/cli-auth/device-code/")
+
+        self.assertEqual(response.status_code, status.HTTP_503_SERVICE_UNAVAILABLE)
+        self.assertEqual(response.json()["error"], "temporarily_unavailable")
+        self.assertEqual(cache.get(key), "already-registered-device")
 
     def test_device_code_works_without_authentication(self):
         """Test that device code endpoint works for unauthenticated requests"""
@@ -327,6 +357,19 @@ class TestCLIAuthAuthorizeEndpoint(APIBaseTest):
         self.assertEqual(PersonalAPIKey.objects.filter(user=self.user).count(), 1)
         self.assertEqual(PersonalAPIKey.objects.filter(user=other_user).count(), 1)
 
+    def test_authorization_is_rejected_if_another_request_claimed_the_code(self):
+        claim_key = get_device_authorization_claim_key(self.device_code)
+        self.assertTrue(cache.add(claim_key, True, timeout=DEVICE_CODE_EXPIRY_SECONDS))
+
+        response = self.client.post(
+            "/api/cli-auth/authorize/",
+            {"user_code": self.user_code, "project_id": self.team.id},
+        )
+
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertEqual(response.json()["error"], "already_authorizing")
+        self.assertFalse(PersonalAPIKey.objects.filter(user=self.user).exists())
+
     def test_authorization_prevents_duplicate_api_keys_from_race_condition(self):
         """Test that attempting to authorize the same code twice does not create duplicate API keys"""
         initial_key_count = PersonalAPIKey.objects.filter(user=self.user).count()
@@ -447,6 +490,21 @@ class TestCLIAuthPollEndpoint(APIBaseTest):
         self.client.logout()
         response = self.client.post("/api/cli-auth/poll/", {"device_code": self.device_code})
         self.assertEqual(response.status_code, status.HTTP_202_ACCEPTED)
+
+    def test_poll_rejects_a_previously_claimed_delivery(self):
+        authorize = self.client.post(
+            "/api/cli-auth/authorize/",
+            {"user_code": self.user_code, "project_id": self.team.id},
+        )
+        self.assertEqual(authorize.status_code, status.HTTP_200_OK)
+
+        claim_key = get_device_poll_claim_key(self.device_code)
+        self.assertTrue(cache.add(claim_key, True, timeout=DEVICE_CODE_EXPIRY_SECONDS))
+        response = self.client.post("/api/cli-auth/poll/", {"device_code": self.device_code})
+
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertNotIn("personal_api_key", response.json())
+        self.assertEqual(response.json()["error"], "expired_token")
 
     def test_poll_returns_api_key_only_once(self):
         """Test that API key can only be retrieved once"""
