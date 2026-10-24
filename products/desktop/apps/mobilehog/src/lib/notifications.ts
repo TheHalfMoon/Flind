@@ -6,6 +6,7 @@ import { AppState, Platform } from "react-native";
 import { authedFetch, getBaseUrl } from "@/lib/api";
 import { sessionIdentity, useAuth } from "@/lib/auth";
 import { logger } from "@/lib/logger";
+import { notificationUrlToAppPath, notificationTaskIdToPath } from "@/lib/notificationPaths";
 
 const log = logger.scope("notifications");
 
@@ -18,16 +19,12 @@ Notifications.setNotificationHandler({
   }),
 });
 
-// The server sends `{ url: "posthog://task/<id>" }` or a legacy `{ taskId }`.
+// Older notification URLs are never interpreted as trusted Flind app links.
 function pathFromNotification(
   notification: Notifications.Notification,
 ): string | null {
   const data = notification.request.content.data as Record<string, unknown>;
-  if (typeof data.url === "string") {
-    return data.url.replace(/^[a-z]+:\/\//, "/").replace(/^\/\/+/, "/");
-  }
-  if (typeof data.taskId === "string") return `/task/${data.taskId}`;
-  return null;
+  return notificationUrlToAppPath(data.url) ?? notificationTaskIdToPath(data.taskId);
 }
 
 async function fetchPushToken(): Promise<string | null> {

@@ -71,7 +71,7 @@ export async function authedFetch(
     {
       Authorization: `Bearer ${getAccessToken()}`,
       "Content-Type": "application/json",
-      "User-Agent": "posthog/mobilehog; version: 0.1.0",
+      "User-Agent": "flind/mobile-studio; version: 0.1.0",
     },
     init?.headers as HeadersInit | undefined,
   );

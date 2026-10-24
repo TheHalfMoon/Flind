@@ -30,7 +30,7 @@ export interface OAuthTokens {
 }
 
 function redirectUri(): string {
-  return AuthSession.makeRedirectUri({ scheme: "posthog", path: "callback" });
+  return AuthSession.makeRedirectUri({ scheme: "flind-studio", path: "callback" });
 }
 
 async function tokenRequest(

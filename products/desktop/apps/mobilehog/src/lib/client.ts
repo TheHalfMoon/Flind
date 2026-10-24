@@ -53,7 +53,7 @@ export function getClient(): PostHogAPIClient {
           return response;
         },
         githubConnectFrom: "posthog_mobile",
-        userAgent: "posthog/mobilehog; version: 0.1.0",
+        userAgent: "flind/mobile-studio; version: 0.1.0",
       },
     );
     clientIdentity = identity;

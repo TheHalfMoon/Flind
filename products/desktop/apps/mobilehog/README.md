@@ -1,10 +1,10 @@
-# posthog
+# Flind Mobile Studio
 
-A stripped-back Expo app over PostHog cloud tasks, built for a local stack.
+An unpublished Flind Studio Expo client for a locally controlled stack.
 
 ## Local stack
 
-In the posthog repo, once:
+In the Flind checkout, once:
 
 ```bash
 echo 'ALLOW_DEV_API_KEY_REVEAL=1' >> .env
@@ -25,4 +25,4 @@ pnpm --filter @flind/mobile-studio start   # afterwards
 
 The host lives in `src/config.ts`. Use your LAN IP instead of `localhost` on a real phone.
 
-See [posthog release checks](../../../../docs/internal/mobilehog-release-checks.md) before you share a build.
+See [Flind Mobile Studio qualification limits](../../../../docs/flind/F3_MOBILE_STUDIO_NATIVE_IDENTITY_WAVE30.md). Do not publish or share an unqualified build.

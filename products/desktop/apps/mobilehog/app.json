@@ -1,22 +1,20 @@
 {
   "expo": {
-    "name": "PostHog",
-    "slug": "mobilehog",
-    "owner": "posthog",
+    "name": "Flind Studio",
+    "slug": "flind-studio",
     "version": "0.1.0",
     "orientation": "portrait",
     "userInterfaceStyle": "automatic",
-    "scheme": ["mobilehog", "posthog"],
+    "scheme": "flind-studio",
     "icon": "./assets/app-icon.png",
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": false,
-      "bundleIdentifier": "com.posthog.mobilehog",
+      "bundleIdentifier": "com.thehalfmoon.flind.studio",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false,
         "NSAppTransportSecurity": {
-          "NSAllowsLocalNetworking": true,
-          "NSAllowsArbitraryLoads": true
+          "NSAllowsLocalNetworking": true
         }
       }
     },
@@ -25,21 +23,21 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.posthog.mobilehog"
+      "package": "com.thehalfmoon.flind.studio"
     },
     "plugins": [
       "expo-router",
       [
         "expo-image-picker",
         {
-          "photosPermission": "Allow PostHog to attach photos to your tasks"
+          "photosPermission": "Allow Flind Studio to attach photos to your tasks"
         }
       ],
       [
         "expo-speech-recognition",
         {
-          "microphonePermission": "Allow PostHog to use the microphone for dictation.",
-          "speechRecognitionPermission": "Allow PostHog to turn speech into a message draft."
+          "microphonePermission": "Allow Flind Studio to use the microphone for dictation.",
+          "speechRecognitionPermission": "Allow Flind Studio to turn speech into a message draft."
         }
       ],
       "./plugins/withSceneLifecycle",
@@ -76,19 +74,14 @@
       "expo-updates"
     ],
     "extra": {
-      "router": {},
-      "eas": {
-        "projectId": "d8e0731d-1107-4421-aa33-abf130eca27f"
-      }
+      "router": {}
     },
     "runtimeVersion": {
       "policy": "fingerprint"
     },
     "updates": {
-      "enabled": true,
-      "checkAutomatically": "ON_LOAD",
-      "fallbackToCacheTimeout": 0,
-      "url": "https://u.expo.dev/d8e0731d-1107-4421-aa33-abf130eca27f"
+      "enabled": false,
+      "checkAutomatically": "NEVER"
     }
   }
 }
