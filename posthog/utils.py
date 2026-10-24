@@ -52,8 +52,10 @@ from rest_framework import serializers
 from rest_framework.request import Request
 from rest_framework.utils.encoders import JSONEncoder
 
+from flind.browser_capture import browser_capture_context
+
 from posthog.cloud_utils import get_cached_instance_license, is_cloud
-from posthog.constants import POSTHOG_JS_CLOUD_HOST, POSTHOG_JS_CLOUD_TOKEN, AvailableFeature
+from posthog.constants import AvailableFeature
 from posthog.dataclasses import frozen
 from posthog.exceptions import RequestParsingError, UnspecifiedCompressionFallbackParsingError
 from posthog.exceptions_capture import capture_exception
@@ -634,11 +636,19 @@ def _build_template_context(
         <script type="module" src="{js_url}/@vite/client"></script>
         <script type="module" src="{js_url}/{source_path}"></script>"""
 
+    # Explicitly scrub any prefilled host/token from caller-supplied context.
+    # Rendering without a local team/token must never bootstrap external JS.
+    for key in ("js_posthog_api_key", "js_posthog_host", "js_posthog_ui_host"):
+        context.pop(key, None)
+
     if settings.E2E_TESTING:
         context["e2e_testing"] = True
-        context["js_posthog_api_key"] = "phc_ex7Mnvi4DqeB6xSQoXU1UVPzAmUIpiciRKQQXGGTYQO"
-        context["js_posthog_host"] = "https://internal-cf.posthog.com"
-        context["js_posthog_ui_host"] = "https://us.posthog.com"
+        context.update(
+            browser_capture_context(
+                e2e_testing=True,
+                e2e_token=getattr(settings, "FLIND_E2E_CAPTURE_TOKEN", ""),
+            )
+        )
 
     elif settings.SELF_CAPTURE:
         # posthog-js uses this token to evaluate PostHog's own gating flags, so it must point at the
@@ -649,18 +659,13 @@ def _build_template_context(
         # current_team): it drifts onto demo teams that hold no internal flags, so flags load from
         # the bootstrap and then vanish the moment posthog-js reloads them against that team.
         self_flags_team = resolve_self_flags_team()
-        if self_flags_team is not None:
-            context["js_posthog_api_key"] = self_flags_team.api_token
-            context["js_posthog_host"] = ""  # Becomes location.origin in the frontend
-        elif get_explicit_self_team_id() is None and posthoganalytics.api_key:
-            # Only reachable without an override. A pinned team that does not exist leaves the token
-            # unset, because sending any other team's token is the mismatch described above.
-            context["js_posthog_api_key"] = posthoganalytics.api_key
-            context["js_posthog_host"] = ""  # Becomes location.origin in the frontend
-    else:
-        context["js_posthog_api_key"] = POSTHOG_JS_CLOUD_TOKEN
-        context["js_posthog_host"] = POSTHOG_JS_CLOUD_HOST
-        context["js_posthog_ui_host"] = "https://us.posthog.com"
+        self_token = self_flags_team.api_token if self_flags_team is not None else ""
+        if not self_token and get_explicit_self_team_id() is None and posthoganalytics.api_key:
+            # Do not fall back when the operator explicitly pinned a missing team.
+            self_token = posthoganalytics.api_key
+        context.update(browser_capture_context(self_capture=True, self_token=self_token))
+
+    # Otherwise browser capture stays off; head.html checks the missing key.
 
     context["js_capture_time_to_see_data"] = settings.CAPTURE_TIME_TO_SEE_DATA
     context["js_url"] = get_js_url(request)

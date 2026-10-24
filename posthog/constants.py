@@ -383,6 +383,4 @@ AUTH_BACKEND_DISPLAY_NAMES = {backend: m["display"] for m in LOGIN_METHODS for b
 AUTH_BACKEND_KEYS = {backend: m["key"] for m in LOGIN_METHODS for backend in m["backends"]}
 
 
-# PostHog's own posthog-js instance on PostHog Cloud. The app's CSP names these by exact path.
-POSTHOG_JS_CLOUD_HOST = "https://internal-cf.posthog.com"
-POSTHOG_JS_CLOUD_TOKEN = "sTMFPsFhdP1Ssg"
+# Flind browser instrumentation defaults off; source-code cloud keys are forbidden.

@@ -1497,6 +1497,44 @@ class TestInitializeSelfCaptureHost(SimpleTestCase):
         assert posthoganalytics.api_key == "phc_self_capture_test"
 
 
+class TestFlindBrowserTelemetryOptIn(TestCase):
+    """Real Django-context checks; require the full backend test environment."""
+
+    @staticmethod
+    def request():
+        request = RequestFactory().get("/?no-preloaded-app-context=1")
+        request.user = AnonymousUser()
+        return request
+
+    @override_settings(SELF_CAPTURE=False, E2E_TESTING=False, OPT_OUT_CAPTURE=False)
+    def test_normal_page_never_injects_cloud_analytics_token(self):
+        context = get_context_for_template(
+            "head.html",
+            self.request(),
+            context={
+                "js_posthog_api_key": "untrusted-old-key",
+                "js_posthog_host": "https://external.example",
+                "js_posthog_ui_host": "https://external.example",
+            },
+        )
+        assert context.get("js_posthog_api_key") is None
+        assert context.get("js_posthog_host") is None
+        assert context.get("js_posthog_ui_host") is None
+
+    @override_settings(SELF_CAPTURE=False, E2E_TESTING=True, FLIND_E2E_CAPTURE_TOKEN="")
+    def test_e2e_page_does_not_inject_default_capture(self):
+        context = get_context_for_template("head.html", self.request())
+        assert context["e2e_testing"] is True
+        assert context.get("js_posthog_api_key") is None
+
+    @override_settings(SELF_CAPTURE=False, E2E_TESTING=True, FLIND_E2E_CAPTURE_TOKEN="fixture-token")
+    def test_e2e_page_with_fixture_token_stays_same_origin(self):
+        context = get_context_for_template("head.html", self.request())
+        assert context["js_posthog_api_key"] == "fixture-token"
+        assert context["js_posthog_host"] == ""
+        assert context.get("js_posthog_ui_host") is None
+
+
 class TestSelfCaptureBrowserFlagToken(TestCase):
     PASSWORD = "testpassword12345"
 
