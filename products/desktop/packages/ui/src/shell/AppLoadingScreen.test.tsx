@@ -3,12 +3,6 @@ import { act, render, screen } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { AppLoadingScreen } from "./AppLoadingScreen";
 
-vi.mock("@flind/ui/shell/openExternal", () => ({
-  openExternalUrl: vi.fn(),
-}));
-
-import { openExternalUrl } from "@flind/ui/shell/openExternal";
-
 const STALL_TIMEOUT_MS = 30_000;
 
 function renderScreen() {
@@ -34,7 +28,7 @@ describe("AppLoadingScreen", () => {
     expect(screen.getByTestId("app-loading-shell")).toBeInTheDocument();
     expect(screen.queryByTestId("app-loading-logo")).not.toBeInTheDocument();
     expect(
-      screen.queryByText("PostHog is taking longer than expected to start"),
+      screen.queryByText("Flind is taking longer than expected to start"),
     ).not.toBeInTheDocument();
   });
 
@@ -52,11 +46,14 @@ describe("AppLoadingScreen", () => {
       vi.advanceTimersByTime(STALL_TIMEOUT_MS);
     });
     expect(
-      screen.getByText("PostHog is taking longer than expected to start"),
+      screen.getByText("Flind is taking longer than expected to start"),
     ).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Retry" })).toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: "Get support" })).toBeNull();
     expect(
-      screen.getByRole("button", { name: "Get support" }),
+      screen.getByText(
+        "Support channel not configured for this Flind installation.",
+      ),
     ).toBeInTheDocument();
     expect(screen.queryByTestId("app-loading-shell")).not.toBeInTheDocument();
   });
@@ -69,14 +66,12 @@ describe("AppLoadingScreen", () => {
     }).not.toThrow();
   });
 
-  it("opens the support link from the stalled screen", () => {
+  it("does not expose an inherited vendor support link", () => {
     renderScreen();
     act(() => {
       vi.advanceTimersByTime(STALL_TIMEOUT_MS);
     });
-    screen.getByRole("button", { name: "Get support" }).click();
-    expect(openExternalUrl).toHaveBeenCalledWith(
-      expect.stringContaining("discord"),
-    );
+    expect(screen.queryByRole("button", { name: "Get support" })).toBeNull();
+    expect(screen.queryByRole("link")).toBeNull();
   });
 });

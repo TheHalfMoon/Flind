@@ -564,7 +564,6 @@ def _build_suggested_next_steps(user: User, products_in_use: list[str]) -> list[
                 "label": "Watch a recent recording",
                 "href": href,
                 "reason": "Your team uses Session replay",
-                "docs_href": "https://posthog.com/docs/session-replay",
                 "product_key": "session_replay",
             }
         )
@@ -576,7 +575,6 @@ def _build_suggested_next_steps(user: User, products_in_use: list[str]) -> list[
                 "label": "See active feature flags",
                 "href": href,
                 "reason": "Your team uses Feature flags",
-                "docs_href": "https://posthog.com/docs/feature-flags",
                 "product_key": "feature_flags",
             }
         )
@@ -588,7 +586,6 @@ def _build_suggested_next_steps(user: User, products_in_use: list[str]) -> list[
                 "label": "Explore running experiments",
                 "href": href,
                 "reason": "Your team uses Experiments",
-                "docs_href": "https://posthog.com/docs/experiments",
                 "product_key": "experiments",
             }
         )
@@ -600,7 +597,6 @@ def _build_suggested_next_steps(user: User, products_in_use: list[str]) -> list[
                 "label": "Explore the project home",
                 "href": href,
                 "reason": "See your team's dashboards and insights",
-                "docs_href": "https://posthog.com/docs",
                 "product_key": "product_analytics",
             }
         )

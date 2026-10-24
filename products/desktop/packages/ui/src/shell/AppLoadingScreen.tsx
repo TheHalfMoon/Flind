@@ -1,7 +1,5 @@
 import { Skeleton } from "@flind/quill";
-import { EXTERNAL_LINKS } from "@flind/shared";
 import { Button } from "@flind/ui/primitives/Button";
-import { openExternalUrl } from "@flind/ui/shell/openExternal";
 import { useEffect, useState } from "react";
 
 // The gate spans bootstrap (20s deadline in core auth), the access check and
@@ -12,7 +10,7 @@ const STALL_TIMEOUT_MS = 30_000;
 function AppBootShell(): React.ReactNode {
   return (
     <output
-      aria-label="PostHog is starting"
+      aria-label="Flind is starting"
       className="flex min-h-screen w-full bg-(--color-background)"
       data-testid="app-loading-shell"
     >
@@ -66,19 +64,16 @@ export function AppLoadingScreen(): React.ReactNode {
     <div className="flex min-h-screen items-center justify-center">
       <div className="flex max-w-[360px] flex-col items-center gap-4 text-center">
         <p className="font-bold text-lg">
-          PostHog is taking longer than expected to start
+          Flind is taking longer than expected to start
         </p>
         <p className="text-(--gray-11)">
           This usually clears up with a restart.
         </p>
         <div className="flex gap-3">
           <Button onClick={() => window.location.reload()}>Retry</Button>
-          <Button
-            variant="soft"
-            onClick={() => openExternalUrl(EXTERNAL_LINKS.discord)}
-          >
-            Get support
-          </Button>
+          <p className="text-(--gray-11) text-sm">
+            Support channel not configured for this Flind installation.
+          </p>
         </div>
       </div>
     </div>

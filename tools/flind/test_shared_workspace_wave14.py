@@ -31,6 +31,19 @@ PAIRS = {
     **{OLD_SCOPE + old: "@flind/" + new for old, new in SPECIAL.items()},
 }
 
+# Published npm artifacts retain their registry identity behind Flind import
+# aliases. Wave 40 tests verify exact versions, owners and sha512 integrities.
+# Suppress ONLY these two versioned external artifacts in the three package
+# metadata files; legacy imports in product source still fail this gate.
+PUBLISHED_UI_ALIAS_FILES = frozenset({
+    "products/desktop/packages/ui/package.json",
+    "products/desktop/pnpm-lock.yaml",
+    "products/desktop/pnpm-workspace.yaml",
+})
+PUBLISHED_UI_ALIAS = re.compile(
+    r"@posthog/(?:quill|quill-charts)(?=@0\.3\.0-beta\.29|>@base-ui/react)"
+)
+
 
 class SharedWorkspaceWave14Tests(unittest.TestCase):
     def test_all_23_package_names_are_flind_and_private(self) -> None:
@@ -98,6 +111,8 @@ class SharedWorkspaceWave14Tests(unittest.TestCase):
                 text = path.read_text()
             except (OSError, UnicodeError):
                 continue
+            if name in PUBLISHED_UI_ALIAS_FILES:
+                text = PUBLISHED_UI_ALIAS.sub("", text)
             if any(p.search(text) for p in patterns):
                 leaks.append(name)
         self.assertEqual(leaks, [])
