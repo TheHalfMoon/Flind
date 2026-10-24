@@ -1,4 +1,4 @@
-import type { LemonTagType } from '@posthog/lemon-ui'
+import type { LemonTagType } from '@flind/lemon-ui'
 
 import type { ExternalDataDestinationStatusEnumApi } from 'products/warehouse_sources/frontend/generated/api.schemas'
 

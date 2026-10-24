@@ -5,7 +5,7 @@ import posthog from 'posthog-js'
 import { memo, useCallback, useMemo, useRef } from 'react'
 
 import { IconDatabase, IconGear, IconInfo, IconSidebarClose } from '@posthog/icons'
-import { LemonDivider } from '@posthog/lemon-ui'
+import { LemonDivider } from '@flind/lemon-ui'
 
 import { AccessControlAction } from 'lib/components/AccessControlAction'
 import { useDebouncedValue } from 'lib/hooks/useDebouncedValue'

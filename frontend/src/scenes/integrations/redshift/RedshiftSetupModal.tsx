@@ -10,7 +10,7 @@ import {
     LemonSelect,
     LemonTabs,
     lemonToast,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { LemonCollapse } from 'lib/lemon-ui/LemonCollapse'
 import { LemonField } from 'lib/lemon-ui/LemonField'

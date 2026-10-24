@@ -4,7 +4,7 @@ import { waitFor } from '@testing-library/react'
 import { expectLogic } from 'kea-test-utils'
 import posthog from 'posthog-js'
 
-import { lemonToast } from '@posthog/lemon-ui'
+import { lemonToast } from '@flind/lemon-ui'
 
 import { ApiConfig } from 'lib/api'
 

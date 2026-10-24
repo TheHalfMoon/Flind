@@ -1,5 +1,5 @@
 import { IconWarning } from '@posthog/icons'
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { addProductIntentForCrossSell } from 'lib/utils/product-intents'
 import { urls } from 'scenes/urls'

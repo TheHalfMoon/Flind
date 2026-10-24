@@ -4,7 +4,7 @@ import type { DeepPartial, DeepPartialMap, FieldName, ValidationErrorType } from
 import posthog from 'posthog-js'
 import React from 'react'
 
-import { LemonDialog, lemonToast } from '@posthog/lemon-ui'
+import { LemonDialog, lemonToast } from '@flind/lemon-ui'
 
 import api from 'lib/api'
 import type { FeatureFlagKey } from 'lib/constants'

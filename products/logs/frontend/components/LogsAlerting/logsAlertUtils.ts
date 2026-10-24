@@ -1,4 +1,4 @@
-import { lemonToast } from '@posthog/lemon-ui'
+import { lemonToast } from '@flind/lemon-ui'
 
 import {
     LOGS_ALERT_AUTO_DISABLED_EVENT_ID,

@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconCheck, IconShieldLock, IconX } from '@posthog/icons'
-import { LemonBadge, LemonButton, LemonDialog, LemonSegmentedButton, LemonTag } from '@posthog/lemon-ui'
+import { LemonBadge, LemonButton, LemonDialog, LemonSegmentedButton, LemonTag } from '@flind/lemon-ui'
 
 import { fullName } from 'lib/utils/strings'
 

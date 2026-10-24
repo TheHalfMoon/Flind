@@ -1,4 +1,4 @@
-import { LemonTag, LemonTagType, Tooltip } from '@posthog/lemon-ui'
+import { LemonTag, LemonTagType, Tooltip } from '@flind/lemon-ui'
 
 import type { SignalReportSuppressionSourceEnumApi } from 'products/signals/frontend/generated/api.schemas'
 

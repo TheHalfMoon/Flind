@@ -1,7 +1,7 @@
 import { MakeLogicType, actions, connect, kea, listeners, path, reducers, selectors } from 'kea'
 import posthog from 'posthog-js'
 
-import { lemonToast } from '@posthog/lemon-ui'
+import { lemonToast } from '@flind/lemon-ui'
 
 import { mcpHintLogic } from 'lib/components/MCPHint/mcpHintLogic'
 import { preflightLogic } from 'lib/logic/preflightLogic'

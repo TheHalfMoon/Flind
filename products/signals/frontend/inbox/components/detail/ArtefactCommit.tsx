@@ -2,7 +2,7 @@ import { useValues } from 'kea'
 import { useEffect, useState } from 'react'
 
 import { IconChevronDown, IconChevronRight } from '@posthog/icons'
-import { LemonButton, LemonCard, LemonSkeleton } from '@posthog/lemon-ui'
+import { LemonButton, LemonCard, LemonSkeleton } from '@flind/lemon-ui'
 
 import { teamLogic } from 'scenes/teamLogic'
 

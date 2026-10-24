@@ -1,5 +1,5 @@
 import { IconCloud, IconDocument, IconExpand45, IconLaptop, IconPullRequest, IconX } from '@posthog/icons'
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { cn } from 'lib/utils/css-classes'
 

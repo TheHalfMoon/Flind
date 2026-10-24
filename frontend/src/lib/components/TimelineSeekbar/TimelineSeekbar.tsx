@@ -2,7 +2,7 @@ import './TimelineSeekbar.scss'
 
 import clsx from 'clsx'
 
-import { LemonBadge } from '@posthog/lemon-ui'
+import { LemonBadge } from '@flind/lemon-ui'
 
 import { Dayjs } from 'lib/dayjs'
 import { Spinner } from 'lib/lemon-ui/Spinner/Spinner'

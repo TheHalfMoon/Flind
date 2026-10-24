@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconPin } from '@posthog/icons'
-import { LemonButton, LemonSelect, LemonSelectOption } from '@posthog/lemon-ui'
+import { LemonButton, LemonSelect, LemonSelectOption } from '@flind/lemon-ui'
 
 import { insightLogic } from 'scenes/insights/insightLogic'
 import { insightVizDataLogic } from 'scenes/insights/insightVizDataLogic'

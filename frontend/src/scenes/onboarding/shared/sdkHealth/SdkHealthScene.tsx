@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import posthog from 'posthog-js'
 
 import { IconBell, IconRefresh } from '@posthog/icons'
-import { LemonBanner, LemonButton, LemonTag, Link } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonTag, Link } from '@flind/lemon-ui'
 import { Button } from '@flind/quill'
 
 import { dayjs } from 'lib/dayjs'

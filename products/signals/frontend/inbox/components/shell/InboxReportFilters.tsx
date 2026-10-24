@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonSelect } from '@posthog/lemon-ui'
+import { LemonSelect } from '@flind/lemon-ui'
 
 import {
     INBOX_CREATED_WINDOW_OPTIONS,

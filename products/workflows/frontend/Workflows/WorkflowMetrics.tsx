@@ -4,7 +4,7 @@ import { useMemo } from 'react'
 
 import * as greekPng from '@posthog/brand/hoggies/png/greek'
 import { IconLetter } from '@posthog/icons'
-import { LemonButton, LemonCollapse, LemonSelect, LemonSelectOptions, ProfilePicture, Spinner } from '@posthog/lemon-ui'
+import { LemonButton, LemonCollapse, LemonSelect, LemonSelectOptions, ProfilePicture, Spinner } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import { getColorVar } from 'lib/colors'

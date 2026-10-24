@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { useState } from 'react'
 
-import { LemonButton, LemonDropdown, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, LemonDropdown, Tooltip } from '@flind/lemon-ui'
 
 import ViewRecordingButton, {
     RecordingPlayerType,

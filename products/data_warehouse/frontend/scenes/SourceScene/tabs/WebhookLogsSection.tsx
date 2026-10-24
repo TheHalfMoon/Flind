@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { useMemo } from 'react'
 
 import { IconEllipsis } from '@posthog/icons'
-import { LemonButton, LemonCheckbox, LemonDialog, LemonMenu, LemonTag } from '@posthog/lemon-ui'
+import { LemonButton, LemonCheckbox, LemonDialog, LemonMenu, LemonTag } from '@flind/lemon-ui'
 
 import { LemonCard } from 'lib/lemon-ui/LemonCard'
 import { LemonTableColumns } from 'lib/lemon-ui/LemonTable'

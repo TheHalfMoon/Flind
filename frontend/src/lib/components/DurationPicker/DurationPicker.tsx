@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { LemonInput, LemonSelect } from '@posthog/lemon-ui'
+import { LemonInput, LemonSelect } from '@flind/lemon-ui'
 
 import { Duration, SmallTimeUnit } from '~/types'
 

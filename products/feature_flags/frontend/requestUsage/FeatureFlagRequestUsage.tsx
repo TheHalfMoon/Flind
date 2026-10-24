@@ -12,7 +12,7 @@ import {
     type LemonTableColumns,
     Link,
     Spinner,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { DateFilter } from 'lib/components/DateFilter/DateFilter'
 import { IntervalFilterStandalone } from 'lib/components/IntervalFilter'

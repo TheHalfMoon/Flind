@@ -17,7 +17,7 @@ jest.mock('kea', () => ({
     useMountedLogic: jest.fn(),
 }))
 
-jest.mock('@posthog/lemon-ui', () => ({
+jest.mock('@flind/lemon-ui', () => ({
     LemonButton: ({ children, ...props }: any) => <button {...props}>{children}</button>,
     LemonInput: ({ value, onChange, fullWidth: _fullWidth, ...props }: any) => (
         <input value={value} onChange={(event) => onChange?.(event.target.value)} {...props} />

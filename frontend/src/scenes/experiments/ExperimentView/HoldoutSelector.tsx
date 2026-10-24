@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconInfo } from '@posthog/icons'
-import { LemonSelect, Tooltip } from '@posthog/lemon-ui'
+import { LemonSelect, Tooltip } from '@flind/lemon-ui'
 
 import { experimentLogic } from '../experimentLogic'
 

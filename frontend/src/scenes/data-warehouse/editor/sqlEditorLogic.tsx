@@ -31,7 +31,7 @@ import {
     Spinner,
     lemonToast,
     Tooltip,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import api, { ApiConfig, ApiError } from 'lib/api'
 import { tryShowMCPHint } from 'lib/components/MCPHint/mcpHintLogic'

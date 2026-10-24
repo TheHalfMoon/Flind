@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconSparkles } from '@posthog/icons'
-import { LemonButton, LemonTextArea } from '@posthog/lemon-ui'
+import { LemonButton, LemonTextArea } from '@flind/lemon-ui'
 
 import { onboardingWelcomeLogic } from './onboardingWelcomeLogic'
 

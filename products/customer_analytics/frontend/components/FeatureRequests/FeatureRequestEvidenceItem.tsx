@@ -1,7 +1,7 @@
 import { useActions } from 'kea'
 
 import { IconImage, IconPencil } from '@posthog/icons'
-import { LemonButton, LemonCard, Link } from '@posthog/lemon-ui'
+import { LemonButton, LemonCard, Link } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'
 

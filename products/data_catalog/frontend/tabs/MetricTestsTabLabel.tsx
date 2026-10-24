@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { LemonTag } from '@posthog/lemon-ui'
+import { LemonTag } from '@flind/lemon-ui'
 
 import { dataQualityChecksLogic } from 'products/data_quality/frontend/dataQualityChecksLogic'
 

@@ -14,7 +14,7 @@ import { useActions, useValues } from 'kea'
 import { Form } from 'kea-forms'
 import { useCallback, useMemo, useRef, useState } from 'react'
 
-import { LemonBanner, LemonButton, LemonDivider, LemonLabel, LemonModal, LemonSegmentedButton } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonDivider, LemonLabel, LemonModal, LemonSegmentedButton } from '@flind/lemon-ui'
 
 import { SceneExport } from 'scenes/sceneTypes'
 

@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 
 import { IconCheckCircle } from '@posthog/icons'
-import { Tooltip } from '@posthog/lemon-ui'
+import { Tooltip } from '@flind/lemon-ui'
 
 import { IconRadioButtonUnchecked } from 'lib/lemon-ui/icons'
 

@@ -1,7 +1,7 @@
 import { useActions, useMountedLogic, useValues } from 'kea'
 import { ReactNode } from 'react'
 
-import { LemonBadge, LemonSegmentedButton } from '@posthog/lemon-ui'
+import { LemonBadge, LemonSegmentedButton } from '@flind/lemon-ui'
 
 import { watchPicksLogic } from '../watchPicksLogic'
 import { watchPicksStarterLogic } from '../watchPicksStarterLogic'

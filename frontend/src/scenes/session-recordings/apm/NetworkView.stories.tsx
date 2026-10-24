@@ -3,7 +3,7 @@ import './NetworkView.scss'
 import { Meta } from '@storybook/react'
 import { useCallback, useRef, useState } from 'react'
 
-import { LemonTable } from '@posthog/lemon-ui'
+import { LemonTable } from '@flind/lemon-ui'
 
 import { Tooltip } from 'lib/lemon-ui/Tooltip'
 import { humanFriendlyMilliseconds } from 'lib/utils/durations'

@@ -14,7 +14,7 @@ import posthog from 'posthog-js'
 import { useCallback, useEffect, useRef, useState } from 'react'
 
 import { IconCode, IconImage, IconList, IconVideoCamera } from '@posthog/icons'
-import { LemonButton, LemonDivider, LemonInput, LemonMenu, LemonModal } from '@posthog/lemon-ui'
+import { LemonButton, LemonDivider, LemonInput, LemonMenu, LemonModal } from '@flind/lemon-ui'
 
 import { ResizableElement } from 'lib/components/ResizeElement/ResizeElement'
 import { LinkExtension } from 'lib/components/RichContentEditor/LinkExtension'

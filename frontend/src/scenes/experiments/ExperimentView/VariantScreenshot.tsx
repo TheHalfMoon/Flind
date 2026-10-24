@@ -10,7 +10,7 @@ import {
     LemonSkeleton,
     lemonToast,
     Spinner,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { ZoomableImage } from 'lib/components/ZoomableImage/ZoomableImage'
 import { useUploadFiles } from 'lib/hooks/useUploadFiles'

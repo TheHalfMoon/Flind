@@ -1,4 +1,4 @@
-import { LemonTag } from '@posthog/lemon-ui'
+import { LemonTag } from '@flind/lemon-ui'
 
 import type { MCPServiceAccountServerApi } from 'products/mcp_store/frontend/generated/api.schemas'
 

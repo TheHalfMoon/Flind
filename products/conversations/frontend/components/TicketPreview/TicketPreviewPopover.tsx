@@ -2,7 +2,7 @@ import { useValues } from 'kea'
 import { useEffect, useRef, useState } from 'react'
 
 import { IconLock } from '@posthog/icons'
-import { Spinner } from '@posthog/lemon-ui'
+import { Spinner } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'
 import { Popover } from 'lib/lemon-ui/Popover'

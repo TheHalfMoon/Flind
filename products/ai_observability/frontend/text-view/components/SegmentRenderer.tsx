@@ -2,7 +2,7 @@
  * Component for rendering different segment types (truncated, gen_expandable, tools_expandable)
  */
 import { IconExternal } from '@posthog/icons'
-import { Link, Tooltip } from '@posthog/lemon-ui'
+import { Link, Tooltip } from '@flind/lemon-ui'
 
 import { urls } from 'scenes/urls'
 

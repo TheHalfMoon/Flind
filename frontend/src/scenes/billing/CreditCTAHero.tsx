@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 
 import * as burningMoneyHogPng from '@posthog/brand/hoggies/png/burning-money'
 import { IconX } from '@posthog/icons'
-import { LemonButton, LemonDivider, LemonSkeleton } from '@posthog/lemon-ui'
+import { LemonButton, LemonDivider, LemonSkeleton } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import { flindPublicUrl } from 'lib/flindPublicLinks'

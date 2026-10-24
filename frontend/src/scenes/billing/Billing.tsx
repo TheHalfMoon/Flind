@@ -8,7 +8,7 @@ import { useEffect } from 'react'
 
 import * as judge from '@posthog/brand/hoggies/png/judge'
 import * as star from '@posthog/brand/hoggies/png/star'
-import { LemonButton, LemonDivider, LemonInput, Link } from '@posthog/lemon-ui'
+import { LemonButton, LemonDivider, LemonInput, Link } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import { RestrictionScope, useRestrictedArea } from 'lib/components/RestrictedArea'

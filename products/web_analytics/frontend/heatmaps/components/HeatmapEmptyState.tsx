@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonBanner, LemonButton, Link, Spinner } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, Link, Spinner } from '@flind/lemon-ui'
 
 import { HEATMAP_TYPES, heatmapDataLogic } from 'lib/components/heatmaps/heatmapDataLogic'
 import type { HeatmapKind } from 'lib/components/heatmaps/types'

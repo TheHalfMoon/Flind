@@ -1,5 +1,5 @@
 import { IconCopy } from '@posthog/icons'
-import { LemonButton, LemonCard, LemonInput, LemonTabs } from '@posthog/lemon-ui'
+import { LemonButton, LemonCard, LemonInput, LemonTabs } from '@flind/lemon-ui'
 
 import { InviteMembersButton } from 'lib/components/Account/InviteMembersButton'
 import { copyToClipboard } from 'lib/utils/copyToClipboard'

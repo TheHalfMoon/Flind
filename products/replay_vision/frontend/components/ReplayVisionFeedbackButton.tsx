@@ -1,4 +1,4 @@
-import { LemonButton, LemonButtonProps } from '@posthog/lemon-ui'
+import { LemonButton, LemonButtonProps } from '@flind/lemon-ui'
 
 import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'
 import posthog from 'lib/posthog-typed'

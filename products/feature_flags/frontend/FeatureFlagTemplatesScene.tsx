@@ -3,7 +3,7 @@ import { combineUrl, router } from 'kea-router'
 import posthog from 'posthog-js'
 
 import { IconArrowLeft, IconCode, IconFlask, IconPeople, IconPlus, IconTestTube, IconToggle } from '@posthog/icons'
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { FlagIntent } from 'scenes/feature-flags/featureFlagIntentWarningLogic'
 import { SceneExport } from 'scenes/sceneTypes'

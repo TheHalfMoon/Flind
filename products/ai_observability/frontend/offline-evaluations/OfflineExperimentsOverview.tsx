@@ -11,7 +11,7 @@ import {
     LemonTable,
     Link,
     Tooltip,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { DateFilter } from 'lib/components/DateFilter/DateFilter'
 import { MemberSelect } from 'lib/components/MemberSelect'

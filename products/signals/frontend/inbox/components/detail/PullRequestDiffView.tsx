@@ -10,7 +10,7 @@ import { useValues } from 'kea'
 import { ReactNode, useEffect, useMemo, useRef, useState } from 'react'
 
 import { IconArrowRight, IconMinus, IconPencil, IconPlus } from '@posthog/icons'
-import { Tooltip } from '@posthog/lemon-ui'
+import { Tooltip } from '@flind/lemon-ui'
 
 import { themeLogic } from '~/layout/navigation-3000/themeLogic'
 

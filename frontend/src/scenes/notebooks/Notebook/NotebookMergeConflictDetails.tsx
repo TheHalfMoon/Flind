@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconCopy } from '@posthog/icons'
-import { LemonButton, LemonModal } from '@posthog/lemon-ui'
+import { LemonButton, LemonModal } from '@flind/lemon-ui'
 
 import { MarkdownTextDiff } from 'lib/components/MarkdownNotebook'
 import type { NotebookCollaborationConflict } from 'lib/components/MarkdownNotebook'

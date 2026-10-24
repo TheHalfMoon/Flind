@@ -2,7 +2,7 @@ import { useValues } from 'kea'
 import { useState } from 'react'
 
 import { IconCode2 } from '@posthog/icons'
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { TerraformExportModal } from 'lib/components/TerraformExporter/TerraformExportModal'
 import { upgradeModalLogic } from 'lib/components/UpgradeModal/upgradeModalLogic'

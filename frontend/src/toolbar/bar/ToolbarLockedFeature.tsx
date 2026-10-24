@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconLock } from '@posthog/icons'
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { toolbarLockedFeatureLogic } from '~/toolbar/bar/toolbarLockedFeatureLogic'
 import { ToolbarMenu } from '~/toolbar/bar/ToolbarMenu'

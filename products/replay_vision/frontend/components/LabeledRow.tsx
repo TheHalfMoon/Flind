@@ -1,5 +1,5 @@
 import { IconInfo } from '@posthog/icons'
-import { Tooltip } from '@posthog/lemon-ui'
+import { Tooltip } from '@flind/lemon-ui'
 
 /** A label-above-content row used across the readonly config and observation detail cards. */
 export function LabeledRow({

@@ -3,7 +3,7 @@ import { router } from 'kea-router'
 import { useMemo } from 'react'
 
 import { IconArrowLeft, IconArrowRight, IconCopy, IconInfo } from '@posthog/icons'
-import { LemonButton, LemonDivider, LemonModal, LemonSkeleton, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, LemonDivider, LemonModal, LemonSkeleton, Tooltip } from '@flind/lemon-ui'
 import {
     type ChartTheme,
     type Series,

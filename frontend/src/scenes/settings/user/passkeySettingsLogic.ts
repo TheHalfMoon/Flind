@@ -2,7 +2,7 @@ import { type PublicKeyCredentialDescriptorJSON, startAuthentication, startRegis
 import { MakeLogicType, actions, connect, kea, listeners, path, reducers } from 'kea'
 import { loaders } from 'kea-loaders'
 
-import { lemonToast } from '@posthog/lemon-ui'
+import { lemonToast } from '@flind/lemon-ui'
 
 import api from 'lib/api'
 import { twoFactorLogic } from 'scenes/authentication/two-factor-setup/twoFactorLogic'

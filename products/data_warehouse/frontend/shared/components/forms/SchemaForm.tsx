@@ -11,7 +11,7 @@ import {
     LemonTable,
     LemonTag,
     Tooltip,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { useFloatingContainer } from 'lib/hooks/useFloatingContainerContext'
 import { pluralize } from 'lib/utils/strings'

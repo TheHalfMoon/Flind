@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconTrash } from '@posthog/icons'
-import { LemonBadge, LemonButton, Tooltip } from '@posthog/lemon-ui'
+import { LemonBadge, LemonButton, Tooltip } from '@flind/lemon-ui'
 
 import { workflowLogic } from '../../workflowLogic'
 import { hogFlowEditorLogic } from '../hogFlowEditorLogic'

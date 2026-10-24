@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { SurveyEventProperties } from 'posthog-js'
 import { useState } from 'react'
 
-import { LemonButton, LemonCheckbox, LemonLabel, LemonModal, LemonTextArea, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, LemonCheckbox, LemonLabel, LemonModal, LemonTextArea, Tooltip } from '@flind/lemon-ui'
 
 import { BillingProductV2AddonType, BillingProductV2Type } from '~/types'
 

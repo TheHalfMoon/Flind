@@ -16,7 +16,7 @@ import {
     LemonSelect,
     LemonSkeleton,
     Link,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { CopyToClipboardInline } from 'lib/components/CopyToClipboard'
 import { exportsLogic } from 'lib/components/ExportButton/exportsLogic'

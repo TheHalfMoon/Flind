@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonButton, LemonModal, LemonTable, Link } from '@posthog/lemon-ui'
+import { LemonButton, LemonModal, LemonTable, Link } from '@flind/lemon-ui'
 
 import { IconOpenInNew } from 'lib/lemon-ui/icons'
 import { FeatureFlagFiltersSection } from 'scenes/feature-flags/FeatureFlagFilters'

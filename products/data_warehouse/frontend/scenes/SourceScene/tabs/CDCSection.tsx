@@ -11,7 +11,7 @@ import {
     LemonSkeleton,
     LemonSwitch,
     LemonTag,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import api, { ApiConfig } from 'lib/api'
 import { AccessControlAction } from 'lib/components/AccessControlAction'

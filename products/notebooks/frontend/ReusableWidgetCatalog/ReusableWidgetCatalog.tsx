@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconSearch } from '@posthog/icons'
-import { LemonBanner, LemonInput, LemonTag } from '@posthog/lemon-ui'
+import { LemonBanner, LemonInput, LemonTag } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'
 import { useOnMountEffect } from 'lib/hooks/useOnMountEffect'

@@ -3,7 +3,7 @@ import { useActions, useValues } from 'kea'
 import { useContext, useEffect, useState } from 'react'
 
 import { IconArrowRight } from '@posthog/icons'
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { supportLogic } from 'lib/components/Support/supportLogic'
 import { reportOnboardingStepCompleted, reportOnboardingStepSkipped } from 'scenes/onboarding/onboardingUsage'

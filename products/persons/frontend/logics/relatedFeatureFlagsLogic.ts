@@ -2,7 +2,7 @@ import { MakeLogicType, actions, connect, events, kea, key, listeners, path, pro
 import { loaders } from 'kea-loaders'
 import { urlToAction } from 'kea-router'
 
-import type { PaginationManual } from '@posthog/lemon-ui'
+import type { PaginationManual } from '@flind/lemon-ui'
 
 import api from 'lib/api'
 import { toParams } from 'lib/utils/url'

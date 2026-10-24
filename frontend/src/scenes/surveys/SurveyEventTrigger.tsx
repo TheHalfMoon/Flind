@@ -3,7 +3,7 @@ import { PropertyMatchType } from 'posthog-js'
 import { useMemo } from 'react'
 
 import { IconX } from '@posthog/icons'
-import { LemonCard, LemonCheckbox, LemonCollapse } from '@posthog/lemon-ui'
+import { LemonCard, LemonCheckbox, LemonCollapse } from '@flind/lemon-ui'
 
 import { PropertyFilters } from 'lib/components/PropertyFilters/PropertyFilters'
 import { TaxonomicFilterGroupType } from 'lib/components/TaxonomicFilter/types'

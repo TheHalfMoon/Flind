@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconPencil, IconPlus, IconX } from '@posthog/icons'
-import { LemonButton, LemonInput, LemonSelect, LemonSkeleton, ProfilePicture, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, LemonInput, LemonSelect, LemonSkeleton, ProfilePicture, Tooltip } from '@flind/lemon-ui'
 
 import { GitHubRepositoryCombobox } from 'lib/integrations/GitHubRepositoryCombobox'
 import { integrationsLogic } from 'lib/integrations/integrationsLogic'

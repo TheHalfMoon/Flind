@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react'
 
-import { LemonButton, LemonDropdown } from '@posthog/lemon-ui'
+import { LemonButton, LemonDropdown } from '@flind/lemon-ui'
 
 import { InternalFeedbackWidget } from './InternalFeedbackWidget'
 

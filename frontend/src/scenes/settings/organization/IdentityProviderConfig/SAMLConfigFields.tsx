@@ -1,4 +1,4 @@
-import { LemonBanner, Link } from '@posthog/lemon-ui'
+import { LemonBanner, Link } from '@flind/lemon-ui'
 
 import { CopyToClipboardInline } from 'lib/components/CopyToClipboard'
 import { LemonField } from 'lib/lemon-ui/LemonField'

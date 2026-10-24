@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { Form } from 'kea-forms'
 
-import { LemonSnack } from '@posthog/lemon-ui'
+import { LemonSnack } from '@flind/lemon-ui'
 
 import { FolderSelect } from 'lib/components/FileSystem/FolderSelect/FolderSelect'
 import { moveToLogic } from 'lib/components/FileSystem/MoveTo/moveToLogic'

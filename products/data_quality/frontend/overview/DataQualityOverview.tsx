@@ -13,7 +13,7 @@ import {
     LemonTag,
     Link,
     Spinner,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'
 import { urls } from 'scenes/urls'

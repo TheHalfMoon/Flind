@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { LemonCollapse } from '@posthog/lemon-ui'
+import { LemonCollapse } from '@flind/lemon-ui'
 
 import { organizationLogic } from 'scenes/organizationLogic'
 

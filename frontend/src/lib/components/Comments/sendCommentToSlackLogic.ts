@@ -1,6 +1,6 @@
 import { MakeLogicType, actions, connect, kea, listeners, path, reducers, selectors } from 'kea'
 
-import { lemonToast } from '@posthog/lemon-ui'
+import { lemonToast } from '@flind/lemon-ui'
 
 import { ApiError } from 'lib/api'
 import { slackChannelId } from 'lib/integrations/slackChannel'

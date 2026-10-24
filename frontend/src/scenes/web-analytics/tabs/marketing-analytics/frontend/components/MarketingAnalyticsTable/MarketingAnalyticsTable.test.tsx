@@ -18,7 +18,7 @@ jest.mock('kea', () => ({
     }),
     useActions: () => new Proxy({}, { get: () => jest.fn() }),
 }))
-jest.mock('@posthog/lemon-ui', () => ({
+jest.mock('@flind/lemon-ui', () => ({
     LemonButton: ({ children }: { children?: React.ReactNode }) => <button>{children}</button>,
     LemonInput: ({ value, onChange }: { value: string; onChange: (value: string) => void }) => (
         <input aria-label="Search" value={value} onChange={(event) => onChange(event.target.value)} />

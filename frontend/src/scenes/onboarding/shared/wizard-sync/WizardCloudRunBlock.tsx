@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { useEffect, useRef } from 'react'
 
 import { IconCheckCircle, IconChevronDown, IconGithub, IconPullRequest } from '@posthog/icons'
-import { LemonBanner, LemonButton } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton } from '@flind/lemon-ui'
 
 import { GitHubRepositoryPicker } from 'lib/integrations/GitHubIntegrationHelpers'
 import { eventUsageLogic } from 'lib/utils/eventUsageLogic'

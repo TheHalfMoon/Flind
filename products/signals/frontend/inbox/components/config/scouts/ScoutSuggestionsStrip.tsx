@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { useEffect, useRef } from 'react'
 
 import { IconChevronDown, IconRefresh, IconSparkles, IconX } from '@posthog/icons'
-import { LemonButton, LemonSkeleton, Link, Spinner } from '@posthog/lemon-ui'
+import { LemonButton, LemonSkeleton, Link, Spinner } from '@flind/lemon-ui'
 
 import { dayjs } from 'lib/dayjs'
 import { cn } from 'lib/utils/css-classes'

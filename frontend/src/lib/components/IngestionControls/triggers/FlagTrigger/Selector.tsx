@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { FlagSelector } from 'lib/components/FlagSelector'
 import { RestrictionScope, useRestrictedArea } from 'lib/components/RestrictedArea'

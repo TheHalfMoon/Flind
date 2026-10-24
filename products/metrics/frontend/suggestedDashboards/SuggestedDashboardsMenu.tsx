@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconCheckCircle, IconChevronDown, IconSparkles } from '@posthog/icons'
-import { LemonBadge, LemonButton, LemonMenu, LemonMenuItem, LemonMenuSection, Spinner } from '@posthog/lemon-ui'
+import { LemonBadge, LemonButton, LemonMenu, LemonMenuItem, LemonMenuSection, Spinner } from '@flind/lemon-ui'
 
 import { getAccessControlDisabledReason } from 'lib/utils/accessControlUtils'
 import { cn } from 'lib/utils/css-classes'

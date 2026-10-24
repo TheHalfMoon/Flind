@@ -1,4 +1,4 @@
-import { Spinner } from '@posthog/lemon-ui'
+import { Spinner } from '@flind/lemon-ui'
 
 export function TabSpinner(): JSX.Element {
     return (

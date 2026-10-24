@@ -15,7 +15,7 @@ import {
     IconStethoscope,
     IconTerminal,
 } from '@posthog/icons'
-import { LemonButton, LemonDropdown, LemonInput, SideAction, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, LemonDropdown, LemonInput, SideAction, Tooltip } from '@flind/lemon-ui'
 
 import { SettingsBar, SettingsButton, SettingsToggle } from 'lib/components/PanelSettings/PanelSettings'
 import { FEATURE_FLAGS } from 'lib/constants'

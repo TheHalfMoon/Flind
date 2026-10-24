@@ -9,7 +9,7 @@ jest.mock('kea', () => ({
     useValues: jest.fn(),
 }))
 
-jest.mock('@posthog/lemon-ui', () => ({
+jest.mock('@flind/lemon-ui', () => ({
     LemonSearchableSelect: ({ disabledReason }: { disabledReason?: string }) => (
         <button disabled={!!disabledReason}>{disabledReason || 'Ready'}</button>
     ),

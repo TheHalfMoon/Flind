@@ -3,7 +3,7 @@ import { MOCK_DEFAULT_ORGANIZATION, MOCK_DEFAULT_TEAM, MOCK_DEFAULT_USER } from 
 import { router } from 'kea-router'
 import { expectLogic, partial } from 'kea-test-utils'
 
-import { LemonDialog } from '@posthog/lemon-ui'
+import { LemonDialog } from '@flind/lemon-ui'
 
 import { FEATURE_FLAGS, OrganizationMembershipLevel } from 'lib/constants'
 import { lemonToast } from 'lib/lemon-ui/LemonToast/LemonToast'

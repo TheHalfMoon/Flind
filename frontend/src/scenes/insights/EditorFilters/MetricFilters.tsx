@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonSelect } from '@posthog/lemon-ui'
+import { LemonSelect } from '@flind/lemon-ui'
 
 import { MetricDirectionColorPickers } from 'lib/components/Metric/MetricDirectionColorPickers'
 import { LemonCheckbox } from 'lib/lemon-ui/LemonCheckbox'

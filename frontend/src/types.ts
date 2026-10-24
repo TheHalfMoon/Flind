@@ -5,7 +5,7 @@ import { eventWithTime } from 'posthog-js/rrweb-types'
 import { ReactNode } from 'react'
 import { LayoutItem } from 'react-grid-layout'
 
-import { LemonTableColumns } from '@posthog/lemon-ui'
+import { LemonTableColumns } from '@flind/lemon-ui'
 
 import { PaginatedResponse } from 'lib/api'
 import { CommonFilters, HeatmapFilters, HeatmapFixedPositionMode } from 'lib/components/heatmaps/types'

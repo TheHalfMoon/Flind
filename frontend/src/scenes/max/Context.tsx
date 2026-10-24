@@ -4,7 +4,7 @@ import { useMemo } from 'react'
 import React from 'react'
 
 import { IconAtSign, IconDashboard, IconGraph, IconNotebook, IconPageChart } from '@posthog/icons'
-import { LemonTag, Tooltip } from '@posthog/lemon-ui'
+import { LemonTag, Tooltip } from '@flind/lemon-ui'
 
 import { TaxonomicPopover } from 'lib/components/TaxonomicPopover/TaxonomicPopover'
 import { IconAction, IconEvent } from 'lib/lemon-ui/icons'

@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconFolder, IconX } from '@posthog/icons'
-import { LemonBanner, LemonButton } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton } from '@flind/lemon-ui'
 
 import { DateFilter } from 'lib/components/DateFilter/DateFilter'
 

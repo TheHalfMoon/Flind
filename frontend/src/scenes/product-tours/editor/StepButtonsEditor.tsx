@@ -1,4 +1,4 @@
-import { LemonInput, LemonSelect, LemonSwitch } from '@posthog/lemon-ui'
+import { LemonInput, LemonSelect, LemonSwitch } from '@flind/lemon-ui'
 
 import { ProductTourButtonAction, ProductTourStepButton, ProductTourStepButtons } from '~/types'
 

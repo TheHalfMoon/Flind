@@ -2,7 +2,7 @@ import { useValues } from 'kea'
 import { useState } from 'react'
 
 import { IconGithub } from '@posthog/icons'
-import { LemonButton, LemonSelect } from '@posthog/lemon-ui'
+import { LemonButton, LemonSelect } from '@flind/lemon-ui'
 
 import api from 'lib/api'
 import type { CustomInputRendererProps } from 'lib/components/CyclotronJob/customInputRenderers'

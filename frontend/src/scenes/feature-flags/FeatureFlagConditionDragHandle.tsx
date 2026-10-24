@@ -1,6 +1,6 @@
 import { DraggableSyntheticListeners } from '@dnd-kit/core'
 
-import { Tooltip } from '@posthog/lemon-ui'
+import { Tooltip } from '@flind/lemon-ui'
 
 import { SortableDragIcon } from 'lib/lemon-ui/icons'
 

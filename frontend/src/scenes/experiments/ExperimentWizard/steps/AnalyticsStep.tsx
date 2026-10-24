@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
 import { IconInfo, IconSparkles } from '@posthog/icons'
-import { LemonButton, LemonCheckbox, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, LemonCheckbox, Tooltip } from '@flind/lemon-ui'
 
 import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'
 import { aiConsentLogic } from 'scenes/settings/organization/aiConsentLogic'

@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { useCallback, useMemo } from 'react'
 
-import { LemonCollapse, LemonTag, Spinner, Tooltip } from '@posthog/lemon-ui'
+import { LemonCollapse, LemonTag, Spinner, Tooltip } from '@flind/lemon-ui'
 
 import { groupsModel } from '~/models/groupsModel'
 import { ActorType, Group, GroupActorType } from '~/types'

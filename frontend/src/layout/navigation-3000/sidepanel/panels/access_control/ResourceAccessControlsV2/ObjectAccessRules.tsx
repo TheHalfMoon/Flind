@@ -11,7 +11,7 @@ import {
     LemonTable,
     Link,
     Tooltip,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { toSentenceCase } from 'lib/utils/strings'
 

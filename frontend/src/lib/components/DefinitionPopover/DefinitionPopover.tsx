@@ -4,7 +4,7 @@ import clsx from 'clsx'
 import { useActions, useValues } from 'kea'
 
 import { IconPin, IconPinFilled } from '@posthog/icons'
-import { LemonButton, LemonDivider, ProfilePicture } from '@posthog/lemon-ui'
+import { LemonButton, LemonDivider, ProfilePicture } from '@flind/lemon-ui'
 
 import { DefinitionPopoverState, definitionPopoverLogic } from 'lib/components/DefinitionPopover/definitionPopoverLogic'
 import { ImageCarousel } from 'lib/components/ImageCarousel/ImageCarousel'

@@ -1,6 +1,6 @@
 import { useActions } from 'kea'
 
-import { LemonBanner } from '@posthog/lemon-ui'
+import { LemonBanner } from '@flind/lemon-ui'
 
 import { truncate } from 'lib/utils/strings'
 

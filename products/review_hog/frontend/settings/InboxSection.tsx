@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonSwitch } from '@posthog/lemon-ui'
+import { LemonSwitch } from '@flind/lemon-ui'
 
 import { YouMark } from 'products/review_hog/frontend/repositories/YouMark'
 import { reviewHogSettingsLogic } from 'products/review_hog/frontend/reviewHogSettingsLogic'

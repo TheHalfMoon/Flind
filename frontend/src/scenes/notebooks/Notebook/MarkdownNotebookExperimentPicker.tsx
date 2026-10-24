@@ -1,7 +1,7 @@
 import { useActions } from 'kea'
 import { useEffect } from 'react'
 
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { LemonModal } from 'lib/lemon-ui/LemonModal'
 

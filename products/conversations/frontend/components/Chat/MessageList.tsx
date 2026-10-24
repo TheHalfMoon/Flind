@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 
-import { LemonButton, Spinner } from '@posthog/lemon-ui'
+import { LemonButton, Spinner } from '@flind/lemon-ui'
 
 import { IconArrowDown } from 'lib/lemon-ui/icons'
 

@@ -3,7 +3,7 @@ import { Form } from 'kea-forms'
 import { ReactNode } from 'react'
 
 import { IconChevronLeft, IconInfo, IconSend } from '@posthog/icons'
-import { LemonInput, LemonTextArea, Link } from '@posthog/lemon-ui'
+import { LemonInput, LemonTextArea, Link } from '@flind/lemon-ui'
 
 import api from 'lib/api'
 import { IntegrationChoice } from 'lib/components/CyclotronJob/integrations/IntegrationChoice'

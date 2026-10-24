@@ -1,5 +1,5 @@
 import { IconExternal } from '@posthog/icons'
-import { Link, Tooltip } from '@posthog/lemon-ui'
+import { Link, Tooltip } from '@flind/lemon-ui'
 
 /** The test-id cell every test table shares: a truncating mono id, linked out when a URL
  *  exists. Render inside a `w-full max-w-0` column so a long nodeid truncates instead of

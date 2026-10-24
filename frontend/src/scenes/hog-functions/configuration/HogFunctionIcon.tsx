@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useInView } from 'react-intersection-observer'
 
 import { IconUpload } from '@posthog/icons'
-import { LemonButton, LemonFileInput, LemonInput, LemonSkeleton, Popover, Spinner, lemonToast } from '@posthog/lemon-ui'
+import { LemonButton, LemonFileInput, LemonInput, LemonSkeleton, Popover, Spinner, lemonToast } from '@flind/lemon-ui'
 
 import { HogFunctionIconLogicProps, hogFunctionIconLogic } from './hogFunctionIconLogic'
 

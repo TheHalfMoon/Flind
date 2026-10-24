@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonBanner, LemonSkeleton, LemonSwitch } from '@posthog/lemon-ui'
+import { LemonBanner, LemonSkeleton, LemonSwitch } from '@flind/lemon-ui'
 
 import { taskDefaultsLogic } from 'products/posthog_ai/frontend/logics/taskDefaultsLogic'
 

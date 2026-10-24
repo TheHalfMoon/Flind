@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonSlider } from '@posthog/lemon-ui'
+import { LemonSlider } from '@flind/lemon-ui'
 
 import { TaxonomicFilterGroupType } from 'lib/components/TaxonomicFilter/types'
 

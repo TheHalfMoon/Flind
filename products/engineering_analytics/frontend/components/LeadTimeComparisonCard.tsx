@@ -1,6 +1,6 @@
 // No DORA band edge: a band on one person's or one team's lead time reads as a grade.
 
-import { LemonCard, LemonSkeleton, Tooltip } from '@posthog/lemon-ui'
+import { LemonCard, LemonSkeleton, Tooltip } from '@flind/lemon-ui'
 
 import { pluralize } from 'lib/utils/strings'
 

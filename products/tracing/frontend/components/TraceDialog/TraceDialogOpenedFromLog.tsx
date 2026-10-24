@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { LogTag } from 'products/logs/frontend/components/LogTag'
 import { formatDuration } from 'products/tracing/frontend/TraceWaterfallView'

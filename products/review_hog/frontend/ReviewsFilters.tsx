@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonButton, LemonSelect } from '@posthog/lemon-ui'
+import { LemonButton, LemonSelect } from '@flind/lemon-ui'
 
 import { ReviewHogReviewsTableRetrieveReviewMode, ReviewHogReviewsTableRetrieveStatus } from './generated/api.schemas'
 import { REVIEW_MODE_LABEL } from './reviewDisplay'

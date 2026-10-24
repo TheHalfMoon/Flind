@@ -10,7 +10,7 @@ import {
     LemonTable,
     LemonTableColumns,
     LemonTag,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { CopyToClipboardInline } from 'lib/components/CopyToClipboard'
 import { TZLabel } from 'lib/components/TZLabel'

@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconChevronRight } from '@posthog/icons'
-import { LemonButton, LemonCheckbox, LemonTag } from '@posthog/lemon-ui'
+import { LemonButton, LemonCheckbox, LemonTag } from '@flind/lemon-ui'
 
 import { REALTIME_NOTIFICATION_TYPE_META } from 'lib/components/NotificationsMenu/NotificationRow'
 import { userLogic } from 'scenes/userLogic'

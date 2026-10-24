@@ -2,8 +2,8 @@ import { Meta, StoryObj } from '@storybook/react'
 import { useState, type ComponentProps } from 'react'
 
 import { IconEllipsis } from '@posthog/icons'
-import { LemonButton } from '@posthog/lemon-ui'
-import type { PaginationManual } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
+import type { PaginationManual } from '@flind/lemon-ui'
 
 import type { SubscriptionApi } from 'products/subscriptions/frontend/generated/api.schemas'
 import {

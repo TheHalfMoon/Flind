@@ -1,4 +1,4 @@
-import { LemonTable, LemonTableColumns } from '@posthog/lemon-ui'
+import { LemonTable, LemonTableColumns } from '@flind/lemon-ui'
 
 import { PlatformAlertApi } from './generated/api.schemas'
 import { OptionalTimeLabel } from './OptionalTimeLabel'

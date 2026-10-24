@@ -5,7 +5,7 @@ import { useState } from 'react'
 
 import * as researchPng from '@posthog/brand/hoggies/png/research'
 import { IconChevronDown, IconClock, IconPlusSmall, IconSearch, IconSparkles, IconX } from '@posthog/icons'
-import { LemonButton, LemonInput, LemonMenu, Popover, Spinner } from '@posthog/lemon-ui'
+import { LemonButton, LemonInput, LemonMenu, Popover, Spinner } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import { DateFilter } from 'lib/components/DateFilter/DateFilter'

@@ -12,7 +12,7 @@ import {
     LemonSelectProps,
     LemonTable,
     Tooltip,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { PayGateMini } from 'lib/components/PayGateMini/PayGateMini'
 import { upgradeModalLogic } from 'lib/components/UpgradeModal/upgradeModalLogic'

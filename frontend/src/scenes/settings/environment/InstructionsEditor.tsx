@@ -1,4 +1,4 @@
-import { LemonButton, LemonSkeleton, LemonTextArea } from '@posthog/lemon-ui'
+import { LemonButton, LemonSkeleton, LemonTextArea } from '@flind/lemon-ui'
 
 import { cn } from 'lib/utils/css-classes'
 

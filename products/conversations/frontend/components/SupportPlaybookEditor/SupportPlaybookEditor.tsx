@@ -8,7 +8,7 @@ import {
     LemonSkeleton,
     LemonTag,
     LemonTextArea,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 export interface SupportPlaybookEditorProps {
     inheritedInstructions: string

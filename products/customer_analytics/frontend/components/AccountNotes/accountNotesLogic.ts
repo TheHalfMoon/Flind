@@ -2,7 +2,7 @@ import { MakeLogicType, actions, afterMount, connect, kea, listeners, path, redu
 import { loaders } from 'kea-loaders'
 import posthog from 'posthog-js'
 
-import { PaginationManual, lemonToast } from '@posthog/lemon-ui'
+import { PaginationManual, lemonToast } from '@flind/lemon-ui'
 
 import { teamLogic } from 'scenes/teamLogic'
 import { userLogic } from 'scenes/userLogic'

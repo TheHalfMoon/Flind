@@ -16,7 +16,7 @@ import {
     LemonTag,
     Tooltip,
     Link,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import api from 'lib/api'
 import { AccessDenied } from 'lib/components/AccessDenied'

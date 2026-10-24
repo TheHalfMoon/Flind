@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 
 import { IconArrowLeft } from '@posthog/icons'
-import { LemonButton, Spinner } from '@posthog/lemon-ui'
+import { LemonButton, Spinner } from '@flind/lemon-ui'
 
 import { NotFound } from 'lib/components/NotFound'
 import { SceneExport } from 'scenes/sceneTypes'

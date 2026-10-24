@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { combineUrl } from 'kea-router'
 
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { userHasAccess } from 'lib/utils/accessControlUtils'
 import { experimentLogic } from 'scenes/experiments/experimentLogic'

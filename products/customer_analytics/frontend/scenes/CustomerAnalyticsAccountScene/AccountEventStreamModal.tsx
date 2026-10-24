@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonModal } from '@posthog/lemon-ui'
+import { LemonModal } from '@flind/lemon-ui'
 
 import { AccountEventStreamMembership } from '../../components/EventStream/AccountEventStreamMembership'
 import { AccountEventStreamSetupBanner } from '../../components/EventStream/AccountEventStreamSetupBanner'

@@ -3,7 +3,7 @@ import posthog from 'posthog-js'
 import { useEffect } from 'react'
 
 import * as judgePng from '@posthog/brand/hoggies/png/judge'
-import { LemonBanner } from '@posthog/lemon-ui'
+import { LemonBanner } from '@flind/lemon-ui'
 
 import { approvalsGateLogic } from 'lib/approvals/approvalsGateLogic'
 import { pngHoggie } from 'lib/brand/hoggies'

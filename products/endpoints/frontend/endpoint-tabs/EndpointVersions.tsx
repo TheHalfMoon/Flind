@@ -1,8 +1,8 @@
 import { useActions, useValues } from 'kea'
 import { combineUrl } from 'kea-router'
 
-import { LemonButton, LemonTable, LemonTag } from '@posthog/lemon-ui'
-import type { LemonTableColumns } from '@posthog/lemon-ui'
+import { LemonButton, LemonTable, LemonTag } from '@flind/lemon-ui'
+import type { LemonTableColumns } from '@flind/lemon-ui'
 
 import { More } from 'lib/lemon-ui/LemonButton/More'
 import { atColumn } from 'lib/lemon-ui/LemonTable/columnUtils'

@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 
-import { LemonTag } from '@posthog/lemon-ui'
+import { LemonTag } from '@flind/lemon-ui'
 
 import { getSeriesColor } from 'lib/colors'
 import { CopyToClipboardInline } from 'lib/components/CopyToClipboard'

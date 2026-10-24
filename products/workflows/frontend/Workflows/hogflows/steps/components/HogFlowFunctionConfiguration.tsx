@@ -3,7 +3,7 @@ import posthog from 'posthog-js'
 import { useEffect } from 'react'
 
 import { IconCheck } from '@posthog/icons'
-import { LemonBanner, LemonButton, LemonCollapse, Link, Spinner } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonCollapse, Link, Spinner } from '@flind/lemon-ui'
 
 import { CyclotronJobInputs } from 'lib/components/CyclotronJob/CyclotronJobInputs'
 import { templateToConfiguration } from 'scenes/hog-functions/configuration/hogFunctionConfigurationLogic'

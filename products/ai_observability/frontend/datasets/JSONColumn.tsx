@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import React from 'react'
 
-import { Tooltip } from '@posthog/lemon-ui'
+import { Tooltip } from '@flind/lemon-ui'
 
 import { HighlightedJSONViewer } from 'lib/components/HighlightedJSONViewer'
 import { JSONViewerTheme } from 'lib/components/JSONViewer'

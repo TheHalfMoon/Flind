@@ -4,7 +4,7 @@ import posthog from 'posthog-js'
 import { useState } from 'react'
 
 import { IconChevronLeft, IconGraph } from '@posthog/icons'
-import { LemonInput, LemonTextArea, Link } from '@posthog/lemon-ui'
+import { LemonInput, LemonTextArea, Link } from '@flind/lemon-ui'
 import { useFeatureFlagVariantKey } from '@posthog/react'
 
 import { IntegrationChoice } from 'lib/components/CyclotronJob/integrations/IntegrationChoice'

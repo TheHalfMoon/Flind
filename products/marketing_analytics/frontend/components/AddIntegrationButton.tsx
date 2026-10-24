@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
 import { IconPlusSmall } from '@posthog/icons'
-import { LemonButton, LemonMenu, LemonMenuItems, LemonTag } from '@posthog/lemon-ui'
+import { LemonButton, LemonMenu, LemonMenuItems, LemonTag } from '@flind/lemon-ui'
 
 import { RestrictionScope, useRestrictedArea } from 'lib/components/RestrictedArea'
 import { FEATURE_FLAGS, TeamMembershipLevel } from 'lib/constants'

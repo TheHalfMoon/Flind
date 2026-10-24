@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonButton, LemonSelect, LemonTextArea } from '@posthog/lemon-ui'
+import { LemonButton, LemonSelect, LemonTextArea } from '@flind/lemon-ui'
 
 import { autoresearchPipelineLogic } from '../autoresearchPipelineLogic'
 import { CreateSuggestionPriorityEnumApi } from '../generated/api.schemas'

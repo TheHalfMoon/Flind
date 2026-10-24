@@ -1,7 +1,7 @@
 import { MakeLogicType, actions, connect, kea, listeners, path } from 'kea'
 import posthog from 'posthog-js'
 
-import { LemonDialog, LemonInput, LemonTextArea, lemonToast } from '@posthog/lemon-ui'
+import { LemonDialog, LemonInput, LemonTextArea, lemonToast } from '@flind/lemon-ui'
 
 import { LemonField } from 'lib/lemon-ui/LemonField'
 import { featureFlagLogic } from 'lib/logic/featureFlagLogic'

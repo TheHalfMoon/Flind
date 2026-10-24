@@ -2,7 +2,7 @@ import './ActivityLog.scss'
 
 import { useValues } from 'kea'
 
-import { LemonDivider } from '@posthog/lemon-ui'
+import { LemonDivider } from '@flind/lemon-ui'
 
 import { ActivityLogLogicProps, activityLogLogic } from 'lib/components/ActivityLog/activityLogLogic'
 import { FEATURE_FLAGS } from 'lib/constants'

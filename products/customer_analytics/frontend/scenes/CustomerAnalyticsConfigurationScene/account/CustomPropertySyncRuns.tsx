@@ -7,7 +7,7 @@ import {
     LemonTableColumns,
     Spinner,
     Tooltip,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'
 import { LemonTag, LemonTagType } from 'lib/lemon-ui/LemonTag'

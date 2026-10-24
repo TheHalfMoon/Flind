@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonButton, LemonModal, Link } from '@posthog/lemon-ui'
+import { LemonButton, LemonModal, Link } from '@flind/lemon-ui'
 
 import { OnboardingStepKey, type SDK } from '~/types'
 

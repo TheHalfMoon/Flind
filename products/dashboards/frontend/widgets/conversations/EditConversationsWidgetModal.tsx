@@ -1,6 +1,6 @@
 import { BindLogic, useActions, useValues } from 'kea'
 
-import { LemonButton, LemonInput, LemonModal } from '@posthog/lemon-ui'
+import { LemonButton, LemonInput, LemonModal } from '@flind/lemon-ui'
 
 import { LemonField } from 'lib/lemon-ui/LemonField/LemonField'
 

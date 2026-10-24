@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonSegmentedButton } from '@posthog/lemon-ui'
+import { LemonSegmentedButton } from '@flind/lemon-ui'
 
 import type { WorkflowTemplateTypeFilter } from '../workflowTypeFilters'
 import { workflowTemplatesLogic } from './workflowTemplatesLogic'

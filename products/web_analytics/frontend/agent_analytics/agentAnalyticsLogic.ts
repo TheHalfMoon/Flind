@@ -5,7 +5,7 @@ import type { DeepPartial, DeepPartialMap, FieldName, ValidationErrorType } from
 import { loaders } from 'kea-loaders'
 import { router } from 'kea-router'
 
-import type { PaginationManual } from '@posthog/lemon-ui'
+import type { PaginationManual } from '@flind/lemon-ui'
 
 import { teamLogic } from 'scenes/teamLogic'
 import { webAnalyticsLogic } from 'scenes/web-analytics/webAnalyticsLogic'

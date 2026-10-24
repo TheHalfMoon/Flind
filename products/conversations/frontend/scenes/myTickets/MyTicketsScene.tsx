@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { Link, Spinner } from '@posthog/lemon-ui'
+import { Link, Spinner } from '@flind/lemon-ui'
 
 import { preflightLogic } from 'scenes/PreflightCheck/preflightLogic'
 import { SceneExport } from 'scenes/sceneTypes'

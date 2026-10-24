@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { router } from 'kea-router'
 
-import { LemonTag, Link } from '@posthog/lemon-ui'
+import { LemonTag, Link } from '@flind/lemon-ui'
 
 import { QueryFeature } from '~/queries/nodes/DataTable/queryFeatures'
 import { Query } from '~/queries/Query/Query'

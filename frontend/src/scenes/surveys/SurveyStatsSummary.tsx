@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { memo } from 'react'
 
-import { LemonSkeleton, LemonSwitch } from '@posthog/lemon-ui'
+import { LemonSkeleton, LemonSwitch } from '@flind/lemon-ui'
 
 import { Tooltip } from 'lib/lemon-ui/Tooltip'
 import { humanFriendlyNumber, percentage } from 'lib/utils/numbers'

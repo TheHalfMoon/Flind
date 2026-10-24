@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { useState } from 'react'
 
 import { IconGear } from '@posthog/icons'
-import { LemonButton, LemonTag } from '@posthog/lemon-ui'
+import { LemonButton, LemonTag } from '@flind/lemon-ui'
 
 import { APP_COMMANDS, buildSlashCommands } from '../../utils/slashCommands'
 import { QueuedMessageList } from '../QueuedMessageList'

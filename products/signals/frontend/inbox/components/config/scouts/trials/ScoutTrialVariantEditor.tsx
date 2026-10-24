@@ -1,5 +1,5 @@
 import { IconTrash } from '@posthog/icons'
-import { LemonButton, LemonInput, LemonSegmentedButton, LemonSelect, LemonTag, LemonTextArea } from '@posthog/lemon-ui'
+import { LemonButton, LemonInput, LemonSegmentedButton, LemonSelect, LemonTag, LemonTextArea } from '@flind/lemon-ui'
 
 import { LemonCard } from 'lib/lemon-ui/LemonCard'
 import { LemonField } from 'lib/lemon-ui/LemonField'

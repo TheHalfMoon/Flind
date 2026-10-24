@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import type { RefObject } from 'react'
 
 import { IconArrowLeft, IconArrowRight, IconChevronRight, IconEllipsis, IconTrash } from '@posthog/icons'
-import { LemonButton, LemonCheckbox, LemonMenu, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, LemonCheckbox, LemonMenu, Tooltip } from '@flind/lemon-ui'
 
 import { ResizableElement } from 'lib/components/ResizeElement/ResizeElement'
 import { TZLabel, TZLabelProps } from 'lib/components/TZLabel'

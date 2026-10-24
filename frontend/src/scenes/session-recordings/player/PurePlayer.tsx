@@ -7,7 +7,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
 import * as construction2Png from '@posthog/brand/hoggies/png/construction-2'
 import * as stopPng from '@posthog/brand/hoggies/png/stop'
-import { LemonBanner, LemonButton } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import { FloatingContainerContext } from 'lib/hooks/useFloatingContainerContext'

@@ -1,6 +1,6 @@
 import { BindLogic, useActions, useValues } from 'kea'
 
-import { LemonBanner, Link } from '@posthog/lemon-ui'
+import { LemonBanner, Link } from '@flind/lemon-ui'
 
 import { LogsAlertCreateModal } from './LogsAlertCreateModal'
 import { LogsAlertEditModal } from './LogsAlertEditModal'

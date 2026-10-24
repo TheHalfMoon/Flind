@@ -4,7 +4,7 @@ import clsx from 'clsx'
 import { BindLogic, batchChanges, useActions, useValues } from 'kea'
 import { forwardRef, useEffect, useId, useRef, useState } from 'react'
 
-import { Link } from '@posthog/lemon-ui'
+import { Link } from '@flind/lemon-ui'
 
 import {
     TaxonomicFilterGroupType,

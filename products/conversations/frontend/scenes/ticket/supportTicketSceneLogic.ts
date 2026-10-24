@@ -17,7 +17,7 @@ import { loaders } from 'kea-loaders'
 import { beforeUnload, router } from 'kea-router'
 import posthog from 'posthog-js'
 
-import { lemonToast } from '@posthog/lemon-ui'
+import { lemonToast } from '@flind/lemon-ui'
 
 import { ApiError } from 'lib/api-error'
 import { commentsLogic } from 'lib/components/Comments/commentsLogic'

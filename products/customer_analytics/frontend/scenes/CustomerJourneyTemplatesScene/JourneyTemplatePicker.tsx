@@ -3,7 +3,7 @@ import { useActions, useValues } from 'kea'
 import { useEffect, useRef } from 'react'
 
 import { IconPlus, IconTarget, IconTrending } from '@posthog/icons'
-import { LemonButton, LemonDivider, LemonInput, Link } from '@posthog/lemon-ui'
+import { LemonButton, LemonDivider, LemonInput, Link } from '@flind/lemon-ui'
 
 import { ObjectTags } from 'lib/components/ObjectTags/ObjectTags'
 import { TZLabel } from 'lib/components/TZLabel'

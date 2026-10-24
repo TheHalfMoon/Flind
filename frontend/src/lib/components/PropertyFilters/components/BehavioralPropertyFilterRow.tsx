@@ -3,7 +3,7 @@ import posthog from 'posthog-js'
 import { useState } from 'react'
 
 import { IconFilter } from '@posthog/icons'
-import { LemonButton, LemonInput, LemonSelect } from '@posthog/lemon-ui'
+import { LemonButton, LemonInput, LemonSelect } from '@flind/lemon-ui'
 
 import { PropertyFilters } from 'lib/components/PropertyFilters/PropertyFilters'
 import {

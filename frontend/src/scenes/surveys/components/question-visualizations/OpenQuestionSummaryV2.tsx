@@ -10,7 +10,7 @@ import {
     IconThumbsUp,
     IconThumbsUpFilled,
 } from '@posthog/icons'
-import { LemonButton, LemonSkeleton } from '@posthog/lemon-ui'
+import { LemonButton, LemonSkeleton } from '@flind/lemon-ui'
 import { useThumbSurvey } from '@posthog/react/surveys'
 
 import api from 'lib/api'

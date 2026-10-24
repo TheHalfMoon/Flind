@@ -1,4 +1,4 @@
-import { LemonSelect } from '@posthog/lemon-ui'
+import { LemonSelect } from '@flind/lemon-ui'
 
 import { apiValueToMathType } from 'products/product_analytics/frontend/insights/trends/mathsLogic'
 

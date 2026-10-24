@@ -1,5 +1,5 @@
 import { IconInfo } from '@posthog/icons'
-import { LemonSkeleton, LemonTag, Tooltip } from '@posthog/lemon-ui'
+import { LemonSkeleton, LemonTag, Tooltip } from '@flind/lemon-ui'
 import { LineChart, ReferenceLines, useChartTheme } from '@flind/quill-charts'
 
 import { humanFriendlyNumber } from 'lib/utils/numbers'

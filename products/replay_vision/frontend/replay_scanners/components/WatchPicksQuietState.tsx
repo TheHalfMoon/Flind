@@ -1,7 +1,7 @@
 import { useActions, useMountedLogic, useValues } from 'kea'
 
 import * as noirPng from '@posthog/brand/hoggies/png/noir-1'
-import { LemonButton, LemonSelect, Link } from '@posthog/lemon-ui'
+import { LemonButton, LemonSelect, Link } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import { TZLabel } from 'lib/components/TZLabel'

@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { useMemo } from 'react'
 
-import { LemonSkeleton } from '@posthog/lemon-ui'
+import { LemonSkeleton } from '@flind/lemon-ui'
 import { TimeSeriesBarChart, useChartTheme, type TimeInterval } from '@flind/quill-charts'
 
 import { Section } from '../components/Section'

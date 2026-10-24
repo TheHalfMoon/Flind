@@ -6,7 +6,7 @@ import { List } from 'react-window'
 import { useDebouncedCallback } from 'use-debounce'
 
 import { IconExternal } from '@posthog/icons'
-import { LemonButton, LemonCheckbox, LemonTag } from '@posthog/lemon-ui'
+import { LemonButton, LemonCheckbox, LemonTag } from '@flind/lemon-ui'
 
 import { AutoSizer } from 'lib/components/AutoSizer'
 import { LemonInput } from 'lib/lemon-ui/LemonInput/LemonInput'

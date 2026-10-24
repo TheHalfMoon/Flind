@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
-import { LemonInput, LemonModal } from '@posthog/lemon-ui'
+import { LemonInput, LemonModal } from '@flind/lemon-ui'
 
 import { LemonButton } from 'lib/lemon-ui/LemonButton'
 import { ExperimentFlagKeyInput } from 'scenes/experiments/ExperimentFlagKeyInput'

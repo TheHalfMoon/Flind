@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { Form } from 'kea-forms'
 
-import { LemonButton, LemonModal, LemonSelect, LemonTag } from '@posthog/lemon-ui'
+import { LemonButton, LemonModal, LemonSelect, LemonTag } from '@flind/lemon-ui'
 
 import { PropertyStatusControl } from 'lib/components/DefinitionPopover/DefinitionPopoverContents'
 import { ObjectTags } from 'lib/components/ObjectTags/ObjectTags'

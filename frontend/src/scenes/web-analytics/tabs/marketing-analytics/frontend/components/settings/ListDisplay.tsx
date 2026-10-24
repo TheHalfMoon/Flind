@@ -1,6 +1,6 @@
 import './ListDisplay.scss'
 
-import { Tooltip } from '@posthog/lemon-ui'
+import { Tooltip } from '@flind/lemon-ui'
 
 interface ListDisplayProps {
     list: string[]

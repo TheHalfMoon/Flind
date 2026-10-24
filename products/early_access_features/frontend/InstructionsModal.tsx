@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { LemonCollapse, LemonModal, Link } from '@posthog/lemon-ui'
+import { LemonCollapse, LemonModal, Link } from '@flind/lemon-ui'
 
 import { CodeSnippet, Language } from 'lib/components/CodeSnippet'
 import { preflightLogic } from 'scenes/PreflightCheck/preflightLogic'

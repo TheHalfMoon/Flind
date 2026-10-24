@@ -1,7 +1,7 @@
 import { router } from 'kea-router'
 import { expectLogic, partial } from 'kea-test-utils'
 
-import { lemonToast } from '@posthog/lemon-ui'
+import { lemonToast } from '@flind/lemon-ui'
 
 import { teamLogic } from 'scenes/teamLogic'
 import { urls } from 'scenes/urls'
@@ -415,8 +415,8 @@ const SAVE_FAILS_DETAIL = 'Prefix is not valid'
 const HOGQL_SAVE_FAILS_ID = 'test-hogql-save-fails-id'
 const HOGQL_SAVE_FAILS_DETAIL = 'Invalid HogQL query: Unable to resolve field: not_a_column'
 
-jest.mock('@posthog/lemon-ui', () => ({
-    ...jest.requireActual('@posthog/lemon-ui'),
+jest.mock('@flind/lemon-ui', () => ({
+    ...jest.requireActual('@flind/lemon-ui'),
     lemonToast: {
         error: jest.fn(),
         success: jest.fn(),

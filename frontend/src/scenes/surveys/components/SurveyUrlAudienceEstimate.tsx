@@ -2,7 +2,7 @@ import { useValues } from 'kea'
 import { RE2JS } from 're2js'
 import { useEffect, useState } from 'react'
 
-import { Spinner } from '@posthog/lemon-ui'
+import { Spinner } from '@flind/lemon-ui'
 
 import api from 'lib/api'
 import { cn } from 'lib/utils/css-classes'

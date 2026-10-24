@@ -1,6 +1,6 @@
 import { BindLogic, useValues } from 'kea'
 
-import { SpinnerOverlay } from '@posthog/lemon-ui'
+import { SpinnerOverlay } from '@flind/lemon-ui'
 
 import { NotFound } from 'lib/components/NotFound'
 import { useSceneAgentPanel } from 'scenes/max/useSceneAgentPanel'

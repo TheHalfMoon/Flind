@@ -1,4 +1,4 @@
-import { LemonCard, LemonCollapse, LemonTag, Link } from '@posthog/lemon-ui'
+import { LemonCard, LemonCollapse, LemonTag, Link } from '@flind/lemon-ui'
 
 import { urls } from 'scenes/urls'
 

@@ -5,7 +5,7 @@ import { loaders } from 'kea-loaders'
 import { router } from 'kea-router'
 import { expectLogic } from 'kea-test-utils'
 
-import { lemonToast } from '@posthog/lemon-ui'
+import { lemonToast } from '@flind/lemon-ui'
 
 import api from 'lib/api'
 import { timeSensitiveAuthenticationLogic } from 'lib/components/TimeSensitiveAuthentication/timeSensitiveAuthenticationLogic'

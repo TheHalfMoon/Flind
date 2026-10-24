@@ -1,4 +1,4 @@
-import { LemonButton, LemonLabel, LemonModal } from '@posthog/lemon-ui'
+import { LemonButton, LemonLabel, LemonModal } from '@flind/lemon-ui'
 
 import { DatePicker } from 'lib/components/DatePicker/DatePicker'
 import { dayjs } from 'lib/dayjs'

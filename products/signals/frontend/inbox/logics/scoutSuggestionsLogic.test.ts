@@ -4,7 +4,7 @@ import { expectLogic } from 'kea-test-utils'
 import posthog from 'posthog-js'
 
 import { ApiError } from 'lib/api-error'
-// Imported from the source module rather than the `@posthog/lemon-ui` barrel, so the spies below
+// Imported from the source module rather than the `@flind/lemon-ui` barrel, so the spies below
 // replace the methods on the same `lemonToast` singleton the logic calls at runtime.
 import { lemonToast } from 'lib/lemon-ui/LemonToast/LemonToast'
 

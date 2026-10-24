@@ -3,7 +3,7 @@ import './ConversionPaths.scss'
 import { BuiltLogic, LogicWrapper, useActions, useValues } from 'kea'
 import { useMemo, useState } from 'react'
 
-import { LemonSegmentedButton, LemonTable, LemonTableColumns } from '@posthog/lemon-ui'
+import { LemonSegmentedButton, LemonTable, LemonTableColumns } from '@flind/lemon-ui'
 
 import { getSeriesColor } from 'lib/colors'
 import { useAttachedLogic } from 'lib/logic/scenes/useAttachedLogic'

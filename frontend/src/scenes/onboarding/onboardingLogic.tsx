@@ -2,7 +2,7 @@ import { MakeLogicType, actions, connect, kea, listeners, path, props, reducers,
 import { actionToUrl, combineUrl, router, urlToAction } from 'kea-router'
 import posthog from 'posthog-js'
 
-import { lemonToast } from '@posthog/lemon-ui'
+import { lemonToast } from '@flind/lemon-ui'
 
 import { type SetupTaskId } from 'lib/components/ProductSetup'
 import { globalSetupLogic } from 'lib/components/ProductSetup/globalSetupLogic'

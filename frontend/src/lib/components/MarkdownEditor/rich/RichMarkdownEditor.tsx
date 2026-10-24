@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { flushSync } from 'react-dom'
 
 import { IconArrowLeft, IconArrowRight } from '@posthog/icons'
-import { LemonButton, LemonDivider } from '@posthog/lemon-ui'
+import { LemonButton, LemonDivider } from '@flind/lemon-ui'
 
 import 'lib/components/MarkdownEditor/shared/RichMarkdownEditor.scss'
 import { MarkdownEditorCharacterCountFooter } from 'lib/components/MarkdownEditor/shared/MarkdownEditorCharacterCountFooter'

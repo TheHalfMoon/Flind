@@ -14,7 +14,7 @@ import {
 } from 'kea'
 import { actionToUrl, router, urlToAction } from 'kea-router'
 
-import { LemonDivider, LemonSkeleton } from '@posthog/lemon-ui'
+import { LemonDivider, LemonSkeleton } from '@flind/lemon-ui'
 
 import { ActivityLog } from 'lib/components/ActivityLog/ActivityLog'
 import { NotFound } from 'lib/components/NotFound'

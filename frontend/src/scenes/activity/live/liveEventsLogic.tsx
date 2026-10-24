@@ -1,6 +1,6 @@
 import { MakeLogicType, actions, connect, events, kea, listeners, path, props, reducers, selectors } from 'kea'
 
-import { Spinner, lemonToast } from '@posthog/lemon-ui'
+import { Spinner, lemonToast } from '@flind/lemon-ui'
 
 import api from 'lib/api'
 import { isEventPropertyFilter } from 'lib/components/PropertyFilters/utils'

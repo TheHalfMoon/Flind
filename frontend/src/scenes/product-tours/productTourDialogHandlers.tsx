@@ -1,4 +1,4 @@
-import { LemonDialog } from '@posthog/lemon-ui'
+import { LemonDialog } from '@flind/lemon-ui'
 
 import { LaunchValidationContent } from './components/LaunchValidationContent'
 import { LaunchValidationIssue } from './productTourLogic'

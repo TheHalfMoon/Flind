@@ -26,7 +26,7 @@ import {
     IconPlus,
     IconTrash,
 } from '@posthog/icons'
-import { LemonButton, LemonMenu, LemonTag } from '@posthog/lemon-ui'
+import { LemonButton, LemonMenu, LemonTag } from '@flind/lemon-ui'
 import { PostHogErrorBoundary } from '@posthog/react'
 
 import { IconArrowDown, IconArrowUp } from 'lib/lemon-ui/icons'

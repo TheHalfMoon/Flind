@@ -1,4 +1,4 @@
-import { LemonTag, ProfilePicture } from '@posthog/lemon-ui'
+import { LemonTag, ProfilePicture } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'
 import { fullNameOrEmail } from 'lib/utils/strings'

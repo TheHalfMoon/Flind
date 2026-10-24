@@ -9,7 +9,7 @@ import {
     LemonSearchableSelect,
     LemonSelect,
     Tooltip,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { midEllipsis } from 'lib/utils/strings'
 

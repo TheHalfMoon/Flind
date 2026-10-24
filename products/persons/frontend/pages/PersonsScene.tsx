@@ -1,7 +1,7 @@
 import { useActions, useAsyncActions, useValues } from 'kea'
 
 import { IconRewind } from '@posthog/icons'
-import { LemonDialog, LemonInput } from '@posthog/lemon-ui'
+import { LemonDialog, LemonInput } from '@flind/lemon-ui'
 
 import { SceneMenuBarFileItems } from 'lib/components/Scenes/SceneMenuBarFileItems'
 import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'

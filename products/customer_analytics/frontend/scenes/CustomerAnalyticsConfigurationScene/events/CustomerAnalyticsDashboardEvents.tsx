@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import posthog from 'posthog-js'
 
 import { IconPlusSmall } from '@posthog/icons'
-import { LemonButton, LemonLabel, Link } from '@posthog/lemon-ui'
+import { LemonButton, LemonLabel, Link } from '@flind/lemon-ui'
 
 import { RestrictionScope, useRestrictedArea } from 'lib/components/RestrictedArea'
 import { TaxonomicFilterGroupType } from 'lib/components/TaxonomicFilter/types'

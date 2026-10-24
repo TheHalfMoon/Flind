@@ -3,7 +3,7 @@ import { router } from 'kea-router'
 import { useEffect, useState } from 'react'
 
 import { IconDatabase, IconPlus } from '@posthog/icons'
-import { LemonButton, LemonCard, LemonInput, LemonSkeleton } from '@posthog/lemon-ui'
+import { LemonButton, LemonCard, LemonInput, LemonSkeleton } from '@flind/lemon-ui'
 
 import {
     ExternalDataSourceTypeEnumApi,

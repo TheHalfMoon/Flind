@@ -4,7 +4,7 @@ import { BuiltLogic, LogicWrapper, useActions, useValues } from 'kea'
 import { Suspense, useId, useMemo, useState } from 'react'
 
 import { IconGear, IconInfo } from '@posthog/icons'
-import { LemonButton, LemonInput, LemonSelect, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, LemonInput, LemonSelect, Tooltip } from '@flind/lemon-ui'
 
 import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'
 import { lazyWithRetry } from 'lib/utils/retryImport'

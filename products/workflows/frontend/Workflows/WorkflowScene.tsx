@@ -3,7 +3,7 @@ import { BindLogic, useValues } from 'kea'
 import { router } from 'kea-router'
 import { useMemo } from 'react'
 
-import { SpinnerOverlay } from '@posthog/lemon-ui'
+import { SpinnerOverlay } from '@flind/lemon-ui'
 
 import { ActivityLog } from 'lib/components/ActivityLog/ActivityLog'
 import { NotFound } from 'lib/components/NotFound'

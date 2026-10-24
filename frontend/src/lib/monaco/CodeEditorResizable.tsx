@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import { useEffect, useRef, useState } from 'react'
 
 import { IconCheck, IconX } from '@posthog/icons'
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { AutoSizer } from 'lib/components/AutoSizer'
 import { CodeEditor, CodeEditorProps } from 'lib/monaco/CodeEditor'

@@ -22,7 +22,7 @@ import { EventType, IncrementalSource, eventWithTime } from 'posthog-js/rrweb-ty
 import type { customEvent } from 'posthog-js/rrweb-types'
 import { RefObject } from 'react'
 
-import { lemonToast } from '@posthog/lemon-ui'
+import { lemonToast } from '@flind/lemon-ui'
 import {
     AudioMuteReplayerPlugin,
     COMMON_REPLAYER_CONFIG,

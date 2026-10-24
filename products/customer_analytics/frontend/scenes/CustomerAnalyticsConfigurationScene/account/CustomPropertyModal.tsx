@@ -17,7 +17,7 @@ import {
     LemonTextArea,
     Link,
     Tooltip,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import type { DataColorToken } from 'lib/colors'
 import { FEATURE_FLAGS } from 'lib/constants'

@@ -2,7 +2,7 @@ import { MOCK_DEFAULT_TEAM } from 'lib/api.mock'
 
 import { expectLogic } from 'kea-test-utils'
 
-import { lemonToast } from '@posthog/lemon-ui'
+import { lemonToast } from '@flind/lemon-ui'
 
 import { teamLogic } from 'scenes/teamLogic'
 
@@ -31,8 +31,8 @@ jest.mock('products/logs/frontend/generated/api', () => ({
     logsAlertsResetCreate: jest.fn(),
 }))
 
-jest.mock('@posthog/lemon-ui', () => ({
-    ...jest.requireActual('@posthog/lemon-ui'),
+jest.mock('@flind/lemon-ui', () => ({
+    ...jest.requireActual('@flind/lemon-ui'),
     lemonToast: {
         success: jest.fn(),
         error: jest.fn(),

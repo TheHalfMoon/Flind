@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonButton, LemonInput, LemonSegmentedButton, LemonTag } from '@posthog/lemon-ui'
+import { LemonButton, LemonInput, LemonSegmentedButton, LemonTag } from '@flind/lemon-ui'
 
 import { membershipLevelToName } from 'lib/utils/permissioning'
 import { pluralize } from 'lib/utils/strings'

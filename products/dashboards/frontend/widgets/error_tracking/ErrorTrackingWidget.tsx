@@ -2,7 +2,7 @@ import { BindLogic, useValues } from 'kea'
 import type { ReactNode } from 'react'
 
 import * as superheroPng from '@posthog/brand/hoggies/png/superhero'
-import { Spinner } from '@posthog/lemon-ui'
+import { Spinner } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import { teamLogic } from 'scenes/teamLogic'

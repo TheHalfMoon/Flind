@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 
 import * as selfDrivingPng from '@posthog/brand/hoggies/png/self-driving'
 import { IconArrowRight } from '@posthog/icons'
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import { ProductEmptyState } from 'lib/components/ProductEmptyState/ProductEmptyState'

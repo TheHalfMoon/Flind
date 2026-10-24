@@ -10,7 +10,7 @@ import {
     LemonSwitch,
     LemonTag,
     LemonTextArea,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { LemonField } from 'lib/lemon-ui/LemonField'
 import { LemonInputSelect } from 'lib/lemon-ui/LemonInputSelect/LemonInputSelect'

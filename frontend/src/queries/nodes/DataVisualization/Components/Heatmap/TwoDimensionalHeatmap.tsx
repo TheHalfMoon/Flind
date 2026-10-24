@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import { useActions, useValues } from 'kea'
 import { useEffect, useMemo } from 'react'
 
-import { LemonBanner, LemonButton } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton } from '@flind/lemon-ui'
 
 import type { Sorting } from 'lib/lemon-ui/LemonTable/sorting'
 import { SortingIndicator, getNextSorting } from 'lib/lemon-ui/LemonTable/sorting'

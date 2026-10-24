@@ -2,7 +2,7 @@ import { Tabs } from '@base-ui/react/tabs'
 import { useActions, useValues } from 'kea'
 
 import { IconSparkles, IconX } from '@posthog/icons'
-import { Tooltip } from '@posthog/lemon-ui'
+import { Tooltip } from '@flind/lemon-ui'
 
 import { RenderKeybind } from 'lib/components/Shortcuts/ShortcutMenu'
 import { keyBinds } from 'lib/components/Shortcuts/shortcuts'

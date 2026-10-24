@@ -2,7 +2,7 @@ import { MakeLogicType, actions, connect, kea, listeners, path, reducers, select
 import { loaders } from 'kea-loaders'
 import { beforeUnload } from 'kea-router'
 
-import { lemonToast } from '@posthog/lemon-ui'
+import { lemonToast } from '@flind/lemon-ui'
 
 import api from 'lib/api'
 import { ApiError, isApprovalRequiredError } from 'lib/api-error'

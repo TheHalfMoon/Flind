@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { LemonBadge } from '@posthog/lemon-ui'
+import { LemonBadge } from '@flind/lemon-ui'
 
 import { workflowsSetupGuideLogic } from './workflowsSetupGuideLogic'
 

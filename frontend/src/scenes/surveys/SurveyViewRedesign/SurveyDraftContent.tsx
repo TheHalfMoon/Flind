@@ -2,7 +2,7 @@ import { useValues } from 'kea'
 
 import * as construction1Png from '@posthog/brand/hoggies/png/construction-1'
 import { IconCheck, IconRocket } from '@posthog/icons'
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import { LaunchSurveyButton } from 'scenes/surveys/components/LaunchSurveyButton'

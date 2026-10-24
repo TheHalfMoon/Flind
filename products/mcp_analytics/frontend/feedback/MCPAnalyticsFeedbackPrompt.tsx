@@ -3,7 +3,7 @@ import { useEffect, useId } from 'react'
 import { useInView } from 'react-intersection-observer'
 
 import { IconThumbsDown, IconThumbsUp } from '@posthog/icons'
-import { LemonBanner, LemonButton, LemonLabel, LemonTextArea } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonLabel, LemonTextArea } from '@flind/lemon-ui'
 
 import { usePageVisibility } from 'lib/hooks/usePageVisibility'
 import { userLogic } from 'scenes/userLogic'

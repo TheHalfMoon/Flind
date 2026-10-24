@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react'
 
 import { IconExternal, IconTrends } from '@posthog/icons'
-import { Link } from '@posthog/lemon-ui'
+import { Link } from '@flind/lemon-ui'
 
 import { LemonCard } from 'lib/lemon-ui/LemonCard'
 

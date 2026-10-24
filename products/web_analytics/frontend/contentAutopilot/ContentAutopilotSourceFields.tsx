@@ -1,6 +1,6 @@
 import { useActions } from 'kea'
 
-import { LemonTextArea } from '@posthog/lemon-ui'
+import { LemonTextArea } from '@flind/lemon-ui'
 
 import { LemonField } from 'lib/lemon-ui/LemonField'
 

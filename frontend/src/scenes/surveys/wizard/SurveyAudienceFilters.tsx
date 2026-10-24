@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useEffect, useState } from 'react'
 
-import { LemonButton, LemonInput } from '@posthog/lemon-ui'
+import { LemonButton, LemonInput } from '@flind/lemon-ui'
 
 import { GuidedWizardPanel } from 'lib/components/GuidedWizard/GuidedWizardPanel'
 import { GuidedWizardSection } from 'lib/components/GuidedWizard/GuidedWizardSection'

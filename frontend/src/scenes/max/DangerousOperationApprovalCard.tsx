@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 
 import { IconNotebook, IconWarning } from '@posthog/icons'
-import { Spinner } from '@posthog/lemon-ui'
+import { Spinner } from '@flind/lemon-ui'
 
 import { DangerousOperationResponse } from '~/queries/schema/schema-assistant-messages'
 

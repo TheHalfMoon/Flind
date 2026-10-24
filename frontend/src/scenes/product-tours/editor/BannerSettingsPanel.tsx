@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonInput, LemonSegmentedButton, LemonSelect, LemonSwitch, Tooltip } from '@posthog/lemon-ui'
+import { LemonInput, LemonSegmentedButton, LemonSelect, LemonSwitch, Tooltip } from '@flind/lemon-ui'
 
 import { ProductTourBannerConfig } from '~/types'
 

@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { useEffect } from 'react'
 
 import { IconDatabase, IconRefresh } from '@posthog/icons'
-import { Link } from '@posthog/lemon-ui'
+import { Link } from '@flind/lemon-ui'
 
 import { usePageVisibility } from 'lib/hooks/usePageVisibility'
 import { IconPlayCircle, IconReplay } from 'lib/lemon-ui/icons'

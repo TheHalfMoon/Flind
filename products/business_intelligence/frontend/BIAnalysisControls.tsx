@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonCheckbox, LemonInput, LemonLabel, LemonSelect } from '@posthog/lemon-ui'
+import { LemonCheckbox, LemonInput, LemonLabel, LemonSelect } from '@flind/lemon-ui'
 
 import { ChartDisplayType } from '~/types'
 

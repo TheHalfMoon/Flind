@@ -2,7 +2,7 @@ import { waitFor } from '@testing-library/react'
 /* oxlint-disable react-hooks/rules-of-hooks -- useMocks is a test helper, not a React hook */
 import { expectLogic } from 'kea-test-utils'
 
-// Imported from the source module rather than the `@posthog/lemon-ui` barrel, so the spy below
+// Imported from the source module rather than the `@flind/lemon-ui` barrel, so the spy below
 // replaces the method on the same `lemonToast` singleton the logic calls at runtime.
 import { lemonToast } from 'lib/lemon-ui/LemonToast/LemonToast'
 

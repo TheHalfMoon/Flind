@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import posthog from 'posthog-js'
 import { useEffect } from 'react'
 
-import { LemonButton, LemonSelect, LemonTag } from '@posthog/lemon-ui'
+import { LemonButton, LemonSelect, LemonTag } from '@flind/lemon-ui'
 
 import { FEATURE_FLAGS } from 'lib/constants'
 import { featureFlagLogic } from 'lib/logic/featureFlagLogic'

@@ -3,7 +3,7 @@ import posthog from 'posthog-js'
 import { useState } from 'react'
 
 import { IconPlus } from '@posthog/icons'
-import { Link } from '@posthog/lemon-ui'
+import { Link } from '@flind/lemon-ui'
 
 import { integrationsLogic } from 'lib/integrations/integrationsLogic'
 import { ICONS } from 'lib/integrations/utils'

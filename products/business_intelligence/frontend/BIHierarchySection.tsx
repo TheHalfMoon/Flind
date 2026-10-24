@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconEllipsis, IconPlus } from '@posthog/icons'
-import { LemonButton, LemonMenu } from '@posthog/lemon-ui'
+import { LemonButton, LemonMenu } from '@flind/lemon-ui'
 
 import { biEditorLogic } from './biEditorLogic'
 import { hierarchyError, hierarchyFieldKey } from './biHierarchies'

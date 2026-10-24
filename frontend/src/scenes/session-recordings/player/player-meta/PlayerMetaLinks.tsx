@@ -10,7 +10,7 @@ import {
     IconPlusSmall,
     IconTrash,
 } from '@posthog/icons'
-import { LemonButton, LemonButtonProps, LemonDialog, LemonMenu, LemonMenuItems } from '@posthog/lemon-ui'
+import { LemonButton, LemonButtonProps, LemonDialog, LemonMenu, LemonMenuItems } from '@flind/lemon-ui'
 
 import { AccessControlAction } from 'lib/components/AccessControlAction'
 import { getVideoExportDisabledReason } from 'lib/components/ExportButton/exportStatus'

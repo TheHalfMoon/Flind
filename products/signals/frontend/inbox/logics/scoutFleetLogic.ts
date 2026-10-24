@@ -14,7 +14,7 @@ import { loaders } from 'kea-loaders'
 import { actionToUrl, router, urlToAction } from 'kea-router'
 import posthog from 'posthog-js'
 
-import { lemonToast } from '@posthog/lemon-ui'
+import { lemonToast } from '@flind/lemon-ui'
 
 import { ApiError, isUnavailableEndpointError, shouldReportApiFailure } from 'lib/api-error'
 import { dayjs } from 'lib/dayjs'

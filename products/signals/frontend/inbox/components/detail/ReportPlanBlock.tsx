@@ -1,4 +1,4 @@
-import { Link } from '@posthog/lemon-ui'
+import { Link } from '@flind/lemon-ui'
 
 import { derivePrState } from 'lib/signals/prState'
 import { PrBadge } from 'lib/signals/SignalReportPrBadge'

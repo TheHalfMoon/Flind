@@ -14,7 +14,7 @@ import { expectLogic, partial } from 'kea-test-utils'
 import posthog from 'posthog-js'
 import { toast } from 'react-toastify'
 
-import { lemonToast as sharedLemonToast } from '@posthog/lemon-ui'
+import { lemonToast as sharedLemonToast } from '@flind/lemon-ui'
 
 import api from 'lib/api'
 import { ApiError, NetworkError } from 'lib/api-error'
@@ -3991,7 +3991,7 @@ describe('featureFlagLogic', () => {
 
         it('deletes the flag without overwriting its description, and Undo keeps it in the list', async () => {
             updateSpy.mockResolvedValue({ ...MOCK_FEATURE_FLAG, deleted: true })
-            // deleteWithUndo imports its toast from @posthog/lemon-ui, which the LemonToast mock above does not reach.
+            // deleteWithUndo imports its toast from @flind/lemon-ui, which the LemonToast mock above does not reach.
             const toastSpy = jest.spyOn(sharedLemonToast, 'info').mockReturnValue('toast-id')
             const successToastSpy = jest.spyOn(sharedLemonToast, 'success').mockReturnValue('toast-id')
             try {
@@ -5279,7 +5279,7 @@ describe('a flag in config version 2', () => {
 
     it('offers no undo after a delete, because the server refuses to restore this flag', async () => {
         jest.spyOn(api, 'update').mockResolvedValue({ ...V2_FLAG, deleted: true, version: 4 })
-        // deleteWithUndo toasts through @posthog/lemon-ui, which the LemonToast module mock does not replace.
+        // deleteWithUndo toasts through @flind/lemon-ui, which the LemonToast module mock does not replace.
         const info = jest.spyOn(sharedLemonToast, 'info')
 
         await expectLogic(logic, () => logic.actions.deleteFeatureFlag(V2_FLAG)).toFinishAllListeners()

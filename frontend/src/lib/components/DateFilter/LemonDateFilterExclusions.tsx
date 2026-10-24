@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import { useState } from 'react'
 
 import { IconChevronRight } from '@posthog/icons'
-import { LemonButton, LemonDivider, LemonSwitch, Popover } from '@posthog/lemon-ui'
+import { LemonButton, LemonDivider, LemonSwitch, Popover } from '@flind/lemon-ui'
 
 import {
     type DateFilterExclusions,

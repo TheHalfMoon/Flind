@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconArrowRight, IconCopy, IconGear, IconGithub, IconPencil, IconPlus, IconTrash } from '@posthog/icons'
-import { LemonButton, LemonInput, LemonSearchableSelect, LemonSkeleton, LemonSwitch, Spinner } from '@posthog/lemon-ui'
+import { LemonButton, LemonInput, LemonSearchableSelect, LemonSkeleton, LemonSwitch, Spinner } from '@flind/lemon-ui'
 
 import api from 'lib/api'
 import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'

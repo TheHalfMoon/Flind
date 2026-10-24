@@ -3,7 +3,7 @@ import { BindLogic, useActions, useMountedLogic, useValues } from 'kea'
 import React, { Suspense, useEffect, useState } from 'react'
 
 import { IconExpand45, IconInfo, IconLineGraph, IconOpenSidebar, IconX } from '@posthog/icons'
-import { LemonSegmentedButton, LemonSegmentedDropdown, LemonSelect, LemonSkeleton } from '@posthog/lemon-ui'
+import { LemonSegmentedButton, LemonSegmentedDropdown, LemonSelect, LemonSkeleton } from '@flind/lemon-ui'
 
 import { IntervalFilterStandalone } from 'lib/components/IntervalFilter/IntervalFilter'
 import { ProductIntroduction } from 'lib/components/ProductIntroduction/ProductIntroduction'

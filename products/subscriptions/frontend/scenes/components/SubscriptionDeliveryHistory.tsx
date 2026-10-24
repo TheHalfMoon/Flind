@@ -7,7 +7,7 @@ import {
     LemonTableColumns,
     LemonTag,
     Tooltip,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'
 

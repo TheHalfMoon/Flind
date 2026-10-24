@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 import { IconSearch } from '@posthog/icons'
-import { LemonButton, LemonInput, LemonMenu, LemonMenuItems } from '@posthog/lemon-ui'
+import { LemonButton, LemonInput, LemonMenu, LemonMenuItems } from '@flind/lemon-ui'
 
 import { cn } from 'lib/utils/css-classes'
 

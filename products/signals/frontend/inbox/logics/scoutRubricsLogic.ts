@@ -15,7 +15,7 @@ import {
 import { loaders } from 'kea-loaders'
 import { v4 as uuid } from 'uuid'
 
-import { lemonToast } from '@posthog/lemon-ui'
+import { lemonToast } from '@flind/lemon-ui'
 
 import { ApiError, readableErrorMessage } from 'lib/api-error'
 

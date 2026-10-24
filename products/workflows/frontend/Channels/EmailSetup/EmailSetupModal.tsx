@@ -11,7 +11,7 @@ import {
     Spinner,
     Tooltip,
     lemonToast,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { DomainConnectBanner } from 'lib/components/DomainConnect'
 import { FlaggedFeature } from 'lib/components/FlaggedFeature'

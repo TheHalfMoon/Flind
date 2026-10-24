@@ -1,5 +1,5 @@
 import { IconBolt, IconCompass } from '@posthog/icons'
-import { Spinner } from '@posthog/lemon-ui'
+import { Spinner } from '@flind/lemon-ui'
 
 export function InstallingFlowRow({ type }: { type: 'source' | 'scout' }): JSX.Element {
     const Icon = type === 'source' ? IconBolt : IconCompass

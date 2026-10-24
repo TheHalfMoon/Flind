@@ -19,7 +19,7 @@ import {
     LemonTag,
     LemonTextArea,
     Link,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import { GuidedWizardStepper } from 'lib/components/GuidedWizard/GuidedWizardStepper'

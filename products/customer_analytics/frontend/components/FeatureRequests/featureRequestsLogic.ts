@@ -5,7 +5,7 @@ import { loaders } from 'kea-loaders'
 import { actionToUrl, router, urlToAction } from 'kea-router'
 import posthog from 'posthog-js'
 
-import type { Sorting } from '@posthog/lemon-ui'
+import type { Sorting } from '@flind/lemon-ui'
 
 import { ApiError } from 'lib/api'
 import { uploadFile } from 'lib/hooks/useUploadFiles'

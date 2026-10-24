@@ -2,7 +2,7 @@ import { MakeLogicType, actions, afterMount, kea, listeners, path, reducers, sel
 import { loaders } from 'kea-loaders'
 import { actionToUrl, router, urlToAction } from 'kea-router'
 
-import { PaginationManual } from '@posthog/lemon-ui'
+import { PaginationManual } from '@flind/lemon-ui'
 
 import api from 'lib/api'
 import { lemonToast } from 'lib/lemon-ui/LemonToast/LemonToast'

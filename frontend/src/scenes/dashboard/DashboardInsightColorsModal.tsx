@@ -9,7 +9,7 @@ import {
     LemonTag,
     LemonTable,
     LemonTableColumns,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { DashboardEventSource } from 'lib/utils/eventUsageLogic'
 import stringWithWBR from 'lib/utils/stringWithWBR'

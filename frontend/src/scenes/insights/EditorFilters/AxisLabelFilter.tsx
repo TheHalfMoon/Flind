@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useEffect, useState } from 'react'
 
-import { LemonInput } from '@posthog/lemon-ui'
+import { LemonInput } from '@flind/lemon-ui'
 import { normalizeAxisLabel } from '@flind/quill-charts'
 
 import { insightLogic } from 'scenes/insights/insightLogic'

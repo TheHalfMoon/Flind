@@ -4,7 +4,7 @@ import { router, urlToAction } from 'kea-router'
 import type { editor } from 'monaco-editor'
 import posthog from 'posthog-js'
 
-import { lemonToast } from '@posthog/lemon-ui'
+import { lemonToast } from '@flind/lemon-ui'
 
 import api from 'lib/api'
 import { databaseTableListLogic } from 'scenes/data-management/database/databaseTableListLogic'

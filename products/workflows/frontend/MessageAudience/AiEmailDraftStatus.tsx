@@ -1,5 +1,5 @@
 import { IconInfo, IconSparkles } from '@posthog/icons'
-import { LemonButton, Spinner } from '@posthog/lemon-ui'
+import { LemonButton, Spinner } from '@flind/lemon-ui'
 
 export type AiEmailDraftStatusProps =
     | { status: 'loading' }

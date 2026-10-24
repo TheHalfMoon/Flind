@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 
-import { LemonCollapse } from '@posthog/lemon-ui'
+import { LemonCollapse } from '@flind/lemon-ui'
 
 interface AlertAdvancedOptionsProps {
     children: ReactNode

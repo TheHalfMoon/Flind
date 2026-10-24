@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonDropdown } from '@posthog/lemon-ui'
+import { LemonDropdown } from '@flind/lemon-ui'
 
 import { cn } from 'lib/utils/css-classes'
 

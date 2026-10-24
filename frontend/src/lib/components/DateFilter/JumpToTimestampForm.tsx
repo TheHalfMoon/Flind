@@ -1,7 +1,7 @@
 import { ReactNode, useState } from 'react'
 
 import { IconCheck, IconWarning } from '@posthog/icons'
-import { LemonInput, LemonSelect } from '@posthog/lemon-ui'
+import { LemonInput, LemonSelect } from '@flind/lemon-ui'
 
 import { dayjs } from 'lib/dayjs'
 import { Tooltip } from 'lib/lemon-ui/Tooltip'

@@ -1,4 +1,4 @@
-import { LemonSkeleton } from '@posthog/lemon-ui'
+import { LemonSkeleton } from '@flind/lemon-ui'
 
 export function TraceViewLoading(): JSX.Element {
     return (

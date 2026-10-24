@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonButton, LemonModal, LemonTextArea } from '@posthog/lemon-ui'
+import { LemonButton, LemonModal, LemonTextArea } from '@flind/lemon-ui'
 
 import { VIMRC_MAX_LENGTH } from 'lib/monaco/vimrc'
 

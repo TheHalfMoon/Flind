@@ -1,6 +1,6 @@
 import { BreakPointFunction } from 'kea'
 
-import { LemonMenuItem } from '@posthog/lemon-ui'
+import { LemonMenuItem } from '@flind/lemon-ui'
 
 import { FEATURE_FLAGS } from 'lib/constants'
 import { PostHogComDocsURL } from 'lib/lemon-ui/Link/Link'

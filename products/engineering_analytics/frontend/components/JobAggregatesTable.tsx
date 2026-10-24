@@ -1,7 +1,7 @@
 // One row per de-sharded job name (the backend strips the matrix "(G/N)" suffix with the same rule as
 // jobGroups). Jobs get no standalone pages — a job always needs its run as context.
 
-import { LemonTable, LemonTag, Tooltip } from '@posthog/lemon-ui'
+import { LemonTable, LemonTag, Tooltip } from '@flind/lemon-ui'
 
 import { humanFriendlyDuration } from 'lib/utils/durations'
 import { humanFriendlyNumber } from 'lib/utils/numbers'

@@ -2,7 +2,7 @@ import { router } from 'kea-router'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 
 import { IconChevronRight } from '@posthog/icons'
-import { Tooltip } from '@posthog/lemon-ui'
+import { Tooltip } from '@flind/lemon-ui'
 
 import { slugifyHeading } from 'lib/lemon-ui/LemonMarkdown'
 

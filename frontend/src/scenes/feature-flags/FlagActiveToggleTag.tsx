@@ -1,4 +1,4 @@
-import { LemonSwitch, LemonTag } from '@posthog/lemon-ui'
+import { LemonSwitch, LemonTag } from '@flind/lemon-ui'
 
 export function FlagActiveToggleTag({
     active,

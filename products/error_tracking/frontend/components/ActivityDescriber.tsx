@@ -1,7 +1,7 @@
 import { useActions } from 'kea'
 import { useEffect } from 'react'
 
-import { Link } from '@posthog/lemon-ui'
+import { Link } from '@flind/lemon-ui'
 
 import { describeMappedChanges } from 'lib/components/ActivityLog/activityDescriptions/describeMappedChanges'
 import {

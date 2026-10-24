@@ -3,7 +3,7 @@ import posthog from 'posthog-js'
 import { useMemo } from 'react'
 
 import { IconSparkles } from '@posthog/icons'
-import { Tooltip } from '@posthog/lemon-ui'
+import { Tooltip } from '@flind/lemon-ui'
 
 import { addProductIntent } from 'lib/utils/product-intents'
 import { experimentLogic, getSectionMetricUuids } from 'scenes/experiments/experimentLogic'

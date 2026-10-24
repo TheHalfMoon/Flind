@@ -1,6 +1,6 @@
 import { capitalizeFirstLetter } from 'kea-forms'
 
-import { LemonTag } from '@posthog/lemon-ui'
+import { LemonTag } from '@flind/lemon-ui'
 
 import { pluralizeResource } from 'lib/utils/accessControlUtils'
 

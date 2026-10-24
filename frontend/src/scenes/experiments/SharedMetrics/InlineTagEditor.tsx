@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 import { IconPencil, IconPlus } from '@posthog/icons'
-import { LemonDropdown, LemonInputSelect, LemonTag } from '@posthog/lemon-ui'
+import { LemonDropdown, LemonInputSelect, LemonTag } from '@flind/lemon-ui'
 
 import { ObjectTags } from 'lib/components/ObjectTags/ObjectTags'
 import { Spinner } from 'lib/lemon-ui/Spinner'

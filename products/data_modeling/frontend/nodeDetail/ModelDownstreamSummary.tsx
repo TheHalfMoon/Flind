@@ -1,4 +1,4 @@
-import { LemonSkeleton, Link, Tooltip } from '@posthog/lemon-ui'
+import { LemonSkeleton, Link, Tooltip } from '@flind/lemon-ui'
 
 export function ModelDownstreamSummary({
     downstreamCount,

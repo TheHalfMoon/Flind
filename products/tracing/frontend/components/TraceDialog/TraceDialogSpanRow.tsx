@@ -1,5 +1,5 @@
 import { IconChevronRight, IconWarning } from '@posthog/icons'
-import { LemonTag, Tooltip } from '@posthog/lemon-ui'
+import { LemonTag, Tooltip } from '@flind/lemon-ui'
 
 import { getSeriesColor } from 'lib/colors'
 import { cn } from 'lib/utils/css-classes'

@@ -1,7 +1,7 @@
 {
-    "name": "@posthog/lemon-ui",
+    "name": "@flind/lemon-ui",
     "version": "0.0.0",
-    "homepage": "https://storybook.dev.posthog.dev/",
+    "homepage": "https://github.com/TheHalfMoon/Flind/tree/main/frontend/flind/lemon-ui",
     "license": "MIT",
     "source": "src/index.ts",
     "main": "dist/index.js",
@@ -23,7 +23,9 @@
         "typescript": "catalog:"
     },
     "peerDependencies": {
+        "antd": "*",
         "react": "*",
         "react-dom": "*"
-    }
+    },
+    "private": true
 }

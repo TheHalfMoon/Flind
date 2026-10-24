@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import type { ReactNode } from 'react'
 
 import { IconPlus } from '@posthog/icons'
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { biEditorLogic } from 'products/business_intelligence/frontend/biEditorLogic'
 import { BIShelf } from 'products/business_intelligence/frontend/biEditorTypes'

@@ -1,5 +1,5 @@
 import { IconCalendar } from '@posthog/icons'
-import { LemonButton, LemonDivider } from '@posthog/lemon-ui'
+import { LemonButton, LemonDivider } from '@flind/lemon-ui'
 
 import { DateFilter } from 'lib/components/DateFilter/DateFilter'
 import { dayjs } from 'lib/dayjs'

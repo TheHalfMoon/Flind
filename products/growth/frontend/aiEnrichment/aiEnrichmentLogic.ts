@@ -2,7 +2,7 @@ import { MakeLogicType, actions, afterMount, kea, listeners, path, reducers, sel
 import { loaders } from 'kea-loaders'
 import { router, urlToAction } from 'kea-router'
 
-import { LemonInputSelectOption } from '@posthog/lemon-ui'
+import { LemonInputSelectOption } from '@flind/lemon-ui'
 
 import { getCookie } from 'lib/api'
 import { lemonToast } from 'lib/lemon-ui/LemonToast/LemonToast'

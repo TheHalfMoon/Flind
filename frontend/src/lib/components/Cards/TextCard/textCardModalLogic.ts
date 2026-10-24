@@ -3,7 +3,7 @@ import { forms } from 'kea-forms'
 import type { DeepPartial, DeepPartialMap, FieldName, ValidationErrorType } from 'kea-forms'
 import posthog from 'posthog-js'
 
-import { lemonToast } from '@posthog/lemon-ui'
+import { lemonToast } from '@flind/lemon-ui'
 
 import { dashboardsModel } from '~/models/dashboardsModel'
 import { DashboardTile, DashboardTileIdOrNew, DashboardType } from '~/types'

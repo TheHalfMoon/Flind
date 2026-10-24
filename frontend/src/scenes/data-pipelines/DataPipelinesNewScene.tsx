@@ -1,6 +1,6 @@
 import { MakeLogicType, BindLogic, kea, path, props, selectors, useValues } from 'kea'
 
-import { LemonSkeleton } from '@posthog/lemon-ui'
+import { LemonSkeleton } from '@flind/lemon-ui'
 
 import { NotFound } from 'lib/components/NotFound'
 import { capitalizeFirstLetter } from 'lib/utils/strings'

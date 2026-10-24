@@ -1,4 +1,4 @@
-import { LemonSkeleton } from '@posthog/lemon-ui'
+import { LemonSkeleton } from '@flind/lemon-ui'
 
 import { CATALOG_GRID_CLASS, CATALOG_TILE_CLASS } from './SourceCatalog'
 

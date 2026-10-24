@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonBanner, LemonLabel, LemonSelect, LemonTag } from '@posthog/lemon-ui'
+import { LemonBanner, LemonLabel, LemonSelect, LemonTag } from '@flind/lemon-ui'
 
 import { BoxPlotSettings } from '~/queries/schema/schema-general'
 

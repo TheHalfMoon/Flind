@@ -1,4 +1,4 @@
-import { Tooltip } from '@posthog/lemon-ui'
+import { Tooltip } from '@flind/lemon-ui'
 
 import type { WarehouseSuggestionEvidenceApi } from '../generated/api.schemas'
 import { QUERY_LOG_CAVEAT, daysReadLabel, surfaceSegments } from '../suggestionCopy'

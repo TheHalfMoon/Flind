@@ -1,6 +1,6 @@
 import { render, within } from '@testing-library/react'
 
-import { lemonToast } from '@posthog/lemon-ui'
+import { lemonToast } from '@flind/lemon-ui'
 
 import { CHANGE_REQUEST_PENDING_CODE, showApprovalRequiredToast } from './ApprovalRequiredBanner'
 

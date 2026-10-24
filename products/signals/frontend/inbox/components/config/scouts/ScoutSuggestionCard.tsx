@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { useLayoutEffect, useRef, useState } from 'react'
 
 import { IconSparkles, IconX } from '@posthog/icons'
-import { LemonButton, LemonTag, Link, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, LemonTag, Link, Tooltip } from '@flind/lemon-ui'
 
 import { cn } from 'lib/utils/css-classes'
 import { capitalizeFirstLetter } from 'lib/utils/strings'

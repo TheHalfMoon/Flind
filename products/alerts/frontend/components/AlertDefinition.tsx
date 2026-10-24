@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 
 import { IconCalendar, IconClock } from '@posthog/icons'
-import { LemonBanner, LemonTag, Link } from '@posthog/lemon-ui'
+import { LemonBanner, LemonTag, Link } from '@flind/lemon-ui'
 
 import { AlertState } from '~/queries/schema/schema-general'
 

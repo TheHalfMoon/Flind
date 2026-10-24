@@ -10,7 +10,7 @@ import {
     LemonSelect,
     LemonSkeleton,
     LemonTabs,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { ContentAutopilotDrafts } from './ContentAutopilotDrafts'
 import { contentAutopilotLogic } from './contentAutopilotLogic'

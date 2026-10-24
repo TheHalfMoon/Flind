@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconArrowLeft } from '@posthog/icons'
-import { LemonButton, Link } from '@posthog/lemon-ui'
+import { LemonButton, Link } from '@flind/lemon-ui'
 
 import { cn } from 'lib/utils/css-classes'
 import { urls } from 'scenes/urls'

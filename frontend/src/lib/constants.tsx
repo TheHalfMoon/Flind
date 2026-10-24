@@ -1,4 +1,4 @@
-import type { LemonSelectOptions } from '@posthog/lemon-ui'
+import type { LemonSelectOptions } from '@flind/lemon-ui'
 
 import { ChartDisplayCategory, ChartDisplayType, Region, SDKKey, type SSOProvider } from '../types'
 

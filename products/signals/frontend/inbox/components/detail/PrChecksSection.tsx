@@ -9,7 +9,7 @@ import {
     IconWarning,
     IconX,
 } from '@posthog/icons'
-import { LemonSkeleton, Link } from '@posthog/lemon-ui'
+import { LemonSkeleton, Link } from '@flind/lemon-ui'
 
 import type { PullRequestCheckApi } from 'products/signals/frontend/generated/api.schemas'
 

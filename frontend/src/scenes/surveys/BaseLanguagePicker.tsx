@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 
 import { IconPencil } from '@posthog/icons'
-import { LemonButton, LemonInputSelect, Popover } from '@posthog/lemon-ui'
+import { LemonButton, LemonInputSelect, Popover } from '@flind/lemon-ui'
 
 import { COMMON_LANGUAGES, isValidLanguageCode, normalizeLanguageCode } from './language'
 

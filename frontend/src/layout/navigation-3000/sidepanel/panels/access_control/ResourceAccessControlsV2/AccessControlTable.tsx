@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import { capitalizeFirstLetter } from 'kea-forms'
 
 import { IconPencil } from '@posthog/icons'
-import { LemonButton, LemonTable, LemonTableColumns, LemonTag, ProfilePicture, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, LemonTable, LemonTableColumns, LemonTag, ProfilePicture, Tooltip } from '@flind/lemon-ui'
 
 import { pluralizeResource } from 'lib/utils/accessControlUtils'
 import { fullName } from 'lib/utils/strings'

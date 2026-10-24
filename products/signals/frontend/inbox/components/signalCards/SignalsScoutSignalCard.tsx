@@ -2,7 +2,7 @@ import { combineUrl } from 'kea-router'
 import { useState } from 'react'
 
 import { IconExternal, IconList } from '@posthog/icons'
-import { LemonButton, Link } from '@posthog/lemon-ui'
+import { LemonButton, Link } from '@flind/lemon-ui'
 
 import { LemonMarkdown } from 'lib/lemon-ui/LemonMarkdown'
 import { humanFriendlyDetailedTime } from 'lib/utils/datetime'

@@ -3,7 +3,7 @@ import { router } from 'kea-router'
 import { Suspense, useEffect, useMemo, useRef, useState } from 'react'
 
 import { IconArrowLeft, IconArrowRight } from '@posthog/icons'
-import { LemonButton, LemonCard, LemonTabs, Link, Spinner } from '@posthog/lemon-ui'
+import { LemonButton, LemonCard, LemonTabs, Link, Spinner } from '@flind/lemon-ui'
 
 import { KeyboardShortcut } from 'lib/components/KeyboardShortcut/KeyboardShortcut'
 import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'

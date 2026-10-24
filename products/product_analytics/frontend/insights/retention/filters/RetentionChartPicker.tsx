@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconGraph, IconTrends } from '@posthog/icons'
-import { LemonSelect, LemonSelectOptions } from '@posthog/lemon-ui'
+import { LemonSelect, LemonSelectOptions } from '@flind/lemon-ui'
 
 import { insightLogic } from 'scenes/insights/insightLogic'
 import { insightVizDataLogic } from 'scenes/insights/insightVizDataLogic'

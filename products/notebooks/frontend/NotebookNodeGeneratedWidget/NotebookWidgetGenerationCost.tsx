@@ -1,5 +1,5 @@
 import { IconInfo } from '@posthog/icons'
-import { LemonButton, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, Tooltip } from '@flind/lemon-ui'
 
 export function NotebookWidgetGenerationCost({ cost }: { cost: string | null | undefined }): JSX.Element | null {
     if (cost == null) {

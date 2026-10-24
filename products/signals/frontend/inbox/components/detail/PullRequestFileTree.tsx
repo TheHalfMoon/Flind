@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 
-import { LemonInput } from '@posthog/lemon-ui'
+import { LemonInput } from '@flind/lemon-ui'
 
 import { LemonTree, TreeDataItem } from 'lib/lemon-ui/LemonTree/LemonTree'
 

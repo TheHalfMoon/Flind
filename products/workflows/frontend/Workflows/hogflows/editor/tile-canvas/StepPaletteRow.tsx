@@ -1,4 +1,4 @@
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { StepIcon } from './StepIcon'
 import type { PaletteItem } from './tileCanvasModel'

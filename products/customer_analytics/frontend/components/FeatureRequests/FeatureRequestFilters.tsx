@@ -9,7 +9,7 @@ import {
     IconRefresh,
     IconTarget,
 } from '@posthog/icons'
-import { LemonButton, LemonDropdown, LemonInputSelect, LemonMenu, LemonMenuItems } from '@posthog/lemon-ui'
+import { LemonButton, LemonDropdown, LemonInputSelect, LemonMenu, LemonMenuItems } from '@flind/lemon-ui'
 
 import { MemberSelectMultiplePopover } from 'lib/components/MemberSelectMultiplePopover'
 

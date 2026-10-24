@@ -1,4 +1,4 @@
-import { LemonBanner, LemonCard, LemonSkeleton, LemonSwitch } from '@posthog/lemon-ui'
+import { LemonBanner, LemonCard, LemonSkeleton, LemonSwitch } from '@flind/lemon-ui'
 
 export interface SelfDrivingSignalSourceToggleProps {
     /** Signal source product, named as it is in the inbox signal sources modal. */

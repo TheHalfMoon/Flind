@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconPencil, IconTrash } from '@posthog/icons'
-import { LemonDialog, LemonInput, LemonTag, Link } from '@posthog/lemon-ui'
+import { LemonDialog, LemonInput, LemonTag, Link } from '@flind/lemon-ui'
 import { Button } from '@flind/quill'
 
 import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'

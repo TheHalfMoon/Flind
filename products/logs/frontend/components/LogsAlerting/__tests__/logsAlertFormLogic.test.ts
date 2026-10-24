@@ -3,7 +3,7 @@ import { MOCK_TEAM_ID } from '~/lib/api.mock'
 import { expectLogic } from 'kea-test-utils'
 import posthog from 'posthog-js'
 
-import { lemonToast } from '@posthog/lemon-ui'
+import { lemonToast } from '@flind/lemon-ui'
 
 import { initKeaTests } from '~/test/init'
 import { AnyPropertyFilter, FilterLogicalOperator, UniversalFiltersGroup } from '~/types'
@@ -35,7 +35,7 @@ jest.mock('products/logs/frontend/generated/api', () => ({
 
 jest.mock('posthog-js')
 
-jest.mock('@posthog/lemon-ui', () => ({
+jest.mock('@flind/lemon-ui', () => ({
     lemonToast: {
         success: jest.fn(),
         error: jest.fn(),

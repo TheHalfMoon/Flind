@@ -4,7 +4,7 @@ import { useActions, useValues } from 'kea'
 import { forwardRef, useEffect, useRef, useState } from 'react'
 
 import { IconCalendar, IconInfo } from '@posthog/icons'
-import { LemonButton, LemonButtonProps, LemonDivider, LemonSwitch, Popover } from '@posthog/lemon-ui'
+import { LemonButton, LemonButtonProps, LemonDivider, LemonSwitch, Popover } from '@flind/lemon-ui'
 
 import {
     CUSTOM_OPTION_DESCRIPTION,

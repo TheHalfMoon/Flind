@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonBanner, Spinner } from '@posthog/lemon-ui'
+import { LemonBanner, Spinner } from '@flind/lemon-ui'
 
 import { autoresearchPipelineLogic, featureChanges } from '../autoresearchPipelineLogic'
 import { AutoresearchModelApi, AutoresearchModelRoleEnumApi } from '../generated/api.schemas'

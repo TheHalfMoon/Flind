@@ -9,7 +9,7 @@ import {
     LemonSkeleton,
     LemonTable,
     Link,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 import { Button } from '@flind/quill'
 
 import { NotFound } from 'lib/components/NotFound'

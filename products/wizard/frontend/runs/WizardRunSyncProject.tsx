@@ -1,7 +1,7 @@
 import { useActions, useMountedLogic, useValues } from 'kea'
 import { Suspense, lazy, useState } from 'react'
 
-import { lemonToast } from '@posthog/lemon-ui'
+import { lemonToast } from '@flind/lemon-ui'
 
 import { useInterval } from 'lib/hooks/useInterval'
 import { elapsedSecondsFrom } from 'lib/utils/datetime'

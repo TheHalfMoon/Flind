@@ -2,7 +2,7 @@ import { BindLogic, useValues } from 'kea'
 import { useMemo, useRef } from 'react'
 
 import { IconArrowRight } from '@posthog/icons'
-import { Tooltip } from '@posthog/lemon-ui'
+import { Tooltip } from '@flind/lemon-ui'
 
 import { dayjs } from 'lib/dayjs'
 import { humanFriendlyLargeNumber } from 'lib/utils/numbers'

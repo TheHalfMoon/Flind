@@ -1,4 +1,4 @@
-import { LemonButton, LemonCollapse, LemonTag } from '@posthog/lemon-ui'
+import { LemonButton, LemonCollapse, LemonTag } from '@flind/lemon-ui'
 
 import type { ConversionRecommendationApi } from '../generated/api.schemas'
 

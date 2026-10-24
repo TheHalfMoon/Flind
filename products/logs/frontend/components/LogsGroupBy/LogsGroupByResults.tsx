@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonTable } from '@posthog/lemon-ui'
-import type { LemonTableColumns } from '@posthog/lemon-ui'
+import { LemonTable } from '@flind/lemon-ui'
+import type { LemonTableColumns } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'
 import { humanFriendlyNumber } from 'lib/utils/numbers'

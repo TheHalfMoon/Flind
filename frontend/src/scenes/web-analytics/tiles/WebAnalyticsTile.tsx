@@ -4,7 +4,7 @@ import { useCallback, useMemo } from 'react'
 
 import * as starPng from '@posthog/brand/hoggies/png/star'
 import { IconChevronDown, IconTrending, IconUndo, IconWarning } from '@posthog/icons'
-import { LemonSegmentedButton, LemonSelect, Link, Tooltip } from '@posthog/lemon-ui'
+import { LemonSegmentedButton, LemonSelect, Link, Tooltip } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import { getColorVar } from 'lib/colors'

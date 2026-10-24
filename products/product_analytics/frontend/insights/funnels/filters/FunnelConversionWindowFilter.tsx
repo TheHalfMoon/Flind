@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconInfo } from '@posthog/icons'
-import { LemonInput, LemonSelect, LemonSelectOption } from '@posthog/lemon-ui'
+import { LemonInput, LemonSelect, LemonSelectOption } from '@flind/lemon-ui'
 
 import { Tooltip } from 'lib/lemon-ui/Tooltip'
 import { capitalizeFirstLetter, pluralize } from 'lib/utils/strings'

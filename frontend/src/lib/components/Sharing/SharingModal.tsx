@@ -14,7 +14,7 @@ import {
     LemonSkeleton,
     LemonSwitch,
     Link,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { CodeSnippet, Language } from 'lib/components/CodeSnippet'
 import { TEMPLATE_LINK_HEADING, TEMPLATE_LINK_PII_WARNING } from 'lib/components/Sharing/templateLinkMessages'

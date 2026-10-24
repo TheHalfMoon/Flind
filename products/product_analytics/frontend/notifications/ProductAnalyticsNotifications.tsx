@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { useEffect } from 'react'
 
 import { IconCursor, IconPlus, IconWarning } from '@posthog/icons'
-import { LemonBanner, LemonButton, LemonCard, LemonSkeleton, LemonSwitch, Link } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonCard, LemonSkeleton, LemonSwitch, Link } from '@flind/lemon-ui'
 
 import { ConfirmDeleteButton } from 'lib/components/ConfirmDeleteButton'
 import { RestrictionScope, useRestrictedArea } from 'lib/components/RestrictedArea'

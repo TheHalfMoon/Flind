@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonBanner, LemonButton, LemonTextArea, Spinner } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonTextArea, Spinner } from '@flind/lemon-ui'
 
 import { navProductsTabLogic } from './navProductsTabLogic'
 

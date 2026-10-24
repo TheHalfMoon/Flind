@@ -1,4 +1,4 @@
-import { LemonSelect } from '@posthog/lemon-ui'
+import { LemonSelect } from '@flind/lemon-ui'
 
 import { DateFilter } from 'lib/components/DateFilter/DateFilter'
 import { LemonDialog } from 'lib/lemon-ui/LemonDialog'

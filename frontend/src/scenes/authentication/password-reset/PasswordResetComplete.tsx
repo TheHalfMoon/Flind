@@ -4,7 +4,7 @@ Scene to enter a new password from a received reset link
 import { useValues } from 'kea'
 import { Form } from 'kea-forms'
 
-import { LemonButton, LemonInput } from '@posthog/lemon-ui'
+import { LemonButton, LemonInput } from '@flind/lemon-ui'
 
 import { BridgePage } from 'lib/components/BridgePage/BridgePage'
 import PasswordStrength from 'lib/components/PasswordStrength'

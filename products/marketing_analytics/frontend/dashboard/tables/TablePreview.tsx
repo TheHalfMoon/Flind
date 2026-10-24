@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useId } from 'react'
 
-import { LemonButton, LemonSwitch } from '@posthog/lemon-ui'
+import { LemonButton, LemonSwitch } from '@flind/lemon-ui'
 
 import { BREAKDOWN_OTHER_STRING_LABEL } from 'scenes/insights/utils'
 import { TileId } from 'scenes/web-analytics/common'

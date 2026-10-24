@@ -2,7 +2,7 @@ import { useValues } from 'kea'
 import posthog from 'posthog-js'
 
 import * as businessEvolutionPng from '@posthog/brand/hoggies/png/business-evolution'
-import { LemonSkeleton, LemonTable, LemonTableColumns, Link } from '@posthog/lemon-ui'
+import { LemonSkeleton, LemonTable, LemonTableColumns, Link } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import { dayjs } from 'lib/dayjs'

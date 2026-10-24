@@ -4,7 +4,7 @@ import type { editor as importedEditor } from 'monaco-editor'
 import { ReactNode, useEffect, useMemo, useRef, useState } from 'react'
 
 import { IconBook, IconChevronDown, IconDownload, IconNotebook, IconX } from '@posthog/icons'
-import { LemonModal, LemonTag, Spinner } from '@posthog/lemon-ui'
+import { LemonModal, LemonTag, Spinner } from '@flind/lemon-ui'
 
 import { AccessControlAction } from 'lib/components/AccessControlAction'
 import { useDebouncedValue } from 'lib/hooks/useDebouncedValue'

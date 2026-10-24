@@ -1,5 +1,5 @@
 import { IconGraph, IconPencil, IconPlay, IconServer } from '@posthog/icons'
-import { LemonBanner, LemonButton } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton } from '@flind/lemon-ui'
 
 import { CodeSnippet, Language } from 'lib/components/CodeSnippet/CodeSnippet'
 import { LemonCollapse } from 'lib/lemon-ui/LemonCollapse'

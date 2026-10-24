@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconSend } from '@posthog/icons'
-import { LemonButton, LemonSearchableSelect, Spinner } from '@posthog/lemon-ui'
+import { LemonButton, LemonSearchableSelect, Spinner } from '@flind/lemon-ui'
 
 import { broadcastPreviewLogic } from './broadcastPreviewLogic'
 import { broadcastTestSendLogic } from './broadcastTestSendLogic'

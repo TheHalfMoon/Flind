@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { router } from 'kea-router'
 
-import { LemonField, LemonSelect } from '@posthog/lemon-ui'
+import { LemonField, LemonSelect } from '@flind/lemon-ui'
 
 import { flindRegionHost, flindRegionUrl } from 'lib/flindRegionHosts'
 import { preflightLogic } from 'scenes/PreflightCheck/preflightLogic'

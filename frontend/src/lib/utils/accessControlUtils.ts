@@ -1,6 +1,6 @@
 import posthog from 'posthog-js'
 
-import type { LemonSelectOptionLeaf } from '@posthog/lemon-ui'
+import type { LemonSelectOptionLeaf } from '@flind/lemon-ui'
 
 import { getAppContext } from 'lib/utils/getAppContext'
 import { toSentenceCase } from 'lib/utils/strings'

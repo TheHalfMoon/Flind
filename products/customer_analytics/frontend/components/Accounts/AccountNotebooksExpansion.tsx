@@ -12,7 +12,7 @@ import {
     IconPiggyBank,
     IconReceipt,
 } from '@posthog/icons'
-import { LemonButton, LemonLabel, LemonSkeleton, ProfilePicture } from '@posthog/lemon-ui'
+import { LemonButton, LemonLabel, LemonSkeleton, ProfilePicture } from '@flind/lemon-ui'
 
 import { FEATURE_FLAGS } from 'lib/constants'
 import { IconSlack } from 'lib/lemon-ui/icons'

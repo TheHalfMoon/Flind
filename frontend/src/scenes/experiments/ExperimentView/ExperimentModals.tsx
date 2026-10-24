@@ -13,7 +13,7 @@ import {
     LemonSelect,
     LemonTextArea,
     Link,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { RestrictionScope, useRestrictedArea } from 'lib/components/RestrictedArea'
 import { FEATURE_FLAGS, OrganizationMembershipLevel } from 'lib/constants'

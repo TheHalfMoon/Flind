@@ -1,4 +1,4 @@
-import { LemonTable, LemonTableColumns, Link } from '@posthog/lemon-ui'
+import { LemonTable, LemonTableColumns, Link } from '@flind/lemon-ui'
 
 import { Lettermark } from 'lib/lemon-ui/Lettermark'
 import { urls } from 'scenes/urls'

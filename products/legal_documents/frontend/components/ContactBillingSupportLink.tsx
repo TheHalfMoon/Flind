@@ -1,6 +1,6 @@
 import { useActions } from 'kea'
 
-import { Link } from '@posthog/lemon-ui'
+import { Link } from '@flind/lemon-ui'
 
 import { supportLogic } from 'lib/components/Support/supportLogic'
 

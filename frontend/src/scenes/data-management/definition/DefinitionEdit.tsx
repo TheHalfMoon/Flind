@@ -3,7 +3,7 @@ import { Form } from 'kea-forms'
 import { createRef } from 'react'
 
 import { IconImage } from '@posthog/icons'
-import { LemonSkeleton, LemonTag } from '@posthog/lemon-ui'
+import { LemonSkeleton, LemonTag } from '@flind/lemon-ui'
 import { Button } from '@flind/quill'
 
 import { PropertyStatusControl } from 'lib/components/DefinitionPopover/DefinitionPopoverContents'

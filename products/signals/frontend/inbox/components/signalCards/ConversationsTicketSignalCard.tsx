@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 import { IconChevronRight, IconImage } from '@posthog/icons'
-import { Link } from '@posthog/lemon-ui'
+import { Link } from '@flind/lemon-ui'
 
 import { LemonMarkdown } from 'lib/lemon-ui/LemonMarkdown'
 import { isTrustedPostHogUrl } from 'lib/utils/trustedUrl'

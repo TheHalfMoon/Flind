@@ -15,7 +15,7 @@ import {
 import { loaders } from 'kea-loaders'
 import posthog from 'posthog-js'
 
-import { PaginationManual, Sorting } from '@posthog/lemon-ui'
+import { PaginationManual, Sorting } from '@flind/lemon-ui'
 
 import { lemonToast } from 'lib/lemon-ui/LemonToast/LemonToast'
 import { notebookPanelLogic } from 'scenes/notebooks/NotebookPanel/notebookPanelLogic'

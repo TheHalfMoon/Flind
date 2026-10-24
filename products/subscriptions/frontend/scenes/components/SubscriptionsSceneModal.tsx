@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { router } from 'kea-router'
 
-import { LemonModal } from '@posthog/lemon-ui'
+import { LemonModal } from '@flind/lemon-ui'
 
 import { urls } from 'scenes/urls'
 

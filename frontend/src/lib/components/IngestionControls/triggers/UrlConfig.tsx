@@ -2,7 +2,7 @@ import { LogicWrapper, useValues } from 'kea'
 import { Form } from 'kea-forms'
 
 import { IconCheck, IconPencil, IconPlus, IconTrash, IconX } from '@posthog/icons'
-import { LemonBanner, LemonButton, LemonDialog, LemonInput, LemonLabel, lemonToast } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonDialog, LemonInput, LemonLabel, lemonToast } from '@flind/lemon-ui'
 
 import { RestrictionScope, useRestrictedArea } from 'lib/components/RestrictedArea'
 import { TeamMembershipLevel } from 'lib/constants'

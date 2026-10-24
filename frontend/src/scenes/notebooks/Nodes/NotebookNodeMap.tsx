@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { Marker } from 'maplibre-gl'
 
-import { LemonSkeleton } from '@posthog/lemon-ui'
+import { LemonSkeleton } from '@flind/lemon-ui'
 
 import { NotFound } from 'lib/components/NotFound'
 import { createPostHogWidgetNode } from 'scenes/notebooks/Nodes/NodeWrapper'

@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { type MouseEvent, useEffect, useMemo, useRef, useState } from 'react'
 
-import { Link, Tooltip } from '@posthog/lemon-ui'
+import { Link, Tooltip } from '@flind/lemon-ui'
 
 import { cn } from 'lib/utils/css-classes'
 

@@ -3,7 +3,7 @@ import { waitFor, within } from '@testing-library/dom'
 import { useValues } from 'kea'
 import { router } from 'kea-router'
 
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { Command } from 'lib/components/Command/Command'
 import { FEATURE_FLAGS } from 'lib/constants'

@@ -13,7 +13,7 @@ import {
     LemonTag,
     Popover,
     Tooltip,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { IconLink } from 'lib/lemon-ui/icons'
 

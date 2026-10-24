@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconCursorClick, IconTrash } from '@posthog/icons'
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { Spinner } from 'lib/lemon-ui/Spinner'
 

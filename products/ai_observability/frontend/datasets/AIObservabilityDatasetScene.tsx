@@ -4,7 +4,7 @@ import { router } from 'kea-router'
 import { useEffect } from 'react'
 
 import { IconArchive, IconArrowLeft, IconDownload, IconInfo } from '@posthog/icons'
-import { LemonBanner, LemonButton, LemonTag } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonTag } from '@flind/lemon-ui'
 import { Button } from '@flind/quill'
 
 import { AccessControlAction } from 'lib/components/AccessControlAction'

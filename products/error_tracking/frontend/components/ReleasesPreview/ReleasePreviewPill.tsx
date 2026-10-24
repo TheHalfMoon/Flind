@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 import { IconCommit } from '@posthog/icons'
-import { LemonTag, Popover } from '@posthog/lemon-ui'
+import { LemonTag, Popover } from '@flind/lemon-ui'
 
 import { ErrorTrackingRelease } from 'lib/components/Errors/types'
 

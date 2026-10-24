@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonButton, LemonTextArea } from '@posthog/lemon-ui'
+import { LemonButton, LemonTextArea } from '@flind/lemon-ui'
 
 import { LemonRadio } from 'lib/lemon-ui/LemonRadio'
 

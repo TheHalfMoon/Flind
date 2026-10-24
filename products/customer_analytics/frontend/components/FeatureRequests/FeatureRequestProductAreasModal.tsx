@@ -10,7 +10,7 @@ import {
     LemonTable,
     LemonTableColumns,
     LemonTag,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import type { FeatureRequestProductAreaApi } from '../../generated/api.schemas'
 import { featureRequestsLogic } from './featureRequestsLogic'

@@ -1,4 +1,4 @@
-import { Tooltip } from '@posthog/lemon-ui'
+import { Tooltip } from '@flind/lemon-ui'
 
 import { ProbabilityBucket } from './autoresearchPipelineLogic'
 import { PredictionSegmentThresholds, predictionSegmentForRange } from './predictionSegments'

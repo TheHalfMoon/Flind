@@ -1,5 +1,5 @@
 import { IconCheck, IconChevronDown, IconCloud, IconLaptop } from '@posthog/icons'
-import { LemonButton, LemonMenu, type LemonMenuItems } from '@posthog/lemon-ui'
+import { LemonButton, LemonMenu, type LemonMenuItems } from '@flind/lemon-ui'
 
 import { urls } from 'scenes/urls'
 

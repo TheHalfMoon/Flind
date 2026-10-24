@@ -48,7 +48,7 @@ import {
     Link,
     Spinner,
     Tooltip,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 import { Button } from '@flind/quill'
 
 import { approvalsGateLogic } from 'lib/approvals/approvalsGateLogic'

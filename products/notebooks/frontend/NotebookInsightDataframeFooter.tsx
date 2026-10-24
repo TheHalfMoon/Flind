@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonButton, Spinner } from '@posthog/lemon-ui'
+import { LemonButton, Spinner } from '@flind/lemon-ui'
 
 import { NotebookCellOutputNameFooter } from 'scenes/notebooks/Nodes/components/NotebookCellOutputNameFooter'
 import { returnVariableValidationError } from 'scenes/notebooks/Nodes/NotebookNodeSQLV2'

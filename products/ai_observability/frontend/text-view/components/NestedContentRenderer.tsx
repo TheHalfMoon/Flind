@@ -3,7 +3,7 @@
  * Used for expandable sections within the main text view
  */
 import { IconExternal } from '@posthog/icons'
-import { Tooltip } from '@posthog/lemon-ui'
+import { Tooltip } from '@flind/lemon-ui'
 
 import { VISIBLE_TOOLS_COUNT } from '../constants'
 import { parseTruncatedSegments } from '../parsing'

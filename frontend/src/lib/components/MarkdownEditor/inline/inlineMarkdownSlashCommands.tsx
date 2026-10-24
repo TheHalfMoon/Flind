@@ -15,7 +15,7 @@ import {
 } from 'react'
 
 import { IconCode, IconImage, IconList, IconMinus, IconQuote } from '@posthog/icons'
-import { LemonButton, LemonDivider } from '@posthog/lemon-ui'
+import { LemonButton, LemonDivider } from '@flind/lemon-ui'
 
 import { IconBold, IconItalic, IconLink, IconTextSize } from 'lib/lemon-ui/icons'
 import { Popover } from 'lib/lemon-ui/Popover'

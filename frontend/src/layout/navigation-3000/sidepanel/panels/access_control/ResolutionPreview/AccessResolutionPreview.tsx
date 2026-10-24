@@ -11,7 +11,7 @@ import {
     LemonTag,
     Link,
     Spinner,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { supportLogic } from 'lib/components/Support/supportLogic'
 import { organizationLogic } from 'scenes/organizationLogic'

@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconGithub, IconPlus, IconRefresh } from '@posthog/icons'
-import { LemonBanner, LemonButton, LemonInputSelect, LemonSkeleton } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonInputSelect, LemonSkeleton } from '@flind/lemon-ui'
 
 import { editorDisabledReason } from './repoAccess'
 import { stamphogSceneLogic } from './stamphogSceneLogic'

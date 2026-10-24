@@ -1,7 +1,7 @@
 import { useActions, useMountedLogic, useValues } from 'kea'
 import { Form } from 'kea-forms'
 
-import { LemonButton, LemonDivider, LemonInput } from '@posthog/lemon-ui'
+import { LemonButton, LemonDivider, LemonInput } from '@flind/lemon-ui'
 
 import { BridgePage } from 'lib/components/BridgePage/BridgePage'
 import passkeyLogo from 'lib/components/SocialLoginButton/passkey.svg'

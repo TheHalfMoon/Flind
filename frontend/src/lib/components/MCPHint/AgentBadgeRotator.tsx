@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 import { IconExternal, IconLogomark } from '@posthog/icons'
-import { Link } from '@posthog/lemon-ui'
+import { Link } from '@flind/lemon-ui'
 
 import { useInterval } from 'lib/hooks/useInterval'
 import { IconSlack } from 'lib/lemon-ui/icons'

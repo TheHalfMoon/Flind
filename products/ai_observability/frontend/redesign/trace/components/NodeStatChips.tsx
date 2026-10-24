@@ -1,4 +1,4 @@
-import { LemonTag } from '@posthog/lemon-ui'
+import { LemonTag } from '@flind/lemon-ui'
 
 import type { TraceNodeStatsApi } from '../../../generated/api.schemas'
 import { statParts } from './formatStats'

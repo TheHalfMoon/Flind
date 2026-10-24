@@ -1,5 +1,5 @@
 import * as townCrierPng from '@posthog/brand/hoggies/png/town-crier'
-import { LemonBanner } from '@posthog/lemon-ui'
+import { LemonBanner } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import { urls } from 'scenes/urls'

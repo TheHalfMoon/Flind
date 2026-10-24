@@ -3,14 +3,14 @@ import '@testing-library/jest-dom'
 import { cleanup, fireEvent, render, screen } from '@testing-library/react'
 import { useActions, useValues } from 'kea'
 
-import { LemonDialog } from '@posthog/lemon-ui'
+import { LemonDialog } from '@flind/lemon-ui'
 
 import type { ConfigVersionApi } from '../generated/api.schemas'
 import { AIEnrichmentVersionRail } from './AIEnrichmentScene'
 
 jest.mock('kea', () => ({ ...jest.requireActual('kea'), useActions: jest.fn(), useValues: jest.fn() }))
-jest.mock('@posthog/lemon-ui', () => ({
-    ...jest.requireActual('@posthog/lemon-ui'),
+jest.mock('@flind/lemon-ui', () => ({
+    ...jest.requireActual('@flind/lemon-ui'),
     LemonDialog: { open: jest.fn(), openForm: jest.fn() },
 }))
 

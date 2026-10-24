@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import posthog from 'posthog-js'
 import type { MouseEventHandler } from 'react'
 
-import { ProfilePicture, Tooltip } from '@posthog/lemon-ui'
+import { ProfilePicture, Tooltip } from '@flind/lemon-ui'
 
 import { FEATURE_FLAGS } from 'lib/constants'
 import { featureFlagLogic } from 'lib/logic/featureFlagLogic'

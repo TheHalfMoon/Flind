@@ -1,4 +1,4 @@
-import { LemonSelect, type LemonSelectOptions } from '@posthog/lemon-ui'
+import { LemonSelect, type LemonSelectOptions } from '@flind/lemon-ui'
 
 import type {
     AutomaticFlashForEnumApi,

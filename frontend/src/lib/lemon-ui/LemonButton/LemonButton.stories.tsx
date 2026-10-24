@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import clsx from 'clsx'
 
 import { IconGear, IconInfo, IconPlus } from '@posthog/icons'
-import { Link } from '@posthog/lemon-ui'
+import { Link } from '@flind/lemon-ui'
 
 import { AccessControlAction } from 'lib/components/AccessControlAction'
 import { IconCalculate, IconLink } from 'lib/lemon-ui/icons'

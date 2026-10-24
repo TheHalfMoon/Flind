@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event'
 import { useActions, useValues } from 'kea'
 import { useEffect, useState } from 'react'
 
-import { LemonTag } from '@posthog/lemon-ui'
+import { LemonTag } from '@flind/lemon-ui'
 
 import { useStorybookMocks } from '~/mocks/browser'
 import { mockIntegration } from '~/test/mocks'

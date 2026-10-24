@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 
 import { IconArrowRight } from '@posthog/icons'
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { cn } from 'lib/utils/css-classes'
 

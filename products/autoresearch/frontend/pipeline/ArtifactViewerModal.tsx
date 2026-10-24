@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonModal, Spinner } from '@posthog/lemon-ui'
+import { LemonModal, Spinner } from '@flind/lemon-ui'
 
 import { CodeSnippet, Language } from 'lib/components/CodeSnippet'
 import { humanizeBytes } from 'lib/utils/numbers'

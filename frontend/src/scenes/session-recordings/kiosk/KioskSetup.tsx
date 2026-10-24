@@ -4,7 +4,7 @@ import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
 import { IconPlay } from '@posthog/icons'
-import { LemonButton, LemonInput, LemonSelect } from '@posthog/lemon-ui'
+import { LemonButton, LemonInput, LemonSelect } from '@flind/lemon-ui'
 
 import { sessionRecordingsKioskLogic } from './sessionRecordingsKioskLogic'
 

@@ -1,7 +1,7 @@
 import { MakeLogicType, actions, connect, kea, listeners, path, reducers, selectors } from 'kea'
 import { loaders } from 'kea-loaders'
 
-import { PaginationManual, Sorting } from '@posthog/lemon-ui'
+import { PaginationManual, Sorting } from '@flind/lemon-ui'
 
 import api, { CountedPaginatedResponse } from 'lib/api'
 import { objectClean, objectsEqual } from 'lib/utils/objects'

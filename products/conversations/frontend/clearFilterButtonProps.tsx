@@ -1,5 +1,5 @@
 import { IconChevronDown, IconX } from '@posthog/icons'
-import { SideAction } from '@posthog/lemon-ui'
+import { SideAction } from '@flind/lemon-ui'
 
 export function clearFilterButtonProps(
     onClear: (() => void) | null,

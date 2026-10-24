@@ -1,4 +1,4 @@
-import type { LemonSelectOptions } from '@posthog/lemon-ui'
+import type { LemonSelectOptions } from '@flind/lemon-ui'
 
 import type { WidgetGenerateRequestApi } from 'products/notebooks/frontend/generated/api.schemas'
 

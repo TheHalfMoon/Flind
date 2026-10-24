@@ -2,7 +2,7 @@
 // de-shard); failing groups sort first and name their failed shards. Groups expand via the caret only,
 // because links inside rows must stay clickable.
 
-import { LemonSkeleton, LemonTable, LemonTag } from '@posthog/lemon-ui'
+import { LemonSkeleton, LemonTable, LemonTag } from '@flind/lemon-ui'
 
 import { dayjs } from 'lib/dayjs'
 import { humanFriendlyDuration } from 'lib/utils/durations'

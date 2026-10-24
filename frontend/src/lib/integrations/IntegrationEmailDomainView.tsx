@@ -3,7 +3,7 @@ import posthog from 'posthog-js'
 import { useState } from 'react'
 
 import { IconCollapse, IconExpand, IconGear, IconLetter, IconTrash } from '@posthog/icons'
-import { LemonButton, LemonTag, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, LemonTag, Tooltip } from '@flind/lemon-ui'
 
 import { teamLogic } from 'scenes/teamLogic'
 

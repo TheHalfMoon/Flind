@@ -1,4 +1,4 @@
-import { LemonButton, LemonButtonWithDropdown, LemonInput } from '@posthog/lemon-ui'
+import { LemonButton, LemonButtonWithDropdown, LemonInput } from '@flind/lemon-ui'
 
 /** Compact summary for the pill face, so an active range is readable without opening the dropdown. */
 export function numericRangeLabel(label: string, min: number | null, max: number | null): string {

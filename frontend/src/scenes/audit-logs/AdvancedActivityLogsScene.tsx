@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconInfo, IconNotification } from '@posthog/icons'
-import { LemonSegmentedButton, LemonTabs, Link, Tooltip } from '@posthog/lemon-ui'
+import { LemonSegmentedButton, LemonTabs, Link, Tooltip } from '@flind/lemon-ui'
 
 import { AccessDenied } from 'lib/components/AccessDenied'
 import { PayGateMini } from 'lib/components/PayGateMini/PayGateMini'

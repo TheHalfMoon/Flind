@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 
 import { IconBolt, IconChevronRight, IconClock, IconLeave, IconTarget } from '@posthog/icons'
-import { LemonButton, LemonTag } from '@posthog/lemon-ui'
+import { LemonButton, LemonTag } from '@flind/lemon-ui'
 
 import PropertyFiltersDisplay from 'lib/components/PropertyFilters/components/PropertyFiltersDisplay'
 import { TZLabel } from 'lib/components/TZLabel'

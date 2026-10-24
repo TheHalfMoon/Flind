@@ -1,6 +1,6 @@
 import './MetricTiles.scss'
 
-import { LemonSkeleton } from '@posthog/lemon-ui'
+import { LemonSkeleton } from '@flind/lemon-ui'
 import { type ChartTheme } from '@flind/quill-charts'
 import {
     Metric,

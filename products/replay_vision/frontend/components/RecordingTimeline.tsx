@@ -1,7 +1,7 @@
 import { Fragment } from 'react'
 
 import { IconSparkles } from '@posthog/icons'
-import { LemonButton, Spinner, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, Spinner, Tooltip } from '@flind/lemon-ui'
 
 import { cn } from 'lib/utils/css-classes'
 import { colonDelimitedDuration, humanFriendlyDuration } from 'lib/utils/durations'

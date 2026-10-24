@@ -1,6 +1,6 @@
 import { router } from 'kea-router'
 
-import { LemonDialog } from '@posthog/lemon-ui'
+import { LemonDialog } from '@flind/lemon-ui'
 
 import { ApiConfig } from 'lib/api'
 import { urls } from 'scenes/urls'

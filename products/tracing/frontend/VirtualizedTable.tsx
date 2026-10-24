@@ -1,7 +1,7 @@
 import { CSSProperties, ReactNode, useMemo, useState } from 'react'
 import { List } from 'react-window'
 
-import { Spinner, Tooltip } from '@posthog/lemon-ui'
+import { Spinner, Tooltip } from '@flind/lemon-ui'
 
 import { AutoSizer } from 'lib/components/AutoSizer'
 import { SizeProps } from 'lib/components/AutoSizer/AutoSizer'

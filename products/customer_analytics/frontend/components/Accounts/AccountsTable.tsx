@@ -12,7 +12,7 @@ import {
     LemonSwitch,
     LemonTable,
     ProfilePicture,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import type { DataColorToken } from 'lib/colors'
 import { MemberSelect } from 'lib/components/MemberSelect'

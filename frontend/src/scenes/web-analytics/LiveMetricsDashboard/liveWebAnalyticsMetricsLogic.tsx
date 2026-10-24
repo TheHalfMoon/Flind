@@ -3,7 +3,7 @@ import { MakeLogicType, actions, connect, events, kea, listeners, path, reducers
 import type { DisposablesManager } from 'kea-disposables'
 import { subscriptions } from 'kea-subscriptions'
 
-import { lemonToast } from '@posthog/lemon-ui'
+import { lemonToast } from '@flind/lemon-ui'
 
 import { ApiError, isTransientServerError } from 'lib/api-error'
 import { createStreamConnection } from 'lib/api-stream'

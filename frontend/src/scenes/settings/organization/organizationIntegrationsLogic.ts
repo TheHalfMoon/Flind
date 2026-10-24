@@ -1,7 +1,7 @@
 import { MakeLogicType, actions, afterMount, kea, listeners, path, selectors } from 'kea'
 import { loaders } from 'kea-loaders'
 
-import { LemonDialog, lemonToast } from '@posthog/lemon-ui'
+import { LemonDialog, lemonToast } from '@flind/lemon-ui'
 
 import api from 'lib/api'
 import { ICONS } from 'lib/integrations/utils'

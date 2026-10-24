@@ -4,7 +4,7 @@ import posthog from 'posthog-js'
 import { useEffect } from 'react'
 
 import { IconInfo, IconOpenSidebar, IconUnlock } from '@posthog/icons'
-import { LemonButton, LemonSkeleton, Link, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, LemonSkeleton, Link, Tooltip } from '@flind/lemon-ui'
 
 import { preflightLogic } from 'lib/logic/preflightLogic'
 import { billingLogic } from 'scenes/billing/billingLogic'

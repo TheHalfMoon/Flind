@@ -1,5 +1,5 @@
 import { IconCopy, IconSparkles } from '@posthog/icons'
-import { LemonButton, LemonTag, Spinner, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, LemonTag, Spinner, Tooltip } from '@flind/lemon-ui'
 
 import { copyToClipboard } from 'lib/utils/copyToClipboard'
 

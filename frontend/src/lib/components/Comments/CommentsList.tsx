@@ -2,7 +2,7 @@ import { BindLogic, useActions, useValues } from 'kea'
 import { useEffect } from 'react'
 
 import * as phoneCall from '@posthog/brand/hoggies/png/phone-call'
-import { LemonSkeleton } from '@posthog/lemon-ui'
+import { LemonSkeleton } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 

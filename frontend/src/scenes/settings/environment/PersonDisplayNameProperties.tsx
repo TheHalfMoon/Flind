@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useEffect, useState } from 'react'
 
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { PropertySelect } from 'lib/components/PropertySelect/PropertySelect'
 import { RestrictionScope, useRestrictedArea } from 'lib/components/RestrictedArea'

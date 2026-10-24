@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonButton, LemonDialog, LemonDivider } from '@posthog/lemon-ui'
+import { LemonButton, LemonDialog, LemonDivider } from '@flind/lemon-ui'
 
 import { humanFriendlyDetailedTime } from 'lib/utils/datetime'
 import { urls } from 'scenes/urls'

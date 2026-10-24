@@ -3,7 +3,7 @@ import { router } from 'kea-router'
 import { useEffect, useMemo, useRef } from 'react'
 
 import { IconChevronDown, IconChevronRight, IconEye } from '@posthog/icons'
-import { LemonButton, LemonInput, LemonSwitch, LemonTag, Link, Spinner, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, LemonInput, LemonSwitch, LemonTag, Link, Spinner, Tooltip } from '@flind/lemon-ui'
 
 import { useResizeObserver } from 'lib/hooks/useResizeObserver'
 import { LemonDropdown } from 'lib/lemon-ui/LemonDropdown/LemonDropdown'

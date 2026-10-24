@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useLayoutEffect, useRef } from 'react'
 
-import { LemonBanner, LemonButton, LemonSelect } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonSelect } from '@flind/lemon-ui'
 
 import { DateFilter } from 'lib/components/DateFilter/DateFilter'
 import {

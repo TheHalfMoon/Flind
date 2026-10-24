@@ -1,7 +1,7 @@
 import { useActions, useAsyncActions, useValues } from 'kea'
 
 import { IconRefresh } from '@posthog/icons'
-import { LemonButton, lemonToast } from '@posthog/lemon-ui'
+import { LemonButton, lemonToast } from '@flind/lemon-ui'
 
 import { dayjs } from 'lib/dayjs'
 import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'

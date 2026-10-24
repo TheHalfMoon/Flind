@@ -2,7 +2,7 @@ import { useValues } from 'kea'
 import { KeyboardEvent, useEffect, useRef, useState } from 'react'
 
 import { IconCheck, IconSend, IconTrash } from '@posthog/icons'
-import { LemonButton, ProfilePicture } from '@posthog/lemon-ui'
+import { LemonButton, ProfilePicture } from '@flind/lemon-ui'
 
 import { wasNotebookNodeJustInserted } from 'lib/components/MarkdownNotebook/freshlyInserted'
 import {

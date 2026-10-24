@@ -10,7 +10,7 @@ import {
     LemonModal,
     LemonSwitch,
     LemonTextArea,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { LemonMenuOverlay } from 'lib/lemon-ui/LemonMenu/LemonMenu'
 import { getExperimentVariants } from 'scenes/experiments/utils'

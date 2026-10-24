@@ -1,5 +1,5 @@
 import { IconCheck } from '@posthog/icons'
-import { LemonTag, LemonTagType, Tooltip } from '@posthog/lemon-ui'
+import { LemonTag, LemonTagType, Tooltip } from '@flind/lemon-ui'
 
 export type SnapshotResult = 'unchanged' | 'changed' | 'new' | 'removed'
 

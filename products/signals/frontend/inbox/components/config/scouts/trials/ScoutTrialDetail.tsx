@@ -1,5 +1,5 @@
 import { IconArrowLeft, IconDownload, IconRefresh, IconUndo } from '@posthog/icons'
-import { LemonBanner, LemonButton, LemonCollapse, LemonSkeleton, LemonTag } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonCollapse, LemonSkeleton, LemonTag } from '@flind/lemon-ui'
 
 import { dayjs } from 'lib/dayjs'
 import { LemonCard } from 'lib/lemon-ui/LemonCard'

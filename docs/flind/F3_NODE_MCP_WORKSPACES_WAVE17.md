@@ -34,8 +34,9 @@ source/build qualification and migration.
 
 - 169 tracked manifests, 261 local `workspace:*` dependency edges,
   zero unresolved references.
-- First-party Flind package identity count **156 → 158**; one inherited
-  source-project package name remains: `@posthog/lemon-ui`.
+- At the time of Wave 17, first-party Flind identities increased **156 → 158**;
+  one inherited-scoped internal UI package remained. Wave 18 subsequently
+  migrated that last package to a private local workspace.
 - Five Python source tests guard private identity, graph completeness,
   first-party MCP CLI filters, original published MCP/UI registry
   snapshots, and Node source references.

@@ -11,7 +11,7 @@ import {
     LemonInput,
     LemonSelect,
     LemonTag,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { ConditionalFormattingRule } from '~/queries/schema/schema-general'
 

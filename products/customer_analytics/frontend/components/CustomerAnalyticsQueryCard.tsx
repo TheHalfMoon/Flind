@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { LemonBanner, LemonCard } from '@posthog/lemon-ui'
+import { LemonBanner, LemonCard } from '@flind/lemon-ui'
 
 import { CardMeta } from 'lib/components/Cards/CardMeta'
 import { InsightMetaContent } from 'lib/components/Cards/InsightCard/InsightMeta'

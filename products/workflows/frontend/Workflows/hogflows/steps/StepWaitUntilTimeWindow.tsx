@@ -1,7 +1,7 @@
 import { Node } from '@xyflow/react'
 import { useActions, useValues } from 'kea'
 
-import { LemonDivider, LemonInputSelect, LemonLabel, LemonSelect, LemonSwitch } from '@posthog/lemon-ui'
+import { LemonDivider, LemonInputSelect, LemonLabel, LemonSelect, LemonSwitch } from '@flind/lemon-ui'
 
 import { timeZoneLabel } from 'lib/utils/timezones'
 import { preflightLogic } from 'scenes/PreflightCheck/preflightLogic'

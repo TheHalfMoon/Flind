@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonButton, LemonTable, LemonTag, type LemonTagType, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, LemonTable, LemonTag, type LemonTagType, Tooltip } from '@flind/lemon-ui'
 
 import { experimentLogic } from 'scenes/experiments/experimentLogic'
 

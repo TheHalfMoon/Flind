@@ -2,7 +2,7 @@ import { useValues } from 'kea'
 import { useCallback, useMemo, useState } from 'react'
 
 import { IconChevronDown } from '@posthog/icons'
-import { LemonButton, SpinnerOverlay } from '@posthog/lemon-ui'
+import { LemonButton, SpinnerOverlay } from '@flind/lemon-ui'
 import {
     type DateRangeZoomData,
     DefaultTooltip,

@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
 import { IconCopy, IconPullRequest } from '@posthog/icons'
-import { LemonButton, LemonMenuOverlay, lemonToast } from '@posthog/lemon-ui'
+import { LemonButton, LemonMenuOverlay, lemonToast } from '@flind/lemon-ui'
 
 import type { AgentPromptDestination } from 'lib/components/AgentPromptButton'
 import { LemonTextArea } from 'lib/lemon-ui/LemonTextArea'

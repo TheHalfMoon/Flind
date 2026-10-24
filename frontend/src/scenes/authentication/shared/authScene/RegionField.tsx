@@ -3,7 +3,7 @@ import { router } from 'kea-router'
 import { useState } from 'react'
 
 import { IconCheckCircle } from '@posthog/icons'
-import { LemonLabel, LemonModal, LemonSelect, LemonSelectOptions } from '@posthog/lemon-ui'
+import { LemonLabel, LemonModal, LemonSelect, LemonSelectOptions } from '@flind/lemon-ui'
 
 import { flindRegionHost, flindRegionUrl } from 'lib/flindRegionHosts'
 import { countryCodeToFlag } from 'lib/utils/country'

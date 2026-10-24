@@ -2,7 +2,7 @@ import { useCallback, useMemo, useState } from 'react'
 import { createPortal } from 'react-dom'
 
 import { IconX } from '@posthog/icons'
-import { LemonButton, LemonModal } from '@posthog/lemon-ui'
+import { LemonButton, LemonModal } from '@flind/lemon-ui'
 
 import { SidePanelRunner } from 'products/posthog_ai/frontend/api/runner'
 

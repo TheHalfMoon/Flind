@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonBanner, LemonTab, LemonTabs } from '@posthog/lemon-ui'
+import { LemonBanner, LemonTab, LemonTabs } from '@flind/lemon-ui'
 
 import { getAccessControlDisabledReason } from 'lib/utils/accessControlUtils'
 import { PendingChangeRequestBanner } from 'scenes/approvals/PendingChangeRequestBanner'

@@ -3,7 +3,7 @@ import { useActions, useValues } from 'kea'
 import { useMemo } from 'react'
 
 import { IconPlus } from '@posthog/icons'
-import { Spinner, Tooltip } from '@posthog/lemon-ui'
+import { Spinner, Tooltip } from '@flind/lemon-ui'
 
 import { LemonButton } from 'lib/lemon-ui/LemonButton'
 import { humanFriendlyNumber } from 'lib/utils/numbers'

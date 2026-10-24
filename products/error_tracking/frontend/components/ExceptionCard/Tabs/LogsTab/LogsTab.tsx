@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useEffect, useMemo } from 'react'
 
-import { LemonSelect, Link } from '@posthog/lemon-ui'
+import { LemonSelect, Link } from '@flind/lemon-ui'
 
 import { errorPropertiesLogic } from 'lib/components/Errors/errorPropertiesLogic'
 import { TabsContent } from 'lib/ui/quill'

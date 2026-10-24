@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { cloneElement, useEffect, useState } from 'react'
 
-import { LemonColorGlyph, LemonInput, LemonLabel, Popover } from '@posthog/lemon-ui'
+import { LemonColorGlyph, LemonInput, LemonLabel, Popover } from '@flind/lemon-ui'
 
 import { DataColorToken } from 'lib/colors'
 import { dataThemeLogic } from 'lib/logic/dataThemeLogic'

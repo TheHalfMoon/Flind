@@ -11,7 +11,7 @@ import {
     IconShare,
     IconSidePanel,
 } from '@posthog/icons'
-import { LemonBanner, Link, Spinner, Tooltip } from '@posthog/lemon-ui'
+import { LemonBanner, Link, Spinner, Tooltip } from '@flind/lemon-ui'
 import { Button, Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from '@flind/quill'
 
 import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'

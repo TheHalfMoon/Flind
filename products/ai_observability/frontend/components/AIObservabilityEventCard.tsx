@@ -1,5 +1,5 @@
 import { IconChevronDown, IconChevronRight } from '@posthog/icons'
-import { LemonTag, Tooltip } from '@posthog/lemon-ui'
+import { LemonTag, Tooltip } from '@flind/lemon-ui'
 
 import type { LLMSentimentResult } from '~/queries/schema/schema-general'
 import { EventDetails } from '~/scenes/activity/explore/EventDetails'

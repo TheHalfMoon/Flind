@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useMemo, useState } from 'react'
 
-import { LemonButton, LemonCheckbox, LemonModal, LemonTag } from '@posthog/lemon-ui'
+import { LemonButton, LemonCheckbox, LemonModal, LemonTag } from '@flind/lemon-ui'
 
 import { organizationLogic } from 'scenes/organizationLogic'
 import { surveysLogic } from 'scenes/surveys/surveysLogic'

@@ -2,7 +2,7 @@ import { BindLogic, useActions, useValues } from 'kea'
 import { router } from 'kea-router'
 
 import { IconOpenSidebar, IconShare, IconSidePanel } from '@posthog/icons'
-import { LemonBanner } from '@posthog/lemon-ui'
+import { LemonBanner } from '@flind/lemon-ui'
 import { DropdownMenuItem, DropdownMenuSeparator } from '@flind/quill'
 
 import { LemonButton } from 'lib/lemon-ui/LemonButton'

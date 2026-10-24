@@ -2,7 +2,7 @@ import useSize from '@react-hook/size'
 import { useActions, useValues } from 'kea'
 import { useRef } from 'react'
 
-import { LemonTag, lemonToast } from '@posthog/lemon-ui'
+import { LemonTag, lemonToast } from '@flind/lemon-ui'
 
 import MonacoDiffEditor from 'lib/components/MonacoDiffEditor'
 import { NotFound } from 'lib/components/NotFound'

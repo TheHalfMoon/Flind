@@ -1,5 +1,5 @@
 import { IconPerson } from '@posthog/icons'
-import type { LemonSelectOption } from '@posthog/lemon-ui'
+import type { LemonSelectOption } from '@flind/lemon-ui'
 
 import type { ChoiceOption } from './repositoryChoices'
 

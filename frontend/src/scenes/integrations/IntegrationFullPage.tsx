@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { router } from 'kea-router'
 
 import { IconArrowLeft, IconCheckCircle, IconWarning } from '@posthog/icons'
-import { LemonBanner, LemonButton, Link, Spinner } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, Link, Spinner } from '@flind/lemon-ui'
 
 import { RestrictionScope, useRestrictedArea } from 'lib/components/RestrictedArea'
 import { TeamMembershipLevel } from 'lib/constants'

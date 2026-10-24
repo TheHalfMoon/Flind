@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useMemo } from 'react'
 
-import { LemonTab, LemonTabs } from '@posthog/lemon-ui'
+import { LemonTab, LemonTabs } from '@flind/lemon-ui'
 
 import { ChartDisplayType } from '~/types'
 

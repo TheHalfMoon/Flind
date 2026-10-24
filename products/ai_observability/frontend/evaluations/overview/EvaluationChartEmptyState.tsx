@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 
 import { IconPlay, IconPlus } from '@posthog/icons'
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { AccessControlAction } from 'lib/components/AccessControlAction'
 import { urls } from 'scenes/urls'

@@ -1,7 +1,7 @@
 import { useActions, useMountedLogic, useValues } from 'kea'
 import { combineUrl } from 'kea-router'
 
-import { LemonSkeleton, Link } from '@posthog/lemon-ui'
+import { LemonSkeleton, Link } from '@flind/lemon-ui'
 
 import { LemonCard } from 'lib/lemon-ui/LemonCard'
 import { Lettermark } from 'lib/lemon-ui/Lettermark'

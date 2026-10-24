@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 
-import { LemonButton, LemonSkeleton, LemonTable, LemonTag, Link } from '@posthog/lemon-ui'
-import type { LemonTagType } from '@posthog/lemon-ui'
+import { LemonButton, LemonSkeleton, LemonTable, LemonTag, Link } from '@flind/lemon-ui'
+import type { LemonTagType } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'
 

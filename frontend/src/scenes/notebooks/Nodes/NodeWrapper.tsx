@@ -1,6 +1,6 @@
 import { memo, type PointerEvent as ReactPointerEvent, useCallback, useRef } from 'react'
 import clsx from 'clsx'
-import { LemonButton, LemonMenu, LemonMenuItems } from '@posthog/lemon-ui'
+import { LemonButton, LemonMenu, LemonMenuItems } from '@flind/lemon-ui'
 import './NodeWrapper.scss'
 import { LemonSkeleton } from 'lib/lemon-ui/LemonSkeleton'
 import { BindLogic, useActions, useMountedLogic, useValues } from 'kea'

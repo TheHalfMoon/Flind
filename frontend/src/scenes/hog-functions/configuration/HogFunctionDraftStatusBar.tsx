@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { LemonTag } from '@posthog/lemon-ui'
+import { LemonTag } from '@flind/lemon-ui'
 
 import { HogFunctionConfigurationLogicProps } from './hogFunctionConfigurationLogic'
 import { hogFunctionDraftLogic } from './hogFunctionDraftLogic'

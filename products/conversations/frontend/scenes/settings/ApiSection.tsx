@@ -1,4 +1,4 @@
-import { LemonBanner, LemonCard, Link } from '@posthog/lemon-ui'
+import { LemonBanner, LemonCard, Link } from '@flind/lemon-ui'
 
 import { SceneSection } from '~/layout/scenes/components/SceneSection'
 

@@ -9,7 +9,7 @@ import {
     LemonInputSelectOption,
     Link,
     ProfilePicture,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import api from 'lib/api'
 import { RestrictionScope, useRestrictedArea } from 'lib/components/RestrictedArea'

@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonTable, LemonTableColumns } from '@posthog/lemon-ui'
+import { LemonTable, LemonTableColumns } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'
 import { humanFriendlyLargeNumber } from 'lib/utils/numbers'

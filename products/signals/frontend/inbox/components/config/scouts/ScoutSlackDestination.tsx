@@ -2,7 +2,7 @@ import { useMountedLogic, useValues } from 'kea'
 import { useState } from 'react'
 
 import { IconTrash } from '@posthog/icons'
-import { LemonButton, LemonCollapse, LemonSegmentedButton, LemonSelect, LemonSwitch, Link } from '@posthog/lemon-ui'
+import { LemonButton, LemonCollapse, LemonSegmentedButton, LemonSelect, LemonSwitch, Link } from '@flind/lemon-ui'
 
 import { integrationsLogic } from 'lib/integrations/integrationsLogic'
 import { SlackChannelPicker, SlackUserPicker } from 'lib/integrations/SlackIntegrationHelpers'

@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonBanner, LemonButton, LemonInput, LemonLabel, LemonModal } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonInput, LemonLabel, LemonModal } from '@flind/lemon-ui'
 
 import { broadcastTestSendLogic } from './broadcastTestSendLogic'
 

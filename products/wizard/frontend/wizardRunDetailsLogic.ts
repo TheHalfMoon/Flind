@@ -3,7 +3,7 @@ import type { BreakPointFunction } from 'kea'
 import { loaders } from 'kea-loaders'
 import posthog from 'posthog-js'
 
-import { LemonDialog, lemonToast } from '@posthog/lemon-ui'
+import { LemonDialog, lemonToast } from '@flind/lemon-ui'
 
 import { ApiError } from 'lib/api'
 import { dayjs } from 'lib/dayjs'

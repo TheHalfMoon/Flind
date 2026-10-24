@@ -13,7 +13,7 @@ import {
     LemonTag,
     Spinner,
     Tooltip,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { CodeSnippet, Language } from 'lib/components/CodeSnippet'
 import { SceneExport } from 'scenes/sceneTypes'

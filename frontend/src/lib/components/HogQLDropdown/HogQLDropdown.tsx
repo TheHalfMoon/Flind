@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import type { ReactNode } from 'react'
 import { useState } from 'react'
 
-import { LemonButton, LemonDropdown } from '@posthog/lemon-ui'
+import { LemonButton, LemonDropdown } from '@flind/lemon-ui'
 
 import { NodeKind } from '~/queries/schema/schema-general'
 import { escapeDottedHogQLIdentifier } from '~/queries/utils'

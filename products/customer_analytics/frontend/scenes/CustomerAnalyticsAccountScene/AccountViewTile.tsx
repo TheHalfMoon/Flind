@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import { useActions, useValues } from 'kea'
 
 import { IconEllipsis, IconPencil, IconTrash } from '@posthog/icons'
-import { LemonButton, LemonCard, LemonDialog, LemonMenu, type LemonMenuItems } from '@posthog/lemon-ui'
+import { LemonButton, LemonCard, LemonDialog, LemonMenu, type LemonMenuItems } from '@flind/lemon-ui'
 
 import { AccountViewComponent } from '../../components/Accounts/AccountViewComponent'
 import { getAccountViewComponentByKind } from '../../components/Accounts/accountViewComponents'

@@ -1,5 +1,5 @@
 import { IconCheck, IconX } from '@posthog/icons'
-import { LemonColorGlyph, Link, ProfilePicture } from '@posthog/lemon-ui'
+import { LemonColorGlyph, Link, ProfilePicture } from '@flind/lemon-ui'
 
 import { DataColorToken } from 'lib/colors'
 import { TZLabel } from 'lib/components/TZLabel'

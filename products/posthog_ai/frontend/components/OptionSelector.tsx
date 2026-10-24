@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
-import { LemonButton, LemonInput, LemonTextArea, Spinner } from '@posthog/lemon-ui'
+import { LemonButton, LemonInput, LemonTextArea, Spinner } from '@flind/lemon-ui'
 
 import { CollapsiblePrimitive, CollapsiblePrimitiveContent } from 'lib/ui/Collapsible/lib/CollapsiblePrimitive'
 import { cn } from 'lib/utils/css-classes'

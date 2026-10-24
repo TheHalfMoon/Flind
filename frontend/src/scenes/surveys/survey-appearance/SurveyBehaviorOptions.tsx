@@ -1,4 +1,4 @@
-import { LemonCheckbox, LemonDialog, LemonDivider, LemonInput } from '@posthog/lemon-ui'
+import { LemonCheckbox, LemonDialog, LemonDivider, LemonInput } from '@flind/lemon-ui'
 
 import { LemonField } from 'lib/lemon-ui/LemonField'
 import { BACK_BUTTON_DEFAULT_TEXT, NewSurvey } from 'scenes/surveys/constants'

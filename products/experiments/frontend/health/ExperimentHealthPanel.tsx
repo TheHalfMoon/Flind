@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { useId, useState } from 'react'
 
 import { IconChevronDown, IconChevronRight } from '@posthog/icons'
-import { LemonButton, LemonCard, LemonTag } from '@posthog/lemon-ui'
+import { LemonButton, LemonCard, LemonTag } from '@flind/lemon-ui'
 
 import { experimentLogic } from 'scenes/experiments/experimentLogic'
 

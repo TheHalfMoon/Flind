@@ -3,7 +3,7 @@ import { MakeLogicType, kea, path, useAllValues } from 'kea'
 import { Form, forms } from 'kea-forms'
 import type { DeepPartial, DeepPartialMap, FieldName, ValidationErrorType } from 'kea-forms'
 
-import { LemonButton, LemonCheckbox, LemonInput, LemonSelect, LemonTextArea } from '@posthog/lemon-ui'
+import { LemonButton, LemonCheckbox, LemonInput, LemonSelect, LemonTextArea } from '@flind/lemon-ui'
 
 import { LemonField, LemonFieldProps } from './LemonField'
 

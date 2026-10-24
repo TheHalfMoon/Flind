@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import posthog from 'posthog-js'
 
-import { LemonSearchableSelect, LemonSelectOptions } from '@posthog/lemon-ui'
+import { LemonSearchableSelect, LemonSelectOptions } from '@flind/lemon-ui'
 
 import { dashboardsModel } from '~/models/dashboardsModel'
 import { sceneLogic } from '~/scenes/sceneLogic'

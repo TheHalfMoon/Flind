@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 
 import { IconGear } from '@posthog/icons'
-import { LemonBanner } from '@posthog/lemon-ui'
+import { LemonBanner } from '@flind/lemon-ui'
 
 import { openSurveysSettingsDialog } from 'scenes/surveys/SurveySettings'
 import { teamLogic } from 'scenes/teamLogic'

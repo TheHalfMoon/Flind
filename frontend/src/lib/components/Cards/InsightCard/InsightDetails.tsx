@@ -16,7 +16,7 @@ import {
     IconUser,
     IconWarning,
 } from '@posthog/icons'
-import { Lettermark, LettermarkColor, Tooltip } from '@posthog/lemon-ui'
+import { Lettermark, LettermarkColor, Tooltip } from '@flind/lemon-ui'
 
 import { CodeSnippet, Language } from 'lib/components/CodeSnippet'
 import { compareFilterLabel } from 'lib/components/CompareFilter/compareFilterLabel'

@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { combineUrl, router } from 'kea-router'
 
-import { Link } from '@posthog/lemon-ui'
+import { Link } from '@flind/lemon-ui'
 import { type ChartTheme } from '@flind/quill-charts'
 
 import { formatPercentage } from 'lib/utils/numbers'

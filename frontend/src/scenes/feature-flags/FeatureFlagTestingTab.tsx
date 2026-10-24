@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonBanner, LemonButton, LemonCalendarSelectInput, LemonLabel, Tooltip } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonCalendarSelectInput, LemonLabel, Tooltip } from '@flind/lemon-ui'
 
 import { PropertiesTable } from 'lib/components/PropertiesTable/PropertiesTable'
 import { TaxonomicFilterGroupType } from 'lib/components/TaxonomicFilter/types'

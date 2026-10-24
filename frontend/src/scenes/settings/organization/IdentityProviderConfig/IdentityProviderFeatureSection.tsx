@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconCheckCircle, IconCircleDashed, IconWarning } from '@posthog/icons'
-import { LemonBanner, LemonButton, LemonCard, LemonSkeleton } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonCard, LemonSkeleton } from '@flind/lemon-ui'
 
 import { PayGateMini } from 'lib/components/PayGateMini/PayGateMini'
 import { RestrictionScope, useRestrictedArea } from 'lib/components/RestrictedArea'

@@ -1,4 +1,4 @@
-import { LemonInput } from '@posthog/lemon-ui'
+import { LemonInput } from '@flind/lemon-ui'
 
 export type UtmTagKey = 'utm_source' | 'utm_medium' | 'utm_campaign' | 'utm_content'
 export type UtmTagValues = Partial<Record<UtmTagKey, string>>

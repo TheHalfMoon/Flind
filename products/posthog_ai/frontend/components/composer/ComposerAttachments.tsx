@@ -2,7 +2,7 @@ import { useActions } from 'kea'
 import { type ClipboardEvent, type RefObject, useCallback } from 'react'
 
 import { IconPlus } from '@posthog/icons'
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { composerAttachmentsLogic } from '../../logics/composerAttachmentsLogic'
 import { useComposerFilePicker } from './useComposerFilePicker'

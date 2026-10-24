@@ -14,7 +14,7 @@
         "@testing-library/react": "*"
     },
     "peerDependencies": {
-        "@posthog/lemon-ui": "*",
+        "@flind/lemon-ui": "workspace:*",
         "@types/react": "*",
         "react": "*"
     }

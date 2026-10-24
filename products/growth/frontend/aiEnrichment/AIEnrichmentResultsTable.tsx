@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { LemonBanner, LemonTable, LemonTableColumns, LemonTag, Tooltip } from '@posthog/lemon-ui'
+import { LemonBanner, LemonTable, LemonTableColumns, LemonTag, Tooltip } from '@flind/lemon-ui'
 
 import { AIEnrichmentRunRow, aiEnrichmentLogic } from './aiEnrichmentLogic'
 import {

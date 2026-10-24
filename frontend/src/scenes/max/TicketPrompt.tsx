@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useRef, useState } from 'react'
 
-import { LemonButton, LemonInput, LemonModal, lemonToast } from '@posthog/lemon-ui'
+import { LemonButton, LemonInput, LemonModal, lemonToast } from '@flind/lemon-ui'
 
 import { SupportForm } from 'lib/components/Support/SupportForm'
 import { supportLogic } from 'lib/components/Support/supportLogic'

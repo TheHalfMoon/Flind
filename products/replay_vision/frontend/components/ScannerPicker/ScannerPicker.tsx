@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { LemonInputSelect, LemonInputSelectOption } from '@posthog/lemon-ui'
+import { LemonInputSelect, LemonInputSelectOption } from '@flind/lemon-ui'
 
 import { scannerPickerLogic } from './scannerPickerLogic'
 

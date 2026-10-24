@@ -1,5 +1,5 @@
 import { IconWarning } from '@posthog/icons'
-import { LemonButton, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, Tooltip } from '@flind/lemon-ui'
 
 import { pluralize } from 'lib/utils/strings'
 

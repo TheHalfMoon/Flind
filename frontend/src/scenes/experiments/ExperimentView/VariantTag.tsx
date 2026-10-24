@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { useValues } from 'kea'
 
-import { LemonTag, Tooltip } from '@posthog/lemon-ui'
+import { LemonTag, Tooltip } from '@flind/lemon-ui'
 
 import { experimentLogic } from '~/scenes/experiments/experimentLogic'
 import { getExperimentVariants, getVariantColor } from '~/scenes/experiments/utils'

@@ -1,4 +1,4 @@
-import { LemonButton, LemonInput, LemonLabel } from '@posthog/lemon-ui'
+import { LemonButton, LemonInput, LemonLabel } from '@flind/lemon-ui'
 
 export interface TrustedRelaySenderSettingsProps {
     configId: string

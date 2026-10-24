@@ -14,7 +14,7 @@ jest.mock('kea', () => ({
     useValues: jest.fn(),
     useActions: () => new Proxy({}, { get: () => jest.fn() }),
 }))
-jest.mock('@posthog/lemon-ui', () => ({
+jest.mock('@flind/lemon-ui', () => ({
     LemonBanner: ({ children }: { children: React.ReactNode }) => <div role="alert">{children}</div>,
     LemonCard: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
     LemonSelect: ({

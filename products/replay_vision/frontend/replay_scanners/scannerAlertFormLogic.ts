@@ -2,7 +2,7 @@ import { MakeLogicType, afterMount, connect, kea, key, path, props, selectors } 
 import type { DeepPartial, DeepPartialMap, FieldName, ValidationErrorType } from 'kea-forms'
 import { forms } from 'kea-forms'
 
-import { lemonToast } from '@posthog/lemon-ui'
+import { lemonToast } from '@flind/lemon-ui'
 
 import { ApiError } from 'lib/api'
 import { teamLogic } from 'scenes/teamLogic'

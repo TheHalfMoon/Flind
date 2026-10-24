@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonSwitch, LemonTag, Link } from '@posthog/lemon-ui'
+import { LemonSwitch, LemonTag, Link } from '@flind/lemon-ui'
 
 import { getTagProps } from 'scenes/max/components/MaxChangelog'
 import { ChangelogEntry, maxChangelogLogic } from 'scenes/max/maxChangelogLogic'

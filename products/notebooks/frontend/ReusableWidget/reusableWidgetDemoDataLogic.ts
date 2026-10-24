@@ -13,7 +13,7 @@ import {
 } from 'kea'
 import { loaders } from 'kea-loaders'
 
-import { LemonDialog } from '@posthog/lemon-ui'
+import { LemonDialog } from '@flind/lemon-ui'
 
 import { ApiError } from 'lib/api-error'
 import { lemonToast } from 'lib/lemon-ui/LemonToast/LemonToast'

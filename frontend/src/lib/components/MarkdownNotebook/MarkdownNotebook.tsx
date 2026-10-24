@@ -23,7 +23,7 @@ import {
 } from 'react'
 
 import { IconCode, IconComment, IconDrag } from '@posthog/icons'
-import { LemonButton, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, Tooltip } from '@flind/lemon-ui'
 
 import { Spinner } from 'lib/lemon-ui/Spinner'
 import { findMountedCodeEditorWithin } from 'lib/monaco/mountedCodeEditors'

@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { LemonTag, Link, Tooltip } from '@posthog/lemon-ui'
+import { LemonTag, Link, Tooltip } from '@flind/lemon-ui'
 
 import { humanFriendlyDuration } from 'lib/utils/durations'
 import { pluralize } from 'lib/utils/strings'

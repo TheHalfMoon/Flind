@@ -2,7 +2,7 @@ import { BaseEdge, Edge, EdgeLabelRenderer, EdgeProps, useEdges } from '@xyflow/
 import { useValues } from 'kea'
 import { useEffect, useRef } from 'react'
 
-import { LemonTag } from '@posthog/lemon-ui'
+import { LemonTag } from '@flind/lemon-ui'
 
 import { hogFlowEditorLogic } from '../hogFlowEditorLogic'
 import { HogFlowEdge } from '../types'

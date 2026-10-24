@@ -1,4 +1,4 @@
-import { LemonButton, LemonTag } from '@posthog/lemon-ui'
+import { LemonButton, LemonTag } from '@flind/lemon-ui'
 
 import { EnrichedReviewer } from '../../types'
 

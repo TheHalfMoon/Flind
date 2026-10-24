@@ -5,7 +5,7 @@ import { useActions, useValues } from 'kea'
 import React, { useState } from 'react'
 
 import { IconPlusSmall, IconTrash } from '@posthog/icons'
-import { LemonButton, LemonInput, LemonSelect } from '@posthog/lemon-ui'
+import { LemonButton, LemonInput, LemonSelect } from '@flind/lemon-ui'
 
 import { IconDragHandle } from 'lib/lemon-ui/icons'
 

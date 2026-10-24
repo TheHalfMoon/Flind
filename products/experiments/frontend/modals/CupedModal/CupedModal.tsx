@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonButton, LemonInput, LemonLabel, LemonModal, LemonSelect } from '@posthog/lemon-ui'
+import { LemonButton, LemonInput, LemonLabel, LemonModal, LemonSelect } from '@flind/lemon-ui'
 
 import { experimentLogic } from 'scenes/experiments/experimentLogic'
 import { CupedSelection, getCupedSelection, resolveCupedLookbackDays } from 'scenes/experiments/ExperimentView/cuped'

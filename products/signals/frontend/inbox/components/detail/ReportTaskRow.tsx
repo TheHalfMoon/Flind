@@ -2,7 +2,7 @@ import { combineUrl } from 'kea-router'
 import { useCallback } from 'react'
 
 import { IconChevronDown, IconChevronRight, IconExternal } from '@posthog/icons'
-import { Link, Tooltip } from '@posthog/lemon-ui'
+import { Link, Tooltip } from '@flind/lemon-ui'
 
 import { cn } from 'lib/utils/css-classes'
 import { urls } from 'scenes/urls'

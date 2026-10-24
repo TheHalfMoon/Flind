@@ -1,5 +1,5 @@
 import { IconClock, IconPeople } from '@posthog/icons'
-import { LemonTag } from '@posthog/lemon-ui'
+import { LemonTag } from '@flind/lemon-ui'
 
 import { PropertyFilterButton } from 'lib/components/PropertyFilters/components/PropertyFilterButton'
 import { UniversalFilterButton } from 'lib/components/UniversalFilters/UniversalFilterButton'

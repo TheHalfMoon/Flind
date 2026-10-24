@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { Field, Form } from 'kea-forms'
 
-import { LemonBanner, LemonButton, LemonInput, LemonModal } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonInput, LemonModal } from '@flind/lemon-ui'
 
 import { CodeEditorInline } from 'lib/monaco/CodeEditorInline'
 

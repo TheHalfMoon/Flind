@@ -1,4 +1,4 @@
-import { LemonSkeleton } from '@posthog/lemon-ui'
+import { LemonSkeleton } from '@flind/lemon-ui'
 
 import type { CleanQuarantinedGroups } from '../lib/liftOnMerge'
 import { CleanQuarantinedStoryList } from './CleanQuarantinedStoryList'

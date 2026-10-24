@@ -4,7 +4,7 @@ import { waitFor } from '@testing-library/react'
 import { router } from 'kea-router'
 import { expectLogic } from 'kea-test-utils'
 
-import { LemonDialog, lemonToast } from '@posthog/lemon-ui'
+import { LemonDialog, lemonToast } from '@flind/lemon-ui'
 
 import apiReal, { ApiError } from 'lib/api'
 import { teamLogic } from 'scenes/teamLogic'

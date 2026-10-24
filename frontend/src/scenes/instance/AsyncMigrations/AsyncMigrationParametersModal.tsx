@@ -2,7 +2,7 @@ import { useActions } from 'kea'
 import { Field, Form } from 'kea-forms'
 import { useState } from 'react'
 
-import { Link } from '@posthog/lemon-ui'
+import { Link } from '@flind/lemon-ui'
 
 import { AnimatedCollapsible } from 'lib/components/AnimatedCollapsible'
 import { LemonButton } from 'lib/lemon-ui/LemonButton'

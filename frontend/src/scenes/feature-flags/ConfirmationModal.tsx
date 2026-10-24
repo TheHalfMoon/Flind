@@ -1,5 +1,5 @@
 import { IconWarning } from '@posthog/icons'
-import { LemonDialog, Link } from '@posthog/lemon-ui'
+import { LemonDialog, Link } from '@flind/lemon-ui'
 
 import { capitalizeFirstLetter } from 'lib/utils/strings'
 import { urls } from 'scenes/urls'

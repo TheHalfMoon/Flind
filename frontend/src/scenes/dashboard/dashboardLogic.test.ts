@@ -6,7 +6,7 @@ import { expectLogic, truth } from 'kea-test-utils'
 import posthog from 'posthog-js'
 import type { Layout } from 'react-grid-layout'
 
-import { LemonDialog, lemonToast } from '@posthog/lemon-ui'
+import { LemonDialog, lemonToast } from '@flind/lemon-ui'
 import * as dashboardWidgetUtils from '@flind/products-dashboards/frontend/utils'
 import { DASHBOARD_WIDGET_FETCH_ERROR_MESSAGE } from '@flind/products-dashboards/frontend/widgets/constants'
 

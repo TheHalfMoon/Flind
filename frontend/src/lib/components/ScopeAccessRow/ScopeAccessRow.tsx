@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 
 import { IconInfo, IconWarning } from '@posthog/icons'
-import { LemonSegmentedButton, Tooltip } from '@posthog/lemon-ui'
+import { LemonSegmentedButton, Tooltip } from '@flind/lemon-ui'
 
 import type { ScopeAccessLevel, ScopePickerRow } from 'lib/scopes'
 

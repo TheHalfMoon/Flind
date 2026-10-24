@@ -1,13 +1,13 @@
 import posthog from 'posthog-js'
 
-import { LemonDialog } from '@posthog/lemon-ui'
+import { LemonDialog } from '@flind/lemon-ui'
 
 import { MetricsQuery, NodeKind } from '~/queries/schema/schema-general'
 
 import { switchMetricsQueryLanguage } from './metricsQueryLanguageSwitch'
 
-jest.mock('@posthog/lemon-ui', () => ({
-    ...jest.requireActual('@posthog/lemon-ui'),
+jest.mock('@flind/lemon-ui', () => ({
+    ...jest.requireActual('@flind/lemon-ui'),
     LemonDialog: { open: jest.fn() },
 }))
 

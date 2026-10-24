@@ -15,7 +15,7 @@ import {
 } from 'kea'
 import posthog from 'posthog-js'
 
-import { LemonMenuItems } from '@posthog/lemon-ui'
+import { LemonMenuItems } from '@flind/lemon-ui'
 
 import type { NotebookComponentToolbarTitleStatus } from 'lib/components/MarkdownNotebook/componentToolbarExtras'
 import { JSONContent, RichContentNode } from 'lib/components/RichContentEditor/types'

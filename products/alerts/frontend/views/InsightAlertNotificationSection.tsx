@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 
 import { IconBell } from '@posthog/icons'
-import { LemonBanner, Link } from '@posthog/lemon-ui'
+import { LemonBanner, Link } from '@flind/lemon-ui'
 
 import { MemberSelectMultiple } from 'lib/components/MemberSelectMultiple'
 import { preflightLogic } from 'lib/logic/preflightLogic'

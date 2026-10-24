@@ -1,7 +1,7 @@
 import { useValues, useActions } from 'kea'
 
 import { IconClock, IconDecisionTree, IconInfo, IconList } from '@posthog/icons'
-import { LemonButton, LemonSegmentedButton, LemonSwitch, LemonTag, Spinner, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, LemonSegmentedButton, LemonSwitch, LemonTag, Spinner, Tooltip } from '@flind/lemon-ui'
 
 import { LastSavedIndicator } from 'lib/components/LastSavedIndicator'
 import { useDebouncedValue } from 'lib/hooks/useDebouncedValue'

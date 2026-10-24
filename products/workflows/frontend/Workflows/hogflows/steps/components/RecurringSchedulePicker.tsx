@@ -9,7 +9,7 @@ import {
     LemonSearchableSelect,
     LemonSelect,
     LemonSwitch,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { dayjs } from 'lib/dayjs'
 import { timeZoneLabel } from 'lib/utils/timezones'

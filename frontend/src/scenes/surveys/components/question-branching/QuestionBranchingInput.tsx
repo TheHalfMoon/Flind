@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonDialog, LemonSelect } from '@posthog/lemon-ui'
+import { LemonDialog, LemonSelect } from '@flind/lemon-ui'
 
 import { LemonField } from 'lib/lemon-ui/LemonField'
 import { truncate } from 'lib/utils/strings'

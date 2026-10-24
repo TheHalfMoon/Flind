@@ -2,7 +2,7 @@ import { BindLogic, useActions, useValues } from 'kea'
 import { router } from 'kea-router'
 
 import { IconArrowLeft } from '@posthog/icons'
-import { LemonButton, LemonDivider, LemonSwitch, LemonTag, ProfilePicture, Spinner } from '@posthog/lemon-ui'
+import { LemonButton, LemonDivider, LemonSwitch, LemonTag, ProfilePicture, Spinner } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'
 import { SceneExport } from 'scenes/sceneTypes'

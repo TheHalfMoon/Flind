@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useEffect, useRef } from 'react'
 
-import { LemonBanner, LemonButton, LemonTable } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonTable } from '@flind/lemon-ui'
 
 import type { LemonTableColumns } from 'lib/lemon-ui/LemonTable'
 

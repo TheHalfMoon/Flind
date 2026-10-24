@@ -1,4 +1,4 @@
-import { LemonSkeleton, Tooltip } from '@posthog/lemon-ui'
+import { LemonSkeleton, Tooltip } from '@flind/lemon-ui'
 
 import { LemonCard } from 'lib/lemon-ui/LemonCard'
 import { cn } from 'lib/utils/css-classes'

@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonSegmentedButton, Link } from '@posthog/lemon-ui'
+import { LemonSegmentedButton, Link } from '@flind/lemon-ui'
 
 import { urls } from 'scenes/urls'
 

@@ -10,7 +10,7 @@ import {
     LemonMenuItems,
     LemonMenuSection,
     LemonTag,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { CLICK_OUTSIDE_BLOCK_CLASS } from 'lib/hooks/useOutsideClickHandler'
 import { copyToClipboard } from 'lib/utils/copyToClipboard'

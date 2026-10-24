@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { LemonTable, LemonTag } from '@posthog/lemon-ui'
+import { LemonTable, LemonTag } from '@flind/lemon-ui'
 
 import { experimentLogic } from 'scenes/experiments/experimentLogic'
 import { MetricTypeTag } from 'scenes/experiments/MetricsView/shared/MetricTypeTag'

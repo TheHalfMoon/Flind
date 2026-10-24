@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconArrowRight, IconChevronDown, IconCursorClick, IconTrash, IconWarning } from '@posthog/icons'
-import { LemonButton, LemonInput, LemonSegmentedButton, LemonSlider, LemonSwitch, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, LemonInput, LemonSegmentedButton, LemonSlider, LemonSwitch, Tooltip } from '@flind/lemon-ui'
 
 import { IconDragHandle } from 'lib/lemon-ui/icons'
 import { getStepIcon, getStepTitle, hasElementTarget, hasIncompleteTargeting } from 'scenes/product-tours/stepUtils'

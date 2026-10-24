@@ -106,7 +106,7 @@ const config: StorybookConfig = {
                     public: path.resolve(FRONTEND, 'public'),
                     products: path.resolve(REPO_ROOT, 'products'),
                     '@common': path.resolve(REPO_ROOT, 'common'),
-                    '@posthog/lemon-ui': path.resolve(FRONTEND, '@posthog', 'lemon-ui', 'src'),
+                    '@flind/lemon-ui': path.resolve(FRONTEND, 'flind', 'lemon-ui', 'src'),
                     '@posthog/mcp-ui': path.resolve(REPO_ROOT, 'services', 'mcp', 'src', 'ui-apps', 'lib'),
                     '@posthog/shared-onboarding': path.resolve(REPO_ROOT, 'docs', 'onboarding'),
                     '@flind/quill': path.resolve(REPO_ROOT, 'packages', 'quill', 'packages', 'quill', 'src'),

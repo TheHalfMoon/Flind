@@ -1,7 +1,7 @@
 import { MakeLogicType, actions, kea, key, listeners, path, props, reducers } from 'kea'
 import posthog from 'posthog-js'
 
-import { lemonToast } from '@posthog/lemon-ui'
+import { lemonToast } from '@flind/lemon-ui'
 
 // Define interfaces for better type safety
 export interface Point {

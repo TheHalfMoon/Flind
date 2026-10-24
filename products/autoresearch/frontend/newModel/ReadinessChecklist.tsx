@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconCheckCircle, IconCircleDashed, IconInfo, IconWarning, IconX } from '@posthog/icons'
-import { LemonBanner, LemonSkeleton, Spinner, Tooltip } from '@posthog/lemon-ui'
+import { LemonBanner, LemonSkeleton, Spinner, Tooltip } from '@flind/lemon-ui'
 
 import { Readiness, ReadinessCheck, autoresearchNewLogic, hasTarget } from '../autoresearchNewLogic'
 import { ValidationWarningApi } from '../generated/api.schemas'

@@ -1,7 +1,7 @@
 import { router } from 'kea-router'
 import { expectLogic } from 'kea-test-utils'
 
-// Imported from the source module rather than the `@posthog/lemon-ui` barrel so the spy replaces
+// Imported from the source module rather than the `@flind/lemon-ui` barrel so the spy replaces
 // `.error` on the same `lemonToast` singleton the logic calls at runtime.
 import { lemonToast } from 'lib/lemon-ui/LemonToast/LemonToast'
 import { databaseTableListLogic } from 'scenes/data-management/database/databaseTableListLogic'

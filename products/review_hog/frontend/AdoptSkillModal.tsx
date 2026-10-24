@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonBanner, LemonButton, LemonInput } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonInput } from '@flind/lemon-ui'
 
 import { SkillPicker } from 'lib/components/SkillPicker/SkillPicker'
 import { LemonField } from 'lib/lemon-ui/LemonField'

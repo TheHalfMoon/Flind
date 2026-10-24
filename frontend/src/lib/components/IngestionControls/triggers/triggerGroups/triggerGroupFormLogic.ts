@@ -2,7 +2,7 @@ import { MakeLogicType, actions, kea, key, listeners, path, props, reducers } fr
 import { forms } from 'kea-forms'
 import type { DeepPartial, DeepPartialMap, FieldName, ValidationErrorType } from 'kea-forms'
 
-import { lemonToast } from '@posthog/lemon-ui'
+import { lemonToast } from '@flind/lemon-ui'
 
 import { ensureAnchored } from 'lib/components/IngestionControls/triggers/urlConfigLogic'
 import { uuid } from 'lib/utils/dom'

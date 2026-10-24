@@ -1,6 +1,6 @@
 // No repo figure: comparing how much an author or a team ships would rank people.
 
-import { LemonCard, LemonSkeleton, Tooltip } from '@posthog/lemon-ui'
+import { LemonCard, LemonSkeleton, Tooltip } from '@flind/lemon-ui'
 
 import type { DeliverySummaryApi } from '../generated/api.schemas'
 

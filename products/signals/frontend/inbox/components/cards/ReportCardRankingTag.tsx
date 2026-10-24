@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { useCallback } from 'react'
 
-import { LemonTag, LemonTagType, Tooltip } from '@posthog/lemon-ui'
+import { LemonTag, LemonTagType, Tooltip } from '@flind/lemon-ui'
 
 import { INBOX_RANKING_SCORES, InboxRankingScore, rankingScoreForField } from '../../filterOptions'
 import { captureInboxRankingDetailsViewed } from '../../inboxAnalytics'

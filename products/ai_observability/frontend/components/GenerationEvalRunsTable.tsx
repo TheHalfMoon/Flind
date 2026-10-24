@@ -1,6 +1,6 @@
 import { BuiltLogic, useValues } from 'kea'
 
-import { LemonTable, Link } from '@posthog/lemon-ui'
+import { LemonTable, Link } from '@flind/lemon-ui'
 
 import { LemonTableColumns } from 'lib/lemon-ui/LemonTable'
 import { urls } from 'scenes/urls'

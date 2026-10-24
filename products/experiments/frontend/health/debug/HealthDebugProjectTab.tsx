@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { LemonSkeleton } from '@posthog/lemon-ui'
+import { LemonSkeleton } from '@flind/lemon-ui'
 
 import { experimentLogic } from 'scenes/experiments/experimentLogic'
 

@@ -1,6 +1,6 @@
 import { combineUrl } from 'kea-router'
 
-import { LemonTag, Link, Tooltip } from '@posthog/lemon-ui'
+import { LemonTag, Link, Tooltip } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'
 import { urls } from 'scenes/urls'

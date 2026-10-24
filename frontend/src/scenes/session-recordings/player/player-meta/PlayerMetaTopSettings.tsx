@@ -3,7 +3,7 @@ import posthog from 'posthog-js'
 import { useEffect, useMemo } from 'react'
 
 import { IconBottomPanel, IconRabbit, IconSearch, IconTortoise } from '@posthog/icons'
-import { LemonMenuItems, Link } from '@posthog/lemon-ui'
+import { LemonMenuItems, Link } from '@flind/lemon-ui'
 
 import { SettingsButton, SettingsMenu } from 'lib/components/PanelSettings/PanelSettings'
 import { SESSION_RECORDINGS_TTL_WARNING_THRESHOLD_DAYS } from 'lib/constants'

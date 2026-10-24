@@ -3,7 +3,7 @@ import { useActions, useMountedLogic, useValues } from 'kea'
 
 import * as mailboxPng from '@posthog/brand/hoggies/png/mailbox'
 import { IconChevronLeft, IconChevronRight } from '@posthog/icons'
-import { LemonButton, LemonTag } from '@posthog/lemon-ui'
+import { LemonButton, LemonTag } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import { dayjs } from 'lib/dayjs'

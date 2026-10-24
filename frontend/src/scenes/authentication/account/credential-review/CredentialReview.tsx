@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { Logomark } from 'lib/brand'
 import { BridgePage } from 'lib/components/BridgePage/BridgePage'

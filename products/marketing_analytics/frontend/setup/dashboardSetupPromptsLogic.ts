@@ -1,6 +1,6 @@
 import { MakeLogicType, actions, kea, key, listeners, path, props, reducers } from 'kea'
 
-import { LemonDialog } from '@posthog/lemon-ui'
+import { LemonDialog } from '@flind/lemon-ui'
 
 import { teamLogic } from 'scenes/teamLogic'
 import {

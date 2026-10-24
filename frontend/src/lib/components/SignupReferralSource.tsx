@@ -1,6 +1,6 @@
 import { Field as KeaField } from 'kea-forms'
 
-import { LemonInput } from '@posthog/lemon-ui'
+import { LemonInput } from '@flind/lemon-ui'
 
 import { AnimatedCollapsible } from 'lib/components/AnimatedCollapsible'
 import { LemonField } from 'lib/lemon-ui/LemonField'

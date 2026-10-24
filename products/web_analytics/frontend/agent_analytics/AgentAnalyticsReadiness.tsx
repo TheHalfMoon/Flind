@@ -12,7 +12,7 @@ import {
     LemonTableColumns,
     LemonTag,
     Link,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { humanFriendlyLargeNumber, percentage } from 'lib/utils/numbers'
 import { humanList } from 'lib/utils/strings'

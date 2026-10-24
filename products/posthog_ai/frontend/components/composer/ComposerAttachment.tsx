@@ -1,5 +1,5 @@
 import { IconX } from '@posthog/icons'
-import { Spinner, Tooltip } from '@posthog/lemon-ui'
+import { Spinner, Tooltip } from '@flind/lemon-ui'
 
 import { formatFileSize } from '../../utils/attachments'
 import { ComposerAttachmentPreview } from './ComposerAttachmentPreview'

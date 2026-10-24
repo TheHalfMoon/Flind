@@ -1,6 +1,6 @@
 import { useId } from 'react'
 
-import { LemonBanner, LemonInput, LemonSelect, LemonSwitch } from '@posthog/lemon-ui'
+import { LemonBanner, LemonInput, LemonSelect, LemonSwitch } from '@flind/lemon-ui'
 
 import { LemonField } from 'lib/lemon-ui/LemonField'
 

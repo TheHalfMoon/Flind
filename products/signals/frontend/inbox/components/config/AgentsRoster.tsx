@@ -11,7 +11,7 @@ import {
     LemonTag,
     Link,
     Spinner,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { LemonTagType } from 'lib/lemon-ui/LemonTag/LemonTag'
 

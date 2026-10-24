@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 
-import { LemonCollapse, LemonTag, Tooltip } from '@posthog/lemon-ui'
+import { LemonCollapse, LemonTag, Tooltip } from '@flind/lemon-ui'
 
 import { FeatureDirectionEnumApi, ModelExplanationFieldApi } from '../generated/api.schemas'
 

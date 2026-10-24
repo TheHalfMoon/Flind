@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import React, { useEffect, useMemo, useRef } from 'react'
 
-import { Tooltip } from '@posthog/lemon-ui'
+import { Tooltip } from '@flind/lemon-ui'
 
 import { ElementClickStats } from 'lib/components/heatmaps/ElementClickStats'
 import { Popover } from 'lib/lemon-ui/Popover'

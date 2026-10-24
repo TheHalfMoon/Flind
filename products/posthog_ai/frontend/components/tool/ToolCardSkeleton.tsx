@@ -1,4 +1,4 @@
-import { Spinner } from '@posthog/lemon-ui'
+import { Spinner } from '@flind/lemon-ui'
 
 /**
  * Eager, dependency-light placeholder shown while a tool renderer's lazy chunk loads. A single

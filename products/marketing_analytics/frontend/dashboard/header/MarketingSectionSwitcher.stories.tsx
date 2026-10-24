@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react'
 import { useActions, useValues } from 'kea'
 
-import { LemonButton, LemonSelect } from '@posthog/lemon-ui'
+import { LemonButton, LemonSelect } from '@flind/lemon-ui'
 
 import { FEATURE_FLAGS } from 'lib/constants'
 import { urls } from 'scenes/urls'

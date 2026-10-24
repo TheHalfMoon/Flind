@@ -1,7 +1,7 @@
 import { BindLogic, useActions, useValues } from 'kea'
 import { Form } from 'kea-forms'
 
-import { LemonBanner, LemonModal } from '@posthog/lemon-ui'
+import { LemonBanner, LemonModal } from '@flind/lemon-ui'
 
 import { WizardReview } from 'lib/components/WizardReview'
 import type { LemonInputSelectOption } from 'lib/lemon-ui/LemonInputSelect'

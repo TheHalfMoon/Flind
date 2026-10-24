@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { LemonTable } from '@posthog/lemon-ui'
+import { LemonTable } from '@flind/lemon-ui'
 
 import { humanFriendlyCurrency, humanFriendlyNumber } from 'lib/utils/numbers'
 

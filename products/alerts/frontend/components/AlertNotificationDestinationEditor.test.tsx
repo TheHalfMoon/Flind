@@ -3,7 +3,7 @@ import { KeyboardEvent, ReactNode } from 'react'
 
 import { AlertNotificationDestinationEditor } from './AlertNotificationDestinationEditor'
 
-jest.mock('@posthog/lemon-ui', () => ({
+jest.mock('@flind/lemon-ui', () => ({
     LemonButton: ({ children }: { children: ReactNode }) => <button>{children}</button>,
     LemonBanner: ({ children }: { children: ReactNode }) => <div>{children}</div>,
     LemonInput: ({

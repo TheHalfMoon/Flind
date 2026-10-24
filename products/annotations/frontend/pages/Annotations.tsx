@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconPencil } from '@posthog/icons'
-import { LemonSelect, Link } from '@posthog/lemon-ui'
+import { LemonSelect, Link } from '@flind/lemon-ui'
 import { Button } from '@flind/quill'
 
 import { TextContent } from 'lib/components/Cards/TextCard/TextCard'

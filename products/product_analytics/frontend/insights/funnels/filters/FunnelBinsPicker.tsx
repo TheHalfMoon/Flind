@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
 import { IconGraph } from '@posthog/icons'
-import { LemonButton, LemonDropdown, LemonInput } from '@posthog/lemon-ui'
+import { LemonButton, LemonDropdown, LemonInput } from '@flind/lemon-ui'
 
 import { BIN_COUNT_AUTO } from 'lib/constants'
 import { insightLogic } from 'scenes/insights/insightLogic'

@@ -11,7 +11,7 @@ import {
     IconTerminal,
     IconWarning,
 } from '@posthog/icons'
-import { LemonButton, Link, LemonSelect, LemonSkeleton, LemonTag, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, Link, LemonSelect, LemonSkeleton, LemonTag, Tooltip } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'
 import { LemonMarkdown } from 'lib/lemon-ui/LemonMarkdown'

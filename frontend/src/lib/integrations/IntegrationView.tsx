@@ -3,7 +3,7 @@ import { useActions, useValues } from 'kea'
 import { useEffect } from 'react'
 
 import { IconTrash } from '@posthog/icons'
-import { LemonBanner, LemonButton, Tooltip } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, Tooltip } from '@flind/lemon-ui'
 
 import api from 'lib/api'
 import { RestrictionScope, useRestrictedArea } from 'lib/components/RestrictedArea'

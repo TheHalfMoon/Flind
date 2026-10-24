@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconRefresh } from '@posthog/icons'
-import { LemonBanner, Spinner } from '@posthog/lemon-ui'
+import { LemonBanner, Spinner } from '@flind/lemon-ui'
 
 import { autoresearchPipelineLogic } from '../autoresearchPipelineLogic'
 import { AgentSearchChart } from './AgentSearchChart'

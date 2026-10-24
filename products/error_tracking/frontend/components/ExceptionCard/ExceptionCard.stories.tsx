@@ -2,7 +2,7 @@ import { Meta } from '@storybook/react'
 import { BindLogic, useActions } from 'kea'
 import { useEffect } from 'react'
 
-import { LemonCard } from '@posthog/lemon-ui'
+import { LemonCard } from '@flind/lemon-ui'
 
 import { ErrorEventType } from 'lib/components/Errors/types'
 import { FEATURE_FLAGS } from 'lib/constants'

@@ -4,7 +4,7 @@ import { useActions, useValues } from 'kea'
 import { ReactNode } from 'react'
 
 import { IconChevronDown } from '@posthog/icons'
-import { LemonMenu, LemonMenuItem } from '@posthog/lemon-ui'
+import { LemonMenu, LemonMenuItem } from '@flind/lemon-ui'
 
 import { eventUsageLogic } from 'lib/utils/eventUsageLogic'
 import { average, median } from 'lib/utils/numbers'

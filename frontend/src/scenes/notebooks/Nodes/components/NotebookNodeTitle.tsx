@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import posthog from 'posthog-js'
 import { KeyboardEvent, useEffect, useRef, useState } from 'react'
 
-import { LemonInput, LemonTag, Tooltip } from '@posthog/lemon-ui'
+import { LemonInput, LemonTag, Tooltip } from '@flind/lemon-ui'
 
 import { Spinner } from 'lib/lemon-ui/Spinner'
 import { notebookLogic } from 'scenes/notebooks/Notebook/notebookLogic'

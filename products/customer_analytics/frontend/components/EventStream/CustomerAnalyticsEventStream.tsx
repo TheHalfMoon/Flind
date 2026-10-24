@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconPlus } from '@posthog/icons'
-import { LemonBanner, LemonButton, LemonSelect, LemonSkeleton, LemonSwitch, Link } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonSelect, LemonSkeleton, LemonSwitch, Link } from '@flind/lemon-ui'
 
 import { EventSelect } from 'lib/components/EventSelect/EventSelect'
 import { SlackChannelPicker } from 'lib/integrations/SlackIntegrationHelpers'

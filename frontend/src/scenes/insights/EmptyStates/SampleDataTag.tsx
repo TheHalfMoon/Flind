@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { LemonTag, Tooltip } from '@posthog/lemon-ui'
+import { LemonTag, Tooltip } from '@flind/lemon-ui'
 
 import { Link } from 'lib/lemon-ui/Link'
 import { setupWizardStatusLogic } from 'scenes/onboarding/shared/setupWizardStatusLogic'

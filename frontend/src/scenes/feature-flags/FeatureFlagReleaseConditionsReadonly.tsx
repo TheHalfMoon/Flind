@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { LemonLabel, LemonTag } from '@posthog/lemon-ui'
+import { LemonLabel, LemonTag } from '@flind/lemon-ui'
 
 import { FeatureFlagEvaluationRuntime, FeatureFlagFilters } from '~/types'
 

@@ -4,7 +4,7 @@ import { useActions, useValues } from 'kea'
 import { useEffect, useState } from 'react'
 
 import { IconInfo } from '@posthog/icons'
-import { LemonCheckbox, LemonSelect, Link } from '@posthog/lemon-ui'
+import { LemonCheckbox, LemonSelect, Link } from '@flind/lemon-ui'
 
 import { INSTANTLY_AVAILABLE_PROPERTIES } from 'lib/constants'
 import { Tooltip } from 'lib/lemon-ui/Tooltip'

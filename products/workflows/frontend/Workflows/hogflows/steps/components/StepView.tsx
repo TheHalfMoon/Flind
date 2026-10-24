@@ -3,7 +3,7 @@ import { useActions, useValues } from 'kea'
 import { useMemo } from 'react'
 
 import { IconCopy, IconDrag, IconEllipsis, IconTrash } from '@posthog/icons'
-import { LemonInput, LemonTextArea, Tooltip } from '@posthog/lemon-ui'
+import { LemonInput, LemonTextArea, Tooltip } from '@flind/lemon-ui'
 
 import { LemonBadge } from 'lib/lemon-ui/LemonBadge'
 import { LemonButton } from 'lib/lemon-ui/LemonButton'

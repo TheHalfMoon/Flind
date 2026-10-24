@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { LemonButton, LemonMenu, LemonMenuItem, LemonMenuItems } from '@posthog/lemon-ui'
+import { LemonButton, LemonMenu, LemonMenuItem, LemonMenuItems } from '@flind/lemon-ui'
 
 import { getAccessControlDisabledReason } from 'lib/utils/accessControlUtils'
 

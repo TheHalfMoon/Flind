@@ -4,7 +4,7 @@ import { router } from 'kea-router'
 import { memo, useId, useMemo, useState } from 'react'
 
 import { IconPlusSmall, IconSearch } from '@posthog/icons'
-import { LemonInput, LemonSkeleton, Tooltip } from '@posthog/lemon-ui'
+import { LemonInput, LemonSkeleton, Tooltip } from '@flind/lemon-ui'
 
 import { ScrollableShadows } from 'lib/components/ScrollableShadows/ScrollableShadows'
 import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'

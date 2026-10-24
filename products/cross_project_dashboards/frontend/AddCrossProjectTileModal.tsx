@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonButton, LemonInputSelect, LemonModal } from '@posthog/lemon-ui'
+import { LemonButton, LemonInputSelect, LemonModal } from '@flind/lemon-ui'
 
 import { dayjs } from 'lib/dayjs'
 import { LemonField } from 'lib/lemon-ui/LemonField'

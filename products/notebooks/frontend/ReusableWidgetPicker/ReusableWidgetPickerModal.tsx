@@ -1,7 +1,7 @@
 import { useActions, useMountedLogic, useValues } from 'kea'
 import { useEffect } from 'react'
 
-import { LemonBanner, LemonButton, LemonInput, LemonModal } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonInput, LemonModal } from '@flind/lemon-ui'
 
 import { LemonSkeleton } from 'lib/lemon-ui/LemonSkeleton'
 import { collectNotebookFrameNodes } from 'scenes/notebooks/Nodes/notebookNodeContent'

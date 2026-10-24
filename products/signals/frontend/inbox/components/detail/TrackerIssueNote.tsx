@@ -1,5 +1,5 @@
 import { IconWarning } from '@posthog/icons'
-import { Link } from '@posthog/lemon-ui'
+import { Link } from '@flind/lemon-ui'
 
 import { SignalReport } from '../../types'
 import { safeHttpUrl } from '../../utils/reportPresentation'

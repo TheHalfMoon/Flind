@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { LemonTag, Tooltip } from '@posthog/lemon-ui'
+import { LemonTag, Tooltip } from '@flind/lemon-ui'
 
 import { aiObservabilitySessionEvaluationsLogic } from './aiObservabilitySessionEvaluationsLogic'
 import { EvalTooltipContent, getEvalBadgeProps, getEvalSummaries } from './components/EvalResultBadges'

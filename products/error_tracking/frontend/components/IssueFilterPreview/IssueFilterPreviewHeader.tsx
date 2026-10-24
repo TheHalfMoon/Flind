@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import type { ReactNode } from 'react'
 
 import { IconArrowLeft } from '@posthog/icons'
-import { Tooltip as LemonTooltip } from '@posthog/lemon-ui'
+import { Tooltip as LemonTooltip } from '@flind/lemon-ui'
 
 import { Button, Heading } from 'lib/ui/quill'
 

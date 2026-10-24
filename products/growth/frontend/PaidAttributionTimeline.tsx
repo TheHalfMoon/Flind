@@ -1,5 +1,5 @@
 import { IconArrowRight, IconExternal, IconTarget } from '@posthog/icons'
-import { LemonButton, LemonTable, LemonTableColumns, LemonTag, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, LemonTable, LemonTableColumns, LemonTag, Tooltip } from '@flind/lemon-ui'
 
 import { dayjs } from 'lib/dayjs'
 import { urls } from 'scenes/urls'

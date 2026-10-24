@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconClock } from '@posthog/icons'
-import { LemonButton, LemonSelect, LemonSkeleton } from '@posthog/lemon-ui'
+import { LemonButton, LemonSelect, LemonSkeleton } from '@flind/lemon-ui'
 
 import { ErrorBoundary } from '~/layout/ErrorBoundary'
 

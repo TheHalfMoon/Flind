@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { Form } from 'kea-forms'
 
 import { IconGitLab } from '@posthog/icons'
-import { LemonButton, LemonInput, LemonModal, Link } from '@posthog/lemon-ui'
+import { LemonButton, LemonInput, LemonModal, Link } from '@flind/lemon-ui'
 
 import { LemonField } from 'lib/lemon-ui/LemonField'
 

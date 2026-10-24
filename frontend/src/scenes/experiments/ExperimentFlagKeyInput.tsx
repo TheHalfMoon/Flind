@@ -1,5 +1,5 @@
 import { IconCopy } from '@posthog/icons'
-import { LemonBanner, LemonInput, LemonTable, Link } from '@posthog/lemon-ui'
+import { LemonBanner, LemonInput, LemonTable, Link } from '@flind/lemon-ui'
 
 import { IconOpenInNew } from 'lib/lemon-ui/icons'
 import { LemonButton } from 'lib/lemon-ui/LemonButton'

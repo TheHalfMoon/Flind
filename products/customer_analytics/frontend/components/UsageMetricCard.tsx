@@ -1,5 +1,5 @@
 import { IconTrending } from '@posthog/icons'
-import { LemonCard, LemonSkeleton, Tooltip } from '@posthog/lemon-ui'
+import { LemonCard, LemonSkeleton, Tooltip } from '@flind/lemon-ui'
 
 import { Sparkline } from 'lib/components/Sparkline'
 import { IconTrendingDown, IconTrendingFlat } from 'lib/lemon-ui/icons'

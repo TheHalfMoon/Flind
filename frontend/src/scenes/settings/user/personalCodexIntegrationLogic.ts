@@ -2,7 +2,7 @@ import { MakeLogicType, actions, events, kea, listeners, path, reducers } from '
 import { loaders } from 'kea-loaders'
 import posthog from 'posthog-js'
 
-import { lemonToast } from '@posthog/lemon-ui'
+import { lemonToast } from '@flind/lemon-ui'
 
 import {
     usersIntegrationsCodexCreate,

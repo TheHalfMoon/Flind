@@ -1,7 +1,7 @@
 import { BindLogic, useValues } from 'kea'
 import { useMemo, useState } from 'react'
 
-import { LemonBanner } from '@posthog/lemon-ui'
+import { LemonBanner } from '@flind/lemon-ui'
 
 import { TitledSnack } from 'lib/components/TitledSnack'
 import { dayjs } from 'lib/dayjs'

@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonInput } from '@posthog/lemon-ui'
+import { LemonInput } from '@flind/lemon-ui'
 
 import { projectsGridLogic } from './projectsGridLogic'
 import { ProjectsGridPicker } from './ProjectsGridPicker'

@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import posthog from 'posthog-js'
 
-import { Tooltip as LemonTooltip } from '@posthog/lemon-ui'
+import { Tooltip as LemonTooltip } from '@flind/lemon-ui'
 
 import { Button, Skeleton } from 'lib/ui/quill'
 import { BREAKDOWN_NULL_STRING_LABEL, isNullBreakdown } from 'scenes/insights/utils'

@@ -1,4 +1,4 @@
-import { LemonButton, LemonTag, type LemonTagType } from '@posthog/lemon-ui'
+import { LemonButton, LemonTag, type LemonTagType } from '@flind/lemon-ui'
 
 import type { WidgetSecurityReviewApi } from 'products/notebooks/frontend/generated/api.schemas'
 

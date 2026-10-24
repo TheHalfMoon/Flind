@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { WorkflowDataSuggestions } from './suggestions/WorkflowDataSuggestions'
 import { workflowDataSuggestionsLogic } from './suggestions/workflowDataSuggestionsLogic'

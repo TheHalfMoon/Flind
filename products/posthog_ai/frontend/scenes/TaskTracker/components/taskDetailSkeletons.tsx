@@ -1,4 +1,4 @@
-import { LemonSkeleton } from '@posthog/lemon-ui'
+import { LemonSkeleton } from '@flind/lemon-ui'
 import { Skeleton } from '@flind/quill-primitives'
 
 import { ScenePanelInfoSection } from '~/layout/scenes/SceneLayout'

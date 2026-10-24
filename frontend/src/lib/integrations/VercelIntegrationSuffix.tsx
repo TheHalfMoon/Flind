@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { Fragment, useEffect, useState } from 'react'
 
 import { IconTrash } from '@posthog/icons'
-import { LemonButton, LemonSelect } from '@posthog/lemon-ui'
+import { LemonButton, LemonSelect } from '@flind/lemon-ui'
 
 import { getCookie } from 'lib/api'
 import { RestrictionScope, useRestrictedArea } from 'lib/components/RestrictedArea'

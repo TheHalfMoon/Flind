@@ -3,7 +3,7 @@ import './CalendarHeatMap.scss'
 import { useValues } from 'kea'
 import React, { useCallback, useEffect, useState } from 'react'
 
-import { LemonSkeleton, Tooltip } from '@posthog/lemon-ui'
+import { LemonSkeleton, Tooltip } from '@flind/lemon-ui'
 
 import { cn } from 'lib/utils/css-classes'
 import { dataThemeLogic } from 'scenes/dataThemeLogic'

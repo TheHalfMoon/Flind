@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonButton, LemonInput, LemonTable, LemonTag, Link, Spinner, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, LemonInput, LemonTable, LemonTag, Link, Spinner, Tooltip } from '@flind/lemon-ui'
 import { Button } from '@flind/quill'
 
 import { Shortcut } from 'lib/components/Shortcuts/Shortcut'

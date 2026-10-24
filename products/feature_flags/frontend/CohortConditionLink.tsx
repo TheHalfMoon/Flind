@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 
 import { IconBolt, IconWarning } from '@posthog/icons'
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { cohortFilterName } from 'lib/components/PropertyFilters/utils'
 import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'

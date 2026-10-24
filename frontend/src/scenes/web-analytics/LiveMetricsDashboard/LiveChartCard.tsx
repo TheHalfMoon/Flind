@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { type ReactNode } from 'react'
 
-import { LemonBanner, Spinner, Tooltip } from '@posthog/lemon-ui'
+import { LemonBanner, Spinner, Tooltip } from '@flind/lemon-ui'
 
 interface LiveChartCardProps {
     title: string

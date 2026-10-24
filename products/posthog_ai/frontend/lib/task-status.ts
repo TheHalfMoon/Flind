@@ -1,4 +1,4 @@
-import { type LemonBadgeProps } from '@posthog/lemon-ui'
+import { type LemonBadgeProps } from '@flind/lemon-ui'
 
 import { TaskRunStatus } from '../types/taskTypes'
 

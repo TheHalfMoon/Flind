@@ -6,7 +6,7 @@ import { useState } from 'react'
 import { createPortal } from 'react-dom'
 
 import { IconEmoji, IconPlusSmall, IconRevert, IconTrash } from '@posthog/icons'
-import { LemonButton, LemonCheckbox, LemonInput, LemonSegmentedButton, LemonTag } from '@posthog/lemon-ui'
+import { LemonButton, LemonCheckbox, LemonInput, LemonSegmentedButton, LemonTag } from '@flind/lemon-ui'
 
 import { EditableField } from 'lib/components/EditableField/EditableField'
 import { GuidedWizardSection } from 'lib/components/GuidedWizard/GuidedWizardSection'

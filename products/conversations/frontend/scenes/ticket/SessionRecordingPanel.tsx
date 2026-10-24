@@ -1,4 +1,4 @@
-import { LemonButton, LemonCollapse } from '@posthog/lemon-ui'
+import { LemonButton, LemonCollapse } from '@flind/lemon-ui'
 
 import { SessionRecordingPlayer } from 'scenes/session-recordings/player/SessionRecordingPlayer'
 import { urls } from 'scenes/urls'

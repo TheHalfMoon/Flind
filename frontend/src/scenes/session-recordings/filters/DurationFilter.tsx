@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 
-import { LemonButton, LemonButtonProps } from '@posthog/lemon-ui'
+import { LemonButton, LemonButtonProps } from '@flind/lemon-ui'
 
 import { DurationPicker, convertSecondsToDuration } from 'lib/components/DurationPicker/DurationPicker'
 import { OperatorSelect } from 'lib/components/PropertyFilters/components/OperatorValueSelect'

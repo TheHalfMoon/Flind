@@ -7,7 +7,7 @@ import posthog from 'posthog-js'
 import { useCallback, useEffect, useRef, useState } from 'react'
 
 import { IconChevronDown, IconRewindPlay, IconSparkles, IconX } from '@posthog/icons'
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { NotFound } from 'lib/components/NotFound'
 import { Resizer } from 'lib/components/Resizer/Resizer'

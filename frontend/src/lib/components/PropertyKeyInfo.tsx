@@ -4,7 +4,7 @@ import clsx from 'clsx'
 import { useValues } from 'kea'
 import React, { useState } from 'react'
 
-import { LemonDivider, TooltipProps } from '@posthog/lemon-ui'
+import { LemonDivider, TooltipProps } from '@flind/lemon-ui'
 
 import { Logomark } from 'lib/brand'
 import { FlagCalledMoveNotice } from 'lib/components/FlagCalledMoveNotice/FlagCalledMoveNotice'

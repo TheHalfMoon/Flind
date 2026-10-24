@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useEffect, memo } from 'react'
 
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { FeedbackPromptLogicProps, feedbackPromptLogic } from '../logics/feedbackPromptLogic'
 import { FeedbackPromptRating as Rating } from '../utils/feedbackEvents'

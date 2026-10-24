@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { LemonSkeleton, LemonTag } from '@posthog/lemon-ui'
+import { LemonSkeleton, LemonTag } from '@flind/lemon-ui'
 
 import { Query } from '~/queries/Query/Query'
 import { InsightVizNode, NodeKind } from '~/queries/schema/schema-general'

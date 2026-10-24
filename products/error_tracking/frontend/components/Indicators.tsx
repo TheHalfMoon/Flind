@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import React from 'react'
 
-import { LemonBadge, Tooltip as LemonTooltip, TooltipProps } from '@posthog/lemon-ui'
+import { LemonBadge, Tooltip as LemonTooltip, TooltipProps } from '@flind/lemon-ui'
 
 import { Dot, Tooltip, TooltipContent, TooltipTrigger } from 'lib/ui/quill'
 

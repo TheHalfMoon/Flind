@@ -1,4 +1,4 @@
-import { LemonBanner } from '@posthog/lemon-ui'
+import { LemonBanner } from '@flind/lemon-ui'
 import { PostHogCaptureOnViewed } from '@posthog/react'
 
 import { saveActionFromSeriesNode } from '~/models/saveAsActionDialog'

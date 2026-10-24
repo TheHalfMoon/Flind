@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 
-import { LemonButton, LemonTag, LemonTagType, Tooltip, LemonSkeleton } from '@posthog/lemon-ui'
+import { LemonButton, LemonTag, LemonTagType, Tooltip, LemonSkeleton } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'
 

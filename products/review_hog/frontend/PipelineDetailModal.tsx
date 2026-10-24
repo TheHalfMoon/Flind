@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonModal } from '@posthog/lemon-ui'
+import { LemonModal } from '@flind/lemon-ui'
 
 import { useWindowSize } from 'lib/hooks/useWindowSize'
 

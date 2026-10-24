@@ -16,7 +16,7 @@ import { loaders } from 'kea-loaders'
 import { router } from 'kea-router'
 import posthog from 'posthog-js'
 
-import { LemonDialog, LemonInput } from '@posthog/lemon-ui'
+import { LemonDialog, LemonInput } from '@flind/lemon-ui'
 
 import { ApiError } from 'lib/api'
 import { isTransientServerError, shouldReportApiFailure } from 'lib/api-error'

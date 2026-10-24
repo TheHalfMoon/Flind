@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { Spinner } from '@posthog/lemon-ui'
+import { Spinner } from '@flind/lemon-ui'
 
 import { failureExcerpt } from '../../lib/ciExplorerDetails'
 import { ciExplorerLogic } from '../../scenes/ciExplorerLogic'

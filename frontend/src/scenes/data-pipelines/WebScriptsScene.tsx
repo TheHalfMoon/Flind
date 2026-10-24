@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconPlus, IconPlusSmall } from '@posthog/icons'
-import { LemonButton, LemonTabs } from '@posthog/lemon-ui'
+import { LemonButton, LemonTabs } from '@flind/lemon-ui'
 import { Button } from '@flind/quill'
 
 import { ActivityLog } from 'lib/components/ActivityLog/ActivityLog'

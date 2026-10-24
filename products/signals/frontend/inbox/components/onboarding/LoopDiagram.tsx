@@ -3,7 +3,7 @@
 import './InboxWelcome.scss'
 
 import { IconRewindPlay, IconWarning } from '@posthog/icons'
-import { LemonButton, LemonCard, LemonTag } from '@posthog/lemon-ui'
+import { LemonButton, LemonCard, LemonTag } from '@flind/lemon-ui'
 
 import { IconSlack } from 'lib/lemon-ui/icons'
 

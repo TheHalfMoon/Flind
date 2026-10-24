@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonInput, LemonSelect, Tooltip } from '@posthog/lemon-ui'
+import { LemonInput, LemonSelect, Tooltip } from '@flind/lemon-ui'
 
 import { MemberSelect } from 'lib/components/MemberSelect'
 import { ObjectTags } from 'lib/components/ObjectTags/ObjectTags'

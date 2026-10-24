@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react'
 import type { MutableRefObject } from 'react'
 
 import { IconEllipsis } from '@posthog/icons'
-import { LemonMenu, LemonMenuItems } from '@posthog/lemon-ui'
+import { LemonMenu, LemonMenuItems } from '@flind/lemon-ui'
 
 import { commentsLogic } from 'lib/components/Comments/commentsLogic'
 import { LemonButton } from 'lib/lemon-ui/LemonButton'

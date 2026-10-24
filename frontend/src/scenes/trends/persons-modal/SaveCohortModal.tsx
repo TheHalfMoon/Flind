@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { LemonButton, LemonInput, LemonModal } from '@posthog/lemon-ui'
+import { LemonButton, LemonInput, LemonModal } from '@flind/lemon-ui'
 
 interface Props {
     onSave: (title: string) => void

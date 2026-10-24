@@ -1,7 +1,7 @@
 // CI failure log excerpts grouped by failed job. Lines come pre-thinned from the backend; omission
 // markers (original_line == null) render muted so the elision is visible, never silent.
 
-import { LemonSkeleton, LemonTag } from '@posthog/lemon-ui'
+import { LemonSkeleton, LemonTag } from '@flind/lemon-ui'
 
 import { cn } from 'lib/utils/css-classes'
 

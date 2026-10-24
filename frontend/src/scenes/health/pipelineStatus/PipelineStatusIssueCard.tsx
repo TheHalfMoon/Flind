@@ -1,5 +1,5 @@
 import { IconDatabase, IconPlug, IconRevert, IconServer, IconX } from '@posthog/icons'
-import { LemonButton, LemonTag, Link } from '@posthog/lemon-ui'
+import { LemonButton, LemonTag, Link } from '@flind/lemon-ui'
 
 import { openInAppSupport } from 'lib/components/Support/openInAppSupport'
 import { humanFriendlyDetailedTime } from 'lib/utils/datetime'

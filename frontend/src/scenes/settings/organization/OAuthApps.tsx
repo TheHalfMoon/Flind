@@ -2,7 +2,7 @@ import { decode } from 'he'
 import { useValues } from 'kea'
 
 import { IconCopy } from '@posthog/icons'
-import { LemonButton, LemonSkeleton, LemonTable, LemonTag } from '@posthog/lemon-ui'
+import { LemonButton, LemonSkeleton, LemonTable, LemonTag } from '@flind/lemon-ui'
 
 import { IconKey } from 'lib/lemon-ui/icons'
 import { copyToClipboard } from 'lib/utils/copyToClipboard'

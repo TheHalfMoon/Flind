@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { Fragment } from 'react'
 
 import { IconWarning } from '@posthog/icons'
-import { LemonTag, LemonTextArea, Tooltip } from '@posthog/lemon-ui'
+import { LemonTag, LemonTextArea, Tooltip } from '@flind/lemon-ui'
 
 import { AnimatedCollapsible } from 'lib/components/AnimatedCollapsible'
 

@@ -12,7 +12,7 @@ import {
     LemonSwitch,
     Popover,
     lemonToast,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { dayjs } from 'lib/dayjs'
 import { LemonField } from 'lib/lemon-ui/LemonField'

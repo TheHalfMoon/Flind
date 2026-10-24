@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useEffect } from 'react'
 
-import { LemonInputSelect, LemonLabel } from '@posthog/lemon-ui'
+import { LemonInputSelect, LemonLabel } from '@flind/lemon-ui'
 
 import { quickSurveyFormLogic } from 'scenes/surveys/quick-create/quickSurveyFormLogic'
 

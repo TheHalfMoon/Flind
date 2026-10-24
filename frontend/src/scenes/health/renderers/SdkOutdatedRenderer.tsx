@@ -1,4 +1,4 @@
-import { LemonTag, Link, Tooltip } from '@posthog/lemon-ui'
+import { LemonTag, Link, Tooltip } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'
 import { SDK_DOCS_LINKS, SDK_TYPE_READABLE_NAME } from 'scenes/onboarding/shared/sdkHealth/sdkConstants'

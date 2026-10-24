@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { useCallback } from 'react'
 
-import { LemonButton, LemonTab, LemonTabs } from '@posthog/lemon-ui'
+import { LemonButton, LemonTab, LemonTabs } from '@flind/lemon-ui'
 import { Button } from '@flind/quill'
 
 import { AccessControlAction } from 'lib/components/AccessControlAction'

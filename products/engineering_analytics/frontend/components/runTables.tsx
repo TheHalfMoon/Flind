@@ -1,6 +1,6 @@
 // Shared status tags and cost formatters for the CI run/job tables (PR detail and workflow-run pages).
 
-import { LemonTag } from '@posthog/lemon-ui'
+import { LemonTag } from '@flind/lemon-ui'
 
 import { cn } from 'lib/utils/css-classes'
 

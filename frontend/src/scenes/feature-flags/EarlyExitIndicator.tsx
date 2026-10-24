@@ -1,5 +1,5 @@
 import { IconInfo } from '@posthog/icons'
-import { Tooltip } from '@posthog/lemon-ui'
+import { Tooltip } from '@flind/lemon-ui'
 
 export function EarlyExitIndicator(): JSX.Element {
     return (

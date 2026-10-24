@@ -1,7 +1,7 @@
 import { BuiltLogic, useActions, useValues } from 'kea'
 import { useEffect, useMemo } from 'react'
 
-import { LemonTag } from '@posthog/lemon-ui'
+import { LemonTag } from '@flind/lemon-ui'
 import { PostHogErrorBoundary } from '@posthog/react'
 
 import { NotFound } from 'lib/components/NotFound'

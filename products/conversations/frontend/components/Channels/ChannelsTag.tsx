@@ -1,5 +1,5 @@
 import { IconComment, IconExternal, IconGithub, IconLetter } from '@posthog/icons'
-import { LemonTag, Link, Tooltip } from '@posthog/lemon-ui'
+import { LemonTag, Link, Tooltip } from '@flind/lemon-ui'
 
 import { IconMicrosoftTeams, IconSlack } from 'lib/lemon-ui/icons'
 

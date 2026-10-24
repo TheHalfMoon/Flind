@@ -7,7 +7,7 @@ import { router } from 'kea-router'
 import React, { HTMLProps, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
 import { IconInfo } from '@posthog/icons'
-import { LemonCheckbox } from '@posthog/lemon-ui'
+import { LemonCheckbox } from '@flind/lemon-ui'
 
 import { ScrollableShadows } from 'lib/components/ScrollableShadows/ScrollableShadows'
 import { useCellCopyContextMenu } from 'lib/hooks/useCellCopyContextMenu'

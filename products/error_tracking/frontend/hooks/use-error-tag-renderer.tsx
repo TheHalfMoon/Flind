@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { useCallback } from 'react'
 
-import { LemonTag } from '@posthog/lemon-ui'
+import { LemonTag } from '@flind/lemon-ui'
 
 import { ErrorEventType } from 'lib/components/Errors/types'
 import { dayjs } from 'lib/dayjs'

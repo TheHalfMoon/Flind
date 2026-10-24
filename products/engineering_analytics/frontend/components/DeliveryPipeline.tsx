@@ -1,6 +1,6 @@
 // Where a change's time goes on the way to production, as bars sharing one scale.
 
-import { LemonCard, LemonSkeleton, Tooltip } from '@posthog/lemon-ui'
+import { LemonCard, LemonSkeleton, Tooltip } from '@flind/lemon-ui'
 
 import type { DeliveryPipelineApi, DeliveryStageTimingApi } from '../generated/api.schemas'
 import { DeliveryStageEnumApi } from '../generated/api.schemas'

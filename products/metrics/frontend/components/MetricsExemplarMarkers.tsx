@@ -1,6 +1,6 @@
 import type { MouseEvent } from 'react'
 
-import { Tooltip } from '@posthog/lemon-ui'
+import { Tooltip } from '@flind/lemon-ui'
 import { useChartLayout } from '@flind/quill-charts'
 
 import { getColorVar } from 'lib/colors'

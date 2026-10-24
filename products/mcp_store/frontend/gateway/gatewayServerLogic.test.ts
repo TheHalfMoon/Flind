@@ -2,7 +2,7 @@ import { MOCK_DEFAULT_BASIC_USER, MOCK_DEFAULT_USER } from '~/lib/api.mock'
 
 import { router } from 'kea-router'
 
-import { lemonToast } from '@posthog/lemon-ui'
+import { lemonToast } from '@flind/lemon-ui'
 
 import { urls } from 'scenes/urls'
 import { userLogic } from 'scenes/userLogic'

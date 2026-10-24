@@ -6,7 +6,7 @@ import {
     LemonMenu,
     LemonSegmentedButton,
     LemonSelect,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { getSeriesColorPalette } from 'lib/colors'
 import { LemonButton } from 'lib/lemon-ui/LemonButton'

@@ -7,7 +7,7 @@ import {
 
 import { expectLogic } from 'kea-test-utils'
 
-import { lemonToast } from '@posthog/lemon-ui'
+import { lemonToast } from '@flind/lemon-ui'
 
 import { OrganizationMembershipLevel } from 'lib/constants'
 import { membersLogic } from 'scenes/organization/membersLogic'
@@ -20,8 +20,8 @@ import { OrganizationMemberType, Region, UserType } from '~/types'
 
 import { impersonationNoticeLogic } from './impersonationNoticeLogic'
 
-jest.mock('@posthog/lemon-ui', () => {
-    const actual = jest.requireActual('@posthog/lemon-ui')
+jest.mock('@flind/lemon-ui', () => {
+    const actual = jest.requireActual('@flind/lemon-ui')
     return {
         ...actual,
         lemonToast: {

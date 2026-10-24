@@ -1,5 +1,5 @@
 import { IconArrowRight } from '@posthog/icons'
-import { Tooltip } from '@posthog/lemon-ui'
+import { Tooltip } from '@flind/lemon-ui'
 import {
     Badge,
     Progress,

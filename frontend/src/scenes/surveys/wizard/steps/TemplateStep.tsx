@@ -22,7 +22,7 @@ import {
     IconTrending,
     IconWarning,
 } from '@posthog/icons'
-import { LemonButton, LemonSegmentedButton, LemonTag, LemonTextArea } from '@posthog/lemon-ui'
+import { LemonButton, LemonSegmentedButton, LemonTag, LemonTextArea } from '@flind/lemon-ui'
 
 import { FEATURE_FLAGS } from 'lib/constants'
 import { featureFlagLogic } from 'lib/logic/featureFlagLogic'

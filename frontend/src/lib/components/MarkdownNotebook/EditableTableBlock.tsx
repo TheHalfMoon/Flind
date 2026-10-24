@@ -13,7 +13,7 @@ import {
 } from 'react'
 
 import { IconMinus, IconPlus } from '@posthog/icons'
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { shouldUseMarkdownPaste } from './documentModel'
 import { getInlineLinkPasteResult, getSelectionRange } from './domSelection'

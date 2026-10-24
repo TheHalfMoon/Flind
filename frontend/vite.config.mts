@@ -77,9 +77,9 @@ export default defineConfig(({ mode }) => {
                 mocks: resolve(__dirname, 'src/mocks'),
                 exporter: resolve(__dirname, 'src/exporter'),
                 types: resolve(__dirname, 'src/types.ts'),
-                // @posthog/lemon-ui aliases
-                '@posthog/lemon-ui': resolve(__dirname, '@posthog/lemon-ui/src/index'),
-                '@posthog/lemon-ui/': resolve(__dirname, '@posthog/lemon-ui/src/'),
+                // @flind/lemon-ui aliases
+                '@flind/lemon-ui': resolve(__dirname, '@flind/lemon-ui/src/index'),
+                '@flind/lemon-ui/': resolve(__dirname, '@flind/lemon-ui/src/'),
                 // Other aliases from tsconfig.json
                 storybook: resolve(__dirname, '../.storybook'),
                 // Just for Vite: we copy public assets to src/assets, we need to alias it to the correct path

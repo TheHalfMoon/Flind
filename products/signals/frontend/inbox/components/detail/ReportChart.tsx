@@ -2,7 +2,7 @@ import { useValues } from 'kea'
 import { useContext, useMemo } from 'react'
 
 import { IconExternal } from '@posthog/icons'
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { LemonCard } from 'lib/lemon-ui/LemonCard'
 import { Spinner } from 'lib/lemon-ui/Spinner'

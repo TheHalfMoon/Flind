@@ -1,5 +1,5 @@
 import { IconWarning } from '@posthog/icons'
-import { LemonBanner } from '@posthog/lemon-ui'
+import { LemonBanner } from '@flind/lemon-ui'
 
 import { checkSelectorFragilityCached } from '~/toolbar/utils/selectorQuality'
 

@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useCallback, useMemo } from 'react'
 
-import { LemonBanner, LemonButton, LemonSelect, LemonTag } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonSelect, LemonTag } from '@flind/lemon-ui'
 
 import {
     SqlScatterGraph,

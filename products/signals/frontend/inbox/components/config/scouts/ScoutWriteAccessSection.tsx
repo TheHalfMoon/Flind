@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { LemonButton, LemonCollapse, LemonTag } from '@posthog/lemon-ui'
+import { LemonButton, LemonCollapse, LemonTag } from '@flind/lemon-ui'
 
 import type {
     PatchedSignalScoutConfigUpdateApi as SignalScoutConfigUpdate,

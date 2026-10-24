@@ -1,5 +1,5 @@
 import { IconPerson } from '@posthog/icons'
-import { LemonTag, Link } from '@posthog/lemon-ui'
+import { LemonTag, Link } from '@flind/lemon-ui'
 
 import { LabeledLink } from '../types'
 

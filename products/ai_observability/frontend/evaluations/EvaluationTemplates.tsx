@@ -5,7 +5,7 @@ import { useState } from 'react'
 
 import * as judgePng from '@posthog/brand/hoggies/png/judge'
 import { IconArrowLeft, IconPlus } from '@posthog/icons'
-import { LemonButton, LemonTabs, Link } from '@posthog/lemon-ui'
+import { LemonButton, LemonTabs, Link } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import { SceneExport } from 'scenes/sceneTypes'

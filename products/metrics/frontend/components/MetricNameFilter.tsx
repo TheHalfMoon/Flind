@@ -3,7 +3,7 @@ import { CSSProperties, useCallback, useMemo } from 'react'
 import { List } from 'react-window'
 
 import { IconChevronDown } from '@posthog/icons'
-import { LemonButton, LemonDropdown, LemonInput, Spinner } from '@posthog/lemon-ui'
+import { LemonButton, LemonDropdown, LemonInput, Spinner } from '@flind/lemon-ui'
 
 import { metricNamePickerLogic } from './metricNamePickerLogic'
 

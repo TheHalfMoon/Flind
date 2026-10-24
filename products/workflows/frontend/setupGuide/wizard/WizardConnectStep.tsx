@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 
 import { IconCheckCircle } from '@posthog/icons'
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import api from 'lib/api'
 import { IconSlack } from 'lib/lemon-ui/icons'

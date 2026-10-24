@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonCollapse, Tooltip } from '@posthog/lemon-ui'
+import { LemonCollapse, Tooltip } from '@flind/lemon-ui'
 
 import type { BriefModel } from '../agentSearch'
 import { autoresearchPipelineLogic } from '../autoresearchPipelineLogic'

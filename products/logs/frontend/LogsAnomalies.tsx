@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { memo } from 'react'
 
-import { LemonBanner, LemonButton, LemonTag } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonTag } from '@flind/lemon-ui'
 
 import { DateRangePicker } from 'lib/components/DateFilter/DateRangePicker/DateRangePicker'
 import { EmptyMessage } from 'lib/components/EmptyMessage/EmptyMessage'

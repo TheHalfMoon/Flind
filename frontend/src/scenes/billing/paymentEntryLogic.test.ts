@@ -5,9 +5,9 @@ import { router } from 'kea-router'
 import { expectLogic } from 'kea-test-utils'
 import posthog from 'posthog-js'
 
-// Imported from the source module rather than the `@posthog/lemon-ui` barrel so that the
+// Imported from the source module rather than the `@flind/lemon-ui` barrel so that the
 // spy below replaces `.error` on the same `lemonToast` singleton that `paymentEntryLogic`
-// calls at runtime. `jest.mock('@posthog/lemon-ui', ...)` did not propagate through the
+// calls at runtime. `jest.mock('@flind/lemon-ui', ...)` did not propagate through the
 // barrel's re-export chain — spying on the shared object avoids that issue.
 import { lemonToast } from 'lib/lemon-ui/LemonToast/LemonToast'
 import { billingLogic } from 'scenes/billing/billingLogic'

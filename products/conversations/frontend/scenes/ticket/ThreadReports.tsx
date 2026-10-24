@@ -1,4 +1,4 @@
-import { Link, Tooltip } from '@posthog/lemon-ui'
+import { Link, Tooltip } from '@flind/lemon-ui'
 
 import { Logomark } from 'lib/brand'
 import { TZLabel } from 'lib/components/TZLabel'

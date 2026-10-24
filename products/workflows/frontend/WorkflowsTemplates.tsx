@@ -1,6 +1,6 @@
 import { router } from 'kea-router'
 
-import { LemonSegmentedButton } from '@posthog/lemon-ui'
+import { LemonSegmentedButton } from '@flind/lemon-ui'
 
 import { urls } from 'scenes/urls'
 

@@ -1,6 +1,6 @@
 import { useActions } from 'kea'
 
-import { LemonTag, Link } from '@posthog/lemon-ui'
+import { LemonTag, Link } from '@flind/lemon-ui'
 
 import { DigestRunApi } from '../../generated/api.schemas'
 import { digestSlackMessageUrl, digestSummary } from './digestDisplay'

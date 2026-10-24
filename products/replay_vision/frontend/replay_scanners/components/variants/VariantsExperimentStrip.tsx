@@ -1,4 +1,4 @@
-import { LemonCard, LemonTag, type LemonTagType } from '@posthog/lemon-ui'
+import { LemonCard, LemonTag, type LemonTagType } from '@flind/lemon-ui'
 
 import { Link } from 'lib/lemon-ui/Link'
 import { pluralize } from 'lib/utils/strings'

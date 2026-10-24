@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
 import { IconClock } from '@posthog/icons'
-import { LemonButton, LemonButtonProps, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, LemonButtonProps, Tooltip } from '@flind/lemon-ui'
 
 import { KeyboardShortcut } from 'lib/components/KeyboardShortcut/KeyboardShortcut'
 import { Dayjs, dayjs } from 'lib/dayjs'

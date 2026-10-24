@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 
 import * as levelUpHogPng from '@posthog/brand/hoggies/png/level-up'
-import { LemonButton, LemonModal, Link } from '@posthog/lemon-ui'
+import { LemonButton, LemonModal, Link } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import { BillingAddonFeaturesList } from 'scenes/billing/BillingAddonFeaturesList'

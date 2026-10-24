@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 
 import * as moneyPng from '@posthog/brand/hoggies/png/money'
 import { IconArrowRight } from '@posthog/icons'
-import { LemonButton, LemonCard, Link } from '@posthog/lemon-ui'
+import { LemonButton, LemonCard, Link } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import { ProductIntroduction } from 'lib/components/ProductIntroduction/ProductIntroduction'

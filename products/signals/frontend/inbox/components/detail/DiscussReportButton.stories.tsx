@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event'
 import { useValues } from 'kea'
 import { Suspense } from 'react'
 
-import { Spinner } from '@posthog/lemon-ui'
+import { Spinner } from '@flind/lemon-ui'
 
 import { SidePanelMax } from '~/layout/navigation-3000/sidepanel/panels/max/SidePanelMax'
 import { sidePanelStateLogic } from '~/layout/navigation-3000/sidepanel/sidePanelStateLogic'

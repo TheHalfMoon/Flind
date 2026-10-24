@@ -1,4 +1,4 @@
-import { LemonTag } from '@posthog/lemon-ui'
+import { LemonTag } from '@flind/lemon-ui'
 
 import type { VisionAlertConfigurationApi } from '../../generated/api.schemas'
 

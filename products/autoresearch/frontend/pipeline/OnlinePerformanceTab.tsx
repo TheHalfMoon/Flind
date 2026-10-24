@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconGraph } from '@posthog/icons'
-import { LemonBanner, LemonCollapse, LemonTable, LemonTag, Spinner } from '@posthog/lemon-ui'
+import { LemonBanner, LemonCollapse, LemonTable, LemonTag, Spinner } from '@flind/lemon-ui'
 
 import { dayjs } from 'lib/dayjs'
 import { pluralize } from 'lib/utils/strings'

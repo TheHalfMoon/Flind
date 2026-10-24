@@ -1,6 +1,6 @@
 import { cleanup, fireEvent, render, within } from '@testing-library/react'
 
-import { LemonMenuItem } from '@posthog/lemon-ui'
+import { LemonMenuItem } from '@flind/lemon-ui'
 
 import { queryByDataAttr } from '~/test/byDataAttr'
 import { initKeaTests } from '~/test/init'

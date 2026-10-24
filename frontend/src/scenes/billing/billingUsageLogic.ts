@@ -6,7 +6,7 @@ import { actionToUrl, router, urlToAction } from 'kea-router'
 import { subscriptions } from 'kea-subscriptions'
 import sortBy from 'lodash.sortby'
 
-import { lemonToast } from '@posthog/lemon-ui'
+import { lemonToast } from '@flind/lemon-ui'
 
 import { dayjs } from 'lib/dayjs'
 import { dateMapping } from 'lib/utils/dateFilters'

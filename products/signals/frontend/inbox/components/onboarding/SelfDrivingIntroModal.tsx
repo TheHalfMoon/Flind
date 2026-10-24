@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 
-import { LemonButton, LemonModal } from '@posthog/lemon-ui'
+import { LemonButton, LemonModal } from '@flind/lemon-ui'
 
 import { Logomark } from 'lib/brand'
 import { urls } from 'scenes/urls'

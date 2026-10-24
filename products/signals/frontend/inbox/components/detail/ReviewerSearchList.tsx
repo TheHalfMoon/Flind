@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { useMemo, useState } from 'react'
 
 import { IconCheck } from '@posthog/icons'
-import { LemonInput, Spinner } from '@posthog/lemon-ui'
+import { LemonInput, Spinner } from '@flind/lemon-ui'
 
 import { PersonDisplay } from 'products/persons/frontend/components/PersonDisplay'
 import type { ReviewerEditActionEnumApi } from 'products/signals/frontend/generated/api.schemas'

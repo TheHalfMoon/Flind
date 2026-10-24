@@ -14,7 +14,7 @@ import {
     LemonModal,
     LemonSegmentedButton,
     LemonSelect,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import {
     CyclotronJobTemplateSuggestionsButton,

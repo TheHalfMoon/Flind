@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { router } from 'kea-router'
 
 import { IconEllipsis, IconPlus, IconTrash } from '@posthog/icons'
-import { LemonButton, LemonMenu, LemonTag, LemonTagType } from '@posthog/lemon-ui'
+import { LemonButton, LemonMenu, LemonTag, LemonTagType } from '@flind/lemon-ui'
 
 import { NotFound } from 'lib/components/NotFound'
 import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'

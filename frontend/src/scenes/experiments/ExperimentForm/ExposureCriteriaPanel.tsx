@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 
 import { IconInfo } from '@posthog/icons'
-import { LemonButton, LemonCollapse, LemonSelect, LemonTag, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, LemonCollapse, LemonSelect, LemonTag, Tooltip } from '@flind/lemon-ui'
 
 import { TaxonomicFilterGroupType } from 'lib/components/TaxonomicFilter/types'
 import { TestAccountFilterSwitch } from 'lib/components/TestAccountFiltersSwitch'

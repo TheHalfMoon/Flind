@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonButton, LemonSkeleton, LemonTag, LemonTagType, Link, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, LemonSkeleton, LemonTag, LemonTagType, Link, Tooltip } from '@flind/lemon-ui'
 
 import type { Dayjs } from 'lib/dayjs'
 import { humanFriendlyNumber, percentage } from 'lib/utils/numbers'

@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { useEffect, useState } from 'react'
 
 import { IconUpload, IconX } from '@posthog/icons'
-import { LemonButton, LemonFileInput, LemonInput, lemonToast } from '@posthog/lemon-ui'
+import { LemonButton, LemonFileInput, LemonInput, lemonToast } from '@flind/lemon-ui'
 
 import { RestrictionScope, useRestrictedArea } from 'lib/components/RestrictedArea'
 import { TeamMembershipLevel } from 'lib/constants'

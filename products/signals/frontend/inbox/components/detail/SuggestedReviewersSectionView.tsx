@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react'
 
 import { IconInfo, IconPeople } from '@posthog/icons'
-import { Spinner, Tooltip } from '@posthog/lemon-ui'
+import { Spinner, Tooltip } from '@flind/lemon-ui'
 
 import { EnrichedReviewer } from '../../types'
 import { DetailSection } from './DetailSection'

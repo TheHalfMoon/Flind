@@ -1,4 +1,4 @@
-import type { LemonTagType } from '@posthog/lemon-ui'
+import type { LemonTagType } from '@flind/lemon-ui'
 
 // Per-workflow rate classification. Reserved words like "Warning" / "Critical" belong to the
 // tenant-level AWS verdict (the reputation page's HEALTH_TAG) — these coarser buckets are just a triage aid for

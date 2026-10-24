@@ -4,7 +4,7 @@ import { ComponentType } from 'react'
 import * as floatPng from '@posthog/brand/hoggies/png/float'
 import * as magnifyingGlassPng from '@posthog/brand/hoggies/png/magnifying-glass'
 import * as shockedPng from '@posthog/brand/hoggies/png/shocked'
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 

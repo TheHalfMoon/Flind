@@ -3,7 +3,7 @@ import { useActions, useValues } from 'kea'
 import { useRef } from 'react'
 
 import { IconArrowLeft, IconX } from '@posthog/icons'
-import { LemonBadge, LemonButton, LemonTab, LemonTabs } from '@posthog/lemon-ui'
+import { LemonBadge, LemonButton, LemonTab, LemonTabs } from '@flind/lemon-ui'
 
 import { Resizer } from 'lib/components/Resizer/Resizer'
 import { ResizerLogicProps, resizerLogic } from 'lib/components/Resizer/resizerLogic'

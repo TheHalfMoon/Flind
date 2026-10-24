@@ -2,7 +2,7 @@ import { type ReactNode } from 'react'
 
 import * as wizardPng from '@posthog/brand/hoggies/png/wizard-1'
 import { IconDocument, IconPullRequest, IconRocket, IconSearch, IconTerminal, IconX } from '@posthog/icons'
-import { LemonBanner, LemonButton, Spinner } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, Spinner } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import { AgentPromptButton } from 'lib/components/AgentPromptButton'

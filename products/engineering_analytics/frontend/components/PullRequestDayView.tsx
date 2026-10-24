@@ -1,4 +1,4 @@
-import { LemonCard, LemonSegmentedButton, LemonSkeleton, Link, Tooltip } from '@posthog/lemon-ui'
+import { LemonCard, LemonSegmentedButton, LemonSkeleton, Link, Tooltip } from '@flind/lemon-ui'
 
 import { dayjs } from 'lib/dayjs'
 import { pluralize } from 'lib/utils/strings'

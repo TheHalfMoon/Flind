@@ -1,4 +1,4 @@
-import { LemonButton, LemonCheckbox, ProfilePicture } from '@posthog/lemon-ui'
+import { LemonButton, LemonCheckbox, ProfilePicture } from '@flind/lemon-ui'
 
 import { fullName } from 'lib/utils/strings'
 

@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconPause, IconPlay, IconTrash } from '@posthog/icons'
-import { LemonButton, LemonDialog } from '@posthog/lemon-ui'
+import { LemonButton, LemonDialog } from '@flind/lemon-ui'
 
 import { More } from 'lib/lemon-ui/LemonButton/More'
 

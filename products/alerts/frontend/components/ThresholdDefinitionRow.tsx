@@ -1,6 +1,6 @@
 import { Group } from 'kea-forms'
 
-import { LemonBanner, LemonInput, LemonSegmentedButton, LemonSelect } from '@posthog/lemon-ui'
+import { LemonBanner, LemonInput, LemonSegmentedButton, LemonSelect } from '@flind/lemon-ui'
 
 import { LemonField } from 'lib/lemon-ui/LemonField'
 

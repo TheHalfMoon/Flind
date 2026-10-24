@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 
-import { LemonCheckbox, LemonTable, LemonTableColumn, LemonTableColumns } from '@posthog/lemon-ui'
+import { LemonCheckbox, LemonTable, LemonTableColumn, LemonTableColumns } from '@flind/lemon-ui'
 
 import { getSeriesColor } from 'lib/colors'
 import { dayjs } from 'lib/dayjs'

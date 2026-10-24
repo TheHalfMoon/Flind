@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { FormContext } from 'kea-forms'
 import { useContext, useEffect, useMemo, useRef } from 'react'
 
-import { LemonInput, LemonInputSelect, LemonSkeleton, LemonTag, Link } from '@posthog/lemon-ui'
+import { LemonInput, LemonInputSelect, LemonSkeleton, LemonTag, Link } from '@flind/lemon-ui'
 
 import { integrationAccountsLogic } from 'lib/integrations/integrationAccountsLogic'
 import { integrationAuthorizeUrl, integrationsLogic, reconnectReturnUrl } from 'lib/integrations/integrationsLogic'

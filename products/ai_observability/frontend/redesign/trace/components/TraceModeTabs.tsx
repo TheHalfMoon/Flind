@@ -1,4 +1,4 @@
-import { LemonTabs } from '@posthog/lemon-ui'
+import { LemonTabs } from '@flind/lemon-ui'
 
 import { TraceMode } from '../types'
 

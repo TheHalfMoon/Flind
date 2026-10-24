@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { LemonSkeleton, LemonTable, LemonTag } from '@posthog/lemon-ui'
+import { LemonSkeleton, LemonTable, LemonTag } from '@flind/lemon-ui'
 
 import { cn } from 'lib/utils/css-classes'
 

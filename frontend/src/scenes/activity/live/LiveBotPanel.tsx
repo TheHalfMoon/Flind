@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 
-import { LemonTag, Tooltip } from '@posthog/lemon-ui'
+import { LemonTag, Tooltip } from '@flind/lemon-ui'
 
 import { IconRobot } from 'lib/lemon-ui/icons'
 import { CATEGORY_LABELS } from 'lib/utils/botDetection'

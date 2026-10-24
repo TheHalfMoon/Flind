@@ -1,6 +1,6 @@
 import { useActions, useMountedLogic, useValues } from 'kea'
 
-import { LemonSnack } from '@posthog/lemon-ui'
+import { LemonSnack } from '@flind/lemon-ui'
 
 import { supportTicketsSceneLogic } from '../../scenes/tickets/supportTicketsSceneLogic'
 import { AssigneeLabelDisplay, AssigneeResolver } from '../Assignee/AssigneeDisplay'

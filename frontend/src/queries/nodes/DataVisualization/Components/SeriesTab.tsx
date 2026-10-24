@@ -16,7 +16,7 @@ import {
     LemonTag,
     Popover,
     Tooltip,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { DataColorToken, getSeriesColor, getSeriesColorPalette } from 'lib/colors'
 import { PART_OF_WHOLE_DISPLAY_TYPES } from 'lib/constants'

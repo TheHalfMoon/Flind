@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import type { ReactNode } from 'react'
 
-import { LemonCheckbox, LemonDivider, LemonInput } from '@posthog/lemon-ui'
+import { LemonCheckbox, LemonDivider, LemonInput } from '@flind/lemon-ui'
 
 import { PayGateMini } from 'lib/components/PayGateMini/PayGateMini'
 import { upgradeModalLogic } from 'lib/components/UpgradeModal/upgradeModalLogic'

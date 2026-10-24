@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonBanner } from '@posthog/lemon-ui'
+import { LemonBanner } from '@flind/lemon-ui'
 
 import { onboardingWizardUrl } from './wizard/onboardingWizardSteps'
 import { workflowsSetupGuideLogic } from './workflowsSetupGuideLogic'

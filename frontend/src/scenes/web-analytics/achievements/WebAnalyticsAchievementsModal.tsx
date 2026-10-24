@@ -10,7 +10,7 @@ import * as hooliganPng from '@posthog/brand/hoggies/png/hooligan'
 import * as magnifyingGlassPng from '@posthog/brand/hoggies/png/magnifying-glass'
 import * as starPng from '@posthog/brand/hoggies/png/star'
 import { IconCheck, IconChevronDown, IconCrown, IconInfo, IconLock, IconPeople, IconPerson } from '@posthog/icons'
-import { LemonModal, Tooltip } from '@posthog/lemon-ui'
+import { LemonModal, Tooltip } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import { dayjs } from 'lib/dayjs'

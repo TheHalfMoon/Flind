@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonTable, LemonTableColumns, LemonTag, Tooltip } from '@posthog/lemon-ui'
+import { LemonTable, LemonTableColumns, LemonTag, Tooltip } from '@flind/lemon-ui'
 
 import { LemonProgress } from 'lib/lemon-ui/LemonProgress'
 import { humanFriendlyLargeNumber, percentage } from 'lib/utils/numbers'

@@ -4,7 +4,7 @@ import { useActions, useValues } from 'kea'
 import { useRef, useState } from 'react'
 
 import { IconRevert } from '@posthog/icons'
-import { LemonButton, LemonTag } from '@posthog/lemon-ui'
+import { LemonButton, LemonTag } from '@flind/lemon-ui'
 
 import { SkeletonLog } from 'lib/components/ActivityLog/ActivityLog'
 import { CodeSnippet, Language } from 'lib/components/CodeSnippet'

@@ -3,7 +3,7 @@ import './EditSurvey.scss'
 import { useActions, useValues } from 'kea'
 
 import { IconInfo } from '@posthog/icons'
-import { LemonBanner, LemonInput, LemonSnack, Link } from '@posthog/lemon-ui'
+import { LemonBanner, LemonInput, LemonSnack, Link } from '@flind/lemon-ui'
 
 import { dayjs } from 'lib/dayjs'
 import { LemonField } from 'lib/lemon-ui/LemonField'

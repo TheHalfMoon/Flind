@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonSelect, type LemonSelectProps } from '@posthog/lemon-ui'
+import { LemonSelect, type LemonSelectProps } from '@flind/lemon-ui'
 
 import { Dot, Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from 'lib/ui/quill'
 

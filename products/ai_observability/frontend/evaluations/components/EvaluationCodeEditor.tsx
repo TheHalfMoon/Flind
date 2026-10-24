@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { Fragment } from 'react'
 
 import { IconCheck, IconExternal, IconMinus, IconSparkles, IconWarning, IconX } from '@posthog/icons'
-import { LemonButton, LemonTable, LemonTag, Link, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, LemonTable, LemonTag, Link, Tooltip } from '@flind/lemon-ui'
 
 import { CodeEditorResizeable } from 'lib/monaco/CodeEditorResizable'
 

@@ -1,4 +1,4 @@
-import { LemonBanner, LemonCollapse, LemonDrawer, LemonSkeleton, LemonTag } from '@posthog/lemon-ui'
+import { LemonBanner, LemonCollapse, LemonDrawer, LemonSkeleton, LemonTag } from '@flind/lemon-ui'
 
 import { dayjs } from 'lib/dayjs'
 import { LemonMarkdown } from 'lib/lemon-ui/LemonMarkdown'

@@ -38,7 +38,7 @@ import {
     Link,
     SpinnerOverlay,
     Tooltip,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 import { Button } from '@flind/quill'
 
 import { AccessControlAction } from 'lib/components/AccessControlAction'

@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { Form } from 'kea-forms'
 
 import { IconPin, IconPlus } from '@posthog/icons'
-import { LemonCheckbox, LemonDivider } from '@posthog/lemon-ui'
+import { LemonCheckbox, LemonDivider } from '@flind/lemon-ui'
 
 import { IconOpenInNew, IconWithCount } from 'lib/lemon-ui/icons'
 import { LemonButton, LemonButtonProps } from 'lib/lemon-ui/LemonButton'

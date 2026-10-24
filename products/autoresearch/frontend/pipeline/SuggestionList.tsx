@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonBanner, LemonTag, Spinner } from '@posthog/lemon-ui'
+import { LemonBanner, LemonTag, Spinner } from '@flind/lemon-ui'
 
 import { dayjs } from 'lib/dayjs'
 

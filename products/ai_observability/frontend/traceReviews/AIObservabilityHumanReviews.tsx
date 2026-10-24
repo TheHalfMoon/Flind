@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { combineUrl, router } from 'kea-router'
 
-import { LemonTab, LemonTabs } from '@posthog/lemon-ui'
+import { LemonTab, LemonTabs } from '@flind/lemon-ui'
 
 import { urls } from '~/scenes/urls'
 

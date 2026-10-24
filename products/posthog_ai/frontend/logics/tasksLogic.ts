@@ -2,7 +2,7 @@ import { MakeLogicType, actions, connect, events, kea, listeners, path, reducers
 import { loaders } from 'kea-loaders'
 import { router } from 'kea-router'
 
-import { lemonToast } from '@posthog/lemon-ui'
+import { lemonToast } from '@flind/lemon-ui'
 
 import api, { PaginatedResponse } from 'lib/api'
 import { FEATURE_FLAGS } from 'lib/constants'

@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { ReactNode } from 'react'
 
 import { IconChevronLeft, IconChevronRight } from '@posthog/icons'
-import { LemonButton, Link } from '@posthog/lemon-ui'
+import { LemonButton, Link } from '@flind/lemon-ui'
 
 import { FacetRail } from 'lib/components/FacetRail/FacetRail'
 

@@ -1,7 +1,7 @@
 import { useActions } from 'kea'
 import { useEffect, useMemo, useState } from 'react'
 
-import { LemonButton, LemonInput, SpinnerOverlay } from '@posthog/lemon-ui'
+import { LemonButton, LemonInput, SpinnerOverlay } from '@flind/lemon-ui'
 
 import { sanitizeNotebookLinkHref } from 'lib/components/MarkdownNotebook/markdown'
 import { createPostHogWidgetNode } from 'scenes/notebooks/Nodes/NodeWrapper'

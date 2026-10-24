@@ -1,6 +1,6 @@
 import { useActions, useValues, type BuiltLogic } from 'kea'
 
-import { LemonBanner, LemonButton, LemonInputSelect, LemonModal } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonInputSelect, LemonModal } from '@flind/lemon-ui'
 
 import { tagsModel } from '~/models/tagsModel'
 

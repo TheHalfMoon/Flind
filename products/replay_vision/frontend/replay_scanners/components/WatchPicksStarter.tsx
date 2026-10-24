@@ -1,7 +1,7 @@
 import { useActions, useMountedLogic, useValues } from 'kea'
 
 import * as magnifyingGlassPng from '@posthog/brand/hoggies/png/magnifying-glass'
-import { LemonBanner, LemonButton, LemonSegmentedButton, Link } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonSegmentedButton, Link } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import { pluralize } from 'lib/utils/strings'

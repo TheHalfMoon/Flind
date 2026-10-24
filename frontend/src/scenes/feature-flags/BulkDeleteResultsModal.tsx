@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { TextMorph } from 'torph/react'
 
 import { IconCheck, IconCopy, IconWarning, IconX } from '@posthog/icons'
-import { LemonButton, LemonCollapse, LemonModal } from '@posthog/lemon-ui'
+import { LemonButton, LemonCollapse, LemonModal } from '@flind/lemon-ui'
 
 import { copyToClipboard } from 'lib/utils/copyToClipboard'
 

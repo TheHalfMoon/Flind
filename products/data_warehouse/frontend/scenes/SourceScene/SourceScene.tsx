@@ -16,7 +16,7 @@ import { actionToUrl, urlToAction } from 'kea-router'
 import { useEffect } from 'react'
 
 import { IconArrowUpRight } from '@posthog/icons'
-import { LemonBanner, LemonSkeleton } from '@posthog/lemon-ui'
+import { LemonBanner, LemonSkeleton } from '@flind/lemon-ui'
 
 import { ActivityLog } from 'lib/components/ActivityLog/ActivityLog'
 import { NotFound } from 'lib/components/NotFound'

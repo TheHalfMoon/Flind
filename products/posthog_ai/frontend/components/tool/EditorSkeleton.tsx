@@ -1,6 +1,6 @@
 import { memo } from 'react'
 
-import { LemonSkeleton } from '@posthog/lemon-ui'
+import { LemonSkeleton } from '@flind/lemon-ui'
 
 interface EditorSkeletonProps {
     /** Match the editor's computed height so the card keeps its shape when Monaco mounts. */

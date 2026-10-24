@@ -4,7 +4,7 @@ import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
 import { IconExpand45 } from '@posthog/icons'
-import { Link } from '@posthog/lemon-ui'
+import { Link } from '@flind/lemon-ui'
 
 import { useResizeBreakpoints } from 'lib/hooks/useResizeObserver'
 import { cn } from 'lib/utils/css-classes'

@@ -1,6 +1,6 @@
 import { combineUrl, router } from 'kea-router'
 
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { LemonDialog } from 'lib/lemon-ui/LemonDialog'
 import { getDefaultEventsSceneQuery } from 'scenes/activity/explore/defaults'

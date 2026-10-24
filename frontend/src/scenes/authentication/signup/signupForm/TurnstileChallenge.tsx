@@ -2,7 +2,7 @@ import { Turnstile, type TurnstileInstance } from '@marsidev/react-turnstile'
 import { useActions } from 'kea'
 import { useCallback, useRef, useState } from 'react'
 
-import { LemonButton, Link, Spinner } from '@posthog/lemon-ui'
+import { LemonButton, Link, Spinner } from '@flind/lemon-ui'
 
 import { supportLogic } from 'lib/components/Support/supportLogic'
 

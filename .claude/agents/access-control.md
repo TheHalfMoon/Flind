@@ -193,7 +193,7 @@ import { AccessControlResourceType, AccessControlLevel } from '~/types'
 Use resource-level permissions for create operations:
 
 ```tsx
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { getAppContext } from 'lib/utils/getAppContext'
 

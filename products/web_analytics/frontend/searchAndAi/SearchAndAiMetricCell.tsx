@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import { useActions, useValues } from 'kea'
 
 import { IconTrending } from '@posthog/icons'
-import { LemonButton, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, Tooltip } from '@flind/lemon-ui'
 
 import { IconTrendingDown, IconTrendingFlat } from 'lib/lemon-ui/icons'
 import { humanFriendlyDuration } from 'lib/utils/durations'

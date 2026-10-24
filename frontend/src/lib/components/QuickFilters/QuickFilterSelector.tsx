@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useMemo } from 'react'
 
-import { LemonSearchableSelect, LemonSelect, LemonSelectOptionLeaf, Spinner } from '@posthog/lemon-ui'
+import { LemonSearchableSelect, LemonSelect, LemonSelectOptionLeaf, Spinner } from '@flind/lemon-ui'
 
 import { QuickFilterContext } from '~/queries/schema/schema-general'
 import { QuickFilter, QuickFilterOption } from '~/types'

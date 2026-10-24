@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react'
 
-import { LemonButton, LemonCheckbox } from '@posthog/lemon-ui'
+import { LemonButton, LemonCheckbox } from '@flind/lemon-ui'
 
 import { ImpersonationReasonModal } from './ImpersonationReasonModal'
 

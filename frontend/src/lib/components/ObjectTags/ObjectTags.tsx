@@ -3,7 +3,7 @@ import { useActions, useValues } from 'kea'
 import { ComponentProps, CSSProperties, useId, useState } from 'react'
 
 import { IconPencil, IconPlus } from '@posthog/icons'
-import { LemonButton, LemonInputSelect, LemonTag, LemonTagType, Popover } from '@posthog/lemon-ui'
+import { LemonButton, LemonInputSelect, LemonTag, LemonTagType, Popover } from '@flind/lemon-ui'
 
 import { objectTagsLogic } from 'lib/components/ObjectTags/objectTagsLogic'
 import { colorForString } from 'lib/utils/colors'

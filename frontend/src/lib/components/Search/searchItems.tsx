@@ -1,5 +1,5 @@
 import { IconBuilding } from '@posthog/icons'
-import type { LemonTagType } from '@posthog/lemon-ui'
+import type { LemonTagType } from '@flind/lemon-ui'
 
 import { getEntryAccessDisabledReason } from 'lib/utils/accessControlUtils'
 import { GroupQueryResult } from 'lib/utils/groups'

@@ -2,7 +2,7 @@ import { BindLogic, useActions, useValues } from 'kea'
 import { useMemo, useState } from 'react'
 
 import { IconEllipsis, IconPlus, IconShare } from '@posthog/icons'
-import { LemonBanner, LemonButton, LemonInput, LemonMenu, LemonModal, Spinner } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonInput, LemonMenu, LemonModal, Spinner } from '@flind/lemon-ui'
 
 import { AccessDenied } from 'lib/components/AccessDenied'
 import { NotFound } from 'lib/components/NotFound'

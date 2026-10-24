@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { router } from 'kea-router'
 
-import { LemonDivider, LemonInput } from '@posthog/lemon-ui'
+import { LemonDivider, LemonInput } from '@flind/lemon-ui'
 
 import { SceneIcon } from 'lib/components/SceneDashboardChoice/SceneIcon'
 import { LemonButton } from 'lib/lemon-ui/LemonButton'

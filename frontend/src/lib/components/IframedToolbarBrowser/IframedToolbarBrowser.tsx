@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { useEffect } from 'react'
 import useResizeObserver from 'use-resize-observer'
 
-import { LemonBanner, Spinner } from '@posthog/lemon-ui'
+import { LemonBanner, Spinner } from '@flind/lemon-ui'
 
 import { getAccessControlDisabledReason } from 'lib/utils/accessControlUtils'
 

@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonLabel } from '@posthog/lemon-ui'
+import { LemonLabel } from '@flind/lemon-ui'
 
 import { quickSurveyFormLogic } from 'scenes/surveys/quick-create/quickSurveyFormLogic'
 

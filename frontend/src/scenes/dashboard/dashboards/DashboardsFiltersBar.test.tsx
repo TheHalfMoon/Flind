@@ -9,8 +9,8 @@ import { DashboardsTab } from './dashboardsLogic'
 
 jest.mock('kea', () => ({ ...jest.requireActual('kea'), useValues: jest.fn(), useActions: jest.fn() }))
 jest.mock('lib/components/MemberSelectMultiplePopover', () => ({ MemberSelectMultiplePopover: () => null }))
-jest.mock('@posthog/lemon-ui', () => ({
-    ...jest.requireActual('@posthog/lemon-ui'),
+jest.mock('@flind/lemon-ui', () => ({
+    ...jest.requireActual('@flind/lemon-ui'),
     Popover: ({ children, overlay }: { children: ReactNode; overlay: ReactNode }) => (
         <>
             {children}

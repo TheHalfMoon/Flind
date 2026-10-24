@@ -1,5 +1,5 @@
 import { IconCheck, IconMinus, IconX } from '@posthog/icons'
-import { LemonTag, LemonTagType } from '@posthog/lemon-ui'
+import { LemonTag, LemonTagType } from '@flind/lemon-ui'
 
 import { EvalOutcome } from '../types'
 

@@ -1,5 +1,5 @@
 import { IconArrowRight } from '@posthog/icons'
-import { Link } from '@posthog/lemon-ui'
+import { Link } from '@flind/lemon-ui'
 
 import { ExperimentTabContent } from 'scenes/experiments/ExperimentTabContent'
 import { urls } from 'scenes/urls'

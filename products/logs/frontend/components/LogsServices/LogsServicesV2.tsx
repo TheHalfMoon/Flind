@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonBanner, LemonInput, LemonSegmentedButton, LemonSelect } from '@posthog/lemon-ui'
-import type { LemonSegmentedButtonOption } from '@posthog/lemon-ui'
+import { LemonBanner, LemonInput, LemonSegmentedButton, LemonSelect } from '@flind/lemon-ui'
+import type { LemonSegmentedButtonOption } from '@flind/lemon-ui'
 
 import { humanFriendlyNumber } from 'lib/utils/numbers'
 

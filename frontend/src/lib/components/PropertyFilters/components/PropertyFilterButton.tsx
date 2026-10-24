@@ -5,7 +5,7 @@ import { useActions, useValues } from 'kea'
 import React, { useEffect } from 'react'
 
 import { IconX } from '@posthog/icons'
-import { LemonButton, PopoverReferenceContext, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, PopoverReferenceContext, Tooltip } from '@flind/lemon-ui'
 
 import { PropertyFilterIcon } from 'lib/components/PropertyFilters/components/PropertyFilterIcon'
 import { fullNameOrEmail, midEllipsis } from 'lib/utils/strings'

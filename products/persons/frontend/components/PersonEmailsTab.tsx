@@ -2,7 +2,7 @@ import { useValues } from 'kea'
 import { useState } from 'react'
 
 import * as greekPng from '@posthog/brand/hoggies/png/greek'
-import { LemonTable, Link } from '@posthog/lemon-ui'
+import { LemonTable, Link } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import { TZLabel } from 'lib/components/TZLabel'

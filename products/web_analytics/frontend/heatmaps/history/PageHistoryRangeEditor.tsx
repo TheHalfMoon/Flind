@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconCamera } from '@posthog/icons'
-import { LemonBanner, LemonButton, LemonLabel, LemonModal, LemonSelect } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonLabel, LemonModal, LemonSelect } from '@flind/lemon-ui'
 
 import { isUsableCapture, pageHistoryLogic } from './pageHistoryLogic'
 import { formatCaptureDay, formatCaptureTimestamp, formatHistoryDateRange } from './pageHistoryUtils'

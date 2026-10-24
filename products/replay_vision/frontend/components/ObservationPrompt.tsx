@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { Link } from '@posthog/lemon-ui'
+import { Link } from '@flind/lemon-ui'
 
 import { FullPromptModal } from '../replay_scanners/components/FullPromptModal'
 import { LabeledRow } from './LabeledRow'

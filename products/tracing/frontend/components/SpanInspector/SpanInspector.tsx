@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { LemonTabs } from '@posthog/lemon-ui'
+import { LemonTabs } from '@flind/lemon-ui'
 
 import { CodeSnippet, Language } from 'lib/components/CodeSnippet'
 import { JSONViewer } from 'lib/components/JSONViewer'

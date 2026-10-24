@@ -10,7 +10,7 @@ import {
     LemonSelect,
     LemonSwitch,
     LemonTextArea,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { LemonField } from 'lib/lemon-ui/LemonField'
 import { teamLogic } from 'scenes/teamLogic'

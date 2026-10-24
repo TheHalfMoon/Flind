@@ -1,4 +1,4 @@
-import { LemonButton, LemonModal } from '@posthog/lemon-ui'
+import { LemonButton, LemonModal } from '@flind/lemon-ui'
 
 import { AccountPropertySelection } from './AccountPropertySelection'
 import { AccountPropertyOption } from './accountPropertyTypes'

@@ -1,7 +1,7 @@
 import { Fragment } from 'react'
 
 import { IconNotebook } from '@posthog/icons'
-import { Link } from '@posthog/lemon-ui'
+import { Link } from '@flind/lemon-ui'
 
 import { JSONContent, RichContentNodeType } from 'lib/components/RichContentEditor/types'
 

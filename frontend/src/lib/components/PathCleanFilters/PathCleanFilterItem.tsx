@@ -4,7 +4,7 @@ import clsx from 'clsx'
 import { useState } from 'react'
 
 import { IconArrowCircleRight } from '@posthog/icons'
-import { LemonSnack, Tooltip } from '@posthog/lemon-ui'
+import { LemonSnack, Tooltip } from '@flind/lemon-ui'
 
 import { isValidRegexp } from 'lib/utils/regexp'
 

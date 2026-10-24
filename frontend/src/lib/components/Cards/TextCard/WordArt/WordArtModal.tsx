@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import posthog from 'posthog-js'
 import { useEffect, useState } from 'react'
 
-import { LemonButton, LemonInput, LemonModal, LemonSegmentedButton } from '@posthog/lemon-ui'
+import { LemonButton, LemonInput, LemonModal, LemonSegmentedButton } from '@flind/lemon-ui'
 
 import { capitalizeFirstLetter } from 'lib/utils/strings'
 

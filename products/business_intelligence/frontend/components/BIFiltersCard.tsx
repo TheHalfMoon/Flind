@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
 import { IconFilter, IconPlus, IconX } from '@posthog/icons'
-import { LemonButton, LemonDropdown, LemonInputSelect } from '@posthog/lemon-ui'
+import { LemonButton, LemonDropdown, LemonInputSelect } from '@flind/lemon-ui'
 
 import { biEditorLogic } from 'products/business_intelligence/frontend/biEditorLogic'
 

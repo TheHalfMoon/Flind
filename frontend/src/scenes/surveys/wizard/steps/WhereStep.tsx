@@ -3,7 +3,7 @@ import { RE2JS } from 're2js'
 import { useEffect } from 'react'
 
 import { IconTrash } from '@posthog/icons'
-import { LemonButton, LemonInputSelect, LemonSegmentedButton } from '@posthog/lemon-ui'
+import { LemonButton, LemonInputSelect, LemonSegmentedButton } from '@flind/lemon-ui'
 
 import { FlagSelector } from 'lib/components/FlagSelector'
 import { GuidedWizardSection } from 'lib/components/GuidedWizard/GuidedWizardSection'

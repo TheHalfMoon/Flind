@@ -1,6 +1,6 @@
 import posthog from 'posthog-js'
 
-import type { Sorting } from '@posthog/lemon-ui'
+import type { Sorting } from '@flind/lemon-ui'
 
 import { ApiError } from 'lib/api'
 

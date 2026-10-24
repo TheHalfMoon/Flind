@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { IconPlay } from '@posthog/icons'
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { EventType } from '~/types'
 

@@ -2,7 +2,7 @@ import { useActions, useMountedLogic, useValues } from 'kea'
 import { useMemo } from 'react'
 
 import { IconExpand45 } from '@posthog/icons'
-import { LemonButtonProps, LemonMenuItem } from '@posthog/lemon-ui'
+import { LemonButtonProps, LemonMenuItem } from '@flind/lemon-ui'
 
 import { copyToClipboard } from 'lib/utils/copyToClipboard'
 import { addProductIntentForCrossSell } from 'lib/utils/product-intents'

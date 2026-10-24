@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonBanner, LemonSelect, LemonSwitch } from '@posthog/lemon-ui'
+import { LemonBanner, LemonSelect, LemonSwitch } from '@flind/lemon-ui'
 
 import type { DefaultReviewModeEnumApi } from 'products/review_hog/frontend/generated/api.schemas'
 import { reviewHogSettingsLogic } from 'products/review_hog/frontend/reviewHogSettingsLogic'

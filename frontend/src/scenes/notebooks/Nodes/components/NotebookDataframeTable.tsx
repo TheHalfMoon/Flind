@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { useMemo, useState } from 'react'
 
-import { LemonButton, LemonSelect, LemonTable, Spinner } from '@posthog/lemon-ui'
+import { LemonButton, LemonSelect, LemonTable, Spinner } from '@flind/lemon-ui'
 
 import { LemonTableColumn } from 'lib/lemon-ui/LemonTable'
 

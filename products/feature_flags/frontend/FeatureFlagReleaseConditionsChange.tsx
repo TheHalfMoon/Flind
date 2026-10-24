@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { useMemo } from 'react'
 
-import { LemonTag } from '@posthog/lemon-ui'
+import { LemonTag } from '@flind/lemon-ui'
 
 import { featureFlagReleaseConditionsLogic } from 'scenes/feature-flags/featureFlagReleaseConditionsLogic'
 

@@ -5,7 +5,7 @@ import { lazyLoaders, loaders } from 'kea-loaders'
 import { beforeUnload, router } from 'kea-router'
 import posthog from 'posthog-js'
 
-import { LemonDialog } from '@posthog/lemon-ui'
+import { LemonDialog } from '@flind/lemon-ui'
 
 import api, { ApiConfig, ApiError } from 'lib/api'
 import { CyclotronJobInputsValidation } from 'lib/components/CyclotronJob/CyclotronJobInputsValidation'

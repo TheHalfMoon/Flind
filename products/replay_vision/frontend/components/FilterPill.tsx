@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { LemonButton, LemonButtonWithDropdown, LemonCheckbox, LemonDivider, LemonInput } from '@posthog/lemon-ui'
+import { LemonButton, LemonButtonWithDropdown, LemonCheckbox, LemonDivider, LemonInput } from '@flind/lemon-ui'
 
 export function FilterPill<T extends string>({
     label,

@@ -2,7 +2,7 @@ import { CSSProperties, useMemo } from 'react'
 import { List } from 'react-window'
 
 import { IconChevronDown, IconChevronRight, IconMinusSmall, IconWarning, IconX } from '@posthog/icons'
-import { LemonButton, LemonCheckbox, LemonInput, Link, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, LemonCheckbox, LemonInput, Link, Tooltip } from '@flind/lemon-ui'
 
 import { cn } from 'lib/utils/css-classes'
 import { humanFriendlyLargeNumber } from 'lib/utils/numbers'

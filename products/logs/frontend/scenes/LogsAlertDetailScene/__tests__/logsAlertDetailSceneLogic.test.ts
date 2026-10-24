@@ -78,8 +78,8 @@ jest.mock('products/logs/frontend/generated/api', () => ({
     logsAlertsDestinationsDeleteCreate: jest.fn(),
 }))
 
-jest.mock('@posthog/lemon-ui', () => ({
-    ...jest.requireActual('@posthog/lemon-ui'),
+jest.mock('@flind/lemon-ui', () => ({
+    ...jest.requireActual('@flind/lemon-ui'),
     LemonDialog: { open: jest.fn() },
     lemonToast: { success: jest.fn(), error: jest.fn() },
 }))

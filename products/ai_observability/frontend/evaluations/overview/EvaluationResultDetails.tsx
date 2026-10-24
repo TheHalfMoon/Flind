@@ -1,6 +1,6 @@
 import { useActions } from 'kea'
 
-import { LemonButton, LemonSkeleton } from '@posthog/lemon-ui'
+import { LemonButton, LemonSkeleton } from '@flind/lemon-ui'
 
 import { RATE_LIMITED_MESSAGE } from './evaluationOverviewDisplay'
 import { type DetailsLoad, type EvaluationDetails, evaluationResultDrawerLogic } from './evaluationResultDrawerLogic'

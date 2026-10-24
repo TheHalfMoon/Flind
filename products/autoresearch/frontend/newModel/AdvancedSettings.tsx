@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonCollapse, LemonInput, LemonSwitch } from '@posthog/lemon-ui'
+import { LemonCollapse, LemonInput, LemonSwitch } from '@flind/lemon-ui'
 
 import { PropertyFilters } from 'lib/components/PropertyFilters/PropertyFilters'
 import { LemonField } from 'lib/lemon-ui/LemonField'

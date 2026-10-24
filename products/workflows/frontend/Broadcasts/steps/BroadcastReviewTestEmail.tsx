@@ -1,7 +1,7 @@
 import { useActions, useMountedLogic, useValues } from 'kea'
 
 import { IconCheckCircle, IconSend } from '@posthog/icons'
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { broadcastTestSendLogic } from '../broadcastTestSendLogic'
 import { broadcastWizardLogic } from '../broadcastWizardLogic'

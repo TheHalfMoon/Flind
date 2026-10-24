@@ -1,4 +1,4 @@
-import { LemonTag, Tooltip } from '@posthog/lemon-ui'
+import { LemonTag, Tooltip } from '@flind/lemon-ui'
 
 export function SuggestedReviewerScoutTag({ scoutNames }: { scoutNames: string[] }): JSX.Element {
     // The tag is a div, so it needs a tab stop: the tooltip holds the only copy of the scout names.

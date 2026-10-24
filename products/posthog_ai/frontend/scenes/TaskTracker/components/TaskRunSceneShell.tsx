@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { type ReactNode } from 'react'
 
 import { IconArchive, IconChevronLeft } from '@posthog/icons'
-import { LemonDivider } from '@posthog/lemon-ui'
+import { LemonDivider } from '@flind/lemon-ui'
 import { Button } from '@flind/quill-primitives'
 
 import { dayjs } from 'lib/dayjs'

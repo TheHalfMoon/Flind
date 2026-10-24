@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonDivider, LemonSwitch } from '@posthog/lemon-ui'
+import { LemonDivider, LemonSwitch } from '@flind/lemon-ui'
 
 import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'
 import { LemonField } from 'lib/lemon-ui/LemonField'

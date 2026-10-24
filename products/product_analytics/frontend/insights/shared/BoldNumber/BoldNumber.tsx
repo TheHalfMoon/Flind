@@ -7,7 +7,7 @@ import { useEffect } from 'react'
 import React from 'react'
 
 import { IconTrending } from '@posthog/icons'
-import { LemonRow, Link } from '@posthog/lemon-ui'
+import { LemonRow, Link } from '@flind/lemon-ui'
 
 import { IconFlare, IconTrendingDown, IconTrendingFlat } from 'lib/lemon-ui/icons'
 import { percentage } from 'lib/utils/numbers'

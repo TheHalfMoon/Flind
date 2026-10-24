@@ -14,7 +14,7 @@ import {
 } from 'kea'
 import { loaders } from 'kea-loaders'
 
-import { lemonToast } from '@posthog/lemon-ui'
+import { lemonToast } from '@flind/lemon-ui'
 
 import api, { ApiConfig } from 'lib/api'
 import { ApiError } from 'lib/api-error'

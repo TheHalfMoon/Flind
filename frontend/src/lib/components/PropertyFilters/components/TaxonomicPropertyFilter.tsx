@@ -5,7 +5,7 @@ import { useActions, useValues } from 'kea'
 import { useId } from 'react'
 
 import { IconPlusSmall, IconWarning } from '@posthog/icons'
-import { LemonButton, LemonDropdown, Link } from '@posthog/lemon-ui'
+import { LemonButton, LemonDropdown, Link } from '@flind/lemon-ui'
 
 import { OperatorValueSelect } from 'lib/components/PropertyFilters/components/OperatorValueSelect'
 import { PropertyFilterInternalProps } from 'lib/components/PropertyFilters/types'

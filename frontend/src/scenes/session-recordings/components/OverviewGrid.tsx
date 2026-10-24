@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import { ReactNode } from 'react'
 
 import { IconFilter } from '@posthog/icons'
-import { Tooltip } from '@posthog/lemon-ui'
+import { Tooltip } from '@flind/lemon-ui'
 
 import { CopyToClipboardInline } from 'lib/components/CopyToClipboard'
 

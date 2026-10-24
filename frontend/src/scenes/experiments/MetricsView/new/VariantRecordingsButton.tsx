@@ -1,7 +1,7 @@
 import posthog from 'posthog-js'
 
 import { IconChevronDown, IconRewindPlay } from '@posthog/icons'
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { LemonMenuOverlay } from 'lib/lemon-ui/LemonMenu'
 import { type ExperimentRecordingModes } from 'scenes/experiments/ExperimentView/experimentRecordingModes'

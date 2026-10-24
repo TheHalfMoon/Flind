@@ -1,5 +1,5 @@
 import { IconClock } from '@posthog/icons'
-import { LemonCard } from '@posthog/lemon-ui'
+import { LemonCard } from '@flind/lemon-ui'
 
 import { Link } from 'lib/lemon-ui/Link'
 import { Tooltip } from 'lib/lemon-ui/Tooltip'

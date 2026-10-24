@@ -1,4 +1,4 @@
-import type { LemonTagType } from '@posthog/lemon-ui'
+import type { LemonTagType } from '@flind/lemon-ui'
 
 const STATUS_COPY: Record<string, { label: string; type: LemonTagType }> = {
     draft: { label: 'Draft', type: 'muted' },

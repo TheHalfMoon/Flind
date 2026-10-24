@@ -14,7 +14,7 @@ import {
 } from 'react'
 
 import { IconArrowRight, IconStopFilled } from '@posthog/icons'
-import { LemonButton, LemonTextArea } from '@posthog/lemon-ui'
+import { LemonButton, LemonTextArea } from '@flind/lemon-ui'
 
 import { cn } from 'lib/utils/css-classes'
 

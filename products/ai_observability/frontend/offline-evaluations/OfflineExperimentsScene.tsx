@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { LemonBanner } from '@posthog/lemon-ui'
+import { LemonBanner } from '@flind/lemon-ui'
 
 import { getProductAccessDisabledReason } from 'lib/utils/accessControlUtils'
 import { Scene, SceneExport } from 'scenes/sceneTypes'

@@ -1,5 +1,5 @@
 import { IconFilter, IconTrash, IconPencil } from '@posthog/icons'
-import { LemonButton, LemonTag, LemonSnack, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, LemonTag, LemonSnack, Tooltip } from '@flind/lemon-ui'
 
 import { RestrictionScope, useRestrictedArea } from 'lib/components/RestrictedArea'
 import { TeamMembershipLevel } from 'lib/constants'

@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 
-import { Tooltip } from '@posthog/lemon-ui'
+import { Tooltip } from '@flind/lemon-ui'
 
 import { cn } from 'lib/utils/css-classes'
 

@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import React, { useMemo } from 'react'
 
-import { LemonBanner, LemonTag, Spinner, Tooltip } from '@posthog/lemon-ui'
+import { LemonBanner, LemonTag, Spinner, Tooltip } from '@flind/lemon-ui'
 
 import { getSeriesColorPalette } from 'lib/colors'
 import { IconRobot } from 'lib/lemon-ui/icons'

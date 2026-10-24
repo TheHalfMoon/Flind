@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
 import { IconCheckCircle, IconCorrelationAnalysis, IconInfo, IconPencil, IconWarning } from '@posthog/icons'
-import { LemonButton, LemonCollapse, LemonTable, LemonTag, Spinner, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, LemonCollapse, LemonTable, LemonTag, Spinner, Tooltip } from '@flind/lemon-ui'
 import {
     LineChart,
     type LineChartConfig,

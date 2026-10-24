@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { Suspense, useMemo } from 'react'
 
-import { LemonTag } from '@posthog/lemon-ui'
+import { LemonTag } from '@flind/lemon-ui'
 
 import { lazyWithRetry } from 'lib/utils/retryImport'
 

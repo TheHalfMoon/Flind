@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import React from 'react'
 
 import { IconPlusSmall, IconSparkles, IconWrench } from '@posthog/icons'
-import { Tooltip } from '@posthog/lemon-ui'
+import { Tooltip } from '@flind/lemon-ui'
 
 import { ToolRegistration } from './max-constants'
 import { useMaxTool } from './useMaxTool'

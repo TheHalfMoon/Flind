@@ -1,4 +1,4 @@
-import { LemonButtonProps } from '@posthog/lemon-ui'
+import { LemonButtonProps } from '@flind/lemon-ui'
 
 import { JSONContent, RichContentNode, RichContentNodeType } from 'lib/components/RichContentEditor/types'
 

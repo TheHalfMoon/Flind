@@ -11,7 +11,7 @@ import {
     LemonSwitch,
     Link,
     Tooltip,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { groupBy } from 'lib/utils/arrays'
 import { newInternalTab } from 'lib/utils/newInternalTab'

@@ -16,7 +16,7 @@ import {
     Link,
     Spinner,
     Tooltip,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { AppMetricsSparkline } from 'lib/components/AppMetrics/AppMetricsSparkline'
 import { CopyToClipboardInline } from 'lib/components/CopyToClipboard'

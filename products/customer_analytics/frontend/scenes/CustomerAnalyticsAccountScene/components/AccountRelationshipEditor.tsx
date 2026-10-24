@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { LemonButton, LemonDialog, LemonInputSelect } from '@posthog/lemon-ui'
+import { LemonButton, LemonDialog, LemonInputSelect } from '@flind/lemon-ui'
 
 import type { AccountRelationshipDefinitionApi } from 'products/customer_analytics/frontend/generated/api.schemas'
 

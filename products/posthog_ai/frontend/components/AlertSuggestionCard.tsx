@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonInput, LemonLabel, LemonSelect } from '@posthog/lemon-ui'
+import { LemonInput, LemonLabel, LemonSelect } from '@flind/lemon-ui'
 
 import { suggestionActionLogic } from '../logics/suggestionActionLogic'
 import type { TurnSuggestionLogicProps } from '../logics/turnSuggestionLogic'

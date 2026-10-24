@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 
 import { IconGlobe, IconHome, IconLaptop } from '@posthog/icons'
-import { LemonSelect, LemonSelectOptionLeaf, LemonSelectSection } from '@posthog/lemon-ui'
+import { LemonSelect, LemonSelectOptionLeaf, LemonSelectSection } from '@flind/lemon-ui'
 
 import { shortTimeZone } from 'lib/utils/timezones'
 import { teamLogic } from 'scenes/teamLogic'

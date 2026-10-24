@@ -2,7 +2,7 @@ import { useActions, useMountedLogic, useValues } from 'kea'
 import { useState } from 'react'
 
 import * as asleepPng from '@posthog/brand/hoggies/png/asleep'
-import { LemonBanner, LemonButton, LemonSwitch, Link } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonSwitch, Link } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import { TZLabel } from 'lib/components/TZLabel'

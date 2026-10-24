@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconWarning } from '@posthog/icons'
-import { LemonModal, Link } from '@posthog/lemon-ui'
+import { LemonModal, Link } from '@flind/lemon-ui'
 
 import { experimentLogic } from 'scenes/experiments/experimentLogic'
 

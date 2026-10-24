@@ -4,7 +4,7 @@
 
 import { ReactNode } from 'react'
 
-import { LemonSkeleton, Tooltip } from '@posthog/lemon-ui'
+import { LemonSkeleton, Tooltip } from '@flind/lemon-ui'
 import { MetricCard } from '@flind/quill-charts'
 
 import { LemonCard } from 'lib/lemon-ui/LemonCard'

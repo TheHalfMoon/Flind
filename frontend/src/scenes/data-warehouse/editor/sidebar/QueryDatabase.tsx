@@ -17,7 +17,7 @@ import {
     IconExternal,
     IconPlusSmall,
 } from '@posthog/icons'
-import { LemonDialog, Tooltip } from '@posthog/lemon-ui'
+import { LemonDialog, Tooltip } from '@flind/lemon-ui'
 
 import { FEATURE_FLAGS } from 'lib/constants'
 import { IconTextSize } from 'lib/lemon-ui/icons'

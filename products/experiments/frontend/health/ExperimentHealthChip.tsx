@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconWarning } from '@posthog/icons'
-import { LemonButton, LemonDropdown, Spinner } from '@posthog/lemon-ui'
+import { LemonButton, LemonDropdown, Spinner } from '@flind/lemon-ui'
 
 import { pluralize } from 'lib/utils/strings'
 import { experimentLogic } from 'scenes/experiments/experimentLogic'

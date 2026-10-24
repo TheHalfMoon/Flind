@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonButton, Spinner } from '@posthog/lemon-ui'
+import { LemonButton, Spinner } from '@flind/lemon-ui'
 
 import { CONTEXT_KIND_NAME } from '../../lib/ciExplorerContext'
 import { providerName } from '../../lib/ciExplorerDetails'

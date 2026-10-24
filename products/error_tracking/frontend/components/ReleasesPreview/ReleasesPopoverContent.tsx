@@ -9,7 +9,7 @@ import {
     type IconComponent,
     type IconProps,
 } from '@posthog/icons'
-import { LemonTag, LemonTagProps, Link, Tooltip } from '@posthog/lemon-ui'
+import { LemonTag, LemonTagProps, Link, Tooltip } from '@flind/lemon-ui'
 
 import { ErrorTrackingRelease, ReleaseGitMetadata } from 'lib/components/Errors/types'
 import { GitMetadataParser } from 'lib/components/Git/gitMetadataParser'

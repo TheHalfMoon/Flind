@@ -1,5 +1,5 @@
 import { IconChevronDown, IconCopy } from '@posthog/icons'
-import { LemonMenu, LemonTag } from '@posthog/lemon-ui'
+import { LemonMenu, LemonTag } from '@flind/lemon-ui'
 
 import { CopyToClipboardInline } from 'lib/components/CopyToClipboard'
 import { copyToClipboard } from 'lib/utils/copyToClipboard'

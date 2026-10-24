@@ -3,7 +3,7 @@ import { useActions, useValues } from 'kea'
 import React from 'react'
 
 import { IconCheckCircle, IconPlus, IconX } from '@posthog/icons'
-import { Tooltip } from '@posthog/lemon-ui'
+import { Tooltip } from '@flind/lemon-ui'
 
 import { LemonButton } from 'lib/lemon-ui/LemonButton'
 import { More } from 'lib/lemon-ui/LemonButton/More'

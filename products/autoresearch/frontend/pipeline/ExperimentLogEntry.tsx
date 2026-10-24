@@ -1,6 +1,6 @@
 import { useActions } from 'kea'
 
-import { LemonButton, LemonTag } from '@posthog/lemon-ui'
+import { LemonButton, LemonTag } from '@flind/lemon-ui'
 
 import { type SearchPoint, formatDelta } from '../agentSearch'
 import { autoresearchPipelineLogic } from '../autoresearchPipelineLogic'

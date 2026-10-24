@@ -5,7 +5,7 @@ import { BindLogic, useActions, useValues } from 'kea'
 import React, { useMemo } from 'react'
 
 import { IconCopy, IconPlusSmall, IconTrash } from '@posthog/icons'
-import { LemonButton, LemonDivider } from '@posthog/lemon-ui'
+import { LemonButton, LemonDivider } from '@flind/lemon-ui'
 
 import { AddBehavioralFilterButton } from 'lib/components/PropertyFilters/components/AddBehavioralFilterButton'
 import { PropertyFilters } from 'lib/components/PropertyFilters/PropertyFilters'

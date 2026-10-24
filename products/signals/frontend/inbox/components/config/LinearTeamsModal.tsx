@@ -2,7 +2,7 @@ import { useValues } from 'kea'
 import { Form } from 'kea-forms'
 import { useId } from 'react'
 
-import { LemonBanner, LemonButton, LemonInputSelect, LemonModal, LemonSkeleton } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonInputSelect, LemonModal, LemonSkeleton } from '@flind/lemon-ui'
 
 import { useLinearTeams } from 'lib/integrations/LinearIntegrationHelpers'
 import { LemonField } from 'lib/lemon-ui/LemonField'

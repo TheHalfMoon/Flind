@@ -2,7 +2,7 @@ import './Suggestions.scss'
 
 import { createContext, type ReactNode, useContext, useEffect, useRef } from 'react'
 
-import { LemonButton, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, Tooltip } from '@flind/lemon-ui'
 
 import { useAnimatedPresence } from 'lib/hooks/useAnimatedPresence'
 import { useOutsideClickHandler } from 'lib/hooks/useOutsideClickHandler'

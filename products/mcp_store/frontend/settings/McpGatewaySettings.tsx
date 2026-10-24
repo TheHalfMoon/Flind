@@ -1,6 +1,6 @@
 import { BindLogic, useActions, useValues } from 'kea'
 
-import { LemonBanner, LemonTabs, Spinner } from '@posthog/lemon-ui'
+import { LemonBanner, LemonTabs, Spinner } from '@flind/lemon-ui'
 
 import { gatewayAgentLogic } from '../gateway/gatewayAgentLogic'
 import { GatewayAgentScene } from '../gateway/GatewayAgentScene'

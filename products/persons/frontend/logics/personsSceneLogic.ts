@@ -2,7 +2,7 @@ import { deepEqual as equal } from 'fast-equals'
 import { MakeLogicType, actions, connect, kea, listeners, path, reducers, selectors } from 'kea'
 import { urlToAction } from 'kea-router'
 
-import { lemonToast } from '@posthog/lemon-ui'
+import { lemonToast } from '@flind/lemon-ui'
 
 import api from 'lib/api'
 import { trackedActionToUrl } from 'lib/logic/scenes/trackedActionToUrl'

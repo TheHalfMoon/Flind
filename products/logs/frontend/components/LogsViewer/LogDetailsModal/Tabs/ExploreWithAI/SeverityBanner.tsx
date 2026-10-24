@@ -1,5 +1,5 @@
 import { IconAIText } from '@posthog/icons'
-import { LemonBanner, LemonTag, LemonTagType, Tooltip } from '@posthog/lemon-ui'
+import { LemonBanner, LemonTag, LemonTagType, Tooltip } from '@flind/lemon-ui'
 
 const BANNER_TO_TAG_TYPE: Record<SeverityBannerProps['type'], LemonTagType> = {
     error: 'danger',

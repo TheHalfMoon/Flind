@@ -1,5 +1,5 @@
 import { IconClock, IconComment, IconDownload, IconRewindPlay, IconShare, IconWarning } from '@posthog/icons'
-import { LemonTable } from '@posthog/lemon-ui'
+import { LemonTable } from '@flind/lemon-ui'
 
 import { LemonTableColumns } from 'lib/lemon-ui/LemonTable'
 

@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconDecisionTree, IconFlag, IconGraph } from '@posthog/icons'
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { autoresearchPipelineLogic } from '../autoresearchPipelineLogic'
 import {

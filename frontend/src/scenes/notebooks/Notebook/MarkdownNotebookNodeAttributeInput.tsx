@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { LemonButton, LemonInput } from '@posthog/lemon-ui'
+import { LemonButton, LemonInput } from '@flind/lemon-ui'
 
 import { getNotebookWidgetDefinition } from '../notebookWidgetCatalog'
 import { MarkdownNotebookEntityPicker } from './MarkdownNotebookEntityPicker'

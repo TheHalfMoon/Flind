@@ -9,7 +9,7 @@ import { CSSProperties, MouseEvent, useCallback, useEffect, useMemo, useRef, use
 import { List } from 'react-window'
 
 import { IconCheck, IconPencil, IconX } from '@posthog/icons'
-import { LemonCheckbox, Tooltip } from '@posthog/lemon-ui'
+import { LemonCheckbox, Tooltip } from '@flind/lemon-ui'
 
 import { AutoSizer } from 'lib/components/AutoSizer'
 import { KeyboardShortcut } from 'lib/components/KeyboardShortcut/KeyboardShortcut'

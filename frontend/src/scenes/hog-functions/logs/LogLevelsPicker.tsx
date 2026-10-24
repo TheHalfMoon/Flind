@@ -1,5 +1,5 @@
 import { IconFilter } from '@posthog/icons'
-import { LemonMenu } from '@posthog/lemon-ui'
+import { LemonMenu } from '@flind/lemon-ui'
 
 import { LemonButton } from 'lib/lemon-ui/LemonButton'
 import { capitalizeFirstLetter } from 'lib/utils/strings'

@@ -3,7 +3,7 @@ import type { ReactNode } from 'react'
 
 import * as moneyPng from '@posthog/brand/hoggies/png/money'
 import { IconCheckCircle, IconInfo } from '@posthog/icons'
-import { LemonButton, LemonCard, LemonCollapse, LemonTag, Spinner } from '@posthog/lemon-ui'
+import { LemonButton, LemonCard, LemonCollapse, LemonTag, Spinner } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import { FEATURE_FLAGS } from 'lib/constants'

@@ -1,4 +1,4 @@
-import { LemonSelect, LemonSelectOptionLeaf } from '@posthog/lemon-ui'
+import { LemonSelect, LemonSelectOptionLeaf } from '@flind/lemon-ui'
 
 import { dayjs } from 'lib/dayjs'
 

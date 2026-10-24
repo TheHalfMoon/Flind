@@ -3,8 +3,8 @@ import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
 import { IconCode, IconRevert } from '@posthog/icons'
-import { LemonModal } from '@posthog/lemon-ui'
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonModal } from '@flind/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { SkeletonLog } from 'lib/components/ActivityLog/ActivityLog'
 import { HumanizedActivityLogItem } from 'lib/components/ActivityLog/humanizeActivity'

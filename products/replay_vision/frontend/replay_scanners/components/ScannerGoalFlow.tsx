@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
 import { IconChevronRight, IconPlus, IconSparkles } from '@posthog/icons'
-import { LemonButton, LemonInput, LemonSegmentedButton, LemonTextArea } from '@posthog/lemon-ui'
+import { LemonButton, LemonInput, LemonSegmentedButton, LemonTextArea } from '@flind/lemon-ui'
 
 import { PopoverReferenceContext } from 'lib/lemon-ui/Popover/Popover'
 import { aiConsentLogic } from 'scenes/settings/organization/aiConsentLogic'

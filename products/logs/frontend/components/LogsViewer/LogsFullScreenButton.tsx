@@ -1,7 +1,7 @@
 import { useActions } from 'kea'
 
 import { IconExpand45 } from '@posthog/icons'
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { LogsViewerScope } from './config/types'
 import { logsViewerModalLogic } from './LogsViewerModal/logsViewerModalLogic'

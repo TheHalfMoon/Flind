@@ -2,7 +2,7 @@ import { clsx } from 'clsx'
 import posthog from 'posthog-js'
 
 import * as experimentPng from '@posthog/brand/hoggies/png/experiment'
-import { LemonSkeleton } from '@posthog/lemon-ui'
+import { LemonSkeleton } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import { TZLabel } from 'lib/components/TZLabel'

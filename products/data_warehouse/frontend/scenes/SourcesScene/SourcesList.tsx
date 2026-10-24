@@ -1,7 +1,7 @@
 import { combineUrl } from 'kea-router'
 
 import { IconPlusSmall } from '@posthog/icons'
-import { LemonButton, LemonTag } from '@posthog/lemon-ui'
+import { LemonButton, LemonTag } from '@flind/lemon-ui'
 
 import { FlaggedFeature } from 'lib/components/FlaggedFeature'
 import { HogFunctionList } from 'scenes/hog-functions/list/HogFunctionsList'

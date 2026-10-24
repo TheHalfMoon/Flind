@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconPulse } from '@posthog/icons'
-import { Spinner } from '@posthog/lemon-ui'
+import { Spinner } from '@flind/lemon-ui'
 
 import { ButtonPrimitive } from 'lib/ui/Button/ButtonPrimitives'
 

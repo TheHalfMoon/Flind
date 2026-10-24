@@ -5,7 +5,7 @@ import { useActions, useValues } from 'kea'
 import { Field as KeaField } from 'kea-forms'
 
 import { IconCopy, IconTrash } from '@posthog/icons'
-import { LemonDivider, Tooltip } from '@posthog/lemon-ui'
+import { LemonDivider, Tooltip } from '@flind/lemon-ui'
 
 import { TaxonomicFilterGroupType } from 'lib/components/TaxonomicFilter/types'
 import { eventsWithMoveNotice, moveAnnouncementUrl } from 'lib/components/TaxonomicFilter/utils/hiddenEvents'

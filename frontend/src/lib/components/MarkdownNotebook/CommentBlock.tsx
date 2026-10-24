@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import { KeyboardEvent, useState } from 'react'
 
 import { IconComment } from '@posthog/icons'
-import { LemonTextArea } from '@posthog/lemon-ui'
+import { LemonTextArea } from '@flind/lemon-ui'
 
 import { LemonDropdown } from 'lib/lemon-ui/LemonDropdown'
 

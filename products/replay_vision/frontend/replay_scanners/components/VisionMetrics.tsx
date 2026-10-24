@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { Link, Spinner, Tooltip } from '@posthog/lemon-ui'
+import { Link, Spinner, Tooltip } from '@flind/lemon-ui'
 
 import { urls } from 'scenes/urls'
 

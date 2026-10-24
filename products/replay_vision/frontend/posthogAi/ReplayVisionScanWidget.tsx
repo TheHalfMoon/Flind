@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { router } from 'kea-router'
 
-import { LemonBanner, Link, Spinner } from '@posthog/lemon-ui'
+import { LemonBanner, Link, Spinner } from '@flind/lemon-ui'
 
 import type { ReplayObservationApi } from '../generated/api.schemas'
 import { POSTHOG_AI_ORIGIN, currentReturnPath, observationFromOriginUrl } from '../utils/breadcrumbs'

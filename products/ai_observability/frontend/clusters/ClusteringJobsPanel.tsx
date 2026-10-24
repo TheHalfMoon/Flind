@@ -11,7 +11,7 @@ import {
     LemonModal,
     LemonSegmentedButton,
     LemonSwitch,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { AccessControlAction } from 'lib/components/AccessControlAction'
 import { PropertyFilters } from 'lib/components/PropertyFilters/PropertyFilters'

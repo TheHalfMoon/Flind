@@ -2,7 +2,7 @@ import { useValues } from 'kea'
 import { ReactElement, useState } from 'react'
 
 import { IconPlusSmall } from '@posthog/icons'
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { TaxonomicFilterGroupType } from 'lib/components/TaxonomicFilter/types'
 

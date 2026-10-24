@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 
-import { Tooltip } from '@posthog/lemon-ui'
+import { Tooltip } from '@flind/lemon-ui'
 
 import { Link } from 'lib/lemon-ui/Link'
 import { urls } from 'scenes/urls'

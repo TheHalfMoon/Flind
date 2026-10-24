@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonCheckbox, LemonLabel } from '@posthog/lemon-ui'
+import { LemonCheckbox, LemonLabel } from '@flind/lemon-ui'
 
 import { capitalizeFirstLetter } from 'lib/utils/strings'
 import { insightVizDataLogic } from 'scenes/insights/insightVizDataLogic'

@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconChevronDown } from '@posthog/icons'
-import { LemonButton, LemonCard } from '@posthog/lemon-ui'
+import { LemonButton, LemonCard } from '@flind/lemon-ui'
 
 import { newAccountMenuLogic } from 'lib/components/Account/newAccountMenuLogic'
 import { OrgSwitcher } from 'lib/components/Account/OrgSwitcher'

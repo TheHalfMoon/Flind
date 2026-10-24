@@ -22,7 +22,7 @@ import { combineUrl } from 'kea-router'
 // re-importing. As for @monaco-editor/react, it does some lazy loading and doesn't have this problem.
 import type { editor } from 'monaco-editor'
 
-import { LemonDialog, LemonInput } from '@posthog/lemon-ui'
+import { LemonDialog, LemonInput } from '@flind/lemon-ui'
 
 import api from 'lib/api'
 import { LemonField } from 'lib/lemon-ui/LemonField'

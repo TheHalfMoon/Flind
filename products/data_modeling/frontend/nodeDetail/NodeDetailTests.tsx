@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonBanner, Spinner } from '@posthog/lemon-ui'
+import { LemonBanner, Spinner } from '@flind/lemon-ui'
 
 import type { DataQualitySubjectType } from 'products/data_quality/frontend/checksApi'
 import { dataQualityChecksLogic } from 'products/data_quality/frontend/dataQualityChecksLogic'

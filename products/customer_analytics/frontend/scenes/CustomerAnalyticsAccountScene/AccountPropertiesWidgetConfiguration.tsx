@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonBanner, LemonSkeleton } from '@posthog/lemon-ui'
+import { LemonBanner, LemonSkeleton } from '@flind/lemon-ui'
 
 import type { AccountViewTileConfig } from '../../components/Accounts/accountViewTileConfig'
 import { ACCOUNT_ID_FIELDS, ACCOUNT_LIST_FIELDS } from './accountNativeProperties'

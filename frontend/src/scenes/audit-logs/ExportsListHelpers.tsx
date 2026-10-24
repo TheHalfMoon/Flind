@@ -1,4 +1,4 @@
-import { LemonTag } from '@posthog/lemon-ui'
+import { LemonTag } from '@flind/lemon-ui'
 
 import { dayjs } from 'lib/dayjs'
 import { teamLogic } from 'scenes/teamLogic'

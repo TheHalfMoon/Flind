@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { useMemo, useState } from 'react'
 
-import { LemonInput } from '@posthog/lemon-ui'
+import { LemonInput } from '@flind/lemon-ui'
 
 import { createFuse } from 'lib/utils/fuseSearch'
 

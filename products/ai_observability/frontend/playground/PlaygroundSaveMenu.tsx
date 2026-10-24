@@ -4,7 +4,7 @@ import posthog from 'posthog-js'
 import React from 'react'
 
 import { IconLlmPromptManagement } from '@posthog/icons'
-import { LemonButton, LemonDivider, LemonDropdown, LemonInput } from '@posthog/lemon-ui'
+import { LemonButton, LemonDivider, LemonDropdown, LemonInput } from '@flind/lemon-ui'
 
 import { LemonDialog } from 'lib/lemon-ui/LemonDialog'
 import { LemonField } from 'lib/lemon-ui/LemonField'

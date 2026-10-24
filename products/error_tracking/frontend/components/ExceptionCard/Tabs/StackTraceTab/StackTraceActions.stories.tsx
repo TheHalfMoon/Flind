@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/react'
 
-import { LemonCard } from '@posthog/lemon-ui'
+import { LemonCard } from '@flind/lemon-ui'
 
 import { sceneLogic } from 'scenes/sceneLogic'
 

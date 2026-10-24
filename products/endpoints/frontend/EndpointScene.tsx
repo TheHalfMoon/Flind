@@ -19,7 +19,7 @@ import {
     IconServer,
     IconTrash,
 } from '@posthog/icons'
-import { LemonBanner, LemonDialog, LemonDivider } from '@posthog/lemon-ui'
+import { LemonBanner, LemonDialog, LemonDivider } from '@flind/lemon-ui'
 
 import { ActivityLog } from 'lib/components/ActivityLog/ActivityLog'
 import { SceneMenuBarFileItems } from 'lib/components/Scenes/SceneMenuBarFileItems'

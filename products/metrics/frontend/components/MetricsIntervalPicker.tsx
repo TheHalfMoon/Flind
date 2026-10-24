@@ -1,4 +1,4 @@
-import { LemonSelect } from '@posthog/lemon-ui'
+import { LemonSelect } from '@flind/lemon-ui'
 
 // Mirrors the backend's `_INTERVAL_LADDER`, finest first.
 const INTERVAL_STEPS: { value: string; label: string }[] = [

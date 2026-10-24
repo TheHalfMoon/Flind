@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 
 import { IconCopy, IconFlag, IconPulse, IconWarning } from '@posthog/icons'
-import { LemonTag, Link } from '@posthog/lemon-ui'
+import { LemonTag, Link } from '@flind/lemon-ui'
 
 import { dayjs } from 'lib/dayjs'
 import { Tooltip } from 'lib/lemon-ui/Tooltip'

@@ -4,7 +4,7 @@ import { useActions, useValues } from 'kea'
 import React, { useMemo } from 'react'
 
 import { IconCollapse, IconPlayFilled, IconX } from '@posthog/icons'
-import { LemonButton, Spinner } from '@posthog/lemon-ui'
+import { LemonButton, Spinner } from '@flind/lemon-ui'
 
 import { EntityFilterInfo } from 'lib/components/EntityFilterInfo'
 import { TaxonomicFilterGroupType } from 'lib/components/TaxonomicFilter/types'

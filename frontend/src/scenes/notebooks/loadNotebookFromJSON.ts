@@ -1,4 +1,4 @@
-import { lemonToast } from '@posthog/lemon-ui'
+import { lemonToast } from '@flind/lemon-ui'
 
 import { JSONContent } from 'lib/components/RichContentEditor/types'
 import { getTextFromFile, selectFiles } from 'lib/utils/file-utils'

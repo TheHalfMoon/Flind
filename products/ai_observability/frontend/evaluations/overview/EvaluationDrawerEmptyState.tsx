@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 
 import * as magnifyingGlassPng from '@posthog/brand/hoggies/png/magnifying-glass'
 import { IconCalendar, IconGear, IconClockRewind, IconPlay } from '@posthog/icons'
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import { getAccessControlDisabledReason } from 'lib/utils/accessControlUtils'

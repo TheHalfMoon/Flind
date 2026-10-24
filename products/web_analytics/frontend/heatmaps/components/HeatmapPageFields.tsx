@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonInput, LemonLabel, LemonSwitch } from '@posthog/lemon-ui'
+import { LemonInput, LemonLabel, LemonSwitch } from '@flind/lemon-ui'
 
 import { heatmapLogic } from '../scenes/heatmap/heatmapLogic'
 

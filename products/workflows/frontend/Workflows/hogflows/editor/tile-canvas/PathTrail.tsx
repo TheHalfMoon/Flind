@@ -3,7 +3,7 @@ import { useActions, useValues } from 'kea'
 import { useMemo } from 'react'
 
 import { IconChevronRight, IconCollapse, IconEllipsis, IconExpand } from '@posthog/icons'
-import { LemonButton, LemonMenu } from '@posthog/lemon-ui'
+import { LemonButton, LemonMenu } from '@flind/lemon-ui'
 
 import { Box, PathFrameSpec, shortLabel } from './tileCanvasLayout'
 import { tileCanvasLogic } from './tileCanvasLogic'

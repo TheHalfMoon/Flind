@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconX } from '@posthog/icons'
-import { LemonButton, LemonTabs } from '@posthog/lemon-ui'
+import { LemonButton, LemonTabs } from '@flind/lemon-ui'
 
 import { CIExplorerDrawerTab, ciExplorerLogic } from '../../scenes/ciExplorerLogic'
 import { CIExplorerContext } from './CIExplorerContext'

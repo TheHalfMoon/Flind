@@ -1,6 +1,6 @@
 import { useActions } from 'kea'
 
-import { LemonBanner, LemonButton } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton } from '@flind/lemon-ui'
 
 import { API_KEY_SCOPE_PRESETS } from 'lib/scopes'
 import { personalAPIKeysLogic } from 'scenes/settings/user/personalAPIKeysLogic'

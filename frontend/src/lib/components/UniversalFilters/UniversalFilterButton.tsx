@@ -5,7 +5,7 @@ import { useValues } from 'kea'
 import React from 'react'
 
 import { IconFilter, IconLogomark, IconX } from '@posthog/icons'
-import { LemonButton, PopoverReferenceContext } from '@posthog/lemon-ui'
+import { LemonButton, PopoverReferenceContext } from '@flind/lemon-ui'
 
 import { PropertyFilterIcon } from 'lib/components/PropertyFilters/components/PropertyFilterIcon'
 import { IconWithCount } from 'lib/lemon-ui/icons'

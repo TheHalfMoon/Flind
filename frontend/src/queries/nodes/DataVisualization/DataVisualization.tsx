@@ -5,7 +5,7 @@ import { useCallback, useMemo, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 
 import { IconGear } from '@posthog/icons'
-import { LemonBanner, LemonButton, LemonDivider } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonDivider } from '@flind/lemon-ui'
 import { createXAxisTickCallback } from '@flind/quill-charts'
 
 import { ExportButton } from 'lib/components/ExportButton/ExportButton'

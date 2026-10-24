@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
 import { IconGear } from '@posthog/icons'
-import { LemonButton, LemonCollapse, LemonInput, LemonSwitch, LemonTag, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, LemonCollapse, LemonInput, LemonSwitch, LemonTag, Tooltip } from '@flind/lemon-ui'
 
 import { CodeSnippet, Language } from 'lib/components/CodeSnippet'
 import { FEATURE_FLAGS } from 'lib/constants'

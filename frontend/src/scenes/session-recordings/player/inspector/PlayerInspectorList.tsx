@@ -5,7 +5,7 @@ import { useActions, useValues } from 'kea'
 import { CSSProperties, useCallback, useEffect, useRef } from 'react'
 import { List, useDynamicRowHeight, useListRef } from 'react-window'
 
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { AutoSizer } from 'lib/components/AutoSizer'
 import { LemonSkeleton } from 'lib/lemon-ui/LemonSkeleton'

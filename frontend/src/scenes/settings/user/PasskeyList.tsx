@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconCheckCircle, IconChip, IconClock, IconLaptop, IconLock, IconPencil, IconTrash } from '@posthog/icons'
-import { LemonButton, LemonTable, Spinner } from '@posthog/lemon-ui'
+import { LemonButton, LemonTable, Spinner } from '@flind/lemon-ui'
 
 import { IconLink, IconSync } from 'lib/lemon-ui/icons'
 import { humanFriendlyDetailedTime } from 'lib/utils/datetime'

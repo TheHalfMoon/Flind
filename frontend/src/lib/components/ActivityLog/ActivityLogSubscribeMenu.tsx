@@ -1,7 +1,7 @@
 import { combineUrl, router } from 'kea-router'
 
 import { IconBell } from '@posthog/icons'
-import { LemonButton, LemonMenu } from '@posthog/lemon-ui'
+import { LemonButton, LemonMenu } from '@flind/lemon-ui'
 
 import { LemonMenuItems } from 'lib/lemon-ui/LemonMenu/LemonMenu'
 import { HOG_FUNCTION_SUB_TEMPLATES } from 'scenes/hog-functions/sub-templates/sub-templates'

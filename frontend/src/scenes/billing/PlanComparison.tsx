@@ -6,7 +6,7 @@ import React, { useState } from 'react'
 import useResizeObserver from 'use-resize-observer'
 
 import { IconCheckCircle, IconWarning, IconX } from '@posthog/icons'
-import { LemonModal, LemonTag, Link } from '@posthog/lemon-ui'
+import { LemonModal, LemonTag, Link } from '@flind/lemon-ui'
 
 import { FEATURE_FLAGS } from 'lib/constants'
 import { Tooltip } from 'lib/lemon-ui/Tooltip'

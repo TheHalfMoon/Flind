@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonButton, LemonCard, LemonTag, Link, Spinner } from '@posthog/lemon-ui'
+import { LemonButton, LemonCard, LemonTag, Link, Spinner } from '@flind/lemon-ui'
 
 import { UniversalFilterButton } from 'lib/components/UniversalFilters/UniversalFilterButton'
 

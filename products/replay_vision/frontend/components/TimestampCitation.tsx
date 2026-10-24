@@ -1,5 +1,5 @@
 import { IconRewindPlay } from '@posthog/icons'
-import { Link } from '@posthog/lemon-ui'
+import { Link } from '@flind/lemon-ui'
 
 import { colonDelimitedDuration } from 'lib/utils/durations'
 

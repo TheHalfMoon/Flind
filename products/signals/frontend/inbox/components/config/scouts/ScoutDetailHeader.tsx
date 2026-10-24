@@ -3,7 +3,7 @@ import { combineUrl } from 'kea-router'
 import { useEffect, useRef, useState } from 'react'
 
 import { IconArrowLeft, IconExternal, IconRefresh, IconUpload } from '@posthog/icons'
-import { LemonButton, LemonTag, LemonTextArea, Link, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, LemonTag, LemonTextArea, Link, Tooltip } from '@flind/lemon-ui'
 
 import { openPublishToCommunityDialog } from 'lib/components/openPublishToCommunityDialog'
 import { FEATURE_FLAGS } from 'lib/constants'

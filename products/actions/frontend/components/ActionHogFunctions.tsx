@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { LemonBanner, LemonCollapse } from '@posthog/lemon-ui'
+import { LemonBanner, LemonCollapse } from '@flind/lemon-ui'
 
 import { LinkedHogFunctions } from 'scenes/hog-functions/list/LinkedHogFunctions'
 

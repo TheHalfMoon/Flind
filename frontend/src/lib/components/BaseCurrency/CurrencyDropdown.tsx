@@ -1,4 +1,4 @@
-import { LemonSelect, LemonSelectProps } from '@posthog/lemon-ui'
+import { LemonSelect, LemonSelectProps } from '@flind/lemon-ui'
 
 import { CurrencyCode } from '~/queries/schema/schema-general'
 

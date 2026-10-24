@@ -4,7 +4,7 @@ import { Form } from 'kea-forms'
 import posthog from 'posthog-js'
 
 import { IconCopy } from '@posthog/icons'
-import { LemonButton, LemonCheckbox, LemonInput } from '@posthog/lemon-ui'
+import { LemonButton, LemonCheckbox, LemonInput } from '@flind/lemon-ui'
 
 import { SharingModalContent } from 'lib/components/Sharing/SharingModal'
 import { LemonDialog } from 'lib/lemon-ui/LemonDialog'

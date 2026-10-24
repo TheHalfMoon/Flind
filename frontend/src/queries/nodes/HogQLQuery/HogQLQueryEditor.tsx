@@ -6,7 +6,7 @@ import type { editor as importedEditor } from 'monaco-editor'
 import { useEffect, useRef, useState } from 'react'
 
 import { IconMagicWand } from '@posthog/icons'
-import { LemonInput, Link } from '@posthog/lemon-ui'
+import { LemonInput, Link } from '@flind/lemon-ui'
 
 import { useOnMountEffect } from 'lib/hooks/useOnMountEffect'
 import { LemonBanner } from 'lib/lemon-ui/LemonBanner'

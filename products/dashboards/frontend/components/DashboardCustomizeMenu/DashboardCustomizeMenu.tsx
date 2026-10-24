@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonTag } from '@posthog/lemon-ui'
+import { LemonTag } from '@flind/lemon-ui'
 
 import { LemonRadio } from 'lib/lemon-ui/LemonRadio'
 import { dashboardLogic } from 'scenes/dashboard/dashboardLogic'

@@ -10,7 +10,7 @@ import {
     LemonTag,
     ProfilePicture,
     Spinner,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { dayjs } from 'lib/dayjs'
 

@@ -1,7 +1,7 @@
 import { ComponentType } from 'react'
 
 import { IconArrowRight } from '@posthog/icons'
-import { Link } from '@posthog/lemon-ui'
+import { Link } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'
 import { urls } from 'scenes/urls'

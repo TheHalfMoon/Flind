@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { LemonInput, LemonInputSelect, LemonSegmentedButton, LemonSelect } from '@posthog/lemon-ui'
+import { LemonInput, LemonInputSelect, LemonSegmentedButton, LemonSelect } from '@flind/lemon-ui'
 
 import { LemonField } from 'lib/lemon-ui/LemonField'
 import type { LemonInputSelectOption } from 'lib/lemon-ui/LemonInputSelect'

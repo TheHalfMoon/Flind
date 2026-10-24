@@ -1,4 +1,4 @@
-import { LemonCheckbox, LemonInput, LemonSelect } from '@posthog/lemon-ui'
+import { LemonCheckbox, LemonInput, LemonSelect } from '@flind/lemon-ui'
 
 import { AWS_ONLY_REGION_OPTIONS, S3_REGION_OPTIONS } from 'lib/integrations/s3Regions'
 import { LemonField } from 'lib/lemon-ui/LemonField'

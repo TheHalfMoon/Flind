@@ -28,7 +28,7 @@ import {
     IconWarning,
     IconX,
 } from '@posthog/icons'
-import { LemonBadge, LemonButton, Spinner } from '@posthog/lemon-ui'
+import { LemonBadge, LemonButton, Spinner } from '@flind/lemon-ui'
 
 import { useKeyboardHotkeys } from 'lib/hooks/useKeyboardHotkeys'
 import { IconFlare, IconMenu } from 'lib/lemon-ui/icons'

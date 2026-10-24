@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonButton, ProfilePicture } from '@posthog/lemon-ui'
+import { LemonButton, ProfilePicture } from '@flind/lemon-ui'
 
 import { MemberSelect } from 'lib/components/MemberSelect'
 import { fullName } from 'lib/utils/strings'

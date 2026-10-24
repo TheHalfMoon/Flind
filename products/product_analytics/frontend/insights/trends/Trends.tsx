@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { Suspense } from 'react'
 
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { PIE_DISPLAY_TYPES } from 'lib/constants'
 import { WrappingLoadingSkeleton } from 'lib/ui/WrappingLoadingSkeleton/WrappingLoadingSkeleton'

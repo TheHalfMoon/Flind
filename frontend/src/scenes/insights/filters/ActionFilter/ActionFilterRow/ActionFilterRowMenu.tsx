@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 import { IconEllipsis } from '@posthog/icons'
-import { LemonBadge, LemonCheckbox, LemonDivider, LemonMenu } from '@posthog/lemon-ui'
+import { LemonBadge, LemonCheckbox, LemonDivider, LemonMenu } from '@flind/lemon-ui'
 
 import { LemonButton } from 'lib/lemon-ui/LemonButton'
 import { Tooltip } from 'lib/lemon-ui/Tooltip'

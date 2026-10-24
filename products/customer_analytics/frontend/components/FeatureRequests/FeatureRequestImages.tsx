@@ -1,5 +1,5 @@
 import { IconImage } from '@posthog/icons'
-import { LemonButton, Link } from '@posthog/lemon-ui'
+import { LemonButton, Link } from '@flind/lemon-ui'
 
 import { backendAssetUrl } from 'lib/utils/apiHost'
 import { urls } from 'scenes/urls'

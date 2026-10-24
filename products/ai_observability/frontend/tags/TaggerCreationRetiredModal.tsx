@@ -1,5 +1,5 @@
 import * as transformerPng from '@posthog/brand/hoggies/png/transformer'
-import { LemonButton, LemonModal } from '@posthog/lemon-ui'
+import { LemonButton, LemonModal } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import { urls } from 'scenes/urls'

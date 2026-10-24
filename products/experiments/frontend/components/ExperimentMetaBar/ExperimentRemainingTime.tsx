@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 
 import { IconCheck, IconGear, IconHourglass } from '@posthog/icons'
-import { LemonButton, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, Tooltip } from '@flind/lemon-ui'
 
 import { LemonProgressCircle } from 'lib/lemon-ui/LemonProgressCircle/LemonProgressCircle'
 import { runningTimeLogic } from 'scenes/experiments/RunningTimeCalculator/runningTimeLogic'

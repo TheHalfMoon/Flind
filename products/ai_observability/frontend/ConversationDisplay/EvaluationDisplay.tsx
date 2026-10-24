@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { Link } from '@posthog/lemon-ui'
+import { Link } from '@flind/lemon-ui'
 
 import { lowercaseFirstLetter } from 'lib/utils/strings'
 import { urls } from 'scenes/urls'

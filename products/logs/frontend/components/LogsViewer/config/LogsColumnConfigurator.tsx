@@ -5,7 +5,7 @@ import { CSS } from '@dnd-kit/utilities'
 import { useActions, useValues } from 'kea'
 
 import { IconPencil, IconPlusSmall, IconX } from '@posthog/icons'
-import { LemonButton, LemonInput, LemonModal, LemonSelect, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, LemonInput, LemonModal, LemonSelect, Tooltip } from '@flind/lemon-ui'
 
 import { AutoSizer } from 'lib/components/AutoSizer'
 import { TaxonomicFilter } from 'lib/components/TaxonomicFilter/TaxonomicFilter'

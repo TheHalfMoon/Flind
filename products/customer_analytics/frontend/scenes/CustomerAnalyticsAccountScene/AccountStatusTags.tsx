@@ -1,6 +1,6 @@
 import { useActions } from 'kea'
 
-import { LemonTag, Tooltip } from '@posthog/lemon-ui'
+import { LemonTag, Tooltip } from '@flind/lemon-ui'
 
 import { getAccountStatusTags } from '../../components/Accounts/accountStatusTags'
 import type { AccountApi } from '../../generated/api.schemas'

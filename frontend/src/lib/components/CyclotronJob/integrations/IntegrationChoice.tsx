@@ -5,7 +5,7 @@ import { useActions, useValues } from 'kea'
 import { useEffect, useId, useRef } from 'react'
 
 import { IconExternal, IconTrash, IconX } from '@posthog/icons'
-import { LemonBanner, LemonButton, LemonMenu, LemonSkeleton } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonMenu, LemonSkeleton } from '@flind/lemon-ui'
 
 import api from 'lib/api'
 import { useIntegrationManagementRestriction } from 'lib/integrations/integrationPermissions'

@@ -7,7 +7,7 @@ import {
     LemonSegmentedButton,
     LemonSelect,
     LemonSwitch,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { dayjs } from 'lib/dayjs'
 import { useOnMountEffect } from 'lib/hooks/useOnMountEffect'

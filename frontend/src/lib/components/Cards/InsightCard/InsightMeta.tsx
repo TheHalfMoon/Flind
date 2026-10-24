@@ -11,7 +11,7 @@ import {
     IconThumbsUp,
     IconWarning,
 } from '@posthog/icons'
-import { lemonToast } from '@posthog/lemon-ui'
+import { lemonToast } from '@flind/lemon-ui'
 
 import { CardMeta } from 'lib/components/Cards/CardMeta'
 import { CardMetaRefreshButton } from 'lib/components/Cards/CardMetaRefreshButton'

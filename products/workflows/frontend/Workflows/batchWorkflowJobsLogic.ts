@@ -2,7 +2,7 @@ import { MakeLogicType, actions, kea, key, listeners, path, props, reducers, sel
 import { lazyLoaders } from 'kea-loaders'
 import { urlToAction } from 'kea-router'
 
-import { lemonToast } from '@posthog/lemon-ui'
+import { lemonToast } from '@flind/lemon-ui'
 
 import api, { ApiConfig } from 'lib/api'
 import { urls } from 'scenes/urls'

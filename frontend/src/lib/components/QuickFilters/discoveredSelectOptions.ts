@@ -1,4 +1,4 @@
-import type { LemonSelectOptionLeaf } from '@posthog/lemon-ui'
+import type { LemonSelectOptionLeaf } from '@flind/lemon-ui'
 
 import { QuickFilterOption } from '~/types'
 

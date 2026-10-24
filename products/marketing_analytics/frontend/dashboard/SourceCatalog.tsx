@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 
 import * as moneyPng from '@posthog/brand/hoggies/png/money'
 import { IconArrowRight, IconCheckCircle, IconExternal, IconInfo } from '@posthog/icons'
-import { LemonButton, LemonCard, LemonInput, Link, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, LemonCard, LemonInput, Link, Tooltip } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import { featureFlagLogic } from 'lib/logic/featureFlagLogic'

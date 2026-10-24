@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { ProfilePicture, Tooltip } from '@posthog/lemon-ui'
+import { ProfilePicture, Tooltip } from '@flind/lemon-ui'
 
 import { customerAnalyticsAccountSceneLogic } from './customerAnalyticsAccountSceneLogic'
 

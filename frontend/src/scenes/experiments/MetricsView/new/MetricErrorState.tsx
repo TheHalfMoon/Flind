@@ -1,6 +1,6 @@
 import { useActions } from 'kea'
 
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { supportLogic } from 'lib/components/Support/supportLogic'
 import { IconErrorOutline } from 'lib/lemon-ui/icons'

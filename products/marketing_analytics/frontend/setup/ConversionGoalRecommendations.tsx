@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import type { ReactNode } from 'react'
 
-import { LemonBanner, LemonButton, LemonCard, LemonCollapse } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonCard, LemonCollapse } from '@flind/lemon-ui'
 
 import { RestrictionScope, useRestrictedArea } from 'lib/components/RestrictedArea'
 import { TZLabel } from 'lib/components/TZLabel'

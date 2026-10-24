@@ -12,7 +12,7 @@ import {
     LemonTable,
     LemonTag,
     Tooltip,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { MCPUseCaseCard } from 'lib/components/MCPHint/MCPUseCaseCard'
 import { TZLabel } from 'lib/components/TZLabel'

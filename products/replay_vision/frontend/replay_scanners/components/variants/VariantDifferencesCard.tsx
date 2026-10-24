@@ -1,4 +1,4 @@
-import { LemonBanner, LemonButton, LemonCard } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonCard } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'
 

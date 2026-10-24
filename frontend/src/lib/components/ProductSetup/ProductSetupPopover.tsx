@@ -4,7 +4,7 @@ import { router } from 'kea-router'
 import { useEffect, useMemo, useRef, useState } from 'react'
 
 import { IconCheck, IconExternal, IconLock, IconTarget } from '@posthog/icons'
-import { LemonButton, LemonSelect, Link } from '@posthog/lemon-ui'
+import { LemonButton, LemonSelect, Link } from '@flind/lemon-ui'
 
 import { useHogfetti } from 'lib/components/Hogfetti/Hogfetti'
 import { SetupTaskId } from 'lib/components/ProductSetup'

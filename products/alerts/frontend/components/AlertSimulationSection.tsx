@@ -1,4 +1,4 @@
-import { LemonButton, LemonSelect } from '@posthog/lemon-ui'
+import { LemonButton, LemonSelect } from '@flind/lemon-ui'
 
 import { DetectorType } from '~/queries/schema/schema-general'
 

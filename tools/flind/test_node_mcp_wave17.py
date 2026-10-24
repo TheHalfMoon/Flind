@@ -21,18 +21,18 @@ class NodeMcpInternalWave17Tests(unittest.TestCase):
                 self.assertEqual(source["name"], expected)
                 self.assertIs(source.get("private"), True)
 
-    def test_workspace_graph_keeps_dependencies_and_only_lemon_ui_remains(self) -> None:
+    def test_workspace_graph_keeps_dependencies_after_ui_migration(self) -> None:
         result = inspect_packages(load_tracked_package_manifests(REPO_ROOT))
         self.assertTrue(result["workspace_gate_passed"], result)
         self.assertEqual(result["unresolved_workspace_dependencies"], [])
         self.assertGreaterEqual(result["workspace_dependency_edges"], 261)
         self.assertGreaterEqual(len(result["flind_package_names"]), 158)
-        self.assertEqual(result["remaining_legacy_package_names"], ["@posthog/lemon-ui"])
+        self.assertEqual(result["remaining_legacy_package_names"], [])
 
-    def test_external_published_mcp_and_ui_packages_are_intact(self) -> None:
+    def test_external_mcp_published_and_local_ui_not_published(self) -> None:
         lock = (REPO_ROOT / "pnpm-lock.yaml").read_text()
         self.assertIn("'@posthog/mcp@0.23.0':", lock)
-        self.assertIn("'@posthog/lemon-ui@0.0.0':", lock)
+        self.assertNotIn("'@posthog/lemon-ui@0.0.0':", lock)
         self.assertNotIn("'@flind/mcp@0.23.0':", lock)
         self.assertNotIn("'@flind/lemon-ui@0.0.0':", lock)
 

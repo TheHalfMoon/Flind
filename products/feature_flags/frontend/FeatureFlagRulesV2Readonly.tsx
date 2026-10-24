@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { LemonTable, LemonTag } from '@posthog/lemon-ui'
+import { LemonTable, LemonTag } from '@flind/lemon-ui'
 
 import PropertyFiltersDisplay from 'lib/components/PropertyFilters/components/PropertyFiltersDisplay'
 import { LemonTableColumns } from 'lib/lemon-ui/LemonTable'

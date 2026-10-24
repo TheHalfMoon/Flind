@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { useCallback, useState } from 'react'
 
-import { LemonButton, LemonTabs } from '@posthog/lemon-ui'
+import { LemonButton, LemonTabs } from '@flind/lemon-ui'
 
 import { DebugCHQueries } from 'lib/components/Shortcuts/utils/DebugCHQueries'
 import { LemonTable, LemonTableColumns } from 'lib/lemon-ui/LemonTable'

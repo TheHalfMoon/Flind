@@ -12,7 +12,7 @@ import {
     LemonModal,
     LemonTable,
     LemonTableColumns,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { AccessControlAction } from 'lib/components/AccessControlAction'
 import { LemonSlider } from 'lib/lemon-ui/LemonSlider'

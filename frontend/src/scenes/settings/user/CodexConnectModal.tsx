@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconCheck } from '@posthog/icons'
-import { LemonBanner, LemonButton, LemonInput, LemonModal, LemonSegmentedButton, Link } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonInput, LemonModal, LemonSegmentedButton, Link } from '@flind/lemon-ui'
 
 import { CodeSnippet, Language } from 'lib/components/CodeSnippet'
 import { platformCommandControlKey } from 'lib/utils/dom'

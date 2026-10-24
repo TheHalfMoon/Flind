@@ -1,4 +1,4 @@
-import { LemonInputSelectOption, Tooltip } from '@posthog/lemon-ui'
+import { LemonInputSelectOption, Tooltip } from '@flind/lemon-ui'
 
 import type { OrganizationOption, TeamOption } from './types'
 

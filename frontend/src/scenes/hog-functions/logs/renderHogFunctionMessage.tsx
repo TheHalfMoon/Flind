@@ -1,4 +1,4 @@
-import { Link } from '@posthog/lemon-ui'
+import { Link } from '@flind/lemon-ui'
 
 const EVENT_LINK_REGEX = /Event: '(.+)'/g
 

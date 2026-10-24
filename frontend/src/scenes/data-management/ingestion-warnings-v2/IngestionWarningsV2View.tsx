@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 
 import * as readingIsMagicPng from '@posthog/brand/hoggies/png/reading-is-magic'
 import { IconOpenSidebar, IconRefresh } from '@posthog/icons'
-import { LemonButton, LemonInput, LemonSegmentedButton, LemonTag } from '@posthog/lemon-ui'
+import { LemonButton, LemonInput, LemonSegmentedButton, LemonTag } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import { CopyToClipboardInline } from 'lib/components/CopyToClipboard'

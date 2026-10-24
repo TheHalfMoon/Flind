@@ -1,5 +1,5 @@
 import { IconRabbit, IconTortoise } from '@posthog/icons'
-import { LemonLabel, LemonSegmentedButton, LemonSegmentedButtonOption, Spinner } from '@posthog/lemon-ui'
+import { LemonLabel, LemonSegmentedButton, LemonSegmentedButtonOption, Spinner } from '@flind/lemon-ui'
 
 import { DataModelingSyncInterval } from '~/types'
 

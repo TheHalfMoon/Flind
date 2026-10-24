@@ -1,5 +1,5 @@
 import { IconFilter } from '@posthog/icons'
-import { LemonCheckbox, LemonMenuItems, LemonMenuOverlay, LemonTableColumn } from '@posthog/lemon-ui'
+import { LemonCheckbox, LemonMenuItems, LemonMenuOverlay, LemonTableColumn } from '@flind/lemon-ui'
 
 export interface ColumnValueFilterOption<V> {
     value: V

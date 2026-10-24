@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { router } from 'kea-router'
 
-import { LemonButton, LemonDivider, LemonModal } from '@posthog/lemon-ui'
+import { LemonButton, LemonDivider, LemonModal } from '@flind/lemon-ui'
 
 import { CodeSnippet, Language } from 'lib/components/CodeSnippet'
 import { IconOpenInNew } from 'lib/lemon-ui/icons'

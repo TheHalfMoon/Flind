@@ -6,7 +6,7 @@
 // The rule matches the Tooltip JSX element; Semgrep reports the match start
 // at the line where that element's expression begins.
 
-import { Link, Tooltip } from '@posthog/lemon-ui'
+import { Link, Tooltip } from '@flind/lemon-ui'
 
 // ─── Positive cases — rule must match ───
 

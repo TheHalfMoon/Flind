@@ -16,7 +16,7 @@ import {
     LemonTag,
     LemonTextArea,
     Tooltip,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { CopyToClipboardInline } from 'lib/components/CopyToClipboard'
 import { ScopeAccessGroup } from 'lib/components/ScopeAccessRow/ScopeAccessGroup'

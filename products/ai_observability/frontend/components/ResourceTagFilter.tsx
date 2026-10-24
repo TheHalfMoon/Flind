@@ -1,4 +1,4 @@
-import { LemonSelect } from '@posthog/lemon-ui'
+import { LemonSelect } from '@flind/lemon-ui'
 
 import { TagSelect } from 'lib/components/TagSelect'
 import { lemonToast } from 'lib/lemon-ui/LemonToast'

@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { LemonCard, LemonSkeleton } from '@posthog/lemon-ui'
+import { LemonCard, LemonSkeleton } from '@flind/lemon-ui'
 
 import { humanFriendlyDuration } from 'lib/utils/durations'
 

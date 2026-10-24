@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconPencil } from '@posthog/icons'
-import { LemonButton, LemonDivider, LemonDropdown, LemonInput } from '@posthog/lemon-ui'
+import { LemonButton, LemonDivider, LemonDropdown, LemonInput } from '@flind/lemon-ui'
 
 import { ACCOUNT_LINK_FIELDS, accountLinksLogic } from './accountLinksLogic'
 

@@ -1,5 +1,5 @@
 import { IconLetter } from '@posthog/icons'
-import { LemonSelectOption, LemonSelectOptionLeaf, LemonSelectOptions } from '@posthog/lemon-ui'
+import { LemonSelectOption, LemonSelectOptionLeaf, LemonSelectOptions } from '@flind/lemon-ui'
 
 import { dayjs } from 'lib/dayjs'
 import { getGrantedScopes } from 'lib/integrations/integrationScopes'

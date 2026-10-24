@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 
 import { IconFolder } from '@posthog/icons'
-import { LemonTag } from '@posthog/lemon-ui'
+import { LemonTag } from '@flind/lemon-ui'
 
 import { businessKnowledgeLogic } from './businessKnowledgeLogic'
 import type { KnowledgeSource } from './businessKnowledgeLogic'

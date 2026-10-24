@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonButton, LemonSegmentedButton, LemonTable, LemonTag } from '@posthog/lemon-ui'
+import { LemonButton, LemonSegmentedButton, LemonTable, LemonTag } from '@flind/lemon-ui'
 import { Button } from '@flind/quill'
 
 import { TZLabel } from 'lib/components/TZLabel'

@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react'
 import { useState } from 'react'
 
-import { LemonButton, LemonMenu, LemonTable, LemonTextArea } from '@posthog/lemon-ui'
+import { LemonButton, LemonMenu, LemonTable, LemonTextArea } from '@flind/lemon-ui'
 
 import { Sorting } from 'lib/lemon-ui/LemonTable/sorting'
 

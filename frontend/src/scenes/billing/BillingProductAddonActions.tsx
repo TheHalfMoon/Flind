@@ -3,7 +3,7 @@ import { useActions, useValues } from 'kea'
 import posthog from 'posthog-js'
 
 import { IconCheckCircle, IconPlus } from '@posthog/icons'
-import { LemonButton, LemonButtonProps, LemonTag } from '@posthog/lemon-ui'
+import { LemonButton, LemonButtonProps, LemonTag } from '@flind/lemon-ui'
 
 import { TRIAL_CANCELLATION_SURVEY_ID, UNSUBSCRIBE_SURVEY_ID } from 'lib/constants'
 import { More } from 'lib/lemon-ui/LemonButton/More'

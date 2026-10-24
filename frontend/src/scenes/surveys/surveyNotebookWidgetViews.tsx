@@ -1,6 +1,6 @@
 import { BindLogic, useValues } from 'kea'
 
-import { LemonTag } from '@posthog/lemon-ui'
+import { LemonTag } from '@flind/lemon-ui'
 
 import { NotFound } from 'lib/components/NotFound'
 import { IconSurveys } from 'lib/lemon-ui/icons'

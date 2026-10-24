@@ -1,5 +1,5 @@
 import { IconPlus, IconTrash } from '@posthog/icons'
-import { LemonButton, LemonInput, LemonInputSelect, LemonSelect, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, LemonInput, LemonInputSelect, LemonSelect, Tooltip } from '@flind/lemon-ui'
 
 import { LemonMenu } from 'lib/lemon-ui/LemonMenu'
 import { SurveyResponseFilter, defaultResponseFilterForQuestion } from 'scenes/surveys/responseFilters'

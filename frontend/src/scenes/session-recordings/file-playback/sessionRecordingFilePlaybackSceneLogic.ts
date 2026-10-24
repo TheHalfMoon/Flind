@@ -2,7 +2,7 @@ import { MakeLogicType, BuiltLogic, connect, kea, listeners, path, reducers, sel
 import { loaders } from 'kea-loaders'
 import { beforeUnload } from 'kea-router'
 
-import { lemonToast } from '@posthog/lemon-ui'
+import { lemonToast } from '@flind/lemon-ui'
 import { createWindowIdRegistry } from '@flind/replay-shared'
 
 import { featureFlagLogic } from 'lib/logic/featureFlagLogic'

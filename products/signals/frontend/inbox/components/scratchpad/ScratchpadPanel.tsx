@@ -9,7 +9,7 @@ import {
     LemonSelect,
     LemonSkeleton,
     LemonSwitch,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { Tooltip } from 'lib/lemon-ui/Tooltip'
 import { pluralize } from 'lib/utils/strings'

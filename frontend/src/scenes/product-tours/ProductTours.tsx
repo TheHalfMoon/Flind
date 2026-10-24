@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 import { Button } from '@flind/quill'
 
 import { FEATURE_FLAGS } from 'lib/constants'

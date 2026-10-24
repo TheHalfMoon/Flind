@@ -3,7 +3,7 @@ import { useActions, useValues } from 'kea'
 import { ReactNode } from 'react'
 
 import * as businessEvolutionPng from '@posthog/brand/hoggies/png/business-evolution'
-import { LemonDropdown, LemonSkeleton, LemonTag, Link, Spinner } from '@posthog/lemon-ui'
+import { LemonDropdown, LemonSkeleton, LemonTag, Link, Spinner } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import { TZLabel } from 'lib/components/TZLabel'

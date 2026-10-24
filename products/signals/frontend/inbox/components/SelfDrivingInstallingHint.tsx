@@ -1,6 +1,6 @@
 import type React from 'react'
 
-import { Spinner } from '@posthog/lemon-ui'
+import { Spinner } from '@flind/lemon-ui'
 
 import { useSelfDrivingRunInFlight } from 'scenes/onboarding/shared/wizard-sync/hooks'
 

@@ -1,7 +1,7 @@
 import { memo } from 'react'
 
 import { IconInfo, IconTrending } from '@posthog/icons'
-import { LemonTag, SpinnerOverlay, Tooltip } from '@posthog/lemon-ui'
+import { LemonTag, SpinnerOverlay, Tooltip } from '@flind/lemon-ui'
 import { Sparkline } from '@flind/quill-charts'
 import type { ChartTheme } from '@flind/quill-charts'
 

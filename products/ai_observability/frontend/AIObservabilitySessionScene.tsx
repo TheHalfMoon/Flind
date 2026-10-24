@@ -3,7 +3,7 @@ import { combineUrl, router } from 'kea-router'
 import { type Ref, Suspense, useEffect, useRef } from 'react'
 
 import { IconWarning, IconWrench } from '@posthog/icons'
-import { LemonButton, LemonDrawer, LemonSwitch, LemonTag, Spinner, SpinnerOverlay, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, LemonDrawer, LemonSwitch, LemonTag, Spinner, SpinnerOverlay, Tooltip } from '@flind/lemon-ui'
 
 import { AccessControlAction } from 'lib/components/AccessControlAction'
 import { TZLabel } from 'lib/components/TZLabel'

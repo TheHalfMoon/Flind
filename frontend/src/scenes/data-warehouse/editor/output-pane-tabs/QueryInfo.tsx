@@ -2,7 +2,7 @@ import { useActions, useMountedLogic, useValues } from 'kea'
 import { router } from 'kea-router'
 
 import { IconExternal, IconTarget } from '@posthog/icons'
-import { LemonBanner, LemonTable, Link, Spinner, lemonToast } from '@posthog/lemon-ui'
+import { LemonBanner, LemonTable, Link, Spinner, lemonToast } from '@flind/lemon-ui'
 
 import api from 'lib/api'
 import { LemonButton } from 'lib/lemon-ui/LemonButton'

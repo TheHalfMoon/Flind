@@ -9,7 +9,7 @@ import {
     LemonSegmentedButton,
     LemonSelect,
     LemonSkeleton,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { urls } from 'scenes/urls'
 

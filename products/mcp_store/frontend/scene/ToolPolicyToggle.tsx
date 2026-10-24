@@ -1,5 +1,5 @@
 import { IconCheck, IconShieldLock, IconX } from '@posthog/icons'
-import { LemonSegmentedButton } from '@posthog/lemon-ui'
+import { LemonSegmentedButton } from '@flind/lemon-ui'
 
 import type { ToolApprovalState } from '../mcpStoreLogic'
 

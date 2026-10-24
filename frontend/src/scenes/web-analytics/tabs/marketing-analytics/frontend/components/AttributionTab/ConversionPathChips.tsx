@@ -2,7 +2,7 @@ import './ConversionPaths.scss'
 
 import clsx from 'clsx'
 
-import { Tooltip } from '@posthog/lemon-ui'
+import { Tooltip } from '@flind/lemon-ui'
 
 /**
  * Collapse consecutive repeats for display: ['google', 'google', 'direct'] becomes google ×2 → direct.

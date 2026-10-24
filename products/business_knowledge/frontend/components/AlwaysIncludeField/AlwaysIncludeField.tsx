@@ -1,4 +1,4 @@
-import { LemonCheckbox } from '@posthog/lemon-ui'
+import { LemonCheckbox } from '@flind/lemon-ui'
 
 import { LemonField } from 'lib/lemon-ui/LemonField'
 

@@ -18,7 +18,7 @@ import {
     IconStar,
     IconSupport,
 } from '@posthog/icons'
-import { LemonTagType } from '@posthog/lemon-ui'
+import { LemonTagType } from '@flind/lemon-ui'
 
 import type {
     InboxCreatedWindow,

@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconBrowser, IconHide, IconImage, IconPlus, IconPlusSmall } from '@posthog/icons'
-import { LemonButton, LemonInput, LemonTable, LemonTableColumns, LemonTag, Link, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, LemonInput, LemonTable, LemonTableColumns, LemonTag, Link, Tooltip } from '@flind/lemon-ui'
 import { Button } from '@flind/quill'
 
 import { AccessControlAction } from 'lib/components/AccessControlAction'

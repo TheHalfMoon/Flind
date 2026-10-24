@@ -1,5 +1,5 @@
 import { IconCheck, IconMinus, IconWarning, IconX } from '@posthog/icons'
-import { LemonTag } from '@posthog/lemon-ui'
+import { LemonTag } from '@flind/lemon-ui'
 
 import type { OfflineResultCellApi, OfflineResultReadApi, OfflineScorerVersionReadApi } from '../generated/api.schemas'
 import { offlineResultLabel } from './offlineResultPresentation'

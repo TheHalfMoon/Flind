@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from 'react'
 import React from 'react'
 
 import { IconChevronRight } from '@posthog/icons'
-import { LemonDropdown, Link, SpinnerOverlay, Tooltip } from '@posthog/lemon-ui'
+import { LemonDropdown, Link, SpinnerOverlay, Tooltip } from '@flind/lemon-ui'
 
 import { humanFriendlyNumber } from 'lib/utils/numbers'
 

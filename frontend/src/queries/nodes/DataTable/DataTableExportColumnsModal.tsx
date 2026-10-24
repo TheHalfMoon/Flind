@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 import { IconCopy, IconDownload } from '@posthog/icons'
-import { LemonButton, LemonCheckbox, LemonDivider, LemonModal } from '@posthog/lemon-ui'
+import { LemonButton, LemonCheckbox, LemonDivider, LemonModal } from '@flind/lemon-ui'
 
 import { extractExpressionComment } from '~/queries/nodes/DataTable/utils'
 import { ExporterFormat } from '~/types'

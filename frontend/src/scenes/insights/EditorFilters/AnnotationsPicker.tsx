@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonSelect, LemonSelectOptions } from '@posthog/lemon-ui'
+import { LemonSelect, LemonSelectOptions } from '@flind/lemon-ui'
 
 import { insightLogic } from 'scenes/insights/insightLogic'
 

@@ -1,6 +1,6 @@
 import { Fragment } from 'react'
 
-import { Link } from '@posthog/lemon-ui'
+import { Link } from '@flind/lemon-ui'
 
 export interface VisualReviewTrailCrumb {
     label: string

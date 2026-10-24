@@ -2,7 +2,7 @@ import { useMountedLogic, useValues } from 'kea'
 import { useState } from 'react'
 
 import { IconChevronRight, IconServer } from '@posthog/icons'
-import { LemonCollapse, LemonSwitch, LemonTag, Link, Spinner } from '@posthog/lemon-ui'
+import { LemonCollapse, LemonSwitch, LemonTag, Link, Spinner } from '@flind/lemon-ui'
 import { ServerIcon } from '@flind/products-mcp-store/frontend/scene/icons'
 
 import { FEATURE_FLAGS } from 'lib/constants'

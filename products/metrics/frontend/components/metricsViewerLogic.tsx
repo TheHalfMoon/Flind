@@ -2,7 +2,7 @@ import { MakeLogicType, actions, connect, kea, key, listeners, path, props, redu
 import { loaders } from 'kea-loaders'
 import { router } from 'kea-router'
 
-import { lemonToast } from '@posthog/lemon-ui'
+import { lemonToast } from '@flind/lemon-ui'
 
 import { DEFAULT_UNIVERSAL_GROUP_FILTER } from 'lib/components/UniversalFilters/constants'
 import { isUniversalGroupFilterLike } from 'lib/components/UniversalFilters/utils'

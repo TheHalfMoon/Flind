@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { TextMorph } from 'torph/react'
 
 import { IconInfo } from '@posthog/icons'
-import { LemonBanner, LemonButton, LemonSkeleton, LemonSnack, LemonTag, Spinner, Tooltip } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonSkeleton, LemonSnack, LemonTag, Spinner, Tooltip } from '@flind/lemon-ui'
 
 import { formatPropertyLabel } from 'lib/components/PropertyFilters/utils'
 import { LoadingBar } from 'lib/lemon-ui/LoadingBar'

@@ -3,7 +3,7 @@ import posthog from 'posthog-js'
 import { useEffect, useRef, useState } from 'react'
 
 import { IconArrowUpRight, IconLaptop, IconShare } from '@posthog/icons'
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { copyToClipboard } from 'lib/utils/copyToClipboard'
 

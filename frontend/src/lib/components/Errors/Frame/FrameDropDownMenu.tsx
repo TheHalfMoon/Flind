@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 
 import { IconCopy, IconExternal, IconGitLab, IconGithub } from '@posthog/icons'
-import { Link } from '@posthog/lemon-ui'
+import { Link } from '@flind/lemon-ui'
 
 import { ButtonPrimitive } from 'lib/ui/Button/ButtonPrimitives'
 import {

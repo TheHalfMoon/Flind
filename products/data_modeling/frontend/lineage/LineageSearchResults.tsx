@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 
 import { IconChevronRight } from '@posthog/icons'
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { DataModelingNode } from '~/types'
 

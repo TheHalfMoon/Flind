@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
 import { IconArrowRight } from '@posthog/icons'
-import { LemonInput, Link } from '@posthog/lemon-ui'
+import { LemonInput, Link } from '@flind/lemon-ui'
 
 import { PathCleanFilterAddItemButton } from 'lib/components/PathCleanFilters/PathCleanFilterAddItemButton'
 import { parseAliasToReadable } from 'lib/components/PathCleanFilters/PathCleanFilterItem'

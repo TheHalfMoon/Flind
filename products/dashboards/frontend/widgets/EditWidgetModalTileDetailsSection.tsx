@@ -1,4 +1,4 @@
-import { LemonTextArea } from '@posthog/lemon-ui'
+import { LemonTextArea } from '@flind/lemon-ui'
 
 import { LemonField } from 'lib/lemon-ui/LemonField/LemonField'
 import { LemonInput } from 'lib/lemon-ui/LemonInput/LemonInput'

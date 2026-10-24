@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonButton, LemonDialog, LemonTable, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, LemonDialog, LemonTable, Tooltip } from '@flind/lemon-ui'
 
 import { humanFriendlyDetailedTime } from 'lib/utils/datetime'
 import { ConnectedApps } from 'scenes/settings/user/ConnectedApps'

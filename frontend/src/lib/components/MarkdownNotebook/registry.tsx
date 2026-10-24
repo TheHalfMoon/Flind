@@ -14,7 +14,7 @@ import {
     IconRewindPlay,
     IconUpload,
 } from '@posthog/icons'
-import { LemonButton, LemonInput, LemonTextArea } from '@posthog/lemon-ui'
+import { LemonButton, LemonInput, LemonTextArea } from '@flind/lemon-ui'
 
 import { wasNotebookNodeJustInserted } from './freshlyInserted'
 import { sanitizeNotebookLinkHref } from './markdown'

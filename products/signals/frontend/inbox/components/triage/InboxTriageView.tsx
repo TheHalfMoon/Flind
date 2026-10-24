@@ -3,7 +3,7 @@ import { router } from 'kea-router'
 import { useEffect, useRef } from 'react'
 
 import { IconArrowLeft, IconCheckCircle, IconPullRequest } from '@posthog/icons'
-import { LemonButton, LemonSkeleton, Link, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, LemonSkeleton, Link, Tooltip } from '@flind/lemon-ui'
 
 import { KeyboardShortcut } from 'lib/components/KeyboardShortcut/KeyboardShortcut'
 import { TZLabel } from 'lib/components/TZLabel'

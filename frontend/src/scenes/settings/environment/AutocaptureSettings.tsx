@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { SupportedWebVitalsMetrics } from 'posthog-js'
 
-import { LemonDivider, LemonSwitch } from '@posthog/lemon-ui'
+import { LemonDivider, LemonSwitch } from '@flind/lemon-ui'
 
 import { RestrictionScope, useRestrictedArea } from 'lib/components/RestrictedArea'
 import { TeamMembershipLevel } from 'lib/constants'

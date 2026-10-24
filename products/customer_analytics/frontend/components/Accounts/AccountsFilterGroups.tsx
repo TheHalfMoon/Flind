@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { Fragment, useId, useState } from 'react'
 
 import { IconFilter, IconPlusSmall, IconTrash } from '@posthog/icons'
-import { LemonBadge, LemonButton, LemonCard, LemonDivider } from '@posthog/lemon-ui'
+import { LemonBadge, LemonButton, LemonCard, LemonDivider } from '@flind/lemon-ui'
 
 import { PropertyFilters } from 'lib/components/PropertyFilters/PropertyFilters'
 import { TaxonomicFilterGroupType } from 'lib/components/TaxonomicFilter/types'

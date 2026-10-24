@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconRefresh } from '@posthog/icons'
-import { LemonButton, ProfilePicture } from '@posthog/lemon-ui'
+import { LemonButton, ProfilePicture } from '@flind/lemon-ui'
 
 import { GRAVATAR_MANAGE_URL } from 'lib/utils/gravatar'
 import { urls } from 'scenes/urls'

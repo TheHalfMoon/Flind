@@ -1,6 +1,6 @@
 import { type KeyboardEvent as ReactKeyboardEvent } from 'react'
 
-import { Tooltip } from '@posthog/lemon-ui'
+import { Tooltip } from '@flind/lemon-ui'
 
 import { dayjs } from 'lib/dayjs'
 import { LemonCard } from 'lib/lemon-ui/LemonCard'

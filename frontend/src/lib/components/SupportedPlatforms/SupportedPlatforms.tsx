@@ -1,7 +1,7 @@
 import { Fragment, memo } from 'react'
 
 import { IconCheck, IconInfo, IconX } from '@posthog/icons'
-import { LemonDivider, Tooltip } from '@posthog/lemon-ui'
+import { LemonDivider, Tooltip } from '@flind/lemon-ui'
 
 import { cn } from 'lib/utils/css-classes'
 import { isObject } from 'lib/utils/guards'

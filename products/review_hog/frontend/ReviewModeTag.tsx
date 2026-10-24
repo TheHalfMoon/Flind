@@ -1,4 +1,4 @@
-import { LemonTag } from '@posthog/lemon-ui'
+import { LemonTag } from '@flind/lemon-ui'
 
 import type { ReviewTriggerReviewModeEnumApi } from './generated/api.schemas'
 import { REVIEW_MODE_LABEL } from './reviewDisplay'

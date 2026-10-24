@@ -1,4 +1,4 @@
-import { LemonDialog } from '@posthog/lemon-ui'
+import { LemonDialog } from '@flind/lemon-ui'
 
 export function openDeleteConversationDialog(onConfirm: () => void): void {
     LemonDialog.open({

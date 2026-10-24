@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import React, { useState } from 'react'
 
 import { printHogStringOutput } from '@flind/logicvm'
-import { LemonButton, LemonTable, LemonTabs } from '@posthog/lemon-ui'
+import { LemonButton, LemonTable, LemonTabs } from '@flind/lemon-ui'
 
 import { JSONViewer } from 'lib/components/JSONViewer'
 import { CodeEditorInline } from 'lib/monaco/CodeEditorInline'

@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 
 import { IconClock } from '@posthog/icons'
-import { LemonBadge, LemonTableColumns, LemonTag, Spinner, Tooltip } from '@posthog/lemon-ui'
+import { LemonBadge, LemonTableColumns, LemonTag, Spinner, Tooltip } from '@flind/lemon-ui'
 
 import { ObjectTags } from 'lib/components/ObjectTags/ObjectTags'
 import { TZLabel } from 'lib/components/TZLabel'

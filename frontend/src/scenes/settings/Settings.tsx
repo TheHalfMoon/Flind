@@ -6,7 +6,7 @@ import { router } from 'kea-router'
 import React from 'react'
 
 import { IconExternal, IconList } from '@posthog/icons'
-import { LemonButton, LemonDivider, Link } from '@posthog/lemon-ui'
+import { LemonButton, LemonDivider, Link } from '@flind/lemon-ui'
 
 import { AccessDenied } from 'lib/components/AccessDenied'
 import { NotFound } from 'lib/components/NotFound'

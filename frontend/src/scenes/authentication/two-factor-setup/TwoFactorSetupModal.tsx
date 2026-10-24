@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
-import { LemonBanner, LemonDivider } from '@posthog/lemon-ui'
+import { LemonBanner, LemonDivider } from '@flind/lemon-ui'
 
 import { OrganizationMenu } from 'lib/components/Account/OrganizationMenu'
 import { LemonModal } from 'lib/lemon-ui/LemonModal'

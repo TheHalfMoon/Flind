@@ -1,4 +1,4 @@
-import { lemonToast } from '@posthog/lemon-ui'
+import { lemonToast } from '@flind/lemon-ui'
 
 import api from 'lib/api'
 import { liveDashboardIds } from 'scenes/dashboard/liveDashboardIds'

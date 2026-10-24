@@ -1,4 +1,4 @@
-import { LemonMenuItem } from '@posthog/lemon-ui'
+import { LemonMenuItem } from '@flind/lemon-ui'
 
 import type { Sorting } from 'lib/lemon-ui/LemonTable/sorting'
 import { downloadTableDataAsCsv } from 'scenes/web-analytics/webAnalyticsExportUtils'

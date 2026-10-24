@@ -3,7 +3,7 @@ import { Form, Group, capitalizeFirstLetter } from 'kea-forms'
 import { router } from 'kea-router'
 
 import { IconPlus, IconTrash } from '@posthog/icons'
-import { LemonButton, LemonDivider, LemonInput, LemonSegmentedButton } from '@posthog/lemon-ui'
+import { LemonButton, LemonDivider, LemonInput, LemonSegmentedButton } from '@flind/lemon-ui'
 import { Button } from '@flind/quill'
 
 import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'

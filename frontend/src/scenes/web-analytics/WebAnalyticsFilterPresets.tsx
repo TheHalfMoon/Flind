@@ -20,7 +20,7 @@ import {
     LemonSkeleton,
     LemonTextArea,
     Popover,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { IconSync } from 'lib/lemon-ui/icons'
 

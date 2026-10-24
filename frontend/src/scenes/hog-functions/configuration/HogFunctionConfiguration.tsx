@@ -10,7 +10,7 @@ import {
     LemonSwitch,
     LemonTag,
     SpinnerOverlay,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { NotFound } from 'lib/components/NotFound'
 import { LemonField } from 'lib/lemon-ui/LemonField'

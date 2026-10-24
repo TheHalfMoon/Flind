@@ -11,7 +11,7 @@ import {
     IconSparkles,
     IconWebhooks,
 } from '@posthog/icons'
-import { LemonButton, LemonCard, LemonTag } from '@posthog/lemon-ui'
+import { LemonButton, LemonCard, LemonTag } from '@flind/lemon-ui'
 
 import { IconSlack, IconTwilio } from 'lib/lemon-ui/icons'
 import { humanFriendlyNumber } from 'lib/utils/numbers'

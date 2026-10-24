@@ -2,7 +2,7 @@ import { BindLogic, useActions, useValues } from 'kea'
 import { useEffect, useMemo, useRef, type CSSProperties } from 'react'
 
 import { IconLogomark } from '@posthog/icons'
-import { LemonCard } from '@posthog/lemon-ui'
+import { LemonCard } from '@flind/lemon-ui'
 
 import { ErrorPropertiesLogicProps, errorPropertiesLogic } from 'lib/components/Errors/errorPropertiesLogic'
 import { ErrorEventType } from 'lib/components/Errors/types'

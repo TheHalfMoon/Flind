@@ -1,4 +1,4 @@
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import type { TraceDialogRow } from './traceDialogRows'
 import { indentPx, TraceDialogTreeLines } from './TraceDialogTreeLines'

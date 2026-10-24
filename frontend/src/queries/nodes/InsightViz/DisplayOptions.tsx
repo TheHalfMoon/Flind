@@ -4,7 +4,7 @@ import { ReactNode } from 'react'
 import { useDebouncedCallback } from 'use-debounce'
 
 import { IconInfo } from '@posthog/icons'
-import { LemonCheckbox, LemonInput, Tooltip } from '@posthog/lemon-ui'
+import { LemonCheckbox, LemonInput, Tooltip } from '@flind/lemon-ui'
 
 import { SmoothingFilter } from 'lib/components/SmoothingFilter/SmoothingFilter'
 import { UnitPicker } from 'lib/components/UnitPicker/UnitPicker'

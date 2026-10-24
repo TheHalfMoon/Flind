@@ -16,8 +16,8 @@ jest.mock('kea', () => ({
     useValues: jest.fn(),
 }))
 
-jest.mock('@posthog/lemon-ui', () => ({
-    ...jest.requireActual('@posthog/lemon-ui'),
+jest.mock('@flind/lemon-ui', () => ({
+    ...jest.requireActual('@flind/lemon-ui'),
     LemonInputSelect: () => <div data-attr="multiple-email-sender-select" />,
     LemonSelect: () => <div data-attr="single-email-sender-select" />,
 }))

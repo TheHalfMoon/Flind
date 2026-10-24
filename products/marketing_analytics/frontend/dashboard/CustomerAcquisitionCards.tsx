@@ -1,5 +1,5 @@
 import { IconInfo } from '@posthog/icons'
-import { LemonButton, LemonCard, LemonSkeleton, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, LemonCard, LemonSkeleton, Tooltip } from '@flind/lemon-ui'
 
 import { SamplingRate } from '~/queries/nodes/OverviewGrid/OverviewGrid'
 import { OverviewMetricCardGrid } from '~/queries/nodes/OverviewGrid/OverviewMetricCardGrid'

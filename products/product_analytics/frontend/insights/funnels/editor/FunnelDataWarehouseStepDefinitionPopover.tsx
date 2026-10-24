@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonButton, LemonInputSelect, LemonSegmentedButton, Link } from '@posthog/lemon-ui'
+import { LemonButton, LemonInputSelect, LemonSegmentedButton, Link } from '@flind/lemon-ui'
 
 import { HogQLDropdown } from 'lib/components/HogQLDropdown/HogQLDropdown'
 import { DatabaseTablePreview } from 'lib/components/TablePreview/DatabaseTablePreview'

@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonCard } from '@posthog/lemon-ui'
+import { LemonCard } from '@flind/lemon-ui'
 
 import { CodeSnippet, Language } from 'lib/components/CodeSnippet'
 import { EditKeyModal } from 'scenes/settings/user/PersonalAPIKeys'

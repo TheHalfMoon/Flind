@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { ReactNode, useState } from 'react'
 
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import api from 'lib/api'
 import { cn } from 'lib/utils/css-classes'

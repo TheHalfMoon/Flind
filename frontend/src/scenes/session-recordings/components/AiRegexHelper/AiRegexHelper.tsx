@@ -5,7 +5,7 @@ import { useActions, useValues } from 'kea'
 import posthog from 'posthog-js'
 
 import { IconAI, IconCopy, IconPlus } from '@posthog/icons'
-import { LemonBanner, LemonButton, LemonModal, LemonTextArea } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonModal, LemonTextArea } from '@flind/lemon-ui'
 
 import { maxGlobalLogic } from 'scenes/max/maxGlobalLogic'
 import { preflightLogic } from 'scenes/PreflightCheck/preflightLogic'

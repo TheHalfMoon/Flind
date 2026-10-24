@@ -5,7 +5,7 @@ import { lazyLoaders } from 'kea-loaders'
 import { router, urlToAction } from 'kea-router'
 import posthog from 'posthog-js'
 
-import { LemonDialog, Link, lemonToast } from '@posthog/lemon-ui'
+import { LemonDialog, Link, lemonToast } from '@flind/lemon-ui'
 
 import api, { getJSONOrNull } from 'lib/api'
 import { buildFakeBillingAlert } from 'lib/components/Superpowers/buildFakeBillingAlert'

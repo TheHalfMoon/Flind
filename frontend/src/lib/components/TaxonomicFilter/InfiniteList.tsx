@@ -16,7 +16,7 @@ import {
     IconSearch,
     IconWarning,
 } from '@posthog/icons'
-import { LemonButton, LemonDivider, LemonTag } from '@posthog/lemon-ui'
+import { LemonButton, LemonDivider, LemonTag } from '@flind/lemon-ui'
 
 import { AutoSizer } from 'lib/components/AutoSizer'
 import { ControlledDefinitionPopover } from 'lib/components/DefinitionPopover/DefinitionPopoverContents'

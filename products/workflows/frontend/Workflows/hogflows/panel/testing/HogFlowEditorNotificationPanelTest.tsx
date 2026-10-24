@@ -15,7 +15,7 @@ import {
     ProfilePicture,
     Spinner,
     Tooltip,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { LemonField } from 'lib/lemon-ui/LemonField'
 import { isEmail } from 'lib/utils/url'

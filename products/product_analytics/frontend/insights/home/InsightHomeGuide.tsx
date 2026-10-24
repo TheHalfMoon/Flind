@@ -5,7 +5,7 @@ import * as chartPng from '@posthog/brand/hoggies/png/chart'
 import * as explorerPng from '@posthog/brand/hoggies/png/explorer'
 import * as loopsPng from '@posthog/brand/hoggies/png/loops'
 import { IconX } from '@posthog/icons'
-import { LemonButton, LemonCard } from '@posthog/lemon-ui'
+import { LemonButton, LemonCard } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import { Link } from 'lib/lemon-ui/Link'

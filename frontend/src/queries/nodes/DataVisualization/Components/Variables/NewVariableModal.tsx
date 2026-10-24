@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonButton, LemonDialog, LemonModal, LemonTable } from '@posthog/lemon-ui'
+import { LemonButton, LemonDialog, LemonModal, LemonTable } from '@flind/lemon-ui'
 
 import { VARIABLE_INSIGHT_COLUMNS } from 'scenes/data-management/variables/insightColumns'
 

@@ -5,7 +5,7 @@ import { useActions, useValues } from 'kea'
 import { FunctionComponent, useEffect } from 'react'
 import React from 'react'
 
-import { Tooltip } from '@posthog/lemon-ui'
+import { Tooltip } from '@flind/lemon-ui'
 
 import { capitalizeFirstLetter } from 'lib/utils/strings'
 

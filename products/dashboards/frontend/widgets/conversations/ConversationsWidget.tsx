@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 
 import * as organizedPng from '@posthog/brand/hoggies/png/organized'
 import { IconChevronDown } from '@posthog/icons'
-import { LemonBadge, LemonButton, LemonSkeleton, LemonTag, Tooltip } from '@posthog/lemon-ui'
+import { LemonBadge, LemonButton, LemonSkeleton, LemonTag, Tooltip } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import { CardTopHeadingRow } from 'lib/components/Cards/CardTopHeadingRow'

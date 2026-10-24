@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 
-import { LemonSkeleton } from '@posthog/lemon-ui'
+import { LemonSkeleton } from '@flind/lemon-ui'
 import {
     ChartLegend,
     type ChartTheme,

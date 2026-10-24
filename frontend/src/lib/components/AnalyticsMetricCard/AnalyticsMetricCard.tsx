@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import type { ReactNode } from 'react'
 
 import { IconChevronRight } from '@posthog/icons'
-import { LemonSkeleton } from '@posthog/lemon-ui'
+import { LemonSkeleton } from '@flind/lemon-ui'
 import { MetricCard, type MetricCardProps } from '@flind/quill-charts'
 
 export interface AnalyticsMetricCardProps extends MetricCardProps {

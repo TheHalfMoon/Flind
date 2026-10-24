@@ -3,7 +3,7 @@ import { CSSProperties, useCallback, useMemo } from 'react'
 import { List } from 'react-window'
 
 import { IconChevronDown } from '@posthog/icons'
-import { LemonButton, LemonCheckbox, LemonDropdown, LemonInput, LemonTag } from '@posthog/lemon-ui'
+import { LemonButton, LemonCheckbox, LemonDropdown, LemonInput, LemonTag } from '@flind/lemon-ui'
 
 import { DateRange, LogsQuery } from '~/queries/schema/schema-general'
 

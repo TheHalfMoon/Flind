@@ -8,7 +8,7 @@ import {
     LemonSegmentedButton,
     LemonSelect,
     LemonSwitch,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { LemonField } from 'lib/lemon-ui/LemonField'
 

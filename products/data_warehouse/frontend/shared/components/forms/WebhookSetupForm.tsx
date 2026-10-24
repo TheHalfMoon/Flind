@@ -2,7 +2,7 @@ import { BuiltLogic, LogicWrapper } from 'kea'
 import { Form } from 'kea-forms'
 
 import { IconCopy, IconRefresh } from '@posthog/icons'
-import { LemonBanner, LemonButton, LemonTag, Spinner } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonTag, Spinner } from '@flind/lemon-ui'
 
 import { LemonCard } from 'lib/lemon-ui/LemonCard'
 import { LemonMarkdown } from 'lib/lemon-ui/LemonMarkdown'

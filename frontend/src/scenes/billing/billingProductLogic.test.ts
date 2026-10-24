@@ -5,7 +5,7 @@ import { expectLogic } from 'kea-test-utils'
 import posthog from 'posthog-js'
 
 import { dayjs } from 'lib/dayjs'
-// Imported from the source module rather than the `@posthog/lemon-ui` barrel so the spy below
+// Imported from the source module rather than the `@flind/lemon-ui` barrel so the spy below
 // replaces `.error` on the same `lemonToast` singleton the logic calls at runtime (see the same
 // note in paymentEntryLogic.test.ts).
 import { lemonToast } from 'lib/lemon-ui/LemonToast/LemonToast'

@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
-import { LemonButton, LemonInput, LemonInputSelect } from '@posthog/lemon-ui'
+import { LemonButton, LemonInput, LemonInputSelect } from '@flind/lemon-ui'
 
 import { dayjs } from 'lib/dayjs'
 import { LemonCalendarSelectInput } from 'lib/lemon-ui/LemonCalendar/LemonCalendarSelect'

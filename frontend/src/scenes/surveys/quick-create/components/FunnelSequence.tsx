@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonInput, LemonLabel, LemonSelect } from '@posthog/lemon-ui'
+import { LemonInput, LemonLabel, LemonSelect } from '@flind/lemon-ui'
 
 import { quickSurveyFormLogic } from 'scenes/surveys/quick-create/quickSurveyFormLogic'
 import { FunnelContext } from 'scenes/surveys/utils/opportunityDetection'

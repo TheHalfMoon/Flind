@@ -1,5 +1,5 @@
 import { IconClock } from '@posthog/icons'
-import { LemonTag, Tooltip } from '@posthog/lemon-ui'
+import { LemonTag, Tooltip } from '@flind/lemon-ui'
 
 /**
  * Render only after the recordings API confirmed the observed session's recording no longer exists.

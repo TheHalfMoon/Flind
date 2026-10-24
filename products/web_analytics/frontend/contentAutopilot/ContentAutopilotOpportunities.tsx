@@ -12,7 +12,7 @@ import {
     LemonTable,
     LemonTag,
     Spinner,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { pluralize } from 'lib/utils/strings'
 import { faviconUrl } from 'scenes/web-analytics/common'

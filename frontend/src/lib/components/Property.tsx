@@ -1,4 +1,4 @@
-import { Link } from '@posthog/lemon-ui'
+import { Link } from '@flind/lemon-ui'
 
 import stringWithWBR from 'lib/utils/stringWithWBR'
 import { isExternalLink } from 'lib/utils/url'

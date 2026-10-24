@@ -1,4 +1,4 @@
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 // A failed fetch must read differently from a successful one that found nothing (TraceUnavailableNotice) —
 // otherwise a network error looks like proof the trace was never sent.

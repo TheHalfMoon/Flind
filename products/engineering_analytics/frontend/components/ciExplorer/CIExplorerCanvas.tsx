@@ -18,7 +18,7 @@ import { useActions, useValues } from 'kea'
 import { type KeyboardEvent, useCallback, useEffect, useMemo, useRef } from 'react'
 
 import { IconArrowLeft, IconMinus, IconPlus } from '@posthog/icons'
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { themeLogic } from '~/layout/navigation-3000/themeLogic'
 

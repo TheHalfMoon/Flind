@@ -3,7 +3,7 @@ import { useActions } from 'kea'
 import { useEffect, useMemo, useRef, useState } from 'react'
 
 import { IconCollapse, IconExpand, IconNotebook } from '@posthog/icons'
-import { LemonButton, LemonSkeleton } from '@posthog/lemon-ui'
+import { LemonButton, LemonSkeleton } from '@flind/lemon-ui'
 
 import {
     InsightBreakdownSummary,

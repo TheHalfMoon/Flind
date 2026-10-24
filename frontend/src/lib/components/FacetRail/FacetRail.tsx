@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { Fragment, ReactNode, useMemo, useRef } from 'react'
 
 import { IconPlus } from '@posthog/icons'
-import { LemonInput } from '@posthog/lemon-ui'
+import { LemonInput } from '@flind/lemon-ui'
 
 import { Resizer } from 'lib/components/Resizer/Resizer'
 import { ResizerLogicProps, resizerLogic } from 'lib/components/Resizer/resizerLogic'

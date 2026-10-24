@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react'
 
-import { LemonButton, LemonModal } from '@posthog/lemon-ui'
+import { LemonButton, LemonModal } from '@flind/lemon-ui'
 
 import { useStorybookMocks } from '~/mocks/browser'
 import type { MockResolverInfo } from '~/mocks/utils'

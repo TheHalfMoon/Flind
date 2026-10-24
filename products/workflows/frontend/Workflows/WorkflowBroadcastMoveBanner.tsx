@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import posthog from 'posthog-js'
 import { useEffect } from 'react'
 
-import { LemonBanner, LemonDialog } from '@posthog/lemon-ui'
+import { LemonBanner, LemonDialog } from '@flind/lemon-ui'
 
 import { lemonBannerLogic } from 'lib/lemon-ui/LemonBanner/lemonBannerLogic'
 import { getAccessControlDisabledReason } from 'lib/utils/accessControlUtils'

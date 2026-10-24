@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import React from 'react'
 
 import { IconCollapse, IconExpand, IconPlus } from '@posthog/icons'
-import { LemonMenu, LemonSwitch } from '@posthog/lemon-ui'
+import { LemonMenu, LemonSwitch } from '@flind/lemon-ui'
 
 import { supportLogic } from 'lib/components/Support/supportLogic'
 import { IconFeedback } from 'lib/lemon-ui/icons'

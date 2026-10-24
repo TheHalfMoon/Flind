@@ -10,7 +10,7 @@ import {
     LemonModal,
     LemonSelect,
     LemonSnack,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { FlagSelector } from 'lib/components/FlagSelector'
 import { EventTriggerSelect } from 'lib/components/IngestionControls/triggers/EventTrigger'

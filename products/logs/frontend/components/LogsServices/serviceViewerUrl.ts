@@ -1,6 +1,6 @@
 import { combineUrl } from 'kea-router'
 
-import { lemonToast } from '@posthog/lemon-ui'
+import { lemonToast } from '@flind/lemon-ui'
 
 import { urls } from 'scenes/urls'
 

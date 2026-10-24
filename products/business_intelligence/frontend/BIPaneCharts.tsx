@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { useMemo } from 'react'
 
-import { LemonBanner, LemonCard } from '@posthog/lemon-ui'
+import { LemonBanner, LemonCard } from '@flind/lemon-ui'
 
 import { dataThemeLogic } from 'scenes/dataThemeLogic'
 

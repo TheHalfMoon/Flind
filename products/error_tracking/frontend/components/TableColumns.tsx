@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { useMemo } from 'react'
 
 import { IconMinus } from '@posthog/icons'
-import { LemonCheckbox, Link } from '@posthog/lemon-ui'
+import { LemonCheckbox, Link } from '@flind/lemon-ui'
 
 import { ErrorTrackingRuntime } from 'lib/components/Errors/types'
 import { getRuntimeFromLib } from 'lib/components/Errors/utils'

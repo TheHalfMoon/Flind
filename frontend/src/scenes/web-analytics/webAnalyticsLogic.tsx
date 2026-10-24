@@ -21,7 +21,7 @@ import { windowValues } from 'kea-window-values'
 import posthog from 'posthog-js'
 
 import { IconGear } from '@posthog/icons'
-import { LemonMenuItem } from '@posthog/lemon-ui'
+import { LemonMenuItem } from '@flind/lemon-ui'
 import { errorTrackingQuery } from '@flind/products-error-tracking/frontend/queries'
 
 import api from 'lib/api'

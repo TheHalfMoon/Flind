@@ -1,4 +1,4 @@
-import { LemonCard } from '@posthog/lemon-ui'
+import { LemonCard } from '@flind/lemon-ui'
 
 /** The white surface for one section of a detail tab: an optional title row with a control on the right, then the body. */
 export function SectionCard({

@@ -1,7 +1,7 @@
 import { KeyboardEvent, Suspense, useEffect, useState } from 'react'
 
 import { IconPencil } from '@posthog/icons'
-import { LemonButton, LemonLabel, LemonModal, LemonTextArea } from '@posthog/lemon-ui'
+import { LemonButton, LemonLabel, LemonModal, LemonTextArea } from '@flind/lemon-ui'
 import { PostHogErrorBoundary } from '@posthog/react'
 
 import { CodeSnippet, Language } from 'lib/components/CodeSnippet'

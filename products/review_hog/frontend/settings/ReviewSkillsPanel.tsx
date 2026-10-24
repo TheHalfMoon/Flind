@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconPlus, IconSearch } from '@posthog/icons'
-import { LemonButton, LemonMenu, LemonSkeleton, LemonSwitch, Link } from '@posthog/lemon-ui'
+import { LemonButton, LemonMenu, LemonSkeleton, LemonSwitch, Link } from '@flind/lemon-ui'
 
 import {
     REVIEW_SKILL_KIND_LABELS,

@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { LemonSelect } from '@posthog/lemon-ui'
+import { LemonSelect } from '@flind/lemon-ui'
 
 import { ProductTour, ProgressStatus } from '~/types'
 

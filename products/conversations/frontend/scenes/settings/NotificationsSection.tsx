@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonButton, LemonCard, LemonDivider, Link } from '@posthog/lemon-ui'
+import { LemonButton, LemonCard, LemonDivider, Link } from '@flind/lemon-ui'
 
 import { MemberSelectMultiple } from 'lib/components/MemberSelectMultiple'
 import { urls } from 'scenes/urls'

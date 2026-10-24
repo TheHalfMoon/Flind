@@ -4,7 +4,7 @@ import { useValues } from 'kea'
 import { router } from 'kea-router'
 import { Suspense, useEffect } from 'react'
 
-import { LemonTabs, Spinner } from '@posthog/lemon-ui'
+import { LemonTabs, Spinner } from '@flind/lemon-ui'
 
 import { FEATURE_FLAGS } from 'lib/constants'
 import { featureFlagLogic } from 'lib/logic/featureFlagLogic'

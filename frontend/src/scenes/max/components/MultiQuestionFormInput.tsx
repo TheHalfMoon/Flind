@@ -3,7 +3,7 @@ import { useCallback, useRef, useState } from 'react'
 import useResizeObserver from 'use-resize-observer'
 
 import { IconX } from '@posthog/icons'
-import { LemonButton, LemonTabs, Spinner } from '@posthog/lemon-ui'
+import { LemonButton, LemonTabs, Spinner } from '@flind/lemon-ui'
 
 import { MultiQuestionForm, MultiQuestionFormQuestion } from '~/queries/schema/schema-assistant-messages'
 

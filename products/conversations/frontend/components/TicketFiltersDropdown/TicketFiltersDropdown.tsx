@@ -10,7 +10,7 @@ import {
     LemonLabel,
     LemonSegmentedButton,
     LemonSelect,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { tagsModel } from '~/models/tagsModel'
 

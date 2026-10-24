@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
 import { IconCloud, IconTerminal } from '@posthog/icons'
-import { LemonSegmentedButton } from '@posthog/lemon-ui'
+import { LemonSegmentedButton } from '@flind/lemon-ui'
 
 import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'
 

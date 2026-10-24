@@ -3,7 +3,7 @@ import { Form } from 'kea-forms'
 import { useEffect } from 'react'
 
 import { IconInfo, IconPlayFilled, IconTestTube } from '@posthog/icons'
-import { LemonBanner, LemonButton, LemonDivider, LemonLabel, LemonSwitch, Tooltip } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonDivider, LemonLabel, LemonSwitch, Tooltip } from '@flind/lemon-ui'
 
 import { LemonField } from 'lib/lemon-ui/LemonField'
 import { LogsViewerTable } from 'scenes/hog-functions/logs/LogsViewer'

@@ -12,7 +12,7 @@ import {
     IconRefresh,
     IconStopFilled,
 } from '@posthog/icons'
-import { LemonButton, LemonDivider, LemonSelect } from '@posthog/lemon-ui'
+import { LemonButton, LemonDivider, LemonSelect } from '@flind/lemon-ui'
 
 import { useNotebookJupyterCommands, useNotebookJupyterStoreValue } from 'lib/components/MarkdownNotebook/jupyterMode'
 import { IconArrowDown, IconArrowUp } from 'lib/lemon-ui/icons'

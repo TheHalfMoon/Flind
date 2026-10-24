@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
 import { IconSearch } from '@posthog/icons'
-import { LemonButton, LemonCheckbox, LemonDropdown, LemonInput } from '@posthog/lemon-ui'
+import { LemonButton, LemonCheckbox, LemonDropdown, LemonInput } from '@flind/lemon-ui'
 
 import { pluralize } from 'lib/utils/strings'
 

@@ -3,7 +3,7 @@ import { MOCK_DEFAULT_USER } from 'lib/api.mock'
 import { router } from 'kea-router'
 import { expectLogic } from 'kea-test-utils'
 
-import { lemonToast } from '@posthog/lemon-ui'
+import { lemonToast } from '@flind/lemon-ui'
 
 import api, { ApiError } from 'lib/api'
 import { removeProjectIdIfPresent } from 'lib/utils/kea-router'
@@ -37,8 +37,8 @@ const createMockTask = (id: string): Task => ({
     created_by: null,
 })
 
-jest.mock('@posthog/lemon-ui', () => ({
-    ...jest.requireActual('@posthog/lemon-ui'),
+jest.mock('@flind/lemon-ui', () => ({
+    ...jest.requireActual('@flind/lemon-ui'),
     lemonToast: { error: jest.fn(), success: jest.fn() },
 }))
 

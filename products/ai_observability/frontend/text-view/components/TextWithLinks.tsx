@@ -1,7 +1,7 @@
 /**
  * Component for rendering text with clickable URLs, event links, and line numbers
  */
-import { Link } from '@posthog/lemon-ui'
+import { Link } from '@flind/lemon-ui'
 
 import { urls } from 'scenes/urls'
 

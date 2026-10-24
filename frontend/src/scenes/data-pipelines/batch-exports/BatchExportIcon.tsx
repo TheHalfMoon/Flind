@@ -1,5 +1,5 @@
 import IconHTTP from '@posthog/brand/hoggies/png/coffee-run'
-import { Link, Tooltip } from '@posthog/lemon-ui'
+import { Link, Tooltip } from '@flind/lemon-ui'
 
 import { BatchExportService } from '~/types'
 

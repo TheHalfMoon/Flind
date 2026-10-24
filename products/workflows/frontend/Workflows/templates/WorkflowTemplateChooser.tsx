@@ -3,7 +3,7 @@ import './WorkflowTemplateChooser.scss'
 import { useActions, useValues } from 'kea'
 import { router } from 'kea-router'
 
-import { LemonDialog } from '@posthog/lemon-ui'
+import { LemonDialog } from '@flind/lemon-ui'
 
 import { lemonToast } from 'lib/lemon-ui/LemonToast'
 import { Spinner } from 'lib/lemon-ui/Spinner'

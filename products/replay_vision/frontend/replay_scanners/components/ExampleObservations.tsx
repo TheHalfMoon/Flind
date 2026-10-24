@@ -1,5 +1,5 @@
 import { IconPlayFilled } from '@posthog/icons'
-import { LemonTag } from '@posthog/lemon-ui'
+import { LemonTag } from '@flind/lemon-ui'
 
 import { cn } from 'lib/utils/css-classes'
 

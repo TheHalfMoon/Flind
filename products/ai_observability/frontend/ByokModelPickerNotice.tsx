@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonBanner, Link } from '@posthog/lemon-ui'
+import { LemonBanner, Link } from '@flind/lemon-ui'
 
 import { PROVIDER_SETTINGS_URL } from './ModelPicker'
 import { modelPickerLogic } from './modelPickerLogic'

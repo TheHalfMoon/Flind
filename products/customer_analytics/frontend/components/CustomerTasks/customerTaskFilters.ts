@@ -1,4 +1,4 @@
-import type { Sorting } from '@posthog/lemon-ui'
+import type { Sorting } from '@flind/lemon-ui'
 
 import { dayjs, dayjsLocalToTimezone, dayjsNowInTimezone } from 'lib/dayjs'
 import { isUUIDLike } from 'lib/utils/guards'

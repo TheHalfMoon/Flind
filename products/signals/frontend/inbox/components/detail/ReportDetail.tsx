@@ -11,7 +11,7 @@ import {
     IconSidebarOpen,
     IconTrends,
 } from '@posthog/icons'
-import { LemonButton, LemonTabs, LemonSelect } from '@posthog/lemon-ui'
+import { LemonButton, LemonTabs, LemonSelect } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'
 import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'

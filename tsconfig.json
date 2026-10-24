@@ -3,8 +3,8 @@
         "paths": {
             "lib/*": ["./frontend/src/lib/*"],
             "scenes/*": ["./frontend/src/scenes/*"],
-            "@posthog/lemon-ui": ["./frontend/@posthog/lemon-ui/src/index"],
-            "@posthog/lemon-ui/*": ["./frontend/@posthog/lemon-ui/src/*"],
+            "@flind/lemon-ui": ["./frontend/flind/lemon-ui/src/index"],
+            "@flind/lemon-ui/*": ["./frontend/flind/lemon-ui/src/*"],
             "@posthog/icons": ["./frontend/node_modules/@posthog/icons"],
             "@posthog/shared-onboarding/*": ["./docs/onboarding/*"],
             "storybook/*": ["./.storybook/*"],

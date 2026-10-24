@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { useEffect, useState } from 'react'
 
 import { IconCheck, IconCursorClick, IconPlay, IconPlus, IconSidebarClose, IconX } from '@posthog/icons'
-import { LemonButton, LemonInput, Link } from '@posthog/lemon-ui'
+import { LemonButton, LemonInput, Link } from '@flind/lemon-ui'
 
 import { LemonModal } from 'lib/lemon-ui/LemonModal'
 import { hasIncompleteTargeting } from 'scenes/product-tours/stepUtils'

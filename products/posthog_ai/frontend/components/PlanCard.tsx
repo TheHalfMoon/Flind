@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 
 import { IconCopy, IconExpand45, IconListCheck, IconX } from '@posthog/icons'
-import { LemonButton, LemonModal } from '@posthog/lemon-ui'
+import { LemonButton, LemonModal } from '@flind/lemon-ui'
 
 import { copyToClipboard } from 'lib/utils/copyToClipboard'
 import { cn } from 'lib/utils/css-classes'

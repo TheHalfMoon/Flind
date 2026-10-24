@@ -3,7 +3,7 @@ import { router } from 'kea-router'
 import { useMemo } from 'react'
 
 import { IconBuilding, IconChevronDown, IconGlobe, IconLock, IconPeople, IconThumbsUpFilled } from '@posthog/icons'
-import { LemonButton, LemonDialog, LemonDivider, LemonInput, LemonMenu, LemonTag, Link } from '@posthog/lemon-ui'
+import { LemonButton, LemonDialog, LemonDivider, LemonInput, LemonMenu, LemonTag, Link } from '@flind/lemon-ui'
 
 import { ObjectTags } from 'lib/components/ObjectTags/ObjectTags'
 import { More } from 'lib/lemon-ui/LemonButton/More'

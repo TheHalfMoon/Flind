@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonSwitch, LemonTag } from '@posthog/lemon-ui'
+import { LemonSwitch, LemonTag } from '@flind/lemon-ui'
 
 import { HogFunctionStatusIndicator } from 'scenes/hog-functions/misc/HogFunctionStatusIndicator'
 import { HogFunctionStatusTag } from 'scenes/hog-functions/misc/HogFunctionStatusTag'

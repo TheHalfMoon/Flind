@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { cloneElement, MouseEvent, useCallback, useEffect, useId, useRef } from 'react'
 
-import { LemonButton, LemonButtonProps, LemonDropdown, LemonDropdownProps } from '@posthog/lemon-ui'
+import { LemonButton, LemonButtonProps, LemonDropdown, LemonDropdownProps } from '@flind/lemon-ui'
 
 import api, { PaginatedResponse } from 'lib/api'
 import { useScrollObserver } from 'lib/hooks/useScrollObserver'

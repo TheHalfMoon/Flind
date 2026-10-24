@@ -9,7 +9,7 @@ import {
     LemonModal,
     LemonSegmentedButton,
     LemonSelect,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { LemonRadio } from 'lib/lemon-ui/LemonRadio'
 

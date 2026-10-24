@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 
-import { LemonBanner, LemonTable, LemonTag } from '@posthog/lemon-ui'
+import { LemonBanner, LemonTable, LemonTag } from '@flind/lemon-ui'
 
 import { humanFriendlyNumber } from 'lib/utils/numbers'
 import { pluralize } from 'lib/utils/strings'

@@ -4,7 +4,7 @@ import { twMerge } from 'tailwind-merge'
 
 import { IconX } from '@posthog/icons'
 // eslint-disable-next-line import/no-cycle
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 export interface LemonSnackProps extends React.HTMLAttributes<HTMLSpanElement> {
     type?: 'regular' | 'pill'

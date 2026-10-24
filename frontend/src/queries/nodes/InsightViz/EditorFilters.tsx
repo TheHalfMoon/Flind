@@ -2,7 +2,7 @@ import { useValues } from 'kea'
 import { Suspense, lazy } from 'react'
 
 import { IconInfo } from '@posthog/icons'
-import { Link, Tooltip } from '@posthog/lemon-ui'
+import { Link, Tooltip } from '@flind/lemon-ui'
 
 import { NON_BREAKDOWN_DISPLAY_TYPES } from 'lib/constants'
 import { retryImport } from 'lib/utils/retryImport'

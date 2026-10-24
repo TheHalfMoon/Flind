@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconArrowRight } from '@posthog/icons'
-import { LemonButton, LemonDrawer } from '@posthog/lemon-ui'
+import { LemonButton, LemonDrawer } from '@flind/lemon-ui'
 
 import { evaluationResultDrawerLogic } from './evaluationResultDrawerLogic'
 import { EvaluationResultExpanded } from './EvaluationResultExpanded'

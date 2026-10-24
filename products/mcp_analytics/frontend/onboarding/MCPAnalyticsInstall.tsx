@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 
 import { IconCheckCircle } from '@posthog/icons'
-import { LemonButton, Spinner } from '@posthog/lemon-ui'
+import { LemonButton, Spinner } from '@flind/lemon-ui'
 
 import { CommandBlock } from 'lib/components/CommandBlock/CommandBlock'
 import { useWizardCommand } from 'scenes/onboarding/shared/useWizardCommand'

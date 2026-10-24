@@ -1,4 +1,4 @@
-import { LemonButton, LemonTable } from '@posthog/lemon-ui'
+import { LemonButton, LemonTable } from '@flind/lemon-ui'
 
 import { BIConfig } from '~/queries/schema/schema-business-intelligence'
 import { ChartSettings } from '~/queries/schema/schema-general'

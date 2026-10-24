@@ -3,7 +3,7 @@ import { loaders } from 'kea-loaders'
 import { actionToUrl, router, urlToAction } from 'kea-router'
 import posthog from 'posthog-js'
 
-import { LemonDialog, PaginationManual, lemonToast } from '@posthog/lemon-ui'
+import { LemonDialog, PaginationManual, lemonToast } from '@flind/lemon-ui'
 
 import api, { ApiConfig, CountedPaginatedResponse, HogFlowListType } from 'lib/api'
 import { buildUserScopedPersistenceConfig } from 'lib/logic/persistence'

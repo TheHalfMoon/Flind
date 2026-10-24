@@ -1,6 +1,6 @@
 import { BindLogic, useActions, useValues } from 'kea'
 
-import { LemonSegmentedButton, LemonSkeleton } from '@posthog/lemon-ui'
+import { LemonSegmentedButton, LemonSkeleton } from '@flind/lemon-ui'
 
 import { EmptyMessage } from 'lib/components/EmptyMessage/EmptyMessage'
 

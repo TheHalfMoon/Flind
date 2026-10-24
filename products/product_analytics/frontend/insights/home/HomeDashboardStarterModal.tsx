@@ -1,5 +1,5 @@
 import { IconChevronRight, IconCopy, IconDashboard, IconHome, IconSparkles, IconStack } from '@posthog/icons'
-import { LemonButton, LemonModal } from '@posthog/lemon-ui'
+import { LemonButton, LemonModal } from '@flind/lemon-ui'
 
 export interface HomeDashboardStarterModalProps {
     isOpen: boolean

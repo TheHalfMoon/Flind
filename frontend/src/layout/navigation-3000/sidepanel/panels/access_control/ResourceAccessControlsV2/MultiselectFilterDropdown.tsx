@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 
-import { LemonButton, LemonCheckbox, LemonInput, Link } from '@posthog/lemon-ui'
+import { LemonButton, LemonCheckbox, LemonInput, Link } from '@flind/lemon-ui'
 
 /** The option list scrolls itself, so give the dropdown that holds it `overflowHidden`. Without
  * that prop the popover wraps this in a second scroller, and the dropdown gets two scrollbars. */

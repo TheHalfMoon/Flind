@@ -3,7 +3,7 @@ import posthog from 'posthog-js'
 import { useCallback, useMemo } from 'react'
 
 import { IconArrowRight, IconWrench } from '@posthog/icons'
-import { LemonSelect, LemonSelectSection, LemonTag } from '@posthog/lemon-ui'
+import { LemonSelect, LemonSelectSection, LemonTag } from '@flind/lemon-ui'
 
 import { FEATURE_FLAGS } from 'lib/constants'
 import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'

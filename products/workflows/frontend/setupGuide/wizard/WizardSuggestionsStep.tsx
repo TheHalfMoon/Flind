@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconArrowRight, IconSparkles } from '@posthog/icons'
-import { LemonButton, LemonSkeleton, LemonTag, Spinner, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, LemonSkeleton, LemonTag, Spinner, Tooltip } from '@flind/lemon-ui'
 
 import { workflowDataSuggestionsLogic } from '../suggestions/workflowDataSuggestionsLogic'
 import { WorkflowSuggestionCard } from '../suggestions/WorkflowSuggestionCard'

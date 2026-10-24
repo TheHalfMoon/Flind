@@ -1,5 +1,5 @@
 import { IconCopy } from '@posthog/icons'
-import { LemonButton, LemonCollapse } from '@posthog/lemon-ui'
+import { LemonButton, LemonCollapse } from '@flind/lemon-ui'
 
 import { copyToClipboard } from 'lib/utils/copyToClipboard'
 import { SURVEY_EVENT_TOKEN, SURVEY_STATUS_TOKEN } from 'scenes/surveys/surveyNotificationModalLogic'

@@ -13,7 +13,7 @@ import { useActions, useValues } from 'kea'
 import { ReactNode, useEffect, useMemo, useState } from 'react'
 
 import { IconDrag, IconFilter, IconGlobe, IconPencil, IconRefresh, IconX } from '@posthog/icons'
-import { LemonBanner, LemonButton, LemonDivider, Popover, Spinner, Tooltip } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonDivider, Popover, Spinner, Tooltip } from '@flind/lemon-ui'
 
 import { FilterBar } from 'lib/components/FilterBar'
 import { liveUserCountLogic } from 'lib/components/LiveUserCount/liveUserCountLogic'

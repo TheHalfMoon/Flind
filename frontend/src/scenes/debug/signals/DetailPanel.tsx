@@ -1,7 +1,7 @@
 import { useCallback, useRef, useState } from 'react'
 
 import { IconExternal } from '@posthog/icons'
-import { LemonButton, Link } from '@posthog/lemon-ui'
+import { LemonButton, Link } from '@flind/lemon-ui'
 
 import { signalCardSourceLine } from 'lib/signals/signalCardSourceLine'
 import { urls } from 'scenes/urls'

@@ -1,6 +1,6 @@
 import Papa from 'papaparse'
 
-import { lemonToast } from '@posthog/lemon-ui'
+import { lemonToast } from '@flind/lemon-ui'
 
 import { copyToClipboard } from 'lib/utils/copyToClipboard'
 
@@ -19,7 +19,7 @@ import {
 import { DataTableRow } from './dataTableLogic'
 
 jest.mock('lib/utils/copyToClipboard')
-jest.mock('@posthog/lemon-ui', () => ({
+jest.mock('@flind/lemon-ui', () => ({
     lemonToast: {
         error: jest.fn(),
     },

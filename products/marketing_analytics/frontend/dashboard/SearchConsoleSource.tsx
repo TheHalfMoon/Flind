@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import type { ReactNode } from 'react'
 
 import * as magnifyingGlass from '@posthog/brand/hoggies/png/magnifying-glass'
-import { LemonBanner, LemonButton, LemonCard, LemonTag, Spinner } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonCard, LemonTag, Spinner } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import { RestrictionScope, useRestrictedArea } from 'lib/components/RestrictedArea'

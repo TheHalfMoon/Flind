@@ -2,7 +2,7 @@ import { useValues } from 'kea'
 import { useMemo } from 'react'
 
 import { IconLlmAnalytics, IconThumbsDown, IconThumbsUp } from '@posthog/icons'
-import { LemonButton, LemonTag, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, LemonTag, Tooltip } from '@flind/lemon-ui'
 
 import { surveyLogic } from 'scenes/surveys/surveyLogic'
 import {

@@ -1,7 +1,7 @@
 import posthog from 'posthog-js'
 
 import { IconEye } from '@posthog/icons'
-import { LemonButton, LemonDropdown, LemonTag } from '@posthog/lemon-ui'
+import { LemonButton, LemonDropdown, LemonTag } from '@flind/lemon-ui'
 
 import { cn } from 'lib/utils/css-classes'
 

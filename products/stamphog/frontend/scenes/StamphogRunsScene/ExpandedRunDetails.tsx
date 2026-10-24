@@ -1,6 +1,6 @@
 import { combineUrl } from 'kea-router'
 
-import { LemonBanner, LemonTag, Link } from '@posthog/lemon-ui'
+import { LemonBanner, LemonTag, Link } from '@flind/lemon-ui'
 
 import { CopyToClipboardInline } from 'lib/components/CopyToClipboard'
 import { TZLabel } from 'lib/components/TZLabel'

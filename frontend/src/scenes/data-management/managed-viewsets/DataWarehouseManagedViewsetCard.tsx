@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconPiggyBank } from '@posthog/icons'
-import { LemonSwitch, Link } from '@posthog/lemon-ui'
+import { LemonSwitch, Link } from '@flind/lemon-ui'
 
 import { AccessControlAction } from 'lib/components/AccessControlAction'
 import { teamLogic } from 'scenes/teamLogic'

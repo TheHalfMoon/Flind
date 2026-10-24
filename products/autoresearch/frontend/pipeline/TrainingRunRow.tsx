@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import type { ReactNode } from 'react'
 
 import { IconChevronRight, IconExternal, IconNotebook } from '@posthog/icons'
-import { LemonBanner, LemonButton, LemonCollapse, LemonTag, Link, Spinner, Tooltip } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonCollapse, LemonTag, Link, Spinner, Tooltip } from '@flind/lemon-ui'
 
 import { FEATURE_FLAGS } from 'lib/constants'
 import { dayjs } from 'lib/dayjs'

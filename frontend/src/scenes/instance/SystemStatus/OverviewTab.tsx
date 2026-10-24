@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { LemonTable } from '@posthog/lemon-ui'
+import { LemonTable } from '@flind/lemon-ui'
 
 import { IconOpenInNew } from 'lib/lemon-ui/icons'
 import { Link } from 'lib/lemon-ui/Link'

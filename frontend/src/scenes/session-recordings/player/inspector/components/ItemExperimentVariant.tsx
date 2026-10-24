@@ -1,4 +1,4 @@
-import { LemonTag } from '@posthog/lemon-ui'
+import { LemonTag } from '@flind/lemon-ui'
 
 import { Link } from 'lib/lemon-ui/Link'
 import { addProductIntentForCrossSell } from 'lib/utils/product-intents'

@@ -1,6 +1,6 @@
 import { KeyboardEvent, RefObject, useEffect, useId, useMemo, useRef, useState } from 'react'
 
-import { LemonInput } from '@posthog/lemon-ui'
+import { LemonInput } from '@flind/lemon-ui'
 
 import type { CreateActionType } from '../../hogFlowEditorLogic'
 import { StepPaletteRow } from './StepPaletteRow'

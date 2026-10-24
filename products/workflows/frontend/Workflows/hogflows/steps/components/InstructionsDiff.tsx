@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { Suspense } from 'react'
 
-import { LemonSkeleton } from '@posthog/lemon-ui'
+import { LemonSkeleton } from '@flind/lemon-ui'
 
 import type { MonacoDiffEditorProps } from 'lib/components/MonacoDiffEditor'
 import { useBodyIsDark } from 'lib/hooks/useBodyIsDark'

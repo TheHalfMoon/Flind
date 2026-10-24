@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconChevronDown, IconChevronRight, IconGear } from '@posthog/icons'
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 import type { ChartTheme } from '@flind/quill-charts'
 
 import { SamplingNotice, SamplingRate } from '~/queries/nodes/OverviewGrid/OverviewGrid'

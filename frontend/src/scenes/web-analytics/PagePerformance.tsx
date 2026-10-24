@@ -1,7 +1,7 @@
 import { useActions, useMountedLogic, useValues } from 'kea'
 import { useMemo } from 'react'
 
-import { LemonBanner, LemonButton, Link } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, Link } from '@flind/lemon-ui'
 
 import { useChartTheme } from 'lib/charts/hooks'
 import { seriesColor } from 'lib/charts/utils/theme'

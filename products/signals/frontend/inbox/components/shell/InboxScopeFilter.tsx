@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { MemberSelect, type MemberSelectProps } from 'lib/components/MemberSelect'
 import { userLogic } from 'scenes/userLogic'

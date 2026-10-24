@@ -2,7 +2,7 @@ import { DndContext } from '@dnd-kit/core'
 import { restrictToParentElement, restrictToVerticalAxis } from '@dnd-kit/modifiers'
 import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable'
 
-import { LemonInputSelect } from '@posthog/lemon-ui'
+import { LemonInputSelect } from '@flind/lemon-ui'
 
 import { AccountPropertyConfiguratorItem } from './AccountPropertyConfiguratorItem'
 import {

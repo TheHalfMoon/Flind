@@ -2,7 +2,7 @@ import { useActions, useMountedLogic, useValues } from 'kea'
 import { router } from 'kea-router'
 import { useEffect, useMemo } from 'react'
 
-import { LemonBanner, LemonButton, LemonSwitch, SpinnerOverlay } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonSwitch, SpinnerOverlay } from '@flind/lemon-ui'
 
 import { AddToDashboardModal } from 'lib/components/AddToDashboard/AddToDashboardModal'
 import { traceUrl } from 'lib/components/ViewTraceButton/traceUrl'

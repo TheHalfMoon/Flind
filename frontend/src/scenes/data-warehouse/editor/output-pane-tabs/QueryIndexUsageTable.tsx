@@ -1,4 +1,4 @@
-import { LemonTable } from '@posthog/lemon-ui'
+import { LemonTable } from '@flind/lemon-ui'
 
 import { LemonTag, LemonTagType } from 'lib/lemon-ui/LemonTag'
 

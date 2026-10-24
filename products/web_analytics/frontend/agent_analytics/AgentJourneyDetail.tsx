@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonBanner, LemonModal, LemonTag, LemonTagType, Spinner, Tooltip } from '@posthog/lemon-ui'
+import { LemonBanner, LemonModal, LemonTag, LemonTagType, Spinner, Tooltip } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'
 import { dayjs } from 'lib/dayjs'

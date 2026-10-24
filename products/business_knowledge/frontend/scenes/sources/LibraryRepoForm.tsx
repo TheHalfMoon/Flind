@@ -1,7 +1,7 @@
 import { useMountedLogic, useValues } from 'kea'
 import { useState } from 'react'
 
-import { LemonButton, LemonInputSelect } from '@posthog/lemon-ui'
+import { LemonButton, LemonInputSelect } from '@flind/lemon-ui'
 
 import { githubReposLogic } from '../settings/githubReposLogic'
 

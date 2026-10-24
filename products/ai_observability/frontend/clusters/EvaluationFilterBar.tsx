@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonButton, LemonInputSelect } from '@posthog/lemon-ui'
+import { LemonButton, LemonInputSelect } from '@flind/lemon-ui'
 
 import { clustersLogic } from './clustersLogic'
 import { EvaluationVerdict } from './traceSummaryLoader'

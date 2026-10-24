@@ -3,7 +3,7 @@ import { router } from 'kea-router'
 import { useState } from 'react'
 
 import { IconLetter } from '@posthog/icons'
-import { LemonButtonProps } from '@posthog/lemon-ui'
+import { LemonButtonProps } from '@flind/lemon-ui'
 import { Button, Popover, PopoverContent, PopoverTrigger } from '@flind/quill'
 
 import { AccessControlAction } from 'lib/components/AccessControlAction'

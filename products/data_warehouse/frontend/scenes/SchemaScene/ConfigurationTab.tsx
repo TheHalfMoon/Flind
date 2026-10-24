@@ -15,7 +15,7 @@ import {
     Link,
     Tooltip,
     lemonToast,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import api, { ApiConfig } from 'lib/api'
 import { TZLabel } from 'lib/components/TZLabel'

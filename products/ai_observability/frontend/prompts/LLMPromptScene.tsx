@@ -3,7 +3,7 @@ import { Form } from 'kea-forms'
 import { combineUrl, router } from 'kea-router'
 
 import { IconPencil, IconPlay } from '@posthog/icons'
-import { LemonButton, LemonTabs } from '@posthog/lemon-ui'
+import { LemonButton, LemonTabs } from '@flind/lemon-ui'
 
 import { AccessControlAction } from 'lib/components/AccessControlAction'
 import { ActivityLog } from 'lib/components/ActivityLog/ActivityLog'

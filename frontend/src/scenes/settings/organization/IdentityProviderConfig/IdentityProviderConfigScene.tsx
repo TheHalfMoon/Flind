@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { Form } from 'kea-forms'
 
 import { IconShieldLock, IconTrash } from '@posthog/icons'
-import { LemonBanner, LemonButton, LemonDivider, LemonModal, Spinner } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonDivider, LemonModal, Spinner } from '@flind/lemon-ui'
 
 import { NotFound } from 'lib/components/NotFound'
 import { PayGateMini } from 'lib/components/PayGateMini/PayGateMini'

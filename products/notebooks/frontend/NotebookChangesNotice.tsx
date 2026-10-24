@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { Suspense } from 'react'
 
-import { LemonBanner, LemonButton, LemonModal, Spinner } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonModal, Spinner } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'
 import { lazyWithRetry } from 'lib/utils/retryImport'

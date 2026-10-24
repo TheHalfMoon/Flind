@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { LemonBanner, LemonButton } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton } from '@flind/lemon-ui'
 
 import { DebugCHQueries } from 'lib/components/Shortcuts/utils/DebugCHQueries'
 import { insightDataLogic } from 'scenes/insights/insightDataLogic'

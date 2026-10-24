@@ -1,4 +1,4 @@
-import { LemonBanner, LemonCollapse, LemonTag } from '@posthog/lemon-ui'
+import { LemonBanner, LemonCollapse, LemonTag } from '@flind/lemon-ui'
 
 import { pluralize } from 'lib/utils/strings'
 

@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { combineUrl } from 'kea-router'
 
 import { IconFlag } from '@posthog/icons'
-import { LemonDivider, LemonTag, Link, Tooltip } from '@posthog/lemon-ui'
+import { LemonDivider, LemonTag, Link, Tooltip } from '@flind/lemon-ui'
 
 import { useAutoMarkRead } from 'lib/components/NotificationsMenu/useAutoMarkRead'
 import { TZLabel } from 'lib/components/TZLabel'

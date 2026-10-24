@@ -1,6 +1,6 @@
 import { MakeLogicType, actions, kea, key, listeners, path, props } from 'kea'
 
-import { LemonDialog, LemonInput, LemonTextArea, Link } from '@posthog/lemon-ui'
+import { LemonDialog, LemonInput, LemonTextArea, Link } from '@flind/lemon-ui'
 
 import { ApiError } from 'lib/api'
 import { LemonField } from 'lib/lemon-ui/LemonField'

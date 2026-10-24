@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonButton, LemonSwitch } from '@posthog/lemon-ui'
+import { LemonButton, LemonSwitch } from '@flind/lemon-ui'
 
 import { teamLogic } from 'scenes/teamLogic'
 

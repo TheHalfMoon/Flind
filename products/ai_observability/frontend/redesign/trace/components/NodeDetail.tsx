@@ -1,4 +1,4 @@
-import { LemonSkeleton, LemonTabs } from '@posthog/lemon-ui'
+import { LemonSkeleton, LemonTabs } from '@flind/lemon-ui'
 
 import type { TraceNodeApi } from '../../../generated/api.schemas'
 import { EvalsState, NodeContent, NodeDetailTab, NodeProperties } from '../types'

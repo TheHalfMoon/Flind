@@ -1,5 +1,5 @@
 import { IconClock } from '@posthog/icons'
-import { LemonTag } from '@posthog/lemon-ui'
+import { LemonTag } from '@flind/lemon-ui'
 
 import { MetricErrorState } from '../new/MetricErrorState'
 

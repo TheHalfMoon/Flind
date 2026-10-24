@@ -3,7 +3,7 @@ import { useActions, useValues } from 'kea'
 import { useEffect, useMemo } from 'react'
 
 import { IconCheck, IconFilter, IconX } from '@posthog/icons'
-import { LemonBanner, LemonButton, LemonLabel, LemonSelect } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonLabel, LemonSelect } from '@flind/lemon-ui'
 
 import { DataWarehouseColumnsHint } from 'lib/components/CyclotronJob/DataWarehouseColumnsHint'
 import { PropertyFilters } from 'lib/components/PropertyFilters/PropertyFilters'

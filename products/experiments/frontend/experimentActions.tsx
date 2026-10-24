@@ -1,5 +1,5 @@
 import { IconClock } from '@posthog/icons'
-import { LemonBanner, LemonCheckbox, LemonDialog } from '@posthog/lemon-ui'
+import { LemonBanner, LemonCheckbox, LemonDialog } from '@flind/lemon-ui'
 
 import { deleteWithUndo } from 'lib/utils/deleteWithUndo'
 import { humanFriendlyNumber } from 'lib/utils/numbers'

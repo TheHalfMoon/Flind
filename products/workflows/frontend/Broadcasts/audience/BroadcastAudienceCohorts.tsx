@@ -1,7 +1,7 @@
 import { useMountedLogic, useValues } from 'kea'
 
 import { IconWarning } from '@posthog/icons'
-import { LemonButton, LemonTag, Spinner } from '@posthog/lemon-ui'
+import { LemonButton, LemonTag, Spinner } from '@flind/lemon-ui'
 
 import { IconCohort, IconOpenInNew } from 'lib/lemon-ui/icons'
 import { humanFriendlyNumber } from 'lib/utils/numbers'

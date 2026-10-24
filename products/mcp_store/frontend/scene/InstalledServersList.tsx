@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonCard, LemonTag } from '@posthog/lemon-ui'
+import { LemonCard, LemonTag } from '@flind/lemon-ui'
 
 import { mcpStoreLogic } from '../mcpStoreLogic'
 import { ServerIcon } from './icons'

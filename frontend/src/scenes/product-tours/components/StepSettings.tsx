@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconCursorClick, IconPlus, IconTrash } from '@posthog/icons'
-import { LemonButton, LemonInput, LemonSegmentedButton, LemonSlider, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, LemonInput, LemonSegmentedButton, LemonSlider, Tooltip } from '@flind/lemon-ui'
 
 import { PositionSelector } from 'scenes/surveys/survey-appearance/SurveyAppearancePositionSelector'
 

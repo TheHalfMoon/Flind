@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import { useValues } from 'kea'
 import { useMemo } from 'react'
 
-import { LemonSkeleton } from '@posthog/lemon-ui'
+import { LemonSkeleton } from '@flind/lemon-ui'
 import type { BarChartConfig, Series } from '@flind/quill-charts'
 import { BarChart } from '@flind/quill-charts'
 

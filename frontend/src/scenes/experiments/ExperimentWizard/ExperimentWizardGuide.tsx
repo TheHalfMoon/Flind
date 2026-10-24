@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { router } from 'kea-router'
 
 import { IconLightBulb, IconSparkles } from '@posthog/icons'
-import { LemonButton, lemonToast } from '@posthog/lemon-ui'
+import { LemonButton, lemonToast } from '@flind/lemon-ui'
 
 import { cn } from 'lib/utils/css-classes'
 import { inStorybook, inStorybookTestRunner } from 'lib/utils/dom'

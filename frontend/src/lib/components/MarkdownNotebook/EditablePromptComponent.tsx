@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import { KeyboardEvent, MutableRefObject, useCallback, useEffect, useRef, useState } from 'react'
 
 import { IconBookmark, IconBookmarkSolid, IconSend, IconTrash } from '@posthog/icons'
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { getNotebookStringProp, isPromptComponentNode } from './documentModel'
 import { RestoreSelectionRequest } from './editorTypes'

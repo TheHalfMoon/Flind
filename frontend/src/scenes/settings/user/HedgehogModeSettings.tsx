@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { Suspense, useEffect, useState } from 'react'
 
-import { LemonSkeleton, LemonSwitch } from '@posthog/lemon-ui'
+import { LemonSkeleton, LemonSwitch } from '@flind/lemon-ui'
 
 import { getHedgehogModeAssetsUrl } from 'lib/components/HedgehogMode/HedgehogMode'
 import { hedgehogModeLogic } from 'lib/components/HedgehogMode/hedgehogModeLogic'

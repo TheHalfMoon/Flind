@@ -2,7 +2,7 @@ import { LogicWrapper, MakeLogicType, actions, connect, kea, listeners, path, pr
 import { forms } from 'kea-forms'
 import type { DeepPartial, DeepPartialMap, FieldName, ValidationErrorType } from 'kea-forms'
 
-import { lemonToast } from '@posthog/lemon-ui'
+import { lemonToast } from '@flind/lemon-ui'
 
 import type { PaginatedResponse } from 'lib/api'
 import { integrationsLogic } from 'lib/integrations/integrationsLogic'

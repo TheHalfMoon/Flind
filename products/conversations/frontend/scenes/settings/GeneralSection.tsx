@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconPlus } from '@posthog/icons'
-import { LemonButton, LemonCard, LemonDivider, LemonSwitch, Link } from '@posthog/lemon-ui'
+import { LemonButton, LemonCard, LemonDivider, LemonSwitch, Link } from '@flind/lemon-ui'
 
 import { FEATURE_FLAGS } from 'lib/constants'
 import { featureFlagLogic } from 'lib/logic/featureFlagLogic'

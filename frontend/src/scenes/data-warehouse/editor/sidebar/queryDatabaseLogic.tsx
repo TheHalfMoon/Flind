@@ -14,7 +14,7 @@ import {
     IconRefresh,
     IconWarning,
 } from '@posthog/icons'
-import { LemonMenuItem, Spinner, lemonToast } from '@posthog/lemon-ui'
+import { LemonMenuItem, Spinner, lemonToast } from '@flind/lemon-ui'
 
 import api from 'lib/api'
 import { ApiError, isAccessDeniedError, readableErrorMessage } from 'lib/api-error'

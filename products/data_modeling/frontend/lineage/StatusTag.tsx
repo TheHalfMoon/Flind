@@ -1,4 +1,4 @@
-import { LemonTag, Tooltip } from '@posthog/lemon-ui'
+import { LemonTag, Tooltip } from '@flind/lemon-ui'
 
 import { STATUS_TAG_SETTINGS, STATUS_TOOLTIPS } from './nodeStyles'
 

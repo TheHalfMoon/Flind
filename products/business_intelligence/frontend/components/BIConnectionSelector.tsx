@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonSelect } from '@posthog/lemon-ui'
+import { LemonSelect } from '@flind/lemon-ui'
 
 import { getConnectionOptionLabel } from 'products/data_warehouse/frontend/shared/logics/connectionSelectorLogic'
 

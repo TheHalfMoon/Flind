@@ -1,7 +1,7 @@
 import { useCallback, useMemo } from 'react'
 
 import { IconChevronDown } from '@posthog/icons'
-import { LemonButton, SpinnerOverlay } from '@posthog/lemon-ui'
+import { LemonButton, SpinnerOverlay } from '@flind/lemon-ui'
 import { DefaultTooltip, HighlightedRange, TimeSeriesBarChart } from '@flind/quill-charts'
 import type { DateRangeZoomData, Series, TimeSeriesBarChartConfig, TooltipContext } from '@flind/quill-charts'
 

@@ -1,5 +1,5 @@
 import { IconPullRequest } from '@posthog/icons'
-import { LemonTag, Link } from '@posthog/lemon-ui'
+import { LemonTag, Link } from '@flind/lemon-ui'
 
 import type { SignalReportPullRequestApi } from 'products/signals/frontend/generated/api.schemas'
 

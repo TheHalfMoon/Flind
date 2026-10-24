@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 
 import { IconWrench } from '@posthog/icons'
-import { LemonButton, LemonDialog, LemonInput, LemonTextArea, lemonToast } from '@posthog/lemon-ui'
+import { LemonButton, LemonDialog, LemonInput, LemonTextArea, lemonToast } from '@flind/lemon-ui'
 
 import api from 'lib/api'
 import { GitHubRepositorySelectField } from 'lib/integrations/GitHubIntegrationHelpers'

@@ -3,7 +3,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react'
 
 import * as director from '@posthog/brand/hoggies/png/director'
 import { IconPencil, IconUndo } from '@posthog/icons'
-import { LemonButton, LemonColorPicker, LemonInput, LemonModal, LemonSelect } from '@posthog/lemon-ui'
+import { LemonButton, LemonColorPicker, LemonInput, LemonModal, LemonSelect } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import { getSeriesColorPalette } from 'lib/colors'

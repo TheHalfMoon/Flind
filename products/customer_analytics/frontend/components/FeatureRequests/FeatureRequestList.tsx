@@ -12,7 +12,7 @@ import {
     LemonTag,
     Link,
     ProfilePicture,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'
 import { getAccessControlDisabledReason } from 'lib/utils/accessControlUtils'

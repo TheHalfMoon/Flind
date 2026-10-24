@@ -2,7 +2,7 @@ import { MakeLogicType, actions, kea, listeners, path, reducers, selectors } fro
 import { loaders } from 'kea-loaders'
 import posthog from 'posthog-js'
 
-import { lemonToast } from '@posthog/lemon-ui'
+import { lemonToast } from '@flind/lemon-ui'
 
 import api, { ApiError, PaginatedResponse } from 'lib/api'
 

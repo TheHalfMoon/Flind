@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import React from 'react'
 
-import { LemonButton, LemonButtonProps } from '@posthog/lemon-ui'
+import { LemonButton, LemonButtonProps } from '@flind/lemon-ui'
 
 export type RecentItemRowProps = Pick<LemonButtonProps, 'onClick' | 'to'> & {
     title: string

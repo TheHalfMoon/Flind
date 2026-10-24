@@ -14,7 +14,7 @@ import {
     LemonTextArea,
     SpinnerOverlay,
     Tooltip,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { AutoSizer } from 'lib/components/AutoSizer'
 import { NotFound } from 'lib/components/NotFound'

@@ -14,7 +14,7 @@ import {
     LemonSearchableSelect,
     LemonSegmentedButton,
     LemonSelect,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { IconTuning, SortableDragIcon } from 'lib/lemon-ui/icons'
 import { Tooltip } from 'lib/lemon-ui/Tooltip'

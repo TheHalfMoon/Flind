@@ -1,6 +1,6 @@
 import { expectLogic } from 'kea-test-utils'
 
-import { LemonDialog } from '@posthog/lemon-ui'
+import { LemonDialog } from '@flind/lemon-ui'
 
 import { lemonToast } from 'lib/lemon-ui/LemonToast'
 import { dataWarehouseViewsLogic } from 'scenes/data-warehouse/saved_queries/dataWarehouseViewsLogic'

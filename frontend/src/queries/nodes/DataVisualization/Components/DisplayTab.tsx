@@ -11,7 +11,7 @@ import {
     LemonSegmentedButton,
     LemonSelect,
     LemonSwitch,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { GoalLinesList } from 'lib/components/GoalLinesList'
 import { MetricDirectionColorPickers } from 'lib/components/Metric/MetricDirectionColorPickers'

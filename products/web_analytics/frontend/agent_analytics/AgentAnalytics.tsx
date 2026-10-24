@@ -1,6 +1,6 @@
 import { useActions, useMountedLogic, useValues } from 'kea'
 
-import { LemonBanner, LemonSegmentedButton } from '@posthog/lemon-ui'
+import { LemonBanner, LemonSegmentedButton } from '@flind/lemon-ui'
 
 import { AgentAnalyticsIssues } from './AgentAnalyticsIssues'
 import { AgentAnalyticsJourneys } from './AgentAnalyticsJourneys'

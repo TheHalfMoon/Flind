@@ -1,6 +1,6 @@
 import { memo, useMemo } from 'react'
 
-import { Link, Tooltip } from '@posthog/lemon-ui'
+import { Link, Tooltip } from '@flind/lemon-ui'
 
 import { humanFriendlyDetailedTime } from 'lib/utils/datetime'
 

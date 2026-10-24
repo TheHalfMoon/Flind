@@ -14,7 +14,7 @@ import {
 } from 'kea'
 import { actionToUrl, router, urlToAction } from 'kea-router'
 
-import { lemonToast } from '@posthog/lemon-ui'
+import { lemonToast } from '@flind/lemon-ui'
 
 import api, { ApiConfig } from 'lib/api'
 import { Sorting } from 'lib/lemon-ui/LemonTable/sorting'

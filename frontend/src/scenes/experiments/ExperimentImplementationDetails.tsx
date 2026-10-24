@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 import { IconServer } from '@posthog/icons'
 import { IconFlutter, IconGo, IconJavascript, IconPHP, IconPython, IconRuby } from '@posthog/icons'
-import { LemonSelect, LemonTabs, Link } from '@posthog/lemon-ui'
+import { LemonSelect, LemonTabs, Link } from '@flind/lemon-ui'
 
 import { IconAndroidOS, IconAppleIOS, IconNodeJS } from 'lib/lemon-ui/icons'
 

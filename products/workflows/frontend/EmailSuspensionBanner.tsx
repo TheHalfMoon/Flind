@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { LemonBanner } from '@posthog/lemon-ui'
+import { LemonBanner } from '@flind/lemon-ui'
 
 import { EMAIL_SENDING_SUSPENDED_MESSAGE } from './Channels/emailSendingMessages'
 import { workflowsEmailSuspensionLogic } from './workflowsEmailSuspensionLogic'

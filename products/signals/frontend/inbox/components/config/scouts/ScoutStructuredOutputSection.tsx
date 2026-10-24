@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { LemonButton, LemonCollapse, LemonDialog, LemonTag, LemonTextArea, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, LemonCollapse, LemonDialog, LemonTag, LemonTextArea, Tooltip } from '@flind/lemon-ui'
 
 import { objectsEqual } from 'lib/utils/objects'
 

@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { useEffect, useState } from 'react'
 
 import { IconChevronDown } from '@posthog/icons'
-import { LemonButton, LemonDropdown } from '@posthog/lemon-ui'
+import { LemonButton, LemonDropdown } from '@flind/lemon-ui'
 
 import type { CustomInputRendererProps } from 'lib/components/CyclotronJob/customInputRenderers'
 

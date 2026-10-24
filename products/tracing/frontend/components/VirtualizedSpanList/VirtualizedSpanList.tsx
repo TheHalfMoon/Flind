@@ -1,7 +1,7 @@
 import { CSSProperties, ReactNode, useCallback, useMemo, useRef } from 'react'
 import { List, useListRef } from 'react-window'
 
-import { LemonTag } from '@posthog/lemon-ui'
+import { LemonTag } from '@flind/lemon-ui'
 
 import { AutoSizer } from 'lib/components/AutoSizer'
 import { SizeProps } from 'lib/components/AutoSizer/AutoSizer'

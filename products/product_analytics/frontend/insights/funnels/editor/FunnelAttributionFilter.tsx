@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonSelect } from '@posthog/lemon-ui'
+import { LemonSelect } from '@flind/lemon-ui'
 
 import { FunnelsFilter } from '~/queries/schema/schema-general'
 import { BreakdownAttributionType, EditorFilterProps, StepOrderValue } from '~/types'

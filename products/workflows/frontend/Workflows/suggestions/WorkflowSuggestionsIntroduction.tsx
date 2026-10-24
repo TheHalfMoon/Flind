@@ -1,6 +1,6 @@
 import * as research from '@posthog/brand/hoggies/png/research'
 import * as stampApproved from '@posthog/brand/hoggies/png/stamp-approved'
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import { ProductIntroduction } from 'lib/components/ProductIntroduction/ProductIntroduction'

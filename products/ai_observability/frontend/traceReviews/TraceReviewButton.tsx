@@ -10,7 +10,7 @@ import {
     LemonTag,
     LemonTextArea,
     Spinner,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { AccessControlAction, AccessControlActionChildrenProps } from 'lib/components/AccessControlAction'
 import { Link } from 'lib/lemon-ui/Link'

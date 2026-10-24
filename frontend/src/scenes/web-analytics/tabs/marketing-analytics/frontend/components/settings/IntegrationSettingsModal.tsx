@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { LemonModal, LemonTabs } from '@posthog/lemon-ui'
+import { LemonModal, LemonTabs } from '@flind/lemon-ui'
 
 import { SourceIcon } from 'products/data_warehouse/frontend/shared/components/SourceIcon'
 

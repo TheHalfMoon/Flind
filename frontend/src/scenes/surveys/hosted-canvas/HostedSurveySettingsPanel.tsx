@@ -9,7 +9,7 @@ import {
     LemonDialog,
     LemonSegmentedButton,
     LemonSelect,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { IconMonitor } from 'lib/lemon-ui/icons'
 import { QuestionBranchingInput } from 'scenes/surveys/components/question-branching/QuestionBranchingInput'

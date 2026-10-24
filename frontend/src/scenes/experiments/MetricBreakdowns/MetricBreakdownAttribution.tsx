@@ -1,4 +1,4 @@
-import { LemonSelect } from '@posthog/lemon-ui'
+import { LemonSelect } from '@flind/lemon-ui'
 
 import { ExperimentFunnelMetric } from '~/queries/schema/schema-general'
 import { BreakdownAttributionType, StepOrderValue } from '~/types'

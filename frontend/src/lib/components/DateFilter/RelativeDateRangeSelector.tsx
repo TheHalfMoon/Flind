@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { LemonButton, LemonDivider, LemonInput, LemonSelect } from '@posthog/lemon-ui'
+import { LemonButton, LemonDivider, LemonInput, LemonSelect } from '@flind/lemon-ui'
 
 interface RelativeDateRangeSelectorProps {
     onApply: (dateFrom: string, dateTo: string) => void

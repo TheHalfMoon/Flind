@@ -2,7 +2,7 @@ import { useActions } from 'kea'
 import { combineUrl } from 'kea-router'
 
 import { IconMessage, IconOpenSidebar, IconShare, IconTrash } from '@posthog/icons'
-import { Spinner } from '@posthog/lemon-ui'
+import { Spinner } from '@flind/lemon-ui'
 
 import { Link } from 'lib/lemon-ui/Link'
 import { ButtonPrimitive } from 'lib/ui/Button/ButtonPrimitives'

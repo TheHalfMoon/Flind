@@ -4,7 +4,7 @@ import clsx from 'clsx'
 import { type ReactNode, useMemo } from 'react'
 
 import { IconPauseFilled } from '@posthog/icons'
-import { Spinner, Tooltip } from '@posthog/lemon-ui'
+import { Spinner, Tooltip } from '@flind/lemon-ui'
 
 import { PropertyKeyInfo } from 'lib/components/PropertyKeyInfo'
 import { TaxonomicFilterGroupType } from 'lib/components/TaxonomicFilter/types'

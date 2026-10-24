@@ -1,6 +1,6 @@
 import posthog from 'posthog-js'
 
-import { LemonDialog } from '@posthog/lemon-ui'
+import { LemonDialog } from '@flind/lemon-ui'
 
 import { NEW_FLAG } from 'scenes/feature-flags/featureFlagLogic'
 

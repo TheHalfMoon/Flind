@@ -1,5 +1,5 @@
 import { IconFlag } from '@posthog/icons'
-import { LemonButton, LemonSnack, LemonTag } from '@posthog/lemon-ui'
+import { LemonButton, LemonSnack, LemonTag } from '@flind/lemon-ui'
 
 import { allOperatorsToHumanName } from 'lib/components/DefinitionPopover/utils'
 import { isPropertyFilterWithOperator } from 'lib/components/PropertyFilters/utils'

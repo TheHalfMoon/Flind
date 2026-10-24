@@ -1,4 +1,4 @@
-import { LemonInput, LemonInputSelect, LemonSelect, LemonTextArea } from '@posthog/lemon-ui'
+import { LemonInput, LemonInputSelect, LemonSelect, LemonTextArea } from '@flind/lemon-ui'
 
 import type { CustomInputRendererProps } from 'lib/components/CyclotronJob/customInputRenderers'
 

@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useEffect, useRef } from 'react'
 
-import { LemonMenu, LemonMenuItems } from '@posthog/lemon-ui'
+import { LemonMenu, LemonMenuItems } from '@flind/lemon-ui'
 
 import { commentsLogic } from 'lib/components/Comments/commentsLogic'
 import { AIConsentPopoverWrapper } from 'scenes/settings/organization/AIConsentPopoverWrapper'

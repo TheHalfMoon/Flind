@@ -1,4 +1,4 @@
-import { LemonTable, LemonTag, Tooltip } from '@posthog/lemon-ui'
+import { LemonTable, LemonTag, Tooltip } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'
 import { LemonTableColumn } from 'lib/lemon-ui/LemonTable'

@@ -11,7 +11,7 @@ import {
     IconTrends,
     IconWarning,
 } from '@posthog/icons'
-import { LemonBanner, LemonButton, LemonCard, LemonTag } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonCard, LemonTag } from '@flind/lemon-ui'
 
 import { ProjectTimezoneHint } from 'lib/components/ScheduledRunStatus'
 import { cn } from 'lib/utils/css-classes'

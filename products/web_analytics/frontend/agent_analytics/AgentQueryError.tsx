@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 
-import { LemonBanner } from '@posthog/lemon-ui'
+import { LemonBanner } from '@flind/lemon-ui'
 
 interface AgentQueryErrorProps {
     error: string | null

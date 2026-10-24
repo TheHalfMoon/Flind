@@ -10,7 +10,7 @@ import {
     LemonInput,
     LemonLabel,
     LemonSelect,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { LemonField } from 'lib/lemon-ui/LemonField'
 import { HogFunctionMapping, MappingSummary } from 'scenes/hog-functions/mapping/HogFunctionMappings'

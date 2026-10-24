@@ -1,7 +1,7 @@
 import { RE2JS } from 're2js'
 import { useEffect, useState } from 'react'
 
-import { LemonBanner, LemonDropdownProps, LemonSelect, LemonSelectProps, LemonSelectSection } from '@posthog/lemon-ui'
+import { LemonBanner, LemonDropdownProps, LemonSelect, LemonSelectProps, LemonSelectSection } from '@flind/lemon-ui'
 
 import { allOperatorsToHumanName } from 'lib/components/DefinitionPopover/utils'
 import { TaxonomicFilterGroupType } from 'lib/components/TaxonomicFilter/types'

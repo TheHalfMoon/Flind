@@ -13,7 +13,7 @@ import {
 } from 'kea'
 import posthog, { Survey } from 'posthog-js'
 
-import { lemonToast } from '@posthog/lemon-ui'
+import { lemonToast } from '@flind/lemon-ui'
 
 import { uuid } from 'lib/utils/dom'
 import { getSurveyIdBasedResponseKey } from 'scenes/surveys/utils'

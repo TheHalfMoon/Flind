@@ -9,7 +9,7 @@ import {
     LemonModal,
     LemonSelect,
     LemonTextArea,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { LemonField } from 'lib/lemon-ui/LemonField'
 

@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { LemonSelect, LemonSkeleton } from '@posthog/lemon-ui'
+import { LemonSelect, LemonSkeleton } from '@flind/lemon-ui'
 
 import { reviewHogSettingsLogic } from 'products/review_hog/frontend/reviewHogSettingsLogic'
 import { prettifySkillName } from 'products/review_hog/frontend/skillNames'

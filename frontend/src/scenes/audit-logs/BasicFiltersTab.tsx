@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconCollapse, IconExpand, IconInfo } from '@posthog/icons'
-import { LemonBadge, LemonButton, LemonSelect, Tooltip } from '@posthog/lemon-ui'
+import { LemonBadge, LemonButton, LemonSelect, Tooltip } from '@flind/lemon-ui'
 
 import { activityClientLabel } from 'lib/components/ActivityLog/activityClientLabel'
 import { humanizeActivity, humanizeScope } from 'lib/components/ActivityLog/humanizeActivity'

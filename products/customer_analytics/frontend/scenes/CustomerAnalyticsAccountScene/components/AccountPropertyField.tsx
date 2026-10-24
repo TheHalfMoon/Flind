@@ -1,5 +1,5 @@
 import { IconBolt, IconDatabase, IconLogomark, IconPencil } from '@posthog/icons'
-import { LemonButton, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, Tooltip } from '@flind/lemon-ui'
 
 import { AccountCustomPropertyEditor } from './AccountCustomPropertyEditor'
 import {

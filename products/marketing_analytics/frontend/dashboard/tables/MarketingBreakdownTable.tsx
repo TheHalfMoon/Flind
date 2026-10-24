@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useId } from 'react'
 
-import { LemonBanner, LemonButton, LemonTable, LemonTableColumn } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonTable, LemonTableColumn } from '@flind/lemon-ui'
 
 import { TileId } from 'scenes/web-analytics/common'
 import { displayBreakdownValue } from 'scenes/web-analytics/tabs/marketing-analytics/frontend/logic/marketingBreakdown'

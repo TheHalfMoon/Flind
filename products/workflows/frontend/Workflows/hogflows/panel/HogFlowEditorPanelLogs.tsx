@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { IconOpenInApp } from 'lib/lemon-ui/icons'
 import { LogsViewer } from 'scenes/hog-functions/logs/LogsViewer'

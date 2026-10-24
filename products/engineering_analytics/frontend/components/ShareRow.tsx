@@ -3,7 +3,7 @@
 
 import { ReactNode } from 'react'
 
-import { Link } from '@posthog/lemon-ui'
+import { Link } from '@flind/lemon-ui'
 
 import { LemonProgress } from 'lib/lemon-ui/LemonProgress'
 import { Lettermark } from 'lib/lemon-ui/Lettermark'

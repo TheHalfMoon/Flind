@@ -1,7 +1,7 @@
 import { useActions } from 'kea'
 import { match } from 'ts-pattern'
 
-import { Spinner } from '@posthog/lemon-ui'
+import { Spinner } from '@flind/lemon-ui'
 
 import { BUILT_IN_ERROR_TRACKING_PROPERTIES } from '../builtInProperties'
 import { ERROR_TRACKING_ISSUE_SCENE_LOGIC_KEY, issueFiltersLogic } from '../IssueFilters/issueFiltersLogic'

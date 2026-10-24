@@ -4,7 +4,7 @@ import Suggestion from '@tiptap/suggestion'
 import { forwardRef, useCallback, useEffect, useImperativeHandle, useState } from 'react'
 
 import { IconCode, IconImage, IconList, IconMinus, IconQuote, IconVideoCamera } from '@posthog/icons'
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { Popover } from 'lib/lemon-ui/Popover'
 

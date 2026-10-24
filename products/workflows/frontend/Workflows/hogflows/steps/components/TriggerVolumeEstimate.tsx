@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { LemonLabel } from '@posthog/lemon-ui'
+import { LemonLabel } from '@flind/lemon-ui'
 
 import { Sparkline } from 'lib/components/Sparkline'
 import { LemonBanner } from 'lib/lemon-ui/LemonBanner'

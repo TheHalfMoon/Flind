@@ -10,7 +10,7 @@ import {
     IconLaptop,
     IconPerson,
 } from '@posthog/icons'
-import { Link } from '@posthog/lemon-ui'
+import { Link } from '@flind/lemon-ui'
 
 import { SurveyConditionSummary, SurveyConditionType } from 'scenes/surveys/utils'
 

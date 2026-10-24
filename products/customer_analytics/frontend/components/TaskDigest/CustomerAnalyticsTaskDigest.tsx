@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonBanner, LemonButton, LemonLabel, LemonSelect, LemonSkeleton, LemonSwitch } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonLabel, LemonSelect, LemonSkeleton, LemonSwitch } from '@flind/lemon-ui'
 
 import { taskDigestLogic } from './taskDigestLogic'
 

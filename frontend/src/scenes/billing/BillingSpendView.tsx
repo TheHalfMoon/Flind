@@ -3,8 +3,8 @@ import './BillingUsage.scss'
 import { useActions, useValues } from 'kea'
 
 import { IconChevronDown, IconInfo } from '@posthog/icons'
-import { LemonButton, LemonCheckbox, LemonMenu, LemonInput } from '@posthog/lemon-ui'
-import { LemonSelect } from '@posthog/lemon-ui'
+import { LemonButton, LemonCheckbox, LemonMenu, LemonInput } from '@flind/lemon-ui'
+import { LemonSelect } from '@flind/lemon-ui'
 
 import { DateFilter } from 'lib/components/DateFilter/DateFilter'
 import { RestrictionScope, useRestrictedArea } from 'lib/components/RestrictedArea'

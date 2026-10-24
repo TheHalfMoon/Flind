@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 
-import { LemonSkeleton } from '@posthog/lemon-ui'
+import { LemonSkeleton } from '@flind/lemon-ui'
 
 interface CardSkeletonProps {
     /** Number of rows to render. */

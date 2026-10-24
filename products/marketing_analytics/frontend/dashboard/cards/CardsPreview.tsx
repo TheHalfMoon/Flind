@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { MarketingMetricCard } from './MarketingMetricCard'
 import { MarketingMetricCardGrid } from './MarketingMetricCardGrid'

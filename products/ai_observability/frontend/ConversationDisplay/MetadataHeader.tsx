@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 
-import { LemonTag } from '@posthog/lemon-ui'
+import { LemonTag } from '@flind/lemon-ui'
 
 import { dayjs } from 'lib/dayjs'
 import { lowercaseFirstLetter } from 'lib/utils/strings'

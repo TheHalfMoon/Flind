@@ -1,4 +1,4 @@
-import { Tooltip } from '@posthog/lemon-ui'
+import { Tooltip } from '@flind/lemon-ui'
 
 import type { SignalReportApi } from 'products/signals/frontend/generated/api.schemas'
 import {

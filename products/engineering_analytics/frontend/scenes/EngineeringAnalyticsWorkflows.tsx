@@ -2,7 +2,7 @@
 
 import { useActions, useValues } from 'kea'
 
-import { LemonButton, LemonInput, LemonSegmentedButton } from '@posthog/lemon-ui'
+import { LemonButton, LemonInput, LemonSegmentedButton } from '@flind/lemon-ui'
 
 import { CIAnalyticsLoadError } from '../components/CIAnalyticsLoadError'
 import { ConnectGitHubSource } from '../components/ConnectGitHubSource'

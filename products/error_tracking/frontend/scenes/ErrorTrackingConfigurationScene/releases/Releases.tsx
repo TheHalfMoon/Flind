@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { useEffect } from 'react'
 
 import { IconExternal } from '@posthog/icons'
-import { LemonTable, LemonTableColumns, Link } from '@posthog/lemon-ui'
+import { LemonTable, LemonTableColumns, Link } from '@flind/lemon-ui'
 
 import { ErrorTrackingRelease } from 'lib/components/Errors/types'
 import { GitMetadataParser } from 'lib/components/Git/gitMetadataParser'

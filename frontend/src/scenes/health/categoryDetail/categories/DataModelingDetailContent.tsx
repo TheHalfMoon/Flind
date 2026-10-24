@@ -1,5 +1,5 @@
 import { IconCheck, IconEllipsis, IconRefresh, IconServer } from '@posthog/icons'
-import { LemonBanner, LemonButton, LemonMenu, LemonTag, Link } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonMenu, LemonTag, Link } from '@flind/lemon-ui'
 
 import { openInAppSupport } from 'lib/components/Support/openInAppSupport'
 import { TZLabel } from 'lib/components/TZLabel'

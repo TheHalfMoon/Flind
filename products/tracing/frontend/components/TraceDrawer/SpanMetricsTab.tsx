@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 
-import { LemonSegmentedButton } from '@posthog/lemon-ui'
+import { LemonSegmentedButton } from '@flind/lemon-ui'
 
 import { dayjs } from 'lib/dayjs'
 

@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import posthog from 'posthog-js'
 
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { Shortcut } from 'lib/components/Shortcuts/Shortcut'
 import { sanitizeDashboard } from 'lib/utils/eventUsageLogic'

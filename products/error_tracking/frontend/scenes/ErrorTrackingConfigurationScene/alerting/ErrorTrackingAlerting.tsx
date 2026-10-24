@@ -1,7 +1,7 @@
 import { BindLogic, useActions, useValues } from 'kea'
 import posthog from 'posthog-js'
 
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { AlertWizard } from 'lib/components/Alerting/AlertWizard/AlertWizard'
 import {

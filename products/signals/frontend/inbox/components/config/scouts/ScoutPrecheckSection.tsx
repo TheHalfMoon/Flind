@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useEffect, useState } from 'react'
 
-import { LemonButton, LemonCollapse, LemonDialog, LemonTag, LemonTextArea } from '@posthog/lemon-ui'
+import { LemonButton, LemonCollapse, LemonDialog, LemonTag, LemonTextArea } from '@flind/lemon-ui'
 
 import { humanFriendlyDetailedTime } from 'lib/utils/datetime'
 import { fullNameOrEmail } from 'lib/utils/strings'

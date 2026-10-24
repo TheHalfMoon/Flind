@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import React, { ReactNode, useMemo } from 'react'
 
-import { Spinner, Tooltip } from '@posthog/lemon-ui'
+import { Spinner, Tooltip } from '@flind/lemon-ui'
 
 import { getSeriesColorPalette } from 'lib/colors'
 

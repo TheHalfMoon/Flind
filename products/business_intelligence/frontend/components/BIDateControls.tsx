@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconCalendar } from '@posthog/icons'
-import { LemonSelect, LemonSwitch } from '@posthog/lemon-ui'
+import { LemonSelect, LemonSwitch } from '@flind/lemon-ui'
 
 import { CompareFilter } from 'lib/components/CompareFilter/CompareFilter'
 import { DateFilter } from 'lib/components/DateFilter/DateFilter'

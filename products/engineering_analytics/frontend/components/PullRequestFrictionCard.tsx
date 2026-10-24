@@ -1,4 +1,4 @@
-import { LemonCard, LemonSkeleton } from '@posthog/lemon-ui'
+import { LemonCard, LemonSkeleton } from '@flind/lemon-ui'
 
 import type { PullRequestFrictionDetailApi } from '../generated/api.schemas'
 import { timesTypical } from '../lib/format'

@@ -3,7 +3,7 @@ import { combineUrl } from 'kea-router'
 import { useState } from 'react'
 
 import { IconInfo } from '@posthog/icons'
-import { LemonBanner, LemonCheckbox, Link } from '@posthog/lemon-ui'
+import { LemonBanner, LemonCheckbox, Link } from '@flind/lemon-ui'
 
 import { CodeSnippet, Language } from 'lib/components/CodeSnippet'
 import { RestrictionScope, useRestrictedArea } from 'lib/components/RestrictedArea'

@@ -1,5 +1,5 @@
 import { IconChevronDown } from '@posthog/icons'
-import { LemonButton, LemonCheckbox, LemonDivider, LemonDropdown } from '@posthog/lemon-ui'
+import { LemonButton, LemonCheckbox, LemonDivider, LemonDropdown } from '@flind/lemon-ui'
 
 import { MemberSelectMultiple } from 'lib/components/MemberSelectMultiple'
 

@@ -1,5 +1,5 @@
 import { IconCode, IconEye } from '@posthog/icons'
-import { Tooltip } from '@posthog/lemon-ui'
+import { Tooltip } from '@flind/lemon-ui'
 
 import { IconAdsClick, IconExclamation, IconEyeHidden } from 'lib/lemon-ui/icons'
 

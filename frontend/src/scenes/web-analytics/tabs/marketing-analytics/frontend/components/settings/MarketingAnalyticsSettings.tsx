@@ -1,4 +1,4 @@
-import { LemonCollapse } from '@posthog/lemon-ui'
+import { LemonCollapse } from '@flind/lemon-ui'
 
 import { BaseCurrency } from 'lib/components/BaseCurrency/BaseCurrency'
 import { FlaggedFeature } from 'lib/components/FlaggedFeature'

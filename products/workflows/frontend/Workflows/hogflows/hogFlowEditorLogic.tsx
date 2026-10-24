@@ -17,7 +17,7 @@ import { subscriptions } from 'kea-subscriptions'
 import posthog from 'posthog-js'
 import type { DragEvent, RefObject } from 'react'
 
-import { lemonToast } from '@posthog/lemon-ui'
+import { lemonToast } from '@flind/lemon-ui'
 
 import {
     AppMetricsTotalsRequest,

@@ -1,4 +1,4 @@
-import { Link } from '@posthog/lemon-ui'
+import { Link } from '@flind/lemon-ui'
 
 export function HostedSurveyRespondentHint({ className }: { className?: string }): JSX.Element {
     return (

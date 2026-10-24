@@ -1,4 +1,4 @@
-import { LemonTag, LemonTagType } from '@posthog/lemon-ui'
+import { LemonTag, LemonTagType } from '@flind/lemon-ui'
 
 import { PlatformAlertConfigurationStatus } from './platformAlertFormat'
 

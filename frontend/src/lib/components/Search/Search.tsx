@@ -16,7 +16,7 @@ import {
 } from 'react'
 
 import { IconDay, IconNight, IconSearch, IconSparkles, IconX } from '@posthog/icons'
-import { LemonTag, Link, Spinner, Tooltip } from '@posthog/lemon-ui'
+import { LemonTag, Link, Spinner, Tooltip } from '@flind/lemon-ui'
 
 import { KeyboardShortcut } from 'lib/components/KeyboardShortcut/KeyboardShortcut'
 import { filterSearchItems } from 'lib/components/Search/utils'

@@ -1,4 +1,4 @@
-import { LemonButton, LemonModal, LemonTable, LemonTableColumns } from '@posthog/lemon-ui'
+import { LemonButton, LemonModal, LemonTable, LemonTableColumns } from '@flind/lemon-ui'
 
 import { BillingInvoiceItemRow, BillingPlanType } from '~/types'
 

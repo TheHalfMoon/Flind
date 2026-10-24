@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonInput, LemonSelect } from '@posthog/lemon-ui'
+import { LemonInput, LemonSelect } from '@flind/lemon-ui'
 
 import { ScoutEnabledFilter, ScoutRosterSort, scoutFleetLogic } from '../../../logics/scoutFleetLogic'
 import { ScoutOwnerFilter } from './ScoutOwnerFilter'

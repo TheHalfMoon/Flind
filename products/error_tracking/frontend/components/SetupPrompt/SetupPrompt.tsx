@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { type ComponentType, isValidElement } from 'react'
 
 import * as errorPng from '@posthog/brand/hoggies/png/error'
-import { LemonButton, Link, Spinner } from '@posthog/lemon-ui'
+import { LemonButton, Link, Spinner } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import {

@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 
 import { IconCheck } from '@posthog/icons'
-import { LemonSwitch } from '@posthog/lemon-ui'
+import { LemonSwitch } from '@flind/lemon-ui'
 
 import { featureFlagLogic } from 'lib/logic/featureFlagLogic'
 

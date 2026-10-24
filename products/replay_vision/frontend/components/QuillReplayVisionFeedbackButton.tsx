@@ -1,4 +1,4 @@
-import { LemonButtonProps } from '@posthog/lemon-ui'
+import { LemonButtonProps } from '@flind/lemon-ui'
 import { Button } from '@flind/quill'
 
 import { quillButtonVariant } from 'lib/lemon-ui/LemonButton/quillButtonVariant'

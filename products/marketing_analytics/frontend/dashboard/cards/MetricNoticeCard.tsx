@@ -1,4 +1,4 @@
-import { LemonButton, LemonCard } from '@posthog/lemon-ui'
+import { LemonButton, LemonCard } from '@flind/lemon-ui'
 
 import type { MetricNotice } from './metricCardSpec'
 

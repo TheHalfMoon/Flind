@@ -1,7 +1,7 @@
 import { Meta } from '@storybook/react'
 import React from 'react'
 
-import { LemonTable } from '@posthog/lemon-ui'
+import { LemonTable } from '@flind/lemon-ui'
 
 import * as hedgehogs from './hedgehogs'
 

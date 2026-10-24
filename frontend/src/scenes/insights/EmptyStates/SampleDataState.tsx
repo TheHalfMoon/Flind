@@ -5,7 +5,7 @@ import { useValues } from 'kea'
 import { useEffect, useState, type ReactNode } from 'react'
 import { TextMorph } from 'torph/react'
 
-import { LemonButton, LemonTag, Spinner, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, LemonTag, Spinner, Tooltip } from '@flind/lemon-ui'
 import { BarChart, LineChart, PieChart, ProportionBar } from '@flind/quill-charts'
 import type {
     BarChartConfig,

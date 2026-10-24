@@ -2,7 +2,7 @@ import { BuiltLogic, useValues } from 'kea'
 import { FormContext } from 'kea-forms'
 import { useContext } from 'react'
 
-import { LemonCheckbox } from '@posthog/lemon-ui'
+import { LemonCheckbox } from '@flind/lemon-ui'
 
 import { CodeSnippet } from 'lib/components/CodeSnippet'
 import { stackFrameLogic } from 'lib/components/Errors/Frame/stackFrameLogic'

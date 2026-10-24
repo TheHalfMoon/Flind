@@ -1,5 +1,5 @@
 import { IconCheckCircle, IconPullRequest, IconQuestion, IconWarning } from '@posthog/icons'
-import { Spinner } from '@posthog/lemon-ui'
+import { Spinner } from '@flind/lemon-ui'
 
 import { InstallationProgress } from './installationProgressLogic'
 

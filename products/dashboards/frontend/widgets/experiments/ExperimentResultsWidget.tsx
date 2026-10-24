@@ -2,7 +2,7 @@ import posthog from 'posthog-js'
 import { useState } from 'react'
 
 import * as experimentPng from '@posthog/brand/hoggies/png/experiment'
-import { LemonDivider, LemonSkeleton } from '@posthog/lemon-ui'
+import { LemonDivider, LemonSkeleton } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import { LemonBanner } from 'lib/lemon-ui/LemonBanner'

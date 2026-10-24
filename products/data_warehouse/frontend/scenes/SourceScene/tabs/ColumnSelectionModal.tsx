@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 
-import { LemonButton, LemonCheckbox, LemonInput, LemonModal, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, LemonCheckbox, LemonInput, LemonModal, Tooltip } from '@flind/lemon-ui'
 
 import { ExternalDataSourceSchema } from '~/types'
 

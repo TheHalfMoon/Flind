@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react'
 
 import { IconCheckCircle, IconCloud, IconExpand45, IconLaptop, IconWarning, IconX } from '@posthog/icons'
-import { LemonButton, LemonMenu, Spinner } from '@posthog/lemon-ui'
+import { LemonButton, LemonMenu, Spinner } from '@flind/lemon-ui'
 
 import { cn } from 'lib/utils/css-classes'
 import { formatElapsed } from 'scenes/onboarding/shared/wizard-sync/helpers'

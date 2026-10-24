@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import * as doctor from '@posthog/brand/hoggies/png/doctor-1'
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import { ProductIntroduction } from 'lib/components/ProductIntroduction/ProductIntroduction'

@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { ReactNode, useLayoutEffect, useRef } from 'react'
 
-import { LemonSkeleton, Tooltip } from '@posthog/lemon-ui'
+import { LemonSkeleton, Tooltip } from '@flind/lemon-ui'
 
 const ROW_HEIGHT = 36
 

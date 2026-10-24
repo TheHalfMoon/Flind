@@ -14,7 +14,7 @@ import {
     LemonSegmentedButton,
     LemonSelect,
     LemonTag,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { featureFlagLogic } from 'lib/logic/featureFlagLogic'
 

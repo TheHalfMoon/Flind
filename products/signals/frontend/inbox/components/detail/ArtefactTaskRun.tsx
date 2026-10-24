@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { LemonSkeleton, LemonTag } from '@posthog/lemon-ui'
+import { LemonSkeleton, LemonTag } from '@flind/lemon-ui'
 
 import api from 'lib/api'
 import { identifierToHuman } from 'lib/utils/strings'

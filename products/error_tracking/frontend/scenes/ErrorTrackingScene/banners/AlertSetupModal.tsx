@@ -2,7 +2,7 @@ import { BindLogic, useActions } from 'kea'
 import { router } from 'kea-router'
 import posthog from 'posthog-js'
 
-import { LemonModal } from '@posthog/lemon-ui'
+import { LemonModal } from '@flind/lemon-ui'
 
 import { AlertWizard } from 'lib/components/Alerting/AlertWizard/AlertWizard'
 import {

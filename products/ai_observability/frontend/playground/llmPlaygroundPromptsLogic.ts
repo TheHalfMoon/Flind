@@ -2,7 +2,7 @@ import { MakeLogicType, actions, afterMount, kea, listeners, path, props, reduce
 import { combineUrl, router, urlToAction } from 'kea-router'
 import posthog from 'posthog-js'
 
-import { lemonToast } from '@posthog/lemon-ui'
+import { lemonToast } from '@flind/lemon-ui'
 
 import api, { ApiConfig } from 'lib/api'
 import { uuid } from 'lib/utils/dom'

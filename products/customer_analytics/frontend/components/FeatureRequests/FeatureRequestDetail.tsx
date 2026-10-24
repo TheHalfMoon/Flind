@@ -9,7 +9,7 @@ import {
     IconPencil,
     IconPlus,
 } from '@posthog/icons'
-import { LemonBanner, LemonButton, LemonTag } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonTag } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'
 import { LemonMarkdown } from 'lib/lemon-ui/LemonMarkdown'

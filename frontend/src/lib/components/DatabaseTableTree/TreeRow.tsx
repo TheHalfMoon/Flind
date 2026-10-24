@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import { useCallback, useState } from 'react'
 
 import { IconChevronDown, IconClock, IconEllipsis } from '@posthog/icons'
-import { LemonButton, LemonMenu, LemonMenuItem, Spinner, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, LemonMenu, LemonMenuItem, Spinner, Tooltip } from '@flind/lemon-ui'
 
 import { copyToClipboard } from 'lib/utils/copyToClipboard'
 import { humanFriendlyDetailedTime } from 'lib/utils/datetime'

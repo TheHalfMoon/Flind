@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { Form } from 'kea-forms'
 
-import { LemonButton, LemonDivider, LemonInput, LemonModal, SpinnerOverlay } from '@posthog/lemon-ui'
+import { LemonButton, LemonDivider, LemonInput, LemonModal, SpinnerOverlay } from '@flind/lemon-ui'
 
 import passkeyLogo from 'lib/components/SocialLoginButton/passkey.svg'
 import { useOnMountEffect } from 'lib/hooks/useOnMountEffect'

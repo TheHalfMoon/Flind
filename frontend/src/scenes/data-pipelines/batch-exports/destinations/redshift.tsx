@@ -1,4 +1,4 @@
-import { LemonBanner, LemonInput, LemonSelect } from '@posthog/lemon-ui'
+import { LemonBanner, LemonInput, LemonSelect } from '@flind/lemon-ui'
 
 import { IntegrationChoice } from 'lib/components/CyclotronJob/integrations/IntegrationChoice'
 import { AWS_ONLY_REGION_OPTIONS } from 'lib/integrations/s3Regions'

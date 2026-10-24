@@ -11,7 +11,7 @@ import {
     LemonModal,
     LemonSkeleton,
     LemonTag,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import type { ApiError } from 'lib/api-error'
 import { TZLabel } from 'lib/components/TZLabel'

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 import { IconWarning } from '@posthog/icons'
-import { Popover, Spinner } from '@posthog/lemon-ui'
+import { Popover, Spinner } from '@flind/lemon-ui'
 
 import api from 'lib/api'
 import { LemonButton, LemonButtonProps } from 'lib/lemon-ui/LemonButton'

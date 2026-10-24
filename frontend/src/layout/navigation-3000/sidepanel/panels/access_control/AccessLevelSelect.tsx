@@ -1,4 +1,4 @@
-import { LemonSelect, LemonSelectOption, LemonSelectProps } from '@posthog/lemon-ui'
+import { LemonSelect, LemonSelectOption, LemonSelectProps } from '@flind/lemon-ui'
 
 import { AccessControlLevel } from '~/types'
 

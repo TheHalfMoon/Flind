@@ -3,7 +3,7 @@ import posthog from 'posthog-js'
 import { useState } from 'react'
 
 import { IconCopy } from '@posthog/icons'
-import { LemonBanner, LemonButton, LemonDivider, LemonModal } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonDivider, LemonModal } from '@flind/lemon-ui'
 
 import { SHARING_MODAL_WIDTH, SharingModalContent } from 'lib/components/Sharing/SharingModal'
 import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'

@@ -1,7 +1,7 @@
 import { expectLogic } from 'kea-test-utils'
 import posthog from 'posthog-js'
 
-import { lemonToast } from '@posthog/lemon-ui'
+import { lemonToast } from '@flind/lemon-ui'
 
 import { SetupTaskId, globalSetupLogic } from 'lib/components/ProductSetup'
 import { preflightLogic } from 'lib/logic/preflightLogic'
@@ -17,8 +17,8 @@ import type { ExperimentMetricsRecalculationRunApi } from 'products/experiments/
 
 import { experimentMetricsLogic } from './experimentMetricsLogic'
 
-jest.mock('@posthog/lemon-ui', () => ({
-    ...jest.requireActual('@posthog/lemon-ui'),
+jest.mock('@flind/lemon-ui', () => ({
+    ...jest.requireActual('@flind/lemon-ui'),
     lemonToast: { error: jest.fn(), success: jest.fn(), info: jest.fn() },
 }))
 

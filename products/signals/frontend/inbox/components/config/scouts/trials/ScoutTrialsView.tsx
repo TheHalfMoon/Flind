@@ -1,4 +1,4 @@
-import { LemonBanner, LemonInputSelect, LemonSkeleton } from '@posthog/lemon-ui'
+import { LemonBanner, LemonInputSelect, LemonSkeleton } from '@flind/lemon-ui'
 
 import { LemonField } from 'lib/lemon-ui/LemonField'
 

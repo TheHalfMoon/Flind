@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonSelect } from '@posthog/lemon-ui'
+import { LemonSelect } from '@flind/lemon-ui'
 
 import { SlackSummaryCadenceEnumApi } from 'products/customer_analytics/frontend/generated/api.schemas'
 

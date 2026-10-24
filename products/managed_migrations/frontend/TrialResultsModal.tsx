@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonBanner, LemonButton, LemonModal, LemonTable, LemonTag } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonModal, LemonTable, LemonTag } from '@flind/lemon-ui'
 
 import { managedMigrationLogic } from './managedMigrationLogic'
 import type { TrialRecord, TrialSummary } from './types'

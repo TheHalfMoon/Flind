@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonBanner, LemonButton, LemonInput, LemonModal, Spinner } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonInput, LemonModal, Spinner } from '@flind/lemon-ui'
 
 import { biHierarchyLogic } from './biHierarchyLogic'
 

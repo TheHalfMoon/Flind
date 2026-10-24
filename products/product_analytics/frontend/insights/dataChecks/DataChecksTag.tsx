@@ -1,5 +1,5 @@
 import { IconCheck, IconCircleDashed, IconWarning } from '@posthog/icons'
-import { LemonTag, LemonTagType } from '@posthog/lemon-ui'
+import { LemonTag, LemonTagType } from '@flind/lemon-ui'
 
 import { Spinner } from 'lib/lemon-ui/Spinner'
 import { cn } from 'lib/utils/css-classes'

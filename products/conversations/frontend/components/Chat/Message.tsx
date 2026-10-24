@@ -11,7 +11,7 @@ import {
     IconTrash,
     IconWarning,
 } from '@posthog/icons'
-import { LemonButton, LemonInput, LemonTag, Link, ProfilePicture, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, LemonInput, LemonTag, Link, ProfilePicture, Tooltip } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'
 import { copyToClipboard } from 'lib/utils/copyToClipboard'

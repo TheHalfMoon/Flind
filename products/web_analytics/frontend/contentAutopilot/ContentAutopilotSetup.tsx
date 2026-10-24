@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconArrowLeft, IconArrowRight, IconTrash } from '@posthog/icons'
-import { LemonBanner, LemonButton, LemonCard, LemonDialog } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonCard, LemonDialog } from '@flind/lemon-ui'
 
 import { GuidedWizardStep, GuidedWizardStepper } from 'lib/components/GuidedWizard/GuidedWizardStepper'
 

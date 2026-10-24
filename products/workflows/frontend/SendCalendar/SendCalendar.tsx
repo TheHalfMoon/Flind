@@ -11,7 +11,7 @@ import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
 import { IconChevronLeft, IconChevronRight } from '@posthog/icons'
-import { LemonButton, LemonSegmentedButton, LemonSelect } from '@posthog/lemon-ui'
+import { LemonButton, LemonSegmentedButton, LemonSelect } from '@flind/lemon-ui'
 
 import { Spinner } from 'lib/lemon-ui/Spinner'
 

@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconFolder } from '@posthog/icons'
-import { LemonTag, Link, Tooltip } from '@posthog/lemon-ui'
+import { LemonTag, Link, Tooltip } from '@flind/lemon-ui'
 
 import { urls } from 'scenes/urls'
 

@@ -3,7 +3,7 @@ import { BindLogic, useActions, useValues } from 'kea'
 import type { ReactNode } from 'react'
 
 import { IconCalendar } from '@posthog/icons'
-import { LemonSelect, Tooltip } from '@posthog/lemon-ui'
+import { LemonSelect, Tooltip } from '@flind/lemon-ui'
 
 import { DateFilter } from 'lib/components/DateFilter/DateFilter'
 import { PropertyFilters } from 'lib/components/PropertyFilters/PropertyFilters'

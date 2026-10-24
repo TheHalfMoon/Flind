@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { Fragment } from 'react'
 
 import { IconFlask } from '@posthog/icons'
-import { LemonButton, LemonDivider, LemonSwitch, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, LemonDivider, LemonSwitch, Tooltip } from '@flind/lemon-ui'
 import { Button } from '@flind/quill'
 
 import { useHogfetti } from 'lib/components/Hogfetti/Hogfetti'

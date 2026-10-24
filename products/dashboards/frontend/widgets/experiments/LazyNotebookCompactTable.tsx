@@ -1,6 +1,6 @@
 import { Suspense } from 'react'
 
-import { LemonSkeleton } from '@posthog/lemon-ui'
+import { LemonSkeleton } from '@flind/lemon-ui'
 
 import { lazyWithRetry } from 'lib/utils/retryImport'
 

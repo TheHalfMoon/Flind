@@ -2,7 +2,7 @@ import { Editor } from '@tiptap/core'
 import { useState } from 'react'
 
 import { IconCode, IconList, IconMinus, IconPalette } from '@posthog/icons'
-import { LemonButton, LemonDivider, LemonInput, LemonMenu } from '@posthog/lemon-ui'
+import { LemonButton, LemonDivider, LemonInput, LemonMenu } from '@flind/lemon-ui'
 
 import { WordArtModal } from 'lib/components/Cards/TextCard/WordArt/WordArtModal'
 import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'

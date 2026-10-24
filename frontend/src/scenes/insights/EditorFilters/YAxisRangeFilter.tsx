@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useEffect, useState } from 'react'
 
-import { LemonInput, LemonSwitch } from '@posthog/lemon-ui'
+import { LemonInput, LemonSwitch } from '@flind/lemon-ui'
 
 import { insightVizDataLogic } from 'scenes/insights/insightVizDataLogic'
 

@@ -3,7 +3,7 @@ import { router } from 'kea-router'
 import React, { useEffect, useRef } from 'react'
 
 import { IconArrowLeft } from '@posthog/icons'
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { useKeyboardHotkeys } from 'lib/hooks/useKeyboardHotkeys'
 import { SceneExport } from 'scenes/sceneTypes'

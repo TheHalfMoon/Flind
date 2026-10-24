@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonBanner, LemonButton, LemonDivider, LemonInput, LemonTag, Spinner } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonDivider, LemonInput, LemonTag, Spinner } from '@flind/lemon-ui'
 
 import { CodeSnippet } from 'lib/components/CodeSnippet'
 import { Link } from 'lib/lemon-ui/Link'

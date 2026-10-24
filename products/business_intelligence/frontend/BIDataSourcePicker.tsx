@@ -2,7 +2,7 @@ import { useActions, useMountedLogic, useValues } from 'kea'
 import { useRef } from 'react'
 
 import { IconChevronDown, IconDatabase } from '@posthog/icons'
-import { LemonButton, LemonDropdown, LemonInput, Spinner } from '@posthog/lemon-ui'
+import { LemonButton, LemonDropdown, LemonInput, Spinner } from '@flind/lemon-ui'
 
 import { LemonTree } from 'lib/lemon-ui/LemonTree/LemonTree'
 import { TreeNodeDisplayIcon } from 'lib/lemon-ui/LemonTree/LemonTreeUtils'

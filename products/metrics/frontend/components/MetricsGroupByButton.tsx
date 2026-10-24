@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
 import { IconChevronDown } from '@posthog/icons'
-import { LemonButton, LemonDropdown, LemonInputSelect, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, LemonDropdown, LemonInputSelect, Tooltip } from '@flind/lemon-ui'
 
 import { metricsViewerLogic } from './metricsViewerLogic'
 

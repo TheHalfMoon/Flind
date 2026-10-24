@@ -3,7 +3,7 @@ import './RetentionModal.scss'
 import clsx from 'clsx'
 import { useActions, useValues } from 'kea'
 
-import { LemonButton, LemonModal } from '@posthog/lemon-ui'
+import { LemonButton, LemonModal } from '@flind/lemon-ui'
 
 import { exportsLogic } from 'lib/components/ExportButton/exportsLogic'
 import { SpinnerOverlay } from 'lib/lemon-ui/Spinner/Spinner'

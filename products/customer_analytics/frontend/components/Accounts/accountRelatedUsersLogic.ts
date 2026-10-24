@@ -14,7 +14,7 @@ import {
 import { loaders } from 'kea-loaders'
 import posthog from 'posthog-js'
 
-import { Sorting } from '@posthog/lemon-ui'
+import { Sorting } from '@flind/lemon-ui'
 
 import api, { CountedPaginatedResponse } from 'lib/api'
 import { OrganizationMembershipLevel } from 'lib/constants'

@@ -3,7 +3,7 @@ import { combineUrl } from 'kea-router'
 import { useEffect, useRef, useState } from 'react'
 
 import { IconArchive, IconLock, IconPlusSmall, IconTrash } from '@posthog/icons'
-import { LemonButton, LemonDialog, LemonTag, Link, lemonToast } from '@posthog/lemon-ui'
+import { LemonButton, LemonDialog, LemonTag, Link, lemonToast } from '@flind/lemon-ui'
 
 import api from 'lib/api'
 import { AccessControlAction } from 'lib/components/AccessControlAction'

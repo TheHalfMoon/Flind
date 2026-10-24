@@ -4,7 +4,7 @@ import { CSS } from '@dnd-kit/utilities'
 import clsx from 'clsx'
 
 import { IconDrag } from '@posthog/icons'
-import { Tooltip } from '@posthog/lemon-ui'
+import { Tooltip } from '@flind/lemon-ui'
 
 const MetricDragHandle = ({
     listeners,

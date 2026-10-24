@@ -1,7 +1,7 @@
 import { BindLogic, useActions, useValues } from 'kea'
 import { useState } from 'react'
 
-import { LemonButton, LemonModal, LemonSegmentedButton } from '@posthog/lemon-ui'
+import { LemonButton, LemonModal, LemonSegmentedButton } from '@flind/lemon-ui'
 
 import { featureFlagLogic as featureFlagSceneLogic } from 'scenes/feature-flags/featureFlagLogic'
 import { FeatureFlagReleaseConditions } from 'scenes/feature-flags/FeatureFlagReleaseConditions'

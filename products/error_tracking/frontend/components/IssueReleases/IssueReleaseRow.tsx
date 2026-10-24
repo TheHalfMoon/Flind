@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { Tooltip as LemonTooltip } from '@posthog/lemon-ui'
+import { Tooltip as LemonTooltip } from '@flind/lemon-ui'
 
 import { dayjs } from 'lib/dayjs'
 import { Button, Text } from 'lib/ui/quill'

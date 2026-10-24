@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { useCallback } from 'react'
 
 import { IconComment, IconEmoji } from '@posthog/icons'
-import { LemonButton, LemonDropdown } from '@posthog/lemon-ui'
+import { LemonButton, LemonDropdown } from '@flind/lemon-ui'
 
 import { AccessControlAction } from 'lib/components/AccessControlAction'
 import { EmojiPickerPopover } from 'lib/components/EmojiPicker/EmojiPickerPopover'

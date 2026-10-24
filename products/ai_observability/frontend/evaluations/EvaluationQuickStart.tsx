@@ -2,7 +2,7 @@ import { useActions } from 'kea'
 import { router } from 'kea-router'
 import posthog from 'posthog-js'
 
-import { Link } from '@posthog/lemon-ui'
+import { Link } from '@flind/lemon-ui'
 
 import { productSetupStatusLogic } from 'lib/components/ProductEmptyState/productSetupStatusLogic'
 import type { ProductEmptyStateMode } from 'lib/components/ProductEmptyState/types'

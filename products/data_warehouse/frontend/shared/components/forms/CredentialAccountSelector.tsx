@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { FormContext } from 'kea-forms'
 import { useContext, useEffect, useMemo } from 'react'
 
-import { LemonInput } from '@posthog/lemon-ui'
+import { LemonInput } from '@flind/lemon-ui'
 
 import { credentialAccountsLogic } from 'lib/integrations/credentialAccountsLogic'
 import { LemonField } from 'lib/lemon-ui/LemonField'

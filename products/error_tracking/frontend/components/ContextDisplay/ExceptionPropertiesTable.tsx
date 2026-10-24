@@ -1,4 +1,4 @@
-import { LemonDivider } from '@posthog/lemon-ui'
+import { LemonDivider } from '@flind/lemon-ui'
 
 import { PropertiesTable } from '../PropertiesTable'
 import type { PropertyTableRow } from '../PropertiesTable'

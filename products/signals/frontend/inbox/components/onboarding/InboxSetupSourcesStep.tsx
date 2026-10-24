@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonButton, LemonSkeleton, LemonSwitch } from '@posthog/lemon-ui'
+import { LemonButton, LemonSkeleton, LemonSwitch } from '@flind/lemon-ui'
 
 import { GuidedWizardSection } from 'lib/components/GuidedWizard/GuidedWizardSection'
 

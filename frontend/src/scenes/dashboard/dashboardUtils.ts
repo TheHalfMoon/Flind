@@ -1,7 +1,7 @@
 import { deepEqual as equal } from 'fast-equals'
 import { ResponsiveLayouts } from 'react-grid-layout'
 
-import { lemonToast } from '@posthog/lemon-ui'
+import { lemonToast } from '@flind/lemon-ui'
 import { getDashboardWidgetCatalogEntry } from '@flind/products-dashboards/frontend/widget_types/catalog'
 
 import api, { ApiMethodOptions, getJSONOrNull, isAbortError } from 'lib/api'

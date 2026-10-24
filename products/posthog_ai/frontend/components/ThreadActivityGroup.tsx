@@ -1,7 +1,7 @@
 import { memo } from 'react'
 
 import { IconChevronRight, IconSpinner } from '@posthog/icons'
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { ActivityDisclosure } from './ActivityDisclosure'
 import { ActivityElapsedTime } from './ActivityElapsedTime'

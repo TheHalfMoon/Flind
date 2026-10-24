@@ -2,7 +2,7 @@ import { deepEqual as equal } from 'fast-equals'
 import { ReactNode } from 'react'
 
 import { IconWarning } from '@posthog/icons'
-import { LemonButtonProps } from '@posthog/lemon-ui'
+import { LemonButtonProps } from '@flind/lemon-ui'
 
 import api from 'lib/api'
 import { DataColorTheme, DataColorToken } from 'lib/colors'

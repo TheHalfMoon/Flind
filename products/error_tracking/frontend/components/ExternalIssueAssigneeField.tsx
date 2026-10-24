@@ -2,7 +2,7 @@ import { BuiltLogic, useActions, useValues } from 'kea'
 import { FormContext } from 'kea-forms'
 import { useContext, useEffect } from 'react'
 
-import { LemonInputSelect } from '@posthog/lemon-ui'
+import { LemonInputSelect } from '@flind/lemon-ui'
 
 import api from 'lib/api'
 import { useIntegrationManagementRestriction } from 'lib/integrations/integrationPermissions'

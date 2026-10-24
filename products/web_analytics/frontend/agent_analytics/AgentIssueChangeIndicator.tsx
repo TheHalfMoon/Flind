@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 
 import { IconTrending } from '@posthog/icons'
-import { LemonTag, LemonTagType, Tooltip } from '@posthog/lemon-ui'
+import { LemonTag, LemonTagType, Tooltip } from '@flind/lemon-ui'
 
 import { IconTrendingDown, IconTrendingFlat } from 'lib/lemon-ui/icons'
 import { percentage } from 'lib/utils/numbers'

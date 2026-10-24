@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { Link } from '@posthog/lemon-ui'
+import { Link } from '@flind/lemon-ui'
 
 import { eventUsageLogic } from 'lib/utils/eventUsageLogic'
 import { parseDraftQueryFromLocalStorage } from 'scenes/insights/utils'

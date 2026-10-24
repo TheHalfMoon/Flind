@@ -2,7 +2,7 @@ import { MakeLogicType, actions, afterMount, kea, listeners, path, props, reduce
 import { loaders } from 'kea-loaders'
 import { router, urlToAction } from 'kea-router'
 
-import { LemonDialog } from '@posthog/lemon-ui'
+import { LemonDialog } from '@flind/lemon-ui'
 
 import { Sorting } from 'lib/lemon-ui/LemonTable'
 import { objectsEqual } from 'lib/utils/objects'

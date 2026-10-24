@@ -1,5 +1,5 @@
 import { IconInfo } from '@posthog/icons'
-import { LemonLabel, Tooltip } from '@posthog/lemon-ui'
+import { LemonLabel, Tooltip } from '@flind/lemon-ui'
 
 import { PropertyFilters } from 'lib/components/PropertyFilters/PropertyFilters'
 import { TaxonomicFilterGroupType } from 'lib/components/TaxonomicFilter/types'

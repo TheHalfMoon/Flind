@@ -2,7 +2,7 @@ import { useValues } from 'kea'
 import posthog from 'posthog-js'
 import { useEffect } from 'react'
 
-import { LemonBanner, Link, Spinner } from '@posthog/lemon-ui'
+import { LemonBanner, Link, Spinner } from '@flind/lemon-ui'
 
 import { billingLogic } from 'scenes/billing/billingLogic'
 import { teamLogic } from 'scenes/teamLogic'

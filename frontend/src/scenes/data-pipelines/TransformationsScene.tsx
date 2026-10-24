@@ -1,5 +1,5 @@
 import { IconPlus, IconPlusSmall } from '@posthog/icons'
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 import { Button } from '@flind/quill'
 
 import { Shortcut } from 'lib/components/Shortcuts/Shortcut'

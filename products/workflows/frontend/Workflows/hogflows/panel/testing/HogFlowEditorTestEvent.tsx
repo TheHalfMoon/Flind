@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconRedo } from '@posthog/icons'
-import { LemonBanner, LemonButton, LemonCollapse, Link, ProfilePicture, Spinner } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonCollapse, Link, ProfilePicture, Spinner } from '@flind/lemon-ui'
 
 import { TaxonomicFilter } from 'lib/components/TaxonomicFilter/TaxonomicFilter'
 import { TaxonomicFilterGroupType } from 'lib/components/TaxonomicFilter/types'

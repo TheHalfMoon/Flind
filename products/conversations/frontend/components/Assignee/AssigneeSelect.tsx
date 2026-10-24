@@ -1,7 +1,7 @@
 import { useActions } from 'kea'
 import { useEffect, useState } from 'react'
 
-import { LemonDropdown } from '@posthog/lemon-ui'
+import { LemonDropdown } from '@flind/lemon-ui'
 
 import { AssigneeResolver } from './AssigneeDisplay'
 import { AssigneeDropdown } from './AssigneeDropdown'

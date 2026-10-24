@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 
 import { IconSend } from '@posthog/icons'
-import { LemonButton, LemonMenu, LemonMenuItem, Link } from '@posthog/lemon-ui'
+import { LemonButton, LemonMenu, LemonMenuItem, Link } from '@flind/lemon-ui'
 
 import type { TicketChannel, TicketStatus } from '../../types'
 import { getReplyDestination } from '../Channels/ChannelsTag'

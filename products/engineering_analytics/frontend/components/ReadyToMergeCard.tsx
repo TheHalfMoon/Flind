@@ -2,7 +2,7 @@
 // the median of the whole, so the bar length is the whole median and the split is the share of summed
 // hours on each side of the approval. The leg medians sit under the bars as separate numbers.
 
-import { LemonCard, LemonSkeleton, Tooltip } from '@posthog/lemon-ui'
+import { LemonCard, LemonSkeleton, Tooltip } from '@flind/lemon-ui'
 
 import { compactAgeLabel, percent } from '../lib/format'
 import { ReadyToMergeRow } from '../lib/readyToMergeRows'

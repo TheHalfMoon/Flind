@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import * as directorPng from '@posthog/brand/hoggies/png/director'
-import { LemonButton, Link } from '@posthog/lemon-ui'
+import { LemonButton, Link } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import { RestrictionScope, useRestrictedArea } from 'lib/components/RestrictedArea'

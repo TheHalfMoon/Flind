@@ -1,6 +1,6 @@
 import { createContext } from 'react'
 
-import type { LemonButtonProps, LemonMenuItem, LemonMenuItems, LemonMenuSection, LemonTagType } from '@posthog/lemon-ui'
+import type { LemonButtonProps, LemonMenuItem, LemonMenuItems, LemonMenuSection, LemonTagType } from '@flind/lemon-ui'
 
 export type NotebookComponentToolbarAction = Pick<LemonButtonProps, 'disabledReason' | 'icon'> & {
     text: string

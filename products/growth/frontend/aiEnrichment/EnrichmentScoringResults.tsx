@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { LemonBanner, LemonTable, LemonTableColumns } from '@posthog/lemon-ui'
+import { LemonBanner, LemonTable, LemonTableColumns } from '@flind/lemon-ui'
 
 import type { ScoringPreviewRowApi } from '../generated/api.schemas'
 import { enrichmentScoringLogic } from './enrichmentScoringLogic'

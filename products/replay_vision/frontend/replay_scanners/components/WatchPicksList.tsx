@@ -1,6 +1,6 @@
 import { useActions, useMountedLogic, useValues } from 'kea'
 
-import { LemonButton, LemonSkeleton } from '@posthog/lemon-ui'
+import { LemonButton, LemonSkeleton } from '@flind/lemon-ui'
 
 import { watchPicksLogic } from '../watchPicksLogic'
 import { watchPicksStarterLogic } from '../watchPicksStarterLogic'

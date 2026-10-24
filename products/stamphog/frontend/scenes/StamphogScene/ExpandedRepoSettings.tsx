@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonSelect, LemonSwitch, Tooltip } from '@posthog/lemon-ui'
+import { LemonSelect, LemonSwitch, Tooltip } from '@flind/lemon-ui'
 
 import { EditableField } from 'lib/components/EditableField/EditableField'
 import { toAccessControlLevel } from 'lib/utils/accessControlUtils'

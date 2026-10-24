@@ -1,5 +1,5 @@
 import { IconArrowRight } from '@posthog/icons'
-import { Link } from '@posthog/lemon-ui'
+import { Link } from '@flind/lemon-ui'
 
 import { FeedbackTabContent } from 'scenes/surveys/FeedbackTabContent'
 import { QuickSurveyType } from 'scenes/surveys/quick-create/types'

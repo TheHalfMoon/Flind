@@ -1,4 +1,4 @@
-import { LemonTag } from '@posthog/lemon-ui'
+import { LemonTag } from '@flind/lemon-ui'
 
 import type { FeatureRequestPriorityEnumApi } from '../../generated/api.schemas'
 import { featureRequestPriorityLabel } from './featureRequestOptions'

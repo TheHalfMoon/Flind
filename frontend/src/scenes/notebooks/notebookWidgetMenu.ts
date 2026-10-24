@@ -1,4 +1,4 @@
-import type { LemonMenuItem } from '@posthog/lemon-ui'
+import type { LemonMenuItem } from '@flind/lemon-ui'
 
 import { CreatePostHogWidgetNodeOptions, CustomNotebookNodeAttributes, NotebookNodeAttributes } from './types'
 

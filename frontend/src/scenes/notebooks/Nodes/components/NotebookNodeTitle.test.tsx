@@ -27,8 +27,8 @@ jest.mock('~/queries/utils', () => ({
     isHogQLQuery: jest.fn((query: unknown) => (query as { kind?: string } | undefined)?.kind === 'HogQLQuery'),
 }))
 
-jest.mock('@posthog/lemon-ui', () => ({
-    ...jest.requireActual('@posthog/lemon-ui'),
+jest.mock('@flind/lemon-ui', () => ({
+    ...jest.requireActual('@flind/lemon-ui'),
     Tooltip: ({ children, title }: { children: React.ReactNode; title: string }) => (
         <div data-attr={title}>{children}</div>
     ),

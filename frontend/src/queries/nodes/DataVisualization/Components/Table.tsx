@@ -5,7 +5,7 @@ import posthog from 'posthog-js'
 import React, { useCallback, useLayoutEffect, useRef, useState } from 'react'
 
 import { IconPin, IconPinFilled } from '@posthog/icons'
-import { LemonBanner, LemonButton, LemonTable, LemonTableColumn, Tooltip } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonTable, LemonTableColumn, Tooltip } from '@flind/lemon-ui'
 
 import { dayjs } from 'lib/dayjs'
 import { lightenDarkenColor } from 'lib/utils/colors'

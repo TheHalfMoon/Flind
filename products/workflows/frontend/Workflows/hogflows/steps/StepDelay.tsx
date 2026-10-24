@@ -1,7 +1,7 @@
 import { Node } from '@xyflow/react'
 import { useActions, useValues } from 'kea'
 
-import { LemonInputSelect, LemonSelect, LemonSwitch } from '@posthog/lemon-ui'
+import { LemonInputSelect, LemonSelect, LemonSwitch } from '@flind/lemon-ui'
 
 import { TaxonomicFilterGroupType } from 'lib/components/TaxonomicFilter/types'
 import { TaxonomicStringPopover } from 'lib/components/TaxonomicPopover/TaxonomicPopover'

@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useCallback, useMemo, useRef } from 'react'
 
-import { Spinner } from '@posthog/lemon-ui'
+import { Spinner } from '@flind/lemon-ui'
 
 import { ChartFilter } from 'lib/components/ChartFilter/ChartFilter'
 import { LemonMenuItems } from 'lib/lemon-ui/LemonMenu'

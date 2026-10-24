@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import type { CSSProperties } from 'react'
 
-import { Link } from '@posthog/lemon-ui'
+import { Link } from '@flind/lemon-ui'
 
 import { cn } from 'lib/utils/css-classes'
 import { humanFriendlyDuration } from 'lib/utils/durations'

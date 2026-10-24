@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { Popover } from '@posthog/lemon-ui'
+import { Popover } from '@flind/lemon-ui'
 
 import type { InboxSummaryPersonApi } from '../../../generated/api.schemas'
 

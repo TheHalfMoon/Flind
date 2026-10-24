@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 import { IconGlobe } from '@posthog/icons'
-import { LemonTabs } from '@posthog/lemon-ui'
+import { LemonTabs } from '@flind/lemon-ui'
 
 import { COUNTRY_CODE_TO_LONG_NAME, countryCodeToFlag } from 'lib/utils/country'
 

@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { useActions, useValues } from 'kea'
 
-import { LemonBanner, LemonCard, LemonSkeleton } from '@posthog/lemon-ui'
+import { LemonBanner, LemonCard, LemonSkeleton } from '@flind/lemon-ui'
 
 import { Link } from 'lib/lemon-ui/Link'
 import { pluralize } from 'lib/utils/strings'

@@ -1,6 +1,6 @@
 import { strToU8, zipSync } from 'fflate'
 
-import { lemonToast } from '@posthog/lemon-ui'
+import { lemonToast } from '@flind/lemon-ui'
 
 import { downloadFile } from 'lib/utils/dom'
 import { slugify } from 'lib/utils/strings'

@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { LemonButton, LemonCheckbox, Spinner } from '@posthog/lemon-ui'
+import { LemonButton, LemonCheckbox, Spinner } from '@flind/lemon-ui'
 
 import { ErrorTrackingFingerprint } from 'lib/components/Errors/types'
 import { dayjs } from 'lib/dayjs'

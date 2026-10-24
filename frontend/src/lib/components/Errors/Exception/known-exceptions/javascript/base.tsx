@@ -1,4 +1,4 @@
-import { LemonBanner } from '@posthog/lemon-ui'
+import { LemonBanner } from '@flind/lemon-ui'
 
 export function KnownExceptionBanner({ children }: { children: React.ReactNode }): JSX.Element {
     return (

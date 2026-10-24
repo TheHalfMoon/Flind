@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { Suspense } from 'react'
 
-import { LemonButton, LemonModal, LemonTag } from '@posthog/lemon-ui'
+import { LemonButton, LemonModal, LemonTag } from '@flind/lemon-ui'
 
 import { LemonField } from 'lib/lemon-ui/LemonField'
 import { LemonInput } from 'lib/lemon-ui/LemonInput'

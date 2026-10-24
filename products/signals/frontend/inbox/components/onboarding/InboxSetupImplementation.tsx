@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonSegmentedButton, LemonSwitch } from '@posthog/lemon-ui'
+import { LemonSegmentedButton, LemonSwitch } from '@flind/lemon-ui'
 
 import { inboxSetupLogic } from '../../logics/inboxSetupLogic'
 import { AUTONOMY_PRIORITY_OPTIONS } from '../../utils/autonomyPriorityOptions'

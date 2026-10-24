@@ -1,5 +1,5 @@
 import { IconChevronDown } from '@posthog/icons'
-import { LemonButton, LemonDropdown, LemonInput } from '@posthog/lemon-ui'
+import { LemonButton, LemonDropdown, LemonInput } from '@flind/lemon-ui'
 
 import { fullName } from 'lib/utils/strings'
 

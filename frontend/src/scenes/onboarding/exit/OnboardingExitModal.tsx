@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { useRef, useState } from 'react'
 
 import { IconArrowRight } from '@posthog/icons'
-import { LemonButton, LemonInput, LemonTextArea } from '@posthog/lemon-ui'
+import { LemonButton, LemonInput, LemonTextArea } from '@flind/lemon-ui'
 
 import { LemonModal } from 'lib/lemon-ui/LemonModal'
 import { userLogic } from 'scenes/userLogic'

@@ -3,7 +3,7 @@ import { router } from 'kea-router'
 import { useEffect } from 'react'
 
 import * as greekPng from '@posthog/brand/hoggies/png/greek'
-import { LemonCollapse, LemonInput, LemonTable, ProfilePicture, Spinner } from '@posthog/lemon-ui'
+import { LemonCollapse, LemonInput, LemonTable, ProfilePicture, Spinner } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import { TZLabel } from 'lib/components/TZLabel'

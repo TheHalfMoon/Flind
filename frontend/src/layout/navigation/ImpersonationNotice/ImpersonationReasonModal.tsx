@@ -1,6 +1,6 @@
 import { ReactNode, useEffect, useId, useState } from 'react'
 
-import { LemonButton, LemonInput, LemonModal, SideAction } from '@posthog/lemon-ui'
+import { LemonButton, LemonInput, LemonModal, SideAction } from '@flind/lemon-ui'
 
 export interface ImpersonationReasonModalCancelButton {
     label: string

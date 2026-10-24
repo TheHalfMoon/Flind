@@ -1,4 +1,4 @@
-import { LemonModal } from '@posthog/lemon-ui'
+import { LemonModal } from '@flind/lemon-ui'
 
 import { CustomerAnalyticsTaskDigest } from './CustomerAnalyticsTaskDigest'
 

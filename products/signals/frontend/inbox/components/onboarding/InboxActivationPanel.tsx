@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { useEffect, useState } from 'react'
 
 import { IconCheckCircle } from '@posthog/icons'
-import { LemonButton, LemonCard, LemonTag, Link, Spinner } from '@posthog/lemon-ui'
+import { LemonButton, LemonCard, LemonTag, Link, Spinner } from '@flind/lemon-ui'
 
 import { urls } from 'scenes/urls'
 

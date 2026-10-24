@@ -1,5 +1,5 @@
 import { IconPullRequest, IconXCircle } from '@posthog/icons'
-import { LemonTag, LemonTagType } from '@posthog/lemon-ui'
+import { LemonTag, LemonTagType } from '@flind/lemon-ui'
 
 import { PRState } from '../scenes/engineeringAnalyticsLogic'
 

@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useEffect, useMemo } from 'react'
 
-import { LemonInputSelect, LemonInputSelectOption } from '@posthog/lemon-ui'
+import { LemonInputSelect, LemonInputSelectOption } from '@flind/lemon-ui'
 
 import { IntegrationType } from '~/types'
 

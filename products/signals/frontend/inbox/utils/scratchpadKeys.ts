@@ -1,6 +1,6 @@
 import { type ComponentProps } from 'react'
 
-import { LemonTag } from '@posthog/lemon-ui'
+import { LemonTag } from '@flind/lemon-ui'
 
 type LemonTagType = ComponentProps<typeof LemonTag>['type']
 

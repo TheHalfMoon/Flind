@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useCallback } from 'react'
 
-import { LemonButton, LemonSelect, Spinner, lemonToast } from '@posthog/lemon-ui'
+import { LemonButton, LemonSelect, Spinner, lemonToast } from '@flind/lemon-ui'
 
 import { More } from 'lib/lemon-ui/LemonButton/More'
 import { LemonTable } from 'lib/lemon-ui/LemonTable'

@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { Form } from 'kea-forms'
 
 import { IconRefresh } from '@posthog/icons'
-import { LemonSegmentedButton, LemonSelect } from '@posthog/lemon-ui'
+import { LemonSegmentedButton, LemonSelect } from '@flind/lemon-ui'
 
 import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'
 import { LemonButton } from 'lib/lemon-ui/LemonButton'

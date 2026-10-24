@@ -2,7 +2,7 @@ import { decode } from 'he'
 import { useActions, useValues } from 'kea'
 
 import { IconCheck } from '@posthog/icons'
-import { LemonButton, LemonCard } from '@posthog/lemon-ui'
+import { LemonButton, LemonCard } from '@flind/lemon-ui'
 
 import type { ConnectedAppApi } from '~/generated/core/api.schemas'
 

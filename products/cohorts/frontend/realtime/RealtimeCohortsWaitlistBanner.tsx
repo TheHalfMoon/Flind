@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import posthog from 'posthog-js'
 import { useEffect } from 'react'
 
-import { LemonBanner, LemonTag } from '@posthog/lemon-ui'
+import { LemonBanner, LemonTag } from '@flind/lemon-ui'
 import { PostHogCaptureOnViewed } from '@posthog/react'
 
 import { ConceptWaitlistCTA } from 'lib/components/FeaturePreviews/ConceptWaitlistCTA'

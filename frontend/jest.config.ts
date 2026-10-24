@@ -131,7 +131,7 @@ const config: Config = {
         // Required for sidePanelNotificationsLogic.test.ts and other tests with a transitive
         // import chain through src/lib/hog.ts.
         '^@flind/logicvm$': '<rootDir>/node_modules/@flind/logicvm/src/index.ts',
-        '^@posthog/lemon-ui(|/.*)$': '<rootDir>/@posthog/lemon-ui/src/$1',
+        '^@flind/lemon-ui(|/.*)$': '<rootDir>/flind/lemon-ui/src/$1',
         '^lib/(.*)$': '<rootDir>/src/lib/$1',
         '^react-markdown$': '<rootDir>/src/test/mocks/reactMarkdownMock.js',
         '^remark-gfm$': '<rootDir>/src/test/mocks/emptyMock.js',

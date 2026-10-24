@@ -14,7 +14,7 @@ import {
     LemonTag,
     LemonTextArea,
     Link,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { IntegrationChoice } from 'lib/components/CyclotronJob/integrations/IntegrationChoice'
 import { FEATURE_FLAGS } from 'lib/constants'

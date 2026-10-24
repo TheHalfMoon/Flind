@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import { useActions, useValues } from 'kea'
 import { DragEventHandler, useState } from 'react'
 
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import type { notebookLogicType } from '../Notebook/notebookLogic'
 import { NotebookSelectList } from '../NotebookSelectButton/NotebookSelectButton'

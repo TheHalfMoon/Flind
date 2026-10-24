@@ -1,6 +1,6 @@
 import './SentimentTag.scss'
 
-import { LemonTag, LemonTagProps, Tooltip } from '@posthog/lemon-ui'
+import { LemonTag, LemonTagProps, Tooltip } from '@flind/lemon-ui'
 
 import { LemonSkeleton } from 'lib/lemon-ui/LemonSkeleton'
 

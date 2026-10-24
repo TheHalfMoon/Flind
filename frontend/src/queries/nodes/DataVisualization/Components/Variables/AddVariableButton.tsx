@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconGear, IconPlus } from '@posthog/icons'
-import { LemonButton, LemonButtonProps, LemonInput, LemonMenu } from '@posthog/lemon-ui'
+import { LemonButton, LemonButtonProps, LemonInput, LemonMenu } from '@flind/lemon-ui'
 
 import { dataVisualizationLogic } from '../../dataVisualizationLogic'
 import { NewVariableModal } from './NewVariableModal'

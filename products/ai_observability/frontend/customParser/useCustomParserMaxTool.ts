@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useCallback, useMemo } from 'react'
 
-import { lemonToast } from '@posthog/lemon-ui'
+import { lemonToast } from '@flind/lemon-ui'
 import { handleCreateParserRecipeCall, sampleForContext } from '@flind/llm-normalizer'
 
 import { useMaxTool } from 'scenes/max/useMaxTool'

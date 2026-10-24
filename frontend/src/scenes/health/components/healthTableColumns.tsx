@@ -1,5 +1,5 @@
 import { IconSparkles } from '@posthog/icons'
-import { LemonButton, LemonTag } from '@posthog/lemon-ui'
+import { LemonButton, LemonTag } from '@flind/lemon-ui'
 
 import { FEATURE_FLAGS } from 'lib/constants'
 import { LemonTableColumn } from 'lib/lemon-ui/LemonTable'

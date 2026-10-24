@@ -9,7 +9,7 @@ import {
     LemonTableColumns,
     LemonTag,
     ProfilePicture,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { MemberSelect } from 'lib/components/MemberSelect'
 import { TZLabel } from 'lib/components/TZLabel'

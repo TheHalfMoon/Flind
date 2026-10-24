@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { router } from 'kea-router'
 
 import { IconArrowRight, IconCheckCircle, IconInfo } from '@posthog/icons'
-import { LemonButton, LemonCard, Link, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, LemonCard, Link, Tooltip } from '@flind/lemon-ui'
 
 import { featureFlagLogic } from 'lib/logic/featureFlagLogic'
 import { cn } from 'lib/utils/css-classes'

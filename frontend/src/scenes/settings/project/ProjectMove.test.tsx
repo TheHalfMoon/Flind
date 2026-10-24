@@ -17,8 +17,8 @@ import { ProjectMove } from './ProjectMove'
 
 // Render LemonSelect as a native <select> so each option's disabled state is assertable from the DOM
 // without driving the (portal-rendered) popover. We only override LemonSelect; the other Lemon components stay real.
-jest.mock('@posthog/lemon-ui', () => ({
-    ...jest.requireActual('@posthog/lemon-ui'),
+jest.mock('@flind/lemon-ui', () => ({
+    ...jest.requireActual('@flind/lemon-ui'),
     LemonSelect: ({ options, value, onChange, placeholder }: any): JSX.Element => (
         <select
             aria-label="target organization"

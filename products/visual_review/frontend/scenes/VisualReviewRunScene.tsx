@@ -3,7 +3,7 @@ import React from 'react'
 
 import * as magnifyingGlassPng from '@posthog/brand/hoggies/png/magnifying-glass'
 import { IconChevronLeft, IconChevronRight } from '@posthog/icons'
-import { LemonButton, LemonCheckbox, LemonSkeleton, Link } from '@posthog/lemon-ui'
+import { LemonButton, LemonCheckbox, LemonSkeleton, Link } from '@flind/lemon-ui'
 import { PostHogCaptureOnViewed } from '@posthog/react'
 
 import { pngHoggie } from 'lib/brand/hoggies'

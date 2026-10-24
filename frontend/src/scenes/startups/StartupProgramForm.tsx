@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { Form } from 'kea-forms'
 
 import { IconUpload, IconX } from '@posthog/icons'
-import { LemonButton, LemonFileInput, LemonInput, LemonSelect, Link, lemonToast } from '@posthog/lemon-ui'
+import { LemonButton, LemonFileInput, LemonInput, LemonSelect, Link, lemonToast } from '@flind/lemon-ui'
 
 import { useUploadFiles } from 'lib/hooks/useUploadFiles'
 import { LemonCalendarSelectInput } from 'lib/lemon-ui/LemonCalendar/LemonCalendarSelect'

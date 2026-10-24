@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 import { IconLetter } from '@posthog/icons'
-import { LemonModal, Link } from '@posthog/lemon-ui'
+import { LemonModal, Link } from '@flind/lemon-ui'
 
 import { HogFlow } from './hogflows/types'
 import { getMessageAssetContentUrl } from './messageAssetsApi'

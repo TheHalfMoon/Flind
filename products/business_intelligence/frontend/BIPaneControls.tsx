@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonCheckbox, LemonInputSelect, LemonLabel, LemonSelect } from '@posthog/lemon-ui'
+import { LemonCheckbox, LemonInputSelect, LemonLabel, LemonSelect } from '@flind/lemon-ui'
 
 import { biEditorLogic } from './biEditorLogic'
 import { getBIFieldPillLabel } from './biEditorTypes'

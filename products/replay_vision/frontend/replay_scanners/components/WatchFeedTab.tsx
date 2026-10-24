@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconSearch } from '@posthog/icons'
-import { LemonButton, LemonInput, LemonSkeleton } from '@posthog/lemon-ui'
+import { LemonButton, LemonInput, LemonSkeleton } from '@flind/lemon-ui'
 
 import { DateFilter } from 'lib/components/DateFilter/DateFilter'
 import { MemberSelectMultiplePopover } from 'lib/components/MemberSelectMultiplePopover'

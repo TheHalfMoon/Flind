@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import React, { useEffect, useRef } from 'react'
 
-import { LemonDivider, LemonSelect, LemonSwitch } from '@posthog/lemon-ui'
+import { LemonDivider, LemonSelect, LemonSwitch } from '@flind/lemon-ui'
 
 import { useOnMountEffect } from 'lib/hooks/useOnMountEffect'
 

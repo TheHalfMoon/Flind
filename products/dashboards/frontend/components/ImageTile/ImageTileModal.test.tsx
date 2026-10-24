@@ -3,7 +3,7 @@ import '@testing-library/jest-dom'
 import { act, cleanup, fireEvent, render, screen } from '@testing-library/react'
 import posthog from 'posthog-js'
 
-import { lemonToast } from '@posthog/lemon-ui'
+import { lemonToast } from '@flind/lemon-ui'
 
 import { useUploadFiles } from 'lib/hooks/useUploadFiles'
 import { preflightLogic } from 'lib/logic/preflightLogic'

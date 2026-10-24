@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import { useValues } from 'kea'
 
 import { IconCheck, IconMinus, IconWarning, IconX } from '@posthog/icons'
-import { LemonBanner } from '@posthog/lemon-ui'
+import { LemonBanner } from '@flind/lemon-ui'
 
 import type { PanelImportOutcomeEnumApi } from 'products/metrics/frontend/generated/api.schemas'
 

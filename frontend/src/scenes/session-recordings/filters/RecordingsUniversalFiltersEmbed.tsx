@@ -28,7 +28,7 @@ import {
     LemonTabs,
     LemonTag,
     Popover,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { DateFilter } from 'lib/components/DateFilter/DateFilter'
 import { PropertyFilterButton } from 'lib/components/PropertyFilters/components/PropertyFilterButton'

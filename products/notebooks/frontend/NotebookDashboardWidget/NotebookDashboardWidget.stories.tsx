@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { waitFor, within } from '@testing-library/dom'
 import { useActions } from 'kea'
 
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { mswDecorator } from '~/mocks/browser'
 import { AccessControlLevel, DashboardBasicType, DashboardPlacement, DashboardTile } from '~/types'

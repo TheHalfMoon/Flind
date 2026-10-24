@@ -2,7 +2,7 @@ import { useValues } from 'kea'
 
 import * as magnifyingGlassPng from '@posthog/brand/hoggies/png/magnifying-glass'
 import { IconDownload } from '@posthog/icons'
-import { LemonButton, LemonTable, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, LemonTable, Tooltip } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import { humanFriendlyDetailedTime } from 'lib/utils/datetime'

@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
-import { LemonButton, LemonModal, LemonTable, LemonTabs, LemonTag, Spinner } from '@posthog/lemon-ui'
+import { LemonButton, LemonModal, LemonTable, LemonTabs, LemonTag, Spinner } from '@flind/lemon-ui'
 
 import { formatDelta, modelSpecRows } from '../agentSearch'
 import { autoresearchPipelineLogic } from '../autoresearchPipelineLogic'

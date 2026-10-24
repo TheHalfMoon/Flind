@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { ReactNode, useCallback, useEffect, useRef, useState } from 'react'
 
 import { IconFlask } from '@posthog/icons'
-import { LemonBanner, LemonButton, LemonModal, LemonSegmentedButton, Spinner } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonModal, LemonSegmentedButton, Spinner } from '@flind/lemon-ui'
 
 import { PropertyFilters } from 'lib/components/PropertyFilters/PropertyFilters'
 import { TaxonomicFilterGroupType } from 'lib/components/TaxonomicFilter/types'

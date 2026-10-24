@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonBanner, lemonToast } from '@posthog/lemon-ui'
+import { LemonBanner, lemonToast } from '@flind/lemon-ui'
 
 import api from 'lib/api'
 import { DataWarehouseManagedViewsetCard } from 'scenes/data-management/managed-viewsets/DataWarehouseManagedViewsetCard'

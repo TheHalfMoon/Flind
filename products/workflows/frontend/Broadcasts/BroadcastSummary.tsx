@@ -10,7 +10,7 @@ import {
     LemonInput,
     LemonTag,
     LemonTagType,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import PropertyFiltersDisplay from 'lib/components/PropertyFilters/components/PropertyFiltersDisplay'
 import { TZLabel } from 'lib/components/TZLabel'

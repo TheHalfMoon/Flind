@@ -1,6 +1,6 @@
 import { router } from 'kea-router'
 
-import { LemonBanner, LemonButton, lemonToast } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, lemonToast } from '@flind/lemon-ui'
 
 import { urls } from 'scenes/urls'
 

@@ -1,5 +1,5 @@
 import { IconPlus, IconShortcut } from '@posthog/icons'
-import { Spinner } from '@posthog/lemon-ui'
+import { Spinner } from '@flind/lemon-ui'
 
 import { FEATURE_FLAGS } from 'lib/constants'
 import { TreeDataItem } from 'lib/lemon-ui/LemonTree/LemonTree'

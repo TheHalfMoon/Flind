@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { useRef, useState } from 'react'
 
-import { Tooltip } from '@posthog/lemon-ui'
+import { Tooltip } from '@flind/lemon-ui'
 
 import { useEventListener } from 'lib/hooks/useEventListener'
 

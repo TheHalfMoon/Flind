@@ -1,6 +1,6 @@
 import { expectLogic } from 'kea-test-utils'
 
-import { lemonToast } from '@posthog/lemon-ui'
+import { lemonToast } from '@flind/lemon-ui'
 
 import { ApiError } from 'lib/api-error'
 
@@ -12,8 +12,8 @@ import { datasetItemModalLogic } from './datasetItemModalLogic'
 import { datasetsApi } from './datasetsApi'
 import { EMPTY_JSON, isStringJsonValue } from './utils'
 
-jest.mock('@posthog/lemon-ui', () => ({
-    ...jest.requireActual('@posthog/lemon-ui'),
+jest.mock('@flind/lemon-ui', () => ({
+    ...jest.requireActual('@flind/lemon-ui'),
     lemonToast: {
         error: jest.fn(),
         success: jest.fn(),

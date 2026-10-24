@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { Form } from 'kea-forms'
 
-import { LemonButton, LemonInput, LemonSelect, Link } from '@posthog/lemon-ui'
+import { LemonButton, LemonInput, LemonSelect, Link } from '@flind/lemon-ui'
 
 import { LemonField } from 'lib/lemon-ui/LemonField'
 

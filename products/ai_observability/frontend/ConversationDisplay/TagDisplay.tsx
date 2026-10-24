@@ -1,4 +1,4 @@
-import { LemonTag, Link } from '@posthog/lemon-ui'
+import { LemonTag, Link } from '@flind/lemon-ui'
 
 import { lowercaseFirstLetter } from 'lib/utils/strings'
 import { urls } from 'scenes/urls'

@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonBanner } from '@posthog/lemon-ui'
+import { LemonBanner } from '@flind/lemon-ui'
 
 import { EmailIntegrationsList } from 'lib/integrations/EmailIntegrationsList'
 import { integrationsLogic } from 'lib/integrations/integrationsLogic'

@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 
 import { IconCompass, IconSignal } from '@posthog/icons'
-import { LemonTag, Link } from '@posthog/lemon-ui'
+import { LemonTag, Link } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'
 import { urls } from 'scenes/urls'

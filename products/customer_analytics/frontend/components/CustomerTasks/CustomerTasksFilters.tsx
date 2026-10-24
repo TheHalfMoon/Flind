@@ -8,7 +8,7 @@ import {
     LemonInputSelect,
     LemonMenu,
     type LemonMenuItems,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import type { CustomerTasksContext } from './customerTaskFilters'
 import {

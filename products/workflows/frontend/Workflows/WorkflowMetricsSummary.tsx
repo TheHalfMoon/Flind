@@ -2,7 +2,7 @@ import { useValues } from 'kea'
 import { useCallback, useMemo } from 'react'
 
 import { IconArrowRight, IconLetter, IconNotification } from '@posthog/icons'
-import { LemonLabel, LemonTable, LemonTableColumns, LemonTag, Link, SpinnerOverlay } from '@posthog/lemon-ui'
+import { LemonLabel, LemonTable, LemonTableColumns, LemonTag, Link, SpinnerOverlay } from '@flind/lemon-ui'
 
 import { getColorVar } from 'lib/colors'
 import { type AppMetricsTimeSeriesResponse } from 'lib/components/AppMetrics/appMetricsLogic'

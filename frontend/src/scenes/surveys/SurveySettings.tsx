@@ -3,7 +3,7 @@ import { DeepPartialMap, ValidationErrorType } from 'kea-forms'
 import { useState } from 'react'
 
 import { IconGear } from '@posthog/icons'
-import { LemonBanner, LemonButton, LemonSwitch, Link } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonSwitch, Link } from '@flind/lemon-ui'
 
 import { RestrictionScope, useRestrictedArea } from 'lib/components/RestrictedArea'
 import { TeamMembershipLevel } from 'lib/constants'

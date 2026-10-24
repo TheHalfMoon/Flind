@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconGithub } from '@posthog/icons'
-import { LemonBanner, LemonButton, LemonInput, LemonSelect, LemonTag, Link } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonInput, LemonSelect, LemonTag, Link } from '@flind/lemon-ui'
 
 import { urls } from 'scenes/urls'
 

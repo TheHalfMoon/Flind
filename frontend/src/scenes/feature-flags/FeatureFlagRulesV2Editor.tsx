@@ -10,7 +10,7 @@ import {
     LemonSegmentedButton,
     LemonSelect,
     LemonTextArea,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 import { Button } from '@flind/quill'
 
 import { ObjectTags } from 'lib/components/ObjectTags/ObjectTags'

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { LemonSegmentedButton } from '@posthog/lemon-ui'
+import { LemonSegmentedButton } from '@flind/lemon-ui'
 
 import { isPlainObject, toDisplayText } from './jsonText'
 import { KeyValueTable } from './KeyValueTable'

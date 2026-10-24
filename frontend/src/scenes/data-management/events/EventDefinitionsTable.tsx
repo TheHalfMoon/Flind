@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
 import { IconApps, IconChevronDown, IconPlus } from '@posthog/icons'
-import { LemonButton, LemonInput, LemonSelect, LemonSelectOptions, Link } from '@posthog/lemon-ui'
+import { LemonButton, LemonInput, LemonSelect, LemonSelectOptions, Link } from '@flind/lemon-ui'
 
 import { BulkUpdateTagsModal } from 'lib/components/BulkActions/BulkUpdateTagsModal'
 import { ObjectTags } from 'lib/components/ObjectTags/ObjectTags'

@@ -1,5 +1,5 @@
 import { IconCheck, IconCircleDashed, IconCollapse, IconWarning, IconX } from '@posthog/icons'
-import { Spinner } from '@posthog/lemon-ui'
+import { Spinner } from '@flind/lemon-ui'
 
 import { humanFriendlyNumber } from 'lib/utils/numbers'
 

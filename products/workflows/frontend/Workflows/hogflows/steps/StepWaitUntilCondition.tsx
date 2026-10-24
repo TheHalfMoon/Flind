@@ -2,7 +2,7 @@ import { Node } from '@xyflow/react'
 import { useActions } from 'kea'
 
 import { IconCursor, IconPerson } from '@posthog/icons'
-import { LemonDivider, LemonLabel } from '@posthog/lemon-ui'
+import { LemonDivider, LemonLabel } from '@flind/lemon-ui'
 
 import { LemonInput } from 'lib/lemon-ui/LemonInput'
 

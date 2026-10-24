@@ -1,7 +1,7 @@
 import { Group } from 'kea-forms'
 
 import { IconInfo } from '@posthog/icons'
-import { LemonBanner, LemonSelect, LemonTag, Tooltip } from '@posthog/lemon-ui'
+import { LemonBanner, LemonSelect, LemonTag, Tooltip } from '@flind/lemon-ui'
 
 import { LemonField } from 'lib/lemon-ui/LemonField'
 import { alphabet } from 'lib/utils/strings'

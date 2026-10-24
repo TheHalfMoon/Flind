@@ -2,7 +2,7 @@ import { Meta, StoryObj } from '@storybook/react'
 import { BindLogic, useActions, useMountedLogic, useValues } from 'kea'
 import { ComponentProps, useRef, useState } from 'react'
 
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { PropertyFilters } from 'lib/components/PropertyFilters/PropertyFilters'
 import { taxonomicFilterMocksDecorator } from 'lib/components/TaxonomicFilter/__mocks__/taxonomicFilterMocksDecorator'

@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useMemo } from 'react'
 
-import { LemonCalendarSelectInput, LemonSearchableSelect } from '@posthog/lemon-ui'
+import { LemonCalendarSelectInput, LemonSearchableSelect } from '@flind/lemon-ui'
 
 import { dayjs } from 'lib/dayjs'
 import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'

@@ -1,4 +1,4 @@
-import { LemonSegmentedButton } from '@posthog/lemon-ui'
+import { LemonSegmentedButton } from '@flind/lemon-ui'
 
 import { LemonInput } from 'lib/lemon-ui/LemonInput'
 

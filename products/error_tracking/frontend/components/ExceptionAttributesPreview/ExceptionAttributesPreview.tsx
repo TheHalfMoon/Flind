@@ -1,7 +1,7 @@
 import { match } from 'ts-pattern'
 
 import { IconBug, IconCheckCircle, IconSparkles, IconWarning } from '@posthog/icons'
-import { LemonTag, Spinner } from '@posthog/lemon-ui'
+import { LemonTag, Spinner } from '@flind/lemon-ui'
 
 import { ExceptionAttributes } from 'lib/components/Errors/types'
 

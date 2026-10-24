@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonBanner, LemonButton, LemonCollapse, LemonSkeleton, LemonTag } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonCollapse, LemonSkeleton, LemonTag } from '@flind/lemon-ui'
 
 import { urls } from 'scenes/urls'
 

@@ -1,5 +1,5 @@
 import { IconShield, IconShieldEmpty, IconShieldExclamation } from '@posthog/icons'
-import { LemonTag, Tooltip } from '@posthog/lemon-ui'
+import { LemonTag, Tooltip } from '@flind/lemon-ui'
 
 const DOCS_URL = 'https://posthog.com/docs/support/widget#identity-verification'
 

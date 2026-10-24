@@ -1,4 +1,4 @@
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 /**
  * Retryable error state for the engineering analytics scenes. Unlike ConnectGitHubSource, shown when a

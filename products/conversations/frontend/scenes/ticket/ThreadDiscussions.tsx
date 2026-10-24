@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { useCallback, useEffect, useMemo } from 'react'
 
 import { IconChat } from '@posthog/icons'
-import { LemonTag } from '@posthog/lemon-ui'
+import { LemonTag } from '@flind/lemon-ui'
 
 import { getCommentAuthorName } from 'lib/components/Comments/Comment'
 import { CommentWithRepliesType, commentsLogic } from 'lib/components/Comments/commentsLogic'

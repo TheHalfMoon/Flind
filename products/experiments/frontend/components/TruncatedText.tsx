@@ -1,6 +1,6 @@
 import { useLayoutEffect, useState } from 'react'
 
-import { Tooltip } from '@posthog/lemon-ui'
+import { Tooltip } from '@flind/lemon-ui'
 
 import { midEllipsis } from 'lib/utils/strings'
 

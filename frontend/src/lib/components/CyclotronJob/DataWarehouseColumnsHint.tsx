@@ -1,4 +1,4 @@
-import { LemonCollapse } from '@posthog/lemon-ui'
+import { LemonCollapse } from '@flind/lemon-ui'
 
 import { LemonButton } from 'lib/lemon-ui/LemonButton'
 import { copyToClipboard } from 'lib/utils/copyToClipboard'

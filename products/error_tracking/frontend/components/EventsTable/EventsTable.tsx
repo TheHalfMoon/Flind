@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 
-import { Link } from '@posthog/lemon-ui'
+import { Link } from '@flind/lemon-ui'
 
 import { ErrorEventType } from 'lib/components/Errors/types'
 import { getExceptionTypeAndValue, getRuntimeFromLib } from 'lib/components/Errors/utils'

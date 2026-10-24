@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useEffect, useMemo } from 'react'
 
-import { LemonInputSelect, LemonInputSelectOption, Link } from '@posthog/lemon-ui'
+import { LemonInputSelect, LemonInputSelectOption, Link } from '@flind/lemon-ui'
 
 import { usePeriodicRerender } from 'lib/hooks/usePeriodicRerender'
 

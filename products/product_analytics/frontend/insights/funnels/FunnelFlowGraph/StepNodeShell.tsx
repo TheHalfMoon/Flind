@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { useValues } from 'kea'
 
-import { LemonDivider, Tooltip } from '@posthog/lemon-ui'
+import { LemonDivider, Tooltip } from '@flind/lemon-ui'
 
 import { LemonProgress } from 'lib/lemon-ui/LemonProgress'
 import { Lettermark, LettermarkColor } from 'lib/lemon-ui/Lettermark'

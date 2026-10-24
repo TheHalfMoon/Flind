@@ -1,4 +1,4 @@
-import { LemonDivider } from '@posthog/lemon-ui'
+import { LemonDivider } from '@flind/lemon-ui'
 
 import { Language } from 'lib/components/CodeSnippet'
 import { CodeSnippet } from 'lib/components/CodeSnippet'

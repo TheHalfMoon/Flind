@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonBanner, LemonButton, LemonInput } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonInput } from '@flind/lemon-ui'
 import { Button } from '@flind/quill'
 
 import { AccessDenied } from 'lib/components/AccessDenied'

@@ -2,7 +2,7 @@ import * as AccordionPrimitive from '@radix-ui/react-accordion'
 import type { Meta, StoryObj } from '@storybook/react'
 import { useRef, useState } from 'react'
 
-import { Link } from '@posthog/lemon-ui'
+import { Link } from '@flind/lemon-ui'
 
 import { ButtonPrimitive } from '../Button/ButtonPrimitives'
 import { ListBox, ListBoxHandle, ListBoxProps } from './ListBox'

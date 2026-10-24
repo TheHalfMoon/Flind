@@ -1,4 +1,4 @@
-import { LemonTagType } from '@posthog/lemon-ui'
+import { LemonTagType } from '@flind/lemon-ui'
 
 import { urls } from 'scenes/urls'
 

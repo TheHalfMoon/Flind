@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import { useId, useState } from 'react'
 
 import { IconChevronRight } from '@posthog/icons'
-import { LemonSegmentedButton, LemonTag } from '@posthog/lemon-ui'
+import { LemonSegmentedButton, LemonTag } from '@flind/lemon-ui'
 
 import {
     type ScopePickerGroup,

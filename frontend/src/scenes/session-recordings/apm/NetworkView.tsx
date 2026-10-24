@@ -4,7 +4,7 @@ import { BindLogic, useActions, useValues } from 'kea'
 import { useCallback, useRef, useState } from 'react'
 
 import { IconChevronLeft, IconChevronRight } from '@posthog/icons'
-import { LemonTable, Link } from '@posthog/lemon-ui'
+import { LemonTable, Link } from '@flind/lemon-ui'
 
 import { dayjs } from 'lib/dayjs'
 import { LemonButton } from 'lib/lemon-ui/LemonButton'

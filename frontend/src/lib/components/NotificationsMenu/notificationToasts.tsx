@@ -18,7 +18,7 @@ import {
     IconTrending,
     IconWarning,
 } from '@posthog/icons'
-import { lemonToast } from '@posthog/lemon-ui'
+import { lemonToast } from '@flind/lemon-ui'
 
 import { notificationsMenuLogic } from 'lib/components/NotificationsMenu/notificationsMenuLogic'
 

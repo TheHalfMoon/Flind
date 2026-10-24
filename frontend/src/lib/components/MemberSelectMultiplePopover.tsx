@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonDropdown } from '@posthog/lemon-ui'
+import { LemonDropdown } from '@flind/lemon-ui'
 
 import { LemonButton } from 'lib/lemon-ui/LemonButton'
 import { membersLogic } from 'scenes/organization/membersLogic'

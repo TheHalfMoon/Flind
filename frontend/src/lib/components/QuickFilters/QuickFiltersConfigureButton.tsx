@@ -1,7 +1,7 @@
 import { useActions } from 'kea'
 
 import { IconGear } from '@posthog/icons'
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { QuickFiltersModal } from './QuickFiltersModal'
 import { QuickFiltersModalLogicProps, quickFiltersModalLogic } from './quickFiltersModalLogic'

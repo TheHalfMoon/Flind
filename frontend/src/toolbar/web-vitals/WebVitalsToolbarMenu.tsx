@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { LemonBanner, Link, Spinner, Tooltip } from '@posthog/lemon-ui'
+import { LemonBanner, Link, Spinner, Tooltip } from '@flind/lemon-ui'
 
 import { inStorybook, inStorybookTestRunner } from 'lib/utils/dom'
 

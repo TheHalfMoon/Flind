@@ -1,4 +1,4 @@
-import { LemonSkeleton } from '@posthog/lemon-ui'
+import { LemonSkeleton } from '@flind/lemon-ui'
 
 import { EvalsState } from '../types'
 import { ErrorCallout } from './ErrorCallout'

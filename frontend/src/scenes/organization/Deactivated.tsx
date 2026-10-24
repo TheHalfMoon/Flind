@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 
 import * as stopPng from '@posthog/brand/hoggies/png/stop'
-import { LemonCard } from '@posthog/lemon-ui'
+import { LemonCard } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import { SupportModalButton } from 'scenes/authentication/shared/SupportModalButton'

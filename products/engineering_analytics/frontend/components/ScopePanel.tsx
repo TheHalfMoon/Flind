@@ -3,7 +3,7 @@
 
 import { ReactNode } from 'react'
 
-import { Spinner } from '@posthog/lemon-ui'
+import { Spinner } from '@flind/lemon-ui'
 
 import { ScopeDateFilter } from './ScopeBar'
 

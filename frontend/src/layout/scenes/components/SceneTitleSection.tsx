@@ -4,7 +4,7 @@ import { useActions, useValues } from 'kea'
 import { useEffect, useMemo, useRef, useState } from 'react'
 
 import { IconCollapse, IconExpand, IconPencil } from '@posthog/icons'
-import { Tooltip } from '@posthog/lemon-ui'
+import { Tooltip } from '@flind/lemon-ui'
 
 import { ProductSetupButton } from 'lib/components/ProductSetup'
 import { releaseStageProductForScene } from 'lib/components/ReleaseStageTag/releaseStage'

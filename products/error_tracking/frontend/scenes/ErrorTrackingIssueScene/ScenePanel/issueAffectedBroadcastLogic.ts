@@ -2,7 +2,7 @@ import { MakeLogicType, actions, connect, kea, key, listeners, path, props, redu
 import { loaders } from 'kea-loaders'
 import { router } from 'kea-router'
 
-import { lemonToast } from '@posthog/lemon-ui'
+import { lemonToast } from '@flind/lemon-ui'
 
 import { pluralize, truncate } from 'lib/utils/strings'
 import { teamLogic } from 'scenes/teamLogic'

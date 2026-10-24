@@ -3,7 +3,7 @@ import posthog from 'posthog-js'
 import { ReactNode, useState } from 'react'
 
 import { IconSparkles, IconX } from '@posthog/icons'
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { CommandBlock } from 'lib/components/CommandBlock/CommandBlock'
 import { AgentBadgeRotator } from 'lib/components/MCPHint/AgentBadgeRotator'

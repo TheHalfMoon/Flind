@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 
-import { Tooltip } from '@posthog/lemon-ui'
+import { Tooltip } from '@flind/lemon-ui'
 
 import { LemonProgress } from 'lib/lemon-ui/LemonProgress'
 import { percentage } from 'lib/utils/numbers'

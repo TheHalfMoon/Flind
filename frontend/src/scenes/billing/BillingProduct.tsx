@@ -4,7 +4,7 @@ import { useRef } from 'react'
 
 import { IconChevronDown, IconDocument, IconInfo } from '@posthog/icons'
 import { IconChevronRight } from '@posthog/icons'
-import { LemonButton, LemonTag, Link } from '@posthog/lemon-ui'
+import { LemonButton, LemonTag, Link } from '@flind/lemon-ui'
 
 import { BillingUpgradeCTA } from 'lib/components/BillingUpgradeCTA'
 import { FEATURE_FLAGS, FeatureFlagKey, UNSUBSCRIBE_SURVEY_ID } from 'lib/constants'

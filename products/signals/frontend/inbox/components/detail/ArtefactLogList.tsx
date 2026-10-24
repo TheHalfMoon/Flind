@@ -25,7 +25,7 @@ import {
     IconPullRequest,
     IconTrending,
 } from '@posthog/icons'
-import { LemonCard, LemonTag, type LemonTagType, Link, ProfilePicture, Tooltip } from '@posthog/lemon-ui'
+import { LemonCard, LemonTag, type LemonTagType, Link, ProfilePicture, Tooltip } from '@flind/lemon-ui'
 
 import { CodeSnippet, Language } from 'lib/components/CodeSnippet'
 import { TZLabel } from 'lib/components/TZLabel'

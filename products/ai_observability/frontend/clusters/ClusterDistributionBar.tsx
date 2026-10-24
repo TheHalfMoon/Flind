@@ -1,6 +1,6 @@
 import { router } from 'kea-router'
 
-import { Tooltip } from '@posthog/lemon-ui'
+import { Tooltip } from '@flind/lemon-ui'
 
 import { getSeriesColor } from 'lib/colors'
 import { urls } from 'scenes/urls'

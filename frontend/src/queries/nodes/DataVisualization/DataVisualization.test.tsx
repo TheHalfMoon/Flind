@@ -19,8 +19,8 @@ const mockLemonTable = jest.fn((props: LemonTableMockProps): null => {
     return null
 })
 
-jest.mock('@posthog/lemon-ui', () => ({
-    ...jest.requireActual('@posthog/lemon-ui'),
+jest.mock('@flind/lemon-ui', () => ({
+    ...jest.requireActual('@flind/lemon-ui'),
     LemonTable: (props: Record<string, unknown>): null => {
         mockLemonTable(props)
         return null

@@ -9,7 +9,7 @@ import {
     LemonSwitch,
     Tooltip,
     lemonToast,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { copyToClipboard } from 'lib/utils/copyToClipboard'
 import { twoFactorLogic } from 'scenes/authentication/two-factor-setup/twoFactorLogic'

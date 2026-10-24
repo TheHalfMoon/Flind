@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconChevronDown } from '@posthog/icons'
-import { LemonButton, LemonCheckbox, LemonDropdown } from '@posthog/lemon-ui'
+import { LemonButton, LemonCheckbox, LemonDropdown } from '@flind/lemon-ui'
 
 import { batchExportRunsLogic } from './batchExportRunsLogic'
 import { BATCH_EXPORT_RUN_STATUS_FILTER_OPTIONS, BatchExportRunStatusGroup } from './utils'

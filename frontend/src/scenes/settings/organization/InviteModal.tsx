@@ -3,7 +3,7 @@ import './InviteModal.scss'
 import { useActions, useValues } from 'kea'
 
 import { IconInfo, IconPlus, IconTrash } from '@posthog/icons'
-import { LemonInput, LemonSelect, LemonTextArea, Link, Tooltip } from '@posthog/lemon-ui'
+import { LemonInput, LemonSelect, LemonTextArea, Link, Tooltip } from '@flind/lemon-ui'
 
 import { useRestrictedArea } from 'lib/components/RestrictedArea'
 import { RestrictionScope } from 'lib/components/RestrictedArea'

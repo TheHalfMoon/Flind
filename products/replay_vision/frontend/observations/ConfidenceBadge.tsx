@@ -1,4 +1,4 @@
-import { LemonTag } from '@posthog/lemon-ui'
+import { LemonTag } from '@flind/lemon-ui'
 
 import type { ReplayObservationApi } from '../generated/api.schemas'
 import { confidenceLevel, readConfidence } from '../utils/observation'

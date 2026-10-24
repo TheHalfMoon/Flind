@@ -5,7 +5,7 @@ import { useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
 
 import { IconExpand, IconX } from '@posthog/icons'
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { DraggableWithSnapZones } from 'lib/components/DraggableWithSnapZones/DraggableWithSnapZones'
 

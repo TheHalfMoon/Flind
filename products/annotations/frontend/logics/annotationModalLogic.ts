@@ -3,7 +3,7 @@ import { forms } from 'kea-forms'
 import type { DeepPartial, DeepPartialMap, FieldName, ValidationErrorType } from 'kea-forms'
 import { urlToAction } from 'kea-router'
 
-import '@posthog/lemon-ui'
+import '@flind/lemon-ui'
 
 import api, { ApiConfig } from 'lib/api'
 import { tryShowMCPHint } from 'lib/components/MCPHint/mcpHintLogic'

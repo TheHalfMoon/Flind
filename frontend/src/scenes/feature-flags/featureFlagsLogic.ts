@@ -2,7 +2,7 @@ import { MakeLogicType, actions, connect, kea, listeners, path, props, reducers,
 import { loaders } from 'kea-loaders'
 import { actionToUrl, router, urlToAction } from 'kea-router'
 
-import { LemonDialog, PaginationManual, lemonToast } from '@posthog/lemon-ui'
+import { LemonDialog, PaginationManual, lemonToast } from '@flind/lemon-ui'
 
 import api, { CountedPaginatedResponse } from 'lib/api'
 import { SetupTaskId, globalSetupLogic } from 'lib/components/ProductSetup'

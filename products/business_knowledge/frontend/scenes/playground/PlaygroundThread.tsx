@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useEffect, useRef } from 'react'
 
-import { LemonBanner, LemonDivider } from '@posthog/lemon-ui'
+import { LemonBanner, LemonDivider } from '@flind/lemon-ui'
 
 import { Composer } from 'products/posthog_ai/frontend/api/composer'
 import { RunLogSkeleton, Welcome } from 'products/posthog_ai/frontend/api/primitives'

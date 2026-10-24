@@ -2,7 +2,7 @@ import { useValues } from 'kea'
 import type { ReactNode } from 'react'
 
 import { IconCalendar, IconClock } from '@posthog/icons'
-import { Link, Tooltip } from '@posthog/lemon-ui'
+import { Link, Tooltip } from '@flind/lemon-ui'
 
 import { shortTimeZone } from 'lib/utils/timezones'
 import { teamLogic } from 'scenes/teamLogic'

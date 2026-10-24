@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import React from 'react'
 
 import { IconMagicWand, IconTarget } from '@posthog/icons'
-import { LemonButton, LemonSnack, LemonSwitch, Link } from '@posthog/lemon-ui'
+import { LemonButton, LemonSnack, LemonSwitch, Link } from '@flind/lemon-ui'
 
 import { DateFilter } from 'lib/components/DateFilter/DateFilter'
 import { HeatmapsSettings } from 'lib/components/heatmaps/HeatMapsSettings'

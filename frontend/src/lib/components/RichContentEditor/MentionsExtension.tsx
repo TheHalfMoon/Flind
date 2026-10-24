@@ -4,7 +4,7 @@ import Suggestion from '@tiptap/suggestion'
 import { useValues } from 'kea'
 import { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo, useState } from 'react'
 
-import { LemonButton, ProfilePicture } from '@posthog/lemon-ui'
+import { LemonButton, ProfilePicture } from '@flind/lemon-ui'
 
 import { Popover } from 'lib/lemon-ui/Popover'
 import { createFuse } from 'lib/utils/fuseSearch'

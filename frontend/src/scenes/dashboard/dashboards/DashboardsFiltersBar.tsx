@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconChevronDown, IconFolder, IconPin, IconPinFilled, IconShare, IconX } from '@posthog/icons'
-import { LemonInput, Popover } from '@posthog/lemon-ui'
+import { LemonInput, Popover } from '@flind/lemon-ui'
 
 import { MemberSelectMultiplePopover } from 'lib/components/MemberSelectMultiplePopover'
 import { useScrollObserver } from 'lib/hooks/useScrollObserver'

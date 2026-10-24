@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonSelect, LemonSwitch } from '@posthog/lemon-ui'
+import { LemonSelect, LemonSwitch } from '@flind/lemon-ui'
 
 import type { UrgencyThresholdEnumApi } from 'products/review_hog/frontend/generated/api.schemas'
 import { ChoiceOption } from 'products/review_hog/frontend/repositories/repositoryChoices'

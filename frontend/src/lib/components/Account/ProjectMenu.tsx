@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { LemonSnack } from '@posthog/lemon-ui'
+import { LemonSnack } from '@flind/lemon-ui'
 
 import { Tooltip } from 'lib/lemon-ui/Tooltip'
 import { ButtonPrimitive, ButtonPrimitiveProps } from 'lib/ui/Button/ButtonPrimitives'

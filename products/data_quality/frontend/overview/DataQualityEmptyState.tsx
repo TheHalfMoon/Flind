@@ -1,5 +1,5 @@
 import * as scientistPng from '@posthog/brand/hoggies/png/scientist'
-import { LemonButton, LemonTag } from '@posthog/lemon-ui'
+import { LemonButton, LemonTag } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 

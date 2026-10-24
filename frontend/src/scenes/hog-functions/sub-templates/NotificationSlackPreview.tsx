@@ -1,6 +1,6 @@
 import { Fragment } from 'react'
 
-import { LemonTag } from '@posthog/lemon-ui'
+import { LemonTag } from '@flind/lemon-ui'
 
 import { Logomark } from 'lib/brand'
 

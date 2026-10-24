@@ -1,7 +1,7 @@
 import { useActions } from 'kea'
 
 import * as construction2Png from '@posthog/brand/hoggies/png/construction-2'
-import { Link } from '@posthog/lemon-ui'
+import { Link } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import { supportLogic } from 'lib/components/Support/supportLogic'

@@ -9,7 +9,7 @@ import {
     LemonModal,
     LemonTextArea,
     ProfilePicture,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { MemberSelect } from 'lib/components/MemberSelect'
 import { dayjsLocalToTimezone, dayjsUtcToTimezone } from 'lib/dayjs'

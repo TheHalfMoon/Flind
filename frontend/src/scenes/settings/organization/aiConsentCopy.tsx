@@ -1,4 +1,4 @@
-import { LemonDialog, LemonDialogProps } from '@posthog/lemon-ui'
+import { LemonDialog, LemonDialogProps } from '@flind/lemon-ui'
 
 import { dayjs } from 'lib/dayjs'
 import { Link } from 'lib/lemon-ui/Link'

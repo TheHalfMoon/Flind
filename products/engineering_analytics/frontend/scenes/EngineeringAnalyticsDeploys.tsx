@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonBanner, LemonInputSelect, LemonSelect } from '@posthog/lemon-ui'
+import { LemonBanner, LemonInputSelect, LemonSelect } from '@flind/lemon-ui'
 
 import { dayjs } from 'lib/dayjs'
 

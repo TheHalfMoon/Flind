@@ -3,7 +3,7 @@ import { useActions, useValues } from 'kea'
 import { useCallback, useMemo, useState } from 'react'
 
 import { IconChat, IconGitBranch } from '@posthog/icons'
-import { LemonSegmentedButton, LemonSkeleton, LemonTag, Tooltip } from '@posthog/lemon-ui'
+import { LemonSegmentedButton, LemonSkeleton, LemonTag, Tooltip } from '@flind/lemon-ui'
 
 import { DraftThread, inboxReportDetailLogic, ReviewThread, threadKey } from '../../logics/inboxReportDetailLogic'
 import { SignalReport } from '../../types'

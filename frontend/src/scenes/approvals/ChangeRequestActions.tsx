@@ -1,5 +1,5 @@
 import { IconEllipsis } from '@posthog/icons'
-import { LemonButton, LemonDialog, LemonInput, LemonMenu, lemonToast } from '@posthog/lemon-ui'
+import { LemonButton, LemonDialog, LemonInput, LemonMenu, lemonToast } from '@flind/lemon-ui'
 
 import { getApproveDisabledReason, getChangeRequestButtonVisibility } from 'scenes/approvals/changeRequestsLogic'
 import { urls } from 'scenes/urls'

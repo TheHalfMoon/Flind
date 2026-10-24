@@ -6,7 +6,7 @@ import posthog from 'posthog-js'
 import { useState } from 'react'
 
 import { IconArrowRight, IconCheckCircle } from '@posthog/icons'
-import { LemonButton, LemonCheckbox, ProfilePicture, SpinnerOverlay, lemonToast } from '@posthog/lemon-ui'
+import { LemonButton, LemonCheckbox, ProfilePicture, SpinnerOverlay, lemonToast } from '@flind/lemon-ui'
 
 import { useOnMountEffect } from 'lib/hooks/useOnMountEffect'
 import { LemonMenuOverlay } from 'lib/lemon-ui/LemonMenu/LemonMenu'

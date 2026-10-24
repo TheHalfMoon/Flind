@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 
-import { LemonLabel } from '@posthog/lemon-ui'
+import { LemonLabel } from '@flind/lemon-ui'
 
 import { LemonField } from 'lib/lemon-ui/LemonField'
 

@@ -1,5 +1,5 @@
 import { IconInfo } from '@posthog/icons'
-import { LemonBanner, LemonCheckbox, LemonInput, Tooltip } from '@posthog/lemon-ui'
+import { LemonBanner, LemonCheckbox, LemonInput, Tooltip } from '@flind/lemon-ui'
 
 import { IntegrationChoice } from 'lib/components/CyclotronJob/integrations/IntegrationChoice'
 import { LemonField } from 'lib/lemon-ui/LemonField'

@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonBanner, LemonButton, LemonSelect, LemonTag, LemonTextArea } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonSelect, LemonTag, LemonTextArea } from '@flind/lemon-ui'
 
 import { LemonLabel } from 'lib/lemon-ui/LemonLabel'
 import type { NotebookFrameNodeSummary } from 'scenes/notebooks/Nodes/notebookNodeContent'

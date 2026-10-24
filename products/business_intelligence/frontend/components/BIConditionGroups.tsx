@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { LemonButton, LemonModal, LemonSelect, LemonTag } from '@posthog/lemon-ui'
+import { LemonButton, LemonModal, LemonSelect, LemonTag } from '@flind/lemon-ui'
 
 import { FloatingContainerContext } from 'lib/hooks/useFloatingContainerContext'
 

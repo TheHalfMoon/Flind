@@ -9,7 +9,7 @@ import {
     LemonTable,
     LemonTableColumn,
     LemonTableColumns,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { exportsLogic } from 'lib/components/ExportButton/exportsLogic'
 import { Link } from 'lib/lemon-ui/Link'

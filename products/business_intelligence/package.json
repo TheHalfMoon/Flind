@@ -17,7 +17,7 @@
     },
     "peerDependencies": {
         "@posthog/icons": "catalog:",
-        "@posthog/lemon-ui": "*",
+        "@flind/lemon-ui": "workspace:*",
         "@testing-library/dom": "*",
         "@types/react": "*",
         "react": "*"

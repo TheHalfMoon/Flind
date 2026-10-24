@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useEffect } from 'react'
 
-import { LemonLabel } from '@posthog/lemon-ui'
+import { LemonLabel } from '@flind/lemon-ui'
 
 import { ActionFilter } from 'scenes/insights/filters/ActionFilter/ActionFilter'
 

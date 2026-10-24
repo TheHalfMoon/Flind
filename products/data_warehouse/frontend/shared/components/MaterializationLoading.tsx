@@ -1,4 +1,4 @@
-import { LemonCard, LemonSkeleton } from '@posthog/lemon-ui'
+import { LemonCard, LemonSkeleton } from '@flind/lemon-ui'
 
 export function MaterializationLoading(): JSX.Element {
     return (

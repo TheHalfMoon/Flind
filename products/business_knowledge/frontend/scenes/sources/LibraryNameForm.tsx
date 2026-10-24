@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { LemonButton, LemonInput } from '@posthog/lemon-ui'
+import { LemonButton, LemonInput } from '@flind/lemon-ui'
 
 export function LibraryNameForm({
     initialName,

@@ -16,7 +16,7 @@ import { loaders } from 'kea-loaders'
 import { router, urlToAction } from 'kea-router'
 import posthog from 'posthog-js'
 
-import { lemonToast, type PaginationManual, type Sorting } from '@posthog/lemon-ui'
+import { lemonToast, type PaginationManual, type Sorting } from '@flind/lemon-ui'
 
 import { ApiError } from 'lib/api-error'
 import { trackedActionToUrl } from 'lib/logic/scenes/trackedActionToUrl'

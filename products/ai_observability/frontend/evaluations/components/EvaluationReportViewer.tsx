@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 
-import { LemonBadge, LemonButton, LemonCollapse, LemonDivider } from '@posthog/lemon-ui'
+import { LemonBadge, LemonButton, LemonCollapse, LemonDivider } from '@flind/lemon-ui'
 
 import { LemonMarkdown } from 'lib/lemon-ui/LemonMarkdown'
 import { urls } from 'scenes/urls'

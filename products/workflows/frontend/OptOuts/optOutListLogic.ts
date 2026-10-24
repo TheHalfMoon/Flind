@@ -14,7 +14,7 @@ import {
 import { loaders } from 'kea-loaders'
 import Papa from 'papaparse'
 
-import { lemonToast } from '@posthog/lemon-ui'
+import { lemonToast } from '@flind/lemon-ui'
 
 import api from 'lib/api'
 import { downloadFile } from 'lib/utils/dom'

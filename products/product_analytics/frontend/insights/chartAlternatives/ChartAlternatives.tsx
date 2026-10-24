@@ -1,7 +1,7 @@
 import { useActions, useMountedLogic, useValues } from 'kea'
 import { useRef } from 'react'
 
-import { LemonButton, Popover } from '@posthog/lemon-ui'
+import { LemonButton, Popover } from '@flind/lemon-ui'
 
 import { ChartFilter } from 'lib/components/ChartFilter'
 

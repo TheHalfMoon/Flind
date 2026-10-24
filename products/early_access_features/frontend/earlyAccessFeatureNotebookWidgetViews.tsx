@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 
 import { IconRocket } from '@posthog/icons'
-import type { LemonTagType } from '@posthog/lemon-ui'
+import type { LemonTagType } from '@flind/lemon-ui'
 
 import { NotFound } from 'lib/components/NotFound'
 import { LemonSkeleton } from 'lib/lemon-ui/LemonSkeleton'

@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { combineUrl } from 'kea-router'
 
 import { IconArrowRight, IconSparkles, IconX } from '@posthog/icons'
-import { LemonCard, LemonSkeleton, LemonTag } from '@posthog/lemon-ui'
+import { LemonCard, LemonSkeleton, LemonTag } from '@flind/lemon-ui'
 
 import { LemonButton } from 'lib/lemon-ui/LemonButton'
 import { Link } from 'lib/lemon-ui/Link'

@@ -3,7 +3,7 @@ import { useActions, useValues } from 'kea'
 import { combineUrl, router } from 'kea-router'
 
 import { IconGridMasonry, IconList, IconPlayFilled } from '@posthog/icons'
-import { LemonCard, LemonSegmentedButton, LemonSkeleton, LemonTag, Link } from '@posthog/lemon-ui'
+import { LemonCard, LemonSegmentedButton, LemonSkeleton, LemonTag, Link } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'
 import { PaginationControl } from 'lib/lemon-ui/PaginationControl'

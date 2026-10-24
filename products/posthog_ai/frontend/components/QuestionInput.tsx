@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { useCallback, useMemo, useRef, useState } from 'react'
 
 import { IconChat } from '@posthog/icons'
-import { LemonTag } from '@posthog/lemon-ui'
+import { LemonTag } from '@flind/lemon-ui'
 
 import type { MultiQuestionFormQuestion } from '~/queries/schema/schema-assistant-messages'
 

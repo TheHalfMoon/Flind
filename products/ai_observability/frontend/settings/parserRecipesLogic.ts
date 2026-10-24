@@ -3,7 +3,7 @@ import { loaders } from 'kea-loaders'
 import { subscriptions } from 'kea-subscriptions'
 import { parse as parseYaml } from 'yaml'
 
-import { lemonToast } from '@posthog/lemon-ui'
+import { lemonToast } from '@flind/lemon-ui'
 import { compileRecipe, StoredRecipe } from '@flind/llm-normalizer'
 
 import { teamLogic } from 'scenes/teamLogic'

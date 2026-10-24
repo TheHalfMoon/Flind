@@ -3,7 +3,7 @@ import { useActions, useValues } from 'kea'
 import { useRef } from 'react'
 
 import { IconInfo } from '@posthog/icons'
-import { LemonBanner, LemonButton, LemonDropdown, Link } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonDropdown, Link } from '@flind/lemon-ui'
 
 import { LemonField } from 'lib/lemon-ui/LemonField'
 import { CodeEditorResizeable } from 'lib/monaco/CodeEditorResizable'

@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 
 import { IconPlus } from '@posthog/icons'
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { isInlineInsertMenuRow, isTextBlockNode } from './documentModel'
 import { NotebookBlockNode } from './types'

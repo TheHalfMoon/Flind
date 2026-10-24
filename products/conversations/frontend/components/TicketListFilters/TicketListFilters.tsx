@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import { useActions, useMountedLogic, useValues } from 'kea'
 
 import { IconRefresh } from '@posthog/icons'
-import { LemonButton, LemonInput, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, LemonInput, Tooltip } from '@flind/lemon-ui'
 
 import { DateFilter } from 'lib/components/DateFilter/DateFilter'
 import { pluralize } from 'lib/utils/strings'

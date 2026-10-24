@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonButton, LemonInput, LemonLabel, LemonModal, LemonSegmentedButton, LemonTextArea } from '@posthog/lemon-ui'
+import { LemonButton, LemonInput, LemonLabel, LemonModal, LemonSegmentedButton, LemonTextArea } from '@flind/lemon-ui'
 
 import { cloudImagesLogic } from './cloudImagesLogic'
 

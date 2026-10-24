@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { LemonDivider, LemonInputSelect, LemonLabel, LemonSelect } from '@posthog/lemon-ui'
+import { LemonDivider, LemonInputSelect, LemonLabel, LemonSelect } from '@flind/lemon-ui'
 
 import type { CustomInputRendererProps } from 'lib/components/CyclotronJob/customInputRenderers'
 import { timeZoneLabel } from 'lib/utils/timezones'

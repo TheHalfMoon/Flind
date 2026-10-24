@@ -10,7 +10,7 @@ import {
     LemonSkeleton,
     LemonSwitch,
     Link,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import api from 'lib/api'
 import { useIntegrationManagementRestriction } from 'lib/integrations/integrationPermissions'

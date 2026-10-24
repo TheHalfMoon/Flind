@@ -1,7 +1,7 @@
 import { useActions } from 'kea'
 
 import { IconCopy } from '@posthog/icons'
-import { LemonButton, LemonMenu } from '@posthog/lemon-ui'
+import { LemonButton, LemonMenu } from '@flind/lemon-ui'
 
 import { shareNudgeLogic } from 'scenes/web-analytics/shareNudgeLogic'
 

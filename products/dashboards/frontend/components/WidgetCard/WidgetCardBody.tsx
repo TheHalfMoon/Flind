@@ -3,7 +3,7 @@ import React from 'react'
 
 import * as chartPng from '@posthog/brand/hoggies/png/chart'
 import { IconLock } from '@posthog/icons'
-import { LemonSkeleton } from '@posthog/lemon-ui'
+import { LemonSkeleton } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import { LemonButton } from 'lib/lemon-ui/LemonButton'

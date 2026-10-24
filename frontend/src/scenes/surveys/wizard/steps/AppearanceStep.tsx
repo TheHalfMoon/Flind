@@ -3,7 +3,7 @@ import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
 import { IconChevronLeft, IconChevronRight } from '@posthog/icons'
-import { LemonButton, LemonCheckbox, LemonInput, LemonSelect, LemonSwitch } from '@posthog/lemon-ui'
+import { LemonButton, LemonCheckbox, LemonInput, LemonSelect, LemonSwitch } from '@flind/lemon-ui'
 
 import { GuidedWizardSection } from 'lib/components/GuidedWizard/GuidedWizardSection'
 import { PayGateMini } from 'lib/components/PayGateMini/PayGateMini'

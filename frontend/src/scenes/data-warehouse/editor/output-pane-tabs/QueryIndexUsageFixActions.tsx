@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { combineUrl } from 'kea-router'
 
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { urls } from 'scenes/urls'
 import { userLogic } from 'scenes/userLogic'

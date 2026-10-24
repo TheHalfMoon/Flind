@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { Link } from '@posthog/lemon-ui'
+import { Link } from '@flind/lemon-ui'
 
 /**
  * The report itself is written by an LLM each run, so there is nothing faithful to preview. The

@@ -3,7 +3,7 @@ import { useActions, useValues } from 'kea'
 import { isValidElement, ReactNode, useEffect } from 'react'
 
 import { IconWarning } from '@posthog/icons'
-import { LemonButton, LemonButtonProps, Link, Spinner, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, LemonButtonProps, Link, Spinner, Tooltip } from '@flind/lemon-ui'
 
 import { Dayjs, dayjs } from 'lib/dayjs'
 import { IconPlayCircle } from 'lib/lemon-ui/icons'

@@ -1,4 +1,4 @@
-import { LemonCard, LemonSkeleton, Tooltip } from '@posthog/lemon-ui'
+import { LemonCard, LemonSkeleton, Tooltip } from '@flind/lemon-ui'
 
 import { pluralize } from 'lib/utils/strings'
 

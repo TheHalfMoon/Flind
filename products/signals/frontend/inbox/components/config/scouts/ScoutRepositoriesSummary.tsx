@@ -1,4 +1,4 @@
-import { LemonTag } from '@posthog/lemon-ui'
+import { LemonTag } from '@flind/lemon-ui'
 
 /** Tags shown before the rest become a count, so the collapsed header can't outgrow its row. */
 const MAX_SUMMARY_TAGS = 3

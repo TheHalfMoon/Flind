@@ -1,4 +1,4 @@
-import { LemonTag, Tooltip } from '@posthog/lemon-ui'
+import { LemonTag, Tooltip } from '@flind/lemon-ui'
 
 import { PRIORITY_TAG_TYPE, PRIORITY_TOOLTIP } from './constants'
 import { ImmediateAction } from './types'

@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 
-import { SpinnerOverlay } from '@posthog/lemon-ui'
+import { SpinnerOverlay } from '@flind/lemon-ui'
 
 import { cn } from 'lib/utils/css-classes'
 

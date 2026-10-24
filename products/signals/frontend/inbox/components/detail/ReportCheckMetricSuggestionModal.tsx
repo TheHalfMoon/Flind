@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
-import { LemonButton, LemonModal, LemonTextArea } from '@posthog/lemon-ui'
+import { LemonButton, LemonModal, LemonTextArea } from '@flind/lemon-ui'
 
 import { inboxTaskKickoffLogic } from '../../inboxTaskKickoffLogic'
 import { SignalReport } from '../../types'

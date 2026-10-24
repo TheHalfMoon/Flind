@@ -14,7 +14,7 @@
         "@storybook/react": "catalog:"
     },
     "peerDependencies": {
-        "@posthog/lemon-ui": "*",
+        "@flind/lemon-ui": "workspace:*",
         "@types/react": "*",
         "react": "*"
     }

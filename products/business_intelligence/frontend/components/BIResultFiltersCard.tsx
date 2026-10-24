@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonButton, LemonCheckbox, LemonDropdown, LemonInput, LemonSelect } from '@posthog/lemon-ui'
+import { LemonButton, LemonCheckbox, LemonDropdown, LemonInput, LemonSelect } from '@flind/lemon-ui'
 
 import { BIResultFilter } from '~/queries/schema/schema-business-intelligence'
 

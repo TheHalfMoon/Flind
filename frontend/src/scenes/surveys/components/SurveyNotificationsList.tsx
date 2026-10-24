@@ -3,7 +3,7 @@ import { router } from 'kea-router'
 
 import * as mailboxPng from '@posthog/brand/hoggies/png/mailbox'
 import { IconPlus } from '@posthog/icons'
-import { LemonBanner, LemonButton, LemonDropdown, LemonInput, LemonSkeleton, LemonSwitch } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonDropdown, LemonInput, LemonSkeleton, LemonSwitch } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import { ConfirmDeleteButton } from 'lib/components/ConfirmDeleteButton'

@@ -1,6 +1,6 @@
 import { ComponentProps, createContext, useContext } from 'react'
 
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import {
     ConversionGoalFilter,

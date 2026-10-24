@@ -1,4 +1,4 @@
-import { LemonCollapse, Lettermark, LettermarkColor } from '@posthog/lemon-ui'
+import { LemonCollapse, Lettermark, LettermarkColor } from '@flind/lemon-ui'
 
 import { CopyToClipboardInline } from 'lib/components/CopyToClipboard'
 import { alphabet } from 'lib/utils/strings'

@@ -4,7 +4,7 @@
 
 import { ReactNode } from 'react'
 
-import { LemonCard, LemonSkeleton, Tooltip } from '@posthog/lemon-ui'
+import { LemonCard, LemonSkeleton, Tooltip } from '@flind/lemon-ui'
 
 import type { ScopeRepoFigureApi } from '../generated/api.schemas'
 import { ComparisonBarRow } from './ComparisonBarRow'

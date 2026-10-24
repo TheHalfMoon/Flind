@@ -1,5 +1,5 @@
 import { IconArrowRight } from '@posthog/icons'
-import { LemonBanner, LemonDialog, LemonTable, LemonTag } from '@posthog/lemon-ui'
+import { LemonBanner, LemonDialog, LemonTable, LemonTag } from '@flind/lemon-ui'
 
 import type { HogFlowPublishImpactApi, HogFlowPublishImpactDeletedStepApi } from '../generated/api.schemas'
 

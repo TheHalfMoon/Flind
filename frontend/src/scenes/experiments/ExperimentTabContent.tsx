@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { LemonBanner, LemonSkeleton, Link } from '@posthog/lemon-ui'
+import { LemonBanner, LemonSkeleton, Link } from '@flind/lemon-ui'
 
 import type { FeatureFlagType } from '~/types'
 

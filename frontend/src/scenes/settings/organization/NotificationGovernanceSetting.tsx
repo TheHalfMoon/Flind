@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonBanner, LemonButton, LemonDialog, Spinner } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonDialog, Spinner } from '@flind/lemon-ui'
 
 import { PayGateMini } from 'lib/components/PayGateMini/PayGateMini'
 import { pluralize } from 'lib/utils/strings'

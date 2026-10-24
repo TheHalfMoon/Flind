@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonButton, LemonInput, LemonModal, LemonTable } from '@posthog/lemon-ui'
+import { LemonButton, LemonInput, LemonModal, LemonTable } from '@flind/lemon-ui'
 
 import { biFilterValuesLogic } from './biFilterValuesLogic'
 import { biMemberAliasesLogic } from './biMemberAliasesLogic'

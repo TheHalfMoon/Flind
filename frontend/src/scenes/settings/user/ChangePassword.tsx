@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { Form } from 'kea-forms'
 
-import { LemonButton, LemonInput } from '@posthog/lemon-ui'
+import { LemonButton, LemonInput } from '@flind/lemon-ui'
 
 import PasswordStrength from 'lib/components/PasswordStrength'
 import { LemonBanner } from 'lib/lemon-ui/LemonBanner'

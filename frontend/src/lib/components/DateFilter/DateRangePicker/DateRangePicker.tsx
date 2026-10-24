@@ -4,7 +4,7 @@ import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
 import { IconCalendar, IconClock } from '@posthog/icons'
-import { LemonButton, LemonDivider, LemonInput, Popover } from '@posthog/lemon-ui'
+import { LemonButton, LemonDivider, LemonInput, Popover } from '@flind/lemon-ui'
 
 import { RollingDateRangeFilter } from 'lib/components/DateFilter/RollingDateRangeFilter'
 import { DateOption } from 'lib/components/DateFilter/rollingDateRangeFilterLogic'

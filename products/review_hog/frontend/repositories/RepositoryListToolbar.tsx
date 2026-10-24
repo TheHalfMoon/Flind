@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonInput, LemonSegmentedButton, LemonSelect } from '@posthog/lemon-ui'
+import { LemonInput, LemonSegmentedButton, LemonSelect } from '@flind/lemon-ui'
 
 import { ReviewHogRepositoryOverviewRetrieveView } from 'products/review_hog/frontend/generated/api.schemas'
 

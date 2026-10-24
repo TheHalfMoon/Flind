@@ -1,4 +1,4 @@
-import { LemonDialog, LemonInput, LemonTextArea } from '@posthog/lemon-ui'
+import { LemonDialog, LemonInput, LemonTextArea } from '@flind/lemon-ui'
 
 import { GitHubRepositorySelectField } from 'lib/integrations/GitHubIntegrationHelpers'
 import { JiraProjectSelectField } from 'lib/integrations/JiraIntegrationHelpers'

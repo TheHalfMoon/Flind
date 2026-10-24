@@ -5,7 +5,7 @@ import { useValues } from 'kea'
 import { common, createLowlight } from 'lowlight'
 import { useMemo, useRef } from 'react'
 
-import { LemonBanner, LemonTabs, LemonTextArea } from '@posthog/lemon-ui'
+import { LemonBanner, LemonTabs, LemonTextArea } from '@flind/lemon-ui'
 
 import { themeLogic } from '~/layout/navigation-3000/themeLogic'
 import { SurveyQuestionDescriptionContentType } from '~/types'

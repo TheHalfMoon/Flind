@@ -5,7 +5,7 @@ import { useActions, useValues } from 'kea'
 import React, { forwardRef, useCallback, useEffect, useMemo, useState } from 'react'
 
 import { IconClock, IconCopy, IconGear, IconHome, IconLaptop } from '@posthog/icons'
-import { LemonButton, LemonDropdown, LemonDropdownProps } from '@posthog/lemon-ui'
+import { LemonButton, LemonDropdown, LemonDropdownProps } from '@flind/lemon-ui'
 
 import { dayjs } from 'lib/dayjs'
 import { useOnMountEffect } from 'lib/hooks/useOnMountEffect'

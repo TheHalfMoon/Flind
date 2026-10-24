@@ -1,7 +1,7 @@
 import { ReactNode, useMemo, useState } from 'react'
 
 import { IconCheck } from '@posthog/icons'
-import { LemonButton, LemonInput, Spinner } from '@posthog/lemon-ui'
+import { LemonButton, LemonInput, Spinner } from '@flind/lemon-ui'
 
 import { Popover } from 'lib/lemon-ui/Popover/Popover'
 

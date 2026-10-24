@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconCheckCircle, IconCompass, IconFlag, IconRefresh, IconSearch, IconSort } from '@posthog/icons'
-import { LemonButton, LemonCheckbox, LemonInput } from '@posthog/lemon-ui'
+import { LemonButton, LemonCheckbox, LemonInput } from '@flind/lemon-ui'
 
 import { STATUS_LABELS } from 'products/signals/frontend/inbox/components/badges/SignalReportStatusBadge'
 import { FilterItem, FilterPopover } from 'products/signals/frontend/inbox/components/shell/filterControls'

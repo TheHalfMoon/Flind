@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { router } from 'kea-router'
 
-import { LemonBanner } from '@posthog/lemon-ui'
+import { LemonBanner } from '@flind/lemon-ui'
 
 import type { DatasetReadApi as Dataset } from '../generated/api.schemas'
 import { DATASET_ITEM_VERSIONS_PER_PAGE, DatasetTab, aiObservabilityDatasetLogic } from './aiObservabilityDatasetLogic'

@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { useEffect, useState } from 'react'
 
 import { IconCopy, IconSearch } from '@posthog/icons'
-import { LemonButton, LemonInput, LemonModal, LemonTag, Spinner } from '@posthog/lemon-ui'
+import { LemonButton, LemonInput, LemonModal, LemonTag, Spinner } from '@flind/lemon-ui'
 
 import { HighlightedJSONViewer } from 'lib/components/HighlightedJSONViewer'
 import { useDebouncedValue } from 'lib/hooks/useDebouncedValue'

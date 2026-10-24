@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonInput, LemonSelect } from '@posthog/lemon-ui'
+import { LemonInput, LemonSelect } from '@flind/lemon-ui'
 
 import { WorkflowTemplateChooser } from './WorkflowTemplateChooser'
 import { workflowTemplatesLogic } from './workflowTemplatesLogic'

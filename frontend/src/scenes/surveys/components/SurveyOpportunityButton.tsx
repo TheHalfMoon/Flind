@@ -4,7 +4,7 @@ import posthog from 'posthog-js'
 import { useEffect, useState } from 'react'
 
 import { IconMessage } from '@posthog/icons'
-import { LemonButton, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, Tooltip } from '@flind/lemon-ui'
 
 import { FEATURE_FLAGS } from 'lib/constants'
 import { featureFlagLogic } from 'lib/logic/featureFlagLogic'

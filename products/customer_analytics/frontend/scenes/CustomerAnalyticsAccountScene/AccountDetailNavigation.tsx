@@ -2,7 +2,7 @@ import { useActions, useMountedLogic, useValues } from 'kea'
 import type { ReactNode } from 'react'
 
 import { IconPencil } from '@posthog/icons'
-import { LemonBanner, LemonButton, LemonSkeleton, LemonTabs } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonSkeleton, LemonTabs } from '@flind/lemon-ui'
 
 import { FEATURE_FLAGS } from 'lib/constants'
 import { featureFlagLogic } from 'lib/logic/featureFlagLogic'

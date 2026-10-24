@@ -1,4 +1,4 @@
-import { LemonCard } from '@posthog/lemon-ui'
+import { LemonCard } from '@flind/lemon-ui'
 
 export interface SourceMapOptionCardProps {
     title: string

@@ -7,7 +7,7 @@ import { router } from 'kea-router'
 import { useEffect } from 'react'
 
 import { IconCheckCircle } from '@posthog/icons'
-import { LemonButton, LemonDivider, LemonInput, Link } from '@posthog/lemon-ui'
+import { LemonButton, LemonDivider, LemonInput, Link } from '@flind/lemon-ui'
 
 import { BridgePage } from 'lib/components/BridgePage/BridgePage'
 import { CodeSnippet, Language } from 'lib/components/CodeSnippet'

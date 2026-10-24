@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonSegmentedButton, LemonTag } from '@posthog/lemon-ui'
+import { LemonSegmentedButton, LemonTag } from '@flind/lemon-ui'
 
 import { getProductAccessDisabledReason } from 'lib/utils/accessControlUtils'
 import { Scene } from 'scenes/sceneTypes'

@@ -11,7 +11,7 @@ import {
     LemonTableColumns,
     Spinner,
     Tooltip,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { LemonProgress } from 'lib/lemon-ui/LemonProgress'
 import { humanFriendlyDuration } from 'lib/utils/durations'

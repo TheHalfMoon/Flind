@@ -1,4 +1,4 @@
-import { LemonModal, Spinner } from '@posthog/lemon-ui'
+import { LemonModal, Spinner } from '@flind/lemon-ui'
 
 import { MaterializationStatusPanel } from './MaterializationStatusPanel'
 

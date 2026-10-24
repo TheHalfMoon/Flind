@@ -1,6 +1,6 @@
 import { forwardRef } from 'react'
 
-import { Link } from '@posthog/lemon-ui'
+import { Link } from '@flind/lemon-ui'
 
 interface ValueInspectorButtonProps {
     onClick?: (e?: React.MouseEvent) => void

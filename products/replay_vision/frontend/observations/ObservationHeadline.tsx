@@ -1,5 +1,5 @@
 import { IconCheckCircle, IconQuestion, IconSparkles, IconXCircle } from '@posthog/icons'
-import { Tooltip } from '@posthog/lemon-ui'
+import { Tooltip } from '@flind/lemon-ui'
 
 import { LabeledRow } from '../components/LabeledRow'
 import { ObservationPrimaryOutput } from '../components/ObservationCard'

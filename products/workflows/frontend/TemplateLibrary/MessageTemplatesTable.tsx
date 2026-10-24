@@ -5,7 +5,7 @@ import { router } from 'kea-router'
 
 import * as readingIsMagicPng from '@posthog/brand/hoggies/png/reading-is-magic'
 import { IconPlus, IconTrash } from '@posthog/icons'
-import { LemonCheckbox } from '@posthog/lemon-ui'
+import { LemonCheckbox } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import { MemberSelect } from 'lib/components/MemberSelect'

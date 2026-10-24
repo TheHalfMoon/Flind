@@ -9,7 +9,7 @@ import posthog from 'posthog-js'
 import { useCallback, useEffect } from 'react'
 
 import { IconCopy, IconFilter, IconGroupIntersect, IconPencil, IconTrash } from '@posthog/icons'
-import { lemonToast } from '@posthog/lemon-ui'
+import { lemonToast } from '@flind/lemon-ui'
 
 import { DefinitionView } from 'lib/components/DefinitionPopover/DefinitionPopoverContents'
 import { EntityFilterInfo } from 'lib/components/EntityFilterInfo'

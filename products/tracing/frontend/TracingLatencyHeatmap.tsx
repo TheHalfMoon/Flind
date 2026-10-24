@@ -1,6 +1,6 @@
 import { useCallback, useMemo } from 'react'
 
-import { SpinnerOverlay } from '@posthog/lemon-ui'
+import { SpinnerOverlay } from '@flind/lemon-ui'
 import { Heatmap, type HeatmapBrushData, useChartTheme } from '@flind/quill-charts'
 
 import { dayjs } from 'lib/dayjs'

@@ -2,7 +2,7 @@ import { useActions, useAsyncActions, useValues } from 'kea'
 import { useCallback } from 'react'
 
 import { IconArrowRight, IconLock } from '@posthog/icons'
-import { LemonButton, Popover, PopoverProps, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, Popover, PopoverProps, Tooltip } from '@flind/lemon-ui'
 
 import { organizationLogic } from 'scenes/organizationLogic'
 

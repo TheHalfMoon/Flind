@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 
 import { IconInfo, IconPencil } from '@posthog/icons'
-import { LemonBanner, LemonInput } from '@posthog/lemon-ui'
+import { LemonBanner, LemonInput } from '@flind/lemon-ui'
 
 import { DataWarehousePopoverField } from 'lib/components/TaxonomicFilter/types'
 import { IconOpenInNew } from 'lib/lemon-ui/icons'

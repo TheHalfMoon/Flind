@@ -1,6 +1,6 @@
 import { IconCheck, IconMinus, IconWarning, IconX } from '@posthog/icons'
-import { LemonTag } from '@posthog/lemon-ui'
-import type { LemonTagProps } from '@posthog/lemon-ui'
+import { LemonTag } from '@flind/lemon-ui'
+import type { LemonTagProps } from '@flind/lemon-ui'
 
 import { categoricalResultPasses, formatNumericEvaluationScore, numericScorePasses } from '../evaluations/constants'
 import type { EvaluationOutputConfig, EvaluationRun } from '../evaluations/types'

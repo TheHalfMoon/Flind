@@ -11,8 +11,8 @@ import {
     Spinner,
     SpinnerOverlay,
     Tooltip,
-} from '@posthog/lemon-ui'
-import type { LemonTableColumn } from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
+import type { LemonTableColumn } from '@flind/lemon-ui'
 
 import { EmptyMessage } from 'lib/components/EmptyMessage/EmptyMessage'
 import { TZLabel } from 'lib/components/TZLabel'

@@ -1,5 +1,5 @@
 import { IconFilter } from '@posthog/icons'
-import { LemonButton, LemonMenu } from '@posthog/lemon-ui'
+import { LemonButton, LemonMenu } from '@flind/lemon-ui'
 
 import { ProjectTreeLogicProps } from './projectTreeLogic'
 import { useTreeFilterMenuItems } from './useTreeFilterMenuItems'

@@ -2,7 +2,7 @@ import { Menu } from '@base-ui/react/menu'
 import { useActions, useValues } from 'kea'
 
 import { IconCopy, IconDatabase, IconOpenSidebar, IconServer, IconShieldLock, IconSparkles } from '@posthog/icons'
-import { ProfilePicture } from '@posthog/lemon-ui'
+import { ProfilePicture } from '@flind/lemon-ui'
 
 import { KeyboardShortcut } from 'lib/components/KeyboardShortcut/KeyboardShortcut'
 import { IconMenu, IconWithBadge } from 'lib/lemon-ui/icons'

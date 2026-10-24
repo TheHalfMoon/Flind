@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonBanner, LemonSelect, LemonSkeleton, LemonSwitch } from '@posthog/lemon-ui'
+import { LemonBanner, LemonSelect, LemonSkeleton, LemonSwitch } from '@flind/lemon-ui'
 
 import { Section } from '../components/Section'
 import { percent } from '../lib/format'

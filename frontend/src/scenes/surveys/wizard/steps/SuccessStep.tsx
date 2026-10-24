@@ -1,7 +1,7 @@
 import { router } from 'kea-router'
 import { useEffect, useState } from 'react'
 
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { doesSurveyRepeatOnEveryEvent, getRecurringSurveyScheduleInfo } from 'scenes/surveys/utils'
 import { urls } from 'scenes/urls'

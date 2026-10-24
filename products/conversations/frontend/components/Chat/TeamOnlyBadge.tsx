@@ -1,5 +1,5 @@
 import { IconLock } from '@posthog/icons'
-import { Tooltip } from '@posthog/lemon-ui'
+import { Tooltip } from '@flind/lemon-ui'
 
 /**
  * Marks a thread entry as team-only. Shared because the thread's whole purpose is sending things to

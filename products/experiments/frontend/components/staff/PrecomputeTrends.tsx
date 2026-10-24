@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 import { TimeSeriesBarChart, TimeSeriesLineChart } from '@flind/quill-charts'
 import type { Series } from '@flind/quill-charts'
 

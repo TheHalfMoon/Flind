@@ -4,7 +4,7 @@ import { router } from 'kea-router'
 import { useEffect, useState } from 'react'
 
 import { IconArrowLeft, IconChevronLeft, IconChevronRight } from '@posthog/icons'
-import { LemonButton, LemonDialog } from '@posthog/lemon-ui'
+import { LemonButton, LemonDialog } from '@flind/lemon-ui'
 
 import { EditableField } from 'lib/components/EditableField/EditableField'
 import { GuidedWizardStep, GuidedWizardStepper } from 'lib/components/GuidedWizard/GuidedWizardStepper'

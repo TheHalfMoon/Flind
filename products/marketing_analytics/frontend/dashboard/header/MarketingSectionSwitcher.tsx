@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconCursor, IconPeople, IconPieChart, IconRetention, IconTarget } from '@posthog/icons'
-import { LemonSegmentedButton, LemonSelect } from '@posthog/lemon-ui'
+import { LemonSegmentedButton, LemonSelect } from '@flind/lemon-ui'
 
 import {
     MarketingDashboardView,

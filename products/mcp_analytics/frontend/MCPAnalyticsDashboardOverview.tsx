@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { Children, type ReactNode } from 'react'
 
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { useChartTheme } from 'lib/charts/hooks'
 import { FEATURE_FLAGS } from 'lib/constants'

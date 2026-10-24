@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
-import { LemonBanner, LemonButton, LemonInput, Spinner } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonInput, Spinner } from '@flind/lemon-ui'
 
 import { passkeySettingsLogic } from './passkeySettingsLogic'
 

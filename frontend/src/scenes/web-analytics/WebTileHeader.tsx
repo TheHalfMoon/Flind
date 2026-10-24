@@ -1,5 +1,5 @@
 import { IconChevronDown, IconEllipsis, IconLineGraph } from '@posthog/icons'
-import { LemonButton, LemonMenu, LemonMenuItem, LemonSelectOptionLeaf } from '@posthog/lemon-ui'
+import { LemonButton, LemonMenu, LemonMenuItem, LemonSelectOptionLeaf } from '@flind/lemon-ui'
 
 import { useWindowSize } from 'lib/hooks/useWindowSize'
 import { IconOpenInNew, IconTableChart } from 'lib/lemon-ui/icons'

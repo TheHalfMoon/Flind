@@ -3,8 +3,8 @@ import { kea, path, useActions, useValues } from 'kea'
 import { Form, forms } from 'kea-forms'
 import { useEffect, useState } from 'react'
 
-import type { LemonSegmentedButtonOption, LemonSelectOptions } from '@posthog/lemon-ui'
-import { LemonCheckbox, LemonInput, LemonSegmentedButton } from '@posthog/lemon-ui'
+import type { LemonSegmentedButtonOption, LemonSelectOptions } from '@flind/lemon-ui'
+import { LemonCheckbox, LemonInput, LemonSegmentedButton } from '@flind/lemon-ui'
 
 import { NextScheduledRun, ProjectTimezoneNotice } from 'lib/components/ScheduledRunStatus'
 import { LemonButton } from 'lib/lemon-ui/LemonButton'

@@ -2,7 +2,7 @@ import { BindLogic, useActions, useValues } from 'kea'
 import { combineUrl, router } from 'kea-router'
 
 import { IconGear } from '@posthog/icons'
-import { LemonButton, LemonTab, LemonTabs } from '@posthog/lemon-ui'
+import { LemonButton, LemonTab, LemonTabs } from '@flind/lemon-ui'
 
 import { NotFound } from 'lib/components/NotFound'
 import { Shortcut } from 'lib/components/Shortcuts/Shortcut'

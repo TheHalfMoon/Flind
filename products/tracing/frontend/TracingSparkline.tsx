@@ -1,7 +1,7 @@
 import { useCallback, useMemo, useState } from 'react'
 
 import { IconChevronDown } from '@posthog/icons'
-import { LemonButton, LemonSegmentedButton, SpinnerOverlay } from '@posthog/lemon-ui'
+import { LemonButton, LemonSegmentedButton, SpinnerOverlay } from '@flind/lemon-ui'
 import {
     BarChart,
     type BarChartConfig,

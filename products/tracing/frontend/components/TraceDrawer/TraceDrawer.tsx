@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useLayoutEffect, useMemo } from 'react'
 
-import { LemonBanner, LemonButton, SpinnerOverlay } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, SpinnerOverlay } from '@flind/lemon-ui'
 
 import { IconLink } from 'lib/lemon-ui/icons'
 import { copyToClipboard } from 'lib/utils/copyToClipboard'

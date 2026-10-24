@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import * as handClaspPng from '@posthog/brand/hoggies/png/hand-clasp'
-import { LemonButton, LemonModal } from '@posthog/lemon-ui'
+import { LemonButton, LemonModal } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import { ErrorTrackingRuntime } from 'lib/components/Errors/types'

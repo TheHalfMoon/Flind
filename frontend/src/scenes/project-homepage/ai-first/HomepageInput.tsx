@@ -3,7 +3,7 @@ import posthog from 'posthog-js'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
 import { IconArrowRight, IconClock, IconInfo, IconPin, IconSparkles } from '@posthog/icons'
-import { LemonButton, LemonSkeleton, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, LemonSkeleton, Tooltip } from '@flind/lemon-ui'
 
 import { Search } from 'lib/components/Search/Search'
 import { Link } from 'lib/lemon-ui/Link'

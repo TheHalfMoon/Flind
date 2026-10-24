@@ -2,7 +2,7 @@ import './ScannerBudget.scss'
 
 import { useValues } from 'kea'
 
-import { LemonCard, LemonInput, LemonSegmentedButton } from '@posthog/lemon-ui'
+import { LemonCard, LemonInput, LemonSegmentedButton } from '@flind/lemon-ui'
 
 import { LemonField } from 'lib/lemon-ui/LemonField'
 import { LemonLabel } from 'lib/lemon-ui/LemonLabel'

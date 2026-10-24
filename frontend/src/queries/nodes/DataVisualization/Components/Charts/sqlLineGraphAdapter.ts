@@ -1,4 +1,4 @@
-import { lemonToast } from '@posthog/lemon-ui'
+import { lemonToast } from '@flind/lemon-ui'
 import {
     MAX_CATEGORY_LABEL_WIDTH,
     type AxisLinesConfig,

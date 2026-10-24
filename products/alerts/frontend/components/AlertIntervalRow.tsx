@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { LemonSelect, Tooltip } from '@posthog/lemon-ui'
+import { LemonSelect, Tooltip } from '@flind/lemon-ui'
 
 import { NextScheduledRun } from 'lib/components/ScheduledRunStatus'
 import { TZLabel } from 'lib/components/TZLabel'

@@ -1,7 +1,7 @@
 import { BindLogic, useActions, useValues } from 'kea'
 import { useRef } from 'react'
 
-import { LemonBanner, LemonDivider, LemonInput, LemonLabel, LemonSegmentedButton } from '@posthog/lemon-ui'
+import { LemonBanner, LemonDivider, LemonInput, LemonLabel, LemonSegmentedButton } from '@flind/lemon-ui'
 
 import { hasWildcard, heatmapPageUrl } from 'lib/components/heatmaps/heatmapUrlMatch'
 import type { HeatmapUrlFilter, HeatmapUrlMatchMode } from 'lib/components/heatmaps/heatmapUrlMatch'

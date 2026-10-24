@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonButton, LemonInput, LemonLabel, LemonModal } from '@posthog/lemon-ui'
+import { LemonButton, LemonInput, LemonLabel, LemonModal } from '@flind/lemon-ui'
 
 import { AccountPropertiesWidgetConfiguration } from './AccountPropertiesWidgetConfiguration'
 import { accountViewsLogic } from './accountViewsLogic'

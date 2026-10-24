@@ -1,6 +1,6 @@
 import type { MouseEventHandler } from 'react'
 
-import { Link } from '@posthog/lemon-ui'
+import { Link } from '@flind/lemon-ui'
 
 import { CopyToClipboardInline } from 'lib/components/CopyToClipboard'
 import { urls } from 'scenes/urls'

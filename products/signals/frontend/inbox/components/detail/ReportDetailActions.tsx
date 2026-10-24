@@ -3,7 +3,7 @@ import { router } from 'kea-router'
 import { type MouseEvent, useState } from 'react'
 
 import { IconCheckCircle, IconHide, IconReceipt, IconUndo, IconClock } from '@posthog/icons'
-import { lemonToast } from '@posthog/lemon-ui'
+import { lemonToast } from '@flind/lemon-ui'
 
 import api from 'lib/api'
 import { urls } from 'scenes/urls'

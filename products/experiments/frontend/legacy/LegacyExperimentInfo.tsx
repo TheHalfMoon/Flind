@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import { useValues } from 'kea'
 
 import { IconWarning } from '@posthog/icons'
-import { LemonTag, Link, ProfilePicture, Tooltip } from '@posthog/lemon-ui'
+import { LemonTag, Link, ProfilePicture, Tooltip } from '@flind/lemon-ui'
 
 import { CopyToClipboardInline } from 'lib/components/CopyToClipboard'
 import { IconOpenInNew } from 'lib/lemon-ui/icons'

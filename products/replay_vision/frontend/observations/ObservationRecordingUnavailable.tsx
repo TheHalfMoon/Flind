@@ -1,5 +1,5 @@
 import { IconVideoCamera } from '@posthog/icons'
-import { Link } from '@posthog/lemon-ui'
+import { Link } from '@flind/lemon-ui'
 
 import { urls } from 'scenes/urls'
 

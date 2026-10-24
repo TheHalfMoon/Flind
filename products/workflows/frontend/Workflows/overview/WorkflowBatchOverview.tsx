@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 import { useMemo, useState } from 'react'
 
-import { LemonBanner, LemonSelect, Spinner } from '@posthog/lemon-ui'
+import { LemonBanner, LemonSelect, Spinner } from '@flind/lemon-ui'
 
 import { dayjs } from 'lib/dayjs'
 

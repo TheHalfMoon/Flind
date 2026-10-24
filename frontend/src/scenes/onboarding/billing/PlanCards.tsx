@@ -6,7 +6,7 @@ import React, { useState } from 'react'
 
 import * as heartPng from '@posthog/brand/hoggies/png/heart'
 import { IconCheck, IconX } from '@posthog/icons'
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import { BillingUpgradeCTA } from 'lib/components/BillingUpgradeCTA'

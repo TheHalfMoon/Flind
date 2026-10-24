@@ -4,7 +4,7 @@ import clsx from 'clsx'
 import { useActions, useValues } from 'kea'
 
 import { IconCheckCircle, IconCollapse, IconExpand, IconRefresh, IconWarning } from '@posthog/icons'
-import { Link, Spinner } from '@posthog/lemon-ui'
+import { Link, Spinner } from '@flind/lemon-ui'
 
 import { AnimatedCollapsible } from 'lib/components/AnimatedCollapsible'
 import { BridgePage } from 'lib/components/BridgePage/BridgePage'

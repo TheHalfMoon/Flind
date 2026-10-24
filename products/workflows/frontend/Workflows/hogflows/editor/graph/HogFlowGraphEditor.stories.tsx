@@ -1,7 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/react'
 import { BindLogic, useValues } from 'kea'
 
-import { SpinnerOverlay } from '@posthog/lemon-ui'
+import { SpinnerOverlay } from '@flind/lemon-ui'
 
 import { FEATURE_FLAGS } from 'lib/constants'
 import { App } from 'scenes/App'

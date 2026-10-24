@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { LemonInput, Popover } from '@posthog/lemon-ui'
+import { LemonInput, Popover } from '@flind/lemon-ui'
 
 import { LemonColorList } from 'lib/lemon-ui/LemonColor'
 import { cn } from 'lib/utils/css-classes'

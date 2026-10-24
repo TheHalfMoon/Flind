@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
 import { IconLetter } from '@posthog/icons'
-import { LemonButton, LemonDivider, LemonInput, LemonModal, Link } from '@posthog/lemon-ui'
+import { LemonButton, LemonDivider, LemonInput, LemonModal, Link } from '@flind/lemon-ui'
 
 import { pendingInvitesLogic } from 'lib/components/Account/pendingInvitesLogic'
 import { LemonBanner } from 'lib/lemon-ui/LemonBanner'

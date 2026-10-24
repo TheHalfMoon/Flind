@@ -7,7 +7,7 @@ import React, { ReactNode, useEffect, useMemo, useRef, useState } from 'react'
 import { useDebouncedCallback } from 'use-debounce'
 
 import { IconArrowRight, IconCheck, IconPencil, IconStopFilled, IconTrash, IconUpload, IconX } from '@posthog/icons'
-import { LemonButton, LemonSwitch, LemonTextArea, Spinner } from '@posthog/lemon-ui'
+import { LemonButton, LemonSwitch, LemonTextArea, Spinner } from '@flind/lemon-ui'
 
 import { KeyboardShortcut } from 'lib/components/KeyboardShortcut/KeyboardShortcut'
 import { cn } from 'lib/utils/css-classes'

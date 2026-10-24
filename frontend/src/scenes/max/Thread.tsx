@@ -30,7 +30,7 @@ import {
     LemonInput,
     LemonSkeleton,
     Tooltip,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import {
     InsightBreakdownSummary,

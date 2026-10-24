@@ -3,7 +3,7 @@ import './BreakdownTagMenu.scss'
 import { useActions, useValues } from 'kea'
 
 import { IconGear, IconInfo } from '@posthog/icons'
-import { LemonButton, LemonDivider, LemonInput, LemonSwitch } from '@posthog/lemon-ui'
+import { LemonButton, LemonDivider, LemonInput, LemonSwitch } from '@flind/lemon-ui'
 
 import { Tooltip } from 'lib/lemon-ui/Tooltip'
 import { urls } from 'scenes/urls'

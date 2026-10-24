@@ -5,7 +5,7 @@ import { useActions, useValues } from 'kea'
 import { ReactNode, useEffect } from 'react'
 
 import { IconTrash, IconWarning } from '@posthog/icons'
-import { LemonButton, LemonCard, LemonCheckbox, LemonDialog, LemonDivider, Spinner } from '@posthog/lemon-ui'
+import { LemonButton, LemonCard, LemonCheckbox, LemonDialog, LemonDivider, Spinner } from '@flind/lemon-ui'
 
 import { PropertyFilters } from 'lib/components/PropertyFilters/PropertyFilters'
 import { TaxonomicFilterGroupType } from 'lib/components/TaxonomicFilter/types'

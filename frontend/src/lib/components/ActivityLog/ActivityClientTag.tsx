@@ -1,4 +1,4 @@
-import { LemonTag, Tooltip } from '@posthog/lemon-ui'
+import { LemonTag, Tooltip } from '@flind/lemon-ui'
 
 import { activityClientLabel, isScoutClient } from 'lib/components/ActivityLog/activityClientLabel'
 

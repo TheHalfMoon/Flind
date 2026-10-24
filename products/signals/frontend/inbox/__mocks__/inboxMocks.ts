@@ -588,7 +588,7 @@ index 6e5d4c3..0000000
 --- a/frontend/src/scenes/invites/InviteFormLegacy.tsx
 +++ /dev/null
 @@ -1,15 +0,0 @@
--import { LemonButton, LemonInput } from '@posthog/lemon-ui'
+-import { LemonButton, LemonInput } from '@flind/lemon-ui'
 -import { useState } from 'react'
 -
 -/** Single-recipient invite form. Replaced by the multi-row InviteRow list. */

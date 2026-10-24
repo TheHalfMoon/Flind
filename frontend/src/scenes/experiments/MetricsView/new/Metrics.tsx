@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 
 import { IconInfo } from '@posthog/icons'
-import { LemonBanner, Tooltip } from '@posthog/lemon-ui'
+import { LemonBanner, Tooltip } from '@flind/lemon-ui'
 
 import { IconAreaChart } from 'lib/lemon-ui/icons'
 

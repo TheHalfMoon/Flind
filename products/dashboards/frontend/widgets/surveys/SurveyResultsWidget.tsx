@@ -2,7 +2,7 @@ import posthog from 'posthog-js'
 import { useState } from 'react'
 
 import * as trenchcoatPng from '@posthog/brand/hoggies/png/trenchcoat'
-import { LemonSkeleton } from '@posthog/lemon-ui'
+import { LemonSkeleton } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import { TZLabel } from 'lib/components/TZLabel'

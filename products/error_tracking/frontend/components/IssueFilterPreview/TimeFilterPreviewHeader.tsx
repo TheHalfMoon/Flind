@@ -2,7 +2,7 @@ import { useValues } from 'kea'
 import { match } from 'ts-pattern'
 
 import { IconTrending } from '@posthog/icons'
-import { Tooltip as LemonTooltip } from '@posthog/lemon-ui'
+import { Tooltip as LemonTooltip } from '@flind/lemon-ui'
 
 import { dayjs } from 'lib/dayjs'
 import { Skeleton } from 'lib/ui/quill'

@@ -23,7 +23,7 @@
     "peerDependencies": {
         "@posthog/brand": "catalog:",
         "@posthog/icons": "catalog:",
-        "@posthog/lemon-ui": "*",
+        "@flind/lemon-ui": "workspace:*",
         "@testing-library/dom": "*",
         "@testing-library/user-event": "*",
         "@types/react": "*",

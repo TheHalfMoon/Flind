@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { useMemo, useState } from 'react'
 
 import { IconLogomark, IconPlus, IconTrash } from '@posthog/icons'
-import { LemonButton, LemonDialog, LemonInput, LemonModal, LemonSelect, LemonSkeleton } from '@posthog/lemon-ui'
+import { LemonButton, LemonDialog, LemonInput, LemonModal, LemonSelect, LemonSkeleton } from '@flind/lemon-ui'
 
 import api from 'lib/api'
 import { ScopeAccessRow } from 'lib/components/ScopeAccessRow/ScopeAccessRow'

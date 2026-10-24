@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 
-import { LemonSwitch, Link } from '@posthog/lemon-ui'
+import { LemonSwitch, Link } from '@flind/lemon-ui'
 
 import { ConfirmDeleteButton } from 'lib/components/ConfirmDeleteButton'
 

@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonBanner, LemonSkeleton, LemonTag } from '@posthog/lemon-ui'
+import { LemonBanner, LemonSkeleton, LemonTag } from '@flind/lemon-ui'
 
 import type { ReviewRepositoryOverviewEntryApi } from 'products/review_hog/frontend/generated/api.schemas'
 

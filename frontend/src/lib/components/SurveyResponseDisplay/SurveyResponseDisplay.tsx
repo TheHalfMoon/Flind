@@ -2,7 +2,7 @@ import { useValues } from 'kea'
 import { router } from 'kea-router'
 
 import { IconArchive, IconCode, IconGlobe, IconLaptop, IconPin } from '@posthog/icons'
-import { LemonDivider, LemonTag, Link } from '@posthog/lemon-ui'
+import { LemonDivider, LemonTag, Link } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'
 import ViewRecordingButton, { ViewRecordingButtonVariant } from 'lib/components/ViewRecordingButton/ViewRecordingButton'

@@ -9,7 +9,7 @@ import {
     LemonDropdown,
     LemonSegmentedButton,
     Popover,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { OperatorValueSelectProps } from 'lib/components/PropertyFilters/components/OperatorValueSelect'
 import { taxonomicFilterGroupTypeToEntityType } from 'scenes/insights/filters/ActionFilter/ActionFilterRow/ActionFilterRow'

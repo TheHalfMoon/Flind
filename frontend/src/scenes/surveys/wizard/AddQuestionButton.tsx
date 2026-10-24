@@ -3,7 +3,7 @@ import * as motion from 'motion/react-client'
 import { useEffect, useRef, useState } from 'react'
 
 import { IconPlus, IconX } from '@posthog/icons'
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { SurveyQuestionType } from '~/types'
 

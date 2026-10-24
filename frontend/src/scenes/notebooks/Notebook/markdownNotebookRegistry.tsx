@@ -47,7 +47,7 @@ import {
 import { useInView } from 'react-intersection-observer'
 
 import { IconComment, IconImage } from '@posthog/icons'
-import { LemonButton, LemonInput, LemonSelect, LemonTextArea, lemonToast } from '@posthog/lemon-ui'
+import { LemonButton, LemonInput, LemonSelect, LemonTextArea, lemonToast } from '@flind/lemon-ui'
 
 import {
     COMMON_INSERT_COMMAND_CATEGORY,

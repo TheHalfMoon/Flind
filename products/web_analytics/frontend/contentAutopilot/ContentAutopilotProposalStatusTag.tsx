@@ -1,4 +1,4 @@
-import { LemonTag, Spinner } from '@posthog/lemon-ui'
+import { LemonTag, Spinner } from '@flind/lemon-ui'
 
 import type { ContentAutopilotProposalListApi } from 'products/web_analytics/frontend/generated/api.schemas'
 

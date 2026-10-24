@@ -14,7 +14,7 @@ import {
     IconTarget,
     IconWarning,
 } from '@posthog/icons'
-import { LemonButton, LemonSkeleton, Spinner, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, LemonSkeleton, Spinner, Tooltip } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'
 import { useCancelAnimationsOnUnmount } from 'lib/hooks/useCancelAnimationsOnUnmount'

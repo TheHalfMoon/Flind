@@ -1,7 +1,7 @@
 import { useActions, useAsyncActions, useValues } from 'kea'
 import { useEffect, useLayoutEffect, useState } from 'react'
 
-import { LemonBanner, LemonButton, LemonInput, LemonSwitch, LemonTextArea, Link } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonInput, LemonSwitch, LemonTextArea, Link } from '@flind/lemon-ui'
 
 import { BasicCard } from 'lib/components/Cards/BasicCard'
 import { FEATURE_FLAGS } from 'lib/constants'

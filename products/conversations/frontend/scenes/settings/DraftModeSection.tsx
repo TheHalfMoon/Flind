@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonCard, LemonSwitch } from '@posthog/lemon-ui'
+import { LemonCard, LemonSwitch } from '@flind/lemon-ui'
 
 import { SceneSection } from '~/layout/scenes/components/SceneSection'
 

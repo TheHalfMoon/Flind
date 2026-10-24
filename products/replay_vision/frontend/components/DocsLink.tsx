@@ -1,4 +1,4 @@
-import { Link } from '@posthog/lemon-ui'
+import { Link } from '@flind/lemon-ui'
 
 // Keep utm-free: ProductIntroduction appends its own utm params to docsURL.
 const VISION_DOCS_URL = 'https://posthog.com/docs/replay-vision'

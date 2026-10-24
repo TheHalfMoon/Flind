@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconPin, IconPinFilled } from '@posthog/icons'
-import { LemonInput } from '@posthog/lemon-ui'
+import { LemonInput } from '@flind/lemon-ui'
 
 import { AccessControlAction } from 'lib/components/AccessControlAction'
 import { MemberSelectMultiplePopover } from 'lib/components/MemberSelectMultiplePopover'

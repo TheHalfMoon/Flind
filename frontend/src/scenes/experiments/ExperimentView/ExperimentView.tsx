@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonBanner, LemonTab, LemonTabs } from '@posthog/lemon-ui'
+import { LemonBanner, LemonTab, LemonTabs } from '@flind/lemon-ui'
 
 import { ActivityLog } from 'lib/components/ActivityLog/ActivityLog'
 import { PendingChangeRequestBanner } from 'scenes/approvals/PendingChangeRequestBanner'

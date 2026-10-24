@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { useEffect } from 'react'
 
 import { IconExternal } from '@posthog/icons'
-import { LemonButton, LemonDivider, LemonLabel, LemonSelect, LemonSwitch } from '@posthog/lemon-ui'
+import { LemonButton, LemonDivider, LemonLabel, LemonSelect, LemonSwitch } from '@flind/lemon-ui'
 
 import { CodeSnippet, Language } from 'lib/components/CodeSnippet'
 import { superpowersLogic } from 'lib/components/Superpowers/superpowersLogic'

@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
 import { IconSearch } from '@posthog/icons'
-import { LemonButton, LemonCheckbox, LemonInput, LemonSnack, LemonTable } from '@posthog/lemon-ui'
+import { LemonButton, LemonCheckbox, LemonInput, LemonSnack, LemonTable } from '@flind/lemon-ui'
 
 import { LOGS_PORTION_LIMIT } from 'lib/constants'
 import { pluralize } from 'lib/utils/strings'

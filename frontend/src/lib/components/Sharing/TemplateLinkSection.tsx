@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { TextMorph } from 'torph/react'
 
 import { IconChevronRight, IconInfo } from '@posthog/icons'
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { CodeSnippet, Language } from 'lib/components/CodeSnippet'
 import { TitleWithIcon } from 'lib/components/TitleWithIcon'

@@ -1,4 +1,4 @@
-import { Tooltip } from '@posthog/lemon-ui'
+import { Tooltip } from '@flind/lemon-ui'
 
 import type { FrictionGroupShareApi } from '../generated/api.schemas'
 import { timesTypical } from '../lib/format'

@@ -1,7 +1,7 @@
 import { MakeLogicType, actions, kea, path, reducers, useActions, useValues } from 'kea'
 
 import { IconCheck, IconX } from '@posthog/icons'
-import { LemonButton, LemonDivider, LemonInput, LemonSwitch, LemonTag } from '@posthog/lemon-ui'
+import { LemonButton, LemonDivider, LemonInput, LemonSwitch, LemonTag } from '@flind/lemon-ui'
 
 import { urls } from 'scenes/urls'
 

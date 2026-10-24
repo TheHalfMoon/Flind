@@ -1,7 +1,7 @@
 import posthog from 'posthog-js'
 
 import { IconPlus, IconTrash } from '@posthog/icons'
-import { LemonButton, LemonInput, LemonTag } from '@posthog/lemon-ui'
+import { LemonButton, LemonInput, LemonTag } from '@flind/lemon-ui'
 
 import { uuid } from 'lib/utils/dom'
 

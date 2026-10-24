@@ -1,4 +1,4 @@
-import { LemonSelectOption } from '@posthog/lemon-ui'
+import { LemonSelectOption } from '@flind/lemon-ui'
 
 import {
     CURRENCY_SYMBOL_TO_EMOJI_MAP,

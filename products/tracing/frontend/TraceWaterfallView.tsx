@@ -2,7 +2,7 @@ import { CSSProperties, useCallback, useEffect, useMemo, useRef, useState } from
 import { List, useDynamicRowHeight, useListRef } from 'react-window'
 
 import { IconChevronRight, IconCollapse, IconExpand, IconWarning } from '@posthog/icons'
-import { LemonButton, Spinner } from '@posthog/lemon-ui'
+import { LemonButton, Spinner } from '@flind/lemon-ui'
 
 import { getSeriesColor } from 'lib/colors'
 import { AutoSizer } from 'lib/components/AutoSizer'

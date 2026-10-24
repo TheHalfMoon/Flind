@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { LemonButton, LemonInput, LemonLabel, LemonModal, LemonSelect, LemonSwitch } from '@posthog/lemon-ui'
+import { LemonButton, LemonInput, LemonLabel, LemonModal, LemonSelect, LemonSwitch } from '@flind/lemon-ui'
 
 import { ChartSettings, YAxisSettings } from '~/queries/schema/schema-general'
 

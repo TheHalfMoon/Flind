@@ -1,6 +1,6 @@
 import { useMountedLogic, useValues } from 'kea'
 
-import { LemonCollapse, LemonInputSelect, Link, Spinner } from '@posthog/lemon-ui'
+import { LemonCollapse, LemonInputSelect, Link, Spinner } from '@flind/lemon-ui'
 
 import { resolveTeamGitHubIntegration, useRepositories } from 'lib/integrations/GitHubIntegrationHelpers'
 import { integrationsLogic } from 'lib/integrations/integrationsLogic'

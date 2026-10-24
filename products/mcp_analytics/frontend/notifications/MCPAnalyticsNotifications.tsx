@@ -1,4 +1,4 @@
-import { LemonBanner, Link } from '@posthog/lemon-ui'
+import { LemonBanner, Link } from '@flind/lemon-ui'
 
 import { NewNotificationDialog } from 'scenes/hog-functions/list/NewNotificationDialog'
 import { urls } from 'scenes/urls'

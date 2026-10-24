@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 
 import { IconDatabase, IconPlug, IconServer } from '@posthog/icons'
-import { LemonTag } from '@posthog/lemon-ui'
+import { LemonTag } from '@flind/lemon-ui'
 
 import type { DataHealthIssue } from './pipelineHealthLogic'
 import { pipelineStatusSceneLogic } from './pipelineStatusSceneLogic'

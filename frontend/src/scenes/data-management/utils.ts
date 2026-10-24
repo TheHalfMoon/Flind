@@ -1,4 +1,4 @@
-import { LemonSelectOptions } from '@posthog/lemon-ui'
+import { LemonSelectOptions } from '@flind/lemon-ui'
 
 type VerifiedFilterOption = 'all' | 'verified' | 'unverified'
 

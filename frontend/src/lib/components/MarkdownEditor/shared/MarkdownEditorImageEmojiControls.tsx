@@ -3,7 +3,7 @@ import { useActions, useValues } from 'kea'
 import type { RefObject } from 'react'
 
 import { IconImage, IconMarkdownFilled } from '@posthog/icons'
-import { LemonButton } from '@posthog/lemon-ui'
+import { LemonButton } from '@flind/lemon-ui'
 
 import { EmojiPickerPopover } from 'lib/components/EmojiPicker/EmojiPickerPopover'
 import { LemonFileInput } from 'lib/lemon-ui/LemonFileInput'

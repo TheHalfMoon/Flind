@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { useMemo, useState } from 'react'
 
 import { IconPin, IconPinFilled } from '@posthog/icons'
-import { LemonButton, LemonCheckbox, LemonInput } from '@posthog/lemon-ui'
+import { LemonButton, LemonCheckbox, LemonInput } from '@flind/lemon-ui'
 
 import { PropertiesTable } from 'lib/components/PropertiesTable'
 import { PropertyKeyInfo } from 'lib/components/PropertyKeyInfo'

@@ -2,7 +2,7 @@ import { useActions, useValues, type BuiltLogic } from 'kea'
 import { combineUrl, router } from 'kea-router'
 
 import { IconChevronLeft, IconChevronRight } from '@posthog/icons'
-import { LemonBanner, LemonButton, LemonCard, LemonSkeleton, LemonTag, Link } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonCard, LemonSkeleton, LemonTag, Link } from '@flind/lemon-ui'
 
 import { urls } from 'scenes/urls'
 

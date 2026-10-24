@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonButton, LemonInput, LemonInputSelect, LemonModal, LemonSelect } from '@posthog/lemon-ui'
+import { LemonButton, LemonInput, LemonInputSelect, LemonModal, LemonSelect } from '@flind/lemon-ui'
 
 import { metricOptionKey, metricsStarterDashboardLogic } from './metricsStarterDashboardLogic'
 

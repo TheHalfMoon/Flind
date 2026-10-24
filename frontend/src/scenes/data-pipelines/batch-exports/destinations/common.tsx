@@ -1,4 +1,4 @@
-import { LemonCheckbox, LemonInput, LemonSelect, LemonSwitch, Link } from '@posthog/lemon-ui'
+import { LemonCheckbox, LemonInput, LemonSelect, LemonSwitch, Link } from '@flind/lemon-ui'
 
 import { IntegrationChoice } from 'lib/components/CyclotronJob/integrations/IntegrationChoice'
 import { LemonField } from 'lib/lemon-ui/LemonField'

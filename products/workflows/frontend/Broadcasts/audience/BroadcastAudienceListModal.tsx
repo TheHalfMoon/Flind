@@ -1,6 +1,6 @@
 import { useActions, useMountedLogic, useValues } from 'kea'
 
-import { LemonBanner, LemonButton, LemonInput, LemonModal } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonInput, LemonModal } from '@flind/lemon-ui'
 
 import { CohortCsvDropzone } from 'scenes/cohorts/CohortCsvDropzone'
 

@@ -1,6 +1,6 @@
 import { useValues } from 'kea'
 
-import { LemonSkeleton, Tooltip } from '@posthog/lemon-ui'
+import { LemonSkeleton, Tooltip } from '@flind/lemon-ui'
 
 import { formatCurrency } from 'lib/utils/currency'
 import { DataSourceIcon } from 'scenes/notebooks/Nodes/components/DataSourceIcon'

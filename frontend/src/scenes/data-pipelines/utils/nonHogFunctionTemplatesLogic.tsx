@@ -1,6 +1,6 @@
 import { MakeLogicType, connect, kea, path, props, selectors } from 'kea'
 
-import { Link } from '@posthog/lemon-ui'
+import { Link } from '@flind/lemon-ui'
 
 import { FEATURE_FLAGS, type FeatureFlagKey } from 'lib/constants'
 import { featureFlagLogic } from 'lib/logic/featureFlagLogic'

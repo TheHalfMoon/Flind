@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonBanner, LemonTab, LemonTabs, Spinner } from '@posthog/lemon-ui'
+import { LemonBanner, LemonTab, LemonTabs, Spinner } from '@flind/lemon-ui'
 
 import { NotFound } from 'lib/components/NotFound'
 import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'

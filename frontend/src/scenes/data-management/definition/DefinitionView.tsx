@@ -3,7 +3,7 @@ import { router } from 'kea-router'
 import { useMemo } from 'react'
 
 import { IconBadge, IconEye, IconHide, IconInfo } from '@posthog/icons'
-import { LemonTag, LemonTagType, Spinner, Tooltip } from '@posthog/lemon-ui'
+import { LemonTag, LemonTagType, Spinner, Tooltip } from '@flind/lemon-ui'
 import { Button } from '@flind/quill'
 
 import { FlaggedFeature } from 'lib/components/FlaggedFeature'

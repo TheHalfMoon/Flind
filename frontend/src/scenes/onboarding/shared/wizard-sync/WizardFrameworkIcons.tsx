@@ -1,4 +1,4 @@
-import { Tooltip } from '@posthog/lemon-ui'
+import { Tooltip } from '@flind/lemon-ui'
 
 import { WIZARD_FRAMEWORKS, type WizardBadgeItem, WizardFrameworkIcon } from './WizardModeShell'
 

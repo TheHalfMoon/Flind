@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { compare as compareFn } from 'natural-orderby'
 
 import { IconFlag } from '@posthog/icons'
-import { LemonColorButton, LemonTag } from '@posthog/lemon-ui'
+import { LemonColorButton, LemonTag } from '@flind/lemon-ui'
 
 import { EntityFilterInfo } from 'lib/components/EntityFilterInfo'
 import { LemonCheckbox } from 'lib/lemon-ui/LemonCheckbox'

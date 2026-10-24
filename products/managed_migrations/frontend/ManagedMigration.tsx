@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { Form } from 'kea-forms'
 
 import { IconSort } from '@posthog/icons'
-import { LemonButton, LemonTable, LemonTag, Link } from '@posthog/lemon-ui'
+import { LemonButton, LemonTable, LemonTag, Link } from '@flind/lemon-ui'
 import { Button } from '@flind/quill'
 
 import { CodeSnippet, Language } from 'lib/components/CodeSnippet'

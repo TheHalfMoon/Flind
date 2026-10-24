@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 import { useEffect, useMemo, useState } from 'react'
 
-import { LemonBanner, LemonSkeleton, Popover } from '@posthog/lemon-ui'
+import { LemonBanner, LemonSkeleton, Popover } from '@flind/lemon-ui'
 
 import api from 'lib/api'
 import { ErrorTrackingSpikeEvent } from 'lib/components/Errors/types'

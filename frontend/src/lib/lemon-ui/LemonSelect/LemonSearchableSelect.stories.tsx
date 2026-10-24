@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { LemonSearchableSelect, LemonSearchableSelectProps, LemonSelectOptions } from '@posthog/lemon-ui'
+import { LemonSearchableSelect, LemonSearchableSelectProps, LemonSelectOptions } from '@flind/lemon-ui'
 
 import { capitalizeFirstLetter } from 'lib/utils/strings'
 

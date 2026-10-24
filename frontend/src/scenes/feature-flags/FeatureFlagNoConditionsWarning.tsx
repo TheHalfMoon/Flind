@@ -1,4 +1,4 @@
-import { LemonBanner } from '@posthog/lemon-ui'
+import { LemonBanner } from '@flind/lemon-ui'
 
 export interface FeatureFlagNoConditionsWarningProps {
     conditionSetCount: number

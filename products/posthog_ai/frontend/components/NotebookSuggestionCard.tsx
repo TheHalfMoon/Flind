@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonInput, LemonLabel } from '@posthog/lemon-ui'
+import { LemonInput, LemonLabel } from '@flind/lemon-ui'
 
 import { pluralize } from 'lib/utils/strings'
 

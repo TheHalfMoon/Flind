@@ -1,4 +1,4 @@
-import { LemonButton, Spinner } from '@posthog/lemon-ui'
+import { LemonButton, Spinner } from '@flind/lemon-ui'
 
 import { ErrorEventType } from 'lib/components/Errors/types'
 

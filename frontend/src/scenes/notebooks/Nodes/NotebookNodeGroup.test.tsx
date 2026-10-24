@@ -16,8 +16,8 @@ jest.mock('./NodeWrapper', () => ({
 }))
 
 // Mocking because it is annoying to mock the hover to assert the tooltip text
-jest.mock('@posthog/lemon-ui', () => ({
-    ...jest.requireActual('@posthog/lemon-ui'),
+jest.mock('@flind/lemon-ui', () => ({
+    ...jest.requireActual('@flind/lemon-ui'),
     Tooltip: ({ children, title }: { children: React.ReactNode; title: string }) => (
         <div data-attr={title}>{children}</div>
     ),

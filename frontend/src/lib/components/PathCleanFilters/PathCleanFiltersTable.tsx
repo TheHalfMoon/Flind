@@ -15,7 +15,7 @@ import clsx from 'clsx'
 import { useEffect, useState } from 'react'
 
 import { IconPencil, IconTrash } from '@posthog/icons'
-import { LemonButton, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, Tooltip } from '@flind/lemon-ui'
 
 import { TeamMembershipLevel } from 'lib/constants'
 import { SortableDragIcon } from 'lib/lemon-ui/icons'

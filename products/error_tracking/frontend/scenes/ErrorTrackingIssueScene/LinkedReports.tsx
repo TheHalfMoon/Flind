@@ -1,7 +1,7 @@
 import { useValues } from 'kea'
 
 import { IconLogomark } from '@posthog/icons'
-import { Link, Tooltip } from '@posthog/lemon-ui'
+import { Link, Tooltip } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'
 import { SignalReportFixOrStatus } from 'lib/signals/SignalReportFixOrStatus'

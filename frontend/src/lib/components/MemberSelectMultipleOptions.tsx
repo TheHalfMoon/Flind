@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { useMemo, useRef, useState } from 'react'
 
 import { IconX } from '@posthog/icons'
-import { LemonButton, LemonInput } from '@posthog/lemon-ui'
+import { LemonButton, LemonInput } from '@flind/lemon-ui'
 
 import { membersLogic } from 'scenes/organization/membersLogic'
 

@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { useMemo } from 'react'
 
 import { IconChevronLeft, IconChevronRight } from '@posthog/icons'
-import { LemonButton, LemonSegmentedButton, LemonTag, Link, SpinnerOverlay } from '@posthog/lemon-ui'
+import { LemonButton, LemonSegmentedButton, LemonTag, Link, SpinnerOverlay } from '@flind/lemon-ui'
 
 import { DateFilter } from 'lib/components/DateFilter/DateFilter'
 import { TZLabel } from 'lib/components/TZLabel'

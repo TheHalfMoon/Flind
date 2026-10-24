@@ -1,5 +1,5 @@
 import { IconWrench } from '@posthog/icons'
-import { LemonTag } from '@posthog/lemon-ui'
+import { LemonTag } from '@flind/lemon-ui'
 
 import { isPlainObject, toDisplayText } from './jsonText'
 import { KeyValueTable } from './KeyValueTable'

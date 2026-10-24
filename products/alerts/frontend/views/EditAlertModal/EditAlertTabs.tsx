@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
-import { LemonTabs } from '@posthog/lemon-ui'
-import type { LemonTab } from '@posthog/lemon-ui'
+import { LemonTabs } from '@flind/lemon-ui'
+import type { LemonTab } from '@flind/lemon-ui'
 
 import { AlertSummaryBanner, AlertSummarySection } from 'products/alerts/frontend/components/AlertSummaryBanner'
 

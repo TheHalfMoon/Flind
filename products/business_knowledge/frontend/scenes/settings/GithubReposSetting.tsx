@@ -1,6 +1,6 @@
 import { useActions, useMountedLogic, useValues } from 'kea'
 
-import { LemonButton, LemonDialog, LemonSkeleton, LemonSnack, LemonTag, Link } from '@posthog/lemon-ui'
+import { LemonButton, LemonDialog, LemonSkeleton, LemonSnack, LemonTag, Link } from '@flind/lemon-ui'
 
 import { GitHubRepositoryCombobox } from 'lib/integrations/GitHubRepositoryCombobox'
 import { integrationsLogic } from 'lib/integrations/integrationsLogic'

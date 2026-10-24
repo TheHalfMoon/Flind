@@ -1,5 +1,5 @@
 import { IconLive } from '@posthog/icons'
-import type { LemonTagType } from '@posthog/lemon-ui'
+import type { LemonTagType } from '@flind/lemon-ui'
 
 import { cn } from 'lib/utils/css-classes'
 

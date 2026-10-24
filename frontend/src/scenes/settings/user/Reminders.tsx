@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { Form } from 'kea-forms'
 
 import { IconPencil, IconPlus, IconTrash } from '@posthog/icons'
-import { LemonButton, LemonInput, LemonModal, LemonSelect, LemonTable, LemonTag } from '@posthog/lemon-ui'
+import { LemonButton, LemonInput, LemonModal, LemonSelect, LemonTable, LemonTag } from '@flind/lemon-ui'
 
 import { DatePicker } from 'lib/components/DatePicker/DatePicker'
 import { TZLabel } from 'lib/components/TZLabel'

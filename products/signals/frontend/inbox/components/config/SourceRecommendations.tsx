@@ -1,6 +1,6 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonButton, LemonTag } from '@posthog/lemon-ui'
+import { LemonButton, LemonTag } from '@flind/lemon-ui'
 
 import { isExternalSignalSource } from '../../externalSignalSources'
 import { WarehouseBackedSource, signalSourcesLogic } from '../../signalSourcesLogic'

@@ -9,7 +9,7 @@ import {
     LemonTableColumn,
     LemonTableColumns,
     LemonTag,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { AccessControlAction } from 'lib/components/AccessControlAction'
 import { More } from 'lib/lemon-ui/LemonButton/More'

@@ -1,7 +1,7 @@
 import { useActions, useValues } from 'kea'
 
-import { LemonBanner, LemonButton, LemonTable, LemonTag, Tooltip } from '@posthog/lemon-ui'
-import type { LemonTableColumns } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonTable, LemonTag, Tooltip } from '@flind/lemon-ui'
+import type { LemonTableColumns } from '@flind/lemon-ui'
 
 import { Sparkline } from 'lib/components/Sparkline'
 import { TZLabel } from 'lib/components/TZLabel'

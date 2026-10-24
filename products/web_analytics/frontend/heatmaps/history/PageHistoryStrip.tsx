@@ -11,7 +11,7 @@ import {
     IconRefresh,
     IconX,
 } from '@posthog/icons'
-import { LemonBanner, LemonButton, LemonCard, LemonMenu, Spinner, Tooltip } from '@posthog/lemon-ui'
+import { LemonBanner, LemonButton, LemonCard, LemonMenu, Spinner, Tooltip } from '@flind/lemon-ui'
 
 import { dayjs } from 'lib/dayjs'
 import { LemonSkeleton } from 'lib/lemon-ui/LemonSkeleton'

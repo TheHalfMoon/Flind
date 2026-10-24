@@ -1,7 +1,7 @@
 import { useId, useState } from 'react'
 
 import { IconChevronDown, IconPencil, IconTrash } from '@posthog/icons'
-import { LemonButton, LemonCheckbox, LemonInput, LemonSwitch, LemonTag, LemonTextArea } from '@posthog/lemon-ui'
+import { LemonButton, LemonCheckbox, LemonInput, LemonSwitch, LemonTag, LemonTextArea } from '@flind/lemon-ui'
 
 import { LemonField } from 'lib/lemon-ui/LemonField'
 import { cn } from 'lib/utils/css-classes'

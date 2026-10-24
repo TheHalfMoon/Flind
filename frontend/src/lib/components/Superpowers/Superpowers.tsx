@@ -3,7 +3,7 @@ import { useState } from 'react'
 
 import * as superheroPng from '@posthog/brand/hoggies/png/superhero'
 import { IconArrowLeft, IconChevronRight, IconTrash } from '@posthog/icons'
-import { LemonButton, LemonDivider, LemonSelect, LemonSwitch, LemonTag } from '@posthog/lemon-ui'
+import { LemonButton, LemonDivider, LemonSelect, LemonSwitch, LemonTag } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import { LemonModal } from 'lib/lemon-ui/LemonModal'

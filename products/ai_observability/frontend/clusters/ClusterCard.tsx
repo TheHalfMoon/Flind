@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 
 import { IconChevronDown, IconChevronRight } from '@posthog/icons'
-import { LemonButton, LemonTag, Link, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, LemonTag, Link, Tooltip } from '@flind/lemon-ui'
 
 import { getSeriesColor } from 'lib/colors'
 import { urls } from 'scenes/urls'

@@ -9,7 +9,7 @@ import {
     LemonLabel,
     LemonSelect,
     LemonTag,
-} from '@posthog/lemon-ui'
+} from '@flind/lemon-ui'
 
 import { getSeriesColorPalette } from 'lib/colors'
 

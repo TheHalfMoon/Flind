@@ -2,7 +2,7 @@ import { BuiltLogic, useActions, useValues } from 'kea'
 import { Children, MouseEvent, ReactElement, isValidElement, useCallback } from 'react'
 import { P, match } from 'ts-pattern'
 
-import { LemonButton, LemonTable, LemonTableColumn, LemonTableProps } from '@posthog/lemon-ui'
+import { LemonButton, LemonTable, LemonTableColumn, LemonTableProps } from '@flind/lemon-ui'
 
 import type { DataSourceLogic } from './types'
 

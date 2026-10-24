@@ -1,4 +1,4 @@
-import { LemonTable, Link } from '@posthog/lemon-ui'
+import { LemonTable, Link } from '@flind/lemon-ui'
 
 import type { ContentAutopilotSourceLedgerEntryApi } from 'products/web_analytics/frontend/generated/api.schemas'
 

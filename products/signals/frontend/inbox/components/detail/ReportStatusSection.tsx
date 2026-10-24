@@ -1,7 +1,7 @@
 import { type ReactNode } from 'react'
 
 import { IconInfo } from '@posthog/icons'
-import { LemonSelect, LemonTag } from '@posthog/lemon-ui'
+import { LemonSelect, LemonTag } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'
 import { Link } from 'lib/lemon-ui/Link'

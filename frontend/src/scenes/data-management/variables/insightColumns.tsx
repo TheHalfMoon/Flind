@@ -1,4 +1,4 @@
-import { LemonTableColumns } from '@posthog/lemon-ui'
+import { LemonTableColumns } from '@flind/lemon-ui'
 
 import { TZLabel } from 'lib/components/TZLabel'
 import { LemonTableLink } from 'lib/lemon-ui/LemonTable/LemonTableLink'

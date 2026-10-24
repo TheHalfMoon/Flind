@@ -1,7 +1,7 @@
 import { useActions, useMountedLogic, useValues } from 'kea'
 
 import { IconWarning } from '@posthog/icons'
-import { LemonButton, LemonInput, LemonLabel, Spinner } from '@posthog/lemon-ui'
+import { LemonButton, LemonInput, LemonLabel, Spinner } from '@flind/lemon-ui'
 
 import PropertyFiltersDisplay from 'lib/components/PropertyFilters/components/PropertyFiltersDisplay'
 import { integrationsLogic } from 'lib/integrations/integrationsLogic'

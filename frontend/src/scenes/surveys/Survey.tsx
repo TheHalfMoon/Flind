@@ -2,7 +2,7 @@ import { BindLogic, useActions, useValues } from 'kea'
 import { Form } from 'kea-forms'
 import { useEffect } from 'react'
 
-import { LemonDivider, LemonTag, Link, lemonToast } from '@posthog/lemon-ui'
+import { LemonDivider, LemonTag, Link, lemonToast } from '@flind/lemon-ui'
 
 import { FlagSelector } from 'lib/components/FlagSelector'
 import { NotFound } from 'lib/components/NotFound'

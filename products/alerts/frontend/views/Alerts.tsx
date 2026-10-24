@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { router } from 'kea-router'
 import { Suspense, useEffect } from 'react'
 
-import { LemonSkeleton, LemonTabs } from '@posthog/lemon-ui'
+import { LemonSkeleton, LemonTabs } from '@flind/lemon-ui'
 
 import { AccessDenied } from 'lib/components/AccessDenied'
 import { lazyWithRetry } from 'lib/utils/retryImport'

@@ -1,6 +1,6 @@
 import { ReactNode, Suspense, useEffect, useRef, useState } from 'react'
 
-import { Spinner } from '@posthog/lemon-ui'
+import { Spinner } from '@flind/lemon-ui'
 
 import type { MonacoDiffEditorProps } from 'lib/components/MonacoDiffEditor'
 import { useBodyIsDark } from 'lib/hooks/useBodyIsDark'

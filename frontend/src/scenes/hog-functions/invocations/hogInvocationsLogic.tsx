@@ -2,7 +2,7 @@ import { MakeLogicType, actions, kea, key, listeners, path, props, reducers, sel
 import { loaders } from 'kea-loaders'
 import { actionToUrl, router, urlToAction } from 'kea-router'
 
-import { lemonToast } from '@posthog/lemon-ui'
+import { lemonToast } from '@flind/lemon-ui'
 
 import api, { ApiConfig } from 'lib/api'
 import { dayjs } from 'lib/dayjs'

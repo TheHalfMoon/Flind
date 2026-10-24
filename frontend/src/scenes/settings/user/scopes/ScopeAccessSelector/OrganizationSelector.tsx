@@ -1,4 +1,4 @@
-import { LemonInputSelect } from '@posthog/lemon-ui'
+import { LemonInputSelect } from '@flind/lemon-ui'
 
 import type { OrganizationSelectorProps } from './types'
 import { createOrganizationOption } from './utils'

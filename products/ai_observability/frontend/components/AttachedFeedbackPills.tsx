@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { LemonTag } from '@posthog/lemon-ui'
+import { LemonTag } from '@flind/lemon-ui'
 
 import { Popover } from 'lib/lemon-ui/Popover/Popover'
 

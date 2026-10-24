@@ -1,7 +1,7 @@
 import { BindLogic, useValues } from 'kea'
 
 import { IconExternal } from '@posthog/icons'
-import { LemonSkeleton, Link } from '@posthog/lemon-ui'
+import { LemonSkeleton, Link } from '@flind/lemon-ui'
 
 import { LemonMarkdown } from 'lib/lemon-ui/LemonMarkdown'
 import { humanFriendlyDetailedTime } from 'lib/utils/datetime'

@@ -1,5 +1,5 @@
 import { IconInfo } from '@posthog/icons'
-import { LemonCheckbox, LemonInput, Tooltip } from '@posthog/lemon-ui'
+import { LemonCheckbox, LemonInput, Tooltip } from '@flind/lemon-ui'
 
 import { DatePicker } from 'lib/components/DatePicker/DatePicker'
 import { dayjs } from 'lib/dayjs'

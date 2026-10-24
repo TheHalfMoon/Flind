@@ -1,4 +1,4 @@
-import { LemonTag, Tooltip } from '@posthog/lemon-ui'
+import { LemonTag, Tooltip } from '@flind/lemon-ui'
 
 import { CONFIDENCE_CONFIG } from './constants'
 import { ProbableCause } from './types'

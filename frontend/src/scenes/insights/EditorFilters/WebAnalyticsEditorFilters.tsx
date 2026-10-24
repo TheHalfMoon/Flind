@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import { useActions, useValues } from 'kea'
 
 import { IconFilter } from '@posthog/icons'
-import { LemonButton, LemonSwitch, Tooltip } from '@posthog/lemon-ui'
+import { LemonButton, LemonSwitch, Tooltip } from '@flind/lemon-ui'
 
 import { FilterBar } from 'lib/components/FilterBar'
 import { insightLogic } from 'scenes/insights/insightLogic'
