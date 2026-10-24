@@ -3,14 +3,14 @@ export type FlindPublicPage = 'docs' | 'changelog' | 'community' | 'roadmap' | '
 
 type LinkConfig = Partial<Record<FlindPublicPage, string | undefined>>
 
-const ownedHostname: string = import.meta.env.VITE_FLIND_WEBSITE_HOST || ''
+const ownedHostname: string = import.meta.env?.VITE_FLIND_WEBSITE_HOST || ''
 const configuredLinks: LinkConfig = {
-    docs: import.meta.env.VITE_FLIND_DOCS_URL,
-    changelog: import.meta.env.VITE_FLIND_CHANGELOG_URL,
-    community: import.meta.env.VITE_FLIND_COMMUNITY_URL,
-    roadmap: import.meta.env.VITE_FLIND_ROADMAP_URL,
-    terms: import.meta.env.VITE_FLIND_TERMS_URL,
-    privacy: import.meta.env.VITE_FLIND_PRIVACY_URL,
+    docs: import.meta.env?.VITE_FLIND_DOCS_URL,
+    changelog: import.meta.env?.VITE_FLIND_CHANGELOG_URL,
+    community: import.meta.env?.VITE_FLIND_COMMUNITY_URL,
+    roadmap: import.meta.env?.VITE_FLIND_ROADMAP_URL,
+    terms: import.meta.env?.VITE_FLIND_TERMS_URL,
+    privacy: import.meta.env?.VITE_FLIND_PRIVACY_URL,
 }
 
 export function flindPublicUrl(

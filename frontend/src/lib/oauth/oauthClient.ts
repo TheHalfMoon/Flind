@@ -29,14 +29,14 @@ export const OAUTH_REGIONS: Record<Region.US | Region.EU, OAuthRegionConfig> = {
         label: 'Flind US',
         flag: '🇺🇸',
         host: flindOAuthHost(Region.US),
-        clientId: import.meta.env.VITE_FLIND_OAUTH_US_CLIENT_ID || '',
+        clientId: import.meta.env?.VITE_FLIND_OAUTH_US_CLIENT_ID || '',
     },
     [Region.EU]: {
         key: Region.EU,
         label: 'Flind EU',
         flag: '🇪🇺',
         host: flindOAuthHost(Region.EU),
-        clientId: import.meta.env.VITE_FLIND_OAUTH_EU_CLIENT_ID || '',
+        clientId: import.meta.env?.VITE_FLIND_OAUTH_EU_CLIENT_ID || '',
     },
 }
 

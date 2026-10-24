@@ -4,7 +4,7 @@ import { LogicWrapper, MakeLogicType, actions, afterMount, kea, path, reducers }
 // marketing domain is ever trusted by default.
 export function isWebsiteReferrer(
     referrer: string,
-    websiteHostname: string = import.meta.env.VITE_FLIND_WEBSITE_HOST || ''
+    websiteHostname: string = import.meta.env?.VITE_FLIND_WEBSITE_HOST || ''
 ): boolean {
     if (!referrer || !websiteHostname || !/^[a-z0-9][a-z0-9.-]*[a-z0-9]$/.test(websiteHostname)) {
         return false

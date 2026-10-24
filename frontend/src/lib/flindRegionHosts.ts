@@ -6,8 +6,8 @@ import { Region } from '~/types'
 export type FlindRegionHosts = Partial<Record<Region, string | undefined>>
 
 const CONFIGURED_HOSTS: FlindRegionHosts = {
-    [Region.US]: import.meta.env.VITE_FLIND_REGION_US_HOST,
-    [Region.EU]: import.meta.env.VITE_FLIND_REGION_EU_HOST,
+    [Region.US]: import.meta.env?.VITE_FLIND_REGION_US_HOST,
+    [Region.EU]: import.meta.env?.VITE_FLIND_REGION_EU_HOST,
 }
 
 export function flindRegionHost(region: Region, config: FlindRegionHosts = CONFIGURED_HOSTS): string | null {
