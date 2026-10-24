@@ -8,6 +8,7 @@ import api, { ApiError } from 'lib/api'
 import { getProductPushDisplay } from 'lib/components/NavPanelAdvertisement/navPanelProductPushDisplay'
 import { reverseProxyCheckerLogic } from 'lib/components/ReverseProxyChecker/reverseProxyCheckerLogic'
 import { FEATURE_FLAGS } from 'lib/constants'
+import { flindPublicUrl } from 'lib/flindPublicLinks'
 import { LemonBannerProps } from 'lib/lemon-ui/LemonBanner/LemonBanner'
 import { LemonDialog } from 'lib/lemon-ui/LemonDialog'
 import { Link } from 'lib/lemon-ui/Link'
@@ -157,9 +158,14 @@ function buildBillingAlertAction(
     }
 
     if (billingAlert.contactSupport) {
+        // No inherited sales inbox. An operator must configure a genuine Flind help destination.
+        const docsUrl = flindPublicUrl('docs')
+        if (!docsUrl) {
+            return undefined
+        }
         return {
-            to: 'mailto:sales@posthog.com',
-            children: billingAlert.buttonCTA || 'Contact support',
+            to: docsUrl,
+            children: 'View support options',
             onClick: () => billingLogic.actions.reportBillingAlertActionClicked(billingAlert),
         }
     }
