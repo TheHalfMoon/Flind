@@ -1,3 +1,4 @@
+use std::net::IpAddr;
 use std::path::Path;
 use std::thread::sleep;
 use std::time::{Duration, Instant};
@@ -238,7 +239,9 @@ impl Importer<'_> {
                     last_transport_error = Some(error.to_string());
                     Disposition::Retry(backoff(attempt))
                 }
-                Err(error) => return Err(error).context("failed to reach the PostHog logs intake"),
+                Err(error) => {
+                    return Err(error).context("failed to reach the configured Flind logs intake")
+                }
             };
 
             match disposition {
@@ -269,12 +272,41 @@ impl Importer<'_> {
 }
 
 /// The intake route, carrying the backfill window the range needs.
-pub fn intake_url(host: &str, from: chrono::DateTime<chrono::Utc>) -> String {
+/// Construct the logs destination from an explicitly configured Flind host.
+/// Never append a bearer-authenticated route to an unrelated vendor, a URL with
+/// hidden path/query components, or an insecure public HTTP endpoint.
+pub fn intake_url(host: &str, from: chrono::DateTime<chrono::Utc>) -> Result<String> {
+    let mut base =
+        reqwest::Url::parse(host).context("Flind logs intake requires an explicit URL")?;
+    let hostname = base
+        .host_str()
+        .context("Flind logs intake URL has no hostname")?;
+    let hostname = hostname.to_ascii_lowercase();
+    if hostname == "posthog.com" || hostname.ends_with(".posthog.com") {
+        bail!("Flind logs intake must not send a project key to the inherited cloud provider");
+    }
+    let unbracketed = hostname.trim_start_matches('[').trim_end_matches(']');
+    let loopback = hostname == "localhost"
+        || hostname.ends_with(".localhost")
+        || unbracketed
+            .parse::<IpAddr>()
+            .is_ok_and(|ip| ip.is_loopback());
+    if !(base.scheme() == "https" || (base.scheme() == "http" && loopback)) {
+        bail!("Flind logs intake requires HTTPS, except for loopback development hosts");
+    }
+    if !base.username().is_empty()
+        || base.password().is_some()
+        || base.path() != "/"
+        || base.query().is_some()
+        || base.fragment().is_some()
+    {
+        bail!("Flind logs intake host must be an origin without credentials, path, query, or fragment");
+    }
     let days = (chrono::Utc::now() - from).num_days().max(1) + 1;
-    format!(
-        "{}/i/v1/logs?backfill_days={days}",
-        host.trim_end_matches('/')
-    )
+    base.set_path("/i/v1/logs");
+    base.query_pairs_mut()
+        .append_pair("backfill_days", &days.to_string());
+    Ok(base.to_string())
 }
 
 #[cfg(test)]
@@ -288,19 +320,55 @@ mod tests {
         // one day wider than the range's age.
         let from = Utc::now() - Duration::days(540);
 
-        let url = intake_url("https://us.i.posthog.com", from);
+        let url = intake_url("https://flind.example", from).unwrap();
 
         assert!(url.contains("backfill_days=541"), "got {url}");
     }
 
     #[test]
     fn a_trailing_slash_on_the_host_does_not_double_up() {
-        let url = intake_url("https://us.i.posthog.com/", Utc::now() - Duration::days(1));
+        let url = intake_url("https://flind.example/", Utc::now() - Duration::days(1)).unwrap();
 
         assert!(
-            url.starts_with("https://us.i.posthog.com/i/v1/logs?"),
+            url.starts_with("https://flind.example/i/v1/logs?"),
             "got {url}"
         );
+    }
+
+    #[test]
+    fn intake_refuses_upstream_hosts_and_url_ambiguity() {
+        let from = Utc::now() - Duration::days(1);
+        for host in [
+            "https://posthog.com",
+            "https://us.i.posthog.com",
+            "https://flind.example/path",
+            "https://flind.example/?token=secret",
+            "https://flind.example/#fragment",
+            "https://user:password@flind.example",
+            "https://posthog.com.attacker.example/path",
+            "http://flind.example",
+            "file:///tmp/logs",
+            "ftp://flind.example",
+        ] {
+            // Only the attacker-lookalike *hostname* is permitted. The path
+            // on that lookalike URL remains invalid on its own merits.
+            assert!(intake_url(host, from).is_err(), "{host} should not qualify");
+        }
+    }
+
+    #[test]
+    fn intake_supports_explicit_tls_and_loopback_development() {
+        let from = Utc::now() - Duration::days(1);
+        for host in [
+            "https://flind.example:8443",
+            "http://localhost:8000",
+            "http://127.0.0.1:8000",
+            "http://[::1]:8000",
+        ] {
+            let url = intake_url(host, from).unwrap();
+            assert!(url.contains("/i/v1/logs?backfill_days="), "{url}");
+        }
+        assert!(intake_url("https://notposthog.com", from).is_ok());
     }
 
     #[test]

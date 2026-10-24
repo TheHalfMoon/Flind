@@ -4,7 +4,7 @@ use clap::Subcommand;
 
 #[derive(Debug, Subcommand)]
 pub enum LogsCommand {
-    /// Import historical logs from another log store into PostHog
+    /// Import historical logs from another log store into Flind
     Import {
         #[command(subcommand)]
         cmd: ImportSource,
@@ -134,6 +134,7 @@ fn dry_run_report(config: &LokiImportConfig, expiry: &Expiry) -> Result<()> {
         &config.source,
         LokiAuth::from_env(),
         reqwest::blocking::Client::builder()
+            .redirect(reqwest::redirect::Policy::none())
             .timeout(std::time::Duration::from_secs(120))
             .build()?,
     );
@@ -195,12 +196,13 @@ fn run_import(
     use super::run::{intake_url, project_key_from_env, Importer};
 
     let http = reqwest::blocking::Client::builder()
+        .redirect(reqwest::redirect::Policy::none())
         .timeout(std::time::Duration::from_secs(120))
         .build()?;
     let client = LokiClient::new(&config.source, LokiAuth::from_env(), http.clone());
     let mapper = Mapper::new(config.extract.clone())?;
-    // The CLI already resolved the host from --host, then the stored login, then the default.
-    // Re-deriving it here would send an EU project's logs to US.
+    // The CLI resolved an explicitly configured host, or a stored login host.
+    // Fail closed rather than forwarding the project write key to the inherited cloud.
     let host = crate::invocation_context::context().config.host.clone();
 
     Importer {
@@ -208,7 +210,7 @@ fn run_import(
         loki: &client,
         mapper: &mapper,
         http: &http,
-        intake_url: intake_url(&host, config.range.from),
+        intake_url: intake_url(&host, config.range.from)?,
         project_key: project_key_from_env()?,
         checkpoint_path: checkpoint,
         retention_days,
