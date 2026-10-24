@@ -1,5 +1,6 @@
 {
-    "name": "@posthog/products-feature-flags",
+    "name": "@flind/products-feature-flags",
+    "private": true,
     "scripts": {
         "backend:test": "pytest -c ../../pytest.ini --rootdir ../.. backend/ -v --tb=short"
     },

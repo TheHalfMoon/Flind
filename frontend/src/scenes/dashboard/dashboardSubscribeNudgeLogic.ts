@@ -13,8 +13,8 @@ import {
 import { loaders } from 'kea-loaders'
 import { subscriptions } from 'kea-subscriptions'
 
-import { dashboardsSubscribeNudgeCreate } from '@posthog/products-dashboards/frontend/generated/api'
-import type { DashboardSubscribeNudgeResponseApi } from '@posthog/products-dashboards/frontend/generated/api.schemas'
+import { dashboardsSubscribeNudgeCreate } from '@flind/products-dashboards/frontend/generated/api'
+import type { DashboardSubscribeNudgeResponseApi } from '@flind/products-dashboards/frontend/generated/api.schemas'
 
 import posthog from 'lib/posthog-typed'
 import { getCurrentTeamId } from 'lib/utils/getAppContext'

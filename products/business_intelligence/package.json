@@ -1,5 +1,5 @@
 {
-    "name": "@posthog/products-business-intelligence",
+    "name": "@flind/products-business-intelligence",
     "private": true,
     "dependencies": {
         "@posthog/quill": "workspace:*",

@@ -8,8 +8,8 @@ import {
     AssigneeIconDisplay,
     AssigneeLabelDisplay,
     AssigneeResolver,
-} from '@posthog/products-error-tracking/frontend/components/Assignee/AssigneeDisplay'
-import { AssigneeSelect } from '@posthog/products-error-tracking/frontend/components/Assignee/AssigneeSelect'
+} from '@flind/products-error-tracking/frontend/components/Assignee/AssigneeDisplay'
+import { AssigneeSelect } from '@flind/products-error-tracking/frontend/components/Assignee/AssigneeSelect'
 
 import { DateFilter } from 'lib/components/DateFilter/DateFilter'
 import { DurationPicker } from 'lib/components/DurationPicker/DurationPicker'

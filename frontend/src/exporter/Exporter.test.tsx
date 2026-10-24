@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react'
 
-import { DashboardLoadingState } from '@posthog/products-dashboards/frontend/components/DashboardLoadingState/DashboardLoadingState'
+import { DashboardLoadingState } from '@flind/products-dashboards/frontend/components/DashboardLoadingState/DashboardLoadingState'
 
 import { Exporter } from '~/exporter/Exporter'
 import { ExportType, ExportedData } from '~/exporter/types'

@@ -1,5 +1,6 @@
 {
-    "name": "@posthog/products-live-debugger",
+    "name": "@flind/products-live-debugger",
+    "private": true,
     "scripts": {
         "backend:test": "echo 'vestigial app — no tests'"
     }

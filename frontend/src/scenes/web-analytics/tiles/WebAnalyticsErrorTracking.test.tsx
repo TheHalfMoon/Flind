@@ -4,7 +4,7 @@ import '@testing-library/jest-dom'
 
 import { cleanup, render, screen, waitFor } from '@testing-library/react'
 
-import { errorTrackingQuery } from '@posthog/products-error-tracking/frontend/queries'
+import { errorTrackingQuery } from '@flind/products-error-tracking/frontend/queries'
 
 import { productSetupStatusLogic } from 'lib/components/ProductEmptyState/productSetupStatusLogic'
 import { ProductSetupStatus } from 'lib/components/ProductEmptyState/types'

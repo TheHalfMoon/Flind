@@ -2,7 +2,7 @@ import { useValues } from 'kea'
 
 import { IconServer } from '@posthog/icons'
 import { LemonSwitch, LemonTag, Link, Spinner } from '@posthog/lemon-ui'
-import { ServerIcon } from '@posthog/products-mcp-store/frontend/scene/icons'
+import { ServerIcon } from '@flind/products-mcp-store/frontend/scene/icons'
 
 import type { CustomInputRendererProps } from 'lib/components/CyclotronJob/customInputRenderers'
 import { FEATURE_FLAGS } from 'lib/constants'

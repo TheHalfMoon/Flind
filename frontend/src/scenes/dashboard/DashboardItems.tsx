@@ -7,8 +7,8 @@ import { RefObject, memo, useCallback, useEffect, useMemo, useRef, useState } fr
 import { Responsive as ReactGridLayout } from 'react-grid-layout'
 import type { Layout, LayoutItem } from 'react-grid-layout'
 
-import { DashboardWidgetItem } from '@posthog/products-dashboards/frontend/components/DashboardWidgetItem/DashboardWidgetItem'
-import { getDashboardWidgetFetchDisplayError } from '@posthog/products-dashboards/frontend/widgets/constants'
+import { DashboardWidgetItem } from '@flind/products-dashboards/frontend/components/DashboardWidgetItem/DashboardWidgetItem'
+import { getDashboardWidgetFetchDisplayError } from '@flind/products-dashboards/frontend/widgets/constants'
 
 import { ApiError } from 'lib/api'
 import { EditModeEdge, useResizeHandleScrollbarPassThrough } from 'lib/components/Cards/InsightCard/EditModeEdgeOverlay'

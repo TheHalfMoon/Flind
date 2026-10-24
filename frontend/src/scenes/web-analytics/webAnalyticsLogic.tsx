@@ -22,7 +22,7 @@ import posthog from 'posthog-js'
 
 import { IconGear } from '@posthog/icons'
 import { LemonMenuItem } from '@posthog/lemon-ui'
-import { errorTrackingQuery } from '@posthog/products-error-tracking/frontend/queries'
+import { errorTrackingQuery } from '@flind/products-error-tracking/frontend/queries'
 
 import api from 'lib/api'
 import { AuthorizedUrlListType, authorizedUrlListLogic } from 'lib/components/AuthorizedUrlList/authorizedUrlListLogic'

@@ -7,8 +7,8 @@ import posthog from 'posthog-js'
 import type { Layout } from 'react-grid-layout'
 
 import { LemonDialog, lemonToast } from '@posthog/lemon-ui'
-import * as dashboardWidgetUtils from '@posthog/products-dashboards/frontend/utils'
-import { DASHBOARD_WIDGET_FETCH_ERROR_MESSAGE } from '@posthog/products-dashboards/frontend/widgets/constants'
+import * as dashboardWidgetUtils from '@flind/products-dashboards/frontend/utils'
+import { DASHBOARD_WIDGET_FETCH_ERROR_MESSAGE } from '@flind/products-dashboards/frontend/widgets/constants'
 
 import api from 'lib/api'
 import { ApiError } from 'lib/api-error'

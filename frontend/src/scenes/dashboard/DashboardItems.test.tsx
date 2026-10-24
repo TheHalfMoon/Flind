@@ -195,7 +195,7 @@ jest.mock('react-grid-layout/extras', () => ({
     ),
 }))
 
-jest.mock('@posthog/products-dashboards/frontend/components/DashboardWidgetItem/DashboardWidgetItem', () => ({
+jest.mock('@flind/products-dashboards/frontend/components/DashboardWidgetItem/DashboardWidgetItem', () => ({
     DashboardWidgetItem: () => <div data-attr="widget-card" />,
 }))
 

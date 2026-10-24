@@ -600,12 +600,24 @@ importers:
       '@flind/products-account-audits':
         specifier: workspace:*
         version: link:../products/account_audits
+      '@flind/products-actions':
+        specifier: workspace:*
+        version: link:../products/actions
       '@flind/products-ai-gateway':
         specifier: workspace:*
         version: link:../products/ai_gateway
+      '@flind/products-ai-observability':
+        specifier: workspace:*
+        version: link:../products/ai_observability
       '@flind/products-ai-training':
         specifier: workspace:*
         version: link:../products/ai_training
+      '@flind/products-alerts':
+        specifier: workspace:*
+        version: link:../products/alerts
+      '@flind/products-alerts-platform':
+        specifier: workspace:*
+        version: link:../products/alerts_platform
       '@flind/products-analytics-platform':
         specifier: workspace:*
         version: link:../products/analytics_platform
@@ -618,21 +630,108 @@ importers:
       '@flind/products-authorization':
         specifier: workspace:*
         version: link:../products/authorization
+      '@flind/products-autoresearch':
+        specifier: workspace:*
+        version: link:../products/autoresearch
       '@flind/products-batch-exports':
         specifier: workspace:*
         version: link:../products/batch_exports
+      '@flind/products-billing-alerts':
+        specifier: workspace:*
+        version: link:../products/billing_alerts
+      '@flind/products-business-intelligence':
+        specifier: workspace:*
+        version: link:../products/business_intelligence
+      '@flind/products-business-knowledge':
+        specifier: workspace:*
+        version: link:../products/business_knowledge
+      '@flind/products-canvas':
+        specifier: workspace:*
+        version: link:../products/canvas
+      '@flind/products-cdp':
+        specifier: workspace:*
+        version: link:../products/cdp
+      '@flind/products-cohorts':
+        specifier: workspace:*
+        version: link:../products/cohorts
+      '@flind/products-conversations':
+        specifier: workspace:*
+        version: link:../products/conversations
+      '@flind/products-cross-project-dashboards':
+        specifier: workspace:*
+        version: link:../products/cross_project_dashboards
       '@flind/products-customer-analytics':
         specifier: workspace:*
         version: link:../products/customer_analytics
+      '@flind/products-dashboards':
+        specifier: workspace:*
+        version: link:../products/dashboards
+      '@flind/products-data-catalog':
+        specifier: workspace:*
+        version: link:../products/data_catalog
+      '@flind/products-data-modeling':
+        specifier: workspace:*
+        version: link:../products/data_modeling
+      '@flind/products-data-quality':
+        specifier: workspace:*
+        version: link:../products/data_quality
       '@flind/products-data-tools':
         specifier: workspace:*
         version: link:../products/data_tools
+      '@flind/products-data-warehouse':
+        specifier: workspace:*
+        version: link:../products/data_warehouse
+      '@flind/products-early-access-features':
+        specifier: workspace:*
+        version: link:../products/early_access_features
+      '@flind/products-endpoints':
+        specifier: workspace:*
+        version: link:../products/endpoints
+      '@flind/products-engineering-analytics':
+        specifier: workspace:*
+        version: link:../products/engineering_analytics
+      '@flind/products-error-tracking':
+        specifier: workspace:*
+        version: link:../products/error_tracking
+      '@flind/products-experiments':
+        specifier: workspace:*
+        version: link:../products/experiments
       '@flind/products-exports':
         specifier: workspace:*
         version: link:../products/exports
+      '@flind/products-feature-flags':
+        specifier: workspace:*
+        version: link:../products/feature_flags
       '@flind/products-games':
         specifier: workspace:*
         version: link:../products/games
+      '@flind/products-groups':
+        specifier: workspace:*
+        version: link:../products/groups
+      '@flind/products-growth':
+        specifier: workspace:*
+        version: link:../products/growth
+      '@flind/products-legal-documents':
+        specifier: workspace:*
+        version: link:../products/legal_documents
+      '@flind/products-logs':
+        specifier: workspace:*
+        version: link:../products/logs
+      '@flind/products-managed-migrations':
+        specifier: workspace:*
+        version: link:../products/managed_migrations
+      '@flind/products-marketing-analytics':
+        specifier: workspace:*
+        version: link:../products/marketing_analytics
+      '@flind/products-mcp-analytics':
+        specifier: workspace:*
+        version: link:../products/mcp_analytics
+      '@flind/products-mcp-registry':
+        specifier: workspace:*
+        version: link:../products/mcp_registry
+      '@flind/products-mcp-store':
+        specifier: workspace:*
+        version: link:../products/mcp_store
       '@flind/replay-shared':
         specifier: workspace:*
         version: link:../common/replay-shared
@@ -678,105 +777,6 @@ importers:
       '@posthog/icons':
         specifier: 'catalog:'
         version: 0.38.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@posthog/products-actions':
-        specifier: workspace:*
-        version: link:../products/actions
-      '@posthog/products-ai-observability':
-        specifier: workspace:*
-        version: link:../products/ai_observability
-      '@posthog/products-alerts':
-        specifier: workspace:*
-        version: link:../products/alerts
-      '@posthog/products-alerts-platform':
-        specifier: workspace:*
-        version: link:../products/alerts_platform
-      '@posthog/products-autoresearch':
-        specifier: workspace:*
-        version: link:../products/autoresearch
-      '@posthog/products-billing-alerts':
-        specifier: workspace:*
-        version: link:../products/billing_alerts
-      '@posthog/products-business-intelligence':
-        specifier: workspace:*
-        version: link:../products/business_intelligence
-      '@posthog/products-business-knowledge':
-        specifier: workspace:*
-        version: link:../products/business_knowledge
-      '@posthog/products-canvas':
-        specifier: workspace:*
-        version: link:../products/canvas
-      '@posthog/products-cdp':
-        specifier: workspace:*
-        version: link:../products/cdp
-      '@posthog/products-cohorts':
-        specifier: workspace:*
-        version: link:../products/cohorts
-      '@posthog/products-conversations':
-        specifier: workspace:*
-        version: link:../products/conversations
-      '@posthog/products-cross-project-dashboards':
-        specifier: workspace:*
-        version: link:../products/cross_project_dashboards
-      '@posthog/products-dashboards':
-        specifier: workspace:*
-        version: link:../products/dashboards
-      '@posthog/products-data-catalog':
-        specifier: workspace:*
-        version: link:../products/data_catalog
-      '@posthog/products-data-modeling':
-        specifier: workspace:*
-        version: link:../products/data_modeling
-      '@posthog/products-data-quality':
-        specifier: workspace:*
-        version: link:../products/data_quality
-      '@posthog/products-data-warehouse':
-        specifier: workspace:*
-        version: link:../products/data_warehouse
-      '@posthog/products-early-access-features':
-        specifier: workspace:*
-        version: link:../products/early_access_features
-      '@posthog/products-endpoints':
-        specifier: workspace:*
-        version: link:../products/endpoints
-      '@posthog/products-engineering-analytics':
-        specifier: workspace:*
-        version: link:../products/engineering_analytics
-      '@posthog/products-error-tracking':
-        specifier: workspace:*
-        version: link:../products/error_tracking
-      '@posthog/products-experiments':
-        specifier: workspace:*
-        version: link:../products/experiments
-      '@posthog/products-feature-flags':
-        specifier: workspace:*
-        version: link:../products/feature_flags
-      '@posthog/products-groups':
-        specifier: workspace:*
-        version: link:../products/groups
-      '@posthog/products-growth':
-        specifier: workspace:*
-        version: link:../products/growth
-      '@posthog/products-legal-documents':
-        specifier: workspace:*
-        version: link:../products/legal_documents
-      '@posthog/products-logs':
-        specifier: workspace:*
-        version: link:../products/logs
-      '@posthog/products-managed-migrations':
-        specifier: workspace:*
-        version: link:../products/managed_migrations
-      '@posthog/products-marketing-analytics':
-        specifier: workspace:*
-        version: link:../products/marketing_analytics
-      '@posthog/products-mcp-analytics':
-        specifier: workspace:*
-        version: link:../products/mcp_analytics
-      '@posthog/products-mcp-registry':
-        specifier: workspace:*
-        version: link:../products/mcp_registry
-      '@posthog/products-mcp-store':
-        specifier: workspace:*
-        version: link:../products/mcp_store
       '@posthog/products-messaging':
         specifier: workspace:*
         version: link:../products/messaging
@@ -4070,15 +4070,15 @@ importers:
       '@dnd-kit/utilities':
         specifier: '*'
         version: 3.2.1(react@18.3.1)
+      '@flind/products-error-tracking':
+        specifier: workspace:*
+        version: link:../error_tracking
       '@posthog/brand':
         specifier: 'catalog:'
         version: 0.12.3(react@18.3.1)
       '@posthog/icons':
         specifier: 'catalog:'
         version: 0.38.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@posthog/products-error-tracking':
-        specifier: workspace:*
-        version: link:../error_tracking
       '@posthog/quill':
         specifier: workspace:*
         version: link:../../packages/quill/packages/quill
@@ -4348,15 +4348,15 @@ importers:
 
   products/metrics:
     dependencies:
+      '@flind/products-error-tracking':
+        specifier: workspace:*
+        version: link:../error_tracking
       '@posthog/brand':
         specifier: 'catalog:'
         version: 0.12.3(react@18.3.1)
       '@posthog/icons':
         specifier: 'catalog:'
         version: 0.38.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@posthog/products-error-tracking':
-        specifier: workspace:*
-        version: link:../error_tracking
       '@posthog/quill':
         specifier: workspace:*
         version: link:../../packages/quill/packages/quill
@@ -4974,6 +4974,9 @@ importers:
 
   products/signals:
     dependencies:
+      '@flind/products-mcp-store':
+        specifier: workspace:*
+        version: link:../mcp_store
       '@pierre/diffs':
         specifier: 1.2.11
         version: 1.2.11(@shikijs/themes@4.3.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -4986,9 +4989,6 @@ importers:
       '@posthog/lemon-ui':
         specifier: '*'
         version: 0.0.0(antd@5.26.0(date-fns@4.1.0)(luxon@3.7.2)(moment@2.29.4)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(kea-router@3.4.2(kea@4.0.0-pre.6(patch_hash=139b8d1f1304f9d9da452a9a1244c94ea679dbcb85687d8999563146879fb6f5)(react@18.3.1)))(kea@4.0.0-pre.6(patch_hash=139b8d1f1304f9d9da452a9a1244c94ea679dbcb85687d8999563146879fb6f5)(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@posthog/products-mcp-store':
-        specifier: workspace:*
-        version: link:../mcp_store
       '@posthog/quill':
         specifier: workspace:*
         version: link:../../packages/quill/packages/quill
@@ -5275,12 +5275,12 @@ importers:
 
   products/tasks:
     dependencies:
+      '@flind/products-mcp-store':
+        specifier: workspace:*
+        version: link:../mcp_store
       '@posthog/icons':
         specifier: 'catalog:'
         version: 0.38.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@posthog/products-mcp-store':
-        specifier: workspace:*
-        version: link:../mcp_store
       '@posthog/quill':
         specifier: workspace:*
         version: link:../../packages/quill/packages/quill

@@ -38,7 +38,7 @@ products/ai_observability/
   docs/                   # Product-level docs (architecture decision records)
   shared/                 # Cross-frontend/backend constants, schemas
   manifest.tsx            # Scene + navigation registration
-  package.json            # Turborepo package (@posthog/products-ai-observability)
+  package.json            # Turborepo package (@flind/products-ai-observability)
 ```
 
 Query runners for the product live **outside** this folder in

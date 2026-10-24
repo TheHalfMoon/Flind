@@ -1,5 +1,6 @@
 {
-    "name": "@posthog/products-data-quality",
+    "name": "@flind/products-data-quality",
+    "private": true,
     "scripts": {
         "backend:test": "pytest -c ../../pytest.ini --rootdir ../.. backend/tests -v --tb=short"
     },

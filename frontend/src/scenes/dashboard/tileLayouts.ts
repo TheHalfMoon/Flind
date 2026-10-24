@@ -4,7 +4,7 @@ import {
     DASHBOARD_WIDGET_CATALOG,
     getDashboardWidgetCatalogEntry,
     type DashboardWidgetCatalogEntry,
-} from '@posthog/products-dashboards/frontend/widget_types/catalog'
+} from '@flind/products-dashboards/frontend/widget_types/catalog'
 
 import { textCardConverter } from 'lib/components/Cards/TextCard/textCardMarkdown'
 import { BREAKPOINT_COLUMN_COUNTS } from 'scenes/dashboard/dashboardUtils'

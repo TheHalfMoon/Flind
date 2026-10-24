@@ -1,3 +1,4 @@
 {
-    "name": "@posthog/products-billing"
+    "name": "@flind/products-billing",
+    "private": true
 }

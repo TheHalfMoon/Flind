@@ -3,7 +3,7 @@ import { useState } from 'react'
 
 import { IconChevronRight, IconServer } from '@posthog/icons'
 import { LemonCollapse, LemonSwitch, LemonTag, Link, Spinner } from '@posthog/lemon-ui'
-import { ServerIcon } from '@posthog/products-mcp-store/frontend/scene/icons'
+import { ServerIcon } from '@flind/products-mcp-store/frontend/scene/icons'
 
 import { FEATURE_FLAGS } from 'lib/constants'
 import { featureFlagLogic } from 'lib/logic/featureFlagLogic'

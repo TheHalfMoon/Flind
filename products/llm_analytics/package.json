@@ -1,5 +1,6 @@
 {
-    "name": "@posthog/products-llm-analytics",
+    "name": "@flind/products-llm-analytics",
+    "private": true,
     "scripts": {
         "backend:test": "echo 'vestigial app — no tests'"
     }

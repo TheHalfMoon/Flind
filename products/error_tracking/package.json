@@ -1,5 +1,6 @@
 {
-    "name": "@posthog/products-error-tracking",
+    "name": "@flind/products-error-tracking",
+    "private": true,
     "scripts": {
         "backend:test": "pytest -c ../../pytest.ini --rootdir ../.. backend/ -v --tb=short",
         "backend:contract-check": "echo 'Contract files unchanged'"

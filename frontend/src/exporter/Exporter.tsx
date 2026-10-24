@@ -5,7 +5,7 @@ import clsx from 'clsx'
 import { BindLogic, useValues } from 'kea'
 import { Suspense, useEffect, useSyncExternalStore } from 'react'
 
-import { DashboardLoadingState } from '@posthog/products-dashboards/frontend/components/DashboardLoadingState/DashboardLoadingState'
+import { DashboardLoadingState } from '@flind/products-dashboards/frontend/components/DashboardLoadingState/DashboardLoadingState'
 
 import { Logo } from 'lib/brand'
 import { useResizeObserver } from 'lib/hooks/useResizeObserver'

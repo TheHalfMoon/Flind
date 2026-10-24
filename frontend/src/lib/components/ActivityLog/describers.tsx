@@ -1,4 +1,4 @@
-import { ActivityDescriber as errorTrackingActivityDescriber } from '@posthog/products-error-tracking/frontend/components/ActivityDescriber'
+import { ActivityDescriber as errorTrackingActivityDescriber } from '@flind/products-error-tracking/frontend/components/ActivityDescriber'
 
 import { instanceSettingActivityDescriber } from 'lib/components/ActivityLog/activityDescriptions/instanceSettingActivityDescriber'
 import { tagActivityDescriber } from 'lib/components/ActivityLog/activityDescriptions/tagActivityDescriber'

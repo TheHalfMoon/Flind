@@ -298,12 +298,12 @@ class TestDetectTestType:
     def test_product_root_uses_turbo(self) -> None:
         config = detect_test_type("products/alerts")
         assert config.test_type == "turbo"
-        assert config.command == ["pnpm", "turbo", "run", "backend:test", "--filter=@posthog/products-alerts"]
+        assert config.command == ["pnpm", "turbo", "run", "backend:test", "--filter=@flind/products-alerts"]
 
     def test_product_root_trailing_slash_uses_turbo(self) -> None:
         config = detect_test_type("products/alerts/")
         assert config.test_type == "turbo"
-        assert config.command == ["pnpm", "turbo", "run", "backend:test", "--filter=@posthog/products-alerts"]
+        assert config.command == ["pnpm", "turbo", "run", "backend:test", "--filter=@flind/products-alerts"]
 
     def test_product_subdirectory_uses_pytest(self) -> None:
         config = detect_test_type("products/error_tracking/backend/test")

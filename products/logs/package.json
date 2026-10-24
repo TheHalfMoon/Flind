@@ -1,5 +1,6 @@
 {
-    "name": "@posthog/products-logs",
+    "name": "@flind/products-logs",
+    "private": true,
     "scripts": {
         "backend:test": "pytest -c ../../pytest.ini --rootdir ../.. backend/ skills/ -v --tb=short"
     },
@@ -24,7 +25,7 @@
         "@dnd-kit/utilities": "*",
         "@posthog/brand": "catalog:",
         "@posthog/icons": "catalog:",
-        "@posthog/products-error-tracking": "workspace:*",
+        "@flind/products-error-tracking": "workspace:*",
         "@storybook/react": "catalog:",
         "@testing-library/jest-dom": "*",
         "@testing-library/react": "*",

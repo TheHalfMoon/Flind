@@ -1,7 +1,7 @@
 import { router } from 'kea-router'
 import { expectLogic } from 'kea-test-utils'
 
-import type { DashboardBasicApi } from '@posthog/products-dashboards/frontend/generated/api.schemas'
+import type { DashboardBasicApi } from '@flind/products-dashboards/frontend/generated/api.schemas'
 
 import { FEATURE_FLAGS } from 'lib/constants'
 import { featureFlagLogic } from 'lib/logic/featureFlagLogic'

@@ -1,5 +1,6 @@
 {
-    "name": "@posthog/products-early-access-features",
+    "name": "@flind/products-early-access-features",
+    "private": true,
     "scripts": {
         "backend:test": "pytest -c ../../pytest.ini --rootdir ../.. backend/ -v --tb=short"
     },

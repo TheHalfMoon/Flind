@@ -1,5 +1,6 @@
 {
-    "name": "@posthog/products-actions",
+    "name": "@flind/products-actions",
+    "private": true,
     "scripts": {
         "backend:test": "pytest -c ../../pytest.ini --rootdir ../.. backend/ -v --tb=short"
     },

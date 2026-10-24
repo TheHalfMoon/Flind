@@ -1,5 +1,5 @@
-import { dashboardsRunWidgetsRetrieve } from '@posthog/products-dashboards/frontend/generated/api'
-import type { DashboardWidgetRunResultApi } from '@posthog/products-dashboards/frontend/generated/api.schemas'
+import { dashboardsRunWidgetsRetrieve } from '@flind/products-dashboards/frontend/generated/api'
+import type { DashboardWidgetRunResultApi } from '@flind/products-dashboards/frontend/generated/api.schemas'
 
 import type { DashboardTile } from '~/types'
 

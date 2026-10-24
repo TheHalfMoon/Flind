@@ -1,5 +1,6 @@
 {
-    "name": "@posthog/products-managed-migrations",
+    "name": "@flind/products-managed-migrations",
+    "private": true,
     "scripts": {
         "backend:test": "pytest -c ../../pytest.ini --rootdir ../.. backend/tests backend/api/test -v --tb=short"
     },

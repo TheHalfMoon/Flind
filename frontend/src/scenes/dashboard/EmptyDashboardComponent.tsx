@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 
 import * as chartPng from '@posthog/brand/hoggies/png/chart'
 import { IconChevronDown, IconPlus } from '@posthog/icons'
-import { DashboardLoadingState } from '@posthog/products-dashboards/frontend/components/DashboardLoadingState/DashboardLoadingState'
+import { DashboardLoadingState } from '@flind/products-dashboards/frontend/components/DashboardLoadingState/DashboardLoadingState'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import { AccessControlAction } from 'lib/components/AccessControlAction'

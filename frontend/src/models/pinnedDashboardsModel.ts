@@ -1,8 +1,8 @@
 import { MakeLogicType, afterMount, connect, kea, listeners, path, reducers } from 'kea'
 import { loaders } from 'kea-loaders'
 
-import { dashboardsList } from '@posthog/products-dashboards/frontend/generated/api'
-import type { DashboardBasicApi } from '@posthog/products-dashboards/frontend/generated/api.schemas'
+import { dashboardsList } from '@flind/products-dashboards/frontend/generated/api'
+import type { DashboardBasicApi } from '@flind/products-dashboards/frontend/generated/api.schemas'
 
 import { isUserLoggedIn } from 'lib/utils/getAppContext'
 import { teamLogic } from 'scenes/teamLogic'

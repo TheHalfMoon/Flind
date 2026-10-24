@@ -5,7 +5,7 @@ import { Link } from '@posthog/lemon-ui'
 import {
     DASHBOARD_GRID_COMPACTION_LABELS,
     DASHBOARD_TILE_SPACING_LABELS,
-} from '@posthog/products-dashboards/frontend/dashboardCustomization'
+} from '@flind/products-dashboards/frontend/dashboardCustomization'
 
 import {
     describeDescriptionChange,

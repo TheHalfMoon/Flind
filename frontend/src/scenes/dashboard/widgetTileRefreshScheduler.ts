@@ -1,4 +1,4 @@
-import { WIDGET_TILE_REFRESH_DEBOUNCE_MS } from '@posthog/products-dashboards/frontend/widgets/constants'
+import { WIDGET_TILE_REFRESH_DEBOUNCE_MS } from '@flind/products-dashboards/frontend/widgets/constants'
 
 export type DashboardWidgetTileRefreshScheduler = {
     schedule: (tileId: number) => void

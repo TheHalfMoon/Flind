@@ -22,7 +22,7 @@ import { BillingUsage } from './BillingUsage'
 import { BillingSectionId } from './types'
 
 const BillingAlerts = lazyWithRetry(() =>
-    import('@posthog/products-billing-alerts/frontend/BillingAlerts').then((module) => ({
+    import('@flind/products-billing-alerts/frontend/BillingAlerts').then((module) => ({
         default: module.BillingAlerts,
     }))
 )

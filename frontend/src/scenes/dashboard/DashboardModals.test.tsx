@@ -50,7 +50,7 @@ jest.mock('products/dashboards/frontend/components/DashboardCustomizeMenu/Dashbo
 
 jest.mock('./DashboardCustomizeButton', () => ({ DashboardCustomizeButton: () => null }))
 
-jest.mock('@posthog/products-dashboards/frontend/widgets/AddWidgetModal', () => ({
+jest.mock('@flind/products-dashboards/frontend/widgets/AddWidgetModal', () => ({
     AddWidgetModal: () => null,
 }))
 

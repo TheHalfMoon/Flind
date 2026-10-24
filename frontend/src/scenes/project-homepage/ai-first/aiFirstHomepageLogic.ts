@@ -3,7 +3,7 @@ import { loaders } from 'kea-loaders'
 import { actionToUrl, router, urlToAction } from 'kea-router'
 import posthog from 'posthog-js'
 
-import type { DashboardBasicApi } from '@posthog/products-dashboards/frontend/generated/api.schemas'
+import type { DashboardBasicApi } from '@flind/products-dashboards/frontend/generated/api.schemas'
 
 import { tabUiStateLogic } from 'lib/logic/tabUiStateLogic'
 import { navigateToHref } from 'lib/utils/navigateToHref'

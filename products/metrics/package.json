@@ -23,7 +23,7 @@
     "peerDependencies": {
         "@posthog/brand": "catalog:",
         "@posthog/icons": "catalog:",
-        "@posthog/products-error-tracking": "workspace:*",
+        "@flind/products-error-tracking": "workspace:*",
         "@storybook/react": "*",
         "@testing-library/jest-dom": "*",
         "@testing-library/react": "*",

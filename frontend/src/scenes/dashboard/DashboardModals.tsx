@@ -26,7 +26,7 @@ import { DuplicateDashboardModal } from './DuplicateDashboardModal'
 
 // These modals carry their own editors and integration setup, which a dashboard needs only once one opens.
 const AddWidgetModal = lazyWithRetry(() =>
-    import('@posthog/products-dashboards/frontend/widgets/AddWidgetModal').then((m) => ({ default: m.AddWidgetModal }))
+    import('@flind/products-dashboards/frontend/widgets/AddWidgetModal').then((m) => ({ default: m.AddWidgetModal }))
 )
 const SharingModal = lazyWithRetry(() =>
     import('lib/components/Sharing/SharingModal').then((m) => ({ default: m.SharingModal }))
