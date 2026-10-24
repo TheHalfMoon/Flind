@@ -38,4 +38,20 @@ describe('Flind public help links', () => {
             expect(flindPublicUrl('docs', host, docs)).toBeNull()
         }
     )
+    it('rejects unconfigured terms and privacy URLs', () => {
+        expect(flindPublicUrl('terms', ownedHost, {})).toBeNull()
+        expect(flindPublicUrl('privacy', ownedHost, {})).toBeNull()
+    })
+
+    it('accepts only first-party operator-configured legal pages', () => {
+        const legal = {
+            terms: 'https://www.flind.example/terms',
+            privacy: 'https://www.flind.example/privacy',
+        }
+        expect(flindPublicUrl('terms', ownedHost, legal)).toBe(legal.terms)
+        expect(flindPublicUrl('privacy', ownedHost, legal)).toBe(legal.privacy)
+        expect(flindPublicUrl('terms', ownedHost, { terms: 'https://unowned.example/terms' })).toBeNull()
+        expect(flindPublicUrl('privacy', ownedHost, { privacy: 'https://www.flind.example.evil.com/privacy' })).toBeNull()
+    })
+
 })

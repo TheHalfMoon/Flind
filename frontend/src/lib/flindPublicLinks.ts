@@ -1,5 +1,5 @@
 /** Optional public Flind pages. Missing or unowned links must never open a different provider. */
-export type FlindPublicPage = 'docs' | 'changelog' | 'community' | 'roadmap'
+export type FlindPublicPage = 'docs' | 'changelog' | 'community' | 'roadmap' | 'terms' | 'privacy'
 
 type LinkConfig = Partial<Record<FlindPublicPage, string | undefined>>
 
@@ -9,6 +9,8 @@ const configuredLinks: LinkConfig = {
     changelog: import.meta.env.VITE_FLIND_CHANGELOG_URL,
     community: import.meta.env.VITE_FLIND_COMMUNITY_URL,
     roadmap: import.meta.env.VITE_FLIND_ROADMAP_URL,
+    terms: import.meta.env.VITE_FLIND_TERMS_URL,
+    privacy: import.meta.env.VITE_FLIND_PRIVACY_URL,
 }
 
 export function flindPublicUrl(

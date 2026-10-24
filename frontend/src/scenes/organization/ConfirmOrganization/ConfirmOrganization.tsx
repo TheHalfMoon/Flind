@@ -5,6 +5,7 @@ import { Link } from '@posthog/lemon-ui'
 
 import { AnimatedCollapsible } from 'lib/components/AnimatedCollapsible'
 import { BridgePage } from 'lib/components/BridgePage/BridgePage'
+import { flindPublicUrl } from 'lib/flindPublicLinks'
 import SignupReferralSource from 'lib/components/SignupReferralSource'
 import SignupRoleSelect from 'lib/components/SignupRoleSelect'
 import { LemonButton } from 'lib/lemon-ui/LemonButton'
@@ -25,6 +26,10 @@ export const scene: SceneExport = {
 export function ConfirmOrganization(): JSX.Element {
     const { isConfirmOrganizationSubmitting, email, showNewOrgWarning } = useValues(confirmOrganizationLogic)
     const { setShowNewOrgWarning } = useActions(confirmOrganizationLogic)
+    const termsUrl = flindPublicUrl('terms')
+    const privacyUrl = flindPublicUrl('privacy')
+    const docsUrl = flindPublicUrl('docs')
+    const communityUrl = flindPublicUrl('community')
 
     return (
         <BridgePage view="org-creation-confirmation">
@@ -53,7 +58,7 @@ export function ConfirmOrganization(): JSX.Element {
                         </p>
                         <ul className="list-disc pl-4">
                             <li>You're logging in with the wrong email address</li>
-                            <li>Your PostHog account is at a different URL</li>
+                            <li>Your Flind account is at a different URL</li>
                             <li>You need an invitation from a colleague</li>
                         </ul>
                     </div>
@@ -79,7 +84,7 @@ export function ConfirmOrganization(): JSX.Element {
                     label="Organization name"
                     help="You can always rename your organization later"
                 >
-                    <LemonInput className="ph-ignore-input" placeholder="Hogflix Movies" />
+                    <LemonInput className="ph-ignore-input" placeholder="Example Company" />
                 </LemonField>
 
                 <SignupRoleSelect />
@@ -96,28 +101,45 @@ export function ConfirmOrganization(): JSX.Element {
                 </LemonButton>
             </Form>
 
-            <div className="text-center terms-and-conditions-text mt-4 text-secondary">
-                By creating an account, you agree to our{' '}
-                <Link to="https://posthog.com/terms" target="_blank">
-                    Terms of Service
-                </Link>{' '}
-                and{' '}
-                <Link to="https://posthog.com/privacy" target="_blank">
-                    Privacy Policy
-                </Link>
-                .
-            </div>
+            {termsUrl && privacyUrl ? (
+                <div className="text-center terms-and-conditions-text mt-4 text-secondary">
+                    By creating an account, you agree to the Flind instance's{' '}
+                    <Link to={termsUrl} target="_blank">
+                        Terms of Service
+                    </Link>{' '}
+                    and{' '}
+                    <Link to={privacyUrl} target="_blank">
+                        Privacy Policy
+                    </Link>
+                    .
+                </div>
+            ) : (
+                <p className="text-center terms-and-conditions-text mt-4 text-secondary">
+                    Legal policies for this Flind instance have not been configured. Contact your workspace
+                    administrator for the applicable terms and privacy information.
+                </p>
+            )}
             <LemonDivider thick dashed className="my-6" />
             <div className="text-center terms-and-conditions-text mt-4 text-secondary">
-                Have questions?{' '}
-                <Link to="https://posthog.com/support" target="_blank">
-                    Visit support
-                </Link>{' '}
-                or{' '}
-                <Link to="https://posthog.com/docs" target="_blank">
-                    read our documentation
-                </Link>
-                .
+                {docsUrl || communityUrl ? (
+                    <>
+                        Need help?{' '}
+                        {communityUrl && (
+                            <Link to={communityUrl} target="_blank">
+                                Flind community
+                            </Link>
+                        )}
+                        {docsUrl && communityUrl && ' or '}
+                        {docsUrl && (
+                            <Link to={docsUrl} target="_blank">
+                                Flind documentation
+                            </Link>
+                        )}
+                        .
+                    </>
+                ) : (
+                    'Need help? Contact your Flind workspace administrator.'
+                )}
             </div>
         </BridgePage>
     )

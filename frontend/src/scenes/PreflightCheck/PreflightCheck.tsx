@@ -8,6 +8,7 @@ import { Link, Spinner } from '@posthog/lemon-ui'
 
 import { AnimatedCollapsible } from 'lib/components/AnimatedCollapsible'
 import { BridgePage } from 'lib/components/BridgePage/BridgePage'
+import { flindPublicUrl } from 'lib/flindPublicLinks'
 import { IconErrorOutline } from 'lib/lemon-ui/icons'
 import { LemonButton } from 'lib/lemon-ui/LemonButton'
 import { LemonDivider } from 'lib/lemon-ui/LemonDivider'
@@ -64,25 +65,33 @@ export function PreflightCheck(): JSX.Element {
         useValues(preflightLogic)
     const { setPreflightMode, handlePreflightFinished, setChecksManuallyExpanded, revalidatePreflight } =
         useActions(preflightLogic)
+    const docsUrl = flindPublicUrl('docs')
+    const communityUrl = flindPublicUrl('community')
 
     return (
         <BridgePage
             view="preflight-check"
             footer={
                 <p className="text-center mt-4 mb-0">
-                    Need help? Take a look at our{' '}
-                    <Link
-                        to="https://posthog.com/docs/self-host/deploy/troubleshooting"
-                        target="_blank"
-                        targetBlankIcon={false}
-                    >
-                        documentation
-                    </Link>{' '}
-                    or{' '}
-                    <Link to="https://posthog.com/support" target="_blank" targetBlankIcon={false}>
-                        visit community support
-                    </Link>
-                    .
+                    {docsUrl || communityUrl ? (
+                        <>
+                            Need help?{' '}
+                            {docsUrl && (
+                                <Link to={docsUrl} target="_blank" targetBlankIcon={false}>
+                                    Flind documentation
+                                </Link>
+                            )}
+                            {docsUrl && communityUrl && ' or '}
+                            {communityUrl && (
+                                <Link to={communityUrl} target="_blank" targetBlankIcon={false}>
+                                    Flind community
+                                </Link>
+                            )}
+                            .
+                        </>
+                    ) : (
+                        'Need help? Contact your Flind workspace administrator.'
+                    )}
                 </p>
             }
             fixedWidth={false}
@@ -128,15 +137,15 @@ export function PreflightCheck(): JSX.Element {
                         <div className="Preflight__header">
                             <p className="Preflight__header--title-text">Validate implementation</p>
                             <p className="Preflight__header--secondary-text">
-                                Validation happens immediately. You can rerun validation checks by clicking “validate
-                                requirements”. If you get stuck, try our{' '}
-                                <Link to="https://posthog.com/docs/self-host/deploy/troubleshooting" target="_blank">
-                                    troubleshooting guide
-                                </Link>{' '}
-                                or our{' '}
-                                <Link to="https://posthog.com/docs/runbook" target="_blank">
-                                    self-host runbook
-                                </Link>
+                                Validation happens immediately. You can rerun checks using “Validate requirements”.
+                                If validation fails,{' '}
+                                {docsUrl ? (
+                                    <Link to={docsUrl} target="_blank">
+                                        consult the Flind documentation
+                                    </Link>
+                                ) : (
+                                    'contact your Flind workspace administrator'
+                                )}
                                 .
                             </p>
                         </div>
