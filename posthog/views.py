@@ -27,6 +27,8 @@ import structlog
 from opentelemetry import trace
 from prometheus_client import REGISTRY, CollectorRegistry, generate_latest, multiprocess
 
+from flind.security_contact import security_txt_content
+
 from posthog.api.secret_revocation import NON_PERSONAL_SECRET_PREFIXES
 from posthog.auth import AUTH_BRAND_COOKIE, apply_auth_brand_cookie, normalize_auth_brand
 from posthog.cache_utils import cache_for
@@ -169,12 +171,15 @@ Disallow: /flags/
 
 
 def security_txt(request):
-    SECURITY_TXT_CONTENT = """
-        Contact: mailto:engineering@posthog.com
-        Hiring: https://posthog.com/careers
-        Expires: 2024-03-14T00:00:00.000Z
-        """
-    return HttpResponse(SECURITY_TXT_CONTENT, content_type="text/plain")
+    # No unverifiable inherited or guessed security contact. The instance
+    # operator must publish its own verified contact and an unexpired date.
+    content = security_txt_content(
+        getattr(settings, "FLIND_SECURITY_CONTACT", ""),
+        getattr(settings, "FLIND_SECURITY_EXPIRES", ""),
+    )
+    if content is None:
+        return HttpResponse(status=404)
+    return HttpResponse(content, content_type="text/plain; charset=utf-8")
 
 
 @xframe_options_exempt

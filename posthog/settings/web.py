@@ -28,6 +28,11 @@ logger = structlog.get_logger(__name__)
 # Values are bare DNS hostnames, not URLs. The cookie is independently checked
 # against these configured hosts before a browser redirect may be generated.
 FLIND_APP_HOST: str = os.getenv("FLIND_APP_HOST", "")
+# No security.txt is advertised until a real Flind operator contact and a
+# near-term expiry are configured; the inherited external listing was stale.
+FLIND_SECURITY_CONTACT: str = os.getenv("FLIND_SECURITY_CONTACT", "")
+FLIND_SECURITY_EXPIRES: str = os.getenv("FLIND_SECURITY_EXPIRES", "")
+
 FLIND_REGION_HOST_US: str = os.getenv("FLIND_REGION_HOST_US", "")
 FLIND_REGION_HOST_EU: str = os.getenv("FLIND_REGION_HOST_EU", "")
 FLIND_REDIRECT_TO_PRIMARY: bool = get_from_env("FLIND_REDIRECT_TO_PRIMARY", False, type_cast=str_to_bool)
