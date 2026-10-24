@@ -35,3 +35,10 @@ verification links have NOT been qualified against a real Flind issuer.
 Source-level Python tests and rustfmt are available in this wave. Actual
 Cargo project tests, full login E2E and DNS/HTTP egress tracing must pass
 before an independent Flind CLI can be released. No publication; **NO-GO**.
+
+## macOS Rust test evidence, 2026-10-24
+
+The CLI's full `cargo test --all-targets --offline --locked` suite
+passed **337/337** after dependency retrieval and the shared CLI proxy
+test fix. The host-selection unit cases passed. Real Flind OAuth
+issuer/browser journeys are still unqualified.

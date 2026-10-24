@@ -40,3 +40,11 @@ does not claim complete CLI network isolation.
 Other historical host defaults in login, generated SDKs, products and
 backend need separate tests. End-to-end network capture, build, and OS
 packaging remain **NO-GO**. Repository private; no public deployment.
+
+## macOS Rust test evidence, 2026-10-24
+
+After fetching public Cargo crates and fixing the related CLI proxy test,
+the complete CLI `cargo test --all-targets --offline --locked` suite
+passed **337/337** tests. This supersedes the prior local-cache blocker
+for macOS Rust test execution; it does **not** establish runtime DNS/HTTP
+egress isolation, Windows/Linux packaging, or production readiness.

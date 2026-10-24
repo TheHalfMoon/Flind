@@ -36,3 +36,23 @@ network request leaves a system. The Node JS bundle, Rust-side telemetry,
 inherited API hosts, updater artifacts and real DNS/HTTP egress still require
 runtime tests on supported OSes. Release remains **NO-GO**, private, no
 deployment.
+
+## Requalification on 2026-10-24
+
+The public Cargo dependency cache was populated and the actual CLI crate
+compiled. Rust caught a regression in the new `Command::get_envs()` test:
+`name` must be dereferenced before comparison with a string. Wave 11
+fixes both comparisons.
+
+After this fix, the complete Rust CLI test suite passed using:
+
+```bash
+CARGO_BUILD_JOBS=2 CARGO_PROFILE_TEST_DEBUG=0 CARGO_INCREMENTAL=0 \
+  cargo test --manifest-path cli/Cargo.toml --locked --offline --all-targets -- --test-threads=2
+```
+
+**337 Rust tests PASSED** (255 library + 13 debug-symbol + 13 git +
+28 integration + 28 sourcemap; binary entrypoint has zero tests). Rust
+compilation and integration are now source-qualified on macOS arm64.
+Cross-OS CLI packaging, API proxy real network egress, auth issuance
+and full product release are NOT qualified.

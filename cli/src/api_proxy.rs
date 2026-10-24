@@ -358,12 +358,12 @@ mod tests {
             assert!(
                 entries
                     .iter()
-                    .any(|(name, value)| name == key && value.is_none()),
+                    .any(|(name, value)| *name == key && value.is_none()),
                 "{key} must be removed from the Node child",
             );
         }
         assert!(entries.iter().any(|(name, value)| {
-            name == "POSTHOG_CLI_API_KEY" && value.is_some_and(|s| s == "user-api-key")
+            *name == "POSTHOG_CLI_API_KEY" && value.is_some_and(|s| s == "user-api-key")
         }));
     }
 
