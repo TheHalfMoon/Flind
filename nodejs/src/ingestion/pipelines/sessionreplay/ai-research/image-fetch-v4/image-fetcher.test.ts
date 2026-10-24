@@ -67,7 +67,7 @@ describe('HttpImageFetcher', () => {
         )
     })
 
-    it('identifies every request as PostHogImageFetcherBot referred by us.posthog.com', async () => {
+    it('identifies every request as FlindImageFetcherBot without an inherited referrer', async () => {
         fetchStreamedMock.mockResolvedValue(image(PNG, 'image/png'))
 
         await fetcher().fetch('https://cdn.example.com/a.png', OPTIONS)
@@ -76,9 +76,7 @@ describe('HttpImageFetcher', () => {
             'https://cdn.example.com/a.png',
             expect.objectContaining({
                 headers: expect.objectContaining({
-                    'user-agent':
-                        'PostHogImageFetcherBot/1.0 (+https://posthog.com/docs/ai-research/image-fetcher-bot)',
-                    referer: 'https://us.posthog.com/',
+                    'user-agent': 'FlindImageFetcherBot/1.0',
                 }),
             })
         )
@@ -459,7 +457,7 @@ describe('HttpImageFetcher', () => {
         response.headerLines = [
             { name: 'content-type', value: 'image/png' },
             { name: 'x-robots-tag', value: 'all' },
-            { name: 'x-robots-tag', value: 'PostHogImageFetcherBot: noimageai' },
+            { name: 'x-robots-tag', value: 'FlindImageFetcherBot: noimageai' },
         ]
         fetchStreamedMock.mockResolvedValue(response)
 

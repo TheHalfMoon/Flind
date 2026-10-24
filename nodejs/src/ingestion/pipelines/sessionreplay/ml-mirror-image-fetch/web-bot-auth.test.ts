@@ -2,7 +2,8 @@ import { KeyObject, createHash, generateKeyPairSync, verify as verifySignature }
 
 import { createWebBotAuthRequestSigner } from './web-bot-auth'
 
-const SIGNATURE_AGENT = '"https://us.posthog.com/.well-known/http-message-signatures-directory"'
+const SIGNATURE_AGENT = '"https://identity.flind.example/.well-known/http-message-signatures-directory"'
+const ORIGINAL_IDENTITY_ORIGIN = process.env.FLIND_IMAGE_FETCHER_IDENTITY_ORIGIN
 
 type TestKeyPair = {
     privateKeyPem: string
@@ -63,11 +64,25 @@ function expectSignedHeadersToVerify(
 
 describe('Web Bot Auth request signing', () => {
     beforeEach(() => {
+        process.env.FLIND_IMAGE_FETCHER_IDENTITY_ORIGIN = 'https://identity.flind.example'
         jest.useFakeTimers().setSystemTime(new Date('2026-08-19T08:00:00Z'))
     })
 
     afterEach(() => {
+        if (ORIGINAL_IDENTITY_ORIGIN === undefined) {
+            delete process.env.FLIND_IMAGE_FETCHER_IDENTITY_ORIGIN
+        } else {
+            process.env.FLIND_IMAGE_FETCHER_IDENTITY_ORIGIN = ORIGINAL_IDENTITY_ORIGIN
+        }
         jest.useRealTimers()
+    })
+
+    it('refuses signing with missing or inherited identity origins', () => {
+        const key = generateEd25519KeyPair().privateKeyPem
+        delete process.env.FLIND_IMAGE_FETCHER_IDENTITY_ORIGIN
+        expect(() => createWebBotAuthRequestSigner(key)).toThrow('FLIND_IMAGE_FETCHER_IDENTITY_ORIGIN is required')
+        process.env.FLIND_IMAGE_FETCHER_IDENTITY_ORIGIN = 'https://us.posthog.com'
+        expect(() => createWebBotAuthRequestSigner(key)).toThrow('approved Flind-owned HTTPS origin')
     })
 
     it('creates a Cloudflare-compatible signature with current protocol parameters', () => {

@@ -1,7 +1,6 @@
 import { KeyObject, createHash, createPrivateKey, createPublicKey, randomBytes, sign } from 'node:crypto'
 
-const SIGNATURE_AGENT_URL = 'https://us.posthog.com/.well-known/http-message-signatures-directory'
-const SIGNATURE_AGENT_HEADER = JSON.stringify(SIGNATURE_AGENT_URL)
+import { flindSignatureAgentHeader } from '../flind-image-bot-identity'
 const SIGNATURE_LIFETIME_SECONDS = 60
 const REQUEST_METHOD = 'GET'
 
@@ -21,11 +20,11 @@ export function createWebBotAuthRequestSigner(commaSeparatedPrivateKeyPems: stri
     }
 
     const signingKeys = privateKeyPems.map((privateKeyPem, index) => loadSigningKey(privateKeyPem, index + 1))
-    return new Ed25519WebBotAuthRequestSigner(signingKeys[0])
+    return new Ed25519WebBotAuthRequestSigner(signingKeys[0], flindSignatureAgentHeader())
 }
 
 class Ed25519WebBotAuthRequestSigner implements WebBotAuthRequestSigner {
-    constructor(private readonly signingKey: SigningKey) {}
+    constructor(private readonly signingKey: SigningKey, private readonly agentHeader: string) {}
 
     public headersForGet(url: string): Record<string, string> {
         const targetUrl = new URL(url)
@@ -42,12 +41,12 @@ class Ed25519WebBotAuthRequestSigner implements WebBotAuthRequestSigner {
             `"@method": ${REQUEST_METHOD}\n` +
             `"@authority": ${authority}\n` +
             `"@target-uri": ${targetUri}\n` +
-            `"signature-agent": ${SIGNATURE_AGENT_HEADER}\n` +
+            `"signature-agent": ${this.agentHeader}\n` +
             `"@signature-params": ${parameters}`
 
         return {
             // Cloudflare rejects the dictionary form from newer drafts, so use the compatible structured string.
-            'signature-agent': SIGNATURE_AGENT_HEADER,
+            'signature-agent': this.agentHeader,
             'signature-input': `sig1=${parameters}`,
             signature: `sig1=:${sign(null, Buffer.from(signatureBase), this.signingKey.privateKey).toString('base64')}:`,
         }

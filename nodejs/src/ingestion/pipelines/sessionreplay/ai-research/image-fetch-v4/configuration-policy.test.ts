@@ -83,7 +83,7 @@ describe('robots policy', () => {
         const body = [
             'User-agent: *',
             'Disallow: /wildcard',
-            'User-agent: PostHogImageFetcherBot',
+            'User-agent: FlindImageFetcherBot',
             'Disallow: /private',
             'Allow: /private/public.png',
         ].join('\n')
@@ -104,7 +104,7 @@ describe('robots policy', () => {
 
     it('uses the greatest valid crawl delay in every selected field line', async () => {
         const body = [
-            'User-agent: PostHogImageFetcherBot',
+            'User-agent: FlindImageFetcherBot',
             'Crawl-delay: 0.25',
             'Crawl-delay: invalid',
             'Crawl-delay: 0x10',
@@ -173,7 +173,7 @@ describe('response opt-out policy', () => {
     })
 
     it.each([
-        ['a scope for this bot', 'PostHogImageFetcherBot: noindex, noimageai', 'x_robots_tag'],
+        ['a scope for this bot', 'FlindImageFetcherBot: noindex, noimageai', 'x_robots_tag'],
         ['a scope for another bot', 'OtherBot: noai', undefined],
         [
             'no scope beside a colon-bearing directive',
@@ -590,8 +590,8 @@ describe('HttpConfigurationFetcher', () => {
         ])
         expect(fetchStreamedMock.mock.calls.map(([, options]) => options.allowH2)).toEqual([true, true])
         expect(fetchStreamedMock.mock.calls.map(([, options]) => options.headers)).toEqual([
-            expect.objectContaining({ referer: 'https://us.posthog.com/' }),
-            expect.objectContaining({ referer: 'https://us.posthog.com/' }),
+            expect.objectContaining({ 'user-agent': 'FlindImageFetcherBot/1.0' }),
+            expect.objectContaining({ 'user-agent': 'FlindImageFetcherBot/1.0' }),
         ])
     })
 
