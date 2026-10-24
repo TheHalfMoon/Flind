@@ -5,7 +5,6 @@ from django.conf import settings
 from django.http import HttpRequest, HttpResponse
 
 from posthog.api.utils import hostname_in_allowed_url_list
-from posthog.constants import PERMITTED_FORUM_DOMAINS
 from posthog.models import User
 from posthog.utils import render_template
 
@@ -16,16 +15,15 @@ def authorize_and_redirect(request: HttpRequest) -> HttpResponse:
     if not request.headers.get("referer"):
         return HttpResponse('You need to make a request that includes the "Referer" header.', status=400)
 
+    # Forum SSO from the inherited source cannot be used by Flind. Refuse
+    # before touching a user profile or rendering an authorization link.
+    if request.GET.get("forum_login", "").lower() == "true":
+        return HttpResponse(status=404)
+
     current_team = cast(User, request.user).team
     referer_url = urlparse(request.headers["referer"])
     redirect_url = urlparse(request.GET["redirect"])
-    is_forum_login = request.GET.get("forum_login", "").lower() == "true"
-
-    if (
-        not current_team
-        or (redirect_url.hostname not in PERMITTED_FORUM_DOMAINS and is_forum_login)
-        or (not is_forum_login and not hostname_in_allowed_url_list(current_team.app_urls, redirect_url.hostname))
-    ):
+    if not current_team or not hostname_in_allowed_url_list(current_team.app_urls, redirect_url.hostname):
         hostname = redirect_url.hostname or request.GET["redirect"]
         return render_template(
             "toolbar_oauth_error.html",
@@ -62,7 +60,7 @@ def authorize_and_redirect(request: HttpRequest) -> HttpResponse:
         )
 
     return render_template(
-        "authorize_and_link.html" if is_forum_login else "authorize_and_redirect.html",
+        "authorize_and_redirect.html",
         request=request,
         context={
             "email": request.user,

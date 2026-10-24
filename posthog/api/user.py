@@ -80,7 +80,7 @@ from posthog.auth import (
     session_auth_required,
 )
 from posthog.cloud_utils import is_cloud
-from posthog.constants import INVITE_DAYS_VALIDITY, PERMITTED_FORUM_DOMAINS, AvailableFeature
+from posthog.constants import INVITE_DAYS_VALIDITY, AvailableFeature
 from posthog.email import is_email_available
 from posthog.event_usage import (
     groups,
@@ -2217,62 +2217,15 @@ def redirect_to_site(request):
 
 @session_auth_required
 def redirect_to_website(request):
-    team = request.user.team
-    app_url = request.GET.get("appUrl") or (team.app_urls and team.app_urls[0])
+    """Fail closed while Flind has no first-party forum SSO integration.
 
-    if not app_url:
-        return HttpResponse(status=404)
+    The inherited implementation registered the logged-in user's email and
+    profile with a third-party forum, then redirected a signed session token
+    to the original provider's website. Neither the registration destination
+    nor the signing key is owned/configured by this Flind instance.
 
-    if not team or urllib.parse.urlparse(app_url).hostname not in PERMITTED_FORUM_DOMAINS:
-        logger.error(
-            "can_only_redirect_to_permitted_domain",
-            permitted_domains=team.app_urls,
-            app_url=app_url,
-            team_id=team.id,
-        )
-        return HttpResponse(f"Can only redirect to a permitted domain.", status=403)
-
-    token = ""
-
-    # check if a strapi id is attached
-    if request.user.strapi_id is None:
-        response = requests.request(
-            "POST",
-            "https://squeak.posthog.cc/api/auth/local/register",
-            json={
-                "username": request.user.email,
-                "email": request.user.email,
-                "password": secrets.token_hex(32),
-                "firstName": request.user.first_name,
-                "lastName": request.user.last_name,
-            },
-            headers={"Content-Type": "application/json"},
-            timeout=10,
-        )
-
-        if response.status_code == 200:
-            json_data = response.json()
-            token = json_data["jwt"]
-            strapi_id = json_data["user"]["id"]
-            request.user.strapi_id = strapi_id
-            request.user.save()
-        else:
-            error_message = response.json()["error"]["message"]
-            if response.text and error_message == "Email or Username are already taken":
-                return redirect("https://posthog.com/auth?error=emailIsTaken")
-    else:
-        token = jwt.encode(
-            {
-                "id": request.user.strapi_id,
-                "iat": int(time.time()),
-                "exp": int((datetime.now() + timedelta(days=30)).timestamp()),
-            },
-            os.environ.get("JWT_SECRET_STRAPI", "random_fallback_secret"),
-            algorithm="HS256",
-        )
-
-    # pass the empty string as the safe param so that `//` is encoded correctly.
-    # see https://github.com/PostHog/posthog/issues/9671
-    userData = urllib.parse.quote(json.dumps({"jwt": token}), safe="")
-
-    return redirect("{}?userData={}&redirect={}".format("https://posthog.com/auth", userData, app_url))
+    Keep the legacy route for compatibility, but do not send user data, mint
+    tokens, or redirect to a vendor site. Re-enable only after an independently
+    reviewed first-party SSO service and opt-in configuration exist.
+    """
+    return HttpResponse(status=404)
