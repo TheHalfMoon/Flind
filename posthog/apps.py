@@ -159,7 +159,12 @@ class PostHogConfig(AppConfig):
 
         # Skip during tests since we handle this in conftest.py
         # Skip during collectstatic (STATIC_COLLECTION=1 in Dockerfile) — no Redis available at build time
-        if not settings.TEST and not settings.STATIC_COLLECTION:
+        if (
+            not settings.TEST
+            and not settings.STATIC_COLLECTION
+            and os.environ.get("FLIND_READINESS_CHECK") != "1"
+        ):
+            # A read-only management check must not queue production tasks.
             queue_sync_hog_function_templates()
 
         file_system_registrations.register_core_file_system_types()

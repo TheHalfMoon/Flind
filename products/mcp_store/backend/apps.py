@@ -1,3 +1,5 @@
+import os
+
 from django.apps import AppConfig
 from django.conf import settings
 
@@ -14,5 +16,10 @@ class McpStoreConfig(AppConfig):
 
         # Skip during tests (suites sync the catalog explicitly where needed) and during
         # collectstatic (STATIC_COLLECTION=1 in Dockerfile) — no Redis available at build time.
-        if not settings.TEST and not settings.STATIC_COLLECTION:
+        if (
+            not settings.TEST
+            and not settings.STATIC_COLLECTION
+            and os.environ.get("FLIND_READINESS_CHECK") != "1"
+        ):
+            # An isolated system check must not acquire Redis locks or queue work.
             queue_sync_mcp_server_templates()

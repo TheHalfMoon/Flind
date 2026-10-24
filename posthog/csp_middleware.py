@@ -4,28 +4,21 @@ The policy lives apart from the other middleware so that team-security owns the 
 `.github/CODEOWNERS` and reviews every change to it.
 """
 
+import os
 import re
 from urllib.parse import parse_qsl, urlencode, urlsplit
 
 from django.conf import settings
 
 from posthog.cloud_utils import get_api_host, is_cloud, is_hobby
-from posthog.constants import POSTHOG_JS_CLOUD_HOST, POSTHOG_JS_CLOUD_TOKEN
 from posthog.models.utils import generate_random_token
-from posthog.ph_client import PH_US_API_KEY, PH_US_HOST
-
-_POSTHOG_CSP_REPORT_ENDPOINT = f"{PH_US_HOST}/report/?token={PH_US_API_KEY}&v=2"
-
 
 def csp_report_endpoint(**params: str) -> str:
     """The URL browsers report CSP violations and crashes to, or "" when reporting is turned off."""
-    endpoint = settings.CSP_REPORT_ENDPOINT
-    if endpoint is None:
-        # Only deployments PostHog runs report to PostHog. Violations from an instance we do not
-        # run tell us nothing we can act on, and reporting sends that instance's document URLs to a
-        # destination its operator never chose. The gate is cloud rather than hobby because a
-        # self-hosted install with DEBUG set runs in the local mode, not the hobby one.
-        endpoint = _POSTHOG_CSP_REPORT_ENDPOINT if is_cloud() else ""
+    # Never inherit a previous provider's report collector or project token.
+    # CSP reports can include document origins; only an explicitly configured
+    # first-party collection endpoint may receive them.
+    endpoint = settings.CSP_REPORT_ENDPOINT or ""
     if not endpoint or not params:
         return endpoint
     # The endpoint carries the destination's project token and report version, so a param the caller
@@ -164,6 +157,46 @@ def app_bundle_origin() -> str:
     return f"{js_url.scheme}://{js_url.netloc}" if js_url.scheme and js_url.netloc else ""
 
 
+def flind_js_cloud_sources() -> tuple[str, str, str]:
+    """Only admit an explicitly configured same-origin Flind JS source.
+
+    No inherited vendor host/token is a default. Separate first-party CDN
+    authorization needs independent qualification before its CSP admission.
+    """
+    raw = os.environ.get("FLIND_JS_CLOUD_ORIGIN", "")
+    try:
+        site = urlsplit(settings.SITE_URL)
+        candidate = urlsplit(raw)
+        site_port = site.port
+        candidate_port = candidate.port
+    except ValueError:
+        return "", "", ""
+    if (
+        not raw
+        or candidate.scheme != "https"
+        or candidate.username is not None
+        or candidate.password is not None
+        or not candidate.hostname
+        or not site.hostname
+        or candidate.hostname != site.hostname
+        or candidate_port != site_port
+        or candidate.path not in ("", "/")
+        or candidate.query
+        or candidate.fragment
+        or site.scheme != "https"
+    ):
+        return "", "", ""
+
+    origin = f"https://{candidate.netloc}"
+    token = os.environ.get("FLIND_JS_CLOUD_TOKEN", "")
+    config = (
+        f"{origin}/array/{token}/config.js"
+        if re.fullmatch(r"[a-zA-Z0-9_-]{1,128}", token)
+        else ""
+    )
+    return origin, f"{origin}/static/", config
+
+
 def img_src_shadow_policy(csp_parts: list[str]) -> list[str]:
     """The app policy's img-src without its `https:` scheme source and with `https://*.posthog.com` swapped for
     named PostHog hosts, to send as a report-only policy of its own.
@@ -175,7 +208,8 @@ def img_src_shadow_policy(csp_parts: list[str]) -> list[str]:
     """
     # The app's own images load from its bundle. posthog-js can load the toolbar on an app page, and the toolbar's
     # files sit under /static/ on the posthog-js host.
-    named_hosts = [source for source in (app_bundle_origin(), f"{POSTHOG_JS_CLOUD_HOST}/static/") if source]
+    _, js_static, _ = flind_js_cloud_sources()
+    named_hosts = [source for source in (app_bundle_origin(), js_static) if source]
     named = narrowed_app_policy(csp_parts, {"img-src": named_hosts})
     return [" ".join(s for s in part.split() if s != "https:") for part in named if part.split()[0] == "img-src"]
 
@@ -424,6 +458,7 @@ class CSPMiddleware:
             shadows: dict[str, list[str]] = {}
             if narrowed:
                 bundle = [bundle_origin] if bundle_origin else []
+                flind_js_origin, flind_js_static, flind_js_config = flind_js_cloud_sources()
                 agent_proxy_url = settings.TASKS_AGENT_PROXY_PUBLIC_URL
                 agent_proxy = (
                     [urlsplit(agent_proxy_url)._replace(path="", query="", fragment="").geturl()]
@@ -437,13 +472,13 @@ class CSPMiddleware:
                         # config path names our token because the same path serves every project's config.
                         "script-src": [
                             *bundle,
-                            f"{POSTHOG_JS_CLOUD_HOST}/static/",
-                            f"{POSTHOG_JS_CLOUD_HOST}/array/{POSTHOG_JS_CLOUD_TOKEN}/config.js",
+                            *([flind_js_static] if flind_js_static else []),
+                            *([flind_js_config] if flind_js_config else []),
                         ],
                         # liveEventsHostOrigin() in the frontend streams from live.<region host>.
                         "connect-src": [
                             *bundle,
-                            POSTHOG_JS_CLOUD_HOST,
+                            *([flind_js_origin] if flind_js_origin else []),
                             f"https://live.{urlsplit(settings.SITE_URL).hostname}",
                             # publicWebhooksHostOrigin() in the frontend posts source-webhook tests and manual
                             # workflow triggers to webhooks.<region host>.
@@ -462,8 +497,8 @@ class CSPMiddleware:
                         #
                         # Production is the first place these two lists apply. A host they miss leaves the page
                         # without its styles or fonts and shows the user no error.
-                        "style-src": [*bundle, f"{POSTHOG_JS_CLOUD_HOST}/static/"],
-                        "font-src": [*bundle, f"{POSTHOG_JS_CLOUD_HOST}/static/"],
+                        "style-src": [*bundle, *([flind_js_static] if flind_js_static else [])],
+                        "font-src": [*bundle, *([flind_js_static] if flind_js_static else [])],
                     },
                 )
                 shadows = {IMG_SRC_SHADOW_REPORT_VERSION: img_src_shadow_policy(csp_parts)}
