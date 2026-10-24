@@ -1,20 +1,12 @@
 import { Text } from "@components/text";
-import { EXTERNAL_LINKS } from "@flind/shared";
-import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
-import { useQueryClient } from "@tanstack/react-query";
 import { router } from "expo-router";
-import { usePostHog } from "posthog-react-native";
 import { ActivityIndicator, Pressable, ScrollView, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useAuthStore, useUserQuery } from "@/features/auth";
 import { ConsentError } from "@/features/consent/components/ConsentError";
 import { ConsentPanel } from "@/features/consent/components/ConsentPanel";
-import {
-  desktopBetaTermsKeys,
-  useOrgConsent,
-} from "@/features/consent/hooks/useOrgConsent";
-import { openExternalUrl } from "@/lib/openExternalUrl";
-import { getPostHogApiClient } from "@/lib/posthogApiClient";
+import { useOrgConsent } from "@/features/consent/hooks/useOrgConsent";
+
 import { useThemeColors } from "@/lib/theme";
 
 const ORGANIZATION_ADMIN_LEVEL = 8;
@@ -24,28 +16,9 @@ export default function ConsentScreen() {
   const consent = useOrgConsent();
   const { data: user } = useUserQuery();
   const logout = useAuthStore((s) => s.logout);
-  const posthog = usePostHog();
-  const queryClient = useQueryClient();
-
   const organization = user?.organization;
   const isAdmin =
     (organization?.membership_level ?? 0) >= ORGANIZATION_ADMIN_LEVEL;
-
-  const acceptAi = async (): Promise<void> => {
-    if (!organization) return;
-    await getPostHogApiClient().approveAiDataProcessing(organization.id);
-    posthog?.capture(ANALYTICS_EVENTS.AI_CONSENT_GRANTED_INAPP);
-    await queryClient.invalidateQueries({ queryKey: ["user"] });
-  };
-
-  const acceptBeta = async (): Promise<void> => {
-    if (!organization) return;
-    await getPostHogApiClient().acceptDesktopBetaTerms();
-    posthog?.capture(ANALYTICS_EVENTS.DESKTOP_BETA_TERMS_ACCEPTED_INAPP);
-    await queryClient.invalidateQueries({
-      queryKey: desktopBetaTermsKeys.all(),
-    });
-  };
 
   const handleLogout = async (): Promise<void> => {
     await logout();
@@ -67,8 +40,6 @@ export default function ConsentScreen() {
             needsAiConsent={consent.needsAiConsent}
             needsBetaTerms={consent.needsBetaTerms}
             isAdmin={isAdmin}
-            onAcceptAi={acceptAi}
-            onAcceptBeta={acceptBeta}
           />
         ) : (
           <View className="items-center py-24">
@@ -77,9 +48,9 @@ export default function ConsentScreen() {
         )}
       </ScrollView>
       <View className="flex-row items-center justify-between px-6 pb-4">
-        <Pressable onPress={() => openExternalUrl(EXTERNAL_LINKS.discord)}>
-          <Text className="text-gray-11 text-sm">Get support</Text>
-        </Pressable>
+        <Text className="text-gray-11 text-sm">
+          Support link not configured
+        </Text>
         <Pressable onPress={handleLogout}>
           <Text className="text-gray-11 text-sm">Log out</Text>
         </Pressable>
