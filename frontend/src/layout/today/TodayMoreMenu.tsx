@@ -53,7 +53,7 @@ export function TodayMoreMenu(): JSX.Element {
                 }
             />
             <DropdownMenuContent side="right" align="end" className="w-56">
-                <DropdownMenuItem
+                {statusPageUrl && <DropdownMenuItem
                     render={todayMenuLinkItem(statusPageUrl, { external: true })}
                     description={
                         statusText && <span className={SEVERITY_TEXT_CLASS[statusSeverity]}>{statusText}</span>
@@ -62,7 +62,7 @@ export function TodayMoreMenu(): JSX.Element {
                 >
                     Status page
                     <IconExternal data-icon="inline-end" className="ms-auto" />
-                </DropdownMenuItem>
+                </DropdownMenuItem>}
                 <DropdownMenuItem
                     render={todayMenuLinkItem(urls.health())}
                     description={

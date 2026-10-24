@@ -20,10 +20,10 @@ export function TodaySupportStatusAlert(): JSX.Element | null {
             <ItemContent>
                 <ItemTitle>{statusDescription || 'Active incident'}</ItemTitle>
                 <ItemDescription>
-                    We're aware of an issue that may be affecting your PostHog experience. You may wish to check our
+                    We're aware of an issue that may be affecting your Flind experience. You may wish to check our
                     current status before contacting support.
                 </ItemDescription>
-                <Button
+                {statusPageUrl && <Button
                     variant="link"
                     size="sm"
                     className="self-start p-0"
@@ -33,7 +33,7 @@ export function TodaySupportStatusAlert(): JSX.Element | null {
                     }
                 >
                     View current status
-                </Button>
+                </Button>}
             </ItemContent>
         </Item>
     )

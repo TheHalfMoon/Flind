@@ -148,6 +148,7 @@ export function HelpMenu({ iconOnly = false }: { iconOnly?: boolean }): JSX.Elem
                                 <Label intent="menu" className="px-2 mt-3">
                                     System
                                 </Label>
+                                {statusPageUrl && (
                                 <Menu.Item
                                     render={(props) => (
                                         <Link
@@ -172,6 +173,7 @@ export function HelpMenu({ iconOnly = false }: { iconOnly?: boolean }): JSX.Elem
                                         </Link>
                                     )}
                                 />
+                                )}
                                 <Menu.Item
                                     render={(props) => (
                                         <Link

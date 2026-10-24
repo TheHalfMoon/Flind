@@ -6,7 +6,18 @@
 
 export type NormalizedStatus = 'operational' | 'degraded_performance' | 'partial_outage' | 'major_outage'
 
-export const STATUS_PAGE_BASE = 'https://www.posthogstatus.com'
+/** Optional status provider. No inherited SaaS status feeds are accepted. */
+export function configuredStatusPageHost(value: string = import.meta.env.VITE_FLIND_STATUS_HOST || ''): string | null {
+    if (!value || value.length > 253 || !/^[a-z0-9][a-z0-9.-]*[a-z0-9]$/.test(value) || value.includes('..')) {
+        return null
+    }
+    if (value.split('.').some((part) => part.length > 63 || part.startsWith('-') || part.endsWith('-'))) {
+        return null
+    }
+    return value
+}
+
+export const STATUS_PAGE_BASE: string = configuredStatusPageHost() ? `https://${configuredStatusPageHost()}` : ''
 
 export const DEFAULT_STATUS: NormalizedStatus = 'operational'
 

@@ -55,18 +55,16 @@ const StatusPageAlert = (): JSX.Element | null => {
                 <IconWarning className="text-warning w-5 h-5 shrink-0 mt-0.5" />
                 <div className="flex-1">
                     <p className="font-semibold mb-1">
-                        <Link to={statusPageUrl} target="_blank">
-                            {description}
-                        </Link>
+                        {statusPageUrl ? <Link to={statusPageUrl} target="_blank">{description}</Link> : description}
                     </p>
                     <div className="text-sm">
                         <p className="mb-1">We're aware of an issue that may be affecting your Flind experience.</p>
                         <p className="mb-0">
-                            You may wish to check our{' '}
-                            <Link to={statusPageUrl} target="_blank">
-                                current status
-                            </Link>{' '}
-                            before contacting support.
+                            {statusPageUrl ? (
+                                <>View the <Link to={statusPageUrl} target="_blank">current Flind status</Link> before contacting support.</>
+                            ) : (
+                                'Contact your Flind workspace administrator for details.'
+                            )}
                         </p>
                     </div>
                 </div>

@@ -19,11 +19,11 @@ describe('incidentStatusLogic', () => {
     })
 
     function statusPageRequestCount(): number {
-        return fetchSpy.mock.calls.filter((call) => String(call[0]).startsWith(STATUS_PAGE_BASE)).length
+        return fetchSpy.mock.calls.filter((call) => STATUS_PAGE_BASE && String(call[0]).startsWith(STATUS_PAGE_BASE)).length
     }
 
     it.each([
-        ['once on US cloud', Region.US, 1],
+        ['no external status source even on US cloud by default', Region.US, 0],
         ['never on a self-hosted deployment', null, 0],
         ['never on local dev', Region.DEV, 0],
     ])('fetches the status page %s', async (_name, region, expectedRequests) => {

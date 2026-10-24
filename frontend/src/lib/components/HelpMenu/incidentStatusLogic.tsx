@@ -5,6 +5,7 @@ import posthog from 'posthog-js'
 import { isBrowserNetworkFailure } from 'lib/api-error'
 // eslint-disable-next-line import/no-cycle
 import { superpowersLogic } from 'lib/components/Superpowers/superpowersLogic'
+import { flindRegionHost } from 'lib/flindRegionHosts'
 import { preflightLogic } from 'lib/logic/preflightLogic'
 
 import { Region } from '~/types'
@@ -74,7 +75,7 @@ const REFRESH_INTERVAL = 60 * 1000 * 5 // 5 minutes
 
 // incident.io component name for the PostHog AI service. An incident is treated as affecting AI only
 // when it tags a component with this exact name under the current region's group (see getRelevantGroupName).
-export const AI_COMPONENT_NAME = 'PostHog AI'
+export const AI_COMPONENT_NAME = 'Flind AI'
 
 // incident.io component group name (text only — the status page suffixes a region flag emoji we strip
 // on the API side via normalizeGroupName) for each cloud region.
@@ -93,12 +94,14 @@ function getRelevantGroupName(region: Region | null | undefined): string | null 
 }
 
 // Map hostname to the region-specific status page path (incident.io sub-pages)
-const REGION_PATH_MAP: Record<string, string> = {
-    'us.posthog.com': '/us',
-    'eu.posthog.com': '/eu',
-    localhost: '/us', // Default to US for local dev
-    '127.0.0.1': '/us', // Storybook CI runs at 127.0.0.1:6006
-}
+const REGION_PATH_MAP: Record<string, string> = Object.fromEntries(
+    ([Region.US, Region.EU] as const)
+        .map((region) => {
+            const host = flindRegionHost(region)
+            return host ? [host, region === Region.US ? '/us' : '/eu'] : null
+        })
+        .filter((entry): entry is [string, string] => entry !== null)
+)
 
 // Reduce an incident.io group_name to its text, dropping the region flag emoji and surrounding
 // whitespace, so it can be compared against the emoji-free names in GROUP_NAME_BY_REGION.
@@ -108,7 +111,7 @@ function normalizeGroupName(name: string): string {
 
 // Region-specific status page URL, falling back to the root page for unknown (self-hosted) hosts
 export function getStatusPageUrl(): string {
-    return `${STATUS_PAGE_BASE}${REGION_PATH_MAP[window.location.hostname] ?? ''}`
+    return STATUS_PAGE_BASE ? `${STATUS_PAGE_BASE}${REGION_PATH_MAP[window.location.hostname] ?? ''}` : ''
 }
 
 function hasRelevantComponents(affectedComponents: AffectedComponent[], relevantGroupName: string | null): boolean {
@@ -281,14 +284,14 @@ export const incidentStatusLogic = kea<incidentStatusLogicType>([
                     // Only a deployment with a region group can act on the summary. Everywhere else
                     // (see getRelevantGroupName) every selector below discards it, so the request buys
                     // nothing. Skipping it also removes the `TypeError: Failed to fetch` that a
-                    // deployment without egress to posthogstatus.com reports on every poll.
+                    // deployment without egress to an unconfigured provider reports on every poll.
                     // `relevantGroupName` is null until preflight resolves, so the loadPreflightSuccess
                     // listener starts the poll when the region arrives late.
-                    if (!values.relevantGroupName) {
+                    if (!STATUS_PAGE_BASE || !values.relevantGroupName) {
                         return null
                     }
 
-                    // The incident.io status page is external (posthogstatus.com), so the fetch can fail
+                    // The incident.io status page is external (an unconfigured provider), so the fetch can fail
                     // for reasons outside our control: ad blockers, tracking-protection extensions, DNS
                     // hiccups, brief status-page outages. Swallow the failure (degrading to 'operational'
                     // via the rawStatus selector). We report a reachable-but-erroring status page (non-2xx)
@@ -382,7 +385,7 @@ export const incidentStatusLogic = kea<incidentStatusLogicType>([
         loadSummarySuccess: () => {
             setIncidentStatus(values.status)
 
-            if (!values.relevantGroupName) {
+            if (!STATUS_PAGE_BASE || !values.relevantGroupName) {
                 // The loader fetched nothing, so there is nothing to refresh.
                 return
             }
