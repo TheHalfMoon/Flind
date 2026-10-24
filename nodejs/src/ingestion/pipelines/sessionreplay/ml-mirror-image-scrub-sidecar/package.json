@@ -1,5 +1,5 @@
 {
-    "name": "@posthog/ml-mirror-image-scrub-sidecar",
+    "name": "@flind/ml-mirror-image-scrub-sidecar",
     "version": "0.0.0",
     "private": true,
     "description": "replay_vision image-scrub sidecar: an HTTP service that turns raw session-replay image bytes into scrubbed bytes using the native ML scrub (NSFW gate + solid-fill of detected faces, text, and QR/barcodes). The plugin-server consumer owns Kafka + S3 and calls this over loopback. Standalone package (not in pnpm-workspace.yaml) so its ML deps (onnxruntime + models) never reach the root lockfile or the plugin-server image.",

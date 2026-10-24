@@ -1,5 +1,6 @@
 {
-    "name": "@posthog/agent-proxy",
+    "name": "@flind/agent-proxy",
+    "private": true,
     "version": "1.0.0",
     "description": "PostHog agent-proxy SSE streaming service",
     "license": "MIT",

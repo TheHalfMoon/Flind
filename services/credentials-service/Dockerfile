@@ -36,7 +36,7 @@ COPY services/credentials-service/package.json services/credentials-service/pack
 # service holding every platform integration credential that is the supply-chain
 # path worth closing.
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store \
-    pnpm install --frozen-lockfile --ignore-scripts --filter @posthog/credentials-service...
+    pnpm install --frozen-lockfile --ignore-scripts --filter @flind/credentials-service...
 
 COPY services/credentials-service/ services/credentials-service/
 WORKDIR /code/services/credentials-service

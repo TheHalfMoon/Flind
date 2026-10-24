@@ -1,5 +1,6 @@
 {
-    "name": "@posthog/stripe",
+    "name": "@flind/stripe",
+    "private": true,
     "version": "1.5.0",
     "description": "PostHog Stripe app",
     "license": "MIT",

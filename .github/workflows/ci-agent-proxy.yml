@@ -61,7 +61,7 @@ jobs:
             - name: Install pnpm dependencies
               uses: ./.github/actions/pnpm-install
               with:
-                  install-command: pnpm install --frozen-lockfile --filter @posthog/agent-proxy...
+                  install-command: pnpm install --frozen-lockfile --filter @flind/agent-proxy...
 
             - name: Typecheck
               working-directory: services/agent-proxy

@@ -1,5 +1,5 @@
 {
-    "name": "@posthog/canvas-builder",
+    "name": "@flind/canvas-builder",
     "private": true,
     "type": "module",
     "dependencies": {

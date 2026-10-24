@@ -19,6 +19,6 @@ in with `vi.importActual`.
 ## Running
 
 ```bash
-pnpm --filter @posthog/agent-proxy test          # watch mode
-pnpm --filter @posthog/agent-proxy exec vitest run  # single run
+pnpm --filter @flind/agent-proxy test          # watch mode
+pnpm --filter @flind/agent-proxy exec vitest run  # single run
 ```

@@ -37,7 +37,7 @@ COPY patches/ patches/
 COPY services/agent-proxy/package.json services/agent-proxy/package.json
 
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store \
-    pnpm install --frozen-lockfile --filter @posthog/agent-proxy...
+    pnpm install --frozen-lockfile --filter @flind/agent-proxy...
 
 COPY services/agent-proxy/ services/agent-proxy/
 WORKDIR /code/services/agent-proxy

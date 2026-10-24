@@ -119,7 +119,7 @@ hogli start                  # Redis, Django (:8000), frontend (:8010), Temporal
 To run only this service standalone (for example when `ai_features` is off):
 
 ```sh
-hogli start:agent-proxy      # this service on :8003 (watch mode); or: pnpm --filter @posthog/agent-proxy dev
+hogli start:agent-proxy      # this service on :8003 (watch mode); or: pnpm --filter @flind/agent-proxy dev
 ```
 
 The proxy must be running before you start a task run. With the URL settings
@@ -150,20 +150,20 @@ identical, so the Django in-process path picks up seamlessly.
 docker build -f services/agent-proxy/Dockerfile -t posthog-agent-proxy .
 
 # Or build the JS bundle only (no Docker)
-pnpm --filter @posthog/agent-proxy build
+pnpm --filter @flind/agent-proxy build
 # Output: services/agent-proxy/dist/agent-proxy-server.mjs
 ```
 
 ## Testing
 
 ```sh
-pnpm --filter @posthog/agent-proxy test
+pnpm --filter @flind/agent-proxy test
 ```
 
 ## Type checking
 
 ```sh
-pnpm --filter @posthog/agent-proxy typecheck
+pnpm --filter @flind/agent-proxy typecheck
 ```
 
 ## Cutover note

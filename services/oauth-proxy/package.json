@@ -1,5 +1,6 @@
 {
-    "name": "@posthog/auth-proxy",
+    "name": "@flind/auth-proxy",
+    "private": true,
     "version": "1.0.0",
     "description": "Cross-region OAuth proxy for PostHog Cloud (oauth.posthog.com)",
     "keywords": [

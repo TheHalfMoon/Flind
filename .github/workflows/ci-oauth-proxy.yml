@@ -55,7 +55,7 @@ jobs:
             - name: Install pnpm dependencies
               uses: ./.github/actions/pnpm-install
               with:
-                  install-command: pnpm --filter=@posthog/auth-proxy... install --frozen-lockfile
+                  install-command: pnpm --filter=@flind/auth-proxy... install --frozen-lockfile
 
             - name: Type check (tsgo)
               run: cd services/oauth-proxy && pnpm typecheck

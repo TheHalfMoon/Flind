@@ -1,5 +1,6 @@
 {
-    "name": "@posthog/credentials-service",
+    "name": "@flind/credentials-service",
+    "private": true,
     "version": "1.0.0",
     "description": "PostHog credentials service — serves platform integration credentials over HTTP",
     "license": "MIT",

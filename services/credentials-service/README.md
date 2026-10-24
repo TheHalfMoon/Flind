@@ -235,10 +235,10 @@ the npm-specific supply-chain path worth closing here.
 ## Local development
 
 ```bash
-pnpm --filter @posthog/credentials-service dev                # tsx watch, pretty logs
-pnpm --filter @posthog/credentials-service typecheck
-pnpm --filter @posthog/credentials-service test:unit
-pnpm --filter @posthog/credentials-service test:integration   # boots a real server on a temp mount
+pnpm --filter @flind/credentials-service dev                # tsx watch, pretty logs
+pnpm --filter @flind/credentials-service typecheck
+pnpm --filter @flind/credentials-service test:unit
+pnpm --filter @flind/credentials-service test:integration   # boots a real server on a temp mount
 ```
 
 The integration suite boots a real `CredentialsServer` against a temp-dir mount and a real

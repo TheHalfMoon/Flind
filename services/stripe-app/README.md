@@ -98,7 +98,7 @@ You can configure phrocs to include the stripe app in your configuration when ru
 hogli start:stripe:app
 
 # Or directly
-pnpm --filter=@posthog/stripe dev
+pnpm --filter=@flind/stripe dev
 ```
 
 This runs `stripe apps start --manifest stripe-app.dev.json`,

@@ -121,11 +121,11 @@ KV is eventually consistent across Cloudflare's edge locations, so this single-u
 ## Development
 
 ```sh
-pnpm --filter @posthog/auth-proxy install
-pnpm --filter @posthog/auth-proxy dev        # wrangler dev
-pnpm --filter @posthog/auth-proxy test       # vitest
-pnpm --filter @posthog/auth-proxy typecheck  # tsgo --noEmit
-pnpm --filter @posthog/auth-proxy cf-typegen # regenerate worker types
+pnpm --filter @flind/auth-proxy install
+pnpm --filter @flind/auth-proxy dev        # wrangler dev
+pnpm --filter @flind/auth-proxy test       # vitest
+pnpm --filter @flind/auth-proxy typecheck  # tsgo --noEmit
+pnpm --filter @flind/auth-proxy cf-typegen # regenerate worker types
 ```
 
 The worker always talks to production `us.posthog.com` and `eu.posthog.com`; there is no local-instance mode.
@@ -137,7 +137,7 @@ CI runs the typecheck and the test suite on any change under `services/oauth-pro
 ## Deploying
 
 ```sh
-pnpm --filter @posthog/auth-proxy deploy
+pnpm --filter @flind/auth-proxy deploy
 ```
 
 This needs Cloudflare credentials for the PostHog account.
