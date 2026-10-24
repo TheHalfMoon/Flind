@@ -36,14 +36,6 @@ type InstallStep struct {
 func GetInstallSteps() []InstallStep {
 	return []InstallStep{
 		{
-			Name: "Send telemetry",
-			Run: func(cfg InstallConfig) InstallResult {
-				SendInstallStartEvent(cfg.Domain)
-				return InstallResult{Detail: "sent"}
-			},
-			Hidden: true,
-		},
-		{
 			Name: "Setup git",
 			Run: func(cfg InstallConfig) InstallResult {
 				_ = AptUpdate()
@@ -206,14 +198,6 @@ func GetInstallSteps() []InstallStep {
 				}
 				return InstallResult{Detail: "PostHog is up!"}
 			},
-		},
-		{
-			Name: "Send completion telemetry",
-			Run: func(cfg InstallConfig) InstallResult {
-				SendInstallCompleteEvent(cfg.Domain)
-				return InstallResult{Detail: "sent"}
-			},
-			Hidden: true,
 		},
 	}
 }
