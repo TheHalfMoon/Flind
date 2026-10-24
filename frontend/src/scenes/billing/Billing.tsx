@@ -14,6 +14,7 @@ import { pngHoggie } from 'lib/brand/hoggies'
 import { RestrictionScope, useRestrictedArea } from 'lib/components/RestrictedArea'
 import { supportLogic } from 'lib/components/Support/supportLogic'
 import { FEATURE_FLAGS } from 'lib/constants'
+import { flindPublicUrl } from 'lib/flindPublicLinks'
 import { dayjs } from 'lib/dayjs'
 import { LemonBanner } from 'lib/lemon-ui/LemonBanner'
 import { SpinnerOverlay } from 'lib/lemon-ui/Spinner/Spinner'
@@ -70,6 +71,7 @@ export function Billing(): JSX.Element {
     const { location, searchParams } = useValues(router)
     const { activeCoupons, couponsOverviewLoading } = useValues(couponLogic({}))
     const { memberCount } = useValues(membersLogic)
+    const docsUrl = flindPublicUrl('docs')
 
     const restrictionReason = useRestrictedArea({
         minimumAccessLevel: minimumBillingAccessLevel,
@@ -113,17 +115,26 @@ export function Billing(): JSX.Element {
         return (
             <div className="deprecated-space-y-4">
                 <LemonBanner type="error">
-                    {
-                        'There was an issue retrieving your current billing information. If this message persists, please '
-                    }
+                    There was an issue retrieving your current billing information.{' '}
                     {preflight?.cloud ? (
-                        <Link onClick={() => openSupportForm({ kind: 'bug', billing_issue: true })}>
-                            submit a bug report
-                        </Link>
+                        <>
+                            If this persists,{' '}
+                            <Link onClick={() => openSupportForm({ kind: 'bug', billing_issue: true })}>
+                                submit a bug report
+                            </Link>
+                            .
+                        </>
+                    ) : docsUrl ? (
+                        <>
+                            If this persists,{' '}
+                            <Link to={docsUrl} target="_blank">
+                                review Flind help options
+                            </Link>
+                            .
+                        </>
                     ) : (
-                        <Link to="mailto:sales@posthog.com">contact sales@posthog.com</Link>
+                        'If this persists, contact your Flind workspace administrator.'
                     )}
-                    .
                 </LemonBanner>
             </div>
         )

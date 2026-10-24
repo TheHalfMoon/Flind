@@ -5,6 +5,7 @@ import { IconX } from '@posthog/icons'
 import { LemonButton, LemonDivider, LemonSkeleton } from '@posthog/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'
+import { flindPublicUrl } from 'lib/flindPublicLinks'
 
 import { billingLogic } from './billingLogic'
 import { PurchaseCreditsModal } from './PurchaseCreditsModal'
@@ -25,6 +26,7 @@ export const CreditCTAHero = (): JSX.Element | null => {
     } = useValues(billingLogic)
     const { showPurchaseCreditsModal, toggleCreditCTAHeroDismissed } = useActions(billingLogic)
     const { estimatedMonthlyCreditAmountUsd } = useValues(billingLogic)
+    const docsUrl = flindPublicUrl('docs')
     const creditInvoiceUrl = isExternallyBilled
         ? billing?.external_billing_provider_invoices_url
         : creditOverview.invoice_url
@@ -156,20 +158,15 @@ export const CreditCTAHero = (): JSX.Element | null => {
                     </div>
                 </div>
 
-                {creditOverview.status === 'none' && (
+                {creditOverview.status === 'none' && docsUrl && (
                     <>
                         <LemonDivider className="my-3" />
                         <div className="flex items-center justify-between gap-6">
                             <p className="mb-0 flex-1">
-                                <strong>Also available:</strong> Our Enterprise tier offers dedicated support in a
-                                private Slack channel, personalized training, and most importantly, free merch.
+                                Need help understanding Flind billing and available options?
                             </p>
-                            <LemonButton
-                                type="primary"
-                                to="mailto:sales@posthog.com?subject=Let's talk enterprise!"
-                                className="w-30"
-                            >
-                                Talk to sales
+                            <LemonButton type="secondary" to={docsUrl}>
+                                View Flind help
                             </LemonButton>
                         </div>
                     </>
