@@ -39,6 +39,7 @@ export function UsageLimitModal() {
     }
   }, [isOpen, cause]);
 
+  const verifiedBillingUrl = getBillingUrl(cloudRegion);
   const content = usageLimitContent({
     cause,
     resetLabel: resetAt ? formatResetTime(resetAt) : null,
@@ -52,8 +53,7 @@ export function UsageLimitModal() {
       ...(cause ? { cause } : {}),
     });
     hide();
-    const billingUrl = getBillingUrl(cloudRegion);
-    if (billingUrl) openExternalUrl(billingUrl);
+    if (verifiedBillingUrl) openExternalUrl(verifiedBillingUrl);
   };
 
   return (
@@ -62,6 +62,7 @@ export function UsageLimitModal() {
       content={content}
       onDismiss={hide}
       onAction={handleAction}
+      actionAvailable={verifiedBillingUrl !== null}
     />
   );
 }
@@ -71,11 +72,13 @@ export function UsageLimitModalContent({
   content,
   onDismiss,
   onAction,
+  actionAvailable = true,
 }: {
   open: boolean;
   content: UsageLimitContent;
   onDismiss: () => void;
   onAction: () => void;
+  actionAvailable?: boolean;
 }) {
   return (
     <AlertDialog
@@ -95,7 +98,7 @@ export function UsageLimitModalContent({
           <AlertDialogDescription>{content.description}</AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          {content.actionLabel ? (
+          {content.actionLabel && actionAvailable ? (
             <>
               <Button variant="outline" onClick={onDismiss}>
                 {content.dismissLabel}
@@ -105,9 +108,16 @@ export function UsageLimitModalContent({
               </Button>
             </>
           ) : (
-            <Button variant="primary" onClick={onDismiss}>
-              {content.dismissLabel}
-            </Button>
+            <>
+              {content.actionLabel && !actionAvailable && (
+                <span className="text-sm text-muted-foreground">
+                  Flind billing is not configured for this installation.
+                </span>
+              )}
+              <Button variant="primary" onClick={onDismiss}>
+                {content.dismissLabel}
+              </Button>
+            </>
           )}
         </AlertDialogFooter>
       </AlertDialogContent>

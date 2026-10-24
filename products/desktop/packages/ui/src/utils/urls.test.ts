@@ -1,5 +1,5 @@
 import { getBillingUrl, getPostHogUrl } from "@flind/ui/utils/urls";
-import { describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 
 describe("getPostHogUrl", () => {
   it("returns null when no region is available and the input is a path", () => {
@@ -26,30 +26,34 @@ describe("getPostHogUrl", () => {
   });
 });
 
-describe("getBillingUrl", () => {
-  it.each([
-    [
-      "us",
-      "https://us.posthog.com/organization/billing/overview?products=posthog_code_usage",
-    ],
-    [
-      "eu",
-      "https://eu.posthog.com/organization/billing/overview?products=posthog_code_usage",
-    ],
-  ] as const)(
-    "points at /organization/billing/overview?products=posthog_code_usage on %s",
-    (region, expected) => {
-      expect(getBillingUrl(region)).toBe(expected);
-    },
-  );
+describe("getBillingUrl first-party billing boundary", () => {
+  afterEach(() => vi.unstubAllEnvs());
 
-  it("returns null when no region is available", () => {
+  it("returns null when billing is not explicitly configured in any region", () => {
+    vi.stubEnv("VITE_FLIND_CLOUD_APP_HOST", "");
+    vi.stubEnv("VITE_FLIND_BILLING_URL", "");
     expect(getBillingUrl()).toBeNull();
+    expect(getBillingUrl("us")).toBeNull();
+    expect(getBillingUrl("eu")).toBeNull();
   });
 
-  it("does not produce the malformed double-scheme URL we used to ship", () => {
-    const url = getBillingUrl("us");
-    expect(url).not.toMatch(/https?:\/\/[^/]+\/https?:/);
-    expect(url).not.toContain("/project/");
+  it("uses only the explicitly configured first-party Flind billing URL", () => {
+    vi.stubEnv("VITE_FLIND_CLOUD_APP_HOST", "app.flind.example");
+    vi.stubEnv("VITE_FLIND_BILLING_URL", "https://app.flind.example/billing");
+    expect(getBillingUrl("us")).toBe("https://app.flind.example/billing");
+    expect(getBillingUrl("eu")).toBe("https://app.flind.example/billing");
+  });
+
+  it.each([
+    "https://us.posthog.com/organization/billing/overview",
+    "https://app.flind.example.evil.test/billing",
+    "http://app.flind.example/billing",
+    "https://user@app.flind.example/billing",
+    "https://app.flind.example:4443/billing",
+    "https://app.flind.example/billing#secret",
+  ])("rejects unsafe or inherited billing destination %s", (url) => {
+    vi.stubEnv("VITE_FLIND_CLOUD_APP_HOST", "app.flind.example");
+    vi.stubEnv("VITE_FLIND_BILLING_URL", url);
+    expect(getBillingUrl("us")).toBeNull();
   });
 });

@@ -28,7 +28,7 @@ export function usageLimitContent(args: {
     return {
       title: "Unlock premium models",
       description:
-        "This model isn't included in the free tier. Add a payment method to your organization to unlock all models — you only pay for what you use. You can keep working now by switching to an included model.",
+        "This model requires additional access. Review your organization's billing configuration or switch to an available model.",
       actionLabel: "Add payment method",
       dismissLabel: "Not now",
     };
@@ -59,7 +59,7 @@ export function usageLimitContent(args: {
       return {
         title: "Organization usage limit reached",
         description:
-          "Your organization has reached its PostHog Desktop credit limit. Contact an organization administrator to change the limit.",
+          "Your organization has reached its configured usage limit. Contact an organization administrator to change the limit.",
         actionLabel: null,
         dismissLabel: "Got it",
       };
@@ -69,7 +69,7 @@ export function usageLimitContent(args: {
         title: "Free usage used up",
         description: `Your organization has used up its included usage.${
           resetLabel ? ` ${resetLabel}.` : ""
-        } Add a payment method to keep going — you only pay for what you use.`,
+        } Review your organization's billing configuration before continuing.`,
         actionLabel: "Add payment method",
         dismissLabel: "Not now",
       };
@@ -77,7 +77,7 @@ export function usageLimitContent(args: {
     return {
       title: "Organization usage limit reached",
       description:
-        "Your organization has reached its PostHog Desktop credit limit. Change the limit in Plan & usage to keep going.",
+        "Your organization has reached its configured usage limit. Change the limit in Plan & usage to keep going.",
       actionLabel: "Open Plan & usage",
       dismissLabel: "Got it",
     };

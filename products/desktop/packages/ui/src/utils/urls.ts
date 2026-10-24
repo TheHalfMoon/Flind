@@ -1,5 +1,6 @@
 import { type CloudRegion, getCloudUrlFromRegion } from "@flind/shared";
 import { useAuthStore } from "@flind/ui/features/auth/store";
+import { verifyFlindExternalLink } from "@flind/ui/shell/flindExternalLinks";
 
 export function getPostHogUrl(
   pathOrUrl: string,
@@ -13,11 +14,14 @@ export function getPostHogUrl(
   return `${base}${pathOrUrl.startsWith("/") ? pathOrUrl : `/${pathOrUrl}`}`;
 }
 
+/** A Flind payment URL must be explicitly provisioned and verified.
+ * Never build an inherited provider billing/legacy SKU route. */
 export function getBillingUrl(
-  regionOverride?: CloudRegion | null,
+  _regionOverride?: CloudRegion | null,
 ): string | null {
-  return getPostHogUrl(
-    "/organization/billing/overview?products=posthog_code_usage",
-    regionOverride,
+  return verifyFlindExternalLink(
+    "website",
+    import.meta.env.VITE_FLIND_CLOUD_APP_HOST,
+    { website: import.meta.env.VITE_FLIND_BILLING_URL },
   );
 }
