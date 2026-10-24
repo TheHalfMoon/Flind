@@ -85,9 +85,9 @@ def redis_ping(port: int = 6379) -> Check:
         return Check("redis", False, "Local PING unavailable")
 
 
-def clickhouse_ping() -> Check:
+def clickhouse_ping(port: int = 8123) -> Check:
     # HTTPConnection never follows a 3xx redirect out of the loopback host.
-    conn = HTTPConnection("127.0.0.1", 8123, timeout=1.5)
+    conn = HTTPConnection("127.0.0.1", port, timeout=1.5)
     try:
         conn.request("GET", "/ping")
         response = conn.getresponse()
@@ -128,10 +128,10 @@ def docker_daemon() -> Check:
         return Check("docker", False, "Local Docker daemon unavailable", required=False)
 
 
-def qualify(redis_port: int = 6379) -> dict:
+def qualify(redis_port: int = 6379, clickhouse_port: int = 8123) -> dict:
     checks = [
         pinned_python_version(), postgres_readonly_sql(), redis_ping(redis_port),
-        clickhouse_ping(), django_import(), docker_daemon(),
+        clickhouse_ping(clickhouse_port), django_import(), docker_daemon(),
     ]
     blockers = [c.name for c in checks if c.required and not c.ready]
     return {
@@ -154,10 +154,16 @@ def main(argv: list[str] | None = None) -> int:
         "--redis-port", type=int, default=6379,
         help="Loopback-only Redis port for isolated local test instances",
     )
+    parser.add_argument(
+        "--clickhouse-port", type=int, default=8123,
+        help="Loopback-only ClickHouse HTTP port for isolated local instances",
+    )
     args = parser.parse_args(argv)
     if not 1 <= args.redis_port <= 65535:
         parser.error("--redis-port must be between 1 and 65535")
-    result = qualify(args.redis_port)
+    if not 1 <= args.clickhouse_port <= 65535:
+        parser.error("--clickhouse-port must be between 1 and 65535")
+    result = qualify(args.redis_port, args.clickhouse_port)
     if args.json:
         print(json.dumps(result, indent=2, ensure_ascii=False))
     else:

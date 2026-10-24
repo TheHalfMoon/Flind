@@ -7,6 +7,7 @@ network is touched. This is a Redis component check, never release E2E.
 from __future__ import annotations
 
 import argparse
+from collections.abc import Callable
 import json
 import secrets
 import shutil
@@ -85,7 +86,10 @@ def redis_command_check(port: int) -> None:
             stream.close()
 
 
-def isolated_redis(binary: str | None = None) -> dict:
+def isolated_redis(
+    binary: str | None = None,
+    on_ready: Callable[[int], dict] | None = None,
+) -> dict:
     resolved = binary or shutil.which("redis-server")
     if not resolved:
         return {
@@ -115,6 +119,7 @@ def isolated_redis(binary: str | None = None) -> dict:
                     raise RuntimeError("Isolated Redis exited before readiness")
                 if redis_ping(port).ready:
                     redis_command_check(port)
+                    nested = on_ready(port) if on_ready else None
                     return {
                         "isolated_redis_passed": True,
                         "release_qualified": False,
@@ -122,6 +127,7 @@ def isolated_redis(binary: str | None = None) -> dict:
                         "persistence": "disabled",
                         "network": "127.0.0.1 only",
                         "backend_prerequisites": qualify(redis_port=port),
+                        **({"nested_clickhouse": nested} if nested is not None else {}),
                     }
                 time.sleep(0.1)
             raise RuntimeError("Isolated Redis did not become ready")

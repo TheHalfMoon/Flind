@@ -130,6 +130,13 @@ class BackendRuntimeReadinessWave48Tests(unittest.TestCase):
         self.assertEqual(conn.request_args, ("GET", "/ping"))
         self.assertTrue(conn.closed)
 
+    @patch.object(ready, "HTTPConnection")
+    def test_clickhouse_custom_port_is_still_loopback(self, connection):
+        client = FakeHttpConnection()
+        connection.return_value = client
+        self.assertTrue(ready.clickhouse_ping(port=18123).ready)
+        self.assertEqual(connection.call_args.args, ("127.0.0.1", 18123))
+
     @patch.object(ready.importlib.util, "find_spec", return_value=None)
     def test_django_absence_is_reported_not_imported(self, finder):
         self.assertFalse(ready.django_import().ready)
