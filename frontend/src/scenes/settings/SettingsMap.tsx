@@ -238,8 +238,7 @@ export const SETTINGS_MAP: SettingSection[] = [
                 id: 'snippet',
                 title: 'SDK setup',
                 description:
-                    'Install PostHog in your app with Wizard, or set it up manually by following the instructions for your platform.',
-                docsUrl: 'https://posthog.com/docs/getting-started/install',
+                    'Install Flind in your app with Wizard, or set it up manually by following the instructions for your platform.',
                 component: <SDKInstallOptions />,
                 keywords: [
                     'install',
@@ -330,7 +329,6 @@ export const SETTINGS_MAP: SettingSection[] = [
                 title: 'Filter out internal and test users',
                 description:
                     'Add filters that match the users you want to keep, for example "email does not contain yourcompany.com". When this filter is on, events that do not match every filter are hidden from insights. A destination applies these filters only when "Filter out internal and test users" is turned on in its filters.',
-                docsUrl: 'https://posthog.com/tutorials/filter-internal-users',
                 component: <ProjectAccountFiltersSetting />,
                 keywords: ['test account', 'internal', 'exclude', 'filter'],
             },
@@ -341,7 +339,6 @@ export const SETTINGS_MAP: SettingSection[] = [
                 title: 'Custom bots',
                 description:
                     'Add your own crawlers and scripts to the bots PostHog already detects, so you can tell them apart from real visitors.',
-                docsUrl: 'https://posthog.com/docs/web-analytics/bot-detection',
                 component: <CustomBotRules />,
                 keywords: ['bot', 'crawler', 'spider', 'scraper', 'user agent', 'ai'],
             },
@@ -659,7 +656,6 @@ export const SETTINGS_MAP: SettingSection[] = [
                 title: 'Model Context Protocol (MCP) server',
                 description:
                     'Connect PostHog to AI tools like Claude, Cursor, and Copilot via the MCP protocol for data-driven AI assistance.',
-                docsUrl: 'https://posthog.com/docs/model-context-protocol',
                 component: <MCPServerSettings />,
                 keywords: ['ai', 'llm', 'claude', 'cursor', 'copilot'],
             },
@@ -692,7 +688,6 @@ export const SETTINGS_MAP: SettingSection[] = [
                 description:
                     'Add and manage provider API keys for AI observability features, including evaluations and playground.',
                 component: <LLMProviderKeysSettings />,
-                docsUrl: 'https://posthog.com/docs/ai-evals/evaluations',
                 keywords: ['llm', 'provider', 'api key', 'openai', 'anthropic', 'gemini', 'playground'],
             },
             {
@@ -748,7 +743,6 @@ export const SETTINGS_MAP: SettingSection[] = [
                 id: 'group-analytics',
                 title: 'Group analytics',
                 description: 'Configure group types for analyzing user behavior at the company or team level.',
-                docsUrl: 'https://posthog.com/docs/product-analytics/group-analytics',
                 component: <GroupAnalyticsConfig />,
                 keywords: ['company', 'organization', 'team', 'group type'],
             },
@@ -841,7 +835,6 @@ export const SETTINGS_MAP: SettingSection[] = [
                 title: 'Exception autocapture',
                 description:
                     'Automatically capture frontend exceptions using onError and onUnhandledRejection listeners in the web JavaScript SDK.',
-                docsUrl: 'https://posthog.com/docs/error-tracking',
                 platformSupport: FEATURE_SUPPORT.errorTrackingExceptionAutocapture,
                 component: <ExceptionAutocaptureToggle />,
                 keywords: ['crash', 'bug', 'exception', 'stack trace'],
@@ -871,7 +864,6 @@ export const SETTINGS_MAP: SettingSection[] = [
                 title: 'Exception autocapture',
                 description:
                     'Automatically capture frontend exceptions using onError and onUnhandledRejection listeners in the web JavaScript SDK.',
-                docsUrl: 'https://posthog.com/docs/error-tracking',
                 platformSupport: FEATURE_SUPPORT.errorTrackingExceptionAutocapture,
                 component: <ExceptionAutocaptureToggle />,
                 keywords: ['crash', 'bug', 'exception', 'stack trace'],
@@ -927,7 +919,6 @@ export const SETTINGS_MAP: SettingSection[] = [
                 id: 'error-tracking-symbol-sets',
                 title: 'Symbol sets',
                 description: 'Upload source maps to get readable stack traces from minified code.',
-                docsUrl: 'https://posthog.com/docs/error-tracking/upload-source-maps',
                 component: <SymbolSets />,
                 keywords: ['source map', 'sourcemap', 'debug', 'minified', 'stack trace'],
             },
@@ -935,7 +926,6 @@ export const SETTINGS_MAP: SettingSection[] = [
                 id: 'error-tracking-releases',
                 title: 'Releases',
                 description: 'Track releases to see which version introduced errors and monitor deployment health.',
-                docsUrl: 'https://posthog.com/docs/error-tracking/releases',
                 component: <Releases />,
                 keywords: ['version', 'deploy', 'release', 'regression'],
             },
@@ -952,7 +942,6 @@ export const SETTINGS_MAP: SettingSection[] = [
                 title: 'Default statistical method',
                 description:
                     'Choose which statistical method to use by default for new experiments in this environment. Individual experiments can override this setting.',
-                docsUrl: 'https://posthog.com/docs/experiments',
                 component: <DefaultExperimentStatsMethod />,
                 keywords: ['bayesian', 'frequentist', 'statistics', 'ab test'],
             },
@@ -1056,8 +1045,6 @@ export const SETTINGS_MAP: SettingSection[] = [
                 title: 'Flag persistence',
                 description:
                     'When enabled, all new feature flags will have persistence enabled by default. This ensures consistent user experiences across authentication steps.',
-                docsUrl:
-                    'https://posthog.com/docs/feature-flags/creating-feature-flags#persisting-feature-flags-across-authentication-steps',
                 component: <FlagPersistenceSettings />,
                 keywords: ['flag', 'persistence', 'authentication', 'consistent'],
             },
@@ -1082,7 +1069,6 @@ export const SETTINGS_MAP: SettingSection[] = [
                 title: 'Require evaluation contexts',
                 description:
                     'Require all new feature flags to have at least one evaluation context before they can be created, preventing flags that are not properly scoped.',
-                docsUrl: 'https://posthog.com/docs/feature-flags/evaluation-contexts',
                 flag: 'FLAG_EVALUATION_TAGS',
                 component: <RequireEvaluationContexts />,
                 keywords: ['evaluation', 'context', 'scope', 'require'],
@@ -1092,7 +1078,6 @@ export const SETTINGS_MAP: SettingSection[] = [
                 title: 'Default evaluation contexts',
                 description:
                     'Automatically apply default evaluation context tags to newly created feature flags. Users can still modify them during flag creation.',
-                docsUrl: 'https://posthog.com/docs/feature-flags/evaluation-contexts',
                 component: <DefaultEvaluationContexts />,
                 keywords: ['evaluation', 'default', 'context', 'tag'],
             },
@@ -1109,7 +1094,6 @@ export const SETTINGS_MAP: SettingSection[] = [
                 title: 'Evaluation context suggestions',
                 description:
                     'Manage which evaluation context names are suggested when scoping a feature flag. Hide stale or mistyped names from the suggestion list without affecting flags that already use them.',
-                docsUrl: 'https://posthog.com/docs/feature-flags/evaluation-contexts',
                 flag: 'FLAG_EVALUATION_TAGS',
                 component: <EvaluationContextSuggestions />,
                 keywords: ['evaluation', 'context', 'suggestion', 'hide', 'tag'],
@@ -1119,7 +1103,6 @@ export const SETTINGS_MAP: SettingSection[] = [
                 title: 'Feature flags secure API key',
                 description:
                     'Deprecated. This key is still usable for local evaluation of feature flags or remote config settings, but new integrations should use a project secret API key with the feature_flag:read scope instead.',
-                docsUrl: 'https://posthog.com/docs/feature-flags/local-evaluation',
                 component: <FlagsSecureApiKeys />,
                 keywords: ['api key', 'secret', 'local evaluation', 'remote config'],
             },
@@ -1136,7 +1119,6 @@ export const SETTINGS_MAP: SettingSection[] = [
                 title: 'Heatmaps',
                 description:
                     'Capture general clicks, mouse movements, and scrolling to create heatmaps. No additional events are created. Heatmaps are generated based on overall mouse or touch positions, useful for understanding general user behavior.',
-                docsUrl: 'https://posthog.com/docs/toolbar/heatmaps',
                 platformSupport: FEATURE_SUPPORT.heatmaps,
                 component: <HeatmapsSettings />,
                 keywords: ['click map', 'scroll', 'rage click', 'mouse', 'touch'],
@@ -1146,7 +1128,6 @@ export const SETTINGS_MAP: SettingSection[] = [
                 title: 'Screenshot request cookie',
                 description:
                     'Heatmap backgrounds are screenshots of your site. Generate a value your screenshots send as a cookie, so bot protection can tell them apart from other headless browsers and allow them.',
-                docsUrl: 'https://posthog.com/docs/toolbar/heatmaps',
                 component: <HeatmapScreenshotCookieSettings />,
                 keywords: [
                     'waf',
@@ -1163,7 +1144,6 @@ export const SETTINGS_MAP: SettingSection[] = [
                 id: 'heatmaps-capture',
                 title: 'Heatmap capture URLs',
                 description: 'Choose which pages send heatmap data: every page, or only the URLs you list.',
-                docsUrl: 'https://posthog.com/docs/toolbar/heatmaps',
                 platformSupport: FEATURE_SUPPORT.heatmaps,
                 component: <HeatmapCaptureSettings />,
                 keywords: ['allow list', 'allowlist', 'url', 'capture', 'restrict'],
@@ -1181,7 +1161,6 @@ export const SETTINGS_MAP: SettingSection[] = [
                 title: 'Logs',
                 description:
                     'Automatically capture browser console logs and send them to the Logs product for analysis and debugging. This is separate from session replay console log capture.',
-                docsUrl: 'https://posthog.com/docs/logs',
                 platformSupport: FEATURE_SUPPORT.logsCapture,
                 component: <LogsCaptureSettings />,
                 keywords: ['log', 'capture', 'collect', 'ingest', 'console'],
@@ -1200,7 +1179,6 @@ export const SETTINGS_MAP: SettingSection[] = [
                 title: 'JSON parse log attribute',
                 description:
                     'Choose a log attribute containing JSON to make its nested fields available in filters. This works independently of JSON parse logs.',
-                docsUrl: 'https://posthog.com/docs/logs/logs-config',
                 component: <LogsJsonParseAttributeSettings />,
                 flag: 'LOGS_JSON_ATTRIBUTE_PARSING',
                 keywords: ['json', 'parse', 'attributes', 'nested', 'structured'],
@@ -1304,7 +1282,6 @@ export const SETTINGS_MAP: SettingSection[] = [
                 id: 'marketing-settings',
                 title: 'Marketing settings',
                 description: 'Configure tracking and attribution settings for marketing analytics.',
-                docsUrl: 'https://posthog.com/docs/web-analytics/marketing-analytics',
                 component: <MarketingAnalyticsSettingsWrapper />,
                 keywords: ['utm', 'attribution', 'campaign', 'channel', 'marketing'],
             },
@@ -1337,7 +1314,6 @@ export const SETTINGS_MAP: SettingSection[] = [
                 title: 'Person display name',
                 description:
                     'Choose which person properties are used to display names in the UI (e.g. email, name, username).',
-                docsUrl: 'https://posthog.com/docs/data/persons',
                 component: <PersonDisplayNameProperties />,
                 keywords: ['name', 'email', 'identity', 'display'],
             },
@@ -1346,7 +1322,6 @@ export const SETTINGS_MAP: SettingSection[] = [
                 title: 'Person last seen tracking',
                 description:
                     'When enabled, PostHog tracks when each person was last active. The value updates hourly and is visible in the People list.',
-                docsUrl: 'https://posthog.com/docs/data/persons',
                 component: <PersonLastSeenAtEnabled />,
                 keywords: ['person', 'last seen', 'activity', 'tracking'],
             },
@@ -1355,7 +1330,6 @@ export const SETTINGS_MAP: SettingSection[] = [
                 title: 'Path cleaning rules',
                 description:
                     'Define regex rules to normalize URLs in path analysis. Useful for removing IDs or query parameters from paths.',
-                docsUrl: 'https://posthog.com/docs/product-analytics/paths#path-cleaning-rules',
                 component: <PathCleaningFiltersConfig />,
                 keywords: ['url', 'regex', 'normalize', 'path analysis'],
             },
@@ -1371,7 +1345,6 @@ export const SETTINGS_MAP: SettingSection[] = [
                 id: 'group-analytics',
                 title: 'Group analytics',
                 description: 'Configure group types for analyzing user behavior at the company or team level.',
-                docsUrl: 'https://posthog.com/docs/product-analytics/group-analytics',
                 component: <GroupAnalyticsConfig />,
                 flag: '!CUSTOMER_ANALYTICS',
                 keywords: ['company', 'organization', 'team', 'group type'],
@@ -1428,7 +1401,6 @@ export const SETTINGS_MAP: SettingSection[] = [
                 id: 'revenue-analytics-events',
                 title: 'Revenue events',
                 description: 'Configure which events represent revenue-generating actions.',
-                docsUrl: 'https://posthog.com/docs/revenue-analytics',
                 component: <EventConfiguration />,
                 keywords: ['purchase', 'payment', 'subscription', 'charge'],
             },
@@ -1453,7 +1425,6 @@ export const SETTINGS_MAP: SettingSection[] = [
                 title: 'Session replay',
                 description:
                     'Watch recordings of how users interact with your web app to diagnose issues and understand user behavior.',
-                docsUrl: 'https://posthog.com/docs/session-replay',
                 component: <ReplayGeneral />,
                 keywords: ['recording', 'video', 'screen', 'session'],
             },
@@ -1461,7 +1432,6 @@ export const SETTINGS_MAP: SettingSection[] = [
                 id: 'replay-log-capture',
                 title: 'Log capture',
                 description: 'Capture browser console logs alongside session recordings to help debug issues.',
-                docsUrl: 'https://posthog.com/docs/session-replay/console-log-recording',
                 platformSupport: FEATURE_SUPPORT.sessionReplayLogCapture,
                 component: <LogCaptureSettings />,
                 keywords: ['console', 'log', 'debug', 'error'],
@@ -1471,7 +1441,6 @@ export const SETTINGS_MAP: SettingSection[] = [
                 title: 'Canvas capture',
                 description:
                     'Capture HTML canvas elements in session recordings. Useful for apps that render charts, games, or other canvas-based content.',
-                docsUrl: 'https://posthog.com/docs/session-replay/canvas-recording',
                 platformSupport: FEATURE_SUPPORT.sessionReplayCanvasCapture,
                 component: <CanvasCaptureSettings />,
                 keywords: ['canvas', 'webgl', 'drawing', 'chart'],
@@ -1481,7 +1450,6 @@ export const SETTINGS_MAP: SettingSection[] = [
                 title: 'Recording conditions',
                 description:
                     'Control when recordings start and stop. Use URL triggers, event triggers, or sampling to manage recording volume.',
-                docsUrl: 'https://posthog.com/docs/session-replay/how-to-control-which-sessions-you-record',
                 component: <ReplayTriggers />,
                 keywords: ['trigger', 'url', 'event', 'sample', 'condition', 'filter'],
             },
@@ -1490,7 +1458,6 @@ export const SETTINGS_MAP: SettingSection[] = [
                 title: 'Privacy and masking',
                 description:
                     'Choose what data gets masked in your session recordings. For more control, configure masking directly in your code.',
-                docsUrl: 'https://posthog.com/docs/session-replay/privacy',
                 platformSupport: FEATURE_SUPPORT.sessionReplayMasking,
                 component: <ReplayMaskingSettings />,
                 keywords: ['redact', 'sensitive', 'pii', 'hide', 'mask', 'privacy', 'gdpr'],
@@ -1500,7 +1467,6 @@ export const SETTINGS_MAP: SettingSection[] = [
                 title: 'Network capture',
                 description:
                     'Capture network request timings alongside session recordings to identify slow or failing API calls.',
-                docsUrl: 'https://posthog.com/docs/session-replay/network-recording',
                 platformSupport: FEATURE_SUPPORT.sessionReplayCaptureRequests,
                 component: <ReplayNetworkCapture />,
                 keywords: ['xhr', 'fetch', 'api', 'request', 'response', 'performance'],
@@ -1510,7 +1476,6 @@ export const SETTINGS_MAP: SettingSection[] = [
                 title: 'Network headers & payloads',
                 description:
                     'Capture request and response headers and body content alongside network timings. Sensitive data is automatically scrubbed.',
-                docsUrl: 'https://posthog.com/docs/session-replay/network-recording',
                 platformSupport: FEATURE_SUPPORT.sessionReplayCaptureHeadersAndPayloads,
                 component: <ReplayNetworkHeadersPayloads />,
                 keywords: ['headers', 'payload', 'body', 'request', 'response'],
@@ -1636,7 +1601,6 @@ export const SETTINGS_MAP: SettingSection[] = [
                 description:
                     'When on, PostHog learns reusable answers from public human replies on resolved support tickets.',
                 component: <LearnFromSupportSetting />,
-                docsUrl: 'https://posthog.com/docs/business-knowledge/learn-from-support',
                 keywords: ['business', 'knowledge', 'support', 'learn', 'ticket', 'resolved'],
             },
             {
@@ -1661,7 +1625,6 @@ export const SETTINGS_MAP: SettingSection[] = [
                 title: 'Surveys',
                 description:
                     'Enable or disable surveys in your web application. When disabled, surveys will not be rendered automatically.',
-                docsUrl: 'https://posthog.com/docs/surveys',
                 platformSupport: FEATURE_SUPPORT.surveys,
                 component: <SurveyEnableToggle />,
                 keywords: ['popup', 'widget', 'feedback', 'nps', 'csat', 'enable'],
@@ -1671,7 +1634,6 @@ export const SETTINGS_MAP: SettingSection[] = [
                 title: 'Default survey appearance',
                 description:
                     'Configure the default look and feel for new surveys. Individual surveys can override these settings.',
-                docsUrl: 'https://posthog.com/docs/surveys/creating-surveys#customizing-the-look-and-feel',
                 component: <SurveyDefaultAppearance />,
                 keywords: ['appearance', 'style', 'theme', 'customization', 'popup'],
             },
@@ -1752,7 +1714,6 @@ export const SETTINGS_MAP: SettingSection[] = [
                 id: 'channel-type',
                 title: 'Custom channel type',
                 description: 'Define custom rules for categorizing traffic sources into channels.',
-                docsUrl: 'https://posthog.com/docs/data/channel-type',
                 component: <CustomChannelTypes />,
                 keywords: ['utm', 'source', 'medium', 'referrer', 'attribution'],
             },
@@ -1761,7 +1722,6 @@ export const SETTINGS_MAP: SettingSection[] = [
                 title: 'Cookieless tracking',
                 description:
                     'Count unique users with a privacy-preserving hash instead of cookies. Enable this here, then enable cookieless mode in posthog-js.',
-                docsUrl: 'https://posthog.com/tutorials/cookieless-tracking',
                 component: <CookielessServerHashModeSetting />,
                 keywords: ['cookie', 'privacy', 'gdpr', 'tracking', 'consent'],
             },
@@ -1770,7 +1730,6 @@ export const SETTINGS_MAP: SettingSection[] = [
                 title: 'Bounce rate duration',
                 description:
                     'Set how long a user can stay on a page (in seconds) before the session is not counted as a bounce. Default is 10 seconds.',
-                docsUrl: 'https://posthog.com/tutorials/bounce-rate',
                 component: <BounceRateDurationSetting />,
                 keywords: ['bounce', 'session', 'duration', 'seconds'],
             },
@@ -1803,7 +1762,6 @@ export const SETTINGS_MAP: SettingSection[] = [
                 id: 'web-vitals-autocapture',
                 title: 'Web vitals autocapture',
                 description: "Capture Google Chrome's web vitals metrics for web analytics performance tracking.",
-                docsUrl: 'https://posthog.com/docs/web-analytics/web-vitals',
                 platformSupport: FEATURE_SUPPORT.webVitals,
                 component: <WebVitalsAutocaptureSettings />,
                 keywords: ['lcp', 'cls', 'fcp', 'inp', 'performance', 'core web vitals'],
@@ -1821,7 +1779,6 @@ export const SETTINGS_MAP: SettingSection[] = [
                 title: 'Engagement events',
                 description:
                     'When enabled, email engagement activity (sent, delivered, opened, link clicked, bounced, blocked, failed) is captured as standard PostHog events alongside the existing workflow metrics. This lets you build insights, funnels, and dashboards from workflows data. These events count toward your event usage and are billed like any other event. This setting only controls event capture: it does not disable open and click tracking itself. To stop tracking opens and clicks for an email, turn off "Track opens and link clicks" on that email step.',
-                docsUrl: 'https://posthog.com/docs/workflows/engagement-events',
                 component: <WorkflowsEngagementEventsSettings />,
                 keywords: [
                     'workflows',
@@ -1920,7 +1877,6 @@ export const SETTINGS_MAP: SettingSection[] = [
                 id: 'environment-access-control',
                 title: 'Access control',
                 description: 'Manage who has access to this project and what they can do.',
-                docsUrl: 'https://posthog.com/docs/settings/access-control',
                 component: <TeamAccessControl />,
                 keywords: ['permission', 'role', 'access', 'rbac', 'team'],
             },
@@ -1971,7 +1927,6 @@ export const SETTINGS_MAP: SettingSection[] = [
                 id: 'approval-policies',
                 title: 'Policies',
                 description: 'Configure which actions require approval before being applied.',
-                docsUrl: 'https://posthog.com/docs/settings/approvals#policies',
                 component: <ApprovalPolicies />,
                 keywords: ['approval', 'policy', 'review', 'gate'],
             },
@@ -1979,7 +1934,6 @@ export const SETTINGS_MAP: SettingSection[] = [
                 id: 'change-requests',
                 title: 'Change requests',
                 description: 'Review and approve pending change requests.',
-                docsUrl: 'https://posthog.com/docs/settings/approvals#change-requests',
                 component: <ChangeRequestsList />,
                 keywords: ['approval', 'review', 'pending', 'request'],
             },
@@ -1995,7 +1949,6 @@ export const SETTINGS_MAP: SettingSection[] = [
                 title: 'Autocapture',
                 description:
                     'Automatically capture frontend events such as clicks, input changes, and form submissions when using the web JavaScript SDK. Also available for React Native and iOS via code configuration.',
-                docsUrl: 'https://posthog.com/docs/product-analytics/autocapture',
                 platformSupport: FEATURE_SUPPORT.autocapture,
                 component: <AutocaptureSettings />,
                 keywords: ['click', 'input', 'form', 'dom', 'automatic', 'event'],
@@ -2005,7 +1958,6 @@ export const SETTINGS_MAP: SettingSection[] = [
                 title: 'Data attributes',
                 description:
                     'Specify data attributes used in your app (e.g. data-attr, data-custom-id). These attributes help the toolbar and action definitions match unique elements on your pages. Use * as a wildcard.',
-                docsUrl: 'https://posthog.com/docs/product-analytics/autocapture#data-attributes',
                 component: <DataAttributes />,
                 keywords: ['selector', 'css', 'element', 'toolbar', 'action'],
             },
@@ -2014,7 +1966,6 @@ export const SETTINGS_MAP: SettingSection[] = [
                 title: 'Web vitals autocapture',
                 description:
                     "Capture Google Chrome's web vitals metrics (LCP, CLS, FCP, INP). These events enhance web analytics and session replay with performance data.",
-                docsUrl: 'https://posthog.com/docs/web-analytics/web-vitals',
                 platformSupport: FEATURE_SUPPORT.webVitals,
                 component: <WebVitalsAutocaptureSettings />,
                 keywords: ['lcp', 'cls', 'inp', 'fcp', 'performance', 'core web vitals'],
@@ -2024,7 +1975,6 @@ export const SETTINGS_MAP: SettingSection[] = [
                 title: 'Dead clicks autocapture',
                 description:
                     "Track clicks that don't result in any action (no scroll, text selection, or DOM mutation). Dead clicks help you find elements users expect to be interactive but aren't.",
-                docsUrl: 'https://posthog.com/docs/toolbar/heatmaps#dead-clicks',
                 platformSupport: FEATURE_SUPPORT.deadClicks,
                 component: <DeadClicksAutocaptureSettings />,
                 keywords: ['rage click', 'broken', 'unresponsive', 'frustration'],
@@ -2136,7 +2086,6 @@ export const SETTINGS_MAP: SettingSection[] = [
                 title: 'IP data capture configuration',
                 description:
                     'When enabled, client IP addresses will not be stored with your events. Transformations like GeoIP enrichment and bot detection can still use the IP before it is discarded. Note: this does not apply when Cookieless server hash mode is enabled, which strips the IP before transformations run.',
-                docsUrl: 'https://posthog.com/docs/privacy',
                 component: <IPCapture />,
                 keywords: ['ip', 'anonymize', 'gdpr', 'privacy', 'geolocation', 'discard'],
             },
@@ -2152,7 +2101,6 @@ export const SETTINGS_MAP: SettingSection[] = [
                 title: 'Project secret API keys',
                 description:
                     'These keys allow access to a select set of API endpoints, intended to be accessed exclusively by your systems. Only give keys the permissions they need, and delete unused keys promptly.',
-                docsUrl: 'https://posthog.com/docs/api',
                 component: <ProjectSecretAPIKeys />,
                 keywords: ['token', 'api key', 'authentication', 'secret'],
             },
@@ -2314,7 +2262,6 @@ export const SETTINGS_MAP: SettingSection[] = [
             {
                 id: 'authentication-domains',
                 title: 'Authentication Domains',
-                docsUrl: 'https://posthog.com/docs/settings/sso',
                 component: <VerifiedDomains />,
                 keywords: ['sso', 'saml', 'single sign-on', 'domain verification', 'enforce'],
             },
@@ -2329,7 +2276,6 @@ export const SETTINGS_MAP: SettingSection[] = [
                 title: 'SAML single sign-on',
                 description:
                     'Authenticate members through your identity provider using Security Assertion Markup Language (SAML).',
-                docsUrl: 'https://posthog.com/docs/data/sso#setting-up-saml',
                 component: <IdentityProviderFeatureSection configScope={ConfigScopeEnumApi.Saml} />,
                 flag: 'SSO_SETTINGS_REDESIGN',
                 keywords: ['sso', 'saml', 'single sign-on', 'identity provider'],
@@ -2347,7 +2293,6 @@ export const SETTINGS_MAP: SettingSection[] = [
                 title: 'SCIM provisioning',
                 description:
                     'Provision and deprovision organization members through your identity provider using System for Cross-domain Identity Management (SCIM).',
-                docsUrl: 'https://posthog.com/docs/data/sso#setting-up-scim',
                 component: <IdentityProviderFeatureSection configScope={ConfigScopeEnumApi.Scim} />,
                 flag: 'SSO_SETTINGS_REDESIGN',
                 keywords: ['scim', 'provisioning', 'identity provider'],
@@ -2356,7 +2301,6 @@ export const SETTINGS_MAP: SettingSection[] = [
                 id: 'xaa-configuration',
                 title: 'XAA authentication',
                 description: 'Automate API and MCP access to PostHog with Cross App Access (XAA).',
-                docsUrl: 'https://posthog.com/docs/settings/id-jag',
                 component: <IdentityProviderFeatureSection configScope={ConfigScopeEnumApi.Xaa} />,
                 flag: ['SSO_SETTINGS_REDESIGN', 'XAA_AUTHENTICATION'],
                 keywords: ['xaa', 'id-jag', 'identity provider', 'token exchange'],
@@ -2417,7 +2361,6 @@ export const SETTINGS_MAP: SettingSection[] = [
             {
                 id: 'organization-proxy',
                 title: 'Managed reverse proxies',
-                docsUrl: 'https://posthog.com/docs/advanced/proxy',
                 component: <ManagedReverseProxy />,
                 keywords: ['custom domain', 'dns', 'cname', 'ad blocker', 'first party'],
             },
@@ -2477,7 +2420,6 @@ export const SETTINGS_MAP: SettingSection[] = [
                 title: 'Roles',
                 description:
                     'Use roles to group members across your organization for access control and issue assignment in Error tracking.',
-                docsUrl: 'https://posthog.com/docs/settings/access-control',
                 component: <RolesAccessControls />,
                 keywords: ['role', 'permission', 'rbac', 'access control'],
             },
@@ -2764,7 +2706,6 @@ export const SETTINGS_MAP: SettingSection[] = [
                 title: 'Personal API keys',
                 description:
                     'These keys allow full access to your personal account through the API. Only give keys the permissions they need, and delete unused keys promptly.',
-                docsUrl: 'https://posthog.com/docs/api',
                 component: <PersonalAPIKeys />,
                 keywords: ['token', 'api key', 'authentication', 'secret'],
             },
