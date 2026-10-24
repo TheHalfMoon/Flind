@@ -1,11 +1,12 @@
 import { useActions, useValues } from 'kea'
 import React from 'react'
 
-import { IconExpand45, IconFeatures, IconHelmet, IconMap, IconWarning } from '@posthog/icons'
+import { IconExpand45, IconFeatures, IconWarning } from '@posthog/icons'
 import { LemonButton, Link } from '@posthog/lemon-ui'
 
 import { incidentStatusLogic } from 'lib/components/HelpMenu/incidentStatusLogic'
 import { DEFAULT_PAID_RESPONSE_TIME, getSupportPlanRows } from 'lib/components/Support/supportResponseTime'
+import { flindPublicUrl } from 'lib/flindPublicLinks'
 import { FEATURE_FLAGS } from 'lib/constants'
 import { dayjs } from 'lib/dayjs'
 import { featureFlagLogic } from 'lib/logic/featureFlagLogic'
@@ -59,7 +60,7 @@ const StatusPageAlert = (): JSX.Element | null => {
                         </Link>
                     </p>
                     <div className="text-sm">
-                        <p className="mb-1">We're aware of an issue that may be affecting your PostHog experience.</p>
+                        <p className="mb-1">We're aware of an issue that may be affecting your Flind experience.</p>
                         <p className="mb-0">
                             You may wish to check our{' '}
                             <Link to={statusPageUrl} target="_blank">
@@ -196,9 +197,11 @@ export function SidePanelSupport(): JSX.Element {
     const isCloudOrDev = preflight?.cloud || process.env.NODE_ENV === 'development'
     const showMaxAI = isCloudOrDev
     const isBillingLoaded = !billingLoading && billing !== undefined
-    // Free plans can't open new tickets, but tickets they already have (billing questions, PostHog AI
+    // Free plans can't open new tickets, but tickets they already have (billing questions, Flind AI
     // bug reports) stay readable and repliable here
     const showTickets = isCloudOrDev && (canCreateTicket || tickets.length > 0)
+    const communityUrl = flindPublicUrl('community')
+    const roadmapUrl = flindPublicUrl('roadmap')
 
     return (
         <div className="SidePanelSupport contents">
@@ -220,12 +223,11 @@ export function SidePanelSupport(): JSX.Element {
                 </SidePanelPaneHeader>
                 <div className="p-0 justify-start flex-none px-1 max-w-160 w-full mx-auto flex flex-col">
                     {showMaxAI && isBillingLoaded && (
-                        <Section title="Ask PostHog AI">
+                        <Section title="Ask Flind AI">
                             <div>
-                                <p>PostHog AI can now answer 80%+ of the support questions we receive! Nice.</p>
+                                <p>Flind AI can help answer questions about supported product workflows.</p>
                                 <p>
-                                    Let PostHog AI read 100s of pages of docs for you, write SQL queries and
-                                    expressions, regex patterns, etc.
+                                    Ask Flind AI for help with queries, expressions and other available functionality.
                                 </p>
                                 <LemonButton
                                     type="primary"
@@ -237,7 +239,7 @@ export function SidePanelSupport(): JSX.Element {
                                     targetBlank={false}
                                     className="mt-2"
                                 >
-                                    Chat with PostHog AI
+                                    Chat with Flind AI
                                 </LemonButton>
                             </div>
                         </Section>
@@ -249,7 +251,7 @@ export function SidePanelSupport(): JSX.Element {
                             <SupportMessageOverride />
                             <p>
                                 {canCreateTicket
-                                    ? "Can't find what you need and PostHog AI unable to help? Message our support engineers."
+                                    ? "Can't find what you need and Flind AI unable to help? Message our support engineers."
                                     : 'You can keep replying to tickets you already have open.'}
                             </p>
                             <SidePanelTickets />
@@ -260,29 +262,25 @@ export function SidePanelSupport(): JSX.Element {
                         <Section title="">
                             <h3>Can't find what you need in the docs?</h3>
                             <p>
-                                With the free plan you can ask the community via the link below, or explore your upgrade
-                                choices to message our support engineers.
+                                Ask your Flind workspace administrator which support channels are available.
                             </p>
                         </Section>
                     )}
 
-                    {/* Community forum */}
-                    <Section title="Ask the community">
-                        <p>
-                            Questions about features, how-tos, or use cases? There are thousands of discussions in our
-                            community forums.
-                        </p>
-                        <LemonButton
-                            type="secondary"
-                            fullWidth
-                            center
-                            to="https://posthog.com/questions"
-                            targetBlank
-                            className="mt-2"
-                        >
-                            Ask the community
-                        </LemonButton>
-                    </Section>
+                    {communityUrl && (
+                        <Section title="Flind community">
+                            <LemonButton
+                                type="secondary"
+                                fullWidth
+                                center
+                                to={communityUrl}
+                                targetBlank
+                                className="mt-2"
+                            >
+                                Open Flind community
+                            </LemonButton>
+                        </Section>
+                    )}
 
                     {/* Add support hours and table */}
                     <div className="mb-2">
@@ -297,44 +295,19 @@ export function SidePanelSupport(): JSX.Element {
                         </div>
                     )}
 
-                    {/* Share feedback section */}
-                    <Section title="Share feedback">
-                        <ul>
-                            <li>
-                                <LemonButton
-                                    type="secondary"
-                                    status="alt"
-                                    to="https://posthog.com/wip"
-                                    icon={<IconHelmet />}
-                                    targetBlank
-                                >
-                                    See what we're building
-                                </LemonButton>
-                            </li>
-                            <li>
-                                <LemonButton
-                                    type="secondary"
-                                    status="alt"
-                                    to="https://posthog.com/roadmap"
-                                    icon={<IconMap />}
-                                    targetBlank
-                                >
-                                    Vote on our roadmap
-                                </LemonButton>
-                            </li>
-                            <li>
-                                <LemonButton
-                                    type="secondary"
-                                    status="alt"
-                                    to="https://posthog.com/roadmap?idea=new"
-                                    icon={<IconFeatures />}
-                                    targetBlank
-                                >
-                                    Request a feature
-                                </LemonButton>
-                            </li>
-                        </ul>
-                    </Section>
+                    {roadmapUrl && (
+                        <Section title="Share feedback">
+                            <LemonButton
+                                type="secondary"
+                                status="alt"
+                                to={roadmapUrl}
+                                icon={<IconFeatures />}
+                                targetBlank
+                            >
+                                Flind roadmap and feedback
+                            </LemonButton>
+                        </Section>
+                    )}
                 </div>
             </SidePanelContentContainer>
         </div>

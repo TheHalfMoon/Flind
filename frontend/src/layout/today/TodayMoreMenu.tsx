@@ -10,6 +10,7 @@ import {
 } from '@posthog/quill'
 
 import { helpMenuLogic } from 'lib/components/HelpMenu/helpMenuLogic'
+import { flindPublicUrl } from 'lib/flindPublicLinks'
 import { posthogStatusLogic } from 'lib/components/HelpMenu/posthogStatusLogic'
 import { urls } from 'scenes/urls'
 
@@ -28,6 +29,8 @@ export function TodayMoreMenu(): JSX.Element {
     const { statusPageUrl } = useValues(posthogStatusLogic)
     const { statusSeverity, statusText, healthSeverity, healthText, moreSeverity, moreLabel } =
         useValues(todayRailStatusLogic)
+
+    const changelogUrl = flindPublicUrl('changelog')
 
     return (
         <DropdownMenu open={isHelpMenuOpen} onOpenChange={setHelpMenuOpen}>
@@ -74,13 +77,13 @@ export function TodayMoreMenu(): JSX.Element {
                     Health
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem
-                    render={todayMenuLinkItem('https://posthog.com/changelog', { external: true })}
+                {changelogUrl && <DropdownMenuItem
+                    render={todayMenuLinkItem(changelogUrl, { external: true })}
                     data-attr="more-menu-changelog-button"
                 >
                     Changelog
                     <IconExternal data-icon="inline-end" className="ms-auto" />
-                </DropdownMenuItem>
+                </DropdownMenuItem>}
                 <DropdownMenuItem render={todayMenuLinkItem(urls.exports())} data-attr="more-menu-exports-button">
                     Exports
                 </DropdownMenuItem>

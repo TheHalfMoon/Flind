@@ -9,6 +9,7 @@ import { IconMenu, IconWithBadge } from 'lib/lemon-ui/icons'
 import { LemonBadge } from 'lib/lemon-ui/LemonBadge/LemonBadge'
 import { Link } from 'lib/lemon-ui/Link/Link'
 import { preflightLogic } from 'lib/logic/preflightLogic'
+import { flindPublicUrl } from 'lib/flindPublicLinks'
 import { ButtonPrimitive } from 'lib/ui/Button/ButtonPrimitives'
 import { Label } from 'lib/ui/Label/Label'
 import { MenuOpenIndicator } from 'lib/ui/Menus/Menus'
@@ -35,12 +36,15 @@ export function HelpMenu({ iconOnly = false }: { iconOnly?: boolean }): JSX.Elem
     const { isHelpMenuOpen, triggerBadgeContent, triggerBadgeStatus } = useValues(helpMenuLogic)
     const { setHelpMenuOpen } = useActions(helpMenuLogic)
     const { user } = useValues(userLogic)
-    const { isCloudOrDev, preflight } = useValues(preflightLogic)
+    const { preflight } = useValues(preflightLogic)
     const { reportAccountOwnerClicked } = useActions(eventUsageLogic)
     const { billing } = useValues(billingLogic)
     const { postHogStatusTooltip, postHogStatusBadgeStatus, postHogStatusBadgeContent, statusPageUrl } =
         useValues(posthogStatusLogic)
     const { healthSummary, unsnoozedCount, snoozedCount } = useValues(healthSummaryLogic)
+
+    const docsUrl = flindPublicUrl('docs')
+    const changelogUrl = flindPublicUrl('changelog')
 
     return (
         <Menu.Root open={isHelpMenuOpen} onOpenChange={setHelpMenuOpen}>
@@ -110,7 +114,7 @@ export function HelpMenu({ iconOnly = false }: { iconOnly?: boolean }): JSX.Elem
                                             buttonProps={{ menuItem: true }}
                                             data-attr="more-menu-ask-ai-button"
                                         >
-                                            Ask PostHog AI
+                                            Ask Flind AI
                                             <IconSparkles className="text-ai" />
                                         </Link>
                                     )}
@@ -124,11 +128,11 @@ export function HelpMenu({ iconOnly = false }: { iconOnly?: boolean }): JSX.Elem
                                         </ButtonPrimitive>
                                     }
                                 />
-                                <Menu.Item
+                                {docsUrl && <Menu.Item
                                     render={(props) => (
                                         <Link
                                             {...props}
-                                            to="https://posthog.com/docs"
+                                            to={docsUrl}
                                             buttonProps={{ menuItem: true }}
                                             target="_blank"
                                             targetBlankIcon
@@ -139,7 +143,7 @@ export function HelpMenu({ iconOnly = false }: { iconOnly?: boolean }): JSX.Elem
                                             Docs
                                         </Link>
                                     )}
-                                />
+                                />}
 
                                 <Label intent="menu" className="px-2 mt-3">
                                     System
@@ -195,22 +199,22 @@ export function HelpMenu({ iconOnly = false }: { iconOnly?: boolean }): JSX.Elem
                                     )}
                                 />
 
-                                <Menu.Item
+                                {changelogUrl && <Menu.Item
                                     render={(props) => (
                                         <Link
                                             {...props}
-                                            tooltip="View our changelog in new browser tab"
+                                            tooltip="View Flind changelog in new browser tab"
                                             tooltipPlacement="right"
                                             targetBlankIcon
                                             target="_blank"
                                             buttonProps={{ menuItem: true }}
-                                            to="https://posthog.com/changelog"
+                                            to={changelogUrl}
                                             data-attr="more-menu-changelog-button"
                                         >
                                             Changelog
                                         </Link>
                                     )}
-                                />
+                                />}
 
                                 <Menu.Item
                                     render={(props) => (
@@ -224,21 +228,6 @@ export function HelpMenu({ iconOnly = false }: { iconOnly?: boolean }): JSX.Elem
                                         </Link>
                                     )}
                                 />
-
-                                {!isCloudOrDev && (
-                                    <Menu.Item
-                                        render={(props) => (
-                                            <Link
-                                                {...props}
-                                                to={urls.moveToPostHogCloud()}
-                                                buttonProps={{ menuItem: true }}
-                                                data-attr="help-menu-upgrade-to-cloud-button"
-                                            >
-                                                Try PostHog Cloud
-                                            </Link>
-                                        )}
-                                    />
-                                )}
 
                                 {user?.is_staff && (
                                     <Menu.SubmenuRoot>
@@ -344,7 +333,7 @@ export function HelpMenu({ iconOnly = false }: { iconOnly?: boolean }): JSX.Elem
                                             render={
                                                 <ButtonPrimitive
                                                     menuItem
-                                                    tooltip="This is your dedicated PostHog human. Click to copy their email. They can help you with trying out new products, solving problems, and reducing your spend."
+                                                    tooltip="Copy the configured account contact email for your Flind workspace."
                                                     tooltipPlacement="right"
                                                     data-attr="help-menu-account-owner-button"
                                                 >

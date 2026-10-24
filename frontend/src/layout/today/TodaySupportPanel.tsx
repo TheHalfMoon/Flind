@@ -1,8 +1,9 @@
 import { useActions, useValues } from 'kea'
 
-import { IconExternal, IconFeatures, IconHelmet, IconMap } from '@posthog/icons'
+import { IconExternal, IconFeatures } from '@posthog/icons'
 import { Button, Heading, Skeleton, Text, cn } from '@posthog/quill'
 
+import { flindPublicUrl } from 'lib/flindPublicLinks'
 import { FEATURE_FLAGS } from 'lib/constants'
 import { LinkPrimitive } from 'lib/lemon-ui/Link'
 import { featureFlagLogic } from 'lib/logic/featureFlagLogic'
@@ -25,11 +26,8 @@ const SUPPORT_MESSAGE_OVERRIDE_TITLE = "We're catching up on our support queue"
 const SUPPORT_MESSAGE_OVERRIDE_BODY =
     'Our support engineers recently attended an offsite to make long-term enhancements to our support process. As a result, our response times are slightly delayed for some inquiries. Thanks for your patience as we work to get caught up!'
 
-const FEEDBACK_LINKS = [
-    { label: "See what we're building", href: 'https://posthog.com/wip', Icon: IconHelmet },
-    { label: 'Vote on our roadmap', href: 'https://posthog.com/roadmap', Icon: IconMap },
-    { label: 'Request a feature', href: 'https://posthog.com/roadmap?idea=new', Icon: IconFeatures },
-]
+const feedbackUrl = flindPublicUrl('roadmap')
+const communityUrl = flindPublicUrl('community')
 
 function ExternalLinkButton({ href, children }: { href: string; children: React.ReactNode }): JSX.Element {
     return (
@@ -75,10 +73,10 @@ export function TodaySupportPanel(): JSX.Element {
                         {isCloudOrDev && (
                             <section className="flex flex-col gap-2">
                                 <Heading size="sm" render={<h3 className="m-0" />}>
-                                    Ask PostHog AI
+                                    Ask Flind AI
                                 </Heading>
                                 <Text size="xs" variant="muted">
-                                    PostHog AI can answer most of the support questions we receive. It reads our docs
+                                    Flind AI can help answer product questions. It can use available documentation
                                     for you, and writes SQL queries, expressions and regex patterns.
                                 </Text>
                                 <Button
@@ -86,7 +84,7 @@ export function TodaySupportPanel(): JSX.Element {
                                     onClick={() => togglePanelTab(SidePanelTab.Max)}
                                     data-attr="support-panel-chat-with-ai"
                                 >
-                                    Chat with PostHog AI
+                                    Chat with Flind AI
                                 </Button>
                             </section>
                         )}
@@ -109,7 +107,7 @@ export function TodaySupportPanel(): JSX.Element {
                                 )}
                                 <Text size="xs" variant="muted">
                                     {canCreateTicket
-                                        ? "Can't find what you need, and PostHog AI couldn't help? Message our support engineers."
+                                        ? "Can't find what you need, and Flind AI could not help? Message our support engineers."
                                         : 'You can keep replying to tickets you already have open.'}
                                 </Text>
                                 <QuillSupportTickets />
@@ -120,27 +118,24 @@ export function TodaySupportPanel(): JSX.Element {
                                     Can't find what you need in the docs?
                                 </Heading>
                                 <Text size="xs" variant="muted">
-                                    With the free plan you can ask the community, or explore your upgrade choices to
-                                    message our support engineers.
+                                    Ask your workspace administrator for support channels available on this Flind instance.
                                 </Text>
                             </section>
                         )}
                     </>
                 )}
 
-                <section className="flex flex-col gap-2">
-                    <Heading size="sm" render={<h3 className="m-0" />}>
-                        Ask the community
-                    </Heading>
-                    <Text size="xs" variant="muted">
-                        Questions about features, how-tos, or use cases? There are thousands of discussions in our
-                        community forums.
-                    </Text>
-                    <ExternalLinkButton href="https://posthog.com/questions">
-                        Ask the community
-                        <IconExternal />
-                    </ExternalLinkButton>
-                </section>
+                {communityUrl && (
+                    <section className="flex flex-col gap-2">
+                        <Heading size="sm" render={<h3 className="m-0" />}>
+                            Flind community
+                        </Heading>
+                        <ExternalLinkButton href={communityUrl}>
+                            Open community
+                            <IconExternal />
+                        </ExternalLinkButton>
+                    </section>
+                )}
 
                 <section className="flex flex-col gap-2">
                     <Heading size="sm" render={<h3 className="m-0" />}>
@@ -159,19 +154,17 @@ export function TodaySupportPanel(): JSX.Element {
                     )}
                 </section>
 
-                <section className="flex flex-col gap-2">
-                    <Heading size="sm" render={<h3 className="m-0" />}>
-                        Share feedback
-                    </Heading>
-                    <div className="flex flex-col items-start gap-2">
-                        {FEEDBACK_LINKS.map(({ label, href, Icon }) => (
-                            <ExternalLinkButton key={href} href={href}>
-                                <Icon />
-                                {label}
-                            </ExternalLinkButton>
-                        ))}
-                    </div>
-                </section>
+                {feedbackUrl && (
+                    <section className="flex flex-col gap-2">
+                        <Heading size="sm" render={<h3 className="m-0" />}>
+                            Share feedback
+                        </Heading>
+                        <ExternalLinkButton href={feedbackUrl}>
+                            <IconFeatures />
+                            Flind roadmap and feedback
+                        </ExternalLinkButton>
+                    </section>
+                )}
             </div>
         </div>
     )

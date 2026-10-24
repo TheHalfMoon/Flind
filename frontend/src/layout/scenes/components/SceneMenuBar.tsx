@@ -28,6 +28,7 @@ import {
 
 import { SetupReminderContext } from 'lib/components/ProductEmptyState/setupReminderContext'
 import { IconBlank } from 'lib/lemon-ui/icons'
+import { flindPublicUrl } from 'lib/flindPublicLinks'
 import { LinkPrimitive } from 'lib/lemon-ui/Link'
 import { cn } from 'lib/utils/css-classes'
 import { sceneLogic } from 'scenes/sceneLogic'
@@ -136,6 +137,7 @@ function SceneMenuBarHelpMenu(): JSX.Element {
     const { openSidePanel } = useActions(sidePanelStateLogic)
     const { productKey } = useContext(SceneContentContext)
     const settingsUrl = getSceneSettingsUrl(productKey)
+    const docsUrl = flindPublicUrl('docs')
 
     return (
         <SceneMenuBarMenu label="Help" dataAttr="scene-menu-bar-help">
@@ -151,13 +153,13 @@ function SceneMenuBarHelpMenu(): JSX.Element {
                     <SceneMenuBarSeparator />
                 </>
             )}
-            <SceneMenuBarItem
+            {docsUrl && <SceneMenuBarItem
                 data-attr="scene-menu-bar-docs"
-                onClick={() => window.open('https://posthog.com/docs', '_blank', 'noopener')}
+                onClick={() => window.open(docsUrl, '_blank', 'noopener')}
             >
                 <IconExternal />
                 Docs
-            </SceneMenuBarItem>
+            </SceneMenuBarItem>}
             <SceneMenuBarItem
                 data-attr="scene-menu-bar-support"
                 opensFloatingUi
@@ -178,6 +180,7 @@ function SceneMenuBarRightLinks(): JSX.Element {
     const { openSidePanel } = useActions(sidePanelStateLogic)
     const { productKey } = useContext(SceneContentContext)
     const settingsUrl = getSceneSettingsUrl(productKey)
+    const docsUrl = flindPublicUrl('docs')
 
     return (
         <div className="flex items-center gap-px pr-1">
@@ -193,16 +196,16 @@ function SceneMenuBarRightLinks(): JSX.Element {
                     <IconGear />
                 </Button>
             )}
-            <Button
+            {docsUrl && <Button
                 data-attr="scene-menu-bar-docs"
                 aria-label="Docs"
                 className={RIGHT_TRIGGER_CLASSES}
                 onClick={() => captureSceneMenuBar('scene menu bar right link clicked', { link: 'docs' })}
-                render={<LinkPrimitive to="https://posthog.com/docs" target="_blank" />}
+                render={<LinkPrimitive to={docsUrl} target="_blank" />}
             >
                 <span className={RIGHT_TRIGGER_LABEL_CLASSES}>Docs</span>
                 <IconExternal />
-            </Button>
+            </Button>}
             <Button
                 type="button"
                 onClick={() => {
@@ -223,12 +226,12 @@ function SceneMenuBarRightLinks(): JSX.Element {
                     openSidePanel(SidePanelTab.Max)
                 }}
                 data-attr="scene-menu-bar-ai"
-                aria-label="PostHog AI"
+                aria-label="Flind AI"
                 className={RIGHT_TRIGGER_CLASSES}
                 variant="outline"
             >
                 <IconSparkles className="text-ai group-hover/button-primitive:animate-hue-rotate" />
-                <span className={RIGHT_TRIGGER_LABEL_CLASSES}>PostHog AI</span>
+                <span className={RIGHT_TRIGGER_LABEL_CLASSES}>Flind AI</span>
             </Button>
         </div>
     )
@@ -236,7 +239,7 @@ function SceneMenuBarRightLinks(): JSX.Element {
 
 /**
  * Canonical menu set for SceneMenuBar. Use these labels in this order so the bar feels
- * consistent across PostHog scenes. Render only the menus your scene actually needs.
+ * consistent across Flind scenes. Render only the menus your scene actually needs.
  *
  * Order: File → Edit → View → Metadata → Staff only (→ Help, added by the bar itself under the Today layout)
  *
@@ -252,7 +255,7 @@ function SceneMenuBarRightLinks(): JSX.Element {
  *   Activity indicator, ExternalReferences.
  * - **Staff only** *(conditional)* — Debug panels, internal toggles.
  *
- * Right cluster includes PostHog AI, Docs, Support, and Settings when configured for the scene's product. Under the
+ * Right cluster includes Flind AI, Docs, Support, and Settings when configured for the scene's product. Under the
  * Today layout Docs and Support move to the Help menu and Settings moves to the scene title row.
  *
  * Full conventions: `.agents/skills/scene-menu-bar/SKILL.md`.
@@ -340,7 +343,7 @@ type SceneMenuBarItemProps = ComponentProps<typeof MenubarItem> & {
 
 /**
  * Pass `variant="destructive"` for any "Delete X" / "Archive X" / "Remove X" action so the
- * visual signal is consistent across PostHog scenes.
+ * visual signal is consistent across Flind scenes.
  */
 export function SceneMenuBarItem({
     opensFloatingUi,
