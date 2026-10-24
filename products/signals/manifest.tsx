@@ -39,7 +39,6 @@ export const manifest: ProductManifest = {
             import: () => import('./frontend/inbox/InboxScene'),
             projectBased: true,
             description: 'Actionable reports automatically generated from user session analysis and other signals.',
-            docsHref: 'https://posthog.com/docs/self-driving/inbox',
         },
     },
     routes: {

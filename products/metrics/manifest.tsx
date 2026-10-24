@@ -17,7 +17,6 @@ export const manifest: ProductManifest = {
             activityScope: 'Metrics',
             description: 'Monitor and analyze application metrics to understand system performance and health.',
             iconType: 'metrics',
-            docsHref: 'https://posthog.com/docs/metrics',
         },
         MetricsDashboardReview: {
             name: 'Dashboard review',

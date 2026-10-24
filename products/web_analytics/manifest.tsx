@@ -36,7 +36,6 @@ export const manifest: ProductManifest = {
             projectBased: true,
             iconType: 'heatmap',
             description: 'Heatmaps are a way to visualize user behavior on your website.',
-            docsHref: 'https://posthog.com/docs/toolbar/heatmaps',
         },
         Heatmap: {
             name: 'Heatmap',

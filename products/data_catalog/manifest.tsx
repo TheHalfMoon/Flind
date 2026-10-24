@@ -13,7 +13,6 @@ export const manifest: ProductManifest = {
             layout: 'app-container',
             iconType: 'data_warehouse',
             description: 'Review and manage governed metrics, certifications, and relationships for your data.',
-            docsHref: 'https://posthog.com/docs/semantic-layer',
         },
         DataCatalogMetric: {
             import: () => import('./frontend/DataCatalogMetricScene'),

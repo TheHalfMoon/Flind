@@ -18,7 +18,6 @@ export const manifest: ProductManifest = {
             name: 'ELT',
             description: 'Every source you import from and every destination you write to, with the health of each.',
             iconType: 'data_pipeline',
-            docsHref: 'https://posthog.com/docs/data-warehouse',
         },
     },
     routes: {

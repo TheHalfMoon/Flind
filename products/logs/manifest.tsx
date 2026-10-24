@@ -19,7 +19,6 @@ export const manifest: ProductManifest = {
             layout: 'app-container',
             iconType: 'logs',
             description: 'Monitor and analyze your logs to understand and fix issues.',
-            docsHref: 'https://posthog.com/docs/logs',
         },
         LogsAlertDetail: {
             import: () => import('./frontend/scenes/LogsAlertDetailScene/LogsAlertDetailScene'),

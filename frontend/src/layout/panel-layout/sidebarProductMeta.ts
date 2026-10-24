@@ -60,25 +60,6 @@ const descriptions: Record<string, string> = {
     Models: 'Turn SQL queries into reusable views and materialized views. Build on shared data models instead of repeating the same preparation in every analysis.',
 }
 
-/**
- * Tree items whose product has no page on posthog.com/docs yet, so they show no docs link.
- * Every other sidebar product must have one — `sidebarProductMeta.test.ts` fails when a new product has neither.
- */
-export const SIDEBAR_PRODUCTS_WITHOUT_DOCS = new Set<string>([
-    'Apps',
-    'Autoresearch',
-    'Broadcasts',
-    'Business intelligence',
-    'Business knowledge',
-    'Code review',
-    'Engineering analytics',
-    'Identity matching',
-    'Product tours',
-    'Pulse',
-    'Uptime monitoring',
-    'Visual review',
-])
-
 const examples: Record<string, string> = {
     Home: 'Return to a dashboard you were investigating yesterday.',
     Activity: 'Check which properties arrive with a signup event.',
