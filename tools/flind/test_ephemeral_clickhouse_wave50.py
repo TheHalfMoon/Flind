@@ -75,9 +75,11 @@ class EphemeralClickhouseWave50Tests(unittest.TestCase):
     @patch.object(ch, "clickhouse_ping", return_value=SimpleNamespace(ready=True))
     @patch.object(ch, "query_roundtrip", return_value={"rows": 3, "sum": 60})
     @patch.object(ch, "qualify", return_value={"release_qualified": False})
+    @patch.object(ch, "local_service_versions",
+                  return_value={"version_requirements_met": False})
     @patch.object(ch.subprocess, "Popen")
     def test_server_process_is_bounded_and_terminated(
-        self, popen, qualify, roundtrip, _ping, _port
+        self, popen, version_gate, qualify, roundtrip, _ping, _port
     ):
         child = MagicMock()
         child.poll.return_value = None
@@ -90,6 +92,7 @@ class EphemeralClickhouseWave50Tests(unittest.TestCase):
         self.assertEqual(command[1], "server")
         self.assertTrue(command[2].startswith("--config-file="))
         qualify.assert_called_once_with(redis_port=6379, clickhouse_port=18123)
+        version_gate.assert_called_once_with(6379, 18123)
         roundtrip.assert_called_once_with(18123)
         child.terminate.assert_called_once()
         child.wait.assert_called_once()

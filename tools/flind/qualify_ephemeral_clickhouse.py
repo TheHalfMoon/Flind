@@ -97,6 +97,14 @@ def query_roundtrip(port: int) -> dict:
         sql_http(port, "DROP TABLE IF EXISTS flind_probe")
 
 
+def local_service_versions(redis_port: int, clickhouse_port: int) -> dict:
+    if __package__:
+        from .qualify_service_versions import qualify_service_versions
+    else:
+        from qualify_service_versions import qualify_service_versions
+    return qualify_service_versions(redis_port, clickhouse_port)
+
+
 def isolated_clickhouse(
     binary: str | None = None,
     redis_port: int = 6379,
@@ -125,7 +133,7 @@ def isolated_clickhouse(
                     "reason": "ClickHouse process could not start",
                 }
             try:
-                deadline = time.monotonic() + 16
+                deadline = time.monotonic() + 30
                 while time.monotonic() < deadline:
                     if child.poll() is not None:
                         raise RuntimeError("ClickHouse exited before readiness")
@@ -141,9 +149,12 @@ def isolated_clickhouse(
                             "backend_prerequisites": qualify(
                                 redis_port=redis_port, clickhouse_port=port,
                             ),
+                            "service_versions": local_service_versions(
+                                redis_port, port,
+                            ),
                         }
                     time.sleep(0.2)
-                raise RuntimeError("ClickHouse startup exceeded 16 seconds")
+                raise RuntimeError("ClickHouse startup exceeded 30 seconds")
             except (OSError, RuntimeError, ValueError, HTTPException) as exc:
                 return {
                     "isolated_clickhouse_passed": False,

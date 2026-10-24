@@ -24,7 +24,9 @@ else:
     from qualify_backend_runtime import redis_ping, qualify
 
 
-def redis_command(stream, *pieces: bytes) -> bytes | int | None:
+def redis_command(
+    stream, *pieces: bytes, max_bulk_bytes: int = 1024,
+) -> bytes | int | None:
     """Send one RESP2 command and read a bounded response."""
     if not all(isinstance(p, bytes) and len(p) <= 512 for p in pieces):
         raise ValueError("Command exceeds bounded test payload")
@@ -49,7 +51,7 @@ def redis_command(stream, *pieces: bytes) -> bytes | int | None:
         count = int(value)
         if count == -1:
             return None
-        if count > 1024 or count < 0:
+        if count > max_bulk_bytes or count < 0:
             raise ValueError("Oversize or invalid Redis bulk response")
         payload = stream.read(count + 2)
         if len(payload) != count + 2 or not payload.endswith(b"\r\n"):
