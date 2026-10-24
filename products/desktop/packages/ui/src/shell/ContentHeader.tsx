@@ -1,9 +1,9 @@
-import { useActiveTabTiled } from "@posthog/ui/features/tab-tiling/useActiveTabTiled";
-import { TaskHeaderActions } from "@posthog/ui/features/task-detail/components/TaskHeaderActions";
-import { useTasks } from "@posthog/ui/features/tasks/useTasks";
-import { ChromeBar } from "@posthog/ui/primitives/ChromeBar";
-import { useAppView } from "@posthog/ui/router/useAppView";
-import { useHeaderStore } from "@posthog/ui/shell/headerStore";
+import { useActiveTabTiled } from "@flind/ui/features/tab-tiling/useActiveTabTiled";
+import { TaskHeaderActions } from "@flind/ui/features/task-detail/components/TaskHeaderActions";
+import { useTasks } from "@flind/ui/features/tasks/useTasks";
+import { ChromeBar } from "@flind/ui/primitives/ChromeBar";
+import { useAppView } from "@flind/ui/router/useAppView";
+import { useHeaderStore } from "@flind/ui/shell/headerStore";
 
 // The in-pane content header for the unified Bluebird chrome. Shows the active
 // view's title (pushed into the header store by each view) on the left and that

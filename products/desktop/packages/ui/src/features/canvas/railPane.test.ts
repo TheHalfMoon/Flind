@@ -1,5 +1,5 @@
-import { useRailSurface } from "@posthog/ui/features/canvas/hooks/useRailSurface";
-import { useSidebarStore } from "@posthog/ui/features/sidebar/sidebarStore";
+import { useRailSurface } from "@flind/ui/features/canvas/hooks/useRailSurface";
+import { useSidebarStore } from "@flind/ui/features/sidebar/sidebarStore";
 import { renderHook } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import {
@@ -12,10 +12,10 @@ import {
 
 const routing = vi.hoisted(() => ({ href: "/inbox", channelsLayout: true }));
 
-vi.mock("@posthog/ui/features/canvas/hooks/useWorkLayout", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useWorkLayout", () => ({
   useWorkLayout: () => false,
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useChannelsLayout", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannelsLayout", () => ({
   useChannelsLayout: () => routing.channelsLayout,
 }));
 

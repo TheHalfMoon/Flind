@@ -5,7 +5,7 @@ import type {
   ContextWikiActiveDreamRun,
   ContextWikiDreamFile,
   ContextWikiDreamRun,
-} from "@posthog/api-client/posthog-client";
+} from "@flind/api-client/posthog-client";
 import {
   Badge,
   Button,
@@ -18,11 +18,11 @@ import {
   EmptyTitle,
   Text,
 } from "@flind/quill";
-import { MarkdownRenderer } from "@posthog/ui/features/editor/components/MarkdownRenderer";
-import { DIFFS_HIGHLIGHTER_OPTIONS } from "@posthog/ui/features/sessions/diffHighlighterOptions";
-import { LoadingState } from "@posthog/ui/primitives/LoadingState";
-import { RelativeTimestamp } from "@posthog/ui/primitives/RelativeTimestamp";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
+import { MarkdownRenderer } from "@flind/ui/features/editor/components/MarkdownRenderer";
+import { DIFFS_HIGHLIGHTER_OPTIONS } from "@flind/ui/features/sessions/diffHighlighterOptions";
+import { LoadingState } from "@flind/ui/primitives/LoadingState";
+import { RelativeTimestamp } from "@flind/ui/primitives/RelativeTimestamp";
+import { Spinner } from "@flind/ui/primitives/Spinner";
 import { useMemo, useState } from "react";
 import type { Components } from "react-markdown";
 import { useThemeStore } from "../../../shell/themeStore";

@@ -2,22 +2,22 @@ import { cleanupAllPinnedSettings } from "@flind/agent/adapters/claude/session/p
 import {
   APP_LIFECYCLE_SERVICE,
   type IAppLifecycle,
-} from "@posthog/platform/app-lifecycle";
-import { MAIN_WINDOW_SERVICE } from "@posthog/platform/main-window";
+} from "@flind/platform/app-lifecycle";
+import { MAIN_WINDOW_SERVICE } from "@flind/platform/main-window";
 import {
   type IStoragePaths,
   STORAGE_PATHS_SERVICE,
-} from "@posthog/platform/storage-paths";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
-import { DATABASE_SERVICE } from "@posthog/workspace-server/db/identifiers";
-import type { DatabaseService } from "@posthog/workspace-server/db/service";
-import { cleanupAllCodexHomes } from "@posthog/workspace-server/services/agent/codex-home";
-import { PROCESS_TRACKING_SERVICE } from "@posthog/workspace-server/services/process-tracking/identifiers";
-import type { ProcessTrackingService } from "@posthog/workspace-server/services/process-tracking/process-tracking";
-import { SUSPENSION_SERVICE } from "@posthog/workspace-server/services/suspension/identifiers";
-import type { SuspensionService } from "@posthog/workspace-server/services/suspension/suspension";
-import type { WatcherRegistryService } from "@posthog/workspace-server/services/watcher-registry/watcher-registry";
-import type { WorkspaceService } from "@posthog/workspace-server/services/workspace/workspace";
+} from "@flind/platform/storage-paths";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
+import { DATABASE_SERVICE } from "@flind/workspace-server/db/identifiers";
+import type { DatabaseService } from "@flind/workspace-server/db/service";
+import { cleanupAllCodexHomes } from "@flind/workspace-server/services/agent/codex-home";
+import { PROCESS_TRACKING_SERVICE } from "@flind/workspace-server/services/process-tracking/identifiers";
+import type { ProcessTrackingService } from "@flind/workspace-server/services/process-tracking/process-tracking";
+import { SUSPENSION_SERVICE } from "@flind/workspace-server/services/suspension/identifiers";
+import type { SuspensionService } from "@flind/workspace-server/services/suspension/suspension";
+import type { WatcherRegistryService } from "@flind/workspace-server/services/watcher-registry/watcher-registry";
+import type { WorkspaceService } from "@flind/workspace-server/services/workspace/workspace";
 import { inject, injectable } from "inversify";
 import { WATCHER_REGISTRY_SERVICE, WORKSPACE_SERVICE } from "../../di/tokens";
 import type { ElectronMainWindow } from "../../platform-adapters/electron-main-window";

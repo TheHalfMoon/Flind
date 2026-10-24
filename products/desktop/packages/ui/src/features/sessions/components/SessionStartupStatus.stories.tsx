@@ -1,4 +1,4 @@
-import { useProvisioningStore } from "@posthog/ui/features/provisioning/store";
+import { useProvisioningStore } from "@flind/ui/features/provisioning/store";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { SessionProvisioningStatus } from "./SessionProvisioningStatus";
 import { SessionStartupStatus, startupLabel } from "./SessionStartupStatus";

@@ -5,7 +5,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@flind/quill";
-import { formatRelativeTimeShort } from "@posthog/shared";
+import { formatRelativeTimeShort } from "@flind/shared";
 
 function ordinal(value: number): string {
   const remainder = value % 100;

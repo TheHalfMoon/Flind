@@ -1,4 +1,4 @@
-import type { ArchivedTask } from "@posthog/shared";
+import type { ArchivedTask } from "@flind/shared";
 
 export interface OptimisticWorkspaceInfo {
   folderId?: string;

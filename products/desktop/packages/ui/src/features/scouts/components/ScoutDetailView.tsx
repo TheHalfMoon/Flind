@@ -1,13 +1,13 @@
-import type { ScoutDetailTab } from "@posthog/core/scouts/scoutDetailTabs";
+import type { ScoutDetailTab } from "@flind/core/scouts/scoutDetailTabs";
 import {
   computeScoutRollups,
   getScoutOrigin,
   prettifyScoutSkillName,
   resolveScoutRouteName,
-} from "@posthog/core/scouts/scoutPresentation";
-import { ANALYTICS_EVENTS } from "@posthog/shared";
-import { useAgentsPageActions } from "@posthog/ui/features/agents/agentsPageStore";
-import { track } from "@posthog/ui/shell/analytics";
+} from "@flind/core/scouts/scoutPresentation";
+import { ANALYTICS_EVENTS } from "@flind/shared";
+import { useAgentsPageActions } from "@flind/ui/features/agents/agentsPageStore";
+import { track } from "@flind/ui/shell/analytics";
 import { useEffect, useMemo, useRef } from "react";
 import { useAuthStateValue } from "../../auth/store";
 import { useScoutConfigMutations } from "../hooks/useScoutConfigMutations";

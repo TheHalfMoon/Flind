@@ -2,14 +2,14 @@ import {
   normalizeChannelName,
   normalizeChannelNameInput,
   validateChannelName,
-} from "@posthog/core/canvas/channelName";
+} from "@flind/core/canvas/channelName";
 import {
   emptySpaceSetupDraft,
   type SpaceSetupDraft,
   spaceSetupDraftMissingField,
   spaceSetupDraftToInput,
   spaceSetupNeedsRepository,
-} from "@posthog/core/canvas/spaceSetup";
+} from "@flind/core/canvas/spaceSetup";
 import {
   Button,
   Dialog,
@@ -34,38 +34,38 @@ import {
   Switch,
   Textarea,
 } from "@flind/quill";
-import { SPACE_SETUP_FLAG } from "@posthog/shared";
+import { SPACE_SETUP_FLAG } from "@flind/shared";
 import {
   ANALYTICS_EVENTS,
   type ChannelsSurface,
-} from "@posthog/shared/analytics-events";
-import type { SpaceSetupInput, UserBasic } from "@posthog/shared/domain-types";
-import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { useCurrentUser } from "@posthog/ui/features/auth/useCurrentUser";
+} from "@flind/shared/analytics-events";
+import type { SpaceSetupInput, UserBasic } from "@flind/shared/domain-types";
+import { useOptionalAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { useCurrentUser } from "@flind/ui/features/auth/useCurrentUser";
 import {
   type CreateStep,
   type CreateStepContext,
   createStepDirection,
   nextCreateStep,
   previousCreateStep,
-} from "@posthog/ui/features/canvas/components/createChannelSteps";
-import { MemberList } from "@posthog/ui/features/canvas/components/MemberList";
-import { MemberSearch } from "@posthog/ui/features/canvas/components/MemberSearch";
-import { SpaceFeatureFields } from "@posthog/ui/features/canvas/components/spaceSetup/SpaceFeatureFields";
-import { SpaceGoalFields } from "@posthog/ui/features/canvas/components/spaceSetup/SpaceGoalFields";
-import { SpaceSetupChoiceField } from "@posthog/ui/features/canvas/components/spaceSetup/SpaceSetupChoiceField";
-import { SpaceSetupRetryDialog } from "@posthog/ui/features/canvas/components/spaceSetup/SpaceSetupRetryDialog";
-import { useChannelMutations } from "@posthog/ui/features/canvas/hooks/useChannels";
-import { useChannelsLayout } from "@posthog/ui/features/canvas/hooks/useChannelsLayout";
-import { useGenerateContext } from "@posthog/ui/features/canvas/hooks/useGenerateContext";
-import { useOrgMembers } from "@posthog/ui/features/canvas/hooks/useOrgMembers";
-import { useSetupSpace } from "@posthog/ui/features/canvas/hooks/useSetupSpace";
-import { useUpdateTaskChannelRepositories } from "@posthog/ui/features/canvas/hooks/useTaskChannels";
-import { useFeatureFlag } from "@posthog/ui/features/feature-flags/useFeatureFlag";
-import { RepositoriesField } from "@posthog/ui/features/integrations/components/RepositoriesField";
-import { AnimatedHeight } from "@posthog/ui/primitives/AnimatedHeight";
-import { toast } from "@posthog/ui/primitives/toast";
-import { track } from "@posthog/ui/shell/analytics";
+} from "@flind/ui/features/canvas/components/createChannelSteps";
+import { MemberList } from "@flind/ui/features/canvas/components/MemberList";
+import { MemberSearch } from "@flind/ui/features/canvas/components/MemberSearch";
+import { SpaceFeatureFields } from "@flind/ui/features/canvas/components/spaceSetup/SpaceFeatureFields";
+import { SpaceGoalFields } from "@flind/ui/features/canvas/components/spaceSetup/SpaceGoalFields";
+import { SpaceSetupChoiceField } from "@flind/ui/features/canvas/components/spaceSetup/SpaceSetupChoiceField";
+import { SpaceSetupRetryDialog } from "@flind/ui/features/canvas/components/spaceSetup/SpaceSetupRetryDialog";
+import { useChannelMutations } from "@flind/ui/features/canvas/hooks/useChannels";
+import { useChannelsLayout } from "@flind/ui/features/canvas/hooks/useChannelsLayout";
+import { useGenerateContext } from "@flind/ui/features/canvas/hooks/useGenerateContext";
+import { useOrgMembers } from "@flind/ui/features/canvas/hooks/useOrgMembers";
+import { useSetupSpace } from "@flind/ui/features/canvas/hooks/useSetupSpace";
+import { useUpdateTaskChannelRepositories } from "@flind/ui/features/canvas/hooks/useTaskChannels";
+import { useFeatureFlag } from "@flind/ui/features/feature-flags/useFeatureFlag";
+import { RepositoriesField } from "@flind/ui/features/integrations/components/RepositoriesField";
+import { AnimatedHeight } from "@flind/ui/primitives/AnimatedHeight";
+import { toast } from "@flind/ui/primitives/toast";
+import { track } from "@flind/ui/shell/analytics";
 import { useNavigate } from "@tanstack/react-router";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useEffect, useId, useMemo, useRef, useState } from "react";

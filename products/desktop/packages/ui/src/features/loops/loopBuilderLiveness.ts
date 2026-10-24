@@ -1,4 +1,4 @@
-import { isTerminalStatus } from "@posthog/shared/domain-types";
+import { isTerminalStatus } from "@flind/shared/domain-types";
 import type { LoopBuilderSession } from "./loopBuilderSessionStore";
 
 // A fresh task can briefly report no run (or be absent from the summaries

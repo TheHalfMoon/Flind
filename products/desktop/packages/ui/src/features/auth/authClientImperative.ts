@@ -1,9 +1,9 @@
-import type { PostHogAPIClient } from "@posthog/api-client/posthog-client";
-import { resolveService } from "@posthog/di/container";
+import type { PostHogAPIClient } from "@flind/api-client/posthog-client";
+import { resolveService } from "@flind/di/container";
 import {
   HOST_TRPC_CLIENT,
   type HostTrpcClient,
-} from "@posthog/host-router/client";
+} from "@flind/host-router/client";
 import { createAuthenticatedClient as createClient } from "./authClient";
 import { type AuthState, fetchAuthState } from "./authQueries";
 

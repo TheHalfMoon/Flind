@@ -1,4 +1,4 @@
-import { registerRendererStateStorage } from "@posthog/ui/shell/rendererStorage";
+import { registerRendererStateStorage } from "@flind/ui/shell/rendererStorage";
 
 /**
  * Persistence for stories. The desktop host registers this seam at boot and

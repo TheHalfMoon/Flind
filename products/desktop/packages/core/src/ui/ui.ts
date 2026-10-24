@@ -1,4 +1,4 @@
-import { TypedEventEmitter } from "@posthog/shared";
+import { TypedEventEmitter } from "@flind/shared";
 import { inject, injectable } from "inversify";
 import { UI_AUTH } from "./identifiers";
 import type { UiAuth } from "./ports";

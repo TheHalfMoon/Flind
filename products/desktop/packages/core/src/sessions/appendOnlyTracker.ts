@@ -1,4 +1,4 @@
-import type { AcpMessage } from "@posthog/shared";
+import type { AcpMessage } from "@flind/shared";
 
 /**
  * Folds a growing session event log into running state, visiting only the tail

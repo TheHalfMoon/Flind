@@ -1,6 +1,6 @@
-import type { LlmGatewayService } from "@posthog/core/llm-gateway/llm-gateway";
-import { TitleGeneratorService } from "@posthog/core/sessions/titleGeneratorService";
-import type { Task } from "@posthog/shared/domain-types";
+import type { LlmGatewayService } from "@flind/core/llm-gateway/llm-gateway";
+import { TitleGeneratorService } from "@flind/core/sessions/titleGeneratorService";
+import type { Task } from "@flind/shared/domain-types";
 import { renderHook, waitFor } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
@@ -33,11 +33,11 @@ vi.mock("@tanstack/react-query", () => ({
   }),
 }));
 
-vi.mock("@posthog/ui/features/auth/authClient", () => ({
+vi.mock("@flind/ui/features/auth/authClient", () => ({
   useOptionalAuthenticatedClient: () => ({ updateTask: mockUpdateTask }),
 }));
 
-vi.mock("@posthog/ui/features/auth/store", () => ({
+vi.mock("@flind/ui/features/auth/store", () => ({
   useAuthStateValue: (
     selector: (state: {
       status: string;
@@ -51,16 +51,16 @@ vi.mock("@posthog/ui/features/auth/store", () => ({
     ),
 }));
 
-vi.mock("@posthog/ui/features/auth/useCurrentUser", () => ({
+vi.mock("@flind/ui/features/auth/useCurrentUser", () => ({
   useCurrentUser: () => ({ data: mockCurrentUser.value }),
 }));
 
-vi.mock("@posthog/core/sessions/sessionEvents", () => ({
+vi.mock("@flind/core/sessions/sessionEvents", () => ({
   extractUserPromptsFromEvents: (events: { prompt: string }[]) =>
     events.map((event) => event.prompt),
 }));
 
-vi.mock("@posthog/di/react", () => ({
+vi.mock("@flind/di/react", () => ({
   useService: () => ({
     updateSessionTaskTitle: mockUpdateSessionTaskTitle,
     enrichDescriptionWithFileContent: mockEnrichDescription,
@@ -68,7 +68,7 @@ vi.mock("@posthog/di/react", () => ({
   }),
 }));
 
-vi.mock("@posthog/ui/shell/logger", () => ({
+vi.mock("@flind/ui/shell/logger", () => ({
   logger: {
     scope: () => ({
       info: vi.fn(),
@@ -79,7 +79,7 @@ vi.mock("@posthog/ui/shell/logger", () => ({
   },
 }));
 
-vi.mock("@posthog/ui/shell/titleAttachmentStore", () => ({
+vi.mock("@flind/ui/shell/titleAttachmentStore", () => ({
   titleAttachmentStoreApi: {
     get: () => mockTitleAttachmentPaths.value,
     set: vi.fn(),
@@ -87,7 +87,7 @@ vi.mock("@posthog/ui/shell/titleAttachmentStore", () => ({
   },
 }));
 
-vi.mock("@posthog/ui/features/sessions/sessionStore", () => {
+vi.mock("@flind/ui/features/sessions/sessionStore", () => {
   const state = {
     taskIdIndex: { "task-1": "run-1" },
     get sessions() {
@@ -109,7 +109,7 @@ vi.mock("@posthog/ui/features/sessions/sessionStore", () => {
   };
 });
 
-import { useTitleGenerationStore } from "@posthog/ui/features/sessions/titleGenerationStore";
+import { useTitleGenerationStore } from "@flind/ui/features/sessions/titleGenerationStore";
 import { useChatTitleGenerator } from "./useChatTitleGenerator";
 
 const TASK_ID = "task-1";

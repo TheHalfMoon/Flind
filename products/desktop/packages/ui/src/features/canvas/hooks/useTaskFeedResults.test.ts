@@ -8,13 +8,13 @@ let taskQueryError: Error | null = null;
 const refetch = vi.fn();
 const refetchMembers = vi.fn();
 
-vi.mock("@posthog/ui/features/auth/authClient", () => ({
+vi.mock("@flind/ui/features/auth/authClient", () => ({
   useOptionalAuthenticatedClient: () => null,
 }));
-vi.mock("@posthog/ui/features/auth/useCurrentUser", () => ({
+vi.mock("@flind/ui/features/auth/useCurrentUser", () => ({
   useCurrentUser: () => ({ data: null, isLoading: currentUserLoading }),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useOrgMembers", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useOrgMembers", () => ({
   useOrgMembers: () => ({
     members: [],
     error: membersError,
@@ -24,10 +24,10 @@ vi.mock("@posthog/ui/features/canvas/hooks/useOrgMembers", () => ({
     refetch: refetchMembers,
   }),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useChannels", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannels", () => ({
   useChannels: () => ({ channels: [], isLoading: false }),
 }));
-vi.mock("@posthog/ui/hooks/useAuthenticatedQuery", () => ({
+vi.mock("@flind/ui/hooks/useAuthenticatedQuery", () => ({
   useAuthenticatedQuery: () => ({
     data: undefined,
     error: taskQueryError,

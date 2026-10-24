@@ -2,15 +2,15 @@ import {
   ROOT_LOGGER,
   type RootLogger,
   type ScopedLogger,
-} from "@posthog/di/logger";
+} from "@flind/di/logger";
 import {
   type IPowerManager,
   POWER_MANAGER_SERVICE,
-} from "@posthog/platform/power-manager";
+} from "@flind/platform/power-manager";
 import {
   type IWorkspaceSettings,
   WORKSPACE_SETTINGS_SERVICE,
-} from "@posthog/platform/workspace-settings";
+} from "@flind/platform/workspace-settings";
 import { inject, injectable, preDestroy } from "inversify";
 
 @injectable()

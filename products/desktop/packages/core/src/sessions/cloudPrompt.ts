@@ -6,10 +6,10 @@ import {
   stripAbsoluteFileTags,
   stripAttachmentTags,
   stripSkillTags,
-} from "@posthog/core/editor/cloud-prompt";
-import type { EditorContent } from "@posthog/core/message-editor/content";
-import { collectUploadableSkillTags } from "@posthog/core/message-editor/skillTags";
-import { getFileName, pathToFileUri } from "@posthog/shared";
+} from "@flind/core/editor/cloud-prompt";
+import type { EditorContent } from "@flind/core/message-editor/content";
+import { collectUploadableSkillTags } from "@flind/core/message-editor/skillTags";
+import { getFileName, pathToFileUri } from "@flind/shared";
 import type { CloudSkillBundleRef } from "./cloudArtifactIdentifiers";
 
 const FILE_URI_PREFIX = "file://";

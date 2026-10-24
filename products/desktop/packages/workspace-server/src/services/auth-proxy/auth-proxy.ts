@@ -4,8 +4,8 @@ import {
   ROOT_LOGGER,
   type RootLogger,
   type ScopedLogger,
-} from "@posthog/di/logger";
-import { serializeError } from "@posthog/shared";
+} from "@flind/di/logger";
+import { serializeError } from "@flind/shared";
 import { inject, injectable, optional } from "inversify";
 import {
   type StreamProgress,

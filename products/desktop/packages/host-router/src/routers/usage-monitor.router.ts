@@ -1,11 +1,11 @@
-import { USAGE_MONITOR_SERVICE } from "@posthog/core/usage/identifiers";
+import { USAGE_MONITOR_SERVICE } from "@flind/core/usage/identifiers";
 import {
   UsageMonitorEvent,
   type UsageMonitorEvents,
   usageSnapshotOutput,
-} from "@posthog/core/usage/monitor-schemas";
-import type { UsageMonitorService } from "@posthog/core/usage/usage-monitor";
-import { publicProcedure, router } from "@posthog/host-trpc/trpc";
+} from "@flind/core/usage/monitor-schemas";
+import type { UsageMonitorService } from "@flind/core/usage/usage-monitor";
+import { publicProcedure, router } from "@flind/host-trpc/trpc";
 
 function subscribe<K extends keyof UsageMonitorEvents>(event: K) {
   return publicProcedure.subscription(async function* (opts) {

@@ -2,12 +2,12 @@ import {
   CanvasLinkEvent,
   type CanvasLinkPayload,
   type CanvasLinkService,
-} from "@posthog/core/links/canvas-link";
+} from "@flind/core/links/canvas-link";
 import {
   ChannelLinkEvent,
   type ChannelLinkPayload,
   type ChannelLinkService,
-} from "@posthog/core/links/channel-link";
+} from "@flind/core/links/channel-link";
 import {
   CANVAS_LINK_SERVICE,
   CHANNEL_LINK_SERVICE,
@@ -17,43 +17,43 @@ import {
   OPEN_TARGET_LINK_SERVICE,
   SCOUT_LINK_SERVICE,
   TASK_LINK_SERVICE,
-} from "@posthog/core/links/identifiers";
+} from "@flind/core/links/identifiers";
 import {
   InboxLinkEvent,
   type InboxLinkService,
   type PendingInboxDeepLink,
-} from "@posthog/core/links/inbox-link";
+} from "@flind/core/links/inbox-link";
 import {
   LoopLinkEvent,
   type LoopLinkPayload,
   type LoopLinkService,
-} from "@posthog/core/links/loop-link";
+} from "@flind/core/links/loop-link";
 import {
   NewTaskLinkEvent,
   type NewTaskLinkPayload,
   type NewTaskLinkService,
-} from "@posthog/core/links/new-task-link";
+} from "@flind/core/links/new-task-link";
 import {
   OpenTargetLinkEvent,
   type OpenTargetLinkService,
-} from "@posthog/core/links/open-target-link";
+} from "@flind/core/links/open-target-link";
 import {
   ScoutLinkEvent,
   type ScoutLinkPayload,
   type ScoutLinkService,
-} from "@posthog/core/links/scout-link";
+} from "@flind/core/links/scout-link";
 import {
   type PendingDeepLink,
   TaskLinkEvent,
   type TaskLinkService,
-} from "@posthog/core/links/task-link";
-import { publicProcedure, router } from "@posthog/host-trpc/trpc";
+} from "@flind/core/links/task-link";
+import { publicProcedure, router } from "@flind/host-trpc/trpc";
 import {
   DEEP_LINK_SERVICE,
   type IDeepLinkRegistry,
-} from "@posthog/platform/deep-link";
-import type { NotificationTarget } from "@posthog/platform/notifications";
-import { buildActionUrl, openAgentActionInput } from "@posthog/shared";
+} from "@flind/platform/deep-link";
+import type { NotificationTarget } from "@flind/platform/notifications";
+import { buildActionUrl, openAgentActionInput } from "@flind/shared";
 import { z } from "zod";
 
 export const deepLinkRouter = router({

@@ -1,4 +1,4 @@
-import type { Task, TaskSearchResult } from "@posthog/shared/domain-types";
+import type { Task, TaskSearchResult } from "@flind/shared/domain-types";
 
 export function taskHref(task: Task, channelId?: string): string {
   return channelId

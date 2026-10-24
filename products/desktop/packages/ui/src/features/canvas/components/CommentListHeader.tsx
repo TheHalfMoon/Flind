@@ -5,13 +5,13 @@ import {
   TabsList,
   TabsTrigger,
 } from "@flind/quill";
-import { SourceIcon } from "@posthog/ui/features/canvas/components/CommentThreadGroups";
-import type { ThreadSourceOption } from "@posthog/ui/features/canvas/components/taskCommentThreads";
-import { ChromeBar } from "@posthog/ui/primitives/ChromeBar";
+import { SourceIcon } from "@flind/ui/features/canvas/components/CommentThreadGroups";
+import type { ThreadSourceOption } from "@flind/ui/features/canvas/components/taskCommentThreads";
+import { ChromeBar } from "@flind/ui/primitives/ChromeBar";
 import {
   FilterMenuTrigger,
   FilterRadioSubMenu,
-} from "@posthog/ui/primitives/FilterMenu";
+} from "@flind/ui/primitives/FilterMenu";
 import type { ReactElement } from "react";
 
 export const ALL_SOURCES = "all";

@@ -1,4 +1,4 @@
-import type { ScoutSuggestionItem } from "@posthog/api-client/posthog-client";
+import type { ScoutSuggestionItem } from "@flind/api-client/posthog-client";
 import { describe, expect, it } from "vitest";
 import { suggestionBrief, suggestionMetaLine } from "./scoutSuggestions";
 

@@ -3,7 +3,7 @@ import type {
   StoredLogEntry,
   Task,
   TaskRun,
-} from "@posthog/shared";
+} from "@flind/shared";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 const { mockGetTask } = vi.hoisted(() => ({ mockGetTask: vi.fn() }));

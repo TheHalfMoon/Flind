@@ -1,8 +1,8 @@
-import { inboxReportKeys } from "@posthog/core/inbox/inboxQuery";
-import type { SignalReport } from "@posthog/shared/types";
-import { inboxStoryImplementations } from "@posthog/ui/features/inbox/components/inboxStoryFixtures";
-import type { ReportTaskData } from "@posthog/ui/features/inbox/hooks/useReportTasks";
-import { taskDetailQuery } from "@posthog/ui/features/tasks/queries";
+import { inboxReportKeys } from "@flind/core/inbox/inboxQuery";
+import type { SignalReport } from "@flind/shared/types";
+import { inboxStoryImplementations } from "@flind/ui/features/inbox/components/inboxStoryFixtures";
+import type { ReportTaskData } from "@flind/ui/features/inbox/hooks/useReportTasks";
+import { taskDetailQuery } from "@flind/ui/features/tasks/queries";
 import { useQueryClient } from "@tanstack/react-query";
 import { type ReactNode, useEffect, useState } from "react";
 

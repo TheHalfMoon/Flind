@@ -1,15 +1,15 @@
-import { ServiceProvider } from "@posthog/di/react";
+import { ServiceProvider } from "@flind/di/react";
 import type {
   ConversationItem,
   TurnContext,
-} from "@posthog/ui/features/sessions/components/buildConversationItems";
-import type { ToolCall } from "@posthog/ui/features/sessions/types";
+} from "@flind/ui/features/sessions/components/buildConversationItems";
+import type { ToolCall } from "@flind/ui/features/sessions/types";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { render, screen } from "@testing-library/react";
 import { Container } from "inversify";
 import { describe, expect, it, vi } from "vitest";
 
-vi.mock("@posthog/host-router/react", () => ({
+vi.mock("@flind/host-router/react", () => ({
   useHostTRPC: () => ({
     deepLink: {
       openAgentAction: {

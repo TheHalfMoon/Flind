@@ -6,8 +6,8 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@flind/quill";
-import { fileExtensionLabel } from "@posthog/ui/features/message-editor/fileKind";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
+import { fileExtensionLabel } from "@flind/ui/features/message-editor/fileKind";
+import { Spinner } from "@flind/ui/primitives/Spinner";
 import type { ReactNode } from "react";
 
 export type AttachmentUploadStatus = "uploading" | "error";

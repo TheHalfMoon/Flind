@@ -1,9 +1,9 @@
-import { resolveService } from "@posthog/di/container";
+import { resolveService } from "@flind/di/container";
 import {
   SHELL_CLIENT,
   type ShellClient,
-} from "@posthog/ui/features/terminal/shellClient";
-import { logger } from "@posthog/ui/shell/logger";
+} from "@flind/ui/features/terminal/shellClient";
+import { logger } from "@flind/ui/shell/logger";
 import { terminalManager } from "./TerminalManager";
 import { useTerminalStore } from "./terminalStore";
 

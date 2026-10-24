@@ -1,7 +1,7 @@
 import type {
   DismissalReasonOptionValue,
   ResolveReasonOptionValue,
-} from "@posthog/shared";
+} from "@flind/shared";
 
 export interface BulkActionResult {
   successCount: number;

@@ -4,7 +4,7 @@ import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 import { SessionView } from "../sessions/components/SessionView";
 
-vi.mock("@posthog/di/react", () => ({
+vi.mock("@flind/di/react", () => ({
   useService: () => ({ maybeRevertBypassMode: vi.fn() }),
 }));
 

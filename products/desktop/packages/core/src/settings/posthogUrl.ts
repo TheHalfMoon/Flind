@@ -1,4 +1,4 @@
-import { type CloudRegion, getCloudUrlFromRegion } from "@posthog/shared";
+import { type CloudRegion, getCloudUrlFromRegion } from "@flind/shared";
 
 export function buildPostHogUrl(
   pathOrUrl: string,

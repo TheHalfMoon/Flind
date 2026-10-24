@@ -1,18 +1,18 @@
-import { callCanvasConnector } from "@posthog/core/canvas/callCanvasConnector";
-import type { CanvasConnectorPermission } from "@posthog/core/canvas/canvasConnectorPermissionService";
+import { callCanvasConnector } from "@flind/core/canvas/callCanvasConnector";
+import type { CanvasConnectorPermission } from "@flind/core/canvas/canvasConnectorPermissionService";
 import type {
   CanvasCaptureInput,
   CanvasConnectorCallInput,
   CanvasDataQueryInput,
   CanvasLoadInsightInput,
-} from "@posthog/core/canvas/freeformSchemas";
-import { canvasConnectorCallInput } from "@posthog/core/canvas/freeformSchemas";
-import { invokeCanvasAction } from "@posthog/core/canvas/invokeCanvasAction";
+} from "@flind/core/canvas/freeformSchemas";
+import { canvasConnectorCallInput } from "@flind/core/canvas/freeformSchemas";
+import { invokeCanvasAction } from "@flind/core/canvas/invokeCanvasAction";
 import type { QueryClient } from "@tanstack/react-query";
 import { hostClient } from "../hostClient";
 
 // Capability gating (assertCanvasCapability) lives in
-// @posthog/core/canvas/canvasCapabilities — it's a pure business rule, not a
+// @flind/core/canvas/canvasCapabilities — it's a pure business rule, not a
 // transport concern; this file owns only the request routing + read cache.
 
 // Namespace for every cached canvas read.

@@ -1,7 +1,7 @@
 import {
   EMPTY_SPEND_LIMITS,
   type SpendLimits,
-} from "@posthog/core/billing/spendLimits";
+} from "@flind/core/billing/spendLimits";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { SpendLimitsSettingsView } from "./SpendLimitsSettings";
 

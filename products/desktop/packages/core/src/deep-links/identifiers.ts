@@ -1,11 +1,11 @@
-import type { GithubRef } from "@posthog/shared";
+import type { GithubRef } from "@flind/shared";
 import type {
   ANALYTICS_EVENTS,
   DeepLinkIssueFailedProperties,
   DeepLinkIssueProperties,
   DeepLinkNewTaskProperties,
   DeepLinkPlanProperties,
-} from "@posthog/shared/analytics-events";
+} from "@flind/shared/analytics-events";
 
 export const NEW_TASK_LINK_RESOLVER = Symbol.for(
   "posthog.core.newTaskLinkResolver",

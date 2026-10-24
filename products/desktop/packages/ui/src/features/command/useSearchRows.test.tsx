@@ -1,6 +1,6 @@
-import type { Task, TaskSearchResult } from "@posthog/shared/domain-types";
-import type { CommandSection } from "@posthog/ui/features/command/commandRow";
-import { useSearchRows } from "@posthog/ui/features/command/useSearchRows";
+import type { Task, TaskSearchResult } from "@flind/shared/domain-types";
+import type { CommandSection } from "@flind/ui/features/command/commandRow";
+import { useSearchRows } from "@flind/ui/features/command/useSearchRows";
 import { renderHook } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 

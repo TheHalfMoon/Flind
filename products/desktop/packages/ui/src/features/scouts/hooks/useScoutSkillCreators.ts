@@ -1,8 +1,8 @@
 import {
   buildScoutCreatorIndex,
   type ScoutCreatorIndex,
-} from "@posthog/core/scouts/scoutPresentation";
-import { useAuthenticatedQuery } from "@posthog/ui/hooks/useAuthenticatedQuery";
+} from "@flind/core/scouts/scoutPresentation";
+import { useAuthenticatedQuery } from "@flind/ui/hooks/useAuthenticatedQuery";
 import { useAuthStateValue } from "../../auth/store";
 import { scoutQueryKeys } from "./scoutQueryKeys";
 

@@ -5,10 +5,10 @@ import {
   GithubLogoIcon,
   WarningIcon,
 } from "@phosphor-icons/react";
-import type { GithubRepoAccessSummary } from "@posthog/core/settings/githubRepoSummary";
-import { formatRepoPreview } from "@posthog/core/settings/githubRepoSummary";
+import type { GithubRepoAccessSummary } from "@flind/core/settings/githubRepoSummary";
+import { formatRepoPreview } from "@flind/core/settings/githubRepoSummary";
 import { Button, Text } from "@flind/quill";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
+import { Spinner } from "@flind/ui/primitives/Spinner";
 import type { ReactNode } from "react";
 import { useState } from "react";
 

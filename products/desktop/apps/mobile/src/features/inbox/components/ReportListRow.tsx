@@ -2,8 +2,8 @@ import { Text } from "@components/text";
 import {
   humanizeReportTitle,
   parseConventionalCommitTitle,
-} from "@posthog/core/inbox/reportPresentation";
-import type { SignalReport } from "@posthog/shared/domain-types";
+} from "@flind/core/inbox/reportPresentation";
+import type { SignalReport } from "@flind/shared/domain-types";
 import { memo } from "react";
 import { Pressable, View } from "react-native";
 import { PrStatusBadge } from "@/features/tasks/components/PrStatusBadge";

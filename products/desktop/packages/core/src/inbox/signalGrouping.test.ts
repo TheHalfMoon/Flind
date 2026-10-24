@@ -1,4 +1,4 @@
-import type { Signal } from "@posthog/shared/types";
+import type { Signal } from "@flind/shared/types";
 import { describe, expect, it } from "vitest";
 
 import { groupReportSignals, shouldGroupSignals } from "./signalGrouping";

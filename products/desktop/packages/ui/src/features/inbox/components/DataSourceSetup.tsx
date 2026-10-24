@@ -1,24 +1,24 @@
-import { GITHUB_INSTALL_PENDING_MESSAGE } from "@posthog/core/integrations/connectErrors";
-import { githubIssuesSchemaNames } from "@posthog/core/integrations/githubSourceRepos";
+import { GITHUB_INSTALL_PENDING_MESSAGE } from "@flind/core/integrations/connectErrors";
+import { githubIssuesSchemaNames } from "@flind/core/integrations/githubSourceRepos";
 import { Button } from "@flind/quill";
 import {
   EXTERNAL_INBOX_SOURCE_BY_PRODUCT,
   type ToggleableSourceProduct,
-} from "@posthog/shared";
-import { useAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { useAuthStateValue } from "@posthog/ui/features/auth/store";
-import { GitHubRepoMultiPicker } from "@posthog/ui/features/folder-picker/GitHubRepoMultiPicker";
-import { DynamicSourceSetup } from "@posthog/ui/features/inbox/components/DynamicSourceSetup";
-import { GithubInstallRequestsBanner } from "@posthog/ui/features/integrations/components/GithubInstallRequestsBanner";
+} from "@flind/shared";
+import { useAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { useAuthStateValue } from "@flind/ui/features/auth/store";
+import { GitHubRepoMultiPicker } from "@flind/ui/features/folder-picker/GitHubRepoMultiPicker";
+import { DynamicSourceSetup } from "@flind/ui/features/inbox/components/DynamicSourceSetup";
+import { GithubInstallRequestsBanner } from "@flind/ui/features/integrations/components/GithubInstallRequestsBanner";
 import {
   describeGithubConnectError,
   useGithubConnect,
-} from "@posthog/ui/features/integrations/useGithubUserConnect";
+} from "@flind/ui/features/integrations/useGithubUserConnect";
 import {
   useGithubRepositories,
   useRepositoryIntegration,
-} from "@posthog/ui/features/integrations/useIntegrations";
-import { toast } from "@posthog/ui/primitives/toast";
+} from "@flind/ui/features/integrations/useIntegrations";
+import { toast } from "@flind/ui/primitives/toast";
 import { Box, Flex, Text, TextField } from "@radix-ui/themes";
 import { useCallback, useEffect, useState } from "react";
 

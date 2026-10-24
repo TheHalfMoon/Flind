@@ -22,7 +22,7 @@ procs:
             layer: Packages
 
     platform:
-        shell: 'node scripts/pnpm-run.mjs --filter @posthog/platform run dev'
+        shell: 'node scripts/pnpm-run.mjs --filter @flind/platform run dev'
         groups:
             layer: Packages
 
@@ -38,7 +38,7 @@ procs:
             layer: Tools
 
     mobile-ios:
-        shell: 'node scripts/pnpm-run.mjs --filter @posthog/mobile run ios'
+        shell: 'node scripts/pnpm-run.mjs --filter @flind/mobile run ios'
         autostart: false
         groups:
             layer: Application
@@ -49,13 +49,13 @@ procs:
             layer: Tools
 
     web:
-        shell: 'node scripts/pnpm-run.mjs --filter @posthog/web run dev'
+        shell: 'node scripts/pnpm-run.mjs --filter @flind/web run dev'
         autostart: false
         groups:
             layer: Application
 
     web-playwright:
-        shell: 'node scripts/pnpm-run.mjs --filter @posthog/web run test:e2e'
+        shell: 'node scripts/pnpm-run.mjs --filter @flind/web run test:e2e'
         autostart: false
         groups:
             layer: Tools

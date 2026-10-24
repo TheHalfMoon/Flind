@@ -1,7 +1,7 @@
 import type {
   CloudPermissionOption,
   CloudTaskPermissionRequestUpdate,
-} from "@posthog/shared";
+} from "@flind/shared";
 
 export type TerminalStatus = "completed" | "failed" | "stopped";
 

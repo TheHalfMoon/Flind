@@ -4,7 +4,7 @@ import {
   codeUsageWindowSuffix,
   formatUsageBreakdown,
   formatUsdAmount,
-} from "@posthog/core/billing/usageDisplay";
+} from "@flind/core/billing/usageDisplay";
 import {
   Button,
   Popover,
@@ -12,12 +12,12 @@ import {
   PopoverTrigger,
   Progress,
 } from "@flind/quill";
-import { BILLING_FLAG } from "@posthog/shared";
+import { BILLING_FLAG } from "@flind/shared";
 import {
   ANALYTICS_EVENTS,
   type UpgradePromptClickedSurface,
-} from "@posthog/shared/analytics-events";
-import { settingsSourceHref } from "@posthog/ui/router/reportNavigation";
+} from "@flind/shared/analytics-events";
+import { settingsSourceHref } from "@flind/ui/router/reportNavigation";
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { track } from "../../shell/analytics";

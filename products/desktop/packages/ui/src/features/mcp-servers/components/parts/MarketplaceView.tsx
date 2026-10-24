@@ -4,12 +4,12 @@ import {
   type McpCategory,
   type McpRecommendedServer,
   type McpServerInstallation,
-} from "@posthog/api-client/posthog-client";
+} from "@flind/api-client/posthog-client";
 import {
   filterServersByCategory,
   filterServersByQuery,
-} from "@posthog/core/mcp-servers/filters";
-import { LoadingState } from "@posthog/ui/primitives/LoadingState";
+} from "@flind/core/mcp-servers/filters";
+import { LoadingState } from "@flind/ui/primitives/LoadingState";
 import {
   Button,
   Flex,

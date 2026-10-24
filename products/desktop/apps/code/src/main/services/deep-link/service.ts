@@ -1,12 +1,12 @@
 import {
   APP_LIFECYCLE_SERVICE,
   type IAppLifecycle,
-} from "@posthog/platform/app-lifecycle";
+} from "@flind/platform/app-lifecycle";
 import type {
   DeepLinkHandler,
   IDeepLinkRegistry,
-} from "@posthog/platform/deep-link";
-import { getDeeplinkProtocol } from "@posthog/shared";
+} from "@flind/platform/deep-link";
+import { getDeeplinkProtocol } from "@flind/shared";
 import { inject, injectable } from "inversify";
 import { isDevBuild } from "../../utils/env";
 import {
@@ -15,7 +15,7 @@ import {
 } from "../../utils/linux-appimage-protocol";
 import { logger } from "../../utils/logger";
 
-export type { DeepLinkHandler } from "@posthog/platform/deep-link";
+export type { DeepLinkHandler } from "@flind/platform/deep-link";
 
 const log = logger.scope("deep-link-service");
 

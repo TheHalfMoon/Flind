@@ -2,11 +2,11 @@ import { CaretDownIcon, CaretRightIcon } from "@phosphor-icons/react";
 import {
   humanizeIdentifier,
   taskRunLabel,
-} from "@posthog/core/inbox/activityLog";
-import type { Task, TaskRunArtefactContent } from "@posthog/shared/types";
-import { TaskLogsPanel } from "@posthog/ui/features/task-detail/components/TaskLogsPanel";
-import { taskKeys } from "@posthog/ui/features/tasks/taskKeys";
-import { useAuthenticatedQuery } from "@posthog/ui/hooks/useAuthenticatedQuery";
+} from "@flind/core/inbox/activityLog";
+import type { Task, TaskRunArtefactContent } from "@flind/shared/types";
+import { TaskLogsPanel } from "@flind/ui/features/task-detail/components/TaskLogsPanel";
+import { taskKeys } from "@flind/ui/features/tasks/taskKeys";
+import { useAuthenticatedQuery } from "@flind/ui/hooks/useAuthenticatedQuery";
 import { Badge, Box, Text } from "@radix-ui/themes";
 import { useState } from "react";
 

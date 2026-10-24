@@ -1,7 +1,7 @@
 import { Clock, Gauge } from "@phosphor-icons/react";
-import type { AutoresearchRun } from "@posthog/core/autoresearch/schemas";
-import { getAutoresearchElapsedMs } from "@posthog/core/autoresearch/stats";
-import type { ContextUsage } from "@posthog/core/sessions/contextUsage";
+import type { AutoresearchRun } from "@flind/core/autoresearch/schemas";
+import { getAutoresearchElapsedMs } from "@flind/core/autoresearch/stats";
+import type { ContextUsage } from "@flind/core/sessions/contextUsage";
 import { Text } from "@radix-ui/themes";
 import { useEffect, useState } from "react";
 import { formatDuration } from "../sessions/components/GeneratingIndicator";

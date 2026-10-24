@@ -1,17 +1,17 @@
-import type { ScoutConfig } from "@posthog/api-client/posthog-client";
+import type { ScoutConfig } from "@flind/api-client/posthog-client";
 import {
   formatScoutScheduleShort,
   scoutScheduleNamesClockTime,
-} from "@posthog/core/scouts/scoutPresentation";
+} from "@flind/core/scouts/scoutPresentation";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@flind/quill";
-import { useProjectTimezone } from "@posthog/ui/features/projects/useProjectTimezone";
-import { formatTimezoneAbbreviation } from "@posthog/ui/primitives/timezone";
-import { projectTimezoneSettingsUrl } from "@posthog/ui/utils/posthogLinks";
+import { useProjectTimezone } from "@flind/ui/features/projects/useProjectTimezone";
+import { formatTimezoneAbbreviation } from "@flind/ui/primitives/timezone";
+import { projectTimezoneSettingsUrl } from "@flind/ui/utils/posthogLinks";
 
 /**
  * How often the scout runs, with the project timezone beside a schedule that picks hours of the

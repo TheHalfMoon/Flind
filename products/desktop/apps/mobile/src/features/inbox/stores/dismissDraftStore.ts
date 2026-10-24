@@ -1,4 +1,4 @@
-import type { DismissalReasonOptionValue } from "@posthog/shared";
+import type { DismissalReasonOptionValue } from "@flind/shared";
 import { create } from "zustand";
 
 export interface DismissDraft {

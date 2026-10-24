@@ -1,22 +1,22 @@
-import type { PostHogAPIClient } from "@posthog/api-client/posthog-client";
+import type { PostHogAPIClient } from "@flind/api-client/posthog-client";
 import type {
   DiscoveryFailureReason,
   DiscoverySignalSource,
   ISetupRunService,
-} from "@posthog/core/setup/identifiers";
-import type { StaleFlagPayload } from "@posthog/core/setup/suggestions";
-import type { DiscoveredTask } from "@posthog/core/setup/types";
-import { resolveService } from "@posthog/di/container";
+} from "@flind/core/setup/identifiers";
+import type { StaleFlagPayload } from "@flind/core/setup/suggestions";
+import type { DiscoveredTask } from "@flind/core/setup/types";
+import { resolveService } from "@flind/di/container";
 import {
   HOST_TRPC_CLIENT,
   type HostTrpcClient,
-} from "@posthog/host-router/client";
-import { getCloudUrlFromRegion } from "@posthog/shared";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
+} from "@flind/host-router/client";
+import { getCloudUrlFromRegion } from "@flind/shared";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
 import {
   isTerminalStatus,
   type TaskRunStatus,
-} from "@posthog/shared/domain-types";
+} from "@flind/shared/domain-types";
 import { injectable } from "inversify";
 import { captureException, track } from "../../shell/analytics";
 import { createAuthenticatedClient } from "../auth/authClientImperative";

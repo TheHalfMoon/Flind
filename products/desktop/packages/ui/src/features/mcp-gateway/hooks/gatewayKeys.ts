@@ -1,4 +1,4 @@
-import type { McpAuditQuickFilter } from "@posthog/api-client/posthog-client";
+import type { McpAuditQuickFilter } from "@flind/api-client/posthog-client";
 
 /** Scope a tool-policy query resolves against. */
 export interface GatewayPolicyScope {

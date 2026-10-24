@@ -1,4 +1,4 @@
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
 import { act, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { beforeEach, describe, expect, it, vi } from "vitest";
@@ -17,7 +17,7 @@ const { track, dndCapture } = vi.hoisted(() => ({
   },
 }));
 
-vi.mock("@posthog/ui/shell/analytics", () => ({ track }));
+vi.mock("@flind/ui/shell/analytics", () => ({ track }));
 vi.mock("@dnd-kit/react", () => ({
   DragDropProvider: ({
     onDragStart,
@@ -44,7 +44,7 @@ vi.mock("@dnd-kit/react/sortable", () => ({
   }),
 }));
 
-import { useSidebarStore } from "@posthog/ui/features/sidebar/sidebarStore";
+import { useSidebarStore } from "@flind/ui/features/sidebar/sidebarStore";
 import { EditListItemAppearanceDialog } from "./EditListItemAppearanceDialog";
 
 function renderDialog(onOpenChange = vi.fn()) {

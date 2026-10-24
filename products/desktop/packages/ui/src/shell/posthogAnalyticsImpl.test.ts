@@ -1,4 +1,4 @@
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 const mockPosthog = {
@@ -270,7 +270,7 @@ describe("networkMetricPath", () => {
 
   it("uses the existing custom cloud configuration", async () => {
     const { networkMetricPath } = await loadAnalytics();
-    const { configureCustomCloud } = await import("@posthog/shared");
+    const { configureCustomCloud } = await import("@flind/shared");
     const request = {
       url: "https://posthog.example.com/api/projects/1/tasks/",
       method: "GET",

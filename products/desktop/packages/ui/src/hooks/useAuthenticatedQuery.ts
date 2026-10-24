@@ -1,6 +1,6 @@
-import type { PostHogAPIClient } from "@posthog/api-client/posthog-client";
-import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { AUTH_SCOPED_QUERY_META } from "@posthog/ui/features/auth/useCurrentUser";
+import type { PostHogAPIClient } from "@flind/api-client/posthog-client";
+import { useOptionalAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { AUTH_SCOPED_QUERY_META } from "@flind/ui/features/auth/useCurrentUser";
 import type {
   QueryKey,
   UseQueryOptions,

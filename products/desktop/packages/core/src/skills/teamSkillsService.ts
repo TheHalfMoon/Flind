@@ -1,12 +1,12 @@
 import type {
   LlmSkillListItem,
   PostHogAPIClient,
-} from "@posthog/api-client/posthog-client";
+} from "@flind/api-client/posthog-client";
 import {
   DISABLE_MODEL_INVOCATION_METADATA_KEY,
   type ExportedSkill,
   isIgnoredSkillPath,
-} from "@posthog/shared";
+} from "@flind/shared";
 import { inject, injectable } from "inversify";
 import { SKILLS_WORKSPACE_CLIENT } from "./identifiers";
 

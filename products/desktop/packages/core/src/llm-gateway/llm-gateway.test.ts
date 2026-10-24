@@ -1,4 +1,4 @@
-import { classifyGatewayLimitError } from "@posthog/shared";
+import { classifyGatewayLimitError } from "@flind/shared";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import type { AuthService } from "../auth/auth";
 import type { GatewayTokenService } from "./gateway-token";

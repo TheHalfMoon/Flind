@@ -1,6 +1,6 @@
-import { useHostTRPCClient } from "@posthog/host-router/react";
-import type { Workspace } from "@posthog/shared";
-import { useExternalAppAction } from "@posthog/ui/features/external-apps/useExternalAppAction";
+import { useHostTRPCClient } from "@flind/host-router/react";
+import type { Workspace } from "@flind/shared";
+import { useExternalAppAction } from "@flind/ui/features/external-apps/useExternalAppAction";
 import { useCallback } from "react";
 
 export interface OpenFileContextMenuInput {

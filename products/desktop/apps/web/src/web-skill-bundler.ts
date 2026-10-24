@@ -1,10 +1,10 @@
-import type { LocalSkillBundle } from "@posthog/core/sessions/cloudArtifactIdentifiers";
+import type { LocalSkillBundle } from "@flind/core/sessions/cloudArtifactIdentifiers";
 import {
   type ExportedSkill,
   isIgnoredSkillPath,
   serializeSkillMarkdown,
   type UploadableSkillSource,
-} from "@posthog/shared";
+} from "@flind/shared";
 import { strToU8, zipSync } from "fflate";
 
 // Browser port of workspace-server's skill-bundler. Desktop zips a skill's

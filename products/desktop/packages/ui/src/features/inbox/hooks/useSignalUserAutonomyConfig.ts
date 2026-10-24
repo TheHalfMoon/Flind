@@ -1,4 +1,4 @@
-import type { SignalUserAutonomyConfig } from "@posthog/shared/domain-types";
+import type { SignalUserAutonomyConfig } from "@flind/shared/domain-types";
 import { useAuthenticatedQuery } from "../../../hooks/useAuthenticatedQuery";
 
 export function useSignalUserAutonomyConfig(options?: {

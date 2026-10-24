@@ -1,6 +1,6 @@
-import { useRailSurface } from "@posthog/ui/features/canvas/hooks/useRailSurface";
-import { useActivitySelection } from "@posthog/ui/features/canvas/stores/activityDetailStore";
-import { useTaskFeedSelectionStore } from "@posthog/ui/features/canvas/stores/taskFeedSelectionStore";
+import { useRailSurface } from "@flind/ui/features/canvas/hooks/useRailSurface";
+import { useActivitySelection } from "@flind/ui/features/canvas/stores/activityDetailStore";
+import { useTaskFeedSelectionStore } from "@flind/ui/features/canvas/stores/taskFeedSelectionStore";
 import { useParams, useSearch } from "@tanstack/react-router";
 
 export interface ActiveSession {

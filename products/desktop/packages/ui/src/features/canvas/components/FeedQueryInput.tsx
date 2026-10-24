@@ -1,13 +1,13 @@
 import {
   type FeedQuerySegment,
   lexFeedQuery,
-} from "@posthog/core/tasks/feedQuery";
+} from "@flind/core/tasks/feedQuery";
 import { cn, Kbd } from "@flind/quill";
 import {
   FeedQueryMatchedLabel,
   useFeedQuerySuggestions,
-} from "@posthog/ui/features/canvas/components/feedQuerySuggestions";
-import { applyFeedQuerySuggestion } from "@posthog/ui/features/canvas/components/feedQuerySuggestionUtils";
+} from "@flind/ui/features/canvas/components/feedQuerySuggestions";
+import { applyFeedQuerySuggestion } from "@flind/ui/features/canvas/components/feedQuerySuggestionUtils";
 import {
   Fragment,
   type KeyboardEvent as ReactKeyboardEvent,

@@ -1,10 +1,10 @@
 import {
   emptySpaceSetupDraft,
   type SpaceSetupDraft,
-} from "@posthog/core/canvas/spaceSetup";
-import { SpaceFeatureFields } from "@posthog/ui/features/canvas/components/spaceSetup/SpaceFeatureFields";
-import { SpaceGoalFields } from "@posthog/ui/features/canvas/components/spaceSetup/SpaceGoalFields";
-import { SpaceSetupChoiceField } from "@posthog/ui/features/canvas/components/spaceSetup/SpaceSetupChoiceField";
+} from "@flind/core/canvas/spaceSetup";
+import { SpaceFeatureFields } from "@flind/ui/features/canvas/components/spaceSetup/SpaceFeatureFields";
+import { SpaceGoalFields } from "@flind/ui/features/canvas/components/spaceSetup/SpaceGoalFields";
+import { SpaceSetupChoiceField } from "@flind/ui/features/canvas/components/spaceSetup/SpaceSetupChoiceField";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
 

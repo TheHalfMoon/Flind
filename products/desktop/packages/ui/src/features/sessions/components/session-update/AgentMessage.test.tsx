@@ -10,7 +10,7 @@ vi.mock("mermaid", () => ({
   },
 }));
 
-vi.mock("@posthog/ui/shell/themeStore", () => ({
+vi.mock("@flind/ui/shell/themeStore", () => ({
   useThemeStore: (selector: (state: { isDarkMode: boolean }) => unknown) =>
     selector({ isDarkMode: false }),
 }));

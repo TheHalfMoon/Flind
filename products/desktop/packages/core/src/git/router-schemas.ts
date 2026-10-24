@@ -4,7 +4,7 @@ import {
   prActionTypeSchema,
   prReviewCommentSchema,
   prReviewThreadSchema,
-} from "@posthog/shared";
+} from "@flind/shared";
 import { z } from "zod";
 
 const directoryPathInput = z.object({
@@ -365,9 +365,9 @@ export type {
   PrCheck,
   PrCheckBucket,
   PrMergeMethod,
-} from "@posthog/shared";
+} from "@flind/shared";
 // Native PR review schemas (PR overview, approve/merge, CI checks,
-// conversation comments) are defined once in `@posthog/shared`'s git domain
+// conversation comments) are defined once in `@flind/shared`'s git domain
 // and re-exported here for the host router and UI.
 export {
   approvePrInput,
@@ -380,7 +380,7 @@ export {
   getPrInfoByUrlOutput,
   mergePrInput,
   mergePrOutput,
-} from "@posthog/shared";
+} from "@flind/shared";
 
 export const getBranchChangedFilesInput = z.object({
   repo: z.string(),

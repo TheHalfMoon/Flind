@@ -1,5 +1,5 @@
-import { useService } from "@posthog/di/react";
-import { useHostTRPC, useHostTRPCClient } from "@posthog/host-router/react";
+import { useService } from "@flind/di/react";
+import { useHostTRPC, useHostTRPCClient } from "@flind/host-router/react";
 import { useCallback } from "react";
 import { toast } from "../../../primitives/toast";
 import {

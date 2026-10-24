@@ -1,4 +1,4 @@
-import type { IDiskCacheImages } from "@posthog/platform/disk-cache";
+import type { IDiskCacheImages } from "@flind/platform/disk-cache";
 import {
   isCacheableImageUrl,
   toCachedImageUrl,

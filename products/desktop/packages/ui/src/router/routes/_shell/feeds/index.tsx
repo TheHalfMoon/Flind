@@ -1,11 +1,11 @@
 import {
   useProjectTaskFeeds,
   useProjectTaskFeedsReady,
-} from "@posthog/ui/features/canvas/hooks/useProjectTaskFeeds";
+} from "@flind/ui/features/canvas/hooks/useProjectTaskFeeds";
 import {
   ChannelSkeleton,
   withRouteSkeleton,
-} from "@posthog/ui/router/routeSkeletons";
+} from "@flind/ui/router/routeSkeletons";
 import { createFileRoute, Navigate } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/_shell/feeds/")({

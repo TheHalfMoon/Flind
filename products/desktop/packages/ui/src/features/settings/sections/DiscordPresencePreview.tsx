@@ -1,6 +1,6 @@
 import { DotsThree, GameController, Pause, Play } from "@phosphor-icons/react";
-import { SettingsSection } from "@posthog/ui/features/settings/components/SettingsCard";
-import { SettingsSegmented } from "@posthog/ui/features/settings/components/SettingsSegmented";
+import { SettingsSection } from "@flind/ui/features/settings/components/SettingsCard";
+import { SettingsSegmented } from "@flind/ui/features/settings/components/SettingsSegmented";
 import { Flex, Text } from "@radix-ui/themes";
 import { useEffect, useState } from "react";
 import posthogIcon from "../../auth/assets/posthog-icon.svg";

@@ -1,17 +1,17 @@
 import { PlusIcon } from "@phosphor-icons/react";
 import { Button } from "@flind/quill";
-import { ANALYTICS_EVENTS } from "@posthog/shared";
+import { ANALYTICS_EVENTS } from "@flind/shared";
 import {
   useAgentsTab,
   useOpenAgent,
-} from "@posthog/ui/features/agents/agentsPageStore";
-import { ConfigureAgentsSection } from "@posthog/ui/features/inbox/components/ConfigureAgentsSection";
-import { FleetOverviewButton } from "@posthog/ui/features/scouts/components/FleetOverviewButton";
-import { NewAgentDialog } from "@posthog/ui/features/scouts/components/NewAgentDialog";
-import { ScoutDetailView } from "@posthog/ui/features/scouts/components/ScoutDetailView";
-import { ScoutsFleetView } from "@posthog/ui/features/scouts/components/ScoutsFleetView";
-import { ScratchpadView } from "@posthog/ui/features/scouts/components/ScratchpadView";
-import { track } from "@posthog/ui/shell/analytics";
+} from "@flind/ui/features/agents/agentsPageStore";
+import { ConfigureAgentsSection } from "@flind/ui/features/inbox/components/ConfigureAgentsSection";
+import { FleetOverviewButton } from "@flind/ui/features/scouts/components/FleetOverviewButton";
+import { NewAgentDialog } from "@flind/ui/features/scouts/components/NewAgentDialog";
+import { ScoutDetailView } from "@flind/ui/features/scouts/components/ScoutDetailView";
+import { ScoutsFleetView } from "@flind/ui/features/scouts/components/ScoutsFleetView";
+import { ScratchpadView } from "@flind/ui/features/scouts/components/ScratchpadView";
+import { track } from "@flind/ui/shell/analytics";
 import { useState } from "react";
 import { AgentsTabLayout } from "./AgentsTabLayout";
 

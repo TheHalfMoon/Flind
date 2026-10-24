@@ -1,5 +1,5 @@
-import type { ScoutConfig } from "@posthog/api-client/posthog-client";
-import { prettifyScoutSkillName } from "@posthog/core/scouts/scoutPresentation";
+import type { ScoutConfig } from "@flind/api-client/posthog-client";
+import { prettifyScoutSkillName } from "@flind/core/scouts/scoutPresentation";
 import { ScoutNameHoverCard } from "./ScoutNameHoverCard";
 
 /** The agent's name, opening its page. Resting on it shows what the agent does. */

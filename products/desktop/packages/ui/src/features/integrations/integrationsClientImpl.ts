@@ -2,14 +2,14 @@ import type {
   GithubConnectClient,
   RepositoriesClient,
   TeamFlowResult,
-} from "@posthog/core/integrations/identifiers";
-import type { CloudRegion } from "@posthog/core/integrations/schemas";
-import { resolveService } from "@posthog/di/container";
+} from "@flind/core/integrations/identifiers";
+import type { CloudRegion } from "@flind/core/integrations/schemas";
+import { resolveService } from "@flind/di/container";
 import {
   HOST_TRPC_CLIENT,
   type HostTrpcClient,
-} from "@posthog/host-router/client";
-import { getAuthenticatedClient } from "@posthog/ui/features/auth/authClientImperative";
+} from "@flind/host-router/client";
+import { getAuthenticatedClient } from "@flind/ui/features/auth/authClientImperative";
 
 async function authedClient() {
   const client = await getAuthenticatedClient();

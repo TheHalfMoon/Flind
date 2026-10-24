@@ -1,7 +1,7 @@
 import {
   findArtifactForLink,
   parseArtifactLink,
-} from "@posthog/ui/utils/artifactLinks";
+} from "@flind/ui/utils/artifactLinks";
 import { describe, expect, it } from "vitest";
 
 const TASK_ID = "3f1c2b6a-1111-4222-8333-444455556666";

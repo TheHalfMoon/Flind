@@ -16,7 +16,7 @@ import {
   PageHeaderNav,
   PageHeaderTitle,
   PageHeaderTitleRow,
-} from "@posthog/ui/primitives/PageHeader";
+} from "@flind/ui/primitives/PageHeader";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {

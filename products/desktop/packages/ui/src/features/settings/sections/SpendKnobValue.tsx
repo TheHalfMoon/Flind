@@ -1,5 +1,5 @@
 import { PencilSimple } from "@phosphor-icons/react";
-import { parseSpendAmount } from "@posthog/core/billing/spendLimits";
+import { parseSpendAmount } from "@flind/core/billing/spendLimits";
 import { useRef, useState } from "react";
 
 interface SpendKnobValueProps {

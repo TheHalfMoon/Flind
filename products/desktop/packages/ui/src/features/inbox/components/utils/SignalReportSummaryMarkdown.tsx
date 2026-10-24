@@ -1,9 +1,9 @@
-import { formatSignalReportSummaryMarkdown } from "@posthog/core/inbox/reportPresentation";
+import { formatSignalReportSummaryMarkdown } from "@flind/core/inbox/reportPresentation";
 import {
   baseComponents,
   MarkdownRenderer,
-} from "@posthog/ui/features/editor/components/MarkdownRenderer";
-import { reportChartAnchorId } from "@posthog/ui/features/inbox/components/detail/ReportChartCard";
+} from "@flind/ui/features/editor/components/MarkdownRenderer";
+import { reportChartAnchorId } from "@flind/ui/features/inbox/components/detail/ReportChartCard";
 import { useMemo } from "react";
 import type { Components } from "react-markdown";
 

@@ -1,24 +1,24 @@
-import { useHostTRPC } from "@posthog/host-router/react";
+import { useHostTRPC } from "@flind/host-router/react";
 import { Switch } from "@flind/quill";
-import { ANALYTICS_EVENTS } from "@posthog/shared";
+import { ANALYTICS_EVENTS } from "@flind/shared";
 import {
   EFFORT_LEVEL_DOCS_URLS,
   EFFORT_LEVEL_LABELS,
   EFFORT_LEVELS,
-} from "@posthog/shared/domain-types";
+} from "@flind/shared/domain-types";
 import {
   ReasoningLevelDropdown,
   type ReasoningLevelOption,
-} from "@posthog/ui/features/sessions/components/ReasoningLevelDropdown";
+} from "@flind/ui/features/sessions/components/ReasoningLevelDropdown";
 import {
   SettingsCard,
   SettingsCardRow,
   SettingsSection,
-} from "@posthog/ui/features/settings/components/SettingsCard";
-import { SettingsSegmented } from "@posthog/ui/features/settings/components/SettingsSegmented";
-import { SettingsSelect } from "@posthog/ui/features/settings/components/SettingsSelect";
-import { AccountSection } from "@posthog/ui/features/settings/sections/AccountSettings";
-import { UpdatesSection } from "@posthog/ui/features/settings/sections/UpdatesSettings";
+} from "@flind/ui/features/settings/components/SettingsCard";
+import { SettingsSegmented } from "@flind/ui/features/settings/components/SettingsSegmented";
+import { SettingsSelect } from "@flind/ui/features/settings/components/SettingsSelect";
+import { AccountSection } from "@flind/ui/features/settings/sections/AccountSettings";
+import { UpdatesSection } from "@flind/ui/features/settings/sections/UpdatesSettings";
 import {
   type AutoConvertLongText,
   type DefaultInitialTaskMode,
@@ -27,9 +27,9 @@ import {
   type DiffOpenMode,
   type SendMessagesWith,
   useSettingsStore,
-} from "@posthog/ui/features/settings/settingsStore";
-import { track } from "@posthog/ui/shell/analytics";
-import { useHostCapabilities } from "@posthog/ui/shell/useHostCapabilities";
+} from "@flind/ui/features/settings/settingsStore";
+import { track } from "@flind/ui/shell/analytics";
+import { useHostCapabilities } from "@flind/ui/shell/useHostCapabilities";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useCallback, useEffect } from "react";
 

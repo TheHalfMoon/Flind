@@ -12,7 +12,7 @@ import type {
   StoredLogEntry,
   TaskClientProvenance,
   TaskRunArtifactMetadata,
-} from "@posthog/shared";
+} from "@flind/shared";
 import {
   buildCloudTaskConfigOptions,
   type CloudTaskConfigOption,
@@ -26,7 +26,7 @@ import {
   type ReportStateReason,
   type ResolveReasonOptionValue,
   resolveCloudInitialPermissionMode,
-} from "@posthog/shared";
+} from "@flind/shared";
 import type {
   ActionabilityJudgmentArtefact,
   AvailableSuggestedReviewer,
@@ -83,12 +83,12 @@ import type {
   UserBasic,
   WorkClaimArtefact,
   WorkReleaseArtefact,
-} from "@posthog/shared/domain-types";
-import { buildPosthogProjectHeaderRecord } from "@posthog/shared/posthog-property-headers";
+} from "@flind/shared/domain-types";
+import { buildPosthogProjectHeaderRecord } from "@flind/shared/posthog-property-headers";
 import {
   spaceSetupInputSchema,
   spaceSetupStartedSchema,
-} from "@posthog/shared/schemas";
+} from "@flind/shared/schemas";
 import {
   activitySection,
   compactCount,

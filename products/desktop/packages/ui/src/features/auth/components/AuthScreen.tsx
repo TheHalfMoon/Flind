@@ -1,5 +1,5 @@
-import { SignInCard } from "@posthog/ui/features/auth/SignInCard";
-import { FullScreenLayout } from "@posthog/ui/primitives/FullScreenLayout";
+import { SignInCard } from "@flind/ui/features/auth/SignInCard";
+import { FullScreenLayout } from "@flind/ui/primitives/FullScreenLayout";
 import { useAuthStateValue } from "../store";
 import { AffirmationButton } from "./AffirmationButton";
 

@@ -1,5 +1,5 @@
-import type { SessionService } from "@posthog/core/sessions/sessionService";
-import type { RootLogger } from "@posthog/di/logger";
+import type { SessionService } from "@flind/core/sessions/sessionService";
+import type { RootLogger } from "@flind/di/logger";
 import { describe, expect, it, vi } from "vitest";
 import type { PiRunner } from "../pi-runtime/piRunner";
 import type { TaskCreationEffects } from "./taskCreationEffects";

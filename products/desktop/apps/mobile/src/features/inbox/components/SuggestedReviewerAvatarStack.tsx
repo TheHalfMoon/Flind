@@ -1,7 +1,7 @@
 import { Text } from "@components/text";
-import { toSuggestedReviewerWriteContent } from "@posthog/core/inbox/artefacts";
-import { selectSuggestedReviewersArtefact } from "@posthog/core/inbox/reportArtefacts";
-import type { SignalReport } from "@posthog/shared/domain-types";
+import { toSuggestedReviewerWriteContent } from "@flind/core/inbox/artefacts";
+import { selectSuggestedReviewersArtefact } from "@flind/core/inbox/reportArtefacts";
+import type { SignalReport } from "@flind/shared/domain-types";
 import { ActivityIndicator, Image, Pressable, View } from "react-native";
 import { useUserQuery } from "@/features/auth";
 import {

@@ -1,15 +1,15 @@
-import { copyInboxReportLink } from "@posthog/ui/features/inbox/utils/copyInboxReportLink";
-import { toast } from "@posthog/ui/primitives/toast";
+import { copyInboxReportLink } from "@flind/ui/features/inbox/utils/copyInboxReportLink";
+import { toast } from "@flind/ui/primitives/toast";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 const writeText = vi.fn();
 
-vi.mock("@posthog/ui/utils/posthogLinks", () => ({
+vi.mock("@flind/ui/utils/posthogLinks", () => ({
   inboxReportUrl: (reportId: string) =>
     `https://us.posthog.com/project/2/inbox/${reportId}`,
 }));
 
-vi.mock("@posthog/ui/primitives/toast", () => ({
+vi.mock("@flind/ui/primitives/toast", () => ({
   toast: { success: vi.fn(), error: vi.fn() },
 }));
 

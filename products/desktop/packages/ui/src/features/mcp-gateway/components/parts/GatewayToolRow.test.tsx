@@ -1,4 +1,4 @@
-import type { McpResolvedToolPolicy } from "@posthog/api-client/posthog-client";
+import type { McpResolvedToolPolicy } from "@flind/api-client/posthog-client";
 import { Theme } from "@radix-ui/themes";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";

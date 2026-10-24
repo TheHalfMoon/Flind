@@ -1,4 +1,4 @@
-import type { NotificationTarget } from "@posthog/platform/notifications";
+import type { NotificationTarget } from "@flind/platform/notifications";
 
 interface ActiveRoute {
   // routeId includes pathless layouts such as `_shell`, but fullPath matches the URL patterns below.

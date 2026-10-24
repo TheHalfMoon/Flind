@@ -2,14 +2,14 @@ import {
   deriveTaskData,
   narrowFullTask,
   type TaskSession,
-} from "@posthog/core/sidebar/buildSidebarData";
-import type { TaskData } from "@posthog/core/sidebar/sidebarData.types";
-import type { Task } from "@posthog/shared/domain-types";
-import { useSessionForTask } from "@posthog/ui/features/sessions/useSession";
-import { usePinnedTasks } from "@posthog/ui/features/sidebar/usePinnedTasks";
-import { useTaskViewed } from "@posthog/ui/features/sidebar/useTaskViewed";
-import { useSuspendedTaskIds } from "@posthog/ui/features/suspension/useSuspendedTaskIds";
-import { useWorkspace } from "@posthog/ui/features/workspace/useWorkspace";
+} from "@flind/core/sidebar/buildSidebarData";
+import type { TaskData } from "@flind/core/sidebar/sidebarData.types";
+import type { Task } from "@flind/shared/domain-types";
+import { useSessionForTask } from "@flind/ui/features/sessions/useSession";
+import { usePinnedTasks } from "@flind/ui/features/sidebar/usePinnedTasks";
+import { useTaskViewed } from "@flind/ui/features/sidebar/useTaskViewed";
+import { useSuspendedTaskIds } from "@flind/ui/features/suspension/useSuspendedTaskIds";
+import { useWorkspace } from "@flind/ui/features/workspace/useWorkspace";
 import { useMemo } from "react";
 
 const EMPTY_SET: ReadonlySet<string> = new Set();

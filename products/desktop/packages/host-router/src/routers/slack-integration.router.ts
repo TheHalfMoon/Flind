@@ -1,14 +1,14 @@
-import { SLACK_INTEGRATION_SERVICE } from "@posthog/core/integrations/identifiers";
+import { SLACK_INTEGRATION_SERVICE } from "@flind/core/integrations/identifiers";
 import {
   startIntegrationFlowInput,
   startIntegrationFlowOutput,
-} from "@posthog/core/integrations/schemas";
+} from "@flind/core/integrations/schemas";
 import {
   type SlackIntegrationCallback,
   SlackIntegrationEvent,
   type SlackIntegrationService,
-} from "@posthog/core/integrations/slack";
-import { publicProcedure, router } from "@posthog/host-trpc/trpc";
+} from "@flind/core/integrations/slack";
+import { publicProcedure, router } from "@flind/host-trpc/trpc";
 
 export const slackIntegrationRouter = router({
   startFlow: publicProcedure

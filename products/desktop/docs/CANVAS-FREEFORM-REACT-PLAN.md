@@ -138,7 +138,7 @@ the authed author, frozen + scoped + closed for public viewers.
 | esbuild bundle + static import check (Node) | `packages/workspace-server` |
 | Canvas orchestration / agent driver / freshness + registry decisions | `packages/core` |
 | iframe host + host-side shim | `packages/ui` |
-| Publish upload, share-token proxy, named-insight registry | `@posthog/api-client` + **PostHog cloud (Django)** |
+| Publish upload, share-token proxy, named-insight registry | `@flind/api-client` + **PostHog cloud (Django)** |
 
 Build runs in **local workspace-server** (desktop + web), uploads an **inert**
 artifact. The cloud owns the trust boundary (proxy + allowlist + token), so a

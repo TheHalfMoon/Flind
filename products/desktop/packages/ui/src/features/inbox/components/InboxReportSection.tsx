@@ -1,7 +1,7 @@
 import { CaretDownIcon } from "@phosphor-icons/react";
 import { Button } from "@flind/quill";
-import type { SignalReport } from "@posthog/shared/types";
-import { LoadingState } from "@posthog/ui/primitives/LoadingState";
+import type { SignalReport } from "@flind/shared/types";
+import { LoadingState } from "@flind/ui/primitives/LoadingState";
 import type { ReactNode } from "react";
 import { useState } from "react";
 

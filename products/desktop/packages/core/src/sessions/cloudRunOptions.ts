@@ -8,8 +8,8 @@ import {
   isTerminalStatus,
   type PrAuthorshipMode,
   type SupportedReasoningEffort,
-} from "@posthog/shared";
-import type { TaskRun } from "@posthog/shared/domain-types";
+} from "@flind/shared";
+import type { TaskRun } from "@flind/shared/domain-types";
 import { z } from "zod";
 import { harnessForModelValue } from "../task-detail/configOptions";
 

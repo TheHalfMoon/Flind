@@ -8,14 +8,14 @@ const mocks = vi.hoisted(() => ({
   scoutsLoading: false,
 }));
 
-vi.mock("@posthog/ui/features/inbox/hooks/useSignalSourceConfigs", () => ({
+vi.mock("@flind/ui/features/inbox/hooks/useSignalSourceConfigs", () => ({
   useSignalSourceConfigs: () => ({
     data: mocks.sourceConfigs,
     isLoading: mocks.sourcesLoading,
   }),
 }));
 
-vi.mock("@posthog/ui/features/scouts/hooks/useScoutConfigs", () => ({
+vi.mock("@flind/ui/features/scouts/hooks/useScoutConfigs", () => ({
   useScoutConfigs: () => ({
     data: mocks.scoutConfigs,
     isLoading: mocks.scoutsLoading,

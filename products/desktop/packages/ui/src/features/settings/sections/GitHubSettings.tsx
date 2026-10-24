@@ -1,11 +1,11 @@
 import { ArrowSquareOutIcon } from "@phosphor-icons/react";
-import { GITHUB_CODE_CONTEXT_MESSAGE } from "@posthog/core/integrations/connectErrors";
+import { GITHUB_CODE_CONTEXT_MESSAGE } from "@flind/core/integrations/connectErrors";
 import { Button } from "@flind/quill";
-import { useAuthStateValue } from "@posthog/ui/features/auth/store";
-import { PersonalGithubInstallationsSection } from "@posthog/ui/features/settings/sections/PersonalGithubInstallationsSection";
-import { ProjectGithubConnectionSection } from "@posthog/ui/features/settings/sections/ProjectGithubConnectionSection";
-import { openUrlInBrowser } from "@posthog/ui/utils/browser";
-import { getPostHogUrl } from "@posthog/ui/utils/urls";
+import { useAuthStateValue } from "@flind/ui/features/auth/store";
+import { PersonalGithubInstallationsSection } from "@flind/ui/features/settings/sections/PersonalGithubInstallationsSection";
+import { ProjectGithubConnectionSection } from "@flind/ui/features/settings/sections/ProjectGithubConnectionSection";
+import { openUrlInBrowser } from "@flind/ui/utils/browser";
+import { getPostHogUrl } from "@flind/ui/utils/urls";
 
 const GITHUB_DOCS_URL = "https://posthog.com/docs/libraries/github?tab=Desktop";
 

@@ -1,4 +1,4 @@
-import type { SuggestedSourceProduct } from "@posthog/shared/types";
+import type { SuggestedSourceProduct } from "@flind/shared/types";
 
 const SOURCE_SUGGESTION_PRODUCTS: Record<
   SuggestedSourceProduct,

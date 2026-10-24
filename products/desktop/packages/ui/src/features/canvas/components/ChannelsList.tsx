@@ -12,8 +12,8 @@ import {
   TrashIcon,
   UsersThreeIcon,
 } from "@phosphor-icons/react";
-import type { ChannelItemModel } from "@posthog/core/canvas/channelItems";
-import type { ChannelPresence } from "@posthog/core/canvas/presence";
+import type { ChannelItemModel } from "@flind/core/canvas/channelItems";
+import type { ChannelPresence } from "@flind/core/canvas/presence";
 import {
   Autocomplete,
   AutocompleteItem,
@@ -40,90 +40,90 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@flind/quill";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
-import { useCurrentUser } from "@posthog/ui/features/auth/useCurrentUser";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
+import { useCurrentUser } from "@flind/ui/features/auth/useCurrentUser";
 import {
   type AutoArchiveAfterDays,
   AutoArchiveSettingsDialog,
-} from "@posthog/ui/features/canvas/components/AutoArchiveSettingsDialog";
+} from "@flind/ui/features/canvas/components/AutoArchiveSettingsDialog";
 import {
   ChannelItemHoverCard,
   SpaceHoverCard,
-} from "@posthog/ui/features/canvas/components/ChannelItemHoverCard";
-import { CreateChannelModal } from "@posthog/ui/features/canvas/components/CreateChannelModal";
-import type { ChannelActionItem } from "@posthog/ui/features/canvas/components/channelActions";
-import { channelGlyph } from "@posthog/ui/features/canvas/components/channelGlyph";
-import { PresenceAvatars } from "@posthog/ui/features/canvas/components/PresenceAvatars";
-import { SidebarSearchHeader } from "@posthog/ui/features/canvas/components/SidebarSearchHeader";
-import { SpaceActionDialogs } from "@posthog/ui/features/canvas/components/SpaceActionDialogs";
-import type { SpacePreviewPayload } from "@posthog/ui/features/canvas/components/SpacePreview";
+} from "@flind/ui/features/canvas/components/ChannelItemHoverCard";
+import { CreateChannelModal } from "@flind/ui/features/canvas/components/CreateChannelModal";
+import type { ChannelActionItem } from "@flind/ui/features/canvas/components/channelActions";
+import { channelGlyph } from "@flind/ui/features/canvas/components/channelGlyph";
+import { PresenceAvatars } from "@flind/ui/features/canvas/components/PresenceAvatars";
+import { SidebarSearchHeader } from "@flind/ui/features/canvas/components/SidebarSearchHeader";
+import { SpaceActionDialogs } from "@flind/ui/features/canvas/components/SpaceActionDialogs";
+import type { SpacePreviewPayload } from "@flind/ui/features/canvas/components/SpacePreview";
 import {
   TaskRowContextMenu,
   type TaskRowMenuProps,
-} from "@posthog/ui/features/canvas/components/TaskRowMenu";
-import { useBlockedSessionCount } from "@posthog/ui/features/canvas/hooks/useBlockedSessionCount";
-import { useChannelStarToggle } from "@posthog/ui/features/canvas/hooks/useChannelStars";
+} from "@flind/ui/features/canvas/components/TaskRowMenu";
+import { useBlockedSessionCount } from "@flind/ui/features/canvas/hooks/useBlockedSessionCount";
+import { useChannelStarToggle } from "@flind/ui/features/canvas/hooks/useChannelStars";
 import {
   type Channel,
   useChannelMutations,
   useChannels,
-} from "@posthog/ui/features/canvas/hooks/useChannels";
-import { useChannelsLayout } from "@posthog/ui/features/canvas/hooks/useChannelsLayout";
-import { useChannelTaskStatus } from "@posthog/ui/features/canvas/hooks/useChannelTaskStatus";
+} from "@flind/ui/features/canvas/hooks/useChannels";
+import { useChannelsLayout } from "@flind/ui/features/canvas/hooks/useChannelsLayout";
+import { useChannelTaskStatus } from "@flind/ui/features/canvas/hooks/useChannelTaskStatus";
 import {
   NO_TASKS,
   type SpaceTasks,
   usePrefetchSpaceTasks,
   useRecentSpaceTasks,
   useSpacePresence,
-} from "@posthog/ui/features/canvas/hooks/useRecentSpaceTasks";
+} from "@flind/ui/features/canvas/hooks/useRecentSpaceTasks";
 import {
   SpaceTaskActionsProvider,
   useSpaceTaskActions,
   useSpaceTaskActionsContext,
-} from "@posthog/ui/features/canvas/hooks/useSpaceTaskActions";
-import { useStarredChannelSlots } from "@posthog/ui/features/canvas/hooks/useStarredChannelSlots";
+} from "@flind/ui/features/canvas/hooks/useSpaceTaskActions";
+import { useStarredChannelSlots } from "@flind/ui/features/canvas/hooks/useStarredChannelSlots";
 import {
   PERSONAL_CHANNEL_LABEL,
   PERSONAL_CHANNEL_NAME,
-} from "@posthog/ui/features/canvas/hooks/useTaskChannels";
-import { useIsChannelUnread } from "@posthog/ui/features/canvas/hooks/useUnreadChannels";
-import { useUnreadSessionCount } from "@posthog/ui/features/canvas/hooks/useUnreadSessionCount";
+} from "@flind/ui/features/canvas/hooks/useTaskChannels";
+import { useIsChannelUnread } from "@flind/ui/features/canvas/hooks/useUnreadChannels";
+import { useUnreadSessionCount } from "@flind/ui/features/canvas/hooks/useUnreadSessionCount";
 import {
   keepListForRoute,
   showChannelPane,
   useChannelPaneStore,
-} from "@posthog/ui/features/canvas/stores/channelPaneStore";
+} from "@flind/ui/features/canvas/stores/channelPaneStore";
 import {
   resetCurrentChannel,
   useCurrentChannelStore,
-} from "@posthog/ui/features/canvas/stores/currentChannelStore";
-import { requestSidebarSearchFocus } from "@posthog/ui/features/canvas/stores/sidebarSearchStore";
-import { useSpaceTreeStore } from "@posthog/ui/features/canvas/stores/spaceTreeStore";
-import { copyChannelLink } from "@posthog/ui/features/canvas/utils/copyChannelLink";
-import { formatHotkey } from "@posthog/ui/features/command/keyboard-shortcuts";
-import { useArchivingTasksStore } from "@posthog/ui/features/sidebar/archivingTasksStore";
+} from "@flind/ui/features/canvas/stores/currentChannelStore";
+import { requestSidebarSearchFocus } from "@flind/ui/features/canvas/stores/sidebarSearchStore";
+import { useSpaceTreeStore } from "@flind/ui/features/canvas/stores/spaceTreeStore";
+import { copyChannelLink } from "@flind/ui/features/canvas/utils/copyChannelLink";
+import { formatHotkey } from "@flind/ui/features/command/keyboard-shortcuts";
+import { useArchivingTasksStore } from "@flind/ui/features/sidebar/archivingTasksStore";
 import {
   TaskBadgeStack,
   TaskStatusDot,
   TaskStatusTooltips,
-} from "@posthog/ui/features/sidebar/components/items/TaskStatusDot";
+} from "@flind/ui/features/sidebar/components/items/TaskStatusDot";
 import {
   DOT_TONE_VAR,
   taskDot,
-} from "@posthog/ui/features/sidebar/components/items/taskStatusVocabulary";
-import { useSidebarStore } from "@posthog/ui/features/sidebar/sidebarStore";
-import { HandoffTaskDialog } from "@posthog/ui/features/task-detail/components/HandoffTaskDialog";
-import { useMountedOnceOpened } from "@posthog/ui/hooks/useMountedOnceOpened";
-import { DotsCircleSpinner } from "@posthog/ui/primitives/DotsCircleSpinner";
+} from "@flind/ui/features/sidebar/components/items/taskStatusVocabulary";
+import { useSidebarStore } from "@flind/ui/features/sidebar/sidebarStore";
+import { HandoffTaskDialog } from "@flind/ui/features/task-detail/components/HandoffTaskDialog";
+import { useMountedOnceOpened } from "@flind/ui/hooks/useMountedOnceOpened";
+import { DotsCircleSpinner } from "@flind/ui/primitives/DotsCircleSpinner";
 import {
   OverflowTickerText,
   useOverflowTickerReveal,
-} from "@posthog/ui/primitives/OverflowTickerText";
-import { toast } from "@posthog/ui/primitives/toast";
-import { openTaskInput } from "@posthog/ui/router/useOpenTask";
-import { track } from "@posthog/ui/shell/analytics";
-import { logger } from "@posthog/ui/shell/logger";
+} from "@flind/ui/primitives/OverflowTickerText";
+import { toast } from "@flind/ui/primitives/toast";
+import { openTaskInput } from "@flind/ui/router/useOpenTask";
+import { track } from "@flind/ui/shell/analytics";
+import { logger } from "@flind/ui/shell/logger";
 import { useNavigate, useRouterState } from "@tanstack/react-router";
 import {
   type ComponentProps,

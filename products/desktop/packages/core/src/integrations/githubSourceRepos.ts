@@ -1,4 +1,4 @@
-import type { ExternalDataSource } from "@posthog/api-client/posthog-client";
+import type { ExternalDataSource } from "@flind/api-client/posthog-client";
 
 /** The only GitHub table Self-driving reads. */
 const ISSUES_ENDPOINT = "issues";

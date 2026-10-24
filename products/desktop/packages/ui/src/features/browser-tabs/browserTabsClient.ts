@@ -1,4 +1,4 @@
-import type { TabIdentity, TabLocation, TabsSnapshot } from "@posthog/shared";
+import type { TabIdentity, TabLocation, TabsSnapshot } from "@flind/shared";
 
 /** Where a tab is, plus the route-derived label/icon cache. */
 type TabLocationInput = TabLocation & TabIdentity;

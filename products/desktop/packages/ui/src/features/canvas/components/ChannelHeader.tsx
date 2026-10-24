@@ -1,15 +1,15 @@
 import { Button, cn } from "@flind/quill";
-import { ChannelBreadcrumb } from "@posthog/ui/features/canvas/components/ChannelBreadcrumb";
-import { ChannelTabs } from "@posthog/ui/features/canvas/components/ChannelTabs";
-import { channelGlyph } from "@posthog/ui/features/canvas/components/channelGlyph";
+import { ChannelBreadcrumb } from "@flind/ui/features/canvas/components/ChannelBreadcrumb";
+import { ChannelTabs } from "@flind/ui/features/canvas/components/ChannelTabs";
+import { channelGlyph } from "@flind/ui/features/canvas/components/channelGlyph";
 import {
   type ChannelPageKey,
   channelPageIcon,
   channelPageLabel,
-} from "@posthog/ui/features/canvas/components/channelPages";
-import { useChannels } from "@posthog/ui/features/canvas/hooks/useChannels";
-import { useChannelsLayout } from "@posthog/ui/features/canvas/hooks/useChannelsLayout";
-import { useMarkChannelSeen } from "@posthog/ui/features/canvas/hooks/useMarkChannelSeen";
+} from "@flind/ui/features/canvas/components/channelPages";
+import { useChannels } from "@flind/ui/features/canvas/hooks/useChannels";
+import { useChannelsLayout } from "@flind/ui/features/canvas/hooks/useChannelsLayout";
+import { useMarkChannelSeen } from "@flind/ui/features/canvas/hooks/useMarkChannelSeen";
 import { Text } from "@radix-ui/themes";
 import { useNavigate, useRouterState } from "@tanstack/react-router";
 

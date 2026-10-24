@@ -1,5 +1,5 @@
-import { ApiRequestError } from "@posthog/api-client/fetcher";
-import type { Task, TaskRun, TaskRunStatus } from "@posthog/shared/types";
+import { ApiRequestError } from "@flind/api-client/fetcher";
+import type { Task, TaskRun, TaskRunStatus } from "@flind/shared/types";
 import { describe, expect, it, vi } from "vitest";
 import {
   derivePurpose,

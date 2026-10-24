@@ -1,12 +1,12 @@
 import { readdirSync, statSync } from "node:fs";
 import os from "node:os";
 import path from "node:path";
-import type { AuthService } from "@posthog/core/auth/auth";
-import { MCP_APPS_SERVICE } from "@posthog/core/mcp-apps/identifiers";
-import type { McpAppsService } from "@posthog/core/mcp-apps/mcp-apps";
-import { UI_SERVICE } from "@posthog/core/ui/identifiers";
-import type { UIService } from "@posthog/core/ui/ui";
-import type { UpdatesService } from "@posthog/core/updates/updates";
+import type { AuthService } from "@flind/core/auth/auth";
+import { MCP_APPS_SERVICE } from "@flind/core/mcp-apps/identifiers";
+import type { McpAppsService } from "@flind/core/mcp-apps/mcp-apps";
+import { UI_SERVICE } from "@flind/core/ui/identifiers";
+import type { UIService } from "@flind/core/ui/ui";
+import type { UpdatesService } from "@flind/core/updates/updates";
 import {
   app,
   type BaseWindow,

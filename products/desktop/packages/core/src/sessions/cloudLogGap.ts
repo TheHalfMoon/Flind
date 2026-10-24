@@ -1,4 +1,4 @@
-import type { StoredLogEntry } from "@posthog/shared";
+import type { StoredLogEntry } from "@flind/shared";
 
 /**
  * Pure logic for reconciling cloud session log gaps. The session service owns

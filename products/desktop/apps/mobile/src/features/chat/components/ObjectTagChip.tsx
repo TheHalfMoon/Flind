@@ -1,9 +1,9 @@
-import type { EvidencePreview } from "@posthog/api-client/evidence-previews";
+import type { EvidencePreview } from "@flind/api-client/evidence-previews";
 import {
   getObjectKind,
   type ObjectTagRef,
   objectWebPath,
-} from "@posthog/core/inbox/objectTags";
+} from "@flind/core/inbox/objectTags";
 import { useQuery } from "@tanstack/react-query";
 import {
   Bug,

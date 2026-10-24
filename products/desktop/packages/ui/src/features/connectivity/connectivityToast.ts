@@ -1,4 +1,4 @@
-import { connectivityStore } from "@posthog/core/connectivity/connectivityStore";
+import { connectivityStore } from "@flind/core/connectivity/connectivityStore";
 import { toast } from "../../primitives/toast";
 
 // The live offline toast's id, tracked so re-entry never stacks a second one and

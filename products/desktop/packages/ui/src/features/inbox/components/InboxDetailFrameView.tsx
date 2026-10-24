@@ -2,20 +2,20 @@ import type { IconProps } from "@phosphor-icons/react";
 import {
   humanizeReportTitle,
   parseConventionalCommitTitle,
-} from "@posthog/core/inbox/reportPresentation";
+} from "@flind/core/inbox/reportPresentation";
 import { Tabs, TabsList, TabsTrigger } from "@flind/quill";
-import type { SignalReport } from "@posthog/shared/types";
-import { ConventionalCommitScopeTag } from "@posthog/ui/features/inbox/components/ConventionalCommitScopeTag";
-import { InboxMetaRow } from "@posthog/ui/features/inbox/components/InboxMetaRow";
-import { ReportBreadcrumbs } from "@posthog/ui/features/inbox/components/ReportBreadcrumbs";
-import { ReportDetailCloseButton } from "@posthog/ui/features/inbox/components/ReportDetailCloseButton";
-import { useReportPage } from "@posthog/ui/features/inbox/components/ReportPageContext";
-import { ReportSummaryDocument } from "@posthog/ui/features/inbox/components/ReportSummaryDocument";
-import { RightColumnSection } from "@posthog/ui/features/inbox/components/RightColumnSection";
-import { SignalReportStatusBadge } from "@posthog/ui/features/inbox/components/utils/SignalReportStatusBadge";
-import { useSetHeaderContent } from "@posthog/ui/hooks/useSetHeaderContent";
-import { ChromeBar } from "@posthog/ui/primitives/ChromeBar";
-import { RelativeTimestamp } from "@posthog/ui/primitives/RelativeTimestamp";
+import type { SignalReport } from "@flind/shared/types";
+import { ConventionalCommitScopeTag } from "@flind/ui/features/inbox/components/ConventionalCommitScopeTag";
+import { InboxMetaRow } from "@flind/ui/features/inbox/components/InboxMetaRow";
+import { ReportBreadcrumbs } from "@flind/ui/features/inbox/components/ReportBreadcrumbs";
+import { ReportDetailCloseButton } from "@flind/ui/features/inbox/components/ReportDetailCloseButton";
+import { useReportPage } from "@flind/ui/features/inbox/components/ReportPageContext";
+import { ReportSummaryDocument } from "@flind/ui/features/inbox/components/ReportSummaryDocument";
+import { RightColumnSection } from "@flind/ui/features/inbox/components/RightColumnSection";
+import { SignalReportStatusBadge } from "@flind/ui/features/inbox/components/utils/SignalReportStatusBadge";
+import { useSetHeaderContent } from "@flind/ui/hooks/useSetHeaderContent";
+import { ChromeBar } from "@flind/ui/primitives/ChromeBar";
+import { RelativeTimestamp } from "@flind/ui/primitives/RelativeTimestamp";
 import type { ComponentType, ReactNode } from "react";
 import { useMemo, useState } from "react";
 

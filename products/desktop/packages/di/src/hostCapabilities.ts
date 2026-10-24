@@ -2,7 +2,7 @@ import type { ServiceIdentifier } from "inversify";
 import type { ServiceContainer } from "./container";
 
 /**
- * A DI token that shared `@posthog/ui` / `@posthog/core` resolves via service
+ * A DI token that shared `@flind/ui` / `@flind/core` resolves via service
  * location (`useService` / `resolveService`) and that every host mounting the
  * shared app must therefore bind in its composition root.
  */
@@ -41,6 +41,6 @@ export function assertHostCapabilities(
     `Host container is missing ${missing.length} required capability ` +
       `binding(s) that shared UI/core resolves at runtime:\n${lines.join("\n")}\n` +
       "Bind them in this host's composition root. See REQUIRED_HOST_CAPABILITIES " +
-      "in @posthog/ui/shell/requiredHostCapabilities.",
+      "in @flind/ui/shell/requiredHostCapabilities.",
   );
 }

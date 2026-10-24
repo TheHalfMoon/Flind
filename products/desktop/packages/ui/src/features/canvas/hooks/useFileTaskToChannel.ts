@@ -1,7 +1,7 @@
-import { useChannels } from "@posthog/ui/features/canvas/hooks/useChannels";
-import { useChannelTaskMutations } from "@posthog/ui/features/canvas/hooks/useChannelTasks";
-import { useFilingTasksStore } from "@posthog/ui/features/canvas/stores/filingTasksStore";
-import { toast } from "@posthog/ui/primitives/toast";
+import { useChannels } from "@flind/ui/features/canvas/hooks/useChannels";
+import { useChannelTaskMutations } from "@flind/ui/features/canvas/hooks/useChannelTasks";
+import { useFilingTasksStore } from "@flind/ui/features/canvas/stores/filingTasksStore";
+import { toast } from "@flind/ui/primitives/toast";
 import { useCallback } from "react";
 
 /**

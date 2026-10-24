@@ -2,7 +2,7 @@ import {
   DEFAULT_CHANNEL_ITEM_FILTERS,
   FIRST_PARTY_CLIENT_SOURCES,
   WEB_SOURCE,
-} from "@posthog/core/canvas/channelItems";
+} from "@flind/core/canvas/channelItems";
 import { describe, expect, it } from "vitest";
 import { useSpaceActivityViewStore } from "./spaceActivityViewStore";
 

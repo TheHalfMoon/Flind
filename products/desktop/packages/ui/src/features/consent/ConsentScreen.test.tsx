@@ -4,23 +4,23 @@ import { describe, expect, it, vi } from "vitest";
 
 vi.mock("react-hotkeys-hook", () => ({ useHotkeys: vi.fn() }));
 
-vi.mock("@posthog/ui/features/auth/useAuthMutations", () => ({
+vi.mock("@flind/ui/features/auth/useAuthMutations", () => ({
   useLogoutMutation: () => ({ isPending: false, mutate: vi.fn() }),
 }));
 
-vi.mock("@posthog/ui/features/auth/useOrgRole", () => ({
+vi.mock("@flind/ui/features/auth/useOrgRole", () => ({
   useIsOrgAdmin: () => ({ isAdmin: false }),
 }));
 
-vi.mock("@posthog/ui/features/settings/SettingsDialog", () => ({
+vi.mock("@flind/ui/features/settings/SettingsDialog", () => ({
   openSettingsDialog: vi.fn(),
 }));
 
-vi.mock("@posthog/ui/features/sidebar/components/ProjectSwitcher", () => ({
+vi.mock("@flind/ui/features/sidebar/components/ProjectSwitcher", () => ({
   ProjectSwitcher: () => <button type="button">Example project</button>,
 }));
 
-vi.mock("@posthog/ui/primitives/FullScreenLayout", () => ({
+vi.mock("@flind/ui/primitives/FullScreenLayout", () => ({
   FullScreenLayout: ({ children }: { children: ReactNode }) => children,
 }));
 

@@ -2,7 +2,7 @@ import { type ComponentProps, createElement } from "react";
 import { act, create, type ReactTestRenderer } from "react-test-renderer";
 import { describe, expect, it, vi } from "vitest";
 
-vi.mock("@posthog/core/sessions/thinkingActivities", () => ({
+vi.mock("@flind/core/sessions/thinkingActivities", () => ({
   pickThinkingActivity: () => "thinking",
 }));
 vi.mock("@/lib/theme", () => ({

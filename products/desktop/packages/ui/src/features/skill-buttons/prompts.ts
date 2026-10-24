@@ -11,8 +11,8 @@ import {
   SKILL_BUTTON_CATALOG,
   type SkillButtonCatalogEntry,
   type SkillButtonId,
-} from "@posthog/core/skill-buttons/catalog";
-import { extractSkillButtonId } from "@posthog/core/skill-buttons/prompts";
+} from "@flind/core/skill-buttons/catalog";
+import { extractSkillButtonId } from "@flind/core/skill-buttons/prompts";
 
 export { extractSkillButtonId };
 export type { SkillButtonId };

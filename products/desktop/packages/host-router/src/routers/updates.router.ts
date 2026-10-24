@@ -1,4 +1,4 @@
-import { UPDATES_SERVICE } from "@posthog/core/updates/identifiers";
+import { UPDATES_SERVICE } from "@flind/core/updates/identifiers";
 import {
   checkForUpdatesOutput,
   installUpdateOutput,
@@ -6,9 +6,9 @@ import {
   UpdatesEvent,
   type UpdatesEvents,
   updatesStatusOutput,
-} from "@posthog/core/updates/schemas";
-import type { UpdatesService } from "@posthog/core/updates/updates";
-import { publicProcedure, router } from "@posthog/host-trpc/trpc";
+} from "@flind/core/updates/schemas";
+import type { UpdatesService } from "@flind/core/updates/updates";
+import { publicProcedure, router } from "@flind/host-trpc/trpc";
 import { z } from "zod";
 
 function subscribe<K extends keyof UpdatesEvents>(event: K) {

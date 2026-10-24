@@ -2,7 +2,7 @@ import {
   type ArchivedTaskWithRepo,
   type ArchiveFilterSortInput,
   filterAndSortArchivedTasks,
-} from "@posthog/core/archive/archiveListView";
+} from "@flind/core/archive/archiveListView";
 
 export function getVisibleArchivedTasks(
   items: ArchivedTaskWithRepo[],

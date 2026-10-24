@@ -1,4 +1,4 @@
-import type { RootLogger } from "@posthog/di/logger";
+import type { RootLogger } from "@flind/di/logger";
 import { describe, expect, it, vi } from "vitest";
 import type { WorkspaceSetupGitClient } from "./identifiers";
 import type { DetectedRepoFullName } from "./repoMismatch";

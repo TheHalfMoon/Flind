@@ -1,4 +1,4 @@
-import type { LoopSchemas } from "@posthog/ui/features/loops/loopSchemas";
+import type { LoopSchemas } from "@flind/ui/features/loops/loopSchemas";
 import { describe, expect, it } from "vitest";
 import { buildLoopSavedProps, buildLoopViewedProps } from "./loopAnalytics";
 

@@ -1,8 +1,8 @@
-import { CHANNEL_SECTIONS } from "@posthog/ui/features/canvas/channelSections";
+import { CHANNEL_SECTIONS } from "@flind/ui/features/canvas/channelSections";
 import {
   CHANNEL_PAGES,
   type ChannelPageKey,
-} from "@posthog/ui/features/canvas/components/channelPages";
+} from "@flind/ui/features/canvas/components/channelPages";
 import { describe, expect, it } from "vitest";
 
 describe("CHANNEL_PAGES", () => {

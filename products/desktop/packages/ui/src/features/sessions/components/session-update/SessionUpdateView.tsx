@@ -1,18 +1,18 @@
-import { AgentMessage } from "@posthog/ui/features/sessions/components/session-update/AgentMessage";
-import { CompactBoundaryView } from "@posthog/ui/features/sessions/components/session-update/CompactBoundaryView";
-import { ConsoleMessage } from "@posthog/ui/features/sessions/components/session-update/ConsoleMessage";
-import { ConversationClearedView } from "@posthog/ui/features/sessions/components/session-update/ConversationClearedView";
-import { ErrorNotificationView } from "@posthog/ui/features/sessions/components/session-update/ErrorNotificationView";
-import { ProgressGroupView } from "@posthog/ui/features/sessions/components/session-update/ProgressGroupView";
-import { StatusNotificationView } from "@posthog/ui/features/sessions/components/session-update/StatusNotificationView";
-import { TaskNotificationView } from "@posthog/ui/features/sessions/components/session-update/TaskNotificationView";
-import { ThoughtView } from "@posthog/ui/features/sessions/components/session-update/ThoughtView";
+import { AgentMessage } from "@flind/ui/features/sessions/components/session-update/AgentMessage";
+import { CompactBoundaryView } from "@flind/ui/features/sessions/components/session-update/CompactBoundaryView";
+import { ConsoleMessage } from "@flind/ui/features/sessions/components/session-update/ConsoleMessage";
+import { ConversationClearedView } from "@flind/ui/features/sessions/components/session-update/ConversationClearedView";
+import { ErrorNotificationView } from "@flind/ui/features/sessions/components/session-update/ErrorNotificationView";
+import { ProgressGroupView } from "@flind/ui/features/sessions/components/session-update/ProgressGroupView";
+import { StatusNotificationView } from "@flind/ui/features/sessions/components/session-update/StatusNotificationView";
+import { TaskNotificationView } from "@flind/ui/features/sessions/components/session-update/TaskNotificationView";
+import { ThoughtView } from "@flind/ui/features/sessions/components/session-update/ThoughtView";
 import type {
   CompactBoundaryUpdate,
   ConversationSessionUpdate,
   ToolCall,
-} from "@posthog/ui/features/sessions/types";
-import type { Step } from "@posthog/ui/primitives/StepList";
+} from "@flind/ui/features/sessions/types";
+import type { Step } from "@flind/ui/primitives/StepList";
 import { memo } from "react";
 import type { ConversationItem } from "../buildConversationItems";
 import { ToolCallBlock } from "./ToolCallBlock";

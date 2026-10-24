@@ -1,4 +1,4 @@
-import type { WorkspaceClient } from "@posthog/workspace-client/client";
+import type { WorkspaceClient } from "@flind/workspace-client/client";
 import type {
   CloneProgressPayload,
   CreatePrInput,

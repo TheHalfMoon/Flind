@@ -1,13 +1,13 @@
-import { useChannelsLayout } from "@posthog/ui/features/canvas/hooks/useChannelsLayout";
-import { useWorkLayout } from "@posthog/ui/features/canvas/hooks/useWorkLayout";
+import { useChannelsLayout } from "@flind/ui/features/canvas/hooks/useChannelsLayout";
+import { useWorkLayout } from "@flind/ui/features/canvas/hooks/useWorkLayout";
 import {
   type NavRailPane,
   railPaneFoldsIntoWork,
   railPaneForHref,
   railPaneHasSidebar,
-} from "@posthog/ui/features/canvas/railPane";
-import { useWorkActivityStore } from "@posthog/ui/features/canvas/stores/workActivityStore";
-import { isInboxTriagePath } from "@posthog/ui/features/inbox/triageRoute";
+} from "@flind/ui/features/canvas/railPane";
+import { useWorkActivityStore } from "@flind/ui/features/canvas/stores/workActivityStore";
+import { isInboxTriagePath } from "@flind/ui/features/inbox/triageRoute";
 import { useRouterState } from "@tanstack/react-router";
 
 export interface RailSurface {

@@ -3,7 +3,7 @@ import {
   INBOX_SCOPE_ENTIRE_PROJECT,
   INBOX_SCOPE_FOR_YOU,
   partitionRunsTabReports,
-} from "@posthog/core/inbox/reportMembership";
+} from "@flind/core/inbox/reportMembership";
 import {
   Empty,
   EmptyDescription,
@@ -11,10 +11,10 @@ import {
   EmptyMedia,
   EmptyTitle,
 } from "@flind/quill";
-import { AgentRunCard } from "@posthog/ui/features/inbox/components/AgentRunCard";
-import { CardSkeleton } from "@posthog/ui/features/inbox/components/CardSkeleton";
-import { useInboxAllReports } from "@posthog/ui/features/inbox/hooks/useInboxAllReports";
-import { useInboxReviewerScopeStore } from "@posthog/ui/features/inbox/stores/inboxReviewerScopeStore";
+import { AgentRunCard } from "@flind/ui/features/inbox/components/AgentRunCard";
+import { CardSkeleton } from "@flind/ui/features/inbox/components/CardSkeleton";
+import { useInboxAllReports } from "@flind/ui/features/inbox/hooks/useInboxAllReports";
+import { useInboxReviewerScopeStore } from "@flind/ui/features/inbox/stores/inboxReviewerScopeStore";
 import { useMemo, useState } from "react";
 
 const RECENTLY_FINISHED_LIMIT = 10;

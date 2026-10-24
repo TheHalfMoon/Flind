@@ -3,8 +3,8 @@ import type {
   AutoresearchIteration,
   AutoresearchRun,
   AutoresearchRunStatus,
-} from "@posthog/core/autoresearch/schemas";
-import type { AcpMessage } from "@posthog/shared";
+} from "@flind/core/autoresearch/schemas";
+import type { AcpMessage } from "@flind/shared";
 import { Badge, Button, Flex, Text } from "@radix-ui/themes";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { AutoresearchObservability } from "./AutoresearchObservability";
@@ -335,7 +335,7 @@ function buildEvents(props: FullDashboardStoryProps): AcpMessage[] {
       toolCallId: "typecheck",
       title: "Typecheck UI package",
       kind: "execute",
-      rawInput: { command: "pnpm --filter @posthog/ui typecheck" },
+      rawInput: { command: "pnpm --filter @flind/ui typecheck" },
       status: "completed",
     }),
     sessionEvent(STARTED_AT + 19 * 60_000, {

@@ -1,5 +1,5 @@
-import { filterInboxSourceOptions } from "@posthog/shared";
-import type { AvailableSuggestedReviewer } from "@posthog/shared/types";
+import { filterInboxSourceOptions } from "@flind/shared";
+import type { AvailableSuggestedReviewer } from "@flind/shared/types";
 import { describe, expect, it } from "vitest";
 import {
   buildSuggestedReviewerFilterOptions,

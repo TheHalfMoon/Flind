@@ -7,44 +7,44 @@ let taskResultsComplete = true;
 
 // The palette pulls half the app in; everything irrelevant to the feed-query
 // mode is stubbed to its empty state.
-vi.mock("@posthog/ui/features/browser-tabs/useOpenBrowserTab", () => ({
+vi.mock("@flind/ui/features/browser-tabs/useOpenBrowserTab", () => ({
   useOpenBrowserTab: () => vi.fn(),
 }));
-vi.mock("@posthog/ui/shell/analytics", () => ({ track: vi.fn() }));
-vi.mock("@posthog/ui/features/auth/authClient", () => ({
+vi.mock("@flind/ui/shell/analytics", () => ({ track: vi.fn() }));
+vi.mock("@flind/ui/features/auth/authClient", () => ({
   useOptionalAuthenticatedClient: () => null,
 }));
-vi.mock("@posthog/ui/features/auth/useCurrentUser", () => ({
+vi.mock("@flind/ui/features/auth/useCurrentUser", () => ({
   useCurrentUser: () => ({ data: { uuid: "user-1" } }),
 }));
-vi.mock("@posthog/di/container", () => ({
+vi.mock("@flind/di/container", () => ({
   resolveService: () => ({}),
   resolveServiceOptional: () => null,
 }));
-vi.mock("@posthog/ui/features/feature-flags/useFeatureFlag", () => ({
+vi.mock("@flind/ui/features/feature-flags/useFeatureFlag", () => ({
   useFeatureFlag: () => false,
 }));
-vi.mock("@posthog/ui/features/tasks/useTasks", () => ({
+vi.mock("@flind/ui/features/tasks/useTasks", () => ({
   useTasks: () => ({ data: [] }),
 }));
-vi.mock("@posthog/ui/features/archive/useArchivedTaskIds", () => ({
+vi.mock("@flind/ui/features/archive/useArchivedTaskIds", () => ({
   useArchivedTaskIds: () => new Set(),
 }));
-vi.mock("@posthog/ui/features/archive/useTaskArchive", () => ({
+vi.mock("@flind/ui/features/archive/useTaskArchive", () => ({
   useTaskArchive: () => ({
     requestArchive: vi.fn(),
     isArchiving: false,
     dialog: null,
   }),
 }));
-vi.mock("@posthog/ui/features/workspace/useWorkspace", () => ({
+vi.mock("@flind/ui/features/workspace/useWorkspace", () => ({
   useWorkspaces: () => ({ data: [], isFetched: true }),
   useWorkspace: () => undefined,
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useChannels", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannels", () => ({
   useChannels: () => ({ channels: [], isLoading: false }),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useOrgMembers", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useOrgMembers", () => ({
   useOrgMembers: () => ({
     members: [
       {
@@ -60,32 +60,32 @@ vi.mock("@posthog/ui/features/canvas/hooks/useOrgMembers", () => ({
     isComplete: true,
   }),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useChannelsLayout", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannelsLayout", () => ({
   useChannelsLayout: () => true,
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useTaskChannelMap", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useTaskChannelMap", () => ({
   useTaskChannelMap: () => new Map(),
 }));
-vi.mock("@posthog/ui/features/command/useFileSearchContext", () => ({
+vi.mock("@flind/ui/features/command/useFileSearchContext", () => ({
   useFileSearchContext: () => ({ repoPath: null }),
 }));
-vi.mock("@posthog/ui/features/command/useTaskSearch", () => ({
+vi.mock("@flind/ui/features/command/useTaskSearch", () => ({
   useTaskSearch: () => ({ data: [] }),
 }));
-vi.mock("@posthog/ui/features/folders/useFolders", () => ({
+vi.mock("@flind/ui/features/folders/useFolders", () => ({
   useFolders: () => ({ folders: [] }),
 }));
-vi.mock("@posthog/ui/router/useAppView", () => ({
+vi.mock("@flind/ui/router/useAppView", () => ({
   useAppView: () => ({ type: "home" }),
 }));
-vi.mock("@posthog/ui/features/sidebar/useTaskPrStatus", () => ({
+vi.mock("@flind/ui/features/sidebar/useTaskPrStatus", () => ({
   useTaskPrStatus: () => ({ prState: null, hasDiff: false, prUrl: null }),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useChannelTaskStatus", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannelTaskStatus", () => ({
   useTaskStatusInput: () => null,
   useChannelTaskStatus: () => null,
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useCanvasQueryResults", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useCanvasQueryResults", () => ({
   useCanvasQueryResults: (query: string | undefined) => ({
     canvases: query
       ? [
@@ -105,7 +105,7 @@ vi.mock("@posthog/ui/features/canvas/hooks/useCanvasQueryResults", () => ({
     isLoading: false,
   }),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useTaskFeedResults", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useTaskFeedResults", () => ({
   useTaskFeedResults: (query: string | undefined) => ({
     tasks: query
       ? [
@@ -125,7 +125,7 @@ vi.mock("@posthog/ui/features/canvas/hooks/useTaskFeedResults", () => ({
 }));
 
 const mocks = vi.hoisted(() => ({ navigateToFeed: vi.fn() }));
-vi.mock("@posthog/ui/router/navigationBridge", async (importOriginal) => ({
+vi.mock("@flind/ui/router/navigationBridge", async (importOriginal) => ({
   ...(await importOriginal<Record<string, unknown>>()),
   navigateToFeed: mocks.navigateToFeed,
 }));
@@ -133,8 +133,8 @@ vi.mock("@posthog/ui/router/navigationBridge", async (importOriginal) => ({
 import {
   ANONYMOUS_AUTH_STATE,
   useAuthStore,
-} from "@posthog/ui/features/auth/store";
-import { useTaskFeedsStore } from "@posthog/ui/features/canvas/stores/taskFeedsStore";
+} from "@flind/ui/features/auth/store";
+import { useTaskFeedsStore } from "@flind/ui/features/canvas/stores/taskFeedsStore";
 import { CommandMenu } from "./CommandMenu";
 
 describe("CommandMenu feed queries", () => {

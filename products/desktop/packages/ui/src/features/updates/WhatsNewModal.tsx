@@ -1,12 +1,12 @@
 import { X } from "@phosphor-icons/react";
-import { useHostTRPC } from "@posthog/host-router/react";
-import { ReleaseNotesSections } from "@posthog/ui/features/updates/ReleaseNotesSections";
+import { useHostTRPC } from "@flind/host-router/react";
+import { ReleaseNotesSections } from "@flind/ui/features/updates/ReleaseNotesSections";
 import {
   groupReleases,
   mergeReleaseNotes,
-} from "@posthog/ui/features/updates/releaseNotes";
-import { useHasActiveUpdate } from "@posthog/ui/features/updates/updateStore";
-import { useWhatsNewStore } from "@posthog/ui/features/updates/whatsNewStore";
+} from "@flind/ui/features/updates/releaseNotes";
+import { useHasActiveUpdate } from "@flind/ui/features/updates/updateStore";
+import { useWhatsNewStore } from "@flind/ui/features/updates/whatsNewStore";
 import {
   Badge,
   Dialog,

@@ -1,4 +1,4 @@
-import { SHORTCUTS } from "@posthog/ui/features/command/keyboard-shortcuts";
+import { SHORTCUTS } from "@flind/ui/features/command/keyboard-shortcuts";
 import { useId, useLayoutEffect } from "react";
 import { useHotkeys } from "react-hotkeys-hook";
 

@@ -6,7 +6,7 @@ import {
   CheckCircleIcon,
   WarningCircleIcon,
 } from "@phosphor-icons/react";
-import { avatarColor } from "@posthog/core/auth/avatarColor";
+import { avatarColor } from "@flind/core/auth/avatarColor";
 import {
   Avatar,
   AvatarFallback,
@@ -18,17 +18,17 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@flind/quill";
-import { formatRelativeTimeShort } from "@posthog/shared";
-import type { UserBasic } from "@posthog/shared/domain-types";
-import { UserAvatar } from "@posthog/ui/features/auth/UserAvatar";
-import { MentionText } from "@posthog/ui/features/canvas/components/MentionText";
-import type { CommentEntry } from "@posthog/ui/features/canvas/components/taskCommentThreads";
-import { githubCommentComponents } from "@posthog/ui/features/editor/components/githubCommentImages";
-import { githubRehypePlugins } from "@posthog/ui/features/editor/components/githubMarkdownPlugins";
-import { MarkdownRenderer } from "@posthog/ui/features/editor/components/MarkdownRenderer";
-import { toast } from "@posthog/ui/primitives/toast";
-import { cachedImageUrl } from "@posthog/ui/shell/cachedImageUrl";
-import { openExternalUrl } from "@posthog/ui/shell/openExternal";
+import { formatRelativeTimeShort } from "@flind/shared";
+import type { UserBasic } from "@flind/shared/domain-types";
+import { UserAvatar } from "@flind/ui/features/auth/UserAvatar";
+import { MentionText } from "@flind/ui/features/canvas/components/MentionText";
+import type { CommentEntry } from "@flind/ui/features/canvas/components/taskCommentThreads";
+import { githubCommentComponents } from "@flind/ui/features/editor/components/githubCommentImages";
+import { githubRehypePlugins } from "@flind/ui/features/editor/components/githubMarkdownPlugins";
+import { MarkdownRenderer } from "@flind/ui/features/editor/components/MarkdownRenderer";
+import { toast } from "@flind/ui/primitives/toast";
+import { cachedImageUrl } from "@flind/ui/shell/cachedImageUrl";
+import { openExternalUrl } from "@flind/ui/shell/openExternal";
 import {
   type KeyboardEvent,
   type ReactElement,

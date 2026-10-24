@@ -1,6 +1,6 @@
 import { Plus, X } from "@phosphor-icons/react";
-import type { SetupLine } from "@posthog/core/settings/environmentSetup";
-import { setupCommandError } from "@posthog/core/settings/imageSpec";
+import type { SetupLine } from "@flind/core/settings/environmentSetup";
+import { setupCommandError } from "@flind/core/settings/imageSpec";
 import { Button, Input, Text } from "@flind/quill";
 
 interface SetupCommandListProps {

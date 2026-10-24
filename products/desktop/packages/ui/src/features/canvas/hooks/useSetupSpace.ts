@@ -1,10 +1,10 @@
 import type {
   SpaceSetupInput,
   SpaceSetupStarted,
-} from "@posthog/shared/domain-types";
-import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { channelFeedQueryKey } from "@posthog/ui/features/canvas/hooks/useChannelFeed";
-import { channelFeedMessagesQueryKey } from "@posthog/ui/features/canvas/hooks/useChannelFeedMessages";
+} from "@flind/shared/domain-types";
+import { useOptionalAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { channelFeedQueryKey } from "@flind/ui/features/canvas/hooks/useChannelFeed";
+import { channelFeedMessagesQueryKey } from "@flind/ui/features/canvas/hooks/useChannelFeedMessages";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 /**

@@ -2,25 +2,25 @@ import { SlackLogoIcon } from "@phosphor-icons/react";
 import {
   describeIntegrationDisconnectError,
   isAlreadyDisconnectedError,
-} from "@posthog/core/integrations/connectErrors";
-import { slackInvalidationKeys } from "@posthog/core/integrations/connectMachine";
-import { SLACK_DISCONNECT_DESCRIPTION } from "@posthog/core/integrations/disconnectCopy";
+} from "@flind/core/integrations/connectErrors";
+import { slackInvalidationKeys } from "@flind/core/integrations/connectMachine";
+import { SLACK_DISCONNECT_DESCRIPTION } from "@flind/core/integrations/disconnectCopy";
 import { Button, Text } from "@flind/quill";
-import { formatRelativeTimeLong } from "@posthog/shared";
-import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { useAuthStateValue } from "@posthog/ui/features/auth/store";
-import { useIsOrgAdmin } from "@posthog/ui/features/auth/useOrgRole";
-import { DisconnectIntegrationDialog } from "@posthog/ui/features/integrations/components/DisconnectIntegrationDialog";
+import { formatRelativeTimeLong } from "@flind/shared";
+import { useOptionalAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { useAuthStateValue } from "@flind/ui/features/auth/store";
+import { useIsOrgAdmin } from "@flind/ui/features/auth/useOrgRole";
+import { DisconnectIntegrationDialog } from "@flind/ui/features/integrations/components/DisconnectIntegrationDialog";
 import {
   type Integration,
   useIntegrationSelectors,
-} from "@posthog/ui/features/integrations/store";
+} from "@flind/ui/features/integrations/store";
 import {
   type SlackConnectResult,
   useSlackConnect,
-} from "@posthog/ui/features/integrations/useSlackConnect";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
-import { toast } from "@posthog/ui/primitives/toast";
+} from "@flind/ui/features/integrations/useSlackConnect";
+import { Spinner } from "@flind/ui/primitives/Spinner";
+import { toast } from "@flind/ui/primitives/toast";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 

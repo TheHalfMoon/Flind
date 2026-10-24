@@ -1,23 +1,23 @@
 import { Text } from "@flind/quill";
-import { ChannelHeader } from "@posthog/ui/features/canvas/components/ChannelHeader";
-import { SpaceMembersSettings } from "@posthog/ui/features/canvas/components/SpaceMembersSettings";
-import { SpaceRepositories } from "@posthog/ui/features/canvas/components/SpaceRepositories";
-import { SpaceVisibility } from "@posthog/ui/features/canvas/components/SpaceVisibility";
-import { useChannelMembers } from "@posthog/ui/features/canvas/hooks/useChannelMembers";
+import { ChannelHeader } from "@flind/ui/features/canvas/components/ChannelHeader";
+import { SpaceMembersSettings } from "@flind/ui/features/canvas/components/SpaceMembersSettings";
+import { SpaceRepositories } from "@flind/ui/features/canvas/components/SpaceRepositories";
+import { SpaceVisibility } from "@flind/ui/features/canvas/components/SpaceVisibility";
+import { useChannelMembers } from "@flind/ui/features/canvas/hooks/useChannelMembers";
 import {
   type Channel,
   useChannels,
-} from "@posthog/ui/features/canvas/hooks/useChannels";
-import { useTaskChannels } from "@posthog/ui/features/canvas/hooks/useTaskChannels";
-import { useWorkLayout } from "@posthog/ui/features/canvas/hooks/useWorkLayout";
-import { SettingsSection } from "@posthog/ui/features/settings/components/SettingsCard";
-import { useSetHeaderContent } from "@posthog/ui/hooks/useSetHeaderContent";
+} from "@flind/ui/features/canvas/hooks/useChannels";
+import { useTaskChannels } from "@flind/ui/features/canvas/hooks/useTaskChannels";
+import { useWorkLayout } from "@flind/ui/features/canvas/hooks/useWorkLayout";
+import { SettingsSection } from "@flind/ui/features/settings/components/SettingsCard";
+import { useSetHeaderContent } from "@flind/ui/hooks/useSetHeaderContent";
 import {
   PageHeader,
   PageHeaderDescription,
   PageHeaderHeading,
   PageHeaderTitle,
-} from "@posthog/ui/primitives/PageHeader";
+} from "@flind/ui/primitives/PageHeader";
 import { useMemo } from "react";
 
 function isShared(

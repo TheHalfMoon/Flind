@@ -1,7 +1,7 @@
 import {
   holdSidebarPeek,
   releaseSidebarPeek,
-} from "@posthog/ui/features/sidebar/sidebarPeekStore";
+} from "@flind/ui/features/sidebar/sidebarPeekStore";
 import { useCallback, useEffect, useRef } from "react";
 
 // Sidebar menus render in portals; holding the peek while one is open stops the

@@ -1,5 +1,5 @@
 import type { SessionConfigOption } from "@agentclientprotocol/sdk";
-import { flattenSelectOptions, type PermissionRequest } from "@posthog/shared";
+import { flattenSelectOptions, type PermissionRequest } from "@flind/shared";
 
 export type PermissionOption = PermissionRequest["options"][number];
 

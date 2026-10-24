@@ -1,5 +1,5 @@
-import { libraryIcon } from "@posthog/ui/features/canvas/blocks/libraryCatalog";
-import { useSourceDragStore } from "@posthog/ui/features/canvas/blocks/sourceDrag";
+import { libraryIcon } from "@flind/ui/features/canvas/blocks/libraryCatalog";
+import { useSourceDragStore } from "@flind/ui/features/canvas/blocks/sourceDrag";
 import { createPortal } from "react-dom";
 
 const GHOST_OFFSET_X = 14;

@@ -1,12 +1,12 @@
-import { updateStore } from "@posthog/core/updates/updateStore";
-import { ServiceProvider } from "@posthog/di/react";
-import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
-import { useUpdateBannerStore } from "@posthog/ui/features/updates/updateBannerStore";
+import { updateStore } from "@flind/core/updates/updateStore";
+import { ServiceProvider } from "@flind/di/react";
+import { useSettingsStore } from "@flind/ui/features/settings/settingsStore";
+import { useUpdateBannerStore } from "@flind/ui/features/updates/updateBannerStore";
 import {
   UPDATES_CLIENT,
   type UpdatesClient,
-} from "@posthog/ui/features/updates/updatesClient";
-import { registerRendererStateStorage } from "@posthog/ui/shell/rendererStorage";
+} from "@flind/ui/features/updates/updatesClient";
+import { registerRendererStateStorage } from "@flind/ui/shell/rendererStorage";
 import { Theme } from "@radix-ui/themes";
 import {
   act,

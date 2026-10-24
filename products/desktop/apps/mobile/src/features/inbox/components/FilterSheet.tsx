@@ -1,7 +1,7 @@
 import { Text } from "@components/text";
-import { INBOX_PIPELINE_STATUSES } from "@posthog/core/inbox/reportFiltering";
-import { inboxStatusLabel } from "@posthog/core/inbox/reportPresentation";
-import type { SignalReportPriority } from "@posthog/shared/domain-types";
+import { INBOX_PIPELINE_STATUSES } from "@flind/core/inbox/reportFiltering";
+import { inboxStatusLabel } from "@flind/core/inbox/reportPresentation";
+import type { SignalReportPriority } from "@flind/shared/domain-types";
 import { Check } from "phosphor-react-native";
 import { useMemo } from "react";
 import { Modal, Pressable, ScrollView, View } from "react-native";

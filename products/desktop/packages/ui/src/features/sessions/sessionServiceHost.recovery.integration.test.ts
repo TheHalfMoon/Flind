@@ -95,13 +95,13 @@ const mockAuth = vi.hoisted(() => ({
   }),
 }));
 
-vi.mock("@posthog/ui/features/auth/authQueries", () => ({
+vi.mock("@flind/ui/features/auth/authQueries", () => ({
   AUTH_SCOPED_QUERY_META: { authScoped: true },
   clearAuthScopedQueries: vi.fn(),
   getAuthIdentity: vi.fn(),
   fetchAuthState: mockAuth.fetchAuthState,
 }));
-vi.mock("@posthog/ui/features/auth/authClientImperative", () => ({
+vi.mock("@flind/ui/features/auth/authClientImperative", () => ({
   getAuthenticatedClient: mockAuth.getAuthenticatedClient,
   createAuthenticatedClient: mockAuth.createAuthenticatedClient,
 }));
@@ -121,7 +121,7 @@ const mockSessionConfigStore = vi.hoisted(() => ({
 }));
 
 vi.mock(
-  "@posthog/ui/features/sessions/sessionConfigStore",
+  "@flind/ui/features/sessions/sessionConfigStore",
   () => mockSessionConfigStore,
 );
 
@@ -141,13 +141,13 @@ const mockSessionAdapterStore = vi.hoisted(() => ({
 }));
 
 vi.mock(
-  "@posthog/ui/features/sessions/sessionAdapterStore",
+  "@flind/ui/features/sessions/sessionAdapterStore",
   () => mockSessionAdapterStore,
 );
 
 const mockGetIsOnline = vi.hoisted(() => vi.fn(() => true));
 
-vi.mock("@posthog/core/connectivity/connectivityStore", () => ({
+vi.mock("@flind/core/connectivity/connectivityStore", () => ({
   getIsOnline: () => mockGetIsOnline(),
 }));
 
@@ -156,7 +156,7 @@ const mockNotificationService = vi.hoisted(() => ({
   notifyPromptComplete: vi.fn(),
 }));
 
-vi.mock("@posthog/di/container", () => ({
+vi.mock("@flind/di/container", () => ({
   resolveService: (token: unknown) => {
     if (token === Symbol.for("posthog.host.trpcClient")) {
       return {
@@ -211,10 +211,10 @@ const mockSettingsState = vi.hoisted(() => ({
 }));
 
 vi.mock(
-  "@posthog/ui/features/settings/settingsStore",
+  "@flind/ui/features/settings/settingsStore",
   async (importOriginal) => ({
     ...(await importOriginal<
-      typeof import("@posthog/ui/features/settings/settingsStore")
+      typeof import("@flind/ui/features/settings/settingsStore")
     >()),
     useSettingsStore: {
       getState: () => mockSettingsState,
@@ -222,14 +222,14 @@ vi.mock(
   }),
 );
 
-vi.mock("@posthog/ui/features/sidebar/taskMetaApi", () => ({
+vi.mock("@flind/ui/features/sidebar/taskMetaApi", () => ({
   taskViewedApi: {
     markActivity: vi.fn(),
     markAsViewed: vi.fn(),
   },
 }));
 
-vi.mock("@posthog/ui/shell/posthogAnalyticsImpl", () => ({
+vi.mock("@flind/ui/shell/posthogAnalyticsImpl", () => ({
   track: vi.fn(),
   buildPermissionToolMetadata: vi.fn(() => ({})),
   posthogFeatureFlags: {
@@ -248,11 +248,11 @@ vi.mock("../../shell/logger", () => ({
     }),
   },
 }));
-vi.mock("@posthog/ui/primitives/toast", () => ({
+vi.mock("@flind/ui/primitives/toast", () => ({
   toast: { error: vi.fn(), info: vi.fn() },
 }));
-vi.mock("@posthog/shared", async (importOriginal) => ({
-  ...(await importOriginal<typeof import("@posthog/shared")>()),
+vi.mock("@flind/shared", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@flind/shared")>()),
   getCloudUrlFromRegion: () => "https://api.anthropic.com",
 }));
 
@@ -260,10 +260,10 @@ const mockConvertStoredEntriesToEvents = vi.hoisted(() =>
   vi.fn<(entries: unknown[]) => unknown[]>(() => []),
 );
 
-vi.mock("@posthog/core/sessions/sessionEvents", async () => {
+vi.mock("@flind/core/sessions/sessionEvents", async () => {
   const actual = await vi.importActual<
-    typeof import("@posthog/core/sessions/sessionEvents")
-  >("@posthog/core/sessions/sessionEvents");
+    typeof import("@flind/core/sessions/sessionEvents")
+  >("@flind/core/sessions/sessionEvents");
   return {
     ...actual,
     convertStoredEntriesToEvents: mockConvertStoredEntriesToEvents,
@@ -297,13 +297,13 @@ vi.mock("@posthog/core/sessions/sessionEvents", async () => {
   };
 });
 
-// NOTE: deliberately NOT mocking "@posthog/ui/features/sessions/sessionStore" —
+// NOTE: deliberately NOT mocking "@flind/ui/features/sessions/sessionStore" —
 // the real Zustand store is the whole point of this test.
-import type { AgentSession } from "@posthog/ui/features/sessions/sessionStore";
+import type { AgentSession } from "@flind/ui/features/sessions/sessionStore";
 import {
   sessionStoreSetters,
   useSessionStore,
-} from "@posthog/ui/features/sessions/sessionStore";
+} from "@flind/ui/features/sessions/sessionStore";
 import { getSessionService, resetSessionService } from "./sessionServiceHost";
 
 const TASK_ID = "task-299bc88e";

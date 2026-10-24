@@ -1,7 +1,7 @@
 import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import type { FetchLike } from "@posthog/core/auth/auth";
+import type { FetchLike } from "@flind/core/auth/auth";
 import { toCachedImageUrl } from "@shared/disk-cache-protocol";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { createCachedImageHandler } from "./images";

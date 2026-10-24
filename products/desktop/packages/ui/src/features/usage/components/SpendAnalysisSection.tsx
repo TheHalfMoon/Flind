@@ -2,8 +2,8 @@ import { WarningCircle } from "@phosphor-icons/react";
 import {
   fillSpendDays,
   type SpendAnalysisWindow,
-} from "@posthog/core/billing/spendAnalysisFormat";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
+} from "@flind/core/billing/spendAnalysisFormat";
+import { Spinner } from "@flind/ui/primitives/Spinner";
 import { Button, Callout, Flex, Text } from "@radix-ui/themes";
 import { useMemo, useState } from "react";
 import { useSpendAnalysis } from "../useSpendAnalysis";

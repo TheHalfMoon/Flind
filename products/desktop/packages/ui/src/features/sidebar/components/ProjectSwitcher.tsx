@@ -30,42 +30,42 @@ import {
   ItemDescription,
   ItemTitle,
 } from "@flind/quill";
-import { EXTERNAL_LINKS } from "@posthog/shared";
+import { EXTERNAL_LINKS } from "@flind/shared";
 import {
   ANALYTICS_EVENTS,
   type ProjectMenuAction,
-} from "@posthog/shared/analytics-events";
-import { useArchivedTaskIds } from "@posthog/ui/features/archive/useArchivedTaskIds";
-import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { useAuthStateValue } from "@posthog/ui/features/auth/store";
+} from "@flind/shared/analytics-events";
+import { useArchivedTaskIds } from "@flind/ui/features/archive/useArchivedTaskIds";
+import { useOptionalAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { useAuthStateValue } from "@flind/ui/features/auth/store";
 import {
   useLogoutMutation,
   useSelectProjectMutation,
   useSwitchOrgMutation,
-} from "@posthog/ui/features/auth/useAuthMutations";
-import { useCurrentUser } from "@posthog/ui/features/auth/useCurrentUser";
-import { useChannelsLayout } from "@posthog/ui/features/canvas/hooks/useChannelsLayout";
+} from "@flind/ui/features/auth/useAuthMutations";
+import { useCurrentUser } from "@flind/ui/features/auth/useCurrentUser";
+import { useChannelsLayout } from "@flind/ui/features/canvas/hooks/useChannelsLayout";
 import {
   formatHotkey,
   SHORTCUTS,
-} from "@posthog/ui/features/command/keyboard-shortcuts";
-import { useFeedbackStore } from "@posthog/ui/features/feedback/feedbackStore";
-import { useProjects } from "@posthog/ui/features/projects/useProjects";
-import { openSettings } from "@posthog/ui/features/settings/hooks/useOpenSettings";
-import type { SettingsCategory } from "@posthog/ui/features/settings/types";
-import { NavRailTile } from "@posthog/ui/features/sidebar/components/NavRailTile";
-import { useHoldSidebarPeek } from "@posthog/ui/features/sidebar/useHoldSidebarPeek";
-import { useWhatsNewStore } from "@posthog/ui/features/updates/whatsNewStore";
+} from "@flind/ui/features/command/keyboard-shortcuts";
+import { useFeedbackStore } from "@flind/ui/features/feedback/feedbackStore";
+import { useProjects } from "@flind/ui/features/projects/useProjects";
+import { openSettings } from "@flind/ui/features/settings/hooks/useOpenSettings";
+import type { SettingsCategory } from "@flind/ui/features/settings/types";
+import { NavRailTile } from "@flind/ui/features/sidebar/components/NavRailTile";
+import { useHoldSidebarPeek } from "@flind/ui/features/sidebar/useHoldSidebarPeek";
+import { useWhatsNewStore } from "@flind/ui/features/updates/whatsNewStore";
 import {
   type MenuFlyoutItem,
   MenuSubFlyout,
   SearchableMenuFlyout,
-} from "@posthog/ui/primitives/SearchableMenuFlyout";
-import { navigateToArchived } from "@posthog/ui/router/navigationBridge";
-import { track } from "@posthog/ui/shell/analytics";
-import { openExternalUrl } from "@posthog/ui/shell/openExternal";
-import { isMac } from "@posthog/ui/utils/platform";
-import { getPostHogUrl } from "@posthog/ui/utils/urls";
+} from "@flind/ui/primitives/SearchableMenuFlyout";
+import { navigateToArchived } from "@flind/ui/router/navigationBridge";
+import { track } from "@flind/ui/shell/analytics";
+import { openExternalUrl } from "@flind/ui/shell/openExternal";
+import { isMac } from "@flind/ui/utils/platform";
+import { getPostHogUrl } from "@flind/ui/utils/urls";
 import { Avatar, Box } from "@radix-ui/themes";
 import { useMemo, useState } from "react";
 

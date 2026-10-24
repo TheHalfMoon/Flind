@@ -77,7 +77,7 @@ const mocks = vi.hoisted(() => {
   };
 });
 
-vi.mock("@posthog/di/container", () => ({
+vi.mock("@flind/di/container", () => ({
   resolveService: () => ({
     check: mocks.check,
     create: mocks.create,
@@ -90,7 +90,7 @@ vi.mock("@posthog/di/container", () => ({
   }),
 }));
 
-vi.mock("@posthog/ui/shell/logger", () => ({
+vi.mock("@flind/ui/shell/logger", () => ({
   logger: {
     scope: () => ({
       info: mocks.logInfo,
@@ -100,7 +100,7 @@ vi.mock("@posthog/ui/shell/logger", () => ({
   },
 }));
 
-vi.mock("@posthog/ui/utils/platform", () => ({
+vi.mock("@flind/ui/utils/platform", () => ({
   isMac: false,
 }));
 

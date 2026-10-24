@@ -1,12 +1,12 @@
-import type { Task } from "@posthog/shared/domain-types";
-import type { BuildResult } from "@posthog/ui/features/sessions/components/buildConversationItems";
-import { SessionFooter } from "@posthog/ui/features/sessions/components/SessionFooter";
-import { SessionStartupRow } from "@posthog/ui/features/sessions/components/SessionStartupRow";
+import type { Task } from "@flind/shared/domain-types";
+import type { BuildResult } from "@flind/ui/features/sessions/components/buildConversationItems";
+import { SessionFooter } from "@flind/ui/features/sessions/components/SessionFooter";
+import { SessionStartupRow } from "@flind/ui/features/sessions/components/SessionStartupRow";
 import {
   usePendingPermissionsForTask,
   useQueuedMessagesForTask,
   useSessionSelector,
-} from "@posthog/ui/features/sessions/sessionStore";
+} from "@flind/ui/features/sessions/sessionStore";
 import { resolvePendingPermissionVisibility } from "./pendingPermissionVisibility";
 
 interface ChatThreadFooterProps {

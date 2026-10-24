@@ -1,11 +1,11 @@
-import { readPrUrls } from "@posthog/shared";
-import type { Task } from "@posthog/shared/domain-types";
+import { readPrUrls } from "@flind/shared";
+import type { Task } from "@flind/shared/domain-types";
 import {
   type PrStateDetails,
   usePrDetailsMap,
   usePrTitles,
-} from "@posthog/ui/features/git-interaction/usePrDetails";
-import { parseHttpsUrl } from "@posthog/ui/utils/posthogLinks";
+} from "@flind/ui/features/git-interaction/usePrDetails";
+import { parseHttpsUrl } from "@flind/ui/utils/posthogLinks";
 import { useMemo } from "react";
 
 export interface SpacePullRequest {

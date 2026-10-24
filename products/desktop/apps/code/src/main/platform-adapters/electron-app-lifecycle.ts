@@ -1,4 +1,4 @@
-import type { IAppLifecycle } from "@posthog/platform/app-lifecycle";
+import type { IAppLifecycle } from "@flind/platform/app-lifecycle";
 import { app } from "electron";
 import { injectable } from "inversify";
 

@@ -1,11 +1,11 @@
-import { applyCspToHtml } from "@posthog/core/mcp-apps/csp";
+import { applyCspToHtml } from "@flind/core/mcp-apps/csp";
 import {
   getImageMimeType,
   getVideoMimeType,
   isAllowedImageMimeType,
   isAllowedVideoMimeType,
   isPlayableVideoFile,
-} from "@posthog/shared";
+} from "@flind/shared";
 import { injectArtifactHtmlCommentBridge } from "./artifactHtmlCommentBridge";
 import type { CommentSurfaceTheme } from "./selectionCommentAction";
 

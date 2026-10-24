@@ -1,4 +1,4 @@
-import { ApiRequestError } from "@posthog/api-client/fetcher";
+import { ApiRequestError } from "@flind/api-client/fetcher";
 import { describe, expect, it, vi } from "vitest";
 import { GithubConnectService } from "./githubConnectService";
 import type { GithubConnectClient } from "./identifiers";

@@ -1,7 +1,7 @@
 import { ListChecks, Robot } from "@phosphor-icons/react";
 import { Text } from "@flind/quill";
-import type { ToolCall } from "@posthog/ui/features/sessions/types";
-import { type Step, StepList } from "@posthog/ui/primitives/StepList";
+import type { ToolCall } from "@flind/ui/features/sessions/types";
+import { type Step, StepList } from "@flind/ui/primitives/StepList";
 import { type ReactElement, useEffect, useState } from "react";
 import {
   compactOrchestrationText,

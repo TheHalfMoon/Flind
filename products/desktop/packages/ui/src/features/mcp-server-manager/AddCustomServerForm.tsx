@@ -1,10 +1,10 @@
 import { ArrowLeft, CaretDown, CaretRight, Plus } from "@phosphor-icons/react";
-import type { McpAuthType } from "@posthog/api-client/posthog-client";
+import type { McpAuthType } from "@flind/api-client/posthog-client";
 import {
   buildCustomServerRequest,
   canSubmitCustomServer,
-} from "@posthog/core/mcp-servers/customServerForm";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
+} from "@flind/core/mcp-servers/customServerForm";
+import { Spinner } from "@flind/ui/primitives/Spinner";
 import { Button, Flex, Select, Text, TextField } from "@radix-ui/themes";
 import { useCallback, useState } from "react";
 

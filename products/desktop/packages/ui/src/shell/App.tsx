@@ -1,53 +1,53 @@
-import { getAuthIdentity } from "@posthog/core/auth/authIdentity";
+import { getAuthIdentity } from "@flind/core/auth/authIdentity";
 import { ToastProvider } from "@flind/quill";
-import { EXTERNAL_LINKS, isNotAuthenticatedError } from "@posthog/shared";
-import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { useAuthStateValue } from "@posthog/ui/features/auth/authQueries";
-import { AuthScreen } from "@posthog/ui/features/auth/components/AuthScreen";
-import { DesktopAccessScreen } from "@posthog/ui/features/auth/components/DesktopAccessScreen";
-import { ScopeReauthPrompt } from "@posthog/ui/features/auth/components/ScopeReauthPrompt";
+import { EXTERNAL_LINKS, isNotAuthenticatedError } from "@flind/shared";
+import { useOptionalAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { useAuthStateValue } from "@flind/ui/features/auth/authQueries";
+import { AuthScreen } from "@flind/ui/features/auth/components/AuthScreen";
+import { DesktopAccessScreen } from "@flind/ui/features/auth/components/DesktopAccessScreen";
+import { ScopeReauthPrompt } from "@flind/ui/features/auth/components/ScopeReauthPrompt";
 import {
   useLogoutMutation,
   useRetryDesktopAccessMutation,
   useSelectProjectMutation,
   useSwitchOrgMutation,
-} from "@posthog/ui/features/auth/useAuthMutations";
-import { useAuthSession } from "@posthog/ui/features/auth/useAuthSession";
-import { useIsOrgAdmin } from "@posthog/ui/features/auth/useOrgRole";
-import { CanvasGenerationToaster } from "@posthog/ui/features/canvas/freeform/useCanvasGenerationToasts";
-import { useChannelsLayout } from "@posthog/ui/features/canvas/hooks/useChannelsLayout";
-import { showChannelList } from "@posthog/ui/features/canvas/stores/channelPaneStore";
-import { useSpaceTreeStore } from "@posthog/ui/features/canvas/stores/spaceTreeStore";
-import { ConnectivityBanner } from "@posthog/ui/features/connectivity/ConnectivityBanner";
-import { ConsentScreen } from "@posthog/ui/features/consent/ConsentScreen";
-import { useConsentAnalytics } from "@posthog/ui/features/consent/consentAnalytics";
-import { useOrgConsent } from "@posthog/ui/features/consent/useOrgConsent";
-import { FeedbackHost } from "@posthog/ui/features/feedback/FeedbackHost";
-import { AddDirectoryDialog } from "@posthog/ui/features/folder-picker/AddDirectoryDialog";
-import { NewLoopDialog } from "@posthog/ui/features/loops/components/NewLoopDialog";
-import { ErrorDetailsDialog } from "@posthog/ui/features/notifications/ErrorDetailsDialog";
-import { OnboardingFlow } from "@posthog/ui/features/onboarding/components/OnboardingFlow";
-import { useOnboardingStore } from "@posthog/ui/features/onboarding/onboardingStore";
-import { SettingsDialog } from "@posthog/ui/features/settings/SettingsDialog";
-import { UpdateBanner } from "@posthog/ui/features/sidebar/components/UpdateBanner";
-import { PendingPromptRecovery } from "@posthog/ui/features/task-detail/components/PendingPromptRecovery";
-import { UpdateAvailableModal } from "@posthog/ui/features/updates/UpdateAvailableModal";
-import { router } from "@posthog/ui/router/router";
-import { AppLoadingScreen } from "@posthog/ui/shell/AppLoadingScreen";
+} from "@flind/ui/features/auth/useAuthMutations";
+import { useAuthSession } from "@flind/ui/features/auth/useAuthSession";
+import { useIsOrgAdmin } from "@flind/ui/features/auth/useOrgRole";
+import { CanvasGenerationToaster } from "@flind/ui/features/canvas/freeform/useCanvasGenerationToasts";
+import { useChannelsLayout } from "@flind/ui/features/canvas/hooks/useChannelsLayout";
+import { showChannelList } from "@flind/ui/features/canvas/stores/channelPaneStore";
+import { useSpaceTreeStore } from "@flind/ui/features/canvas/stores/spaceTreeStore";
+import { ConnectivityBanner } from "@flind/ui/features/connectivity/ConnectivityBanner";
+import { ConsentScreen } from "@flind/ui/features/consent/ConsentScreen";
+import { useConsentAnalytics } from "@flind/ui/features/consent/consentAnalytics";
+import { useOrgConsent } from "@flind/ui/features/consent/useOrgConsent";
+import { FeedbackHost } from "@flind/ui/features/feedback/FeedbackHost";
+import { AddDirectoryDialog } from "@flind/ui/features/folder-picker/AddDirectoryDialog";
+import { NewLoopDialog } from "@flind/ui/features/loops/components/NewLoopDialog";
+import { ErrorDetailsDialog } from "@flind/ui/features/notifications/ErrorDetailsDialog";
+import { OnboardingFlow } from "@flind/ui/features/onboarding/components/OnboardingFlow";
+import { useOnboardingStore } from "@flind/ui/features/onboarding/onboardingStore";
+import { SettingsDialog } from "@flind/ui/features/settings/SettingsDialog";
+import { UpdateBanner } from "@flind/ui/features/sidebar/components/UpdateBanner";
+import { PendingPromptRecovery } from "@flind/ui/features/task-detail/components/PendingPromptRecovery";
+import { UpdateAvailableModal } from "@flind/ui/features/updates/UpdateAvailableModal";
+import { router } from "@flind/ui/router/router";
+import { AppLoadingScreen } from "@flind/ui/shell/AppLoadingScreen";
 import {
   isBackgroundAccessRecheck,
   nextLastAllowedProjectId,
-} from "@posthog/ui/shell/desktopAccessGate";
-import { ErrorBoundary } from "@posthog/ui/shell/ErrorBoundary";
-import { ensureSession } from "@posthog/ui/shell/firstRun";
-import { logger } from "@posthog/ui/shell/logger";
-import { openExternalUrl } from "@posthog/ui/shell/openExternal";
+} from "@flind/ui/shell/desktopAccessGate";
+import { ErrorBoundary } from "@flind/ui/shell/ErrorBoundary";
+import { ensureSession } from "@flind/ui/shell/firstRun";
+import { logger } from "@flind/ui/shell/logger";
+import { openExternalUrl } from "@flind/ui/shell/openExternal";
 import {
   rememberStartupLocation,
   resolveStartupLocation,
-} from "@posthog/ui/shell/startupLocation";
-import { useAppLoadingGateTelemetry } from "@posthog/ui/shell/useAppLoadingGateTelemetry";
-import { useAppVisibilityWatchdog } from "@posthog/ui/shell/useAppVisibilityWatchdog";
+} from "@flind/ui/shell/startupLocation";
+import { useAppLoadingGateTelemetry } from "@flind/ui/shell/useAppLoadingGateTelemetry";
+import { useAppVisibilityWatchdog } from "@flind/ui/shell/useAppVisibilityWatchdog";
 import { RouterProvider } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "framer-motion";
 import { type ReactNode, useEffect, useRef, useState } from "react";

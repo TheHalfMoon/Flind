@@ -1,6 +1,6 @@
-import { publicProcedure, router } from "@posthog/host-trpc/trpc";
-import type { EnrichmentService } from "@posthog/workspace-server/services/enrichment/enrichment";
-import { ENRICHMENT_SERVICE } from "@posthog/workspace-server/services/enrichment/identifiers";
+import { publicProcedure, router } from "@flind/host-trpc/trpc";
+import type { EnrichmentService } from "@flind/workspace-server/services/enrichment/enrichment";
+import { ENRICHMENT_SERVICE } from "@flind/workspace-server/services/enrichment/identifiers";
 import { z } from "zod";
 
 const enrichFileInput = z.object({

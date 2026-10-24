@@ -2,7 +2,7 @@ import {
   formatNumber,
   type GoalPeriod,
   type GoalTarget,
-} from "@posthog/core/canvas/contextDocument";
+} from "@flind/core/canvas/contextDocument";
 import {
   LineChart,
   type LineChartConfig,
@@ -12,8 +12,8 @@ import {
   useChartLayout,
   useChartTheme,
 } from "@flind/quill-charts";
-import { useGoalPalette } from "@posthog/ui/features/canvas/goalColors";
-import type { GoalTrendPoint } from "@posthog/ui/features/canvas/hooks/useGoalMeasure";
+import { useGoalPalette } from "@flind/ui/features/canvas/goalColors";
+import type { GoalTrendPoint } from "@flind/ui/features/canvas/hooks/useGoalMeasure";
 import { useCallback, useId, useMemo } from "react";
 
 const BASE_CONFIG: LineChartConfig = {

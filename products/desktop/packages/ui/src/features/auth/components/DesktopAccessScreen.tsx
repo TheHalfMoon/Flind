@@ -8,7 +8,7 @@ import {
   SignOut,
   WarningCircle,
 } from "@phosphor-icons/react";
-import type { DesktopAccess, OrgProjectsMap } from "@posthog/core/auth/schemas";
+import type { DesktopAccess, OrgProjectsMap } from "@flind/core/auth/schemas";
 import {
   Button,
   Combobox,
@@ -27,15 +27,15 @@ import {
   Field,
   FieldLabel,
 } from "@flind/quill";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
-import { FullScreenLayout } from "@posthog/ui/primitives/FullScreenLayout";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
-import { track } from "@posthog/ui/shell/analytics";
-import { openExternalUrl } from "@posthog/ui/shell/openExternal";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
+import { FullScreenLayout } from "@flind/ui/primitives/FullScreenLayout";
+import { Spinner } from "@flind/ui/primitives/Spinner";
+import { track } from "@flind/ui/shell/analytics";
+import { openExternalUrl } from "@flind/ui/shell/openExternal";
 import {
   FIELD_CONTENT_CLASS,
   FIELD_TRIGGER_CLASS,
-} from "@posthog/ui/styles/fieldTrigger";
+} from "@flind/ui/styles/fieldTrigger";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 interface OrganizationOption {

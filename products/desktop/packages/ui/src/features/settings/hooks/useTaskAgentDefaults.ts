@@ -4,17 +4,17 @@ import {
   NO_TASK_RUN_PREFERENCES,
   type TaskRunDefaults,
   type TaskRunPreferences,
-} from "@posthog/api-client/posthog-client";
+} from "@flind/api-client/posthog-client";
 import {
   preferredRunAdapter,
   preferredRunsOnPi,
-} from "@posthog/core/task-detail/previewConfig";
-import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { useAuthStateValue } from "@posthog/ui/features/auth/store";
-import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
-import { taskRunDefaultsQueryKey } from "@posthog/ui/features/task-detail/hooks/useTaskRunDefaults";
-import { useAuthenticatedQuery } from "@posthog/ui/hooks/useAuthenticatedQuery";
-import { toast } from "@posthog/ui/primitives/toast";
+} from "@flind/core/task-detail/previewConfig";
+import { useOptionalAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { useAuthStateValue } from "@flind/ui/features/auth/store";
+import { useSettingsStore } from "@flind/ui/features/settings/settingsStore";
+import { taskRunDefaultsQueryKey } from "@flind/ui/features/task-detail/hooks/useTaskRunDefaults";
+import { useAuthenticatedQuery } from "@flind/ui/hooks/useAuthenticatedQuery";
+import { toast } from "@flind/ui/primitives/toast";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useCallback, useEffect, useRef } from "react";
 

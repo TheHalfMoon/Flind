@@ -1,4 +1,4 @@
-import { useCanvasChatPanelStore } from "@posthog/ui/features/canvas/stores/canvasChatPanelStore";
+import { useCanvasChatPanelStore } from "@flind/ui/features/canvas/stores/canvasChatPanelStore";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { CanvasSidePanel } from "./CanvasSidePanel";
@@ -11,7 +11,7 @@ vi.mock("@tanstack/react-query", async (importOriginal) => ({
   ...(await importOriginal<typeof import("@tanstack/react-query")>()),
   useQuery: () => ({ data: mocks.task }),
 }));
-vi.mock("@posthog/ui/features/canvas/components/TaskCommentsList", () => ({
+vi.mock("@flind/ui/features/canvas/components/TaskCommentsList", () => ({
   TaskCommentsList: ({
     taskId,
     onlySource,
@@ -24,10 +24,10 @@ vi.mock("@posthog/ui/features/canvas/components/TaskCommentsList", () => ({
     </div>
   ),
 }));
-vi.mock("@posthog/ui/features/sessions/components/EmbeddedSessionView", () => ({
+vi.mock("@flind/ui/features/sessions/components/EmbeddedSessionView", () => ({
   EmbeddedSessionView: () => <div data-testid="task-chat" />,
 }));
-vi.mock("@posthog/ui/features/canvas/freeform/FreeformGenerateBar", () => ({
+vi.mock("@flind/ui/features/canvas/freeform/FreeformGenerateBar", () => ({
   FreeformGenerateBar: () => <div data-testid="canvas-composer" />,
 }));
 

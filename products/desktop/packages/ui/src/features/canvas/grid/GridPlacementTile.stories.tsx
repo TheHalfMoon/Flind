@@ -1,4 +1,4 @@
-import type { GridPlacement } from "@posthog/core/canvas/gridLayoutSchemas";
+import type { GridPlacement } from "@flind/core/canvas/gridLayoutSchemas";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { GridPlacementTile, type PlacementActions } from "./GridPlacementTile";
 

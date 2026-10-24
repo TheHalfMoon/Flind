@@ -1,15 +1,15 @@
 import {
   type CommandCenterCellData as BaseCommandCenterCellData,
   buildCommandCenterCells,
-} from "@posthog/core/command-center/cells";
+} from "@flind/core/command-center/cells";
 import {
   buildStatusSummary,
   type CellStatus,
   hasUnseenCompletion,
   type StatusSummary,
-} from "@posthog/core/command-center/status";
-import { taskActivityAt } from "@posthog/core/tasks/taskActivity";
-import type { Task } from "@posthog/shared/domain-types";
+} from "@flind/core/command-center/status";
+import { taskActivityAt } from "@flind/core/tasks/taskActivity";
+import type { Task } from "@flind/shared/domain-types";
 import { useMemo } from "react";
 import { useTaskViewed } from "../../sidebar/useTaskViewed";
 import { useTasks } from "../../tasks/useTasks";

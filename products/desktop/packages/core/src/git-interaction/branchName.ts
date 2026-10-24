@@ -1,4 +1,4 @@
-import { BRANCH_PREFIX } from "@posthog/shared";
+import { BRANCH_PREFIX } from "@flind/shared";
 
 export function sanitizeBranchName(input: string): string {
   return input.replace(/ /g, "-");

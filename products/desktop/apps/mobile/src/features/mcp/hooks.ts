@@ -3,7 +3,7 @@ import type {
   InstallMcpTemplateOptions,
   McpApprovalState,
   UpdateMcpServerInstallationOptions,
-} from "@posthog/api-client/types";
+} from "@flind/api-client/types";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { getPostHogApiClient } from "@/lib/posthogApiClient";
 

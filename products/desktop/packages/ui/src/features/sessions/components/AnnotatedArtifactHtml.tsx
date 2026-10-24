@@ -1,15 +1,15 @@
-import type { ResourceComment } from "@posthog/api-client/posthog-client";
+import type { ResourceComment } from "@flind/api-client/posthog-client";
 import {
   type CommentAnchor,
   commentAnchorSchema,
   type TextCommentAnchor,
-} from "@posthog/core/comments/anchors";
-import type { UserBasic } from "@posthog/shared/domain-types";
-import type { EditorSelection } from "@posthog/ui/features/code-editor/components/CodeMirrorEditor";
-import { SelectionCommentOverlay } from "@posthog/ui/features/code-editor/components/SelectionCommentOverlay";
-import { openExternalUrl } from "@posthog/ui/shell/openExternal";
-import { useThemeStore } from "@posthog/ui/shell/themeStore";
-import { parseHttpsUrl } from "@posthog/ui/utils/posthogLinks";
+} from "@flind/core/comments/anchors";
+import type { UserBasic } from "@flind/shared/domain-types";
+import type { EditorSelection } from "@flind/ui/features/code-editor/components/CodeMirrorEditor";
+import { SelectionCommentOverlay } from "@flind/ui/features/code-editor/components/SelectionCommentOverlay";
+import { openExternalUrl } from "@flind/ui/shell/openExternal";
+import { useThemeStore } from "@flind/ui/shell/themeStore";
+import { parseHttpsUrl } from "@flind/ui/utils/posthogLinks";
 import { useCallback, useMemo, useRef, useState } from "react";
 import {
   selectionAnchor,

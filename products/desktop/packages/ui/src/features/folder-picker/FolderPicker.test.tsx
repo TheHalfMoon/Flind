@@ -6,7 +6,7 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 const selectDirectoryQuery = vi.fn();
 const addFolder = vi.fn().mockResolvedValue(undefined);
 
-vi.mock("@posthog/host-router/react", () => ({
+vi.mock("@flind/host-router/react", () => ({
   useHostTRPCClient: () => ({
     os: { selectDirectory: { query: () => selectDirectoryQuery() } },
   }),
@@ -15,7 +15,7 @@ vi.mock("@posthog/host-router/react", () => ({
   }),
 }));
 
-vi.mock("@posthog/ui/features/folders/useFolders", () => ({
+vi.mock("@flind/ui/features/folders/useFolders", () => ({
   useFolders: () => ({
     folders: [],
     getRecentFolders: () => [],
@@ -26,7 +26,7 @@ vi.mock("@posthog/ui/features/folders/useFolders", () => ({
   }),
 }));
 
-vi.mock("@posthog/di/react", () => ({
+vi.mock("@flind/di/react", () => ({
   useService: () => ({ error: vi.fn() }),
 }));
 
@@ -34,7 +34,7 @@ vi.mock("@tanstack/react-query", () => ({
   useQueries: () => [],
 }));
 
-import type { RegisteredFolder } from "@posthog/ui/features/folders/types";
+import type { RegisteredFolder } from "@flind/ui/features/folders/types";
 import { buildFolderRows, FolderPicker } from "./FolderPicker";
 
 /** A promise we resolve by hand, to hold the picker open mid-flight. */

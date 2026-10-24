@@ -3,17 +3,17 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 
-vi.mock("@posthog/ui/features/canvas/hooks/useWorkLayout", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useWorkLayout", () => ({
   useWorkLayout: () => false,
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useChannelsLayout", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannelsLayout", () => ({
   useChannelsLayout: () => false,
 }));
-vi.mock("@posthog/ui/shell/analytics", () => ({ track: vi.fn() }));
-vi.mock("@posthog/ui/features/feature-flags/useFeatureFlag", () => ({
+vi.mock("@flind/ui/shell/analytics", () => ({ track: vi.fn() }));
+vi.mock("@flind/ui/features/feature-flags/useFeatureFlag", () => ({
   useFeatureFlag: () => false,
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useSelectedCanvasId", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useSelectedCanvasId", () => ({
   useSelectedCanvasId: () => useSelectedCanvasId(),
 }));
 
@@ -60,7 +60,7 @@ vi.mock("@tanstack/react-router", () => ({
 }));
 
 vi.mock(
-  "@posthog/ui/features/task-detail/components/TaskHeaderActions",
+  "@flind/ui/features/task-detail/components/TaskHeaderActions",
   () => ({
     TaskHeaderActions: ({ task }: { task: { id: string } }) => (
       <div data-testid="task-header-actions">{task.id}</div>
@@ -68,27 +68,27 @@ vi.mock(
   }),
 );
 
-vi.mock("@posthog/ui/features/tasks/useTasks", () => ({ useTasks }));
-vi.mock("@posthog/ui/features/canvas/hooks/useChannelTasks", () => ({
+vi.mock("@flind/ui/features/tasks/useTasks", () => ({ useTasks }));
+vi.mock("@flind/ui/features/canvas/hooks/useChannelTasks", () => ({
   useChannelTasks,
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useChannels", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannels", () => ({
   useChannels: () => ({
     channels: [{ id: "chan-1", name: "project-bluebird" }],
   }),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useChannelStars", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannelStars", () => ({
   useChannelStarMutations: () => ({
     star: vi.fn(),
     unstar: vi.fn(),
   }),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useDashboards", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useDashboards", () => ({
   useDashboard,
   useDashboardMutations: () => ({}),
   useCanvasVersions: () => ({ versions: [{ taskId: "version-task" }] }),
 }));
-vi.mock("@posthog/ui/features/sessions/components/useComments", () => ({
+vi.mock("@flind/ui/features/sessions/components/useComments", () => ({
   useCommentsQuery: () => ({
     data: [
       {
@@ -114,23 +114,23 @@ vi.mock("@posthog/ui/features/sessions/components/useComments", () => ({
     ],
   }),
 }));
-vi.mock("@posthog/ui/features/canvas/stores/dashboardEditStore", () => ({
+vi.mock("@flind/ui/features/canvas/stores/dashboardEditStore", () => ({
   useDashboardEditStore: (sel: (s: unknown) => unknown) =>
     sel({ setEditing: vi.fn() }),
   useIsDashboardEditing: () => false,
 }));
-vi.mock("@posthog/ui/features/canvas/components/ActivityDetailPane", () => ({
+vi.mock("@flind/ui/features/canvas/components/ActivityDetailPane", () => ({
   ActivityDetailPane: () => <div data-testid="activity-detail" />,
 }));
-vi.mock("@posthog/ui/features/canvas/components/NewCanvasMenu", () => ({
+vi.mock("@flind/ui/features/canvas/components/NewCanvasMenu", () => ({
   NewCanvasMenu: () => null,
 }));
-vi.mock("@posthog/ui/features/canvas/freeform/CanvasFrameHost", () => ({
+vi.mock("@flind/ui/features/canvas/freeform/CanvasFrameHost", () => ({
   CanvasFrameHost: () => null,
 }));
 
-import { useCanvasChatPanelStore } from "@posthog/ui/features/canvas/stores/canvasChatPanelStore";
-import { useHeaderStore } from "@posthog/ui/shell/headerStore";
+import { useCanvasChatPanelStore } from "@flind/ui/features/canvas/stores/canvasChatPanelStore";
+import { useHeaderStore } from "@flind/ui/shell/headerStore";
 import { ShellLayout } from "./ShellLayout";
 
 function renderLayout({

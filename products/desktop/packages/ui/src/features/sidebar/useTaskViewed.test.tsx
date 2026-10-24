@@ -1,5 +1,5 @@
-import { isTaskUnread } from "@posthog/core/sidebar/buildSidebarData";
-import type { RawTaskTimestamp } from "@posthog/core/sidebar/taskMeta";
+import { isTaskUnread } from "@flind/core/sidebar/buildSidebarData";
+import type { RawTaskTimestamp } from "@flind/core/sidebar/taskMeta";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { act, renderHook, waitFor } from "@testing-library/react";
 import type { PropsWithChildren } from "react";
@@ -12,7 +12,7 @@ const mocks = vi.hoisted(() => ({
   markViewed: vi.fn(),
 }));
 
-vi.mock("@posthog/host-router/react", () => ({
+vi.mock("@flind/host-router/react", () => ({
   useHostTRPC: () => ({
     workspace: {
       getAllTaskTimestamps: {

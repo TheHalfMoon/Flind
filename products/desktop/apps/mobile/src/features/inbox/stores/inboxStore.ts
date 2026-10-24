@@ -1,4 +1,4 @@
-import type { SignalReportOrderingField } from "@posthog/shared/domain-types";
+import type { SignalReportOrderingField } from "@flind/shared/domain-types";
 import { create } from "zustand";
 
 type OrderDirection = "asc" | "desc";

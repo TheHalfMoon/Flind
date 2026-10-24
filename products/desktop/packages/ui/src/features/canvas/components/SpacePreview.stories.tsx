@@ -1,6 +1,6 @@
 import { LinkIcon, StarIcon, TrashIcon } from "@phosphor-icons/react";
 import { Card } from "@flind/quill";
-import type { UserBasic } from "@posthog/shared/domain-types";
+import type { UserBasic } from "@flind/shared/domain-types";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import type { ChannelActionItem } from "./channelActions";
 import { SpacePreviewContent, type SpacePreviewPayload } from "./SpacePreview";

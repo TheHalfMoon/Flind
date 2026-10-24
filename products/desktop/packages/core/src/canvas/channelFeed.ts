@@ -1,8 +1,8 @@
 import type {
   TaskRunEnvironment,
   TaskRunStatus,
-} from "@posthog/shared/domain-types";
-import { isTerminalStatus } from "@posthog/shared/domain-types";
+} from "@flind/shared/domain-types";
+import { isTerminalStatus } from "@flind/shared/domain-types";
 import { runStatusForDisplay } from "../tasks/taskStatusPresentation";
 
 const PERMANENT_CHANNEL_FEED_FAILURES = new Set([401, 403, 404]);

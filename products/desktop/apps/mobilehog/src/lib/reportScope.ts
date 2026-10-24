@@ -1,5 +1,5 @@
-import { buildSuggestedReviewerFilterParam } from "@posthog/core/inbox/reportFiltering";
-import type { SignalReportsQueryParams } from "@posthog/shared/domain-types";
+import { buildSuggestedReviewerFilterParam } from "@flind/core/inbox/reportFiltering";
+import type { SignalReportsQueryParams } from "@flind/shared/domain-types";
 import { create } from "zustand";
 
 export type ReportScope = "for-you" | "entire-project";

@@ -1,5 +1,5 @@
-import { RightPanelSurface } from "@posthog/ui/features/navigation/components/RightPanelSurface";
-import { resolvePanelGeometry } from "@posthog/ui/features/navigation/rightPanelGeometry";
+import { RightPanelSurface } from "@flind/ui/features/navigation/components/RightPanelSurface";
+import { resolvePanelGeometry } from "@flind/ui/features/navigation/rightPanelGeometry";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useRef, useState } from "react";
 

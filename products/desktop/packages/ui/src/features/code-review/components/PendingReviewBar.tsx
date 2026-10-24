@@ -1,5 +1,5 @@
 import { PaperPlaneTilt } from "@phosphor-icons/react";
-import { buildBatchedInlineCommentsPrompt } from "@posthog/core/code-review/reviewPrompts";
+import { buildBatchedInlineCommentsPrompt } from "@flind/core/code-review/reviewPrompts";
 import { Button } from "@flind/quill";
 import { Badge, Flex } from "@radix-ui/themes";
 import { sendPromptToAgent } from "../../sessions/sendPromptToAgent";

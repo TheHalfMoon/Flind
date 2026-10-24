@@ -1,7 +1,7 @@
-import { decideAutoCompact } from "@posthog/core/sessions/autoCompact";
-import type { ContextUsage } from "@posthog/core/sessions/contextUsage";
-import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
-import { toast } from "@posthog/ui/primitives/toast";
+import { decideAutoCompact } from "@flind/core/sessions/autoCompact";
+import type { ContextUsage } from "@flind/core/sessions/contextUsage";
+import { useSettingsStore } from "@flind/ui/features/settings/settingsStore";
+import { toast } from "@flind/ui/primitives/toast";
 import { useEffect, useRef } from "react";
 
 export interface AutoCompactArgs {

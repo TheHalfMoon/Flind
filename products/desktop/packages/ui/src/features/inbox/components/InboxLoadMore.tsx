@@ -1,4 +1,4 @@
-import { Button } from "@posthog/ui/primitives/Button";
+import { Button } from "@flind/ui/primitives/Button";
 import { Flex } from "@radix-ui/themes";
 
 /**

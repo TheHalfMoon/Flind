@@ -1,7 +1,7 @@
-import type { Task } from "@posthog/shared/domain-types";
-import { channelFeedQueryRoot } from "@posthog/ui/features/canvas/hooks/useChannelFeed";
-import { useFilingTasksStore } from "@posthog/ui/features/canvas/stores/filingTasksStore";
-import { taskKeys } from "@posthog/ui/features/tasks/taskKeys";
+import type { Task } from "@flind/shared/domain-types";
+import { channelFeedQueryRoot } from "@flind/ui/features/canvas/hooks/useChannelFeed";
+import { useFilingTasksStore } from "@flind/ui/features/canvas/stores/filingTasksStore";
+import { taskKeys } from "@flind/ui/features/tasks/taskKeys";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { act, renderHook } from "@testing-library/react";
 import type { ReactNode } from "react";
@@ -18,7 +18,7 @@ const mutations = vi.hoisted(() => ({
   unfile: vi.fn().mockResolvedValue(undefined),
 }));
 
-vi.mock("@posthog/host-router/react", () => ({
+vi.mock("@flind/host-router/react", () => ({
   useHostTRPC: () => ({
     channelTasks: {
       list: {

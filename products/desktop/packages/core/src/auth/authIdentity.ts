@@ -1,4 +1,4 @@
-import { getCustomCloud } from "@posthog/shared";
+import { getCustomCloud } from "@flind/shared";
 import type { AuthState } from "./schemas";
 
 export function getAuthIdentity(authState: AuthState): string | null {

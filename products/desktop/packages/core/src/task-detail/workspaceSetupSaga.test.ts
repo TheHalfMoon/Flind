@@ -1,5 +1,5 @@
-import type { RootLogger } from "@posthog/di/logger";
-import type { Workspace } from "@posthog/shared";
+import type { RootLogger } from "@flind/di/logger";
+import type { Workspace } from "@flind/shared";
 import { describe, expect, it, vi } from "vitest";
 import {
   type WorkspaceSetupExecutor,

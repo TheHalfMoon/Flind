@@ -1,4 +1,4 @@
-import type { SourceConfig } from "@posthog/api-client/posthog-client";
+import type { SourceConfig } from "@flind/api-client/posthog-client";
 import { describe, expect, it } from "vitest";
 import { buildPayload } from "./DynamicSourceSetup";
 

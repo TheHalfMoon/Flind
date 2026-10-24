@@ -1,18 +1,18 @@
 import type {
   McpApprovalState,
   McpInstallationTool,
-} from "@posthog/api-client/posthog-client";
-import { isPolicyStateAllowedByCeiling } from "@posthog/core/mcp-gateway/gatewayServers";
-import { dispatchBulkApproval } from "@posthog/core/mcp-servers/toolBulk";
+} from "@flind/api-client/posthog-client";
+import { isPolicyStateAllowedByCeiling } from "@flind/core/mcp-gateway/gatewayServers";
+import { dispatchBulkApproval } from "@flind/core/mcp-servers/toolBulk";
 import {
   autoRefreshRetryDelayMs,
   shouldAutoRefreshTools,
   shouldRetryAutoRefresh,
-} from "@posthog/core/mcp-servers/toolRefresh";
-import { useHostTRPC } from "@posthog/host-router/react";
-import { useAuthenticatedMutation } from "@posthog/ui/hooks/useAuthenticatedMutation";
-import { useAuthenticatedQuery } from "@posthog/ui/hooks/useAuthenticatedQuery";
-import { toast } from "@posthog/ui/primitives/toast";
+} from "@flind/core/mcp-servers/toolRefresh";
+import { useHostTRPC } from "@flind/host-router/react";
+import { useAuthenticatedMutation } from "@flind/ui/hooks/useAuthenticatedMutation";
+import { useAuthenticatedQuery } from "@flind/ui/hooks/useAuthenticatedQuery";
+import { toast } from "@flind/ui/primitives/toast";
 import { useQueryClient } from "@tanstack/react-query";
 import { useSubscription } from "@trpc/tanstack-react-query";
 import { useCallback, useEffect, useRef } from "react";

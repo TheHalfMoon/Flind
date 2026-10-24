@@ -1,4 +1,4 @@
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
 import { Theme } from "@radix-ui/themes";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
@@ -9,28 +9,28 @@ const { featureFlagEnabled, track } = vi.hoisted(() => ({
   track: vi.fn(),
 }));
 
-vi.mock("@posthog/ui/shell/analytics", () => ({ track }));
-vi.mock("@posthog/ui/features/feature-flags/useFeatureFlag", () => ({
+vi.mock("@flind/ui/shell/analytics", () => ({ track }));
+vi.mock("@flind/ui/features/feature-flags/useFeatureFlag", () => ({
   useFeatureFlag: () => featureFlagEnabled.value,
 }));
-vi.mock("@posthog/host-router/react", () => ({
+vi.mock("@flind/host-router/react", () => ({
   useHostTRPCClient: () => ({ os: { selectDirectory: { query: vi.fn() } } }),
 }));
-vi.mock("@posthog/ui/features/auth/useMeQuery", () => ({
+vi.mock("@flind/ui/features/auth/useMeQuery", () => ({
   useMeQuery: () => ({ data: { is_staff: false } }),
 }));
-vi.mock("@posthog/ui/features/folders/useFolders", () => ({
+vi.mock("@flind/ui/features/folders/useFolders", () => ({
   useFolders: () => ({ addFolder: vi.fn() }),
 }));
-vi.mock("@posthog/ui/features/sidebar/useHoldSidebarPeek", () => ({
+vi.mock("@flind/ui/features/sidebar/useHoldSidebarPeek", () => ({
   useHoldSidebarPeek: () => vi.fn(),
 }));
-vi.mock("@posthog/ui/shell/commandMenuStore", () => ({
+vi.mock("@flind/ui/shell/commandMenuStore", () => ({
   useCommandMenuStore: (selector: (state: { open: () => void }) => unknown) =>
     selector({ open: vi.fn() }),
 }));
 
-import { useSidebarStore } from "@posthog/ui/features/sidebar/sidebarStore";
+import { useSidebarStore } from "@flind/ui/features/sidebar/sidebarStore";
 import { TasksHeader } from "./TasksHeader";
 
 describe("TasksHeader", () => {

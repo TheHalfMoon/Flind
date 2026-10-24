@@ -2,10 +2,10 @@ import {
   getPostHogObjectArtifactMetadata,
   groupRunArtifactVersions,
   type PostHogObjectArtifactMetadata,
-} from "@posthog/core/canvas/runArtifactSchemas";
-import type { SessionService } from "@posthog/core/sessions/sessionService";
-import type { TaskRunArtifact } from "@posthog/shared";
-import { AUTH_SCOPED_QUERY_META } from "@posthog/ui/features/auth/useCurrentUser";
+} from "@flind/core/canvas/runArtifactSchemas";
+import type { SessionService } from "@flind/core/sessions/sessionService";
+import type { TaskRunArtifact } from "@flind/shared";
+import { AUTH_SCOPED_QUERY_META } from "@flind/ui/features/auth/useCurrentUser";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { artifactPreviewBlob } from "./artifactPreviewDocument";

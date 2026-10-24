@@ -1,5 +1,5 @@
-import type { HostTrpcClient } from "@posthog/host-router/client";
-import type { HostRouter } from "@posthog/host-router/router";
+import type { HostTrpcClient } from "@flind/host-router/client";
+import type { HostRouter } from "@flind/host-router/router";
 import { partialMatchKey, QueryClient } from "@tanstack/react-query";
 import { createTRPCOptionsProxy } from "@trpc/tanstack-react-query";
 import { describe, expect, it } from "vitest";

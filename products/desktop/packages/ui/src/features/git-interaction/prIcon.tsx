@@ -6,8 +6,8 @@ import {
   PencilSimple,
   X,
 } from "@phosphor-icons/react";
-import type { PrVisualIcon } from "@posthog/core/git-interaction/prStatus";
-import type { PrActionType } from "@posthog/shared";
+import type { PrVisualIcon } from "@flind/core/git-interaction/prStatus";
+import type { PrActionType } from "@flind/shared";
 
 export function getPrVisualIcon(icon: PrVisualIcon): Icon {
   switch (icon) {

@@ -1,5 +1,5 @@
-import type { GithubRef, NewTaskLinkPayload } from "@posthog/shared";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
+import type { GithubRef, NewTaskLinkPayload } from "@flind/shared";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
 import { describe, expect, it, vi } from "vitest";
 import type { GitHubIssueClient } from "./identifiers";
 import { NewTaskLinkResolver } from "./newTaskLinkResolver";

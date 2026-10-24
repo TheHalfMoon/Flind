@@ -1,5 +1,5 @@
 import { Badge } from "@flind/quill";
-import { LoopIcon } from "@posthog/ui/primitives/LoopIcon";
+import { LoopIcon } from "@flind/ui/primitives/LoopIcon";
 import type { MouseEventHandler } from "react";
 import { SidebarItem } from "../SidebarItem";
 

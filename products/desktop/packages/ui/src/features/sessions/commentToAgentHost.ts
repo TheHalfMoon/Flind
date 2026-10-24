@@ -1,8 +1,8 @@
-import type { CommentToAgentHost } from "@posthog/core/sessions/commentToAgent";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
-import { useDraftStore } from "@posthog/ui/features/message-editor/draftStore";
-import { persistImageFile } from "@posthog/ui/features/message-editor/utils/persistFile";
-import { track } from "@posthog/ui/shell/analytics";
+import type { CommentToAgentHost } from "@flind/core/sessions/commentToAgent";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
+import { useDraftStore } from "@flind/ui/features/message-editor/draftStore";
+import { persistImageFile } from "@flind/ui/features/message-editor/utils/persistFile";
+import { track } from "@flind/ui/shell/analytics";
 import { showTaskChat } from "./showTaskChat";
 
 export const commentToAgentHost: CommentToAgentHost = {

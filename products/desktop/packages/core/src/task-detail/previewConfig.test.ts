@@ -1,5 +1,5 @@
 import type { SessionConfigOption } from "@agentclientprotocol/sdk";
-import { EFFORT_LEVELS } from "@posthog/shared/domain-types";
+import { EFFORT_LEVELS } from "@flind/shared/domain-types";
 import { describe, expect, it } from "vitest";
 import {
   applyConfigChange,

@@ -1,6 +1,6 @@
-import { recoverPendingPrompt } from "@posthog/ui/features/task-detail/pendingPromptActions";
-import { logger } from "@posthog/ui/shell/logger";
-import { pendingTaskPromptStoreApi } from "@posthog/ui/shell/pendingTaskPromptStore";
+import { recoverPendingPrompt } from "@flind/ui/features/task-detail/pendingPromptActions";
+import { logger } from "@flind/ui/shell/logger";
+import { pendingTaskPromptStoreApi } from "@flind/ui/shell/pendingTaskPromptStore";
 import { useEffect } from "react";
 
 const log = logger.scope("pending-prompt-recovery");

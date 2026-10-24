@@ -1,10 +1,10 @@
 import { CaretRight, Key } from "@phosphor-icons/react";
-import type { McpAuthType } from "@posthog/api-client/posthog-client";
+import type { McpAuthType } from "@flind/api-client/posthog-client";
 import {
   canSubmitGatewayConnect,
   GATEWAY_CONNECT_DEFAULTS,
   type GatewayConnectCredentials,
-} from "@posthog/core/mcp-gateway/gatewayConnect";
+} from "@flind/core/mcp-gateway/gatewayConnect";
 import {
   Button,
   Dialog,

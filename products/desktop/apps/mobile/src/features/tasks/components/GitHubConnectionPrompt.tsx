@@ -1,5 +1,5 @@
 import { Text } from "@components/text";
-import { GITHUB_CODE_CONTEXT_MESSAGE } from "@posthog/core/integrations/connectErrors";
+import { GITHUB_CODE_CONTEXT_MESSAGE } from "@flind/core/integrations/connectErrors";
 import * as WebBrowser from "expo-web-browser";
 import { Pressable, View } from "react-native";
 import { useAuthStore } from "@/features/auth";

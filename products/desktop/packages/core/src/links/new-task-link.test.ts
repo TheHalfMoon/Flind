@@ -1,5 +1,5 @@
-import type { IDeepLinkRegistry } from "@posthog/platform/deep-link";
-import type { IMainWindow } from "@posthog/platform/main-window";
+import type { IDeepLinkRegistry } from "@flind/platform/deep-link";
+import type { IMainWindow } from "@flind/platform/main-window";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { NewTaskLinkEvent, NewTaskLinkService } from "./new-task-link";
 

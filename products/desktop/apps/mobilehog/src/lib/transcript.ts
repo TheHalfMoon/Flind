@@ -1,6 +1,6 @@
-import { extractPromptDisplayContent } from "@posthog/core/sessions/promptContent";
-import type { StoredLogEntry } from "@posthog/shared";
-import { isIdleResumeTurnComplete, isRasterImageFile } from "@posthog/shared";
+import { extractPromptDisplayContent } from "@flind/core/sessions/promptContent";
+import type { StoredLogEntry } from "@flind/shared";
+import { isIdleResumeTurnComplete, isRasterImageFile } from "@flind/shared";
 
 export type ToolStatus = "pending" | "running" | "completed" | "failed";
 

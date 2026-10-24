@@ -1,9 +1,9 @@
-import { ROOT_LOGGER, type RootLogger } from "@posthog/di/logger";
+import { ROOT_LOGGER, type RootLogger } from "@flind/di/logger";
 import {
   ANALYTICS_SERVICE,
   type IAnalytics,
-} from "@posthog/platform/analytics";
-import { TRANSCRIPT_TAIL_WINDOW } from "@posthog/shared";
+} from "@flind/platform/analytics";
+import { TRANSCRIPT_TAIL_WINDOW } from "@flind/shared";
 import { inject, injectable, optional, preDestroy } from "inversify";
 import { CloudTaskEngine } from "./cloud-task-engine";
 import {

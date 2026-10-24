@@ -3,7 +3,7 @@ import {
   deriveFileLabel,
   type FileAttachment,
   type MentionChip,
-} from "@posthog/core/message-editor/content";
+} from "@flind/core/message-editor/content";
 import {
   Button,
   DropdownMenu,
@@ -11,9 +11,9 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@flind/quill";
-import { isRasterImageFile } from "@posthog/shared";
-import { useAddDirectoryDialogStore } from "@posthog/ui/features/folder-picker/addDirectoryDialogStore";
-import { toast } from "@posthog/ui/primitives/toast";
+import { isRasterImageFile } from "@flind/shared";
+import { useAddDirectoryDialogStore } from "@flind/ui/features/folder-picker/addDirectoryDialogStore";
+import { toast } from "@flind/ui/primitives/toast";
 import { useQuery } from "@tanstack/react-query";
 import { SquareSlash } from "lucide-react";
 import { useRef, useState } from "react";

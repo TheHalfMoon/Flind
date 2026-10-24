@@ -2,9 +2,9 @@ import {
   type MentionActivityItem,
   mergeTaskMentions,
   toMentionActivityItems,
-} from "@posthog/core/canvas/mentionActivity";
-import type { TaskMention } from "@posthog/shared/domain-types";
-import { useAuthenticatedQuery } from "@posthog/ui/hooks/useAuthenticatedQuery";
+} from "@flind/core/canvas/mentionActivity";
+import type { TaskMention } from "@flind/shared/domain-types";
+import { useAuthenticatedQuery } from "@flind/ui/hooks/useAuthenticatedQuery";
 import { useQueryClient } from "@tanstack/react-query";
 import { useMemo } from "react";
 

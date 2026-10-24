@@ -1,8 +1,8 @@
 import type {
   DeepLinkHandler,
   IDeepLinkRegistry,
-} from "@posthog/platform/deep-link";
-import type { IMainWindow } from "@posthog/platform/main-window";
+} from "@flind/platform/deep-link";
+import type { IMainWindow } from "@flind/platform/main-window";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import {
   ScoutLinkEvent,

@@ -1,8 +1,8 @@
-import { useChannels } from "@posthog/ui/features/canvas/hooks/useChannels";
-import { LoopDetailView } from "@posthog/ui/features/loops/components/LoopDetailView";
-import { useLoop } from "@posthog/ui/features/loops/hooks/useLoop";
-import { useLoopScope } from "@posthog/ui/features/loops/hooks/useLoopScope";
-import { parseLoopDetailSearch } from "@posthog/ui/features/loops/loopDetailSearch";
+import { useChannels } from "@flind/ui/features/canvas/hooks/useChannels";
+import { LoopDetailView } from "@flind/ui/features/loops/components/LoopDetailView";
+import { useLoop } from "@flind/ui/features/loops/hooks/useLoop";
+import { useLoopScope } from "@flind/ui/features/loops/hooks/useLoopScope";
+import { parseLoopDetailSearch } from "@flind/ui/features/loops/loopDetailSearch";
 import { createFileRoute, Navigate } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/_shell/loops/$loopId/")({

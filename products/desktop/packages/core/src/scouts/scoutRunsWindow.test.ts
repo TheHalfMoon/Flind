@@ -1,7 +1,7 @@
 import type {
   ScoutRun,
   ScoutRunsQueryParams,
-} from "@posthog/api-client/posthog-client";
+} from "@flind/api-client/posthog-client";
 import { describe, expect, it } from "vitest";
 import {
   fetchScoutRunsWindow,

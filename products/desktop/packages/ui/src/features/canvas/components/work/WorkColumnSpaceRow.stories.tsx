@@ -1,8 +1,8 @@
-import type { ChannelPresence } from "@posthog/core/canvas/presence";
+import type { ChannelPresence } from "@flind/core/canvas/presence";
 import { Autocomplete, AutocompleteList, MenuLabel } from "@flind/quill";
-import type { Task, UserBasic } from "@posthog/shared/domain-types";
-import { ChannelItemPreviewCardProvider } from "@posthog/ui/features/canvas/components/ChannelItemHoverCard";
-import type { Channel } from "@posthog/ui/features/canvas/hooks/useChannels";
+import type { Task, UserBasic } from "@flind/shared/domain-types";
+import { ChannelItemPreviewCardProvider } from "@flind/ui/features/canvas/components/ChannelItemHoverCard";
+import type { Channel } from "@flind/ui/features/canvas/hooks/useChannels";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useQueryClient } from "@tanstack/react-query";
 import { type ReactNode, useState } from "react";

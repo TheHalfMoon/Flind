@@ -1,4 +1,4 @@
-import type { FeedbackSubmissionInput } from "@posthog/platform/feedback-context";
+import type { FeedbackSubmissionInput } from "@flind/platform/feedback-context";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
@@ -17,14 +17,14 @@ const {
   toastWarning: vi.fn(),
 }));
 
-vi.mock("@posthog/ui/shell/analytics", () => ({
+vi.mock("@flind/ui/shell/analytics", () => ({
   captureException,
   getAnalyticsSessionId,
 }));
-vi.mock("@posthog/ui/primitives/toast", () => ({
+vi.mock("@flind/ui/primitives/toast", () => ({
   toast: { error: toastError, success: toastSuccess, warning: toastWarning },
 }));
-vi.mock("@posthog/ui/router/useAppView", () => ({
+vi.mock("@flind/ui/router/useAppView", () => ({
   getAppViewSnapshot: () => ({ type: "task-detail", taskId: "task-123" }),
 }));
 

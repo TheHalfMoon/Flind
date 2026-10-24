@@ -1,5 +1,5 @@
-import type { CloudTaskService } from "@posthog/core/cloud-task/cloud-task";
-import { CLOUD_TASK_SERVICE } from "@posthog/core/cloud-task/identifiers";
+import type { CloudTaskService } from "@flind/core/cloud-task/cloud-task";
+import { CLOUD_TASK_SERVICE } from "@flind/core/cloud-task/identifiers";
 import {
   CloudTaskEvent,
   cloudContextOutput,
@@ -13,8 +13,8 @@ import {
   stopOutput,
   unwatchInput,
   watchInput,
-} from "@posthog/core/cloud-task/schemas";
-import { publicProcedure, router } from "@posthog/host-trpc/trpc";
+} from "@flind/core/cloud-task/schemas";
+import { publicProcedure, router } from "@flind/host-trpc/trpc";
 
 export const cloudTaskRouter = router({
   context: publicProcedure

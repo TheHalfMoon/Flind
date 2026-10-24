@@ -1,6 +1,6 @@
 import type { SessionConfigSelectOption } from "@agentclientprotocol/sdk";
-import { isRestrictedModelOption } from "@posthog/shared";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
+import { isRestrictedModelOption } from "@flind/shared";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
 import { track } from "../../shell/analytics";
 import { useUsageLimitStore } from "./usageLimitStore";
 

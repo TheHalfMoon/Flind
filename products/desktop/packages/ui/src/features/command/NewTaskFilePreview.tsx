@@ -1,11 +1,11 @@
-import { CodeMirrorEditor } from "@posthog/ui/features/code-editor/components/CodeMirrorEditor";
+import { CodeMirrorEditor } from "@flind/ui/features/code-editor/components/CodeMirrorEditor";
 import {
   SelectionCommentOverlay,
   useSelectionComposer,
-} from "@posthog/ui/features/code-editor/components/SelectionCommentOverlay";
-import { useRepoFileContent } from "@posthog/ui/features/code-editor/hooks/useFileContent";
-import { useFileSearchStore } from "@posthog/ui/features/command/fileSearchStore";
-import { FileIcon } from "@posthog/ui/primitives/FileIcon";
+} from "@flind/ui/features/code-editor/components/SelectionCommentOverlay";
+import { useRepoFileContent } from "@flind/ui/features/code-editor/hooks/useFileContent";
+import { useFileSearchStore } from "@flind/ui/features/command/fileSearchStore";
+import { FileIcon } from "@flind/ui/primitives/FileIcon";
 import { Cross2Icon } from "@radix-ui/react-icons";
 import { Box, Flex, IconButton, Text } from "@radix-ui/themes";
 

@@ -1,6 +1,6 @@
 import { Text } from "@components/text";
-import { REFUND_REASON_OPTIONS } from "@posthog/shared";
-import type { SignalReportRefundReason } from "@posthog/shared/domain-types";
+import { REFUND_REASON_OPTIONS } from "@flind/shared";
+import type { SignalReportRefundReason } from "@flind/shared/domain-types";
 import * as Haptics from "expo-haptics";
 import { Check } from "phosphor-react-native";
 import { useEffect, useState } from "react";

@@ -2,8 +2,8 @@ import type {
   ExternalAppsFocusCoordinator,
   ExternalAppsFocusParams,
   ExternalAppsFocusSession,
-} from "@posthog/core/external-apps/identifiers";
-import type { FocusSagaResult } from "@posthog/core/focus/service";
+} from "@flind/core/external-apps/identifiers";
+import type { FocusSagaResult } from "@flind/core/focus/service";
 import { injectable } from "inversify";
 import { useFocusStore } from "../focus/focusStore";
 

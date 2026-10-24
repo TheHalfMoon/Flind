@@ -1,9 +1,9 @@
 import { ArrowLeftIcon, PlayIcon } from "@phosphor-icons/react";
-import type { ScoutConfig } from "@posthog/api-client/posthog-client";
+import type { ScoutConfig } from "@flind/api-client/posthog-client";
 import {
   SCOUT_DETAIL_TABS,
   type ScoutDetailTab,
-} from "@posthog/core/scouts/scoutDetailTabs";
+} from "@flind/core/scouts/scoutDetailTabs";
 import {
   deriveRunOutcome,
   deriveScoutLifecycle,
@@ -17,10 +17,10 @@ import {
   scoutCreatorDisplayName,
   scoutRunOutcomeLabel,
   scoutSummarySentence,
-} from "@posthog/core/scouts/scoutPresentation";
+} from "@flind/core/scouts/scoutPresentation";
 import { Button, Skeleton } from "@flind/quill";
-import { RelativeTimestamp } from "@posthog/ui/primitives/RelativeTimestamp";
-import { TabStrip } from "@posthog/ui/primitives/TabStrip";
+import { RelativeTimestamp } from "@flind/ui/primitives/RelativeTimestamp";
+import { TabStrip } from "@flind/ui/primitives/TabStrip";
 import { Fragment, type ReactNode } from "react";
 import type { ScoutConfigUpdate } from "../hooks/useScoutConfigMutations";
 import { useScoutRunNow } from "../hooks/useScoutRunNow";

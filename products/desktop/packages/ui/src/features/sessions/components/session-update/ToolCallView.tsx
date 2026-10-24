@@ -1,12 +1,12 @@
-import { getPostHogExecDisplay } from "@posthog/core/sessions/posthogExecDisplay";
+import { getPostHogExecDisplay } from "@flind/core/sessions/posthogExecDisplay";
 import {
   compactHomePath,
   formatPiMcpToolName,
   readMcpProxyCallDetails,
   readMcpToolDescriptor,
   readPiMcpCallDetails,
-} from "@posthog/shared";
-import type { ToolCall } from "@posthog/ui/features/sessions/types";
+} from "@flind/shared";
+import type { ToolCall } from "@flind/ui/features/sessions/types";
 import { ToolRow } from "./ToolRow";
 import {
   compactInput,

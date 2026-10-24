@@ -6,7 +6,7 @@ const sessionService = vi.hoisted(() => ({
   scheduleEventEviction: vi.fn(),
 }));
 
-vi.mock("@posthog/di/react", () => ({
+vi.mock("@flind/di/react", () => ({
   useService: () => sessionService,
 }));
 

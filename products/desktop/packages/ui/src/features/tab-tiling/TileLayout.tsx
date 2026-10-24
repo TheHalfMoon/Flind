@@ -1,10 +1,10 @@
 import { cn } from "@flind/quill";
-import type { BrowserTab } from "@posthog/shared";
-import { usePinnedTabsStore } from "@posthog/ui/features/browser-tabs/pinnedTabsStore";
-import { useTabReorderStore } from "@posthog/ui/features/browser-tabs/tabReorderStore";
-import { useActiveTabId } from "@posthog/ui/features/browser-tabs/useActiveTabId";
-import { useTabsSnapshot } from "@posthog/ui/features/browser-tabs/useBrowserTabs";
-import { useGoToTab } from "@posthog/ui/features/browser-tabs/useGoToTab";
+import type { BrowserTab } from "@flind/shared";
+import { usePinnedTabsStore } from "@flind/ui/features/browser-tabs/pinnedTabsStore";
+import { useTabReorderStore } from "@flind/ui/features/browser-tabs/tabReorderStore";
+import { useActiveTabId } from "@flind/ui/features/browser-tabs/useActiveTabId";
+import { useTabsSnapshot } from "@flind/ui/features/browser-tabs/useBrowserTabs";
+import { useGoToTab } from "@flind/ui/features/browser-tabs/useGoToTab";
 import {
   Fragment,
   type ReactNode,

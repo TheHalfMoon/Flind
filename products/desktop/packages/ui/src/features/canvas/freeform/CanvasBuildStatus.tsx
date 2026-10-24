@@ -9,8 +9,8 @@ import {
   type CanvasBuildLifecycle,
   currentHeadBuildFailure,
   latestFinishedCanvasBuild,
-} from "@posthog/core/canvas/canvasBuildSchemas";
-import { useHostTRPC } from "@posthog/host-router/react";
+} from "@flind/core/canvas/canvasBuildSchemas";
+import { useHostTRPC } from "@flind/host-router/react";
 import {
   Button,
   Text,
@@ -19,9 +19,9 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@flind/quill";
-import type { CanvasDiagnostic } from "@posthog/shared";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
-import { toast } from "@posthog/ui/primitives/toast";
+import type { CanvasDiagnostic } from "@flind/shared";
+import { Spinner } from "@flind/ui/primitives/Spinner";
+import { toast } from "@flind/ui/primitives/toast";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 

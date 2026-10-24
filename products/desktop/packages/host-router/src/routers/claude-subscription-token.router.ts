@@ -1,9 +1,9 @@
 import {
   CLAUDE_SUBSCRIPTION_TOKEN_STORE,
   type ClaudeSubscriptionTokenStore,
-} from "@posthog/core/cloud-task/identifiers";
-import { publicProcedure, router } from "@posthog/host-trpc/trpc";
-import { claudeSubscriptionTokenInput } from "@posthog/workspace-server/services/claude-subscription/schemas";
+} from "@flind/core/cloud-task/identifiers";
+import { publicProcedure, router } from "@flind/host-trpc/trpc";
+import { claudeSubscriptionTokenInput } from "@flind/workspace-server/services/claude-subscription/schemas";
 
 export const claudeSubscriptionTokenRouter = router({
   has: publicProcedure.query(({ ctx }) =>

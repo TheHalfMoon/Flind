@@ -1,11 +1,11 @@
-import type { TaskUsage } from "@posthog/api-client/posthog-client";
-import type { ServiceContainer } from "@posthog/di/container";
-import { ServiceProvider } from "@posthog/di/react";
-import { TASK_COST_VISIBLE_FLAG } from "@posthog/shared";
+import type { TaskUsage } from "@flind/api-client/posthog-client";
+import type { ServiceContainer } from "@flind/di/container";
+import { ServiceProvider } from "@flind/di/react";
+import { TASK_COST_VISIBLE_FLAG } from "@flind/shared";
 import {
   FEATURE_FLAGS,
   type FeatureFlags,
-} from "@posthog/ui/features/feature-flags/identifiers";
+} from "@flind/ui/features/feature-flags/identifiers";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useMemo } from "react";

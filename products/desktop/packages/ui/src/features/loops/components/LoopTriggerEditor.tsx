@@ -30,14 +30,14 @@ import {
   ToggleGroup,
   ToggleGroupItem,
 } from "@flind/quill";
-import type { LoopSchemas } from "@posthog/ui/features/loops/loopSchemas";
-import { SettingsOptionSelect } from "@posthog/ui/features/settings/SettingsOptionSelect";
-import { TimezonePicker } from "@posthog/ui/primitives/TimezonePicker";
-import { TimezoneTimestamp } from "@posthog/ui/primitives/TimezoneTimestamp";
+import type { LoopSchemas } from "@flind/ui/features/loops/loopSchemas";
+import { SettingsOptionSelect } from "@flind/ui/features/settings/SettingsOptionSelect";
+import { TimezonePicker } from "@flind/ui/primitives/TimezonePicker";
+import { TimezoneTimestamp } from "@flind/ui/primitives/TimezoneTimestamp";
 import {
   formatScheduleTimestamp,
   systemTimezone,
-} from "@posthog/ui/primitives/timezone";
+} from "@flind/ui/primitives/timezone";
 import type { ReactNode } from "react";
 import {
   compileCronSchedule,

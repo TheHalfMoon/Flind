@@ -1,4 +1,4 @@
-import type { McpAuthType } from "@posthog/api-client/types";
+import type { McpAuthType } from "@flind/api-client/types";
 
 export interface CustomServerFormValues {
   name: string;

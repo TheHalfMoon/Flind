@@ -1,4 +1,4 @@
-import type { SpaceSetupChoice } from "@posthog/core/canvas/spaceSetup";
+import type { SpaceSetupChoice } from "@flind/core/canvas/spaceSetup";
 
 export const CREATE_STEPS = [
   "name",

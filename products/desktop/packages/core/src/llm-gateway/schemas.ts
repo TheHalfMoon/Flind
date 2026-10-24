@@ -1,4 +1,4 @@
-import type { GatewayBlockedStatus } from "@posthog/shared";
+import type { GatewayBlockedStatus } from "@flind/shared";
 import { z } from "zod";
 
 export const llmMessageSchema = z.object({

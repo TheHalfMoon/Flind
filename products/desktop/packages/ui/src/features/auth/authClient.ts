@@ -1,8 +1,8 @@
-import { PostHogAPIClient } from "@posthog/api-client/posthog-client";
-import type { AuthState } from "@posthog/core/auth/schemas";
-import type { HostTrpcClient } from "@posthog/host-router/client";
-import { useHostTRPCClient } from "@posthog/host-router/react";
-import { getCloudUrlFromRegion, NotAuthenticatedError } from "@posthog/shared";
+import { PostHogAPIClient } from "@flind/api-client/posthog-client";
+import type { AuthState } from "@flind/core/auth/schemas";
+import type { HostTrpcClient } from "@flind/host-router/client";
+import { useHostTRPCClient } from "@flind/host-router/react";
+import { getCloudUrlFromRegion, NotAuthenticatedError } from "@flind/shared";
 import { useMemo } from "react";
 import { useAuthStateValue } from "./store";
 

@@ -28,23 +28,23 @@ import {
   type ModelAccess,
   selectOptionDocsUrl,
   selectOptionHarness,
-} from "@posthog/shared";
+} from "@flind/shared";
 import {
   EFFORT_LEVEL_LABELS,
   FAST_MODE_DOCS_URLS,
-} from "@posthog/shared/domain-types";
-import { useFeatureFlag } from "@posthog/ui/features/feature-flags/useFeatureFlag";
+} from "@flind/shared/domain-types";
+import { useFeatureFlag } from "@flind/ui/features/feature-flags/useFeatureFlag";
 import {
   type AgentHarness,
   HarnessSubmenu,
-} from "@posthog/ui/features/sessions/components/HarnessSubmenu";
-import { ModelSelectList } from "@posthog/ui/features/sessions/components/ModelSelectList";
-import { SubscriptionSubmenu } from "@posthog/ui/features/sessions/components/SubscriptionSubmenu";
-import { shortModelLabel } from "@posthog/ui/features/sessions/components/shortModelLabel";
-import type { WorkspaceModeForAccess } from "@posthog/ui/features/settings/adapterSubscription";
-import type { AgentAdapter } from "@posthog/ui/features/settings/settingsStore";
-import { AnimatedHeight } from "@posthog/ui/primitives/AnimatedHeight";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
+} from "@flind/ui/features/sessions/components/HarnessSubmenu";
+import { ModelSelectList } from "@flind/ui/features/sessions/components/ModelSelectList";
+import { SubscriptionSubmenu } from "@flind/ui/features/sessions/components/SubscriptionSubmenu";
+import { shortModelLabel } from "@flind/ui/features/sessions/components/shortModelLabel";
+import type { WorkspaceModeForAccess } from "@flind/ui/features/settings/adapterSubscription";
+import type { AgentAdapter } from "@flind/ui/features/settings/settingsStore";
+import { AnimatedHeight } from "@flind/ui/primitives/AnimatedHeight";
+import { Spinner } from "@flind/ui/primitives/Spinner";
 import { AnimatePresence, motion } from "framer-motion";
 import { useRef, useState } from "react";
 import { flattenSelectOptions } from "../sessionStore";

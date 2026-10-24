@@ -1,4 +1,4 @@
-import { buildCloudTaskDescription } from "@posthog/core/editor/cloud-prompt";
+import { buildCloudTaskDescription } from "@flind/core/editor/cloud-prompt";
 import type {
   Adapter,
   AgentRuntime,
@@ -7,8 +7,8 @@ import type {
   ModelAccess,
   TaskCreationInput,
   WorkspaceMode,
-} from "@posthog/shared";
-import type { ExecutionMode } from "@posthog/shared/domain-types";
+} from "@flind/shared";
+import type { ExecutionMode } from "@flind/shared/domain-types";
 
 export interface PrepareTaskInputOptions {
   selectedDirectory?: string;

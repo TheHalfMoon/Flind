@@ -11,9 +11,9 @@ import type {
   ReadResourceResult,
   Tool,
 } from "@modelcontextprotocol/sdk/types.js";
-import { applyCspToHtml } from "@posthog/core/mcp-apps/csp";
-import type { McpUiResource } from "@posthog/core/mcp-apps/schemas";
-import { getAppViewSnapshot } from "@posthog/ui/router/useAppView";
+import { applyCspToHtml } from "@flind/core/mcp-apps/csp";
+import type { McpUiResource } from "@flind/core/mcp-apps/schemas";
+import { getAppViewSnapshot } from "@flind/ui/router/useAppView";
 import { useCallback, useEffect, useRef } from "react";
 import { logger } from "../../../shell/logger";
 import { useDraftStore } from "../../message-editor/draftStore";

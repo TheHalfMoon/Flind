@@ -1,6 +1,6 @@
 import { Text } from "@components/text";
-import { taskActivityTimestamp } from "@posthog/core/tasks/taskActivity";
-import type { Task } from "@posthog/shared";
+import { taskActivityTimestamp } from "@flind/core/tasks/taskActivity";
+import type { Task } from "@flind/shared";
 import * as Haptics from "expo-haptics";
 import { Archive, GitBranch, Plus, Sparkle, X } from "phosphor-react-native";
 import { useCallback, useMemo, useState } from "react";

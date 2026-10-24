@@ -1,4 +1,4 @@
-import type { CanvasCapabilities } from "@posthog/shared";
+import type { CanvasCapabilities } from "@flind/shared";
 import type {
   CanvasCaptureInput,
   CanvasLoadInsightInput,

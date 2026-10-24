@@ -1,10 +1,10 @@
-import { applyRenameToSummaries } from "@posthog/core/tasks/taskRename";
+import { applyRenameToSummaries } from "@flind/core/tasks/taskRename";
 import type {
   SignalReport,
   SignalReportArtefactsResponse,
   SuggestedReviewer,
   SuggestedReviewersArtefact,
-} from "@posthog/shared/domain-types";
+} from "@flind/shared/domain-types";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { renderHook, waitFor } from "@testing-library/react";
 import { act, type ReactNode } from "react";
@@ -17,19 +17,19 @@ const mockClient = vi.hoisted(() => ({
   getTaskSummaries: vi.fn(),
 }));
 
-vi.mock("@posthog/ui/features/auth/authClient", () => ({
+vi.mock("@flind/ui/features/auth/authClient", () => ({
   useOptionalAuthenticatedClient: () => mockClient,
 }));
 
-vi.mock("@posthog/di/react", async () => {
+vi.mock("@flind/di/react", async () => {
   const { ReportImplementationService } = await import(
-    "@posthog/core/inbox/reportImplementationService"
+    "@flind/core/inbox/reportImplementationService"
   );
   const service = new ReportImplementationService();
   return { useService: () => service };
 });
 
-vi.mock("@posthog/ui/primitives/toast", () => ({
+vi.mock("@flind/ui/primitives/toast", () => ({
   toast: { error: vi.fn() },
 }));
 

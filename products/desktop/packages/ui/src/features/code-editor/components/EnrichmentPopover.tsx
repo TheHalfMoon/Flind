@@ -3,16 +3,16 @@ import {
   compactNumber,
   relativeTime,
   stalenessLabel,
-} from "@posthog/core/code-editor/enrichmentPresenters";
+} from "@flind/core/code-editor/enrichmentPresenters";
 import { Badge, Button, Card } from "@flind/quill";
-import type { SerializedEvent, SerializedFlag } from "@posthog/shared";
+import type { SerializedEvent, SerializedFlag } from "@flind/shared";
 import {
   eventDefinitionUrl,
   experimentUrl,
   flagUrl,
   flagUrlByKey,
   type LinkOverrides,
-} from "@posthog/ui/utils/posthogLinks";
+} from "@flind/ui/utils/posthogLinks";
 import { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { openExternalUrl } from "../../../shell/openExternal";

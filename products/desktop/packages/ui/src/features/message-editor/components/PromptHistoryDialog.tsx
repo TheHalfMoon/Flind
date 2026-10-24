@@ -11,11 +11,11 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@flind/quill";
-import { formatRelativeTimeLong } from "@posthog/shared";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
-import { useTaskInputHistoryStore } from "@posthog/ui/features/message-editor/taskInputHistoryStore";
-import { track } from "@posthog/ui/shell/analytics";
-import { showMessageBox } from "@posthog/ui/utils/dialog";
+import { formatRelativeTimeLong } from "@flind/shared";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
+import { useTaskInputHistoryStore } from "@flind/ui/features/message-editor/taskInputHistoryStore";
+import { track } from "@flind/ui/shell/analytics";
+import { showMessageBox } from "@flind/ui/utils/dialog";
 import Fuse from "fuse.js";
 import { useMemo, useRef, useState } from "react";
 

@@ -1,5 +1,5 @@
 import { SparkleIcon } from "@phosphor-icons/react";
-import { buildScoutAuthorPrompt } from "@posthog/core/scouts/scoutPrompts";
+import { buildScoutAuthorPrompt } from "@flind/core/scouts/scoutPrompts";
 import {
   Button,
   Dialog,

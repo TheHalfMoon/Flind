@@ -49,7 +49,7 @@ Build the workspace deps (TTY-safe, the same step `pnpm dev` runs first), then
 launch only the Electron app with its stdin held open:
 
 ```bash
-pnpm build:deps                        # turbo build of @posthog/code deps
+pnpm build:deps                        # turbo build of @flind/code deps
 tail -f /dev/null | pnpm dev:code      # run in the background; leave it running
 ```
 

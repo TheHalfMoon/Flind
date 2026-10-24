@@ -5,7 +5,7 @@ import { expect, it, vi } from "vitest";
 const readDelayMs = 5;
 async function freshStore(stored: Record<string, string> | null) {
   vi.resetModules();
-  vi.doMock("@posthog/ui/shell/rendererStorage", () => ({
+  vi.doMock("@flind/ui/shell/rendererStorage", () => ({
     electronStorage: {
       getItem: async () => {
         await new Promise((r) => setTimeout(r, readDelayMs));

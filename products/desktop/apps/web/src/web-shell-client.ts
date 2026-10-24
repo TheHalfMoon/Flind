@@ -1,4 +1,4 @@
-import type { ShellClient } from "@posthog/ui/features/terminal/shellClient";
+import type { ShellClient } from "@flind/ui/features/terminal/shellClient";
 
 // There is no PTY/terminal in a browser. useSessionCallbacks resolves
 // SHELL_CLIENT unconditionally when a chat view mounts (for the local

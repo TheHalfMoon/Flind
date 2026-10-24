@@ -1,5 +1,5 @@
 import { DownloadSimpleIcon, WarningIcon } from "@phosphor-icons/react";
-import type { SkillIssue } from "@posthog/core/skills/analyzeSkills";
+import type { SkillIssue } from "@flind/core/skills/analyzeSkills";
 import {
   AlertDialog,
   AlertDialogContent,
@@ -21,11 +21,11 @@ import {
   DropdownMenuSeparator,
   Input,
 } from "@flind/quill";
-import type { SkillInfo } from "@posthog/shared";
-import { stripFrontmatter } from "@posthog/shared";
-import { CodeMirrorEditor } from "@posthog/ui/features/code-editor/components/CodeMirrorEditor";
-import { MarkdownRenderer } from "@posthog/ui/features/editor/components/MarkdownRenderer";
-import { toast } from "@posthog/ui/primitives/toast";
+import type { SkillInfo } from "@flind/shared";
+import { stripFrontmatter } from "@flind/shared";
+import { CodeMirrorEditor } from "@flind/ui/features/code-editor/components/CodeMirrorEditor";
+import { MarkdownRenderer } from "@flind/ui/features/editor/components/MarkdownRenderer";
+import { toast } from "@flind/ui/primitives/toast";
 import { useState } from "react";
 import { ReplaceSkillDialog } from "./ReplaceSkillDialog";
 import { SOURCE_CONFIG } from "./SkillCard";

@@ -1,5 +1,5 @@
-import { resolveCloudResumeOptions } from "@posthog/core/sessions/cloudRunOptions";
-import { convertStoredEntriesToPortableSessionEvents } from "@posthog/core/sessions/portableSessionEvents";
+import { resolveCloudResumeOptions } from "@flind/core/sessions/cloudRunOptions";
+import { convertStoredEntriesToPortableSessionEvents } from "@flind/core/sessions/portableSessionEvents";
 import {
   type CloudTaskUpdatePayload,
   isIdleResumeTurnComplete,
@@ -7,7 +7,7 @@ import {
   type StoredLogEntry,
   serializeCloudPrompt,
   type Task,
-} from "@posthog/shared";
+} from "@flind/shared";
 import * as Haptics from "expo-haptics";
 import { AppState } from "react-native";
 import { create } from "zustand";

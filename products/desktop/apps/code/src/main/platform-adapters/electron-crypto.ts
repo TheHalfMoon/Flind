@@ -1,5 +1,5 @@
 import { createHash, randomBytes } from "node:crypto";
-import type { ICrypto } from "@posthog/platform/crypto";
+import type { ICrypto } from "@flind/platform/crypto";
 import { injectable } from "inversify";
 
 @injectable()

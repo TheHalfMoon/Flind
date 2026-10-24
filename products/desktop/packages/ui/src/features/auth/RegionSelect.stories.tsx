@@ -1,8 +1,8 @@
-import type { CloudRegion } from "@posthog/shared";
-import { CustomCloudFields } from "@posthog/ui/features/auth/CustomCloudFields";
-import { RegionSelect } from "@posthog/ui/features/auth/RegionSelect";
-import type { CustomCloudDraft } from "@posthog/ui/features/auth/useCustomCloud";
-import { ProductWordmark } from "@posthog/ui/primitives/ProductWordmark";
+import type { CloudRegion } from "@flind/shared";
+import { CustomCloudFields } from "@flind/ui/features/auth/CustomCloudFields";
+import { RegionSelect } from "@flind/ui/features/auth/RegionSelect";
+import type { CustomCloudDraft } from "@flind/ui/features/auth/useCustomCloud";
+import { ProductWordmark } from "@flind/ui/primitives/ProductWordmark";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
 

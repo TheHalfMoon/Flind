@@ -1,18 +1,18 @@
-import { useHostTRPC } from "@posthog/host-router/react";
+import { useHostTRPC } from "@flind/host-router/react";
 import { Button, Switch } from "@flind/quill";
-import { ANALYTICS_EVENTS } from "@posthog/shared";
+import { ANALYTICS_EVENTS } from "@flind/shared";
 import {
   applyModelAccess,
   useAdapterSubscription,
-} from "@posthog/ui/features/settings/adapterSubscription";
-import { SettingsCardRow } from "@posthog/ui/features/settings/components/SettingsCard";
-import { CodexCloudSection } from "@posthog/ui/features/settings/sections/CodexCloudSection";
-import { useSettingsPageStore } from "@posthog/ui/features/settings/stores/settingsPageStore";
-import { SUBSCRIPTION_LOGIN_ACTION } from "@posthog/ui/features/settings/subscriptionActions";
-import { toast } from "@posthog/ui/primitives/toast";
-import { track } from "@posthog/ui/shell/analytics";
-import { openExternalUrl } from "@posthog/ui/shell/openExternal";
-import { registerAdapterSubscription } from "@posthog/ui/shell/posthogAnalyticsImpl";
+} from "@flind/ui/features/settings/adapterSubscription";
+import { SettingsCardRow } from "@flind/ui/features/settings/components/SettingsCard";
+import { CodexCloudSection } from "@flind/ui/features/settings/sections/CodexCloudSection";
+import { useSettingsPageStore } from "@flind/ui/features/settings/stores/settingsPageStore";
+import { SUBSCRIPTION_LOGIN_ACTION } from "@flind/ui/features/settings/subscriptionActions";
+import { toast } from "@flind/ui/primitives/toast";
+import { track } from "@flind/ui/shell/analytics";
+import { openExternalUrl } from "@flind/ui/shell/openExternal";
+import { registerAdapterSubscription } from "@flind/ui/shell/posthogAnalyticsImpl";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { type ReactElement, useEffect, useState } from "react";
 

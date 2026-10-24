@@ -1,8 +1,8 @@
-import { publicProcedure, router } from "@posthog/host-trpc/trpc";
+import { publicProcedure, router } from "@flind/host-trpc/trpc";
 import {
   type IScreenCapture,
   SCREEN_CAPTURE_SERVICE,
-} from "@posthog/platform/screen-capture";
+} from "@flind/platform/screen-capture";
 import { z } from "zod";
 
 const regionInput = z.object({

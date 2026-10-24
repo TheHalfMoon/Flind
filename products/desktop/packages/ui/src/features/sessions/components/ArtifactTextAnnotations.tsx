@@ -1,13 +1,13 @@
-import type { ResourceComment } from "@posthog/api-client/posthog-client";
+import type { ResourceComment } from "@flind/api-client/posthog-client";
 import {
   type CommentAnchor,
   createTextCommentAnchor,
   resolveTextCommentAnchor,
   type TextCommentAnchor,
-} from "@posthog/core/comments/anchors";
-import type { UserBasic } from "@posthog/shared/domain-types";
-import type { EditorSelection } from "@posthog/ui/features/code-editor/components/CodeMirrorEditor";
-import { SelectionCommentOverlay } from "@posthog/ui/features/code-editor/components/SelectionCommentOverlay";
+} from "@flind/core/comments/anchors";
+import type { UserBasic } from "@flind/shared/domain-types";
+import type { EditorSelection } from "@flind/ui/features/code-editor/components/CodeMirrorEditor";
+import { SelectionCommentOverlay } from "@flind/ui/features/code-editor/components/SelectionCommentOverlay";
 import {
   type RefObject,
   useCallback,

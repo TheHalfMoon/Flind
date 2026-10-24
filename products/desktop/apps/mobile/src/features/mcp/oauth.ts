@@ -3,7 +3,7 @@ import type {
   InstallMcpTemplateOptions,
   McpInstallResponse,
   McpServerInstallation,
-} from "@posthog/api-client/types";
+} from "@flind/api-client/types";
 import * as Linking from "expo-linking";
 import * as WebBrowser from "expo-web-browser";
 import { getPostHogApiClient } from "@/lib/posthogApiClient";

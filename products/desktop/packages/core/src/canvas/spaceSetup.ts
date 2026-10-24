@@ -3,7 +3,7 @@ import type {
   SpaceGoalPeriod,
   SpaceSetupInput,
   SpaceSetupKind,
-} from "@posthog/shared/domain-types";
+} from "@flind/shared/domain-types";
 
 /** What the create-space flow asks the space to be set up for. */
 export type SpaceSetupChoice = "none" | SpaceSetupKind;

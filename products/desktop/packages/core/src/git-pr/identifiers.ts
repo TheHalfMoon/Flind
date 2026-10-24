@@ -1,4 +1,4 @@
-import type { SagaLogger } from "@posthog/shared";
+import type { SagaLogger } from "@flind/shared";
 
 export const GIT_PR_SERVICE = Symbol.for("posthog.core.gitPrService");
 export const GIT_DIFF_SOURCE = Symbol.for("posthog.core.gitDiffSource");

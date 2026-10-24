@@ -1,11 +1,11 @@
-import type { PostHogAPIClient } from "@posthog/api-client/posthog-client";
-import { resolveServiceOptional } from "@posthog/di/container";
+import type { PostHogAPIClient } from "@flind/api-client/posthog-client";
+import { resolveServiceOptional } from "@flind/di/container";
 import {
   isImageBuildFailed,
   isImageBuildInProgress,
   type SandboxCustomImage,
-} from "@posthog/shared/domain-types";
-import { NotificationBus } from "@posthog/ui/features/notifications/notifications";
+} from "@flind/shared/domain-types";
+import { NotificationBus } from "@flind/ui/features/notifications/notifications";
 
 const POLL_INTERVAL_MS = 5000;
 const MAX_POLLS = 720;

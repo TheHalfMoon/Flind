@@ -1,4 +1,4 @@
-import type { AttachmentRef } from "@posthog/core/sessions/promptContent";
+import type { AttachmentRef } from "@flind/core/sessions/promptContent";
 
 export type UserMessageAttachment = AttachmentRef;
 

@@ -1,17 +1,17 @@
-import type { BrowserTabsClient } from "@posthog/ui/features/browser-tabs/browserTabsClient";
+import type { BrowserTabsClient } from "@flind/ui/features/browser-tabs/browserTabsClient";
 import {
   type BrowserTabDestination,
   findTabForDestination,
   openInNewBrowserTabSync,
-} from "@posthog/ui/features/browser-tabs/imperativeTabNavigation";
-import { readMirror } from "@posthog/ui/features/browser-tabs/tabsSync";
-import { readCanvasDragDetail } from "@posthog/ui/features/canvas/canvasDrag";
-import { useCurrentChannelStore } from "@posthog/ui/features/canvas/stores/currentChannelStore";
+} from "@flind/ui/features/browser-tabs/imperativeTabNavigation";
+import { readMirror } from "@flind/ui/features/browser-tabs/tabsSync";
+import { readCanvasDragDetail } from "@flind/ui/features/canvas/canvasDrag";
+import { useCurrentChannelStore } from "@flind/ui/features/canvas/stores/currentChannelStore";
 import {
   consumeTaskDrop,
   readTaskDragData,
-} from "@posthog/ui/features/sidebar/taskDrag";
-import { getCachedTask } from "@posthog/ui/features/tasks/queries";
+} from "@flind/ui/features/sidebar/taskDrag";
+import { getCachedTask } from "@flind/ui/features/tasks/queries";
 import { tileBeside } from "./tileActions";
 import { useTileLayoutStore } from "./tileLayoutStore";
 import {

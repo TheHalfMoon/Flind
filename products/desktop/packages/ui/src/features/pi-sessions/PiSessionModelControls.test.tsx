@@ -1,4 +1,4 @@
-import type { PiControllerSessionState } from "@posthog/core/pi-runtime/piSessionStore";
+import type { PiControllerSessionState } from "@flind/core/pi-runtime/piSessionStore";
 import { Theme } from "@radix-ui/themes";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";

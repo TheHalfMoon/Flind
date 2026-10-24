@@ -2,7 +2,7 @@ import {
   CANVAS_PLATFORM_MANIFEST,
   CANVAS_SDK_MODULE_SOURCE,
   CANVAS_SDK_SPECIFIER,
-} from "@posthog/shared";
+} from "@flind/shared";
 import { describe, expect, it } from "vitest";
 import { buildImportMap, FREEFORM_WHITELIST } from "./freeformWhitelist";
 

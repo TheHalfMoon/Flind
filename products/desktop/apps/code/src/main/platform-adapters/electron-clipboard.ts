@@ -1,4 +1,4 @@
-import type { IClipboard } from "@posthog/platform/clipboard";
+import type { IClipboard } from "@flind/platform/clipboard";
 import { clipboard } from "electron";
 import { injectable } from "inversify";
 

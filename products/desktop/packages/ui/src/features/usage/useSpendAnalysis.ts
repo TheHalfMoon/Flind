@@ -1,11 +1,11 @@
-import type { SpendAnalysisResponse } from "@posthog/api-client/spend-analysis";
+import type { SpendAnalysisResponse } from "@flind/api-client/spend-analysis";
 import {
   type SpendAnalysisWindow,
   windowToDateFrom,
-} from "@posthog/core/billing/spendAnalysisFormat";
-import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { AUTH_SCOPED_QUERY_META } from "@posthog/ui/features/auth/useCurrentUser";
-import { logger } from "@posthog/ui/shell/logger";
+} from "@flind/core/billing/spendAnalysisFormat";
+import { useOptionalAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { AUTH_SCOPED_QUERY_META } from "@flind/ui/features/auth/useCurrentUser";
+import { logger } from "@flind/ui/shell/logger";
 import { useQuery } from "@tanstack/react-query";
 
 const log = logger.scope("spend-analysis");

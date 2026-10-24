@@ -33,15 +33,15 @@ const mocks = vi.hoisted(() => ({
   navigate: vi.fn(),
 }));
 
-vi.mock("@posthog/ui/shell/analytics", () => ({ track: vi.fn() }));
-vi.mock("@posthog/ui/features/canvas/components/CreateChannelModal", () => ({
+vi.mock("@flind/ui/shell/analytics", () => ({ track: vi.fn() }));
+vi.mock("@flind/ui/features/canvas/components/CreateChannelModal", () => ({
   CreateChannelModal: ({ open }: { open: boolean }) =>
     open ? <div role="dialog">New space dialog</div> : null,
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useChannelsLayout", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannelsLayout", () => ({
   useChannelsLayout: () => mocks.channelsLayout,
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useChannels", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannels", () => ({
   useChannels: () => ({ channels: mocks.channels, isLoading: false }),
   useChannelMutations: () => ({
     deleteChannel: vi.fn(),
@@ -50,51 +50,51 @@ vi.mock("@posthog/ui/features/canvas/hooks/useChannels", () => ({
     isUpdatingAutoArchive: false,
   }),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useChannelStars", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannelStars", () => ({
   useChannelStarToggle: () => ({
     isStarred: false,
     toggleStar: vi.fn(),
   }),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useDashboards", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useDashboards", () => ({
   useCreateAndOpenDashboard: () => vi.fn(),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useUnreadChannels", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useUnreadChannels", () => ({
   useIsChannelUnread: () => () => false,
 }));
 // Reads the task list and the viewed timestamps, and the timestamps come over
 // tRPC — which this file renders without, like the other data hooks it stubs.
-vi.mock("@posthog/ui/features/canvas/hooks/useUnreadSessionCount", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useUnreadSessionCount", () => ({
   useUnreadSessionCount: () => (channelId: string | undefined) =>
     mocks.unreadSessions[channelId ?? ""] ?? 0,
 }));
 // Reads the live session store and the task list, neither of which this file
 // mounts.
-vi.mock("@posthog/ui/features/canvas/hooks/useBlockedSessionCount", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useBlockedSessionCount", () => ({
   useBlockedSessionCount: () => (channelId: string | undefined) =>
     mocks.blockedSessions[channelId ?? ""] ?? 0,
 }));
-vi.mock("@posthog/ui/features/auth/useCurrentUser", () => ({
+vi.mock("@flind/ui/features/auth/useCurrentUser", () => ({
   useCurrentUser: () => ({ data: { id: mocks.currentUserId } }),
 }));
 // The row menu's spaces list and filing mutation are tRPC-backed; the flag
 // lookup sits behind a service provider that isn't mounted here.
-vi.mock("@posthog/ui/features/feature-flags/useFeatureFlag", () => ({
+vi.mock("@flind/ui/features/feature-flags/useFeatureFlag", () => ({
   useFeatureFlag: () => true,
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useFileTaskToChannel", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useFileTaskToChannel", () => ({
   useFileTaskToChannel: () => ({ fileTask: vi.fn() }),
 }));
-vi.mock("@posthog/ui/features/browser-tabs/useOpenBrowserTab", () => ({
+vi.mock("@flind/ui/features/browser-tabs/useOpenBrowserTab", () => ({
   useOpenBrowserTab: () => vi.fn(),
 }));
 vi.mock(
-  "@posthog/ui/features/task-detail/components/HandoffTaskDialog",
+  "@flind/ui/features/task-detail/components/HandoffTaskDialog",
   () => ({
     HandoffTaskDialog: () => null,
   }),
 );
-vi.mock("@posthog/ui/features/canvas/hooks/useRecentSpaceTasks", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useRecentSpaceTasks", () => ({
   NO_TASKS: { items: [], total: 0 },
   usePrefetchSpaceTasks: () => () => undefined,
   useSpacePresence: () => new Map(),
@@ -132,14 +132,14 @@ vi.mock("@posthog/ui/features/canvas/hooks/useRecentSpaceTasks", () => ({
       }),
     ),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useChannelTaskStatus", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannelTaskStatus", () => ({
   useChannelTaskStatus: () => null,
 }));
 vi.mock(
-  "@posthog/ui/features/canvas/hooks/useSpaceTaskActions",
+  "@flind/ui/features/canvas/hooks/useSpaceTaskActions",
   async (importOriginal) => ({
     ...(await importOriginal<
-      typeof import("@posthog/ui/features/canvas/hooks/useSpaceTaskActions")
+      typeof import("@flind/ui/features/canvas/hooks/useSpaceTaskActions")
     >()),
     // The real one is a pin mutation and an archive mutation; the tree's rows
     // only need something to hand their menus.
@@ -150,7 +150,7 @@ vi.mock(
     }),
   }),
 );
-vi.mock("@posthog/ui/features/canvas/components/RenameChannelModal", () => ({
+vi.mock("@flind/ui/features/canvas/components/RenameChannelModal", () => ({
   RenameChannelModal: () => null,
 }));
 vi.mock("@tanstack/react-router", () => ({
@@ -167,15 +167,15 @@ import {
   showChannelList,
   showChannelPane,
   useChannelPaneStore,
-} from "@posthog/ui/features/canvas/stores/channelPaneStore";
-import { useCurrentChannelStore } from "@posthog/ui/features/canvas/stores/currentChannelStore";
+} from "@flind/ui/features/canvas/stores/channelPaneStore";
+import { useCurrentChannelStore } from "@flind/ui/features/canvas/stores/currentChannelStore";
 import {
   requestSidebarSearchFocus,
   useSidebarSearchStore,
-} from "@posthog/ui/features/canvas/stores/sidebarSearchStore";
-import { useSpaceTreeStore } from "@posthog/ui/features/canvas/stores/spaceTreeStore";
-import { useArchivingTasksStore } from "@posthog/ui/features/sidebar/archivingTasksStore";
-import { useSidebarStore } from "@posthog/ui/features/sidebar/sidebarStore";
+} from "@flind/ui/features/canvas/stores/sidebarSearchStore";
+import { useSpaceTreeStore } from "@flind/ui/features/canvas/stores/spaceTreeStore";
+import { useArchivingTasksStore } from "@flind/ui/features/sidebar/archivingTasksStore";
+import { useSidebarStore } from "@flind/ui/features/sidebar/sidebarStore";
 import { ChannelsList } from "./ChannelsList";
 
 const ME = {

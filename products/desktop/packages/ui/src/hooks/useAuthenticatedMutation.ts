@@ -1,5 +1,5 @@
-import type { PostHogAPIClient } from "@posthog/api-client/posthog-client";
-import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
+import type { PostHogAPIClient } from "@flind/api-client/posthog-client";
+import { useOptionalAuthenticatedClient } from "@flind/ui/features/auth/authClient";
 import type {
   UseMutationOptions,
   UseMutationResult,

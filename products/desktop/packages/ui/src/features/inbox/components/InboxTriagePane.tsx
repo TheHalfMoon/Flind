@@ -1,11 +1,11 @@
-import { ReportTriageFocus } from "@posthog/ui/features/inbox/components/ReportTriageFocus";
-import { useInboxTriageOrigin } from "@posthog/ui/features/inbox/hooks/useInboxBackTarget";
-import { useInboxSectionedReports } from "@posthog/ui/features/inbox/hooks/useInboxSectionedReports";
+import { ReportTriageFocus } from "@flind/ui/features/inbox/components/ReportTriageFocus";
+import { useInboxTriageOrigin } from "@flind/ui/features/inbox/hooks/useInboxBackTarget";
+import { useInboxSectionedReports } from "@flind/ui/features/inbox/hooks/useInboxSectionedReports";
 import {
   hasActiveReportsListFilters,
   useInboxSignalsFilterStore,
-} from "@posthog/ui/features/inbox/stores/inboxSignalsFilterStore";
-import { LoadingState } from "@posthog/ui/primitives/LoadingState";
+} from "@flind/ui/features/inbox/stores/inboxSignalsFilterStore";
+import { LoadingState } from "@flind/ui/primitives/LoadingState";
 import { useNavigate } from "@tanstack/react-router";
 import type { ReactElement } from "react";
 

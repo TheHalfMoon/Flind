@@ -13,26 +13,26 @@ const getUserIntegrationIdForRepo = vi.hoisted(() => vi.fn(() => "ghu_1"));
 const resolveDefaultCloudRepository = vi.hoisted(() => vi.fn());
 const toastError = vi.hoisted(() => vi.fn());
 
-vi.mock("@posthog/ui/features/auth/store", () => ({
+vi.mock("@flind/ui/features/auth/store", () => ({
   useAuthStateValue: (sel: (s: { cloudRegion: string }) => unknown) =>
     sel({ cloudRegion: "us" }),
 }));
-vi.mock("@posthog/ui/hooks/useConnectivity", () => ({
+vi.mock("@flind/ui/hooks/useConnectivity", () => ({
   useConnectivity: () => ({ isOnline: true }),
 }));
-vi.mock("@posthog/ui/features/connectivity/connectivityToast", () => ({
+vi.mock("@flind/ui/features/connectivity/connectivityToast", () => ({
   showOfflineToast: vi.fn(),
 }));
-vi.mock("@posthog/ui/features/inbox/hooks/resolveDefaultModel", () => ({
+vi.mock("@flind/ui/features/inbox/hooks/resolveDefaultModel", () => ({
   resolveDefaultModel: vi.fn().mockResolvedValue("claude-sonnet"),
 }));
-vi.mock("@posthog/ui/features/integrations/useIntegrations", () => ({
+vi.mock("@flind/ui/features/integrations/useIntegrations", () => ({
   useUserRepositoryIntegration: () => ({
     repositories: [],
     getUserIntegrationIdForRepo,
   }),
 }));
-vi.mock("@posthog/ui/features/settings/settingsStore", () => ({
+vi.mock("@flind/ui/features/settings/settingsStore", () => ({
   resolveDefaultCloudRepository,
   useSettingsStore: Object.assign(
     (sel: (s: { lastUsedCloudRepository: string | null }) => unknown) =>
@@ -46,23 +46,23 @@ vi.mock("@posthog/ui/features/settings/settingsStore", () => ({
     },
   ),
 }));
-vi.mock("@posthog/di/react", () => ({
+vi.mock("@flind/di/react", () => ({
   useService: (token: symbol) =>
     token.description === "posthog.core.inbox.reportModelResolver"
       ? { resolveDefaultModel: vi.fn() }
       : { createTask },
 }));
-vi.mock("@posthog/ui/features/tasks/useTaskCrudMutations", () => ({
+vi.mock("@flind/ui/features/tasks/useTaskCrudMutations", () => ({
   useCreateTask: () => ({ invalidateTasks: vi.fn() }),
 }));
-vi.mock("@posthog/ui/router/useOpenTask", () => ({
+vi.mock("@flind/ui/router/useOpenTask", () => ({
   openTask: vi.fn().mockResolvedValue(undefined),
 }));
-vi.mock("@posthog/ui/shell/analytics", () => ({ track: vi.fn() }));
-vi.mock("@posthog/ui/shell/logger", () => ({
+vi.mock("@flind/ui/shell/analytics", () => ({ track: vi.fn() }));
+vi.mock("@flind/ui/shell/logger", () => ({
   logger: { scope: () => ({ info: vi.fn(), error: vi.fn(), warn: vi.fn() }) },
 }));
-vi.mock("@posthog/ui/primitives/toast", () => ({
+vi.mock("@flind/ui/primitives/toast", () => ({
   toast: {
     error: toastError,
     loading: vi.fn(() => "toast-1"),

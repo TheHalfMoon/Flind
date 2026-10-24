@@ -6,7 +6,7 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 const readFileAsDataUrl = vi.hoisted(() =>
   vi.fn(async () => "data:image/png;base64,AA"),
 );
-vi.mock("@posthog/ui/features/message-editor/hostApi", () => ({
+vi.mock("@flind/ui/features/message-editor/hostApi", () => ({
   readFileAsDataUrl,
 }));
 

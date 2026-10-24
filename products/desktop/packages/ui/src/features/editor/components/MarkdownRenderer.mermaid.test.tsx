@@ -1,5 +1,5 @@
-import { MarkdownDocumentPreview } from "@posthog/ui/features/code-editor/components/MarkdownDocumentPreview";
-import { MarkdownRenderer } from "@posthog/ui/features/editor/components/MarkdownRenderer";
+import { MarkdownDocumentPreview } from "@flind/ui/features/code-editor/components/MarkdownDocumentPreview";
+import { MarkdownRenderer } from "@flind/ui/features/editor/components/MarkdownRenderer";
 import { render, screen } from "@testing-library/react";
 import mermaid from "mermaid";
 import { describe, expect, it, vi } from "vitest";
@@ -16,12 +16,12 @@ vi.mock("mermaid", () => ({
   },
 }));
 
-vi.mock("@posthog/ui/shell/themeStore", () => ({
+vi.mock("@flind/ui/shell/themeStore", () => ({
   useThemeStore: (selector: (state: { isDarkMode: boolean }) => unknown) =>
     selector({ isDarkMode: false }),
 }));
 
-vi.mock("@posthog/ui/utils/syntax-highlight", () => ({
+vi.mock("@flind/ui/utils/syntax-highlight", () => ({
   highlightSyntax: () => null,
 }));
 

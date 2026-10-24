@@ -1,5 +1,5 @@
 import { Button } from "@flind/quill";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
+import { Spinner } from "@flind/ui/primitives/Spinner";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {

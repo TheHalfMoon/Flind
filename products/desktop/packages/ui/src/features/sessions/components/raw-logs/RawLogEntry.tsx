@@ -1,5 +1,5 @@
 import { Copy } from "@phosphor-icons/react";
-import type { AcpMessage } from "@posthog/shared";
+import type { AcpMessage } from "@flind/shared";
 import { Box, Code, Flex, IconButton, Text } from "@radix-ui/themes";
 
 interface RawLogEntryProps {

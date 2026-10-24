@@ -1,4 +1,4 @@
-import { getErrorMessage, SKILL_EXISTS_MARKER } from "@posthog/shared";
+import { getErrorMessage, SKILL_EXISTS_MARKER } from "@flind/shared";
 
 /** Write endpoints throw plain Errors; conflicts match the shared marker. */
 export function isSkillExistsError(error: unknown): boolean {

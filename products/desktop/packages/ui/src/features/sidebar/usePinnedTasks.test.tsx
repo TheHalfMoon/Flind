@@ -9,7 +9,7 @@ const authClient = vi.hoisted(() => ({
   getPinnedTaskIds: vi.fn(),
 }));
 
-vi.mock("@posthog/ui/features/auth/authClient", () => ({
+vi.mock("@flind/ui/features/auth/authClient", () => ({
   useOptionalAuthenticatedClient: () => authClient,
 }));
 

@@ -13,8 +13,8 @@ import {
   pickerStyle,
   tag,
 } from "@expo/ui/swift-ui/modifiers";
-import { formatRelativeAge } from "@posthog/shared";
-import type { SignalReport } from "@posthog/shared/domain-types";
+import { formatRelativeAge } from "@flind/shared";
+import type { SignalReport } from "@flind/shared/domain-types";
 import * as Haptics from "expo-haptics";
 import { useNavigation, useRouter } from "expo-router";
 import { useEffect, useMemo, useState } from "react";

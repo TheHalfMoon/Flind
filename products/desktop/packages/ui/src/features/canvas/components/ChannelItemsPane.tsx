@@ -12,7 +12,7 @@ import {
   PINNED_SECTION_KEY,
   sameSources,
   sortChannelItems,
-} from "@posthog/core/canvas/channelItems";
+} from "@flind/core/canvas/channelItems";
 import {
   Empty,
   EmptyDescription,
@@ -29,33 +29,33 @@ import {
 import {
   ANALYTICS_EVENTS,
   type TaskListSurface,
-} from "@posthog/shared/analytics-events";
-import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { useCurrentUser } from "@posthog/ui/features/auth/useCurrentUser";
+} from "@flind/shared/analytics-events";
+import { useOptionalAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { useCurrentUser } from "@flind/ui/features/auth/useCurrentUser";
 import {
   commandCenterAssigner,
   isInCommandCenter,
-} from "@posthog/ui/features/canvas/commandCenterAssign";
-import { ChannelFilterMenu } from "@posthog/ui/features/canvas/components/ChannelFilterMenu";
-import { ChannelItemDragPreview } from "@posthog/ui/features/canvas/components/ChannelItemDragPreview";
-import type { ChannelItemActions } from "@posthog/ui/features/canvas/components/ChannelItemRow";
-import { ChannelItemRow } from "@posthog/ui/features/canvas/components/ChannelItemRow";
-import { PinnedRun } from "@posthog/ui/features/canvas/components/PinnedRun";
-import { useChannelItemSelection } from "@posthog/ui/features/canvas/hooks/useChannelItemSelection";
-import { useLocalDayStart } from "@posthog/ui/features/canvas/hooks/useLocalDayStart";
-import { useCommandCenterStore } from "@posthog/ui/features/command-center/commandCenterStore";
-import { EditListItemAppearanceDialog } from "@posthog/ui/features/sidebar/components/EditListItemAppearanceDialog";
-import { MarqueeOverlay } from "@posthog/ui/features/sidebar/components/MarqueeOverlay";
-import { SidebarBulkActionBar } from "@posthog/ui/features/sidebar/components/SidebarBulkActionBar";
+} from "@flind/ui/features/canvas/commandCenterAssign";
+import { ChannelFilterMenu } from "@flind/ui/features/canvas/components/ChannelFilterMenu";
+import { ChannelItemDragPreview } from "@flind/ui/features/canvas/components/ChannelItemDragPreview";
+import type { ChannelItemActions } from "@flind/ui/features/canvas/components/ChannelItemRow";
+import { ChannelItemRow } from "@flind/ui/features/canvas/components/ChannelItemRow";
+import { PinnedRun } from "@flind/ui/features/canvas/components/PinnedRun";
+import { useChannelItemSelection } from "@flind/ui/features/canvas/hooks/useChannelItemSelection";
+import { useLocalDayStart } from "@flind/ui/features/canvas/hooks/useLocalDayStart";
+import { useCommandCenterStore } from "@flind/ui/features/command-center/commandCenterStore";
+import { EditListItemAppearanceDialog } from "@flind/ui/features/sidebar/components/EditListItemAppearanceDialog";
+import { MarqueeOverlay } from "@flind/ui/features/sidebar/components/MarqueeOverlay";
+import { SidebarBulkActionBar } from "@flind/ui/features/sidebar/components/SidebarBulkActionBar";
 import {
   DEFAULT_SIDEBAR_CHANNEL_ITEM_FILTERS,
   useSidebarStore,
-} from "@posthog/ui/features/sidebar/sidebarStore";
-import { taskDragSiblings } from "@posthog/ui/features/sidebar/taskDrag";
-import { usePinDrag } from "@posthog/ui/features/sidebar/usePinDrag";
-import { useRenameTask } from "@posthog/ui/features/tasks/useTaskMutations";
-import { track } from "@posthog/ui/shell/analytics";
-import { logger } from "@posthog/ui/shell/logger";
+} from "@flind/ui/features/sidebar/sidebarStore";
+import { taskDragSiblings } from "@flind/ui/features/sidebar/taskDrag";
+import { usePinDrag } from "@flind/ui/features/sidebar/usePinDrag";
+import { useRenameTask } from "@flind/ui/features/tasks/useTaskMutations";
+import { track } from "@flind/ui/shell/analytics";
+import { logger } from "@flind/ui/shell/logger";
 import { motion, useReducedMotion } from "framer-motion";
 import {
   Fragment,

@@ -7,7 +7,7 @@ import {
   buildImageDataUrl,
   isAllowedImageMimeType,
   MAX_IMAGE_BASE64_LENGTH,
-} from "@posthog/shared";
+} from "@flind/shared";
 import { Flex, Text } from "@radix-ui/themes";
 import { useState } from "react";
 import { TransformComponent, TransformWrapper } from "react-zoom-pan-pinch";

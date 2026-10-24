@@ -1,4 +1,4 @@
-import { useHostTRPC } from "@posthog/host-router/react";
+import { useHostTRPC } from "@flind/host-router/react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useCallback, useMemo } from "react";
 

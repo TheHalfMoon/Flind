@@ -1,5 +1,5 @@
 import type { AnnotationSide, FileDiffOptions } from "@pierre/diffs";
-import type { PrReviewComment } from "@posthog/shared";
+import type { PrReviewComment } from "@flind/shared";
 
 export type DiffSource = "local" | "branch" | "pr";
 

@@ -1,4 +1,4 @@
-import type { ArchivedTask } from "@posthog/shared";
+import type { ArchivedTask } from "@flind/shared";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import {
   type ArchiveOrchestrationDeps,

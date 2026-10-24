@@ -1,5 +1,5 @@
-import { useHostTRPCClient } from "@posthog/host-router/react";
-import { logger } from "@posthog/ui/shell/logger";
+import { useHostTRPCClient } from "@flind/host-router/react";
+import { logger } from "@flind/ui/shell/logger";
 import { useEffect, useRef } from "react";
 
 const log = logger.scope("slack-integration-callback-hook");

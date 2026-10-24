@@ -1,7 +1,7 @@
 import type {
   GridDefinition,
   GridPlacement,
-} from "@posthog/core/canvas/gridLayoutSchemas";
+} from "@flind/core/canvas/gridLayoutSchemas";
 
 /** A single cell of the grid, by column and row. */
 export interface GridCell {

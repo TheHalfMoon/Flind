@@ -1,14 +1,14 @@
-import type { Task } from "@posthog/shared/domain-types";
-import { TaskDetail } from "@posthog/ui/features/task-detail/components/TaskDetail";
+import type { Task } from "@flind/shared/domain-types";
+import { TaskDetail } from "@flind/ui/features/task-detail/components/TaskDetail";
 import {
   getCachedTask,
   getCachedTaskDetail,
   taskDetailQuery,
-} from "@posthog/ui/features/tasks/queries";
-import { pickFreshestTask } from "@posthog/ui/features/tasks/taskFreshness";
-import { useTasks } from "@posthog/ui/features/tasks/useTasks";
-import { TaskDetailSkeleton } from "@posthog/ui/router/routeSkeletons";
-import { yieldToPaint } from "@posthog/ui/router/yieldToPaint";
+} from "@flind/ui/features/tasks/queries";
+import { pickFreshestTask } from "@flind/ui/features/tasks/taskFreshness";
+import { useTasks } from "@flind/ui/features/tasks/useTasks";
+import { TaskDetailSkeleton } from "@flind/ui/router/routeSkeletons";
+import { yieldToPaint } from "@flind/ui/router/yieldToPaint";
 import { useQuery } from "@tanstack/react-query";
 import { createFileRoute, Navigate } from "@tanstack/react-router";
 

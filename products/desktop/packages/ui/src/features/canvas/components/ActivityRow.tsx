@@ -8,24 +8,24 @@ import {
 import {
   activityCanvasId,
   type TaskActivityItem,
-} from "@posthog/core/canvas/taskActivity";
+} from "@flind/core/canvas/taskActivity";
 import { Avatar, AvatarFallback, Badge, Button, cn } from "@flind/quill";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
-import type { UserBasic } from "@posthog/shared/domain-types";
-import { UserAvatar } from "@posthog/ui/features/auth/UserAvatar";
-import { ActivityRowSurface } from "@posthog/ui/features/canvas/components/ActivityRowSurface";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
+import type { UserBasic } from "@flind/shared/domain-types";
+import { UserAvatar } from "@flind/ui/features/auth/UserAvatar";
+import { ActivityRowSurface } from "@flind/ui/features/canvas/components/ActivityRowSurface";
 import {
   type AgentActivityIconKind,
   activityPresentation,
-} from "@posthog/ui/features/canvas/components/activityPresentation";
-import { MentionText } from "@posthog/ui/features/canvas/components/MentionText";
+} from "@flind/ui/features/canvas/components/activityPresentation";
+import { MentionText } from "@flind/ui/features/canvas/components/MentionText";
 import {
   TaskRowDropdownMenu,
   type TaskRowMenuProps,
-} from "@posthog/ui/features/canvas/components/TaskRowMenu";
-import { copyCanvasLink } from "@posthog/ui/features/canvas/utils/copyCanvasLink";
-import { copyChannelLink } from "@posthog/ui/features/canvas/utils/copyChannelLink";
-import { track } from "@posthog/ui/shell/analytics";
+} from "@flind/ui/features/canvas/components/TaskRowMenu";
+import { copyCanvasLink } from "@flind/ui/features/canvas/utils/copyCanvasLink";
+import { copyChannelLink } from "@flind/ui/features/canvas/utils/copyChannelLink";
+import { track } from "@flind/ui/shell/analytics";
 import type { ReactElement } from "react";
 
 function AgentActivityIcon({

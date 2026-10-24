@@ -4,14 +4,14 @@ import {
   CaretRightIcon,
   InfoIcon,
 } from "@phosphor-icons/react";
-import { attributionLabel } from "@posthog/core/inbox/activityLog";
+import { attributionLabel } from "@flind/core/inbox/activityLog";
 import {
   formatRankingLift,
   formatRankingProbability,
   rankingLiftBarPercent,
-} from "@posthog/core/inbox/rankingFormat";
+} from "@flind/core/inbox/rankingFormat";
 import { Badge } from "@flind/quill";
-import { dismissalReasonLabel } from "@posthog/shared/dismissalReasons";
+import { dismissalReasonLabel } from "@flind/shared/dismissalReasons";
 import type {
   ActionabilityJudgmentContent,
   AnySignalReportArtefact,
@@ -31,16 +31,16 @@ import type {
   TaskRunArtefactContent,
   WorkClaimContent,
   WorkReleaseContent,
-} from "@posthog/shared/types";
-import { MarkdownRenderer } from "@posthog/ui/features/editor/components/MarkdownRenderer";
-import { ArtefactCommit } from "@posthog/ui/features/inbox/components/detail/ArtefactCommit";
-import { ArtefactTaskRun } from "@posthog/ui/features/inbox/components/detail/ArtefactTaskRun";
-import { SignalReportActionabilityBadge } from "@posthog/ui/features/inbox/components/utils/SignalReportActionabilityBadge";
-import { SignalReportPriorityBadge } from "@posthog/ui/features/inbox/components/utils/SignalReportPriorityBadge";
-import { CodeBlock } from "@posthog/ui/primitives/CodeBlock";
-import { HighlightedCode } from "@posthog/ui/primitives/HighlightedCode";
-import { RelativeTimestamp } from "@posthog/ui/primitives/RelativeTimestamp";
-import { cachedImageUrl } from "@posthog/ui/shell/cachedImageUrl";
+} from "@flind/shared/types";
+import { MarkdownRenderer } from "@flind/ui/features/editor/components/MarkdownRenderer";
+import { ArtefactCommit } from "@flind/ui/features/inbox/components/detail/ArtefactCommit";
+import { ArtefactTaskRun } from "@flind/ui/features/inbox/components/detail/ArtefactTaskRun";
+import { SignalReportActionabilityBadge } from "@flind/ui/features/inbox/components/utils/SignalReportActionabilityBadge";
+import { SignalReportPriorityBadge } from "@flind/ui/features/inbox/components/utils/SignalReportPriorityBadge";
+import { CodeBlock } from "@flind/ui/primitives/CodeBlock";
+import { HighlightedCode } from "@flind/ui/primitives/HighlightedCode";
+import { RelativeTimestamp } from "@flind/ui/primitives/RelativeTimestamp";
+import { cachedImageUrl } from "@flind/ui/shell/cachedImageUrl";
 import { Fragment, useState } from "react";
 
 // A chronological log of every artefact on a report. Each known type renders a

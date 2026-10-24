@@ -1,5 +1,5 @@
 {
-  "name": "@posthog/tsup-config",
+  "name": "@flind/tsup-config",
   "private": true,
   "version": "0.1.0",
   "description": "Shared tsup config factory for workspace packages",

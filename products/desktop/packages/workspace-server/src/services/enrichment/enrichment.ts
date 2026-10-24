@@ -4,7 +4,7 @@ import {
   ROOT_LOGGER,
   type RootLogger,
   type ScopedLogger,
-} from "@posthog/di/logger";
+} from "@flind/di/logger";
 import {
   EXT_TO_LANG_ID,
   enrichSource,

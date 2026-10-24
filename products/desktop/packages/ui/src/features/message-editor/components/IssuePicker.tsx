@@ -1,8 +1,8 @@
-import type { MentionChip } from "@posthog/core/message-editor/content";
+import type { MentionChip } from "@flind/core/message-editor/content";
 import {
   githubIssueToMentionChip,
   githubPullRequestToMentionChip,
-} from "@posthog/core/message-editor/githubIssueChip";
+} from "@flind/core/message-editor/githubIssueChip";
 import {
   Combobox,
   ComboboxContent,
@@ -11,7 +11,7 @@ import {
   ComboboxItem,
   ComboboxList,
 } from "@flind/quill";
-import { useDebounce } from "@posthog/ui/primitives/hooks/useDebounce";
+import { useDebounce } from "@flind/ui/primitives/hooks/useDebounce";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { IssueRow } from "../components/IssueRow";

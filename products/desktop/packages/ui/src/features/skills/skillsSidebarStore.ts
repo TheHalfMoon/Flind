@@ -1,4 +1,4 @@
-import { createSidebarStore } from "@posthog/ui/shell/createSidebarStore";
+import { createSidebarStore } from "@flind/ui/shell/createSidebarStore";
 
 export const useSkillsSidebarStore = createSidebarStore({
   name: "skills-sidebar",

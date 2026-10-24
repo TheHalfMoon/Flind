@@ -8,7 +8,7 @@ import {
 import {
   flattenConfigValues,
   harnessForModelValue,
-} from "@posthog/core/task-detail/configOptions";
+} from "@flind/core/task-detail/configOptions";
 import {
   applyConfigChange,
   CONTEXT_WINDOW_OPTION_CATEGORY,
@@ -17,16 +17,16 @@ import {
   matchesPreferredRunSelection,
   pickPreferredRunSelection,
   preferredRunAdapter,
-} from "@posthog/core/task-detail/previewConfig";
-import { useHostTRPCClient } from "@posthog/host-router/react";
+} from "@flind/core/task-detail/previewConfig";
+import { useHostTRPCClient } from "@flind/host-router/react";
 import {
   type Adapter,
   adapterForModelId,
   FAST_MODE_FLAG,
   getCloudUrlFromRegion,
-} from "@posthog/shared";
-import { stripDisabledModelOption } from "@posthog/ui/features/sessions/modelOptionFilters";
-import { useModelRolloutFlags } from "@posthog/ui/features/sessions/useModelRolloutFlags";
+} from "@flind/shared";
+import { stripDisabledModelOption } from "@flind/ui/features/sessions/modelOptionFilters";
+import { useModelRolloutFlags } from "@flind/ui/features/sessions/useModelRolloutFlags";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { logger } from "../../../shell/logger";
 import { useAuthStateValue } from "../../auth/store";

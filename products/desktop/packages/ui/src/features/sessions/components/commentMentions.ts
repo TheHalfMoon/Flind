@@ -1,5 +1,5 @@
-import { splitMentionSegments } from "@posthog/shared";
-import type { UserBasic } from "@posthog/shared/domain-types";
+import { splitMentionSegments } from "@flind/shared";
+import type { UserBasic } from "@flind/shared/domain-types";
 
 export function mentionIdsFromContent(
   content: string,

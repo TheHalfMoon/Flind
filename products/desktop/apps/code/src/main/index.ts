@@ -1,61 +1,61 @@
 import "reflect-metadata";
 import os from "node:os";
-import { TypedEventEmitter } from "@posthog/shared";
-import type { WorkspaceClient } from "@posthog/workspace-client/client";
-import { createLazyWorkspaceClient } from "@posthog/workspace-client/client";
-import type { FileWatcherEvent } from "@posthog/workspace-client/types";
+import { TypedEventEmitter } from "@flind/shared";
+import type { WorkspaceClient } from "@flind/workspace-client/client";
+import { createLazyWorkspaceClient } from "@flind/workspace-client/client";
+import type { FileWatcherEvent } from "@flind/workspace-client/types";
 import { app, BrowserWindow, dialog, session } from "electron";
 import log from "electron-log/main";
 import "./utils/logger";
 import "./services/index.js";
-import type { AuthService } from "@posthog/core/auth/auth";
-import { focusHostModule } from "@posthog/core/focus/focus-host.module";
+import type { AuthService } from "@flind/core/auth/auth";
+import { focusHostModule } from "@flind/core/focus/focus-host.module";
 import {
   FOCUS_SESSION_STORE,
   FOCUS_WORKSPACE_CLIENT,
   FOCUS_WORKTREE_PATHS,
-} from "@posthog/core/focus/host-focus";
+} from "@flind/core/focus/host-focus";
 import {
   FOCUS_SERVICE,
   type IFocusService,
-} from "@posthog/core/focus/identifiers";
-import { GIT_WORKSPACE_CLIENT } from "@posthog/core/git/identifiers";
-import type { GitHubIntegrationService } from "@posthog/core/integrations/github";
+} from "@flind/core/focus/identifiers";
+import { GIT_WORKSPACE_CLIENT } from "@flind/core/git/identifiers";
+import type { GitHubIntegrationService } from "@flind/core/integrations/github";
 import {
   GITHUB_INTEGRATION_SERVICE,
   SLACK_INTEGRATION_SERVICE,
-} from "@posthog/core/integrations/identifiers";
-import type { SlackIntegrationService } from "@posthog/core/integrations/slack";
-import type { CanvasLinkService } from "@posthog/core/links/canvas-link";
-import type { ChannelLinkService } from "@posthog/core/links/channel-link";
-import type { InboxLinkService } from "@posthog/core/links/inbox-link";
-import type { LoopLinkService } from "@posthog/core/links/loop-link";
-import type { NewTaskLinkService } from "@posthog/core/links/new-task-link";
-import type { ScoutLinkService } from "@posthog/core/links/scout-link";
-import type { TaskLinkService } from "@posthog/core/links/task-link";
-import { NOTIFICATION_SERVICE } from "@posthog/core/notification/identifiers";
-import type { NotificationService } from "@posthog/core/notification/notification";
-import { OAUTH_SERVICE } from "@posthog/core/oauth/identifiers";
-import type { OAuthService } from "@posthog/core/oauth/oauth";
-import type { UpdatesService } from "@posthog/core/updates/updates";
-import { ENVIRONMENT_CLIENT } from "@posthog/host-router/ports/environment-client";
-import { FILE_WATCHER_CONTROL } from "@posthog/host-router/ports/file-watcher-control";
-import { DISK_CACHE_SERVICE } from "@posthog/platform/disk-cache";
+} from "@flind/core/integrations/identifiers";
+import type { SlackIntegrationService } from "@flind/core/integrations/slack";
+import type { CanvasLinkService } from "@flind/core/links/canvas-link";
+import type { ChannelLinkService } from "@flind/core/links/channel-link";
+import type { InboxLinkService } from "@flind/core/links/inbox-link";
+import type { LoopLinkService } from "@flind/core/links/loop-link";
+import type { NewTaskLinkService } from "@flind/core/links/new-task-link";
+import type { ScoutLinkService } from "@flind/core/links/scout-link";
+import type { TaskLinkService } from "@flind/core/links/task-link";
+import { NOTIFICATION_SERVICE } from "@flind/core/notification/identifiers";
+import type { NotificationService } from "@flind/core/notification/notification";
+import { OAUTH_SERVICE } from "@flind/core/oauth/identifiers";
+import type { OAuthService } from "@flind/core/oauth/oauth";
+import type { UpdatesService } from "@flind/core/updates/updates";
+import { ENVIRONMENT_CLIENT } from "@flind/host-router/ports/environment-client";
+import { FILE_WATCHER_CONTROL } from "@flind/host-router/ports/file-watcher-control";
+import { DISK_CACHE_SERVICE } from "@flind/platform/disk-cache";
 import {
   type IImageProcessor,
   IMAGE_PROCESSOR_SERVICE,
-} from "@posthog/platform/image-processor";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
-import type { DatabaseService } from "@posthog/workspace-server/db/service";
-import type { ExternalAppsService } from "@posthog/workspace-server/services/external-apps/external-apps";
+} from "@flind/platform/image-processor";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
+import type { DatabaseService } from "@flind/workspace-server/db/service";
+import type { ExternalAppsService } from "@flind/workspace-server/services/external-apps/external-apps";
 import {
   FS_SERVICE,
   type FsCapability,
-} from "@posthog/workspace-server/services/fs/identifiers";
-import type { PosthogPluginService } from "@posthog/workspace-server/services/posthog-plugin/posthog-plugin";
-import { SUSPENSION_SERVICE } from "@posthog/workspace-server/services/suspension/identifiers";
-import type { SuspensionService } from "@posthog/workspace-server/services/suspension/suspension";
-import type { WorkspaceService } from "@posthog/workspace-server/services/workspace/workspace";
+} from "@flind/workspace-server/services/fs/identifiers";
+import type { PosthogPluginService } from "@flind/workspace-server/services/posthog-plugin/posthog-plugin";
+import { SUSPENSION_SERVICE } from "@flind/workspace-server/services/suspension/identifiers";
+import type { SuspensionService } from "@flind/workspace-server/services/suspension/suspension";
+import type { WorkspaceService } from "@flind/workspace-server/services/workspace/workspace";
 import { initializeDeepLinks, registerDeepLinkHandlers } from "./deep-links";
 import { container } from "./di/container";
 import {

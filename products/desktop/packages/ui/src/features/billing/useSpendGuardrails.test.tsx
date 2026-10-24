@@ -1,5 +1,5 @@
-import type { SpendSnapshot } from "@posthog/ui/features/billing/useSpendTotals";
-import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
+import type { SpendSnapshot } from "@flind/ui/features/billing/useSpendTotals";
+import { useSettingsStore } from "@flind/ui/features/settings/settingsStore";
 import { act, renderHook } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
@@ -9,14 +9,14 @@ const spendTotals = vi.hoisted(() => ({
 const toastMock = vi.hoisted(() => ({ warning: vi.fn(), dismiss: vi.fn() }));
 const spendAvailable = vi.hoisted(() => ({ value: true }));
 
-vi.mock("@posthog/ui/features/billing/useSpendTotals", () => ({
+vi.mock("@flind/ui/features/billing/useSpendTotals", () => ({
   useSpendTotals: () => spendTotals.value,
 }));
-vi.mock("@posthog/ui/features/billing/useUserSpendLimit", () => ({
+vi.mock("@flind/ui/features/billing/useUserSpendLimit", () => ({
   useSpendLimitAvailable: () => spendAvailable.value,
 }));
 vi.mock("../../primitives/toast", () => ({ toast: toastMock }));
-vi.mock("@posthog/ui/features/settings/hooks/useOpenSettings", () => ({
+vi.mock("@flind/ui/features/settings/hooks/useOpenSettings", () => ({
   openSettings: vi.fn(),
 }));
 

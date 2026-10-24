@@ -1,12 +1,12 @@
-import type { Task } from "@posthog/shared/domain-types";
-import { useTaskViewed } from "@posthog/ui/features/sidebar/useTaskViewed";
+import type { Task } from "@flind/shared/domain-types";
+import { useTaskViewed } from "@flind/ui/features/sidebar/useTaskViewed";
 import {
   getCachedTask,
   getCachedTaskDetail,
   taskDetailQuery,
-} from "@posthog/ui/features/tasks/queries";
-import { pickFreshestTask } from "@posthog/ui/features/tasks/taskFreshness";
-import { useTasks } from "@posthog/ui/features/tasks/useTasks";
+} from "@flind/ui/features/tasks/queries";
+import { pickFreshestTask } from "@flind/ui/features/tasks/taskFreshness";
+import { useTasks } from "@flind/ui/features/tasks/useTasks";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 

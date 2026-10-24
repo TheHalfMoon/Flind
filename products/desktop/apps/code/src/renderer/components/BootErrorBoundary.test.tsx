@@ -3,7 +3,7 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 
 const { logError } = vi.hoisted(() => ({ logError: vi.fn() }));
 
-vi.mock("@posthog/ui/shell/logger", () => ({
+vi.mock("@flind/ui/shell/logger", () => ({
   logger: {
     scope: () => ({
       error: logError,

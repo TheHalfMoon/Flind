@@ -5,10 +5,10 @@ import {
   dismiss as dismissMachine,
   startTour as startTourMachine,
   type TourEvent,
-} from "@posthog/core/tour/tourMachine";
-import { getRegisteredTours, getTour } from "@posthog/core/tour/tourRegistry";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
-import { track } from "@posthog/ui/shell/analytics";
+} from "@flind/core/tour/tourMachine";
+import { getRegisteredTours, getTour } from "@flind/core/tour/tourRegistry";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
+import { track } from "@flind/ui/shell/analytics";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 

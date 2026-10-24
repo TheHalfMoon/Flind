@@ -7,20 +7,20 @@ import {
   INBOX_PIPELINE_STATUS_FILTER,
   INBOX_PULL_REQUEST_STATUS_FILTER,
   INBOX_REPORTS_TAB_STATUS_FILTER,
-} from "@posthog/core/inbox/reportFiltering";
+} from "@flind/core/inbox/reportFiltering";
 import {
   INBOX_SCOPE_FOR_YOU,
   parseTeammateInboxScope,
-} from "@posthog/core/inbox/reportMembership";
-import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { useCurrentUser } from "@posthog/ui/features/auth/useCurrentUser";
-import { DESKTOP_INBOX_REFETCH_INTERVAL_MS } from "@posthog/ui/features/inbox/hooks/inboxPolling";
+} from "@flind/core/inbox/reportMembership";
+import { useOptionalAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { useCurrentUser } from "@flind/ui/features/auth/useCurrentUser";
+import { DESKTOP_INBOX_REFETCH_INTERVAL_MS } from "@flind/ui/features/inbox/hooks/inboxPolling";
 import {
   useInboxReports,
   useInboxReportsInfinite,
-} from "@posthog/ui/features/inbox/hooks/useInboxReports";
-import { useInboxReviewerScopeStore } from "@posthog/ui/features/inbox/stores/inboxReviewerScopeStore";
-import { useInboxSignalsFilterStore } from "@posthog/ui/features/inbox/stores/inboxSignalsFilterStore";
+} from "@flind/ui/features/inbox/hooks/useInboxReports";
+import { useInboxReviewerScopeStore } from "@flind/ui/features/inbox/stores/inboxReviewerScopeStore";
+import { useInboxSignalsFilterStore } from "@flind/ui/features/inbox/stores/inboxSignalsFilterStore";
 import { useMemo } from "react";
 
 // Module-level stable references — selectors returning these never trigger a

@@ -1,9 +1,9 @@
-import { NOTIFICATION_SERVICE } from "@posthog/core/notification/identifiers";
-import type { NotificationService } from "@posthog/core/notification/notification";
-import { publicProcedure, router } from "@posthog/host-trpc/trpc";
+import { NOTIFICATION_SERVICE } from "@flind/core/notification/identifiers";
+import type { NotificationService } from "@flind/core/notification/notification";
+import { publicProcedure, router } from "@flind/host-trpc/trpc";
 import { z } from "zod";
 
-// Mirrors the `NotificationTarget` union in @posthog/platform/notifications.
+// Mirrors the `NotificationTarget` union in @flind/platform/notifications.
 // Kept in lockstep by a type-parity test (notification-target.test.ts).
 export const notificationTargetSchema = z.discriminatedUnion("kind", [
   z.object({

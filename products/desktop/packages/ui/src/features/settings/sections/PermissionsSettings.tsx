@@ -1,5 +1,5 @@
-import { useHostTRPC } from "@posthog/host-router/react";
-import { SettingsCardRow } from "@posthog/ui/features/settings/components/SettingsCard";
+import { useHostTRPC } from "@flind/host-router/react";
+import { SettingsCardRow } from "@flind/ui/features/settings/components/SettingsCard";
 import { useQuery } from "@tanstack/react-query";
 
 function PermissionBadge({

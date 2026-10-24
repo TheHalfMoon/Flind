@@ -1,6 +1,6 @@
-import type { PostHogAPIClient } from "@posthog/api-client/posthog-client";
-import type { TaskSummaryDTO } from "@posthog/api-client/task-normalization";
-import type { SignalReport, Task } from "@posthog/shared/types";
+import type { PostHogAPIClient } from "@flind/api-client/posthog-client";
+import type { TaskSummaryDTO } from "@flind/api-client/task-normalization";
+import type { SignalReport, Task } from "@flind/shared/types";
 import { injectable } from "inversify";
 import {
   deriveReportImplementationState,

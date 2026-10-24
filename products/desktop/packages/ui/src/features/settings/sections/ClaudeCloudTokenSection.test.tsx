@@ -1,7 +1,7 @@
-import type { ServiceContainer } from "@posthog/di/container";
-import { ServiceProvider } from "@posthog/di/react";
-import { ANALYTICS_EVENTS } from "@posthog/shared";
-import { CLAUDE_SUBSCRIPTION_TOKEN_SETTINGS } from "@posthog/ui/features/settings/claudeSubscriptionTokenSettings";
+import type { ServiceContainer } from "@flind/di/container";
+import { ServiceProvider } from "@flind/di/react";
+import { ANALYTICS_EVENTS } from "@flind/shared";
+import { CLAUDE_SUBSCRIPTION_TOKEN_SETTINGS } from "@flind/ui/features/settings/claudeSubscriptionTokenSettings";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
@@ -20,14 +20,14 @@ const { tokenStore, track, setClaudeCloudSubscriptionOn, toast } = vi.hoisted(
   }),
 );
 
-vi.mock("@posthog/ui/features/settings/settingsStore", () => ({
+vi.mock("@flind/ui/features/settings/settingsStore", () => ({
   useSettingsStore: (selector: (s: unknown) => unknown) =>
     selector({ setClaudeCloudSubscriptionOn }),
 }));
 
-vi.mock("@posthog/ui/primitives/toast", () => ({ toast }));
+vi.mock("@flind/ui/primitives/toast", () => ({ toast }));
 
-vi.mock("@posthog/ui/shell/analytics", () => ({ track }));
+vi.mock("@flind/ui/shell/analytics", () => ({ track }));
 
 import { ClaudeCloudTokenSection } from "./ClaudeCloudTokenSection";
 

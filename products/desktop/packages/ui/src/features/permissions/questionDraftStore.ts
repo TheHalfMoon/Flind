@@ -1,4 +1,4 @@
-import type { StepAnswer } from "@posthog/ui/primitives/ActionSelector";
+import type { StepAnswer } from "@flind/ui/primitives/ActionSelector";
 import { create } from "zustand";
 
 interface QuestionDraft {

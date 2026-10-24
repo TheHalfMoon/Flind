@@ -1,10 +1,10 @@
-import type { ExternalAppAction } from "@posthog/core/context-menu/schemas";
+import type { ExternalAppAction } from "@flind/core/context-menu/schemas";
 import type {
   ExternalAppService,
   ExternalAppWorkspaceContext,
-} from "@posthog/core/external-apps/externalAppService";
-import { EXTERNAL_APPS_SERVICE } from "@posthog/core/external-apps/identifiers";
-import { useService } from "@posthog/di/react";
+} from "@flind/core/external-apps/externalAppService";
+import { EXTERNAL_APPS_SERVICE } from "@flind/core/external-apps/identifiers";
+import { useService } from "@flind/di/react";
 import { useCallback } from "react";
 import { toast } from "../../primitives/toast";
 import { showFocusSuccessToast } from "../focus/focusToast";

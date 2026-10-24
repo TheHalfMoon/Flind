@@ -2,10 +2,10 @@ import {
   AUTO_COMPACT_DEFAULT_PERCENT,
   AUTO_COMPACT_MAX_PERCENT,
   AUTO_COMPACT_MIN_PERCENT,
-} from "@posthog/core/sessions/autoCompact";
+} from "@flind/core/sessions/autoCompact";
 import { Slider, Switch, Text } from "@flind/quill";
-import { SettingsSubsection } from "@posthog/ui/features/settings/components/SettingsSubsection";
-import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
+import { SettingsSubsection } from "@flind/ui/features/settings/components/SettingsSubsection";
+import { useSettingsStore } from "@flind/ui/features/settings/settingsStore";
 
 export function ContextCompactionSettings() {
   const percent = useSettingsStore((state) => state.autoCompactPercent);

@@ -1,8 +1,8 @@
-import { buildApiFetcher, createApiClient } from "@posthog/api-client";
-import type { ApiClient } from "@posthog/api-client/generated";
-import { getPosthogApiClientAppVersion } from "@posthog/api-client/posthog-client";
-import { useHostTRPCClient } from "@posthog/host-router/react";
-import { getCloudUrlFromRegion } from "@posthog/shared";
+import { buildApiFetcher, createApiClient } from "@flind/api-client";
+import type { ApiClient } from "@flind/api-client/generated";
+import { getPosthogApiClientAppVersion } from "@flind/api-client/posthog-client";
+import { useHostTRPCClient } from "@flind/host-router/react";
+import { getCloudUrlFromRegion } from "@flind/shared";
 import { useMemo } from "react";
 import { useAuthStateValue } from "../../auth/store";
 

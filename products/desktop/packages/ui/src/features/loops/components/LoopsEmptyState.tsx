@@ -1,5 +1,5 @@
-import { channelDisplayReference } from "@posthog/core/canvas/channelName";
-import { hoggiePng } from "@posthog/shared/hoggies";
+import { channelDisplayReference } from "@flind/core/canvas/channelName";
+import { hoggiePng } from "@flind/shared/hoggies";
 import { Flex, Text } from "@radix-ui/themes";
 
 const GETTING_STARTED_STEPS = [

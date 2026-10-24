@@ -1,5 +1,5 @@
 import { Plus } from "@phosphor-icons/react";
-import { Combobox } from "@posthog/ui/primitives/combobox/Combobox";
+import { Combobox } from "@flind/ui/primitives/combobox/Combobox";
 import { Button, Text } from "@radix-ui/themes";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";

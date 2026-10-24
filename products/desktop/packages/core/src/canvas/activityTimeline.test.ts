@@ -1,13 +1,13 @@
 import {
   ACTIVITY_EVENTS,
   parseActivityEvent,
-} from "@posthog/core/canvas/activityEvents";
+} from "@flind/core/canvas/activityEvents";
 import {
   type ActivityTaskLike,
   buildActivityTimeline,
   type CommentThreadLike,
-} from "@posthog/core/canvas/activityTimeline";
-import type { ThreadMessageLike } from "@posthog/core/canvas/threadTimeline";
+} from "@flind/core/canvas/activityTimeline";
+import type { ThreadMessageLike } from "@flind/core/canvas/threadTimeline";
 import { describe, expect, it } from "vitest";
 
 const task: ActivityTaskLike = {

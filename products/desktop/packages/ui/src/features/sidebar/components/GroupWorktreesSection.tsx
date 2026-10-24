@@ -1,10 +1,10 @@
 import { GitBranch, TreeStructure } from "@phosphor-icons/react";
-import { SidebarItem } from "@posthog/ui/features/sidebar/components/SidebarItem";
-import { SidebarSection } from "@posthog/ui/features/sidebar/components/SidebarSection";
-import { useSidebarStore } from "@posthog/ui/features/sidebar/sidebarStore";
-import { useAdoptableWorktrees } from "@posthog/ui/features/sidebar/useAdoptableWorktrees";
-import { useStartTaskFromWorktree } from "@posthog/ui/features/sidebar/useStartTaskFromWorktree";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
+import { SidebarItem } from "@flind/ui/features/sidebar/components/SidebarItem";
+import { SidebarSection } from "@flind/ui/features/sidebar/components/SidebarSection";
+import { useSidebarStore } from "@flind/ui/features/sidebar/sidebarStore";
+import { useAdoptableWorktrees } from "@flind/ui/features/sidebar/useAdoptableWorktrees";
+import { useStartTaskFromWorktree } from "@flind/ui/features/sidebar/useStartTaskFromWorktree";
+import { Spinner } from "@flind/ui/primitives/Spinner";
 
 interface GroupWorktreesSectionProps {
   groupId: string;

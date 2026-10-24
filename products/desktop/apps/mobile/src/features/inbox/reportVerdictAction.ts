@@ -1,6 +1,6 @@
-import { canCreateImplementationPr } from "@posthog/core/inbox/reportActions";
-import { parsePrUrl } from "@posthog/core/inbox/reportPresentation";
-import type { SignalReport } from "@posthog/shared/domain-types";
+import { canCreateImplementationPr } from "@flind/core/inbox/reportActions";
+import { parsePrUrl } from "@flind/core/inbox/reportPresentation";
+import type { SignalReport } from "@flind/shared/domain-types";
 
 export type ReportVerdictAction =
   | { kind: "start"; label: string; awaitingInput: boolean }

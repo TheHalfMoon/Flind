@@ -5,9 +5,9 @@ const mockSaveClipboardText = vi.hoisted(() => vi.fn());
 const mockSaveClipboardFile = vi.hoisted(() => vi.fn());
 const mockDownscaleImageFile = vi.hoisted(() => vi.fn());
 
-vi.mock("@posthog/shared", async () => {
+vi.mock("@flind/shared", async () => {
   const actual =
-    await vi.importActual<typeof import("@posthog/shared")>("@posthog/shared");
+    await vi.importActual<typeof import("@flind/shared")>("@flind/shared");
   return { ...actual, getImageMimeType: () => "image/png" };
 });
 

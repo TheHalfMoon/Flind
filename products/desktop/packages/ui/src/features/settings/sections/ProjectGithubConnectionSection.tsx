@@ -3,41 +3,41 @@ import {
   describeIntegrationDisconnectError,
   GITHUB_CONNECT_TIMEOUT_MESSAGE,
   isAlreadyDisconnectedError,
-} from "@posthog/core/integrations/connectErrors";
-import { buildGithubDisconnectDescription } from "@posthog/core/integrations/disconnectCopy";
-import type { Integration } from "@posthog/core/integrations/selectors";
+} from "@flind/core/integrations/connectErrors";
+import { buildGithubDisconnectDescription } from "@flind/core/integrations/disconnectCopy";
+import type { Integration } from "@flind/core/integrations/selectors";
 import {
   describeGithubRepoAccess,
   formatGithubAccountLabel,
   githubInstallationSettingsUrl,
-} from "@posthog/core/settings/githubRepoSummary";
+} from "@flind/core/settings/githubRepoSummary";
 import { Button, Text } from "@flind/quill";
-import { formatRelativeTimeLong } from "@posthog/shared";
-import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { useAuthStateValue } from "@posthog/ui/features/auth/store";
-import { useIsOrgAdmin } from "@posthog/ui/features/auth/useOrgRole";
-import { DisconnectIntegrationDialog } from "@posthog/ui/features/integrations/components/DisconnectIntegrationDialog";
-import { GithubInstallRequestsBanner } from "@posthog/ui/features/integrations/components/GithubInstallRequestsBanner";
-import { GithubRepoSummary } from "@posthog/ui/features/integrations/components/GithubRepoSummary";
-import { RequestIntegrationAccessForm } from "@posthog/ui/features/integrations/components/RequestIntegrationAccessForm";
-import { useIntegrationSelectors } from "@posthog/ui/features/integrations/store";
+import { formatRelativeTimeLong } from "@flind/shared";
+import { useOptionalAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { useAuthStateValue } from "@flind/ui/features/auth/store";
+import { useIsOrgAdmin } from "@flind/ui/features/auth/useOrgRole";
+import { DisconnectIntegrationDialog } from "@flind/ui/features/integrations/components/DisconnectIntegrationDialog";
+import { GithubInstallRequestsBanner } from "@flind/ui/features/integrations/components/GithubInstallRequestsBanner";
+import { GithubRepoSummary } from "@flind/ui/features/integrations/components/GithubRepoSummary";
+import { RequestIntegrationAccessForm } from "@flind/ui/features/integrations/components/RequestIntegrationAccessForm";
+import { useIntegrationSelectors } from "@flind/ui/features/integrations/store";
 import {
   describeGithubConnectError,
   invalidateGithubQueries,
   useGithubConnect,
-} from "@posthog/ui/features/integrations/useGithubUserConnect";
+} from "@flind/ui/features/integrations/useGithubUserConnect";
 import {
   useIntegrations,
   useRepositoryIntegration,
-} from "@posthog/ui/features/integrations/useIntegrations";
+} from "@flind/ui/features/integrations/useIntegrations";
 import {
   SettingsCard,
   SettingsCardRow,
   SettingsSection,
-} from "@posthog/ui/features/settings/components/SettingsCard";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
-import { toast } from "@posthog/ui/primitives/toast";
-import { openUrlInBrowser } from "@posthog/ui/utils/browser";
+} from "@flind/ui/features/settings/components/SettingsCard";
+import { Spinner } from "@flind/ui/primitives/Spinner";
+import { toast } from "@flind/ui/primitives/toast";
+import { openUrlInBrowser } from "@flind/ui/utils/browser";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 

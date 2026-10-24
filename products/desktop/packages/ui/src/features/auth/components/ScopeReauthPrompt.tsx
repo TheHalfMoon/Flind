@@ -1,5 +1,5 @@
 import { ShieldWarning } from "@phosphor-icons/react";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
+import { Spinner } from "@flind/ui/primitives/Spinner";
 import { Button, Dialog, Flex, Text } from "@radix-ui/themes";
 import { logger } from "../../../shell/logger";
 import { useAuthStateValue } from "../store";

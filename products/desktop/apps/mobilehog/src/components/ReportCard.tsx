@@ -3,13 +3,13 @@ import {
   formatSignalReportSummaryMarkdown,
   parseConventionalCommitTitle,
   splitReportSummary,
-} from "@posthog/core/inbox/reportPresentation";
-import { formatRelativeAge } from "@posthog/shared";
+} from "@flind/core/inbox/reportPresentation";
+import { formatRelativeAge } from "@flind/shared";
 import type {
   SignalReport,
   SignalReportPriority,
   SuggestedReviewersArtefact,
-} from "@posthog/shared/domain-types";
+} from "@flind/shared/domain-types";
 import {
   type ColorValue,
   Pressable,

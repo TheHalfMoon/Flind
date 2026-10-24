@@ -21,10 +21,10 @@ import {
   QuestionnaireSubmit,
   QuestionnaireTitle,
 } from "@flind/quill";
-import { useAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { leaveSettings } from "@posthog/ui/features/settings/hooks/useOpenSettings";
-import { toast } from "@posthog/ui/primitives/toast";
-import { navigateToChannelTask } from "@posthog/ui/router/navigationBridge";
+import { useAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { leaveSettings } from "@flind/ui/features/settings/hooks/useOpenSettings";
+import { toast } from "@flind/ui/primitives/toast";
+import { navigateToChannelTask } from "@flind/ui/router/navigationBridge";
 import {
   type ChangeEvent,
   type ComponentProps,

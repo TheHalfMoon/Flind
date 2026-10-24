@@ -1,4 +1,4 @@
-import type { useHostTRPC } from "@posthog/host-router/react";
+import type { useHostTRPC } from "@flind/host-router/react";
 import type { QueryClient } from "@tanstack/react-query";
 
 type HostTRPC = ReturnType<typeof useHostTRPC>;

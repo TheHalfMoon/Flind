@@ -1,10 +1,10 @@
-import { ROOT_LOGGER, type RootLogger } from "@posthog/di/logger";
+import { ROOT_LOGGER, type RootLogger } from "@flind/di/logger";
 import {
   type AgentSession,
   getBackoffDelay,
   getConfigOptionByCategory,
   type SagaLogger,
-} from "@posthog/shared";
+} from "@flind/shared";
 import { inject, injectable, preDestroy } from "inversify";
 import { type SessionState, sessionStore } from "../sessions/sessionStore";
 import {

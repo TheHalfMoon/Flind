@@ -3,8 +3,8 @@ import {
   GithubLogoIcon,
   HeartIcon,
 } from "@phosphor-icons/react";
-import Logo from "@posthog/ui/primitives/Logo";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
+import Logo from "@flind/ui/primitives/Logo";
+import { Spinner } from "@flind/ui/primitives/Spinner";
 import { domAnimation, LazyMotion, m, useReducedMotion } from "framer-motion";
 
 interface GithubConnectionIconProps {

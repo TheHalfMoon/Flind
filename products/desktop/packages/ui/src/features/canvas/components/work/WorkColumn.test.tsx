@@ -2,8 +2,8 @@ import {
   type ChannelItemModel,
   DESKTOP_SOURCE,
   FIRST_PARTY_CLIENT_SOURCES,
-} from "@posthog/core/canvas/channelItems";
-import { ChannelItemPreviewCardProvider } from "@posthog/ui/features/canvas/components/ChannelItemHoverCard";
+} from "@flind/core/canvas/channelItems";
+import { ChannelItemPreviewCardProvider } from "@flind/ui/features/canvas/components/ChannelItemHoverCard";
 import { Theme } from "@radix-ui/themes";
 import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
@@ -22,7 +22,7 @@ const mocks = vi.hoisted(() => ({
   },
 }));
 
-vi.mock("@posthog/ui/router/navigationBridge", () => ({
+vi.mock("@flind/ui/router/navigationBridge", () => ({
   navigateToChannel: mocks.navigate.toChannel,
   navigateToChannelDashboard: mocks.navigate.toChannelDashboard,
   navigateToChannelTask: mocks.navigate.toChannelTask,
@@ -30,21 +30,21 @@ vi.mock("@posthog/ui/router/navigationBridge", () => ({
   navigateToTaskDetail: mocks.navigate.toTaskDetail,
 }));
 
-vi.mock("@posthog/ui/features/canvas/hooks/useRecentWorkItems", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useRecentWorkItems", () => ({
   useRecentWorkItems: (args: unknown) => {
     mocks.recentWorkArgs = args;
     return { items: mocks.items, isLoading: false };
   },
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useTaskSources", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useTaskSources", () => ({
   useTaskSources: () => mocks.taskSources,
 }));
-vi.mock("@posthog/ui/features/canvas/components/ChannelFilterMenu", () => ({
+vi.mock("@flind/ui/features/canvas/components/ChannelFilterMenu", () => ({
   ChannelFilterMenu: ({ sources }: { sources: readonly string[] }) => (
     <div data-testid="filter-sources">{sources.join(",")}</div>
   ),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useChannelItems", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannelItems", () => ({
   useChannelItemActions: ({
     open,
   }: {
@@ -56,44 +56,44 @@ vi.mock("@posthog/ui/features/canvas/hooks/useChannelItems", () => ({
     archive: vi.fn(),
   }),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useChannels", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannels", () => ({
   useChannels: () => ({ channels: [], isLoading: false }),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useRecentSpaceTasks", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useRecentSpaceTasks", () => ({
   useSpacePresence: () => new Map(),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useUnreadSessionCount", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useUnreadSessionCount", () => ({
   useUnreadSessionCount: () => () => 0,
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useBlockedSessionCount", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useBlockedSessionCount", () => ({
   useBlockedSessionCount: () => () => 0,
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useUnreadChannels", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useUnreadChannels", () => ({
   useIsChannelUnread: () => () => false,
 }));
 vi.mock("@tanstack/react-router", () => ({
   useNavigate: () => vi.fn(),
   useRouterState: () => "/spaces/channel-1",
 }));
-vi.mock("@posthog/ui/shell/analytics", () => ({ track: vi.fn() }));
-vi.mock("@posthog/ui/features/auth/authClient", () => ({
+vi.mock("@flind/ui/shell/analytics", () => ({ track: vi.fn() }));
+vi.mock("@flind/ui/features/auth/authClient", () => ({
   useOptionalAuthenticatedClient: () => null,
 }));
-vi.mock("@posthog/ui/features/auth/useCurrentUser", () => ({
+vi.mock("@flind/ui/features/auth/useCurrentUser", () => ({
   useCurrentUser: () => ({ data: { id: 1, uuid: "me-uuid" } }),
 }));
-vi.mock("@posthog/ui/features/tasks/useTaskMutations", () => ({
+vi.mock("@flind/ui/features/tasks/useTaskMutations", () => ({
   useRenameTask: () => ({ renameTask: vi.fn() }),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useChannelTaskStatus", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannelTaskStatus", () => ({
   useChannelTaskStatus: () => null,
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useChannelTasksRunState", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannelTasksRunState", () => ({
   useChannelTasksRunState: () => [],
 }));
 // What each bulk action does has its own suite; this one is about whether the
 // column offers them at all, so the bar only needs its count to be real.
-vi.mock("@posthog/ui/features/sidebar/useSidebarBulkActions", () => ({
+vi.mock("@flind/ui/features/sidebar/useSidebarBulkActions", () => ({
   useSidebarBulkActions: (selectedTaskIds: string[]) => ({
     selectedCount: selectedTaskIds.length,
     pinDirection: "pin",
@@ -112,22 +112,22 @@ vi.mock("@posthog/ui/features/sidebar/useSidebarBulkActions", () => ({
     archiveSelected: vi.fn(),
   }),
 }));
-vi.mock("@posthog/ui/features/canvas/components/CreateChannelModal", () => ({
+vi.mock("@flind/ui/features/canvas/components/CreateChannelModal", () => ({
   CreateChannelModal: () => null,
 }));
 vi.mock(
-  "@posthog/ui/features/sidebar/components/EditListItemAppearanceDialog",
+  "@flind/ui/features/sidebar/components/EditListItemAppearanceDialog",
   () => ({ EditListItemAppearanceDialog: () => null }),
 );
-vi.mock("@posthog/ui/features/browser-tabs/useOpenBrowserTab", () => ({
+vi.mock("@flind/ui/features/browser-tabs/useOpenBrowserTab", () => ({
   useOpenBrowserTab: () => vi.fn(),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useFileTaskToChannel", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useFileTaskToChannel", () => ({
   useFileTaskToChannel: () => vi.fn(),
 }));
 
-import { useSidebarStore } from "@posthog/ui/features/sidebar/sidebarStore";
-import { useTaskSelectionStore } from "@posthog/ui/features/sidebar/taskSelectionStore";
+import { useSidebarStore } from "@flind/ui/features/sidebar/sidebarStore";
+import { useTaskSelectionStore } from "@flind/ui/features/sidebar/taskSelectionStore";
 import { WorkColumn } from "./WorkColumn";
 
 function entry(index: number): {

@@ -132,7 +132,7 @@ export function createRecordStore<S extends z.ZodType>(
   };
 }
 
-// StateStorage backend for @posthog/ui's zustand persist (web-storage.ts).
+// StateStorage backend for @flind/ui's zustand persist (web-storage.ts).
 // Zustand already serializes, so this passes raw strings straight through. It
 // also lets storage errors propagate: the renderer persistence layer awaits and
 // logs failed writes, so swallowing here would report a dropped draft/setting/

@@ -1,4 +1,4 @@
-import type { SignalTeamConfig } from "@posthog/shared/domain-types";
+import type { SignalTeamConfig } from "@flind/shared/domain-types";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useAuthStore } from "@/features/auth";
 import { getPostHogApiClient } from "@/lib/posthogApiClient";

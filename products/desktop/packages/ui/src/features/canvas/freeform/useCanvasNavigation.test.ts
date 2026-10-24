@@ -1,15 +1,15 @@
-import { openTaskInput } from "@posthog/ui/router/useOpenTask";
+import { openTaskInput } from "@flind/ui/router/useOpenTask";
 import { renderHook } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import { useCanvasNavigation } from "./useCanvasNavigation";
 
-vi.mock("@posthog/ui/router/useOpenTask", () => ({ openTaskInput: vi.fn() }));
-vi.mock("@posthog/ui/router/navigationBridge", () => ({
+vi.mock("@flind/ui/router/useOpenTask", () => ({ openTaskInput: vi.fn() }));
+vi.mock("@flind/ui/router/navigationBridge", () => ({
   navigateToChannelDashboard: vi.fn(),
   navigateToChannelTask: vi.fn(),
   navigateToSettings: vi.fn(),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useDashboards", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useDashboards", () => ({
   useCreateAndOpenDashboard: () => vi.fn(),
 }));
 

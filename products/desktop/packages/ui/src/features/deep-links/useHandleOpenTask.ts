@@ -1,20 +1,20 @@
 import {
   type CommentTarget,
   commentScopeFromWire,
-} from "@posthog/core/comments/anchors";
-import type { TaskLinkCommentAnchor } from "@posthog/core/links/task-link";
+} from "@flind/core/comments/anchors";
+import type { TaskLinkCommentAnchor } from "@flind/core/links/task-link";
 import {
   TASK_SERVICE,
   type TaskService,
-} from "@posthog/core/task-detail/taskService";
-import { useService } from "@posthog/di/react";
-import type { Task } from "@posthog/shared/domain-types";
-import { useCommentNavigationStore } from "@posthog/ui/features/sessions/commentNavigationStore";
-import { useTaskViewed } from "@posthog/ui/features/sidebar/useTaskViewed";
-import { taskKeys } from "@posthog/ui/features/tasks/taskKeys";
-import { toast } from "@posthog/ui/primitives/toast";
-import { openTask as openTaskHelper } from "@posthog/ui/router/useOpenTask";
-import { logger } from "@posthog/ui/shell/logger";
+} from "@flind/core/task-detail/taskService";
+import { useService } from "@flind/di/react";
+import type { Task } from "@flind/shared/domain-types";
+import { useCommentNavigationStore } from "@flind/ui/features/sessions/commentNavigationStore";
+import { useTaskViewed } from "@flind/ui/features/sidebar/useTaskViewed";
+import { taskKeys } from "@flind/ui/features/tasks/taskKeys";
+import { toast } from "@flind/ui/primitives/toast";
+import { openTask as openTaskHelper } from "@flind/ui/router/useOpenTask";
+import { logger } from "@flind/ui/shell/logger";
 import { useQueryClient } from "@tanstack/react-query";
 import { useCallback } from "react";
 

@@ -1,8 +1,8 @@
 import { TrayIcon } from "@phosphor-icons/react";
-import type { LinkedSignalReport } from "@posthog/api-client/posthog-client";
-import { ANALYTICS_EVENTS } from "@posthog/shared";
-import { useOpenInboxReport } from "@posthog/ui/features/inbox/hooks/useOpenInboxReport";
-import { track } from "@posthog/ui/shell/analytics";
+import type { LinkedSignalReport } from "@flind/api-client/posthog-client";
+import { ANALYTICS_EVENTS } from "@flind/shared";
+import { useOpenInboxReport } from "@flind/ui/features/inbox/hooks/useOpenInboxReport";
+import { track } from "@flind/ui/shell/analytics";
 import { Text } from "@radix-ui/themes";
 import { useState } from "react";
 

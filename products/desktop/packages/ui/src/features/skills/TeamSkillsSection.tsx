@@ -1,5 +1,5 @@
 import { UsersThreeIcon } from "@phosphor-icons/react";
-import type { TeamSkillInfo } from "@posthog/core/skills/teamSkillsService";
+import type { TeamSkillInfo } from "@flind/core/skills/teamSkillsService";
 import { SkillListCard } from "./SkillListCard";
 import { SkillChip } from "./SkillPanelHeader";
 

@@ -1,7 +1,7 @@
-import { SHELL_PROCESS_POLLER } from "@posthog/core/terminal/identifiers";
-import type { ShellProcessPoller } from "@posthog/core/terminal/shellProcessPoller";
-import { useService } from "@posthog/di/react";
-import { useTerminalStore } from "@posthog/ui/features/terminal/terminalStore";
+import { SHELL_PROCESS_POLLER } from "@flind/core/terminal/identifiers";
+import type { ShellProcessPoller } from "@flind/core/terminal/shellProcessPoller";
+import { useService } from "@flind/di/react";
+import { useTerminalStore } from "@flind/ui/features/terminal/terminalStore";
 import { useEffect } from "react";
 
 export function useShellProcessPoller(key: string): void {

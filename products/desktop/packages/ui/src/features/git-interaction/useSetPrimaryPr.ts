@@ -1,11 +1,11 @@
-import { useHostTRPC } from "@posthog/host-router/react";
+import { useHostTRPC } from "@flind/host-router/react";
 import {
   buildPrOutput,
   promotePrUrl,
   readPrSummaries,
   readPrUrls,
-} from "@posthog/shared";
-import type { Task } from "@posthog/shared/domain-types";
+} from "@flind/shared";
+import type { Task } from "@flind/shared/domain-types";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "../../primitives/toast";
 import { sessionStoreSetters, useSessionStore } from "../sessions/sessionStore";

@@ -1,4 +1,4 @@
-import type { TaskRunArtifact } from "@posthog/shared";
+import type { TaskRunArtifact } from "@flind/shared";
 import { createElement } from "react";
 import WebView from "react-native-webview";
 import { act, create } from "react-test-renderer";
@@ -21,7 +21,7 @@ vi.mock("react-native-webview", () => ({
   default: (props: Record<string, unknown>) => createElement("WebView", props),
 }));
 
-vi.mock("@posthog/core/mcp-apps/csp", () => ({
+vi.mock("@flind/core/mcp-apps/csp", () => ({
   applyCspToHtml: (html: string) => `csp:${html}`,
 }));
 

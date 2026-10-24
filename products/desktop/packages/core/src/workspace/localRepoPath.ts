@@ -1,4 +1,4 @@
-import type { Workspace } from "@posthog/shared";
+import type { Workspace } from "@flind/shared";
 
 export function resolveLocalRepoPath(
   workspace: Workspace | null,

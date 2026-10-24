@@ -3,13 +3,13 @@ import {
   type SetupTarget,
   withEnvironmentName,
   withRepositories,
-} from "@posthog/core/settings/environmentSetup";
+} from "@flind/core/settings/environmentSetup";
 import { Checkbox, Input, Label, Text } from "@flind/quill";
-import { RepositoriesField } from "@posthog/ui/features/integrations/components/RepositoriesField";
-import { SettingsSelect } from "@posthog/ui/features/settings/components/SettingsSelect";
-import { StepBody } from "@posthog/ui/features/settings/sections/environments/setup/StepBody";
-import { StepFieldError } from "@posthog/ui/features/settings/sections/environments/setup/StepFieldError";
-import { RadioCards } from "@posthog/ui/primitives/RadioCards";
+import { RepositoriesField } from "@flind/ui/features/integrations/components/RepositoriesField";
+import { SettingsSelect } from "@flind/ui/features/settings/components/SettingsSelect";
+import { StepBody } from "@flind/ui/features/settings/sections/environments/setup/StepBody";
+import { StepFieldError } from "@flind/ui/features/settings/sections/environments/setup/StepFieldError";
+import { RadioCards } from "@flind/ui/primitives/RadioCards";
 import { useId } from "react";
 
 export interface SetupEnvironmentOption {

@@ -1,10 +1,10 @@
-import type { AcpMessage } from "@posthog/shared";
+import type { AcpMessage } from "@flind/shared";
 import type {
   BuildConversationOptions,
   BuildResult,
-} from "@posthog/ui/features/sessions/components/buildConversationItems";
-import { createIncrementalConversationBuilder } from "@posthog/ui/features/sessions/components/incrementalConversationItems";
-import { logger } from "@posthog/ui/shell/logger";
+} from "@flind/ui/features/sessions/components/buildConversationItems";
+import { createIncrementalConversationBuilder } from "@flind/ui/features/sessions/components/incrementalConversationItems";
+import { logger } from "@flind/ui/shell/logger";
 import { useRef } from "react";
 
 const log = logger.scope("transcript");

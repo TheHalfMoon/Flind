@@ -1,14 +1,14 @@
-import { ANALYTICS_EVENTS } from "@posthog/shared";
+import { ANALYTICS_EVENTS } from "@flind/shared";
 import {
   SettingsCard,
   SettingsCardRow,
-} from "@posthog/ui/features/settings/components/SettingsCard";
+} from "@flind/ui/features/settings/components/SettingsCard";
 import {
   type TerminalFont,
   useSettingsStore,
-} from "@posthog/ui/features/settings/settingsStore";
-import { useDebounce } from "@posthog/ui/primitives/hooks/useDebounce";
-import { track } from "@posthog/ui/shell/analytics";
+} from "@flind/ui/features/settings/settingsStore";
+import { useDebounce } from "@flind/ui/primitives/hooks/useDebounce";
+import { track } from "@flind/ui/shell/analytics";
 import { Flex, Select, Switch, Text, TextField } from "@radix-ui/themes";
 import { useEffect, useState } from "react";
 

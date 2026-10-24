@@ -1,4 +1,4 @@
-import type { BackupReview } from "@posthog/core/settings/settingsBackup";
+import type { BackupReview } from "@flind/core/settings/settingsBackup";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { SettingsBackupView } from "./SettingsBackup";
 

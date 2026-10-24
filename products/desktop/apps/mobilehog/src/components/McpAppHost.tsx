@@ -1,6 +1,6 @@
 import type { McpUiDisplayMode } from "@modelcontextprotocol/ext-apps/app-bridge";
 import type { CallToolResult } from "@modelcontextprotocol/sdk/types.js";
-import { resolveResultResourceUri } from "@posthog/core/mcp-apps/schemas";
+import { resolveResultResourceUri } from "@flind/core/mcp-apps/schemas";
 import { useQuery } from "@tanstack/react-query";
 import { useRef, useState } from "react";
 import {

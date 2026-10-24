@@ -2,7 +2,7 @@ import {
   DURATION_TOLERANCE_MS,
   MAX_CUSTOM_SOUND_BYTES,
   MAX_CUSTOM_SOUND_DURATION_MS,
-} from "@posthog/core/settings/schemas";
+} from "@flind/core/settings/schemas";
 
 // Helpers for capturing user-installed notification sounds (live recording or
 // file import). Custom clips are stored inline as base64 data URLs in the

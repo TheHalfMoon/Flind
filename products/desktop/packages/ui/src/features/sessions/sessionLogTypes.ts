@@ -1,1 +1,1 @@
-export type { PermissionRequest } from "@posthog/shared";
+export type { PermissionRequest } from "@flind/shared";

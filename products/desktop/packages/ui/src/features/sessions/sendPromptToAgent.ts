@@ -1,6 +1,6 @@
 import type { ContentBlock } from "@agentclientprotocol/sdk";
-import { resolveService } from "@posthog/di/container";
-import { toast } from "@posthog/ui/primitives/toast";
+import { resolveService } from "@flind/di/container";
+import { toast } from "@flind/ui/primitives/toast";
 import {
   AGENT_PROMPT_SENDER,
   type AgentPromptSender,

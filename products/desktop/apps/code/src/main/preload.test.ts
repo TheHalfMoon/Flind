@@ -15,7 +15,7 @@ vi.mock("electron", () => ({
   webUtils: { getPathForFile: vi.fn() },
 }));
 vi.mock("electron-log/preload", () => ({}));
-vi.mock("@posthog/electron-trpc/main", () => ({
+vi.mock("@flind/electron-trpc/main", () => ({
   exposeElectronTRPC: vi.fn(),
 }));
 

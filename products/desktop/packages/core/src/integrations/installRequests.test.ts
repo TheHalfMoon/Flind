@@ -1,4 +1,4 @@
-import type { GithubInstallRequestItem } from "@posthog/api-client/posthog-client";
+import type { GithubInstallRequestItem } from "@flind/api-client/posthog-client";
 import { describe, expect, it } from "vitest";
 import {
   buildOrgOwnerMessage,

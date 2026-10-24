@@ -1,5 +1,5 @@
-import type { ResourceComment } from "@posthog/api-client/posthog-client";
-import type { PrConversationComment, PrReviewThread } from "@posthog/shared";
+import type { ResourceComment } from "@flind/api-client/posthog-client";
+import type { PrConversationComment, PrReviewThread } from "@flind/shared";
 import { describe, expect, it } from "vitest";
 import type { CommentSource } from "./taskArtifactRows";
 import {

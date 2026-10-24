@@ -1,6 +1,6 @@
 import path from "node:path";
 import { getCurrentBranch, getDefaultBranch } from "@flind/git/queries";
-import type { WorkspaceMode } from "@posthog/shared";
+import type { WorkspaceMode } from "@flind/shared";
 
 export interface WorkspaceEnvContext {
   taskId: string;

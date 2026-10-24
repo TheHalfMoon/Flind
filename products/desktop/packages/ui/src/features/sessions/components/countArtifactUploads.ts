@@ -1,9 +1,9 @@
-import { createAppendOnlyTracker } from "@posthog/core/sessions/appendOnlyTracker";
+import { createAppendOnlyTracker } from "@flind/core/sessions/appendOnlyTracker";
 import {
   type AcpMessage,
   isJsonRpcNotification,
   readMcpToolDescriptor,
-} from "@posthog/shared";
+} from "@flind/shared";
 import { useMemo, useRef } from "react";
 
 const UPLOAD_ARTIFACT_TOOL = "upload_artifact";

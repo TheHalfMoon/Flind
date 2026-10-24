@@ -1,6 +1,6 @@
-import type { SessionService } from "@posthog/core/sessions/sessionService";
-import { getErrorMessage } from "@posthog/shared";
-import { logger } from "@posthog/ui/shell/logger";
+import type { SessionService } from "@flind/core/sessions/sessionService";
+import { getErrorMessage } from "@flind/shared";
+import { logger } from "@flind/ui/shell/logger";
 import { create } from "zustand";
 
 const log = logger.scope("side-question");

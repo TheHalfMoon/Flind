@@ -9,13 +9,13 @@ import {
   type OnboardingStep,
   stepDirection,
   stepGatePending,
-} from "@posthog/core/onboarding/steps";
-import { useHostTRPC } from "@posthog/host-router/react";
-import { useAuthStateValue } from "@posthog/ui/features/auth/store";
-import { useOrgConsent } from "@posthog/ui/features/consent/useOrgConsent";
-import { useUserGithubIntegrations } from "@posthog/ui/features/integrations/useIntegrations";
-import { useOnboardingStore } from "@posthog/ui/features/onboarding/onboardingStore";
-import { useHostCapabilities } from "@posthog/ui/shell/useHostCapabilities";
+} from "@flind/core/onboarding/steps";
+import { useHostTRPC } from "@flind/host-router/react";
+import { useAuthStateValue } from "@flind/ui/features/auth/store";
+import { useOrgConsent } from "@flind/ui/features/consent/useOrgConsent";
+import { useUserGithubIntegrations } from "@flind/ui/features/integrations/useIntegrations";
+import { useOnboardingStore } from "@flind/ui/features/onboarding/onboardingStore";
+import { useHostCapabilities } from "@flind/ui/shell/useHostCapabilities";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useMemo, useRef, useState } from "react";
 import {

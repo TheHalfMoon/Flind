@@ -1,9 +1,9 @@
-import type { PostHogAPIClient } from "@posthog/api-client/posthog-client";
-import { userGithubIntegrationKeys } from "@posthog/core/integrations/repositoryKeys";
-import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { useAuthStateValue } from "@posthog/ui/features/auth/store";
-import { invalidateGithubQueries } from "@posthog/ui/features/integrations/useGithubUserConnect";
-import { toast } from "@posthog/ui/primitives/toast";
+import type { PostHogAPIClient } from "@flind/api-client/posthog-client";
+import { userGithubIntegrationKeys } from "@flind/core/integrations/repositoryKeys";
+import { useOptionalAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { useAuthStateValue } from "@flind/ui/features/auth/store";
+import { invalidateGithubQueries } from "@flind/ui/features/integrations/useGithubUserConnect";
+import { toast } from "@flind/ui/primitives/toast";
 import {
   type UseMutationResult,
   useMutation,

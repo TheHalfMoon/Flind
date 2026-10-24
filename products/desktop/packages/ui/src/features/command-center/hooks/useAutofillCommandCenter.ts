@@ -1,8 +1,8 @@
-import { selectAutofillCandidates } from "@posthog/core/command-center/autofill";
+import { selectAutofillCandidates } from "@flind/core/command-center/autofill";
 import {
   isSandboxPromptTask,
   workspaceIdSet,
-} from "@posthog/core/command-center/eligibility";
+} from "@flind/core/command-center/eligibility";
 import { useEffect } from "react";
 import { useArchivedTaskIds } from "../../archive/useArchivedTaskIds";
 import { useTasks } from "../../tasks/useTasks";

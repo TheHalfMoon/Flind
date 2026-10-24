@@ -1,7 +1,7 @@
 import {
   type EditorContent,
   isContentEmpty,
-} from "@posthog/core/message-editor/content";
+} from "@flind/core/message-editor/content";
 import { inject, injectable } from "inversify";
 
 export type CommentAgentContext = {

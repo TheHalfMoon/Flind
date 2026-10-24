@@ -4,8 +4,8 @@ import {
   type PiWorkflowToolDetails,
   piSubagentToolDetailsSchema,
   piWorkflowToolDetailsSchema,
-} from "@posthog/shared";
-import type { Step } from "@posthog/ui/primitives/StepList";
+} from "@flind/shared";
+import type { Step } from "@flind/ui/primitives/StepList";
 
 const TASK_PREVIEW_LENGTH = 160;
 

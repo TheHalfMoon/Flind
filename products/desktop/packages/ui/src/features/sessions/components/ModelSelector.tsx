@@ -1,8 +1,8 @@
 import type { SessionConfigSelectGroup } from "@agentclientprotocol/sdk";
 import { CaretDown } from "@phosphor-icons/react";
-import type { SessionService } from "@posthog/core/sessions/sessionService";
-import { SESSION_SERVICE } from "@posthog/core/sessions/sessionService";
-import { useService } from "@posthog/di/react";
+import type { SessionService } from "@flind/core/sessions/sessionService";
+import { SESSION_SERVICE } from "@flind/core/sessions/sessionService";
+import { useService } from "@flind/di/react";
 import {
   Button,
   DropdownMenu,
@@ -12,19 +12,19 @@ import {
   DropdownMenuTrigger,
   MenuLabel,
 } from "@flind/quill";
-import type { Adapter } from "@posthog/shared";
-import { gateRestrictedModelPick } from "@posthog/ui/features/billing/modelGate";
-import { ModelCostFooter } from "@posthog/ui/features/sessions/components/ModelCostChip";
-import { ModelRadioItem } from "@posthog/ui/features/sessions/components/ModelRadioItem";
-import { stripDisabledModelOption } from "@posthog/ui/features/sessions/modelOptionFilters";
-import { toPickerOption } from "@posthog/ui/features/sessions/modelPickerOption";
+import type { Adapter } from "@flind/shared";
+import { gateRestrictedModelPick } from "@flind/ui/features/billing/modelGate";
+import { ModelCostFooter } from "@flind/ui/features/sessions/components/ModelCostChip";
+import { ModelRadioItem } from "@flind/ui/features/sessions/components/ModelRadioItem";
+import { stripDisabledModelOption } from "@flind/ui/features/sessions/modelOptionFilters";
+import { toPickerOption } from "@flind/ui/features/sessions/modelPickerOption";
 import {
   flattenSelectOptions,
   useModelConfigOptionForTask,
   useSessionIsCloud,
   useSessionSelector,
-} from "@posthog/ui/features/sessions/sessionStore";
-import { useModelRolloutFlags } from "@posthog/ui/features/sessions/useModelRolloutFlags";
+} from "@flind/ui/features/sessions/sessionStore";
+import { useModelRolloutFlags } from "@flind/ui/features/sessions/useModelRolloutFlags";
 import { Fragment, useMemo } from "react";
 
 interface ModelSelectorProps {

@@ -1,4 +1,4 @@
-import type { TabViewState } from "@posthog/shared";
+import type { TabViewState } from "@flind/shared";
 import { sql } from "drizzle-orm";
 import { index, integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
 
@@ -71,7 +71,7 @@ export const taskMetadata = sqliteTable("task_metadata", {
 
 // Autoresearch runs, persisted so the optimization loop survives app
 // restarts. `data` is the core AutoresearchRun serialized as JSON — the
-// schema lives in @posthog/core; this table only indexes it. `endedAt` is
+// schema lives in @flind/core; this table only indexes it. `endedAt` is
 // null while a run is still open (running / paused / interrupted), which is
 // what boot-time restore queries on.
 export const autoresearchRuns = sqliteTable(

@@ -1,9 +1,9 @@
-import type { ChannelItemModel } from "@posthog/core/canvas/channelItems";
-import { useArchiveTask } from "@posthog/ui/features/archive/useArchiveTask";
-import { useCommandCenterStore } from "@posthog/ui/features/command-center/commandCenterStore";
-import { usePinnedTasks } from "@posthog/ui/features/sidebar/usePinnedTasks";
-import { toast } from "@posthog/ui/primitives/toast";
-import { navigateToCommandCenter } from "@posthog/ui/router/navigationBridge";
+import type { ChannelItemModel } from "@flind/core/canvas/channelItems";
+import { useArchiveTask } from "@flind/ui/features/archive/useArchiveTask";
+import { useCommandCenterStore } from "@flind/ui/features/command-center/commandCenterStore";
+import { usePinnedTasks } from "@flind/ui/features/sidebar/usePinnedTasks";
+import { toast } from "@flind/ui/primitives/toast";
+import { navigateToCommandCenter } from "@flind/ui/router/navigationBridge";
 import { createContext, useContext, useEffect, useMemo, useRef } from "react";
 
 /**

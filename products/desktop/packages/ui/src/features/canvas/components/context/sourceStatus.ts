@@ -1,5 +1,5 @@
-import type { ContextSourceStatus } from "@posthog/core/canvas/contextSources";
-import type { ContextSourceState } from "@posthog/ui/features/canvas/hooks/useContextSources";
+import type { ContextSourceStatus } from "@flind/core/canvas/contextSources";
+import type { ContextSourceState } from "@flind/ui/features/canvas/hooks/useContextSources";
 
 const CONNECT_VERB: Partial<Record<ContextSourceStatus, string>> = {
   needs_reauth: "Reconnect",

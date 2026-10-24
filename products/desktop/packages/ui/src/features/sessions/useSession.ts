@@ -2,8 +2,8 @@ import type {
   AvailableCommand,
   SessionConfigOption,
 } from "@agentclientprotocol/sdk";
-import { extractAvailableCommandsFromEvents } from "@posthog/core/sessions/sessionEvents";
-import type { PermissionRequest } from "@posthog/ui/features/sessions/sessionLogTypes";
+import { extractAvailableCommandsFromEvents } from "@flind/core/sessions/sessionEvents";
+import type { PermissionRequest } from "@flind/ui/features/sessions/sessionLogTypes";
 import { shallow } from "zustand/shallow";
 import {
   type Adapter,

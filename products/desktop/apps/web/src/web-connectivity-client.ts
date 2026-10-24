@@ -1,4 +1,4 @@
-import type { ConnectivityClient } from "@posthog/ui/features/connectivity/connectivityClient";
+import type { ConnectivityClient } from "@flind/ui/features/connectivity/connectivityClient";
 
 // Real web connectivity, backed by navigator.onLine and the browser's
 // online/offline events. Desktop resolves this over the main-process

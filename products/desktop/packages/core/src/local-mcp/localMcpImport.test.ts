@@ -1,4 +1,4 @@
-import type { LocalMcpServerDescriptor } from "@posthog/shared";
+import type { LocalMcpServerDescriptor } from "@flind/shared";
 import { describe, expect, it } from "vitest";
 import {
   classifyLocalMcpServer,

@@ -1,4 +1,4 @@
-import { SpaceSelect } from "@posthog/ui/features/canvas/components/SpaceSelect";
+import { SpaceSelect } from "@flind/ui/features/canvas/components/SpaceSelect";
 
 export function NewSessionHeading({
   channelId,

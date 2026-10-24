@@ -37,46 +37,46 @@ vi.mock("@tanstack/react-router", () => ({
       },
     }),
 }));
-vi.mock("@posthog/ui/router/routerRef", () => ({
+vi.mock("@flind/ui/router/routerRef", () => ({
   getRouterOrNull: () => ({
     navigate: mocks.navigate,
     state: { resolvedLocation: { href: mocks.href } },
   }),
 }));
 
-vi.mock("@posthog/ui/features/canvas/hooks/useTaskActivity", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useTaskActivity", () => ({
   useTaskActivity: () => ({ unreadCount: 1 }),
 }));
 vi.mock(
-  "@posthog/ui/features/command-center/useCommandCenterActiveCount",
+  "@flind/ui/features/command-center/useCommandCenterActiveCount",
   () => ({ useCommandCenterActiveCount: () => 0 }),
 );
-vi.mock("@posthog/ui/features/feature-flags/useFeatureFlag", () => ({
+vi.mock("@flind/ui/features/feature-flags/useFeatureFlag", () => ({
   useFeatureFlag: (key: string) => mocks.featureFlags.get(key) ?? false,
 }));
-vi.mock("@posthog/ui/features/browser-tabs/useSpacesTabs", () => ({
+vi.mock("@flind/ui/features/browser-tabs/useSpacesTabs", () => ({
   useSpacesTabs: () => true,
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useChannelsLayout", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannelsLayout", () => ({
   useChannelsLayout: () => true,
 }));
-vi.mock("@posthog/ui/features/inbox/hooks/useInboxDecisionCount", () => ({
+vi.mock("@flind/ui/features/inbox/hooks/useInboxDecisionCount", () => ({
   useInboxDecisionCount: () => 1,
 }));
-vi.mock("@posthog/ui/features/sidebar/components/ProjectSwitcher", () => ({
+vi.mock("@flind/ui/features/sidebar/components/ProjectSwitcher", () => ({
   ProjectSwitcher: () => (
     <button type="button" aria-label="Project switcher">
       Project switcher
     </button>
   ),
 }));
-vi.mock("@posthog/ui/features/browser-tabs/useOpenBrowserTab", () => ({
+vi.mock("@flind/ui/features/browser-tabs/useOpenBrowserTab", () => ({
   useOpenBrowserTab: () => mocks.openBrowserTab,
 }));
-vi.mock("@posthog/ui/features/settings/hooks/useOpenSettings", () => ({
+vi.mock("@flind/ui/features/settings/hooks/useOpenSettings", () => ({
   openSettings: mocks.openSettings,
 }));
-vi.mock("@posthog/ui/router/navigationBridge", () => ({
+vi.mock("@flind/ui/router/navigationBridge", () => ({
   getCurrentMatches: () => [{ fullPath: mocks.fullPath }],
   navigateToActivity: (...a: unknown[]) => mocks.navigateToActivity(...a),
   navigateToCanvases: (...a: unknown[]) => mocks.navigateToCanvases(...a),
@@ -90,14 +90,14 @@ vi.mock("@posthog/ui/router/navigationBridge", () => ({
     mocks.navigateToCommandCenter(...a),
   navigateToSpacesContext: vi.fn(),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useProjectTaskFeeds", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useProjectTaskFeeds", () => ({
   useProjectTaskFeeds: () => [],
 }));
-vi.mock("@posthog/ui/shell/analytics", () => ({ track: vi.fn() }));
-vi.mock("@posthog/ui/features/canvas/components/ActivityHoverCard", () => ({
+vi.mock("@flind/ui/shell/analytics", () => ({ track: vi.fn() }));
+vi.mock("@flind/ui/features/canvas/components/ActivityHoverCard", () => ({
   ActivityHoverCard: () => <div>Recent activity card</div>,
 }));
-vi.mock("@posthog/ui/features/canvas/components/ChannelsFab", () => ({
+vi.mock("@flind/ui/features/canvas/components/ChannelsFab", () => ({
   ChannelsFab: ({
     channelId,
     placement,
@@ -114,18 +114,18 @@ vi.mock("@posthog/ui/features/canvas/components/ChannelsFab", () => ({
   ),
 }));
 
-import { browserTabsStore } from "@posthog/core/browser-tabs/browserTabsStore";
-import { DESKTOP_HOME_FLAG, type RailVisit } from "@posthog/shared";
-import { useActivityFilterStore } from "@posthog/ui/features/canvas/stores/activityFilterStore";
+import { browserTabsStore } from "@flind/core/browser-tabs/browserTabsStore";
+import { DESKTOP_HOME_FLAG, type RailVisit } from "@flind/shared";
+import { useActivityFilterStore } from "@flind/ui/features/canvas/stores/activityFilterStore";
 import {
   clearKeepListForRoute,
   shouldKeepListForRoute,
   useChannelPaneStore,
-} from "@posthog/ui/features/canvas/stores/channelPaneStore";
-import { useCurrentChannelStore } from "@posthog/ui/features/canvas/stores/currentChannelStore";
-import { useSidebarSearchStore } from "@posthog/ui/features/canvas/stores/sidebarSearchStore";
-import { useSidebarStore } from "@posthog/ui/features/sidebar/sidebarStore";
-import { isMac } from "@posthog/ui/utils/platform";
+} from "@flind/ui/features/canvas/stores/channelPaneStore";
+import { useCurrentChannelStore } from "@flind/ui/features/canvas/stores/currentChannelStore";
+import { useSidebarSearchStore } from "@flind/ui/features/canvas/stores/sidebarSearchStore";
+import { useSidebarStore } from "@flind/ui/features/sidebar/sidebarStore";
+import { isMac } from "@flind/ui/utils/platform";
 import { NavRail } from "./NavRail";
 
 it("stays above floating sidebar layers", () => {

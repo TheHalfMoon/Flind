@@ -1,5 +1,5 @@
-import type { AuthService } from "@posthog/core/auth/auth";
-import type { SavedInsight } from "@posthog/core/canvas/freeformSchemas";
+import type { AuthService } from "@flind/core/auth/auth";
+import type { SavedInsight } from "@flind/core/canvas/freeformSchemas";
 
 // Thin authenticated helpers over the PostHog HTTP API, shared by the canvas
 // services so the HogQL-query and current-user round-trips aren't duplicated.

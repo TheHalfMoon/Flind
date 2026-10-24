@@ -1,11 +1,11 @@
 import "reflect-metadata";
-import type { NotificationTarget } from "@posthog/platform/notifications";
+import type { NotificationTarget } from "@flind/platform/notifications";
 import { describe, expect, it, vi } from "vitest";
 
 // Keep resolveSoundUrl real (the bus uses it to decide the native silent flag);
 // only stub the side-effecting player.
-vi.mock("@posthog/ui/utils/sounds", async (importOriginal) => ({
-  ...(await importOriginal<typeof import("@posthog/ui/utils/sounds")>()),
+vi.mock("@flind/ui/utils/sounds", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@flind/ui/utils/sounds")>()),
   playCompletionSound: vi.fn(),
 }));
 
@@ -14,13 +14,13 @@ const toastMock = vi.hoisted(() => ({
   error: vi.fn(),
   warning: vi.fn(),
 }));
-vi.mock("@posthog/ui/primitives/toast", () => ({ toast: toastMock }));
+vi.mock("@flind/ui/primitives/toast", () => ({ toast: toastMock }));
 
 import {
   clearCapturedLogs,
   formatCapturedLogs,
-} from "@posthog/ui/shell/logCapture";
-import { playCompletionSound } from "@posthog/ui/utils/sounds";
+} from "@flind/ui/shell/logCapture";
+import { playCompletionSound } from "@flind/ui/utils/sounds";
 import type {
   IActiveView,
   INotificationSettings,

@@ -10,21 +10,21 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@flind/quill";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
-import { channelGlyph } from "@posthog/ui/features/canvas/components/channelGlyph";
-import { useChannelStarMutations } from "@posthog/ui/features/canvas/hooks/useChannelStars";
-import { useChannels } from "@posthog/ui/features/canvas/hooks/useChannels";
-import { useChannelsLayout } from "@posthog/ui/features/canvas/hooks/useChannelsLayout";
-import { copyChannelLink } from "@posthog/ui/features/canvas/utils/copyChannelLink";
-import { HeaderTitleEditor } from "@posthog/ui/features/task-detail/HeaderTitleEditor";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
+import { channelGlyph } from "@flind/ui/features/canvas/components/channelGlyph";
+import { useChannelStarMutations } from "@flind/ui/features/canvas/hooks/useChannelStars";
+import { useChannels } from "@flind/ui/features/canvas/hooks/useChannels";
+import { useChannelsLayout } from "@flind/ui/features/canvas/hooks/useChannelsLayout";
+import { copyChannelLink } from "@flind/ui/features/canvas/utils/copyChannelLink";
+import { HeaderTitleEditor } from "@flind/ui/features/task-detail/HeaderTitleEditor";
 import {
   BreadcrumbSegment,
   BreadcrumbSeparator,
-} from "@posthog/ui/primitives/Breadcrumb";
-import { LEADING_BUTTON_PULL } from "@posthog/ui/primitives/ChromeBar";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
-import { toast } from "@posthog/ui/primitives/toast";
-import { track } from "@posthog/ui/shell/analytics";
+} from "@flind/ui/primitives/Breadcrumb";
+import { LEADING_BUTTON_PULL } from "@flind/ui/primitives/ChromeBar";
+import { Spinner } from "@flind/ui/primitives/Spinner";
+import { toast } from "@flind/ui/primitives/toast";
+import { track } from "@flind/ui/shell/analytics";
 import { Flex } from "@radix-ui/themes";
 import { useNavigate, useRouterState } from "@tanstack/react-router";
 import { type ReactNode, useState } from "react";

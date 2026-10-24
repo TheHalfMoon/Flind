@@ -21,7 +21,7 @@ function nextQueueId(): string {
 // queued before it may auto-send; it and everything after stay put until the
 // edit is saved or cancelled. Returns the full length when nothing is being
 // edited (or the edited message has already left the queue). Mirrors
-// `sendableQueuePrefixLength` in @posthog/shared, reimplemented here because
+// `sendableQueuePrefixLength` in @flind/shared, reimplemented here because
 // mobile's queue rows (`{id, content, attachments}`) don't match the shared
 // `AgentSession` message shape.
 function sendablePrefixLength(

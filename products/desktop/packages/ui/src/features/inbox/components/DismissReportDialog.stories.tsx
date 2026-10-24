@@ -1,4 +1,4 @@
-import { inboxStoryReport } from "@posthog/ui/features/inbox/components/inboxStoryFixtures";
+import { inboxStoryReport } from "@flind/ui/features/inbox/components/inboxStoryFixtures";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { DismissReportDialog } from "./DismissReportDialog";
 

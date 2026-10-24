@@ -2,19 +2,19 @@ import type {
   INotifications,
   NotificationOptions,
   NotificationTarget,
-} from "@posthog/platform/notifications";
-import { useThreadPanelStore } from "@posthog/ui/features/canvas/stores/threadPanelStore";
+} from "@flind/platform/notifications";
+import { useThreadPanelStore } from "@flind/ui/features/canvas/stores/threadPanelStore";
 import type {
   IActiveView,
   INotificationSettings,
   NotificationSettings,
-} from "@posthog/ui/features/notifications/identifiers";
-import { resolveActiveNotificationTarget } from "@posthog/ui/features/notifications/routeNotification";
-import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
+} from "@flind/ui/features/notifications/identifiers";
+import { resolveActiveNotificationTarget } from "@flind/ui/features/notifications/routeNotification";
+import { useSettingsStore } from "@flind/ui/features/settings/settingsStore";
 import {
   getCurrentMatches,
   openNotificationTarget,
-} from "@posthog/ui/router/navigationBridge";
+} from "@flind/ui/router/navigationBridge";
 
 // The Web Notifications API is the browser equivalent of the desktop main
 // process's OS notifications. Clicking a notification focuses the tab and

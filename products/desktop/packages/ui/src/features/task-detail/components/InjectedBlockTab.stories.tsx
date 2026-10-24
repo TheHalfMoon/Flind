@@ -1,4 +1,4 @@
-import { InjectedBlockTab } from "@posthog/ui/features/task-detail/components/InjectedBlockTab";
+import { InjectedBlockTab } from "@flind/ui/features/task-detail/components/InjectedBlockTab";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta: Meta<typeof InjectedBlockTab> = {

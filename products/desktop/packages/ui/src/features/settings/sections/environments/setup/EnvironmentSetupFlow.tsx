@@ -4,18 +4,18 @@ import {
   emptyEnvironmentSetupPlan,
   planEnvironmentInput,
   type SetupScope,
-} from "@posthog/core/settings/environmentSetup";
-import type { SandboxCustomImage } from "@posthog/shared/domain-types";
-import { useHandleOpenTask } from "@posthog/ui/features/deep-links/useHandleOpenTask";
+} from "@flind/core/settings/environmentSetup";
+import type { SandboxCustomImage } from "@flind/shared/domain-types";
+import { useHandleOpenTask } from "@flind/ui/features/deep-links/useHandleOpenTask";
 import {
   EnvironmentSetupForm,
   type ImageBuildMode,
-} from "@posthog/ui/features/settings/sections/environments/setup/EnvironmentSetupForm";
-import { submitEnvironmentPlan } from "@posthog/ui/features/settings/sections/environments/setup/submitEnvironmentPlan";
-import { useImageFromPlan } from "@posthog/ui/features/settings/sections/environments/setup/useImageFromPlan";
-import { useSandboxCustomImages } from "@posthog/ui/features/settings/sections/environments/useSandboxCustomImages";
-import { useSandboxEnvironments } from "@posthog/ui/features/settings/sections/environments/useSandboxEnvironments";
-import { LoadingState } from "@posthog/ui/primitives/LoadingState";
+} from "@flind/ui/features/settings/sections/environments/setup/EnvironmentSetupForm";
+import { submitEnvironmentPlan } from "@flind/ui/features/settings/sections/environments/setup/submitEnvironmentPlan";
+import { useImageFromPlan } from "@flind/ui/features/settings/sections/environments/setup/useImageFromPlan";
+import { useSandboxCustomImages } from "@flind/ui/features/settings/sections/environments/useSandboxCustomImages";
+import { useSandboxEnvironments } from "@flind/ui/features/settings/sections/environments/useSandboxEnvironments";
+import { LoadingState } from "@flind/ui/primitives/LoadingState";
 import { useRef, useState } from "react";
 
 interface EnvironmentSetupFlowProps {

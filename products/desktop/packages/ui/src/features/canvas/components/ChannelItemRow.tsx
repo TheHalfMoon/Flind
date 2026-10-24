@@ -1,4 +1,4 @@
-import type { ChannelItemModel } from "@posthog/core/canvas/channelItems";
+import type { ChannelItemModel } from "@flind/core/canvas/channelItems";
 import {
   AlertDialog,
   AlertDialogClose,
@@ -16,45 +16,45 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@flind/quill";
-import { formatRelativeTimeShort } from "@posthog/shared";
-import { useCurrentUser } from "@posthog/ui/features/auth/useCurrentUser";
-import { writeCanvasDragData } from "@posthog/ui/features/canvas/canvasDrag";
-import { ChannelItemHoverCard } from "@posthog/ui/features/canvas/components/ChannelItemHoverCard";
-import { RowPresence } from "@posthog/ui/features/canvas/components/ChannelItemPresence";
-import { iconForTemplate } from "@posthog/ui/features/canvas/components/canvasTemplateIcon";
+import { formatRelativeTimeShort } from "@flind/shared";
+import { useCurrentUser } from "@flind/ui/features/auth/useCurrentUser";
+import { writeCanvasDragData } from "@flind/ui/features/canvas/canvasDrag";
+import { ChannelItemHoverCard } from "@flind/ui/features/canvas/components/ChannelItemHoverCard";
+import { RowPresence } from "@flind/ui/features/canvas/components/ChannelItemPresence";
+import { iconForTemplate } from "@flind/ui/features/canvas/components/canvasTemplateIcon";
 import {
   type TaskRowBulkMenu,
   TaskRowContextMenu,
   type TaskRowMenuProps,
-} from "@posthog/ui/features/canvas/components/TaskRowMenu";
-import { WorkRowSurface } from "@posthog/ui/features/canvas/components/WorkRowSurface";
-import { useChannelItemMetadata } from "@posthog/ui/features/canvas/hooks/useChannelItemFacts";
-import { useChannelTaskStatus } from "@posthog/ui/features/canvas/hooks/useChannelTaskStatus";
-import { useIsCanvasPendingDelete } from "@posthog/ui/features/canvas/stores/pendingCanvasDeleteStore";
-import { useArchivingTasksStore } from "@posthog/ui/features/sidebar/archivingTasksStore";
-import { InlineEditInput } from "@posthog/ui/features/sidebar/components/items/TaskItem";
+} from "@flind/ui/features/canvas/components/TaskRowMenu";
+import { WorkRowSurface } from "@flind/ui/features/canvas/components/WorkRowSurface";
+import { useChannelItemMetadata } from "@flind/ui/features/canvas/hooks/useChannelItemFacts";
+import { useChannelTaskStatus } from "@flind/ui/features/canvas/hooks/useChannelTaskStatus";
+import { useIsCanvasPendingDelete } from "@flind/ui/features/canvas/stores/pendingCanvasDeleteStore";
+import { useArchivingTasksStore } from "@flind/ui/features/sidebar/archivingTasksStore";
+import { InlineEditInput } from "@flind/ui/features/sidebar/components/items/TaskItem";
 import {
   PinnedBadge,
   ROW_BADGE_CLASS,
   TaskBadgeStack,
   TaskStatusDot,
   TaskStatusTooltips,
-} from "@posthog/ui/features/sidebar/components/items/TaskStatusDot";
-import type { TaskStatusInput } from "@posthog/ui/features/sidebar/components/items/taskStatusVocabulary";
+} from "@flind/ui/features/sidebar/components/items/TaskStatusDot";
+import type { TaskStatusInput } from "@flind/ui/features/sidebar/components/items/taskStatusVocabulary";
 import {
   type TaskDot,
   taskDot,
-} from "@posthog/ui/features/sidebar/components/items/taskStatusVocabulary";
-import { SidebarItem } from "@posthog/ui/features/sidebar/components/SidebarItem";
-import { writeTaskDragData } from "@posthog/ui/features/sidebar/taskDrag";
-import { SESSION_ROW_ATTRIBUTE } from "@posthog/ui/features/sidebar/useMarqueeSelection";
-import { HandoffTaskDialog } from "@posthog/ui/features/task-detail/components/HandoffTaskDialog";
-import { useMountedOnceOpened } from "@posthog/ui/hooks/useMountedOnceOpened";
-import { DotsCircleSpinner } from "@posthog/ui/primitives/DotsCircleSpinner";
+} from "@flind/ui/features/sidebar/components/items/taskStatusVocabulary";
+import { SidebarItem } from "@flind/ui/features/sidebar/components/SidebarItem";
+import { writeTaskDragData } from "@flind/ui/features/sidebar/taskDrag";
+import { SESSION_ROW_ATTRIBUTE } from "@flind/ui/features/sidebar/useMarqueeSelection";
+import { HandoffTaskDialog } from "@flind/ui/features/task-detail/components/HandoffTaskDialog";
+import { useMountedOnceOpened } from "@flind/ui/hooks/useMountedOnceOpened";
+import { DotsCircleSpinner } from "@flind/ui/primitives/DotsCircleSpinner";
 import {
   OverflowTickerText,
   useOverflowTickerReveal,
-} from "@posthog/ui/primitives/OverflowTickerText";
+} from "@flind/ui/primitives/OverflowTickerText";
 import {
   type DragEvent,
   type ReactNode,

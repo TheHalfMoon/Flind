@@ -1,4 +1,4 @@
-import type { TaskRunStatus } from "@posthog/shared/domain-types";
+import type { TaskRunStatus } from "@flind/shared/domain-types";
 
 export type RunStatusVariant =
   | "default"

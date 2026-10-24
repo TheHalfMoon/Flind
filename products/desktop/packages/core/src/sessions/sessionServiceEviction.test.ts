@@ -1,5 +1,5 @@
-import type { AgentSession } from "@posthog/shared";
-import type { Task } from "@posthog/shared/domain-types";
+import type { AgentSession } from "@flind/shared";
+import type { Task } from "@flind/shared/domain-types";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { MAX_CONNECTED_SESSIONS } from "./sessionEviction";
 import {

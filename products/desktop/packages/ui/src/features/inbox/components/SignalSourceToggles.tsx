@@ -9,16 +9,16 @@ import {
 import type {
   ExternalDataSource,
   SignalSourceConfig,
-} from "@posthog/api-client/posthog-client";
-import { formatRepoPreview } from "@posthog/core/settings/githubRepoSummary";
+} from "@flind/api-client/posthog-client";
+import { formatRepoPreview } from "@flind/core/settings/githubRepoSummary";
 import { Button, Switch } from "@flind/quill";
 import {
   EXTERNAL_INBOX_SOURCES,
   type ToggleableSourceProduct,
-} from "@posthog/shared";
-import { GitHubSourceRepositoriesDialog } from "@posthog/ui/features/inbox/components/GitHubSourceRepositoriesDialog";
-import { getSourceProductMeta } from "@posthog/ui/features/inbox/components/utils/source-product-icons";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
+} from "@flind/shared";
+import { GitHubSourceRepositoriesDialog } from "@flind/ui/features/inbox/components/GitHubSourceRepositoriesDialog";
+import { getSourceProductMeta } from "@flind/ui/features/inbox/components/utils/source-product-icons";
+import { Spinner } from "@flind/ui/primitives/Spinner";
 import { memo, useCallback, useState } from "react";
 
 export type SignalSourceValues = Record<ToggleableSourceProduct, boolean>;

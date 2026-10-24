@@ -2,8 +2,8 @@ import {
   type DiffStats,
   deriveIsCloud,
   selectTaskDiffStats,
-} from "@posthog/core/code-review/selectTaskDiffStats";
-import type { Task } from "@posthog/shared/domain-types";
+} from "@flind/core/code-review/selectTaskDiffStats";
+import type { Task } from "@flind/shared/domain-types";
 import { useMemo } from "react";
 import {
   useLocalBranchChangedFiles,

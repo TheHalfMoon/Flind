@@ -1,14 +1,14 @@
 import type { IconProps } from "@phosphor-icons/react";
-import type { SignalReport } from "@posthog/shared/types";
-import { ReportSourceSuggestion } from "@posthog/ui/features/inbox/components/detail/ReportSourceSuggestion";
-import { InboxDetailFrameView } from "@posthog/ui/features/inbox/components/InboxDetailFrameView";
+import type { SignalReport } from "@flind/shared/types";
+import { ReportSourceSuggestion } from "@flind/ui/features/inbox/components/detail/ReportSourceSuggestion";
+import { InboxDetailFrameView } from "@flind/ui/features/inbox/components/InboxDetailFrameView";
 import {
   SignalsList,
   SignalsListSkeleton,
-} from "@posthog/ui/features/inbox/components/SignalsList";
-import { useInboxReportDismissAction } from "@posthog/ui/features/inbox/hooks/useInboxReportDismissAction";
-import { useInboxReportReadState } from "@posthog/ui/features/inbox/hooks/useInboxReportReadState";
-import { useInboxReportSignals } from "@posthog/ui/features/inbox/hooks/useInboxReports";
+} from "@flind/ui/features/inbox/components/SignalsList";
+import { useInboxReportDismissAction } from "@flind/ui/features/inbox/hooks/useInboxReportDismissAction";
+import { useInboxReportReadState } from "@flind/ui/features/inbox/hooks/useInboxReportReadState";
+import { useInboxReportSignals } from "@flind/ui/features/inbox/hooks/useInboxReports";
 import { type ComponentType, type ReactNode, useEffect } from "react";
 
 interface InboxDetailFrameProps {

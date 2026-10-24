@@ -1,4 +1,4 @@
-import { useServiceOptional } from "@posthog/di/react";
+import { useServiceOptional } from "@flind/di/react";
 import {
   type SyntheticEvent,
   useEffect,

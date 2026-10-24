@@ -1,4 +1,4 @@
-import { formatUsdAmount } from "@posthog/core/billing/usageDisplay";
+import { formatUsdAmount } from "@flind/core/billing/usageDisplay";
 import { cn } from "@flind/quill";
 import { Flex, Progress, Text } from "@radix-ui/themes";
 

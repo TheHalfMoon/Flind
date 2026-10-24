@@ -1,5 +1,5 @@
-import { MarkdownRenderer } from "@posthog/ui/features/editor/components/MarkdownRenderer";
-import { MermaidDiagram } from "@posthog/ui/primitives/MermaidDiagram";
+import { MarkdownRenderer } from "@flind/ui/features/editor/components/MarkdownRenderer";
+import { MermaidDiagram } from "@flind/ui/primitives/MermaidDiagram";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {

@@ -1,4 +1,4 @@
-import type { IAuthOAuthFlowService } from "@posthog/core/auth/identifiers";
+import type { IAuthOAuthFlowService } from "@flind/core/auth/identifiers";
 import {
   type CancelFlowOutput,
   type OAuthErrorCode,
@@ -6,14 +6,14 @@ import {
   oAuthTokenResponse,
   type RefreshTokenOutput,
   type StartFlowOutput,
-} from "@posthog/core/auth/oauth.schemas";
-import type { RootLogger } from "@posthog/di/logger";
+} from "@flind/core/auth/oauth.schemas";
+import type { RootLogger } from "@flind/di/logger";
 import {
   type CloudRegion,
   getCloudUrlFromRegion,
   getOauthClientIdFromRegion,
   OAUTH_SCOPES,
-} from "@posthog/shared";
+} from "@flind/shared";
 
 // Browser implementation of the auth OAuth flow. Desktop's OAuthService drives
 // PKCE through a posthog-code:// deep link (prod) or a loopback HTTP server

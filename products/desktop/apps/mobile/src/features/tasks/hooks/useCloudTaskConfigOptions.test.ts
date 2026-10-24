@@ -1,4 +1,4 @@
-import { DEFAULT_GATEWAY_MODEL, type GatewayModel } from "@posthog/shared";
+import { DEFAULT_GATEWAY_MODEL, type GatewayModel } from "@flind/shared";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { createElement, type PropsWithChildren } from "react";
 import { act, create } from "react-test-renderer";

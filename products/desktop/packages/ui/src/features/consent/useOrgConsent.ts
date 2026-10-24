@@ -1,9 +1,9 @@
-import { isNotAuthenticatedError } from "@posthog/shared";
-import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
+import { isNotAuthenticatedError } from "@flind/shared";
+import { useOptionalAuthenticatedClient } from "@flind/ui/features/auth/authClient";
 import {
   AUTH_SCOPED_QUERY_META,
   useCurrentUser,
-} from "@posthog/ui/features/auth/useCurrentUser";
+} from "@flind/ui/features/auth/useCurrentUser";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useCallback } from "react";
 

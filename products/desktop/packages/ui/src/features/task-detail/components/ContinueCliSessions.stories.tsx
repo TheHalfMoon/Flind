@@ -1,4 +1,4 @@
-import type { DiscoveredTask } from "@posthog/core/setup/types";
+import type { DiscoveredTask } from "@flind/core/setup/types";
 import { Flex, Text } from "@radix-ui/themes";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {

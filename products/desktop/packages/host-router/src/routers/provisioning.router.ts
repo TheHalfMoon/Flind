@@ -1,9 +1,9 @@
-import { PROVISIONING_SERVICE } from "@posthog/core/provisioning/identifiers";
+import { PROVISIONING_SERVICE } from "@flind/core/provisioning/identifiers";
 import {
   ProvisioningEvent,
   type ProvisioningService,
-} from "@posthog/core/provisioning/provisioning";
-import { publicProcedure, router } from "@posthog/host-trpc/trpc";
+} from "@flind/core/provisioning/provisioning";
+import { publicProcedure, router } from "@flind/host-trpc/trpc";
 
 export const provisioningRouter = router({
   onOutput: publicProcedure.subscription(async function* (opts) {

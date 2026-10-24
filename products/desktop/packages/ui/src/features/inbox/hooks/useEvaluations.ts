@@ -1,4 +1,4 @@
-import type { Evaluation } from "@posthog/api-client/posthog-client";
+import type { Evaluation } from "@flind/api-client/posthog-client";
 import { useAuthenticatedQuery } from "../../../hooks/useAuthenticatedQuery";
 import { useAuthStateValue } from "../../auth/store";
 

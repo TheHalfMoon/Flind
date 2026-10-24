@@ -1,5 +1,5 @@
-import type { SessionService } from "@posthog/core/sessions/sessionService";
-import type { Task, TaskRun } from "@posthog/shared/domain-types";
+import type { SessionService } from "@flind/core/sessions/sessionService";
+import type { Task, TaskRun } from "@flind/shared/domain-types";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import type {
   CloudPromptTransport,

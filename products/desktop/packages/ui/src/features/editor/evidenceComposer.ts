@@ -2,7 +2,7 @@ import {
   type EditorContent,
   isContentEmpty,
   type PostHogObjectKind,
-} from "@posthog/core/message-editor/content";
+} from "@flind/core/message-editor/content";
 
 export function buildEvidenceComposerContent({
   kind,

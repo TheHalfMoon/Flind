@@ -16,7 +16,7 @@ import {
 import type {
   AutoresearchDirection,
   AutoresearchDraftConfig,
-} from "@posthog/core/autoresearch/schemas";
+} from "@flind/core/autoresearch/schemas";
 import {
   Button,
   Dialog,

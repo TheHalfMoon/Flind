@@ -17,17 +17,17 @@ import {
   UsersIcon,
   XIcon,
 } from "@phosphor-icons/react";
-import { TASK_RUN_STATUSES } from "@posthog/core/tasks/feedQuery";
-import { UserAvatar } from "@posthog/ui/features/auth/UserAvatar";
+import { TASK_RUN_STATUSES } from "@flind/core/tasks/feedQuery";
+import { UserAvatar } from "@flind/ui/features/auth/UserAvatar";
 import type {
   FeedQueryEditContext,
   FeedQuerySuggestion,
-} from "@posthog/ui/features/canvas/components/feedQuerySuggestionUtils";
-import { useChannels } from "@posthog/ui/features/canvas/hooks/useChannels";
-import { useOrgMembers } from "@posthog/ui/features/canvas/hooks/useOrgMembers";
-import { userDisplayName } from "@posthog/ui/features/canvas/utils/userDisplay";
-import { getOriginProductMeta } from "@posthog/ui/features/sidebar/components/items/TaskIcon";
-import { DOT_TONE_VAR } from "@posthog/ui/features/sidebar/components/items/taskStatusVocabulary";
+} from "@flind/ui/features/canvas/components/feedQuerySuggestionUtils";
+import { useChannels } from "@flind/ui/features/canvas/hooks/useChannels";
+import { useOrgMembers } from "@flind/ui/features/canvas/hooks/useOrgMembers";
+import { userDisplayName } from "@flind/ui/features/canvas/utils/userDisplay";
+import { getOriginProductMeta } from "@flind/ui/features/sidebar/components/items/TaskIcon";
+import { DOT_TONE_VAR } from "@flind/ui/features/sidebar/components/items/taskStatusVocabulary";
 import { type ReactNode, useMemo } from "react";
 
 interface FeedQuerySuggestionGroup {

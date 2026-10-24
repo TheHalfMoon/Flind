@@ -1,16 +1,16 @@
 import { useDraggable } from "@dnd-kit/react";
 import { DotsSixVerticalIcon, XIcon } from "@phosphor-icons/react";
 import { Button, cn, Text } from "@flind/quill";
-import type { BrowserTab } from "@posthog/shared";
+import type { BrowserTab } from "@flind/shared";
 import {
   isTabAppView,
   resolveTabAppViewDisplay,
-} from "@posthog/ui/features/browser-tabs/tabAppViews";
-import { ActivityDetailCloseButton } from "@posthog/ui/features/canvas/components/ActivityDetailCloseButton";
-import { useActivitySelection } from "@posthog/ui/features/canvas/stores/activityDetailStore";
-import { TaskHeaderActions } from "@posthog/ui/features/task-detail/components/TaskHeaderActions";
-import { useTasks } from "@posthog/ui/features/tasks/useTasks";
-import { ChromeBar } from "@posthog/ui/primitives/ChromeBar";
+} from "@flind/ui/features/browser-tabs/tabAppViews";
+import { ActivityDetailCloseButton } from "@flind/ui/features/canvas/components/ActivityDetailCloseButton";
+import { useActivitySelection } from "@flind/ui/features/canvas/stores/activityDetailStore";
+import { TaskHeaderActions } from "@flind/ui/features/task-detail/components/TaskHeaderActions";
+import { useTasks } from "@flind/ui/features/tasks/useTasks";
+import { ChromeBar } from "@flind/ui/primitives/ChromeBar";
 import type { ReactNode } from "react";
 import { TileDropZones } from "./TileDropZones";
 import { TileTabContent } from "./TileTabContent";

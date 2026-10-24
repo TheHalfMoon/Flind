@@ -1,13 +1,13 @@
 import { GitPullRequestIcon } from "@phosphor-icons/react";
-import { isPullRequestReport } from "@posthog/core/inbox/reportMembership";
-import type { SignalReport } from "@posthog/shared/types";
-import { InboxReportListTab } from "@posthog/ui/features/inbox/components/InboxReportListTab";
-import { PullRequestCard } from "@posthog/ui/features/inbox/components/PullRequestCard";
+import { isPullRequestReport } from "@flind/core/inbox/reportMembership";
+import type { SignalReport } from "@flind/shared/types";
+import { InboxReportListTab } from "@flind/ui/features/inbox/components/InboxReportListTab";
+import { PullRequestCard } from "@flind/ui/features/inbox/components/PullRequestCard";
 import {
   PrDiffStatsBatchContext,
   type PrDiffStatsBatchContextValue,
-} from "@posthog/ui/features/inbox/context/PrDiffStatsBatchContext";
-import { usePrDiffStatsBatch } from "@posthog/ui/features/inbox/hooks/usePrDiffStatsBatch";
+} from "@flind/ui/features/inbox/context/PrDiffStatsBatchContext";
+import { usePrDiffStatsBatch } from "@flind/ui/features/inbox/hooks/usePrDiffStatsBatch";
 import { type ReactNode, useMemo } from "react";
 
 export function PullRequestsTab() {

@@ -1,4 +1,4 @@
-import { useTasks } from "@posthog/ui/features/tasks/useTasks";
+import { useTasks } from "@flind/ui/features/tasks/useTasks";
 import { useMemo } from "react";
 
 /**

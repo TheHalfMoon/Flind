@@ -2,13 +2,13 @@ import {
   buildTaskMap,
   groupWorktrees,
   parseWorktreeLimit,
-} from "@posthog/core/settings/worktreeGrouping";
-import { deleteWorktree as runDeleteWorktree } from "@posthog/core/settings/worktreeMaintenanceService";
-import { useHostTRPC, useHostTRPCClient } from "@posthog/host-router/react";
+} from "@flind/core/settings/worktreeGrouping";
+import { deleteWorktree as runDeleteWorktree } from "@flind/core/settings/worktreeMaintenanceService";
+import { useHostTRPC, useHostTRPCClient } from "@flind/host-router/react";
 import {
   SettingsCard,
   SettingsCardRow,
-} from "@posthog/ui/features/settings/components/SettingsCard";
+} from "@flind/ui/features/settings/components/SettingsCard";
 import { Switch, Text, TextField } from "@radix-ui/themes";
 import { useQueries, useQueryClient } from "@tanstack/react-query";
 import { useCallback, useMemo, useState } from "react";

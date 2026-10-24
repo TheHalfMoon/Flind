@@ -1,6 +1,6 @@
-import type { SpendAnalysisFilledDay } from "@posthog/core/billing/spendAnalysisTypes";
-import { EMPTY_SPEND_LIMITS } from "@posthog/core/billing/spendLimits";
-import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
+import type { SpendAnalysisFilledDay } from "@flind/core/billing/spendAnalysisTypes";
+import { EMPTY_SPEND_LIMITS } from "@flind/core/billing/spendLimits";
+import { useSettingsStore } from "@flind/ui/features/settings/settingsStore";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useEffect } from "react";
 import { SpendOverTimeCard } from "./SpendOverTimeCard";

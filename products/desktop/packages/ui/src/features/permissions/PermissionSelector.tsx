@@ -1,5 +1,5 @@
 import type { PermissionOption } from "@agentclientprotocol/sdk";
-import { readMcpToolName } from "@posthog/shared";
+import { readMcpToolName } from "@flind/shared";
 import { DefaultPermission } from "./DefaultPermission";
 import { DeletePermission } from "./DeletePermission";
 import { EditPermission } from "./EditPermission";

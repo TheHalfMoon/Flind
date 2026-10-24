@@ -1,4 +1,4 @@
-import { resolveService } from "@posthog/di/container";
+import { resolveService } from "@flind/di/container";
 import { recordLog } from "./logCapture";
 
 export interface ScopedLogger {

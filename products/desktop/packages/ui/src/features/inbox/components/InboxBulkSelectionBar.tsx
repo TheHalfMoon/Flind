@@ -6,14 +6,14 @@ import {
   UserMinusIcon,
   XIcon,
 } from "@phosphor-icons/react";
-import { isDismissalReasonSnooze } from "@posthog/shared/dismissalReasons";
-import type { SignalReport } from "@posthog/shared/types";
+import { isDismissalReasonSnooze } from "@flind/shared/dismissalReasons";
+import type { SignalReport } from "@flind/shared/types";
 import {
   DismissReportDialog,
   type DismissReportDialogResult,
-} from "@posthog/ui/features/inbox/components/DismissReportDialog";
-import { useInboxBulkActions } from "@posthog/ui/features/inbox/hooks/useInboxBulkActions";
-import { Button } from "@posthog/ui/primitives/Button";
+} from "@flind/ui/features/inbox/components/DismissReportDialog";
+import { useInboxBulkActions } from "@flind/ui/features/inbox/hooks/useInboxBulkActions";
+import { Button } from "@flind/ui/primitives/Button";
 import { AlertDialog, Flex, Text } from "@radix-ui/themes";
 import { useCallback, useState } from "react";
 

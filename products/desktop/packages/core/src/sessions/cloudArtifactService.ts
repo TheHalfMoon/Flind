@@ -1,6 +1,6 @@
-import type { ReadFileAsBase64 } from "@posthog/core/editor/cloud-prompt";
-import { base64ToUint8Array } from "@posthog/core/files/base64";
-import { getFileName } from "@posthog/shared";
+import type { ReadFileAsBase64 } from "@flind/core/editor/cloud-prompt";
+import { base64ToUint8Array } from "@flind/core/files/base64";
+import { getFileName } from "@flind/shared";
 import { inject, injectable } from "inversify";
 import {
   type BundleLocalSkill,

@@ -1,7 +1,7 @@
 import {
   CHAT_CONTENT_MAX_WIDTH,
   CHAT_CONTENT_PADDING_INLINE,
-} from "@posthog/ui/features/sessions/constants";
+} from "@flind/ui/features/sessions/constants";
 
 /** Widest ring the composer paints outside its border box (quill's 3px focus outline). */
 const OUTLINE_BLEED = 4;

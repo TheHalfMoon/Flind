@@ -1,4 +1,4 @@
-import { channelDisplayReference } from "@posthog/core/canvas/channelName";
+import { channelDisplayReference } from "@flind/core/canvas/channelName";
 import {
   Dialog,
   DialogContent,
@@ -6,8 +6,8 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@flind/quill";
-import { navigateToLoopDetail } from "@posthog/ui/router/navigationBridge";
-import { useThemeStore } from "@posthog/ui/shell/themeStore";
+import { navigateToLoopDetail } from "@flind/ui/router/navigationBridge";
+import { useThemeStore } from "@flind/ui/shell/themeStore";
 import { Theme } from "@radix-ui/themes";
 import { useLoopWizardDialogStore } from "../loopWizardDialogStore";
 import { LoopForm } from "./LoopForm";

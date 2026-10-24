@@ -1,4 +1,4 @@
-import { AUTORESEARCH_FLAG } from "@posthog/shared";
+import { AUTORESEARCH_FLAG } from "@flind/shared";
 import { useFeatureFlag } from "../feature-flags/useFeatureFlag";
 
 /**

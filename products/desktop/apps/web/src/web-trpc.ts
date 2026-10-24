@@ -1,6 +1,6 @@
-import { resolveService } from "@posthog/di/container";
-import type { HostRouter } from "@posthog/host-router/router";
-import type { HostContext } from "@posthog/host-trpc/context";
+import { resolveService } from "@flind/di/container";
+import type { HostRouter } from "@flind/host-router/router";
+import type { HostContext } from "@flind/host-trpc/context";
 import {
   createTRPCClient,
   type TRPCLink,

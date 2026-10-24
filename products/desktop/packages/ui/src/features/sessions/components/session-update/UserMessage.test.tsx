@@ -1,4 +1,4 @@
-import { ServiceProvider } from "@posthog/di/react";
+import { ServiceProvider } from "@flind/di/react";
 import { Theme } from "@radix-ui/themes";
 import { render, screen } from "@testing-library/react";
 import { Container } from "inversify";

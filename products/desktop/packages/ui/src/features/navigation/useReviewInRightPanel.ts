@@ -1,5 +1,5 @@
-import { useChannelsLayout } from "@posthog/ui/features/canvas/hooks/useChannelsLayout";
-import { useActiveSession } from "@posthog/ui/features/navigation/useActiveSession";
+import { useChannelsLayout } from "@flind/ui/features/canvas/hooks/useChannelsLayout";
+import { useActiveSession } from "@flind/ui/features/navigation/useActiveSession";
 
 /**
  * Whether a session's review belongs to the shared right panel rather than to

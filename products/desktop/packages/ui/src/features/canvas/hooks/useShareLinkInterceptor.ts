@@ -1,4 +1,4 @@
-import { interceptShareLinkClicks } from "@posthog/ui/utils/shareLinks";
+import { interceptShareLinkClicks } from "@flind/ui/utils/shareLinks";
 import { useEffect } from "react";
 
 /**

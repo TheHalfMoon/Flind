@@ -14,20 +14,20 @@ import {
   historicalCanvasBuild,
   latestFinishedCanvasBuild,
   publishedCanvasBuild,
-} from "@posthog/core/canvas/canvasBuildSchemas";
+} from "@flind/core/canvas/canvasBuildSchemas";
 import type {
   CanvasDraft,
   CanvasVersion,
-} from "@posthog/core/canvas/dashboardSchemas";
+} from "@flind/core/canvas/dashboardSchemas";
 import {
   type CanvasAgentRequestResult,
   type CanvasAnalyticsConfig,
   type CanvasCommentHighlight,
   canvasAgentRequestInputSchema,
   limitCanvasCommentHighlights,
-} from "@posthog/core/canvas/freeformSchemas";
-import { textToContent } from "@posthog/core/message-editor/content";
-import { useHostTRPC } from "@posthog/host-router/react";
+} from "@flind/core/canvas/freeformSchemas";
+import { textToContent } from "@flind/core/message-editor/content";
+import { useHostTRPC } from "@flind/host-router/react";
 import {
   Badge,
   Button,
@@ -50,56 +50,56 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@flind/quill";
-import { CANVAS_COMPONENT_PATH, formatRelativeAge } from "@posthog/shared";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
-import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { useCurrentUser } from "@posthog/ui/features/auth/useCurrentUser";
-import { CanvasSourceAutosave } from "@posthog/ui/features/canvas/blocks/CanvasBlocks";
-import { CanvasSourceEditor } from "@posthog/ui/features/canvas/blocks/CanvasSourceEditor";
-import { useCanvasSourceSync } from "@posthog/ui/features/canvas/blocks/canvasSourceHooks";
+import { CANVAS_COMPONENT_PATH, formatRelativeAge } from "@flind/shared";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
+import { useOptionalAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { useCurrentUser } from "@flind/ui/features/auth/useCurrentUser";
+import { CanvasSourceAutosave } from "@flind/ui/features/canvas/blocks/CanvasBlocks";
+import { CanvasSourceEditor } from "@flind/ui/features/canvas/blocks/CanvasSourceEditor";
+import { useCanvasSourceSync } from "@flind/ui/features/canvas/blocks/canvasSourceHooks";
 import {
   useCanvasSourceEntry,
   useCanvasSourceStore,
-} from "@posthog/ui/features/canvas/blocks/canvasSourceStore";
+} from "@flind/ui/features/canvas/blocks/canvasSourceStore";
 import {
   isCanvasGenerating,
   isCanvasGenerationRunning,
-} from "@posthog/ui/features/canvas/freeform/canvasGenerationStatus";
-import { invalidateCanvasLifecycle } from "@posthog/ui/features/canvas/hooks/invalidateCanvasLifecycle";
-import { useCanvasBuilds } from "@posthog/ui/features/canvas/hooks/useCanvasBuilds";
-import { useChannels } from "@posthog/ui/features/canvas/hooks/useChannels";
+} from "@flind/ui/features/canvas/freeform/canvasGenerationStatus";
+import { invalidateCanvasLifecycle } from "@flind/ui/features/canvas/hooks/invalidateCanvasLifecycle";
+import { useCanvasBuilds } from "@flind/ui/features/canvas/hooks/useCanvasBuilds";
+import { useChannels } from "@flind/ui/features/canvas/hooks/useChannels";
 import {
   useCanvasDrafts,
   useCanvasSource,
   useCanvasVersions,
   useDashboardMutations,
   usePrimeCanvasView,
-} from "@posthog/ui/features/canvas/hooks/useDashboards";
-import { useCanvasChatPanelStore } from "@posthog/ui/features/canvas/stores/canvasChatPanelStore";
+} from "@flind/ui/features/canvas/hooks/useDashboards";
+import { useCanvasChatPanelStore } from "@flind/ui/features/canvas/stores/canvasChatPanelStore";
 import {
   dashboardIdOf,
   useFreeformChatStore,
   useFreeformThread,
-} from "@posthog/ui/features/canvas/stores/freeformChatStore";
-import { useDraftStore } from "@posthog/ui/features/message-editor/draftStore";
-import type { EditorHandle } from "@posthog/ui/features/message-editor/types";
+} from "@flind/ui/features/canvas/stores/freeformChatStore";
+import { useDraftStore } from "@flind/ui/features/message-editor/draftStore";
+import type { EditorHandle } from "@flind/ui/features/message-editor/types";
 import {
   canvasCommentFocusKey,
   useCommentNavigationStore,
-} from "@posthog/ui/features/sessions/commentNavigationStore";
+} from "@flind/ui/features/sessions/commentNavigationStore";
 import {
   buildCommentThreads,
   readCommentContext,
-} from "@posthog/ui/features/sessions/components/commentViewTypes";
-import { useCommentsQuery } from "@posthog/ui/features/sessions/components/useComments";
-import { useSessionForTask } from "@posthog/ui/features/sessions/useSession";
-import { taskDetailQuery } from "@posthog/ui/features/tasks/queries";
-import { ChromeBar } from "@posthog/ui/primitives/ChromeBar";
-import { LoadingState } from "@posthog/ui/primitives/LoadingState";
-import { ResizableSidebar } from "@posthog/ui/primitives/ResizableSidebar";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
-import { toast } from "@posthog/ui/primitives/toast";
-import { track } from "@posthog/ui/shell/analytics";
+} from "@flind/ui/features/sessions/components/commentViewTypes";
+import { useCommentsQuery } from "@flind/ui/features/sessions/components/useComments";
+import { useSessionForTask } from "@flind/ui/features/sessions/useSession";
+import { taskDetailQuery } from "@flind/ui/features/tasks/queries";
+import { ChromeBar } from "@flind/ui/primitives/ChromeBar";
+import { LoadingState } from "@flind/ui/primitives/LoadingState";
+import { ResizableSidebar } from "@flind/ui/primitives/ResizableSidebar";
+import { Spinner } from "@flind/ui/primitives/Spinner";
+import { toast } from "@flind/ui/primitives/toast";
+import { track } from "@flind/ui/shell/analytics";
 import {
   Box,
   Flex,

@@ -1,45 +1,45 @@
-import { PI_SESSION_CONTROLLER } from "@posthog/core/pi-runtime/identifiers";
-import type { PiSessionController } from "@posthog/core/pi-runtime/piSessionController";
+import { PI_SESSION_CONTROLLER } from "@flind/core/pi-runtime/identifiers";
+import type { PiSessionController } from "@flind/core/pi-runtime/piSessionController";
 import {
   SESSION_SERVICE,
   type SessionService,
-} from "@posthog/core/sessions/sessionService";
-import { useService, useServiceOptional } from "@posthog/di/react";
-import { useHostTRPC } from "@posthog/host-router/react";
-import type { Task } from "@posthog/shared/domain-types";
-import { useSpacesTabs } from "@posthog/ui/features/browser-tabs/useSpacesTabs";
-import { useChannelsLayout } from "@posthog/ui/features/canvas/hooks/useChannelsLayout";
-import { toggleActivityPanel } from "@posthog/ui/features/canvas/toggleActivityPanel";
-import { getDefaultReviewMode } from "@posthog/ui/features/code-review/getDefaultReviewMode";
-import { useReviewNavigationStore } from "@posthog/ui/features/code-review/reviewNavigationStore";
+} from "@flind/core/sessions/sessionService";
+import { useService, useServiceOptional } from "@flind/di/react";
+import { useHostTRPC } from "@flind/host-router/react";
+import type { Task } from "@flind/shared/domain-types";
+import { useSpacesTabs } from "@flind/ui/features/browser-tabs/useSpacesTabs";
+import { useChannelsLayout } from "@flind/ui/features/canvas/hooks/useChannelsLayout";
+import { toggleActivityPanel } from "@flind/ui/features/canvas/toggleActivityPanel";
+import { getDefaultReviewMode } from "@flind/ui/features/code-review/getDefaultReviewMode";
+import { useReviewNavigationStore } from "@flind/ui/features/code-review/reviewNavigationStore";
 import {
   GLOBAL_HOTKEY_OPTIONS,
   SHORTCUTS,
-} from "@posthog/ui/features/command/keyboard-shortcuts";
-import { useFeedbackStore } from "@posthog/ui/features/feedback/feedbackStore";
-import { useFolders } from "@posthog/ui/features/folders/useFolders";
-import { toggleRightPanel } from "@posthog/ui/features/navigation/rightPanelSide";
-import { usePanelLayoutStore } from "@posthog/ui/features/panels/panelLayoutStore";
-import { openSettings } from "@posthog/ui/features/settings/hooks/useOpenSettings";
-import { useSidebarStore } from "@posthog/ui/features/sidebar/sidebarStore";
-import type { TaskData } from "@posthog/ui/features/sidebar/useSidebarData";
-import { useFocusWorkspace } from "@posthog/ui/features/workspace/useFocusWorkspace";
-import { useWorkspaces } from "@posthog/ui/features/workspace/useWorkspace";
-import { shipIt } from "@posthog/ui/primitives/confetti";
+} from "@flind/ui/features/command/keyboard-shortcuts";
+import { useFeedbackStore } from "@flind/ui/features/feedback/feedbackStore";
+import { useFolders } from "@flind/ui/features/folders/useFolders";
+import { toggleRightPanel } from "@flind/ui/features/navigation/rightPanelSide";
+import { usePanelLayoutStore } from "@flind/ui/features/panels/panelLayoutStore";
+import { openSettings } from "@flind/ui/features/settings/hooks/useOpenSettings";
+import { useSidebarStore } from "@flind/ui/features/sidebar/sidebarStore";
+import type { TaskData } from "@flind/ui/features/sidebar/useSidebarData";
+import { useFocusWorkspace } from "@flind/ui/features/workspace/useFocusWorkspace";
+import { useWorkspaces } from "@flind/ui/features/workspace/useWorkspace";
+import { shipIt } from "@flind/ui/primitives/confetti";
 import {
   goBackInHistory,
   goForwardInHistory,
   navigateToCommandCenter,
   navigateToFolderSettings,
   navigateToInbox,
-} from "@posthog/ui/router/navigationBridge";
-import { useAppView } from "@posthog/ui/router/useAppView";
-import { openTask, openTaskInput } from "@posthog/ui/router/useOpenTask";
-import { useCommandMenuStore } from "@posthog/ui/shell/commandMenuStore";
-import { logger } from "@posthog/ui/shell/logger";
-import { useRendererWindowFocusStore } from "@posthog/ui/shell/rendererWindowFocusStore";
-import { installUncaughtErrorLogging } from "@posthog/ui/shell/uncaughtErrorLog";
-import { clearApplicationStorage } from "@posthog/ui/utils/clearStorage";
+} from "@flind/ui/router/navigationBridge";
+import { useAppView } from "@flind/ui/router/useAppView";
+import { openTask, openTaskInput } from "@flind/ui/router/useOpenTask";
+import { useCommandMenuStore } from "@flind/ui/shell/commandMenuStore";
+import { logger } from "@flind/ui/shell/logger";
+import { useRendererWindowFocusStore } from "@flind/ui/shell/rendererWindowFocusStore";
+import { installUncaughtErrorLogging } from "@flind/ui/shell/uncaughtErrorLog";
+import { clearApplicationStorage } from "@flind/ui/utils/clearStorage";
 import { useSubscription } from "@trpc/tanstack-react-query";
 import { useCallback, useEffect, useMemo, useRef } from "react";
 import { useHotkeys } from "react-hotkeys-hook";

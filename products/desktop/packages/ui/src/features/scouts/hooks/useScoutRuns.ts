@@ -1,12 +1,12 @@
 import {
   fetchScoutRunsWindow,
   type ScoutRunsWindow,
-} from "@posthog/core/scouts/scoutRunsWindow";
-import { useAuthenticatedQuery } from "@posthog/ui/hooks/useAuthenticatedQuery";
+} from "@flind/core/scouts/scoutRunsWindow";
+import { useAuthenticatedQuery } from "@flind/ui/hooks/useAuthenticatedQuery";
 import {
   readQuerySnapshot,
   useWriteQuerySnapshot,
-} from "@posthog/ui/hooks/useQuerySnapshot";
+} from "@flind/ui/hooks/useQuerySnapshot";
 import { useQueryClient } from "@tanstack/react-query";
 import { useAuthStateValue } from "../../auth/store";
 import { scoutQueryKeys } from "./scoutQueryKeys";

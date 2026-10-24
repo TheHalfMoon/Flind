@@ -1,7 +1,7 @@
 import { cn } from "@flind/quill";
-import { CodeBlock } from "@posthog/ui/primitives/CodeBlock";
-import { LoadingState } from "@posthog/ui/primitives/LoadingState";
-import { useThemeStore } from "@posthog/ui/shell/themeStore";
+import { CodeBlock } from "@flind/ui/primitives/CodeBlock";
+import { LoadingState } from "@flind/ui/primitives/LoadingState";
+import { useThemeStore } from "@flind/ui/shell/themeStore";
 import type { Mermaid } from "mermaid";
 import { useEffect, useId, useState } from "react";
 

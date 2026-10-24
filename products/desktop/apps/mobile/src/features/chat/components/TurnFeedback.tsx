@@ -1,4 +1,4 @@
-import type { AgentTurnFeedbackSentiment } from "@posthog/shared";
+import type { AgentTurnFeedbackSentiment } from "@flind/shared";
 import * as Haptics from "expo-haptics";
 import { ThumbsDown, ThumbsUp } from "phosphor-react-native";
 import { useCallback } from "react";

@@ -1,6 +1,6 @@
 import { Button, Host, Image, Menu } from "@expo/ui/swift-ui";
 import { frame, glassEffect } from "@expo/ui/swift-ui/modifiers";
-import type { SignalReport, Task } from "@posthog/shared/domain-types";
+import type { SignalReport, Task } from "@flind/shared/domain-types";
 import { FlashList } from "@shopify/flash-list";
 import { useQueries } from "@tanstack/react-query";
 import { useFocusEffect, useNavigation, useRouter } from "expo-router";

@@ -4,7 +4,7 @@ const navigateToSettings = vi.fn();
 const leaveSettingsRoute = vi.fn();
 const isOnSettingsRoute = vi.fn(() => false);
 
-vi.mock("@posthog/ui/router/navigationBridge", () => ({
+vi.mock("@flind/ui/router/navigationBridge", () => ({
   navigateToSettings: (...args: unknown[]) => navigateToSettings(...args),
   isOnSettingsRoute: () => isOnSettingsRoute(),
   isSettingsRouteId: (routeId: string) => routeId.includes("/settings/"),

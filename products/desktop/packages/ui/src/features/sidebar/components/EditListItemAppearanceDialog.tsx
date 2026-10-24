@@ -1,5 +1,5 @@
 import { type DragDropEvents, DragDropProvider } from "@dnd-kit/react";
-import type { TaskData } from "@posthog/core/sidebar/sidebarData.types";
+import type { TaskData } from "@flind/core/sidebar/sidebarData.types";
 import {
   Button,
   Dialog,
@@ -15,18 +15,18 @@ import {
 import {
   ANALYTICS_EVENTS,
   type TaskListAppearanceChangedProperties,
-} from "@posthog/shared/analytics-events";
-import { TaskStatusDot } from "@posthog/ui/features/sidebar/components/items/TaskStatusDot";
-import { taskDot } from "@posthog/ui/features/sidebar/components/items/taskStatusVocabulary";
-import { taskMetadata } from "@posthog/ui/features/sidebar/components/ListItemMetadata";
-import { SidebarItem } from "@posthog/ui/features/sidebar/components/SidebarItem";
+} from "@flind/shared/analytics-events";
+import { TaskStatusDot } from "@flind/ui/features/sidebar/components/items/TaskStatusDot";
+import { taskDot } from "@flind/ui/features/sidebar/components/items/taskStatusVocabulary";
+import { taskMetadata } from "@flind/ui/features/sidebar/components/ListItemMetadata";
+import { SidebarItem } from "@flind/ui/features/sidebar/components/SidebarItem";
 import {
   LIST_ITEM_METADATA_FIELDS,
   type ListItemMetadataField,
   moveListItemMetadataField,
-} from "@posthog/ui/features/sidebar/listItemAppearance";
-import { useSidebarStore } from "@posthog/ui/features/sidebar/sidebarStore";
-import { track } from "@posthog/ui/shell/analytics";
+} from "@flind/ui/features/sidebar/listItemAppearance";
+import { useSidebarStore } from "@flind/ui/features/sidebar/sidebarStore";
+import { track } from "@flind/ui/shell/analytics";
 import { useEffect, useRef, useState } from "react";
 import { SortableListItemMetadataField } from "./SortableListItemMetadataField";
 

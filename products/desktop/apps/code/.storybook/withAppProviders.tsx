@@ -1,21 +1,21 @@
 import WorkerUrl from "@pierre/diffs/worker/worker.js?worker&url";
-import { type ServiceContainer, setRootContainer } from "@posthog/di/container";
-import { ServiceProvider } from "@posthog/di/react";
-import { ipcLink } from "@posthog/electron-trpc/renderer";
+import { type ServiceContainer, setRootContainer } from "@flind/di/container";
+import { ServiceProvider } from "@flind/di/react";
+import { ipcLink } from "@flind/electron-trpc/renderer";
 import {
   HOST_TRPC_CLIENT,
   type HostTrpcClient,
-} from "@posthog/host-router/client";
-import { HostTRPCProvider } from "@posthog/host-router/react";
-import type { HostRouter } from "@posthog/host-router/router";
+} from "@flind/host-router/client";
+import { HostTRPCProvider } from "@flind/host-router/react";
+import type { HostRouter } from "@flind/host-router/router";
 import { ToastProvider } from "@flind/quill";
 import {
   FEATURE_FLAGS,
   type FeatureFlags,
-} from "@posthog/ui/features/feature-flags/identifiers";
-import { DIFF_WORKER_FACTORY } from "@posthog/ui/shell/diffWorkerHost";
-import { IMPERATIVE_QUERY_CLIENT } from "@posthog/ui/shell/queryClient";
-import { registerRendererStateStorage } from "@posthog/ui/shell/rendererStorage";
+} from "@flind/ui/features/feature-flags/identifiers";
+import { DIFF_WORKER_FACTORY } from "@flind/ui/shell/diffWorkerHost";
+import { IMPERATIVE_QUERY_CLIENT } from "@flind/ui/shell/queryClient";
+import { registerRendererStateStorage } from "@flind/ui/shell/rendererStorage";
 import type { Decorator } from "@storybook/react-vite";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {

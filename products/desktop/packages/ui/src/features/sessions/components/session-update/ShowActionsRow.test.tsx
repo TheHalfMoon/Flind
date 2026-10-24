@@ -1,4 +1,4 @@
-import type { ToolCall } from "@posthog/ui/features/sessions/types";
+import type { ToolCall } from "@flind/ui/features/sessions/types";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
@@ -6,7 +6,7 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 
 const openAgentAction = vi.hoisted(() => vi.fn());
 
-vi.mock("@posthog/host-router/react", () => ({
+vi.mock("@flind/host-router/react", () => ({
   useHostTRPC: () => ({
     deepLink: {
       openAgentAction: {

@@ -1,4 +1,4 @@
-import { router } from "@posthog/host-trpc/trpc";
+import { router } from "@flind/host-trpc/trpc";
 import { additionalDirectoriesRouter } from "./routers/additional-directories.router";
 import { agentRouter } from "./routers/agent.router";
 import { analyticsRouter } from "./routers/analytics.router";

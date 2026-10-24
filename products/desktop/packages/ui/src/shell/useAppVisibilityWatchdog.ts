@@ -1,5 +1,5 @@
-import { captureException } from "@posthog/ui/shell/analytics";
-import { logger } from "@posthog/ui/shell/logger";
+import { captureException } from "@flind/ui/shell/analytics";
+import { logger } from "@flind/ui/shell/logger";
 import { type RefObject, useEffect } from "react";
 
 const log = logger.scope("app-visibility");

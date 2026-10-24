@@ -1,13 +1,13 @@
-import type { AcpMessage } from "@posthog/shared";
+import type { AcpMessage } from "@flind/shared";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { countUserPrompts } from "./promptCount";
 
 const scanned = vi.hoisted(() => ({ count: 0 }));
 
-vi.mock("@posthog/core/sessions/sessionEvents", async () => {
+vi.mock("@flind/core/sessions/sessionEvents", async () => {
   const actual = await vi.importActual<
-    typeof import("@posthog/core/sessions/sessionEvents")
-  >("@posthog/core/sessions/sessionEvents");
+    typeof import("@flind/core/sessions/sessionEvents")
+  >("@flind/core/sessions/sessionEvents");
   return {
     ...actual,
     extractUserPromptsFromEvents: (events: AcpMessage[]) => {

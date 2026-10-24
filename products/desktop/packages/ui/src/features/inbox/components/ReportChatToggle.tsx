@@ -5,14 +5,14 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@flind/quill";
-import type { SignalReport } from "@posthog/shared/types";
+import type { SignalReport } from "@flind/shared/types";
 import {
   findContinuableImplementationTask,
   findLatestDiscussionTask,
   findPendingStartedTaskId,
   useReportTasks,
-} from "@posthog/ui/features/inbox/hooks/useReportTasks";
-import { useReportChatPanelStore } from "@posthog/ui/features/inbox/stores/reportChatPanelStore";
+} from "@flind/ui/features/inbox/hooks/useReportTasks";
+import { useReportChatPanelStore } from "@flind/ui/features/inbox/stores/reportChatPanelStore";
 
 export function ReportChatToggle({ report }: { report: SignalReport }) {
   const chatOpen = useReportChatPanelStore((state) => state.open);

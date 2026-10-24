@@ -1,4 +1,4 @@
-import type { Schemas } from "@posthog/api-client";
+import type { Schemas } from "@flind/api-client";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { act, renderHook } from "@testing-library/react";
 import { createElement, type ReactNode } from "react";
@@ -11,18 +11,18 @@ const mocks = vi.hoisted(() => ({
 }));
 
 vi.mock(
-  "@posthog/core/archive/archiveOrchestration",
+  "@flind/core/archive/archiveOrchestration",
   async (importOriginal) => ({
     ...(await importOriginal<
-      typeof import("@posthog/core/archive/archiveOrchestration")
+      typeof import("@flind/core/archive/archiveOrchestration")
     >()),
     archiveTask: mocks.archiveTask,
   }),
 );
-vi.mock("@posthog/di/container", () => ({
+vi.mock("@flind/di/container", () => ({
   resolveService: () => ({}),
 }));
-vi.mock("@posthog/host-router/react", () => ({
+vi.mock("@flind/host-router/react", () => ({
   useHostTRPC: () => ({
     archive: {
       archivedTaskIds: { queryKey: () => ["archived-task-ids"] },
@@ -34,7 +34,7 @@ vi.mock("@posthog/host-router/react", () => ({
 vi.mock("./useUnarchiveTask", () => ({
   useUnarchiveTask: () => ({ restore: vi.fn() }),
 }));
-vi.mock("@posthog/ui/primitives/toast", () => ({
+vi.mock("@flind/ui/primitives/toast", () => ({
   toast: { success: vi.fn(), dismiss: vi.fn() },
 }));
 

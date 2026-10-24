@@ -1,5 +1,5 @@
 {
-  "name": "@posthog/di",
+  "name": "@flind/di",
   "version": "1.0.0",
   "description": "DI and boot primitives. Owns the CONTRIBUTION token + interface, boot(), the ROOT_LOGGER logging port, and the useService React boundary hook. Framework-light: depends only on inversify, with React as a peer for the boundary hook.",
   "private": true,
@@ -22,7 +22,7 @@
     "react": "catalog:"
   },
   "devDependencies": {
-    "@posthog/tsconfig": "workspace:*",
+    "@flind/tsconfig": "workspace:*",
     "@types/react": "catalog:",
     "react": "catalog:",
     "typescript": "catalog:",

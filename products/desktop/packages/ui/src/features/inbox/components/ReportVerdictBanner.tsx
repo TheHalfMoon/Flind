@@ -6,22 +6,22 @@ import {
   EyeSlashIcon,
   GitPullRequestIcon,
 } from "@phosphor-icons/react";
-import { extractRepoSelectionRepository } from "@posthog/core/inbox/artefacts";
+import { extractRepoSelectionRepository } from "@flind/core/inbox/artefacts";
 import {
   resolveInboxReportDetailCache,
   updateInboxReportCaches,
-} from "@posthog/core/inbox/inboxQuery";
+} from "@flind/core/inbox/inboxQuery";
 import {
   canCreateImplementationPr,
   canResolveReport,
-} from "@posthog/core/inbox/reportActions";
+} from "@flind/core/inbox/reportActions";
 import {
   deriveReportImplementationState,
   needsImplementationDecision,
   REPORT_IMPLEMENTATION_LABELS,
-} from "@posthog/core/inbox/reportImplementation";
-import { parsePrUrl } from "@posthog/core/inbox/reportPresentation";
-import { deriveReportVerdict } from "@posthog/core/inbox/reportVerdict";
+} from "@flind/core/inbox/reportImplementation";
+import { parsePrUrl } from "@flind/core/inbox/reportPresentation";
+import { deriveReportVerdict } from "@flind/core/inbox/reportVerdict";
 import {
   Button,
   Field,
@@ -32,28 +32,28 @@ import {
   PopoverTrigger,
   Textarea,
 } from "@flind/quill";
-import type { InboxReportActionSurface } from "@posthog/shared/analytics-events";
-import type { SignalReport, Task } from "@posthog/shared/types";
-import { useTaskChannels } from "@posthog/ui/features/canvas/hooks/useTaskChannels";
-import { ReportVerdictCallout } from "@posthog/ui/features/inbox/components/ReportVerdictCallout";
-import { useCreatePrReport } from "@posthog/ui/features/inbox/hooks/useCreatePrReport";
-import { useDiscussReport } from "@posthog/ui/features/inbox/hooks/useDiscussReport";
-import { useInboxReportDismissAction } from "@posthog/ui/features/inbox/hooks/useInboxReportDismissAction";
-import { useInboxReportResolveAction } from "@posthog/ui/features/inbox/hooks/useInboxReportResolveAction";
-import { useInboxReportArtefacts } from "@posthog/ui/features/inbox/hooks/useInboxReports";
-import { useReportActionTracker } from "@posthog/ui/features/inbox/hooks/useReportActionTracker";
+import type { InboxReportActionSurface } from "@flind/shared/analytics-events";
+import type { SignalReport, Task } from "@flind/shared/types";
+import { useTaskChannels } from "@flind/ui/features/canvas/hooks/useTaskChannels";
+import { ReportVerdictCallout } from "@flind/ui/features/inbox/components/ReportVerdictCallout";
+import { useCreatePrReport } from "@flind/ui/features/inbox/hooks/useCreatePrReport";
+import { useDiscussReport } from "@flind/ui/features/inbox/hooks/useDiscussReport";
+import { useInboxReportDismissAction } from "@flind/ui/features/inbox/hooks/useInboxReportDismissAction";
+import { useInboxReportResolveAction } from "@flind/ui/features/inbox/hooks/useInboxReportResolveAction";
+import { useInboxReportArtefacts } from "@flind/ui/features/inbox/hooks/useInboxReports";
+import { useReportActionTracker } from "@flind/ui/features/inbox/hooks/useReportActionTracker";
 import {
   findContinuableImplementationTask,
   findLatestDiscussionTask,
   findPendingStartedTaskId,
   getTaskPrUrl,
   useReportTasks,
-} from "@posthog/ui/features/inbox/hooks/useReportTasks";
-import { useReportChatPanelStore } from "@posthog/ui/features/inbox/stores/reportChatPanelStore";
-import { taskDetailQuery } from "@posthog/ui/features/tasks/queries";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
-import { openTaskInput, useOpenTask } from "@posthog/ui/router/useOpenTask";
-import { openExternalUrl } from "@posthog/ui/shell/openExternal";
+} from "@flind/ui/features/inbox/hooks/useReportTasks";
+import { useReportChatPanelStore } from "@flind/ui/features/inbox/stores/reportChatPanelStore";
+import { taskDetailQuery } from "@flind/ui/features/tasks/queries";
+import { Spinner } from "@flind/ui/primitives/Spinner";
+import { openTaskInput, useOpenTask } from "@flind/ui/router/useOpenTask";
+import { openExternalUrl } from "@flind/ui/shell/openExternal";
 import { useQueryClient } from "@tanstack/react-query";
 import { useCallback, useEffect, useState } from "react";
 

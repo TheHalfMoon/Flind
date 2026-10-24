@@ -1,7 +1,7 @@
 import type {
   SignalReport,
   SignalReportsResponse,
-} from "@posthog/shared/domain-types";
+} from "@flind/shared/domain-types";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { createElement } from "react";
 import { act, create } from "react-test-renderer";

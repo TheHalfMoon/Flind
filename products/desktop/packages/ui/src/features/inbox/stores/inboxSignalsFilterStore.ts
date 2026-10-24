@@ -2,7 +2,7 @@ import type {
   SignalReportOrderingField,
   SignalReportPriority,
   SourceProduct,
-} from "@posthog/shared/types";
+} from "@flind/shared/types";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 

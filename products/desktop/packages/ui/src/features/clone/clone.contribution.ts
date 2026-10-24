@@ -1,10 +1,10 @@
-import { removalDelayMsForStatus } from "@posthog/core/clone/cloneRemovalDelay";
-import type { Contribution } from "@posthog/di/contribution";
+import { removalDelayMsForStatus } from "@flind/core/clone/cloneRemovalDelay";
+import type { Contribution } from "@flind/di/contribution";
 import {
   HOST_TRPC_CLIENT,
   type HostTrpcClient,
-} from "@posthog/host-router/client";
-import { cloneStore } from "@posthog/ui/features/clone/cloneStore";
+} from "@flind/host-router/client";
+import { cloneStore } from "@flind/ui/features/clone/cloneStore";
 import { inject, injectable } from "inversify";
 
 /**

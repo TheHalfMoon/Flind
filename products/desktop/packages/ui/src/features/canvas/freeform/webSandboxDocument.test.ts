@@ -3,7 +3,7 @@ import { buildSandboxDocument } from "./sandboxRuntime";
 
 // The web app cannot load the sandbox as srcdoc, because a srcdoc frame
 // inherits the app's CSP. Django serves this checked-in copy from the canvas
-// artifact origin instead. Run `pnpm --filter @posthog/ui
+// artifact origin instead. Run `pnpm --filter @flind/ui
 // generate-web-sandbox` to write it again after a change to sandboxRuntime.ts.
 const WEB_SANDBOX_DOCUMENT =
   "../../../../../../../canvas/backend/sandbox/sandbox_document.html";

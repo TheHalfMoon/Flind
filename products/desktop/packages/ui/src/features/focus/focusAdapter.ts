@@ -1,8 +1,8 @@
-import { resolveService } from "@posthog/di/container";
+import { resolveService } from "@flind/di/container";
 import {
   HOST_TRPC_CLIENT,
   type HostTrpcClient,
-} from "@posthog/host-router/client";
+} from "@flind/host-router/client";
 import type { FocusControllerDeps } from "./focusClient";
 
 function host(): HostTrpcClient {

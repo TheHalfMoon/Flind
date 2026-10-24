@@ -11,7 +11,7 @@ vi.mock("@dnd-kit/react", () => ({
   useDroppable: () => ({ ref: vi.fn() }),
 }));
 
-vi.mock("@posthog/host-router/react", () => ({
+vi.mock("@flind/host-router/react", () => ({
   useHostTRPCClient: () => ({
     contextMenu: {
       showSplitContextMenu: { mutate: vi.fn() },

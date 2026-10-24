@@ -1,6 +1,6 @@
-import type { CloudRegion } from "@posthog/shared";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
-import { useHostCapabilities } from "@posthog/ui/shell/useHostCapabilities";
+import type { CloudRegion } from "@flind/shared";
+import { Spinner } from "@flind/ui/primitives/Spinner";
+import { useHostCapabilities } from "@flind/ui/shell/useHostCapabilities";
 import { Callout } from "@radix-ui/themes";
 import { CustomCloudFields } from "./CustomCloudFields";
 import { RegionSelect } from "./RegionSelect";

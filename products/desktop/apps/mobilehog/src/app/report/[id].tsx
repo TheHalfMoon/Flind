@@ -1,5 +1,5 @@
-import { canCreateImplementationPr } from "@posthog/core/inbox/reportActions";
-import { isDismissedReport } from "@posthog/core/inbox/reportMembership";
+import { canCreateImplementationPr } from "@flind/core/inbox/reportActions";
+import { isDismissedReport } from "@flind/core/inbox/reportMembership";
 import * as Haptics from "expo-haptics";
 import { router, useLocalSearchParams } from "expo-router";
 import { useEffect } from "react";

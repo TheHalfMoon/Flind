@@ -1,7 +1,7 @@
 import type {
   EditorContent,
   MentionChip,
-} from "@posthog/core/message-editor/content";
+} from "@flind/core/message-editor/content";
 import type { JSONContent } from "@tiptap/core";
 
 type Segment = EditorContent["segments"][number];

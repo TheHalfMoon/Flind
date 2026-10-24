@@ -1,16 +1,16 @@
-import { countSessionsByChannel } from "@posthog/core/canvas/channelUnread";
+import { countSessionsByChannel } from "@flind/core/canvas/channelUnread";
 import {
   deriveTaskRunState,
   isTaskUnread,
   narrowFullTask,
-} from "@posthog/core/sidebar/buildSidebarData";
-import { taskActivityAt } from "@posthog/core/tasks/taskActivity";
-import { readPrUrls } from "@posthog/shared";
-import type { Task } from "@posthog/shared/domain-types";
-import { useArchivedTaskIds } from "@posthog/ui/features/archive/useArchivedTaskIds";
-import { taskDot } from "@posthog/ui/features/sidebar/components/items/taskStatusVocabulary";
-import { useTaskViewed } from "@posthog/ui/features/sidebar/useTaskViewed";
-import { useTasks } from "@posthog/ui/features/tasks/useTasks";
+} from "@flind/core/sidebar/buildSidebarData";
+import { taskActivityAt } from "@flind/core/tasks/taskActivity";
+import { readPrUrls } from "@flind/shared";
+import type { Task } from "@flind/shared/domain-types";
+import { useArchivedTaskIds } from "@flind/ui/features/archive/useArchivedTaskIds";
+import { taskDot } from "@flind/ui/features/sidebar/components/items/taskStatusVocabulary";
+import { useTaskViewed } from "@flind/ui/features/sidebar/useTaskViewed";
+import { useTasks } from "@flind/ui/features/tasks/useTasks";
 import { useMemo } from "react";
 
 /**

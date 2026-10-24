@@ -1,4 +1,4 @@
-import { NewTaskScreen } from "@posthog/ui/features/task-detail/components/NewTaskScreen";
+import { NewTaskScreen } from "@flind/ui/features/task-detail/components/NewTaskScreen";
 import { createFileRoute } from "@tanstack/react-router";
 
 // A new task filed to no space. Per-space new tasks live at /spaces/$id/new.

@@ -1,4 +1,4 @@
-import type { PostHogAPIClient } from "@posthog/api-client/posthog-client";
+import type { PostHogAPIClient } from "@flind/api-client/posthog-client";
 import type { QueryClient } from "@tanstack/react-query";
 import { useQueryClient } from "@tanstack/react-query";
 import { useEffect } from "react";

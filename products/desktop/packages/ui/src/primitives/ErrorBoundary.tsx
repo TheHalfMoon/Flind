@@ -1,4 +1,4 @@
-import { ErrorBoundaryFallback } from "@posthog/ui/primitives/ErrorBoundaryFallback";
+import { ErrorBoundaryFallback } from "@flind/ui/primitives/ErrorBoundaryFallback";
 import { Component, type ErrorInfo, type ReactNode } from "react";
 
 export interface ErrorBoundaryProps {

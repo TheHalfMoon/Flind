@@ -9,7 +9,7 @@ vi.mock("posthog-react-native", () => ({
   usePostHog: () => null,
 }));
 
-import type { SignalReport } from "@posthog/shared/domain-types";
+import type { SignalReport } from "@flind/shared/domain-types";
 import { ANALYTICS_EVENTS, type Analytics } from "@/lib/analytics";
 import {
   type InboxEngagementTracker,

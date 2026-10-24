@@ -1,10 +1,10 @@
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
 import { renderHook } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 
 const trackMock = vi.hoisted(() => vi.fn());
 
-vi.mock("@posthog/ui/shell/analytics", () => ({ track: trackMock }));
+vi.mock("@flind/ui/shell/analytics", () => ({ track: trackMock }));
 
 import {
   type TrackUsageViewedInput,

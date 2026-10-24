@@ -1,5 +1,5 @@
-import type { PostHogAPIClient } from "@posthog/api-client/posthog-client";
-import type { SignalReport, Task, TaskRunStatus } from "@posthog/shared/types";
+import type { PostHogAPIClient } from "@flind/api-client/posthog-client";
+import type { SignalReport, Task, TaskRunStatus } from "@flind/shared/types";
 import { describe, expect, it, vi } from "vitest";
 import {
   deriveReportImplementationState,

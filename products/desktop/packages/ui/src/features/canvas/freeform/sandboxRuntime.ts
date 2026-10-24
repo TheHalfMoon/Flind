@@ -4,21 +4,21 @@ import {
   FREEFORM_ESM_HOST,
   FREEFORM_POSTHOG_JS_URL,
   FREEFORM_QUILL_CSS_URLS,
-} from "@posthog/core/canvas/freeformWhitelist";
-import { resolveTextCommentAnchor } from "@posthog/core/comments/anchors";
+} from "@flind/core/canvas/freeformWhitelist";
+import { resolveTextCommentAnchor } from "@flind/core/comments/anchors";
 import {
   CANVAS_SDK_MODULE_SOURCE,
   CANVAS_SDK_SPECIFIER,
-} from "@posthog/shared";
+} from "@flind/shared";
 import {
   compileCanvasProject,
   installCanvasEditing,
-} from "@posthog/ui/features/canvas/blocks/canvasEditRuntime";
-import { EDIT_LABELS } from "@posthog/ui/features/canvas/blocks/libraryCatalog";
+} from "@flind/ui/features/canvas/blocks/canvasEditRuntime";
+import { EDIT_LABELS } from "@flind/ui/features/canvas/blocks/libraryCatalog";
 import {
   commentActionAnchorRect,
   installSelectionSettleGate,
-} from "@posthog/ui/features/sessions/components/selectionCommentAction";
+} from "@flind/ui/features/sessions/components/selectionCommentAction";
 
 // Builds the HTML document loaded into the freeform-canvas sandbox iframe.
 //

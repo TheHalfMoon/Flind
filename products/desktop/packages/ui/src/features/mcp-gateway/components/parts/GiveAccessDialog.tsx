@@ -5,17 +5,17 @@ import type {
   McpResolvedToolPolicy,
   McpServiceAccount,
   McpToolPolicyEntry,
-} from "@posthog/api-client/posthog-client";
+} from "@flind/api-client/posthog-client";
 import {
   AGENT_POLICY_STATES,
   type AgentPolicyState,
   defaultAgentGrantPolicy,
   isAgentPolicyState,
-} from "@posthog/core/mcp-gateway/gatewayServers";
-import { AgentScopeToggle } from "@posthog/ui/features/mcp-gateway/components/parts/AgentScopeToggle";
-import { RobotAvatar } from "@posthog/ui/features/mcp-gateway/components/parts/avatars";
-import { ToolPolicyToggle } from "@posthog/ui/features/mcp-servers/components/parts/ToolPolicyToggle";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
+} from "@flind/core/mcp-gateway/gatewayServers";
+import { AgentScopeToggle } from "@flind/ui/features/mcp-gateway/components/parts/AgentScopeToggle";
+import { RobotAvatar } from "@flind/ui/features/mcp-gateway/components/parts/avatars";
+import { ToolPolicyToggle } from "@flind/ui/features/mcp-servers/components/parts/ToolPolicyToggle";
+import { Spinner } from "@flind/ui/primitives/Spinner";
 import {
   Badge,
   Button,

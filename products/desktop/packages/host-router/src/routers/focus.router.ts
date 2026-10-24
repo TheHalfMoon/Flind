@@ -14,8 +14,8 @@ import {
   stashResultSchema,
   syncInput,
   worktreeInput,
-} from "@posthog/core/focus/identifiers";
-import { publicProcedure, router } from "@posthog/host-trpc/trpc";
+} from "@flind/core/focus/identifiers";
+import { publicProcedure, router } from "@flind/host-trpc/trpc";
 import { z } from "zod";
 
 function subscribe<K extends keyof FocusServiceEvents>(event: K) {

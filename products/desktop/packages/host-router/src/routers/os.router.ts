@@ -1,10 +1,10 @@
-import { publicProcedure, router } from "@posthog/host-trpc/trpc";
+import { publicProcedure, router } from "@flind/host-trpc/trpc";
 import {
   type IMainWindow,
   MAIN_WINDOW_SERVICE,
-} from "@posthog/platform/main-window";
-import { OS_SERVICE } from "@posthog/workspace-server/services/os/identifiers";
-import type { OsService } from "@posthog/workspace-server/services/os/os";
+} from "@flind/platform/main-window";
+import { OS_SERVICE } from "@flind/workspace-server/services/os/identifiers";
+import type { OsService } from "@flind/workspace-server/services/os/os";
 import {
   checkWriteAccessInput,
   claudePermissionsOutput,
@@ -22,7 +22,7 @@ import {
   setWorktreeLocationInput,
   showMessageBoxInput,
   userAgentInstructionsOutput,
-} from "@posthog/workspace-server/services/os/schemas";
+} from "@flind/workspace-server/services/os/schemas";
 
 export const osRouter = router({
   getClaudePermissions: publicProcedure

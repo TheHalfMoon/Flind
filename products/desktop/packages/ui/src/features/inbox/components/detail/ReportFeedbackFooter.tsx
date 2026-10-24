@@ -1,11 +1,11 @@
 import { ThumbsDownIcon, ThumbsUpIcon } from "@phosphor-icons/react";
 import { Button } from "@flind/quill";
-import type { InboxReportFeedbackSentiment } from "@posthog/shared";
-import type { SignalReport } from "@posthog/shared/types";
+import type { InboxReportFeedbackSentiment } from "@flind/shared";
+import type { SignalReport } from "@flind/shared/types";
 import {
   FEEDBACK_NOTE_MAX_LENGTH,
   useReportFeedbackTracker,
-} from "@posthog/ui/features/inbox/hooks/useReportFeedbackTracker";
+} from "@flind/ui/features/inbox/hooks/useReportFeedbackTracker";
 import { Flex, Text, TextArea } from "@radix-ui/themes";
 import { useCallback, useState } from "react";
 

@@ -1,23 +1,23 @@
 import type {
   McpApprovalState,
   McpResolvedToolPolicy,
-} from "@posthog/api-client/posthog-client";
+} from "@flind/api-client/posthog-client";
 import {
   isAgentPolicyState,
   isPolicyStateAllowedByCeiling,
-} from "@posthog/core/mcp-gateway/gatewayServers";
+} from "@flind/core/mcp-gateway/gatewayServers";
 import {
   autoRefreshRetryDelayMs,
   shouldAutoRefreshTools,
   shouldRetryAutoRefresh,
-} from "@posthog/core/mcp-servers/toolRefresh";
+} from "@flind/core/mcp-servers/toolRefresh";
 import {
   type GatewayPolicyScope,
   gatewayKeys,
-} from "@posthog/ui/features/mcp-gateway/hooks/gatewayKeys";
-import { useAuthenticatedMutation } from "@posthog/ui/hooks/useAuthenticatedMutation";
-import { useAuthenticatedQuery } from "@posthog/ui/hooks/useAuthenticatedQuery";
-import { toast } from "@posthog/ui/primitives/toast";
+} from "@flind/ui/features/mcp-gateway/hooks/gatewayKeys";
+import { useAuthenticatedMutation } from "@flind/ui/hooks/useAuthenticatedMutation";
+import { useAuthenticatedQuery } from "@flind/ui/hooks/useAuthenticatedQuery";
+import { toast } from "@flind/ui/primitives/toast";
 import { useQueryClient } from "@tanstack/react-query";
 import { useCallback, useEffect, useRef } from "react";
 

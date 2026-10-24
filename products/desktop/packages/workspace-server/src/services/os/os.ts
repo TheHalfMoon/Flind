@@ -2,28 +2,28 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
-import { APP_META_SERVICE, type IAppMeta } from "@posthog/platform/app-meta";
+import { APP_META_SERVICE, type IAppMeta } from "@flind/platform/app-meta";
 import {
   DIALOG_SERVICE,
   type DialogSeverity,
   type IDialog,
-} from "@posthog/platform/dialog";
+} from "@flind/platform/dialog";
 import {
   type IImageProcessor,
   IMAGE_PROCESSOR_SERVICE,
-} from "@posthog/platform/image-processor";
+} from "@flind/platform/image-processor";
 import {
   type IStoragePaths,
   STORAGE_PATHS_SERVICE,
-} from "@posthog/platform/storage-paths";
+} from "@flind/platform/storage-paths";
 import {
   type IUrlLauncher,
   URL_LAUNCHER_SERVICE,
-} from "@posthog/platform/url-launcher";
+} from "@flind/platform/url-launcher";
 import {
   type IWorkspaceSettings,
   WORKSPACE_SETTINGS_SERVICE,
-} from "@posthog/platform/workspace-settings";
+} from "@flind/platform/workspace-settings";
 import {
   ALLOWED_IMAGE_MIME_TYPES,
   CLIPBOARD_ATTACHMENT_DIR_NAME,
@@ -31,7 +31,7 @@ import {
   IMAGE_MIME_TYPES,
   isClipboardAttachmentPath,
   isRasterImageFile,
-} from "@posthog/shared";
+} from "@flind/shared";
 import { inject, injectable } from "inversify";
 import type {
   ClaudePermissions,

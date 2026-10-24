@@ -1,5 +1,5 @@
 import { PencilSimple, Trash } from "@phosphor-icons/react";
-import { useReviewDraftsStore } from "@posthog/ui/features/code-review/reviewDraftsStore";
+import { useReviewDraftsStore } from "@flind/ui/features/code-review/reviewDraftsStore";
 import { Badge, Flex, IconButton, Text } from "@radix-ui/themes";
 
 interface DraftCommentAnnotationProps {

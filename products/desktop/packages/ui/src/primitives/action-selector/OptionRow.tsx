@@ -1,4 +1,4 @@
-import { compactHomePath } from "@posthog/shared";
+import { compactHomePath } from "@flind/shared";
 import { Box, Checkbox, Flex, Radio, Text } from "@radix-ui/themes";
 import { isCancelOption, isOtherOption, isSubmitOption } from "./constants";
 import { InlineEditableText } from "./InlineEditableText";

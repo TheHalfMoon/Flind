@@ -1,6 +1,6 @@
 import type { IconProps } from "@phosphor-icons/react";
-import { useChannelPaneStore } from "@posthog/ui/features/canvas/stores/channelPaneStore";
-import { useCurrentChannelStore } from "@posthog/ui/features/canvas/stores/currentChannelStore";
+import { useChannelPaneStore } from "@flind/ui/features/canvas/stores/channelPaneStore";
+import { useCurrentChannelStore } from "@flind/ui/features/canvas/stores/currentChannelStore";
 
 const SQUARES = [
   { x: 40, y: 40 },

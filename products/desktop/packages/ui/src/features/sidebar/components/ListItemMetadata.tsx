@@ -1,10 +1,10 @@
-import type { TaskData } from "@posthog/core/sidebar/sidebarData.types";
+import type { TaskData } from "@flind/core/sidebar/sidebarData.types";
 import {
   type ListItemMetadataField,
   type ListItemMetadataSegment,
   listItemMetadataSegments,
   taskMetadataSegments,
-} from "@posthog/ui/features/sidebar/listItemAppearance";
+} from "@flind/ui/features/sidebar/listItemAppearance";
 import { Fragment, type ReactNode } from "react";
 
 /**

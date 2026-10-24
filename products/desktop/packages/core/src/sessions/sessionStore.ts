@@ -7,8 +7,8 @@ import {
   type QueuedMessage,
   sendableQueuePrefixLength,
   type TaskRunStatus,
-} from "@posthog/shared";
-import { isTerminalStatus } from "@posthog/shared/domain-types";
+} from "@flind/shared";
+import { isTerminalStatus } from "@flind/shared/domain-types";
 import { setAutoFreeze } from "immer";
 import { immer } from "zustand/middleware/immer";
 import { createStore } from "zustand/vanilla";

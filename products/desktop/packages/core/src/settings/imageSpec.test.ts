@@ -1,4 +1,4 @@
-import { IMAGE_TOOLS_ENV_KEY } from "@posthog/shared/constants";
+import { IMAGE_TOOLS_ENV_KEY } from "@flind/shared/constants";
 import { describe, expect, it } from "vitest";
 import {
   IMAGE_PRESET_TOOLS,

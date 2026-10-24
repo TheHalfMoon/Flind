@@ -1,5 +1,5 @@
 import { PackageIcon } from "@phosphor-icons/react";
-import type { Task } from "@posthog/shared/domain-types";
+import type { Task } from "@flind/shared/domain-types";
 import { renderHook } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import type { Tab } from "../panelTypes";

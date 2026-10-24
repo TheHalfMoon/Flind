@@ -1,11 +1,11 @@
 import type {
   McpGatewayMemberSummary,
   McpGatewayServer,
-} from "@posthog/api-client/posthog-client";
-import { gatewayKeys } from "@posthog/ui/features/mcp-gateway/hooks/gatewayKeys";
-import { useAuthenticatedMutation } from "@posthog/ui/hooks/useAuthenticatedMutation";
-import { useAuthenticatedQuery } from "@posthog/ui/hooks/useAuthenticatedQuery";
-import { toast } from "@posthog/ui/primitives/toast";
+} from "@flind/api-client/posthog-client";
+import { gatewayKeys } from "@flind/ui/features/mcp-gateway/hooks/gatewayKeys";
+import { useAuthenticatedMutation } from "@flind/ui/hooks/useAuthenticatedMutation";
+import { useAuthenticatedQuery } from "@flind/ui/hooks/useAuthenticatedQuery";
+import { toast } from "@flind/ui/primitives/toast";
 import { useQueryClient } from "@tanstack/react-query";
 
 function setIdEnabled<T extends string | number>(

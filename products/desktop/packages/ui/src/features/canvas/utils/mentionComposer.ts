@@ -1,6 +1,6 @@
-import { formatMention, splitMentionSegments } from "@posthog/shared";
-import type { UserBasic } from "@posthog/shared/domain-types";
-import { userDisplayName } from "@posthog/ui/features/canvas/utils/userDisplay";
+import { formatMention, splitMentionSegments } from "@flind/shared";
+import type { UserBasic } from "@flind/shared/domain-types";
+import { userDisplayName } from "@flind/ui/features/canvas/utils/userDisplay";
 import type { Node as PmNode } from "@tiptap/pm/model";
 import type { JSONContent } from "@tiptap/react";
 

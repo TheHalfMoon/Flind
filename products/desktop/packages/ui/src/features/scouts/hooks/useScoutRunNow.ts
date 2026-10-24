@@ -1,12 +1,12 @@
 import {
   type ScoutConfig,
   ScoutRequestError,
-} from "@posthog/api-client/posthog-client";
-import type { ScoutSurface } from "@posthog/shared";
-import { ANALYTICS_EVENTS } from "@posthog/shared";
-import { useAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { toast } from "@posthog/ui/primitives/toast";
-import { track } from "@posthog/ui/shell/analytics";
+} from "@flind/api-client/posthog-client";
+import type { ScoutSurface } from "@flind/shared";
+import { ANALYTICS_EVENTS } from "@flind/shared";
+import { useAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { toast } from "@flind/ui/primitives/toast";
+import { track } from "@flind/ui/shell/analytics";
 import { useQueryClient } from "@tanstack/react-query";
 import { useCallback, useState } from "react";
 import { useAuthStateValue } from "../../auth/store";

@@ -11,8 +11,8 @@ import {
   GITHUB_CONNECT_PENDING_APPROVAL_CODE,
   isGithubConnectAlreadyLinked,
   isGithubConnectPendingApproval,
-} from "@posthog/core/integrations/connectErrors";
-import { githubInvalidationKeys } from "@posthog/core/integrations/connectMachine";
+} from "@flind/core/integrations/connectErrors";
+import { githubInvalidationKeys } from "@flind/core/integrations/connectMachine";
 import {
   buildConnectAbandonedProps,
   buildConnectFailedProps,
@@ -25,11 +25,11 @@ import {
   getGithubPanelMessage,
   isAnyIntegrationStale,
   resolveSelectedProjectId,
-} from "@posthog/core/onboarding/githubConnectPanel";
-import type { GithubConnectService } from "@posthog/core/onboarding/githubConnectService";
-import { GITHUB_CONNECT_SERVICE } from "@posthog/core/onboarding/identifiers";
-import { formatGithubAccountLabel } from "@posthog/core/settings/githubRepoSummary";
-import { useService } from "@posthog/di/react";
+} from "@flind/core/onboarding/githubConnectPanel";
+import type { GithubConnectService } from "@flind/core/onboarding/githubConnectService";
+import { GITHUB_CONNECT_SERVICE } from "@flind/core/onboarding/identifiers";
+import { formatGithubAccountLabel } from "@flind/core/settings/githubRepoSummary";
+import { useService } from "@flind/di/react";
 import {
   Badge,
   Button,
@@ -49,25 +49,25 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@flind/quill";
-import type { OnboardingGithubConnectFlow } from "@posthog/shared/analytics-events";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
-import { useAuthStateValue } from "@posthog/ui/features/auth/store";
-import { DisconnectIntegrationDialog } from "@posthog/ui/features/integrations/components/DisconnectIntegrationDialog";
-import { GithubApprovalNotice } from "@posthog/ui/features/integrations/GithubApprovalNotice";
-import { useGithubDisconnect } from "@posthog/ui/features/integrations/useGithubDisconnect";
-import { useGithubInstallRequests } from "@posthog/ui/features/integrations/useGithubInstallRequests";
+import type { OnboardingGithubConnectFlow } from "@flind/shared/analytics-events";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
+import { useAuthStateValue } from "@flind/ui/features/auth/store";
+import { DisconnectIntegrationDialog } from "@flind/ui/features/integrations/components/DisconnectIntegrationDialog";
+import { GithubApprovalNotice } from "@flind/ui/features/integrations/GithubApprovalNotice";
+import { useGithubDisconnect } from "@flind/ui/features/integrations/useGithubDisconnect";
+import { useGithubInstallRequests } from "@flind/ui/features/integrations/useGithubInstallRequests";
 import {
   describeGithubConnectError,
   useGithubConnect,
-} from "@posthog/ui/features/integrations/useGithubUserConnect";
+} from "@flind/ui/features/integrations/useGithubUserConnect";
 import {
   useUserGithubIntegrations,
   useUserRepositoryIntegration,
-} from "@posthog/ui/features/integrations/useIntegrations";
-import { useProjectsWithIntegrations } from "@posthog/ui/features/onboarding/hooks/useProjectsWithIntegrations";
-import { useOnboardingStore } from "@posthog/ui/features/onboarding/onboardingStore";
-import { track } from "@posthog/ui/shell/analytics";
-import { openExternalUrl } from "@posthog/ui/shell/openExternal";
+} from "@flind/ui/features/integrations/useIntegrations";
+import { useProjectsWithIntegrations } from "@flind/ui/features/onboarding/hooks/useProjectsWithIntegrations";
+import { useOnboardingStore } from "@flind/ui/features/onboarding/onboardingStore";
+import { track } from "@flind/ui/shell/analytics";
+import { openExternalUrl } from "@flind/ui/shell/openExternal";
 import { useQueryClient } from "@tanstack/react-query";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 

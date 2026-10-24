@@ -2,12 +2,12 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 
 const send = vi.hoisted(() => vi.fn());
 const toastError = vi.hoisted(() => vi.fn());
-vi.mock("@posthog/core/sessions/commentToAgent", () => ({
+vi.mock("@flind/core/sessions/commentToAgent", () => ({
   CommentToAgentService: class {
     send = send;
   },
 }));
-vi.mock("@posthog/ui/primitives/toast", () => ({
+vi.mock("@flind/ui/primitives/toast", () => ({
   toast: { error: toastError },
 }));
 vi.mock("./commentToAgentHost", () => ({ commentToAgentHost: {} }));

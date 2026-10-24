@@ -1,19 +1,19 @@
 import {
   githubIssueToMentionChip,
   githubPullRequestToMentionChip,
-} from "@posthog/core/message-editor/githubIssueChip";
+} from "@flind/core/message-editor/githubIssueChip";
 import {
   getAbsolutePathSuggestion,
   mergeCommands,
   searchCommands,
   shapeCommandSuggestions,
   shapeFileSuggestions,
-} from "@posthog/core/message-editor/suggestions";
-import { sessionSupportsSideQuestion } from "@posthog/shared";
+} from "@flind/core/message-editor/suggestions";
+import { sessionSupportsSideQuestion } from "@flind/shared";
 import {
   getAvailableCommandsForTask,
   useSessionStore,
-} from "@posthog/ui/features/sessions/sessionStore";
+} from "@flind/ui/features/sessions/sessionStore";
 import { fetchRepoFiles, searchFiles } from "../../repo-files/useRepoFiles";
 import { BTW_COMMAND_NAME, CODE_COMMANDS } from "../commands";
 import { useDraftStore } from "../draftStore";

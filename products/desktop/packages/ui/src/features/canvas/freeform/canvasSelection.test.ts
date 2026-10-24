@@ -1,4 +1,4 @@
-import type { CanvasTextSelection } from "@posthog/core/canvas/freeformSchemas";
+import type { CanvasTextSelection } from "@flind/core/canvas/freeformSchemas";
 import { describe, expect, it } from "vitest";
 import { translateCanvasTextSelection } from "./canvasSelection";
 

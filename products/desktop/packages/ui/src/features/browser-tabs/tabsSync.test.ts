@@ -1,5 +1,5 @@
-import { browserTabsStore } from "@posthog/core/browser-tabs/browserTabsStore";
-import type { TabsSnapshot } from "@posthog/shared";
+import { browserTabsStore } from "@flind/core/browser-tabs/browserTabsStore";
+import type { TabsSnapshot } from "@flind/shared";
 import { beforeEach, describe, expect, it } from "vitest";
 import {
   applyLocalTransform,

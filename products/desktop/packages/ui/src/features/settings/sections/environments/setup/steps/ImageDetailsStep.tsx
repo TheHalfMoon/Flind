@@ -1,11 +1,11 @@
 import {
   type EnvironmentSetupPlan,
   withRepositories,
-} from "@posthog/core/settings/environmentSetup";
+} from "@flind/core/settings/environmentSetup";
 import { Checkbox, Label, Text } from "@flind/quill";
-import { RepositoriesField } from "@posthog/ui/features/integrations/components/RepositoriesField";
-import { StepBody } from "@posthog/ui/features/settings/sections/environments/setup/StepBody";
-import { ImageNameField } from "@posthog/ui/features/settings/sections/environments/setup/steps/ImageNameField";
+import { RepositoriesField } from "@flind/ui/features/integrations/components/RepositoriesField";
+import { StepBody } from "@flind/ui/features/settings/sections/environments/setup/StepBody";
+import { ImageNameField } from "@flind/ui/features/settings/sections/environments/setup/steps/ImageNameField";
 import { useId } from "react";
 
 interface ImageDetailsStepProps {

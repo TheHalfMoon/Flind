@@ -1,4 +1,4 @@
-import type { IAppLifecycle } from "@posthog/platform/app-lifecycle";
+import type { IAppLifecycle } from "@flind/platform/app-lifecycle";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { AppLifecycleService } from "./service";
 
@@ -95,13 +95,13 @@ vi.mock("../../platform-adapters/posthog-analytics.js", () => ({
   },
 }));
 
-vi.mock("@posthog/shared/analytics-events", () => ({
+vi.mock("@flind/shared/analytics-events", () => ({
   ANALYTICS_EVENTS: {
     APP_QUIT: "app_quit",
   },
 }));
 
-vi.mock("@posthog/workspace-server/services/agent/codex-home", () => ({
+vi.mock("@flind/workspace-server/services/agent/codex-home", () => ({
   cleanupAllCodexHomes: mockCleanupAllCodexHomes,
 }));
 

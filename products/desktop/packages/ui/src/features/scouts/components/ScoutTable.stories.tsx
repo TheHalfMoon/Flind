@@ -1,15 +1,15 @@
-import type { ScoutConfig, ScoutRun } from "@posthog/api-client/posthog-client";
+import type { ScoutConfig, ScoutRun } from "@flind/api-client/posthog-client";
 import {
   buildScoutCreatorIndex,
   computeScoutRollups,
   listScoutsNeedingAttention,
   sortConfigsForDisplay,
-} from "@posthog/core/scouts/scoutPresentation";
-import { AgentsTabLayout } from "@posthog/ui/features/agents/components/AgentsTabLayout";
+} from "@flind/core/scouts/scoutPresentation";
+import { AgentsTabLayout } from "@flind/ui/features/agents/components/AgentsTabLayout";
 import {
   ANONYMOUS_AUTH_STATE,
   useAuthStore,
-} from "@posthog/ui/features/auth/store";
+} from "@flind/ui/features/auth/store";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import type { ReactNode } from "react";
 import { ScoutAttentionStrip } from "./ScoutAttentionStrip";

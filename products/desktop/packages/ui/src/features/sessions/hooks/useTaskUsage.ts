@@ -1,5 +1,5 @@
-import type { TaskUsage } from "@posthog/api-client/posthog-client";
-import { useAuthenticatedQuery } from "@posthog/ui/hooks/useAuthenticatedQuery";
+import type { TaskUsage } from "@flind/api-client/posthog-client";
+import { useAuthenticatedQuery } from "@flind/ui/hooks/useAuthenticatedQuery";
 import type { UseQueryResult } from "@tanstack/react-query";
 
 const TASK_USAGE_REFRESH_MS = 60_000;

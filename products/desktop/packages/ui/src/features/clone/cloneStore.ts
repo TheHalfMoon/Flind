@@ -1,7 +1,7 @@
 import type {
   CloneOperation,
   CloneProgressEvent,
-} from "@posthog/core/clone/cloneTypes";
+} from "@flind/core/clone/cloneTypes";
 import { create } from "zustand";
 
 interface CloneStore {

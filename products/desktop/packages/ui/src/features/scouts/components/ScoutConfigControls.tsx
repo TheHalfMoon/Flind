@@ -1,5 +1,5 @@
 import { ArrowSquareOutIcon } from "@phosphor-icons/react";
-import type { ScoutConfig } from "@posthog/api-client/posthog-client";
+import type { ScoutConfig } from "@flind/api-client/posthog-client";
 import {
   DEFAULT_SCOUT_DAILY_TIME,
   DEFAULT_SCOUT_WEEKLY_DAY,
@@ -19,14 +19,14 @@ import {
   scoutCronScheduleError,
   timeToDailyCron,
   weeklyCronToDayTime,
-} from "@posthog/core/scouts/scoutPresentation";
+} from "@flind/core/scouts/scoutPresentation";
 import { Button, Input, Switch } from "@flind/quill";
-import { ANALYTICS_EVENTS } from "@posthog/shared";
-import { SettingsOptionSelect } from "@posthog/ui/features/settings/SettingsOptionSelect";
-import { RadioCards } from "@posthog/ui/primitives/RadioCards";
-import { Tooltip } from "@posthog/ui/primitives/Tooltip";
-import { track } from "@posthog/ui/shell/analytics";
-import { skillUrl } from "@posthog/ui/utils/posthogLinks";
+import { ANALYTICS_EVENTS } from "@flind/shared";
+import { SettingsOptionSelect } from "@flind/ui/features/settings/SettingsOptionSelect";
+import { RadioCards } from "@flind/ui/primitives/RadioCards";
+import { Tooltip } from "@flind/ui/primitives/Tooltip";
+import { track } from "@flind/ui/shell/analytics";
+import { skillUrl } from "@flind/ui/utils/posthogLinks";
 import { type ReactNode, useId, useState } from "react";
 import type { ScoutConfigUpdate } from "../hooks/useScoutConfigMutations";
 import { ScoutHelperSkillLinks } from "./ScoutHelperSkillLinks";

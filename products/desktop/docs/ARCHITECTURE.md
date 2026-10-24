@@ -9,30 +9,30 @@ apps/<host>
   boot, lifecycle, platform adapters, DI bindings
     |
     v
-@posthog/ui
+@flind/ui
   React views, hooks, view-state stores, contributions
     |
     v
-@posthog/core
+@flind/core
   services, domain stores, domain schemas
     |
     v
-@posthog/api-client              PostHog cloud HTTP API
-@posthog/workspace-client        typed client for workspace-server
+@flind/api-client              PostHog cloud HTTP API
+@flind/workspace-client        typed client for workspace-server
     |
     v
-@posthog/workspace-server        Node capabilities: git, fs, pty, spawn, watchers
+@flind/workspace-server        Node capabilities: git, fs, pty, spawn, watchers
 
-@posthog/platform                host-capability interfaces
-@posthog/shared                  zero-dependency primitives
+@flind/platform                host-capability interfaces
+@flind/shared                  zero-dependency primitives
 ```
 
 Host code boots and binds. Shared packages own reusable logic and UI. `core` and `ui` never import host transports.
 
 Two tRPC surfaces exist:
 
-- `@posthog/host-router`: Electron main process API for its renderer.
-- `@posthog/workspace-server`: privileged Node backend API consumed by `@posthog/workspace-client`.
+- `@flind/host-router`: Electron main process API for its renderer.
+- `@flind/workspace-server`: privileged Node backend API consumed by `@flind/workspace-client`.
 
 ## New task startup
 
@@ -105,7 +105,7 @@ for recovery into the originating composer.
 
 ## Dependency Injection
 
-Use plain Inversify through `@posthog/di`.
+Use plain Inversify through `@flind/di`.
 
 - Define an interface and `Symbol.for(...)` token in the owning package.
 - Inject dependencies through constructors.
@@ -179,7 +179,7 @@ Components do not start long-lived subscriptions. A contribution starts the subs
 
 ## Host Router
 
-`@posthog/host-router` is the Electron main-to-renderer API. Router files live at:
+`@flind/host-router` is the Electron main-to-renderer API. Router files live at:
 
 ```text
 packages/host-router/src/routers/<feature>.router.ts
@@ -207,7 +207,7 @@ The renderer imports `HostRouter` as a type and uses `useHostTRPC`. `trpcClient`
 
 ## Workspace Server
 
-`@posthog/workspace-server` owns privileged Node work:
+`@flind/workspace-server` owns privileged Node work:
 
 - git
 - filesystem
@@ -215,7 +215,7 @@ The renderer imports `HostRouter` as a type and uses `useHostTRPC`. `trpcClient`
 - process spawn
 - watchers
 
-It exposes colocated tRPC routers. `@posthog/workspace-client` is the typed client. `core` services inject narrow workspace-client slices and call those procedures.
+It exposes colocated tRPC routers. `@flind/workspace-client` is the typed client. `core` services inject narrow workspace-client slices and call those procedures.
 
 ## Disk Cache
 
@@ -225,7 +225,7 @@ A namespace can take a `maxBytes` budget.
 Nothing else removes entries, so a namespace without one grows for as long as callers reach for new keys.
 With one, a write that passes the budget drops the oldest entries until the namespace fits again.
 
-Consumers take a namespace and serve it over the `posthog-cache://` protocol (`apps/code/src/main/protocols/disk-cache.ts`). Today `images/` serves remote images: the renderer rewrites an `https:` URL with `cachedImageUrl()` from `@posthog/ui/shell/cachedImageUrl`, backed by the `IDiskCacheImages` platform interface. Hosts without a disk cache leave the URL unchanged.
+Consumers take a namespace and serve it over the `posthog-cache://` protocol (`apps/code/src/main/protocols/disk-cache.ts`). Today `images/` serves remote images: the renderer rewrites an `https:` URL with `cachedImageUrl()` from `@flind/ui/shell/cachedImageUrl`, backed by the `IDiskCacheImages` platform interface. Hosts without a disk cache leave the URL unchanged.
 
 The protocol is registered on the session that also renders untrusted artifact HTML, so treat every source as attacker-chosen.
 A source must be public `https:` with no embedded credentials: intranet and loopback addresses are refused, and a response that redirected onto one is thrown away.
@@ -267,13 +267,13 @@ Store each fact once.
 
 Domain state:
 
-- lives in `@posthog/core`
+- lives in `@flind/core`
 - uses `zustand/vanilla`
 - represents facts read by business logic
 
 View state:
 
-- lives in `@posthog/ui`
+- lives in `@flind/ui`
 - uses React Zustand `create`
 - represents selection, panel state, scroll position, drafts, and filters
 
@@ -297,7 +297,7 @@ Compute counts, labels, filtered lists, and status summaries from source facts.
 
 MCP Apps render tool-provided HTML UIs inside sandboxed iframes.
 
-- Shared schemas: `@posthog/shared`.
+- Shared schemas: `@flind/shared`.
 - Service: `packages/core/src/mcp-apps/`.
 - UI feature: `packages/ui/src/features/mcp-apps/`.
 - Desktop host glue: `apps/code/src/renderer/features/mcp-apps/`.

@@ -1,7 +1,7 @@
 import type {
   CheckForUpdatesOutput,
   UpdatesStatusPayload,
-} from "@posthog/core/updates/schemas";
+} from "@flind/core/updates/schemas";
 
 interface Subscriber<T> {
   onData: (data: T) => void;

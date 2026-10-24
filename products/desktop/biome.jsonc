@@ -69,7 +69,7 @@
   "overrides": [
     {
       // Main-process code must not import from "electron" directly. Every Electron
-      // API goes through a port in @posthog/platform, implemented by an adapter in
+      // API goes through a port in @flind/platform, implemented by an adapter in
       // apps/code/src/main/platform-adapters/. The only files allowed to import
       // electron are the adapters and the Electron host files below.
       "includes": [
@@ -91,7 +91,7 @@
               "level": "error",
               "options": {
                 "paths": {
-                  "electron": "Use a port from @posthog/platform via DI. Define new ports in packages/platform/src/ and adapters in apps/code/src/main/platform-adapters/."
+                  "electron": "Use a port from @flind/platform via DI. Define new ports in packages/platform/src/ and adapters in apps/code/src/main/platform-adapters/."
                 }
               }
             }
@@ -196,10 +196,10 @@
                       "react-dom",
                       "node:*",
                       "@posthog/*",
-                      "!@posthog/shared",
-                      "!@posthog/platform",
-                      "!@posthog/workspace-client",
-                      "!@posthog/api-client"
+                      "!@flind/shared",
+                      "!@flind/platform",
+                      "!@flind/workspace-client",
+                      "!@flind/api-client"
                     ],
                     "message": "core is a pure layer. Allowed @posthog deps: shared, platform, workspace-client, api-client. Never ui/* or workspace-server/*."
                   }
@@ -227,8 +227,8 @@
                       "electron",
                       "node:*",
                       "@posthog/*",
-                      "!@posthog/shared",
-                      "!@posthog/shared/*"
+                      "!@flind/shared",
+                      "!@flind/shared/*"
                     ],
                     "message": "api-client must run in any JS environment."
                   }
@@ -256,8 +256,8 @@
                       "electron",
                       "node:*",
                       "@posthog/*",
-                      "!@posthog/api-client",
-                      "!@posthog/workspace-server"
+                      "!@flind/api-client",
+                      "!@flind/workspace-server"
                     ],
                     "message": "workspace-client must run in any JS environment."
                   }
@@ -308,11 +308,11 @@
                 "patterns": [
                   {
                     "group": [
-                      "@posthog/ui",
-                      "@posthog/api-client",
-                      "@posthog/core",
-                      "@posthog/workspace-client",
-                      "@posthog/host-router"
+                      "@flind/ui",
+                      "@flind/api-client",
+                      "@flind/core",
+                      "@flind/workspace-client",
+                      "@flind/host-router"
                     ],
                     "message": "workspace-server must not depend on UI, the PostHog API, core, workspace-client, or host-router."
                   }
@@ -334,11 +334,11 @@
                 "paths": {
                   "@flind/quill": {
                     "importNames": ["Spinner"],
-                    "message": "Use Spinner or LoadingState from @posthog/ui/primitives so every loading indicator shares one glyph, size scale and compositor-only animation."
+                    "message": "Use Spinner or LoadingState from @flind/ui/primitives so every loading indicator shares one glyph, size scale and compositor-only animation."
                   },
                   "@radix-ui/themes": {
                     "importNames": ["Spinner"],
-                    "message": "Use Spinner or LoadingState from @posthog/ui/primitives so every loading indicator shares one glyph, size scale and compositor-only animation."
+                    "message": "Use Spinner or LoadingState from @flind/ui/primitives so every loading indicator shares one glyph, size scale and compositor-only animation."
                   },
                   "@phosphor-icons/react": {
                     "importNames": [
@@ -349,7 +349,7 @@
                       "CircleNotch",
                       "CircleNotchIcon"
                     ],
-                    "message": "Use Spinner from @posthog/ui/primitives/Spinner instead of spinning a phosphor glyph."
+                    "message": "Use Spinner from @flind/ui/primitives/Spinner instead of spinning a phosphor glyph."
                   }
                 },
                 "patterns": [
@@ -358,14 +358,14 @@
                       "electron",
                       "node:*",
                       "@posthog/*",
-                      "!@posthog/core",
-                      "!@posthog/api-client",
-                      "!@posthog/shared",
-                      "!@posthog/shared/*",
-                      "!@posthog/workspace-client",
-                      "!@posthog/workspace-client/client",
-                      "!@posthog/platform",
-                      "!@posthog/platform/*",
+                      "!@flind/core",
+                      "!@flind/api-client",
+                      "!@flind/shared",
+                      "!@flind/shared/*",
+                      "!@flind/workspace-client",
+                      "!@flind/workspace-client/client",
+                      "!@flind/platform",
+                      "!@flind/platform/*",
                       "!@flind/quill",
                       "!@flind/quill-charts"
                     ],

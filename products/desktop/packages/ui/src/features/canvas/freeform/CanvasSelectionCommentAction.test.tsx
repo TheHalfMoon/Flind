@@ -1,22 +1,22 @@
-import { useCanvasChatPanelStore } from "@posthog/ui/features/canvas/stores/canvasChatPanelStore";
+import { useCanvasChatPanelStore } from "@flind/ui/features/canvas/stores/canvasChatPanelStore";
 import {
   canvasCommentFocusKey,
   useCommentNavigationStore,
-} from "@posthog/ui/features/sessions/commentNavigationStore";
+} from "@flind/ui/features/sessions/commentNavigationStore";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { CanvasSelectionCommentAction } from "./CanvasSelectionCommentAction";
 
 const { mutateAsync } = vi.hoisted(() => ({ mutateAsync: vi.fn() }));
 
-vi.mock("@posthog/ui/features/canvas/hooks/useOrgMembers", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useOrgMembers", () => ({
   useOrgMembers: () => ({ members: [] }),
 }));
-vi.mock("@posthog/ui/features/sessions/components/useComments", () => ({
+vi.mock("@flind/ui/features/sessions/components/useComments", () => ({
   useCreateComment: () => ({ mutateAsync }),
 }));
 vi.mock(
-  "@posthog/ui/features/code-editor/components/SelectionCommentOverlay",
+  "@flind/ui/features/code-editor/components/SelectionCommentOverlay",
   () => ({
     SelectionCommentOverlay: ({
       open,

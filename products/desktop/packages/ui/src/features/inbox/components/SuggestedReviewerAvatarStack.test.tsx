@@ -2,7 +2,7 @@ import type {
   SignalReport,
   SignalReportArtefactsResponse,
   SuggestedReviewer,
-} from "@posthog/shared/types";
+} from "@flind/shared/types";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { beforeEach, describe, expect, it, vi } from "vitest";
@@ -15,15 +15,15 @@ const mocks = vi.hoisted(() => ({
   lastSurface: undefined as string | undefined,
 }));
 
-vi.mock("@posthog/ui/features/auth/authClient", () => ({
+vi.mock("@flind/ui/features/auth/authClient", () => ({
   useOptionalAuthenticatedClient: () => ({}),
 }));
 
-vi.mock("@posthog/ui/features/auth/useCurrentUser", () => ({
+vi.mock("@flind/ui/features/auth/useCurrentUser", () => ({
   useCurrentUser: () => ({ data: { uuid: mocks.currentUserUuid } }),
 }));
 
-vi.mock("@posthog/ui/features/inbox/hooks/useInboxReports", () => ({
+vi.mock("@flind/ui/features/inbox/hooks/useInboxReports", () => ({
   useInboxReportArtefacts: () => ({ data: undefined }),
   useUpdateSuggestedReviewers: () => ({
     mutate: mocks.mutate,
@@ -31,7 +31,7 @@ vi.mock("@posthog/ui/features/inbox/hooks/useInboxReports", () => ({
   }),
 }));
 
-vi.mock("@posthog/ui/features/inbox/hooks/useReportActionTracker", () => ({
+vi.mock("@flind/ui/features/inbox/hooks/useReportActionTracker", () => ({
   useReportActionTracker: (_report: unknown, surface?: string) => {
     mocks.lastSurface = surface;
     return mocks.trackAction;

@@ -3,9 +3,9 @@ import {
   type OptimisticRevertCallbacks,
   REVERT_HUNK_SERVICE,
   type RevertHunkService,
-} from "@posthog/core/code-review/revertHunkService";
-import { useService } from "@posthog/di/react";
-import { useHostTRPC } from "@posthog/host-router/react";
+} from "@flind/core/code-review/revertHunkService";
+import { useService } from "@flind/di/react";
+import { useHostTRPC } from "@flind/host-router/react";
 import { useQueryClient } from "@tanstack/react-query";
 import { useCallback } from "react";
 

@@ -1,4 +1,4 @@
-import { useReviewNavigationStore } from "@posthog/ui/features/code-review/reviewNavigationStore";
+import { useReviewNavigationStore } from "@flind/ui/features/code-review/reviewNavigationStore";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import {
@@ -11,19 +11,19 @@ const openExternalUrl = vi.fn();
 const navigateToShareTarget = vi.fn();
 let postHogOrigin = "https://us.posthog.com";
 
-vi.mock("@posthog/ui/shell/openExternal", () => ({
+vi.mock("@flind/ui/shell/openExternal", () => ({
   openExternalUrl: (url: string) => openExternalUrl(url),
 }));
 
-vi.mock("@posthog/ui/utils/shareLinks", () => ({
+vi.mock("@flind/ui/utils/shareLinks", () => ({
   navigateToShareTarget: (target: unknown) => navigateToShareTarget(target),
 }));
 
-vi.mock("@posthog/ui/utils/urls", () => ({
+vi.mock("@flind/ui/utils/urls", () => ({
   getPostHogUrl: (path: string) => `${postHogOrigin}${path}`,
 }));
 
-vi.mock("@posthog/ui/features/git-interaction/usePrDetails", () => ({
+vi.mock("@flind/ui/features/git-interaction/usePrDetails", () => ({
   usePrDetails: () => ({
     meta: { state: "open", merged: false, draft: false },
   }),

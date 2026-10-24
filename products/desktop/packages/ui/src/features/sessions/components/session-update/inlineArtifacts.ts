@@ -2,9 +2,9 @@ import {
   isUploadArtifactCall,
   readCreatedPrUrl as readCreatedPrUrlFromCall,
   readUploadedArtifactName,
-} from "@posthog/core/sessions/inlineArtifacts";
-import { getContentText } from "@posthog/ui/features/sessions/components/session-update/toolCallUtils";
-import type { ToolCall } from "@posthog/ui/features/sessions/types";
+} from "@flind/core/sessions/inlineArtifacts";
+import { getContentText } from "@flind/ui/features/sessions/components/session-update/toolCallUtils";
+import type { ToolCall } from "@flind/ui/features/sessions/types";
 
 export { isUploadArtifactCall, readUploadedArtifactName };
 

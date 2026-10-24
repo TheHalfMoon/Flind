@@ -1,5 +1,5 @@
-import { formatRelativeTimeLong } from "@posthog/shared";
-import { Tooltip } from "@posthog/ui/primitives/Tooltip";
+import { formatRelativeTimeLong } from "@flind/shared";
+import { Tooltip } from "@flind/ui/primitives/Tooltip";
 import { Text } from "@radix-ui/themes";
 
 interface RelativeTimestampProps {

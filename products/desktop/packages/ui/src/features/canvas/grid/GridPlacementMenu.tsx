@@ -1,5 +1,5 @@
 import { DotsThreeIcon } from "@phosphor-icons/react";
-import type { GridPlacement } from "@posthog/core/canvas/gridLayoutSchemas";
+import type { GridPlacement } from "@flind/core/canvas/gridLayoutSchemas";
 import {
   AlertDialog,
   AlertDialogClose,

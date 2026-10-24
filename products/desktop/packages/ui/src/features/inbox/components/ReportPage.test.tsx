@@ -1,4 +1,4 @@
-import type { SignalReport } from "@posthog/shared/types";
+import type { SignalReport } from "@flind/shared/types";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import type { ReactNode } from "react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
@@ -28,15 +28,15 @@ vi.mock("@tanstack/react-router", () => ({
     }),
 }));
 
-vi.mock("@posthog/ui/router/routerRef", () => ({
+vi.mock("@flind/ui/router/routerRef", () => ({
   getRouterOrNull: () => ({ navigate: mocks.routerNavigate }),
 }));
 
-vi.mock("@posthog/ui/features/feature-flags/useTriageFocusEnabled", () => ({
+vi.mock("@flind/ui/features/feature-flags/useTriageFocusEnabled", () => ({
   useTriageFocusEnabled: () => mocks.triageEnabled,
 }));
 
-vi.mock("@posthog/ui/features/inbox/components/InboxReportDetailGate", () => ({
+vi.mock("@flind/ui/features/inbox/components/InboxReportDetailGate", () => ({
   InboxReportDetailGate: (props: {
     children: (report: SignalReport) => ReactNode;
   }) => {
@@ -46,7 +46,7 @@ vi.mock("@posthog/ui/features/inbox/components/InboxReportDetailGate", () => ({
   ReportOpenTracker: mocks.tracker,
 }));
 
-vi.mock("@posthog/ui/features/settings/components/SettingsLayout", () => ({
+vi.mock("@flind/ui/features/settings/components/SettingsLayout", () => ({
   SettingsLayout: ({
     category,
     childBackHref,
@@ -65,15 +65,15 @@ vi.mock("@posthog/ui/features/settings/components/SettingsLayout", () => ({
   ),
 }));
 
-vi.mock("@posthog/ui/features/inbox/components/ReportDetail", () => ({
+vi.mock("@flind/ui/features/inbox/components/ReportDetail", () => ({
   ReportDetailContent: () => <div>Report content</div>,
 }));
 
-vi.mock("@posthog/ui/features/inbox/components/PullRequestDetail", () => ({
+vi.mock("@flind/ui/features/inbox/components/PullRequestDetail", () => ({
   PullRequestDetailContent: () => <div>PR content</div>,
 }));
 
-vi.mock("@posthog/ui/features/inbox/components/DismissedReportDetail", () => ({
+vi.mock("@flind/ui/features/inbox/components/DismissedReportDetail", () => ({
   DismissedReportDetailContent: () => <div>Archived content</div>,
 }));
 

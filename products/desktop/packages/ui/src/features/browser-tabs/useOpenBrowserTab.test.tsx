@@ -1,4 +1,4 @@
-import { browserTabsStore } from "@posthog/core/browser-tabs/browserTabsStore";
+import { browserTabsStore } from "@flind/core/browser-tabs/browserTabsStore";
 import { createMemoryHistory } from "@tanstack/react-router";
 import { act, renderHook, waitFor } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
@@ -9,7 +9,7 @@ const mocks = vi.hoisted(() => ({
   history: null as ReturnType<typeof createMemoryHistory> | null,
 }));
 
-vi.mock("@posthog/di/react", () => ({
+vi.mock("@flind/di/react", () => ({
   useService: (token: symbol) =>
     String(token).includes("BrowserTabsClient") ? mocks.client : mocks.logger,
 }));

@@ -1,6 +1,6 @@
 import { ArrowLeft, Warning } from "@phosphor-icons/react";
-import { useAppView } from "@posthog/ui/router/useAppView";
-import { openTaskInput } from "@posthog/ui/router/useOpenTask";
+import { useAppView } from "@flind/ui/router/useAppView";
+import { openTaskInput } from "@flind/ui/router/useOpenTask";
 import {
   Box,
   Button,

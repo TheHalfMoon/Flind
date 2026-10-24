@@ -10,14 +10,14 @@ import {
   CollapsibleTrigger,
   Text,
 } from "@flind/quill";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
-import { useAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
+import { useAuthenticatedClient } from "@flind/ui/features/auth/authClient";
 import {
   authKeys,
   useCurrentUser,
-} from "@posthog/ui/features/auth/useCurrentUser";
-import { toast } from "@posthog/ui/primitives/toast";
-import { track } from "@posthog/ui/shell/analytics";
+} from "@flind/ui/features/auth/useCurrentUser";
+import { toast } from "@flind/ui/primitives/toast";
+import { track } from "@flind/ui/shell/analytics";
 import { useQueryClient } from "@tanstack/react-query";
 import { type ReactNode, useState } from "react";
 import { desktopBetaTermsKeys, type OrgConsent } from "./useOrgConsent";

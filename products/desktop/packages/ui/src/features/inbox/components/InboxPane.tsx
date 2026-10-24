@@ -1,14 +1,14 @@
-import { filterReportsBySearch } from "@posthog/core/inbox/reportFiltering";
-import { InboxFilterMenu } from "@posthog/ui/features/inbox/components/InboxFilterMenu";
-import { InboxPanePresentation } from "@posthog/ui/features/inbox/components/InboxPanePresentation";
-import { InboxPaneRow } from "@posthog/ui/features/inbox/components/InboxPaneRow";
-import { InboxTriageButton } from "@posthog/ui/features/inbox/components/InboxTriageButton";
-import { useInboxSectionedReports } from "@posthog/ui/features/inbox/hooks/useInboxSectionedReports";
+import { filterReportsBySearch } from "@flind/core/inbox/reportFiltering";
+import { InboxFilterMenu } from "@flind/ui/features/inbox/components/InboxFilterMenu";
+import { InboxPanePresentation } from "@flind/ui/features/inbox/components/InboxPanePresentation";
+import { InboxPaneRow } from "@flind/ui/features/inbox/components/InboxPaneRow";
+import { InboxTriageButton } from "@flind/ui/features/inbox/components/InboxTriageButton";
+import { useInboxSectionedReports } from "@flind/ui/features/inbox/hooks/useInboxSectionedReports";
 import {
   hasActiveReportsListFilters,
   useInboxSignalsFilterStore,
-} from "@posthog/ui/features/inbox/stores/inboxSignalsFilterStore";
-import { reportIdFromHref } from "@posthog/ui/router/reportNavigation";
+} from "@flind/ui/features/inbox/stores/inboxSignalsFilterStore";
+import { reportIdFromHref } from "@flind/ui/router/reportNavigation";
 import { useRouterState } from "@tanstack/react-router";
 import { type ReactElement, useMemo, useState } from "react";
 

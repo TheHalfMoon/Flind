@@ -1,9 +1,9 @@
-import type { Contribution } from "@posthog/di/contribution";
+import type { Contribution } from "@flind/di/contribution";
 import {
   HOST_TRPC_CLIENT,
   type HostTrpcClient,
-} from "@posthog/host-router/client";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
+} from "@flind/host-router/client";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
 import { inject, injectable } from "inversify";
 import { track } from "../../shell/analytics";
 

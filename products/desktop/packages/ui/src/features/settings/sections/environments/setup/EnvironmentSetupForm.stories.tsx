@@ -1,9 +1,9 @@
 import {
   type EnvironmentSetupPlan,
   emptyEnvironmentSetupPlan,
-} from "@posthog/core/settings/environmentSetup";
-import type { SandboxCustomImage } from "@posthog/shared/domain-types";
-import { EnvironmentSetupForm } from "@posthog/ui/features/settings/sections/environments/setup/EnvironmentSetupForm";
+} from "@flind/core/settings/environmentSetup";
+import type { SandboxCustomImage } from "@flind/shared/domain-types";
+import { EnvironmentSetupForm } from "@flind/ui/features/settings/sections/environments/setup/EnvironmentSetupForm";
 import type { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
 

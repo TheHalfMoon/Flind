@@ -1,6 +1,6 @@
-import { deriveCloudRunState } from "@posthog/core/task-detail/cloudRunState";
-import { extractCloudToolChangedFiles } from "@posthog/core/task-detail/cloudToolChanges";
-import type { Task } from "@posthog/shared/domain-types";
+import { deriveCloudRunState } from "@flind/core/task-detail/cloudRunState";
+import { extractCloudToolChangedFiles } from "@flind/core/task-detail/cloudToolChanges";
+import type { Task } from "@flind/shared/domain-types";
 import { useMemo } from "react";
 import { shallow } from "zustand/shallow";
 import { resolveCloudPrUrl } from "../../git-interaction/cloudPrUrl";

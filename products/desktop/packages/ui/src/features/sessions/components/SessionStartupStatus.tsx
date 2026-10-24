@@ -1,6 +1,6 @@
-import type { SessionStartupPhase } from "@posthog/core/sessions/sessionStartup";
+import type { SessionStartupPhase } from "@flind/core/sessions/sessionStartup";
 import { cn } from "@flind/quill";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
+import { Spinner } from "@flind/ui/primitives/Spinner";
 
 export type SessionStartupTarget = "cloud" | "local";
 

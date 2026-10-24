@@ -1,4 +1,4 @@
-import { isSafeExternalUrl } from "@posthog/shared";
+import { isSafeExternalUrl } from "@flind/shared";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 const openURL = vi.fn((_url: string) => Promise.resolve(true));

@@ -2,8 +2,8 @@ import {
   getPermissionOptionMeta,
   isPermissionRejection,
   permissionOptionUsesCustomInput,
-} from "@posthog/core/sessions/permissionResponse";
-import { extractPlanText } from "@posthog/core/sessions/planApprovalPresentation";
+} from "@flind/core/sessions/permissionResponse";
+import { extractPlanText } from "@flind/core/sessions/planApprovalPresentation";
 import {
   ArrowsClockwise,
   ChatCircle,

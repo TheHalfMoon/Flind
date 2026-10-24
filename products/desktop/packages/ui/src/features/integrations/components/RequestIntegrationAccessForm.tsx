@@ -1,6 +1,6 @@
 import { Button, Text, Textarea } from "@flind/quill";
-import { useAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { toast } from "@posthog/ui/primitives/toast";
+import { useAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { toast } from "@flind/ui/primitives/toast";
 import { useMutation } from "@tanstack/react-query";
 import { useState } from "react";
 

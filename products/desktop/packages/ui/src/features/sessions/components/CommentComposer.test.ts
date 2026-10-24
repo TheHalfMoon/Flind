@@ -1,5 +1,5 @@
-import { formatMention } from "@posthog/shared";
-import type { UserBasic } from "@posthog/shared/domain-types";
+import { formatMention } from "@flind/shared";
+import type { UserBasic } from "@flind/shared/domain-types";
 import { describe, expect, it } from "vitest";
 import { mentionIdsFromContent } from "./commentMentions";
 

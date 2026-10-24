@@ -1,5 +1,5 @@
 {
-  "name": "@posthog/api-client",
+  "name": "@flind/api-client",
   "version": "1.0.0",
   "description": "Client for the PostHog API (auth, projects, task metadata, billing). Pure HTTPS, runs in any JS environment. Constructed via factory function — no DI container.",
   "private": true,
@@ -17,7 +17,7 @@
     "generate-client": "tsx scripts/update-openapi-client.ts"
   },
   "devDependencies": {
-    "@posthog/tsconfig": "workspace:*",
+    "@flind/tsconfig": "workspace:*",
     "prettier": "3.8.1",
     "tsx": "^4.22.3",
     "typed-openapi": "2.2.7",
@@ -28,7 +28,7 @@
     "src/**/*"
   ],
   "dependencies": {
-    "@posthog/shared": "workspace:*",
+    "@flind/shared": "workspace:*",
     "zod": "^4.1.12"
   }
 }

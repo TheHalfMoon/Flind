@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 
 vi.mock(
-  "@posthog/ui/features/mcp-gateway/hooks/useRegisterGatewayServer",
+  "@flind/ui/features/mcp-gateway/hooks/useRegisterGatewayServer",
   () => ({
     useRegisterGatewayServer: () => ({
       register: vi.fn(),

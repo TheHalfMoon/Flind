@@ -1,5 +1,5 @@
 import { Text } from "@components/text";
-import type { Task } from "@posthog/shared";
+import type { Task } from "@flind/shared";
 import * as Haptics from "expo-haptics";
 import { ArrowCounterClockwise } from "phosphor-react-native";
 import { useEffect, useRef } from "react";

@@ -1,14 +1,14 @@
 import {
   SESSION_SERVICE,
   type SessionService,
-} from "@posthog/core/sessions/sessionService";
-import { useService } from "@posthog/di/react";
-import { PermissionSelector } from "@posthog/ui/features/permissions/PermissionSelector";
+} from "@flind/core/sessions/sessionService";
+import { useService } from "@flind/di/react";
+import { PermissionSelector } from "@flind/ui/features/permissions/PermissionSelector";
 import {
   useModeConfigOptionForTask,
   usePendingPermissionsForTask,
-} from "@posthog/ui/features/sessions/useSession";
-import { toast } from "@posthog/ui/primitives/toast";
+} from "@flind/ui/features/sessions/useSession";
+import { toast } from "@flind/ui/primitives/toast";
 import { Dialog, VisuallyHidden } from "@radix-ui/themes";
 import { useCallback, useMemo } from "react";
 

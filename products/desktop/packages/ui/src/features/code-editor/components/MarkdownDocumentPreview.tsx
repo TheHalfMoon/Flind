@@ -1,5 +1,5 @@
-import { MermaidDiagram } from "@posthog/ui/primitives/MermaidDiagram";
-import { isMermaidCodeBlock } from "@posthog/ui/utils/mermaidBlocks";
+import { MermaidDiagram } from "@flind/ui/primitives/MermaidDiagram";
+import { isMermaidCodeBlock } from "@flind/ui/utils/mermaidBlocks";
 import { useMemo } from "react";
 import type { Components } from "react-markdown";
 import ReactMarkdown from "react-markdown";

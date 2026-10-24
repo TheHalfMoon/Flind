@@ -1,7 +1,7 @@
-import { useSettingsPageStore } from "@posthog/ui/features/settings/stores/settingsPageStore";
-import type { SettingsCategory } from "@posthog/ui/features/settings/types";
-import * as nav from "@posthog/ui/router/navigationBridge";
-import { useReportSourceHref } from "@posthog/ui/router/reportNavigation";
+import { useSettingsPageStore } from "@flind/ui/features/settings/stores/settingsPageStore";
+import type { SettingsCategory } from "@flind/ui/features/settings/types";
+import * as nav from "@flind/ui/router/navigationBridge";
+import { useReportSourceHref } from "@flind/ui/router/reportNavigation";
 import { useRouterState } from "@tanstack/react-router";
 
 interface SettingsContext {

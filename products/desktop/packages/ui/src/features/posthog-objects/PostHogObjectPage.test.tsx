@@ -1,4 +1,4 @@
-import type { EvidenceCardData } from "@posthog/ui/features/editor/evidencePreview";
+import type { EvidenceCardData } from "@flind/ui/features/editor/evidencePreview";
 import { Theme } from "@radix-ui/themes";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
@@ -43,7 +43,7 @@ const queryState = vi.hoisted(() => ({
   },
 }));
 
-vi.mock("@posthog/ui/hooks/useAuthenticatedQuery", () => ({
+vi.mock("@flind/ui/hooks/useAuthenticatedQuery", () => ({
   useAuthenticatedQuery: () => ({
     isPending: queryState.current.isPending,
     isError: queryState.current.isError,
@@ -51,7 +51,7 @@ vi.mock("@posthog/ui/hooks/useAuthenticatedQuery", () => ({
   }),
 }));
 
-vi.mock("@posthog/ui/features/editor/components/EvidenceRefChip", () => ({
+vi.mock("@flind/ui/features/editor/components/EvidenceRefChip", () => ({
   useEvidenceUrl,
   EvidenceSparkline: () => null,
 }));

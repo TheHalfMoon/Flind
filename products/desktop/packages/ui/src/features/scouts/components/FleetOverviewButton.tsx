@@ -1,5 +1,5 @@
 import { SparkleIcon } from "@phosphor-icons/react";
-import { SCOUT_FLEET_OVERVIEW_PROMPT } from "@posthog/core/scouts/scoutPrompts";
+import { SCOUT_FLEET_OVERVIEW_PROMPT } from "@flind/core/scouts/scoutPrompts";
 import { Button } from "@flind/quill";
 import { useScoutChatTask } from "../hooks/useScoutChatTask";
 

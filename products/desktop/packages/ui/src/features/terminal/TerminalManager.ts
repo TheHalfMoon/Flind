@@ -1,12 +1,12 @@
-import { DEFAULT_TERMINAL_FONT_FAMILY } from "@posthog/core/terminal/resolveTerminalFontFamily";
-import { resolveService } from "@posthog/di/container";
-import { getErrorMessage } from "@posthog/shared";
+import { DEFAULT_TERMINAL_FONT_FAMILY } from "@flind/core/terminal/resolveTerminalFontFamily";
+import { resolveService } from "@flind/di/container";
+import { getErrorMessage } from "@flind/shared";
 import {
   SHELL_CLIENT,
   type ShellClient,
-} from "@posthog/ui/features/terminal/shellClient";
-import { logger } from "@posthog/ui/shell/logger";
-import { isMac } from "@posthog/ui/utils/platform";
+} from "@flind/ui/features/terminal/shellClient";
+import { logger } from "@flind/ui/shell/logger";
+import { isMac } from "@flind/ui/utils/platform";
 import { FitAddon } from "@xterm/addon-fit";
 import { SerializeAddon } from "@xterm/addon-serialize";
 import { WebLinksAddon } from "@xterm/addon-web-links";

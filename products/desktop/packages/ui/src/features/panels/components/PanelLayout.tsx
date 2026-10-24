@@ -1,5 +1,5 @@
 import { DragDropProvider } from "@dnd-kit/react";
-import type { Task } from "@posthog/shared/domain-types";
+import type { Task } from "@flind/shared/domain-types";
 import type React from "react";
 import { useCallback, useEffect } from "react";
 import { useDragDropHandlers } from "../hooks/useDragDropHandlers";

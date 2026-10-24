@@ -1,5 +1,5 @@
-import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
-import { TIP_KEYS } from "@posthog/ui/features/settings/tipKeys";
+import { useSettingsStore } from "@flind/ui/features/settings/settingsStore";
+import { TIP_KEYS } from "@flind/ui/features/settings/tipKeys";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { hintToast } from "./hintToast";
 
@@ -8,7 +8,7 @@ const STEER = TIP_KEYS.steerSafeBoundary;
 const PASTE = TIP_KEYS.pasteAsFile;
 
 const quillToast = vi.hoisted(() => ({ info: vi.fn() }));
-vi.mock("@posthog/ui/primitives/toast", () => ({ toast: quillToast }));
+vi.mock("@flind/ui/primitives/toast", () => ({ toast: quillToast }));
 
 beforeEach(() => {
   vi.clearAllMocks();

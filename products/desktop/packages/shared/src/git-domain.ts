@@ -64,7 +64,7 @@ export type PrActionType = z.infer<typeof prActionTypeSchema>;
 
 // Native PR review schemas (PR overview, approve/merge, CI checks,
 // conversation comments). Defined once here and re-exported by
-// `@posthog/core/git/router-schemas` and workspace-server's git schemas so
+// `@flind/core/git/router-schemas` and workspace-server's git schemas so
 // the tRPC layers on both sides of the boundary share one source of truth.
 
 /** Full PR overview (title/body/branches/stats) for the native in-app PR view. */

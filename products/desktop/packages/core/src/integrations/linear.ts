@@ -1,8 +1,8 @@
 import {
   type IUrlLauncher,
   URL_LAUNCHER_SERVICE,
-} from "@posthog/platform/url-launcher";
-import { type CloudRegion, getCloudUrlFromRegion } from "@posthog/shared";
+} from "@flind/platform/url-launcher";
+import { type CloudRegion, getCloudUrlFromRegion } from "@flind/shared";
 import { inject, injectable } from "inversify";
 import type { StartIntegrationFlowOutput } from "./schemas";
 

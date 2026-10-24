@@ -1,4 +1,4 @@
-import type { ClaudeSubscriptionTokenStore } from "@posthog/core/cloud-task/identifiers";
+import type { ClaudeSubscriptionTokenStore } from "@flind/core/cloud-task/identifiers";
 
 export type ClaudeSubscriptionTokenSettings = Pick<
   ClaudeSubscriptionTokenStore,

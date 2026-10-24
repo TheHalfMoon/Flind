@@ -1,6 +1,6 @@
 import { SquaresFourIcon } from "@phosphor-icons/react";
-import { SHORTCUTS } from "@posthog/ui/features/command/keyboard-shortcuts";
-import { CountBadge } from "@posthog/ui/primitives/CountBadge";
+import { SHORTCUTS } from "@flind/ui/features/command/keyboard-shortcuts";
+import { CountBadge } from "@flind/ui/primitives/CountBadge";
 import type { MouseEventHandler } from "react";
 import { SidebarItem } from "../SidebarItem";
 import { SidebarKbdHint } from "./SidebarKbdHint";

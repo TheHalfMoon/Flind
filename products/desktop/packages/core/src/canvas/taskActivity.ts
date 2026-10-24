@@ -2,7 +2,7 @@ import type {
   TaskActivity,
   TaskActivityKind,
   UserBasic,
-} from "@posthog/shared/domain-types";
+} from "@flind/shared/domain-types";
 import { type CommentTarget, commentScopeFromWire } from "../comments/anchors";
 import { channelDisplayName } from "./channelName";
 

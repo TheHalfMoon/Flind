@@ -8,7 +8,7 @@ vi.mock("@flind/agent/posthog-api", () => ({
 
 vi.stubGlobal("fetch", mockFetch);
 
-import { configureCustomCloud } from "@posthog/shared";
+import { configureCustomCloud } from "@flind/shared";
 import { Container } from "inversify";
 import { AUTH_PROXY_SERVICE } from "../auth-proxy/identifiers";
 import { MCP_PROXY_SERVICE } from "../mcp-proxy/identifiers";

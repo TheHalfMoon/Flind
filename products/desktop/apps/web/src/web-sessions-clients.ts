@@ -1,19 +1,19 @@
-import type { ReadFileAsBase64 } from "@posthog/core/editor/cloud-prompt";
-import { base64ToText } from "@posthog/core/files/base64";
-import type { FileReadClient } from "@posthog/core/files/identifiers";
+import type { ReadFileAsBase64 } from "@flind/core/editor/cloud-prompt";
+import { base64ToText } from "@flind/core/files/base64";
+import type { FileReadClient } from "@flind/core/files/identifiers";
 import type {
   BundleLocalSkill,
   ResolveSkillBundleDependencies,
-} from "@posthog/core/sessions/cloudArtifactIdentifiers";
+} from "@flind/core/sessions/cloudArtifactIdentifiers";
 import type {
   GithubPrTitleClient,
   TitleGeneratorLogger,
-} from "@posthog/core/sessions/titleGeneratorIdentifiers";
-import { TEAM_SKILLS_SERVICE } from "@posthog/core/skills/identifiers";
-import type { TeamSkillsService } from "@posthog/core/skills/teamSkillsService";
-import { resolveService } from "@posthog/di/container";
-import type { RootLogger } from "@posthog/di/logger";
-import { getAuthenticatedClient } from "@posthog/ui/features/auth/authClientImperative";
+} from "@flind/core/sessions/titleGeneratorIdentifiers";
+import { TEAM_SKILLS_SERVICE } from "@flind/core/skills/identifiers";
+import type { TeamSkillsService } from "@flind/core/skills/teamSkillsService";
+import { resolveService } from "@flind/di/container";
+import type { RootLogger } from "@flind/di/logger";
+import { getAuthenticatedClient } from "@flind/ui/features/auth/authClientImperative";
 import { getWebAttachmentBase64 } from "./web-attachment-store";
 import { bundleExportedSkill } from "./web-skill-bundler";
 

@@ -1,9 +1,9 @@
-import type { ChannelItemModel } from "@posthog/core/canvas/channelItems";
-import { getCanvasCellId } from "@posthog/core/command-center/grid";
+import type { ChannelItemModel } from "@flind/core/canvas/channelItems";
+import { getCanvasCellId } from "@flind/core/command-center/grid";
 import {
   placeCanvasInCommandCenter,
   placeTaskInCommandCenter,
-} from "@posthog/ui/features/command-center/placeTaskInCommandCenter";
+} from "@flind/ui/features/command-center/placeTaskInCommandCenter";
 
 export function commandCenterAssigner(item: ChannelItemModel): () => void {
   return () => {

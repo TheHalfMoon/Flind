@@ -1,8 +1,8 @@
-import { resolveServiceOptional } from "@posthog/di/container";
+import { resolveServiceOptional } from "@flind/di/container";
 import {
   DISK_CACHE_IMAGES,
   type IDiskCacheImages,
-} from "@posthog/platform/disk-cache";
+} from "@flind/platform/disk-cache";
 
 export function cachedImageUrl(remoteUrl: string): string {
   return (

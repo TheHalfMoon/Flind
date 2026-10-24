@@ -1,4 +1,4 @@
-import { Saga, type SagaLogger } from "@posthog/shared";
+import { Saga, type SagaLogger } from "@flind/shared";
 
 export type CreatePrStep =
   | "creating-branch"

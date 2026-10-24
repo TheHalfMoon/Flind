@@ -1,4 +1,4 @@
-import type { CodexCloudTerminal } from "@posthog/core/integrations/codexCloudAccountService";
+import type { CodexCloudTerminal } from "@flind/core/integrations/codexCloudAccountService";
 import {
   Button,
   Dialog,
@@ -8,11 +8,11 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@flind/quill";
-import { useConnectCodexCloudAccount } from "@posthog/ui/features/settings/codexCloudAccount";
+import { useConnectCodexCloudAccount } from "@flind/ui/features/settings/codexCloudAccount";
 import {
   AuthTerminalPanel,
   type AuthTerminalStatus,
-} from "@posthog/ui/features/settings/components/AuthTerminalPanel";
+} from "@flind/ui/features/settings/components/AuthTerminalPanel";
 import { type ReactElement, useCallback, useState } from "react";
 
 interface CodexCloudAuthTerminalDialogProps {

@@ -1,6 +1,6 @@
-import { HostTRPCProvider } from "@posthog/host-router/react";
-import { ThemeWrapper } from "@posthog/ui/primitives/ThemeWrapper";
-import { WorkspaceClientProvider } from "@posthog/workspace-client/provider";
+import { HostTRPCProvider } from "@flind/host-router/react";
+import { ThemeWrapper } from "@flind/ui/primitives/ThemeWrapper";
+import { WorkspaceClientProvider } from "@flind/workspace-client/provider";
 import {
   hostTrpcClient,
   TRPCProvider,

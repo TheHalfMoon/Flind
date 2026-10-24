@@ -1,5 +1,5 @@
 import { MultiFileDiff } from "@pierre/diffs/react";
-import { announcementsPayloadSchema } from "@posthog/shared/announcements";
+import { announcementsPayloadSchema } from "@flind/shared/announcements";
 import { useEffect, useMemo, useState } from "react";
 import { z } from "zod";
 import { capture, captureException } from "./analytics";

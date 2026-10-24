@@ -1,4 +1,4 @@
-import { extractRepoSelectionRepository } from "@posthog/core/inbox/artefacts";
+import { extractRepoSelectionRepository } from "@flind/core/inbox/artefacts";
 import { getPostHogApiClient } from "@/lib/posthogApiClient";
 
 /** Resolve the repository associated with a signal report via its repo_selection artefact. */

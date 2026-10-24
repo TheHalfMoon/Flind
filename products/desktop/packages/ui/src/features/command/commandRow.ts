@@ -1,4 +1,4 @@
-import type { CommandMenuAction } from "@posthog/shared/analytics-events";
+import type { CommandMenuAction } from "@flind/shared/analytics-events";
 import type { ReactNode } from "react";
 
 export type Command = {

@@ -8,11 +8,11 @@ import {
   Button,
   AlertDialog as ConfirmDialog,
 } from "@flind/quill";
-import { AutoArchiveSettingsDialog } from "@posthog/ui/features/canvas/components/AutoArchiveSettingsDialog";
-import type { useChannelActions } from "@posthog/ui/features/canvas/components/ChannelsList";
-import { RenameChannelModal } from "@posthog/ui/features/canvas/components/RenameChannelModal";
-import type { Channel } from "@posthog/ui/features/canvas/hooks/useChannels";
-import { useMountedOnceOpened } from "@posthog/ui/hooks/useMountedOnceOpened";
+import { AutoArchiveSettingsDialog } from "@flind/ui/features/canvas/components/AutoArchiveSettingsDialog";
+import type { useChannelActions } from "@flind/ui/features/canvas/components/ChannelsList";
+import { RenameChannelModal } from "@flind/ui/features/canvas/components/RenameChannelModal";
+import type { Channel } from "@flind/ui/features/canvas/hooks/useChannels";
+import { useMountedOnceOpened } from "@flind/ui/hooks/useMountedOnceOpened";
 import type { ReactElement } from "react";
 
 export function SpaceActionDialogs({

@@ -1,9 +1,9 @@
-import type { ServiceResolver } from "@posthog/host-trpc/context";
-import { publicProcedure, router } from "@posthog/host-trpc/trpc";
+import type { ServiceResolver } from "@flind/host-trpc/context";
+import { publicProcedure, router } from "@flind/host-trpc/trpc";
 import {
   type ConnectivityStatusOutput,
   connectivityStatusOutput,
-} from "@posthog/workspace-server/services/connectivity/schemas";
+} from "@flind/workspace-server/services/connectivity/schemas";
 import {
   CONNECTIVITY_CLIENT,
   type HostConnectivityClient,

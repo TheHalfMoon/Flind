@@ -1,7 +1,7 @@
 import {
   INBOX_SCOPE_FOR_YOU,
   type InboxScope,
-} from "@posthog/core/inbox/reportMembership";
+} from "@flind/core/inbox/reportMembership";
 import { create } from "zustand";
 
 interface InboxReviewerScopeStore {

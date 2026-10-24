@@ -7,8 +7,8 @@ import {
   DEV_NETWORK_SERVICE,
   MISSION_CONTROL_SERVICE,
 } from "@main/di/tokens";
-import type { AgentService } from "@posthog/workspace-server/services/agent/agent";
-import { AGENT_SERVICE } from "@posthog/workspace-server/services/agent/identifiers";
+import type { AgentService } from "@flind/workspace-server/services/agent/agent";
+import { AGENT_SERVICE } from "@flind/workspace-server/services/agent/identifiers";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 import type { MissionControlService } from "../../platform-adapters/electron-mission-control";

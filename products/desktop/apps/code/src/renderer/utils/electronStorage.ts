@@ -1,4 +1,4 @@
-import { registerRendererStateStorage } from "@posthog/ui/shell/rendererStorage";
+import { registerRendererStateStorage } from "@flind/ui/shell/rendererStorage";
 import { trpcClient } from "../trpc";
 
 registerRendererStateStorage({

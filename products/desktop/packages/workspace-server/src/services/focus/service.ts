@@ -15,7 +15,7 @@ import {
   StashPopSaga,
   StashPushSaga,
 } from "@flind/git/sagas/stash";
-import { TypedEventEmitter } from "@posthog/shared";
+import { TypedEventEmitter } from "@flind/shared";
 import { injectable } from "inversify";
 import type {
   FocusBranchRenamedEvent,

@@ -5,17 +5,17 @@ import {
   Rows,
   X,
 } from "@phosphor-icons/react";
-import type { ResolvedDiffSource } from "@posthog/core/code-review/resolveDiffSource";
+import type { ResolvedDiffSource } from "@flind/core/code-review/resolveDiffSource";
 import { Button } from "@flind/quill";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
-import { useDiffViewerStore } from "@posthog/ui/features/code-editor/diffViewerStore";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
+import { useDiffViewerStore } from "@flind/ui/features/code-editor/diffViewerStore";
 import {
   type ReviewMode,
   useReviewNavigationStore,
-} from "@posthog/ui/features/code-review/reviewNavigationStore";
-import { useReviewInRightPanel } from "@posthog/ui/features/navigation/useReviewInRightPanel";
-import { Tooltip } from "@posthog/ui/primitives/Tooltip";
-import { track } from "@posthog/ui/shell/analytics";
+} from "@flind/ui/features/code-review/reviewNavigationStore";
+import { useReviewInRightPanel } from "@flind/ui/features/navigation/useReviewInRightPanel";
+import { Tooltip } from "@flind/ui/primitives/Tooltip";
+import { track } from "@flind/ui/shell/analytics";
 import { Flex, Separator, Text } from "@radix-ui/themes";
 import {
   FoldVertical,

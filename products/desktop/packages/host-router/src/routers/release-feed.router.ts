@@ -1,10 +1,10 @@
-import { publicProcedure, router } from "@posthog/host-trpc/trpc";
-import { RELEASE_FEED_SERVICE } from "@posthog/workspace-server/services/release-feed/identifiers";
-import type { ReleaseFeedService } from "@posthog/workspace-server/services/release-feed/release-feed";
+import { publicProcedure, router } from "@flind/host-trpc/trpc";
+import { RELEASE_FEED_SERVICE } from "@flind/workspace-server/services/release-feed/identifiers";
+import type { ReleaseFeedService } from "@flind/workspace-server/services/release-feed/release-feed";
 import {
   listReleasesInput,
   listReleasesOutput,
-} from "@posthog/workspace-server/services/release-feed/schemas";
+} from "@flind/workspace-server/services/release-feed/schemas";
 
 export const releaseFeedRouter = router({
   list: publicProcedure

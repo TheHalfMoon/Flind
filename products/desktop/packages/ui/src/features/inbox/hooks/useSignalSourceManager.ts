@@ -1,9 +1,9 @@
-import { useSignalEvaluations } from "@posthog/ui/features/inbox/hooks/useSignalEvaluations";
-import { useSignalSourceToggles } from "@posthog/ui/features/inbox/hooks/useSignalSourceToggles";
-import { useSignalTeamConfig } from "@posthog/ui/features/inbox/hooks/useSignalTeamConfig";
-import { useSignalTeamConfigMutations } from "@posthog/ui/features/inbox/hooks/useSignalTeamConfigMutations";
-import { useSignalUserAutonomyConfig } from "@posthog/ui/features/inbox/hooks/useSignalUserAutonomyConfig";
-import { useSignalUserAutonomyMutations } from "@posthog/ui/features/inbox/hooks/useSignalUserAutonomyMutations";
+import { useSignalEvaluations } from "@flind/ui/features/inbox/hooks/useSignalEvaluations";
+import { useSignalSourceToggles } from "@flind/ui/features/inbox/hooks/useSignalSourceToggles";
+import { useSignalTeamConfig } from "@flind/ui/features/inbox/hooks/useSignalTeamConfig";
+import { useSignalTeamConfigMutations } from "@flind/ui/features/inbox/hooks/useSignalTeamConfigMutations";
+import { useSignalUserAutonomyConfig } from "@flind/ui/features/inbox/hooks/useSignalUserAutonomyConfig";
+import { useSignalUserAutonomyMutations } from "@flind/ui/features/inbox/hooks/useSignalUserAutonomyMutations";
 
 /**
  * Aggregator over the focused source/evaluations/team-config/autonomy hooks.

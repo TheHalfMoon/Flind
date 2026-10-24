@@ -1,12 +1,12 @@
-import { CHANNEL_TASK_SUGGESTIONS } from "@posthog/ui/features/canvas/channelTaskSuggestions";
-import { NewSessionHeading } from "@posthog/ui/features/canvas/components/work/NewSessionHeading";
-import { useChannelsWorld } from "@posthog/ui/features/canvas/hooks/useChannelsWorld";
-import { useWorkLayout } from "@posthog/ui/features/canvas/hooks/useWorkLayout";
-import { TaskInput } from "@posthog/ui/features/task-detail/components/TaskInput";
-import { getTaskInputSessionId } from "@posthog/ui/features/task-detail/taskInputSession";
-import { useSetHeaderContent } from "@posthog/ui/hooks/useSetHeaderContent";
-import { navigateToChannelNewTask } from "@posthog/ui/router/navigationBridge";
-import { useAppView } from "@posthog/ui/router/useAppView";
+import { CHANNEL_TASK_SUGGESTIONS } from "@flind/ui/features/canvas/channelTaskSuggestions";
+import { NewSessionHeading } from "@flind/ui/features/canvas/components/work/NewSessionHeading";
+import { useChannelsWorld } from "@flind/ui/features/canvas/hooks/useChannelsWorld";
+import { useWorkLayout } from "@flind/ui/features/canvas/hooks/useWorkLayout";
+import { TaskInput } from "@flind/ui/features/task-detail/components/TaskInput";
+import { getTaskInputSessionId } from "@flind/ui/features/task-detail/taskInputSession";
+import { useSetHeaderContent } from "@flind/ui/hooks/useSetHeaderContent";
+import { navigateToChannelNewTask } from "@flind/ui/router/navigationBridge";
+import { useAppView } from "@flind/ui/router/useAppView";
 import { useRouterState } from "@tanstack/react-router";
 
 /**

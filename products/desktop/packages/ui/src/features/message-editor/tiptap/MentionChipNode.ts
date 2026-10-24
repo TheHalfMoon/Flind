@@ -1,5 +1,5 @@
-import type { PostHogObjectKind } from "@posthog/core/message-editor/content";
-import type { UploadableSkillSource } from "@posthog/shared";
+import type { PostHogObjectKind } from "@flind/core/message-editor/content";
+import type { UploadableSkillSource } from "@flind/shared";
 import { mergeAttributes, Node } from "@tiptap/core";
 import { ReactNodeViewRenderer } from "@tiptap/react";
 import { findChipRangeById } from "./chipRange";

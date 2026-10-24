@@ -9,7 +9,7 @@ import {
   ComboboxTrigger,
   Button as QuillButton,
 } from "@flind/quill";
-import { useTeamSkills } from "@posthog/ui/features/skills/useTeamSkills";
+import { useTeamSkills } from "@flind/ui/features/skills/useTeamSkills";
 import { useRef, useState } from "react";
 import { Field } from "./LoopFormPrimitives";
 

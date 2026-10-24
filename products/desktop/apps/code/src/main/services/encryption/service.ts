@@ -2,7 +2,7 @@ import { logger } from "@main/utils/logger";
 import {
   type ISecureStorage,
   SECURE_STORAGE_SERVICE,
-} from "@posthog/platform/secure-storage";
+} from "@flind/platform/secure-storage";
 import { inject, injectable } from "inversify";
 
 const log = logger.scope("encryption");

@@ -1,7 +1,7 @@
 import {
   getPrVisualConfig,
   type PrVisualConfig,
-} from "@posthog/core/git-interaction/prStatus";
+} from "@flind/core/git-interaction/prStatus";
 import { Text } from "react-native";
 import { usePrStatus } from "@/features/tasks/hooks/usePrStatus";
 import { openExternalUrl } from "@/lib/openExternalUrl";

@@ -1,5 +1,5 @@
 import { LockSimpleIcon } from "@phosphor-icons/react";
-import type { Channel } from "@posthog/ui/features/canvas/hooks/useChannels";
+import type { Channel } from "@flind/ui/features/canvas/hooks/useChannels";
 import type { ReactElement } from "react";
 import { describe, expect, it } from "vitest";
 import { buildCanvasSpaceOptions } from "./canvasSpaceOptions";

@@ -3,7 +3,7 @@ import type {
   CanvasCommentHighlight,
   CanvasNavIntent,
   CanvasTextSelection,
-} from "@posthog/core/canvas/freeformSchemas";
+} from "@flind/core/canvas/freeformSchemas";
 import { useLayoutEffect, useMemo, useRef } from "react";
 import { useCanvasFrameStore } from "./canvasFrameStore";
 

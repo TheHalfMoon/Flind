@@ -1,14 +1,14 @@
 import { Button, Switch } from "@flind/quill";
-import { useMeQuery } from "@posthog/ui/features/auth/useMeQuery";
+import { useMeQuery } from "@flind/ui/features/auth/useMeQuery";
 import {
   SettingsCard,
   SettingsCardRow,
   SettingsSection,
-} from "@posthog/ui/features/settings/components/SettingsCard";
-import { useAuthenticatedMutation } from "@posthog/ui/hooks/useAuthenticatedMutation";
-import { useAuthenticatedQuery } from "@posthog/ui/hooks/useAuthenticatedQuery";
-import { toast } from "@posthog/ui/primitives/toast";
-import { openExternalUrl } from "@posthog/ui/shell/openExternal";
+} from "@flind/ui/features/settings/components/SettingsCard";
+import { useAuthenticatedMutation } from "@flind/ui/hooks/useAuthenticatedMutation";
+import { useAuthenticatedQuery } from "@flind/ui/hooks/useAuthenticatedQuery";
+import { toast } from "@flind/ui/primitives/toast";
+import { openExternalUrl } from "@flind/ui/shell/openExternal";
 import { useQueryClient } from "@tanstack/react-query";
 
 // Server-side, unlike the toggles above it: the DM is sent by a worker, so the preference has to

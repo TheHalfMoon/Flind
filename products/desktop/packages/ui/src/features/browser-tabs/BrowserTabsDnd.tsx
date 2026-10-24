@@ -1,14 +1,14 @@
 import { type DragDropEvents, DragDropProvider } from "@dnd-kit/react";
-import { browserTabsStore } from "@posthog/core/browser-tabs/browserTabsStore";
-import { useService } from "@posthog/di/react";
-import { primaryWindow, setTabOrder } from "@posthog/shared";
-import { isTileDropData } from "@posthog/ui/features/tab-tiling/TileDropZones";
+import { browserTabsStore } from "@flind/core/browser-tabs/browserTabsStore";
+import { useService } from "@flind/di/react";
+import { primaryWindow, setTabOrder } from "@flind/shared";
+import { isTileDropData } from "@flind/ui/features/tab-tiling/TileDropZones";
 import {
   tileBeside,
   untileTracked,
-} from "@posthog/ui/features/tab-tiling/tileActions";
-import { isTileTabDragData } from "@posthog/ui/features/tab-tiling/tileDrag";
-import { useTileLayoutStore } from "@posthog/ui/features/tab-tiling/tileLayoutStore";
+} from "@flind/ui/features/tab-tiling/tileActions";
+import { isTileTabDragData } from "@flind/ui/features/tab-tiling/tileDrag";
+import { useTileLayoutStore } from "@flind/ui/features/tab-tiling/tileLayoutStore";
 import { type ReactNode, useRef } from "react";
 import {
   BROWSER_TABS_CLIENT,

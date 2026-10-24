@@ -1,28 +1,28 @@
 import { ArrowSquareOut } from "@phosphor-icons/react";
 import type { PiThinkingLevel } from "@flind/agent/pi/types";
-import type { TaskRunPreferences } from "@posthog/api-client/posthog-client";
-import { buildPostHogUrl } from "@posthog/core/settings/posthogUrl";
-import { syntheticPiModelSelection } from "@posthog/core/task-detail/configOptions";
+import type { TaskRunPreferences } from "@flind/api-client/posthog-client";
+import { buildPostHogUrl } from "@flind/core/settings/posthogUrl";
+import { syntheticPiModelSelection } from "@flind/core/task-detail/configOptions";
 import { Button } from "@flind/quill";
 import {
   type Adapter,
   formatModelId,
   PI_HARNESS_FLAG,
   PI_RUNTIME,
-} from "@posthog/shared";
-import { EFFORT_LEVEL_LABELS } from "@posthog/shared/domain-types";
-import { useAuthStateValue } from "@posthog/ui/features/auth/store";
-import { useFeatureFlag } from "@posthog/ui/features/feature-flags/useFeatureFlag";
-import { PiModelSelector } from "@posthog/ui/features/pi-sessions/PiSessionControls";
-import { usePiModelCatalog } from "@posthog/ui/features/pi-sessions/usePiModelCatalog";
-import type { AgentHarness } from "@posthog/ui/features/sessions/components/HarnessSubmenu";
-import { ReasoningLevelSelector } from "@posthog/ui/features/sessions/components/ReasoningLevelSelector";
+} from "@flind/shared";
+import { EFFORT_LEVEL_LABELS } from "@flind/shared/domain-types";
+import { useAuthStateValue } from "@flind/ui/features/auth/store";
+import { useFeatureFlag } from "@flind/ui/features/feature-flags/useFeatureFlag";
+import { PiModelSelector } from "@flind/ui/features/pi-sessions/PiSessionControls";
+import { usePiModelCatalog } from "@flind/ui/features/pi-sessions/usePiModelCatalog";
+import type { AgentHarness } from "@flind/ui/features/sessions/components/HarnessSubmenu";
+import { ReasoningLevelSelector } from "@flind/ui/features/sessions/components/ReasoningLevelSelector";
 import {
   SettingsCard,
   SettingsCardRow,
-} from "@posthog/ui/features/settings/components/SettingsCard";
-import { useTaskAgentDefaults } from "@posthog/ui/features/settings/hooks/useTaskAgentDefaults";
-import { usePreviewConfig } from "@posthog/ui/features/task-detail/hooks/usePreviewConfig";
+} from "@flind/ui/features/settings/components/SettingsCard";
+import { useTaskAgentDefaults } from "@flind/ui/features/settings/hooks/useTaskAgentDefaults";
+import { usePreviewConfig } from "@flind/ui/features/task-detail/hooks/usePreviewConfig";
 import { Text } from "@radix-ui/themes";
 import { useEffect, useRef, useState } from "react";
 

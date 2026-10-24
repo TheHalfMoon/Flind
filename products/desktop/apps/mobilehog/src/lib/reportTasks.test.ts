@@ -1,8 +1,8 @@
-import { ApiRequestError } from "@posthog/api-client/fetcher";
+import { ApiRequestError } from "@flind/api-client/fetcher";
 import type {
   SignalReportArtefactsResponse,
   Task,
-} from "@posthog/shared/domain-types";
+} from "@flind/shared/domain-types";
 import { describe, expect, it, vi } from "vitest";
 import {
   fetchHasLiveImplementationTask,

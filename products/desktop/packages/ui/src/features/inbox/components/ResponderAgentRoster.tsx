@@ -1,16 +1,16 @@
 import { ArrowSquareOutIcon, type IconProps } from "@phosphor-icons/react";
-import type { SignalSourceConfig } from "@posthog/api-client/posthog-client";
+import type { SignalSourceConfig } from "@flind/api-client/posthog-client";
 import { Button } from "@flind/quill";
 import {
   RESPONDER_AGENT_GROUPS,
   type ResponderAgentDefinition,
   type ResponderAgentSource,
-} from "@posthog/ui/features/inbox/components/responderAgentMeta";
-import type { SignalSourceValues } from "@posthog/ui/features/inbox/components/SignalSourceToggles";
-import { InboxBadge } from "@posthog/ui/features/inbox/components/utils/InboxBadge";
-import { getSourceProductMeta } from "@posthog/ui/features/inbox/components/utils/source-product-icons";
-import { Badge } from "@posthog/ui/primitives/Badge";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
+} from "@flind/ui/features/inbox/components/responderAgentMeta";
+import type { SignalSourceValues } from "@flind/ui/features/inbox/components/SignalSourceToggles";
+import { InboxBadge } from "@flind/ui/features/inbox/components/utils/InboxBadge";
+import { getSourceProductMeta } from "@flind/ui/features/inbox/components/utils/source-product-icons";
+import { Badge } from "@flind/ui/primitives/Badge";
+import { Spinner } from "@flind/ui/primitives/Spinner";
 import { Box, Flex, Switch, Text } from "@radix-ui/themes";
 import { type ComponentType, memo, useCallback } from "react";
 

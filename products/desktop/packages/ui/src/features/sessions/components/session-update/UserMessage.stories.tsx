@@ -1,8 +1,8 @@
 import {
   STORY_SCREENSHOT_PATHS,
   WithStoryScreenshots,
-} from "@posthog/ui/features/message-editor/components/commentContextStoryFixtures";
-import { UserMessage } from "@posthog/ui/features/sessions/components/session-update/UserMessage";
+} from "@flind/ui/features/message-editor/components/commentContextStoryFixtures";
+import { UserMessage } from "@flind/ui/features/sessions/components/session-update/UserMessage";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta: Meta<typeof UserMessage> = {

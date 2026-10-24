@@ -1,5 +1,5 @@
 {
-  "extends": "@posthog/tsconfig/react-package.json",
+  "extends": "@flind/tsconfig/react-package.json",
   "compilerOptions": {
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true

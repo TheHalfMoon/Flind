@@ -2,8 +2,8 @@ import {
   type BlockPropsRecord,
   blockDefinition,
   freshBlockProps,
-} from "@posthog/core/canvas/blockLibrary/blockDefinitions";
-import { syncBlockLibrary } from "@posthog/core/canvas/blockLibrary/blockLibrarySync";
+} from "@flind/core/canvas/blockLibrary/blockDefinitions";
+import { syncBlockLibrary } from "@flind/core/canvas/blockLibrary/blockLibrarySync";
 import {
   blockRanges,
   duplicateRange,
@@ -18,18 +18,18 @@ import {
   type SourceFiles,
   type SourceRange,
   updateBlockProps,
-} from "@posthog/core/canvas/blockLibrary/sourceEdits";
+} from "@flind/core/canvas/blockLibrary/sourceEdits";
 import {
   type CanvasEditSelection,
   isRootSelection,
   useCanvasSourceStore,
-} from "@posthog/ui/features/canvas/blocks/canvasSourceStore";
-import { libraryLabel } from "@posthog/ui/features/canvas/blocks/libraryCatalog";
+} from "@flind/ui/features/canvas/blocks/canvasSourceStore";
+import { libraryLabel } from "@flind/ui/features/canvas/blocks/libraryCatalog";
 import type {
   SourceDragSource,
   SourceDropHit,
-} from "@posthog/ui/features/canvas/blocks/sourceDrag";
-import { useCanvasChatPanelStore } from "@posthog/ui/features/canvas/stores/canvasChatPanelStore";
+} from "@flind/ui/features/canvas/blocks/sourceDrag";
+import { useCanvasChatPanelStore } from "@flind/ui/features/canvas/stores/canvasChatPanelStore";
 import { useMemo } from "react";
 
 export interface CanvasSourceActions {

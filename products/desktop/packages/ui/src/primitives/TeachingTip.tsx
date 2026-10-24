@@ -10,8 +10,8 @@ import {
   type HintState,
   isHintRetired,
   useSettingsStore,
-} from "@posthog/ui/features/settings/settingsStore";
-import { useRendererWindowFocusStore } from "@posthog/ui/shell/rendererWindowFocusStore";
+} from "@flind/ui/features/settings/settingsStore";
+import { useRendererWindowFocusStore } from "@flind/ui/shell/rendererWindowFocusStore";
 import type { ReactNode } from "react";
 import { useEffect, useRef, useState } from "react";
 

@@ -1,9 +1,9 @@
-import type { TaskActivitySortMode } from "@posthog/core/tasks/taskActivity";
+import type { TaskActivitySortMode } from "@flind/core/tasks/taskActivity";
 import type {
   Adapter,
   ExecutionMode,
   SupportedReasoningEffort,
-} from "@posthog/shared";
+} from "@flind/shared";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";

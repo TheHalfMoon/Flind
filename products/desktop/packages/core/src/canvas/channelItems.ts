@@ -2,13 +2,13 @@ import {
   formatShortDayLabel,
   getLocalDayKey,
   type WorkspaceMode,
-} from "@posthog/shared";
-import type { TaskListGroupingChangedProperties } from "@posthog/shared/analytics-events";
+} from "@flind/shared";
+import type { TaskListGroupingChangedProperties } from "@flind/shared/analytics-events";
 import type {
   Task,
   TaskRunStatus,
   UserBasic,
-} from "@posthog/shared/domain-types";
+} from "@flind/shared/domain-types";
 import { isTaskUnread, type TaskTimestamp } from "../sidebar/buildSidebarData";
 import { getRepositoryInfo, repositoryLabel } from "../sidebar/groupTasks";
 import { taskActivityAt, taskActivityTimestamp } from "../tasks/taskActivity";

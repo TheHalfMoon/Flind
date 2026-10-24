@@ -1,10 +1,10 @@
-import { useChannelsLayout } from "@posthog/ui/features/canvas/hooks/useChannelsLayout";
+import { useChannelsLayout } from "@flind/ui/features/canvas/hooks/useChannelsLayout";
 import {
   CATEGORY_LABELS,
   formatHotkeyParts,
   getShortcutsByCategory,
   type ShortcutCategory,
-} from "@posthog/ui/features/command/keyboard-shortcuts";
+} from "@flind/ui/features/command/keyboard-shortcuts";
 import { Box, Dialog, Flex, Text } from "@radix-ui/themes";
 import { useMemo, useState } from "react";
 import { useHotkeys } from "react-hotkeys-hook";

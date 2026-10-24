@@ -6,7 +6,7 @@ import {
   EmptyMedia,
   EmptyTitle,
 } from "@flind/quill";
-import type { Task } from "@posthog/shared/domain-types";
+import type { Task } from "@flind/shared/domain-types";
 import type React from "react";
 import { useMemo } from "react";
 import { useHostCapabilities } from "../../../shell/useHostCapabilities";

@@ -1,4 +1,4 @@
-import type { ScoutConfig } from "@posthog/api-client/posthog-client";
+import type { ScoutConfig } from "@flind/api-client/posthog-client";
 import {
   Badge,
   Tooltip,

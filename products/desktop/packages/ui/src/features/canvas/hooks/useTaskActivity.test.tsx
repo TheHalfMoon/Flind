@@ -1,7 +1,7 @@
 import type {
   TaskActivity,
   TaskActivityPage,
-} from "@posthog/shared/domain-types";
+} from "@flind/shared/domain-types";
 import {
   focusManager,
   QueryClient,
@@ -16,7 +16,7 @@ const mockClient = vi.hoisted(() => ({
   markTaskActivityRead: vi.fn(),
 }));
 
-vi.mock("@posthog/ui/features/auth/authClient", () => ({
+vi.mock("@flind/ui/features/auth/authClient", () => ({
   useOptionalAuthenticatedClient: () => mockClient,
 }));
 

@@ -1,10 +1,10 @@
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
-import { CanvasUnavailable } from "@posthog/ui/features/canvas/components/CanvasUnavailable";
-import { FreeformCanvasView } from "@posthog/ui/features/canvas/freeform/FreeformCanvasView";
-import { GridCanvasView } from "@posthog/ui/features/canvas/grid/GridCanvasView";
-import { useDashboard } from "@posthog/ui/features/canvas/hooks/useDashboards";
-import { useIsDashboardEditing } from "@posthog/ui/features/canvas/stores/dashboardEditStore";
-import { track } from "@posthog/ui/shell/analytics";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
+import { CanvasUnavailable } from "@flind/ui/features/canvas/components/CanvasUnavailable";
+import { FreeformCanvasView } from "@flind/ui/features/canvas/freeform/FreeformCanvasView";
+import { GridCanvasView } from "@flind/ui/features/canvas/grid/GridCanvasView";
+import { useDashboard } from "@flind/ui/features/canvas/hooks/useDashboards";
+import { useIsDashboardEditing } from "@flind/ui/features/canvas/stores/dashboardEditStore";
+import { track } from "@flind/ui/shell/analytics";
 import { useEffect, useRef } from "react";
 
 // Renders a canvas's app in a sandboxed iframe (view + edit). Edit mode adds

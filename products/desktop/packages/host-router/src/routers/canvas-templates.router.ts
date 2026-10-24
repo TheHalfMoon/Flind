@@ -1,7 +1,7 @@
-import { CANVAS_TEMPLATES_SERVICE } from "@posthog/core/canvas/identifiers";
-import type { ICanvasTemplatesService } from "@posthog/core/canvas/services";
-import { canvasTemplateSummarySchema } from "@posthog/core/canvas/templateSchemas";
-import { publicProcedure, router } from "@posthog/host-trpc/trpc";
+import { CANVAS_TEMPLATES_SERVICE } from "@flind/core/canvas/identifiers";
+import type { ICanvasTemplatesService } from "@flind/core/canvas/services";
+import { canvasTemplateSummarySchema } from "@flind/core/canvas/templateSchemas";
+import { publicProcedure, router } from "@flind/host-trpc/trpc";
 import { z } from "zod";
 
 export const canvasTemplatesRouter = router({

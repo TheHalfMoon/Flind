@@ -2,7 +2,7 @@ import type { PiRpcClient } from "@flind/agent/pi/rpc-client";
 import type { RpcCommand, RpcResponse } from "@flind/agent/pi/rpc-transport";
 import type { PiRuntime } from "@flind/agent/pi/runtime";
 import type { PiExtensionEvent } from "@flind/agent/pi/types";
-import type { RootLogger } from "@posthog/di/logger";
+import type { RootLogger } from "@flind/di/logger";
 import { describe, expect, it, vi } from "vitest";
 import type { ITaskMetadataRepository } from "../../db/repositories/task-metadata-repository";
 import type { ProcessTrackingService } from "../process-tracking/process-tracking";

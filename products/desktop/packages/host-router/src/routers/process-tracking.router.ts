@@ -1,13 +1,13 @@
-import { publicProcedure, router } from "@posthog/host-trpc/trpc";
-import { PROCESS_TRACKING_SERVICE } from "@posthog/workspace-server/services/process-tracking/identifiers";
-import type { ProcessTrackingService } from "@posthog/workspace-server/services/process-tracking/process-tracking";
+import { publicProcedure, router } from "@flind/host-trpc/trpc";
+import { PROCESS_TRACKING_SERVICE } from "@flind/workspace-server/services/process-tracking/identifiers";
+import type { ProcessTrackingService } from "@flind/workspace-server/services/process-tracking/process-tracking";
 import {
   getSnapshotInput,
   killByCategoryInput,
   killByPidInput,
   killByTaskIdInput,
   listByTaskIdInput,
-} from "@posthog/workspace-server/services/process-tracking/schemas";
+} from "@flind/workspace-server/services/process-tracking/schemas";
 
 export const processTrackingRouter = router({
   getSnapshot: publicProcedure

@@ -1,8 +1,8 @@
 import {
   type AutoresearchState,
   autoresearchStore,
-} from "@posthog/core/autoresearch/autoresearchStore";
-import type { AutoresearchRun } from "@posthog/core/autoresearch/schemas";
+} from "@flind/core/autoresearch/autoresearchStore";
+import type { AutoresearchRun } from "@flind/core/autoresearch/schemas";
 import { useMemo } from "react";
 import { useStore } from "zustand";
 

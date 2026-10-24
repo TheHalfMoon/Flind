@@ -1,4 +1,4 @@
-// DI tokens for the canvas/dashboards services. They live in @posthog/core so
+// DI tokens for the canvas/dashboards services. They live in @flind/core so
 // both the host-router routers and the host DI container can reference them
 // without depending on the desktop app's main process (where the concrete
 // service classes are bound).

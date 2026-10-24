@@ -1,6 +1,6 @@
 import { execFile } from "node:child_process";
 import path from "node:path";
-import type { IFileIcon } from "@posthog/platform/file-icon";
+import type { IFileIcon } from "@flind/platform/file-icon";
 import { app } from "electron";
 import { injectable } from "inversify";
 

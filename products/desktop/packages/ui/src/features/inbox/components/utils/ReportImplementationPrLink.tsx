@@ -1,8 +1,8 @@
 import { GitMergeIcon, GitPullRequestIcon } from "@phosphor-icons/react";
-import { parsePrUrl } from "@posthog/core/inbox/reportPresentation";
+import { parsePrUrl } from "@flind/core/inbox/reportPresentation";
 import { cn } from "@flind/quill";
-import { usePrDetails } from "@posthog/ui/features/git-interaction/usePrDetails";
-import { usePrDiffStatsFromBatch } from "@posthog/ui/features/inbox/context/PrDiffStatsBatchContext";
+import { usePrDetails } from "@flind/ui/features/git-interaction/usePrDetails";
+import { usePrDiffStatsFromBatch } from "@flind/ui/features/inbox/context/PrDiffStatsBatchContext";
 import { Tooltip } from "@radix-ui/themes";
 
 type ImplementationPrLinkSize = "sm" | "md";

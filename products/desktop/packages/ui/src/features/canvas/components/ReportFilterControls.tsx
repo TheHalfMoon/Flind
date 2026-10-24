@@ -1,5 +1,5 @@
 import { FunnelSimple as FunnelSimpleIcon } from "@phosphor-icons/react";
-import type { ReportStatusFilter } from "@posthog/core/inbox/reportChannelScope";
+import type { ReportStatusFilter } from "@flind/core/inbox/reportChannelScope";
 import {
   Button,
   DropdownMenu,
@@ -14,9 +14,9 @@ import {
   DropdownMenuTrigger,
   Input,
 } from "@flind/quill";
-import type { SignalReportPriority } from "@posthog/shared/types";
-import { cnHeaderButton } from "@posthog/ui/features/canvas/components/channelHeaderButton";
-import type { ChannelReportsFilters } from "@posthog/ui/features/canvas/hooks/useChannelReports";
+import type { SignalReportPriority } from "@flind/shared/types";
+import { cnHeaderButton } from "@flind/ui/features/canvas/components/channelHeaderButton";
+import type { ChannelReportsFilters } from "@flind/ui/features/canvas/hooks/useChannelReports";
 
 const PRIORITIES: SignalReportPriority[] = ["P0", "P1", "P2", "P3", "P4"];
 

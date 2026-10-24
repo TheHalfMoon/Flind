@@ -1,7 +1,7 @@
 import {
   computeGitInteractionState,
   type GitState,
-} from "@posthog/core/git-interaction/gitInteractionLogic";
+} from "@flind/core/git-interaction/gitInteractionLogic";
 import type { Meta, StoryObj } from "@storybook/react";
 import { GitActionControl, PrBadgeControl } from "./TaskActionsMenu";
 

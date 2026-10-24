@@ -10,18 +10,18 @@ import {
   type BlockPropsRecord,
   type BlockPropValue,
   blockDefinition,
-} from "@posthog/core/canvas/blockLibrary/blockDefinitions";
+} from "@flind/core/canvas/blockLibrary/blockDefinitions";
 import {
   builderSql,
   SQL_BLOCK_TYPES,
   SQL_COLUMN_HINTS,
-} from "@posthog/core/canvas/blockLibrary/blockSql";
+} from "@flind/core/canvas/blockLibrary/blockSql";
 import type {
   ParamSchema,
   ParamSpec,
-} from "@posthog/core/canvas/blockLibrary/params";
+} from "@flind/core/canvas/blockLibrary/params";
 import { Button, Slider } from "@flind/quill";
-import type { CanvasEditSelection } from "@posthog/ui/features/canvas/blocks/canvasSourceStore";
+import type { CanvasEditSelection } from "@flind/ui/features/canvas/blocks/canvasSourceStore";
 import {
   ControlNote,
   DraftInput,
@@ -32,13 +32,13 @@ import {
   type MathValue,
   OptionSelect,
   Segmented,
-} from "@posthog/ui/features/canvas/blocks/inspector/fields";
+} from "@flind/ui/features/canvas/blocks/inspector/fields";
 import {
   EventPicker,
   InsightPicker,
   PropertyPicker,
-} from "@posthog/ui/features/canvas/blocks/inspector/Pickers";
-import { SqlEditor } from "@posthog/ui/features/canvas/components/context/SqlEditor";
+} from "@flind/ui/features/canvas/blocks/inspector/Pickers";
+import { SqlEditor } from "@flind/ui/features/canvas/components/context/SqlEditor";
 import { type ReactNode, useEffect, useState } from "react";
 
 type Change = (props: BlockPropsRecord) => void;

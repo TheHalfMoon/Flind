@@ -1,9 +1,9 @@
 import { Brain, Pause } from "@phosphor-icons/react";
-import type { Task } from "@posthog/shared/domain-types";
+import type { Task } from "@flind/shared/domain-types";
 import {
   formatDuration,
   GeneratingIndicator,
-} from "@posthog/ui/features/sessions/components/GeneratingIndicator";
+} from "@flind/ui/features/sessions/components/GeneratingIndicator";
 import { Box, Flex, Text } from "@radix-ui/themes";
 import { DiffStatsChip } from "./DiffStatsChip";
 import { ImageBuilderBuildButton } from "./ImageBuilderBuildButton";

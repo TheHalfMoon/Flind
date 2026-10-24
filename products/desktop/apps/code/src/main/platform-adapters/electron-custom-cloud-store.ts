@@ -1,9 +1,9 @@
-import type { CustomCloudStore } from "@posthog/core/custom-cloud/identifiers";
+import type { CustomCloudStore } from "@flind/core/custom-cloud/identifiers";
 import {
   type CustomCloud,
   configureCustomCloud,
   normalizeCustomCloud,
-} from "@posthog/shared";
+} from "@flind/shared";
 import { settingsStore } from "../services/settingsStore";
 import { isCustomCloudBuild } from "../utils/build-channel";
 

@@ -1,4 +1,4 @@
-import type { CloudTaskUpdatePayload } from "@posthog/shared/domain-types";
+import type { CloudTaskUpdatePayload } from "@flind/shared/domain-types";
 
 export interface CloudTaskSubscriptionHandlers {
   onUpdate: (update: CloudTaskUpdatePayload) => void;

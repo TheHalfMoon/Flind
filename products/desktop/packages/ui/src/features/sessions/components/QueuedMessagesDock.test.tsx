@@ -24,28 +24,28 @@ const dndCapture = vi.hoisted(() => ({
   onDragOver: undefined as ((event: unknown) => void) | undefined,
 }));
 
-vi.mock("@posthog/core/sessions/sessionService", () => ({
+vi.mock("@flind/core/sessions/sessionService", () => ({
   SESSION_SERVICE: Symbol.for("test.session-service"),
 }));
 
-vi.mock("@posthog/di/react", () => ({
+vi.mock("@flind/di/react", () => ({
   useService: () => sessionService,
 }));
 
-vi.mock("@posthog/ui/features/sessions/useSession", () => ({
+vi.mock("@flind/ui/features/sessions/useSession", () => ({
   useQueuedMessagesForTask: () => queuedState.messages,
 }));
 
-vi.mock("@posthog/ui/features/sessions/hooks/useMessagingMode", () => ({
+vi.mock("@flind/ui/features/sessions/hooks/useMessagingMode", () => ({
   useSupportsNativeSteer: () => false,
 }));
 
-vi.mock("@posthog/ui/features/sessions/hooks/useEditQueuedMessage", () => ({
+vi.mock("@flind/ui/features/sessions/hooks/useEditQueuedMessage", () => ({
   useEditQueuedMessage: () => vi.fn(),
   useCancelQueuedMessageEdit: () => vi.fn(),
 }));
 
-vi.mock("@posthog/ui/features/sessions/sessionStore", () => ({
+vi.mock("@flind/ui/features/sessions/sessionStore", () => ({
   sessionStoreSetters: storeSetters,
   useSessionIsCloud: () => false,
   useSessionSelector: <T,>(
@@ -63,7 +63,7 @@ vi.mock("@posthog/ui/features/sessions/sessionStore", () => ({
   },
 }));
 
-vi.mock("@posthog/ui/primitives/toast", () => ({
+vi.mock("@flind/ui/primitives/toast", () => ({
   toast: { error: vi.fn() },
 }));
 
@@ -96,7 +96,7 @@ vi.mock("@dnd-kit/dom", () => ({ PointerSensor: class {} }));
 // Stub the per-message card so the test exercises the dock's collapse/scroll
 // shell, not the markdown/steer internals it already owns.
 vi.mock(
-  "@posthog/ui/features/sessions/components/session-update/QueuedMessageView",
+  "@flind/ui/features/sessions/components/session-update/QueuedMessageView",
   async () => {
     const React = await import("react");
     return {

@@ -1,4 +1,4 @@
-import type { JsonRpcMessage, StoredLogEntry } from "@posthog/shared";
+import type { JsonRpcMessage, StoredLogEntry } from "@flind/shared";
 
 export type PortableSessionToolCallStatus =
   | "pending"

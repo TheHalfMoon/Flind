@@ -1,5 +1,5 @@
 import { ArrowRight } from "@phosphor-icons/react";
-import { estimateUncachedInputCost } from "@posthog/core/billing/modelPricing";
+import { estimateUncachedInputCost } from "@flind/core/billing/modelPricing";
 import {
   AlertDialog,
   AlertDialogContent,
@@ -13,8 +13,8 @@ import {
   Label,
   Text,
 } from "@flind/quill";
-import { formatCostUsd } from "@posthog/ui/features/sessions/contextColors";
-import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
+import { formatCostUsd } from "@flind/ui/features/sessions/contextColors";
+import { useSettingsStore } from "@flind/ui/features/settings/settingsStore";
 import { type ReactElement, useEffect, useId, useRef, useState } from "react";
 
 interface ModelSwitchCacheDialogProps {

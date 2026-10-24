@@ -25,7 +25,7 @@ const mocks = vi.hoisted(() => ({
   }>,
 }));
 
-vi.mock("@posthog/api-client/posthog-client", () => ({
+vi.mock("@flind/api-client/posthog-client", () => ({
   PostHogAPIClient: class {
     setTeamId = vi.fn();
 

@@ -6,8 +6,8 @@ import {
   LinkIcon,
   ReceiptIcon,
 } from "@phosphor-icons/react";
-import { canResolveReport } from "@posthog/core/inbox/reportActions";
-import { parsePrUrl } from "@posthog/core/inbox/reportPresentation";
+import { canResolveReport } from "@flind/core/inbox/reportActions";
+import { parsePrUrl } from "@flind/core/inbox/reportPresentation";
 import {
   Button,
   DropdownMenu,
@@ -21,14 +21,14 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@flind/quill";
-import type { SignalReport } from "@posthog/shared/types";
-import { RefundReportDialog } from "@posthog/ui/features/inbox/components/RefundReportDialog";
-import { ReportChatToggle } from "@posthog/ui/features/inbox/components/ReportChatToggle";
-import { useInboxReportDismissAction } from "@posthog/ui/features/inbox/hooks/useInboxReportDismissAction";
-import { useInboxReportResolveAction } from "@posthog/ui/features/inbox/hooks/useInboxReportResolveAction";
-import { useRefundReport } from "@posthog/ui/features/inbox/hooks/useRefundReport";
-import { copyInboxReportLink } from "@posthog/ui/features/inbox/utils/copyInboxReportLink";
-import { openExternalUrl } from "@posthog/ui/shell/openExternal";
+import type { SignalReport } from "@flind/shared/types";
+import { RefundReportDialog } from "@flind/ui/features/inbox/components/RefundReportDialog";
+import { ReportChatToggle } from "@flind/ui/features/inbox/components/ReportChatToggle";
+import { useInboxReportDismissAction } from "@flind/ui/features/inbox/hooks/useInboxReportDismissAction";
+import { useInboxReportResolveAction } from "@flind/ui/features/inbox/hooks/useInboxReportResolveAction";
+import { useRefundReport } from "@flind/ui/features/inbox/hooks/useRefundReport";
+import { copyInboxReportLink } from "@flind/ui/features/inbox/utils/copyInboxReportLink";
+import { openExternalUrl } from "@flind/ui/shell/openExternal";
 import { useState } from "react";
 
 interface ReportDetailActionsProps {

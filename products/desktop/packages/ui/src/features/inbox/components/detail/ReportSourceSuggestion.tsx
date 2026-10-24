@@ -1,16 +1,16 @@
 import { ArrowSquareOutIcon } from "@phosphor-icons/react";
-import { reportAgeHours } from "@posthog/core/inbox/engagement";
-import { sourceSuggestionTarget } from "@posthog/core/inbox/sourceSuggestion";
+import { reportAgeHours } from "@flind/core/inbox/engagement";
+import { sourceSuggestionTarget } from "@flind/core/inbox/sourceSuggestion";
 import { Button } from "@flind/quill";
-import { ANALYTICS_EVENTS } from "@posthog/shared";
+import { ANALYTICS_EVENTS } from "@flind/shared";
 import type {
   SignalReport,
   SignalReportSourceSuggestion,
-} from "@posthog/shared/types";
-import { getSourceProductMeta } from "@posthog/ui/features/inbox/components/utils/source-product-icons";
-import { track } from "@posthog/ui/shell/analytics";
-import { openExternalUrl } from "@posthog/ui/shell/openExternal";
-import { projectPathUrl } from "@posthog/ui/utils/posthogLinks";
+} from "@flind/shared/types";
+import { getSourceProductMeta } from "@flind/ui/features/inbox/components/utils/source-product-icons";
+import { track } from "@flind/ui/shell/analytics";
+import { openExternalUrl } from "@flind/ui/shell/openExternal";
+import { projectPathUrl } from "@flind/ui/utils/posthogLinks";
 import { useEffect, useEffectEvent } from "react";
 
 function suggestionEventProperties(report: SignalReport, product: string) {

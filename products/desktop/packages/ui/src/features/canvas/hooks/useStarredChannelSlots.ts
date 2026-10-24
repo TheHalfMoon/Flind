@@ -1,7 +1,7 @@
 import {
   type Channel,
   useChannels,
-} from "@posthog/ui/features/canvas/hooks/useChannels";
+} from "@flind/ui/features/canvas/hooks/useChannels";
 import { useMemo } from "react";
 
 const STARRED_HOTKEY_SLOTS = 9;

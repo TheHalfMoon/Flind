@@ -1,10 +1,10 @@
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
-import { track } from "@posthog/ui/shell/analytics";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
+import { track } from "@flind/ui/shell/analytics";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { tileBeside, untileTracked } from "./tileActions";
 import { useTileLayoutStore } from "./tileLayoutStore";
 
-vi.mock("@posthog/ui/shell/analytics", () => ({ track: vi.fn() }));
+vi.mock("@flind/ui/shell/analytics", () => ({ track: vi.fn() }));
 
 describe("tile analytics", () => {
   beforeEach(() => {

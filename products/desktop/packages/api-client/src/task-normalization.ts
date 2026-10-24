@@ -8,7 +8,7 @@ import {
   type TaskRunArtifactMetadata,
   type TaskRunStatus,
   taskRunStateSchema,
-} from "@posthog/shared/domain-types";
+} from "@flind/shared/domain-types";
 import type { Schemas } from "./generated";
 
 export type TaskSummaryDTO = Omit<Schemas.TaskSummaryDTO, "latest_run"> & {

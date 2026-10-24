@@ -1,12 +1,12 @@
-import type { EditorContent } from "@posthog/core/message-editor/content";
+import type { EditorContent } from "@flind/core/message-editor/content";
 import {
   type TaskInputReportAssociation,
   useTaskInputPrefillStore,
-} from "@posthog/ui/features/task-detail/stores/taskInputPrefillStore";
+} from "@flind/ui/features/task-detail/stores/taskInputPrefillStore";
 import {
   isReportPath,
   reportSourceHrefFromLocation,
-} from "@posthog/ui/router/reportNavigation";
+} from "@flind/ui/router/reportNavigation";
 import { useRouterState } from "@tanstack/react-router";
 import { useMemo } from "react";
 import { getCurrentMatches } from "./navigationBridge";

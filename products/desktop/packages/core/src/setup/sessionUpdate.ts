@@ -1,4 +1,4 @@
-import type { ActivityEntry } from "@posthog/core/setup/setupState";
+import type { ActivityEntry } from "@flind/core/setup/setupState";
 
 let activityIdCounter = 0;
 

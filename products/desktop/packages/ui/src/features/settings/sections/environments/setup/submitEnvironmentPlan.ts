@@ -1,7 +1,7 @@
-import type { EnvironmentSetupPlan } from "@posthog/core/settings/environmentSetup";
-import type { SandboxCustomImage } from "@posthog/shared/domain-types";
-import type { ImageFromPlan } from "@posthog/ui/features/settings/sections/environments/setup/useImageFromPlan";
-import { toast } from "@posthog/ui/primitives/toast";
+import type { EnvironmentSetupPlan } from "@flind/core/settings/environmentSetup";
+import type { SandboxCustomImage } from "@flind/shared/domain-types";
+import type { ImageFromPlan } from "@flind/ui/features/settings/sections/environments/setup/useImageFromPlan";
+import { toast } from "@flind/ui/primitives/toast";
 
 export interface SubmitEnvironmentPlanDeps {
   image: ImageFromPlan;

@@ -1,11 +1,11 @@
-import type { ChannelItemModel } from "@posthog/core/canvas/channelItems";
-import type { Task } from "@posthog/shared/domain-types";
-import { useChannelTasksRunState } from "@posthog/ui/features/canvas/hooks/useChannelTasksRunState";
-import { useScopedTaskSelectionStore } from "@posthog/ui/features/sidebar/TaskSelectionScope";
-import { useBulkArchiveConfirm } from "@posthog/ui/features/sidebar/useBulkArchiveConfirm";
-import { useClearSelectionOnEscape } from "@posthog/ui/features/sidebar/useClearSelectionOnEscape";
-import { useMarqueeSelection } from "@posthog/ui/features/sidebar/useMarqueeSelection";
-import { useSidebarBulkActions } from "@posthog/ui/features/sidebar/useSidebarBulkActions";
+import type { ChannelItemModel } from "@flind/core/canvas/channelItems";
+import type { Task } from "@flind/shared/domain-types";
+import { useChannelTasksRunState } from "@flind/ui/features/canvas/hooks/useChannelTasksRunState";
+import { useScopedTaskSelectionStore } from "@flind/ui/features/sidebar/TaskSelectionScope";
+import { useBulkArchiveConfirm } from "@flind/ui/features/sidebar/useBulkArchiveConfirm";
+import { useClearSelectionOnEscape } from "@flind/ui/features/sidebar/useClearSelectionOnEscape";
+import { useMarqueeSelection } from "@flind/ui/features/sidebar/useMarqueeSelection";
+import { useSidebarBulkActions } from "@flind/ui/features/sidebar/useSidebarBulkActions";
 import type { MouseEvent, RefObject } from "react";
 import { useCallback, useEffect, useMemo, useRef } from "react";
 

@@ -1,4 +1,4 @@
-import type { PrCommentThread } from "@posthog/core/code-review/types";
+import type { PrCommentThread } from "@flind/core/code-review/types";
 import type { ReactNode } from "react";
 
 export type CommentFileFilter = "none" | "commented" | "unresolved";

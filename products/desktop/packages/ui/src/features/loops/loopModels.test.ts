@@ -2,9 +2,9 @@ import type {
   SessionConfigOption,
   SessionConfigSelectOptions,
 } from "@agentclientprotocol/sdk";
-import { restrictedModelMeta } from "@posthog/shared";
-import { MODELS } from "@posthog/shared/model-catalog";
-import type { LoopSchemas } from "@posthog/ui/features/loops/loopSchemas";
+import { restrictedModelMeta } from "@flind/shared";
+import { MODELS } from "@flind/shared/model-catalog";
+import type { LoopSchemas } from "@flind/ui/features/loops/loopSchemas";
 import { describe, expect, it } from "vitest";
 import type { ModelRolloutFlags } from "../sessions/modelOptionFilters";
 import {

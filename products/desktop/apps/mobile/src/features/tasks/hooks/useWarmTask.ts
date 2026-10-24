@@ -1,7 +1,7 @@
 import {
   type ExecutionMode,
   TASKS_PREWARM_SANDBOX_FLAG,
-} from "@posthog/shared";
+} from "@flind/shared";
 import { useFeatureFlag } from "posthog-react-native";
 import { useEffect, useRef } from "react";
 import { logger } from "@/lib/logger";

@@ -1,24 +1,24 @@
 import type {
   McpAuditEvent,
   McpAuditQuickFilter,
-} from "@posthog/api-client/posthog-client";
+} from "@flind/api-client/posthog-client";
 import {
   AUDIT_DECISION_LABELS,
   credentialOwnerLabel,
   formatAuditTime,
-} from "@posthog/core/mcp-gateway/gatewayServers";
-import { UserAvatar } from "@posthog/ui/features/auth/UserAvatar";
+} from "@flind/core/mcp-gateway/gatewayServers";
+import { UserAvatar } from "@flind/ui/features/auth/UserAvatar";
 import {
   gatewayUserName,
   RobotAvatar,
-} from "@posthog/ui/features/mcp-gateway/components/parts/avatars";
+} from "@flind/ui/features/mcp-gateway/components/parts/avatars";
 import {
   AUDIT_PAGE_SIZE,
   useGatewayAudit,
-} from "@posthog/ui/features/mcp-gateway/hooks/useGatewayAudit";
-import { useGatewayConfig } from "@posthog/ui/features/mcp-gateway/hooks/useGatewayConfig";
-import { useServiceAccounts } from "@posthog/ui/features/mcp-gateway/hooks/useServiceAccounts";
-import { LoadingState } from "@posthog/ui/primitives/LoadingState";
+} from "@flind/ui/features/mcp-gateway/hooks/useGatewayAudit";
+import { useGatewayConfig } from "@flind/ui/features/mcp-gateway/hooks/useGatewayConfig";
+import { useServiceAccounts } from "@flind/ui/features/mcp-gateway/hooks/useServiceAccounts";
+import { LoadingState } from "@flind/ui/primitives/LoadingState";
 import { Badge, Button, Flex, Heading, Select, Text } from "@radix-ui/themes";
 import { useState } from "react";
 

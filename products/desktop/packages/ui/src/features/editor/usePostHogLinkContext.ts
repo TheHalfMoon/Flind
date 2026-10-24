@@ -1,7 +1,7 @@
-import type { PostHogLinkContext } from "@posthog/core/posthog-objects/objectUrls";
-import { getCloudUrlFromRegion } from "@posthog/shared";
-import { useAuthStateValue } from "@posthog/ui/features/auth/store";
-import { remarkObjectTags } from "@posthog/ui/utils/remarkObjectTags";
+import type { PostHogLinkContext } from "@flind/core/posthog-objects/objectUrls";
+import { getCloudUrlFromRegion } from "@flind/shared";
+import { useAuthStateValue } from "@flind/ui/features/auth/store";
+import { remarkObjectTags } from "@flind/ui/utils/remarkObjectTags";
 import { useMemo } from "react";
 import remarkGfm from "remark-gfm";
 import type { PluggableList } from "unified";

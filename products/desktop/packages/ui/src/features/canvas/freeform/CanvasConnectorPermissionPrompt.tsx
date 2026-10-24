@@ -1,4 +1,4 @@
-import type { CanvasConnectorPermission } from "@posthog/core/canvas/canvasConnectorPermissionService";
+import type { CanvasConnectorPermission } from "@flind/core/canvas/canvasConnectorPermissionService";
 import {
   Button,
   Dialog,

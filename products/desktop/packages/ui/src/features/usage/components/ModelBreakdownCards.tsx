@@ -2,8 +2,8 @@ import { Robot } from "@phosphor-icons/react";
 import {
   formatTokens,
   formatUsd,
-} from "@posthog/core/billing/spendAnalysisFormat";
-import type { SpendAnalysisModelRow } from "@posthog/core/billing/spendAnalysisTypes";
+} from "@flind/core/billing/spendAnalysisFormat";
+import type { SpendAnalysisModelRow } from "@flind/core/billing/spendAnalysisTypes";
 import {
   Select,
   SelectContent,

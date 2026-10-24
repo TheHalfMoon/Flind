@@ -1,12 +1,12 @@
-import type { ChannelItemModel } from "@posthog/core/canvas/channelItems";
-import { userDisplayName } from "@posthog/ui/features/canvas/utils/userDisplay";
-import { metadataFromValues } from "@posthog/ui/features/sidebar/components/ListItemMetadata";
+import type { ChannelItemModel } from "@flind/core/canvas/channelItems";
+import { userDisplayName } from "@flind/ui/features/canvas/utils/userDisplay";
+import { metadataFromValues } from "@flind/ui/features/sidebar/components/ListItemMetadata";
 import {
   activityValue,
   type ListItemMetadataField,
   type ListItemMetadataValue,
-} from "@posthog/ui/features/sidebar/listItemAppearance";
-import { useSidebarStore } from "@posthog/ui/features/sidebar/sidebarStore";
+} from "@flind/ui/features/sidebar/listItemAppearance";
+import { useSidebarStore } from "@flind/ui/features/sidebar/sidebarStore";
 import type { ReactNode } from "react";
 
 /**

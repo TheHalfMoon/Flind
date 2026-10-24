@@ -1,4 +1,4 @@
-import type { ScoutConfig, ScoutRun } from "@posthog/api-client/posthog-client";
+import type { ScoutConfig, ScoutRun } from "@flind/api-client/posthog-client";
 import { describe, expect, it } from "vitest";
 import {
   buildScoutCreatorIndex,

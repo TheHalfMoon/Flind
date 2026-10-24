@@ -1,4 +1,4 @@
-import type { BrowserTab, TabsSnapshot } from "@posthog/shared";
+import type { BrowserTab, TabsSnapshot } from "@flind/shared";
 import { describe, expect, it } from "vitest";
 import {
   collapseSplits,

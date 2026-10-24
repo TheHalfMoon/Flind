@@ -1,1 +1,1 @@
-export * from "@posthog/core/auth/oauth.schemas";
+export * from "@flind/core/auth/oauth.schemas";

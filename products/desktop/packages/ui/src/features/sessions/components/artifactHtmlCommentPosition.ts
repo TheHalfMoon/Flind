@@ -1,5 +1,5 @@
-import type { EditorSelection } from "@posthog/ui/features/code-editor/components/CodeMirrorEditor";
-import type { SelectionAnchor } from "@posthog/ui/features/code-editor/components/selectionScreenshot";
+import type { EditorSelection } from "@flind/ui/features/code-editor/components/CodeMirrorEditor";
+import type { SelectionAnchor } from "@flind/ui/features/code-editor/components/selectionScreenshot";
 import type { ArtifactHtmlFrameRect } from "./artifactHtmlFrameHost";
 
 export function selectionAnchor(

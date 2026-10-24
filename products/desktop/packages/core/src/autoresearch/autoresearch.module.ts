@@ -1,4 +1,4 @@
-import { CONTRIBUTION } from "@posthog/di/contribution";
+import { CONTRIBUTION } from "@flind/di/contribution";
 import { ContainerModule } from "inversify";
 import { AutoresearchService } from "./autoresearch";
 import { AutoresearchRehydrationContribution } from "./autoresearch.contribution";

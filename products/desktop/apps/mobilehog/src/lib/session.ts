@@ -1,9 +1,9 @@
-import { CloudCommandError } from "@posthog/api-client/posthog-client";
+import { CloudCommandError } from "@flind/api-client/posthog-client";
 import type {
   CloudTaskUpdatePayload,
   Task,
   TaskRunStatus,
-} from "@posthog/shared";
+} from "@flind/shared";
 import * as Haptics from "expo-haptics";
 import { create } from "zustand";
 import { type Photo, uploadRunPhotos } from "@/lib/attachments";

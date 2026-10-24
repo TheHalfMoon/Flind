@@ -5,15 +5,15 @@ import {
   PopoverTrigger,
   Text,
 } from "@flind/quill";
-import { TASK_COST_VISIBLE_FLAG } from "@posthog/shared";
-import { useFeatureFlag } from "@posthog/ui/features/feature-flags/useFeatureFlag";
+import { TASK_COST_VISIBLE_FLAG } from "@flind/shared";
+import { useFeatureFlag } from "@flind/ui/features/feature-flags/useFeatureFlag";
 import {
   formatCostUsd,
   formatTokensCompact,
   getOverallUsageColor,
-} from "@posthog/ui/features/sessions/contextColors";
-import type { ContextUsage } from "@posthog/ui/features/sessions/hooks/useContextUsage";
-import { useTaskUsage } from "@posthog/ui/features/sessions/hooks/useTaskUsage";
+} from "@flind/ui/features/sessions/contextColors";
+import type { ContextUsage } from "@flind/ui/features/sessions/hooks/useContextUsage";
+import { useTaskUsage } from "@flind/ui/features/sessions/hooks/useTaskUsage";
 import { ContextBreakdownPopover } from "./ContextBreakdownPopover";
 
 const CIRCLE_SIZE = 20;

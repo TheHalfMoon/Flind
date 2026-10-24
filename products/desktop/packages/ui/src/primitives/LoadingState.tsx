@@ -1,5 +1,5 @@
 import { cn } from "@flind/quill";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
+import { Spinner } from "@flind/ui/primitives/Spinner";
 import type { ComponentProps } from "react";
 
 interface LoadingStateProps extends Omit<ComponentProps<"div">, "children"> {

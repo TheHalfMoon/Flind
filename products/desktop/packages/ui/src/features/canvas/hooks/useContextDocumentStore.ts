@@ -1,15 +1,15 @@
 import {
   ContextWikiConflictError,
   FolderInstructionsConflictError,
-} from "@posthog/api-client/posthog-client";
+} from "@flind/api-client/posthog-client";
 import {
   useFolderInstructions,
   useFolderInstructionsMutations,
-} from "@posthog/ui/features/canvas/hooks/useFolderInstructions";
+} from "@flind/ui/features/canvas/hooks/useFolderInstructions";
 import {
   useContextWikiPage,
   useContextWikiPageMutation,
-} from "@posthog/ui/features/context-wiki/hooks/useContextWiki";
+} from "@flind/ui/features/context-wiki/hooks/useContextWiki";
 import { useCallback } from "react";
 
 export interface ContextDocumentStore {

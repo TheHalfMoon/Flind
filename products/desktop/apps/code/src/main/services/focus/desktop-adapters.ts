@@ -3,7 +3,7 @@ import path from "node:path";
 import type {
   FocusSessionStore,
   FocusWorktreePaths,
-} from "@posthog/core/focus/host-focus";
+} from "@flind/core/focus/host-focus";
 import { focusStore } from "../../utils/store";
 import { getWorktreeLocation } from "../settingsStore";
 

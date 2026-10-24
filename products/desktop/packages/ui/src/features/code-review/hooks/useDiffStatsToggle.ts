@@ -1,4 +1,4 @@
-import type { Task } from "@posthog/shared/domain-types";
+import type { Task } from "@flind/shared/domain-types";
 import { useCallback } from "react";
 import { getDefaultReviewMode } from "../getDefaultReviewMode";
 import { useReviewNavigationStore } from "../reviewNavigationStore";

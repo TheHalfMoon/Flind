@@ -1,10 +1,10 @@
 import { ShapesIcon } from "@phosphor-icons/react";
-import { CanvasBlocksStarter } from "@posthog/ui/features/canvas/blocks/CanvasBlocks";
-import { CANVAS_GENERATE_SUGGESTIONS } from "@posthog/ui/features/canvas/freeform/canvasGenerateSuggestions";
-import { FreeformGenerateBar } from "@posthog/ui/features/canvas/freeform/FreeformGenerateBar";
-import type { EditorHandle } from "@posthog/ui/features/message-editor/types";
-import { SuggestedPromptCard } from "@posthog/ui/features/task-detail/components/SuggestedPromptCard";
-import { DotPatternBackground } from "@posthog/ui/primitives/DotPatternBackground";
+import { CanvasBlocksStarter } from "@flind/ui/features/canvas/blocks/CanvasBlocks";
+import { CANVAS_GENERATE_SUGGESTIONS } from "@flind/ui/features/canvas/freeform/canvasGenerateSuggestions";
+import { FreeformGenerateBar } from "@flind/ui/features/canvas/freeform/FreeformGenerateBar";
+import type { EditorHandle } from "@flind/ui/features/message-editor/types";
+import { SuggestedPromptCard } from "@flind/ui/features/task-detail/components/SuggestedPromptCard";
+import { DotPatternBackground } from "@flind/ui/primitives/DotPatternBackground";
 import { useRef } from "react";
 
 // The empty-canvas landing state: a centered composer with starter-prompt

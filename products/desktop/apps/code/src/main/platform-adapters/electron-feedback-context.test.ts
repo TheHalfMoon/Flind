@@ -5,7 +5,7 @@ vi.mock("inversify", () => ({
   inject: () => () => undefined,
 }));
 
-vi.mock("@posthog/core/feedback/feedbackAttachmentService", () => ({
+vi.mock("@flind/core/feedback/feedbackAttachmentService", () => ({
   FEEDBACK_SUBMISSION_SERVICE: Symbol.for(
     "posthog.core.feedback.submissionService",
   ),

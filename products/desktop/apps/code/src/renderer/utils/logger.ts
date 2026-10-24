@@ -2,7 +2,7 @@ import {
   type HostLogger,
   type ScopedLogger,
   logger as uiLogger,
-} from "@posthog/ui/shell/logger";
+} from "@flind/ui/shell/logger";
 import log from "electron-log/renderer";
 
 log.transports.console.level = "debug";

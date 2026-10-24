@@ -1,8 +1,8 @@
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
-import { createIPCHandler } from "@posthog/electron-trpc/main";
-import { MAIN_WINDOW_SERVICE } from "@posthog/platform/main-window";
-import { DARK_APP_BACKGROUND_COLOR } from "@posthog/shared/constants";
+import { createIPCHandler } from "@flind/electron-trpc/main";
+import { MAIN_WINDOW_SERVICE } from "@flind/platform/main-window";
+import { DARK_APP_BACKGROUND_COLOR } from "@flind/shared/constants";
 import {
   app,
   BrowserWindow,

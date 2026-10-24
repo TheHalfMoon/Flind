@@ -10,9 +10,9 @@ import {
 import {
   ANALYTICS_EVENTS,
   type AnnouncementProperties,
-} from "@posthog/shared/analytics-events";
-import type { Announcement } from "@posthog/shared/announcements";
-import { track } from "@posthog/ui/shell/analytics";
+} from "@flind/shared/analytics-events";
+import type { Announcement } from "@flind/shared/announcements";
+import { track } from "@flind/ui/shell/analytics";
 import { useEffect } from "react";
 import { AnnouncementHero } from "./AnnouncementHero";
 import { AnnouncementMarkdown } from "./AnnouncementMarkdown";

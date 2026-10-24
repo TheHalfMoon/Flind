@@ -1,8 +1,8 @@
-import { buildToolCallFallbacks } from "@posthog/core/code-review/buildToolCallFallbacks";
-import { buildGithubFileUrl } from "@posthog/core/code-review/reviewItemKeys";
-import { extractCloudFileDiff } from "@posthog/core/task-detail/cloudToolChanges";
-import type { Task } from "@posthog/shared/domain-types";
-import { LoadingState } from "@posthog/ui/primitives/LoadingState";
+import { buildToolCallFallbacks } from "@flind/core/code-review/buildToolCallFallbacks";
+import { buildGithubFileUrl } from "@flind/core/code-review/reviewItemKeys";
+import { extractCloudFileDiff } from "@flind/core/task-detail/cloudToolChanges";
+import type { Task } from "@flind/shared/domain-types";
+import { LoadingState } from "@flind/ui/primitives/LoadingState";
 import { useMemo } from "react";
 import { useDiffViewerStore } from "../../code-editor/diffViewerStore";
 import { usePrDetails } from "../../git-interaction/usePrDetails";

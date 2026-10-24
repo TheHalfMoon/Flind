@@ -1,4 +1,4 @@
-import { ArtifactChip } from "@posthog/ui/primitives/ArtifactChip";
+import { ArtifactChip } from "@flind/ui/primitives/ArtifactChip";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {

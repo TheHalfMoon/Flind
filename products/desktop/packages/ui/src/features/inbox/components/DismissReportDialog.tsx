@@ -17,8 +17,8 @@ import {
   DISMISSAL_REASON_OPTIONS,
   type DismissalReasonOptionValue,
   isDismissalReasonSnooze,
-} from "@posthog/shared/dismissalReasons";
-import type { SignalReport } from "@posthog/shared/types";
+} from "@flind/shared/dismissalReasons";
+import type { SignalReport } from "@flind/shared/types";
 import { useId, useState } from "react";
 
 export interface DismissReportDialogResult {

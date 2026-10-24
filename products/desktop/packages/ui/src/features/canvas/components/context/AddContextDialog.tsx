@@ -12,7 +12,7 @@ import {
   isHttpUrl,
   parsePostHogObjectUrl,
   urlHost,
-} from "@posthog/core/canvas/contextDocument";
+} from "@flind/core/canvas/contextDocument";
 import {
   fileDisplayName,
   fileNameToPath,
@@ -20,11 +20,11 @@ import {
   newFileContent,
   UPLOAD_ACCEPT,
   UPLOAD_MAX_BYTES,
-} from "@posthog/core/canvas/contextFiles";
+} from "@flind/core/canvas/contextFiles";
 import {
   type ContextSource,
   parseContextSourceInput,
-} from "@posthog/core/canvas/contextSources";
+} from "@flind/core/canvas/contextSources";
 import {
   Button,
   cn,
@@ -41,8 +41,8 @@ import {
 import type {
   ContextSourceState,
   ContextSources,
-} from "@posthog/ui/features/canvas/hooks/useContextSources";
-import { usePostHogHost } from "@posthog/ui/features/canvas/hooks/usePostHogHost";
+} from "@flind/ui/features/canvas/hooks/useContextSources";
+import { usePostHogHost } from "@flind/ui/features/canvas/hooks/usePostHogHost";
 import {
   cloneElement,
   isValidElement,

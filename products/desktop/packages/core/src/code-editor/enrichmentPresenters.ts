@@ -1,4 +1,4 @@
-import type { SerializedFlag } from "@posthog/shared";
+import type { SerializedFlag } from "@flind/shared";
 
 export function compactNumber(n: number): string {
   if (n < 1000) return `${n}`;

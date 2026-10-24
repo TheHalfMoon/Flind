@@ -1,16 +1,16 @@
-import type { EditorContent } from "@posthog/core/message-editor/content";
+import type { EditorContent } from "@flind/core/message-editor/content";
 import {
   contentToPlainText,
   contentToXml,
   textToContent,
-} from "@posthog/core/message-editor/content";
-import type { Task } from "@posthog/shared/domain-types";
-import { useTaskInputHistoryStore } from "@posthog/ui/features/message-editor/taskInputHistoryStore";
-import { useTaskInputPrefillStore } from "@posthog/ui/features/task-detail/stores/taskInputPrefillStore";
+} from "@flind/core/message-editor/content";
+import type { Task } from "@flind/shared/domain-types";
+import { useTaskInputHistoryStore } from "@flind/ui/features/message-editor/taskInputHistoryStore";
+import { useTaskInputPrefillStore } from "@flind/ui/features/task-detail/stores/taskInputPrefillStore";
 import {
   pendingTaskPromptStoreApi,
   usePendingTaskPromptStore,
-} from "@posthog/ui/shell/pendingTaskPromptStore";
+} from "@flind/ui/shell/pendingTaskPromptStore";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { act, renderHook } from "@testing-library/react";
 import type { ReactNode } from "react";
@@ -28,11 +28,11 @@ const cloudSubscription = vi.hoisted(() => ({
   cloudFlagEnabled: true,
 }));
 
-vi.mock("@posthog/di/react", () => ({
+vi.mock("@flind/di/react", () => ({
   useService: () => ({ createTask: createTaskMock }),
   useServiceOptional: () => undefined,
 }));
-vi.mock("@posthog/host-router/react", () => ({
+vi.mock("@flind/host-router/react", () => ({
   useHostTRPC: () => ({
     workspace: { getAll: { queryKey: () => ["workspaces"] } },
     additionalDirectories: {
@@ -48,13 +48,13 @@ vi.mock("@posthog/host-router/react", () => ({
     workspace: { getWorktreeFileUsage: { query: vi.fn() } },
   }),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useTaskChannels", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useTaskChannels", () => ({
   useTaskChannels: () => ({ personalChannel: null }),
 }));
-vi.mock("@posthog/ui/features/feature-flags/useFeatureFlag", () => ({
+vi.mock("@flind/ui/features/feature-flags/useFeatureFlag", () => ({
   useFeatureFlag: () => false,
 }));
-vi.mock("@posthog/ui/features/settings/adapterSubscription", () => ({
+vi.mock("@flind/ui/features/settings/adapterSubscription", () => ({
   useAdapterSubscription: () => ({
     ...cloudSubscription,
     flagEnabled: false,
@@ -64,13 +64,13 @@ vi.mock("@posthog/ui/features/settings/adapterSubscription", () => ({
   subscriptionModelAccess: () =>
     cloudSubscription.cloudSubscriptionOn ? "own-subscription" : undefined,
 }));
-vi.mock("@posthog/ui/features/tasks/useTaskCrudMutations", () => ({
+vi.mock("@flind/ui/features/tasks/useTaskCrudMutations", () => ({
   useCreateTask: () => ({ invalidateTasks: invalidateTasksMock }),
 }));
-vi.mock("@posthog/ui/features/tasks/useTasks", () => ({
+vi.mock("@flind/ui/features/tasks/useTasks", () => ({
   useTasks: () => ({ data: [] }),
 }));
-vi.mock("@posthog/ui/features/local-mcp/useLocalMcpCloudServers", () => ({
+vi.mock("@flind/ui/features/local-mcp/useLocalMcpCloudServers", () => ({
   useLocalMcpCloudServers: () => ({ servers: [], isLoading: false }),
 }));
 vi.mock("../../../hooks/useConnectivity", () => ({
@@ -88,15 +88,15 @@ vi.mock("../../../shell/logger", () => ({
     scope: () => ({ warn: vi.fn(), error: vi.fn(), info: vi.fn() }),
   },
 }));
-vi.mock("@posthog/ui/features/notifications/errorDetails", () => ({
+vi.mock("@flind/ui/features/notifications/errorDetails", () => ({
   toastError: vi.fn(),
 }));
-vi.mock("@posthog/ui/features/auth/store", () => ({
+vi.mock("@flind/ui/features/auth/store", () => ({
   useAuthStateValue: () => true,
 }));
-vi.mock("@posthog/ui/router/useOpenTask", async (importOriginal) => {
+vi.mock("@flind/ui/router/useOpenTask", async (importOriginal) => {
   const actual =
-    await importOriginal<typeof import("@posthog/ui/router/useOpenTask")>();
+    await importOriginal<typeof import("@flind/ui/router/useOpenTask")>();
   return { ...actual, openTask: openTaskMock };
 });
 

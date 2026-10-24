@@ -1,12 +1,12 @@
 import type { ContentBlock } from "@agentclientprotocol/sdk";
-import { CLOUD_USAGE_LIMIT_ERROR_MESSAGE } from "@posthog/api-client/posthog-client";
+import { CLOUD_USAGE_LIMIT_ERROR_MESSAGE } from "@flind/api-client/posthog-client";
 import {
   CLOUD_ARTIFACT_SERVICE,
   type CloudArtifactClient,
-} from "@posthog/core/sessions/cloudArtifactIdentifiers";
-import type { CloudArtifactService } from "@posthog/core/sessions/cloudArtifactService";
-import { getCloudPromptTransport } from "@posthog/core/sessions/cloudPrompt";
-import type { TaskCreationApiClient } from "@posthog/core/task-detail/taskCreationApiClient";
+} from "@flind/core/sessions/cloudArtifactIdentifiers";
+import type { CloudArtifactService } from "@flind/core/sessions/cloudArtifactService";
+import { getCloudPromptTransport } from "@flind/core/sessions/cloudPrompt";
+import type { TaskCreationApiClient } from "@flind/core/task-detail/taskCreationApiClient";
 import type {
   CloudPromptTransport,
   CreatedWorkspaceInfo,
@@ -18,17 +18,17 @@ import type {
   SetupActionDispatch,
   TaskEnvironment,
   TaskFolderInfo,
-} from "@posthog/core/task-detail/taskCreationHost";
-import { resolveService } from "@posthog/di/container";
+} from "@flind/core/task-detail/taskCreationHost";
+import { resolveService } from "@flind/di/container";
 import {
   HOST_TRPC_CLIENT,
   type HostTrpcClient,
-} from "@posthog/host-router/client";
+} from "@flind/host-router/client";
 import {
   type ExecutionMode,
   expandTildePath,
   type Workspace,
-} from "@posthog/shared";
+} from "@flind/shared";
 import { injectable } from "inversify";
 import { track } from "../../shell/analytics";
 import { getAuthenticatedClient } from "../auth/authClientImperative";

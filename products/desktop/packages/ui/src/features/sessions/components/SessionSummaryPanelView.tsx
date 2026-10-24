@@ -1,6 +1,6 @@
 import { TextAlignLeft } from "@phosphor-icons/react";
 import { Button, Text } from "@flind/quill";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
+import { Spinner } from "@flind/ui/primitives/Spinner";
 import { MarkdownRenderer } from "../../editor/components/MarkdownRenderer";
 
 export type SessionSummaryState =

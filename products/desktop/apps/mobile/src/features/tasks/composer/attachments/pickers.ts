@@ -1,4 +1,4 @@
-import { getImageMimeType } from "@posthog/shared";
+import { getImageMimeType } from "@flind/shared";
 import { Alert } from "react-native";
 import { logger } from "@/lib/logger";
 import type { PendingAttachment } from "./types";

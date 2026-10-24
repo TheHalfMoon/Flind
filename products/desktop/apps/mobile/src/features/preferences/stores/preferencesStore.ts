@@ -1,4 +1,4 @@
-import type { EffortLevel } from "@posthog/shared/domain-types";
+import type { EffortLevel } from "@flind/shared/domain-types";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Platform } from "react-native";
 import { create } from "zustand";

@@ -1,11 +1,11 @@
 import {
   getPostHogObjectArtifactMetadata,
   groupRunArtifactVersions,
-} from "@posthog/core/canvas/runArtifactSchemas";
-import { mergePrUrls, readPrUrls, type TaskRunArtifact } from "@posthog/shared";
-import type { Task } from "@posthog/shared/domain-types";
-import { useSessionSelector } from "@posthog/ui/features/sessions/sessionStore";
-import { useRunArtifacts } from "@posthog/ui/features/sessions/useRunArtifacts";
+} from "@flind/core/canvas/runArtifactSchemas";
+import { mergePrUrls, readPrUrls, type TaskRunArtifact } from "@flind/shared";
+import type { Task } from "@flind/shared/domain-types";
+import { useSessionSelector } from "@flind/ui/features/sessions/sessionStore";
+import { useRunArtifacts } from "@flind/ui/features/sessions/useRunArtifacts";
 
 const NO_ARTIFACTS: TaskRunArtifact[] = [];
 

@@ -5,11 +5,11 @@ import { describe, expect, it, vi } from "vitest";
 const usePrDetailsMock = vi.hoisted(() => vi.fn());
 const usePrChecksMock = vi.hoisted(() => vi.fn());
 
-vi.mock("@posthog/ui/features/git-interaction/usePrDetails", () => ({
+vi.mock("@flind/ui/features/git-interaction/usePrDetails", () => ({
   usePrDetails: usePrDetailsMock,
 }));
 
-vi.mock("@posthog/ui/features/pr-review/usePrChecks", () => ({
+vi.mock("@flind/ui/features/pr-review/usePrChecks", () => ({
   usePrChecks: usePrChecksMock,
 }));
 

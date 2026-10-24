@@ -1,4 +1,4 @@
-import { getFileName, isBinaryFile } from "@posthog/shared";
+import { getFileName, isBinaryFile } from "@flind/shared";
 import type { FileReadClient } from "./identifiers";
 
 /** Enough of an attachment to name a task after, without bloating the prompt. */

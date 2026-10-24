@@ -1,6 +1,6 @@
 // Host-agnostic shapes for the user's locally configured MCP servers
 // (~/.claude.json) as they relate to cloud task runs. The workspace-server
-// reads the config from disk; @posthog/core classifies each server by whether
+// reads the config from disk; @flind/core classifies each server by whether
 // it can be imported into a cloud sandbox.
 
 /** Where a local MCP server definition came from in ~/.claude.json. */

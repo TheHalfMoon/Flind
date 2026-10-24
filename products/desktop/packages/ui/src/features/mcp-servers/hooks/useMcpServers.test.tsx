@@ -1,4 +1,4 @@
-import type { McpRecommendedServer } from "@posthog/api-client/posthog-client";
+import type { McpRecommendedServer } from "@flind/api-client/posthog-client";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { act, renderHook, waitFor } from "@testing-library/react";
 import type { ReactNode } from "react";
@@ -29,11 +29,11 @@ const mockTrpc = vi.hoisted(() => ({
   },
 }));
 
-vi.mock("@posthog/ui/features/auth/authClient", () => ({
+vi.mock("@flind/ui/features/auth/authClient", () => ({
   useOptionalAuthenticatedClient: () => mockClient,
 }));
 
-vi.mock("@posthog/host-router/react", () => ({
+vi.mock("@flind/host-router/react", () => ({
   useHostTRPC: () => mockTrpc,
   useHostTRPCClient: () => mockTrpcClient,
 }));
@@ -42,7 +42,7 @@ vi.mock("@trpc/tanstack-react-query", () => ({
   useSubscription: vi.fn(),
 }));
 
-vi.mock("@posthog/ui/primitives/toast", () => ({
+vi.mock("@flind/ui/primitives/toast", () => ({
   toast: {
     error: vi.fn(),
     success: vi.fn(),

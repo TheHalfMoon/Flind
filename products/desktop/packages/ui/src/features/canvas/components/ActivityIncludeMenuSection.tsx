@@ -1,15 +1,15 @@
-import { getAuthIdentity } from "@posthog/core/auth/authIdentity";
+import { getAuthIdentity } from "@flind/core/auth/authIdentity";
 import {
   DropdownMenuCheckboxItem,
   DropdownMenuSeparator,
   MenuLabel,
 } from "@flind/quill";
-import { useAuthStateValue } from "@posthog/ui/features/auth/store";
+import { useAuthStateValue } from "@flind/ui/features/auth/store";
 import {
   type ActivityInboxScope,
   hasActiveActivityMenuFilters,
   useActivityFilterStore,
-} from "@posthog/ui/features/canvas/stores/activityFilterStore";
+} from "@flind/ui/features/canvas/stores/activityFilterStore";
 import {
   INBOX_PRIORITY_MENU_OPTIONS,
   INBOX_SORT_MENU_OPTIONS,
@@ -17,15 +17,15 @@ import {
   inboxSortOptionFromKey,
   inboxSortOptionKey,
   inboxSourceFilterLabel,
-} from "@posthog/ui/features/inbox/filterOptions";
-import { useInboxSourceFilterOptions } from "@posthog/ui/features/inbox/hooks/useInboxSourceFilterOptions";
-import type { InboxPrFilter } from "@posthog/ui/features/inbox/stores/inboxSignalsFilterStore";
+} from "@flind/ui/features/inbox/filterOptions";
+import { useInboxSourceFilterOptions } from "@flind/ui/features/inbox/hooks/useInboxSourceFilterOptions";
+import type { InboxPrFilter } from "@flind/ui/features/inbox/stores/inboxSignalsFilterStore";
 import {
   FilterCheckboxSubMenu,
   FilterClearItem,
   type FilterOption,
   FilterRadioSubMenu,
-} from "@posthog/ui/primitives/FilterMenu";
+} from "@flind/ui/primitives/FilterMenu";
 import type { ReactElement } from "react";
 
 const SCOPE_OPTIONS: readonly FilterOption<ActivityInboxScope>[] = [

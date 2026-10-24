@@ -1,5 +1,5 @@
-import { LoopDetailView } from "@posthog/ui/features/loops/components/LoopDetailView";
-import { parseLoopDetailSearch } from "@posthog/ui/features/loops/loopDetailSearch";
+import { LoopDetailView } from "@flind/ui/features/loops/components/LoopDetailView";
+import { parseLoopDetailSearch } from "@flind/ui/features/loops/loopDetailSearch";
 import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/_shell/spaces/$channelId/loops/$loopId")(

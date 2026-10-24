@@ -1,9 +1,9 @@
-import type { Contribution } from "@posthog/di/contribution";
+import type { Contribution } from "@flind/di/contribution";
 import {
   ROOT_LOGGER,
   type RootLogger,
   type ScopedLogger,
-} from "@posthog/di/logger";
+} from "@flind/di/logger";
 import { inject, injectable } from "inversify";
 import { subscribeToRouterResolved } from "../../router/navigationBridge";
 import { getAppViewSnapshot } from "../../router/useAppView";

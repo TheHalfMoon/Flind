@@ -1,5 +1,5 @@
 import { Button, cn } from "@flind/quill";
-import type { FeedQueryKeyChip } from "@posthog/ui/features/command/useFeedQueryCommands";
+import type { FeedQueryKeyChip } from "@flind/ui/features/command/useFeedQueryCommands";
 import { useState } from "react";
 
 export function PaletteFilterChips({

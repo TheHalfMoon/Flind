@@ -1,7 +1,7 @@
-import type { ScoutConfig } from "@posthog/api-client/posthog-client";
-import { ScoutRequestError } from "@posthog/api-client/posthog-client";
-import type { ScoutFleetSyncOutcome } from "@posthog/shared";
-import { useAuthenticatedQuery } from "@posthog/ui/hooks/useAuthenticatedQuery";
+import type { ScoutConfig } from "@flind/api-client/posthog-client";
+import { ScoutRequestError } from "@flind/api-client/posthog-client";
+import type { ScoutFleetSyncOutcome } from "@flind/shared";
+import { useAuthenticatedQuery } from "@flind/ui/hooks/useAuthenticatedQuery";
 import { useQueryClient } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { useAuthStateValue } from "../../auth/store";

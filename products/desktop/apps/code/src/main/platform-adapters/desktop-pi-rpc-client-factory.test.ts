@@ -1,19 +1,19 @@
 import type { PiRpcClient } from "@flind/agent/pi/rpc-client";
 import { getLlmGatewayUrl } from "@flind/agent/posthog-api";
-import type { RootLogger } from "@posthog/di/logger";
-import { ROOT_LOGGER } from "@posthog/di/logger";
-import { getCloudUrlFromRegion } from "@posthog/shared";
+import type { RootLogger } from "@flind/di/logger";
+import { ROOT_LOGGER } from "@flind/di/logger";
+import { getCloudUrlFromRegion } from "@flind/shared";
 import {
   AGENT_AUTH,
   AGENT_MCP_APPS,
   MCP_SERVER_CONNECTION_SOURCE,
-} from "@posthog/workspace-server/services/agent/identifiers";
+} from "@flind/workspace-server/services/agent/identifiers";
 import type {
   AgentAuth,
   AgentMcpApps,
-} from "@posthog/workspace-server/services/agent/ports";
-import type { AuthProxyService } from "@posthog/workspace-server/services/auth-proxy/auth-proxy";
-import { AUTH_PROXY_SERVICE } from "@posthog/workspace-server/services/auth-proxy/identifiers";
+} from "@flind/workspace-server/services/agent/ports";
+import type { AuthProxyService } from "@flind/workspace-server/services/auth-proxy/auth-proxy";
+import { AUTH_PROXY_SERVICE } from "@flind/workspace-server/services/auth-proxy/identifiers";
 import { Container } from "inversify";
 import { describe, expect, it, vi } from "vitest";
 import { DesktopPiRpcClientFactory } from "./desktop-pi-rpc-client-factory";

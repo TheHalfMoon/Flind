@@ -1,11 +1,11 @@
 import {
   deriveTaskRunState,
   narrowFullTask,
-} from "@posthog/core/sidebar/buildSidebarData";
-import type { Task } from "@posthog/shared/domain-types";
-import { TaskIcon } from "@posthog/ui/features/sidebar/components/items/TaskIcon";
-import { useTaskPrStatus } from "@posthog/ui/features/sidebar/useTaskPrStatus";
-import { SlackMark } from "@posthog/ui/primitives/SlackMark";
+} from "@flind/core/sidebar/buildSidebarData";
+import type { Task } from "@flind/shared/domain-types";
+import { TaskIcon } from "@flind/ui/features/sidebar/components/items/TaskIcon";
+import { useTaskPrStatus } from "@flind/ui/features/sidebar/useTaskPrStatus";
+import { SlackMark } from "@flind/ui/primitives/SlackMark";
 
 /**
  * The leading mark on a session row in the command palette.

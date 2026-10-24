@@ -1,30 +1,30 @@
 import { CheckIcon, MagnifyingGlassIcon } from "@phosphor-icons/react";
-import { toSuggestedReviewerWriteContent } from "@posthog/core/inbox/artefacts";
-import { selectSuggestedReviewersArtefact } from "@posthog/core/inbox/reportArtefacts";
+import { toSuggestedReviewerWriteContent } from "@flind/core/inbox/artefacts";
+import { selectSuggestedReviewersArtefact } from "@flind/core/inbox/reportArtefacts";
 import { Button } from "@flind/quill";
-import type { InboxReportActionSurface } from "@posthog/shared/analytics-events";
+import type { InboxReportActionSurface } from "@flind/shared/analytics-events";
 import type {
   AvailableSuggestedReviewer,
   SignalReport,
   SuggestedReviewer,
-} from "@posthog/shared/types";
-import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { useCurrentUser } from "@posthog/ui/features/auth/useCurrentUser";
-import { SuggestedReviewerAvatar } from "@posthog/ui/features/inbox/components/utils/SuggestedReviewerAvatar";
+} from "@flind/shared/types";
+import { useOptionalAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { useCurrentUser } from "@flind/ui/features/auth/useCurrentUser";
+import { SuggestedReviewerAvatar } from "@flind/ui/features/inbox/components/utils/SuggestedReviewerAvatar";
 import {
   buildSuggestedReviewerFilterOptions,
   getSuggestedReviewerDisplayName,
-} from "@posthog/ui/features/inbox/filterOptions";
+} from "@flind/ui/features/inbox/filterOptions";
 import {
   useInboxAvailableSuggestedReviewers,
   useInboxReportArtefacts,
   useUpdateSuggestedReviewers,
-} from "@posthog/ui/features/inbox/hooks/useInboxReports";
+} from "@flind/ui/features/inbox/hooks/useInboxReports";
 import {
   useReportActionResultTracker,
   useReportActionTracker,
-} from "@posthog/ui/features/inbox/hooks/useReportActionTracker";
-import { LoadingState } from "@posthog/ui/primitives/LoadingState";
+} from "@flind/ui/features/inbox/hooks/useReportActionTracker";
+import { LoadingState } from "@flind/ui/primitives/LoadingState";
 import { useDeferredValue, useMemo, useState } from "react";
 
 function reviewerMatchesAvailable(

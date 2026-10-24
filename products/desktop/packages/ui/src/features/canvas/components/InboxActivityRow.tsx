@@ -1,9 +1,9 @@
-import { humanizeReportTitle } from "@posthog/core/inbox/reportPresentation";
+import { humanizeReportTitle } from "@flind/core/inbox/reportPresentation";
 import { Avatar, AvatarFallback } from "@flind/quill";
-import { formatRelativeAge } from "@posthog/shared";
-import type { SignalReport } from "@posthog/shared/types";
-import { ActivityRowSurface } from "@posthog/ui/features/canvas/components/ActivityRowSurface";
-import { useOpenInboxReport } from "@posthog/ui/features/inbox/hooks/useOpenInboxReport";
+import { formatRelativeAge } from "@flind/shared";
+import type { SignalReport } from "@flind/shared/types";
+import { ActivityRowSurface } from "@flind/ui/features/canvas/components/ActivityRowSurface";
+import { useOpenInboxReport } from "@flind/ui/features/inbox/hooks/useOpenInboxReport";
 import { type ReactElement, useState } from "react";
 
 interface InboxActivityRowProps {

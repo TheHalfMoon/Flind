@@ -1,4 +1,4 @@
-import { formatUsd } from "@posthog/core/billing/spendAnalysisFormat";
+import { formatUsd } from "@flind/core/billing/spendAnalysisFormat";
 import {
   evaluateSpendLimits,
   maskStops,
@@ -6,11 +6,11 @@ import {
   spendLimitNoticeKey,
   spendPeriodLabel,
   utcDayIso,
-} from "@posthog/core/billing/spendLimits";
-import { useSpendTotals } from "@posthog/ui/features/billing/useSpendTotals";
-import { useSpendLimitAvailable } from "@posthog/ui/features/billing/useUserSpendLimit";
-import { openSettings } from "@posthog/ui/features/settings/hooks/useOpenSettings";
-import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
+} from "@flind/core/billing/spendLimits";
+import { useSpendTotals } from "@flind/ui/features/billing/useSpendTotals";
+import { useSpendLimitAvailable } from "@flind/ui/features/billing/useUserSpendLimit";
+import { openSettings } from "@flind/ui/features/settings/hooks/useOpenSettings";
+import { useSettingsStore } from "@flind/ui/features/settings/settingsStore";
 import { useEffect } from "react";
 import { toast } from "../../primitives/toast";
 

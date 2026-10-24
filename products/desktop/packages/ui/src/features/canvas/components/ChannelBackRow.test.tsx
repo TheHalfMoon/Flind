@@ -14,24 +14,24 @@ const mocks = vi.hoisted(() => ({
   navigate: vi.fn(),
 }));
 
-vi.mock("@posthog/ui/shell/analytics", () => ({ track: vi.fn() }));
+vi.mock("@flind/ui/shell/analytics", () => ({ track: vi.fn() }));
 vi.mock("@tanstack/react-router", () => ({
   useNavigate: () => mocks.navigate,
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useChannelsLayout", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannelsLayout", () => ({
   useChannelsLayout: () => true,
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useChannels", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannels", () => ({
   useChannels: () => ({ channels: mocks.channels, isLoading: mocks.isLoading }),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useChannelStars", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannelStars", () => ({
   useChannelStarToggle: () => ({
     isStarred: false,
     toggleStar: mocks.toggleStar,
   }),
 }));
 
-import { useChannelPaneStore } from "@posthog/ui/features/canvas/stores/channelPaneStore";
+import { useChannelPaneStore } from "@flind/ui/features/canvas/stores/channelPaneStore";
 import { ChannelBackRow } from "./ChannelBackRow";
 
 const ENG = {

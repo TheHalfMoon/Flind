@@ -3,7 +3,7 @@ import {
   dailyReportLimitFieldValue,
   describeDailyReportLimit,
   parseDailyReportLimit,
-} from "@posthog/core/inbox/dailyReportLimit";
+} from "@flind/core/inbox/dailyReportLimit";
 import { CaretRight } from "phosphor-react-native";
 import { useState } from "react";
 import {

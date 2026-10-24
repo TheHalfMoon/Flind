@@ -1,4 +1,4 @@
-import type { TabData } from "@posthog/ui/features/panels/panelTypes";
+import type { TabData } from "@flind/ui/features/panels/panelTypes";
 import type React from "react";
 import { DraggableTab } from "./DraggableTab";
 

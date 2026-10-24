@@ -2503,7 +2503,7 @@ jobs:
                       echo "This branch predates the desktop API client regen, so there is nothing to install."
                       exit 0
                   fi
-                  pnpm install --frozen-lockfile --filter @posthog/api-client --ignore-scripts --config.node-linker=isolated
+                  pnpm install --frozen-lockfile --filter @flind/api-client --ignore-scripts --config.node-linker=isolated
               retry: 2
             - name: Wait for Docker services
               env:

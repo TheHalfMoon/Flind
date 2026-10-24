@@ -4,21 +4,21 @@ import {
   CaretRight,
   Check,
 } from "@phosphor-icons/react";
-import { requestErrorStatus } from "@posthog/api-client/fetcher";
-import { hogFlowRequestDetail } from "@posthog/api-client/hogFlowLoops";
-import { channelDisplayLabel } from "@posthog/core/canvas/channelName";
+import { requestErrorStatus } from "@flind/api-client/fetcher";
+import { hogFlowRequestDetail } from "@flind/api-client/hogFlowLoops";
+import { channelDisplayLabel } from "@flind/core/canvas/channelName";
 import { Button, cn, Input, Textarea } from "@flind/quill";
-import { ANALYTICS_EVENTS } from "@posthog/shared";
-import { useChannelsLayout } from "@posthog/ui/features/canvas/hooks/useChannelsLayout";
-import type { LoopSchemas } from "@posthog/ui/features/loops/loopSchemas";
-import { useSidebarStore } from "@posthog/ui/features/sidebar/sidebarStore";
-import { useSetHeaderContent } from "@posthog/ui/hooks/useSetHeaderContent";
-import { toast } from "@posthog/ui/primitives/toast";
+import { ANALYTICS_EVENTS } from "@flind/shared";
+import { useChannelsLayout } from "@flind/ui/features/canvas/hooks/useChannelsLayout";
+import type { LoopSchemas } from "@flind/ui/features/loops/loopSchemas";
+import { useSidebarStore } from "@flind/ui/features/sidebar/sidebarStore";
+import { useSetHeaderContent } from "@flind/ui/hooks/useSetHeaderContent";
+import { toast } from "@flind/ui/primitives/toast";
 import {
   navigateToLoopDetail,
   navigateToLoops,
-} from "@posthog/ui/router/navigationBridge";
-import { track } from "@posthog/ui/shell/analytics";
+} from "@flind/ui/router/navigationBridge";
+import { track } from "@flind/ui/shell/analytics";
 import { type ReactNode, useEffect, useMemo, useRef, useState } from "react";
 import { useLoopHogFlow } from "../hooks/useLoop";
 import { useCreateLoop, useUpdateLoop } from "../hooks/useLoopMutations";

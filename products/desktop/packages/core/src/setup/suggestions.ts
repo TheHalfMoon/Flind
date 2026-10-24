@@ -1,4 +1,4 @@
-import type { DiscoveredTask } from "@posthog/core/setup/types";
+import type { DiscoveredTask } from "@flind/core/setup/types";
 
 export interface StaleFlagPayload {
   flagKey: string;

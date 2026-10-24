@@ -4,23 +4,23 @@ const deleteMutate = vi.fn().mockResolvedValue(undefined);
 const toastSuccess = vi.fn();
 const toastError = vi.fn();
 
-vi.mock("@posthog/ui/features/canvas/hostClient", () => ({
+vi.mock("@flind/ui/features/canvas/hostClient", () => ({
   hostClient: () => ({ dashboards: { delete: { mutate: deleteMutate } } }),
 }));
-vi.mock("@posthog/ui/primitives/toast", () => ({
+vi.mock("@flind/ui/primitives/toast", () => ({
   toast: {
     success: (...args: unknown[]) => toastSuccess(...args),
     error: (...args: unknown[]) => toastError(...args),
     dismiss: vi.fn(),
   },
 }));
-vi.mock("@posthog/ui/shell/analytics", () => ({ track: vi.fn() }));
+vi.mock("@flind/ui/shell/analytics", () => ({ track: vi.fn() }));
 
 import {
   CANVAS_DELETE_UNDO_MS,
   deleteCanvasWithUndo,
-} from "@posthog/ui/features/canvas/deleteCanvasWithUndo";
-import { usePendingCanvasDeleteStore } from "@posthog/ui/features/canvas/stores/pendingCanvasDeleteStore";
+} from "@flind/ui/features/canvas/deleteCanvasWithUndo";
+import { usePendingCanvasDeleteStore } from "@flind/ui/features/canvas/stores/pendingCanvasDeleteStore";
 
 function schedule(invalidate = vi.fn()) {
   deleteCanvasWithUndo({

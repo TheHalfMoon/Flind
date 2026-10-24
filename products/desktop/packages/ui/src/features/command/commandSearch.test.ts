@@ -1,12 +1,12 @@
 import type {
   Command,
   CommandSection,
-} from "@posthog/ui/features/command/commandRow";
+} from "@flind/ui/features/command/commandRow";
 import {
   addRecentCommand,
   matchesCommandSearch,
   prioritizeExactCommandMatches,
-} from "@posthog/ui/features/command/commandSearch";
+} from "@flind/ui/features/command/commandSearch";
 import { describe, expect, it } from "vitest";
 
 const command = (id: string, label: string): Command => ({

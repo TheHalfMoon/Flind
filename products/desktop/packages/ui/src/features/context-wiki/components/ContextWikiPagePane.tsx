@@ -1,7 +1,7 @@
 import {
   ContextWikiConflictError,
   ContextWikiLintError,
-} from "@posthog/api-client/posthog-client";
+} from "@flind/api-client/posthog-client";
 import {
   Button,
   cn,
@@ -9,10 +9,10 @@ import {
   ToggleGroup,
   ToggleGroupItem,
 } from "@flind/quill";
-import { MarkdownRenderer } from "@posthog/ui/features/editor/components/MarkdownRenderer";
-import { LoadingState } from "@posthog/ui/primitives/LoadingState";
-import { RelativeTimestamp } from "@posthog/ui/primitives/RelativeTimestamp";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
+import { MarkdownRenderer } from "@flind/ui/features/editor/components/MarkdownRenderer";
+import { LoadingState } from "@flind/ui/primitives/LoadingState";
+import { RelativeTimestamp } from "@flind/ui/primitives/RelativeTimestamp";
+import { Spinner } from "@flind/ui/primitives/Spinner";
 import { useState } from "react";
 import type { Components } from "react-markdown";
 import {

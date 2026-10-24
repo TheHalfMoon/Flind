@@ -1,11 +1,11 @@
-import type { GridPlacement } from "@posthog/core/canvas/gridLayoutSchemas";
+import type { GridPlacement } from "@flind/core/canvas/gridLayoutSchemas";
 import { Button, Text } from "@flind/quill";
-import { isTerminalStatus } from "@posthog/shared/domain-types";
-import { PromptInput } from "@posthog/ui/features/message-editor/components/PromptInput";
-import { useSessionStore } from "@posthog/ui/features/sessions/sessionStore";
-import { taskDetailQuery } from "@posthog/ui/features/tasks/queries";
-import { useInView } from "@posthog/ui/primitives/hooks/useInView";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
+import { isTerminalStatus } from "@flind/shared/domain-types";
+import { PromptInput } from "@flind/ui/features/message-editor/components/PromptInput";
+import { useSessionStore } from "@flind/ui/features/sessions/sessionStore";
+import { taskDetailQuery } from "@flind/ui/features/tasks/queries";
+import { useInView } from "@flind/ui/primitives/hooks/useInView";
+import { Spinner } from "@flind/ui/primitives/Spinner";
 import { useQuery } from "@tanstack/react-query";
 import type { ReactNode } from "react";
 import { useState } from "react";

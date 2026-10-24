@@ -1,4 +1,4 @@
-import type { Task } from "@posthog/shared/domain-types";
+import type { Task } from "@flind/shared/domain-types";
 import { render } from "@testing-library/react";
 import type { ReactNode } from "react";
 import { describe, expect, it, vi } from "vitest";
@@ -13,10 +13,10 @@ const { useDiffStatsToggle } = vi.hoisted(() => ({
   })),
 }));
 
-vi.mock("@posthog/ui/features/code-review/hooks/useDiffStatsToggle", () => ({
+vi.mock("@flind/ui/features/code-review/hooks/useDiffStatsToggle", () => ({
   useDiffStatsToggle,
 }));
-vi.mock("@posthog/ui/primitives/Tooltip", () => ({
+vi.mock("@flind/ui/primitives/Tooltip", () => ({
   Tooltip: ({ children }: { children: ReactNode }) => children,
 }));
 

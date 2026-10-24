@@ -1,4 +1,4 @@
-import type { UserShellExecuteResult } from "@posthog/shared";
+import type { UserShellExecuteResult } from "@flind/shared";
 import { Box } from "@radix-ui/themes";
 import { memo } from "react";
 import { ExecuteToolView } from "./ExecuteToolView";

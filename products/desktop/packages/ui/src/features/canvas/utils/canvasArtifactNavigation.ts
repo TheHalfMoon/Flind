@@ -1,7 +1,7 @@
-import { openExternalUrl } from "@posthog/ui/shell/openExternal";
-import { parseHttpsUrl, parseShareLink } from "@posthog/ui/utils/posthogLinks";
-import { navigateToShareTarget } from "@posthog/ui/utils/shareLinks";
-import { getPostHogUrl } from "@posthog/ui/utils/urls";
+import { openExternalUrl } from "@flind/ui/shell/openExternal";
+import { parseHttpsUrl, parseShareLink } from "@flind/ui/utils/posthogLinks";
+import { navigateToShareTarget } from "@flind/ui/utils/shareLinks";
+import { getPostHogUrl } from "@flind/ui/utils/urls";
 
 export function canvasArtifactOpenHandler(
   url: string | null,

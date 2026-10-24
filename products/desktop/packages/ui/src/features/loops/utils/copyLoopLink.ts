@@ -1,7 +1,7 @@
-import { ANALYTICS_EVENTS, buildLoopDeeplink } from "@posthog/shared";
-import type { LoopSchemas } from "@posthog/ui/features/loops/loopSchemas";
-import { toast } from "@posthog/ui/primitives/toast";
-import { track } from "@posthog/ui/shell/analytics";
+import { ANALYTICS_EVENTS, buildLoopDeeplink } from "@flind/shared";
+import type { LoopSchemas } from "@flind/ui/features/loops/loopSchemas";
+import { toast } from "@flind/ui/primitives/toast";
+import { track } from "@flind/ui/shell/analytics";
 
 /**
  * Copy a deep link (`<scheme>://loop/{loopId}`) for a loop to the clipboard,

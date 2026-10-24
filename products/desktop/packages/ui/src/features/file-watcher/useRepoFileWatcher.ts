@@ -1,6 +1,6 @@
-import { useService } from "@posthog/di/react";
-import { toRelativePath } from "@posthog/shared";
-import type { FileWatcherEvent } from "@posthog/workspace-client/types";
+import { useService } from "@flind/di/react";
+import { toRelativePath } from "@flind/shared";
+import type { FileWatcherEvent } from "@flind/workspace-client/types";
 import { useQueryClient } from "@tanstack/react-query";
 import { useCallback, useEffect } from "react";
 import { logger } from "../../shell/logger";

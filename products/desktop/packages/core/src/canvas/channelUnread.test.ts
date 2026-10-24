@@ -3,8 +3,8 @@ import {
   countSessionsByChannel,
   latestActivityForChannel,
   unreadChannelIds,
-} from "@posthog/core/canvas/channelUnread";
-import type { MentionActivityItem } from "@posthog/core/canvas/mentionActivity";
+} from "@flind/core/canvas/channelUnread";
+import type { MentionActivityItem } from "@flind/core/canvas/mentionActivity";
 import { describe, expect, it } from "vitest";
 
 function mention(

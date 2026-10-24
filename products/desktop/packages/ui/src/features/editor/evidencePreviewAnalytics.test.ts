@@ -1,6 +1,6 @@
-import type { PostHogAPIClient } from "@posthog/api-client/posthog-client";
-import { setRootContainer } from "@posthog/di/container";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
+import type { PostHogAPIClient } from "@flind/api-client/posthog-client";
+import { setRootContainer } from "@flind/di/container";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
 import { Container } from "inversify";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { ANALYTICS_TRACKER } from "../../shell/analytics";

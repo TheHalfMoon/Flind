@@ -6,7 +6,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@flind/quill";
-import { GithubConnectionIcon } from "@posthog/ui/features/integrations/components/GithubConnectionIcon";
+import { GithubConnectionIcon } from "@flind/ui/features/integrations/components/GithubConnectionIcon";
 import type { ReactElement } from "react";
 
 interface CloudGithubSetupDialogContentProps {

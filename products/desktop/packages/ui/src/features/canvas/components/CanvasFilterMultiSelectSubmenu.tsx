@@ -8,8 +8,8 @@ import {
   DropdownMenuSub,
   DropdownMenuSubContent,
 } from "@flind/quill";
-import type { CanvasMultiSelectOption } from "@posthog/ui/features/canvas/components/canvasFilterSelection";
-import { FilterSubMenuTrigger } from "@posthog/ui/primitives/FilterMenu";
+import type { CanvasMultiSelectOption } from "@flind/ui/features/canvas/components/canvasFilterSelection";
+import { FilterSubMenuTrigger } from "@flind/ui/primitives/FilterMenu";
 import type { ReactElement, SyntheticEvent } from "react";
 
 const DEFAULT_OPTION_KEY = "__canvas_filter_default__";

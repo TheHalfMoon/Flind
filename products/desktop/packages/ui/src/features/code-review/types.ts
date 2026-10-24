@@ -2,13 +2,13 @@ import type { FileDiffProps, MultiFileDiffProps } from "@pierre/diffs/react";
 import type {
   AnnotationMetadata,
   PrCommentThread,
-} from "@posthog/core/code-review/types";
+} from "@flind/core/code-review/types";
 
 export type {
   AnnotationMetadata,
   DiffOptions,
   PrCommentMetadata,
-} from "@posthog/core/code-review/types";
+} from "@flind/core/code-review/types";
 
 interface PrCommentProps {
   taskId?: string;

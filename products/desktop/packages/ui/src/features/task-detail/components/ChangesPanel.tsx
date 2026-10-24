@@ -7,13 +7,13 @@ import {
   MinusIcon,
   PlusIcon,
 } from "@phosphor-icons/react";
-import { getFileExtension } from "@posthog/shared";
+import { getFileExtension } from "@flind/shared";
 import {
   ANALYTICS_EVENTS,
   type FileChangeType,
-} from "@posthog/shared/analytics-events";
-import type { ChangedFile, Task } from "@posthog/shared/domain-types";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
+} from "@flind/shared/analytics-events";
+import type { ChangedFile, Task } from "@flind/shared/domain-types";
+import { Spinner } from "@flind/ui/primitives/Spinner";
 import {
   Badge,
   Box,

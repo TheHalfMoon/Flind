@@ -1,4 +1,4 @@
-import type { Adapter } from "@posthog/shared";
+import type { Adapter } from "@flind/shared";
 
 export const INBOX_BULK_ACTION_SERVICE = Symbol.for(
   "posthog.core.inbox.bulkActionService",

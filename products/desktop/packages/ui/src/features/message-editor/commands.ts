@@ -2,18 +2,18 @@ import type { AvailableCommand } from "@agentclientprotocol/sdk";
 import {
   AI_FEEDBACK_TEXT_MAX_LENGTH,
   buildSlashFeedbackEvents,
-} from "@posthog/core/analytics/aiFeedback";
+} from "@flind/core/analytics/aiFeedback";
 import {
   basename,
   parseCommandLine,
-} from "@posthog/core/message-editor/commands";
-import { escapeXmlAttr, type SkillSource } from "@posthog/shared";
+} from "@flind/core/message-editor/commands";
+import { escapeXmlAttr, type SkillSource } from "@flind/shared";
 import {
   ANALYTICS_EVENTS,
   type FeedbackType,
-} from "@posthog/shared/analytics-events";
-import { useAddDirectoryDialogStore } from "@posthog/ui/features/folder-picker/addDirectoryDialogStore";
-import { toast } from "@posthog/ui/primitives/toast";
+} from "@flind/shared/analytics-events";
+import { useAddDirectoryDialogStore } from "@flind/ui/features/folder-picker/addDirectoryDialogStore";
+import { toast } from "@flind/ui/primitives/toast";
 import type { Editor } from "@tiptap/core";
 import { track } from "../../shell/analytics";
 import { selectDirectory } from "./hostApi";

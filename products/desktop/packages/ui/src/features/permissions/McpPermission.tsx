@@ -2,10 +2,10 @@ import {
   formatPosthogExecBody,
   getPostHogExecDisplay,
   isPostHogExecTool,
-} from "@posthog/core/sessions/posthogExecDisplay";
-import { mcpToolKey, readMcpToolDescriptor } from "@posthog/shared";
-import { formatInput } from "@posthog/ui/features/sessions/components/session-update/toolCallUtils";
-import { ActionSelector } from "@posthog/ui/primitives/ActionSelector";
+} from "@flind/core/sessions/posthogExecDisplay";
+import { mcpToolKey, readMcpToolDescriptor } from "@flind/shared";
+import { formatInput } from "@flind/ui/features/sessions/components/session-update/toolCallUtils";
+import { ActionSelector } from "@flind/ui/primitives/ActionSelector";
 import { Box, Code } from "@radix-ui/themes";
 import { DefaultPermission } from "./DefaultPermission";
 import { type BasePermissionProps, toSelectorOptions } from "./types";

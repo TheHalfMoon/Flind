@@ -1,8 +1,8 @@
 import type { parsePatchFiles } from "@pierre/diffs";
-import { contentHash } from "@posthog/core/code-review/contentHash";
-import type { PrCommentThread } from "@posthog/core/code-review/types";
-import { isBinaryFile } from "@posthog/shared";
-import type { ChangedFile } from "@posthog/shared/domain-types";
+import { contentHash } from "@flind/core/code-review/contentHash";
+import type { PrCommentThread } from "@flind/core/code-review/types";
+import { isBinaryFile } from "@flind/shared";
+import type { ChangedFile } from "@flind/shared/domain-types";
 import { memo, useCallback, useMemo } from "react";
 import { useInView } from "../../../primitives/hooks/useInView";
 import { REVIEW_PREFETCH_ROOT_MARGIN } from "../constants";

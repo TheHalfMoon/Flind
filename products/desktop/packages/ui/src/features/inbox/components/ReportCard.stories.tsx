@@ -1,4 +1,4 @@
-import type { SignalReport } from "@posthog/shared/types";
+import type { SignalReport } from "@flind/shared/types";
 import type { Meta, StoryObj } from "@storybook/react";
 import type { ReactNode } from "react";
 import { ReportCardView } from "./ReportCard";

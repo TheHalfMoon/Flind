@@ -1,11 +1,11 @@
 import {
   type Channel,
   useChannels,
-} from "@posthog/ui/features/canvas/hooks/useChannels";
+} from "@flind/ui/features/canvas/hooks/useChannels";
 import {
   resetCurrentChannel,
   useCurrentChannelStore,
-} from "@posthog/ui/features/canvas/stores/currentChannelStore";
+} from "@flind/ui/features/canvas/stores/currentChannelStore";
 import { useEffect } from "react";
 
 /**

@@ -1,5 +1,5 @@
-import { useChannelsLayout } from "@posthog/ui/features/canvas/hooks/useChannelsLayout";
-import { useSidebarStore } from "@posthog/ui/features/sidebar/sidebarStore";
+import { useChannelsLayout } from "@flind/ui/features/canvas/hooks/useChannelsLayout";
+import { useSidebarStore } from "@flind/ui/features/sidebar/sidebarStore";
 
 /**
  * Whether any channels chrome is on screen: the spaces layout, or the older

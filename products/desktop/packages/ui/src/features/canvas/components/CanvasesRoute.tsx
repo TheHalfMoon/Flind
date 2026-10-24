@@ -7,10 +7,10 @@ import {
   EmptyMedia,
   EmptyTitle,
 } from "@flind/quill";
-import { WebsiteDashboard } from "@posthog/ui/features/canvas/components/WebsiteDashboard";
-import { useSelectedCanvasId } from "@posthog/ui/features/canvas/hooks/useSelectedCanvasId";
-import { useCanvasViewedStore } from "@posthog/ui/features/canvas/stores/canvasViewedStore";
-import { OpenSidebarButton } from "@posthog/ui/features/sidebar/components/OpenSidebarButton";
+import { WebsiteDashboard } from "@flind/ui/features/canvas/components/WebsiteDashboard";
+import { useSelectedCanvasId } from "@flind/ui/features/canvas/hooks/useSelectedCanvasId";
+import { useCanvasViewedStore } from "@flind/ui/features/canvas/stores/canvasViewedStore";
+import { OpenSidebarButton } from "@flind/ui/features/sidebar/components/OpenSidebarButton";
 import { useEffect } from "react";
 
 export function CanvasesRoute() {

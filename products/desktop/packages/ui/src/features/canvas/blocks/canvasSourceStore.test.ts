@@ -1,4 +1,4 @@
-import type { CanvasSourceProject } from "@posthog/core/canvas/dashboardSchemas";
+import type { CanvasSourceProject } from "@flind/core/canvas/dashboardSchemas";
 import { beforeEach, describe, expect, it } from "vitest";
 import { isSourceDirty, useCanvasSourceStore } from "./canvasSourceStore";
 

@@ -1,4 +1,4 @@
-import { useChannelsWorld } from "@posthog/ui/features/canvas/hooks/useChannelsWorld";
+import { useChannelsWorld } from "@flind/ui/features/canvas/hooks/useChannelsWorld";
 import { useRouterState } from "@tanstack/react-router";
 
 /**

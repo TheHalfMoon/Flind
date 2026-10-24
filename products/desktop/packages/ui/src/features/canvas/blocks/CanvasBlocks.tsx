@@ -2,18 +2,18 @@ import { ChartLineUp, type Icon, SquaresFour } from "@phosphor-icons/react";
 import {
   CANVAS_STARTERS,
   type CanvasStarter,
-} from "@posthog/core/canvas/blockLibrary/blockProject";
-import { isPlaceholderCanvasName } from "@posthog/core/canvas/canvasNaming";
+} from "@flind/core/canvas/blockLibrary/blockProject";
+import { isPlaceholderCanvasName } from "@flind/core/canvas/canvasNaming";
 import {
   useCanvasSourceAutosave,
   useStartCanvasFromStarter,
-} from "@posthog/ui/features/canvas/blocks/canvasSourceHooks";
+} from "@flind/ui/features/canvas/blocks/canvasSourceHooks";
 import {
   useDashboard,
   useDashboardMutations,
-} from "@posthog/ui/features/canvas/hooks/useDashboards";
-import { useCanvasChatPanelStore } from "@posthog/ui/features/canvas/stores/canvasChatPanelStore";
-import { useDashboardEditStore } from "@posthog/ui/features/canvas/stores/dashboardEditStore";
+} from "@flind/ui/features/canvas/hooks/useDashboards";
+import { useCanvasChatPanelStore } from "@flind/ui/features/canvas/stores/canvasChatPanelStore";
+import { useDashboardEditStore } from "@flind/ui/features/canvas/stores/dashboardEditStore";
 
 const STARTER_LOOKS: Record<string, { icon: Icon; color: string }> = {
   blank: { icon: SquaresFour, color: "blue" },

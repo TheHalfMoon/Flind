@@ -10,14 +10,14 @@ if (typeof globalThis.ResizeObserver === "undefined") {
   } as unknown as typeof ResizeObserver;
 }
 
-vi.mock("@posthog/ui/shell/rendererStorage", () => ({
+vi.mock("@flind/ui/shell/rendererStorage", () => ({
   electronStorage: {
     getItem: () => null,
     setItem: () => {},
     removeItem: () => {},
   },
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useChannels", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannels", () => ({
   useChannels: () => ({
     channels: [{ id: "chan-1", name: "eng" }],
     isLoading: false,
@@ -25,10 +25,10 @@ vi.mock("@posthog/ui/features/canvas/hooks/useChannels", () => ({
 }));
 // The dock only exists off the chrome, so the layout is per-test state.
 const layout = vi.hoisted(() => ({ channels: false }));
-vi.mock("@posthog/ui/features/canvas/hooks/useChannelsLayout", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannelsLayout", () => ({
   useChannelsLayout: () => layout.channels,
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useTaskChannels", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useTaskChannels", () => ({
   PERSONAL_CHANNEL_NAME: "me",
   useTaskChannels: () => ({
     channels: [{ id: "chan-1", name: "eng" }],
@@ -39,41 +39,41 @@ vi.mock("@posthog/ui/features/canvas/hooks/useTaskChannels", () => ({
     isLoading: false,
   }),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useChannelFeed", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannelFeed", () => ({
   useChannelFeed: () => ({ tasks: [], isLoading: false }),
   channelFeedQueryKey: () => ["feed"],
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useChannelFeedMessages", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannelFeedMessages", () => ({
   useChannelFeedMessages: () => ({ messages: [], isLoading: false }),
   channelCreationMessage: () => null,
 }));
 vi.mock(
-  "@posthog/ui/features/canvas/components/work/useSpacePullRequests",
+  "@flind/ui/features/canvas/components/work/useSpacePullRequests",
   () => ({ useSpacePullRequests: () => [] }),
 );
-vi.mock("@posthog/ui/features/canvas/hooks/useFolderInstructions", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useFolderInstructions", () => ({
   useFolderInstructions: () => ({ data: undefined, isLoading: false }),
 }));
 vi.mock(
-  "@posthog/ui/features/canvas/hooks/useDashboards",
+  "@flind/ui/features/canvas/hooks/useDashboards",
   async (original) => ({
     ...(await original<object>()),
     useDashboards: () => ({ dashboards: [], isLoading: false }),
   }),
 );
 vi.mock(
-  "@posthog/ui/features/archive/useArchivedTaskIds",
+  "@flind/ui/features/archive/useArchivedTaskIds",
   async (original) => ({
     ...(await original<object>()),
     useArchivedTaskIds: () => new Set<string>(),
   }),
 );
-vi.mock("@posthog/ui/features/sidebar/usePinnedTasks", async (original) => ({
+vi.mock("@flind/ui/features/sidebar/usePinnedTasks", async (original) => ({
   ...(await original<object>()),
   usePinnedTasks: () => ({ pinnedTaskIds: new Set<string>() }),
 }));
 vi.mock(
-  "@posthog/ui/features/canvas/hooks/useChannelItems",
+  "@flind/ui/features/canvas/hooks/useChannelItems",
   async (original) => ({
     ...(await original<object>()),
     useChannelSessionFacts: () => ({
@@ -83,24 +83,24 @@ vi.mock(
     }),
   }),
 );
-vi.mock("@posthog/ui/features/auth/authClient", async (original) => ({
+vi.mock("@flind/ui/features/auth/authClient", async (original) => ({
   ...(await original<object>()),
   useOptionalAuthenticatedClient: () => null,
 }));
-vi.mock("@posthog/ui/features/auth/useCurrentUser", async (original) => ({
+vi.mock("@flind/ui/features/auth/useCurrentUser", async (original) => ({
   ...(await original<object>()),
   useCurrentUser: () => ({ data: undefined }),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useChannelTasks", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannelTasks", () => ({
   useChannelTaskMutations: () => ({ fileTask: () => Promise.resolve() }),
 }));
-vi.mock("@posthog/ui/hooks/useSetHeaderContent", () => ({
+vi.mock("@flind/ui/hooks/useSetHeaderContent", () => ({
   useSetHeaderContent: () => {},
 }));
-vi.mock("@posthog/ui/features/feature-flags/useFeatureFlag", () => ({
+vi.mock("@flind/ui/features/feature-flags/useFeatureFlag", () => ({
   useFeatureFlag: () => false,
 }));
-vi.mock("@posthog/ui/shell/analytics", () => ({ track: vi.fn() }));
+vi.mock("@flind/ui/shell/analytics", () => ({ track: vi.fn() }));
 vi.mock("@tanstack/react-query", () => ({
   useQueryClient: () => ({ setQueryData: vi.fn(), invalidateQueries: vi.fn() }),
   keepPreviousData: <T,>(previous: T): T => previous,
@@ -118,23 +118,23 @@ vi.mock("@tanstack/react-router", () => ({ useNavigate: () => vi.fn() }));
 
 // ThreadSidebar is the task dock under test; the rest of the channel chrome
 // (feed rows, composer, intro) plays no part in the feed/sidebar exclusion.
-vi.mock("@posthog/ui/features/canvas/components/ChannelFeedView", () => ({
+vi.mock("@flind/ui/features/canvas/components/ChannelFeedView", () => ({
   ChannelFeedView: () => <div data-testid="feed" />,
 }));
-vi.mock("@posthog/ui/features/canvas/components/ChannelHomeComposer", () => ({
+vi.mock("@flind/ui/features/canvas/components/ChannelHomeComposer", () => ({
   ChannelHomeComposer: () => null,
 }));
-vi.mock("@posthog/ui/features/canvas/components/ChannelIntro", () => ({
+vi.mock("@flind/ui/features/canvas/components/ChannelIntro", () => ({
   ChannelIntro: () => null,
 }));
-vi.mock("@posthog/ui/features/canvas/components/CreateChannelModal", () => ({
+vi.mock("@flind/ui/features/canvas/components/CreateChannelModal", () => ({
   CreateChannelModal: () => null,
 }));
-vi.mock("@posthog/ui/features/canvas/components/ThreadSidebar", () => ({
+vi.mock("@flind/ui/features/canvas/components/ThreadSidebar", () => ({
   ThreadSidebar: () => <div data-testid="task-sidebar" />,
 }));
 
-import { useThreadPanelStore } from "@posthog/ui/features/canvas/stores/threadPanelStore";
+import { useThreadPanelStore } from "@flind/ui/features/canvas/stores/threadPanelStore";
 import { WebsiteChannelHome } from "./WebsiteChannelHome";
 
 describe("WebsiteChannelHome", () => {

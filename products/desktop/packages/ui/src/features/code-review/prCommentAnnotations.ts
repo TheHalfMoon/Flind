@@ -1,1 +1,1 @@
-export type { PrCommentThread } from "@posthog/core/code-review/types";
+export type { PrCommentThread } from "@flind/core/code-review/types";

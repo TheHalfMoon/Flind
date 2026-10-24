@@ -2,8 +2,8 @@ import {
   formatPosthogExecBody,
   getPostHogExecDisplay,
   isPostHogExecTool,
-} from "@posthog/core/sessions/posthogExecDisplay";
-import { parseMcpToolName } from "@posthog/shared";
+} from "@flind/core/sessions/posthogExecDisplay";
+import { parseMcpToolName } from "@flind/shared";
 import { useRouter } from "expo-router";
 import {
   ArrowsClockwise,

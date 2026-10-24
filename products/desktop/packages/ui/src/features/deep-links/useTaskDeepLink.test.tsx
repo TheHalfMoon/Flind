@@ -28,7 +28,7 @@ const routerOpenTask = vi.hoisted(() => vi.fn().mockResolvedValue(undefined));
 const markAsViewed = vi.hoisted(() => vi.fn());
 const bluebirdState = vi.hoisted(() => ({ enabled: true }));
 
-vi.mock("@posthog/host-router/react", () => ({
+vi.mock("@flind/host-router/react", () => ({
   useHostTRPCClient: () => ({
     deepLink: {
       getPendingDeepLink: { query: getPendingDeepLink },
@@ -36,26 +36,26 @@ vi.mock("@posthog/host-router/react", () => ({
     },
   }),
 }));
-vi.mock("@posthog/ui/features/auth/store", () => ({
+vi.mock("@flind/ui/features/auth/store", () => ({
   useAuthStateValue: (sel: (s: { status: string }) => unknown) =>
     sel({ status: "authenticated" }),
 }));
-vi.mock("@posthog/ui/router/useOpenTask", () => ({
+vi.mock("@flind/ui/router/useOpenTask", () => ({
   openTask: routerOpenTask,
 }));
-vi.mock("@posthog/ui/features/sidebar/useTaskViewed", () => ({
+vi.mock("@flind/ui/features/sidebar/useTaskViewed", () => ({
   useTaskViewed: () => ({ markAsViewed }),
 }));
-vi.mock("@posthog/di/react", () => ({
+vi.mock("@flind/di/react", () => ({
   useService: () => ({ openTask }),
 }));
-vi.mock("@posthog/ui/shell/logger", () => ({
+vi.mock("@flind/ui/shell/logger", () => ({
   logger: { scope: () => ({ info: vi.fn(), error: vi.fn(), warn: vi.fn() }) },
 }));
-vi.mock("@posthog/ui/primitives/toast", () => ({
+vi.mock("@flind/ui/primitives/toast", () => ({
   toast: { error: vi.fn() },
 }));
-vi.mock("@posthog/ui/features/feature-flags/useFeatureFlag", () => ({
+vi.mock("@flind/ui/features/feature-flags/useFeatureFlag", () => ({
   useFeatureFlag: () => bluebirdState.enabled,
 }));
 

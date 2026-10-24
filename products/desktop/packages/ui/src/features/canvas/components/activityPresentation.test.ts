@@ -1,4 +1,4 @@
-import type { TaskActivityItem } from "@posthog/core/canvas/taskActivity";
+import type { TaskActivityItem } from "@flind/core/canvas/taskActivity";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import {
   type AgentActivityIconKind,

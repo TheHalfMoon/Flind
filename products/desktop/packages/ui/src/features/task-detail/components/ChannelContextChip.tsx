@@ -1,4 +1,4 @@
-import { channelDisplayLabel } from "@posthog/core/canvas/channelName";
+import { channelDisplayLabel } from "@flind/core/canvas/channelName";
 import {
   Chip,
   ChipClose,

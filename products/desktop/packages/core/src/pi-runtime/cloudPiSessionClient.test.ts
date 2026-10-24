@@ -1,13 +1,13 @@
-import type { TaskService } from "@posthog/core/task-detail/taskService";
-import type { RootLogger } from "@posthog/di/logger";
+import type { TaskService } from "@flind/core/task-detail/taskService";
+import type { RootLogger } from "@flind/di/logger";
 import {
   type AgentConversationEvent,
   agentConversationEventToAcpNotification,
   mcpToolKey,
   posthogToolMeta,
   type StoredLogEntry,
-} from "@posthog/shared";
-import type { CloudTaskUpdatePayload } from "@posthog/shared/domain-types";
+} from "@flind/shared";
+import type { CloudTaskUpdatePayload } from "@flind/shared/domain-types";
 import { describe, expect, it, vi } from "vitest";
 import type { CloudTaskClient } from "../cloud-task/cloudTaskClient";
 import { CloudPiSessionClient } from "./cloudPiSessionClient";

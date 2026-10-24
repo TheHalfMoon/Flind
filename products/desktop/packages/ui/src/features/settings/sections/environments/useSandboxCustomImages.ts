@@ -1,9 +1,9 @@
-import { SandboxCustomImagesDisabledError } from "@posthog/api-client/posthog-client";
-import { CUSTOM_IMAGES_FEATURE_FLAG } from "@posthog/shared";
+import { SandboxCustomImagesDisabledError } from "@flind/api-client/posthog-client";
+import { CUSTOM_IMAGES_FEATURE_FLAG } from "@flind/shared";
 import {
   isImageBuildInProgress,
   type SandboxCustomImage,
-} from "@posthog/shared/domain-types";
+} from "@flind/shared/domain-types";
 import { useQueryClient } from "@tanstack/react-query";
 import { useAuthenticatedMutation } from "../../../../hooks/useAuthenticatedMutation";
 import { useAuthenticatedQuery } from "../../../../hooks/useAuthenticatedQuery";

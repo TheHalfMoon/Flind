@@ -2,7 +2,7 @@ import { Text } from "@components/text";
 import type {
   McpRecommendedServer,
   McpServerInstallation,
-} from "@posthog/api-client/types";
+} from "@flind/api-client/types";
 import { CaretRight, Lock, Warning } from "phosphor-react-native";
 import type { ReactNode } from "react";
 import { Pressable, View } from "react-native";

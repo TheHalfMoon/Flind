@@ -1,5 +1,5 @@
 import { Text } from "@components/text";
-import { readPrUrls, type Task } from "@posthog/shared";
+import { readPrUrls, type Task } from "@flind/shared";
 import { differenceInHours, format, formatDistanceToNow } from "date-fns";
 import { Check, GitPullRequest } from "phosphor-react-native";
 import { memo } from "react";

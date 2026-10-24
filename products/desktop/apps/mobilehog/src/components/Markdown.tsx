@@ -1,5 +1,5 @@
-import type { ObjectTagRef } from "@posthog/core/inbox/objectTags";
-import { isSafeExternalUrl } from "@posthog/shared";
+import type { ObjectTagRef } from "@flind/core/inbox/objectTags";
+import { isSafeExternalUrl } from "@flind/shared";
 import type { MarkedToken, Token, Tokens } from "marked";
 import { type ReactNode, useMemo, useState } from "react";
 import {

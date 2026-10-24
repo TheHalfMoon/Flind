@@ -1,4 +1,4 @@
-import type { TaskDefaults } from "@posthog/api-client/posthog-client";
+import type { TaskDefaults } from "@flind/api-client/posthog-client";
 import type {
   DefaultInitialTaskMode,
   TaskDefaultsSyncState,

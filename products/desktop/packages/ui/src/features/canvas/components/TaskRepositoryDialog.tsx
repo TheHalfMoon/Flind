@@ -10,8 +10,8 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@flind/quill";
-import { FolderPicker } from "@posthog/ui/features/folder-picker/FolderPicker";
-import { RepositoriesField } from "@posthog/ui/features/integrations/components/RepositoriesField";
+import { FolderPicker } from "@flind/ui/features/folder-picker/FolderPicker";
+import { RepositoriesField } from "@flind/ui/features/integrations/components/RepositoriesField";
 import { useState } from "react";
 
 interface TaskRepositoryDialogProps {

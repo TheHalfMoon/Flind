@@ -2,10 +2,10 @@ import type {
   CloudRegion,
   McpServerConnection,
   McpToolPolicy,
-} from "@posthog/shared";
+} from "@flind/shared";
 
 // Narrow ports inverting AgentService's dependencies on core/host services so it
-// can live in workspace-server without importing @posthog/core or apps/code.
+// can live in workspace-server without importing @flind/core or apps/code.
 // The host (apps/code) binds these to the concrete SleepService, McpAppsService,
 // FsService bridge, AuthService, and scoped logger.
 

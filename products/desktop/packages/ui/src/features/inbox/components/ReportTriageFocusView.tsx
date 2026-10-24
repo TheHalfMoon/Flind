@@ -6,23 +6,23 @@ import {
   FileTextIcon,
   XIcon,
 } from "@phosphor-icons/react";
-import { renderableReportChartIds } from "@posthog/core/inbox/reportCharts";
+import { renderableReportChartIds } from "@flind/core/inbox/reportCharts";
 import {
   deriveHeadline,
   displayConventionalCommitTitle,
   parseConventionalCommitTitle,
   splitReportSummary,
-} from "@posthog/core/inbox/reportPresentation";
+} from "@flind/core/inbox/reportPresentation";
 import { Button } from "@flind/quill";
-import type { SignalReport } from "@posthog/shared/types";
-import { ConventionalCommitScopeTag } from "@posthog/ui/features/inbox/components/ConventionalCommitScopeTag";
-import { DetailSection } from "@posthog/ui/features/inbox/components/DetailSection";
-import { ReportChartsSection } from "@posthog/ui/features/inbox/components/detail/ReportChartCard";
-import { PriorityMonogram } from "@posthog/ui/features/inbox/components/PriorityMonogram";
-import { SignalReportSummaryMarkdown } from "@posthog/ui/features/inbox/components/utils/SignalReportSummaryMarkdown";
-import { getSourceProductMeta } from "@posthog/ui/features/inbox/components/utils/source-product-icons";
-import { KeyHint } from "@posthog/ui/primitives/KeyHint";
-import { RelativeTimestamp } from "@posthog/ui/primitives/RelativeTimestamp";
+import type { SignalReport } from "@flind/shared/types";
+import { ConventionalCommitScopeTag } from "@flind/ui/features/inbox/components/ConventionalCommitScopeTag";
+import { DetailSection } from "@flind/ui/features/inbox/components/DetailSection";
+import { ReportChartsSection } from "@flind/ui/features/inbox/components/detail/ReportChartCard";
+import { PriorityMonogram } from "@flind/ui/features/inbox/components/PriorityMonogram";
+import { SignalReportSummaryMarkdown } from "@flind/ui/features/inbox/components/utils/SignalReportSummaryMarkdown";
+import { getSourceProductMeta } from "@flind/ui/features/inbox/components/utils/source-product-icons";
+import { KeyHint } from "@flind/ui/primitives/KeyHint";
+import { RelativeTimestamp } from "@flind/ui/primitives/RelativeTimestamp";
 import type { ReactNode } from "react";
 
 export interface ReportTriageFocusViewProps {

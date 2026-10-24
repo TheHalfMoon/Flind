@@ -1,21 +1,21 @@
-import { sourceOf } from "@posthog/core/canvas/channelItems";
+import { sourceOf } from "@flind/core/canvas/channelItems";
 import {
   SESSION_SERVICE,
   type SessionService,
-} from "@posthog/core/sessions/sessionService";
+} from "@flind/core/sessions/sessionService";
 import {
   insertTaskDedup,
   removeTaskFromList,
-} from "@posthog/core/tasks/taskDelete";
+} from "@flind/core/tasks/taskDelete";
 import {
   TASK_DELETION_SERVICE,
   type TaskDeletionService,
-} from "@posthog/core/tasks/taskDeletionService";
-import { useService } from "@posthog/di/react";
-import type { Task } from "@posthog/shared/domain-types";
-import { destroyTaskTerminals } from "@posthog/ui/features/terminal/destroyTaskTerminals";
-import { useAuthenticatedMutation } from "@posthog/ui/hooks/useAuthenticatedMutation";
-import { logger } from "@posthog/ui/shell/logger";
+} from "@flind/core/tasks/taskDeletionService";
+import { useService } from "@flind/di/react";
+import type { Task } from "@flind/shared/domain-types";
+import { destroyTaskTerminals } from "@flind/ui/features/terminal/destroyTaskTerminals";
+import { useAuthenticatedMutation } from "@flind/ui/hooks/useAuthenticatedMutation";
+import { logger } from "@flind/ui/shell/logger";
 import { useQueryClient } from "@tanstack/react-query";
 import { useCallback } from "react";
 import { taskKeys } from "./taskKeys";

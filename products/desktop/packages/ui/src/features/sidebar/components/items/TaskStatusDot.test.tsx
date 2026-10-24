@@ -1,5 +1,5 @@
-import { TaskStatusDot } from "@posthog/ui/features/sidebar/components/items/TaskStatusDot";
-import type { TaskDot } from "@posthog/ui/features/sidebar/components/items/taskStatusVocabulary";
+import { TaskStatusDot } from "@flind/ui/features/sidebar/components/items/TaskStatusDot";
+import type { TaskDot } from "@flind/ui/features/sidebar/components/items/taskStatusVocabulary";
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 

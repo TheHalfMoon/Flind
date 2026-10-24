@@ -1,4 +1,4 @@
-import type { SerializedEnrichment } from "@posthog/shared";
+import type { SerializedEnrichment } from "@flind/shared";
 import { describe, expect, it } from "vitest";
 import { buildEnrichmentOccurrences } from "./buildEnrichmentOccurrences";
 

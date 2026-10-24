@@ -1,14 +1,14 @@
 import { RobotIcon } from "@phosphor-icons/react";
 import { Avatar, AvatarFallback, InputGroup } from "@flind/quill";
-import type { UserBasic } from "@posthog/shared/domain-types";
-import { UserAvatar } from "@posthog/ui/features/auth/UserAvatar";
+import type { UserBasic } from "@flind/shared/domain-types";
+import { UserAvatar } from "@flind/ui/features/auth/UserAvatar";
 import {
   type ComposerMentionCandidate,
   contentToDoc,
   docToContent,
   filterComposerMentionCandidates,
-} from "@posthog/ui/features/canvas/utils/mentionComposer";
-import { userDisplayName } from "@posthog/ui/features/canvas/utils/userDisplay";
+} from "@flind/ui/features/canvas/utils/mentionComposer";
+import { userDisplayName } from "@flind/ui/features/canvas/utils/userDisplay";
 import Mention, { type MentionNodeAttrs } from "@tiptap/extension-mention";
 import Placeholder from "@tiptap/extension-placeholder";
 import { EditorContent, useEditor } from "@tiptap/react";
@@ -58,7 +58,7 @@ interface SuggestionSession {
 /**
  * The thread composer: a rich text area that opens an @-mention typeahead over
  * the org's members. Selecting a member inserts an inline chip — rendered the
- * same way as in sent messages — that serializes to the `@posthog/shared`
+ * same way as in sent messages — that serializes to the `@flind/shared`
  * mention token and notifies them in the Activity page.
  */
 export function MentionComposer({

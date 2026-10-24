@@ -1,6 +1,6 @@
 import { ArrowSquareOut } from "@phosphor-icons/react";
 import { Button } from "@flind/quill";
-import { openExternalUrl } from "@posthog/ui/shell/openExternal";
+import { openExternalUrl } from "@flind/ui/shell/openExternal";
 
 /**
  * Shown in place of the configuration summary when the workflow behind a loop

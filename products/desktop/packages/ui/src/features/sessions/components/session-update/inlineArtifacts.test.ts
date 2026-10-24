@@ -1,5 +1,5 @@
-import { posthogToolMeta } from "@posthog/shared";
-import type { ToolCall } from "@posthog/ui/features/sessions/types";
+import { posthogToolMeta } from "@flind/shared";
+import type { ToolCall } from "@flind/ui/features/sessions/types";
 import { describe, expect, it } from "vitest";
 import { readCreatedPrUrl, readUploadedArtifactName } from "./inlineArtifacts";
 

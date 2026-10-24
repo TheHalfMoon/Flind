@@ -3,9 +3,9 @@ import type {
   RequestPermissionRequest,
   ToolCallContent,
 } from "@agentclientprotocol/sdk";
-import { getPermissionOptionMeta } from "@posthog/core/sessions/permissionResponse";
-import type { CodeToolKind } from "@posthog/ui/features/sessions/types";
-import type { SelectorOption } from "@posthog/ui/primitives/ActionSelector";
+import { getPermissionOptionMeta } from "@flind/core/sessions/permissionResponse";
+import type { CodeToolKind } from "@flind/ui/features/sessions/types";
+import type { SelectorOption } from "@flind/ui/primitives/ActionSelector";
 
 type AcpToolCall = RequestPermissionRequest["toolCall"];
 export type PermissionToolCall = Omit<AcpToolCall, "kind"> & {
@@ -37,7 +37,7 @@ export function toSelectorOptions(
   });
 }
 
-export { findDiffContent } from "@posthog/ui/features/sessions/components/session-update/toolCallUtils";
+export { findDiffContent } from "@flind/ui/features/sessions/components/session-update/toolCallUtils";
 export type StandardContent = Extract<ToolCallContent, { type: "content" }>;
 
 export function findTextContent(

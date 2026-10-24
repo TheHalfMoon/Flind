@@ -1,4 +1,4 @@
-import type { CommentAnchor } from "@posthog/core/comments/anchors";
+import type { CommentAnchor } from "@flind/core/comments/anchors";
 import { describe, expect, it } from "vitest";
 import {
   type CommentResource,

@@ -2,7 +2,7 @@ import { Brain, Circle } from "@phosphor-icons/react";
 import {
   pickNextThinkingActivity,
   pickThinkingActivity,
-} from "@posthog/core/sessions/thinkingActivities";
+} from "@flind/core/sessions/thinkingActivities";
 import { Text } from "@flind/quill";
 import { useEffect, useRef, useState } from "react";
 

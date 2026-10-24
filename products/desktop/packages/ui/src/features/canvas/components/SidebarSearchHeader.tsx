@@ -1,10 +1,10 @@
 import { AutocompleteClear, AutocompleteInput, Kbd } from "@flind/quill";
-import { useSidebarSearchFocus } from "@posthog/ui/features/canvas/hooks/useSidebarSearchFocus";
+import { useSidebarSearchFocus } from "@flind/ui/features/canvas/hooks/useSidebarSearchFocus";
 import {
   formatHotkey,
   SHORTCUTS,
-} from "@posthog/ui/features/command/keyboard-shortcuts";
-import { ChromeBar } from "@posthog/ui/primitives/ChromeBar";
+} from "@flind/ui/features/command/keyboard-shortcuts";
+import { ChromeBar } from "@flind/ui/primitives/ChromeBar";
 import {
   forwardRef,
   type ReactElement,

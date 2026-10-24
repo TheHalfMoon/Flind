@@ -1,6 +1,6 @@
-import type { ChannelItemModel } from "@posthog/core/canvas/channelItems";
-import type { Task } from "@posthog/shared/domain-types";
-import type { TaskStatusInput } from "@posthog/ui/features/sidebar/components/items/taskStatusVocabulary";
+import type { ChannelItemModel } from "@flind/core/canvas/channelItems";
+import type { Task } from "@flind/shared/domain-types";
+import type { TaskStatusInput } from "@flind/ui/features/sidebar/components/items/taskStatusVocabulary";
 import { Theme } from "@radix-ui/themes";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
@@ -10,19 +10,19 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 // query, none of which a unit test has. Stubbed at the module boundary, as
 // ChannelItemRow.test.tsx does for the same reason.
 const mocks = vi.hoisted(() => ({ status: null as TaskStatusInput | null }));
-vi.mock("@posthog/ui/features/canvas/hooks/useChannelTaskStatus", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannelTaskStatus", () => ({
   useChannelTaskStatus: () => mocks.status,
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useChannels", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannels", () => ({
   useChannels: () => ({ channels: [] }),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useFileTaskToChannel", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useFileTaskToChannel", () => ({
   useFileTaskToChannel: () => vi.fn(),
 }));
-vi.mock("@posthog/ui/features/browser-tabs/useOpenBrowserTab", () => ({
+vi.mock("@flind/ui/features/browser-tabs/useOpenBrowserTab", () => ({
   useOpenBrowserTab: () => vi.fn(),
 }));
-vi.mock("@posthog/ui/features/feature-flags/useFeatureFlag", () => ({
+vi.mock("@flind/ui/features/feature-flags/useFeatureFlag", () => ({
   useFeatureFlag: () => true,
 }));
 

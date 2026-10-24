@@ -1,4 +1,4 @@
-import type { CanvasRuntimeErrorProperties } from "@posthog/shared/analytics-events";
+import type { CanvasRuntimeErrorProperties } from "@flind/shared/analytics-events";
 
 export function canvasRuntimeErrorAnalytics(
   message: string,

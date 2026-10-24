@@ -23,8 +23,8 @@ import {
   OBJECT_KIND_DATA,
   type ObjectKindData,
   type ObjectKindName,
-} from "@posthog/core/inbox/objectKinds.generated";
-import { objectKindMeta } from "@posthog/core/inbox/objectTags";
+} from "@flind/core/inbox/objectKinds.generated";
+import { objectKindMeta } from "@flind/core/inbox/objectTags";
 
 /**
  * The registry of PostHog object kinds an agent can embed in a message as
@@ -100,7 +100,7 @@ const GENERIC_OBJECT_KIND: ObjectKindDef = toDef(
   PulseIcon,
 );
 
-export { resolveObjectKindName } from "@posthog/core/inbox/objectTags";
+export { resolveObjectKindName } from "@flind/core/inbox/objectTags";
 
 export function getObjectKind(kind: string): ObjectKindDef {
   return OBJECT_KINDS[kind] ?? GENERIC_OBJECT_KIND;

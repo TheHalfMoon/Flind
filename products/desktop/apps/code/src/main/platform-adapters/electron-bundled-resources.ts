@@ -1,5 +1,5 @@
 import path from "node:path";
-import type { IBundledResources } from "@posthog/platform/bundled-resources";
+import type { IBundledResources } from "@flind/platform/bundled-resources";
 import { app } from "electron";
 import { injectable } from "inversify";
 

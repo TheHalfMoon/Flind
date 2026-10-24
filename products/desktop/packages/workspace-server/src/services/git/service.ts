@@ -39,7 +39,7 @@ import { DiscardFileChangesSaga } from "@flind/git/sagas/discard";
 import { PullSaga } from "@flind/git/sagas/pull";
 import { PushSaga } from "@flind/git/sagas/push";
 import { parseGithubUrl } from "@flind/git/utils";
-import { TypedEventEmitter } from "@posthog/shared";
+import { TypedEventEmitter } from "@flind/shared";
 import { injectable } from "inversify";
 import type { SidebarPrState } from "../workspace/schemas";
 import type {

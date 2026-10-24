@@ -6,7 +6,7 @@ import {
   ThumbsDown,
   ThumbsUp,
 } from "@phosphor-icons/react";
-import { buildTurnRatingMetric } from "@posthog/core/analytics/aiFeedback";
+import { buildTurnRatingMetric } from "@flind/core/analytics/aiFeedback";
 import {
   Button,
   ChatBubble,
@@ -40,27 +40,27 @@ import type {
   AcpMessage,
   AgentConversationEvent,
   AgentTurnFeedbackSentiment,
-} from "@posthog/shared";
-import { ANALYTICS_EVENTS } from "@posthog/shared";
-import type { Task } from "@posthog/shared/domain-types";
-import { SHORTCUTS } from "@posthog/ui/features/command/keyboard-shortcuts";
-import { useSmoothedText } from "@posthog/ui/features/editor/components/useSmoothedText";
+} from "@flind/shared";
+import { ANALYTICS_EVENTS } from "@flind/shared";
+import type { Task } from "@flind/shared/domain-types";
+import { SHORTCUTS } from "@flind/ui/features/command/keyboard-shortcuts";
+import { useSmoothedText } from "@flind/ui/features/editor/components/useSmoothedText";
 import {
   type BuildResult,
   type ConversationItem,
   hasSetupProgressForRun,
-} from "@posthog/ui/features/sessions/components/buildConversationItems";
+} from "@flind/ui/features/sessions/components/buildConversationItems";
 import {
   ChatMarkdown,
   ChatStreamingMarkdown,
-} from "@posthog/ui/features/sessions/components/chat-thread/ChatMarkdown";
-import { ChatThreadFooter } from "@posthog/ui/features/sessions/components/chat-thread/ChatThreadFooter";
-import type { PromptRecallHandler } from "@posthog/ui/features/sessions/components/chat-thread/composerPromptRecall";
-import { groupToolRuns } from "@posthog/ui/features/sessions/components/chat-thread/groupToolRuns";
-import { MessageJumpPicker } from "@posthog/ui/features/sessions/components/chat-thread/MessageJumpPicker";
-import { MessageMinimap } from "@posthog/ui/features/sessions/components/chat-thread/MessageMinimap";
-import { ToolGroup } from "@posthog/ui/features/sessions/components/chat-thread/ToolGroup";
-import { THREAD_HOTKEY_OPTIONS } from "@posthog/ui/features/sessions/components/chat-thread/threadHotkeys";
+} from "@flind/ui/features/sessions/components/chat-thread/ChatMarkdown";
+import { ChatThreadFooter } from "@flind/ui/features/sessions/components/chat-thread/ChatThreadFooter";
+import type { PromptRecallHandler } from "@flind/ui/features/sessions/components/chat-thread/composerPromptRecall";
+import { groupToolRuns } from "@flind/ui/features/sessions/components/chat-thread/groupToolRuns";
+import { MessageJumpPicker } from "@flind/ui/features/sessions/components/chat-thread/MessageJumpPicker";
+import { MessageMinimap } from "@flind/ui/features/sessions/components/chat-thread/MessageMinimap";
+import { ToolGroup } from "@flind/ui/features/sessions/components/chat-thread/ToolGroup";
+import { THREAD_HOTKEY_OPTIONS } from "@flind/ui/features/sessions/components/chat-thread/threadHotkeys";
 import {
   type AgentTurn,
   CHAT_THREAD_VIRTUALIZATION_THRESHOLD,
@@ -79,58 +79,58 @@ import {
   type ThreadItem,
   type ThreadScrollResume,
   type TurnRow,
-} from "@posthog/ui/features/sessions/components/chat-thread/threadVirtualization";
-import { buildTurnCopyText } from "@posthog/ui/features/sessions/components/chat-thread/turnCopyText";
-import { UserMessageBody } from "@posthog/ui/features/sessions/components/chat-thread/UserMessageBody";
-import { usePromptRecallSource } from "@posthog/ui/features/sessions/components/chat-thread/usePromptRecallSource";
-import { VirtualThreadScrollBody } from "@posthog/ui/features/sessions/components/chat-thread/VirtualThreadScrollBody";
+} from "@flind/ui/features/sessions/components/chat-thread/threadVirtualization";
+import { buildTurnCopyText } from "@flind/ui/features/sessions/components/chat-thread/turnCopyText";
+import { UserMessageBody } from "@flind/ui/features/sessions/components/chat-thread/UserMessageBody";
+import { usePromptRecallSource } from "@flind/ui/features/sessions/components/chat-thread/usePromptRecallSource";
+import { VirtualThreadScrollBody } from "@flind/ui/features/sessions/components/chat-thread/VirtualThreadScrollBody";
 import {
   copyFromContextMenu,
   getSelectionWithin,
-} from "@posthog/ui/features/sessions/components/copyContextTarget";
-import { GitActionMessage } from "@posthog/ui/features/sessions/components/GitActionMessage";
-import { GitActionResult } from "@posthog/ui/features/sessions/components/GitActionResult";
-import { isUserInitiatedConversationItem } from "@posthog/ui/features/sessions/components/isUserInitiatedConversationItem";
-import { mergeConversationItems } from "@posthog/ui/features/sessions/components/mergeConversationItems";
-import { InjectedBlockChips } from "@posthog/ui/features/sessions/components/session-update/InjectedBlockChips";
-import { MentionChip } from "@posthog/ui/features/sessions/components/session-update/parseFileMentions";
-import { SessionUpdateView } from "@posthog/ui/features/sessions/components/session-update/SessionUpdateView";
-import { UserShellExecuteView } from "@posthog/ui/features/sessions/components/session-update/UserShellExecuteView";
-import { splitUserMessage } from "@posthog/ui/features/sessions/components/session-update/userMessageDisplay";
-import { useVisibleInjectedBlocks } from "@posthog/ui/features/sessions/components/session-update/useVisibleInjectedBlocks";
-import { UserMessageAttachments } from "@posthog/ui/features/sessions/components/UserMessageAttachments";
+} from "@flind/ui/features/sessions/components/copyContextTarget";
+import { GitActionMessage } from "@flind/ui/features/sessions/components/GitActionMessage";
+import { GitActionResult } from "@flind/ui/features/sessions/components/GitActionResult";
+import { isUserInitiatedConversationItem } from "@flind/ui/features/sessions/components/isUserInitiatedConversationItem";
+import { mergeConversationItems } from "@flind/ui/features/sessions/components/mergeConversationItems";
+import { InjectedBlockChips } from "@flind/ui/features/sessions/components/session-update/InjectedBlockChips";
+import { MentionChip } from "@flind/ui/features/sessions/components/session-update/parseFileMentions";
+import { SessionUpdateView } from "@flind/ui/features/sessions/components/session-update/SessionUpdateView";
+import { UserShellExecuteView } from "@flind/ui/features/sessions/components/session-update/UserShellExecuteView";
+import { splitUserMessage } from "@flind/ui/features/sessions/components/session-update/userMessageDisplay";
+import { useVisibleInjectedBlocks } from "@flind/ui/features/sessions/components/session-update/useVisibleInjectedBlocks";
+import { UserMessageAttachments } from "@flind/ui/features/sessions/components/UserMessageAttachments";
 import {
   CHAT_CONTENT_MAX_WIDTH,
   CHAT_CONTENT_PADDING_INLINE,
-} from "@posthog/ui/features/sessions/constants";
-import { useAgentConversationItems } from "@posthog/ui/features/sessions/hooks/useAgentConversationItems";
-import { useConversationItems } from "@posthog/ui/features/sessions/hooks/useConversationItems";
+} from "@flind/ui/features/sessions/constants";
+import { useAgentConversationItems } from "@flind/ui/features/sessions/hooks/useAgentConversationItems";
+import { useConversationItems } from "@flind/ui/features/sessions/hooks/useConversationItems";
 import {
   useOptimisticItemsForTask,
   useSessionIsCloud,
   useSessionSelector,
-} from "@posthog/ui/features/sessions/sessionStore";
+} from "@flind/ui/features/sessions/sessionStore";
 import {
   useSessionViewActions,
   useShowRawLogs,
   useTurnFeedback,
-} from "@posthog/ui/features/sessions/sessionViewStore";
-import { useThreadScrollRequest } from "@posthog/ui/features/sessions/threadNavigationStore";
+} from "@flind/ui/features/sessions/sessionViewStore";
+import { useThreadScrollRequest } from "@flind/ui/features/sessions/threadNavigationStore";
 import {
   NO_ATTACHMENTS,
   type UserMessageAttachment,
-} from "@posthog/ui/features/sessions/userMessageTypes";
+} from "@flind/ui/features/sessions/userMessageTypes";
 import {
   SessionTaskIdProvider,
   useSessionTaskId,
-} from "@posthog/ui/features/sessions/useSessionTaskId";
-import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
-import { TIP_KEYS } from "@posthog/ui/features/settings/tipKeys";
-import { SkillButtonActionMessage } from "@posthog/ui/features/skill-buttons/components/SkillButtonActionMessage";
-import { useDebouncedValue } from "@posthog/ui/primitives/hooks/useDebouncedValue";
-import { toast } from "@posthog/ui/primitives/toast";
-import { useCopy } from "@posthog/ui/primitives/useCopy";
-import { track } from "@posthog/ui/shell/analytics";
+} from "@flind/ui/features/sessions/useSessionTaskId";
+import { useSettingsStore } from "@flind/ui/features/settings/settingsStore";
+import { TIP_KEYS } from "@flind/ui/features/settings/tipKeys";
+import { SkillButtonActionMessage } from "@flind/ui/features/skill-buttons/components/SkillButtonActionMessage";
+import { useDebouncedValue } from "@flind/ui/primitives/hooks/useDebouncedValue";
+import { toast } from "@flind/ui/primitives/toast";
+import { useCopy } from "@flind/ui/primitives/useCopy";
+import { track } from "@flind/ui/shell/analytics";
 import {
   createContext,
   type FocusEvent,

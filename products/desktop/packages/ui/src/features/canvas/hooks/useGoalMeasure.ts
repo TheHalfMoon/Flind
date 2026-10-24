@@ -1,17 +1,17 @@
-import type { PostHogAPIClient } from "@posthog/api-client/posthog-client";
+import type { PostHogAPIClient } from "@flind/api-client/posthog-client";
 import {
   type ContextGoal,
   firstNumericCell,
   type GoalMeasure,
   type GoalPeriod,
   numericCell,
-} from "@posthog/core/canvas/contextDocument";
-import { insightCurrentValue } from "@posthog/core/canvas/goalMeasures";
+} from "@flind/core/canvas/contextDocument";
+import { insightCurrentValue } from "@flind/core/canvas/goalMeasures";
 import {
   type DerivedTrend,
   deriveTrendSql,
-} from "@posthog/ui/features/canvas/deriveTrendSql";
-import { useAuthenticatedQuery } from "@posthog/ui/hooks/useAuthenticatedQuery";
+} from "@flind/ui/features/canvas/deriveTrendSql";
+import { useAuthenticatedQuery } from "@flind/ui/hooks/useAuthenticatedQuery";
 
 const LIVE_QUERY = {
   staleTime: 60_000,

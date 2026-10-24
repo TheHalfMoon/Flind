@@ -4,12 +4,12 @@ import {
   canSubmitGatewayServer,
   GATEWAY_ADD_SERVER_DEFAULTS,
   type GatewayAddServerValues,
-} from "@posthog/core/mcp-gateway/gatewayAddServer";
-import { isValidMcpUrl } from "@posthog/core/mcp-servers/customServerForm";
-import { AgentScopeToggle } from "@posthog/ui/features/mcp-gateway/components/parts/AgentScopeToggle";
-import type { GatewayRoute } from "@posthog/ui/features/mcp-gateway/gatewayRoute";
-import { useRegisterGatewayServer } from "@posthog/ui/features/mcp-gateway/hooks/useRegisterGatewayServer";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
+} from "@flind/core/mcp-gateway/gatewayAddServer";
+import { isValidMcpUrl } from "@flind/core/mcp-servers/customServerForm";
+import { AgentScopeToggle } from "@flind/ui/features/mcp-gateway/components/parts/AgentScopeToggle";
+import type { GatewayRoute } from "@flind/ui/features/mcp-gateway/gatewayRoute";
+import { useRegisterGatewayServer } from "@flind/ui/features/mcp-gateway/hooks/useRegisterGatewayServer";
+import { Spinner } from "@flind/ui/primitives/Spinner";
 import {
   Button,
   Flex,

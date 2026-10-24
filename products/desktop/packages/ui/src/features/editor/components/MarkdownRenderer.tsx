@@ -1,26 +1,26 @@
-import { isPostHogCodeDeeplink } from "@posthog/shared";
-import { ArtifactRefChip } from "@posthog/ui/features/editor/components/ArtifactRefChip";
-import { EvidenceRefChip } from "@posthog/ui/features/editor/components/EvidenceRefChip";
-import { githubRefChipFor } from "@posthog/ui/features/editor/components/githubRefChipFor";
-import { MessageChartCard } from "@posthog/ui/features/editor/components/MessageChartCard";
-import { useObjectTagRemarkPlugins } from "@posthog/ui/features/editor/usePostHogLinkContext";
-import { CodeBlock } from "@posthog/ui/primitives/CodeBlock";
-import { Divider } from "@posthog/ui/primitives/Divider";
-import { HighlightedCode } from "@posthog/ui/primitives/HighlightedCode";
-import { List, ListItem } from "@posthog/ui/primitives/List";
-import { MermaidDiagram } from "@posthog/ui/primitives/MermaidDiagram";
-import { parseArtifactLink } from "@posthog/ui/utils/artifactLinks";
+import { isPostHogCodeDeeplink } from "@flind/shared";
+import { ArtifactRefChip } from "@flind/ui/features/editor/components/ArtifactRefChip";
+import { EvidenceRefChip } from "@flind/ui/features/editor/components/EvidenceRefChip";
+import { githubRefChipFor } from "@flind/ui/features/editor/components/githubRefChipFor";
+import { MessageChartCard } from "@flind/ui/features/editor/components/MessageChartCard";
+import { useObjectTagRemarkPlugins } from "@flind/ui/features/editor/usePostHogLinkContext";
+import { CodeBlock } from "@flind/ui/primitives/CodeBlock";
+import { Divider } from "@flind/ui/primitives/Divider";
+import { HighlightedCode } from "@flind/ui/primitives/HighlightedCode";
+import { List, ListItem } from "@flind/ui/primitives/List";
+import { MermaidDiagram } from "@flind/ui/primitives/MermaidDiagram";
+import { parseArtifactLink } from "@flind/ui/utils/artifactLinks";
 import {
   chartBlockKey,
   isGeneratedChartBlock,
   parseChartBlock,
-} from "@posthog/ui/utils/chartBlocks";
-import { parseEvidenceLink } from "@posthog/ui/utils/evidenceLinks";
+} from "@flind/ui/utils/chartBlocks";
+import { parseEvidenceLink } from "@flind/ui/utils/evidenceLinks";
 import {
   isMermaidCodeBlock,
   MERMAID_LANGUAGE,
-} from "@posthog/ui/utils/mermaidBlocks";
-import { handleShareLinkClick } from "@posthog/ui/utils/shareLinks";
+} from "@flind/ui/utils/mermaidBlocks";
+import { handleShareLinkClick } from "@flind/ui/utils/shareLinks";
 import { Blockquote, Checkbox, Code, Kbd, Text } from "@radix-ui/themes";
 import { memo, useMemo } from "react";
 import type { Components } from "react-markdown";

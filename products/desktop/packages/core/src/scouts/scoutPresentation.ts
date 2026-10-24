@@ -4,7 +4,7 @@ import type {
   ScoutConfig,
   ScoutPauseReason,
   ScoutRun,
-} from "@posthog/api-client/posthog-client";
+} from "@flind/api-client/posthog-client";
 
 export type ScoutOrigin = "canonical" | "custom";
 

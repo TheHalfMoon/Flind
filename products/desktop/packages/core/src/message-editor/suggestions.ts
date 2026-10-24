@@ -1,4 +1,4 @@
-import { isAbsolutePath, type SkillSource } from "@posthog/shared";
+import { isAbsolutePath, type SkillSource } from "@flind/shared";
 import Fuse, { type IFuseOptions } from "fuse.js";
 
 export interface CommandLike {

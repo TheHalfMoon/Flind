@@ -1,9 +1,9 @@
 import type {
   SandboxCustomImage,
   SandboxEnvironment,
-} from "@posthog/shared/domain-types";
-import { CustomImageList } from "@posthog/ui/features/settings/sections/environments/CustomImageList";
-import { EnvironmentList } from "@posthog/ui/features/settings/sections/environments/EnvironmentList";
+} from "@flind/shared/domain-types";
+import { CustomImageList } from "@flind/ui/features/settings/sections/environments/CustomImageList";
+import { EnvironmentList } from "@flind/ui/features/settings/sections/environments/EnvironmentList";
 import type { Meta, StoryObj } from "@storybook/react";
 
 const env = (overrides: Partial<SandboxEnvironment>): SandboxEnvironment =>

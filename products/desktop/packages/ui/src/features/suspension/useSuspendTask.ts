@@ -1,7 +1,7 @@
-import { useHostTRPC, useHostTRPCClient } from "@posthog/host-router/react";
-import { useFocusStore } from "@posthog/ui/features/focus/focusStore";
-import { destroyTaskTerminals } from "@posthog/ui/features/terminal/destroyTaskTerminals";
-import { logger } from "@posthog/ui/shell/logger";
+import { useHostTRPC, useHostTRPCClient } from "@flind/host-router/react";
+import { useFocusStore } from "@flind/ui/features/focus/focusStore";
+import { destroyTaskTerminals } from "@flind/ui/features/terminal/destroyTaskTerminals";
+import { logger } from "@flind/ui/shell/logger";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { WORKSPACE_QUERY_KEY } from "../workspace/identifiers";
 

@@ -1,4 +1,4 @@
 export {
   calculateDefaultSize,
   shouldUpdateSizes,
-} from "@posthog/core/panels/panelSizeMath";
+} from "@flind/core/panels/panelSizeMath";

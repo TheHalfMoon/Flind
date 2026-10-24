@@ -4,10 +4,10 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 import { useSideQuestionStore } from "../sideQuestionStore";
 import { SessionSummaryPanel } from "./SessionSummaryPanel";
 
-vi.mock("@posthog/di/react", () => ({
+vi.mock("@flind/di/react", () => ({
   useService: () => ({ askSideQuestion: vi.fn() }),
 }));
-vi.mock("@posthog/ui/shell/analytics", () => ({ track: vi.fn() }));
+vi.mock("@flind/ui/shell/analytics", () => ({ track: vi.fn() }));
 
 describe("SessionSummaryPanel", () => {
   beforeEach(() => {

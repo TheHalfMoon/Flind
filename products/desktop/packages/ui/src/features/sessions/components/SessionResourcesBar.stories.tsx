@@ -2,8 +2,8 @@ import {
   type AcpMessage,
   POSTHOG_PRODUCTS,
   type PostHogProductId,
-} from "@posthog/shared";
-import { SessionResourcesBar } from "@posthog/ui/features/sessions/components/SessionResourcesBar";
+} from "@flind/shared";
+import { SessionResourcesBar } from "@flind/ui/features/sessions/components/SessionResourcesBar";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta: Meta<typeof SessionResourcesBar> = {

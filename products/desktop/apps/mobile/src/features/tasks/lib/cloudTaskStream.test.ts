@@ -10,11 +10,11 @@ const mocks = vi.hoisted(() => ({
   },
 }));
 
-vi.mock("@posthog/core/cloud-task/cloud-task-engine", () => ({
+vi.mock("@flind/core/cloud-task/cloud-task-engine", () => ({
   createCloudTaskEngine: () => mocks.engine,
 }));
 
-vi.mock("@posthog/core/cloud-task/schemas", () => ({
+vi.mock("@flind/core/cloud-task/schemas", () => ({
   CloudTaskEvent: { Update: "cloud-task-update" },
 }));
 

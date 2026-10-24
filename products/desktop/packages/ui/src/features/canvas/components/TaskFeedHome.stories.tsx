@@ -1,9 +1,9 @@
-import type { Task, TaskRun, UserBasic } from "@posthog/shared/domain-types";
+import type { Task, TaskRun, UserBasic } from "@flind/shared/domain-types";
 import {
   ANONYMOUS_AUTH_STATE,
   useAuthStore,
-} from "@posthog/ui/features/auth/store";
-import { authKeys } from "@posthog/ui/features/auth/useCurrentUser";
+} from "@flind/ui/features/auth/store";
+import { authKeys } from "@flind/ui/features/auth/useCurrentUser";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useQueryClient } from "@tanstack/react-query";
 import type { ReactNode } from "react";

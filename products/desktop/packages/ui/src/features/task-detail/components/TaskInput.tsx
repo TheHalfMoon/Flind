@@ -1,54 +1,54 @@
 import { X } from "@phosphor-icons/react";
-import type { AutoresearchService } from "@posthog/core/autoresearch/autoresearch";
-import { AUTORESEARCH_SERVICE } from "@posthog/core/autoresearch/identifiers";
-import { buildKickoffPreamble } from "@posthog/core/autoresearch/prompts";
-import { buildFileLineReferencePrompt } from "@posthog/core/code-review/reviewPrompts";
-import type { EditorContent } from "@posthog/core/message-editor/content";
-import { xmlToContent } from "@posthog/core/message-editor/content";
+import type { AutoresearchService } from "@flind/core/autoresearch/autoresearch";
+import { AUTORESEARCH_SERVICE } from "@flind/core/autoresearch/identifiers";
+import { buildKickoffPreamble } from "@flind/core/autoresearch/prompts";
+import { buildFileLineReferencePrompt } from "@flind/core/code-review/reviewPrompts";
+import type { EditorContent } from "@flind/core/message-editor/content";
+import { xmlToContent } from "@flind/core/message-editor/content";
 import type {
   PiModelSelection,
   PiThinkingLevel,
-} from "@posthog/core/pi-runtime/piSessionController";
+} from "@flind/core/pi-runtime/piSessionController";
 import {
   harnessForModelValue,
   isValidConfigValue,
   modelOptionForHarness,
   syntheticPiModelSelection,
-} from "@posthog/core/task-detail/configOptions";
-import { preferredRunsOnPi } from "@posthog/core/task-detail/previewConfig";
-import { useServiceOptional } from "@posthog/di/react";
-import { useHostTRPC, useHostTRPCClient } from "@posthog/host-router/react";
+} from "@flind/core/task-detail/configOptions";
+import { preferredRunsOnPi } from "@flind/core/task-detail/previewConfig";
+import { useServiceOptional } from "@flind/di/react";
+import { useHostTRPC, useHostTRPCClient } from "@flind/host-router/react";
 import { ButtonGroup } from "@flind/quill";
 import {
   type AgentRuntime,
   ANALYTICS_EVENTS,
   adapterForModelId,
   PI_HARNESS_FLAG,
-} from "@posthog/shared";
-import type { Task } from "@posthog/shared/domain-types";
+} from "@flind/shared";
+import type { Task } from "@flind/shared/domain-types";
 import {
   spendStopMessage,
   useSpendStop,
-} from "@posthog/ui/features/billing/useSpendStop";
-import { TaskRepositoryChip } from "@posthog/ui/features/canvas/components/TaskRepositoryChip";
-import { TaskRepositoryDialog } from "@posthog/ui/features/canvas/components/TaskRepositoryDialog";
-import { useUpdateTaskChannelRepositories } from "@posthog/ui/features/canvas/hooks/useTaskChannels";
+} from "@flind/ui/features/billing/useSpendStop";
+import { TaskRepositoryChip } from "@flind/ui/features/canvas/components/TaskRepositoryChip";
+import { TaskRepositoryDialog } from "@flind/ui/features/canvas/components/TaskRepositoryDialog";
+import { useUpdateTaskChannelRepositories } from "@flind/ui/features/canvas/hooks/useTaskChannels";
 import {
   resolveTaskRepositoryDraft,
   useTaskRepositoryDraftStore,
-} from "@posthog/ui/features/canvas/stores/taskRepositoryDraftStore";
-import { useChannelReportsEnabled } from "@posthog/ui/features/feature-flags/useChannelReportsEnabled";
-import { useOpenInboxReport } from "@posthog/ui/features/inbox/hooks/useOpenInboxReport";
+} from "@flind/ui/features/canvas/stores/taskRepositoryDraftStore";
+import { useChannelReportsEnabled } from "@flind/ui/features/feature-flags/useChannelReportsEnabled";
+import { useOpenInboxReport } from "@flind/ui/features/inbox/hooks/useOpenInboxReport";
 import {
   subscriptionModelAccess,
   useAdapterSubscription,
-} from "@posthog/ui/features/settings/adapterSubscription";
-import { openSettings } from "@posthog/ui/features/settings/hooks/useOpenSettings";
-import type { TaskInputReportAssociation } from "@posthog/ui/features/task-detail/stores/taskInputPrefillStore";
-import { useTaskInputPrefillStore } from "@posthog/ui/features/task-detail/stores/taskInputPrefillStore";
-import { navigateToInbox } from "@posthog/ui/router/navigationBridge";
-import { useAppView } from "@posthog/ui/router/useAppView";
-import { track } from "@posthog/ui/shell/analytics";
+} from "@flind/ui/features/settings/adapterSubscription";
+import { openSettings } from "@flind/ui/features/settings/hooks/useOpenSettings";
+import type { TaskInputReportAssociation } from "@flind/ui/features/task-detail/stores/taskInputPrefillStore";
+import { useTaskInputPrefillStore } from "@flind/ui/features/task-detail/stores/taskInputPrefillStore";
+import { navigateToInbox } from "@flind/ui/router/navigationBridge";
+import { useAppView } from "@flind/ui/router/useAppView";
+import { track } from "@flind/ui/shell/analytics";
 import { Box, Flex, Text, Tooltip } from "@radix-ui/themes";
 import { useQuery } from "@tanstack/react-query";
 import { AnimatePresence, motion } from "framer-motion";

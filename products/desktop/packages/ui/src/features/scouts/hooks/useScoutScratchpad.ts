@@ -1,9 +1,9 @@
-import type { ScoutScratchpadEntry } from "@posthog/api-client/posthog-client";
-import { useAuthenticatedQuery } from "@posthog/ui/hooks/useAuthenticatedQuery";
+import type { ScoutScratchpadEntry } from "@flind/api-client/posthog-client";
+import { useAuthenticatedQuery } from "@flind/ui/hooks/useAuthenticatedQuery";
 import {
   readQuerySnapshot,
   useWriteQuerySnapshot,
-} from "@posthog/ui/hooks/useQuerySnapshot";
+} from "@flind/ui/hooks/useQuerySnapshot";
 import { useAuthStateValue } from "../../auth/store";
 import { scoutQueryKeys } from "./scoutQueryKeys";
 

@@ -1,4 +1,4 @@
-import { isMac } from "@posthog/ui/utils/platform";
+import { isMac } from "@flind/ui/utils/platform";
 
 export function panelTabShortcut(macPlatform: boolean): string {
   const modifier = macPlatform ? "ctrl" : "alt";

@@ -1,4 +1,4 @@
-import { SkillButtonActionMessage } from "@posthog/ui/features/skill-buttons/components/SkillButtonActionMessage";
+import { SkillButtonActionMessage } from "@flind/ui/features/skill-buttons/components/SkillButtonActionMessage";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta: Meta<typeof SkillButtonActionMessage> = {

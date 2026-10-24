@@ -1,4 +1,4 @@
-import type { RootLogger } from "@posthog/di/logger";
+import type { RootLogger } from "@flind/di/logger";
 import { describe, expect, it, vi } from "vitest";
 import { GitPrService } from "./git-pr";
 import type { CreatePrHost, GitDiffSource } from "./identifiers";

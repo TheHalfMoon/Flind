@@ -22,7 +22,7 @@ import {
   SelectValue,
   Switch,
 } from "@flind/quill";
-import type { Channel } from "@posthog/ui/features/canvas/hooks/useChannels";
+import type { Channel } from "@flind/ui/features/canvas/hooks/useChannels";
 import { useEffect, useState } from "react";
 
 export type AutoArchiveAfterDays = number;

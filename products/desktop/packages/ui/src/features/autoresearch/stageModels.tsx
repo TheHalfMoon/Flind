@@ -1,7 +1,7 @@
 import type { SessionConfigOption } from "@agentclientprotocol/sdk";
-import { AUTORESEARCH_MAX_ITERATIONS_LIMIT } from "@posthog/core/autoresearch/schemas";
-import { isDefaultSelectOption, selectOptionDocsUrl } from "@posthog/shared";
-import { ReasoningLevelDropdown } from "@posthog/ui/features/sessions/components/ReasoningLevelDropdown";
+import { AUTORESEARCH_MAX_ITERATIONS_LIMIT } from "@flind/core/autoresearch/schemas";
+import { isDefaultSelectOption, selectOptionDocsUrl } from "@flind/shared";
+import { ReasoningLevelDropdown } from "@flind/ui/features/sessions/components/ReasoningLevelDropdown";
 import { Select } from "@radix-ui/themes";
 import { flattenSelectOptions } from "../sessions/sessionStore";
 

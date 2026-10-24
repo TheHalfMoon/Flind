@@ -1,14 +1,14 @@
-import type { UserBasic } from "@posthog/shared/domain-types";
-import { MemberRow } from "@posthog/ui/features/canvas/components/MemberRow";
-import { MemberSearch } from "@posthog/ui/features/canvas/components/MemberSearch";
+import type { UserBasic } from "@flind/shared/domain-types";
+import { MemberRow } from "@flind/ui/features/canvas/components/MemberRow";
+import { MemberSearch } from "@flind/ui/features/canvas/components/MemberSearch";
 import {
   useChannelMembers,
   useSetChannelMembers,
-} from "@posthog/ui/features/canvas/hooks/useChannelMembers";
-import type { Channel } from "@posthog/ui/features/canvas/hooks/useChannels";
-import { userDisplayName } from "@posthog/ui/features/canvas/utils/userDisplay";
-import { SettingsCard } from "@posthog/ui/features/settings/components/SettingsCard";
-import { toast } from "@posthog/ui/primitives/toast";
+} from "@flind/ui/features/canvas/hooks/useChannelMembers";
+import type { Channel } from "@flind/ui/features/canvas/hooks/useChannels";
+import { userDisplayName } from "@flind/ui/features/canvas/utils/userDisplay";
+import { SettingsCard } from "@flind/ui/features/settings/components/SettingsCard";
+import { toast } from "@flind/ui/primitives/toast";
 
 export function SpaceMembersSettings({ channel }: { channel: Channel }) {
   const { members, isLoading, error } = useChannelMembers(channel.id);

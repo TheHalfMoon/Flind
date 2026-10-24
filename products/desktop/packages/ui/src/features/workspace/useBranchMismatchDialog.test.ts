@@ -29,7 +29,7 @@ vi.mock("../git-interaction/gitCacheKeys", () => ({
   invalidateGitBranchQueries: vi.fn(),
 }));
 
-vi.mock("@posthog/host-router/react", () => ({
+vi.mock("@flind/host-router/react", () => ({
   useHostTRPC: () => ({
     git: {
       checkoutBranch: {
@@ -62,7 +62,7 @@ vi.mock("../../shell/analytics", () => ({
   track: (...args: unknown[]) => mockTrack(...args),
 }));
 
-import { ANALYTICS_EVENTS } from "@posthog/shared";
+import { ANALYTICS_EVENTS } from "@flind/shared";
 import { useBranchMismatchDialog } from "./useBranchMismatchDialog";
 
 function renderDialog(overrides?: { shouldWarn?: boolean }) {

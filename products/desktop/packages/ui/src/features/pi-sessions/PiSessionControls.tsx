@@ -3,7 +3,7 @@ import { CaretDown, Lightning, PiIcon, Stack } from "@phosphor-icons/react";
 import type {
   PiModelSelection,
   PiThinkingLevel,
-} from "@posthog/core/pi-runtime/piSessionController";
+} from "@flind/core/pi-runtime/piSessionController";
 import {
   Button,
   DropdownMenu,
@@ -17,19 +17,19 @@ import {
   DropdownMenuTrigger,
   MenuLabel,
 } from "@flind/quill";
-import { customModelMeta } from "@posthog/shared";
+import { customModelMeta } from "@flind/shared";
 import {
   type AgentHarness,
   HarnessSubmenu,
-} from "@posthog/ui/features/sessions/components/HarnessSubmenu";
+} from "@flind/ui/features/sessions/components/HarnessSubmenu";
 import {
   ModelCostChip,
   ModelCostFooter,
-} from "@posthog/ui/features/sessions/components/ModelCostChip";
-import { ModelSelectList } from "@posthog/ui/features/sessions/components/ModelSelectList";
-import type { MessagingMode } from "@posthog/ui/features/sessions/messagingModeStore";
-import { toPickerOption } from "@posthog/ui/features/sessions/modelPickerOption";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
+} from "@flind/ui/features/sessions/components/ModelCostChip";
+import { ModelSelectList } from "@flind/ui/features/sessions/components/ModelSelectList";
+import type { MessagingMode } from "@flind/ui/features/sessions/messagingModeStore";
+import { toPickerOption } from "@flind/ui/features/sessions/modelPickerOption";
+import { Spinner } from "@flind/ui/primitives/Spinner";
 import { useState } from "react";
 
 type PiModelOption = PiModelSelection & { name?: string };

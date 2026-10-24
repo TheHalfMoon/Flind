@@ -1,5 +1,5 @@
-import { useWorkspaceTRPC } from "@posthog/workspace-client/trpc";
-import type { FileWatcherEvent } from "@posthog/workspace-client/types";
+import { useWorkspaceTRPC } from "@flind/workspace-client/trpc";
+import type { FileWatcherEvent } from "@flind/workspace-client/types";
 import { useSubscription } from "@trpc/tanstack-react-query";
 
 export type { FileWatcherEvent };

@@ -3,7 +3,7 @@ import {
   MagnifyingGlassPlus,
   Trash,
 } from "@phosphor-icons/react";
-import { resizeCellsForLayout } from "@posthog/core/command-center/grid";
+import { resizeCellsForLayout } from "@flind/core/command-center/grid";
 import { Flex, Select, Text } from "@radix-ui/themes";
 import { useCallback } from "react";
 import {

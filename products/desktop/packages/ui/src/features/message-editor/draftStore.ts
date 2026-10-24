@@ -1,5 +1,5 @@
-import type { EditorContent } from "@posthog/core/message-editor/content";
-import { electronStorage } from "@posthog/ui/shell/rendererStorage";
+import type { EditorContent } from "@flind/core/message-editor/content";
+import { electronStorage } from "@flind/ui/shell/rendererStorage";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { immer } from "zustand/middleware/immer";

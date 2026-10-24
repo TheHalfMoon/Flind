@@ -1,5 +1,5 @@
-import { getAuthIdentity } from "@posthog/core/auth/authIdentity";
-import type { AuthState } from "@posthog/core/auth/schemas";
+import { getAuthIdentity } from "@flind/core/auth/authIdentity";
+import type { AuthState } from "@flind/core/auth/schemas";
 import { create } from "zustand";
 
 export { getAuthIdentity };

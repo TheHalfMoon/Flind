@@ -11,19 +11,19 @@ import {
   UsersThreeIcon,
   XIcon,
 } from "@phosphor-icons/react";
-import { useHostTRPC } from "@posthog/host-router/react";
+import { useHostTRPC } from "@flind/host-router/react";
 import { Button } from "@flind/quill";
-import { DetailSection } from "@posthog/ui/features/inbox/components/DetailSection";
-import { InboxDetailFrameView } from "@posthog/ui/features/inbox/components/InboxDetailFrameView";
+import { DetailSection } from "@flind/ui/features/inbox/components/DetailSection";
+import { InboxDetailFrameView } from "@flind/ui/features/inbox/components/InboxDetailFrameView";
 import {
   inboxStoryImplementations,
   inboxStoryReport,
   inboxStorySignal,
-} from "@posthog/ui/features/inbox/components/inboxStoryFixtures";
-import { ReportVerdictBanner } from "@posthog/ui/features/inbox/components/ReportVerdictBanner";
-import { SignalsList } from "@posthog/ui/features/inbox/components/SignalsList";
-import { PrDecisionBlock } from "@posthog/ui/features/pr-review/PrDecisionBlock";
-import { PrFilesChangedSection } from "@posthog/ui/features/pr-review/PrFilesChangedSection";
+} from "@flind/ui/features/inbox/components/inboxStoryFixtures";
+import { ReportVerdictBanner } from "@flind/ui/features/inbox/components/ReportVerdictBanner";
+import { SignalsList } from "@flind/ui/features/inbox/components/SignalsList";
+import { PrDecisionBlock } from "@flind/ui/features/pr-review/PrDecisionBlock";
+import { PrFilesChangedSection } from "@flind/ui/features/pr-review/PrFilesChangedSection";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useQueryClient } from "@tanstack/react-query";
 import type { ReactNode } from "react";

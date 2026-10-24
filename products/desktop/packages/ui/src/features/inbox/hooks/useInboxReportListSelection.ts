@@ -1,4 +1,4 @@
-import { useInboxReportSelectionStore } from "@posthog/ui/features/inbox/stores/inboxReportSelectionStore";
+import { useInboxReportSelectionStore } from "@flind/ui/features/inbox/stores/inboxReportSelectionStore";
 import { type MouseEvent, useCallback, useEffect, useMemo } from "react";
 
 /**

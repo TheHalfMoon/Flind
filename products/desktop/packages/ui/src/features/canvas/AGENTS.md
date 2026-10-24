@@ -120,7 +120,7 @@ changing breadcrumbs, canvas naming, or the canvas generation harness. The root
   mention row, and remote search — and each calls it, because only the first
   goes through `useTaskChannels`.
   Recognition of a full channel object goes through `isPersonalChannel`/`isGeneralChannel`
-  (`@posthog/core/canvas/channelName`), which check `system_role` first and fall back to
+  (`@flind/core/canvas/channelName`), which check `system_role` first and fall back to
   `channel_type`/name for a server that predates the field — never the name alone.
 - **The lock follows what a space is, not what it is called.** `channelGlyph`
   takes a `personal` flag; a caller holding the channel object should pass
@@ -333,7 +333,7 @@ changing breadcrumbs, canvas naming, or the canvas generation harness. The root
   appends an immutable source version, guarded by `expected_current_version_id`
   so concurrent publishes conflict (409) instead of clobbering. The rendered
   output is the published build's artifact, served from the isolated artifact
-  origin. See `@posthog/core/canvas/dashboardsService.ts` and
+  origin. See `@flind/core/canvas/dashboardsService.ts` and
   `dashboardSchemas.ts` for the record/source/version shapes.
 - **Two components render a canvas, and `FreeformCanvasView` picks between
   them.** A build's artifact renders in `BuiltCanvas`; a canvas with no

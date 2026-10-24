@@ -1,5 +1,5 @@
-import type { McpUiResource } from "@posthog/core/mcp-apps/schemas";
-import type { ToolCall } from "@posthog/ui/features/sessions/types";
+import type { McpUiResource } from "@flind/core/mcp-apps/schemas";
+import type { ToolCall } from "@flind/ui/features/sessions/types";
 import { renderHook } from "@testing-library/react";
 import { act } from "react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
@@ -48,7 +48,7 @@ vi.mock("@modelcontextprotocol/ext-apps/app-bridge", () => ({
   PostMessageTransport: vi.fn(),
 }));
 
-vi.mock("@posthog/ui/router/useAppView", () => ({
+vi.mock("@flind/ui/router/useAppView", () => ({
   getAppViewSnapshot: () => ({ type: "default" }),
 }));
 

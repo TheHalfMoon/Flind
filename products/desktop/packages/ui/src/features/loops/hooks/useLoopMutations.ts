@@ -1,6 +1,6 @@
-import type { Schemas } from "@posthog/api-client/generated";
-import { deleteHogFlow } from "@posthog/api-client/hogFlowLoops";
-import type { LoopSchemas } from "@posthog/ui/features/loops/loopSchemas";
+import type { Schemas } from "@flind/api-client/generated";
+import { deleteHogFlow } from "@flind/api-client/hogFlowLoops";
+import type { LoopSchemas } from "@flind/ui/features/loops/loopSchemas";
 import {
   type QueryClient,
   useMutation,

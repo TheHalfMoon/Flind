@@ -1,8 +1,8 @@
 import type { SessionConfigOption } from "@agentclientprotocol/sdk";
-import type { TaskRunDefaults } from "@posthog/api-client/posthog-client";
-import { flattenConfigValues } from "@posthog/core/task-detail/configOptions";
-import { type Adapter, PI_RUNTIME } from "@posthog/shared";
-import { EFFORT_LEVELS } from "@posthog/shared/domain-types";
+import type { TaskRunDefaults } from "@flind/api-client/posthog-client";
+import { flattenConfigValues } from "@flind/core/task-detail/configOptions";
+import { type Adapter, PI_RUNTIME } from "@flind/shared";
+import { EFFORT_LEVELS } from "@flind/shared/domain-types";
 
 export const CONTEXT_WINDOW_OPTION_CATEGORY = "_context_window";
 export const FAST_MODE_OPTION_CATEGORY = "_fast_mode";

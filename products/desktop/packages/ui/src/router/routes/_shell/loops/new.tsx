@@ -1,4 +1,4 @@
-import { openNewLoop } from "@posthog/ui/features/loops/loopWizardDialogStore";
+import { openNewLoop } from "@flind/ui/features/loops/loopWizardDialogStore";
 import { createFileRoute, Navigate } from "@tanstack/react-router";
 import { useEffect } from "react";
 

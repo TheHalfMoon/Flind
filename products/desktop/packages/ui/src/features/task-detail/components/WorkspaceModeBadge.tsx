@@ -1,5 +1,5 @@
 import { Cloud, GitFork, HardDrives } from "@phosphor-icons/react";
-import type { WorkspaceMode } from "@posthog/shared";
+import type { WorkspaceMode } from "@flind/shared";
 import { Tooltip } from "../../../primitives/Tooltip";
 
 const MODE_META: Record<

@@ -13,7 +13,7 @@ vi.mock("mermaid", () => ({
   },
 }));
 
-vi.mock("@posthog/ui/shell/themeStore", () => ({
+vi.mock("@flind/ui/shell/themeStore", () => ({
   useThemeStore: (selector: (state: { isDarkMode: boolean }) => unknown) =>
     selector({ isDarkMode: false }),
 }));
@@ -39,7 +39,7 @@ vi.mock("../../../auth/authClient", () => ({
   useOptionalAuthenticatedClient: () => null,
 }));
 
-vi.mock("@posthog/ui/features/git-interaction/usePrDetails", () => ({
+vi.mock("@flind/ui/features/git-interaction/usePrDetails", () => ({
   usePrDetails: () => ({
     meta: {
       state: "open",
@@ -55,11 +55,11 @@ vi.mock("@posthog/ui/features/git-interaction/usePrDetails", () => ({
   }),
 }));
 
-vi.mock("@posthog/ui/features/pr-review/usePrChecks", () => ({
+vi.mock("@flind/ui/features/pr-review/usePrChecks", () => ({
   usePrChecks: () => ({ data: [], isLoading: false }),
 }));
 
-vi.mock("@posthog/ui/features/sidebar/useCwd", () => ({
+vi.mock("@flind/ui/features/sidebar/useCwd", () => ({
   useCwd: () => "/repo",
 }));
 
@@ -75,15 +75,15 @@ const { useWorkspaceFileAsBase64 } = vi.hoisted(() => ({
     }
   >(() => ({ data: null, isPending: false })),
 }));
-vi.mock("@posthog/ui/features/code-editor/hooks/useFileContent", () => ({
+vi.mock("@flind/ui/features/code-editor/hooks/useFileContent", () => ({
   useWorkspaceFileAsBase64,
 }));
 
 import {
   ANONYMOUS_AUTH_STATE,
   useAuthStore,
-} from "@posthog/ui/features/auth/store";
-import { SessionTaskIdProvider } from "@posthog/ui/features/sessions/useSessionTaskId";
+} from "@flind/ui/features/auth/store";
+import { SessionTaskIdProvider } from "@flind/ui/features/sessions/useSessionTaskId";
 import {
   ChatMarkdown,
   ChatStreamingMarkdown,

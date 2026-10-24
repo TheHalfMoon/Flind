@@ -1,7 +1,7 @@
-import { requestErrorStatus } from "@posthog/api-client/fetcher";
-import { useAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { GITHUB_INSTALL_REQUESTS_QUERY_KEY } from "@posthog/ui/features/integrations/useGithubInstallRequests";
-import { toast } from "@posthog/ui/primitives/toast";
+import { requestErrorStatus } from "@flind/api-client/fetcher";
+import { useAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { GITHUB_INSTALL_REQUESTS_QUERY_KEY } from "@flind/ui/features/integrations/useGithubInstallRequests";
+import { toast } from "@flind/ui/primitives/toast";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 export function useDismissGithubInstallRequest() {

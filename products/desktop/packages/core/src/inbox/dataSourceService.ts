@@ -1,4 +1,4 @@
-import type { PostHogAPIClient } from "@posthog/api-client/posthog-client";
+import type { PostHogAPIClient } from "@flind/api-client/posthog-client";
 import { inject, injectable } from "inversify";
 import { LINEAR_OAUTH_FLOW, type LinearOAuthFlow } from "./identifiers";
 

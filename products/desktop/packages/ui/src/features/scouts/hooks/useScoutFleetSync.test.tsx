@@ -1,4 +1,4 @@
-import { ScoutRequestError } from "@posthog/api-client/posthog-client";
+import { ScoutRequestError } from "@flind/api-client/posthog-client";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { renderHook, waitFor } from "@testing-library/react";
 import type { ReactNode } from "react";
@@ -6,15 +6,15 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 
 const syncScoutConfigs = vi.hoisted(() => vi.fn());
 
-vi.mock("@posthog/ui/features/auth/store", () => ({
+vi.mock("@flind/ui/features/auth/store", () => ({
   useAuthStateValue: (
     select: (state: { currentProjectId: number | null }) => unknown,
   ) => select({ currentProjectId: 42 }),
 }));
-vi.mock("@posthog/ui/features/auth/authClient", () => ({
+vi.mock("@flind/ui/features/auth/authClient", () => ({
   useOptionalAuthenticatedClient: () => ({ syncScoutConfigs }),
 }));
-vi.mock("@posthog/ui/features/auth/useCurrentUser", () => ({
+vi.mock("@flind/ui/features/auth/useCurrentUser", () => ({
   AUTH_SCOPED_QUERY_META: {},
 }));
 

@@ -1,5 +1,5 @@
 import { Host, Image as SymbolImage } from "@expo/ui/swift-ui";
-import { getReasoningEffortOptions } from "@posthog/shared";
+import { getReasoningEffortOptions } from "@flind/shared";
 import * as Haptics from "expo-haptics";
 import { useFocusEffect, useRouter } from "expo-router";
 import { useCallback, useEffect, useRef, useState } from "react";

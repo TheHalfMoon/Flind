@@ -1,16 +1,16 @@
-import { useService } from "@posthog/di/react";
-import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { AUTH_SCOPED_QUERY_META } from "@posthog/ui/features/auth/useCurrentUser";
+import { useService } from "@flind/di/react";
+import { useOptionalAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { AUTH_SCOPED_QUERY_META } from "@flind/ui/features/auth/useCurrentUser";
 import {
   BROWSER_TABS_CLIENT,
   type BrowserTabsClient,
-} from "@posthog/ui/features/browser-tabs/browserTabsClient";
-import { focusOrOpenBrowserTab } from "@posthog/ui/features/browser-tabs/imperativeTabNavigation";
-import { reportKeys } from "@posthog/ui/features/inbox/hooks/useInboxReports";
-import { toast } from "@posthog/ui/primitives/toast";
-import { navigateToReport } from "@posthog/ui/router/navigationBridge";
-import { getRouterOrNull } from "@posthog/ui/router/routerRef";
-import { logger } from "@posthog/ui/shell/logger";
+} from "@flind/ui/features/browser-tabs/browserTabsClient";
+import { focusOrOpenBrowserTab } from "@flind/ui/features/browser-tabs/imperativeTabNavigation";
+import { reportKeys } from "@flind/ui/features/inbox/hooks/useInboxReports";
+import { toast } from "@flind/ui/primitives/toast";
+import { navigateToReport } from "@flind/ui/router/navigationBridge";
+import { getRouterOrNull } from "@flind/ui/router/routerRef";
+import { logger } from "@flind/ui/shell/logger";
 import { useQueryClient } from "@tanstack/react-query";
 import { useCallback } from "react";
 

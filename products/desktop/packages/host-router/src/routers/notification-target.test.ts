@@ -1,4 +1,4 @@
-import type { NotificationTarget } from "@posthog/platform/notifications";
+import type { NotificationTarget } from "@flind/platform/notifications";
 import { describe, expect, it } from "vitest";
 import type { z } from "zod";
 import { notificationTargetSchema } from "./notification.router";

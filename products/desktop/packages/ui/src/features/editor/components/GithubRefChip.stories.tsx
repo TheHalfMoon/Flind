@@ -2,11 +2,11 @@ import { GitPullRequestIcon } from "@phosphor-icons/react";
 import {
   GithubRefChip,
   GithubRefChipLink,
-} from "@posthog/ui/features/editor/components/GithubRefChip";
+} from "@flind/ui/features/editor/components/GithubRefChip";
 import {
   PrRefChip,
   type PrRefDetails,
-} from "@posthog/ui/features/editor/components/PrRefChip";
+} from "@flind/ui/features/editor/components/PrRefChip";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {

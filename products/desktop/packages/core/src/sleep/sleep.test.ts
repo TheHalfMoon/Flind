@@ -1,5 +1,5 @@
-import type { IPowerManager } from "@posthog/platform/power-manager";
-import type { IWorkspaceSettings } from "@posthog/platform/workspace-settings";
+import type { IPowerManager } from "@flind/platform/power-manager";
+import type { IWorkspaceSettings } from "@flind/platform/workspace-settings";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { SleepService } from "./sleep";
 

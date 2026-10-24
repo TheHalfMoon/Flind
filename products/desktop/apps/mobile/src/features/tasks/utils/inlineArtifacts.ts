@@ -1,7 +1,7 @@
 import {
   detectInlineArtifact as detectFromCall,
   type InlineArtifact,
-} from "@posthog/core/sessions/inlineArtifacts";
+} from "@flind/core/sessions/inlineArtifacts";
 
 export type { InlineArtifact };
 

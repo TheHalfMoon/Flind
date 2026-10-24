@@ -1,9 +1,9 @@
 import type {
   ReportVerdict,
   ReportVerdictTone,
-} from "@posthog/core/inbox/reportVerdict";
+} from "@flind/core/inbox/reportVerdict";
 import { cn } from "@flind/quill";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
+import { Spinner } from "@flind/ui/primitives/Spinner";
 import type { ReactNode } from "react";
 
 const TONE_CLASS: Record<ReportVerdictTone, string> = {

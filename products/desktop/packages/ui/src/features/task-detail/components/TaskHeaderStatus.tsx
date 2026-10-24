@@ -1,25 +1,25 @@
 import { PushPin } from "@phosphor-icons/react";
 import { Button } from "@flind/quill";
-import type { WorkspaceMode } from "@posthog/shared";
-import { getErrorMessage } from "@posthog/shared";
-import type { Task } from "@posthog/shared/domain-types";
-import { useTaskStatusInput } from "@posthog/ui/features/canvas/hooks/useChannelTaskStatus";
+import type { WorkspaceMode } from "@flind/shared";
+import { getErrorMessage } from "@flind/shared";
+import type { Task } from "@flind/shared/domain-types";
+import { useTaskStatusInput } from "@flind/ui/features/canvas/hooks/useChannelTaskStatus";
 import {
   RowTooltip,
   TaskStatusDot,
   TaskStatusTooltips,
-} from "@posthog/ui/features/sidebar/components/items/TaskStatusDot";
+} from "@flind/ui/features/sidebar/components/items/TaskStatusDot";
 import {
   type TaskBadge,
   type TaskStatusInput,
   TONE_ICON_VAR,
   taskBadges,
   taskDot,
-} from "@posthog/ui/features/sidebar/components/items/taskStatusVocabulary";
-import { usePinnedTasks } from "@posthog/ui/features/sidebar/usePinnedTasks";
-import { WorkspaceModeBadge } from "@posthog/ui/features/task-detail/components/WorkspaceModeBadge";
-import { toast } from "@posthog/ui/primitives/toast";
-import { openExternalUrl } from "@posthog/ui/shell/openExternal";
+} from "@flind/ui/features/sidebar/components/items/taskStatusVocabulary";
+import { usePinnedTasks } from "@flind/ui/features/sidebar/usePinnedTasks";
+import { WorkspaceModeBadge } from "@flind/ui/features/task-detail/components/WorkspaceModeBadge";
+import { toast } from "@flind/ui/primitives/toast";
+import { openExternalUrl } from "@flind/ui/shell/openExternal";
 import { type ReactNode, useState } from "react";
 
 // What quill's `icon-sm` button renders a glyph at. The marks that aren't

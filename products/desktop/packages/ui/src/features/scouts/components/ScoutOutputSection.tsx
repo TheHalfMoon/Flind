@@ -2,13 +2,13 @@ import type {
   LinkedSignalReport,
   ScoutEmission,
   ScoutRun,
-} from "@posthog/api-client/posthog-client";
-import { scoutRunOutputCount } from "@posthog/core/scouts/scoutPresentation";
-import { SCOUT_RUNS_WINDOW_LABEL } from "@posthog/core/scouts/scoutRunsWindow";
-import { ANALYTICS_EVENTS } from "@posthog/shared";
-import { RelativeTimestamp } from "@posthog/ui/primitives/RelativeTimestamp";
-import { track } from "@posthog/ui/shell/analytics";
-import { getPostHogUrl } from "@posthog/ui/utils/urls";
+} from "@flind/api-client/posthog-client";
+import { scoutRunOutputCount } from "@flind/core/scouts/scoutPresentation";
+import { SCOUT_RUNS_WINDOW_LABEL } from "@flind/core/scouts/scoutRunsWindow";
+import { ANALYTICS_EVENTS } from "@flind/shared";
+import { RelativeTimestamp } from "@flind/ui/primitives/RelativeTimestamp";
+import { track } from "@flind/ui/shell/analytics";
+import { getPostHogUrl } from "@flind/ui/utils/urls";
 import { useMemo, useState } from "react";
 import { useScoutEmissionReports } from "../hooks/useScoutEmissionReports";
 import { useScoutRunEmissions } from "../hooks/useScoutRunEmissions";

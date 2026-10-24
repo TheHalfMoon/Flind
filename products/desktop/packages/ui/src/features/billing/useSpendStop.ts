@@ -1,14 +1,14 @@
-import { formatUsd } from "@posthog/core/billing/spendAnalysisFormat";
+import { formatUsd } from "@flind/core/billing/spendAnalysisFormat";
 import {
   evaluateSpendLimits,
   maskStops,
   type SpendLimitCrossing,
   spendPeriodLabel,
   utcDayIso,
-} from "@posthog/core/billing/spendLimits";
-import { useSpendTotals } from "@posthog/ui/features/billing/useSpendTotals";
-import { useSpendLimitAvailable } from "@posthog/ui/features/billing/useUserSpendLimit";
-import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
+} from "@flind/core/billing/spendLimits";
+import { useSpendTotals } from "@flind/ui/features/billing/useSpendTotals";
+import { useSpendLimitAvailable } from "@flind/ui/features/billing/useUserSpendLimit";
+import { useSettingsStore } from "@flind/ui/features/settings/settingsStore";
 
 /**
  * The user's own stop line currently holding new agent work, or null. Null

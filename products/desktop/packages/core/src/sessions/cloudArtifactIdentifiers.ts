@@ -1,7 +1,7 @@
 import type {
   TaskRunArtifactMetadata,
   UploadableSkillSource,
-} from "@posthog/shared";
+} from "@flind/shared";
 
 export interface CloudArtifactUploadRequest {
   name: string;

@@ -6,13 +6,13 @@ import {
   isDefaultSelectOption,
   isRestrictedModelOption,
   selectOptionDocsUrl,
-} from "@posthog/shared";
+} from "@flind/shared";
 import {
   accessFlagForModel,
   DEFAULT_MODEL_BY_RUNTIME_ADAPTER,
   labelForModel,
-} from "@posthog/shared/model-catalog";
-import type { LoopSchemas } from "@posthog/ui/features/loops/loopSchemas";
+} from "@flind/shared/model-catalog";
+import type { LoopSchemas } from "@flind/ui/features/loops/loopSchemas";
 import type { ModelRolloutFlags } from "../sessions/modelOptionFilters";
 
 export interface LoopModelOption {

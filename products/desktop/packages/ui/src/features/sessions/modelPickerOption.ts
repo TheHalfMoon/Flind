@@ -2,8 +2,8 @@ import {
   type ModelPickerOption,
   type ModelPickerOptionBase,
   toModelPickerOption,
-} from "@posthog/core/billing/modelPricing";
-import { logger } from "@posthog/ui/shell/logger";
+} from "@flind/core/billing/modelPricing";
+import { logger } from "@flind/ui/shell/logger";
 
 const log = logger.scope("model-picker");
 

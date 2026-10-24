@@ -1,4 +1,4 @@
-import { customModelMeta } from "@posthog/shared";
+import { customModelMeta } from "@flind/shared";
 import { describe, expect, it } from "vitest";
 import {
   estimateUncachedInputCost,

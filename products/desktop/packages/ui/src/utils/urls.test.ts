@@ -1,4 +1,4 @@
-import { getBillingUrl, getPostHogUrl } from "@posthog/ui/utils/urls";
+import { getBillingUrl, getPostHogUrl } from "@flind/ui/utils/urls";
 import { describe, expect, it } from "vitest";
 
 describe("getPostHogUrl", () => {

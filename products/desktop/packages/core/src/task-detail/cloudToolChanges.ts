@@ -6,8 +6,8 @@ import {
   type AcpMessage,
   isBinaryFile,
   isJsonRpcNotification,
-} from "@posthog/shared";
-import type { ChangedFile } from "@posthog/shared/domain-types";
+} from "@flind/shared";
+import type { ChangedFile } from "@flind/shared/domain-types";
 import { createAppendOnlyTracker } from "../sessions/appendOnlyTracker";
 
 function getContentText(

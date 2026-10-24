@@ -1,6 +1,6 @@
-import { publicProcedure, router } from "@posthog/host-trpc/trpc";
-import type { ArchiveService } from "@posthog/workspace-server/services/archive/archive";
-import { ARCHIVE_SERVICE } from "@posthog/workspace-server/services/archive/identifiers";
+import { publicProcedure, router } from "@flind/host-trpc/trpc";
+import type { ArchiveService } from "@flind/workspace-server/services/archive/archive";
+import { ARCHIVE_SERVICE } from "@flind/workspace-server/services/archive/identifiers";
 import {
   archivedTaskIdsOutput,
   archiveScopeInput,
@@ -11,7 +11,7 @@ import {
   listArchivedTasksOutput,
   unarchiveTaskInput,
   unarchiveTaskOutput,
-} from "@posthog/workspace-server/services/archive/schemas";
+} from "@flind/workspace-server/services/archive/schemas";
 
 export const archiveRouter = router({
   archive: publicProcedure

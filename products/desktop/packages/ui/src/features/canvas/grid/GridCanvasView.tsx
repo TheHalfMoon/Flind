@@ -2,19 +2,19 @@ import { SidebarSimpleIcon } from "@phosphor-icons/react";
 import type {
   GridPlacement,
   LayoutOperation,
-} from "@posthog/core/canvas/gridLayoutSchemas";
+} from "@flind/core/canvas/gridLayoutSchemas";
 import { Button, Text } from "@flind/quill";
-import { canvasCommentTaskId } from "@posthog/ui/features/canvas/freeform/canvasCommentTask";
-import { useChannels } from "@posthog/ui/features/canvas/hooks/useChannels";
+import { canvasCommentTaskId } from "@flind/ui/features/canvas/freeform/canvasCommentTask";
+import { useChannels } from "@flind/ui/features/canvas/hooks/useChannels";
 import {
   useCanvasVersions,
   useDashboard,
-} from "@posthog/ui/features/canvas/hooks/useDashboards";
-import { useGenerateFreeformCanvas } from "@posthog/ui/features/canvas/hooks/useGenerateFreeformCanvas";
-import { useCanvasChatPanelStore } from "@posthog/ui/features/canvas/stores/canvasChatPanelStore";
-import { ChromeBar } from "@posthog/ui/primitives/ChromeBar";
-import { LoadingState } from "@posthog/ui/primitives/LoadingState";
-import { ResizableSidebar } from "@posthog/ui/primitives/ResizableSidebar";
+} from "@flind/ui/features/canvas/hooks/useDashboards";
+import { useGenerateFreeformCanvas } from "@flind/ui/features/canvas/hooks/useGenerateFreeformCanvas";
+import { useCanvasChatPanelStore } from "@flind/ui/features/canvas/stores/canvasChatPanelStore";
+import { ChromeBar } from "@flind/ui/primitives/ChromeBar";
+import { LoadingState } from "@flind/ui/primitives/LoadingState";
+import { ResizableSidebar } from "@flind/ui/primitives/ResizableSidebar";
 import { useCallback, useMemo, useState } from "react";
 import { GridChatPanel, type GridChatTarget } from "./GridChatPanel";
 import { GridSurface } from "./GridSurface";

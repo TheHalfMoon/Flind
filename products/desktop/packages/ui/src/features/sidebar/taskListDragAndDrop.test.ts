@@ -1,4 +1,4 @@
-import type { TaskData } from "@posthog/core/sidebar/sidebarData.types";
+import type { TaskData } from "@flind/core/sidebar/sidebarData.types";
 import { describe, expect, it } from "vitest";
 import {
   getPinDropAction,

@@ -1,4 +1,4 @@
-import { useCurrentChannelStore } from "@posthog/ui/features/canvas/stores/currentChannelStore";
+import { useCurrentChannelStore } from "@flind/ui/features/canvas/stores/currentChannelStore";
 import { create } from "zustand";
 
 /**

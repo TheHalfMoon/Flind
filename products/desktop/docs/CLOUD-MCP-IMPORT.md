@@ -32,7 +32,7 @@ private-network URLs) need the desktop **relay** — see
    (`packages/workspace-server/src/services/local-mcp/local-mcp.ts`) reads
    `~/.claude.json` through `loadUserClaudeJsonMcpServerEntries` (extracted
    from the Claude adapter's loader so both share one parser) and normalizes
-   each entry to a `LocalMcpServerDescriptor` (`@posthog/shared`). stdio `env`
+   each entry to a `LocalMcpServerDescriptor` (`@flind/shared`). stdio `env`
    values are dropped at this boundary — they routinely hold secrets the
    renderer has no use for.
 

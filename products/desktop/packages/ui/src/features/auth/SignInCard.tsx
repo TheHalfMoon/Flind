@@ -1,5 +1,5 @@
-import type { CloudRegion } from "@posthog/shared";
-import { ProductWordmark } from "@posthog/ui/primitives/ProductWordmark";
+import type { CloudRegion } from "@flind/shared";
+import { ProductWordmark } from "@flind/ui/primitives/ProductWordmark";
 import { OAuthControls } from "./OAuthControls";
 
 interface SignInCardProps {

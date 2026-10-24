@@ -1,4 +1,4 @@
-import { isBashModeText } from "@posthog/core/message-editor/paste";
+import { isBashModeText } from "@flind/core/message-editor/paste";
 import type { Editor } from "@tiptap/core";
 import {
   Fragment,

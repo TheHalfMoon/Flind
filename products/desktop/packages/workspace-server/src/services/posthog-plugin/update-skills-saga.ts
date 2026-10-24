@@ -9,7 +9,7 @@ import {
   writeFile,
 } from "node:fs/promises";
 import { basename, dirname, join } from "node:path";
-import { Saga } from "@posthog/shared";
+import { Saga } from "@flind/shared";
 import { extractZip, unzipAsync } from "./extract-zip";
 
 /**

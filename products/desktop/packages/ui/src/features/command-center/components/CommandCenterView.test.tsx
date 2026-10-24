@@ -7,7 +7,7 @@ const mocks = vi.hoisted(() => ({
   timestampsReady: false,
 }));
 
-vi.mock("@posthog/ui/shell/analytics", () => ({ track: vi.fn() }));
+vi.mock("@flind/ui/shell/analytics", () => ({ track: vi.fn() }));
 vi.mock("../../../hooks/useSetHeaderContent", () => ({
   useSetHeaderContent: vi.fn(),
 }));

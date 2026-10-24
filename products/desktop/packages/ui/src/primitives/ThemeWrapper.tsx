@@ -1,4 +1,4 @@
-import { useThemeStore } from "@posthog/ui/shell/themeStore";
+import { useThemeStore } from "@flind/ui/shell/themeStore";
 import { Theme } from "@radix-ui/themes";
 import type React from "react";
 import { useEffect, useRef } from "react";

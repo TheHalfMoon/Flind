@@ -1,4 +1,4 @@
-import { isContentlessTask } from "@posthog/shared/domain-types";
+import { isContentlessTask } from "@flind/shared/domain-types";
 
 export type TaskActivitySortMode = "created" | "updated";
 

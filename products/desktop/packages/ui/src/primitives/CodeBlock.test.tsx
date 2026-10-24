@@ -1,17 +1,17 @@
-import { CodeBlock } from "@posthog/ui/primitives/CodeBlock";
-import { HighlightedCode } from "@posthog/ui/primitives/HighlightedCode";
+import { CodeBlock } from "@flind/ui/primitives/CodeBlock";
+import { HighlightedCode } from "@flind/ui/primitives/HighlightedCode";
 import { Theme } from "@radix-ui/themes";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import type { ReactElement } from "react";
 import { describe, expect, it, vi } from "vitest";
 
-vi.mock("@posthog/ui/shell/themeStore", () => ({
+vi.mock("@flind/ui/shell/themeStore", () => ({
   useThemeStore: (selector: (state: { isDarkMode: boolean }) => unknown) =>
     selector({ isDarkMode: false }),
 }));
 
-vi.mock("@posthog/ui/utils/syntax-highlight", () => ({
+vi.mock("@flind/ui/utils/syntax-highlight", () => ({
   highlightSyntax: () => null,
 }));
 

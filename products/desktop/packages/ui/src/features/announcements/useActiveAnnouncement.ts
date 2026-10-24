@@ -1,6 +1,6 @@
-import { useHostTRPC } from "@posthog/host-router/react";
-import { ANNOUNCEMENTS_FLAG } from "@posthog/shared";
-import { logger } from "@posthog/ui/shell/logger";
+import { useHostTRPC } from "@flind/host-router/react";
+import { ANNOUNCEMENTS_FLAG } from "@flind/shared";
+import { logger } from "@flind/ui/shell/logger";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useFeatureFlag } from "../feature-flags/useFeatureFlag";

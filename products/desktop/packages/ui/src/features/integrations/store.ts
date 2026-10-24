@@ -1,10 +1,10 @@
 import {
   classifyIntegrations,
   type Integration,
-} from "@posthog/core/integrations/selectors";
+} from "@flind/core/integrations/selectors";
 import { create } from "zustand";
 
-export type { Integration } from "@posthog/core/integrations/selectors";
+export type { Integration } from "@flind/core/integrations/selectors";
 
 interface IntegrationStore {
   integrations: Integration[];

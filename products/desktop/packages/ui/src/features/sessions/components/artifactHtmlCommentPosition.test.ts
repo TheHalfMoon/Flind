@@ -1,4 +1,4 @@
-import type { EditorSelection } from "@posthog/ui/features/code-editor/components/CodeMirrorEditor";
+import type { EditorSelection } from "@flind/ui/features/code-editor/components/CodeMirrorEditor";
 import { describe, expect, it } from "vitest";
 import { withSelectionPosition } from "./artifactHtmlCommentPosition";
 

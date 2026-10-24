@@ -1,4 +1,4 @@
-import type { AutoresearchDraftConfig } from "@posthog/core/autoresearch/schemas";
+import type { AutoresearchDraftConfig } from "@flind/core/autoresearch/schemas";
 import { create } from "zustand";
 
 /**

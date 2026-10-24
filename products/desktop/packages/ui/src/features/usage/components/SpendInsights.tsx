@@ -1,11 +1,11 @@
 import { Sparkle } from "@phosphor-icons/react";
-import { windowDays } from "@posthog/core/billing/spendAnalysisFormat";
-import { buildAnalysisPrompt } from "@posthog/core/billing/spendAnalysisPrompt";
-import type { SpendAnalysisResponse } from "@posthog/core/billing/spendAnalysisTypes";
-import { deriveSpendSuggestions } from "@posthog/core/billing/spendSuggestions";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
-import { openTaskInput } from "@posthog/ui/router/useOpenTask";
-import { track } from "@posthog/ui/shell/analytics";
+import { windowDays } from "@flind/core/billing/spendAnalysisFormat";
+import { buildAnalysisPrompt } from "@flind/core/billing/spendAnalysisPrompt";
+import type { SpendAnalysisResponse } from "@flind/core/billing/spendAnalysisTypes";
+import { deriveSpendSuggestions } from "@flind/core/billing/spendSuggestions";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
+import { openTaskInput } from "@flind/ui/router/useOpenTask";
+import { track } from "@flind/ui/shell/analytics";
 import { Button, Flex, Separator, Text } from "@radix-ui/themes";
 import { UsageCard } from "./UsageCard";
 

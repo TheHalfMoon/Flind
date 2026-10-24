@@ -1,4 +1,4 @@
-import type { SpaceSetupDraft } from "@posthog/core/canvas/spaceSetup";
+import type { SpaceSetupDraft } from "@flind/core/canvas/spaceSetup";
 import {
   Field,
   FieldDescription,
@@ -10,8 +10,8 @@ import {
 import type {
   SpaceGoalDirection,
   SpaceGoalPeriod,
-} from "@posthog/shared/domain-types";
-import { SettingsSegmented } from "@posthog/ui/features/settings/components/SettingsSegmented";
+} from "@flind/shared/domain-types";
+import { SettingsSegmented } from "@flind/ui/features/settings/components/SettingsSegmented";
 
 const DIRECTIONS: { value: SpaceGoalDirection; label: string }[] = [
   { value: "at_least", label: "At least" },

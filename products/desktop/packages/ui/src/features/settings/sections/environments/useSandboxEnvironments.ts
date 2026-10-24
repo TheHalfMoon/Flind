@@ -1,4 +1,4 @@
-import type { SandboxEnvironmentInput } from "@posthog/shared/domain-types";
+import type { SandboxEnvironmentInput } from "@flind/shared/domain-types";
 import { useQueryClient } from "@tanstack/react-query";
 import { useAuthenticatedMutation } from "../../../../hooks/useAuthenticatedMutation";
 import { useAuthenticatedQuery } from "../../../../hooks/useAuthenticatedQuery";

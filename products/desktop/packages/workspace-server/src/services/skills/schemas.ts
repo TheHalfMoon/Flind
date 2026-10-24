@@ -1,4 +1,4 @@
-import type { ExportedSkill as SharedExportedSkill } from "@posthog/shared";
+import type { ExportedSkill as SharedExportedSkill } from "@flind/shared";
 import { z } from "zod";
 
 export const skillSource = z.enum([

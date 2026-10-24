@@ -1,12 +1,12 @@
-import type { SignalReport } from "@posthog/shared/types";
-import { useReportChatPanelStore } from "@posthog/ui/features/inbox/stores/reportChatPanelStore";
-import { navigateToInboxReportDetail } from "@posthog/ui/router/navigationBridge";
+import type { SignalReport } from "@flind/shared/types";
+import { useReportChatPanelStore } from "@flind/ui/features/inbox/stores/reportChatPanelStore";
+import { navigateToInboxReportDetail } from "@flind/ui/router/navigationBridge";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { createEvent, fireEvent, render, screen } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { ReportTriageFocus } from "./ReportTriageFocus";
 
-vi.mock("@posthog/ui/features/auth/authClient", () => ({
+vi.mock("@flind/ui/features/auth/authClient", () => ({
   useOptionalAuthenticatedClient: () => null,
 }));
 
@@ -15,13 +15,13 @@ vi.mock("@tanstack/react-router", async (importOriginal) => ({
   useRouter: () => ({ preloadRoute: vi.fn() }),
 }));
 
-vi.mock("@posthog/ui/router/navigationBridge", () => ({
+vi.mock("@flind/ui/router/navigationBridge", () => ({
   navigateToInboxReportDetail: vi.fn(),
 }));
 
-vi.mock("@posthog/ui/shell/analytics", () => ({ track: vi.fn() }));
+vi.mock("@flind/ui/shell/analytics", () => ({ track: vi.fn() }));
 
-vi.mock("@posthog/ui/features/inbox/components/ReportVerdictBanner", () => ({
+vi.mock("@flind/ui/features/inbox/components/ReportVerdictBanner", () => ({
   ReportVerdictBanner: () => null,
 }));
 

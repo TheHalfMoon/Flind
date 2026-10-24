@@ -1,4 +1,4 @@
-import type { LocalMcpServerDescriptor } from "@posthog/shared";
+import type { LocalMcpServerDescriptor } from "@flind/shared";
 
 export const LOCAL_MCP_SERVICE = Symbol.for("posthog.workspace.localMcp");
 

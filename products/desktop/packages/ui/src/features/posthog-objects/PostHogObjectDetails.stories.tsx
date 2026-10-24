@@ -1,5 +1,5 @@
-import type { EvidencePreview } from "@posthog/api-client/evidence-previews";
-import { PostHogObjectDetails } from "@posthog/ui/features/posthog-objects/PostHogObjectDetails";
+import type { EvidencePreview } from "@flind/api-client/evidence-previews";
+import { PostHogObjectDetails } from "@flind/ui/features/posthog-objects/PostHogObjectDetails";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const preview: EvidencePreview = {

@@ -1,10 +1,10 @@
 import { CaretDown, Play, Plus, Trash } from "@phosphor-icons/react";
-import { useServiceOptional } from "@posthog/di/react";
+import { useServiceOptional } from "@flind/di/react";
 import {
   type INotifications,
   NOTIFICATIONS_SERVICE,
-} from "@posthog/platform/notifications";
-import { type ISpeech, SPEECH_SERVICE } from "@posthog/platform/speech";
+} from "@flind/platform/notifications";
+import { type ISpeech, SPEECH_SERVICE } from "@flind/platform/speech";
 import {
   Button,
   DropdownMenu,
@@ -25,20 +25,20 @@ import {
   ToggleGroup,
   ToggleGroupItem,
 } from "@flind/quill";
-import { ANALYTICS_EVENTS, SPOKEN_NARRATION_FLAG } from "@posthog/shared";
-import type { Task } from "@posthog/shared/domain-types";
-import { useFeatureFlag } from "@posthog/ui/features/feature-flags/useFeatureFlag";
-import { NotificationBus } from "@posthog/ui/features/notifications/notifications";
-import { NotificationDeliveryCard } from "@posthog/ui/features/settings/components/NotificationDeliveryCard";
+import { ANALYTICS_EVENTS, SPOKEN_NARRATION_FLAG } from "@flind/shared";
+import type { Task } from "@flind/shared/domain-types";
+import { useFeatureFlag } from "@flind/ui/features/feature-flags/useFeatureFlag";
+import { NotificationBus } from "@flind/ui/features/notifications/notifications";
+import { NotificationDeliveryCard } from "@flind/ui/features/settings/components/NotificationDeliveryCard";
 import {
   SettingsCard,
   SettingsCardRow,
   SettingsSection,
-} from "@posthog/ui/features/settings/components/SettingsCard";
-import { settingsToggleItemClassName } from "@posthog/ui/features/settings/components/SettingsSegmented";
-import { SettingsSelect } from "@posthog/ui/features/settings/components/SettingsSelect";
-import { AddCustomSoundDialog } from "@posthog/ui/features/settings/sections/AddCustomSoundDialog";
-import { TipsSection } from "@posthog/ui/features/settings/sections/TipsSettings";
+} from "@flind/ui/features/settings/components/SettingsCard";
+import { settingsToggleItemClassName } from "@flind/ui/features/settings/components/SettingsSegmented";
+import { SettingsSelect } from "@flind/ui/features/settings/components/SettingsSelect";
+import { AddCustomSoundDialog } from "@flind/ui/features/settings/sections/AddCustomSoundDialog";
+import { TipsSection } from "@flind/ui/features/settings/sections/TipsSettings";
 import {
   type CompletionSound,
   type CustomSound,
@@ -47,18 +47,18 @@ import {
   notificationsPaused,
   type SpokenFocusMode,
   useSettingsStore,
-} from "@posthog/ui/features/settings/settingsStore";
+} from "@flind/ui/features/settings/settingsStore";
 import {
   type ISpeechKeyStore,
   SPEECH_KEY_STORE,
-} from "@posthog/ui/features/settings/speechKeyStore";
-import { useTasks } from "@posthog/ui/features/tasks/useTasks";
-import { Tooltip } from "@posthog/ui/primitives/Tooltip";
-import { toast } from "@posthog/ui/primitives/toast";
-import { track } from "@posthog/ui/shell/analytics";
-import { useHostCapabilities } from "@posthog/ui/shell/useHostCapabilities";
-import { formatDurationSeconds } from "@posthog/ui/utils/customSound";
-import { playCompletionSound } from "@posthog/ui/utils/sounds";
+} from "@flind/ui/features/settings/speechKeyStore";
+import { useTasks } from "@flind/ui/features/tasks/useTasks";
+import { Tooltip } from "@flind/ui/primitives/Tooltip";
+import { toast } from "@flind/ui/primitives/toast";
+import { track } from "@flind/ui/shell/analytics";
+import { useHostCapabilities } from "@flind/ui/shell/useHostCapabilities";
+import { formatDurationSeconds } from "@flind/ui/utils/customSound";
+import { playCompletionSound } from "@flind/ui/utils/sounds";
 import { useCallback, useEffect, useState } from "react";
 
 const BUILT_IN_SOUND_OPTIONS: { value: CompletionSound; label: string }[] = [

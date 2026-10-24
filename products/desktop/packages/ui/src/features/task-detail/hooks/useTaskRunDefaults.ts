@@ -1,8 +1,8 @@
 import {
   NO_TASK_RUN_DEFAULTS,
   type TaskRunDefaults,
-} from "@posthog/api-client/posthog-client";
-import { useAuthenticatedQuery } from "@posthog/ui/hooks/useAuthenticatedQuery";
+} from "@flind/api-client/posthog-client";
+import { useAuthenticatedQuery } from "@flind/ui/hooks/useAuthenticatedQuery";
 import { useRef } from "react";
 import { useAuthStateFetched, useAuthStateValue } from "../../auth/store";
 

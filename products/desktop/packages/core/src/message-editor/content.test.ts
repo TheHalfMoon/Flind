@@ -1,4 +1,4 @@
-import { renderRichOutputPrompt } from "@posthog/shared/rich-output-prompt";
+import { renderRichOutputPrompt } from "@flind/shared/rich-output-prompt";
 import { describe, expect, it } from "vitest";
 import { getAbsoluteAttachmentPaths } from "../editor/cloud-prompt";
 import { OBJECT_KIND_DATA } from "../inbox/objectKinds.generated";

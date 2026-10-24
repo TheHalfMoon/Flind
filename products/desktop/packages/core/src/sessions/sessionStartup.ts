@@ -1,4 +1,4 @@
-import type { AgentSessionErrorProperties } from "@posthog/shared/analytics-events";
+import type { AgentSessionErrorProperties } from "@flind/shared/analytics-events";
 import { z } from "zod";
 import { isNotification, POSTHOG_NOTIFICATIONS } from "./acpNotifications";
 

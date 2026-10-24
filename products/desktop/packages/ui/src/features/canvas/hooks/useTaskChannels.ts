@@ -2,10 +2,10 @@ import {
   channelDisplayName,
   isGeneralChannel,
   isPersonalChannel,
-} from "@posthog/core/canvas/channelName";
-import type { TaskChannel } from "@posthog/shared/domain-types";
-import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { useAuthenticatedQuery } from "@posthog/ui/hooks/useAuthenticatedQuery";
+} from "@flind/core/canvas/channelName";
+import type { TaskChannel } from "@flind/shared/domain-types";
+import { useOptionalAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { useAuthenticatedQuery } from "@flind/ui/hooks/useAuthenticatedQuery";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useMemo } from "react";
 
@@ -17,7 +17,7 @@ export const TASK_CHANNELS_QUERY_KEY = ["task-channels"] as const;
 export {
   PERSONAL_CHANNEL_LABEL,
   PERSONAL_CHANNEL_NAME,
-} from "@posthog/core/canvas/channelName";
+} from "@flind/core/canvas/channelName";
 
 /**
  * Backend task channels. Feed, threads, instructions and canvases all hang off

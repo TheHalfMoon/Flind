@@ -1,5 +1,5 @@
-import { resolveResultResourceUri } from "@posthog/core/mcp-apps/schemas";
-import type { ConversationItem } from "@posthog/ui/features/sessions/components/buildConversationItems";
+import { resolveResultResourceUri } from "@flind/core/mcp-apps/schemas";
+import type { ConversationItem } from "@flind/ui/features/sessions/components/buildConversationItems";
 
 /**
  * Whether the item's resolved tool result carries a UI-app resource (an MCP

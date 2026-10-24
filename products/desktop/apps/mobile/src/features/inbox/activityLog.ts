@@ -1,4 +1,4 @@
-import type { AnySignalReportArtefact } from "@posthog/shared/domain-types";
+import type { AnySignalReportArtefact } from "@flind/shared/domain-types";
 
 export type ActivityArtefact = Extract<
   AnySignalReportArtefact,

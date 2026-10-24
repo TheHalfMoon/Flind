@@ -3,7 +3,7 @@ import {
   GITHUB_ADMIN_ACCESS_REQUEST,
   GITHUB_CLOUD_TASK_CONNECTION_REQUIRED_MESSAGE,
   GITHUB_CODE_CONTEXT_MESSAGE,
-} from "@posthog/core/integrations/connectErrors";
+} from "@flind/core/integrations/connectErrors";
 import {
   Button,
   Dialog,
@@ -13,7 +13,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@flind/quill";
-import { toast } from "@posthog/ui/primitives/toast";
+import { toast } from "@flind/ui/primitives/toast";
 import {
   type ReactElement,
   type ReactNode,

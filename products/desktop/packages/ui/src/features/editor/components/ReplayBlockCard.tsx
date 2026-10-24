@@ -1,5 +1,5 @@
 import { PlayIcon } from "@phosphor-icons/react";
-import { Button } from "@posthog/ui/primitives/Button";
+import { Button } from "@flind/ui/primitives/Button";
 import { useAuthenticatedQuery } from "../../../hooks/useAuthenticatedQuery";
 import { openExternalUrl } from "../../../shell/openExternal";
 import type { ChartBlockSpec } from "../../../utils/chartBlocks";

@@ -2,18 +2,18 @@ import { File } from "@phosphor-icons/react";
 import {
   SESSION_SERVICE,
   type SessionService,
-} from "@posthog/core/sessions/sessionService";
-import { useService } from "@posthog/di/react";
-import { isRasterImageFile, parseImageDataUrl } from "@posthog/shared";
+} from "@flind/core/sessions/sessionService";
+import { useService } from "@flind/di/react";
+import { isRasterImageFile, parseImageDataUrl } from "@flind/shared";
 import {
   getAuthIdentity,
   useAuthStateValue,
-} from "@posthog/ui/features/auth/store";
-import { readFileAsDataUrl } from "@posthog/ui/features/message-editor/hostApi";
-import { MentionChip } from "@posthog/ui/features/sessions/components/session-update/parseFileMentions";
-import type { UserMessageAttachment } from "@posthog/ui/features/sessions/userMessageTypes";
-import { useSessionTaskId } from "@posthog/ui/features/sessions/useSessionTaskId";
-import { SafeImagePreview } from "@posthog/ui/primitives/SafeImagePreview";
+} from "@flind/ui/features/auth/store";
+import { readFileAsDataUrl } from "@flind/ui/features/message-editor/hostApi";
+import { MentionChip } from "@flind/ui/features/sessions/components/session-update/parseFileMentions";
+import type { UserMessageAttachment } from "@flind/ui/features/sessions/userMessageTypes";
+import { useSessionTaskId } from "@flind/ui/features/sessions/useSessionTaskId";
+import { SafeImagePreview } from "@flind/ui/primitives/SafeImagePreview";
 import { Dialog, Text } from "@radix-ui/themes";
 import { useQuery } from "@tanstack/react-query";
 

@@ -2,11 +2,11 @@ import type {
   PiResumeInput,
   PiRunInput,
   PiRunner,
-} from "@posthog/core/pi-runtime/piRunner";
+} from "@flind/core/pi-runtime/piRunner";
 import {
   HOST_TRPC_CLIENT,
   type HostTrpcClient,
-} from "@posthog/host-router/client";
+} from "@flind/host-router/client";
 import { inject, injectable } from "inversify";
 
 @injectable()

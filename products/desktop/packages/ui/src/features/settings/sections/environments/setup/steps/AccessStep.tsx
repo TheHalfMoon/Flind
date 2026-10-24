@@ -1,10 +1,10 @@
-import type { EnvironmentSetupPlan } from "@posthog/core/settings/environmentSetup";
-import { validateDomains } from "@posthog/core/settings/environmentSetup";
+import type { EnvironmentSetupPlan } from "@flind/core/settings/environmentSetup";
+import { validateDomains } from "@flind/core/settings/environmentSetup";
 import { Checkbox, Label, Text, Textarea } from "@flind/quill";
-import { NetworkAccessSelect } from "@posthog/ui/features/settings/sections/environments/NetworkAccessSelect";
-import { StepBody } from "@posthog/ui/features/settings/sections/environments/setup/StepBody";
-import { StepFieldError } from "@posthog/ui/features/settings/sections/environments/setup/StepFieldError";
-import { EnvVarRows } from "@posthog/ui/features/settings/sections/environments/setup/steps/EnvVarRows";
+import { NetworkAccessSelect } from "@flind/ui/features/settings/sections/environments/NetworkAccessSelect";
+import { StepBody } from "@flind/ui/features/settings/sections/environments/setup/StepBody";
+import { StepFieldError } from "@flind/ui/features/settings/sections/environments/setup/StepFieldError";
+import { EnvVarRows } from "@flind/ui/features/settings/sections/environments/setup/steps/EnvVarRows";
 import { useId } from "react";
 
 interface AccessStepProps {

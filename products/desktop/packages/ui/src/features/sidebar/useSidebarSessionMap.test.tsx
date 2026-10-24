@@ -1,5 +1,5 @@
-import { sessionStoreSetters } from "@posthog/core/sessions/sessionStore";
-import type { AcpMessage, AgentSession } from "@posthog/shared";
+import { sessionStoreSetters } from "@flind/core/sessions/sessionStore";
+import type { AcpMessage, AgentSession } from "@flind/shared";
 import { act, renderHook } from "@testing-library/react";
 import { afterEach, describe, expect, it } from "vitest";
 import { useSidebarSessionMap } from "./useSidebarSessionMap";

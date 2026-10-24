@@ -5,15 +5,15 @@ import {
   reportChartHeightClass,
   reportChartOpenTarget,
   shapeReportChartData,
-} from "@posthog/core/inbox/reportCharts";
-import { getCloudUrlFromRegion } from "@posthog/shared";
-import { useAuthStateValue } from "@posthog/ui/features/auth/store";
+} from "@flind/core/inbox/reportCharts";
+import { getCloudUrlFromRegion } from "@flind/shared";
+import { useAuthStateValue } from "@flind/ui/features/auth/store";
 import {
   type ReportChartCardState,
   ReportChartCardView,
-} from "@posthog/ui/features/inbox/components/detail/ReportChartCard";
-import { useAuthenticatedQuery } from "@posthog/ui/hooks/useAuthenticatedQuery";
-import type { ChartBlockSpec } from "@posthog/ui/utils/chartBlocks";
+} from "@flind/ui/features/inbox/components/detail/ReportChartCard";
+import { useAuthenticatedQuery } from "@flind/ui/hooks/useAuthenticatedQuery";
+import type { ChartBlockSpec } from "@flind/ui/utils/chartBlocks";
 import { useMemo } from "react";
 import { ReplayBlockCard } from "./ReplayBlockCard";
 

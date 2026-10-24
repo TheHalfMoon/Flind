@@ -7,39 +7,39 @@ import {
   type PiRpcClient,
 } from "@flind/agent/pi/rpc-client";
 import { getLlmGatewayUrl } from "@flind/agent/posthog-api";
-import { ROOT_LOGGER, type RootLogger } from "@posthog/di/logger";
+import { ROOT_LOGGER, type RootLogger } from "@flind/di/logger";
 import {
   type CloudRegion,
   getCloudUrlFromRegion,
   type McpServerConnection,
-} from "@posthog/shared";
-import { buildPosthogScopedPropertyHeaderRecord } from "@posthog/shared/posthog-property-headers";
+} from "@flind/shared";
+import { buildPosthogScopedPropertyHeaderRecord } from "@flind/shared/posthog-property-headers";
 import type {
   TaskContext,
   TaskContextInput,
-} from "@posthog/shared/task-context";
-import { prepareContextWiki } from "@posthog/workspace-server/services/agent/context-wiki";
+} from "@flind/shared/task-context";
+import { prepareContextWiki } from "@flind/workspace-server/services/agent/context-wiki";
 import {
   AGENT_AUTH,
   AGENT_MCP_APPS,
   MCP_SERVER_CONNECTION_SOURCE,
-} from "@posthog/workspace-server/services/agent/identifiers";
+} from "@flind/workspace-server/services/agent/identifiers";
 import type {
   AgentAuth,
   AgentMcpApps,
   McpServerConnectionSource,
-} from "@posthog/workspace-server/services/agent/ports";
-import type { AuthProxyService } from "@posthog/workspace-server/services/auth-proxy/auth-proxy";
-import { resolveGatewayProxy } from "@posthog/workspace-server/services/auth-proxy/gateway-proxy";
+} from "@flind/workspace-server/services/agent/ports";
+import type { AuthProxyService } from "@flind/workspace-server/services/auth-proxy/auth-proxy";
+import { resolveGatewayProxy } from "@flind/workspace-server/services/auth-proxy/gateway-proxy";
 import {
   AUTH_PROXY_SERVICE,
   GATEWAY_CREDENTIAL_SOURCE,
-} from "@posthog/workspace-server/services/auth-proxy/identifiers";
+} from "@flind/workspace-server/services/auth-proxy/identifiers";
 import {
   type GatewayCredentialSource,
   AUTH_PROXY_PLACEHOLDER_CREDENTIAL as PROXY_API_KEY,
-} from "@posthog/workspace-server/services/auth-proxy/ports";
-import type { PiRpcClientFactory } from "@posthog/workspace-server/services/pi-session/identifiers";
+} from "@flind/workspace-server/services/auth-proxy/ports";
+import type { PiRpcClientFactory } from "@flind/workspace-server/services/pi-session/identifiers";
 import { inject, injectable } from "inversify";
 
 @injectable()

@@ -1,7 +1,7 @@
 import type {
   SignalReportActionability,
   SignalReportStatus,
-} from "@posthog/shared/types";
+} from "@flind/shared/types";
 
 const MAX_HEADLINE_LENGTH = 140;
 

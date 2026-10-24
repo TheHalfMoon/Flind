@@ -1,13 +1,13 @@
-import { isUsageExceeded } from "@posthog/core/billing/usageDisplay";
-import type { UsageOutput } from "@posthog/core/usage/schemas";
-import { resolveService } from "@posthog/di/container";
+import { isUsageExceeded } from "@flind/core/billing/usageDisplay";
+import type { UsageOutput } from "@flind/core/usage/schemas";
+import { resolveService } from "@flind/di/container";
 import {
   HOST_TRPC_CLIENT,
   type HostTrpcClient,
-} from "@posthog/host-router/client";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
-import { track } from "@posthog/ui/shell/analytics";
-import { logger } from "@posthog/ui/shell/logger";
+} from "@flind/host-router/client";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
+import { track } from "@flind/ui/shell/analytics";
+import { logger } from "@flind/ui/shell/logger";
 import { type UsageLimitShowArgs, useUsageLimitStore } from "./usageLimitStore";
 
 const log = logger.scope("preflight-cloud-usage");

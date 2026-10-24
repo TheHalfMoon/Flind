@@ -2,7 +2,7 @@ import type {
   NetworkAccessLevel,
   SandboxEnvironment,
   SandboxEnvironmentInput,
-} from "@posthog/shared/domain-types";
+} from "@flind/shared/domain-types";
 import {
   DEFAULT_TOOL_IDS,
   IMAGE_PRESET_TOOLS,

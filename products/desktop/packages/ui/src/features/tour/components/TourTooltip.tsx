@@ -1,6 +1,6 @@
-import { calculateTooltipPlacement } from "@posthog/core/tour/calculateTooltipPlacement";
-import type { TooltipPlacement, TourStep } from "@posthog/core/tour/types";
-import { useThemeStore } from "@posthog/ui/shell/themeStore";
+import { calculateTooltipPlacement } from "@flind/core/tour/calculateTooltipPlacement";
+import type { TooltipPlacement, TourStep } from "@flind/core/tour/types";
+import { useThemeStore } from "@flind/ui/shell/themeStore";
 import { Button, Flex, Text, Theme } from "@radix-ui/themes";
 import { AnimatePresence, motion, useAnimationControls } from "framer-motion";
 import { useEffect } from "react";

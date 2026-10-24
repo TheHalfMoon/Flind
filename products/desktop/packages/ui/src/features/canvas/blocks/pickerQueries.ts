@@ -1,4 +1,4 @@
-import { hostClient } from "@posthog/ui/features/canvas/hostClient";
+import { hostClient } from "@flind/ui/features/canvas/hostClient";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 
 export const TOP_EVENTS_HOGQL =

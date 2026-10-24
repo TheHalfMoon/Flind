@@ -5,13 +5,13 @@ const mocks = vi.hoisted(() => ({
   navigateToInboxReports: vi.fn(),
 }));
 
-vi.mock("@posthog/ui/router/navigationBridge", () => ({
+vi.mock("@flind/ui/router/navigationBridge", () => ({
   navigateToInboxReports: mocks.navigateToInboxReports,
 }));
 
-import { useActivityFilterStore } from "@posthog/ui/features/canvas/stores/activityFilterStore";
-import { useInboxReviewerScopeStore } from "@posthog/ui/features/inbox/stores/inboxReviewerScopeStore";
-import { useInboxSignalsFilterStore } from "@posthog/ui/features/inbox/stores/inboxSignalsFilterStore";
+import { useActivityFilterStore } from "@flind/ui/features/canvas/stores/activityFilterStore";
+import { useInboxReviewerScopeStore } from "@flind/ui/features/inbox/stores/inboxReviewerScopeStore";
+import { useInboxSignalsFilterStore } from "@flind/ui/features/inbox/stores/inboxSignalsFilterStore";
 import { InboxActivityOverflowRow } from "./InboxActivityOverflowRow";
 
 describe("InboxActivityOverflowRow", () => {

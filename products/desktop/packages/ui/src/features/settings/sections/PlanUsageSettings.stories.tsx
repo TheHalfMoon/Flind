@@ -1,5 +1,5 @@
-import type { UsageOutput } from "@posthog/core/usage/schemas";
-import { PlanUsageContent } from "@posthog/ui/features/settings/sections/PlanUsageSettings";
+import type { UsageOutput } from "@flind/core/usage/schemas";
+import { PlanUsageContent } from "@flind/ui/features/settings/sections/PlanUsageSettings";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const usage = {

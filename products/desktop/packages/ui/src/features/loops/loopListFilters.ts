@@ -1,4 +1,4 @@
-import type { LoopSchemas } from "@posthog/ui/features/loops/loopSchemas";
+import type { LoopSchemas } from "@flind/ui/features/loops/loopSchemas";
 import { type LoopSpace, resolveLoopScope } from "./loopScopes";
 
 export type LoopScopeFilter = "all" | "global";

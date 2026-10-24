@@ -1,5 +1,5 @@
-// Mirrors `@posthog/core/mcp-servers/iconDomain` (mobile doesn't depend on
-// @posthog/core, same as the hand-mirrored types in ./types.ts).
+// Mirrors `@flind/core/mcp-servers/iconDomain` (mobile doesn't depend on
+// @flind/core, same as the hand-mirrored types in ./types.ts).
 
 // Machine-facing subdomains stripped when deriving a brand domain from a
 // server URL, so a custom install at https://mcp.linear.app/mcp still

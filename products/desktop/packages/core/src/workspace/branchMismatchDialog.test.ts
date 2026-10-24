@@ -1,4 +1,4 @@
-import { ANALYTICS_EVENTS } from "@posthog/shared";
+import { ANALYTICS_EVENTS } from "@flind/shared";
 import { describe, expect, it } from "vitest";
 import {
   buildBranchMismatchAnalyticsEvent,

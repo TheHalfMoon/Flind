@@ -7,10 +7,10 @@ const mockClient = vi.hoisted(() => ({
 }));
 const flagState = vi.hoisted(() => ({ enabled: true }));
 
-vi.mock("@posthog/ui/features/auth/authClient", () => ({
+vi.mock("@flind/ui/features/auth/authClient", () => ({
   useOptionalAuthenticatedClient: () => mockClient,
 }));
-vi.mock("@posthog/ui/features/feature-flags/useFeatureFlag", () => ({
+vi.mock("@flind/ui/features/feature-flags/useFeatureFlag", () => ({
   useFeatureFlag: () => flagState.enabled,
 }));
 vi.mock("../../../shell/logger", () => ({

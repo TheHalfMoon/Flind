@@ -1,10 +1,10 @@
-import { formatClockTime } from "@posthog/shared";
-import type { LoopSchemas } from "@posthog/ui/features/loops/loopSchemas";
-import { nextRecurringRun } from "@posthog/ui/primitives/nextRecurringRun";
+import { formatClockTime } from "@flind/shared";
+import type { LoopSchemas } from "@flind/ui/features/loops/loopSchemas";
+import { nextRecurringRun } from "@flind/ui/primitives/nextRecurringRun";
 import {
   formatTimezoneAbbreviation,
   systemTimezone,
-} from "@posthog/ui/primitives/timezone";
+} from "@flind/ui/primitives/timezone";
 import { parseCronSchedule } from "./loopCron";
 
 const WEEKDAY_NAMES: Record<string, string> = {

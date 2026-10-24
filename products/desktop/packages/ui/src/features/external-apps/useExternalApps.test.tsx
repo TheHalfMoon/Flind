@@ -1,4 +1,4 @@
-import type { DetectedApplication } from "@posthog/shared/domain-types";
+import type { DetectedApplication } from "@flind/shared/domain-types";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { act, renderHook, waitFor } from "@testing-library/react";
 import type { ReactNode } from "react";
@@ -11,7 +11,7 @@ const mockClient = vi.hoisted(() => ({
     setLastUsed: { mutate: vi.fn() },
   },
 }));
-vi.mock("@posthog/host-router/react", () => ({
+vi.mock("@flind/host-router/react", () => ({
   useHostTRPCClient: () => mockClient,
 }));
 

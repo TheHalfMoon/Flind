@@ -1,7 +1,7 @@
-import { usePrChangedFiles } from "@posthog/ui/features/git-interaction/useGitQueries";
-import { computeDiffStats } from "@posthog/ui/features/git-interaction/utils/diffStats";
-import { PrDiffIndicator } from "@posthog/ui/features/inbox/components/PrDiffIndicator";
-import { usePrDiffStatsFromBatch } from "@posthog/ui/features/inbox/context/PrDiffStatsBatchContext";
+import { usePrChangedFiles } from "@flind/ui/features/git-interaction/useGitQueries";
+import { computeDiffStats } from "@flind/ui/features/git-interaction/utils/diffStats";
+import { PrDiffIndicator } from "@flind/ui/features/inbox/components/PrDiffIndicator";
+import { usePrDiffStatsFromBatch } from "@flind/ui/features/inbox/context/PrDiffStatsBatchContext";
 
 interface PrDiffStatsProps {
   prUrl: string;

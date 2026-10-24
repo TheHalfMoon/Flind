@@ -1,7 +1,7 @@
-import type { ReportModelResolver } from "@posthog/core/inbox/identifiers";
-import type { TitleGeneratorService } from "@posthog/core/sessions/titleGeneratorService";
-import type { TaskService } from "@posthog/core/task-detail/taskService";
-import type { RootLogger } from "@posthog/di/logger";
+import type { ReportModelResolver } from "@flind/core/inbox/identifiers";
+import type { TitleGeneratorService } from "@flind/core/sessions/titleGeneratorService";
+import type { TaskService } from "@flind/core/task-detail/taskService";
+import type { RootLogger } from "@flind/di/logger";
 import { describe, expect, it, vi } from "vitest";
 import {
   CanvasApplicationService,

@@ -8,7 +8,7 @@ import {
   DropdownMenuTrigger,
   Text,
 } from "@flind/quill";
-import { useProjectTaskFeeds } from "@posthog/ui/features/canvas/hooks/useProjectTaskFeeds";
+import { useProjectTaskFeeds } from "@flind/ui/features/canvas/hooks/useProjectTaskFeeds";
 import { useNavigate } from "@tanstack/react-router";
 import type { ReactElement } from "react";
 

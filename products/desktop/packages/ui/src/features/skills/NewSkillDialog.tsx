@@ -1,4 +1,4 @@
-import { toast } from "@posthog/ui/primitives/toast";
+import { toast } from "@flind/ui/primitives/toast";
 import {
   Box,
   Button,

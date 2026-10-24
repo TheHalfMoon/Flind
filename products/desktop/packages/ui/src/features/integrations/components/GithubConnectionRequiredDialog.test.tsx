@@ -5,7 +5,7 @@ import { GithubConnectionRequiredDialog } from "./GithubConnectionRequiredDialog
 
 const mockToastError = vi.hoisted(() => vi.fn());
 
-vi.mock("@posthog/ui/primitives/toast", () => ({
+vi.mock("@flind/ui/primitives/toast", () => ({
   toast: { error: mockToastError },
 }));
 

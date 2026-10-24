@@ -1,4 +1,4 @@
 {
-  "extends": "@posthog/tsconfig/node-package.json",
+  "extends": "@flind/tsconfig/node-package.json",
   "include": ["src/**/*"]
 }

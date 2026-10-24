@@ -1,10 +1,10 @@
 import type {
   ScoutSuggestionItem,
   ScoutSuggestionSet,
-} from "@posthog/api-client/posthog-client";
-import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { useAuthenticatedQuery } from "@posthog/ui/hooks/useAuthenticatedQuery";
-import { logger } from "@posthog/ui/shell/logger";
+} from "@flind/api-client/posthog-client";
+import { useOptionalAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { useAuthenticatedQuery } from "@flind/ui/hooks/useAuthenticatedQuery";
+import { logger } from "@flind/ui/shell/logger";
 import { useQueryClient } from "@tanstack/react-query";
 import { useCallback } from "react";
 import { useAuthStateValue } from "../../auth/store";

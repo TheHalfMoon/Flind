@@ -1,4 +1,4 @@
-import type { ApiClient, Schemas } from "@posthog/api-client/generated";
+import type { ApiClient, Schemas } from "@flind/api-client/generated";
 import {
   createHogFlow,
   createHogFlowSchedule,
@@ -7,7 +7,7 @@ import {
   patchHogFlow,
   runHogFlow,
   updateHogFlowSchedule,
-} from "@posthog/api-client/hogFlowLoops";
+} from "@flind/api-client/hogFlowLoops";
 import {
   isLoopShapedHogFlow,
   type LoopHogFlowSource,

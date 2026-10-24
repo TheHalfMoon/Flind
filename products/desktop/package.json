@@ -22,15 +22,15 @@
     "app:cdp": "node scripts/electron-cdp.mjs",
     "build:agent": "node scripts/build-agent-workspace.mjs",
     "build": "pnpm build:agent && turbo build",
-    "build:deps": "pnpm build:agent && turbo build --filter=@posthog/code^...",
+    "build:deps": "pnpm build:agent && turbo build --filter=@flind/code^...",
     "package": "pnpm build && pnpm --filter code package",
     "test": "pnpm build:agent && pnpm --dir ../../packages/agent test && turbo test --concurrency=2",
-    "test:bun": "turbo test --filter=@posthog/core --filter=@posthog/cli",
-    "test:vitest": "pnpm --filter code --filter @posthog/electron-trpc test",
+    "test:bun": "turbo test --filter=@flind/core --filter=@posthog/cli",
+    "test:vitest": "pnpm --filter code --filter @flind/electron-trpc test",
     "test:e2e": "pnpm --filter code test:e2e",
     "test:e2e:headed": "pnpm --filter code test:e2e:headed",
-    "test:e2e:web": "pnpm --filter @posthog/web test:e2e",
-    "test:e2e:web:ui": "pnpm --filter @posthog/web test:e2e:ui",
+    "test:e2e:web": "pnpm --filter @flind/web test:e2e",
+    "test:e2e:web:ui": "pnpm --filter @flind/web test:e2e:ui",
     "rebuild:sqlite-node": "node scripts/rebuild-better-sqlite3-node.mjs",
     "rebuild:sqlite-electron": "node scripts/rebuild-better-sqlite3-electron.mjs",
     "typecheck": "pnpm build:agent && pnpm --dir ../../packages/agent typecheck && turbo typecheck",
@@ -40,7 +40,7 @@
     "clean": "pnpm -r clean",
     "knip": "knip",
     "skills:pull": "node scripts/pull-skills.mjs",
-    "hosthog:build": "pnpm install --frozen-lockfile --ignore-scripts --filter @posthog/web... && pnpm build:agent && SKIP_PRODUCT_ENGINEER_SKILLS_DOWNLOAD=1 pnpm exec turbo build --filter=@posthog/web && ln -sfn apps/web/dist dist"
+    "hosthog:build": "pnpm install --frozen-lockfile --ignore-scripts --filter @flind/web... && pnpm build:agent && SKIP_PRODUCT_ENGINEER_SKILLS_DOWNLOAD=1 pnpm exec turbo build --filter=@flind/web && ln -sfn apps/web/dist dist"
   },
   "keywords": [
     "posthog",
@@ -53,7 +53,7 @@
   "license": "MIT",
   "devDependencies": {
     "@biomejs/biome": "2.2.4",
-    "@posthog/shared": "workspace:*",
+    "@flind/shared": "workspace:*",
     "fflate": "^0.8.2",
     "knip": "^5.66.3",
     "mprocs": "^0.7.1",

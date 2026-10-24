@@ -67,7 +67,7 @@ export const PRIORITY_ACCENT: Record<SignalReportPriority, string> = {
     P4: 'var(--muted, #8f8f8f)',
 }
 
-// Port of desktop `@posthog/ui/features/inbox/filterOptions`. Drives the Source /
+// Port of desktop `@flind/ui/features/inbox/filterOptions`. Drives the Source /
 // Sort filter popovers. Source-product values match the backend
 // `source_product` values.
 

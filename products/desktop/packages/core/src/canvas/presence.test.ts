@@ -4,8 +4,8 @@ import {
   PRESENCE_RECENT_WINDOW_MS,
   presenceByChannel,
   presenceTier,
-} from "@posthog/core/canvas/presence";
-import type { Task, UserBasic } from "@posthog/shared/domain-types";
+} from "@flind/core/canvas/presence";
+import type { Task, UserBasic } from "@flind/shared/domain-types";
 import { describe, expect, it } from "vitest";
 
 const NOW = 1_700_000_000_000;

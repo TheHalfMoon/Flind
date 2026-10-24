@@ -18,7 +18,7 @@ const store = new Store<UsageThresholdStoreSchema>({
 
 /**
  * Electron-store-backed persistence for the usage-monitor threshold dedup
- * state. Implements the host-side slice of `@posthog/core/usage`'s `UsageHost`
+ * state. Implements the host-side slice of `@flind/core/usage`'s `UsageHost`
  * port so core never touches electron-store.
  */
 export const electronUsageThresholdStore = {

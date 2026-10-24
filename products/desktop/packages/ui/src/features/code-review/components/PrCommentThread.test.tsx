@@ -1,4 +1,4 @@
-import type { PrReviewComment } from "@posthog/shared";
+import type { PrReviewComment } from "@flind/shared";
 import { Theme } from "@radix-ui/themes";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";

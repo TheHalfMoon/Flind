@@ -12,7 +12,7 @@
   "dependencies": {
     "@pierre/diffs": "^1.2.10",
     "@posthog/brand": "catalog:",
-    "@posthog/shared": "workspace:*",
+    "@flind/shared": "workspace:*",
     "posthog-js": "^1.438.21",
     "react": "19.2.6",
     "react-dom": "19.2.6",

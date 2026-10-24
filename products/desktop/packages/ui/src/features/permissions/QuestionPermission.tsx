@@ -12,7 +12,7 @@ import {
   type StepAnswer,
   type StepInfo,
   SUBMIT_OPTION_ID,
-} from "@posthog/ui/primitives/ActionSelector";
+} from "@flind/ui/primitives/ActionSelector";
 import { Box, Flex, Text } from "@radix-ui/themes";
 import { useCallback, useMemo } from "react";
 import { useQuestionDraftStore } from "./questionDraftStore";

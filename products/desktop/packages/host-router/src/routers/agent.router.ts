@@ -1,9 +1,9 @@
 import type { ContentBlock } from "@agentclientprotocol/sdk";
-import { SLEEP_SERVICE } from "@posthog/core/sleep/identifiers";
-import type { SleepService } from "@posthog/core/sleep/sleep";
-import { publicProcedure, router } from "@posthog/host-trpc/trpc";
-import type { AgentService } from "@posthog/workspace-server/services/agent/agent";
-import { AGENT_SERVICE } from "@posthog/workspace-server/services/agent/identifiers";
+import { SLEEP_SERVICE } from "@flind/core/sleep/identifiers";
+import type { SleepService } from "@flind/core/sleep/sleep";
+import { publicProcedure, router } from "@flind/host-trpc/trpc";
+import type { AgentService } from "@flind/workspace-server/services/agent/agent";
+import { AGENT_SERVICE } from "@flind/workspace-server/services/agent/identifiers";
 import {
   AgentServiceEvent,
   authTerminalOutput,
@@ -35,11 +35,11 @@ import {
   sideQuestionOutput,
   startSessionInput,
   subscribeSessionInput,
-} from "@posthog/workspace-server/services/agent/schemas";
-import { PROCESS_TRACKING_SERVICE } from "@posthog/workspace-server/services/process-tracking/identifiers";
-import type { ProcessTrackingService } from "@posthog/workspace-server/services/process-tracking/process-tracking";
-import { SHELL_SERVICE } from "@posthog/workspace-server/services/shell/identifiers";
-import type { ShellService } from "@posthog/workspace-server/services/shell/shell";
+} from "@flind/workspace-server/services/agent/schemas";
+import { PROCESS_TRACKING_SERVICE } from "@flind/workspace-server/services/process-tracking/identifiers";
+import type { ProcessTrackingService } from "@flind/workspace-server/services/process-tracking/process-tracking";
+import { SHELL_SERVICE } from "@flind/workspace-server/services/shell/identifiers";
+import type { ShellService } from "@flind/workspace-server/services/shell/shell";
 
 export const agentRouter = router({
   start: publicProcedure

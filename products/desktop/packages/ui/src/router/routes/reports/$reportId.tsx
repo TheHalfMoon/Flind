@@ -1,7 +1,7 @@
-import type { SignalReport } from "@posthog/shared/types";
-import { ReportPage } from "@posthog/ui/features/inbox/components/ReportPage";
-import { getCachedInboxReportDetail } from "@posthog/ui/features/inbox/inboxQueries";
-import { validSourceHref } from "@posthog/ui/router/reportNavigation";
+import type { SignalReport } from "@flind/shared/types";
+import { ReportPage } from "@flind/ui/features/inbox/components/ReportPage";
+import { getCachedInboxReportDetail } from "@flind/ui/features/inbox/inboxQueries";
+import { validSourceHref } from "@flind/ui/router/reportNavigation";
 import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/reports/$reportId")({

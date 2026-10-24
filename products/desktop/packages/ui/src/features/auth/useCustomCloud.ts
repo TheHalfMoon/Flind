@@ -1,9 +1,9 @@
-import { useHostTRPCClient } from "@posthog/host-router/react";
+import { useHostTRPCClient } from "@flind/host-router/react";
 import {
   type CustomCloud,
   configureCustomCloud,
   normalizeCustomCloud,
-} from "@posthog/shared";
+} from "@flind/shared";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 

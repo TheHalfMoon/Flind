@@ -1,12 +1,12 @@
-import { useService } from "@posthog/di/react";
-import { useHostTRPC } from "@posthog/host-router/react";
-import { useAuthStateValue } from "@posthog/ui/features/auth/store";
+import { useService } from "@flind/di/react";
+import { useHostTRPC } from "@flind/host-router/react";
+import { useAuthStateValue } from "@flind/ui/features/auth/store";
 import {
   BROWSER_TABS_CLIENT,
   type BrowserTabsClient,
-} from "@posthog/ui/features/browser-tabs/browserTabsClient";
-import { focusOrOpenBrowserTab } from "@posthog/ui/features/browser-tabs/imperativeTabNavigation";
-import { navigateToLoopDetail } from "@posthog/ui/router/navigationBridge";
+} from "@flind/ui/features/browser-tabs/browserTabsClient";
+import { focusOrOpenBrowserTab } from "@flind/ui/features/browser-tabs/imperativeTabNavigation";
+import { navigateToLoopDetail } from "@flind/ui/router/navigationBridge";
 import { useQuery } from "@tanstack/react-query";
 import { useSubscription } from "@trpc/tanstack-react-query";
 import { useCallback, useEffect } from "react";

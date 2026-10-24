@@ -2,20 +2,20 @@ import {
   type CanvasListService,
   type CanvasListSettings,
   DEFAULT_CANVAS_LIST_SETTINGS,
-} from "@posthog/core/canvas/canvasListService";
-import type { DashboardRecord } from "@posthog/core/canvas/dashboardSchemas";
-import { CANVAS_LIST_SERVICE } from "@posthog/core/canvas/identifiers";
-import { useService } from "@posthog/di/react";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
-import { useMeQuery } from "@posthog/ui/features/auth/useMeQuery";
-import { CanvasFilterMenu } from "@posthog/ui/features/canvas/components/CanvasFilterMenu";
-import { buildCanvasSpaceOptions } from "@posthog/ui/features/canvas/components/canvasSpaceOptions";
-import { useChannels } from "@posthog/ui/features/canvas/hooks/useChannels";
-import { useAllCanvases } from "@posthog/ui/features/canvas/hooks/useDashboards";
-import { useSelectedCanvasId } from "@posthog/ui/features/canvas/hooks/useSelectedCanvasId";
-import { useCanvasViewedStore } from "@posthog/ui/features/canvas/stores/canvasViewedStore";
-import { userDisplayName } from "@posthog/ui/features/canvas/utils/userDisplay";
-import { track } from "@posthog/ui/shell/analytics";
+} from "@flind/core/canvas/canvasListService";
+import type { DashboardRecord } from "@flind/core/canvas/dashboardSchemas";
+import { CANVAS_LIST_SERVICE } from "@flind/core/canvas/identifiers";
+import { useService } from "@flind/di/react";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
+import { useMeQuery } from "@flind/ui/features/auth/useMeQuery";
+import { CanvasFilterMenu } from "@flind/ui/features/canvas/components/CanvasFilterMenu";
+import { buildCanvasSpaceOptions } from "@flind/ui/features/canvas/components/canvasSpaceOptions";
+import { useChannels } from "@flind/ui/features/canvas/hooks/useChannels";
+import { useAllCanvases } from "@flind/ui/features/canvas/hooks/useDashboards";
+import { useSelectedCanvasId } from "@flind/ui/features/canvas/hooks/useSelectedCanvasId";
+import { useCanvasViewedStore } from "@flind/ui/features/canvas/stores/canvasViewedStore";
+import { userDisplayName } from "@flind/ui/features/canvas/utils/userDisplay";
+import { track } from "@flind/ui/shell/analytics";
 import { useNavigate } from "@tanstack/react-router";
 import { type ReactElement, useEffect, useMemo, useState } from "react";
 import { CanvasList } from "./CanvasList";

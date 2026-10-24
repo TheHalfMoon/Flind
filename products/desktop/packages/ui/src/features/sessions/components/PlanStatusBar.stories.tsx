@@ -1,5 +1,5 @@
-import { PlanStatusBar } from "@posthog/ui/features/sessions/components/PlanStatusBar";
-import type { Plan } from "@posthog/ui/features/sessions/types";
+import { PlanStatusBar } from "@flind/ui/features/sessions/components/PlanStatusBar";
+import type { Plan } from "@flind/ui/features/sessions/types";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta: Meta<typeof PlanStatusBar> = {

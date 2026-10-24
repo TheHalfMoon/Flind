@@ -1,7 +1,7 @@
-import type { SessionService } from "@posthog/core/sessions/sessionService";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
-import { fireSideQuestion } from "@posthog/ui/features/sessions/sideQuestionStore";
-import { track } from "@posthog/ui/shell/analytics";
+import type { SessionService } from "@flind/core/sessions/sessionService";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
+import { fireSideQuestion } from "@flind/ui/features/sessions/sideQuestionStore";
+import { track } from "@flind/ui/shell/analytics";
 
 export const SESSION_SUMMARY_LABEL = "Session summary";
 

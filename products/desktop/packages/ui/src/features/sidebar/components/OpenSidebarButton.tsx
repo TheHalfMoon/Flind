@@ -3,9 +3,9 @@ import { Button, Kbd } from "@flind/quill";
 import {
   formatHotkey,
   SHORTCUTS,
-} from "@posthog/ui/features/command/keyboard-shortcuts";
-import { cancelSidebarPeek } from "@posthog/ui/features/sidebar/sidebarPeekStore";
-import { useSidebarStore } from "@posthog/ui/features/sidebar/sidebarStore";
+} from "@flind/ui/features/command/keyboard-shortcuts";
+import { cancelSidebarPeek } from "@flind/ui/features/sidebar/sidebarPeekStore";
+import { useSidebarStore } from "@flind/ui/features/sidebar/sidebarStore";
 import type { ReactElement } from "react";
 
 /**

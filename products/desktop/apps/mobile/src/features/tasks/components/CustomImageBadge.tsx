@@ -1,5 +1,5 @@
 import { Text } from "@components/text";
-import type { Task } from "@posthog/shared";
+import type { Task } from "@flind/shared";
 import { Cube } from "phosphor-react-native";
 import { View } from "react-native";
 import { toRgba } from "@/lib/theme";

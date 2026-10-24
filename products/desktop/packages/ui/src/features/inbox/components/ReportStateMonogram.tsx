@@ -1,12 +1,12 @@
 import { FileTextIcon } from "@phosphor-icons/react";
-import { isAgentRunReport } from "@posthog/core/inbox/reportMembership";
+import { isAgentRunReport } from "@flind/core/inbox/reportMembership";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@flind/quill";
-import type { SignalReport } from "@posthog/shared/types";
+import type { SignalReport } from "@flind/shared/types";
 import {
   resolveRunVariant,
   VARIANT_META,
   type VariantMeta,
-} from "@posthog/ui/features/inbox/components/AgentRunCard";
+} from "@flind/ui/features/inbox/components/AgentRunCard";
 
 /**
  * Run-state meta for a report that hasn't been triaged yet (queued, live, or

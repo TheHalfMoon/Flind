@@ -1,7 +1,7 @@
-import { DEFAULT_TAB_HREF, type TabIdentity } from "@posthog/shared";
-import { channelSectionFor } from "@posthog/ui/features/canvas/channelSections";
-import { useWorkLayout } from "@posthog/ui/features/canvas/hooks/useWorkLayout";
-import { useChannelReportsEnabled } from "@posthog/ui/features/feature-flags/useChannelReportsEnabled";
+import { DEFAULT_TAB_HREF, type TabIdentity } from "@flind/shared";
+import { channelSectionFor } from "@flind/ui/features/canvas/channelSections";
+import { useWorkLayout } from "@flind/ui/features/canvas/hooks/useWorkLayout";
+import { useChannelReportsEnabled } from "@flind/ui/features/feature-flags/useChannelReportsEnabled";
 import { useNavigate, useRouter } from "@tanstack/react-router";
 import { useCallback } from "react";
 import { isTabAppView } from "./tabAppViews";

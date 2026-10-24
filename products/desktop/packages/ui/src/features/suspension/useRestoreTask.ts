@@ -1,10 +1,10 @@
-import { useHostTRPC, useHostTRPCClient } from "@posthog/host-router/react";
+import { useHostTRPC, useHostTRPCClient } from "@flind/host-router/react";
 import {
   invalidateGitBranchQueries,
   invalidateGitWorkingTreeQueries,
-} from "@posthog/ui/features/git-interaction/gitCacheKeys";
-import { toast } from "@posthog/ui/primitives/toast";
-import { logger } from "@posthog/ui/shell/logger";
+} from "@flind/ui/features/git-interaction/gitCacheKeys";
+import { toast } from "@flind/ui/primitives/toast";
+import { logger } from "@flind/ui/shell/logger";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import { WORKSPACE_QUERY_KEY } from "../workspace/identifiers";

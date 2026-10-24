@@ -29,7 +29,7 @@ const config: StorybookConfig = {
   framework: getAbsolutePath("@storybook/react-vite"),
   // Use the TypeScript-compiler docgen instead of the default Babel react-docgen.
   // The Babel parser chokes on the legacy Inversify decorators (`@injectable()`)
-  // in the @posthog/core services that components pull in; the TS-based docgen
+  // in the @flind/core services that components pull in; the TS-based docgen
   // handles them and only inspects `.tsx` components.
   typescript: {
     reactDocgen: "react-docgen-typescript",
@@ -115,7 +115,7 @@ const config: StorybookConfig = {
             ),
           },
           {
-            find: "@posthog/electron-trpc/renderer",
+            find: "@flind/electron-trpc/renderer",
             replacement: path.resolve(__dirname, "./mocks/electron-trpc.ts"),
           },
           // The agent dist bundles are Node-targeted: tsup opens every file

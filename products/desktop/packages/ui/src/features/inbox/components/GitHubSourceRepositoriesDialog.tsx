@@ -1,11 +1,11 @@
-import type { ExternalDataSource } from "@posthog/api-client/posthog-client";
+import type { ExternalDataSource } from "@flind/api-client/posthog-client";
 import {
   buildGithubRepositoriesPatch,
   effectiveGithubSourceRepos,
   GITHUB_ISSUES_SYNC_TYPE,
   githubIssuesSchemasToEnable,
   githubSourceIntegrationId,
-} from "@posthog/core/integrations/githubSourceRepos";
+} from "@flind/core/integrations/githubSourceRepos";
 import {
   Button,
   Dialog,
@@ -17,14 +17,14 @@ import {
   DialogTitle,
   Text,
 } from "@flind/quill";
-import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { useAuthStateValue } from "@posthog/ui/features/auth/store";
-import { GitHubRepoMultiPicker } from "@posthog/ui/features/folder-picker/GitHubRepoMultiPicker";
+import { useOptionalAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { useAuthStateValue } from "@flind/ui/features/auth/store";
+import { GitHubRepoMultiPicker } from "@flind/ui/features/folder-picker/GitHubRepoMultiPicker";
 import {
   useGithubRepositories,
   useRepositoryIntegration,
-} from "@posthog/ui/features/integrations/useIntegrations";
-import { toast } from "@posthog/ui/primitives/toast";
+} from "@flind/ui/features/integrations/useIntegrations";
+import { toast } from "@flind/ui/primitives/toast";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 

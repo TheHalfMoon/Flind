@@ -1,5 +1,5 @@
-import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
-import { fireFrom } from "@posthog/ui/primitives/confetti";
+import { useSettingsStore } from "@flind/ui/features/settings/settingsStore";
+import { fireFrom } from "@flind/ui/primitives/confetti";
 import { motion } from "framer-motion";
 import { useCallback, useEffect, useRef, useState } from "react";
 

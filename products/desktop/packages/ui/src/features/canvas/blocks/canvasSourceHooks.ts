@@ -3,15 +3,15 @@ import {
   type CanvasStarter,
   canvasCapabilities,
   starterProject,
-} from "@posthog/core/canvas/blockLibrary/blockProject";
-import { useHostTRPC } from "@posthog/host-router/react";
+} from "@flind/core/canvas/blockLibrary/blockProject";
+import { useHostTRPC } from "@flind/host-router/react";
 import {
   describeChanges,
   isSourceDirty,
   useCanvasSourceEntry,
   useCanvasSourceStore,
-} from "@posthog/ui/features/canvas/blocks/canvasSourceStore";
-import { invalidateCanvasLifecycle } from "@posthog/ui/features/canvas/hooks/invalidateCanvasLifecycle";
+} from "@flind/ui/features/canvas/blocks/canvasSourceStore";
+import { invalidateCanvasLifecycle } from "@flind/ui/features/canvas/hooks/invalidateCanvasLifecycle";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useCallback, useEffect } from "react";
 

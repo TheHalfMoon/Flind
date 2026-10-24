@@ -8,7 +8,7 @@ import {
   ItemTitle,
   Kbd,
 } from "@flind/quill";
-import { FileIcon } from "@posthog/ui/primitives/FileIcon";
+import { FileIcon } from "@flind/ui/primitives/FileIcon";
 import {
   forwardRef,
   type ReactNode,

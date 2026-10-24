@@ -1,4 +1,4 @@
-import type { AutoresearchDirection } from "@posthog/core/autoresearch/schemas";
+import type { AutoresearchDirection } from "@flind/core/autoresearch/schemas";
 import {
   Button,
   Dialog,

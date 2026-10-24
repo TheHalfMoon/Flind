@@ -1,5 +1,5 @@
-import type { SourceProduct } from "@posthog/shared/types";
-import type { SignalSourceValues } from "@posthog/ui/features/inbox/components/SignalSourceToggles";
+import type { SourceProduct } from "@flind/shared/types";
+import type { SignalSourceValues } from "@flind/ui/features/inbox/components/SignalSourceToggles";
 
 export type ResponderAgentSource = keyof SignalSourceValues;
 

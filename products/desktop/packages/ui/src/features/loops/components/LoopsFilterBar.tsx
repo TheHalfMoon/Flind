@@ -1,7 +1,7 @@
 import { CheckIcon } from "@phosphor-icons/react";
 import { Button } from "@flind/quill";
-import { SettingsOptionSelect } from "@posthog/ui/features/settings/SettingsOptionSelect";
-import { SearchInput } from "@posthog/ui/primitives/SearchInput";
+import { SettingsOptionSelect } from "@flind/ui/features/settings/SettingsOptionSelect";
+import { SearchInput } from "@flind/ui/primitives/SearchInput";
 import type {
   LoopCounts,
   LoopListFilters,

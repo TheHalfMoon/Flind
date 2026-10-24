@@ -3,9 +3,9 @@ import {
   type ExecutionMode,
   TASKS_PREWARM_SANDBOX_FLAG,
   type WorkspaceMode,
-} from "@posthog/shared";
-import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { useFeatureFlag } from "@posthog/ui/features/feature-flags/useFeatureFlag";
+} from "@flind/shared";
+import { useOptionalAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { useFeatureFlag } from "@flind/ui/features/feature-flags/useFeatureFlag";
 import { useEffect, useMemo, useRef } from "react";
 import { logger } from "../../../shell/logger";
 import {

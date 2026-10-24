@@ -3,7 +3,7 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 
 const markAsViewed = vi.hoisted(() => vi.fn());
 
-vi.mock("@posthog/ui/features/sidebar/useTaskViewed", () => ({
+vi.mock("@flind/ui/features/sidebar/useTaskViewed", () => ({
   useTaskViewed: () => ({ markAsViewed }),
 }));
 

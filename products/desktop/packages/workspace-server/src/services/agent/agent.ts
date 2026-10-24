@@ -61,23 +61,23 @@ import { getCurrentBranch } from "@flind/git/queries";
 import type { ContextWikiEnv } from "@flind/harness/extensions/context-wiki";
 import { fetchPosthogPiModelCatalog } from "@flind/harness/extensions/posthog-provider/model-catalog";
 import { buildTaskSystemPrompt } from "@flind/harness/extensions/task-system-prompt";
-import { APP_META_SERVICE, type IAppMeta } from "@posthog/platform/app-meta";
+import { APP_META_SERVICE, type IAppMeta } from "@flind/platform/app-meta";
 import {
   BUNDLED_RESOURCES_SERVICE,
   type IBundledResources,
-} from "@posthog/platform/bundled-resources";
+} from "@flind/platform/bundled-resources";
 import {
   type IPowerManager,
   POWER_MANAGER_SERVICE,
-} from "@posthog/platform/power-manager";
+} from "@flind/platform/power-manager";
 import {
   type IStoragePaths,
   STORAGE_PATHS_SERVICE,
-} from "@posthog/platform/storage-paths";
+} from "@flind/platform/storage-paths";
 import {
   type IWorkspaceSettings,
   WORKSPACE_SETTINGS_SERVICE,
-} from "@posthog/platform/workspace-settings";
+} from "@flind/platform/workspace-settings";
 import {
   type AcpMessage,
   type Adapter,
@@ -93,12 +93,12 @@ import {
   resolveCloudInitialPermissionMode,
   serializeError,
   TypedEventEmitter,
-} from "@posthog/shared";
-import { prependProductEngineerPrompt } from "@posthog/shared/product-engineer-prompt";
+} from "@flind/shared";
+import { prependProductEngineerPrompt } from "@flind/shared/product-engineer-prompt";
 import {
   appendRichOutputPrompt,
   getProjectWebUrl,
-} from "@posthog/shared/rich-output-prompt";
+} from "@flind/shared/rich-output-prompt";
 import { inject, injectable, preDestroy } from "inversify";
 import { WORKSPACE_REPOSITORY } from "../../db/identifiers";
 import type { IWorkspaceRepository } from "../../db/repositories/workspace-repository";

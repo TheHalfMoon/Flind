@@ -7,8 +7,8 @@ import {
 import type {
   LlmSkillCreatedBy,
   ScoutConfig,
-} from "@posthog/api-client/posthog-client";
-import { getUserInitials } from "@posthog/core/auth/userInitials";
+} from "@flind/api-client/posthog-client";
+import { getUserInitials } from "@flind/core/auth/userInitials";
 import {
   deriveRunOutcome,
   deriveScoutLifecycle,
@@ -22,7 +22,7 @@ import {
   type ScoutRunOutcome,
   scoutCreatorDisplayName,
   scoutRunOutcomeLabel,
-} from "@posthog/core/scouts/scoutPresentation";
+} from "@flind/core/scouts/scoutPresentation";
 import {
   Avatar,
   AvatarFallback,
@@ -36,12 +36,12 @@ import {
   TableCell,
   TableRow,
 } from "@flind/quill";
-import { ANALYTICS_EVENTS } from "@posthog/shared";
-import { useAgentsPageActions } from "@posthog/ui/features/agents/agentsPageStore";
-import { RelativeTimestamp } from "@posthog/ui/primitives/RelativeTimestamp";
-import { Tooltip } from "@posthog/ui/primitives/Tooltip";
-import { track } from "@posthog/ui/shell/analytics";
-import { skillUrl } from "@posthog/ui/utils/posthogLinks";
+import { ANALYTICS_EVENTS } from "@flind/shared";
+import { useAgentsPageActions } from "@flind/ui/features/agents/agentsPageStore";
+import { RelativeTimestamp } from "@flind/ui/primitives/RelativeTimestamp";
+import { Tooltip } from "@flind/ui/primitives/Tooltip";
+import { track } from "@flind/ui/shell/analytics";
+import { skillUrl } from "@flind/ui/utils/posthogLinks";
 import { memo } from "react";
 import type { ScoutConfigUpdate } from "../hooks/useScoutConfigMutations";
 import { useScoutRunNow } from "../hooks/useScoutRunNow";

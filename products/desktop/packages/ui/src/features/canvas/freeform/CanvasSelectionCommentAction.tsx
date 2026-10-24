@@ -1,17 +1,17 @@
-import type { TextCommentAnchor } from "@posthog/core/comments/anchors";
-import { useOrgMembers } from "@posthog/ui/features/canvas/hooks/useOrgMembers";
-import { useCanvasChatPanelStore } from "@posthog/ui/features/canvas/stores/canvasChatPanelStore";
-import { SelectionCommentOverlay } from "@posthog/ui/features/code-editor/components/SelectionCommentOverlay";
+import type { TextCommentAnchor } from "@flind/core/comments/anchors";
+import { useOrgMembers } from "@flind/ui/features/canvas/hooks/useOrgMembers";
+import { useCanvasChatPanelStore } from "@flind/ui/features/canvas/stores/canvasChatPanelStore";
+import { SelectionCommentOverlay } from "@flind/ui/features/code-editor/components/SelectionCommentOverlay";
 import {
   commentAgentContext,
   withScreenshot,
-} from "@posthog/ui/features/sessions/commentAgentContext";
+} from "@flind/ui/features/sessions/commentAgentContext";
 import {
   canvasCommentFocusKey,
   useCommentNavigationStore,
-} from "@posthog/ui/features/sessions/commentNavigationStore";
-import { useCreateComment } from "@posthog/ui/features/sessions/components/useComments";
-import { sendCommentToAgent } from "@posthog/ui/features/sessions/sendCommentToAgent";
+} from "@flind/ui/features/sessions/commentNavigationStore";
+import { useCreateComment } from "@flind/ui/features/sessions/components/useComments";
+import { sendCommentToAgent } from "@flind/ui/features/sessions/sendCommentToAgent";
 import type { HostCanvasTextSelection } from "./canvasSelection";
 
 export function CanvasSelectionCommentAction({

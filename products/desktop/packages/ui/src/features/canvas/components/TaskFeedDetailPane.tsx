@@ -7,12 +7,12 @@ import {
   EmptyMedia,
   EmptyTitle,
 } from "@flind/quill";
-import { useChannels } from "@posthog/ui/features/canvas/hooks/useChannels";
-import { useTaskFeedSelection } from "@posthog/ui/features/canvas/stores/taskFeedSelectionStore";
-import { OpenSidebarButton } from "@posthog/ui/features/sidebar/components/OpenSidebarButton";
-import { TaskDetail } from "@posthog/ui/features/task-detail/components/TaskDetail";
-import { useResolvedTask } from "@posthog/ui/features/tasks/useResolvedTask";
-import { TaskDetailSkeleton } from "@posthog/ui/router/routeSkeletons";
+import { useChannels } from "@flind/ui/features/canvas/hooks/useChannels";
+import { useTaskFeedSelection } from "@flind/ui/features/canvas/stores/taskFeedSelectionStore";
+import { OpenSidebarButton } from "@flind/ui/features/sidebar/components/OpenSidebarButton";
+import { TaskDetail } from "@flind/ui/features/task-detail/components/TaskDetail";
+import { useResolvedTask } from "@flind/ui/features/tasks/useResolvedTask";
+import { TaskDetailSkeleton } from "@flind/ui/router/routeSkeletons";
 
 export function TaskFeedDetailPane({
   feedId,

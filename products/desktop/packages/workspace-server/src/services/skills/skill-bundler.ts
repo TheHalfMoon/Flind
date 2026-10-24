@@ -1,7 +1,7 @@
 import * as crypto from "node:crypto";
 import * as fs from "node:fs";
 import * as path from "node:path";
-import { isIgnoredSkillEntry } from "@posthog/shared";
+import { isIgnoredSkillEntry } from "@flind/shared";
 import { strToU8, zipSync } from "fflate";
 import type { BundleLocalSkillOutput, UploadableSkillSource } from "./schemas";
 

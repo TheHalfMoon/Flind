@@ -1,4 +1,4 @@
-import type { Task } from "@posthog/shared/domain-types";
+import type { Task } from "@flind/shared/domain-types";
 import { QueryClient } from "@tanstack/react-query";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
@@ -9,15 +9,15 @@ const mocks = vi.hoisted(() => ({
   openTask: vi.fn(),
 }));
 
-vi.mock("@posthog/ui/features/auth/authClientImperative", () => ({
+vi.mock("@flind/ui/features/auth/authClientImperative", () => ({
   getAuthenticatedClient: mocks.getAuthenticatedClient,
 }));
 
-vi.mock("@posthog/ui/router/navigationBridge", () => ({
+vi.mock("@flind/ui/router/navigationBridge", () => ({
   navigateToTaskDetail: mocks.navigateToTaskDetail,
 }));
 
-vi.mock("@posthog/ui/router/useOpenTask", () => ({
+vi.mock("@flind/ui/router/useOpenTask", () => ({
   openTask: mocks.openTask,
 }));
 

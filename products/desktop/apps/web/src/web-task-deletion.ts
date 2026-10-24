@@ -3,10 +3,10 @@ import type {
   ITaskDeletionWorkspaceClient,
   TaskDeletionFocusSession,
   TaskDeletionView,
-} from "@posthog/core/tasks/identifiers";
-import { pinnedTasksApi } from "@posthog/ui/features/sidebar/taskMetaApi";
-import { getAppViewSnapshot } from "@posthog/ui/router/useAppView";
-import { openTaskInput } from "@posthog/ui/router/useOpenTask";
+} from "@flind/core/tasks/identifiers";
+import { pinnedTasksApi } from "@flind/ui/features/sidebar/taskMetaApi";
+import { getAppViewSnapshot } from "@flind/ui/router/useAppView";
+import { openTaskInput } from "@flind/ui/router/useOpenTask";
 
 // Task deletion on web: the actual task delete goes through the PostHog API
 // (client.deleteTask, passed into TaskDeletionService). These clients only

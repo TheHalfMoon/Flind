@@ -1,4 +1,4 @@
-import type { ConversationItem } from "@posthog/ui/features/sessions/components/buildConversationItems";
+import type { ConversationItem } from "@flind/ui/features/sessions/components/buildConversationItems";
 import { describe, expect, it } from "vitest";
 import type { ToolGroupItem } from "./ToolGroup";
 import {

@@ -3,7 +3,7 @@ import {
   DISMISSAL_REASON_OPTIONS,
   type DismissalReasonOptionValue,
   isDismissalReasonSnooze,
-} from "@posthog/shared";
+} from "@flind/shared";
 import * as Haptics from "expo-haptics";
 import { Check } from "phosphor-react-native";
 import { useEffect, useRef, useState } from "react";

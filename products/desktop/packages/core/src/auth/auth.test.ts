@@ -1,10 +1,10 @@
-import type { RootLogger } from "@posthog/di/logger";
-import type { IPowerManager } from "@posthog/platform/power-manager";
+import type { RootLogger } from "@flind/di/logger";
+import type { IPowerManager } from "@flind/platform/power-manager";
 import {
   type CloudRegion,
   NotAuthenticatedError,
   OAUTH_SCOPE_VERSION,
-} from "@posthog/shared";
+} from "@flind/shared";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { AuthService, type FetchLike } from "./auth";
 import type {
@@ -21,8 +21,8 @@ import type {
 } from "./identifiers";
 import { AuthServiceEvent } from "./schemas";
 
-vi.mock("@posthog/shared", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@posthog/shared")>();
+vi.mock("@flind/shared", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@flind/shared")>();
   return {
     ...actual,
     sleepWithBackoff: vi.fn().mockResolvedValue(undefined),

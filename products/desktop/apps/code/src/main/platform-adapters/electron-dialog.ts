@@ -3,7 +3,7 @@ import type {
   DialogSeverity,
   IDialog,
   PickFileOptions,
-} from "@posthog/platform/dialog";
+} from "@flind/platform/dialog";
 import {
   BrowserWindow,
   dialog,

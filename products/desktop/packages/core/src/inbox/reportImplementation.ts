@@ -1,4 +1,4 @@
-import type { SignalReport, Task } from "@posthog/shared/types";
+import type { SignalReport, Task } from "@flind/shared/types";
 
 export type ReportImplementationState =
   | "checking"

@@ -9,12 +9,12 @@ const availabilityState = vi.hoisted(() => ({
   },
 }));
 
-vi.mock("@posthog/ui/features/canvas/hooks/useDashboards", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useDashboards", () => ({
   useCanvasAvailability: () => availabilityState.current,
 }));
 
 const track = vi.hoisted(() => vi.fn());
-vi.mock("@posthog/ui/shell/analytics", () => ({ track }));
+vi.mock("@flind/ui/shell/analytics", () => ({ track }));
 
 function renderWith(current: {
   availability?: string;

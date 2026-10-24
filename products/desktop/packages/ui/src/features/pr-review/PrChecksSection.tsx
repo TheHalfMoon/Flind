@@ -6,9 +6,9 @@ import {
   ProhibitIcon,
   XCircleIcon,
 } from "@phosphor-icons/react";
-import type { PrCheck, PrCheckBucket } from "@posthog/core/git/router-schemas";
-import { DetailSection } from "@posthog/ui/features/inbox/components/DetailSection";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
+import type { PrCheck, PrCheckBucket } from "@flind/core/git/router-schemas";
+import { DetailSection } from "@flind/ui/features/inbox/components/DetailSection";
+import { Spinner } from "@flind/ui/primitives/Spinner";
 import { useMemo } from "react";
 import { openExternalUrl } from "../../shell/openExternal";
 import { usePrChecks } from "./usePrChecks";

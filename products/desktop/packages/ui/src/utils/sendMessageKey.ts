@@ -1,4 +1,4 @@
-import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
+import { useSettingsStore } from "@flind/ui/features/settings/settingsStore";
 
 interface SubmitKeyEvent {
   key: string;

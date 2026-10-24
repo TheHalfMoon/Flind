@@ -7,15 +7,15 @@ import {
   EmptyMedia,
   EmptyTitle,
 } from "@flind/quill";
-import { ActivityDetailCloseButton } from "@posthog/ui/features/canvas/components/ActivityDetailCloseButton";
-import { useChannels } from "@posthog/ui/features/canvas/hooks/useChannels";
-import { useInboxActivityPreview } from "@posthog/ui/features/canvas/hooks/useInboxActivityPreview";
-import { useActivitySelection } from "@posthog/ui/features/canvas/stores/activityDetailStore";
-import { ReportDetail } from "@posthog/ui/features/inbox/components/ReportDetail";
-import { OpenSidebarButton } from "@posthog/ui/features/sidebar/components/OpenSidebarButton";
-import { TaskDetail } from "@posthog/ui/features/task-detail/components/TaskDetail";
-import { useResolvedTask } from "@posthog/ui/features/tasks/useResolvedTask";
-import { TaskDetailSkeleton } from "@posthog/ui/router/routeSkeletons";
+import { ActivityDetailCloseButton } from "@flind/ui/features/canvas/components/ActivityDetailCloseButton";
+import { useChannels } from "@flind/ui/features/canvas/hooks/useChannels";
+import { useInboxActivityPreview } from "@flind/ui/features/canvas/hooks/useInboxActivityPreview";
+import { useActivitySelection } from "@flind/ui/features/canvas/stores/activityDetailStore";
+import { ReportDetail } from "@flind/ui/features/inbox/components/ReportDetail";
+import { OpenSidebarButton } from "@flind/ui/features/sidebar/components/OpenSidebarButton";
+import { TaskDetail } from "@flind/ui/features/task-detail/components/TaskDetail";
+import { useResolvedTask } from "@flind/ui/features/tasks/useResolvedTask";
+import { TaskDetailSkeleton } from "@flind/ui/router/routeSkeletons";
 
 /** What the Activity destination shows beside its feed. */
 export function ActivityDetailPane() {

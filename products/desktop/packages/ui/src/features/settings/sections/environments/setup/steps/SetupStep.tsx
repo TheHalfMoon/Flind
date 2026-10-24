@@ -3,11 +3,11 @@ import {
   type EnvironmentSetupPlan,
   primaryRepository,
   type SetupLine,
-} from "@posthog/core/settings/environmentSetup";
+} from "@flind/core/settings/environmentSetup";
 import {
   SETUP_COMMAND_GROUPS,
   SETUP_COMMAND_SUGGESTIONS,
-} from "@posthog/core/settings/imagePreset";
+} from "@flind/core/settings/imagePreset";
 import {
   Button,
   Text,
@@ -15,12 +15,12 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@flind/quill";
-import { StepBody } from "@posthog/ui/features/settings/sections/environments/setup/StepBody";
-import { SetupCommandList } from "@posthog/ui/features/settings/sections/environments/setup/steps/SetupCommandList";
+import { StepBody } from "@flind/ui/features/settings/sections/environments/setup/StepBody";
+import { SetupCommandList } from "@flind/ui/features/settings/sections/environments/setup/steps/SetupCommandList";
 import {
   type RadioCardOption,
   RadioCards,
-} from "@posthog/ui/primitives/RadioCards";
+} from "@flind/ui/primitives/RadioCards";
 import { useState } from "react";
 
 interface SetupStepProps {

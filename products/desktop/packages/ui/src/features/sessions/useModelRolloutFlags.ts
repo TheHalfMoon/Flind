@@ -1,10 +1,10 @@
-import { useService } from "@posthog/di/react";
-import { MODEL_ACCESS_FLAGS } from "@posthog/shared/model-catalog";
-import { isFlagForcedOff } from "@posthog/ui/features/feature-flags/devFlagOverrides";
+import { useService } from "@flind/di/react";
+import { MODEL_ACCESS_FLAGS } from "@flind/shared/model-catalog";
+import { isFlagForcedOff } from "@flind/ui/features/feature-flags/devFlagOverrides";
 import {
   FEATURE_FLAGS,
   type FeatureFlags,
-} from "@posthog/ui/features/feature-flags/identifiers";
+} from "@flind/ui/features/feature-flags/identifiers";
 import { useCallback, useEffect, useState } from "react";
 import type { ModelRolloutFlags } from "./modelOptionFilters";
 

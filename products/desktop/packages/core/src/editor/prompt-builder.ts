@@ -1,5 +1,5 @@
 import type { ContentBlock } from "@agentclientprotocol/sdk";
-import { escapeXmlAttr, isAbsolutePath, pathToFileUri } from "@posthog/shared";
+import { escapeXmlAttr, isAbsolutePath, pathToFileUri } from "@flind/shared";
 import {
   CHANNEL_CONTEXT_TAG,
   CUSTOM_INSTRUCTIONS_PREAMBLE,

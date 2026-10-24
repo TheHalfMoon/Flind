@@ -2,14 +2,14 @@ import {
   type EnableFocusParams,
   FocusController,
   type FocusSagaResult,
-} from "@posthog/core/focus/service";
-import { resolveService } from "@posthog/di/container";
-import type { SagaLogger } from "@posthog/shared";
-import { logger } from "@posthog/ui/shell/logger";
+} from "@flind/core/focus/service";
+import { resolveService } from "@flind/di/container";
+import type { SagaLogger } from "@flind/shared";
+import { logger } from "@flind/ui/shell/logger";
 import type {
   FocusResult,
   FocusSession,
-} from "@posthog/workspace-client/types";
+} from "@flind/workspace-client/types";
 import { create } from "zustand";
 import { invalidateGitBranchQueries } from "../git-interaction/gitCacheKeys";
 import { FOCUS_CONTROLLER_DEPS, type FocusControllerDeps } from "./focusClient";

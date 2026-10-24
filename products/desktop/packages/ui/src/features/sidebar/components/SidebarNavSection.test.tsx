@@ -1,4 +1,4 @@
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
 import { Theme } from "@radix-ui/themes";
 import { fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
@@ -36,27 +36,27 @@ const {
   openBrowserTab: vi.fn(),
 }));
 
-vi.mock("@posthog/ui/shell/analytics", () => ({ track }));
-vi.mock("@posthog/ui/router/useAppView", () => ({
+vi.mock("@flind/ui/shell/analytics", () => ({ track }));
+vi.mock("@flind/ui/router/useAppView", () => ({
   useAppView,
   useReportSourceNavType: () => null,
 }));
 // Channel reports defaults off here; the flag-on test flips it via
 // `channelReportsFlag`.
 let channelReportsFlag = false;
-vi.mock("@posthog/ui/features/feature-flags/useFeatureFlag", () => ({
+vi.mock("@flind/ui/features/feature-flags/useFeatureFlag", () => ({
   useFeatureFlag: (flag: string) =>
     flag === "posthog-desktop-channel-reports" ? channelReportsFlag : true,
 }));
-vi.mock("@posthog/ui/features/feature-flags/useChannelReportsEnabled", () => ({
+vi.mock("@flind/ui/features/feature-flags/useChannelReportsEnabled", () => ({
   useChannelReportsEnabled: () => channelReportsFlag,
 }));
 // These tests pin the legacy layout (flag off), where the "Enable channels"
 // toggle row is present.
-vi.mock("@posthog/ui/features/canvas/hooks/useChannelsLayout", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannelsLayout", () => ({
   useChannelsLayout: () => false,
 }));
-vi.mock("@posthog/ui/router/navigationBridge", () => ({
+vi.mock("@flind/ui/router/navigationBridge", () => ({
   navigateToActivity,
   navigateToCommandCenter,
   navigateToContext: vi.fn(),
@@ -69,32 +69,32 @@ vi.mock("@posthog/ui/router/navigationBridge", () => ({
   navigateToWebsiteMcpServers: vi.fn(),
   navigateToWebsiteSkills: vi.fn(),
 }));
-vi.mock("@posthog/ui/router/useOpenTask", () => ({ openTaskInput: vi.fn() }));
-vi.mock("@posthog/ui/features/browser-tabs/useOpenBrowserTab", () => ({
+vi.mock("@flind/ui/router/useOpenTask", () => ({ openTaskInput: vi.fn() }));
+vi.mock("@flind/ui/features/browser-tabs/useOpenBrowserTab", () => ({
   useOpenBrowserTab: () => openBrowserTab,
 }));
-vi.mock("@posthog/ui/features/settings/hooks/useOpenSettings", () => ({
+vi.mock("@flind/ui/features/settings/hooks/useOpenSettings", () => ({
   openSettings,
 }));
-vi.mock("@posthog/ui/shell/commandMenuStore", () => ({
+vi.mock("@flind/ui/shell/commandMenuStore", () => ({
   useCommandMenuStore: (selector: (s: { open: () => void }) => unknown) =>
     selector({ open: openCommandMenu }),
 }));
-vi.mock("@posthog/ui/features/command-center/commandCenterStore", () => ({
+vi.mock("@flind/ui/features/command-center/commandCenterStore", () => ({
   useCommandCenterStore: (
     selector: (s: { cells: (string | null)[] }) => unknown,
   ) => selector({ cells: [] }),
 }));
-vi.mock("@posthog/ui/features/inbox/hooks/useInboxDecisionCount", () => ({
+vi.mock("@flind/ui/features/inbox/hooks/useInboxDecisionCount", () => ({
   useInboxDecisionCount: () => 0,
 }));
-vi.mock("@posthog/ui/features/inbox/hooks/useInboxAllReports", () => ({
+vi.mock("@flind/ui/features/inbox/hooks/useInboxAllReports", () => ({
   useInboxAllReports: () => ({ scopedReports: [], counts: { pulls: 0 } }),
 }));
-vi.mock("@posthog/ui/features/tasks/useTasks", () => ({
+vi.mock("@flind/ui/features/tasks/useTasks", () => ({
   useTasks: () => ({ data: [] }),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useTaskActivity", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useTaskActivity", () => ({
   useTaskActivity: () => ({ items: [], unreadCount: 0, isLoading: false }),
 }));
 vi.mock("@tanstack/react-router", () => ({
@@ -110,7 +110,7 @@ vi.mock("@tanstack/react-router", () => ({
     }),
 }));
 
-import { useSidebarStore } from "@posthog/ui/features/sidebar/sidebarStore";
+import { useSidebarStore } from "@flind/ui/features/sidebar/sidebarStore";
 import { SidebarNavSection } from "./SidebarNavSection";
 
 function renderNav() {

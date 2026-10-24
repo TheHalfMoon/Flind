@@ -1,9 +1,9 @@
-import type { Contribution } from "@posthog/di/contribution";
+import type { Contribution } from "@flind/di/contribution";
 import {
   HOST_TRPC_CLIENT,
   type HostTrpcClient,
-} from "@posthog/host-router/client";
-import type { HostRouter } from "@posthog/host-router/router";
+} from "@flind/host-router/client";
+import type { HostRouter } from "@flind/host-router/router";
 import { createTRPCOptionsProxy } from "@trpc/tanstack-react-query";
 import { inject, injectable } from "inversify";
 import { toast } from "../../primitives/toast";

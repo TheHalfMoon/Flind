@@ -1,4 +1,4 @@
-import type { UserBasic } from "@posthog/shared/domain-types";
+import type { UserBasic } from "@flind/shared/domain-types";
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { PresenceAvatar, PresenceAvatars } from "./PresenceAvatars";

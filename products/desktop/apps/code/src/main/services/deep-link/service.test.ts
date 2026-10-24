@@ -19,7 +19,7 @@ vi.mock("../../utils/logger.js", () => ({
   },
 }));
 
-import type { IAppLifecycle } from "@posthog/platform/app-lifecycle";
+import type { IAppLifecycle } from "@flind/platform/app-lifecycle";
 import { DeepLinkService } from "./service";
 
 describe("DeepLinkService", () => {

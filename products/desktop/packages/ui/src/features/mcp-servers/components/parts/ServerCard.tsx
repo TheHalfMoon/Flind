@@ -2,8 +2,8 @@ import { CaretRight, CheckCircle } from "@phosphor-icons/react";
 import {
   MCP_CATEGORIES,
   type McpRecommendedServer,
-} from "@posthog/api-client/posthog-client";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
+} from "@flind/api-client/posthog-client";
+import { Spinner } from "@flind/ui/primitives/Spinner";
 import { Badge, Button, Flex, Text } from "@radix-ui/themes";
 import { ServerIcon } from "./icons";
 

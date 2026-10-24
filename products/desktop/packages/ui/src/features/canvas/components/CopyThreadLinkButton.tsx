@@ -5,7 +5,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@flind/quill";
-import { copyChannelLink } from "@posthog/ui/features/canvas/utils/copyChannelLink";
+import { copyChannelLink } from "@flind/ui/features/canvas/utils/copyChannelLink";
 
 // Header affordance on a thread (channel-filed task): copies the thread's
 // shareable https link, which deep-links back into this exact thread.

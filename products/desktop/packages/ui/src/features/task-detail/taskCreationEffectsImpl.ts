@@ -1,11 +1,11 @@
-import type { TaskCreationEffects } from "@posthog/core/task-detail/taskCreationEffects";
-import { resolveService } from "@posthog/di/container";
+import type { TaskCreationEffects } from "@flind/core/task-detail/taskCreationEffects";
+import { resolveService } from "@flind/di/container";
 import type {
   TaskCreationInput,
   TaskCreationOutput,
   Workspace,
-} from "@posthog/shared";
-import type { Task, TaskRun } from "@posthog/shared/domain-types";
+} from "@flind/shared";
+import type { Task, TaskRun } from "@flind/shared/domain-types";
 import {
   IMPERATIVE_QUERY_CLIENT,
   type ImperativeQueryClient,

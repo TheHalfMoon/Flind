@@ -1,4 +1,4 @@
-import type { Task } from "@posthog/shared/domain-types";
+import type { Task } from "@flind/shared/domain-types";
 import { fireEvent, render, screen } from "@testing-library/react";
 import type { ReactNode } from "react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
@@ -29,29 +29,29 @@ const mocks = vi.hoisted(() => ({
   },
 }));
 
-vi.mock("@posthog/ui/router/useOpenTask", () => ({
+vi.mock("@flind/ui/router/useOpenTask", () => ({
   openTask: (...args: unknown[]) => mocks.openTask(...args),
 }));
-vi.mock("@posthog/ui/features/canvas/freeform/FreeformCanvasView", () => ({
+vi.mock("@flind/ui/features/canvas/freeform/FreeformCanvasView", () => ({
   FreeformCanvasView: () => null,
 }));
-vi.mock("@posthog/ui/features/canvas/grid/GridCanvasView", () => ({
+vi.mock("@flind/ui/features/canvas/grid/GridCanvasView", () => ({
   GridCanvasView: () => null,
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useDashboards", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useDashboards", () => ({
   useDashboard: () => ({ dashboard: null, isLoading: false }),
 }));
-vi.mock("@posthog/ui/features/terminal/destroyShellTerminal", () => ({
+vi.mock("@flind/ui/features/terminal/destroyShellTerminal", () => ({
   destroyShellTerminal: vi.fn(),
 }));
-vi.mock("@posthog/ui/features/terminal/ShellTerminal", () => ({
+vi.mock("@flind/ui/features/terminal/ShellTerminal", () => ({
   ShellTerminal: () => null,
 }));
-vi.mock("@posthog/ui/shell/analytics", () => ({ track: vi.fn() }));
-vi.mock("@posthog/ui/shell/useHostCapabilities", () => ({
+vi.mock("@flind/ui/shell/analytics", () => ({ track: vi.fn() }));
+vi.mock("@flind/ui/shell/useHostCapabilities", () => ({
   useHostCapabilities: () => ({ localWorkspaces: true }),
 }));
-vi.mock("@posthog/ui/utils/random", () => ({
+vi.mock("@flind/ui/utils/random", () => ({
   secureRandomString: () => "random",
 }));
 vi.mock("@radix-ui/themes", () => ({

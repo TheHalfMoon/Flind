@@ -1,5 +1,5 @@
-import type { ServiceResolver } from "@posthog/host-trpc/context";
-import { publicProcedure, router } from "@posthog/host-trpc/trpc";
+import type { ServiceResolver } from "@flind/host-trpc/context";
+import { publicProcedure, router } from "@flind/host-trpc/trpc";
 import { z } from "zod";
 import {
   FILE_WATCHER_CONTROL,

@@ -1,14 +1,14 @@
-import type { AuthState } from "@posthog/core/auth/schemas";
-import { resolveService } from "@posthog/di/container";
+import type { AuthState } from "@flind/core/auth/schemas";
+import { resolveService } from "@flind/di/container";
 import {
   HOST_TRPC_CLIENT,
   type HostTrpcClient,
-} from "@posthog/host-router/client";
-import { clearQuerySnapshots } from "@posthog/ui/hooks/useQuerySnapshot";
+} from "@flind/host-router/client";
+import { clearQuerySnapshots } from "@flind/ui/hooks/useQuerySnapshot";
 import {
   IMPERATIVE_QUERY_CLIENT,
   type ImperativeQueryClient,
-} from "@posthog/ui/shell/queryClient";
+} from "@flind/ui/shell/queryClient";
 import { getAuthIdentity, useAuthStore } from "./store";
 
 export type { AuthState };

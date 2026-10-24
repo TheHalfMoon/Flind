@@ -1,9 +1,9 @@
-import { Saga, type SagaLogger } from "@posthog/shared";
+import { Saga, type SagaLogger } from "@flind/shared";
 import type {
   FocusResult,
   FocusSession,
   StashResult,
-} from "@posthog/workspace-client/types";
+} from "@flind/workspace-client/types";
 
 type SessionContext = {
   type: "detached_head";

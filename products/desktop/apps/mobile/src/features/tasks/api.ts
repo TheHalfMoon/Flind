@@ -5,7 +5,7 @@ import type {
   Task,
   TaskRun,
   TaskRunArtifact,
-} from "@posthog/shared";
+} from "@flind/shared";
 import { fetch } from "expo/fetch";
 import {
   authedFetch,

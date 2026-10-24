@@ -1,5 +1,5 @@
-import { ShowActionsRow } from "@posthog/ui/features/sessions/components/session-update/ShowActionsRow";
-import type { ToolCall } from "@posthog/ui/features/sessions/types";
+import { ShowActionsRow } from "@flind/ui/features/sessions/components/session-update/ShowActionsRow";
+import type { ToolCall } from "@flind/ui/features/sessions/types";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 function showActionsCall(actions: unknown[]): ToolCall {

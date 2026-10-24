@@ -1,4 +1,4 @@
-import type { Task } from "@posthog/shared/domain-types";
+import type { Task } from "@flind/shared/domain-types";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import type { CommandCenterCellData } from "../hooks/useCommandCenterData";
 import { CommandCenterPanel } from "./CommandCenterPanel";

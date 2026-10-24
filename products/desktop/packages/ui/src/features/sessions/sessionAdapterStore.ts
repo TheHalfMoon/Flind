@@ -1,5 +1,5 @@
-import type { Adapter } from "@posthog/shared";
-import { electronStorage } from "@posthog/ui/shell/rendererStorage";
+import type { Adapter } from "@flind/shared";
+import { electronStorage } from "@flind/ui/shell/rendererStorage";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 

@@ -2,16 +2,16 @@ import type { SessionConfigOption } from "@agentclientprotocol/sdk";
 import type {
   EditorContent,
   FileAttachment,
-} from "@posthog/core/message-editor/content";
-import type { ContextUsage } from "@posthog/core/sessions/contextUsage";
-import { PromptHistoryDialog } from "@posthog/ui/features/message-editor/components/PromptHistoryDialog";
-import { PromptInput } from "@posthog/ui/features/message-editor/components/PromptInput";
-import type { MentionChip } from "@posthog/ui/features/message-editor/content";
-import type { EditorHandle } from "@posthog/ui/features/message-editor/types";
-import { ContextUsageIndicator } from "@posthog/ui/features/sessions/components/ContextUsageIndicator";
-import { ReasoningLevelSelector } from "@posthog/ui/features/sessions/components/ReasoningLevelSelector";
-import { SteerQueueToggle } from "@posthog/ui/features/sessions/components/SteerQueueToggle";
-import { ChannelContextChip } from "@posthog/ui/features/task-detail/components/ChannelContextChip";
+} from "@flind/core/message-editor/content";
+import type { ContextUsage } from "@flind/core/sessions/contextUsage";
+import { PromptHistoryDialog } from "@flind/ui/features/message-editor/components/PromptHistoryDialog";
+import { PromptInput } from "@flind/ui/features/message-editor/components/PromptInput";
+import type { MentionChip } from "@flind/ui/features/message-editor/content";
+import type { EditorHandle } from "@flind/ui/features/message-editor/types";
+import { ContextUsageIndicator } from "@flind/ui/features/sessions/components/ContextUsageIndicator";
+import { ReasoningLevelSelector } from "@flind/ui/features/sessions/components/ReasoningLevelSelector";
+import { SteerQueueToggle } from "@flind/ui/features/sessions/components/SteerQueueToggle";
+import { ChannelContextChip } from "@flind/ui/features/task-detail/components/ChannelContextChip";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useEffect, useRef, useState } from "react";
 import {

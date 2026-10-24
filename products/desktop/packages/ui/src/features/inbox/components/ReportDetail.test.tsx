@@ -5,11 +5,11 @@ const { inboxReportDetailGate } = vi.hoisted(() => ({
   inboxReportDetailGate: vi.fn(() => null),
 }));
 
-vi.mock("@posthog/ui/features/inbox/components/InboxReportDetailGate", () => ({
+vi.mock("@flind/ui/features/inbox/components/InboxReportDetailGate", () => ({
   InboxReportDetailGate: inboxReportDetailGate,
 }));
 
-import { ReportDetail } from "@posthog/ui/features/inbox/components/ReportDetail";
+import { ReportDetail } from "@flind/ui/features/inbox/components/ReportDetail";
 
 describe("ReportDetail", () => {
   beforeEach(() => inboxReportDetailGate.mockClear());

@@ -1,4 +1,4 @@
-import type { SignalReport, Task } from "@posthog/shared/types";
+import type { SignalReport, Task } from "@flind/shared/types";
 import { render, screen } from "@testing-library/react";
 import type { ReactNode } from "react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
@@ -22,34 +22,34 @@ vi.mock("@tanstack/react-query", async (importOriginal) => {
   };
 });
 
-vi.mock("@posthog/ui/features/inbox/hooks/useReportTasks", () => ({
+vi.mock("@flind/ui/features/inbox/hooks/useReportTasks", () => ({
   findContinuableImplementationTask,
   findLatestDiscussionTask: () => null,
   findPendingStartedTaskId: () => null,
   useReportTasks,
 }));
 
-vi.mock("@posthog/ui/features/canvas/hooks/useTaskChannels", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useTaskChannels", () => ({
   useTaskChannels: () => ({ generalChannel: null }),
 }));
 
-vi.mock("@posthog/ui/features/inbox/hooks/useDiscussReport", () => ({
+vi.mock("@flind/ui/features/inbox/hooks/useDiscussReport", () => ({
   useDiscussReport: () => ({ discussReport: vi.fn(), isDiscussing: false }),
 }));
 
-vi.mock("@posthog/ui/features/inbox/hooks/useReportActionTracker", () => ({
+vi.mock("@flind/ui/features/inbox/hooks/useReportActionTracker", () => ({
   useReportActionTracker: () => vi.fn(),
 }));
 
-vi.mock("@posthog/ui/router/useOpenTask", () => ({
+vi.mock("@flind/ui/router/useOpenTask", () => ({
   useOpenTask: () => vi.fn(),
 }));
 
-vi.mock("@posthog/ui/primitives/ResizableSidebar", () => ({
+vi.mock("@flind/ui/primitives/ResizableSidebar", () => ({
   ResizableSidebar: ({ children }: { children: ReactNode }) => children,
 }));
 
-vi.mock("@posthog/ui/features/sessions/components/EmbeddedSessionView", () => ({
+vi.mock("@flind/ui/features/sessions/components/EmbeddedSessionView", () => ({
   EmbeddedSessionView: () => <div>Existing conversation</div>,
 }));
 

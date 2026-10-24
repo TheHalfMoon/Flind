@@ -1,20 +1,20 @@
 import { FileTextIcon, MagnifyingGlassIcon } from "@phosphor-icons/react";
-import type { SignalReport } from "@posthog/shared/types";
+import type { SignalReport } from "@flind/shared/types";
 import {
   AskAboutSelection,
   quoteSelection,
-} from "@posthog/ui/features/inbox/components/AskAboutSelection";
-import { ReportActivitySection } from "@posthog/ui/features/inbox/components/detail/ReportActivitySection";
-import { ReportFeedbackFooter } from "@posthog/ui/features/inbox/components/detail/ReportFeedbackFooter";
-import { InboxDetailFrame } from "@posthog/ui/features/inbox/components/InboxDetailFrame";
-import { InboxReportDetailGate } from "@posthog/ui/features/inbox/components/InboxReportDetailGate";
-import { ReportChatSidebar } from "@posthog/ui/features/inbox/components/ReportChatSidebar";
-import { ReportDetailActions } from "@posthog/ui/features/inbox/components/ReportDetailActions";
-import { ReportReviewersSection } from "@posthog/ui/features/inbox/components/ReportReviewersSection";
-import { ReportRunsSection } from "@posthog/ui/features/inbox/components/ReportRunsSection";
-import { ReportVerdictBanner } from "@posthog/ui/features/inbox/components/ReportVerdictBanner";
-import { ReportTrackerIssueLink } from "@posthog/ui/features/inbox/components/utils/ReportTrackerIssueLink";
-import { useReportChatPanelStore } from "@posthog/ui/features/inbox/stores/reportChatPanelStore";
+} from "@flind/ui/features/inbox/components/AskAboutSelection";
+import { ReportActivitySection } from "@flind/ui/features/inbox/components/detail/ReportActivitySection";
+import { ReportFeedbackFooter } from "@flind/ui/features/inbox/components/detail/ReportFeedbackFooter";
+import { InboxDetailFrame } from "@flind/ui/features/inbox/components/InboxDetailFrame";
+import { InboxReportDetailGate } from "@flind/ui/features/inbox/components/InboxReportDetailGate";
+import { ReportChatSidebar } from "@flind/ui/features/inbox/components/ReportChatSidebar";
+import { ReportDetailActions } from "@flind/ui/features/inbox/components/ReportDetailActions";
+import { ReportReviewersSection } from "@flind/ui/features/inbox/components/ReportReviewersSection";
+import { ReportRunsSection } from "@flind/ui/features/inbox/components/ReportRunsSection";
+import { ReportVerdictBanner } from "@flind/ui/features/inbox/components/ReportVerdictBanner";
+import { ReportTrackerIssueLink } from "@flind/ui/features/inbox/components/utils/ReportTrackerIssueLink";
+import { useReportChatPanelStore } from "@flind/ui/features/inbox/stores/reportChatPanelStore";
 import { type ReactNode, useCallback, useEffect, useRef } from "react";
 
 interface ReportDetailProps {

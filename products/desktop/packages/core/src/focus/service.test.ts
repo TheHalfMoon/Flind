@@ -2,7 +2,7 @@ import type {
   FocusResult,
   FocusSession,
   StashResult,
-} from "@posthog/workspace-client/types";
+} from "@flind/workspace-client/types";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import {
   type EnableFocusParams,

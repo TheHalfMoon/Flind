@@ -1,18 +1,18 @@
-import { PI_SESSION_CONTROLLER } from "@posthog/core/pi-runtime/identifiers";
-import type { PiSessionController } from "@posthog/core/pi-runtime/piSessionController";
+import { PI_SESSION_CONTROLLER } from "@flind/core/pi-runtime/identifiers";
+import type { PiSessionController } from "@flind/core/pi-runtime/piSessionController";
 import {
   deriveTaskRunState,
   narrowFullTask,
-} from "@posthog/core/sidebar/buildSidebarData";
-import { isTaskActivelyRunning } from "@posthog/core/sidebar/taskRunning";
-import { useService } from "@posthog/di/react";
-import type { Task } from "@posthog/shared/domain-types";
-import { useArchiveTask } from "@posthog/ui/features/archive/useArchiveTask";
-import { useSessionSelector } from "@posthog/ui/features/sessions/useSession";
-import { useArchivingTasksStore } from "@posthog/ui/features/sidebar/archivingTasksStore";
-import { ArchiveRunningTaskDialog } from "@posthog/ui/features/sidebar/components/ArchiveRunningTaskDialog";
-import { toast } from "@posthog/ui/primitives/toast";
-import { logger } from "@posthog/ui/shell/logger";
+} from "@flind/core/sidebar/buildSidebarData";
+import { isTaskActivelyRunning } from "@flind/core/sidebar/taskRunning";
+import { useService } from "@flind/di/react";
+import type { Task } from "@flind/shared/domain-types";
+import { useArchiveTask } from "@flind/ui/features/archive/useArchiveTask";
+import { useSessionSelector } from "@flind/ui/features/sessions/useSession";
+import { useArchivingTasksStore } from "@flind/ui/features/sidebar/archivingTasksStore";
+import { ArchiveRunningTaskDialog } from "@flind/ui/features/sidebar/components/ArchiveRunningTaskDialog";
+import { toast } from "@flind/ui/primitives/toast";
+import { logger } from "@flind/ui/shell/logger";
 import { type ReactElement, useCallback, useState } from "react";
 import { useStore } from "zustand";
 import { shallow } from "zustand/shallow";

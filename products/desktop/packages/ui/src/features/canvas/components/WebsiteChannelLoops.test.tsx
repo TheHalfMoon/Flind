@@ -1,4 +1,4 @@
-import type { LoopSchemas } from "@posthog/ui/features/loops/loopSchemas";
+import type { LoopSchemas } from "@flind/ui/features/loops/loopSchemas";
 import { render, screen } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
@@ -23,35 +23,35 @@ const mocks = vi.hoisted(() => {
   };
 });
 
-vi.mock("@posthog/ui/features/canvas/hooks/useWorkLayout", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useWorkLayout", () => ({
   useWorkLayout: () => false,
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useChannels", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannels", () => ({
   useChannels: () => ({
     channels: mocks.channels,
     isLoading: mocks.channelsLoading,
   }),
 }));
-vi.mock("@posthog/ui/features/canvas/components/ChannelHeader", () => ({
+vi.mock("@flind/ui/features/canvas/components/ChannelHeader", () => ({
   ChannelHeader: () => <div>Personal space header</div>,
 }));
-vi.mock("@posthog/ui/hooks/useSetHeaderContent", () => ({
+vi.mock("@flind/ui/hooks/useSetHeaderContent", () => ({
   useSetHeaderContent: () => {},
 }));
-vi.mock("@posthog/ui/features/loops/loopWizardDialogStore", () => ({
+vi.mock("@flind/ui/features/loops/loopWizardDialogStore", () => ({
   openNewLoop: vi.fn(),
 }));
-vi.mock("@posthog/ui/features/loops/hooks/useLoops", () => ({
+vi.mock("@flind/ui/features/loops/hooks/useLoops", () => ({
   useLoops: mocks.useLoops,
 }));
-vi.mock("@posthog/ui/features/loops/components/LoopBuilderComposer", () => ({
+vi.mock("@flind/ui/features/loops/components/LoopBuilderComposer", () => ({
   LoopBuilderComposer: () => null,
 }));
-vi.mock("@posthog/ui/features/loops/components/LoopFallbacks", () => ({
+vi.mock("@flind/ui/features/loops/components/LoopFallbacks", () => ({
   LoopsEmptyNotice: () => null,
   LoopsSkeleton: () => <div>Loading loops</div>,
 }));
-vi.mock("@posthog/ui/features/loops/components/LoopsTable", () => ({
+vi.mock("@flind/ui/features/loops/components/LoopsTable", () => ({
   LoopsTable: ({ loops }: { loops: { id: string; name: string }[] }) => (
     <div>
       {loops.map((loop) => (
@@ -60,10 +60,10 @@ vi.mock("@posthog/ui/features/loops/components/LoopsTable", () => ({
     </div>
   ),
 }));
-vi.mock("@posthog/ui/features/loops/components/LoopsEmptyState", () => ({
+vi.mock("@flind/ui/features/loops/components/LoopsEmptyState", () => ({
   LoopsEmptyState: () => null,
 }));
-vi.mock("@posthog/ui/features/loops/components/LoopTemplatesSection", () => ({
+vi.mock("@flind/ui/features/loops/components/LoopTemplatesSection", () => ({
   LoopTemplatesSection: () => null,
 }));
 

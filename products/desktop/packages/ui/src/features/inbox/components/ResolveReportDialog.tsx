@@ -16,8 +16,8 @@ import {
 import {
   RESOLVE_REASON_OPTIONS,
   type ResolveReasonOptionValue,
-} from "@posthog/shared/dismissalReasons";
-import type { SignalReport } from "@posthog/shared/types";
+} from "@flind/shared/dismissalReasons";
+import type { SignalReport } from "@flind/shared/types";
 import { useId, useState } from "react";
 
 export interface ResolveReportDialogResult {

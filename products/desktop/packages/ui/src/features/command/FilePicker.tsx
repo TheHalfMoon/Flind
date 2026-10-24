@@ -10,15 +10,15 @@ import {
   Dialog,
   DialogContent,
 } from "@flind/quill";
-import { CommandKeyHints } from "@posthog/ui/features/command/CommandKeyHints";
+import { CommandKeyHints } from "@flind/ui/features/command/CommandKeyHints";
 import {
   buildRecentFileSections,
   type FileItem,
   type FileSection,
   rankFiles,
   useRepoFiles,
-} from "@posthog/ui/features/repo-files/useRepoFiles";
-import { FileIcon } from "@posthog/ui/primitives/FileIcon";
+} from "@flind/ui/features/repo-files/useRepoFiles";
+import { FileIcon } from "@flind/ui/primitives/FileIcon";
 import { useCallback, useMemo, useState } from "react";
 
 interface FilePickerProps {

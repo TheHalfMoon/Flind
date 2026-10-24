@@ -1,8 +1,8 @@
-import type { Task } from "@posthog/shared/domain-types";
-import { taskDetailQuery } from "@posthog/ui/features/tasks/queries";
-import { taskKeys } from "@posthog/ui/features/tasks/taskKeys";
-import { navigateToTaskDetail } from "@posthog/ui/router/navigationBridge";
-import { openTask } from "@posthog/ui/router/useOpenTask";
+import type { Task } from "@flind/shared/domain-types";
+import { taskDetailQuery } from "@flind/ui/features/tasks/queries";
+import { taskKeys } from "@flind/ui/features/tasks/taskKeys";
+import { navigateToTaskDetail } from "@flind/ui/router/navigationBridge";
+import { openTask } from "@flind/ui/router/useOpenTask";
 import type { QueryClient } from "@tanstack/react-query";
 
 function getCachedTask(queryClient: QueryClient, taskId: string): Task | null {

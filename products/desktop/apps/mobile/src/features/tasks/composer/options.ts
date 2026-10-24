@@ -1,8 +1,8 @@
 import {
   getDefaultExecutionModeForAdapter,
   type ModeInfo,
-} from "@posthog/core/sessions/executionModes";
-import type { CloudComposerSelection } from "@posthog/core/task-detail/composerModelPolicy";
+} from "@flind/core/sessions/executionModes";
+import type { CloudComposerSelection } from "@flind/core/task-detail/composerModelPolicy";
 import {
   type Adapter,
   adapterForModelId,
@@ -14,7 +14,7 @@ import {
   isRestrictedModelOption,
   type SupportedReasoningEffort,
   selectOptionHarness,
-} from "@posthog/shared";
+} from "@flind/shared";
 
 export type ContextWindow = "200k" | "1m";
 export const DEFAULT_CONTEXT_WINDOW: ContextWindow = "1m";

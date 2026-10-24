@@ -2,7 +2,7 @@ import type {
   SignalReport,
   SignalReportActionability,
   SignalReportStatus,
-} from "@posthog/shared/domain-types";
+} from "@flind/shared/domain-types";
 import { describe, expect, it } from "vitest";
 import {
   type ReportVerdictAction,

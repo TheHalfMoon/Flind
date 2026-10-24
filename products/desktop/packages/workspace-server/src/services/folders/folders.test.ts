@@ -69,14 +69,14 @@ vi.mock("@flind/git/sagas/init", () => ({
   },
 }));
 
-import type { RootLogger } from "@posthog/di/logger";
+import type { RootLogger } from "@flind/di/logger";
 import {
   getLinkedWorktreeMainPath,
   getRemoteUrl,
   isGitRepository,
 } from "@flind/git/queries";
-import type { IDialog } from "@posthog/platform/dialog";
-import type { IWorkspaceSettings } from "@posthog/platform/workspace-settings";
+import type { IDialog } from "@flind/platform/dialog";
+import type { IWorkspaceSettings } from "@flind/platform/workspace-settings";
 import type { IRepositoryRepository } from "../../db/repositories/repository-repository";
 import type { IWorkspaceRepository } from "../../db/repositories/workspace-repository";
 import type { IWorktreeRepository } from "../../db/repositories/worktree-repository";

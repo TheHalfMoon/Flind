@@ -1,5 +1,5 @@
 import type http from "node:http";
-import type { ScopedLogger } from "@posthog/di/logger";
+import type { ScopedLogger } from "@flind/di/logger";
 import {
   aiGatewayDenialCode,
   aiGatewayRemintReason,
@@ -7,8 +7,8 @@ import {
   GATEWAY_BLOCKED_ERROR_TYPES,
   GATEWAY_TRANSIENT_DETAIL,
   serializeError,
-} from "@posthog/shared";
-import { collapsePropertyHeadersForAiGateway } from "@posthog/shared/posthog-property-headers";
+} from "@flind/shared";
+import { collapsePropertyHeadersForAiGateway } from "@flind/shared/posthog-property-headers";
 import {
   type StreamProgress,
   streamBodyToResponse,

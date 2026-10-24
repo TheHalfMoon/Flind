@@ -2,12 +2,12 @@ import { Check, MagnifyingGlass, X } from "@phosphor-icons/react";
 import type {
   McpGatewayServer,
   McpRecommendedServer,
-} from "@posthog/api-client/posthog-client";
-import type { GatewayRoute } from "@posthog/ui/features/mcp-gateway/gatewayRoute";
-import { useGatewayConfig } from "@posthog/ui/features/mcp-gateway/hooks/useGatewayConfig";
-import { useGatewayServers } from "@posthog/ui/features/mcp-gateway/hooks/useGatewayServers";
-import { ServerIcon } from "@posthog/ui/features/mcp-servers/components/parts/icons";
-import { toast } from "@posthog/ui/primitives/toast";
+} from "@flind/api-client/posthog-client";
+import type { GatewayRoute } from "@flind/ui/features/mcp-gateway/gatewayRoute";
+import { useGatewayConfig } from "@flind/ui/features/mcp-gateway/hooks/useGatewayConfig";
+import { useGatewayServers } from "@flind/ui/features/mcp-gateway/hooks/useGatewayServers";
+import { ServerIcon } from "@flind/ui/features/mcp-servers/components/parts/icons";
+import { toast } from "@flind/ui/primitives/toast";
 import {
   Button,
   Flex,

@@ -1,11 +1,11 @@
-import { requestErrorStatus } from "@posthog/api-client/fetcher";
-import type { PostHogAPIClient } from "@posthog/api-client/posthog-client";
+import { requestErrorStatus } from "@flind/api-client/fetcher";
+import type { PostHogAPIClient } from "@flind/api-client/posthog-client";
 import {
   isTerminalStatus,
   type SignalReportArtefactsResponse,
   type Task,
   type TaskRunArtefactContent,
-} from "@posthog/shared/domain-types";
+} from "@flind/shared/domain-types";
 
 type ReportTaskClient = Pick<
   PostHogAPIClient,

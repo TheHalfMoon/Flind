@@ -1,18 +1,18 @@
 import {
   isNotAuthenticatedError,
   NotAuthenticatedError,
-} from "@posthog/shared";
+} from "@flind/shared";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import type { ReactNode } from "react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { ErrorBoundary } from "./ErrorBoundary";
 
-vi.mock("@posthog/ui/shell/analytics", () => ({
+vi.mock("@flind/ui/shell/analytics", () => ({
   captureException: vi.fn(),
 }));
 
-vi.mock("@posthog/ui/shell/logger", () => ({
+vi.mock("@flind/ui/shell/logger", () => ({
   logger: {
     scope: () => ({
       error: vi.fn(),
@@ -23,7 +23,7 @@ vi.mock("@posthog/ui/shell/logger", () => ({
   },
 }));
 
-import { captureException } from "@posthog/ui/shell/analytics";
+import { captureException } from "@flind/ui/shell/analytics";
 
 function Thrower({ error }: { error: Error | null }) {
   if (error) throw error;

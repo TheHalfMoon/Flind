@@ -1,5 +1,5 @@
-import type { AutoresearchDirection } from "@posthog/core/autoresearch/schemas";
-import { isImprovement } from "@posthog/core/autoresearch/stats";
+import type { AutoresearchDirection } from "@flind/core/autoresearch/schemas";
+import { isImprovement } from "@flind/core/autoresearch/stats";
 
 /**
  * Attach the run's metric unit to an already-formatted value. Percent hugs

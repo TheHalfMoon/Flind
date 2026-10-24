@@ -1,6 +1,6 @@
-import { mergePrUrls, readPrSummaries, readPrUrls } from "@posthog/shared";
-import type { Task } from "@posthog/shared/domain-types";
-import type { AgentSession } from "@posthog/ui/features/sessions/sessionStore";
+import { mergePrUrls, readPrSummaries, readPrUrls } from "@flind/shared";
+import type { Task } from "@flind/shared/domain-types";
+import type { AgentSession } from "@flind/ui/features/sessions/sessionStore";
 
 export function resolveCloudPrUrls(
   task: Task | undefined,

@@ -1,5 +1,5 @@
-import type { NewTaskLinkPayload } from "@posthog/shared";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
+import type { NewTaskLinkPayload } from "@flind/shared";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
 import { inject, injectable } from "inversify";
 import {
   GITHUB_ISSUE_CLIENT,

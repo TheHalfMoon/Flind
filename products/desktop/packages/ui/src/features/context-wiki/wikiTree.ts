@@ -1,4 +1,4 @@
-import type { FileTreeNode } from "@posthog/ui/primitives/FileExplorer";
+import type { FileTreeNode } from "@flind/ui/primitives/FileExplorer";
 
 /**
  * Folds the tree endpoint's flat path list into a FileExplorer tree.

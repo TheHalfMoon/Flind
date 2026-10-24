@@ -11,7 +11,7 @@ const archiveLocally = vi.hoisted(() => vi.fn());
 const refreshArchiveState = vi.hoisted(() => vi.fn());
 const serverArchiveScope = '["us","user-a",42]';
 
-vi.mock("@posthog/ui/features/auth/authClient", () => ({
+vi.mock("@flind/ui/features/auth/authClient", () => ({
   useOptionalAuthenticatedClient: () => apiClient,
 }));
 
@@ -19,7 +19,7 @@ vi.mock("./useServerArchiveScope", () => ({
   useServerArchiveScope: () => serverArchiveScope,
 }));
 
-vi.mock("@posthog/di/react", () => ({
+vi.mock("@flind/di/react", () => ({
   useService: () => ({
     archive: archiveLocally,
     refreshArchiveState,
@@ -28,7 +28,7 @@ vi.mock("@posthog/di/react", () => ({
 
 const archivedIds = vi.hoisted(() => ({ current: new Set<string>() }));
 
-vi.mock("@posthog/ui/features/archive/useArchivedTaskIds", () => ({
+vi.mock("@flind/ui/features/archive/useArchivedTaskIds", () => ({
   useArchivedTaskIds: () => archivedIds.current,
 }));
 

@@ -1,4 +1,4 @@
-import type { DiscoveredTask } from "@posthog/core/setup/types";
+import type { DiscoveredTask } from "@flind/core/setup/types";
 
 type DiscoveryStatus = "idle" | "running" | "done" | "error";
 export type EnricherStatus = "idle" | "running" | "done" | "error";

@@ -1,15 +1,15 @@
-import { useServiceOptional } from "@posthog/di/react";
+import { useServiceOptional } from "@flind/di/react";
 import { Button, Input, Switch } from "@flind/quill";
-import { ANALYTICS_EVENTS } from "@posthog/shared";
-import { setCloudSubscriptionOn } from "@posthog/ui/features/settings/adapterSubscription";
+import { ANALYTICS_EVENTS } from "@flind/shared";
+import { setCloudSubscriptionOn } from "@flind/ui/features/settings/adapterSubscription";
 import {
   CLAUDE_SUBSCRIPTION_TOKEN_SETTINGS,
   type ClaudeSubscriptionTokenSettings,
   claudeSubscriptionTokenQueryKey,
   isValidClaudeSetupToken,
-} from "@posthog/ui/features/settings/claudeSubscriptionTokenSettings";
-import { toast } from "@posthog/ui/primitives/toast";
-import { track } from "@posthog/ui/shell/analytics";
+} from "@flind/ui/features/settings/claudeSubscriptionTokenSettings";
+import { toast } from "@flind/ui/primitives/toast";
+import { track } from "@flind/ui/shell/analytics";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { type ReactElement, useId, useState } from "react";
 

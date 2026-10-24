@@ -11,50 +11,50 @@ const mocks = vi.hoisted(() => ({
   navigate: vi.fn(),
   track: vi.fn(),
 }));
-vi.mock("@posthog/ui/shell/analytics", () => ({ track: mocks.track }));
+vi.mock("@flind/ui/shell/analytics", () => ({ track: mocks.track }));
 vi.mock("@tanstack/react-router", () => ({
   useNavigate: () => mocks.navigate,
 }));
-vi.mock("@posthog/ui/features/auth/authClient", () => ({
+vi.mock("@flind/ui/features/auth/authClient", () => ({
   useOptionalAuthenticatedClient: () => ({ setupTaskChannel: mocks.setup }),
 }));
-vi.mock("@posthog/ui/features/auth/useCurrentUser", () => ({
+vi.mock("@flind/ui/features/auth/useCurrentUser", () => ({
   useCurrentUser: () => ({ data: null }),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useOrgMembers", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useOrgMembers", () => ({
   useOrgMembers: () => ({ members: [] }),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useChannelsLayout", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannelsLayout", () => ({
   useChannelsLayout: () => true,
 }));
-vi.mock("@posthog/ui/features/feature-flags/useFeatureFlag", () => ({
+vi.mock("@flind/ui/features/feature-flags/useFeatureFlag", () => ({
   useFeatureFlag: () => mocks.setupFlag(),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useChannels", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannels", () => ({
   useChannelMutations: () => ({
     createChannel: mocks.createChannel,
     isCreating: false,
   }),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useGenerateContext", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useGenerateContext", () => ({
   useGenerateContext: () => ({ generate: mocks.generate, isStarting: false }),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useTaskChannels", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useTaskChannels", () => ({
   useUpdateTaskChannelRepositories: () => ({
     mutateAsync: vi.fn(),
     isPending: false,
   }),
 }));
 vi.mock(
-  "@posthog/ui/features/integrations/components/RepositoriesField",
+  "@flind/ui/features/integrations/components/RepositoriesField",
   () => ({
     RepositoriesField: () => <div data-testid="repositories-field" />,
   }),
 );
-vi.mock("@posthog/ui/features/canvas/components/MemberSearch", () => ({
+vi.mock("@flind/ui/features/canvas/components/MemberSearch", () => ({
   MemberSearch: () => null,
 }));
-vi.mock("@posthog/ui/features/canvas/components/MemberList", () => ({
+vi.mock("@flind/ui/features/canvas/components/MemberList", () => ({
   MemberList: () => null,
 }));
 

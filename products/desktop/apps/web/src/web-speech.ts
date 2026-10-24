@@ -1,20 +1,20 @@
 import type {
   SpeechSettingsProvider,
   UserNameProvider,
-} from "@posthog/core/speech/identifiers";
-import type { ISpeech } from "@posthog/platform/speech";
-import { authKeys } from "@posthog/ui/features/auth/useCurrentUser";
-import type { ISpeechNotifySettings } from "@posthog/ui/features/notifications/identifiers";
+} from "@flind/core/speech/identifiers";
+import type { ISpeech } from "@flind/platform/speech";
+import { authKeys } from "@flind/ui/features/auth/useCurrentUser";
+import type { ISpeechNotifySettings } from "@flind/ui/features/notifications/identifiers";
 import {
   notificationsPaused,
   useSettingsStore,
-} from "@posthog/ui/features/settings/settingsStore";
-import type { ImperativeQueryClient } from "@posthog/ui/shell/queryClient";
+} from "@flind/ui/features/settings/settingsStore";
+import type { ImperativeQueryClient } from "@flind/ui/shell/queryClient";
 import {
   isSpeechSupported,
   speakSystemVoice,
   stopSpeech,
-} from "@posthog/ui/utils/speech";
+} from "@flind/ui/utils/speech";
 
 // System voice only: ElevenLabs synthesis needs the key in a host secure store,
 // which the browser has no equivalent of. voiceId is therefore ignored.

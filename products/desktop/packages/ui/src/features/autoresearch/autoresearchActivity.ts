@@ -1,5 +1,5 @@
-import { parsePlanReport } from "@posthog/core/autoresearch/prompts";
-import type { AcpMessage } from "@posthog/shared";
+import { parsePlanReport } from "@flind/core/autoresearch/prompts";
+import type { AcpMessage } from "@flind/shared";
 
 export type AutoresearchActivityKind =
   | "research"

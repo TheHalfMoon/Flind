@@ -1,4 +1,4 @@
-import type { SpaceSetupDraft } from "@posthog/core/canvas/spaceSetup";
+import type { SpaceSetupDraft } from "@flind/core/canvas/spaceSetup";
 import {
   Field,
   FieldDescription,

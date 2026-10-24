@@ -3,7 +3,7 @@ import type {
   DiffLineAnnotation,
   SelectedLineRange,
 } from "@pierre/diffs";
-import type { AnnotationMetadata } from "@posthog/ui/features/code-review/types";
+import type { AnnotationMetadata } from "@flind/ui/features/code-review/types";
 import { useCallback, useState } from "react";
 
 export interface CommentEditSeed {

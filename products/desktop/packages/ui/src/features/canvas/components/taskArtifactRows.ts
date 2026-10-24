@@ -6,19 +6,19 @@ import {
   parseRunArtifacts,
   type RunArtifact,
   type RunArtifactVersions,
-} from "@posthog/core/canvas/runArtifactSchemas";
-import type { ThreadTimelineRow } from "@posthog/core/canvas/threadTimeline";
+} from "@flind/core/canvas/runArtifactSchemas";
+import type { ThreadTimelineRow } from "@flind/core/canvas/threadTimeline";
 import {
   type CommentTarget,
   commentTargetKey,
-} from "@posthog/core/comments/anchors";
-import { readPrUrls } from "@posthog/shared";
+} from "@flind/core/comments/anchors";
+import { readPrUrls } from "@flind/shared";
 import type {
   Task,
   TaskRun,
   TaskThreadMessage,
-} from "@posthog/shared/domain-types";
-import { parseHttpsUrl, parseShareLink } from "@posthog/ui/utils/posthogLinks";
+} from "@flind/shared/domain-types";
+import { parseHttpsUrl, parseShareLink } from "@flind/ui/utils/posthogLinks";
 
 export type RunFile = RunArtifact & { runId: string };
 

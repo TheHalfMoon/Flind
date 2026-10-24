@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { iconDomainFromServerUrl } from "./iconDomain";
 
 // Mirrors packages/core/src/mcp-servers/iconDomain.test.ts — the helper is
-// duplicated because mobile doesn't depend on @posthog/core.
+// duplicated because mobile doesn't depend on @flind/core.
 describe("iconDomainFromServerUrl", () => {
   it.each([
     ["strips mcp. from deep hosts", "https://mcp.linear.app/sse", "linear.app"],

@@ -4,7 +4,7 @@ import { usePinDragStore } from "./pinDragStore";
 import { consumeTaskDrop } from "./taskDrag";
 import { usePinDrag } from "./usePinDrag";
 
-vi.mock("@posthog/ui/utils/sounds", () => ({ playTrashSound: vi.fn() }));
+vi.mock("@flind/ui/utils/sounds", () => ({ playTrashSound: vi.fn() }));
 
 interface Row {
   id: string;

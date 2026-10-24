@@ -1,5 +1,5 @@
 import "reflect-metadata";
-// Side effect: registers the host (electron-trpc-backed) storage with @posthog/ui.
+// Side effect: registers the host (electron-trpc-backed) storage with @flind/ui.
 // Persisted stores hydrate from it once it registers, wherever in the import
 // graph they are created.
 import "@utils/electronStorage";
@@ -10,7 +10,7 @@ import "@renderer/di/container";
 // Side effect: drives the updates subscription + toast via the core update store.
 import "@renderer/platform-adapters/updates";
 // Side effect: attaches window focus/visibility listeners so `focused` is accurate before inbox queries mount.
-import "@posthog/ui/shell/rendererWindowFocusStore";
+import "@flind/ui/shell/rendererWindowFocusStore";
 import {
   BootErrorBoundary,
   BootErrorScreen,
@@ -18,21 +18,21 @@ import {
 import { Providers } from "@components/Providers";
 import { DevToolbarHost } from "@features/dev-toolbar/DevToolbarHost";
 import { preloadHighlighter } from "@pierre/diffs";
-import { boot } from "@posthog/di/contribution";
-import { assertHostCapabilities } from "@posthog/di/hostCapabilities";
-import { ServiceProvider } from "@posthog/di/react";
-import { MissionControlOverlay } from "@posthog/ui/features/mission-control/MissionControlOverlay";
-import App from "@posthog/ui/shell/App";
-import { logger } from "@posthog/ui/shell/logger";
-import { initializePostHog } from "@posthog/ui/shell/posthogAnalyticsImpl";
-import { REQUIRED_HOST_CAPABILITIES } from "@posthog/ui/shell/requiredHostCapabilities";
+import { boot } from "@flind/di/contribution";
+import { assertHostCapabilities } from "@flind/di/hostCapabilities";
+import { ServiceProvider } from "@flind/di/react";
+import { MissionControlOverlay } from "@flind/ui/features/mission-control/MissionControlOverlay";
+import App from "@flind/ui/shell/App";
+import { logger } from "@flind/ui/shell/logger";
+import { initializePostHog } from "@flind/ui/shell/posthogAnalyticsImpl";
+import { REQUIRED_HOST_CAPABILITIES } from "@flind/ui/shell/requiredHostCapabilities";
 import { hydrateCustomCloud } from "@renderer/custom-cloud";
 import { registerDesktopContributions } from "@renderer/desktop-contributions";
 import { container } from "@renderer/di/container";
 import "@renderer/desktop-services";
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "@posthog/ui/styles/globals.css";
+import "@flind/ui/styles/globals.css";
 
 void preloadHighlighter({
   themes: ["github-dark", "github-light"],

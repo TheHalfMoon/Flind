@@ -1,9 +1,9 @@
 import {
   BreadcrumbSegment,
   BreadcrumbSeparator,
-} from "@posthog/ui/primitives/Breadcrumb";
-import { LoopIcon } from "@posthog/ui/primitives/LoopIcon";
-import { navigateToLoops } from "@posthog/ui/router/navigationBridge";
+} from "@flind/ui/primitives/Breadcrumb";
+import { LoopIcon } from "@flind/ui/primitives/LoopIcon";
+import { navigateToLoops } from "@flind/ui/router/navigationBridge";
 
 export function LoopHeaderTitle({ label }: { label: string }) {
   return (

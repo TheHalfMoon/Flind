@@ -1,6 +1,6 @@
-import type { CanvasMultiSelectOption } from "@posthog/ui/features/canvas/components/canvasFilterSelection";
-import { channelGlyph } from "@posthog/ui/features/canvas/components/channelGlyph";
-import type { Channel } from "@posthog/ui/features/canvas/hooks/useChannels";
+import type { CanvasMultiSelectOption } from "@flind/ui/features/canvas/components/canvasFilterSelection";
+import { channelGlyph } from "@flind/ui/features/canvas/components/channelGlyph";
+import type { Channel } from "@flind/ui/features/canvas/hooks/useChannels";
 
 function optionForChannel(channel: Channel): CanvasMultiSelectOption {
   const personal = channel.channelType === "personal";

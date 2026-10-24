@@ -18,19 +18,19 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@flind/quill";
-import { CanvasBlocksPanel } from "@posthog/ui/features/canvas/blocks/CanvasBlocksPanel";
-import { TaskCommentsList } from "@posthog/ui/features/canvas/components/TaskCommentsList";
-import { CanvasTimeline } from "@posthog/ui/features/canvas/freeform/CanvasTimeline";
-import { FreeformGenerateBar } from "@posthog/ui/features/canvas/freeform/FreeformGenerateBar";
+import { CanvasBlocksPanel } from "@flind/ui/features/canvas/blocks/CanvasBlocksPanel";
+import { TaskCommentsList } from "@flind/ui/features/canvas/components/TaskCommentsList";
+import { CanvasTimeline } from "@flind/ui/features/canvas/freeform/CanvasTimeline";
+import { FreeformGenerateBar } from "@flind/ui/features/canvas/freeform/FreeformGenerateBar";
 import {
   type CanvasPanelTab,
   useCanvasChatPanelStore,
-} from "@posthog/ui/features/canvas/stores/canvasChatPanelStore";
-import type { EditorHandle } from "@posthog/ui/features/message-editor/types";
-import { EmbeddedSessionView } from "@posthog/ui/features/sessions/components/EmbeddedSessionView";
-import { taskDetailQuery } from "@posthog/ui/features/tasks/queries";
-import { ChromeBar } from "@posthog/ui/primitives/ChromeBar";
-import { LoadingState } from "@posthog/ui/primitives/LoadingState";
+} from "@flind/ui/features/canvas/stores/canvasChatPanelStore";
+import type { EditorHandle } from "@flind/ui/features/message-editor/types";
+import { EmbeddedSessionView } from "@flind/ui/features/sessions/components/EmbeddedSessionView";
+import { taskDetailQuery } from "@flind/ui/features/tasks/queries";
+import { ChromeBar } from "@flind/ui/primitives/ChromeBar";
+import { LoadingState } from "@flind/ui/primitives/LoadingState";
 import { useQuery } from "@tanstack/react-query";
 import { type Ref, useEffect, useRef } from "react";
 

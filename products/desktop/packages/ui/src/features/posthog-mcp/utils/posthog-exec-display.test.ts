@@ -2,7 +2,7 @@ import {
   formatPosthogExecBody,
   getPostHogExecDisplay,
   isPostHogExecTool,
-} from "@posthog/core/sessions/posthogExecDisplay";
+} from "@flind/core/sessions/posthogExecDisplay";
 import { describe, expect, it } from "vitest";
 
 describe("isPostHogExecTool", () => {

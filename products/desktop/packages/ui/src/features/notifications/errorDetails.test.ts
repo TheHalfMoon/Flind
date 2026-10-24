@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from "vitest";
 
 const toastMock = vi.hoisted(() => ({ error: vi.fn() }));
-vi.mock("@posthog/ui/primitives/toast", () => ({ toast: toastMock }));
+vi.mock("@flind/ui/primitives/toast", () => ({ toast: toastMock }));
 
 import { serializeError, summarizeError, toastError } from "./errorDetails";
 

@@ -1,23 +1,23 @@
-import { useServiceOptional } from "@posthog/di/react";
+import { useServiceOptional } from "@flind/di/react";
 import { Switch } from "@flind/quill";
-import { ANALYTICS_EVENTS } from "@posthog/shared";
+import { ANALYTICS_EVENTS } from "@flind/shared";
 import {
   MISSION_CONTROL_CLIENT,
   type MissionControlClient,
-} from "@posthog/ui/features/mission-control/identifiers";
+} from "@flind/ui/features/mission-control/identifiers";
 import {
   SettingsCard,
   SettingsCardRow,
-} from "@posthog/ui/features/settings/components/SettingsCard";
-import { SettingsSegmented } from "@posthog/ui/features/settings/components/SettingsSegmented";
-import { ThemePicker } from "@posthog/ui/features/settings/components/ThemePicker";
+} from "@flind/ui/features/settings/components/SettingsCard";
+import { SettingsSegmented } from "@flind/ui/features/settings/components/SettingsSegmented";
+import { ThemePicker } from "@flind/ui/features/settings/components/ThemePicker";
 import {
   type NavRailSize,
   useSettingsStore,
-} from "@posthog/ui/features/settings/settingsStore";
-import { track } from "@posthog/ui/shell/analytics";
-import type { ThemePreference } from "@posthog/ui/shell/themeStore";
-import { useThemeStore } from "@posthog/ui/shell/themeStore";
+} from "@flind/ui/features/settings/settingsStore";
+import { track } from "@flind/ui/shell/analytics";
+import type { ThemePreference } from "@flind/ui/shell/themeStore";
+import { useThemeStore } from "@flind/ui/shell/themeStore";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useCallback } from "react";
 

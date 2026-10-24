@@ -1,10 +1,10 @@
 import { DotsThree } from "@phosphor-icons/react";
-import { isTerminalStatus } from "@posthog/core/cloud-task/schemas";
+import { isTerminalStatus } from "@flind/core/cloud-task/schemas";
 import {
   SESSION_SERVICE,
   type SessionService,
-} from "@posthog/core/sessions/sessionService";
-import { useService } from "@posthog/di/react";
+} from "@flind/core/sessions/sessionService";
+import { useService } from "@flind/di/react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,14 +13,14 @@ import {
   DropdownMenuTrigger,
   Button as QuillButton,
 } from "@flind/quill";
-import { sessionSupportsSideQuestion } from "@posthog/shared";
-import type { Task } from "@posthog/shared/domain-types";
-import { TaskArchiveMenuItem } from "@posthog/ui/features/archive/TaskArchiveMenuItem";
-import { useTaskArchive } from "@posthog/ui/features/archive/useTaskArchive";
-import { StopCloudRunDialog } from "@posthog/ui/features/sessions/components/StopCloudRunDialog";
-import { startSessionSummary } from "@posthog/ui/features/sessions/sessionSummary";
-import { useSideQuestionStore } from "@posthog/ui/features/sessions/sideQuestionStore";
-import { useSessionSelector } from "@posthog/ui/features/sessions/useSession";
+import { sessionSupportsSideQuestion } from "@flind/shared";
+import type { Task } from "@flind/shared/domain-types";
+import { TaskArchiveMenuItem } from "@flind/ui/features/archive/TaskArchiveMenuItem";
+import { useTaskArchive } from "@flind/ui/features/archive/useTaskArchive";
+import { StopCloudRunDialog } from "@flind/ui/features/sessions/components/StopCloudRunDialog";
+import { startSessionSummary } from "@flind/ui/features/sessions/sessionSummary";
+import { useSideQuestionStore } from "@flind/ui/features/sessions/sideQuestionStore";
+import { useSessionSelector } from "@flind/ui/features/sessions/useSession";
 import { useState } from "react";
 import { shallow } from "zustand/shallow";
 

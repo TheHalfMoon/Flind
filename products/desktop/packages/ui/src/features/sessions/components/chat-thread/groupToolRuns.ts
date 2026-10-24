@@ -1,12 +1,12 @@
-import { readAgentToolName } from "@posthog/shared";
-import { hasUiAppResult } from "@posthog/ui/features/mcp-apps/hasUiAppResult";
+import { readAgentToolName } from "@flind/shared";
+import { hasUiAppResult } from "@flind/ui/features/mcp-apps/hasUiAppResult";
 import type {
   ConversationItem,
   TurnContext,
-} from "@posthog/ui/features/sessions/components/buildConversationItems";
-import type { ThreadItem } from "@posthog/ui/features/sessions/components/chat-thread/threadVirtualization";
-import { isPlanApprovalTool } from "@posthog/ui/features/sessions/components/session-update/collaborationTools";
-import { isShowActionsItem } from "@posthog/ui/features/sessions/components/session-update/showActionsItem";
+} from "@flind/ui/features/sessions/components/buildConversationItems";
+import type { ThreadItem } from "@flind/ui/features/sessions/components/chat-thread/threadVirtualization";
+import { isPlanApprovalTool } from "@flind/ui/features/sessions/components/session-update/collaborationTools";
+import { isShowActionsItem } from "@flind/ui/features/sessions/components/session-update/showActionsItem";
 
 type SessionUpdateItem = Extract<ConversationItem, { type: "session_update" }>;
 

@@ -1,6 +1,6 @@
-import type { LoopSchemas } from "@posthog/ui/features/loops/loopSchemas";
-import { useModelRolloutFlags } from "@posthog/ui/features/sessions/useModelRolloutFlags";
-import { SettingsOptionSelect } from "@posthog/ui/features/settings/SettingsOptionSelect";
+import type { LoopSchemas } from "@flind/ui/features/loops/loopSchemas";
+import { useModelRolloutFlags } from "@flind/ui/features/sessions/useModelRolloutFlags";
+import { SettingsOptionSelect } from "@flind/ui/features/settings/SettingsOptionSelect";
 import { useMemo } from "react";
 import { useLoopModelConfigOptions } from "../hooks/useLoopModelConfigOptions";
 import {

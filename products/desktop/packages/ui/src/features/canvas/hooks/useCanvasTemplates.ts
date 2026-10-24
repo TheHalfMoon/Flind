@@ -1,5 +1,5 @@
-import type { CanvasTemplateSummary } from "@posthog/core/canvas/templateSchemas";
-import { useHostTRPC } from "@posthog/host-router/react";
+import type { CanvasTemplateSummary } from "@flind/core/canvas/templateSchemas";
+import { useHostTRPC } from "@flind/host-router/react";
 import { useQuery } from "@tanstack/react-query";
 
 /** The canvas templates the create-picker offers (built-ins + future user ones). */

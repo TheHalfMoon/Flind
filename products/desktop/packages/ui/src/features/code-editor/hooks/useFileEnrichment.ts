@@ -1,6 +1,6 @@
-import { isEnrichmentEligible } from "@posthog/core/code-editor/enrichmentEligibility";
-import { useHostTRPC } from "@posthog/host-router/react";
-import type { SerializedEnrichment } from "@posthog/shared";
+import { isEnrichmentEligible } from "@flind/core/code-editor/enrichmentEligibility";
+import { useHostTRPC } from "@flind/host-router/react";
+import type { SerializedEnrichment } from "@flind/shared";
 import { useQuery } from "@tanstack/react-query";
 import { useAuthStateValue } from "../../auth/store";
 

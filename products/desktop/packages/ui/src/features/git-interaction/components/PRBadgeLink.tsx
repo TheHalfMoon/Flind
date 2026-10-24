@@ -1,9 +1,9 @@
 import {
   getPrVisualConfig,
   parsePrNumber,
-} from "@posthog/core/git-interaction/prStatus";
+} from "@flind/core/git-interaction/prStatus";
 import { Button, cn } from "@flind/quill";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
+import { Spinner } from "@flind/ui/primitives/Spinner";
 import { getPrVisualIcon } from "../prIcon";
 import {
   PR_TONE_BORDER,

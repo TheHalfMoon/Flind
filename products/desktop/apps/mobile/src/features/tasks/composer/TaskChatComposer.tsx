@@ -1,14 +1,14 @@
 import { Text } from "@components/text";
-import { DEFAULT_CLAUDE_EXECUTION_MODE } from "@posthog/core/sessions/executionModes";
-import type { CloudComposerSelection } from "@posthog/core/task-detail/composerModelPolicy";
-import { resolveCloudComposerModelChange } from "@posthog/core/task-detail/composerModelPolicy";
+import { DEFAULT_CLAUDE_EXECUTION_MODE } from "@flind/core/sessions/executionModes";
+import type { CloudComposerSelection } from "@flind/core/task-detail/composerModelPolicy";
+import { resolveCloudComposerModelChange } from "@flind/core/task-detail/composerModelPolicy";
 import {
   type Adapter,
   DEFAULT_GATEWAY_MODEL,
   DEFAULT_REASONING_EFFORT,
   type ExecutionMode,
   type SupportedReasoningEffort,
-} from "@posthog/shared";
+} from "@flind/shared";
 import * as Haptics from "expo-haptics";
 import {
   ArrowUp,

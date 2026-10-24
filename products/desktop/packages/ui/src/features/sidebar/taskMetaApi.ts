@@ -1,17 +1,17 @@
 import {
   parseTimestamps,
   type TaskTimestamps,
-} from "@posthog/core/sidebar/taskMeta";
-import { resolveService } from "@posthog/di/container";
+} from "@flind/core/sidebar/taskMeta";
+import { resolveService } from "@flind/di/container";
 import {
   HOST_TRPC_CLIENT,
   type HostTrpcClient,
-} from "@posthog/host-router/client";
-import { getAuthenticatedClient } from "@posthog/ui/features/auth/authClientImperative";
+} from "@flind/host-router/client";
+import { getAuthenticatedClient } from "@flind/ui/features/auth/authClientImperative";
 import {
   IMPERATIVE_QUERY_CLIENT,
   type ImperativeQueryClient,
-} from "@posthog/ui/shell/queryClient";
+} from "@flind/ui/shell/queryClient";
 
 // Outer array partial-matches tRPC's `[["workspace", "getAllTaskTimestamps"], { type }]`.
 const TASK_TIMESTAMPS_QUERY_KEY = [["workspace", "getAllTaskTimestamps"]];

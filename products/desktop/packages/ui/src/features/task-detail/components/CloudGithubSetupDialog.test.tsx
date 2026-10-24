@@ -1,4 +1,4 @@
-import { useRendererWindowFocusStore } from "@posthog/ui/shell/rendererWindowFocusStore";
+import { useRendererWindowFocusStore } from "@flind/ui/shell/rendererWindowFocusStore";
 import {
   act,
   fireEvent,
@@ -21,14 +21,14 @@ const connectState = vi.hoisted(() => ({
   onConnected: null as (() => void) | null,
 }));
 
-vi.mock("@posthog/ui/features/auth/store", () => ({
+vi.mock("@flind/ui/features/auth/store", () => ({
   useAuthStateValue: (selector: (state: unknown) => unknown) =>
     selector({ currentProjectId: 1, cloudRegion: "us" }),
 }));
-vi.mock("@posthog/ui/features/integrations/useIntegrations", () => ({
+vi.mock("@flind/ui/features/integrations/useIntegrations", () => ({
   useRepositoryIntegration: () => ({ hasGithubIntegration: false }),
 }));
-vi.mock("@posthog/ui/features/integrations/useGithubUserConnect", () => ({
+vi.mock("@flind/ui/features/integrations/useGithubUserConnect", () => ({
   useGithubConnect: ({ onConnected }: { onConnected?: () => void }) => {
     connectState.onConnected = onConnected ?? null;
     return connectState;
@@ -36,7 +36,7 @@ vi.mock("@posthog/ui/features/integrations/useGithubUserConnect", () => ({
 }));
 const { openUrlInBrowser } = vi.hoisted(() => ({ openUrlInBrowser: vi.fn() }));
 
-vi.mock("@posthog/ui/utils/browser", () => ({ openUrlInBrowser }));
+vi.mock("@flind/ui/utils/browser", () => ({ openUrlInBrowser }));
 
 describe("CloudGithubSetupDialog", () => {
   beforeEach(() => {

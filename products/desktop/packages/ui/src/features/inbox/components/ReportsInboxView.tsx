@@ -1,20 +1,20 @@
-import { inboxReviewerScopeValue } from "@posthog/core/inbox/reportMembership";
-import { useTriageFocusEnabled } from "@posthog/ui/features/feature-flags/useTriageFocusEnabled";
-import { InboxReportFilters } from "@posthog/ui/features/inbox/components/InboxReportFilters";
-import { InboxReportRow } from "@posthog/ui/features/inbox/components/InboxReportRow";
-import { InboxScopeSelect } from "@posthog/ui/features/inbox/components/InboxScopeSelect";
-import { ReportsInboxViewPresentation } from "@posthog/ui/features/inbox/components/ReportsInboxViewPresentation";
-import { useInboxSectionedReports } from "@posthog/ui/features/inbox/hooks/useInboxSectionedReports";
-import { useInboxTriageHotkey } from "@posthog/ui/features/inbox/hooks/useInboxTriageHotkey";
-import { useSelfDrivingSetupStatus } from "@posthog/ui/features/inbox/hooks/useSelfDrivingSetupStatus";
-import { useTrackReportsInboxViewed } from "@posthog/ui/features/inbox/hooks/useTrackReportsInboxViewed";
+import { inboxReviewerScopeValue } from "@flind/core/inbox/reportMembership";
+import { useTriageFocusEnabled } from "@flind/ui/features/feature-flags/useTriageFocusEnabled";
+import { InboxReportFilters } from "@flind/ui/features/inbox/components/InboxReportFilters";
+import { InboxReportRow } from "@flind/ui/features/inbox/components/InboxReportRow";
+import { InboxScopeSelect } from "@flind/ui/features/inbox/components/InboxScopeSelect";
+import { ReportsInboxViewPresentation } from "@flind/ui/features/inbox/components/ReportsInboxViewPresentation";
+import { useInboxSectionedReports } from "@flind/ui/features/inbox/hooks/useInboxSectionedReports";
+import { useInboxTriageHotkey } from "@flind/ui/features/inbox/hooks/useInboxTriageHotkey";
+import { useSelfDrivingSetupStatus } from "@flind/ui/features/inbox/hooks/useSelfDrivingSetupStatus";
+import { useTrackReportsInboxViewed } from "@flind/ui/features/inbox/hooks/useTrackReportsInboxViewed";
 import {
   DEFAULT_INBOX_REPORT_STATE_FILTER,
   hasActiveReportsListFilters,
   useInboxSignalsFilterStore,
-} from "@posthog/ui/features/inbox/stores/inboxSignalsFilterStore";
-import { INBOX_TRIAGE_ROUTE } from "@posthog/ui/features/inbox/triageRoute";
-import { navigateToSettings } from "@posthog/ui/router/navigationBridge";
+} from "@flind/ui/features/inbox/stores/inboxSignalsFilterStore";
+import { INBOX_TRIAGE_ROUTE } from "@flind/ui/features/inbox/triageRoute";
+import { navigateToSettings } from "@flind/ui/router/navigationBridge";
 import { useNavigate } from "@tanstack/react-router";
 
 export function ReportsInboxView(): React.JSX.Element {

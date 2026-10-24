@@ -1,4 +1,4 @@
-import { NotAuthenticatedError } from "@posthog/shared";
+import { NotAuthenticatedError } from "@flind/shared";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import type { AuthService } from "../auth/auth";
 import type { UsageHost } from "./identifiers";

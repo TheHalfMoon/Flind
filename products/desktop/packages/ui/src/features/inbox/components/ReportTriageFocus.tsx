@@ -1,27 +1,27 @@
-import { canCreateImplementationPr } from "@posthog/core/inbox/reportActions";
+import { canCreateImplementationPr } from "@flind/core/inbox/reportActions";
 import {
   type InboxScope,
   inboxReviewerScopeValue,
   inboxScopeTriggerLabel,
-} from "@posthog/core/inbox/reportMembership";
-import { parsePrUrl } from "@posthog/core/inbox/reportPresentation";
+} from "@flind/core/inbox/reportMembership";
+import { parsePrUrl } from "@flind/core/inbox/reportPresentation";
 import { Button } from "@flind/quill";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
-import type { SignalReport } from "@posthog/shared/types";
-import { ReportChatSidebar } from "@posthog/ui/features/inbox/components/ReportChatSidebar";
-import { ReportTriageFocusView } from "@posthog/ui/features/inbox/components/ReportTriageFocusView";
-import { ReportVerdictBanner } from "@posthog/ui/features/inbox/components/ReportVerdictBanner";
-import { SuggestedReviewerAvatarStack } from "@posthog/ui/features/inbox/components/SuggestedReviewerAvatarStack";
-import { useInboxBulkActions } from "@posthog/ui/features/inbox/hooks/useInboxBulkActions";
-import { useInboxReportDetailPrefetch } from "@posthog/ui/features/inbox/hooks/useInboxReportDetailPrefetch";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
+import type { SignalReport } from "@flind/shared/types";
+import { ReportChatSidebar } from "@flind/ui/features/inbox/components/ReportChatSidebar";
+import { ReportTriageFocusView } from "@flind/ui/features/inbox/components/ReportTriageFocusView";
+import { ReportVerdictBanner } from "@flind/ui/features/inbox/components/ReportVerdictBanner";
+import { SuggestedReviewerAvatarStack } from "@flind/ui/features/inbox/components/SuggestedReviewerAvatarStack";
+import { useInboxBulkActions } from "@flind/ui/features/inbox/hooks/useInboxBulkActions";
+import { useInboxReportDetailPrefetch } from "@flind/ui/features/inbox/hooks/useInboxReportDetailPrefetch";
 import {
   findContinuableImplementationTask,
   getTaskPrUrl,
   useReportTasks,
-} from "@posthog/ui/features/inbox/hooks/useReportTasks";
-import { useReportChatPanelStore } from "@posthog/ui/features/inbox/stores/reportChatPanelStore";
-import { navigateToInboxReportDetail } from "@posthog/ui/router/navigationBridge";
-import { track } from "@posthog/ui/shell/analytics";
+} from "@flind/ui/features/inbox/hooks/useReportTasks";
+import { useReportChatPanelStore } from "@flind/ui/features/inbox/stores/reportChatPanelStore";
+import { navigateToInboxReportDetail } from "@flind/ui/router/navigationBridge";
+import { track } from "@flind/ui/shell/analytics";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 function isTypingTarget(target: EventTarget | null): boolean {

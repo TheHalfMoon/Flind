@@ -1,5 +1,5 @@
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
-import { track } from "@posthog/ui/shell/analytics";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
+import { track } from "@flind/ui/shell/analytics";
 
 // Where a canvas create was triggered from, for analytics.
 export type CreateSurface = "dashboards_grid";

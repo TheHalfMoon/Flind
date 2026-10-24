@@ -1,5 +1,5 @@
-import type { UserMessageAttachment } from "@posthog/ui/features/sessions/userMessageTypes";
-import { electronStorage } from "@posthog/ui/shell/rendererStorage";
+import type { UserMessageAttachment } from "@flind/ui/features/sessions/userMessageTypes";
+import { electronStorage } from "@flind/ui/shell/rendererStorage";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
@@ -149,4 +149,4 @@ import {
   buildPendingPromptKey,
   capPendingPrompts,
   listPendingPromptsNewestFirst,
-} from "@posthog/core/tasks/pendingPrompts";
+} from "@flind/core/tasks/pendingPrompts";

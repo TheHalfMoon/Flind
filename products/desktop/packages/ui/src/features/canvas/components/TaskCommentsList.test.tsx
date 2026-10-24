@@ -1,7 +1,7 @@
-import type { ResourceComment } from "@posthog/api-client/posthog-client";
-import type { ThreadTimelineRow } from "@posthog/core/canvas/threadTimeline";
-import type { Task, TaskRun, TaskRunArtifact } from "@posthog/shared";
-import type { TaskThreadMessage } from "@posthog/shared/domain-types";
+import type { ResourceComment } from "@flind/api-client/posthog-client";
+import type { ThreadTimelineRow } from "@flind/core/canvas/threadTimeline";
+import type { Task, TaskRun, TaskRunArtifact } from "@flind/shared";
+import type { TaskThreadMessage } from "@flind/shared/domain-types";
 import { act, fireEvent, render, screen, within } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
@@ -44,17 +44,17 @@ function openThread(body: string): void {
   );
 }
 
-vi.mock("@posthog/ui/features/canvas/hooks/useTaskRuns", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useTaskRuns", () => ({
   useTaskRuns: () => ({ runs: mocks.runs, isLoading: false }),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useOrgMembers", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useOrgMembers", () => ({
   useOrgMembers: () => ({ members: [] }),
 }));
-vi.mock("@posthog/ui/features/panels/panelLayoutStore", () => ({
+vi.mock("@flind/ui/features/panels/panelLayoutStore", () => ({
   usePanelLayoutStore: () => mocks.openArtifactTab,
   useActiveArtifactId: () => mocks.activeArtifactId,
 }));
-vi.mock("@posthog/ui/features/pr-review/usePrCommentsForUrls", () => ({
+vi.mock("@flind/ui/features/pr-review/usePrCommentsForUrls", () => ({
   usePrCommentsForUrls: (urls: string[]) => {
     mocks.prCommentUrls = urls;
     return {
@@ -63,7 +63,7 @@ vi.mock("@posthog/ui/features/pr-review/usePrCommentsForUrls", () => ({
     };
   },
 }));
-vi.mock("@posthog/ui/features/pr-review/usePrReviewThreadsForUrls", () => ({
+vi.mock("@flind/ui/features/pr-review/usePrReviewThreadsForUrls", () => ({
   usePrReviewThreadsForUrls: (urls: string[]) => {
     mocks.prReviewUrls = urls;
     return {
@@ -72,34 +72,34 @@ vi.mock("@posthog/ui/features/pr-review/usePrReviewThreadsForUrls", () => ({
     };
   },
 }));
-vi.mock("@posthog/ui/features/git-interaction/usePrDetails", () => ({
+vi.mock("@flind/ui/features/git-interaction/usePrDetails", () => ({
   usePrTitles: (urls: string[]) => {
     mocks.prTitleUrls = urls;
     return {};
   },
 }));
-vi.mock("@posthog/ui/shell/openExternal", () => ({
+vi.mock("@flind/ui/shell/openExternal", () => ({
   openExternalUrl: (url: string) => mocks.openExternalUrl(url),
 }));
 // GitHub bodies render through MarkdownRenderer; the wiring under test is the
 // list, not the markdown pipeline, so keep it to plain text here.
-vi.mock("@posthog/ui/features/editor/components/MarkdownRenderer", () => ({
+vi.mock("@flind/ui/features/editor/components/MarkdownRenderer", () => ({
   MarkdownRenderer: ({ content }: { content: string }) => (
     <span>{content}</span>
   ),
 }));
-vi.mock("@posthog/ui/features/code-review/openPrInReview", () => ({
+vi.mock("@flind/ui/features/code-review/openPrInReview", () => ({
   openPrInReview: (taskId: string, url: string) =>
     mocks.openPrInReview(taskId, url),
 }));
-vi.mock("@posthog/ui/features/code-review/reviewNavigationStore", () => ({
+vi.mock("@flind/ui/features/code-review/reviewNavigationStore", () => ({
   useReviewNavigationStore: {
     getState: () => ({ requestScrollToFile: mocks.requestScrollToFile }),
   },
 }));
 // Tiptap's editor renders no placeholder attribute and drags a lot of DOM into
 // jsdom; the wiring under test is which target a composed comment posts to.
-vi.mock("@posthog/ui/features/sessions/components/CommentComposer", () => ({
+vi.mock("@flind/ui/features/sessions/components/CommentComposer", () => ({
   CommentComposer: ({
     placeholder,
     onSubmit,
@@ -112,13 +112,13 @@ vi.mock("@posthog/ui/features/sessions/components/CommentComposer", () => ({
     </button>
   ),
 }));
-vi.mock("@posthog/ui/features/code-review/hooks/usePrCommentActions", () => ({
+vi.mock("@flind/ui/features/code-review/hooks/usePrCommentActions", () => ({
   usePrCommentActions: () => ({
     reply: mocks.prReply,
     resolve: mocks.prResolve,
   }),
 }));
-vi.mock("@posthog/ui/features/sessions/components/useComments", () => ({
+vi.mock("@flind/ui/features/sessions/components/useComments", () => ({
   isOptimisticComment: (comment: ResourceComment) =>
     comment.id.startsWith("optimistic-"),
   useCommentsQuery: (target: unknown) => {
@@ -150,7 +150,7 @@ vi.mock("@posthog/ui/features/sessions/components/useComments", () => ({
 import {
   canvasCommentFocusKey,
   useCommentNavigationStore,
-} from "@posthog/ui/features/sessions/commentNavigationStore";
+} from "@flind/ui/features/sessions/commentNavigationStore";
 import { TaskCommentsList } from "./TaskCommentsList";
 
 const task = { id: "task-1", latest_run: null } as unknown as Task;

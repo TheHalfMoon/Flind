@@ -1,5 +1,5 @@
-import { LEAN_SKILLS } from "@posthog/core/billing/leanSkills";
-import { LeanSkillDialog } from "@posthog/ui/features/cost-management/LeanSkillDialog";
+import { LEAN_SKILLS } from "@flind/core/billing/leanSkills";
+import { LeanSkillDialog } from "@flind/ui/features/cost-management/LeanSkillDialog";
 import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof LeanSkillDialog> = {

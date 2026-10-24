@@ -1,4 +1,4 @@
-import type { SignalReport } from "@posthog/shared/types";
+import type { SignalReport } from "@flind/shared/types";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { act, renderHook, waitFor } from "@testing-library/react";
 import type { ReactNode } from "react";
@@ -9,7 +9,7 @@ const { getSignalReport, preloadRoute } = vi.hoisted(() => ({
   preloadRoute: vi.fn(),
 }));
 
-vi.mock("@posthog/ui/features/auth/authClient", () => ({
+vi.mock("@flind/ui/features/auth/authClient", () => ({
   useOptionalAuthenticatedClient: () => ({ getSignalReport }),
 }));
 
@@ -17,7 +17,7 @@ vi.mock("@tanstack/react-router", () => ({
   useRouter: () => ({ preloadRoute }),
 }));
 
-import { inboxReportDetailQueryKey } from "@posthog/core/inbox/inboxQuery";
+import { inboxReportDetailQueryKey } from "@flind/core/inbox/inboxQuery";
 import { useInboxReportDetailPrefetch } from "./useInboxReportDetailPrefetch";
 import { useInboxReportById } from "./useInboxReports";
 

@@ -1,4 +1,4 @@
-import type { Task } from "@posthog/shared/domain-types";
+import type { Task } from "@flind/shared/domain-types";
 import { describe, expect, it } from "vitest";
 import { filterAndSortTasks, taskActivityTimestamp } from "./taskActivity";
 

@@ -1,12 +1,12 @@
-import { useService } from "@posthog/di/react";
+import { useService } from "@flind/di/react";
 import { cn } from "@flind/quill";
-import type { Task } from "@posthog/shared/domain-types";
-import { useArchivedTaskIds } from "@posthog/ui/features/archive/useArchivedTaskIds";
-import { useCloudPrUrl } from "@posthog/ui/features/git-interaction/useCloudPrUrl";
-import { useTaskPrStatus } from "@posthog/ui/features/sidebar/useTaskPrStatus";
-import { useIsWiderThan } from "@posthog/ui/primitives/hooks/useObservedWidth";
-import { LoadingState } from "@posthog/ui/primitives/LoadingState";
-import { ResizeHandle } from "@posthog/ui/primitives/ResizeHandle";
+import type { Task } from "@flind/shared/domain-types";
+import { useArchivedTaskIds } from "@flind/ui/features/archive/useArchivedTaskIds";
+import { useCloudPrUrl } from "@flind/ui/features/git-interaction/useCloudPrUrl";
+import { useTaskPrStatus } from "@flind/ui/features/sidebar/useTaskPrStatus";
+import { useIsWiderThan } from "@flind/ui/primitives/hooks/useObservedWidth";
+import { LoadingState } from "@flind/ui/primitives/LoadingState";
+import { ResizeHandle } from "@flind/ui/primitives/ResizeHandle";
 import { Flex, Text } from "@radix-ui/themes";
 import {
   type ReactNode,

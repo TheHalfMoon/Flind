@@ -1,10 +1,10 @@
 import {
   type TaskActivityItem,
   toTaskActivityItems,
-} from "@posthog/core/canvas/taskActivity";
-import type { TaskActivityPage } from "@posthog/shared/domain-types";
-import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { AUTH_SCOPED_QUERY_META } from "@posthog/ui/features/auth/useCurrentUser";
+} from "@flind/core/canvas/taskActivity";
+import type { TaskActivityPage } from "@flind/shared/domain-types";
+import { useOptionalAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { AUTH_SCOPED_QUERY_META } from "@flind/ui/features/auth/useCurrentUser";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useMemo } from "react";
 import { TASK_ACTIVITY_QUERY_KEY } from "../task-activity/taskActivityQuery";

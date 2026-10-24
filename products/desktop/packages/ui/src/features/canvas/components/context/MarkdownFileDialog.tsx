@@ -17,9 +17,9 @@ import {
   Kbd,
   Text,
 } from "@flind/quill";
-import type { ContextDocumentStore } from "@posthog/ui/features/canvas/hooks/useContextDocumentStore";
-import { CodeMirrorEditor } from "@posthog/ui/features/code-editor/components/CodeMirrorEditor";
-import { LoadingState } from "@posthog/ui/primitives/LoadingState";
+import type { ContextDocumentStore } from "@flind/ui/features/canvas/hooks/useContextDocumentStore";
+import { CodeMirrorEditor } from "@flind/ui/features/code-editor/components/CodeMirrorEditor";
+import { LoadingState } from "@flind/ui/primitives/LoadingState";
 import { useEffect, useState } from "react";
 
 interface MarkdownFileDialogProps {

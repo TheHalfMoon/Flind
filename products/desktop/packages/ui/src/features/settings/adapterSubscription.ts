@@ -1,4 +1,4 @@
-import { useHostTRPC } from "@posthog/host-router/react";
+import { useHostTRPC } from "@flind/host-router/react";
 import {
   type Adapter,
   ANALYTICS_EVENTS,
@@ -7,15 +7,15 @@ import {
   CODEX_OWN_SUBSCRIPTION_CLOUD_FLAG,
   CODEX_OWN_SUBSCRIPTION_FLAG,
   type ModelAccess,
-} from "@posthog/shared";
-import { useFeatureFlag } from "@posthog/ui/features/feature-flags/useFeatureFlag";
+} from "@flind/shared";
+import { useFeatureFlag } from "@flind/ui/features/feature-flags/useFeatureFlag";
 import {
   type SettingsStore,
   useSettingsStore,
-} from "@posthog/ui/features/settings/settingsStore";
-import { track } from "@posthog/ui/shell/analytics";
-import { registerAdapterSubscription } from "@posthog/ui/shell/posthogAnalyticsImpl";
-import { useHostCapabilities } from "@posthog/ui/shell/useHostCapabilities";
+} from "@flind/ui/features/settings/settingsStore";
+import { track } from "@flind/ui/shell/analytics";
+import { registerAdapterSubscription } from "@flind/ui/shell/posthogAnalyticsImpl";
+import { useHostCapabilities } from "@flind/ui/shell/useHostCapabilities";
 import { useQuery } from "@tanstack/react-query";
 
 export interface SubscriptionStatus {

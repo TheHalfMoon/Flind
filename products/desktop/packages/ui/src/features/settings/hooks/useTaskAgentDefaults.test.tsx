@@ -19,19 +19,19 @@ const settingsStore = vi.hoisted(() => ({
 }));
 const toastMock = vi.hoisted(() => ({ error: vi.fn(), success: vi.fn() }));
 
-vi.mock("@posthog/ui/features/auth/authClient", () => ({
+vi.mock("@flind/ui/features/auth/authClient", () => ({
   useOptionalAuthenticatedClient: () => mockClient,
 }));
-vi.mock("@posthog/ui/features/auth/store", () => ({
+vi.mock("@flind/ui/features/auth/store", () => ({
   useAuthStateValue: (select: (state: unknown) => unknown) =>
     select({ currentProjectId: PROJECT_ID }),
 }));
-vi.mock("@posthog/ui/features/settings/settingsStore", () => ({
+vi.mock("@flind/ui/features/settings/settingsStore", () => ({
   useSettingsStore: { getState: () => settingsStore },
 }));
-vi.mock("@posthog/ui/primitives/toast", () => ({ toast: toastMock }));
+vi.mock("@flind/ui/primitives/toast", () => ({ toast: toastMock }));
 
-import { taskRunDefaultsQueryKey } from "@posthog/ui/features/task-detail/hooks/useTaskRunDefaults";
+import { taskRunDefaultsQueryKey } from "@flind/ui/features/task-detail/hooks/useTaskRunDefaults";
 import { useTaskAgentDefaults } from "./useTaskAgentDefaults";
 
 const TEAM_DEFAULT = {

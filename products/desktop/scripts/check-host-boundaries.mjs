@@ -27,7 +27,7 @@ const RULES = [
   },
   {
     id: "feature-ui-in-host",
-    why: "Renderer feature UI (components/hooks/stories) is portable and belongs in @posthog/ui.",
+    why: "Renderer feature UI (components/hooks/stories) is portable and belongs in @flind/ui.",
     test: (path) =>
       path.includes("/renderer/features/") && path.endsWith(".tsx"),
   },
@@ -41,7 +41,7 @@ const RULES = [
   },
   {
     id: "router-with-logic",
-    why: "tRPC router bodies with real logic belong in @posthog/host-router. apps/code routers aggregate/delegate only.",
+    why: "tRPC router bodies with real logic belong in @flind/host-router. apps/code routers aggregate/delegate only.",
     test: (path, src) =>
       path.includes("/main/trpc/routers/") &&
       (/\bfetch\s*\(/.test(src) ||

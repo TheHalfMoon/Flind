@@ -1,8 +1,8 @@
-import { renderableReportChartIds } from "@posthog/core/inbox/reportCharts";
-import { splitReportSummary } from "@posthog/core/inbox/reportPresentation";
-import type { SignalReport } from "@posthog/shared/types";
-import { ReportChartsSection } from "@posthog/ui/features/inbox/components/detail/ReportChartCard";
-import { SignalReportSummaryMarkdown } from "@posthog/ui/features/inbox/components/utils/SignalReportSummaryMarkdown";
+import { renderableReportChartIds } from "@flind/core/inbox/reportCharts";
+import { splitReportSummary } from "@flind/core/inbox/reportPresentation";
+import type { SignalReport } from "@flind/shared/types";
+import { ReportChartsSection } from "@flind/ui/features/inbox/components/detail/ReportChartCard";
+import { SignalReportSummaryMarkdown } from "@flind/ui/features/inbox/components/utils/SignalReportSummaryMarkdown";
 
 export function ReportSummaryDocument({
   report,

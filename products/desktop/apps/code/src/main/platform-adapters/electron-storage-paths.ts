@@ -1,5 +1,5 @@
 import { dirname } from "node:path";
-import type { IStoragePaths } from "@posthog/platform/storage-paths";
+import type { IStoragePaths } from "@flind/platform/storage-paths";
 import { app } from "electron";
 import { injectable } from "inversify";
 import { getLogFilePath } from "../utils/logger";

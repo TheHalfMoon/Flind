@@ -1,5 +1,5 @@
-import type { AcpMessage, JsonRpcMessage } from "@posthog/shared";
-import { isJsonRpcNotification } from "@posthog/shared";
+import type { AcpMessage, JsonRpcMessage } from "@flind/shared";
+import { isJsonRpcNotification } from "@flind/shared";
 
 /**
  * The last thing the agent actually said, for surfaces that show a task without

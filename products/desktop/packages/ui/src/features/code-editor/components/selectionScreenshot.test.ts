@@ -1,4 +1,4 @@
-import type { CaptureRegion } from "@posthog/platform/screen-capture";
+import type { CaptureRegion } from "@flind/platform/screen-capture";
 import { describe, expect, it, vi } from "vitest";
 import { captureSelectionScreenshot } from "./selectionScreenshot";
 

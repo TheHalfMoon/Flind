@@ -2,16 +2,16 @@ import {
   type ReconcileSessionState,
   SESSION_SERVICE,
   type SessionService,
-} from "@posthog/core/sessions/sessionService";
-import { useService } from "@posthog/di/react";
-import type { Task } from "@posthog/shared/domain-types";
-import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { useAuthStateValue } from "@posthog/ui/features/auth/store";
-import { useCurrentUser } from "@posthog/ui/features/auth/useCurrentUser";
-import type { AgentSession } from "@posthog/ui/features/sessions/sessionStore";
-import { useConnectivity } from "@posthog/ui/hooks/useConnectivity";
-import { useUserPresence } from "@posthog/ui/hooks/useUserPresence";
-import { logger } from "@posthog/ui/shell/logger";
+} from "@flind/core/sessions/sessionService";
+import { useService } from "@flind/di/react";
+import type { Task } from "@flind/shared/domain-types";
+import { useOptionalAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { useAuthStateValue } from "@flind/ui/features/auth/store";
+import { useCurrentUser } from "@flind/ui/features/auth/useCurrentUser";
+import type { AgentSession } from "@flind/ui/features/sessions/sessionStore";
+import { useConnectivity } from "@flind/ui/hooks/useConnectivity";
+import { useUserPresence } from "@flind/ui/hooks/useUserPresence";
+import { logger } from "@flind/ui/shell/logger";
 import { useQueryClient } from "@tanstack/react-query";
 import { useEffect, useMemo } from "react";
 import { useChatTitleGenerator } from "./useChatTitleGenerator";

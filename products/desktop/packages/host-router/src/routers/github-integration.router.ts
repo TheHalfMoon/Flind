@@ -2,13 +2,13 @@ import {
   GitHubIntegrationEvent,
   type GitHubIntegrationService,
   type IntegrationCallback,
-} from "@posthog/core/integrations/github";
-import { GITHUB_INTEGRATION_SERVICE } from "@posthog/core/integrations/identifiers";
+} from "@flind/core/integrations/github";
+import { GITHUB_INTEGRATION_SERVICE } from "@flind/core/integrations/identifiers";
 import {
   startIntegrationFlowInput,
   startIntegrationFlowOutput,
-} from "@posthog/core/integrations/schemas";
-import { publicProcedure, router } from "@posthog/host-trpc/trpc";
+} from "@flind/core/integrations/schemas";
+import { publicProcedure, router } from "@flind/host-trpc/trpc";
 
 export const githubIntegrationRouter = router({
   startFlow: publicProcedure

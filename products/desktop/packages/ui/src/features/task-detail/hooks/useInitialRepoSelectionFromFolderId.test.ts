@@ -1,4 +1,4 @@
-import type { WorkspaceMode } from "@posthog/shared";
+import type { WorkspaceMode } from "@flind/shared";
 import { renderHook } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import type { RegisteredFolder } from "../../folders/types";

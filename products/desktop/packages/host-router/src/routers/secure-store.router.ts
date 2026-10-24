@@ -1,11 +1,11 @@
-import { publicProcedure, router } from "@posthog/host-trpc/trpc";
-import type { ISecureStoreService } from "@posthog/workspace-server/services/secure-store/identifiers";
-import { SECURE_STORE_SERVICE } from "@posthog/workspace-server/services/secure-store/identifiers";
+import { publicProcedure, router } from "@flind/host-trpc/trpc";
+import type { ISecureStoreService } from "@flind/workspace-server/services/secure-store/identifiers";
+import { SECURE_STORE_SERVICE } from "@flind/workspace-server/services/secure-store/identifiers";
 import {
   secureStoreGetInput,
   secureStoreRemoveInput,
   secureStoreSetInput,
-} from "@posthog/workspace-server/services/secure-store/schemas";
+} from "@flind/workspace-server/services/secure-store/schemas";
 
 export const secureStoreRouter = router({
   getItem: publicProcedure

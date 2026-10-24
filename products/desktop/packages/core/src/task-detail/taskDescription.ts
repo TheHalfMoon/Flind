@@ -1,10 +1,10 @@
-import { hasProseBeyondAttachments } from "@posthog/core/editor/cloud-prompt";
+import { hasProseBeyondAttachments } from "@flind/core/editor/cloud-prompt";
 import {
   formatAttachmentSnippet,
   readAttachmentSnippets,
-} from "@posthog/core/files/attachmentText";
-import type { FileReadClient } from "@posthog/core/files/identifiers";
-import { xmlToContent } from "@posthog/core/message-editor/content";
+} from "@flind/core/files/attachmentText";
+import type { FileReadClient } from "@flind/core/files/identifiers";
+import { xmlToContent } from "@flind/core/message-editor/content";
 
 /**
  * Build the text the server should name a task from, when the description has no

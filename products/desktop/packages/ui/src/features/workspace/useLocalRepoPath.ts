@@ -1,4 +1,4 @@
-import { resolveLocalRepoPath } from "@posthog/core/workspace/localRepoPath";
+import { resolveLocalRepoPath } from "@flind/core/workspace/localRepoPath";
 import { selectIsFocusedOnWorktree, useFocusStore } from "../focus/focusStore";
 import { useWorkspace } from "./useWorkspace";
 

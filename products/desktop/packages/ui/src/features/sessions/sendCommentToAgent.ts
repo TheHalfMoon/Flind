@@ -1,5 +1,5 @@
-import { CommentToAgentService } from "@posthog/core/sessions/commentToAgent";
-import { toast } from "@posthog/ui/primitives/toast";
+import { CommentToAgentService } from "@flind/core/sessions/commentToAgent";
+import { toast } from "@flind/ui/primitives/toast";
 import { commentToAgentHost } from "./commentToAgentHost";
 
 const commentToAgentService = new CommentToAgentService(commentToAgentHost);

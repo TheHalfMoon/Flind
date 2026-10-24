@@ -9,14 +9,14 @@ const mocks = vi.hoisted(() => ({
   setUserSpendLimit: vi.fn(),
 }));
 
-vi.mock("@posthog/ui/features/auth/authClient", () => ({
+vi.mock("@flind/ui/features/auth/authClient", () => ({
   useOptionalAuthenticatedClient: () => ({
     getUserSpendLimit: mocks.getUserSpendLimit,
     setUserSpendLimit: mocks.setUserSpendLimit,
   }),
 }));
 
-vi.mock("@posthog/ui/features/feature-flags/useFeatureFlag", () => ({
+vi.mock("@flind/ui/features/feature-flags/useFeatureFlag", () => ({
   useFeatureFlag: () => mocks.enabled,
 }));
 

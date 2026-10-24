@@ -2,7 +2,7 @@ import path from "node:path";
 import {
   type IStoragePaths,
   STORAGE_PATHS_SERVICE,
-} from "@posthog/platform/storage-paths";
+} from "@flind/platform/storage-paths";
 import Database from "better-sqlite3";
 import {
   type BetterSQLite3Database,

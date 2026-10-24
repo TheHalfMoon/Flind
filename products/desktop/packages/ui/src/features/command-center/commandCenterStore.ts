@@ -8,16 +8,16 @@ import {
   makeTerminalCellValue,
   resizeCells,
   ZOOM_STEP,
-} from "@posthog/core/command-center/grid";
-import { electronStorage } from "@posthog/ui/shell/rendererStorage";
+} from "@flind/core/command-center/grid";
+import { electronStorage } from "@flind/ui/shell/rendererStorage";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-export type { LayoutPreset } from "@posthog/core/command-center/grid";
+export type { LayoutPreset } from "@flind/core/command-center/grid";
 export {
   getCellSessionId,
   getGridDimensions,
-} from "@posthog/core/command-center/grid";
+} from "@flind/core/command-center/grid";
 
 export type CommandCenterPlacement = {
   kind: "task" | "canvas";

@@ -4,7 +4,7 @@
     {
       "label": "build-electron-trpc",
       "type": "shell",
-      "command": "pnpm --filter @posthog/electron-trpc build",
+      "command": "pnpm --filter @flind/electron-trpc build",
       "problemMatcher": [],
       "presentation": {
         "reveal": "silent",

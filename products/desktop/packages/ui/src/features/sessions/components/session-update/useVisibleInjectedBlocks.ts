@@ -1,5 +1,5 @@
-import type { InjectedBlock } from "@posthog/core/editor/injectedBlocks";
-import { visibleInjectedBlocks } from "@posthog/ui/features/sessions/components/session-update/injectedBlocks";
+import type { InjectedBlock } from "@flind/core/editor/injectedBlocks";
+import { visibleInjectedBlocks } from "@flind/ui/features/sessions/components/session-update/injectedBlocks";
 import { useMemo } from "react";
 
 export function useVisibleInjectedBlocks(

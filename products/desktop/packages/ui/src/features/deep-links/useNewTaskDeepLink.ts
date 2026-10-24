@@ -1,18 +1,18 @@
-import type { NewTaskLinkAnalytics } from "@posthog/core/deep-links/identifiers";
+import type { NewTaskLinkAnalytics } from "@flind/core/deep-links/identifiers";
 import {
   NEW_TASK_LINK_RESOLVER,
   type NewTaskLinkResolver,
-} from "@posthog/core/deep-links/newTaskLinkResolver";
-import { useService } from "@posthog/di/react";
-import { useHostTRPCClient } from "@posthog/host-router/react";
-import type { NewTaskLinkPayload } from "@posthog/shared";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
-import { useAuthStateValue } from "@posthog/ui/features/auth/store";
-import { useTaskInputPrefillStore } from "@posthog/ui/features/task-detail/stores/taskInputPrefillStore";
-import { toast } from "@posthog/ui/primitives/toast";
-import { openTaskInput } from "@posthog/ui/router/useOpenTask";
-import { track } from "@posthog/ui/shell/analytics";
-import { logger } from "@posthog/ui/shell/logger";
+} from "@flind/core/deep-links/newTaskLinkResolver";
+import { useService } from "@flind/di/react";
+import { useHostTRPCClient } from "@flind/host-router/react";
+import type { NewTaskLinkPayload } from "@flind/shared";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
+import { useAuthStateValue } from "@flind/ui/features/auth/store";
+import { useTaskInputPrefillStore } from "@flind/ui/features/task-detail/stores/taskInputPrefillStore";
+import { toast } from "@flind/ui/primitives/toast";
+import { openTaskInput } from "@flind/ui/router/useOpenTask";
+import { track } from "@flind/ui/shell/analytics";
+import { logger } from "@flind/ui/shell/logger";
 import { useCallback, useEffect, useRef } from "react";
 
 const log = logger.scope("new-task-deep-link");

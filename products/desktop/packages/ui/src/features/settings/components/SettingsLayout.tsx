@@ -1,14 +1,14 @@
-import { AnnouncementBanner } from "@posthog/ui/features/announcements/AnnouncementBanner";
-import { ConnectivityBanner } from "@posthog/ui/features/connectivity/ConnectivityBanner";
-import { SettingsDialogFrame } from "@posthog/ui/features/settings/components/SettingsDialogFrame";
-import { SettingsPanel } from "@posthog/ui/features/settings/components/SettingsPanel";
-import { closeSettings } from "@posthog/ui/features/settings/hooks/useOpenSettings";
+import { AnnouncementBanner } from "@flind/ui/features/announcements/AnnouncementBanner";
+import { ConnectivityBanner } from "@flind/ui/features/connectivity/ConnectivityBanner";
+import { SettingsDialogFrame } from "@flind/ui/features/settings/components/SettingsDialogFrame";
+import { SettingsPanel } from "@flind/ui/features/settings/components/SettingsPanel";
+import { closeSettings } from "@flind/ui/features/settings/hooks/useOpenSettings";
 import {
   type SettingsCategory,
   settingsPageRevealsApp,
-} from "@posthog/ui/features/settings/types";
-import { navigateToSettings } from "@posthog/ui/router/navigationBridge";
-import { getRouterOrNull } from "@posthog/ui/router/routerRef";
+} from "@flind/ui/features/settings/types";
+import { navigateToSettings } from "@flind/ui/router/navigationBridge";
+import { getRouterOrNull } from "@flind/ui/router/routerRef";
 import type { ReactNode } from "react";
 
 export function SettingsLayout({

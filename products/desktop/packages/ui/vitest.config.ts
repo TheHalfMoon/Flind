@@ -7,14 +7,14 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      // Resolve self-package imports (`@posthog/ui/*`) to source so tests that
+      // Resolve self-package imports (`@flind/ui/*`) to source so tests that
       // transitively load self-importing UI modules work under vitest.
-      "@posthog/ui": fileURLToPath(new URL("./src", import.meta.url)),
-      // `@posthog/di` exposes subpaths (`/react`, `/logger`) via a renderer
+      "@flind/ui": fileURLToPath(new URL("./src", import.meta.url)),
+      // `@flind/di` exposes subpaths (`/react`, `/logger`) via a renderer
       // Vite alias, not its package `exports`; mirror that for vitest so tests
       // of `useService`-based hooks resolve.
-      "@posthog/di": fileURLToPath(new URL("../di/src", import.meta.url)),
-      "@posthog/host-router": fileURLToPath(
+      "@flind/di": fileURLToPath(new URL("../di/src", import.meta.url)),
+      "@flind/host-router": fileURLToPath(
         new URL("../host-router/src", import.meta.url),
       ),
       // quill-charts' dist imports dayjs plugins without the .js extension,

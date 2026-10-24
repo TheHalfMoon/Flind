@@ -1,14 +1,14 @@
-import type { UserCodexIntegration } from "@posthog/api-client/posthog-client";
+import type { UserCodexIntegration } from "@flind/api-client/posthog-client";
 import {
   CODEX_CLOUD_ACCOUNT_SERVICE,
   type CodexCloudAccountService,
   type CodexCloudConnectResult,
-} from "@posthog/core/integrations/codexCloudAccountService";
-import { useServiceOptional } from "@posthog/di/react";
-import { ANALYTICS_EVENTS } from "@posthog/shared";
-import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { toast } from "@posthog/ui/primitives/toast";
-import { track } from "@posthog/ui/shell/analytics";
+} from "@flind/core/integrations/codexCloudAccountService";
+import { useServiceOptional } from "@flind/di/react";
+import { ANALYTICS_EVENTS } from "@flind/shared";
+import { useOptionalAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { toast } from "@flind/ui/primitives/toast";
+import { track } from "@flind/ui/shell/analytics";
 import {
   type UseMutationResult,
   type UseQueryResult,

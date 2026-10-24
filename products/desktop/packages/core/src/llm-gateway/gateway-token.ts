@@ -1,8 +1,8 @@
-import { ROOT_LOGGER, type RootLogger } from "@posthog/di/logger";
+import { ROOT_LOGGER, type RootLogger } from "@flind/di/logger";
 import {
   GATEWAY_TRANSIENT_DETAIL,
   validateAiGatewayUrl,
-} from "@posthog/shared";
+} from "@flind/shared";
 import { inject, injectable } from "inversify";
 import type { AuthService } from "../auth/auth";
 import { AUTH_SERVICE } from "../auth/auth.module";

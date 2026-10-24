@@ -1,14 +1,14 @@
 import { ArrowsClockwise, Gift, X } from "@phosphor-icons/react";
-import { updateStore } from "@posthog/core/updates/updateStore";
-import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
-import { useUpdateBannerStore } from "@posthog/ui/features/updates/updateBannerStore";
-import { useUpdateModalStore } from "@posthog/ui/features/updates/updateModalStore";
+import { updateStore } from "@flind/core/updates/updateStore";
+import { useSettingsStore } from "@flind/ui/features/settings/settingsStore";
+import { useUpdateBannerStore } from "@flind/ui/features/updates/updateBannerStore";
+import { useUpdateModalStore } from "@flind/ui/features/updates/updateModalStore";
 import {
   useHasActiveUpdate,
   useInstallUpdate,
   useUpdateView,
-} from "@posthog/ui/features/updates/updateStore";
-import { Spin, Spinner } from "@posthog/ui/primitives/Spinner";
+} from "@flind/ui/features/updates/updateStore";
+import { Spin, Spinner } from "@flind/ui/primitives/Spinner";
 import { Box } from "@radix-ui/themes";
 import { AnimatePresence, motion } from "framer-motion";
 import { useStore } from "zustand";

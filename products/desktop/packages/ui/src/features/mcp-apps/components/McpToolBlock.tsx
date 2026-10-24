@@ -1,13 +1,13 @@
 import {
   POSTHOG_EXEC_TOOL_KEY,
   resolveResultResourceUri,
-} from "@posthog/core/mcp-apps/schemas";
-import { useServiceOptional } from "@posthog/di/react";
-import { useHostTRPC } from "@posthog/host-router/react";
-import { McpToolView } from "@posthog/ui/features/mcp-apps/components/McpToolView";
-import { parseMcpToolKey } from "@posthog/ui/features/mcp-apps/utils/mcp-app-host-utils";
-import type { ToolViewProps } from "@posthog/ui/features/sessions/components/session-update/toolCallUtils";
-import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
+} from "@flind/core/mcp-apps/schemas";
+import { useServiceOptional } from "@flind/di/react";
+import { useHostTRPC } from "@flind/host-router/react";
+import { McpToolView } from "@flind/ui/features/mcp-apps/components/McpToolView";
+import { parseMcpToolKey } from "@flind/ui/features/mcp-apps/utils/mcp-app-host-utils";
+import type { ToolViewProps } from "@flind/ui/features/sessions/components/session-update/toolCallUtils";
+import { useSettingsStore } from "@flind/ui/features/settings/settingsStore";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useSubscription } from "@trpc/tanstack-react-query";
 import {

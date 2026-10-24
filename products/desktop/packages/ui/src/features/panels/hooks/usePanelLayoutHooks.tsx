@@ -4,8 +4,8 @@ import {
   PackageIcon,
   Terminal,
 } from "@phosphor-icons/react";
-import { resolveTabAbsolutePath } from "@posthog/core/panels/resolveTabPath";
-import type { Task } from "@posthog/shared/domain-types";
+import { resolveTabAbsolutePath } from "@flind/core/panels/resolveTabPath";
+import type { Task } from "@flind/shared/domain-types";
 import { useCallback, useEffect, useMemo, useRef } from "react";
 import type { ImperativePanelGroupHandle } from "react-resizable-panels";
 import { FileIcon } from "../../../primitives/FileIcon";

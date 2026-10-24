@@ -1,8 +1,8 @@
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
-import { FilePicker } from "@posthog/ui/features/command/FilePicker";
-import { useFileSearchStore } from "@posthog/ui/features/command/fileSearchStore";
-import { useFileSearchContext } from "@posthog/ui/features/command/useFileSearchContext";
-import { track } from "@posthog/ui/shell/analytics";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
+import { FilePicker } from "@flind/ui/features/command/FilePicker";
+import { useFileSearchStore } from "@flind/ui/features/command/fileSearchStore";
+import { useFileSearchContext } from "@flind/ui/features/command/useFileSearchContext";
+import { track } from "@flind/ui/shell/analytics";
 import { useCallback, useEffect } from "react";
 
 export function GlobalFilePicker() {

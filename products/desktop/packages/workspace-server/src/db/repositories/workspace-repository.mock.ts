@@ -1,4 +1,4 @@
-import { mergePrUrls, promotePrUrl } from "@posthog/shared";
+import { mergePrUrls, promotePrUrl } from "@flind/shared";
 import {
   type CreateWorkspaceData,
   type IWorkspaceRepository,

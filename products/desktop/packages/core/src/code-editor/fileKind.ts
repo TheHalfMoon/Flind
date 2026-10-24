@@ -1,4 +1,4 @@
-import { getFileExtension } from "@posthog/shared";
+import { getFileExtension } from "@flind/shared";
 
 const MARKDOWN_EXTENSIONS = new Set(["md", "markdown"]);
 const HTML_EXTENSIONS = new Set(["html", "htm"]);

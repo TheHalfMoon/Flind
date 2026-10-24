@@ -1,13 +1,13 @@
 import {
   buildCreatePrReportPrompt,
   canCreateImplementationPr,
-} from "@posthog/core/inbox/reportActions";
+} from "@flind/core/inbox/reportActions";
 import type {
   SignalReport,
   SignalReportArtefactsResponse,
   SignalReportSignalsResponse,
   SignalReportsResponse,
-} from "@posthog/shared/domain-types";
+} from "@flind/shared/domain-types";
 import {
   type QueryClient,
   useMutation,

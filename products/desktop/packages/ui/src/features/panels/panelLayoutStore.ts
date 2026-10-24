@@ -1,5 +1,5 @@
-import { contentHash } from "@posthog/core/code-review/contentHash";
-import type { InjectedBlock } from "@posthog/core/editor/injectedBlocks";
+import { contentHash } from "@flind/core/code-review/contentHash";
+import type { InjectedBlock } from "@flind/core/editor/injectedBlocks";
 import {
   addRecentFile,
   addActionTab as coreAddActionTab,
@@ -19,13 +19,13 @@ import {
   updateTabMetadata as coreUpdateTabMetadata,
   createInitialTaskLayout,
   splitPanelTree,
-} from "@posthog/core/panels/panelLayoutTransforms";
+} from "@flind/core/panels/panelLayoutTransforms";
 import {
   activeArtifactId,
   createFileTabId,
-} from "@posthog/core/panels/panelStoreHelpers";
-import { findTabInTree } from "@posthog/core/panels/panelTree";
-import { ANALYTICS_EVENTS, getFileExtension } from "@posthog/shared";
+} from "@flind/core/panels/panelStoreHelpers";
+import { findTabInTree } from "@flind/core/panels/panelTree";
+import { ANALYTICS_EVENTS, getFileExtension } from "@flind/shared";
 import {
   createJSONStorage,
   persist,

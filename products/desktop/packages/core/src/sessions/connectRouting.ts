@@ -1,4 +1,4 @@
-import type { SessionStatus } from "@posthog/shared";
+import type { SessionStatus } from "@flind/shared";
 
 export type LocalConnectRoute =
   | { kind: "no-auth" }

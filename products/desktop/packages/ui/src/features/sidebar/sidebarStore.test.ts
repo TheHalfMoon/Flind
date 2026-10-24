@@ -3,7 +3,7 @@ import {
   DESKTOP_SOURCE,
   MOBILE_SOURCE,
   WEB_SOURCE,
-} from "@posthog/core/canvas/channelItems";
+} from "@flind/core/canvas/channelItems";
 import { describe, expect, it } from "vitest";
 import {
   DEFAULT_SIDEBAR_CHANNEL_ITEM_FILTERS,

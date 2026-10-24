@@ -1,4 +1,4 @@
-import { getGravatarRefresh } from "@posthog/core/auth/gravatarRefresh";
+import { getGravatarRefresh } from "@flind/core/auth/gravatarRefresh";
 import { act, renderHook, waitFor } from "@testing-library/react";
 import { afterEach, describe, expect, it } from "vitest";
 import { useGravatarRefreshStore } from "./gravatarRefreshStore";

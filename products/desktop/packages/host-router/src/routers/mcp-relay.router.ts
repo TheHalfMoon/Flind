@@ -1,13 +1,13 @@
-import { publicProcedure, router } from "@posthog/host-trpc/trpc";
+import { publicProcedure, router } from "@flind/host-trpc/trpc";
 import {
   MCP_RELAY_SERVICE,
   type McpRelayService,
-} from "@posthog/workspace-server/services/mcp-relay/identifiers";
+} from "@flind/workspace-server/services/mcp-relay/identifiers";
 import {
   closeRunInput,
   executeMcpRelayInput,
   executeMcpRelayOutput,
-} from "@posthog/workspace-server/services/mcp-relay/schemas";
+} from "@flind/workspace-server/services/mcp-relay/schemas";
 
 export const mcpRelayRouter = router({
   execute: publicProcedure

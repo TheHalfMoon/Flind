@@ -1,5 +1,5 @@
-import { DEFAULT_GATEWAY_MODEL } from "@posthog/shared";
-import type { SignalReport } from "@posthog/shared/domain-types";
+import { DEFAULT_GATEWAY_MODEL } from "@flind/shared";
+import type { SignalReport } from "@flind/shared/domain-types";
 import { createElement } from "react";
 import { Alert, Animated, Pressable } from "react-native";
 import { act, create, type ReactTestRenderer } from "react-test-renderer";

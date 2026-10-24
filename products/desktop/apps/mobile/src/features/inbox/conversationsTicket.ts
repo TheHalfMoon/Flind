@@ -1,4 +1,4 @@
-import type { Signal } from "@posthog/shared/domain-types";
+import type { Signal } from "@flind/shared/domain-types";
 import { getCloudUrlFromRegion } from "@/features/auth/lib/constants";
 import type { CloudRegion } from "@/features/auth/types";
 

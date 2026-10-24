@@ -1,4 +1,4 @@
-import type { Signal, SignalReport } from "@posthog/shared/types";
+import type { Signal, SignalReport } from "@flind/shared/types";
 
 // A cloud first message rides through task-run creation as plain text; keep the
 // inlined report bounded so a signal-heavy report can't balloon the request.

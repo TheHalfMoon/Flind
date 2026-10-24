@@ -1,4 +1,4 @@
-import { requestErrorStatus } from "@posthog/api-client/fetcher";
+import { requestErrorStatus } from "@flind/api-client/fetcher";
 import {
   type ChannelContextWikiPage,
   type ContextWikiDreamDetail,
@@ -8,9 +8,9 @@ import {
   type ContextWikiPageProposal,
   type ContextWikiTree,
   ContextWikiUnavailableError,
-} from "@posthog/api-client/posthog-client";
-import { useAuthenticatedMutation } from "@posthog/ui/hooks/useAuthenticatedMutation";
-import { useAuthenticatedQuery } from "@posthog/ui/hooks/useAuthenticatedQuery";
+} from "@flind/api-client/posthog-client";
+import { useAuthenticatedMutation } from "@flind/ui/hooks/useAuthenticatedMutation";
+import { useAuthenticatedQuery } from "@flind/ui/hooks/useAuthenticatedQuery";
 import {
   type UseMutationResult,
   type UseQueryResult,

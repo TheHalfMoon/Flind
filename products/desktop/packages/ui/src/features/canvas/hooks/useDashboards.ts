@@ -1,17 +1,17 @@
-import { UNTITLED_CANVAS_NAME } from "@posthog/core/canvas/canvasNaming";
+import { UNTITLED_CANVAS_NAME } from "@flind/core/canvas/canvasNaming";
 import type {
   CanvasAvailability,
   CanvasDraft,
   CanvasSource,
   CanvasVersion,
   DashboardRecord,
-} from "@posthog/core/canvas/dashboardSchemas";
-import { useHostTRPC } from "@posthog/host-router/react";
-import { AUTH_SCOPED_QUERY_META } from "@posthog/ui/features/auth/useCurrentUser";
-import { invalidateCanvasLifecycle } from "@posthog/ui/features/canvas/hooks/invalidateCanvasLifecycle";
-import { useDashboardEditStore } from "@posthog/ui/features/canvas/stores/dashboardEditStore";
-import { toast } from "@posthog/ui/primitives/toast";
-import { logger } from "@posthog/ui/shell/logger";
+} from "@flind/core/canvas/dashboardSchemas";
+import { useHostTRPC } from "@flind/host-router/react";
+import { AUTH_SCOPED_QUERY_META } from "@flind/ui/features/auth/useCurrentUser";
+import { invalidateCanvasLifecycle } from "@flind/ui/features/canvas/hooks/invalidateCanvasLifecycle";
+import { useDashboardEditStore } from "@flind/ui/features/canvas/stores/dashboardEditStore";
+import { toast } from "@flind/ui/primitives/toast";
+import { logger } from "@flind/ui/shell/logger";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
 import { useCallback } from "react";
@@ -22,7 +22,7 @@ import {
 } from "./spaceQueryPolicy";
 
 const log = logger.scope("dashboards");
-// The naming helpers moved to @posthog/core (CanvasApplicationService uses them
+// The naming helpers moved to @flind/core (CanvasApplicationService uses them
 // for auto-naming); re-exported here for the UI surfaces that import them.
 
 /** Saved canvases for a channel. */

@@ -1,11 +1,11 @@
 import { useDroppable } from "@dnd-kit/react";
 import { Plus, SquareSplitHorizontalIcon, X } from "@phosphor-icons/react";
-import { useHostTRPCClient } from "@posthog/host-router/react";
-import { CONTENT_CHROME_RIGHT_VAR } from "@posthog/ui/features/navigation/rightPanelSide";
-import { PanelDropZones } from "@posthog/ui/features/panels/components/PanelDropZones";
-import type { SplitDirection } from "@posthog/ui/features/panels/panelLayoutStore";
-import type { PanelContent } from "@posthog/ui/features/panels/panelTypes";
-import { Tooltip } from "@posthog/ui/primitives/Tooltip";
+import { useHostTRPCClient } from "@flind/host-router/react";
+import { CONTENT_CHROME_RIGHT_VAR } from "@flind/ui/features/navigation/rightPanelSide";
+import { PanelDropZones } from "@flind/ui/features/panels/components/PanelDropZones";
+import type { SplitDirection } from "@flind/ui/features/panels/panelLayoutStore";
+import type { PanelContent } from "@flind/ui/features/panels/panelTypes";
+import { Tooltip } from "@flind/ui/primitives/Tooltip";
 import { Box, Flex } from "@radix-ui/themes";
 import type React from "react";
 import { forwardRef, useCallback, useEffect, useRef, useState } from "react";

@@ -1,10 +1,10 @@
-import { SettingsDialogFrame } from "@posthog/ui/features/settings/components/SettingsDialogFrame";
-import { SettingsPanel } from "@posthog/ui/features/settings/components/SettingsPanel";
-import { useSettingsPageStore } from "@posthog/ui/features/settings/stores/settingsPageStore";
+import { SettingsDialogFrame } from "@flind/ui/features/settings/components/SettingsDialogFrame";
+import { SettingsPanel } from "@flind/ui/features/settings/components/SettingsPanel";
+import { useSettingsPageStore } from "@flind/ui/features/settings/stores/settingsPageStore";
 import {
   type SettingsCategory,
   settingsPageRevealsApp,
-} from "@posthog/ui/features/settings/types";
+} from "@flind/ui/features/settings/types";
 import { useEffect, useState } from "react";
 
 /**

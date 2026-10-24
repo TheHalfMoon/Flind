@@ -9,15 +9,15 @@ import {
   Square,
 } from "@phosphor-icons/react";
 import type { FileDiffMetadata } from "@pierre/diffs/react";
-import type { ResolvedDiffSource } from "@posthog/core/code-review/resolveDiffSource";
+import type { ResolvedDiffSource } from "@flind/core/code-review/resolveDiffSource";
 import {
   type DeferredReason,
   getDeferredMessage,
   splitFilePath,
   sumHunkStats,
-} from "@posthog/core/code-review/reviewShellGeometry";
+} from "@flind/core/code-review/reviewShellGeometry";
 import { Badge } from "@flind/quill";
-import type { ChangedFile, Task } from "@posthog/shared/domain-types";
+import type { ChangedFile, Task } from "@flind/shared/domain-types";
 import { type ReactNode, useCallback, useMemo, useState } from "react";
 import { FileIcon } from "../../primitives/FileIcon";
 import { Tooltip } from "../../primitives/Tooltip";
@@ -28,11 +28,11 @@ import type { ReviewListItem } from "./commentFileFilter";
 import { useReviewViewedContext } from "./reviewViewedContext";
 import { useReviewViewedStore } from "./reviewViewedStore";
 
-export type { DeferredReason } from "@posthog/core/code-review/reviewShellGeometry";
+export type { DeferredReason } from "@flind/core/code-review/reviewShellGeometry";
 export {
   buildItemIndex,
   splitFilePath,
-} from "@posthog/core/code-review/reviewShellGeometry";
+} from "@flind/core/code-review/reviewShellGeometry";
 export type { ReviewListItem } from "./commentFileFilter";
 
 const STICKY_HEADER_CSS = `[data-diffs-header] { position: sticky; top: 0; z-index: 1; background: var(--gray-2); }`;

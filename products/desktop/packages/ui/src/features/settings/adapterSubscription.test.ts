@@ -4,11 +4,11 @@ const { registerAdapterSubscription } = vi.hoisted(() => ({
   registerAdapterSubscription: vi.fn(),
 }));
 
-vi.mock("@posthog/ui/shell/posthogAnalyticsImpl", () => ({
+vi.mock("@flind/ui/shell/posthogAnalyticsImpl", () => ({
   registerAdapterSubscription,
 }));
 
-import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
+import { useSettingsStore } from "@flind/ui/features/settings/settingsStore";
 import {
   effectiveModelAccess,
   registerSubscriptionAtBoot,

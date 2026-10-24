@@ -5,7 +5,7 @@ import {
   PushPinSlashIcon,
   TrashIcon,
 } from "@phosphor-icons/react";
-import type { DashboardRecord } from "@posthog/core/canvas/dashboardSchemas";
+import type { DashboardRecord } from "@flind/core/canvas/dashboardSchemas";
 import {
   Badge,
   Button,
@@ -18,24 +18,24 @@ import {
   DropdownMenuTrigger,
   Text,
 } from "@flind/quill";
-import { formatRelativeTimeShort } from "@posthog/shared";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
-import { CanvasPreviewFrame } from "@posthog/ui/features/canvas/components/CanvasPreviewFrame";
+import { formatRelativeTimeShort } from "@flind/shared";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
+import { CanvasPreviewFrame } from "@flind/ui/features/canvas/components/CanvasPreviewFrame";
 import {
   ActivityPresenceAvatar,
   canvasAuthor,
-} from "@posthog/ui/features/canvas/components/ChannelItemPresence";
-import { NewCanvasMenu } from "@posthog/ui/features/canvas/components/NewCanvasMenu";
-import { deleteCanvasWithUndo } from "@posthog/ui/features/canvas/deleteCanvasWithUndo";
-import { useCanvasTemplates } from "@posthog/ui/features/canvas/hooks/useCanvasTemplates";
+} from "@flind/ui/features/canvas/components/ChannelItemPresence";
+import { NewCanvasMenu } from "@flind/ui/features/canvas/components/NewCanvasMenu";
+import { deleteCanvasWithUndo } from "@flind/ui/features/canvas/deleteCanvasWithUndo";
+import { useCanvasTemplates } from "@flind/ui/features/canvas/hooks/useCanvasTemplates";
 import {
   useDashboardMutations,
   useDashboards,
-} from "@posthog/ui/features/canvas/hooks/useDashboards";
-import { useIsCanvasPendingDelete } from "@posthog/ui/features/canvas/stores/pendingCanvasDeleteStore";
-import { copyCanvasLink } from "@posthog/ui/features/canvas/utils/copyCanvasLink";
-import { toast } from "@posthog/ui/primitives/toast";
-import { track } from "@posthog/ui/shell/analytics";
+} from "@flind/ui/features/canvas/hooks/useDashboards";
+import { useIsCanvasPendingDelete } from "@flind/ui/features/canvas/stores/pendingCanvasDeleteStore";
+import { copyCanvasLink } from "@flind/ui/features/canvas/utils/copyCanvasLink";
+import { toast } from "@flind/ui/primitives/toast";
+import { track } from "@flind/ui/shell/analytics";
 import { Box, Flex } from "@radix-ui/themes";
 import { Link } from "@tanstack/react-router";
 import { memo, useState } from "react";

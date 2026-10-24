@@ -1,4 +1,4 @@
-import type { AutoresearchRun } from "@posthog/core/autoresearch/schemas";
+import type { AutoresearchRun } from "@flind/core/autoresearch/schemas";
 import { Theme } from "@radix-ui/themes";
 import { render, screen } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";

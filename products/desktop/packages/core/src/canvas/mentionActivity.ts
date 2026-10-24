@@ -1,4 +1,4 @@
-import type { TaskMention, UserBasic } from "@posthog/shared/domain-types";
+import type { TaskMention, UserBasic } from "@flind/shared/domain-types";
 import { channelDisplayName } from "./channelName";
 
 /**

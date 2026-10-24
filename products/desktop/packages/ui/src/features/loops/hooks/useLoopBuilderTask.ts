@@ -1,10 +1,10 @@
-import type { TaskCreationInput } from "@posthog/core/task-detail/taskService";
-import type { Task } from "@posthog/shared/domain-types";
-import { getAuthIdentity, useAuthStore } from "@posthog/ui/features/auth/store";
+import type { TaskCreationInput } from "@flind/core/task-detail/taskService";
+import type { Task } from "@flind/shared/domain-types";
+import { getAuthIdentity, useAuthStore } from "@flind/ui/features/auth/store";
 import {
   type InboxCloudTaskInputContext,
   useInboxCloudTaskRunner,
-} from "@posthog/ui/features/inbox/hooks/useInboxCloudTaskRunner";
+} from "@flind/ui/features/inbox/hooks/useInboxCloudTaskRunner";
 import { useCallback, useMemo, useRef } from "react";
 import { buildLoopBuilderSystemInstructions } from "../loopBuilderPrompt";
 import { useLoopBuilderSessionStore } from "../loopBuilderSessionStore";

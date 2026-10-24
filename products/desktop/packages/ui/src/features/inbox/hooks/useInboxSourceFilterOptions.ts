@@ -1,10 +1,10 @@
-import { filterInboxSourceOptions } from "@posthog/shared";
-import type { SourceProduct } from "@posthog/shared/types";
+import { filterInboxSourceOptions } from "@flind/shared";
+import type { SourceProduct } from "@flind/shared/types";
 import {
   INBOX_SOURCE_OPTIONS,
   type InboxSourceOption,
-} from "@posthog/ui/features/inbox/filterOptions";
-import { useSignalSourceConfigs } from "@posthog/ui/features/inbox/hooks/useSignalSourceConfigs";
+} from "@flind/ui/features/inbox/filterOptions";
+import { useSignalSourceConfigs } from "@flind/ui/features/inbox/hooks/useSignalSourceConfigs";
 import { useMemo } from "react";
 
 /**

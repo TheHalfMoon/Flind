@@ -1,4 +1,4 @@
-import { toModelPickerOption } from "@posthog/core/billing/modelPricing";
+import { toModelPickerOption } from "@flind/core/billing/modelPricing";
 import {
   Button,
   DropdownMenu,
@@ -6,7 +6,7 @@ import {
   DropdownMenuRadioGroup,
   DropdownMenuTrigger,
 } from "@flind/quill";
-import { customModelMeta } from "@posthog/shared";
+import { customModelMeta } from "@flind/shared";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { ModelCostFooter } from "./ModelCostChip";
 import { ModelRadioItem } from "./ModelRadioItem";

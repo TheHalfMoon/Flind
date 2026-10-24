@@ -1,9 +1,9 @@
-import { ChannelHeader } from "@posthog/ui/features/canvas/components/ChannelHeader";
-import { SpaceContextPage } from "@posthog/ui/features/canvas/components/context/SpaceContextPage";
-import { SpaceContextDocument } from "@posthog/ui/features/canvas/components/SpaceContextDocument";
-import { useWorkLayout } from "@posthog/ui/features/canvas/hooks/useWorkLayout";
-import { useSetHeaderContent } from "@posthog/ui/hooks/useSetHeaderContent";
-import { navigateToSpacesContext } from "@posthog/ui/router/navigationBridge";
+import { ChannelHeader } from "@flind/ui/features/canvas/components/ChannelHeader";
+import { SpaceContextPage } from "@flind/ui/features/canvas/components/context/SpaceContextPage";
+import { SpaceContextDocument } from "@flind/ui/features/canvas/components/SpaceContextDocument";
+import { useWorkLayout } from "@flind/ui/features/canvas/hooks/useWorkLayout";
+import { useSetHeaderContent } from "@flind/ui/hooks/useSetHeaderContent";
+import { navigateToSpacesContext } from "@flind/ui/router/navigationBridge";
 import { useMemo } from "react";
 
 interface WebsiteContextProps {

@@ -1,6 +1,6 @@
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { isSafeExternalUrl } from "@posthog/shared";
+import { isSafeExternalUrl } from "@flind/shared";
 import { type BrowserWindow, type Session, shell } from "electron";
 import { logger } from "./utils/logger";
 

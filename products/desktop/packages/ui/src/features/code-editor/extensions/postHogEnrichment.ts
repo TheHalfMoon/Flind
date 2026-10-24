@@ -14,8 +14,8 @@ import {
 import {
   buildEnrichmentOccurrences,
   type EnrichmentOccurrence,
-} from "@posthog/core/code-editor/buildEnrichmentOccurrences";
-import type { SerializedEnrichment } from "@posthog/shared";
+} from "@flind/core/code-editor/buildEnrichmentOccurrences";
+import type { SerializedEnrichment } from "@flind/shared";
 import { useEnrichmentPopoverStore } from "../stores/enrichmentPopoverStore";
 
 export const setEnrichmentEffect =

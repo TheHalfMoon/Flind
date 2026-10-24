@@ -2,13 +2,13 @@ import { Folder, Warning } from "@phosphor-icons/react";
 import {
   WORKSPACE_SETUP_SAGA,
   type WorkspaceSetupSaga,
-} from "@posthog/core/task-detail/workspaceSetupSaga";
-import { WORKSPACE_SETUP_SERVICE } from "@posthog/core/workspace/identifiers";
-import type { WorkspaceSetupService } from "@posthog/core/workspace/WorkspaceSetupService";
-import { useService } from "@posthog/di/react";
-import { getTaskRepository } from "@posthog/shared";
-import type { Task } from "@posthog/shared/domain-types";
-import { LoadingState } from "@posthog/ui/primitives/LoadingState";
+} from "@flind/core/task-detail/workspaceSetupSaga";
+import { WORKSPACE_SETUP_SERVICE } from "@flind/core/workspace/identifiers";
+import type { WorkspaceSetupService } from "@flind/core/workspace/WorkspaceSetupService";
+import { useService } from "@flind/di/react";
+import { getTaskRepository } from "@flind/shared";
+import type { Task } from "@flind/shared/domain-types";
+import { LoadingState } from "@flind/ui/primitives/LoadingState";
 import { Box, Button, Code, Flex, Text } from "@radix-ui/themes";
 import { useCallback, useMemo, useState } from "react";
 import { FolderPicker } from "../../folder-picker/FolderPicker";

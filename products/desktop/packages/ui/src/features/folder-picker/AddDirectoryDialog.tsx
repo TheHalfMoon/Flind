@@ -1,7 +1,7 @@
 import { Folder } from "@phosphor-icons/react";
-import { ROOT_LOGGER, type RootLogger } from "@posthog/di/logger";
-import { useService } from "@posthog/di/react";
-import { useHostTRPCClient } from "@posthog/host-router/react";
+import { ROOT_LOGGER, type RootLogger } from "@flind/di/logger";
+import { useService } from "@flind/di/react";
+import { useHostTRPCClient } from "@flind/host-router/react";
 import {
   Button,
   Dialog,
@@ -11,7 +11,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@flind/quill";
-import { useAddDirectoryDialogStore } from "@posthog/ui/features/folder-picker/addDirectoryDialogStore";
+import { useAddDirectoryDialogStore } from "@flind/ui/features/folder-picker/addDirectoryDialogStore";
 import { useEffect, useRef } from "react";
 
 export function AddDirectoryDialog() {

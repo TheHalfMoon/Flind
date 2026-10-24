@@ -1,4 +1,4 @@
-import type { SettingsCategory } from "@posthog/ui/features/settings/types";
+import type { SettingsCategory } from "@flind/ui/features/settings/types";
 
 // Settings that only make sense with a local filesystem/host (local worktrees,
 // terminal, the local `claude` CLI, the desktop app itself). Hidden on the

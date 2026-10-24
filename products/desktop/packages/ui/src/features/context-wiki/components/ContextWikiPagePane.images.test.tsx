@@ -36,9 +36,9 @@ vi.mock("../hooks/useContextWiki", () => ({
   }),
 }));
 
-// The real client pulls in @posthog/shared, which this package's vitest config
+// The real client pulls in @flind/shared, which this package's vitest config
 // does not resolve; the pane only needs these two error classes for instanceof.
-vi.mock("@posthog/api-client/posthog-client", () => ({
+vi.mock("@flind/api-client/posthog-client", () => ({
   ContextWikiConflictError: class ContextWikiConflictError extends Error {},
   ContextWikiLintError: class ContextWikiLintError extends Error {},
 }));

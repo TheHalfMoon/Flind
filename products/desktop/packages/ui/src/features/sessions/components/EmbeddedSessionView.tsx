@@ -1,4 +1,4 @@
-import type { Task } from "@posthog/shared/domain-types";
+import type { Task } from "@flind/shared/domain-types";
 import { Flex } from "@radix-ui/themes";
 import { type ReactNode, useEffect } from "react";
 import { useDraftStore } from "../../message-editor/draftStore";

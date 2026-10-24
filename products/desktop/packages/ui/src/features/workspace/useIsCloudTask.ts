@@ -1,4 +1,4 @@
-import type { Task } from "@posthog/shared/domain-types";
+import type { Task } from "@flind/shared/domain-types";
 import { useWorkspace } from "./useWorkspace";
 
 export function useIsCloudTask(taskId: string, task?: Task): boolean {

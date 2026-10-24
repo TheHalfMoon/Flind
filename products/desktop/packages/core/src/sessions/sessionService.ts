@@ -9,7 +9,7 @@ import type {
   SessionConfigSelectOption,
   SessionUpdate,
 } from "@agentclientprotocol/sdk";
-import { requestErrorStatus } from "@posthog/api-client/fetcher";
+import { requestErrorStatus } from "@flind/api-client/fetcher";
 import {
   type CreateResourceCommentRequest,
   type PostHogAPIClient,
@@ -17,7 +17,7 @@ import {
   type ResourceComment,
   SESSION_LOGS_MAX_PAGE_SIZE,
   type TaskRunSessionLogsResult,
-} from "@posthog/api-client/posthog-client";
+} from "@flind/api-client/posthog-client";
 import {
   type AcpMessage,
   type Adapter,
@@ -57,8 +57,8 @@ import {
   type TaskRunStatus,
   TRANSCRIPT_TAIL_WINDOW,
   TranscriptBoundaries,
-} from "@posthog/shared";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
+} from "@flind/shared";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
 import {
   type CloudTaskPermissionRequestUpdate,
   type CloudTaskUpdatePayload,
@@ -68,7 +68,7 @@ import {
   isTerminalStatus,
   readPendingFollowupMessages,
   type Task,
-} from "@posthog/shared/domain-types";
+} from "@flind/shared/domain-types";
 import type { SendCommandOutput } from "../cloud-task/schemas";
 import type { CommentTarget } from "../comments/anchors";
 import { isGithubConnectionRequiredError } from "../integrations/connectErrors";

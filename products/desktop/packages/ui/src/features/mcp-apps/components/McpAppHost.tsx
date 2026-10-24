@@ -8,12 +8,12 @@ import { ArrowsIn, ArrowsOut, Plugs, X } from "@phosphor-icons/react";
 import {
   POSTHOG_EXEC_TOOL_KEY,
   resolveResultResourceUri,
-} from "@posthog/core/mcp-apps/schemas";
-import { useService } from "@posthog/di/react";
-import { useHostTRPC } from "@posthog/host-router/react";
-import type { ToolViewProps } from "@posthog/ui/features/sessions/components/session-update/toolCallUtils";
-import { logger } from "@posthog/ui/shell/logger";
-import { useThemeStore } from "@posthog/ui/shell/themeStore";
+} from "@flind/core/mcp-apps/schemas";
+import { useService } from "@flind/di/react";
+import { useHostTRPC } from "@flind/host-router/react";
+import type { ToolViewProps } from "@flind/ui/features/sessions/components/session-update/toolCallUtils";
+import { logger } from "@flind/ui/shell/logger";
+import { useThemeStore } from "@flind/ui/shell/themeStore";
 import { Box, Flex, IconButton, Text } from "@radix-ui/themes";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useSubscription } from "@trpc/tanstack-react-query";

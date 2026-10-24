@@ -3,14 +3,14 @@ import { Button, ToggleGroup, ToggleGroupItem } from "@flind/quill";
 import {
   useDiffViewerStore,
   type ViewMode,
-} from "@posthog/ui/features/code-editor/diffViewerStore";
-import { PatchedFileDiff } from "@posthog/ui/features/code-review/components/PatchedFileDiff";
-import { useDiffOptions } from "@posthog/ui/features/code-review/reviewShellParts";
-import { usePrChangedFiles } from "@posthog/ui/features/git-interaction/useGitQueries";
-import { DetailSection } from "@posthog/ui/features/inbox/components/DetailSection";
-import { NestedButton } from "@posthog/ui/primitives/NestedButton";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
-import { openExternalUrl } from "@posthog/ui/shell/openExternal";
+} from "@flind/ui/features/code-editor/diffViewerStore";
+import { PatchedFileDiff } from "@flind/ui/features/code-review/components/PatchedFileDiff";
+import { useDiffOptions } from "@flind/ui/features/code-review/reviewShellParts";
+import { usePrChangedFiles } from "@flind/ui/features/git-interaction/useGitQueries";
+import { DetailSection } from "@flind/ui/features/inbox/components/DetailSection";
+import { NestedButton } from "@flind/ui/primitives/NestedButton";
+import { Spinner } from "@flind/ui/primitives/Spinner";
+import { openExternalUrl } from "@flind/ui/shell/openExternal";
 import { type ReactNode, useMemo, useRef, useState } from "react";
 import {
   fileViewedFingerprint,

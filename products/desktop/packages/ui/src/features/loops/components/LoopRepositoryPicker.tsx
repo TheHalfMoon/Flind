@@ -1,6 +1,6 @@
-import { GitHubRepoPicker } from "@posthog/ui/features/folder-picker/GitHubRepoPicker";
-import { useRepositoryIntegration } from "@posthog/ui/features/integrations/useIntegrations";
-import type { LoopSchemas } from "@posthog/ui/features/loops/loopSchemas";
+import { GitHubRepoPicker } from "@flind/ui/features/folder-picker/GitHubRepoPicker";
+import { useRepositoryIntegration } from "@flind/ui/features/integrations/useIntegrations";
+import type { LoopSchemas } from "@flind/ui/features/loops/loopSchemas";
 
 interface LoopRepositoryPickerProps {
   value: LoopSchemas.LoopRepositoryEntry | null;

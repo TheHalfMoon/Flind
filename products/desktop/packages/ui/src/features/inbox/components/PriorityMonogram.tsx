@@ -1,4 +1,4 @@
-import type { SignalReportPriority } from "@posthog/shared/types";
+import type { SignalReportPriority } from "@flind/shared/types";
 
 const PRIORITY_CLASSES: Record<SignalReportPriority, string> = {
   P0: "bg-(--red-3) text-(--red-11) ring-1 ring-(--red-5) ring-inset",

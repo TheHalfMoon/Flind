@@ -1,4 +1,4 @@
-import { useSidebarStore } from "@posthog/ui/features/sidebar/sidebarStore";
+import { useSidebarStore } from "@flind/ui/features/sidebar/sidebarStore";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { fn } from "storybook/test";
 import { EditListItemAppearanceDialog } from "./EditListItemAppearanceDialog";

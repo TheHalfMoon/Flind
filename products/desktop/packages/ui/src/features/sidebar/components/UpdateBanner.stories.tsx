@@ -1,9 +1,9 @@
 import {
   type UpdateUiStatus,
   updateStore,
-} from "@posthog/core/updates/updateStore";
-import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
-import { UpdateBanner } from "@posthog/ui/features/sidebar/components/UpdateBanner";
+} from "@flind/core/updates/updateStore";
+import { useSettingsStore } from "@flind/ui/features/settings/settingsStore";
+import { UpdateBanner } from "@flind/ui/features/sidebar/components/UpdateBanner";
 import type { Decorator, Meta, StoryObj } from "@storybook/react-vite";
 import { useEffect } from "react";
 

@@ -1,9 +1,9 @@
-import { saveSettingsBackupInput } from "@posthog/core/settings/schemas";
-import { publicProcedure, router } from "@posthog/host-trpc/trpc";
+import { saveSettingsBackupInput } from "@flind/core/settings/schemas";
+import { publicProcedure, router } from "@flind/host-trpc/trpc";
 import {
   type ISettingsBackupFiles,
   SETTINGS_BACKUP_FILES,
-} from "@posthog/platform/settings-backup-files";
+} from "@flind/platform/settings-backup-files";
 
 export const settingsBackupRouter = router({
   open: publicProcedure.mutation(({ ctx }) =>

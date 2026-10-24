@@ -1,4 +1,4 @@
-import { useService } from "@posthog/di/react";
+import { useService } from "@flind/di/react";
 import { useEffect, useState } from "react";
 import { FEATURE_FLAGS, type FeatureFlags } from "./identifiers";
 

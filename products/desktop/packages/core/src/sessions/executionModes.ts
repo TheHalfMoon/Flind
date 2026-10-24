@@ -1,4 +1,4 @@
-import { CODEX_MODE_PRESETS, type ExecutionMode } from "@posthog/shared";
+import { CODEX_MODE_PRESETS, type ExecutionMode } from "@flind/shared";
 
 export interface ModeInfo {
   id: string;
@@ -40,7 +40,7 @@ function getAvailableModes(): ModeInfo[] {
   return availableModes;
 }
 
-// The preset literals live in @posthog/shared (one copy for every picker and
+// The preset literals live in @flind/shared (one copy for every picker and
 // the app-server adapter's CODEX_MODES). Cloud sessions offer all presets,
 // including full-access; the agent package applies its own bypass gating.
 function getAvailableCodexModes(): ModeInfo[] {

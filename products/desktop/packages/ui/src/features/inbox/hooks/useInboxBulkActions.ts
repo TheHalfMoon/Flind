@@ -1,31 +1,31 @@
-import { buildSnoozeRequest } from "@posthog/core/inbox/bulkActions";
+import { buildSnoozeRequest } from "@flind/core/inbox/bulkActions";
 import {
   buildBulkActionEvents,
   type InboxBulkActionType,
-} from "@posthog/core/inbox/engagement";
+} from "@flind/core/inbox/engagement";
 import {
   type InboxReportCacheSnapshot,
   restoreInboxReportCaches,
   updateInboxReportCaches,
-} from "@posthog/core/inbox/inboxQuery";
-import { inboxStatusLabel } from "@posthog/core/inbox/reportPresentation";
-import type { InboxReportActionSurface } from "@posthog/shared/analytics-events";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
+} from "@flind/core/inbox/inboxQuery";
+import { inboxStatusLabel } from "@flind/core/inbox/reportPresentation";
+import type { InboxReportActionSurface } from "@flind/shared/analytics-events";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
 import type {
   SignalReport,
   SuggestedReviewer,
   SuggestedReviewersArtefact,
   SuggestedReviewerWriteEntry,
-} from "@posthog/shared/types";
-import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { useCurrentUser } from "@posthog/ui/features/auth/useCurrentUser";
-import { taskFeedResultsQueryRoot } from "@posthog/ui/features/canvas/hooks/useTaskFeedResults";
-import type { DismissReportDialogResult } from "@posthog/ui/features/inbox/components/DismissReportDialog";
-import { reportKeys } from "@posthog/ui/features/inbox/hooks/useInboxReports";
-import { useInboxReportSelectionStore } from "@posthog/ui/features/inbox/stores/inboxReportSelectionStore";
-import { useAuthenticatedMutation } from "@posthog/ui/hooks/useAuthenticatedMutation";
-import { toast } from "@posthog/ui/primitives/toast";
-import { track } from "@posthog/ui/shell/analytics";
+} from "@flind/shared/types";
+import { useOptionalAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { useCurrentUser } from "@flind/ui/features/auth/useCurrentUser";
+import { taskFeedResultsQueryRoot } from "@flind/ui/features/canvas/hooks/useTaskFeedResults";
+import type { DismissReportDialogResult } from "@flind/ui/features/inbox/components/DismissReportDialog";
+import { reportKeys } from "@flind/ui/features/inbox/hooks/useInboxReports";
+import { useInboxReportSelectionStore } from "@flind/ui/features/inbox/stores/inboxReportSelectionStore";
+import { useAuthenticatedMutation } from "@flind/ui/hooks/useAuthenticatedMutation";
+import { toast } from "@flind/ui/primitives/toast";
+import { track } from "@flind/ui/shell/analytics";
 import { useQueryClient } from "@tanstack/react-query";
 import { useCallback, useMemo } from "react";
 
@@ -109,7 +109,7 @@ const snoozableStatuses = new Set<SignalReport["status"]>([
   "failed",
 ]);
 
-/** Clause after "Disabled because …" (see `@posthog/ui/primitives/Button`). */
+/** Clause after "Disabled because …" (see `@flind/ui/primitives/Button`). */
 const DISABLED_NO_SELECTION = "you haven't selected a report";
 
 /** Clause when none of the selected reports have the current user as a reviewer. */

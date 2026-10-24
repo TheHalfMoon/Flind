@@ -1,4 +1,4 @@
-import type { AgentSession } from "@posthog/shared";
+import type { AgentSession } from "@flind/shared";
 
 export function createBaseSession(
   taskRunId: string,

@@ -6,11 +6,11 @@ import {
   EmptyMedia,
   EmptyTitle,
 } from "@flind/quill";
-import { CardSkeleton } from "@posthog/ui/features/inbox/components/CardSkeleton";
-import { InboxLoadMore } from "@posthog/ui/features/inbox/components/InboxLoadMore";
-import { ReportCard } from "@posthog/ui/features/inbox/components/ReportCard";
-import { useInboxDismissedReports } from "@posthog/ui/features/inbox/hooks/useInboxDismissedReports";
-import { useInboxRestoreReport } from "@posthog/ui/features/inbox/hooks/useInboxRestoreReport";
+import { CardSkeleton } from "@flind/ui/features/inbox/components/CardSkeleton";
+import { InboxLoadMore } from "@flind/ui/features/inbox/components/InboxLoadMore";
+import { ReportCard } from "@flind/ui/features/inbox/components/ReportCard";
+import { useInboxDismissedReports } from "@flind/ui/features/inbox/hooks/useInboxDismissedReports";
+import { useInboxRestoreReport } from "@flind/ui/features/inbox/hooks/useInboxRestoreReport";
 
 /**
  * Archive tab: terminal reports, newest first — ones the user archived

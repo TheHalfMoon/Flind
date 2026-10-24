@@ -2,17 +2,17 @@ import {
   type INotifications,
   NOTIFICATIONS_SERVICE,
   type NotificationTarget,
-} from "@posthog/platform/notifications";
-import type { TaskActivityKind } from "@posthog/shared/domain-types";
-import { notificationsPaused } from "@posthog/ui/features/settings/settingsStore";
-import { toast } from "@posthog/ui/primitives/toast";
-import { openNotificationTarget } from "@posthog/ui/router/navigationBridge";
-import { logger } from "@posthog/ui/shell/logger";
+} from "@flind/platform/notifications";
+import type { TaskActivityKind } from "@flind/shared/domain-types";
+import { notificationsPaused } from "@flind/ui/features/settings/settingsStore";
+import { toast } from "@flind/ui/primitives/toast";
+import { openNotificationTarget } from "@flind/ui/router/navigationBridge";
+import { logger } from "@flind/ui/shell/logger";
 import {
   playbackRateForTaskDuration,
   playCompletionSound,
   resolveSoundUrl,
-} from "@posthog/ui/utils/sounds";
+} from "@flind/ui/utils/sounds";
 import { inject, injectable } from "inversify";
 import { summarizeError } from "./errorDetails";
 import {

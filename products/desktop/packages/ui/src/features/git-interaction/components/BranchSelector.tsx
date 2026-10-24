@@ -5,8 +5,8 @@ import {
   GitBranch,
   Plus,
 } from "@phosphor-icons/react";
-import { useService } from "@posthog/di/react";
-import { useHostTRPC } from "@posthog/host-router/react";
+import { useService } from "@flind/di/react";
+import { useHostTRPC } from "@flind/host-router/react";
 import {
   Button,
   Combobox,
@@ -20,12 +20,12 @@ import {
   InputGroupAddon,
   InputGroupButton,
 } from "@flind/quill";
-import { getFileName } from "@posthog/shared";
+import { getFileName } from "@flind/shared";
 import type {
   GitBusyOperation,
   GitBusyState,
-} from "@posthog/shared/domain-types";
-import { Spin, Spinner } from "@posthog/ui/primitives/Spinner";
+} from "@flind/shared/domain-types";
+import { Spin, Spinner } from "@flind/ui/primitives/Spinner";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { type RefObject, useEffect, useMemo, useRef, useState } from "react";
 import { Tooltip } from "../../../primitives/Tooltip";

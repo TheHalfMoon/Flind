@@ -5,12 +5,12 @@ import {
   PencilSimple,
   Tray,
 } from "@phosphor-icons/react";
-import { readShowActions } from "@posthog/core/sessions/showActions";
-import { useHostTRPC } from "@posthog/host-router/react";
+import { readShowActions } from "@flind/core/sessions/showActions";
+import { useHostTRPC } from "@flind/host-router/react";
 import { Button, Text } from "@flind/quill";
-import type { ShowActionButton } from "@posthog/shared";
-import type { ToolViewProps } from "@posthog/ui/features/sessions/components/session-update/toolCallUtils";
-import { toast } from "@posthog/ui/primitives/toast";
+import type { ShowActionButton } from "@flind/shared";
+import type { ToolViewProps } from "@flind/ui/features/sessions/components/session-update/toolCallUtils";
+import { toast } from "@flind/ui/primitives/toast";
 import { useMutation } from "@tanstack/react-query";
 
 // The UI picks the icon and accent from the verb, so the agent never gets to

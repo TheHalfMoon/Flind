@@ -1,5 +1,5 @@
-import { EMPTY_DIFF_STATS } from "@posthog/core/code-review/selectTaskDiffStats";
-import { useHostTRPC } from "@posthog/host-router/react";
+import { EMPTY_DIFF_STATS } from "@flind/core/code-review/selectTaskDiffStats";
+import { useHostTRPC } from "@flind/host-router/react";
 import { useQuery } from "@tanstack/react-query";
 
 export interface UseDiffStatsOptions {

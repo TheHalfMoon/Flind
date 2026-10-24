@@ -1,8 +1,8 @@
-import { formatUsd } from "@posthog/core/billing/spendAnalysisFormat";
+import { formatUsd } from "@flind/core/billing/spendAnalysisFormat";
 import { Text } from "@flind/quill";
 import { MetricCard, useChartTheme } from "@flind/quill-charts";
-import type { SpendSnapshot } from "@posthog/ui/features/billing/useSpendTotals";
-import { LoadingState } from "@posthog/ui/primitives/LoadingState";
+import type { SpendSnapshot } from "@flind/ui/features/billing/useSpendTotals";
+import { LoadingState } from "@flind/ui/primitives/LoadingState";
 
 interface PersonalSpendTotalsProps {
   totals: SpendSnapshot | null;

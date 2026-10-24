@@ -1,4 +1,4 @@
-import type { Task } from "@posthog/shared/domain-types";
+import type { Task } from "@flind/shared/domain-types";
 import { Flex, Text } from "@radix-ui/themes";
 import type { WorktreeEntry } from "./WorktreeRow";
 import { WorktreeRow } from "./WorktreeRow";

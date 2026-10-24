@@ -1,4 +1,4 @@
-import type { Task } from "@posthog/shared/domain-types";
+import type { Task } from "@flind/shared/domain-types";
 import { AutoresearchPanel } from "../../autoresearch/AutoresearchPanel";
 import { CodeEditorPanel } from "../../code-editor/components/CodeEditorPanel";
 import {

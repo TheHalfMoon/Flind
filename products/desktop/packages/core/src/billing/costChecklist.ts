@@ -1,5 +1,5 @@
-import type { Adapter } from "@posthog/shared";
-import { getCapabilityLadder } from "@posthog/shared";
+import type { Adapter } from "@flind/shared";
+import { getCapabilityLadder } from "@flind/shared";
 import { modelCostMultiplier } from "./modelPricing";
 
 /**

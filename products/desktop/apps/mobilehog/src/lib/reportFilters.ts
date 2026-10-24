@@ -5,12 +5,12 @@ import {
   INBOX_ACTIONABLE_REPORT_STATUS_FILTER,
   INBOX_DISMISSED_STATUS_FILTER,
   INBOX_PULL_REQUEST_STATUS_FILTER,
-} from "@posthog/core/inbox/reportFiltering";
-import { isSafeGitHubPullRequestUrl } from "@posthog/shared";
+} from "@flind/core/inbox/reportFiltering";
+import { isSafeGitHubPullRequestUrl } from "@flind/shared";
 import type {
   SignalReport,
   SignalReportsQueryParams,
-} from "@posthog/shared/domain-types";
+} from "@flind/shared/domain-types";
 
 export type ReportFilter = "attention" | "pull-requests" | "dismissed";
 

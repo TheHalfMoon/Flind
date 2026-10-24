@@ -5,29 +5,29 @@ import {
   shouldSuspendThreadSession,
   type ThreadAgentStatus,
   type ThreadTimelineRow,
-} from "@posthog/core/canvas/threadTimeline";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
+} from "@flind/core/canvas/threadTimeline";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
 import type {
   Task,
   TaskThreadMessage,
   UserBasic,
-} from "@posthog/shared/domain-types";
-import { isTerminalStatus } from "@posthog/shared/domain-types";
-import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { useCurrentUser } from "@posthog/ui/features/auth/useCurrentUser";
-import { useOrgMembers } from "@posthog/ui/features/canvas/hooks/useOrgMembers";
+} from "@flind/shared/domain-types";
+import { isTerminalStatus } from "@flind/shared/domain-types";
+import { useOptionalAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { useCurrentUser } from "@flind/ui/features/auth/useCurrentUser";
+import { useOrgMembers } from "@flind/ui/features/canvas/hooks/useOrgMembers";
 import {
   useDeleteTaskThreadMessage,
   usePostTaskThreadMessage,
   usePostTaskThreadMessageToAgent,
   useSendTaskThreadMessageToAgent,
   useTaskThread,
-} from "@posthog/ui/features/canvas/hooks/useTaskThread";
-import { useSessionConnection } from "@posthog/ui/features/sessions/hooks/useSessionConnection";
-import { useSessionViewState } from "@posthog/ui/features/sessions/hooks/useSessionViewState";
-import { usePendingPermissionsForTask } from "@posthog/ui/features/sessions/sessionStore";
-import { toast } from "@posthog/ui/primitives/toast";
-import { track } from "@posthog/ui/shell/analytics";
+} from "@flind/ui/features/canvas/hooks/useTaskThread";
+import { useSessionConnection } from "@flind/ui/features/sessions/hooks/useSessionConnection";
+import { useSessionViewState } from "@flind/ui/features/sessions/hooks/useSessionViewState";
+import { usePendingPermissionsForTask } from "@flind/ui/features/sessions/sessionStore";
+import { toast } from "@flind/ui/primitives/toast";
+import { track } from "@flind/ui/shell/analytics";
 import { useCallback, useMemo, useState } from "react";
 
 export type ThreadSurface = "thread_panel" | "activity_panel";

@@ -1,4 +1,4 @@
-import type { McpRecommendedServer } from "@posthog/api-client/types";
+import type { McpRecommendedServer } from "@flind/api-client/types";
 import { describe, expect, it } from "vitest";
 import { filterServersByCategory, filterServersByQuery } from "./filters";
 

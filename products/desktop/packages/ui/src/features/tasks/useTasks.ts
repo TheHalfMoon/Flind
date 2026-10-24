@@ -1,6 +1,6 @@
-import { TASK_LIST_MAX_PAGE_SIZE } from "@posthog/api-client/posthog-client";
-import type { TaskSummaryDTO } from "@posthog/api-client/task-normalization";
-import type { Task } from "@posthog/shared/domain-types";
+import { TASK_LIST_MAX_PAGE_SIZE } from "@flind/api-client/posthog-client";
+import type { TaskSummaryDTO } from "@flind/api-client/task-normalization";
+import type { Task } from "@flind/shared/domain-types";
 import { keepPreviousData } from "@tanstack/react-query";
 import { useAuthenticatedQuery } from "../../hooks/useAuthenticatedQuery";
 import { useMeQuery } from "../auth/useMeQuery";

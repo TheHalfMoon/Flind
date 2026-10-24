@@ -1,4 +1,4 @@
-import type { ChangedFile } from "@posthog/shared/domain-types";
+import type { ChangedFile } from "@flind/shared/domain-types";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 

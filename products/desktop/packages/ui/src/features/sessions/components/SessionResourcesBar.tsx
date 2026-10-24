@@ -15,9 +15,9 @@ import {
   TableIcon,
   VideoIcon,
 } from "@phosphor-icons/react";
-import type { AcpMessage, PostHogProductId } from "@posthog/shared";
-import { CHAT_CONTENT_MAX_WIDTH } from "@posthog/ui/features/sessions/constants";
-import { openUrlInBrowser } from "@posthog/ui/utils/browser";
+import type { AcpMessage, PostHogProductId } from "@flind/shared";
+import { CHAT_CONTENT_MAX_WIDTH } from "@flind/ui/features/sessions/constants";
+import { openUrlInBrowser } from "@flind/ui/utils/browser";
 import { Badge, Box, Flex, Text } from "@radix-ui/themes";
 import { type ComponentType, useMemo, useRef, useState } from "react";
 import { createSessionResourcesTracker } from "./accumulateSessionResources";

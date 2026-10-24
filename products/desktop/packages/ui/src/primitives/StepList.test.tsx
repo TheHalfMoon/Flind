@@ -5,7 +5,7 @@ import { StepList } from "./StepList";
 
 const openExternalUrl = vi.fn();
 
-vi.mock("@posthog/ui/shell/openExternal", () => ({
+vi.mock("@flind/ui/shell/openExternal", () => ({
   openExternalUrl: (url: string) => openExternalUrl(url),
 }));
 

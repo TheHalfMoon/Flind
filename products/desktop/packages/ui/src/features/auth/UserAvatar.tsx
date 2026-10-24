@@ -1,14 +1,14 @@
-import { avatarColor } from "@posthog/core/auth/avatarColor";
-import type { UserLike } from "@posthog/core/auth/userInitials";
+import { avatarColor } from "@flind/core/auth/avatarColor";
+import type { UserLike } from "@flind/core/auth/userInitials";
 import { Avatar, AvatarFallback, AvatarImage } from "@flind/quill";
 import {
   rememberAvatarImageStatus,
   rememberedAvatarImageStatus,
-} from "@posthog/ui/features/auth/avatarImageStatus";
-import { useGravatarUrl } from "@posthog/ui/features/auth/useGravatarUrl";
-import { getUserInitials } from "@posthog/ui/features/auth/userInitials";
-import { userDisplayName } from "@posthog/ui/features/canvas/utils/userDisplay";
-import { cachedImageUrl } from "@posthog/ui/shell/cachedImageUrl";
+} from "@flind/ui/features/auth/avatarImageStatus";
+import { useGravatarUrl } from "@flind/ui/features/auth/useGravatarUrl";
+import { getUserInitials } from "@flind/ui/features/auth/userInitials";
+import { userDisplayName } from "@flind/ui/features/canvas/utils/userDisplay";
+import { cachedImageUrl } from "@flind/ui/shell/cachedImageUrl";
 
 type AvatarSize = "lg" | "default" | "sm" | "xs";
 

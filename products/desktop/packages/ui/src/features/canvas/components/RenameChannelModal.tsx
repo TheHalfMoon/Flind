@@ -1,13 +1,13 @@
 import { XIcon } from "@phosphor-icons/react";
-import { validateChannelName } from "@posthog/core/canvas/channelName";
+import { validateChannelName } from "@flind/core/canvas/channelName";
 import { Button } from "@flind/quill";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
-import { channelGlyph } from "@posthog/ui/features/canvas/components/channelGlyph";
-import type { Channel } from "@posthog/ui/features/canvas/hooks/useChannels";
-import { useChannelMutations } from "@posthog/ui/features/canvas/hooks/useChannels";
-import { useChannelsLayout } from "@posthog/ui/features/canvas/hooks/useChannelsLayout";
-import { toast } from "@posthog/ui/primitives/toast";
-import { track } from "@posthog/ui/shell/analytics";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
+import { channelGlyph } from "@flind/ui/features/canvas/components/channelGlyph";
+import type { Channel } from "@flind/ui/features/canvas/hooks/useChannels";
+import { useChannelMutations } from "@flind/ui/features/canvas/hooks/useChannels";
+import { useChannelsLayout } from "@flind/ui/features/canvas/hooks/useChannelsLayout";
+import { toast } from "@flind/ui/primitives/toast";
+import { track } from "@flind/ui/shell/analytics";
 import { Dialog, Flex, IconButton, Text, TextField } from "@radix-ui/themes";
 import { useEffect, useState } from "react";
 

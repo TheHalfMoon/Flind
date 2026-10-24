@@ -3,8 +3,8 @@ import {
   buildQuestionToolCallData,
   type QuestionItem,
 } from "@flind/agent/adapters/claude/questions/utils";
-import { PermissionSelector } from "@posthog/ui/features/permissions/PermissionSelector";
-import { PermissionDock } from "@posthog/ui/features/sessions/components/PermissionDock";
+import { PermissionSelector } from "@flind/ui/features/permissions/PermissionSelector";
+import { PermissionDock } from "@flind/ui/features/sessions/components/PermissionDock";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const wordyQuestions: QuestionItem[] = [

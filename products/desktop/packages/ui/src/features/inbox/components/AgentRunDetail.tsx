@@ -11,7 +11,7 @@ import {
 import {
   deriveHeadline,
   parsePrUrl,
-} from "@posthog/core/inbox/reportPresentation";
+} from "@flind/core/inbox/reportPresentation";
 import {
   Button,
   DropdownMenu,
@@ -24,48 +24,48 @@ import {
   isTerminalStatus,
   type SignalReport,
   type TaskRunStatus,
-} from "@posthog/shared/types";
+} from "@flind/shared/types";
 import {
   RUN_VARIANT_TIMESTAMP_LABEL,
   resolveRunVariant,
-} from "@posthog/ui/features/inbox/components/AgentRunCard";
-import { DetailSection } from "@posthog/ui/features/inbox/components/DetailSection";
-import { ReportActivitySection } from "@posthog/ui/features/inbox/components/detail/ReportActivitySection";
-import { InboxDetailPageHeader } from "@posthog/ui/features/inbox/components/InboxDetailPageHeader";
+} from "@flind/ui/features/inbox/components/AgentRunCard";
+import { DetailSection } from "@flind/ui/features/inbox/components/DetailSection";
+import { ReportActivitySection } from "@flind/ui/features/inbox/components/detail/ReportActivitySection";
+import { InboxDetailPageHeader } from "@flind/ui/features/inbox/components/InboxDetailPageHeader";
 import {
   InboxMetaSeparator,
   InboxMetaText,
-} from "@posthog/ui/features/inbox/components/InboxMetaRow";
-import { InboxMetaSourceStack } from "@posthog/ui/features/inbox/components/InboxMetaSourceStack";
-import { InboxReportDetailGate } from "@posthog/ui/features/inbox/components/InboxReportDetailGate";
-import { PrDiffStats } from "@posthog/ui/features/inbox/components/PrDiffStats";
-import { RightColumnSection } from "@posthog/ui/features/inbox/components/RightColumnSection";
+} from "@flind/ui/features/inbox/components/InboxMetaRow";
+import { InboxMetaSourceStack } from "@flind/ui/features/inbox/components/InboxMetaSourceStack";
+import { InboxReportDetailGate } from "@flind/ui/features/inbox/components/InboxReportDetailGate";
+import { PrDiffStats } from "@flind/ui/features/inbox/components/PrDiffStats";
+import { RightColumnSection } from "@flind/ui/features/inbox/components/RightColumnSection";
 import {
   SignalsList,
   SignalsListSkeleton,
-} from "@posthog/ui/features/inbox/components/SignalsList";
-import { ForYouBadge } from "@posthog/ui/features/inbox/components/utils/ForYouBadge";
-import { InboxBadge } from "@posthog/ui/features/inbox/components/utils/InboxBadge";
-import { ReportTrackerIssueLink } from "@posthog/ui/features/inbox/components/utils/ReportTrackerIssueLink";
-import { SignalReportPriorityBadge } from "@posthog/ui/features/inbox/components/utils/SignalReportPriorityBadge";
-import { SignalReportSummaryMarkdown } from "@posthog/ui/features/inbox/components/utils/SignalReportSummaryMarkdown";
+} from "@flind/ui/features/inbox/components/SignalsList";
+import { ForYouBadge } from "@flind/ui/features/inbox/components/utils/ForYouBadge";
+import { InboxBadge } from "@flind/ui/features/inbox/components/utils/InboxBadge";
+import { ReportTrackerIssueLink } from "@flind/ui/features/inbox/components/utils/ReportTrackerIssueLink";
+import { SignalReportPriorityBadge } from "@flind/ui/features/inbox/components/utils/SignalReportPriorityBadge";
+import { SignalReportSummaryMarkdown } from "@flind/ui/features/inbox/components/utils/SignalReportSummaryMarkdown";
 import {
   getSourceProductMeta,
   hasKnownSourceProduct,
-} from "@posthog/ui/features/inbox/components/utils/source-product-icons";
-import { useInboxReportSignals } from "@posthog/ui/features/inbox/hooks/useInboxReports";
+} from "@flind/ui/features/inbox/components/utils/source-product-icons";
+import { useInboxReportSignals } from "@flind/ui/features/inbox/hooks/useInboxReports";
 import {
   type ReportTaskData,
   useReportTasks,
-} from "@posthog/ui/features/inbox/hooks/useReportTasks";
-import { copyInboxReportLink } from "@posthog/ui/features/inbox/utils/copyInboxReportLink";
-import { TaskLogsPanel } from "@posthog/ui/features/task-detail/components/TaskLogsPanel";
-import { RelativeTimestamp } from "@posthog/ui/primitives/RelativeTimestamp";
+} from "@flind/ui/features/inbox/hooks/useReportTasks";
+import { copyInboxReportLink } from "@flind/ui/features/inbox/utils/copyInboxReportLink";
+import { TaskLogsPanel } from "@flind/ui/features/task-detail/components/TaskLogsPanel";
+import { RelativeTimestamp } from "@flind/ui/primitives/RelativeTimestamp";
 import {
   navigationSourceHref,
   reportNavigationState,
-} from "@posthog/ui/router/reportNavigation";
-import { openTask } from "@posthog/ui/router/useOpenTask";
+} from "@flind/ui/router/reportNavigation";
+import { openTask } from "@flind/ui/router/useOpenTask";
 import { Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 

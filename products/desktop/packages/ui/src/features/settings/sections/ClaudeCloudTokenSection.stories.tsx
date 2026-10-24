@@ -1,9 +1,9 @@
-import type { ServiceContainer } from "@posthog/di/container";
-import { ServiceProvider } from "@posthog/di/react";
+import type { ServiceContainer } from "@flind/di/container";
+import { ServiceProvider } from "@flind/di/react";
 import {
   CLAUDE_SUBSCRIPTION_TOKEN_SETTINGS,
   type ClaudeSubscriptionTokenSettings,
-} from "@posthog/ui/features/settings/claudeSubscriptionTokenSettings";
+} from "@flind/ui/features/settings/claudeSubscriptionTokenSettings";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useMemo } from "react";

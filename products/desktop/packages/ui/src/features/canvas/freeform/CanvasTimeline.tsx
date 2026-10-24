@@ -1,5 +1,5 @@
 import { PulseIcon, Sparkle } from "@phosphor-icons/react";
-import type { CanvasVersion } from "@posthog/core/canvas/dashboardSchemas";
+import type { CanvasVersion } from "@flind/core/canvas/dashboardSchemas";
 import {
   Empty,
   EmptyDescription,
@@ -7,9 +7,9 @@ import {
   EmptyMedia,
   EmptyTitle,
 } from "@flind/quill";
-import { formatRelativeAge } from "@posthog/shared";
-import { useCanvasVersions } from "@posthog/ui/features/canvas/hooks/useDashboards";
-import { LoadingState } from "@posthog/ui/primitives/LoadingState";
+import { formatRelativeAge } from "@flind/shared";
+import { useCanvasVersions } from "@flind/ui/features/canvas/hooks/useDashboards";
+import { LoadingState } from "@flind/ui/primitives/LoadingState";
 
 function versionTitle(version: CanvasVersion): string {
   const prompt = version.prompt?.trim();

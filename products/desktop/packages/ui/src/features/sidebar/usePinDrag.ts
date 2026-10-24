@@ -1,10 +1,10 @@
-import { usePinDragStore } from "@posthog/ui/features/sidebar/pinDragStore";
-import { takeConsumedTaskDrop } from "@posthog/ui/features/sidebar/taskDrag";
+import { usePinDragStore } from "@flind/ui/features/sidebar/pinDragStore";
+import { takeConsumedTaskDrop } from "@flind/ui/features/sidebar/taskDrag";
 import {
   getPinDropAction,
   isPointInsideRect,
-} from "@posthog/ui/features/sidebar/taskListDragAndDrop";
-import { playTrashSound } from "@posthog/ui/utils/sounds";
+} from "@flind/ui/features/sidebar/taskListDragAndDrop";
+import { playTrashSound } from "@flind/ui/utils/sounds";
 import { type MotionValue, useMotionValue } from "framer-motion";
 import {
   type DragEvent,

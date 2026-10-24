@@ -2,7 +2,7 @@ import { Text } from "@components/text";
 import {
   EFFORT_LEVEL_LABELS,
   EFFORT_LEVELS,
-} from "@posthog/shared/domain-types";
+} from "@flind/shared/domain-types";
 import { router } from "expo-router";
 import { ArrowSquareOut, CaretRight, SpeakerHigh } from "phosphor-react-native";
 import { useState } from "react";

@@ -1,10 +1,10 @@
-import type { ChannelTaskRecord } from "@posthog/core/canvas/channelTaskSchemas";
-import { useHostTRPC } from "@posthog/host-router/react";
-import type { Task } from "@posthog/shared/domain-types";
-import { AUTH_SCOPED_QUERY_META } from "@posthog/ui/features/auth/useCurrentUser";
-import { channelFeedQueryRoot } from "@posthog/ui/features/canvas/hooks/useChannelFeed";
-import { useFilingTasksStore } from "@posthog/ui/features/canvas/stores/filingTasksStore";
-import { taskKeys } from "@posthog/ui/features/tasks/taskKeys";
+import type { ChannelTaskRecord } from "@flind/core/canvas/channelTaskSchemas";
+import { useHostTRPC } from "@flind/host-router/react";
+import type { Task } from "@flind/shared/domain-types";
+import { AUTH_SCOPED_QUERY_META } from "@flind/ui/features/auth/useCurrentUser";
+import { channelFeedQueryRoot } from "@flind/ui/features/canvas/hooks/useChannelFeed";
+import { useFilingTasksStore } from "@flind/ui/features/canvas/stores/filingTasksStore";
+import { taskKeys } from "@flind/ui/features/tasks/taskKeys";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   SPACE_QUERY_GC_TIME_MS,

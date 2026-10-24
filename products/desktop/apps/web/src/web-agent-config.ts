@@ -20,7 +20,7 @@ import {
   isOpenAIModel,
 } from "@flind/agent/gateway-models";
 import { getLlmGatewayUrl } from "@flind/agent/posthog-api";
-import { type Adapter, customModelMeta } from "@posthog/shared";
+import { type Adapter, customModelMeta } from "@flind/shared";
 
 // Web port of AgentService.getPreviewConfigOptions (workspace-server). The
 // desktop host runs this in the Node main process; the browser can run the exact

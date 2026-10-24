@@ -1,9 +1,9 @@
-import { SESSION_SERVICE } from "@posthog/core/sessions/sessionService";
-import { ServiceProvider } from "@posthog/di/react";
-import type { TaskRunArtifact } from "@posthog/shared";
-import { useAuthStore } from "@posthog/ui/features/auth/store";
-import { useSessionStore } from "@posthog/ui/features/sessions/sessionStore";
-import { useRunArtifacts } from "@posthog/ui/features/sessions/useRunArtifacts";
+import { SESSION_SERVICE } from "@flind/core/sessions/sessionService";
+import { ServiceProvider } from "@flind/di/react";
+import type { TaskRunArtifact } from "@flind/shared";
+import { useAuthStore } from "@flind/ui/features/auth/store";
+import { useSessionStore } from "@flind/ui/features/sessions/sessionStore";
+import { useRunArtifacts } from "@flind/ui/features/sessions/useRunArtifacts";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { renderHook, waitFor } from "@testing-library/react";
 import { Container } from "inversify";

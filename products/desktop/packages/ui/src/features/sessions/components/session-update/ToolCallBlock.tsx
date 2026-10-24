@@ -1,25 +1,25 @@
-import { isShowActionsCall } from "@posthog/core/sessions/showActions";
-import { useServiceOptional } from "@posthog/di/react";
-import { readAgentToolName, readMcpToolName } from "@posthog/shared";
-import { DeleteToolView } from "@posthog/ui/features/sessions/components/session-update/DeleteToolView";
-import { EditToolView } from "@posthog/ui/features/sessions/components/session-update/EditToolView";
-import { ExecuteToolView } from "@posthog/ui/features/sessions/components/session-update/ExecuteToolView";
-import { FetchToolView } from "@posthog/ui/features/sessions/components/session-update/FetchToolView";
-import { ListToolView } from "@posthog/ui/features/sessions/components/session-update/ListToolView";
-import { MoveToolView } from "@posthog/ui/features/sessions/components/session-update/MoveToolView";
-import { PiOrchestrationToolView } from "@posthog/ui/features/sessions/components/session-update/PiOrchestrationToolView";
-import { PlanApprovalView } from "@posthog/ui/features/sessions/components/session-update/PlanApprovalView";
-import { readPiOrchestrationDetails } from "@posthog/ui/features/sessions/components/session-update/piOrchestrationDetails";
-import { QuestionToolView } from "@posthog/ui/features/sessions/components/session-update/QuestionToolView";
-import { ReadToolView } from "@posthog/ui/features/sessions/components/session-update/ReadToolView";
-import { SearchToolView } from "@posthog/ui/features/sessions/components/session-update/SearchToolView";
-import { ThinkToolView } from "@posthog/ui/features/sessions/components/session-update/ThinkToolView";
-import { ToolCallView } from "@posthog/ui/features/sessions/components/session-update/ToolCallView";
+import { isShowActionsCall } from "@flind/core/sessions/showActions";
+import { useServiceOptional } from "@flind/di/react";
+import { readAgentToolName, readMcpToolName } from "@flind/shared";
+import { DeleteToolView } from "@flind/ui/features/sessions/components/session-update/DeleteToolView";
+import { EditToolView } from "@flind/ui/features/sessions/components/session-update/EditToolView";
+import { ExecuteToolView } from "@flind/ui/features/sessions/components/session-update/ExecuteToolView";
+import { FetchToolView } from "@flind/ui/features/sessions/components/session-update/FetchToolView";
+import { ListToolView } from "@flind/ui/features/sessions/components/session-update/ListToolView";
+import { MoveToolView } from "@flind/ui/features/sessions/components/session-update/MoveToolView";
+import { PiOrchestrationToolView } from "@flind/ui/features/sessions/components/session-update/PiOrchestrationToolView";
+import { PlanApprovalView } from "@flind/ui/features/sessions/components/session-update/PlanApprovalView";
+import { readPiOrchestrationDetails } from "@flind/ui/features/sessions/components/session-update/piOrchestrationDetails";
+import { QuestionToolView } from "@flind/ui/features/sessions/components/session-update/QuestionToolView";
+import { ReadToolView } from "@flind/ui/features/sessions/components/session-update/ReadToolView";
+import { SearchToolView } from "@flind/ui/features/sessions/components/session-update/SearchToolView";
+import { ThinkToolView } from "@flind/ui/features/sessions/components/session-update/ThinkToolView";
+import { ToolCallView } from "@flind/ui/features/sessions/components/session-update/ToolCallView";
 import {
   type ToolViewProps,
   useToolCallStatus,
-} from "@posthog/ui/features/sessions/components/session-update/toolCallUtils";
-import type { ToolCall } from "@posthog/ui/features/sessions/types";
+} from "@flind/ui/features/sessions/components/session-update/toolCallUtils";
+import type { ToolCall } from "@flind/ui/features/sessions/types";
 import type { ConversationItem, TurnContext } from "../buildConversationItems";
 import { isPlanApprovalTool, isSubagentSpawnTool } from "./collaborationTools";
 import { CreatedPrCard, UploadedArtifactCard } from "./InlineArtifactCard";

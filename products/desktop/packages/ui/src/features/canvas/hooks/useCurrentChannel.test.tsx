@@ -7,11 +7,11 @@ const channelsResult = vi.hoisted(() => ({
     isLoading: true,
   },
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useChannels", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannels", () => ({
   useChannels: () => channelsResult.current,
 }));
 
-import { useCurrentChannelStore } from "@posthog/ui/features/canvas/stores/currentChannelStore";
+import { useCurrentChannelStore } from "@flind/ui/features/canvas/stores/currentChannelStore";
 import { useCurrentChannel } from "./useCurrentChannel";
 
 function channel(id: string, name: string) {

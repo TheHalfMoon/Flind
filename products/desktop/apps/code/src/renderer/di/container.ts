@@ -2,157 +2,157 @@ import "reflect-metadata";
 import { useDevFlagsStore } from "@features/dev-toolbar/devFlagsStore";
 import { TypedContainer } from "@inversifyjs/strongly-typed";
 import type { TrpcRouter } from "@main/trpc/router";
-import { canvasApplicationModule } from "@posthog/core/canvas/canvas.module";
+import { canvasApplicationModule } from "@flind/core/canvas/canvas.module";
 import {
   CLOUD_TASK_CLIENT,
   type CloudTaskClient,
-} from "@posthog/core/cloud-task/cloudTaskClient";
+} from "@flind/core/cloud-task/cloudTaskClient";
 import {
   CODE_REVIEW_WORKSPACE_CLIENT,
   REVERT_HUNK_SERVICE,
-} from "@posthog/core/code-review/identifiers";
-import type { CodeReviewWorkspaceClient } from "@posthog/core/code-review/revertHunkService";
-import { RevertHunkService } from "@posthog/core/code-review/revertHunkService";
+} from "@flind/core/code-review/identifiers";
+import type { CodeReviewWorkspaceClient } from "@flind/core/code-review/revertHunkService";
+import { RevertHunkService } from "@flind/core/code-review/revertHunkService";
 import {
   GITHUB_ISSUE_CLIENT,
   type GitHubIssueClient,
   NEW_TASK_LINK_RESOLVER,
-} from "@posthog/core/deep-links/identifiers";
-import { NewTaskLinkResolver } from "@posthog/core/deep-links/newTaskLinkResolver";
-import { ExternalAppService } from "@posthog/core/external-apps/externalAppService";
+} from "@flind/core/deep-links/identifiers";
+import { NewTaskLinkResolver } from "@flind/core/deep-links/newTaskLinkResolver";
+import { ExternalAppService } from "@flind/core/external-apps/externalAppService";
 import {
   EXTERNAL_APPS_FOCUS_COORDINATOR,
   EXTERNAL_APPS_SERVICE,
   EXTERNAL_APPS_WORKSPACE_CLIENT,
   type ExternalAppsWorkspaceClient,
-} from "@posthog/core/external-apps/identifiers";
-import { FILE_READ_CLIENT } from "@posthog/core/files/identifiers";
-import { GitInteractionService } from "@posthog/core/git-interaction/gitInteractionService";
+} from "@flind/core/external-apps/identifiers";
+import { FILE_READ_CLIENT } from "@flind/core/files/identifiers";
+import { GitInteractionService } from "@flind/core/git-interaction/gitInteractionService";
 import {
   GIT_INTERACTION_EFFECTS,
   GIT_INTERACTION_SERVICE,
   GIT_WRITE_CLIENT,
-} from "@posthog/core/git-interaction/identifiers";
-import { LLM_GATEWAY_SERVICE } from "@posthog/core/llm-gateway/identifiers";
-import type { LlmGatewayService } from "@posthog/core/llm-gateway/llm-gateway";
-import type { LlmMessage } from "@posthog/core/llm-gateway/schemas";
-import { LOCAL_MCP_WORKSPACE_CLIENT } from "@posthog/core/local-mcp/identifiers";
-import type { LocalMcpWorkspaceClient } from "@posthog/core/local-mcp/localMcpImport";
-import { PI_RUNNER } from "@posthog/core/pi-runtime/identifiers";
-import { piRuntimeModule } from "@posthog/core/pi-runtime/pi-runtime.module";
-import type { PiRunner } from "@posthog/core/pi-runtime/piRunner";
-import { LOCAL_PI_SESSION_FACTORY } from "@posthog/core/pi-runtime/piSessionController";
+} from "@flind/core/git-interaction/identifiers";
+import { LLM_GATEWAY_SERVICE } from "@flind/core/llm-gateway/identifiers";
+import type { LlmGatewayService } from "@flind/core/llm-gateway/llm-gateway";
+import type { LlmMessage } from "@flind/core/llm-gateway/schemas";
+import { LOCAL_MCP_WORKSPACE_CLIENT } from "@flind/core/local-mcp/identifiers";
+import type { LocalMcpWorkspaceClient } from "@flind/core/local-mcp/localMcpImport";
+import { PI_RUNNER } from "@flind/core/pi-runtime/identifiers";
+import { piRuntimeModule } from "@flind/core/pi-runtime/pi-runtime.module";
+import type { PiRunner } from "@flind/core/pi-runtime/piRunner";
+import { LOCAL_PI_SESSION_FACTORY } from "@flind/core/pi-runtime/piSessionController";
 import {
   CLOUD_ARTIFACT_BUNDLE_LOCAL_SKILL,
   CLOUD_ARTIFACT_READ_FILE_AS_BASE64,
   CLOUD_ARTIFACT_RESOLVE_SKILL_DEPENDENCIES,
-} from "@posthog/core/sessions/cloudArtifactIdentifiers";
+} from "@flind/core/sessions/cloudArtifactIdentifiers";
 import {
   SESSION_SERVICE,
   type SessionService,
-} from "@posthog/core/sessions/sessionService";
-import { sessionsModule } from "@posthog/core/sessions/sessions.module";
+} from "@flind/core/sessions/sessionService";
+import { sessionsModule } from "@flind/core/sessions/sessions.module";
 import {
   TITLE_GENERATOR_GITHUB_PR_TITLE_CLIENT,
   TITLE_GENERATOR_LOGGER,
-} from "@posthog/core/sessions/titleGeneratorIdentifiers";
-import { SKILLS_WORKSPACE_CLIENT } from "@posthog/core/skills/identifiers";
-import type { SkillsWorkspaceClient } from "@posthog/core/skills/teamSkillsService";
+} from "@flind/core/sessions/titleGeneratorIdentifiers";
+import { SKILLS_WORKSPACE_CLIENT } from "@flind/core/skills/identifiers";
+import type { SkillsWorkspaceClient } from "@flind/core/skills/teamSkillsService";
 import {
   TASK_CREATION_EFFECTS,
   TASK_CREATION_HOST,
   WORKSPACE_SETUP_SAGA,
-} from "@posthog/core/task-detail/identifiers";
-import type { ITaskCreationHost } from "@posthog/core/task-detail/taskCreationHost";
+} from "@flind/core/task-detail/identifiers";
+import type { ITaskCreationHost } from "@flind/core/task-detail/taskCreationHost";
 import {
   TASK_SERVICE,
   TaskService,
-} from "@posthog/core/task-detail/taskService";
-import { WorkspaceSetupSaga } from "@posthog/core/task-detail/workspaceSetupSaga";
+} from "@flind/core/task-detail/taskService";
+import { WorkspaceSetupSaga } from "@flind/core/task-detail/workspaceSetupSaga";
 import {
   TASK_DELETION_HOST,
   TASK_DELETION_SERVICE,
   TASK_DELETION_WORKSPACE_CLIENT,
-} from "@posthog/core/tasks/identifiers";
-import { TaskDeletionService } from "@posthog/core/tasks/taskDeletionService";
+} from "@flind/core/tasks/identifiers";
+import { TaskDeletionService } from "@flind/core/tasks/taskDeletionService";
 import {
   SHELL_PROCESS_READER,
   type ShellProcessReader,
-} from "@posthog/core/terminal/identifiers";
-import { terminalCoreModule } from "@posthog/core/terminal/terminal.module";
+} from "@flind/core/terminal/identifiers";
+import { terminalCoreModule } from "@flind/core/terminal/terminal.module";
 import {
   WORKSPACE_SETUP_GIT_CLIENT,
   WORKSPACE_SETUP_SERVICE,
-} from "@posthog/core/workspace/identifiers";
-import { WorkspaceSetupService } from "@posthog/core/workspace/WorkspaceSetupService";
-import { setRootContainer } from "@posthog/di/container";
-import { HOST_TRPC_CLIENT } from "@posthog/host-router/client";
-import { TrpcCloudTaskClient } from "@posthog/host-router/cloud-task-client";
-import { TrpcPiRunner } from "@posthog/host-router/pi-runner";
-import { TrpcPiSessionFactory } from "@posthog/host-router/pi-session-factory";
+} from "@flind/core/workspace/identifiers";
+import { WorkspaceSetupService } from "@flind/core/workspace/WorkspaceSetupService";
+import { setRootContainer } from "@flind/di/container";
+import { HOST_TRPC_CLIENT } from "@flind/host-router/client";
+import { TrpcCloudTaskClient } from "@flind/host-router/cloud-task-client";
+import { TrpcPiRunner } from "@flind/host-router/pi-runner";
+import { TrpcPiSessionFactory } from "@flind/host-router/pi-session-factory";
 import {
   FEEDBACK_CONTEXT_SERVICE,
   type IFeedbackContext,
-} from "@posthog/platform/feedback-context";
+} from "@flind/platform/feedback-context";
 import {
   type IScreenCapture,
   SCREEN_CAPTURE_SERVICE,
-} from "@posthog/platform/screen-capture";
+} from "@flind/platform/screen-capture";
 import {
   BROWSER_TABS_CLIENT,
   type BrowserTabsClient,
-} from "@posthog/ui/features/browser-tabs/browserTabsClient";
+} from "@flind/ui/features/browser-tabs/browserTabsClient";
 import {
   REVIEW_HOST,
   type ReviewHost,
-} from "@posthog/ui/features/code-review/reviewHost";
+} from "@flind/ui/features/code-review/reviewHost";
 import {
   CONNECTIVITY_CLIENT,
   type ConnectivityClient,
-} from "@posthog/ui/features/connectivity/connectivityClient";
+} from "@flind/ui/features/connectivity/connectivityClient";
 import {
   DISCORD_PRESENCE_CLIENT,
   type DiscordPresenceClient,
-} from "@posthog/ui/features/discord-presence/identifiers";
-import { FocusStoreCoordinator } from "@posthog/ui/features/external-apps/focusCoordinator";
-import { focusDeps } from "@posthog/ui/features/focus/focusAdapter";
-import { FOCUS_CONTROLLER_DEPS } from "@posthog/ui/features/focus/focusClient";
+} from "@flind/ui/features/discord-presence/identifiers";
+import { FocusStoreCoordinator } from "@flind/ui/features/external-apps/focusCoordinator";
+import { focusDeps } from "@flind/ui/features/focus/focusAdapter";
+import { FOCUS_CONTROLLER_DEPS } from "@flind/ui/features/focus/focusClient";
 import {
   gitInteractionEffects,
   gitWriteClient,
-} from "@posthog/ui/features/git-interaction/gitInteractionAdapter";
-import { McpAppHost } from "@posthog/ui/features/mcp-apps/components/McpAppHost";
-import { McpToolBlock } from "@posthog/ui/features/mcp-apps/components/McpToolBlock";
+} from "@flind/ui/features/git-interaction/gitInteractionAdapter";
+import { McpAppHost } from "@flind/ui/features/mcp-apps/components/McpAppHost";
+import { McpToolBlock } from "@flind/ui/features/mcp-apps/components/McpToolBlock";
 import {
   MCP_APP_HOST_COMPONENT,
   MCP_SANDBOX_PROXY_URL,
-} from "@posthog/ui/features/mcp-apps/identifiers";
+} from "@flind/ui/features/mcp-apps/identifiers";
 import {
   MISSION_CONTROL_CLIENT,
   type MissionControlClient,
-} from "@posthog/ui/features/mission-control/identifiers";
-import { ARTIFACT_HTML_FRAME_COMPONENT } from "@posthog/ui/features/sessions/components/artifactHtmlFrameHost";
-import { MCP_TOOL_BLOCK_COMPONENT } from "@posthog/ui/features/sessions/components/session-update/identifiers";
-import { getSessionService } from "@posthog/ui/features/sessions/sessionServiceHost";
+} from "@flind/ui/features/mission-control/identifiers";
+import { ARTIFACT_HTML_FRAME_COMPONENT } from "@flind/ui/features/sessions/components/artifactHtmlFrameHost";
+import { MCP_TOOL_BLOCK_COMPONENT } from "@flind/ui/features/sessions/components/session-update/identifiers";
+import { getSessionService } from "@flind/ui/features/sessions/sessionServiceHost";
 import {
   DEV_MODE_CLIENT,
   type DevModeClient,
-} from "@posthog/ui/features/settings/devModeClient";
-import { taskCreationEffects } from "@posthog/ui/features/task-detail/taskCreationEffectsImpl";
-import { TrpcTaskCreationHost } from "@posthog/ui/features/task-detail/taskCreationHostImpl";
+} from "@flind/ui/features/settings/devModeClient";
+import { taskCreationEffects } from "@flind/ui/features/task-detail/taskCreationEffectsImpl";
+import { TrpcTaskCreationHost } from "@flind/ui/features/task-detail/taskCreationHostImpl";
 import {
   SHELL_CLIENT,
   type ShellClient,
-} from "@posthog/ui/features/terminal/shellClient";
-import { updatesClient } from "@posthog/ui/features/updates/updatesAdapter";
-import { UPDATES_CLIENT } from "@posthog/ui/features/updates/updatesClient";
+} from "@flind/ui/features/terminal/shellClient";
+import { updatesClient } from "@flind/ui/features/updates/updatesAdapter";
+import { UPDATES_CLIENT } from "@flind/ui/features/updates/updatesClient";
 import {
   ANALYTICS_TRACKER,
   type AnalyticsTracker,
-} from "@posthog/ui/shell/analytics";
-import { DIFF_WORKER_FACTORY } from "@posthog/ui/shell/diffWorkerHost";
-import { HOST_LOGGER } from "@posthog/ui/shell/logger";
-import { posthogAnalyticsTracker } from "@posthog/ui/shell/posthogAnalyticsImpl";
+} from "@flind/ui/shell/analytics";
+import { DIFF_WORKER_FACTORY } from "@flind/ui/shell/diffWorkerHost";
+import { HOST_LOGGER } from "@flind/ui/shell/logger";
+import { posthogAnalyticsTracker } from "@flind/ui/shell/posthogAnalyticsImpl";
 import {
   diffWorkerFactory,
   reviewHost,

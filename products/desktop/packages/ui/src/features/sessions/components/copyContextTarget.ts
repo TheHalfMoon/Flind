@@ -1,4 +1,4 @@
-import { GITHUB_REF_URL_ATTR } from "@posthog/ui/features/editor/components/GithubRefChip";
+import { GITHUB_REF_URL_ATTR } from "@flind/ui/features/editor/components/GithubRefChip";
 
 /**
  * Resolve the GitHub PR/issue URL the context menu was opened on, if the

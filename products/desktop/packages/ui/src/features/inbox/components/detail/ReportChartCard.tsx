@@ -6,7 +6,7 @@ import {
   type ReportChartOpenTarget,
   reportChartHeightClass,
   reportChartOpenTarget,
-} from "@posthog/core/inbox/reportCharts";
+} from "@flind/core/inbox/reportCharts";
 import { cn } from "@flind/quill";
 import {
   BarChart,
@@ -16,12 +16,12 @@ import {
   TimeSeriesLineChart,
   useChartTheme,
 } from "@flind/quill-charts";
-import { getCloudUrlFromRegion } from "@posthog/shared";
-import type { SignalReportChart } from "@posthog/shared/types";
-import { useAuthStateValue } from "@posthog/ui/features/auth/store";
-import { useReportChartData } from "@posthog/ui/features/inbox/hooks/useReportChartData";
-import { Button } from "@posthog/ui/primitives/Button";
-import { openExternalUrl } from "@posthog/ui/shell/openExternal";
+import { getCloudUrlFromRegion } from "@flind/shared";
+import type { SignalReportChart } from "@flind/shared/types";
+import { useAuthStateValue } from "@flind/ui/features/auth/store";
+import { useReportChartData } from "@flind/ui/features/inbox/hooks/useReportChartData";
+import { Button } from "@flind/ui/primitives/Button";
+import { openExternalUrl } from "@flind/ui/shell/openExternal";
 import { useMemo } from "react";
 
 export type ReportChartCardState =

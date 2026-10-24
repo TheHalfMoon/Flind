@@ -1,5 +1,5 @@
-import { useTerminalStore } from "@posthog/ui/features/terminal/terminalStore";
-import { secureRandomString } from "@posthog/ui/utils/random";
+import { useTerminalStore } from "@flind/ui/features/terminal/terminalStore";
+import { secureRandomString } from "@flind/ui/utils/random";
 import { useMemo } from "react";
 import { Terminal } from "./Terminal";
 

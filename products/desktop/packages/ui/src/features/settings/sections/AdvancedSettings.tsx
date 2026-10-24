@@ -1,24 +1,24 @@
-import { useServiceOptional } from "@posthog/di/react";
-import { useHostTRPC } from "@posthog/host-router/react";
+import { useServiceOptional } from "@flind/di/react";
+import { useHostTRPC } from "@flind/host-router/react";
 import {
   BACKGROUND_AGENT_LOGS_FLAG,
   ONBOARDING_TEST_TOOLS_FLAG,
-} from "@posthog/shared";
-import { useFeatureFlag } from "@posthog/ui/features/feature-flags/useFeatureFlag";
-import { useOnboardingStore } from "@posthog/ui/features/onboarding/onboardingStore";
+} from "@flind/shared";
+import { useFeatureFlag } from "@flind/ui/features/feature-flags/useFeatureFlag";
+import { useOnboardingStore } from "@flind/ui/features/onboarding/onboardingStore";
 import {
   SettingsCard,
   SettingsCardRow,
-} from "@posthog/ui/features/settings/components/SettingsCard";
+} from "@flind/ui/features/settings/components/SettingsCard";
 import {
   DEV_MODE_CLIENT,
   type DevModeClient,
-} from "@posthog/ui/features/settings/devModeClient";
-import { closeSettings } from "@posthog/ui/features/settings/hooks/useOpenSettings";
-import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
-import { useSetupStore } from "@posthog/ui/features/setup/setupStore";
-import { useTourStore } from "@posthog/ui/features/tour/tourStore";
-import { clearApplicationStorage } from "@posthog/ui/utils/clearStorage";
+} from "@flind/ui/features/settings/devModeClient";
+import { closeSettings } from "@flind/ui/features/settings/hooks/useOpenSettings";
+import { useSettingsStore } from "@flind/ui/features/settings/settingsStore";
+import { useSetupStore } from "@flind/ui/features/setup/setupStore";
+import { useTourStore } from "@flind/ui/features/tour/tourStore";
+import { clearApplicationStorage } from "@flind/ui/utils/clearStorage";
 import { Button, Checkbox, Flex, Switch, Text } from "@radix-ui/themes";
 import { useQuery } from "@tanstack/react-query";
 import { useSyncExternalStore } from "react";

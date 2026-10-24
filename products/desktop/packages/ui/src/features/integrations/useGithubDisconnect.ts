@@ -1,8 +1,8 @@
-import type { GithubConnectService } from "@posthog/core/onboarding/githubConnectService";
-import { GITHUB_CONNECT_SERVICE } from "@posthog/core/onboarding/identifiers";
-import { useService } from "@posthog/di/react";
-import { invalidateGithubQueries } from "@posthog/ui/features/integrations/useGithubUserConnect";
-import { toast } from "@posthog/ui/primitives/toast";
+import type { GithubConnectService } from "@flind/core/onboarding/githubConnectService";
+import { GITHUB_CONNECT_SERVICE } from "@flind/core/onboarding/identifiers";
+import { useService } from "@flind/di/react";
+import { invalidateGithubQueries } from "@flind/ui/features/integrations/useGithubUserConnect";
+import { toast } from "@flind/ui/primitives/toast";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 interface DisconnectVariables {

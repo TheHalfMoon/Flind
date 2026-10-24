@@ -7,20 +7,20 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@flind/quill";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
-import { channelGlyph } from "@posthog/ui/features/canvas/components/channelGlyph";
-import { useChannelStarToggle } from "@posthog/ui/features/canvas/hooks/useChannelStars";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
+import { channelGlyph } from "@flind/ui/features/canvas/components/channelGlyph";
+import { useChannelStarToggle } from "@flind/ui/features/canvas/hooks/useChannelStars";
 import {
   type Channel,
   useChannels,
-} from "@posthog/ui/features/canvas/hooks/useChannels";
-import { useChannelsLayout } from "@posthog/ui/features/canvas/hooks/useChannelsLayout";
-import { showChannelList } from "@posthog/ui/features/canvas/stores/channelPaneStore";
+} from "@flind/ui/features/canvas/hooks/useChannels";
+import { useChannelsLayout } from "@flind/ui/features/canvas/hooks/useChannelsLayout";
+import { showChannelList } from "@flind/ui/features/canvas/stores/channelPaneStore";
 import {
   formatHotkey,
   SHORTCUTS,
-} from "@posthog/ui/features/command/keyboard-shortcuts";
-import { track } from "@posthog/ui/shell/analytics";
+} from "@flind/ui/features/command/keyboard-shortcuts";
+import { track } from "@flind/ui/shell/analytics";
 import { useNavigate } from "@tanstack/react-router";
 
 function RowStar({ channel }: { channel: Channel }) {

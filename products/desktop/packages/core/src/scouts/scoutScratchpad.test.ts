@@ -1,4 +1,4 @@
-import type { ScoutScratchpadEntry } from "@posthog/api-client/posthog-client";
+import type { ScoutScratchpadEntry } from "@flind/api-client/posthog-client";
 import { describe, expect, it } from "vitest";
 import {
   filterScratchpadEntries,

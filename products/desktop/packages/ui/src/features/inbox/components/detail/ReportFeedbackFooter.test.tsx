@@ -1,5 +1,5 @@
-import { ANALYTICS_EVENTS } from "@posthog/shared";
-import type { SignalReport } from "@posthog/shared/types";
+import { ANALYTICS_EVENTS } from "@flind/shared";
+import type { SignalReport } from "@flind/shared/types";
 import { Theme } from "@radix-ui/themes";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
@@ -7,7 +7,7 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 
 const { track } = vi.hoisted(() => ({ track: vi.fn() }));
 
-vi.mock("@posthog/ui/shell/analytics", () => ({ track }));
+vi.mock("@flind/ui/shell/analytics", () => ({ track }));
 
 import { ReportFeedbackFooter } from "./ReportFeedbackFooter";
 

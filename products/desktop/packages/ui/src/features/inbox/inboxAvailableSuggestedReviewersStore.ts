@@ -1,4 +1,4 @@
-import type { AvailableSuggestedReviewer } from "@posthog/shared";
+import type { AvailableSuggestedReviewer } from "@flind/shared";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 

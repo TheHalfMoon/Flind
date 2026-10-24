@@ -1,5 +1,5 @@
 import { EnvelopeSimpleIcon } from "@phosphor-icons/react";
-import { groupReportsByAge } from "@posthog/core/inbox/reportAgeGroups";
+import { groupReportsByAge } from "@flind/core/inbox/reportAgeGroups";
 import {
   Autocomplete,
   AutocompleteList,
@@ -13,9 +13,9 @@ import {
   EmptyTitle,
   MenuLabel,
 } from "@flind/quill";
-import type { SignalReport } from "@posthog/shared/types";
-import { SidebarSearchHeader } from "@posthog/ui/features/canvas/components/SidebarSearchHeader";
-import { LoadingState } from "@posthog/ui/primitives/LoadingState";
+import type { SignalReport } from "@flind/shared/types";
+import { SidebarSearchHeader } from "@flind/ui/features/canvas/components/SidebarSearchHeader";
+import { LoadingState } from "@flind/ui/primitives/LoadingState";
 import { Fragment, type ReactElement, type ReactNode, useMemo } from "react";
 
 export interface InboxPanePresentationProps {

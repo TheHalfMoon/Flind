@@ -1,6 +1,6 @@
-import type { AgentConversationEvent } from "@posthog/shared";
-import type { BuildResult } from "@posthog/ui/features/sessions/components/buildConversationItems";
-import { createIncrementalAgentConversationBuilder } from "@posthog/ui/features/sessions/components/incrementalConversationItems";
+import type { AgentConversationEvent } from "@flind/shared";
+import type { BuildResult } from "@flind/ui/features/sessions/components/buildConversationItems";
+import { createIncrementalAgentConversationBuilder } from "@flind/ui/features/sessions/components/incrementalConversationItems";
 import { useRef } from "react";
 
 export function useAgentConversationItems(

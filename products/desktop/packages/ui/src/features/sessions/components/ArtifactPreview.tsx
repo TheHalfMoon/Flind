@@ -1,34 +1,34 @@
 import { CaretLeftIcon, CaretRightIcon } from "@phosphor-icons/react";
-import type { ResourceComment } from "@posthog/api-client/posthog-client";
+import type { ResourceComment } from "@flind/api-client/posthog-client";
 import {
   getPostHogObjectArtifactMetadata,
   groupRunArtifactVersions,
   OUTPUT_ARTIFACT_TYPES,
   parseRunArtifacts,
-} from "@posthog/core/canvas/runArtifactSchemas";
+} from "@flind/core/canvas/runArtifactSchemas";
 import {
   type CommentAnchor,
   type CommentTarget,
   isSameCommentTarget,
-} from "@posthog/core/comments/anchors";
+} from "@flind/core/comments/anchors";
 import {
   SESSION_SERVICE,
   type SessionService,
-} from "@posthog/core/sessions/sessionService";
-import { useService } from "@posthog/di/react";
+} from "@flind/core/sessions/sessionService";
+import { useService } from "@flind/di/react";
 import { Button } from "@flind/quill";
-import type { TaskRun, TaskRunArtifact } from "@posthog/shared";
+import type { TaskRun, TaskRunArtifact } from "@flind/shared";
 import {
   getAuthIdentity,
   useAuthStateValue,
-} from "@posthog/ui/features/auth/store";
-import { useOrgMembers } from "@posthog/ui/features/canvas/hooks/useOrgMembers";
-import { useTaskRuns } from "@posthog/ui/features/canvas/hooks/useTaskRuns";
-import { usePanelLayoutStore } from "@posthog/ui/features/panels/panelLayoutStore";
-import { PostHogObjectPage } from "@posthog/ui/features/posthog-objects/PostHogObjectPage";
-import { useCommentNavigationStore } from "@posthog/ui/features/sessions/commentNavigationStore";
-import { useSessionSelector } from "@posthog/ui/features/sessions/sessionStore";
-import { LoadingState } from "@posthog/ui/primitives/LoadingState";
+} from "@flind/ui/features/auth/store";
+import { useOrgMembers } from "@flind/ui/features/canvas/hooks/useOrgMembers";
+import { useTaskRuns } from "@flind/ui/features/canvas/hooks/useTaskRuns";
+import { usePanelLayoutStore } from "@flind/ui/features/panels/panelLayoutStore";
+import { PostHogObjectPage } from "@flind/ui/features/posthog-objects/PostHogObjectPage";
+import { useCommentNavigationStore } from "@flind/ui/features/sessions/commentNavigationStore";
+import { useSessionSelector } from "@flind/ui/features/sessions/sessionStore";
+import { LoadingState } from "@flind/ui/primitives/LoadingState";
 import {
   type ReactElement,
   useCallback,

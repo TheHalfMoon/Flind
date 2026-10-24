@@ -1,19 +1,19 @@
 import { GitPullRequestIcon, MagnifyingGlassIcon } from "@phosphor-icons/react";
-import { parsePrUrl } from "@posthog/core/inbox/reportPresentation";
-import type { SignalReport } from "@posthog/shared/types";
-import { ReportFeedbackFooter } from "@posthog/ui/features/inbox/components/detail/ReportFeedbackFooter";
-import { InboxDetailFrame } from "@posthog/ui/features/inbox/components/InboxDetailFrame";
-import { InboxMetaSeparator } from "@posthog/ui/features/inbox/components/InboxMetaRow";
-import { InboxReportDetailGate } from "@posthog/ui/features/inbox/components/InboxReportDetailGate";
-import { PrDiffStats } from "@posthog/ui/features/inbox/components/PrDiffStats";
-import { ReportChatLayout } from "@posthog/ui/features/inbox/components/ReportDetail";
-import { ReportDetailActions } from "@posthog/ui/features/inbox/components/ReportDetailActions";
-import { ReportReviewersSection } from "@posthog/ui/features/inbox/components/ReportReviewersSection";
-import { ReportImplementationPrLink } from "@posthog/ui/features/inbox/components/utils/ReportImplementationPrLink";
-import { ReportTrackerIssueLink } from "@posthog/ui/features/inbox/components/utils/ReportTrackerIssueLink";
-import { PrCommentsSection } from "@posthog/ui/features/pr-review/PrCommentsSection";
-import { PrDecisionBlock } from "@posthog/ui/features/pr-review/PrDecisionBlock";
-import { PrFilesChangedSection } from "@posthog/ui/features/pr-review/PrFilesChangedSection";
+import { parsePrUrl } from "@flind/core/inbox/reportPresentation";
+import type { SignalReport } from "@flind/shared/types";
+import { ReportFeedbackFooter } from "@flind/ui/features/inbox/components/detail/ReportFeedbackFooter";
+import { InboxDetailFrame } from "@flind/ui/features/inbox/components/InboxDetailFrame";
+import { InboxMetaSeparator } from "@flind/ui/features/inbox/components/InboxMetaRow";
+import { InboxReportDetailGate } from "@flind/ui/features/inbox/components/InboxReportDetailGate";
+import { PrDiffStats } from "@flind/ui/features/inbox/components/PrDiffStats";
+import { ReportChatLayout } from "@flind/ui/features/inbox/components/ReportDetail";
+import { ReportDetailActions } from "@flind/ui/features/inbox/components/ReportDetailActions";
+import { ReportReviewersSection } from "@flind/ui/features/inbox/components/ReportReviewersSection";
+import { ReportImplementationPrLink } from "@flind/ui/features/inbox/components/utils/ReportImplementationPrLink";
+import { ReportTrackerIssueLink } from "@flind/ui/features/inbox/components/utils/ReportTrackerIssueLink";
+import { PrCommentsSection } from "@flind/ui/features/pr-review/PrCommentsSection";
+import { PrDecisionBlock } from "@flind/ui/features/pr-review/PrDecisionBlock";
+import { PrFilesChangedSection } from "@flind/ui/features/pr-review/PrFilesChangedSection";
 
 interface PullRequestDetailProps {
   reportId: string;

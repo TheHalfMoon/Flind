@@ -1,4 +1,4 @@
-import type { RenderableKind } from "@posthog/core/code-editor/fileKind";
+import type { RenderableKind } from "@flind/core/code-editor/fileKind";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 

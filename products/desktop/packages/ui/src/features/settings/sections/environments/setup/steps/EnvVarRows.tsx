@@ -3,7 +3,7 @@ import {
   type EnvVarRow,
   envVarError,
   splitPastedEnvVars,
-} from "@posthog/core/settings/environmentSetup";
+} from "@flind/core/settings/environmentSetup";
 import { Button, Input, Text } from "@flind/quill";
 import { type ClipboardEvent, type ReactNode, useState } from "react";
 

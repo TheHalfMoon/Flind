@@ -1,10 +1,10 @@
-import type { LoopSchemas } from "@posthog/ui/features/loops/loopSchemas";
+import type { LoopSchemas } from "@flind/ui/features/loops/loopSchemas";
 import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 import { LoopModelFields } from "./LoopModelFields";
 
-vi.mock("@posthog/ui/features/sessions/useModelRolloutFlags", () => ({
+vi.mock("@flind/ui/features/sessions/useModelRolloutFlags", () => ({
   useModelRolloutFlags: () => ({
     glm: false,
     glm53: false,
@@ -18,7 +18,7 @@ vi.mock("../hooks/useLoopModelConfigOptions", () => ({
 }));
 // A native select stands in for the dropdown so the test can read the offered
 // options and pick one without driving a popup.
-vi.mock("@posthog/ui/features/settings/SettingsOptionSelect", () => ({
+vi.mock("@flind/ui/features/settings/SettingsOptionSelect", () => ({
   SettingsOptionSelect: ({
     value,
     options,

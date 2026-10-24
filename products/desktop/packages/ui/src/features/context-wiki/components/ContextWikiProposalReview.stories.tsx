@@ -1,4 +1,4 @@
-import { ApiRequestError } from "@posthog/api-client/fetcher";
+import { ApiRequestError } from "@flind/api-client/fetcher";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { fn } from "storybook/test";
 import { ContextWikiProposalReview } from "./ContextWikiProposalReview";

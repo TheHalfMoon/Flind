@@ -1,7 +1,7 @@
 import { LinkIcon } from "@phosphor-icons/react";
 import { Button } from "@flind/quill";
-import { InboxReportCopyLinkMenu } from "@posthog/ui/features/inbox/components/InboxReportCopyLinkMenu";
-import { inboxStoryReport } from "@posthog/ui/features/inbox/components/inboxStoryFixtures";
+import { InboxReportCopyLinkMenu } from "@flind/ui/features/inbox/components/InboxReportCopyLinkMenu";
+import { inboxStoryReport } from "@flind/ui/features/inbox/components/inboxStoryFixtures";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { within } from "storybook/test";
 

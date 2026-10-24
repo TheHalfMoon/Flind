@@ -1,10 +1,10 @@
-import { formatResetTime } from "@posthog/core/billing/usageDisplay";
-import type { Contribution } from "@posthog/di/contribution";
-import { ROOT_LOGGER, type RootLogger } from "@posthog/di/logger";
+import { formatResetTime } from "@flind/core/billing/usageDisplay";
+import type { Contribution } from "@flind/di/contribution";
+import { ROOT_LOGGER, type RootLogger } from "@flind/di/logger";
 import {
   HOST_TRPC_CLIENT,
   type HostTrpcClient,
-} from "@posthog/host-router/client";
+} from "@flind/host-router/client";
 import { inject, injectable } from "inversify";
 import { toast } from "../../primitives/toast";
 import { openSettings } from "../settings/hooks/useOpenSettings";

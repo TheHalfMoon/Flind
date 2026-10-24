@@ -1,8 +1,8 @@
 import { DownloadSimple, Warning, X } from "@phosphor-icons/react";
-import { stripFrontmatter } from "@posthog/shared";
-import { CodeMirrorEditor } from "@posthog/ui/features/code-editor/components/CodeMirrorEditor";
-import { MarkdownRenderer } from "@posthog/ui/features/editor/components/MarkdownRenderer";
-import { toast } from "@posthog/ui/primitives/toast";
+import { stripFrontmatter } from "@flind/shared";
+import { CodeMirrorEditor } from "@flind/ui/features/code-editor/components/CodeMirrorEditor";
+import { MarkdownRenderer } from "@flind/ui/features/editor/components/MarkdownRenderer";
+import { toast } from "@flind/ui/primitives/toast";
 import {
   Badge,
   Box,

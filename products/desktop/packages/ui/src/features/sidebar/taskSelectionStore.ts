@@ -3,7 +3,7 @@ import {
   dedupeTaskIds,
   pruneToVisible,
   sameTaskIds,
-} from "@posthog/core/sidebar/selection";
+} from "@flind/core/sidebar/selection";
 import { create } from "zustand";
 
 interface TaskSelectionState {

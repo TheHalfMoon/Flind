@@ -4,8 +4,8 @@ import {
   marqueeSpan,
   mergeMarqueeSelection,
   rowsInMarquee,
-} from "@posthog/core/sidebar/marquee";
-import { useScopedTaskSelectionStore } from "@posthog/ui/features/sidebar/TaskSelectionScope";
+} from "@flind/core/sidebar/marquee";
+import { useScopedTaskSelectionStore } from "@flind/ui/features/sidebar/TaskSelectionScope";
 import { type RefObject, useEffect, useState } from "react";
 
 /** Marks a row as a session the marquee can sweep up; the value is its task id. */

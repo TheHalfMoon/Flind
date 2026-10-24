@@ -38,7 +38,7 @@ vi.mock("../hooks/useContextWiki", () => ({
 
 // Stand in for the shared tree so the test drives selection through a stable
 // button per page instead of the explorer's internal DOM.
-vi.mock("@posthog/ui/primitives/FileExplorer", () => ({
+vi.mock("@flind/ui/primitives/FileExplorer", () => ({
   FileExplorer: ({
     onSelectPath,
     children,
@@ -57,15 +57,15 @@ vi.mock("@posthog/ui/primitives/FileExplorer", () => ({
   ),
 }));
 
-vi.mock("@posthog/ui/hooks/useSetHeaderContent", () => ({
+vi.mock("@flind/ui/hooks/useSetHeaderContent", () => ({
   useSetHeaderContent: () => {},
 }));
 
-vi.mock("@posthog/ui/features/editor/components/MarkdownRenderer", () => ({
+vi.mock("@flind/ui/features/editor/components/MarkdownRenderer", () => ({
   MarkdownRenderer: ({ content }: { content: string }) => <div>{content}</div>,
 }));
 
-vi.mock("@posthog/api-client/posthog-client", () => ({
+vi.mock("@flind/api-client/posthog-client", () => ({
   ContextWikiConflictError: class ContextWikiConflictError extends Error {},
   ContextWikiLintError: class ContextWikiLintError extends Error {},
   ContextWikiUnavailableError: class ContextWikiUnavailableError extends Error {},

@@ -7,13 +7,13 @@ import {
   TabsTrigger,
   Text,
 } from "@flind/quill";
-import { TaskCommentsList } from "@posthog/ui/features/canvas/components/TaskCommentsList";
-import { useGenerateFreeformCanvas } from "@posthog/ui/features/canvas/hooks/useGenerateFreeformCanvas";
-import { useCanvasChatPanelStore } from "@posthog/ui/features/canvas/stores/canvasChatPanelStore";
-import { EmbeddedSessionView } from "@posthog/ui/features/sessions/components/EmbeddedSessionView";
-import { taskDetailQuery } from "@posthog/ui/features/tasks/queries";
-import { ChromeBar } from "@posthog/ui/primitives/ChromeBar";
-import { LoadingState } from "@posthog/ui/primitives/LoadingState";
+import { TaskCommentsList } from "@flind/ui/features/canvas/components/TaskCommentsList";
+import { useGenerateFreeformCanvas } from "@flind/ui/features/canvas/hooks/useGenerateFreeformCanvas";
+import { useCanvasChatPanelStore } from "@flind/ui/features/canvas/stores/canvasChatPanelStore";
+import { EmbeddedSessionView } from "@flind/ui/features/sessions/components/EmbeddedSessionView";
+import { taskDetailQuery } from "@flind/ui/features/tasks/queries";
+import { ChromeBar } from "@flind/ui/primitives/ChromeBar";
+import { LoadingState } from "@flind/ui/primitives/LoadingState";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 

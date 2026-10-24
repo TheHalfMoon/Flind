@@ -1,5 +1,5 @@
-import { getRelativeDateGroup } from "@posthog/shared";
-import type { SignalReport } from "@posthog/shared/types";
+import { getRelativeDateGroup } from "@flind/shared";
+import type { SignalReport } from "@flind/shared/types";
 
 export interface ReportAgeGroup {
   label: string;

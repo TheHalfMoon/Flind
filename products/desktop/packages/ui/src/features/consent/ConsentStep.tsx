@@ -1,8 +1,8 @@
 import { ArrowLeft, ArrowRight } from "@phosphor-icons/react";
 import { Button } from "@flind/quill";
-import { useIsOrgAdmin } from "@posthog/ui/features/auth/useOrgRole";
-import { StepActions } from "@posthog/ui/features/onboarding/components/StepActions";
-import { LoadingState } from "@posthog/ui/primitives/LoadingState";
+import { useIsOrgAdmin } from "@flind/ui/features/auth/useOrgRole";
+import { StepActions } from "@flind/ui/features/onboarding/components/StepActions";
+import { LoadingState } from "@flind/ui/primitives/LoadingState";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { ConsentErrorContent } from "./ConsentErrorContent";

@@ -2,12 +2,12 @@ import { CaretRightIcon, CompassIcon } from "@phosphor-icons/react";
 import type {
   LinkedSignalReport,
   ScoutEmission,
-} from "@posthog/api-client/posthog-client";
+} from "@flind/api-client/posthog-client";
 import { Badge } from "@flind/quill";
-import { ANALYTICS_EVENTS } from "@posthog/shared";
-import { MarkdownRenderer } from "@posthog/ui/features/editor/components/MarkdownRenderer";
-import { RelativeTimestamp } from "@posthog/ui/primitives/RelativeTimestamp";
-import { track } from "@posthog/ui/shell/analytics";
+import { ANALYTICS_EVENTS } from "@flind/shared";
+import { MarkdownRenderer } from "@flind/ui/features/editor/components/MarkdownRenderer";
+import { RelativeTimestamp } from "@flind/ui/primitives/RelativeTimestamp";
+import { track } from "@flind/ui/shell/analytics";
 import { type ReactNode, useEffect, useRef, useState } from "react";
 import { SeverityBadge } from "./ScoutBadges";
 import { ScoutLinkedReportChip } from "./ScoutLinkedReportChip";

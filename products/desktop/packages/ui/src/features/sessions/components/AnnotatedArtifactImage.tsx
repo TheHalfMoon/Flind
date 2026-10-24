@@ -1,13 +1,13 @@
-import type { ResourceComment } from "@posthog/api-client/posthog-client";
+import type { ResourceComment } from "@flind/api-client/posthog-client";
 import type {
   CommentAnchor,
   RegionCommentAnchor,
-} from "@posthog/core/comments/anchors";
-import type { UserBasic } from "@posthog/shared/domain-types";
-import { UserAvatar } from "@posthog/ui/features/auth/UserAvatar";
-import type { EditorSelection } from "@posthog/ui/features/code-editor/components/CodeMirrorEditor";
-import { SelectionCommentOverlay } from "@posthog/ui/features/code-editor/components/SelectionCommentOverlay";
-import { ZoomableImage } from "@posthog/ui/primitives/SafeImagePreview";
+} from "@flind/core/comments/anchors";
+import type { UserBasic } from "@flind/shared/domain-types";
+import { UserAvatar } from "@flind/ui/features/auth/UserAvatar";
+import type { EditorSelection } from "@flind/ui/features/code-editor/components/CodeMirrorEditor";
+import { SelectionCommentOverlay } from "@flind/ui/features/code-editor/components/SelectionCommentOverlay";
+import { ZoomableImage } from "@flind/ui/primitives/SafeImagePreview";
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
   type CommentLocateRequest,

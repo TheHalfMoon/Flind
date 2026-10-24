@@ -1,5 +1,5 @@
-import type { TaskSearchResult } from "@posthog/shared/domain-types";
-import { useAuthenticatedQuery } from "@posthog/ui/hooks/useAuthenticatedQuery";
+import type { TaskSearchResult } from "@flind/shared/domain-types";
+import { useAuthenticatedQuery } from "@flind/ui/hooks/useAuthenticatedQuery";
 
 export function useTaskSearch(query: string, enabled: boolean) {
   return useAuthenticatedQuery<TaskSearchResult[]>(

@@ -1,11 +1,11 @@
-import type { UserGitHubIntegration } from "@posthog/api-client/posthog-client";
+import type { UserGitHubIntegration } from "@flind/api-client/posthog-client";
 import {
   branchPageSizeForOffset,
   computeNextBranchOffset,
   flattenBranchPages,
   type GithubBranchesPage,
-} from "@posthog/core/integrations/branches";
-import { REPOSITORIES_SERVICE } from "@posthog/core/integrations/identifiers";
+} from "@flind/core/integrations/branches";
+import { REPOSITORIES_SERVICE } from "@flind/core/integrations/identifiers";
 import {
   combineGithubRepositories,
   combineUserGithubRepositories,
@@ -22,25 +22,25 @@ import {
   resolveEffectiveUserRepositoryMap,
   resolveUserRepositoryCacheAction,
   type UserRepositoryIntegrationRef,
-} from "@posthog/core/integrations/repositories";
-import type { RepositoriesService } from "@posthog/core/integrations/repositoriesService";
+} from "@flind/core/integrations/repositories";
+import type { RepositoriesService } from "@flind/core/integrations/repositoriesService";
 import {
   integrationKeys,
   type RepositoryRefetchKey,
   userGithubIntegrationKeys,
-} from "@posthog/core/integrations/repositoryKeys";
-import { useService } from "@posthog/di/react";
-import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { AUTH_SCOPED_QUERY_META } from "@posthog/ui/features/auth/useCurrentUser";
+} from "@flind/core/integrations/repositoryKeys";
+import { useService } from "@flind/di/react";
+import { useOptionalAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { AUTH_SCOPED_QUERY_META } from "@flind/ui/features/auth/useCurrentUser";
 import {
   type Integration,
   useIntegrationSelectors,
   useIntegrationStore,
-} from "@posthog/ui/features/integrations/store";
-import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
-import { useAuthenticatedInfiniteQuery } from "@posthog/ui/hooks/useAuthenticatedInfiniteQuery";
-import { useAuthenticatedQuery } from "@posthog/ui/hooks/useAuthenticatedQuery";
-import { useDebounce } from "@posthog/ui/primitives/hooks/useDebounce";
+} from "@flind/ui/features/integrations/store";
+import { useSettingsStore } from "@flind/ui/features/settings/settingsStore";
+import { useAuthenticatedInfiniteQuery } from "@flind/ui/hooks/useAuthenticatedInfiniteQuery";
+import { useAuthenticatedQuery } from "@flind/ui/hooks/useAuthenticatedQuery";
+import { useDebounce } from "@flind/ui/primitives/hooks/useDebounce";
 import {
   type QueryClient,
   useQueries,

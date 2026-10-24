@@ -1,5 +1,5 @@
 import { ArrowSquareIn, type Icon } from "@phosphor-icons/react";
-import { SlackMark } from "@posthog/ui/primitives/SlackMark";
+import { SlackMark } from "@flind/ui/primitives/SlackMark";
 import { describe, expect, it } from "vitest";
 
 import { taskBadges } from "./taskStatusVocabulary";

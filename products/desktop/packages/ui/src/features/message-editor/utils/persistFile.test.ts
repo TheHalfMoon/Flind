@@ -15,11 +15,11 @@ vi.mock("../hostApi", () => ({
   },
 }));
 
-vi.mock("@posthog/ui/utils/getFilePath", () => ({
+vi.mock("@flind/ui/utils/getFilePath", () => ({
   getFilePath: mockGetFilePath,
 }));
 
-vi.mock("@posthog/ui/primitives/toast", () => ({
+vi.mock("@flind/ui/primitives/toast", () => ({
   toast: { warning: mockToastWarning },
 }));
 

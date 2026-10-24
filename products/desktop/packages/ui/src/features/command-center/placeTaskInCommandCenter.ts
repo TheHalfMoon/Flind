@@ -3,9 +3,9 @@ import {
   getExpandedLayout,
   getExpansionCellIndex,
   resizeCellsForLayout,
-} from "@posthog/core/command-center/grid";
-import { planCommandCenterPlacement } from "@posthog/core/command-center/placement";
-import { navigateToCommandCenter } from "@posthog/ui/router/navigationBridge";
+} from "@flind/core/command-center/grid";
+import { planCommandCenterPlacement } from "@flind/core/command-center/placement";
+import { navigateToCommandCenter } from "@flind/ui/router/navigationBridge";
 import { useCommandCenterStore } from "./commandCenterStore";
 
 /**

@@ -1,5 +1,5 @@
-import { getAvailableModesForAdapter } from "@posthog/core/sessions/executionModes";
-import type { CloudComposerSelection } from "@posthog/core/task-detail/composerModelPolicy";
+import { getAvailableModesForAdapter } from "@flind/core/sessions/executionModes";
+import type { CloudComposerSelection } from "@flind/core/task-detail/composerModelPolicy";
 import {
   type Adapter,
   type CloudTaskConfigOption,
@@ -10,7 +10,7 @@ import {
   type SupportedReasoningEffort,
   supports1MContext,
   supportsFastMode,
-} from "@posthog/shared";
+} from "@flind/shared";
 import {
   Cpu,
   Lightning,

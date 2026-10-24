@@ -1,7 +1,7 @@
 import type {
   McpAuthType,
   McpGatewayServer,
-} from "@posthog/api-client/posthog-client";
+} from "@flind/api-client/posthog-client";
 import {
   type InstallFlowClient,
   type IOAuthCallback,

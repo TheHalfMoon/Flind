@@ -1,12 +1,12 @@
 import {
   ANALYTICS_EVENTS,
   type SidebarLayout,
-} from "@posthog/shared/analytics-events";
+} from "@flind/shared/analytics-events";
 import {
   type Channel,
   useChannels,
-} from "@posthog/ui/features/canvas/hooks/useChannels";
-import { track } from "@posthog/ui/shell/analytics";
+} from "@flind/ui/features/canvas/hooks/useChannels";
+import { track } from "@flind/ui/shell/analytics";
 import { useEffect, useRef } from "react";
 
 export function useTrackChannelsSpaceViewed({

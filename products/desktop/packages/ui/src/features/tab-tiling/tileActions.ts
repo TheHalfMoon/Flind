@@ -1,5 +1,5 @@
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
-import { track } from "@posthog/ui/shell/analytics";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
+import { track } from "@flind/ui/shell/analytics";
 import { useTileLayoutStore } from "./tileLayoutStore";
 import { groupForTab, type TileEdge, tabIdsIn } from "./tileTree";
 

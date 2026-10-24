@@ -1,6 +1,6 @@
-import type { ActivityEntry } from "@posthog/core/setup/setupState";
-import type { StaleFlagPayload } from "@posthog/core/setup/suggestions";
-import type { DiscoveredTask } from "@posthog/core/setup/types";
+import type { ActivityEntry } from "@flind/core/setup/setupState";
+import type { StaleFlagPayload } from "@flind/core/setup/suggestions";
+import type { DiscoveredTask } from "@flind/core/setup/types";
 
 export type DiscoverySignalSource =
   | "structured_output"
@@ -87,7 +87,7 @@ export const SETUP_RUN_SERVICE = Symbol.for("posthog.core.setupRunService");
 /**
  * Host-supplied window onto the setup zustand store. Inverts the store
  * coupling so the core orchestration writes UI state through a narrow
- * interface instead of importing `@posthog/ui`. The apps composition binds
+ * interface instead of importing `@flind/ui`. The apps composition binds
  * this to a delegate over `useSetupStore.getState()`.
  */
 export interface ISetupStore {

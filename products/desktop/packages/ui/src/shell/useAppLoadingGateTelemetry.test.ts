@@ -1,11 +1,11 @@
 import { renderHook } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-vi.mock("@posthog/ui/shell/analytics", () => ({
+vi.mock("@flind/ui/shell/analytics", () => ({
   captureException: vi.fn(),
 }));
 
-vi.mock("@posthog/ui/shell/logger", () => ({
+vi.mock("@flind/ui/shell/logger", () => ({
   logger: {
     scope: () => ({
       error: vi.fn(),
@@ -16,7 +16,7 @@ vi.mock("@posthog/ui/shell/logger", () => ({
   },
 }));
 
-import { captureException } from "@posthog/ui/shell/analytics";
+import { captureException } from "@flind/ui/shell/analytics";
 import {
   type AppLoadingGateState,
   useAppLoadingGateTelemetry,

@@ -1,4 +1,4 @@
-import type { ContextBreakdown } from "@posthog/ui/features/sessions/hooks/useContextUsage";
+import type { ContextBreakdown } from "@flind/ui/features/sessions/hooks/useContextUsage";
 
 interface CategoryStyle {
   key: keyof ContextBreakdown;

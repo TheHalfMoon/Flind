@@ -1,8 +1,8 @@
-import { GithubRefChip } from "@posthog/ui/features/editor/components/GithubRefChip";
+import { GithubRefChip } from "@flind/ui/features/editor/components/GithubRefChip";
 import {
   copyFromContextMenu,
   getGithubRefUrlFromEventTarget,
-} from "@posthog/ui/features/sessions/components/copyContextTarget";
+} from "@flind/ui/features/sessions/components/copyContextTarget";
 import { ContextMenu, Theme } from "@radix-ui/themes";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";

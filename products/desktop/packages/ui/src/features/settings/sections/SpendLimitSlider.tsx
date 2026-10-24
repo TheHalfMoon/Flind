@@ -1,13 +1,13 @@
 import {
   formatUsd,
   formatUsdCompact,
-} from "@posthog/core/billing/spendAnalysisFormat";
+} from "@flind/core/billing/spendAnalysisFormat";
 import {
   niceCeil,
   type SpendLimitLevel,
   spendTickIncrement,
-} from "@posthog/core/billing/spendLimits";
-import { SpendKnobValue } from "@posthog/ui/features/settings/sections/SpendKnobValue";
+} from "@flind/core/billing/spendLimits";
+import { SpendKnobValue } from "@flind/ui/features/settings/sections/SpendKnobValue";
 import { useRef, useState } from "react";
 
 function isPositive(value: number | null): value is number {

@@ -9,20 +9,20 @@ const { useTeamSkills, openTaskInput } = vi.hoisted(() => ({
   openTaskInput: vi.fn(),
 }));
 
-vi.mock("@posthog/ui/features/auth/authClient", () => ({
+vi.mock("@flind/ui/features/auth/authClient", () => ({
   useOptionalAuthenticatedClient: () => null,
 }));
-vi.mock("@posthog/ui/features/auth/store", () => ({
+vi.mock("@flind/ui/features/auth/store", () => ({
   getAuthIdentity: vi.fn(),
   useAuthStateValue: () => "project-1",
 }));
-vi.mock("@posthog/ui/features/auth/useCurrentUser", () => ({
+vi.mock("@flind/ui/features/auth/useCurrentUser", () => ({
   useCurrentUser: () => ({ data: { uuid: "user-1" } }),
 }));
-vi.mock("@posthog/ui/features/skills/useTeamSkills", () => ({
+vi.mock("@flind/ui/features/skills/useTeamSkills", () => ({
   useTeamSkills,
 }));
-vi.mock("@posthog/ui/router/useOpenTask", () => ({ openTaskInput }));
+vi.mock("@flind/ui/router/useOpenTask", () => ({ openTaskInput }));
 vi.mock("@tanstack/react-router", () => ({
   Link: ({ children }: { children: React.ReactNode }) => (
     <a href="/settings/skills">{children}</a>

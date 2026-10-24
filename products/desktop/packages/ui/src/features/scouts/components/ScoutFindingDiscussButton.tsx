@@ -1,9 +1,9 @@
 import { ChatCircleIcon } from "@phosphor-icons/react";
-import type { ScoutEmission } from "@posthog/api-client/posthog-client";
-import { prettifyScoutSkillName } from "@posthog/core/scouts/scoutPresentation";
-import { buildScoutFindingDiscussPrompt } from "@posthog/core/scouts/scoutPrompts";
+import type { ScoutEmission } from "@flind/api-client/posthog-client";
+import { prettifyScoutSkillName } from "@flind/core/scouts/scoutPresentation";
+import { buildScoutFindingDiscussPrompt } from "@flind/core/scouts/scoutPrompts";
 import { Button } from "@flind/quill";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
+import { Spinner } from "@flind/ui/primitives/Spinner";
 import { Flex, Popover, Text, TextArea } from "@radix-ui/themes";
 import { useCallback, useMemo, useState } from "react";
 import { useScoutChatTask } from "../hooks/useScoutChatTask";

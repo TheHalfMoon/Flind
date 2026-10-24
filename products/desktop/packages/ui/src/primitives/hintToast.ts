@@ -1,5 +1,5 @@
-import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
-import { type ToastOptions, toast } from "@posthog/ui/primitives/toast";
+import { useSettingsStore } from "@flind/ui/features/settings/settingsStore";
+import { type ToastOptions, toast } from "@flind/ui/primitives/toast";
 
 /**
  * A toast that teaches something, keyed so it stops once the lesson has landed.

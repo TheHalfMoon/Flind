@@ -16,7 +16,7 @@ vi.mock("../gitCacheKeys", () => ({
   invalidateGitBranchQueries: vi.fn(),
 }));
 
-vi.mock("@posthog/host-router/react", () => ({
+vi.mock("@flind/host-router/react", () => ({
   useHostTRPC: () => ({
     git: {
       getAllBranches: { queryOptions: () => ({}) },
@@ -28,7 +28,7 @@ vi.mock("@posthog/host-router/react", () => ({
   }),
 }));
 
-vi.mock("@posthog/di/react", () => ({
+vi.mock("@flind/di/react", () => ({
   useService: () => ({
     gitQueryKey: () => [],
     gitQueryFilter: () => ({}),

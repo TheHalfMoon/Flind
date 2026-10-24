@@ -1,15 +1,15 @@
 import {
   SESSION_SERVICE,
   type SessionService,
-} from "@posthog/core/sessions/sessionService";
-import { useService } from "@posthog/di/react";
-import type { TaskRunArtifact } from "@posthog/shared";
+} from "@flind/core/sessions/sessionService";
+import { useService } from "@flind/di/react";
+import type { TaskRunArtifact } from "@flind/shared";
 import {
   getAuthIdentity,
   useAuthStateValue,
-} from "@posthog/ui/features/auth/store";
-import { useCompletedArtifactUploads } from "@posthog/ui/features/sessions/components/countArtifactUploads";
-import { useSessionSelector } from "@posthog/ui/features/sessions/sessionStore";
+} from "@flind/ui/features/auth/store";
+import { useCompletedArtifactUploads } from "@flind/ui/features/sessions/components/countArtifactUploads";
+import { useSessionSelector } from "@flind/ui/features/sessions/sessionStore";
 import {
   keepPreviousData,
   type UseQueryResult,

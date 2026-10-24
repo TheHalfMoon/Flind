@@ -1,4 +1,4 @@
-import { POSTHOG_CODE_INTERNAL_CHILD_ENV } from "@posthog/shared/constants";
+import { POSTHOG_CODE_INTERNAL_CHILD_ENV } from "@flind/shared/constants";
 
 // Packaged-only: dev builds must stay launchable from dogfooding trees, where
 // an app-spawned agent or terminal runs `pnpm dev` with the marker inherited.

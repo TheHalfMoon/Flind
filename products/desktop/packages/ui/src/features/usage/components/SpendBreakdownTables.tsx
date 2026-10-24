@@ -2,11 +2,11 @@ import { Stack, Wrench } from "@phosphor-icons/react";
 import {
   formatTokens,
   formatUsd,
-} from "@posthog/core/billing/spendAnalysisFormat";
+} from "@flind/core/billing/spendAnalysisFormat";
 import type {
   SpendAnalysisProductRow,
   SpendAnalysisToolRow,
-} from "@posthog/core/billing/spendAnalysisTypes";
+} from "@flind/core/billing/spendAnalysisTypes";
 import { Table } from "@radix-ui/themes";
 import { UsageCard } from "./UsageCard";
 

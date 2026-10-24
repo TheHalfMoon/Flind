@@ -1,4 +1,4 @@
-import type { ISecureStorage } from "@posthog/platform/secure-storage";
+import type { ISecureStorage } from "@flind/platform/secure-storage";
 import { describe, expect, it } from "vitest";
 import { EncryptionService } from "./service";
 

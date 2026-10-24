@@ -1,11 +1,11 @@
 import {
   ANALYTICS_EVENTS,
   type ChannelsSurface,
-} from "@posthog/shared/analytics-events";
-import { hostClient } from "@posthog/ui/features/canvas/hostClient";
-import { usePendingCanvasDeleteStore } from "@posthog/ui/features/canvas/stores/pendingCanvasDeleteStore";
-import { toast } from "@posthog/ui/primitives/toast";
-import { track } from "@posthog/ui/shell/analytics";
+} from "@flind/shared/analytics-events";
+import { hostClient } from "@flind/ui/features/canvas/hostClient";
+import { usePendingCanvasDeleteStore } from "@flind/ui/features/canvas/stores/pendingCanvasDeleteStore";
+import { toast } from "@flind/ui/primitives/toast";
+import { track } from "@flind/ui/shell/analytics";
 
 // How long the "Deleted artifact" toast stays up — and, because nothing is sent
 // to the host until it expires, how long the user has to undo.

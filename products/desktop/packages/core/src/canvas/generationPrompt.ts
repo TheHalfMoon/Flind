@@ -1,4 +1,4 @@
-import { escapeXmlAttr } from "@posthog/shared";
+import { escapeXmlAttr } from "@flind/shared";
 import { CANVAS_INSTRUCTIONS_TAG } from "../editor/injectedBlocks";
 import { FREEFORM_TEMPLATE_ID } from "./freeformSchemas";
 

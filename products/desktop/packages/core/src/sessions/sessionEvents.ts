@@ -15,12 +15,12 @@ import type {
   PendingFollowupMessage,
   StoredLogEntry,
   UserShellExecuteParams,
-} from "@posthog/shared";
+} from "@flind/shared";
 import {
   IMPORTED_USER_PROMPT_META_KEY,
   isJsonRpcNotification,
   isJsonRpcRequest,
-} from "@posthog/shared";
+} from "@flind/shared";
 import { stripTrailingAttachmentSummary } from "../editor/cloud-prompt";
 import { skillTagsToSlashCommands } from "../message-editor/skillTags";
 import { isNotification, POSTHOG_NOTIFICATIONS } from "./acpNotifications";
@@ -462,7 +462,7 @@ export function normalizePromptToBlocks(
   );
 }
 
-export { isFatalSessionError } from "@posthog/shared";
+export { isFatalSessionError } from "@flind/shared";
 
 /**
  * Whether a list of events already contains a `session/prompt` request.

@@ -1,10 +1,10 @@
-import type { CloudTaskUpdatePayload } from "@posthog/shared";
+import type { CloudTaskUpdatePayload } from "@flind/shared";
 import { z } from "zod";
 
 export {
   type CloudTaskUpdatePayload,
   isTerminalStatus,
-} from "@posthog/shared";
+} from "@flind/shared";
 
 export const cloudContextOutput = z
   .object({ apiHost: z.string(), teamId: z.number() })

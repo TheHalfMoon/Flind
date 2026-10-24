@@ -1,6 +1,6 @@
 import { toast as quillToast } from "@flind/quill";
-import { showErrorDetails } from "@posthog/ui/features/notifications/errorDetailsStore";
-import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
+import { showErrorDetails } from "@flind/ui/features/notifications/errorDetailsStore";
+import { useSettingsStore } from "@flind/ui/features/settings/settingsStore";
 
 // Thin wrapper over quill's toast so the whole app shares one import and a
 // stable `(title, options)` signature. Quill (base-ui under the hood) owns

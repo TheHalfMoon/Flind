@@ -19,8 +19,8 @@ import {
   InputGroupButton,
   Text,
 } from "@flind/quill";
-import { Spin, Spinner } from "@posthog/ui/primitives/Spinner";
-import { Tooltip } from "@posthog/ui/primitives/Tooltip";
+import { Spin, Spinner } from "@flind/ui/primitives/Spinner";
+import { Tooltip } from "@flind/ui/primitives/Tooltip";
 import { defaultFilter } from "cmdk";
 import { type RefObject, useEffect, useMemo, useRef, useState } from "react";
 

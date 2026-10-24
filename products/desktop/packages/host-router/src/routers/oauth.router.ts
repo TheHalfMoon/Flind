@@ -1,7 +1,7 @@
-import { OAUTH_SERVICE } from "@posthog/core/oauth/identifiers";
-import type { OAuthService } from "@posthog/core/oauth/oauth";
-import { cancelFlowOutput } from "@posthog/core/oauth/schemas";
-import { publicProcedure, router } from "@posthog/host-trpc/trpc";
+import { OAUTH_SERVICE } from "@flind/core/oauth/identifiers";
+import type { OAuthService } from "@flind/core/oauth/oauth";
+import { cancelFlowOutput } from "@flind/core/oauth/schemas";
+import { publicProcedure, router } from "@flind/host-trpc/trpc";
 
 export const oauthRouter = router({
   cancelFlow: publicProcedure

@@ -1,37 +1,37 @@
 import { ArchiveIcon } from "@phosphor-icons/react";
-import { extractRepoSelectionRepository } from "@posthog/core/inbox/artefacts";
+import { extractRepoSelectionRepository } from "@flind/core/inbox/artefacts";
 import {
   deriveHeadline,
   displayConventionalCommitTitle,
   parseConventionalCommitTitle,
   parsePrUrl,
-} from "@posthog/core/inbox/reportPresentation";
+} from "@flind/core/inbox/reportPresentation";
 import { Button } from "@flind/quill";
 import type {
   SignalReport,
   SignalReportArtefactsResponse,
-} from "@posthog/shared/types";
-import { ConventionalCommitScopeTag } from "@posthog/ui/features/inbox/components/ConventionalCommitScopeTag";
+} from "@flind/shared/types";
+import { ConventionalCommitScopeTag } from "@flind/ui/features/inbox/components/ConventionalCommitScopeTag";
 import {
   InboxCardActions,
   InboxCardTimestamp,
   InboxCardTopRight,
   inboxCardBodyClassName,
   inboxCardClassName,
-} from "@posthog/ui/features/inbox/components/InboxCardChrome";
-import { InboxCardSourceMeta } from "@posthog/ui/features/inbox/components/InboxCardSourceMeta";
-import { InboxCardTitle } from "@posthog/ui/features/inbox/components/InboxCardTitle";
-import { PrDiffStats } from "@posthog/ui/features/inbox/components/PrDiffStats";
-import { PriorityMonogram } from "@posthog/ui/features/inbox/components/PriorityMonogram";
-import { SuggestedReviewerAvatarStack } from "@posthog/ui/features/inbox/components/SuggestedReviewerAvatarStack";
-import { ReportImplementationPrLink } from "@posthog/ui/features/inbox/components/utils/ReportImplementationPrLink";
-import { useInboxReportDetailPrefetch } from "@posthog/ui/features/inbox/hooks/useInboxReportDetailPrefetch";
-import { useInboxReportArtefacts } from "@posthog/ui/features/inbox/hooks/useInboxReports";
-import { Button as UiButton } from "@posthog/ui/primitives/Button";
+} from "@flind/ui/features/inbox/components/InboxCardChrome";
+import { InboxCardSourceMeta } from "@flind/ui/features/inbox/components/InboxCardSourceMeta";
+import { InboxCardTitle } from "@flind/ui/features/inbox/components/InboxCardTitle";
+import { PrDiffStats } from "@flind/ui/features/inbox/components/PrDiffStats";
+import { PriorityMonogram } from "@flind/ui/features/inbox/components/PriorityMonogram";
+import { SuggestedReviewerAvatarStack } from "@flind/ui/features/inbox/components/SuggestedReviewerAvatarStack";
+import { ReportImplementationPrLink } from "@flind/ui/features/inbox/components/utils/ReportImplementationPrLink";
+import { useInboxReportDetailPrefetch } from "@flind/ui/features/inbox/hooks/useInboxReportDetailPrefetch";
+import { useInboxReportArtefacts } from "@flind/ui/features/inbox/hooks/useInboxReports";
+import { Button as UiButton } from "@flind/ui/primitives/Button";
 import {
   navigationSourceHref,
   reportNavigationState,
-} from "@posthog/ui/router/reportNavigation";
+} from "@flind/ui/router/reportNavigation";
 import { Link, useNavigate } from "@tanstack/react-router";
 import type { HTMLAttributes, MouseEvent, ReactNode } from "react";
 

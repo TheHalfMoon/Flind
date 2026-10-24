@@ -1,4 +1,4 @@
-import { CANVAS_PLATFORM_MANIFEST } from "@posthog/shared";
+import { CANVAS_PLATFORM_MANIFEST } from "@flind/shared";
 import type { CanvasSourceProject } from "../dashboardSchemas";
 import {
   BLOCK_ICONS_PATH,

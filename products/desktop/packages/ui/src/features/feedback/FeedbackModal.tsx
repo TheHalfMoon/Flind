@@ -1,7 +1,7 @@
 import type {
   FeedbackSubmissionInput,
   IFeedbackContext,
-} from "@posthog/platform/feedback-context";
+} from "@flind/platform/feedback-context";
 import {
   Button,
   Dialog,
@@ -22,14 +22,14 @@ import {
   Text,
   Textarea,
 } from "@flind/quill";
-import { formatHotkey } from "@posthog/ui/features/command/keyboard-shortcuts";
-import { FEEDBACK_SOURCE_BY_MODE } from "@posthog/ui/features/feedback/feedbackSurvey";
-import { toast } from "@posthog/ui/primitives/toast";
-import { getAppViewSnapshot } from "@posthog/ui/router/useAppView";
+import { formatHotkey } from "@flind/ui/features/command/keyboard-shortcuts";
+import { FEEDBACK_SOURCE_BY_MODE } from "@flind/ui/features/feedback/feedbackSurvey";
+import { toast } from "@flind/ui/primitives/toast";
+import { getAppViewSnapshot } from "@flind/ui/router/useAppView";
 import {
   captureException,
   getAnalyticsSessionId,
-} from "@posthog/ui/shell/analytics";
+} from "@flind/ui/shell/analytics";
 import { useEffect, useRef, useState } from "react";
 import {
   FeedbackAttachments,

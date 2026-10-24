@@ -234,8 +234,8 @@ pnpm install --prefer-offline --frozen-lockfile --ignore-scripts
 log "smoke-testing Desktop cloud-task bootstrap"
 # Exercise the same branch-correct preparation that task provisioning runs after
 # checkout. This keeps the nightly publish from succeeding when a fresh dev-stack
-# task cannot resolve the built workspace exports needed by @posthog/ui.
-(cd products/desktop && pnpm bootstrap:cloud-task && pnpm --filter @posthog/ui --filter code typecheck)
+# task cannot resolve the built workspace exports needed by @flind/ui.
+(cd products/desktop && pnpm bootstrap:cloud-task && pnpm --filter @flind/ui --filter code typecheck)
 
 log "installing playwright chromium (+ system deps)"
 # Storybook builds and screenshot runs drive Playwright's Chromium. Browsers land in

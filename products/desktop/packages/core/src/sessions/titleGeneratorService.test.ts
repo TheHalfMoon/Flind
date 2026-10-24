@@ -1,5 +1,5 @@
-import type { FileReadClient } from "@posthog/core/files/identifiers";
-import type { LlmGatewayService } from "@posthog/core/llm-gateway/llm-gateway";
+import type { FileReadClient } from "@flind/core/files/identifiers";
+import type { LlmGatewayService } from "@flind/core/llm-gateway/llm-gateway";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { TitleGeneratorService } from "./titleGeneratorService";
 

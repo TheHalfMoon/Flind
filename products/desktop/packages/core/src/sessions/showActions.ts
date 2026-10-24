@@ -3,7 +3,7 @@ import {
   type ShowActionButton,
   showActionSchema,
   splitShowAction,
-} from "@posthog/shared";
+} from "@flind/shared";
 import { z } from "zod";
 
 const SHOW_ACTIONS_TOOL = "show_actions";

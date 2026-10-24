@@ -1,5 +1,5 @@
-import { modelCostInfo } from "@posthog/core/billing/modelPricing";
-import { buildProviderModelGroups } from "@posthog/shared";
+import { modelCostInfo } from "@flind/core/billing/modelPricing";
+import { buildProviderModelGroups } from "@flind/shared";
 import { useRouter } from "expo-router";
 import { useMemo } from "react";
 import { ScrollView, Text, View } from "react-native";

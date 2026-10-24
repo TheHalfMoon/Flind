@@ -1,7 +1,7 @@
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
-import type { TabRef } from "@posthog/ui/features/browser-tabs/useGoToTab";
-import { useGoToTab } from "@posthog/ui/features/browser-tabs/useGoToTab";
-import { track } from "@posthog/ui/shell/analytics";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
+import type { TabRef } from "@flind/ui/features/browser-tabs/useGoToTab";
+import { useGoToTab } from "@flind/ui/features/browser-tabs/useGoToTab";
+import { track } from "@flind/ui/shell/analytics";
 import { useCallback } from "react";
 import { useTileLayoutStore } from "./tileLayoutStore";
 import { groupForTab, tabIdsIn } from "./tileTree";

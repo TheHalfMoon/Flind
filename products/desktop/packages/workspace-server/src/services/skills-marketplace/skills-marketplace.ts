@@ -1,6 +1,6 @@
 import * as fs from "node:fs";
 import * as path from "node:path";
-import { isIgnoredSkillPath, SKILL_EXISTS_MARKER } from "@posthog/shared";
+import { isIgnoredSkillPath, SKILL_EXISTS_MARKER } from "@flind/shared";
 import type { Unzipped } from "fflate";
 import { injectable } from "inversify";
 import { unzipAsync } from "../posthog-plugin/extract-zip";

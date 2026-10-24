@@ -2,9 +2,9 @@ import { StopCircle } from "@phosphor-icons/react";
 import {
   SESSION_SERVICE,
   type SessionService,
-} from "@posthog/core/sessions/sessionService";
-import { useService } from "@posthog/di/react";
-import { GitDialog } from "@posthog/ui/features/git-interaction/components/GitInteractionDialogs";
+} from "@flind/core/sessions/sessionService";
+import { useService } from "@flind/di/react";
+import { GitDialog } from "@flind/ui/features/git-interaction/components/GitInteractionDialogs";
 import { Text } from "@radix-ui/themes";
 import { useState } from "react";
 

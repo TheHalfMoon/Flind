@@ -1,28 +1,28 @@
-import { isDismissedReport } from "@posthog/core/inbox/reportMembership";
-import type { SignalReport } from "@posthog/shared/types";
-import { useTriageFocusEnabled } from "@posthog/ui/features/feature-flags/useTriageFocusEnabled";
-import { DismissedReportDetailContent } from "@posthog/ui/features/inbox/components/DismissedReportDetail";
+import { isDismissedReport } from "@flind/core/inbox/reportMembership";
+import type { SignalReport } from "@flind/shared/types";
+import { useTriageFocusEnabled } from "@flind/ui/features/feature-flags/useTriageFocusEnabled";
+import { DismissedReportDetailContent } from "@flind/ui/features/inbox/components/DismissedReportDetail";
 import {
   InboxReportDetailGate,
   ReportOpenTracker,
-} from "@posthog/ui/features/inbox/components/InboxReportDetailGate";
-import { PullRequestDetailContent } from "@posthog/ui/features/inbox/components/PullRequestDetail";
-import { ReportDetailContent } from "@posthog/ui/features/inbox/components/ReportDetail";
-import { ReportPageContext } from "@posthog/ui/features/inbox/components/ReportPageContext";
-import { useCloseReportWhenTerminal } from "@posthog/ui/features/inbox/hooks/useCloseReport";
-import { useInboxTriageHotkey } from "@posthog/ui/features/inbox/hooks/useInboxTriageHotkey";
-import { LoadingState } from "@posthog/ui/primitives/LoadingState";
+} from "@flind/ui/features/inbox/components/InboxReportDetailGate";
+import { PullRequestDetailContent } from "@flind/ui/features/inbox/components/PullRequestDetail";
+import { ReportDetailContent } from "@flind/ui/features/inbox/components/ReportDetail";
+import { ReportPageContext } from "@flind/ui/features/inbox/components/ReportPageContext";
+import { useCloseReportWhenTerminal } from "@flind/ui/features/inbox/hooks/useCloseReport";
+import { useInboxTriageHotkey } from "@flind/ui/features/inbox/hooks/useInboxTriageHotkey";
+import { LoadingState } from "@flind/ui/primitives/LoadingState";
 import {
   resolveNavigationSource,
   useReportSourceHref,
-} from "@posthog/ui/router/reportNavigation";
+} from "@flind/ui/router/reportNavigation";
 import { lazy, Suspense } from "react";
 
 // The settings portal statically reaches every settings screen through
 // SettingsPanel. A report read outside settings never mounts it, so keep that
 // ~300-module tree out of the report route's chunk.
 const SettingsLayout = lazy(() =>
-  import("@posthog/ui/features/settings/components/SettingsLayout").then(
+  import("@flind/ui/features/settings/components/SettingsLayout").then(
     (m) => ({ default: m.SettingsLayout }),
   ),
 );

@@ -1,12 +1,12 @@
-import type { Task } from "@posthog/shared/domain-types";
-import { useProvisioningStore } from "@posthog/ui/features/provisioning/store";
-import { SessionProvisioningStatus } from "@posthog/ui/features/sessions/components/SessionProvisioningStatus";
+import type { Task } from "@flind/shared/domain-types";
+import { useProvisioningStore } from "@flind/ui/features/provisioning/store";
+import { SessionProvisioningStatus } from "@flind/ui/features/sessions/components/SessionProvisioningStatus";
 import {
   SessionStartupStatus,
   startupLabel,
-} from "@posthog/ui/features/sessions/components/SessionStartupStatus";
-import { useSessionViewState } from "@posthog/ui/features/sessions/hooks/useSessionViewState";
-import { useSessionStore } from "@posthog/ui/features/sessions/sessionStore";
+} from "@flind/ui/features/sessions/components/SessionStartupStatus";
+import { useSessionViewState } from "@flind/ui/features/sessions/hooks/useSessionViewState";
+import { useSessionStore } from "@flind/ui/features/sessions/sessionStore";
 
 export function SessionStartupRow({
   taskId,

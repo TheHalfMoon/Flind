@@ -10,17 +10,17 @@ const mocks = vi.hoisted(() => ({
   },
 }));
 
-vi.mock("@posthog/ui/features/inbox/components/DetailBackLink", () => ({
+vi.mock("@flind/ui/features/inbox/components/DetailBackLink", () => ({
   DetailBackLink: () => null,
 }));
-vi.mock("@posthog/ui/features/inbox/hooks/useInboxReports", () => ({
+vi.mock("@flind/ui/features/inbox/hooks/useInboxReports", () => ({
   useInboxReportById: () => mocks.reportQuery,
 }));
-vi.mock("@posthog/ui/features/inbox/hooks/useInboxBackTarget", async () => ({
+vi.mock("@flind/ui/features/inbox/hooks/useInboxBackTarget", async () => ({
   asInboxBackTarget: () => null,
   useInboxTriageOrigin: () => null,
 }));
-vi.mock("@posthog/ui/features/inbox/hooks/useReportOpenTracker", () => ({
+vi.mock("@flind/ui/features/inbox/hooks/useReportOpenTracker", () => ({
   useReportOpenTracker: () => undefined,
 }));
 vi.mock("@tanstack/react-router", () => ({

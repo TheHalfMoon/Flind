@@ -1,4 +1,4 @@
-import type { SignalReport } from "@posthog/shared/types";
+import type { SignalReport } from "@flind/shared/types";
 
 /** Drives the banner's styling: what kind of moment the report is in. */
 export type ReportVerdictTone = "decision" | "progress" | "info" | "danger";

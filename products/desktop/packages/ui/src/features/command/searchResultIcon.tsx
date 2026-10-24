@@ -1,11 +1,11 @@
 import { GitPullRequestIcon } from "@phosphor-icons/react";
-import type { Task, TaskSearchResult } from "@posthog/shared/domain-types";
-import { iconForTemplate } from "@posthog/ui/features/canvas/components/canvasTemplateIcon";
-import { channelGlyph } from "@posthog/ui/features/canvas/components/channelGlyph";
-import { TaskCommandIcon } from "@posthog/ui/features/command/TaskCommandIcon";
-import { TaskIcon } from "@posthog/ui/features/sidebar/components/items/TaskIcon";
-import { FileIcon } from "@posthog/ui/primitives/FileIcon";
-import { SlackMark } from "@posthog/ui/primitives/SlackMark";
+import type { Task, TaskSearchResult } from "@flind/shared/domain-types";
+import { iconForTemplate } from "@flind/ui/features/canvas/components/canvasTemplateIcon";
+import { channelGlyph } from "@flind/ui/features/canvas/components/channelGlyph";
+import { TaskCommandIcon } from "@flind/ui/features/command/TaskCommandIcon";
+import { TaskIcon } from "@flind/ui/features/sidebar/components/items/TaskIcon";
+import { FileIcon } from "@flind/ui/primitives/FileIcon";
+import { SlackMark } from "@flind/ui/primitives/SlackMark";
 import type { ReactNode } from "react";
 
 const ICON_SIZE = 12;

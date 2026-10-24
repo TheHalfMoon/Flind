@@ -2,7 +2,7 @@ import type { SessionConfigOption } from "@agentclientprotocol/sdk";
 import {
   DEFAULT_OPTION_META_KEY,
   OPTION_DOCS_URL_META_KEY,
-} from "@posthog/shared";
+} from "@flind/shared";
 import { Theme } from "@radix-ui/themes";
 import {
   configure,
@@ -21,19 +21,19 @@ import { ReasoningLevelSelector } from "./ReasoningLevelSelector";
 configure({ asyncUtilTimeout: 5000 });
 
 const openUrlInBrowser = vi.hoisted(() => vi.fn());
-vi.mock("@posthog/ui/utils/browser", () => ({ openUrlInBrowser }));
-vi.mock("@posthog/ui/features/feature-flags/useFeatureFlag", () => ({
+vi.mock("@flind/ui/utils/browser", () => ({ openUrlInBrowser }));
+vi.mock("@flind/ui/features/feature-flags/useFeatureFlag", () => ({
   useFeatureFlag: () => true,
 }));
 
 const useAdapterSubscription = vi.hoisted(() => vi.fn());
 const applyModelAccess = vi.hoisted(() => vi.fn());
 vi.mock(
-  "@posthog/ui/features/settings/adapterSubscription",
+  "@flind/ui/features/settings/adapterSubscription",
   async (importOriginal) => {
     const actual =
       await importOriginal<
-        typeof import("@posthog/ui/features/settings/adapterSubscription")
+        typeof import("@flind/ui/features/settings/adapterSubscription")
       >();
     return {
       ...actual,

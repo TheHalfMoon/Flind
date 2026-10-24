@@ -1,1 +1,1 @@
-export { partitionByStaged } from "@posthog/core/git-interaction/diffStats";
+export { partitionByStaged } from "@flind/core/git-interaction/diffStats";

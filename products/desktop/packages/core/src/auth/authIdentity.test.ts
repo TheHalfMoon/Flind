@@ -1,4 +1,4 @@
-import { configureCustomCloud } from "@posthog/shared";
+import { configureCustomCloud } from "@flind/shared";
 import { afterEach, describe, expect, it } from "vitest";
 import { getAuthIdentity } from "./authIdentity";
 import type { AuthState } from "./schemas";

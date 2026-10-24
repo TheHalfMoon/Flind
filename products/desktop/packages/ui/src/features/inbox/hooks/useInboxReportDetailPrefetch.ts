@@ -1,9 +1,9 @@
 import {
   INBOX_REPORT_DETAIL_STALE_TIME_MS,
   inboxReportDetailQueryKey,
-} from "@posthog/core/inbox/inboxQuery";
-import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { AUTH_SCOPED_QUERY_META } from "@posthog/ui/features/auth/useCurrentUser";
+} from "@flind/core/inbox/inboxQuery";
+import { useOptionalAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { AUTH_SCOPED_QUERY_META } from "@flind/ui/features/auth/useCurrentUser";
 import { useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "@tanstack/react-router";
 import { useCallback, useMemo } from "react";

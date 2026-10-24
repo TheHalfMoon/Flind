@@ -1,5 +1,5 @@
-import type { Workspace } from "@posthog/shared";
-import type { Task, TaskRunEnvironment } from "@posthog/shared/domain-types";
+import type { Workspace } from "@flind/shared";
+import type { Task, TaskRunEnvironment } from "@flind/shared/domain-types";
 import { describe, expect, it } from "vitest";
 import { isCloudTask } from "./useWorkspace";
 

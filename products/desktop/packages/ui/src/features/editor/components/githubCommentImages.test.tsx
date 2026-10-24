@@ -3,7 +3,7 @@ import { describe, expect, it, vi } from "vitest";
 import { githubCommentComponents } from "./githubCommentImages";
 import { MarkdownRenderer } from "./MarkdownRenderer";
 
-vi.mock("@posthog/ui/shell/cachedImageUrl", () => ({
+vi.mock("@flind/ui/shell/cachedImageUrl", () => ({
   cachedImageUrl: (remoteUrl: string) =>
     `posthog-cache://images/?src=${encodeURIComponent(remoteUrl)}`,
 }));

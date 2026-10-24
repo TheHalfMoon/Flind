@@ -1,1 +1,1 @@
-export { getUserInitials } from "@posthog/core/auth/userInitials";
+export { getUserInitials } from "@flind/core/auth/userInitials";

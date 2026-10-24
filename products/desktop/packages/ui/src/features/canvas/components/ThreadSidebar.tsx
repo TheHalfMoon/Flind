@@ -1,11 +1,11 @@
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
-import type { Task } from "@posthog/shared/domain-types";
-import { ActivityPanel } from "@posthog/ui/features/canvas/components/ActivityPanel";
-import { ThreadPanel } from "@posthog/ui/features/canvas/components/ThreadPanel";
-import { useChannelsLayout } from "@posthog/ui/features/canvas/hooks/useChannelsLayout";
-import { useThreadPanelStore } from "@posthog/ui/features/canvas/stores/threadPanelStore";
-import { ResizableSidebar } from "@posthog/ui/primitives/ResizableSidebar";
-import { track } from "@posthog/ui/shell/analytics";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
+import type { Task } from "@flind/shared/domain-types";
+import { ActivityPanel } from "@flind/ui/features/canvas/components/ActivityPanel";
+import { ThreadPanel } from "@flind/ui/features/canvas/components/ThreadPanel";
+import { useChannelsLayout } from "@flind/ui/features/canvas/hooks/useChannelsLayout";
+import { useThreadPanelStore } from "@flind/ui/features/canvas/stores/threadPanelStore";
+import { ResizableSidebar } from "@flind/ui/primitives/ResizableSidebar";
+import { track } from "@flind/ui/shell/analytics";
 import { useState } from "react";
 
 // The right-hand dock for a task's thread (collapsible, resizable). Flag on

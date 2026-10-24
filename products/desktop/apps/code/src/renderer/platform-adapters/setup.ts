@@ -1,17 +1,17 @@
-import type { ISetupStore } from "@posthog/core/setup/identifiers";
-import type { ActivityEntry } from "@posthog/core/setup/setupState";
-import type { DiscoveredTask } from "@posthog/core/setup/types";
+import type { ISetupStore } from "@flind/core/setup/identifiers";
+import type { ActivityEntry } from "@flind/core/setup/setupState";
+import type { DiscoveredTask } from "@flind/core/setup/types";
 import {
   selectRepoDiscovery,
   selectRepoEnricher,
   useSetupStore,
-} from "@posthog/ui/features/setup/setupStore";
+} from "@flind/ui/features/setup/setupStore";
 
 /**
  * Host delegate exposing the setup zustand store to the core
  * `SetupRunService`. Inverts the store coupling (the connectivity getValue()
  * pattern): core writes UI state through this narrow interface instead of
- * importing `@posthog/ui`.
+ * importing `@flind/ui`.
  */
 export const setupStore: ISetupStore = {
   getDiscoveryStatus: (repoPath) =>

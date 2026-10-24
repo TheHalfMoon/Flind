@@ -1,4 +1,4 @@
-import type { Task, UserBasic } from "@posthog/shared/domain-types";
+import type { Task, UserBasic } from "@flind/shared/domain-types";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { renderHook, waitFor } from "@testing-library/react";
 import { createElement, type ReactNode } from "react";
@@ -9,19 +9,19 @@ const mocks = vi.hoisted(() => ({
   timestamps: {} as Record<string, { lastViewedAt: number | null }>,
 }));
 
-vi.mock("@posthog/ui/features/auth/authClient", () => ({
+vi.mock("@flind/ui/features/auth/authClient", () => ({
   useOptionalAuthenticatedClient: () => ({ getTasksPage: mocks.getTasksPage }),
 }));
-vi.mock("@posthog/ui/features/archive/useArchivedTaskIds", () => ({
+vi.mock("@flind/ui/features/archive/useArchivedTaskIds", () => ({
   useArchivedTaskIds: () => EMPTY_IDS,
 }));
-vi.mock("@posthog/ui/features/sidebar/usePinnedTasks", () => ({
+vi.mock("@flind/ui/features/sidebar/usePinnedTasks", () => ({
   usePinnedTasks: () => ({ pinnedTaskIds: EMPTY_IDS }),
 }));
-vi.mock("@posthog/ui/features/sidebar/useTaskViewed", () => ({
+vi.mock("@flind/ui/features/sidebar/useTaskViewed", () => ({
   useTaskViewed: () => ({ timestamps: mocks.timestamps }),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useBlockedSessionCount", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useBlockedSessionCount", () => ({
   useBlockedTaskIds: () => EMPTY_IDS,
 }));
 

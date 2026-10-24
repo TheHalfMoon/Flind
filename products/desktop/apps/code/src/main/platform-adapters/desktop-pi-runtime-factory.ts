@@ -3,7 +3,7 @@ import {
   PI_RPC_CLIENT_FACTORY,
   type PiRpcClientFactory,
   type PiRuntimeFactory,
-} from "@posthog/workspace-server/services/pi-session/identifiers";
+} from "@flind/workspace-server/services/pi-session/identifiers";
 import { inject, injectable } from "inversify";
 
 @injectable()

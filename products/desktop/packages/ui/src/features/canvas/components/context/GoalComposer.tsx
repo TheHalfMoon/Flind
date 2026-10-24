@@ -10,7 +10,7 @@ import {
   type GoalDirection,
   type GoalMeasure,
   type GoalTarget,
-} from "@posthog/core/canvas/contextDocument";
+} from "@flind/core/canvas/contextDocument";
 import {
   Button,
   cn,
@@ -20,9 +20,9 @@ import {
   Kbd,
   Text,
 } from "@flind/quill";
-import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import type { GoalMeasureTask } from "@posthog/ui/features/canvas/goalMeasureTasks";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
+import { useOptionalAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import type { GoalMeasureTask } from "@flind/ui/features/canvas/goalMeasureTasks";
+import { Spinner } from "@flind/ui/primitives/Spinner";
 import { useMutation } from "@tanstack/react-query";
 import {
   type KeyboardEvent,

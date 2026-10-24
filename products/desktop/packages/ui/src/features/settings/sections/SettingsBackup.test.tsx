@@ -1,7 +1,7 @@
 import type {
   BackupReview,
   BackupScope,
-} from "@posthog/core/settings/settingsBackup";
+} from "@flind/core/settings/settingsBackup";
 import { render, screen, within } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import {

@@ -1,13 +1,13 @@
-import type { GithubInstallRequestItem } from "@posthog/api-client/posthog-client";
+import type { GithubInstallRequestItem } from "@flind/api-client/posthog-client";
 import {
   buildOrgOwnerMessage,
   unlinkedApprovedRequests,
-} from "@posthog/core/integrations/installRequests";
+} from "@flind/core/integrations/installRequests";
 import { Button, Text } from "@flind/quill";
-import { useDismissGithubInstallRequest } from "@posthog/ui/features/integrations/useDismissGithubInstallRequest";
-import { useGithubInstallRequests } from "@posthog/ui/features/integrations/useGithubInstallRequests";
-import { useUserGithubIntegrations } from "@posthog/ui/features/integrations/useIntegrations";
-import { useCopy } from "@posthog/ui/primitives/useCopy";
+import { useDismissGithubInstallRequest } from "@flind/ui/features/integrations/useDismissGithubInstallRequest";
+import { useGithubInstallRequests } from "@flind/ui/features/integrations/useGithubInstallRequests";
+import { useUserGithubIntegrations } from "@flind/ui/features/integrations/useIntegrations";
+import { useCopy } from "@flind/ui/primitives/useCopy";
 
 interface GithubInstallRequestsBannerProps {
   /** Re-runs the surface's own connect flow once an owner has approved the install. */

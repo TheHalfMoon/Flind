@@ -1,17 +1,17 @@
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
-import { useSpacesTabs } from "@posthog/ui/features/browser-tabs/useSpacesTabs";
-import { useChannelsLayout } from "@posthog/ui/features/canvas/hooks/useChannelsLayout";
-import { useStarredChannelSlots } from "@posthog/ui/features/canvas/hooks/useStarredChannelSlots";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
+import { useSpacesTabs } from "@flind/ui/features/browser-tabs/useSpacesTabs";
+import { useChannelsLayout } from "@flind/ui/features/canvas/hooks/useChannelsLayout";
+import { useStarredChannelSlots } from "@flind/ui/features/canvas/hooks/useStarredChannelSlots";
 import {
   showChannelList,
   showChannelPane,
-} from "@posthog/ui/features/canvas/stores/channelPaneStore";
-import { useCurrentChannelStore } from "@posthog/ui/features/canvas/stores/currentChannelStore";
-import { requestSidebarSearchFocus } from "@posthog/ui/features/canvas/stores/sidebarSearchStore";
-import { SHORTCUTS } from "@posthog/ui/features/command/keyboard-shortcuts";
-import { useSidebarStore } from "@posthog/ui/features/sidebar/sidebarStore";
-import { navigateToChannel } from "@posthog/ui/router/navigationBridge";
-import { track } from "@posthog/ui/shell/analytics";
+} from "@flind/ui/features/canvas/stores/channelPaneStore";
+import { useCurrentChannelStore } from "@flind/ui/features/canvas/stores/currentChannelStore";
+import { requestSidebarSearchFocus } from "@flind/ui/features/canvas/stores/sidebarSearchStore";
+import { SHORTCUTS } from "@flind/ui/features/command/keyboard-shortcuts";
+import { useSidebarStore } from "@flind/ui/features/sidebar/sidebarStore";
+import { navigateToChannel } from "@flind/ui/router/navigationBridge";
+import { track } from "@flind/ui/shell/analytics";
 import { useHotkeys } from "react-hotkeys-hook";
 
 /**

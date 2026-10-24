@@ -1,6 +1,6 @@
-import { publicProcedure, router } from "@posthog/host-trpc/trpc";
-import type { FoldersService } from "@posthog/workspace-server/services/folders/folders";
-import { FOLDERS_SERVICE } from "@posthog/workspace-server/services/folders/identifiers";
+import { publicProcedure, router } from "@flind/host-trpc/trpc";
+import type { FoldersService } from "@flind/workspace-server/services/folders/folders";
+import { FOLDERS_SERVICE } from "@flind/workspace-server/services/folders/identifiers";
 import {
   addFolderInput,
   addFolderOutput,
@@ -9,7 +9,7 @@ import {
   removeFolderInput,
   repositoryLookupResult,
   updateFolderAccessedInput,
-} from "@posthog/workspace-server/services/folders/schemas";
+} from "@flind/workspace-server/services/folders/schemas";
 
 export const foldersRouter = router({
   getFolders: publicProcedure.output(getFoldersOutput).query(({ ctx }) => {

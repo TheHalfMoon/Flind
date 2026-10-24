@@ -4,13 +4,13 @@ import {
   GitPullRequestIcon,
 } from "@phosphor-icons/react";
 import { Button, cn } from "@flind/quill";
-import { iconForTemplate } from "@posthog/ui/features/canvas/components/canvasTemplateIcon";
+import { iconForTemplate } from "@flind/ui/features/canvas/components/canvasTemplateIcon";
 import type {
   SourceKind,
   TaskCommentThread,
-} from "@posthog/ui/features/canvas/components/taskCommentThreads";
-import { moveThreadFocus } from "@posthog/ui/features/sessions/components/threadListFocus";
-import { FileIcon } from "@posthog/ui/primitives/FileIcon";
+} from "@flind/ui/features/canvas/components/taskCommentThreads";
+import { moveThreadFocus } from "@flind/ui/features/sessions/components/threadListFocus";
+import { FileIcon } from "@flind/ui/primitives/FileIcon";
 import {
   type ReactElement,
   type ReactNode,

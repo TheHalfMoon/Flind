@@ -1,4 +1,4 @@
-import type { Task } from "@posthog/shared/domain-types";
+import type { Task } from "@flind/shared/domain-types";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { renderHook, waitFor } from "@testing-library/react";
 import type { PropsWithChildren } from "react";
@@ -7,7 +7,7 @@ import { useRefreshedTask } from "./useRefreshedTask";
 
 const mocks = vi.hoisted(() => ({ getTask: vi.fn() }));
 
-vi.mock("@posthog/ui/features/auth/authClientImperative", () => ({
+vi.mock("@flind/ui/features/auth/authClientImperative", () => ({
   getAuthenticatedClient: vi.fn(async () => ({ getTask: mocks.getTask })),
 }));
 

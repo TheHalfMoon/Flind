@@ -1,5 +1,5 @@
-import { ROOT_LOGGER, type RootLogger } from "@posthog/di/logger";
-import type { Workspace, WorkspaceMode } from "@posthog/shared";
+import { ROOT_LOGGER, type RootLogger } from "@flind/di/logger";
+import type { Workspace, WorkspaceMode } from "@flind/shared";
 import { inject, injectable } from "inversify";
 
 export { WORKSPACE_SETUP_SAGA } from "./identifiers";

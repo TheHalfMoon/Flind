@@ -6,36 +6,36 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@flind/quill";
-import type { Task } from "@posthog/shared/domain-types";
-import { ActivityPanelBody } from "@posthog/ui/features/canvas/components/ActivityPanelBody";
+import type { Task } from "@flind/shared/domain-types";
+import { ActivityPanelBody } from "@flind/ui/features/canvas/components/ActivityPanelBody";
 import {
   LazyCloudReviewPage as CloudReviewPage,
   LazyReviewPage as ReviewPage,
-} from "@posthog/ui/features/code-review/components/LazyReviewPages";
-import { preloadReviewPages } from "@posthog/ui/features/code-review/components/preloadReviewPages";
-import { useReviewNavigationStore } from "@posthog/ui/features/code-review/reviewNavigationStore";
-import { PanelResizeHandle } from "@posthog/ui/features/navigation/components/PanelResizeHandle";
-import { RightPanelButtons } from "@posthog/ui/features/navigation/components/RightPanelButtons";
+} from "@flind/ui/features/code-review/components/LazyReviewPages";
+import { preloadReviewPages } from "@flind/ui/features/code-review/components/preloadReviewPages";
+import { useReviewNavigationStore } from "@flind/ui/features/code-review/reviewNavigationStore";
+import { PanelResizeHandle } from "@flind/ui/features/navigation/components/PanelResizeHandle";
+import { RightPanelButtons } from "@flind/ui/features/navigation/components/RightPanelButtons";
 import {
   RightPanelSurface,
   SLIDE_MS,
-} from "@posthog/ui/features/navigation/components/RightPanelSurface";
-import { resolvePanelGeometry } from "@posthog/ui/features/navigation/rightPanelGeometry";
+} from "@flind/ui/features/navigation/components/RightPanelSurface";
+import { resolvePanelGeometry } from "@flind/ui/features/navigation/rightPanelGeometry";
 import {
   openRightPanelSide,
   SIDES,
   SWITCHER_WIDTH_PX,
-} from "@posthog/ui/features/navigation/rightPanelSide";
-import { useActiveSession } from "@posthog/ui/features/navigation/useActiveSession";
-import { useCommentFocusRequest } from "@posthog/ui/features/sessions/useCommentFocusRequest";
+} from "@flind/ui/features/navigation/rightPanelSide";
+import { useActiveSession } from "@flind/ui/features/navigation/useActiveSession";
+import { useCommentFocusRequest } from "@flind/ui/features/sessions/useCommentFocusRequest";
 import {
   useSessionArtifactCount,
   useSessionIsWorking,
-} from "@posthog/ui/features/sessions/useSessionArtifactCount";
-import { taskDetailQuery } from "@posthog/ui/features/tasks/queries";
-import { useTasks } from "@posthog/ui/features/tasks/useTasks";
-import { useIsCloudTask } from "@posthog/ui/features/workspace/useWorkspace";
-import { useParentWidth } from "@posthog/ui/primitives/hooks/useObservedWidth";
+} from "@flind/ui/features/sessions/useSessionArtifactCount";
+import { taskDetailQuery } from "@flind/ui/features/tasks/queries";
+import { useTasks } from "@flind/ui/features/tasks/useTasks";
+import { useIsCloudTask } from "@flind/ui/features/workspace/useWorkspace";
+import { useParentWidth } from "@flind/ui/primitives/hooks/useObservedWidth";
 import { useQuery } from "@tanstack/react-query";
 import {
   memo,

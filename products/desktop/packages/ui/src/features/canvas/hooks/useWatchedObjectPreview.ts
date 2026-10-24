@@ -1,11 +1,11 @@
-import type { EvidencePreview } from "@posthog/api-client/evidence-previews";
-import type { ContextObject } from "@posthog/core/canvas/contextDocument";
-import { parsePostHogObjectUrl } from "@posthog/core/canvas/contextDocument";
+import type { EvidencePreview } from "@flind/api-client/evidence-previews";
+import type { ContextObject } from "@flind/core/canvas/contextDocument";
+import { parsePostHogObjectUrl } from "@flind/core/canvas/contextDocument";
 import {
   EVIDENCE_PREVIEW_STALE_TIME,
   evidencePreviewQueryKey,
-} from "@posthog/ui/features/editor/evidencePreview";
-import { useAuthenticatedQuery } from "@posthog/ui/hooks/useAuthenticatedQuery";
+} from "@flind/ui/features/editor/evidencePreview";
+import { useAuthenticatedQuery } from "@flind/ui/hooks/useAuthenticatedQuery";
 import { usePostHogHost } from "./usePostHogHost";
 
 export function useWatchedObjectPreview(object: ContextObject) {

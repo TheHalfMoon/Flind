@@ -6,10 +6,10 @@ const mocks = vi.hoisted(() => ({
   flagEnabled: true,
 }));
 
-vi.mock("@posthog/di/react", () => ({
+vi.mock("@flind/di/react", () => ({
   useServiceOptional: () => (mocks.filesBound ? {} : null),
 }));
-vi.mock("@posthog/ui/features/feature-flags/useFeatureFlag", () => ({
+vi.mock("@flind/ui/features/feature-flags/useFeatureFlag", () => ({
   useFeatureFlag: () => mocks.flagEnabled,
 }));
 

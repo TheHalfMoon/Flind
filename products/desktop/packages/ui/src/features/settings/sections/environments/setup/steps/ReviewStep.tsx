@@ -5,14 +5,14 @@ import {
   planSpecInput,
   planTools,
   stepError,
-} from "@posthog/core/settings/environmentSetup";
-import { isDirectlyInstallable } from "@posthog/core/settings/imagePreset";
+} from "@flind/core/settings/environmentSetup";
+import { isDirectlyInstallable } from "@flind/core/settings/imagePreset";
 import {
   buildImageSpec,
   imageSpecToYaml,
-} from "@posthog/core/settings/imageSpec";
+} from "@flind/core/settings/imageSpec";
 import { Text } from "@flind/quill";
-import { StepBody } from "@posthog/ui/features/settings/sections/environments/setup/StepBody";
+import { StepBody } from "@flind/ui/features/settings/sections/environments/setup/StepBody";
 
 interface ReviewStepProps {
   plan: EnvironmentSetupPlan;

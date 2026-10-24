@@ -4,7 +4,7 @@ import {
   Lightning,
   MagnifyingGlass,
 } from "@phosphor-icons/react";
-import type { DiscoveredTask } from "@posthog/core/setup/types";
+import type { DiscoveredTask } from "@flind/core/setup/types";
 import { Flex, Text } from "@radix-ui/themes";
 import { AnimatePresence, motion } from "framer-motion";
 import {

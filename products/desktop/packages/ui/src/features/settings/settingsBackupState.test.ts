@@ -1,8 +1,8 @@
 import {
   flushRendererStateWrites,
   registerRendererStateStorage,
-} from "@posthog/ui/shell/rendererStorage";
-import { useThemeStore } from "@posthog/ui/shell/themeStore";
+} from "@flind/ui/shell/rendererStorage";
+import { useThemeStore } from "@flind/ui/shell/themeStore";
 import { beforeEach, describe, expect, it } from "vitest";
 import { settingsBackupState } from "./settingsBackupState";
 import { useSettingsStore } from "./settingsStore";

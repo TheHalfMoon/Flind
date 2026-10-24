@@ -3,7 +3,7 @@ import {
   workspaceModeSchema,
   workspaceSchema,
   worktreeInfoSchema,
-} from "@posthog/shared";
+} from "@flind/shared";
 import { z } from "zod";
 
 // Input schemas
@@ -285,7 +285,7 @@ export type {
   Workspace,
   WorkspaceInfo,
   WorktreeInfo,
-} from "@posthog/shared";
+} from "@flind/shared";
 
 export type CreateWorkspaceInput = z.infer<typeof createWorkspaceInput>;
 export type CheckWorktreeBranchInput = z.infer<typeof checkWorktreeBranchInput>;

@@ -1,4 +1,4 @@
-import type { AgentTurnFeedbackSentiment } from "@posthog/shared";
+import type { AgentTurnFeedbackSentiment } from "@flind/shared";
 import { create } from "zustand";
 
 interface SessionViewState {

@@ -1,6 +1,6 @@
-import { ServiceProvider } from "@posthog/di/react";
-import { createPiToolCallRecord, posthogToolMeta } from "@posthog/shared";
-import type { ConversationItem } from "@posthog/ui/features/sessions/components/buildConversationItems";
+import { ServiceProvider } from "@flind/di/react";
+import { createPiToolCallRecord, posthogToolMeta } from "@flind/shared";
+import type { ConversationItem } from "@flind/ui/features/sessions/components/buildConversationItems";
 import { Theme } from "@radix-ui/themes";
 import { render, screen } from "@testing-library/react";
 import { Container } from "inversify";

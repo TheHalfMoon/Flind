@@ -8,7 +8,7 @@ import {
   isRestrictedModelOption,
   isSupportedReasoningEffort,
   type SupportedReasoningEffort,
-} from "@posthog/shared";
+} from "@flind/shared";
 import { getDefaultExecutionModeForAdapter } from "../sessions/executionModes";
 
 export interface CloudComposerSelection {

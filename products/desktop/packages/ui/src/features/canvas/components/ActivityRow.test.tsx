@@ -1,4 +1,4 @@
-import type { TaskActivityItem } from "@posthog/core/canvas/taskActivity";
+import type { TaskActivityItem } from "@flind/core/canvas/taskActivity";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
@@ -12,37 +12,37 @@ const links = vi.hoisted(() => ({
   copyChannelLink: vi.fn(() => Promise.resolve()),
 }));
 
-vi.mock("@posthog/ui/router/navigationBridge", () => ({
+vi.mock("@flind/ui/router/navigationBridge", () => ({
   navigateToChannelDashboard: navigation.toChannelDashboard,
   navigateToChannelTask: navigation.toChannelTask,
   navigateToTaskDetail: navigation.toTaskDetail,
 }));
-vi.mock("@posthog/ui/shell/analytics", () => ({ track: vi.fn() }));
-vi.mock("@posthog/ui/features/feature-flags/useFeatureFlag", () => ({
+vi.mock("@flind/ui/shell/analytics", () => ({ track: vi.fn() }));
+vi.mock("@flind/ui/features/feature-flags/useFeatureFlag", () => ({
   useFeatureFlag: () => true,
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useChannels", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannels", () => ({
   useChannels: () => ({
     channels: [{ id: "channel-1", name: "Personal space", starred: false }],
   }),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useFileTaskToChannel", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useFileTaskToChannel", () => ({
   useFileTaskToChannel: () => vi.fn(),
 }));
-vi.mock("@posthog/ui/features/browser-tabs/useOpenBrowserTab", () => ({
+vi.mock("@flind/ui/features/browser-tabs/useOpenBrowserTab", () => ({
   useOpenBrowserTab: () => vi.fn(),
 }));
-vi.mock("@posthog/ui/features/canvas/utils/copyCanvasLink", () => ({
+vi.mock("@flind/ui/features/canvas/utils/copyCanvasLink", () => ({
   copyCanvasLink: links.copyCanvasLink,
 }));
-vi.mock("@posthog/ui/features/canvas/utils/copyChannelLink", () => ({
+vi.mock("@flind/ui/features/canvas/utils/copyChannelLink", () => ({
   copyChannelLink: links.copyChannelLink,
 }));
 
 import {
   canvasCommentFocusKey,
   useCommentNavigationStore,
-} from "@posthog/ui/features/sessions/commentNavigationStore";
+} from "@flind/ui/features/sessions/commentNavigationStore";
 import { ActivityRow } from "./ActivityRow";
 import { openActivityItem, openActivityItemInRail } from "./openActivityItem";
 import type { TaskRowMenuProps } from "./TaskRowMenu";

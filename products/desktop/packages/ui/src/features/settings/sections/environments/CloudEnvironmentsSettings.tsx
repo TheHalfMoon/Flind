@@ -1,18 +1,18 @@
 import { Plus } from "@phosphor-icons/react";
-import type { SetupScope } from "@posthog/core/settings/environmentSetup";
+import type { SetupScope } from "@flind/core/settings/environmentSetup";
 import { Button, Text } from "@flind/quill";
 import type {
   SandboxCustomImage,
   SandboxEnvironment,
-} from "@posthog/shared/domain-types";
-import { CustomImageList } from "@posthog/ui/features/settings/sections/environments/CustomImageList";
-import { EnvironmentList } from "@posthog/ui/features/settings/sections/environments/EnvironmentList";
-import { ImageDetailPage } from "@posthog/ui/features/settings/sections/environments/ImageDetailPage";
-import { EnvironmentEditPage } from "@posthog/ui/features/settings/sections/environments/setup/EnvironmentEditPage";
-import { EnvironmentSetupFlow } from "@posthog/ui/features/settings/sections/environments/setup/EnvironmentSetupFlow";
-import { useSandboxCustomImages } from "@posthog/ui/features/settings/sections/environments/useSandboxCustomImages";
-import { useSandboxEnvironments } from "@posthog/ui/features/settings/sections/environments/useSandboxEnvironments";
-import { useSettingsPageStore } from "@posthog/ui/features/settings/stores/settingsPageStore";
+} from "@flind/shared/domain-types";
+import { CustomImageList } from "@flind/ui/features/settings/sections/environments/CustomImageList";
+import { EnvironmentList } from "@flind/ui/features/settings/sections/environments/EnvironmentList";
+import { ImageDetailPage } from "@flind/ui/features/settings/sections/environments/ImageDetailPage";
+import { EnvironmentEditPage } from "@flind/ui/features/settings/sections/environments/setup/EnvironmentEditPage";
+import { EnvironmentSetupFlow } from "@flind/ui/features/settings/sections/environments/setup/EnvironmentSetupFlow";
+import { useSandboxCustomImages } from "@flind/ui/features/settings/sections/environments/useSandboxCustomImages";
+import { useSandboxEnvironments } from "@flind/ui/features/settings/sections/environments/useSandboxEnvironments";
+import { useSettingsPageStore } from "@flind/ui/features/settings/stores/settingsPageStore";
 import { type ReactNode, useEffect, useState } from "react";
 
 /**

@@ -2,7 +2,7 @@ import type {
   McpGatewayServer,
   McpResolvedToolPolicy,
   McpServiceAccount,
-} from "@posthog/api-client/posthog-client";
+} from "@flind/api-client/posthog-client";
 import { Theme } from "@radix-ui/themes";
 import { fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";

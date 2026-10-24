@@ -1,7 +1,7 @@
-import { parseActivityEvent } from "@posthog/core/canvas/activityEvents";
-import { groupActivityRows } from "@posthog/core/canvas/activityGrouping";
-import type { ActivityRow } from "@posthog/core/canvas/activityTimeline";
-import type { ThreadMessageLike } from "@posthog/core/canvas/threadTimeline";
+import { parseActivityEvent } from "@flind/core/canvas/activityEvents";
+import { groupActivityRows } from "@flind/core/canvas/activityGrouping";
+import type { ActivityRow } from "@flind/core/canvas/activityTimeline";
+import type { ThreadMessageLike } from "@flind/core/canvas/threadTimeline";
 import { describe, expect, it } from "vitest";
 
 let nextId = 0;

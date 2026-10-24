@@ -1,5 +1,5 @@
-import { TileProvider } from "@posthog/ui/features/tab-tiling/tileContext";
-import { useHeaderStore } from "@posthog/ui/shell/headerStore";
+import { TileProvider } from "@flind/ui/features/tab-tiling/tileContext";
+import { useHeaderStore } from "@flind/ui/shell/headerStore";
 import { renderHook } from "@testing-library/react";
 import type { ReactNode } from "react";
 import { beforeEach, describe, expect, it } from "vitest";

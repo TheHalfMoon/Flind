@@ -2,7 +2,7 @@ import {
   INBOX_REPORT_DETAIL_STALE_TIME_MS,
   inboxReportKeys,
   resolveInboxReportDetailCache,
-} from "@posthog/core/inbox/inboxQuery";
+} from "@flind/core/inbox/inboxQuery";
 import type {
   AvailableSuggestedReviewersResponse,
   SignalReport,
@@ -12,16 +12,16 @@ import type {
   SignalReportsResponse,
   SuggestedReviewersArtefact,
   SuggestedReviewerWriteEntry,
-} from "@posthog/shared/types";
+} from "@flind/shared/types";
 import {
   getAuthIdentity,
   useAuthStateValue,
-} from "@posthog/ui/features/auth/store";
-import { useInboxAvailableSuggestedReviewersStore } from "@posthog/ui/features/inbox/inboxAvailableSuggestedReviewersStore";
-import { useAuthenticatedInfiniteQuery } from "@posthog/ui/hooks/useAuthenticatedInfiniteQuery";
-import { useAuthenticatedMutation } from "@posthog/ui/hooks/useAuthenticatedMutation";
-import { useAuthenticatedQuery } from "@posthog/ui/hooks/useAuthenticatedQuery";
-import { toast } from "@posthog/ui/primitives/toast";
+} from "@flind/ui/features/auth/store";
+import { useInboxAvailableSuggestedReviewersStore } from "@flind/ui/features/inbox/inboxAvailableSuggestedReviewersStore";
+import { useAuthenticatedInfiniteQuery } from "@flind/ui/hooks/useAuthenticatedInfiniteQuery";
+import { useAuthenticatedMutation } from "@flind/ui/hooks/useAuthenticatedMutation";
+import { useAuthenticatedQuery } from "@flind/ui/hooks/useAuthenticatedQuery";
+import { toast } from "@flind/ui/primitives/toast";
 import type { InfiniteData } from "@tanstack/react-query";
 import { useQueryClient } from "@tanstack/react-query";
 import { useEffect, useMemo } from "react";

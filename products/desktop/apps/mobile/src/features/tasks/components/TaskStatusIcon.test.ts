@@ -1,4 +1,4 @@
-import type { Task } from "@posthog/shared";
+import type { Task } from "@flind/shared";
 import { describe, expect, it } from "vitest";
 import { getTaskStatusIconKind } from "./taskStatusIconKind";
 

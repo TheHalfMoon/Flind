@@ -1,4 +1,4 @@
-import type { ContextUsage } from "@posthog/ui/features/sessions/hooks/useContextUsage";
+import type { ContextUsage } from "@flind/ui/features/sessions/hooks/useContextUsage";
 import { Theme } from "@radix-ui/themes";
 import { render, screen } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
@@ -14,10 +14,10 @@ const taskUsageState = vi.hoisted(() => ({
       }
     | undefined,
 }));
-vi.mock("@posthog/ui/features/feature-flags/useFeatureFlag", () => ({
+vi.mock("@flind/ui/features/feature-flags/useFeatureFlag", () => ({
   useFeatureFlag: () => flagState.costVisible,
 }));
-vi.mock("@posthog/ui/features/sessions/hooks/useTaskUsage", () => ({
+vi.mock("@flind/ui/features/sessions/hooks/useTaskUsage", () => ({
   useTaskUsage: () => taskUsageState,
 }));
 

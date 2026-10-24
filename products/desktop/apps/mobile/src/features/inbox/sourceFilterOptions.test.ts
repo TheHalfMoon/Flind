@@ -1,5 +1,5 @@
-import type { SignalSourceConfig } from "@posthog/api-client/posthog-client";
-import { EXTERNAL_INBOX_SOURCES, type SourceProduct } from "@posthog/shared";
+import type { SignalSourceConfig } from "@flind/api-client/posthog-client";
+import { EXTERNAL_INBOX_SOURCES, type SourceProduct } from "@flind/shared";
 import { describe, expect, it } from "vitest";
 import {
   narrowSourceProductOptions,

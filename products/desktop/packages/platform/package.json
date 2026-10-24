@@ -1,5 +1,6 @@
 {
-  "name": "@posthog/platform",
+  "name": "@flind/platform",
+    "private": true,
   "version": "1.0.0",
   "description": "Host-agnostic platform port interfaces. Zero runtime deps; implemented by per-host adapters (Electron, Node server, React Native, web).",
   "type": "module",

@@ -6,9 +6,9 @@ import {
   GitFork,
   X,
 } from "@phosphor-icons/react";
-import { ROOT_LOGGER, type RootLogger } from "@posthog/di/logger";
-import { useService } from "@posthog/di/react";
-import { useHostTRPC, useHostTRPCClient } from "@posthog/host-router/react";
+import { ROOT_LOGGER, type RootLogger } from "@flind/di/logger";
+import { useService } from "@flind/di/react";
+import { useHostTRPC, useHostTRPCClient } from "@flind/host-router/react";
 import {
   AlertDialog,
   AlertDialogClose,
@@ -25,11 +25,11 @@ import {
   DropdownMenuTrigger,
   MenuLabel,
 } from "@flind/quill";
-import type { RegisteredFolder } from "@posthog/ui/features/folders/types";
-import { useFolders } from "@posthog/ui/features/folders/useFolders";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
-import { toast } from "@posthog/ui/primitives/toast";
-import { FIELD_TRIGGER_CLASS } from "@posthog/ui/styles/fieldTrigger";
+import type { RegisteredFolder } from "@flind/ui/features/folders/types";
+import { useFolders } from "@flind/ui/features/folders/useFolders";
+import { Spinner } from "@flind/ui/primitives/Spinner";
+import { toast } from "@flind/ui/primitives/toast";
+import { FIELD_TRIGGER_CLASS } from "@flind/ui/styles/fieldTrigger";
 import { Text } from "@radix-ui/themes";
 import { useQueries } from "@tanstack/react-query";
 import { type RefObject, useMemo, useState } from "react";

@@ -1,14 +1,14 @@
 import type {
   BaseImageChoice,
   EnvironmentSetupPlan,
-} from "@posthog/core/settings/environmentSetup";
+} from "@flind/core/settings/environmentSetup";
 import { Button, Label, Text } from "@flind/quill";
-import type { SandboxCustomImage } from "@posthog/shared/domain-types";
-import { SettingsSelect } from "@posthog/ui/features/settings/components/SettingsSelect";
-import { StepBody } from "@posthog/ui/features/settings/sections/environments/setup/StepBody";
-import { StepFieldError } from "@posthog/ui/features/settings/sections/environments/setup/StepFieldError";
-import { ImageNameField } from "@posthog/ui/features/settings/sections/environments/setup/steps/ImageNameField";
-import { RadioCards } from "@posthog/ui/primitives/RadioCards";
+import type { SandboxCustomImage } from "@flind/shared/domain-types";
+import { SettingsSelect } from "@flind/ui/features/settings/components/SettingsSelect";
+import { StepBody } from "@flind/ui/features/settings/sections/environments/setup/StepBody";
+import { StepFieldError } from "@flind/ui/features/settings/sections/environments/setup/StepFieldError";
+import { ImageNameField } from "@flind/ui/features/settings/sections/environments/setup/steps/ImageNameField";
+import { RadioCards } from "@flind/ui/primitives/RadioCards";
 
 interface BaseImageStepProps {
   plan: EnvironmentSetupPlan;

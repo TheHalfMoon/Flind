@@ -1,5 +1,5 @@
-import type { TaskActivityItem } from "@posthog/core/canvas/taskActivity";
-import type { SignalReport } from "@posthog/shared/types";
+import type { TaskActivityItem } from "@flind/core/canvas/taskActivity";
+import type { SignalReport } from "@flind/shared/types";
 import { describe, expect, it } from "vitest";
 import {
   deriveActivityFeedContent,

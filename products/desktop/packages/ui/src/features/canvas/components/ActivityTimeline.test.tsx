@@ -1,16 +1,16 @@
-import { buildThreadTimeline } from "@posthog/core/canvas/threadTimeline";
-import type { Task, TaskThreadMessage } from "@posthog/shared/domain-types";
+import { buildThreadTimeline } from "@flind/core/canvas/threadTimeline";
+import type { Task, TaskThreadMessage } from "@flind/shared/domain-types";
 import { fireEvent, render, screen, within } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-vi.mock("@posthog/ui/features/git-interaction/usePrDetails", () => ({
+vi.mock("@flind/ui/features/git-interaction/usePrDetails", () => ({
   usePrDetails: () => ({
     meta: { state: "open", merged: false, draft: false },
   }),
 }));
 
-import type { ConversationItem } from "@posthog/ui/features/sessions/components/buildConversationItems";
-import { useThreadNavigationStore } from "@posthog/ui/features/sessions/threadNavigationStore";
+import type { ConversationItem } from "@flind/ui/features/sessions/components/buildConversationItems";
+import { useThreadNavigationStore } from "@flind/ui/features/sessions/threadNavigationStore";
 import { ActivityTimeline } from "./ActivityTimeline";
 
 const task = {

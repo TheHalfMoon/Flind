@@ -13,7 +13,7 @@ import {
   Warning,
   Wrench,
 } from "@phosphor-icons/react";
-import type { DiscoveredTask } from "@posthog/core/setup/types";
+import type { DiscoveredTask } from "@flind/core/setup/types";
 
 interface CategoryConfig {
   icon: Icon;

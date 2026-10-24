@@ -1,26 +1,26 @@
-import type { CostChecklistItemKind } from "@posthog/core/billing/costChecklist";
+import type { CostChecklistItemKind } from "@flind/core/billing/costChecklist";
 import {
   EMPTY_SPEND_LIMITS,
   pruneSpendNoticesSeen,
   type SpendLimits,
   type SpendLimitsPatch,
-} from "@posthog/core/billing/spendLimits";
-import type { UserRepositoryIntegrationRef } from "@posthog/core/integrations/repositories";
-import { clampAutoCompactPercent } from "@posthog/core/sessions/autoCompact";
+} from "@flind/core/billing/spendLimits";
+import type { UserRepositoryIntegrationRef } from "@flind/core/integrations/repositories";
+import { clampAutoCompactPercent } from "@flind/core/sessions/autoCompact";
 import type {
   Adapter,
   AgentRuntime,
   ExecutionMode,
   ModelAccess,
   WorkspaceMode,
-} from "@posthog/shared";
-import type { EffortLevel } from "@posthog/shared/domain-types";
-import { SIMPLIFIED_TECHNICAL_ENGLISH_INSTRUCTION } from "@posthog/shared/product-engineer-prompt";
+} from "@flind/shared";
+import type { EffortLevel } from "@flind/shared/domain-types";
+import { SIMPLIFIED_TECHNICAL_ENGLISH_INSTRUCTION } from "@flind/shared/product-engineer-prompt";
 import {
   TIP_SHOWINGS,
   type TipKey,
-} from "@posthog/ui/features/settings/tipKeys";
-import { electronStorage } from "@posthog/ui/shell/rendererStorage";
+} from "@flind/ui/features/settings/tipKeys";
+import { electronStorage } from "@flind/ui/shell/rendererStorage";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 

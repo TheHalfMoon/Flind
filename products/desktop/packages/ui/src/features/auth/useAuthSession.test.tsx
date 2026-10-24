@@ -1,4 +1,4 @@
-import { USAGE_QUERY_KEY } from "@posthog/ui/features/billing/useUsage";
+import { USAGE_QUERY_KEY } from "@flind/ui/features/billing/useUsage";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { renderHook } from "@testing-library/react";
 import type { ReactNode } from "react";

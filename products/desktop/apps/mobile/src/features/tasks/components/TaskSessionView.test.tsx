@@ -25,7 +25,7 @@ vi.mock("@/features/chat", () => ({
   deriveToolKind: () => "other",
 }));
 
-vi.mock("@posthog/core/sessions/thinkingActivities", () => ({
+vi.mock("@flind/core/sessions/thinkingActivities", () => ({
   pickThinkingActivity: () => "Thinking",
 }));
 

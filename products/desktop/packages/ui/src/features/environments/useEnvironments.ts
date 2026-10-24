@@ -1,4 +1,4 @@
-import { useWorkspaceTRPC } from "@posthog/workspace-client/trpc";
+import { useWorkspaceTRPC } from "@flind/workspace-client/trpc";
 import { useQuery } from "@tanstack/react-query";
 
 export function useEnvironments(repoPath: string | null) {

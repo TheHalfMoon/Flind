@@ -1,11 +1,11 @@
 import type { parsePatchFiles } from "@pierre/diffs";
-import { contentHash } from "@posthog/core/code-review/contentHash";
+import { contentHash } from "@flind/core/code-review/contentHash";
 import {
   buildGithubFileUrl,
   computeSkipExpansion,
-} from "@posthog/core/code-review/reviewItemKeys";
-import type { PrCommentThread } from "@posthog/core/code-review/types";
-import type { ChangedFile } from "@posthog/shared/domain-types";
+} from "@flind/core/code-review/reviewItemKeys";
+import type { PrCommentThread } from "@flind/core/code-review/types";
+import type { ChangedFile } from "@flind/shared/domain-types";
 import { makeFileKey } from "../../git-interaction/utils/fileKey";
 import type { ReviewListItem } from "../commentFileFilter";
 import type { DiffOptions } from "../types";

@@ -1,6 +1,6 @@
-import type { ChannelItemModel } from "@posthog/core/canvas/channelItems";
+import type { ChannelItemModel } from "@flind/core/canvas/channelItems";
 import { Card } from "@flind/quill";
-import type { Task, TaskRun } from "@posthog/shared/domain-types";
+import type { Task, TaskRun } from "@flind/shared/domain-types";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { ChannelItemPreview } from "./ChannelItemPreview";
 import type { TaskRowMenuProps } from "./TaskRowMenu";

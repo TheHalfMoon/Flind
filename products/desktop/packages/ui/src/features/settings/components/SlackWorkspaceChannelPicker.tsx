@@ -1,6 +1,6 @@
-import type { Integration } from "@posthog/core/integrations/selectors";
-import { SlackChannelCombobox } from "@posthog/ui/features/settings/components/SlackChannelCombobox";
-import { SlackWorkspaceSelect } from "@posthog/ui/features/settings/components/SlackWorkspaceSelect";
+import type { Integration } from "@flind/core/integrations/selectors";
+import { SlackChannelCombobox } from "@flind/ui/features/settings/components/SlackChannelCombobox";
+import { SlackWorkspaceSelect } from "@flind/ui/features/settings/components/SlackWorkspaceSelect";
 import { Flex } from "@radix-ui/themes";
 
 interface SlackWorkspaceChannelPickerProps {

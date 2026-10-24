@@ -1,7 +1,7 @@
 import { InfoIcon } from "@phosphor-icons/react";
 import { Input, Text } from "@flind/quill";
-import { DEV_CALLBACK_PORT } from "@posthog/shared";
-import { Tooltip } from "@posthog/ui/primitives/Tooltip";
+import { DEV_CALLBACK_PORT } from "@flind/shared";
+import { Tooltip } from "@flind/ui/primitives/Tooltip";
 import type { CustomCloudDraft } from "./useCustomCloud";
 
 // The app only listens on the HTTP callback in a development build; a packaged

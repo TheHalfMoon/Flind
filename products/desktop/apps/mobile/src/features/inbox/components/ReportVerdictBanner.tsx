@@ -2,8 +2,8 @@ import { Text } from "@components/text";
 import {
   deriveReportVerdict,
   type ReportVerdictTone,
-} from "@posthog/core/inbox/reportVerdict";
-import type { SignalReport } from "@posthog/shared/domain-types";
+} from "@flind/core/inbox/reportVerdict";
+import type { SignalReport } from "@flind/shared/domain-types";
 import { ArrowSquareOut, Play, Plus } from "phosphor-react-native";
 import { ActivityIndicator, Pressable, View } from "react-native";
 import { resolveReportVerdictAction } from "@/features/inbox/reportVerdictAction";

@@ -2,7 +2,7 @@ import {
   buildVideoDataUrl,
   isAllowedVideoMimeType,
   MAX_VIDEO_BASE64_LENGTH,
-} from "@posthog/shared";
+} from "@flind/shared";
 import { Flex, Text } from "@radix-ui/themes";
 import { useState } from "react";
 

@@ -1,7 +1,7 @@
-import type { Task } from "@posthog/shared/domain-types";
-import { useTaskStatusInput } from "@posthog/ui/features/canvas/hooks/useChannelTaskStatus";
-import { TaskStatusDot } from "@posthog/ui/features/sidebar/components/items/TaskStatusDot";
-import { taskDot } from "@posthog/ui/features/sidebar/components/items/taskStatusVocabulary";
+import type { Task } from "@flind/shared/domain-types";
+import { useTaskStatusInput } from "@flind/ui/features/canvas/hooks/useChannelTaskStatus";
+import { TaskStatusDot } from "@flind/ui/features/sidebar/components/items/TaskStatusDot";
+import { taskDot } from "@flind/ui/features/sidebar/components/items/taskStatusVocabulary";
 
 /**
  * A session tab wears the session list's status dot. Same vocabulary as the row

@@ -1,9 +1,9 @@
 import {
   buildCreateWorkspaceRequest,
   selectExistingWorkspace,
-} from "@posthog/core/workspace/ensureWorkspace";
-import { useHostTRPC } from "@posthog/host-router/react";
-import type { Workspace, WorkspaceMode } from "@posthog/shared";
+} from "@flind/core/workspace/ensureWorkspace";
+import { useHostTRPC } from "@flind/host-router/react";
+import type { Workspace, WorkspaceMode } from "@flind/shared";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useCallback } from "react";
 

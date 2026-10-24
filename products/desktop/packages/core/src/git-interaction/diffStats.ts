@@ -1,5 +1,5 @@
-import { isBinaryFile } from "@posthog/shared";
-import type { ChangedFile } from "@posthog/shared/domain-types";
+import { isBinaryFile } from "@flind/shared";
+import type { ChangedFile } from "@flind/shared/domain-types";
 
 export interface DiffStats {
   filesChanged: number;

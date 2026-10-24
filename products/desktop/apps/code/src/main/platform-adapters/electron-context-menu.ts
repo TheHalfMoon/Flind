@@ -3,7 +3,7 @@ import type {
   ContextMenuItem,
   IContextMenu,
   ShowContextMenuOptions,
-} from "@posthog/platform/context-menu";
+} from "@flind/platform/context-menu";
 import { Menu, type MenuItemConstructorOptions, nativeImage } from "electron";
 import { injectable } from "inversify";
 

@@ -5,19 +5,19 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@flind/quill";
-import type { InboxReportActionSurface } from "@posthog/shared/analytics-events";
+import type { InboxReportActionSurface } from "@flind/shared/analytics-events";
 import {
   type DismissalReasonOptionValue,
   isDismissalReasonSnooze,
-} from "@posthog/shared/dismissalReasons";
-import type { SignalReport } from "@posthog/shared/types";
+} from "@flind/shared/dismissalReasons";
+import type { SignalReport } from "@flind/shared/types";
 import {
   DismissReportDialog,
   type DismissReportDialogResult,
-} from "@posthog/ui/features/inbox/components/DismissReportDialog";
-import { useInboxBulkActions } from "@posthog/ui/features/inbox/hooks/useInboxBulkActions";
-import { useInboxReportActionDraftStore } from "@posthog/ui/features/inbox/stores/inboxReportActionDraftStore";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
+} from "@flind/ui/features/inbox/components/DismissReportDialog";
+import { useInboxBulkActions } from "@flind/ui/features/inbox/hooks/useInboxBulkActions";
+import { useInboxReportActionDraftStore } from "@flind/ui/features/inbox/stores/inboxReportActionDraftStore";
+import { Spinner } from "@flind/ui/primitives/Spinner";
 import {
   type ReactElement,
   useCallback,

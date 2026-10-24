@@ -1,4 +1,4 @@
-import type { SkillButtonId } from "@posthog/shared/analytics-events";
+import type { SkillButtonId } from "@flind/shared/analytics-events";
 
 export type { SkillButtonId };
 

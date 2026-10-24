@@ -7,7 +7,7 @@ import {
   formatModelId,
   isSelectGroup,
   selectOptionHarness,
-} from "@posthog/shared";
+} from "@flind/shared";
 
 type RawOptionItem = {
   value?: string;

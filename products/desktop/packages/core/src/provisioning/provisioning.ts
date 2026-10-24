@@ -1,4 +1,4 @@
-import { TypedEventEmitter } from "@posthog/shared";
+import { TypedEventEmitter } from "@flind/shared";
 import { injectable } from "inversify";
 
 export const ProvisioningEvent = {

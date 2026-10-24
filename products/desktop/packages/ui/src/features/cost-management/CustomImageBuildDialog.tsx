@@ -11,11 +11,11 @@ import {
 import {
   isImageBuildFailed,
   type SandboxCustomImage,
-} from "@posthog/shared/domain-types";
-import { BuildLogPane } from "@posthog/ui/features/settings/sections/environments/BuildLogPane";
-import { imageFailureDetail } from "@posthog/ui/features/settings/sections/environments/imageBuildWatcher";
-import { EnvironmentSetupFlow } from "@posthog/ui/features/settings/sections/environments/setup/EnvironmentSetupFlow";
-import { useSandboxCustomImageDetail } from "@posthog/ui/features/settings/sections/environments/useSandboxCustomImages";
+} from "@flind/shared/domain-types";
+import { BuildLogPane } from "@flind/ui/features/settings/sections/environments/BuildLogPane";
+import { imageFailureDetail } from "@flind/ui/features/settings/sections/environments/imageBuildWatcher";
+import { EnvironmentSetupFlow } from "@flind/ui/features/settings/sections/environments/setup/EnvironmentSetupFlow";
+import { useSandboxCustomImageDetail } from "@flind/ui/features/settings/sections/environments/useSandboxCustomImages";
 import { useState } from "react";
 
 interface CustomImageBuildDialogProps {

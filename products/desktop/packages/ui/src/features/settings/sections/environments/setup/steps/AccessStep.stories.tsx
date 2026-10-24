@@ -1,8 +1,8 @@
 import {
   type EnvironmentSetupPlan,
   emptyEnvironmentSetupPlan,
-} from "@posthog/core/settings/environmentSetup";
-import { AccessStep } from "@posthog/ui/features/settings/sections/environments/setup/steps/AccessStep";
+} from "@flind/core/settings/environmentSetup";
+import { AccessStep } from "@flind/ui/features/settings/sections/environments/setup/steps/AccessStep";
 import type { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
 

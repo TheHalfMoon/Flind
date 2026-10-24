@@ -1,14 +1,14 @@
-import { channelDisplayLabel } from "@posthog/core/canvas/channelName";
+import { channelDisplayLabel } from "@flind/core/canvas/channelName";
 import {
   formatBulkArchiveWarning,
   sessionsLabel,
-} from "@posthog/core/sidebar/selection";
+} from "@flind/core/sidebar/selection";
 import {
   CONTEXT_MENU_SERVICE,
   type ContextMenuItem,
   type IContextMenu,
-} from "@posthog/platform/context-menu";
-import { DIALOG_SERVICE, type IDialog } from "@posthog/platform/dialog";
+} from "@flind/platform/context-menu";
+import { DIALOG_SERVICE, type IDialog } from "@flind/platform/dialog";
 import { inject, injectable } from "inversify";
 import {
   CONTEXT_MENU_EXTERNAL_APPS_SERVICE,

@@ -1,8 +1,8 @@
 import {
   EXTERNAL_INBOX_SOURCE_BY_PRODUCT,
   type SourceProduct,
-} from "@posthog/shared";
-import type { Signal } from "@posthog/shared/domain-types";
+} from "@flind/shared";
+import type { Signal } from "@flind/shared/domain-types";
 import { differenceInHours, format, formatDistanceToNow } from "date-fns";
 
 const ERROR_TRACKING_TYPE_LABELS: Record<string, string> = {

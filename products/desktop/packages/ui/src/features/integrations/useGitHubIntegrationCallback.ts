@@ -1,7 +1,7 @@
-import { classifyGithubCallback } from "@posthog/core/integrations/connectEligibility";
-import type { IntegrationCallback } from "@posthog/core/integrations/github";
-import { useHostTRPCClient } from "@posthog/host-router/react";
-import { logger } from "@posthog/ui/shell/logger";
+import { classifyGithubCallback } from "@flind/core/integrations/connectEligibility";
+import type { IntegrationCallback } from "@flind/core/integrations/github";
+import { useHostTRPCClient } from "@flind/host-router/react";
+import { logger } from "@flind/ui/shell/logger";
 import { useEffect, useRef } from "react";
 
 const log = logger.scope("github-integration-callback-hook");

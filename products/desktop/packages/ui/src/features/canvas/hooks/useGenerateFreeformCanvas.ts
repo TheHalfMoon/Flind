@@ -1,23 +1,23 @@
 import type {
   CanvasApplicationService,
   CanvasGenerationGateway,
-} from "@posthog/core/canvas/canvasApplicationService";
-import { CANVAS_APPLICATION_SERVICE } from "@posthog/core/canvas/identifiers";
-import { useService } from "@posthog/di/react";
-import { useHostTRPC } from "@posthog/host-router/react";
-import type { Adapter, WorkspaceMode } from "@posthog/shared";
-import { useAuthStateValue } from "@posthog/ui/features/auth/store";
-import { useChannelTaskMutations } from "@posthog/ui/features/canvas/hooks/useChannelTasks";
-import { useDashboardMutations } from "@posthog/ui/features/canvas/hooks/useDashboards";
-import { useFolderInstructions } from "@posthog/ui/features/canvas/hooks/useFolderInstructions";
-import { useCanvasGenerationTrackerStore } from "@posthog/ui/features/canvas/stores/canvasGenerationTrackerStore";
-import { toastError } from "@posthog/ui/features/notifications/errorDetails";
-import { useCreateTask } from "@posthog/ui/features/tasks/useTaskCrudMutations";
-import { toast } from "@posthog/ui/primitives/toast";
+} from "@flind/core/canvas/canvasApplicationService";
+import { CANVAS_APPLICATION_SERVICE } from "@flind/core/canvas/identifiers";
+import { useService } from "@flind/di/react";
+import { useHostTRPC } from "@flind/host-router/react";
+import type { Adapter, WorkspaceMode } from "@flind/shared";
+import { useAuthStateValue } from "@flind/ui/features/auth/store";
+import { useChannelTaskMutations } from "@flind/ui/features/canvas/hooks/useChannelTasks";
+import { useDashboardMutations } from "@flind/ui/features/canvas/hooks/useDashboards";
+import { useFolderInstructions } from "@flind/ui/features/canvas/hooks/useFolderInstructions";
+import { useCanvasGenerationTrackerStore } from "@flind/ui/features/canvas/stores/canvasGenerationTrackerStore";
+import { toastError } from "@flind/ui/features/notifications/errorDetails";
+import { useCreateTask } from "@flind/ui/features/tasks/useTaskCrudMutations";
+import { toast } from "@flind/ui/primitives/toast";
 import { useQueryClient } from "@tanstack/react-query";
 import { useCallback, useState } from "react";
 
-// Thin mutation adapter over CanvasApplicationService (@posthog/core), which
+// Thin mutation adapter over CanvasApplicationService (@flind/core), which
 // owns the generation orchestration: model resolution, the skills-routing
 // prompt, task creation, channel filing, generation-task recording, and
 // auto-naming. This hook contributes only presentation state — the isStarting

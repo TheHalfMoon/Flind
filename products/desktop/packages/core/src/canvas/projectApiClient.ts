@@ -1,5 +1,5 @@
-import type { AuthService } from "@posthog/core/auth/auth";
-import { AUTH_SERVICE } from "@posthog/core/auth/auth.module";
+import type { AuthService } from "@flind/core/auth/auth";
+import { AUTH_SERVICE } from "@flind/core/auth/auth.module";
 import { inject, injectable } from "inversify";
 
 export const PROJECT_API_CLIENT = Symbol.for(

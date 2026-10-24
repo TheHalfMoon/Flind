@@ -1,5 +1,5 @@
 import { Text } from "@components/text";
-import type { SignalReport } from "@posthog/shared/domain-types";
+import type { SignalReport } from "@flind/shared/domain-types";
 import * as Haptics from "expo-haptics";
 import { ThumbsDown, ThumbsUp } from "phosphor-react-native";
 import { useCallback, useState } from "react";

@@ -1,5 +1,5 @@
-import type { IOAuthCallback } from "@posthog/core/mcp-servers/installFlow";
-import type { useHostTRPCClient } from "@posthog/host-router/react";
+import type { IOAuthCallback } from "@flind/core/mcp-servers/installFlow";
+import type { useHostTRPCClient } from "@flind/host-router/react";
 
 export const mcpKeys = {
   servers: ["mcp", "servers"] as const,

@@ -1,6 +1,6 @@
 import type { SessionConfigOption } from "@agentclientprotocol/sdk";
-import { isSelectGroup } from "@posthog/shared";
-import { accessFlagForModel } from "@posthog/shared/model-catalog";
+import { isSelectGroup } from "@flind/shared";
+import { accessFlagForModel } from "@flind/shared/model-catalog";
 
 /** Whether each model access flag is on for this person, keyed by flag. */
 export type ModelRolloutFlags = Record<string, boolean>;

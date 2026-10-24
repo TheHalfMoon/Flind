@@ -1,6 +1,6 @@
-import { GITHUB_CONNECTION_REQUIRED_MESSAGE } from "@posthog/core/integrations/connectErrors";
-import { getTaskRepository } from "@posthog/shared";
-import type { Task } from "@posthog/shared/domain-types";
+import { GITHUB_CONNECTION_REQUIRED_MESSAGE } from "@flind/core/integrations/connectErrors";
+import { getTaskRepository } from "@flind/shared";
+import type { Task } from "@flind/shared/domain-types";
 import { Box, Flex } from "@radix-ui/themes";
 import { useCallback, useEffect, useState } from "react";
 import { BackgroundWrapper } from "../../../primitives/BackgroundWrapper";

@@ -1,21 +1,21 @@
-import { inboxReportKeys } from "@posthog/core/inbox/inboxQuery";
-import { deriveReportImplementationState } from "@posthog/core/inbox/reportImplementation";
+import { inboxReportKeys } from "@flind/core/inbox/inboxQuery";
+import { deriveReportImplementationState } from "@flind/core/inbox/reportImplementation";
 import { Button } from "@flind/quill";
-import type { SignalReport } from "@posthog/shared/types";
+import type { SignalReport } from "@flind/shared/types";
 import {
   ANONYMOUS_AUTH_STATE,
   useAuthStore,
-} from "@posthog/ui/features/auth/store";
-import { authKeys } from "@posthog/ui/features/auth/useCurrentUser";
-import { InboxFilterMenu } from "@posthog/ui/features/inbox/components/InboxFilterMenu";
-import { InboxPanePresentation } from "@posthog/ui/features/inbox/components/InboxPanePresentation";
-import { InboxPaneRow } from "@posthog/ui/features/inbox/components/InboxPaneRow";
+} from "@flind/ui/features/auth/store";
+import { authKeys } from "@flind/ui/features/auth/useCurrentUser";
+import { InboxFilterMenu } from "@flind/ui/features/inbox/components/InboxFilterMenu";
+import { InboxPanePresentation } from "@flind/ui/features/inbox/components/InboxPanePresentation";
+import { InboxPaneRow } from "@flind/ui/features/inbox/components/InboxPaneRow";
 import {
   inboxStoryImplementations,
   inboxStoryReport,
-} from "@posthog/ui/features/inbox/components/inboxStoryFixtures";
-import { useInboxReportReadStore } from "@posthog/ui/features/inbox/stores/inboxReportReadStore";
-import { CHANNELS_SIDEBAR_MIN_WIDTH } from "@posthog/ui/features/sidebar/constants";
+} from "@flind/ui/features/inbox/components/inboxStoryFixtures";
+import { useInboxReportReadStore } from "@flind/ui/features/inbox/stores/inboxReportReadStore";
+import { CHANNELS_SIDEBAR_MIN_WIDTH } from "@flind/ui/features/sidebar/constants";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useQueryClient } from "@tanstack/react-query";
 import { type ReactNode, useEffect, useState } from "react";

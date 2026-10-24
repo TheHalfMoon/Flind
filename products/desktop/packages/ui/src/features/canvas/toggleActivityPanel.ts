@@ -1,7 +1,7 @@
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
-import { useCurrentChannelStore } from "@posthog/ui/features/canvas/stores/currentChannelStore";
-import { useThreadPanelStore } from "@posthog/ui/features/canvas/stores/threadPanelStore";
-import { track } from "@posthog/ui/shell/analytics";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
+import { useCurrentChannelStore } from "@flind/ui/features/canvas/stores/currentChannelStore";
+import { useThreadPanelStore } from "@flind/ui/features/canvas/stores/threadPanelStore";
+import { track } from "@flind/ui/shell/analytics";
 
 /**
  * Toggle the activity panel from the global shortcut. Reads the open thread

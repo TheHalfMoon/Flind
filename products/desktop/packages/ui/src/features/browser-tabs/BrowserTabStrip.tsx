@@ -1,6 +1,6 @@
 import { MagnifyingGlassIcon, PlusIcon } from "@phosphor-icons/react";
-import { humanizeReportTitle } from "@posthog/core/inbox/reportPresentation";
-import { useService } from "@posthog/di/react";
+import { humanizeReportTitle } from "@flind/core/inbox/reportPresentation";
+import { useService } from "@flind/di/react";
 import {
   type BrowserTab,
   closeTab as closeTabLocal,
@@ -15,57 +15,57 @@ import {
   type TabIdentity,
   type TabsSnapshot,
   type TabViewState,
-} from "@posthog/shared";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
-import { channelSectionFor } from "@posthog/ui/features/canvas/channelSections";
-import { iconForTemplate } from "@posthog/ui/features/canvas/components/canvasTemplateIcon";
-import { channelGlyph } from "@posthog/ui/features/canvas/components/channelGlyph";
-import { useChannels } from "@posthog/ui/features/canvas/hooks/useChannels";
-import { useChannelsLayout } from "@posthog/ui/features/canvas/hooks/useChannelsLayout";
+} from "@flind/shared";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
+import { channelSectionFor } from "@flind/ui/features/canvas/channelSections";
+import { iconForTemplate } from "@flind/ui/features/canvas/components/canvasTemplateIcon";
+import { channelGlyph } from "@flind/ui/features/canvas/components/channelGlyph";
+import { useChannels } from "@flind/ui/features/canvas/hooks/useChannels";
+import { useChannelsLayout } from "@flind/ui/features/canvas/hooks/useChannelsLayout";
 import {
   useDashboard,
   useDashboards,
-} from "@posthog/ui/features/canvas/hooks/useDashboards";
-import { useProjectTaskFeeds } from "@posthog/ui/features/canvas/hooks/useProjectTaskFeeds";
-import { useRailPane } from "@posthog/ui/features/canvas/hooks/useRailSurface";
-import { useSelectedCanvasId } from "@posthog/ui/features/canvas/hooks/useSelectedCanvasId";
-import { useWorkLayout } from "@posthog/ui/features/canvas/hooks/useWorkLayout";
-import { isRestorableVisitHref } from "@posthog/ui/features/canvas/railPane";
+} from "@flind/ui/features/canvas/hooks/useDashboards";
+import { useProjectTaskFeeds } from "@flind/ui/features/canvas/hooks/useProjectTaskFeeds";
+import { useRailPane } from "@flind/ui/features/canvas/hooks/useRailSurface";
+import { useSelectedCanvasId } from "@flind/ui/features/canvas/hooks/useSelectedCanvasId";
+import { useWorkLayout } from "@flind/ui/features/canvas/hooks/useWorkLayout";
+import { isRestorableVisitHref } from "@flind/ui/features/canvas/railPane";
 import {
   activityReportIdFromHref,
   useActivitySelection,
-} from "@posthog/ui/features/canvas/stores/activityDetailStore";
+} from "@flind/ui/features/canvas/stores/activityDetailStore";
 import {
   applyTabViewState,
   useChannelPaneStore,
-} from "@posthog/ui/features/canvas/stores/channelPaneStore";
-import { useCurrentChannelStore } from "@posthog/ui/features/canvas/stores/currentChannelStore";
-import { feedIdFromHref } from "@posthog/ui/features/canvas/stores/taskFeedSelectionStore";
-import { SHORTCUTS } from "@posthog/ui/features/command/keyboard-shortcuts";
-import { useInboxReportById } from "@posthog/ui/features/inbox/hooks/useInboxReports";
-import { useDraftStore } from "@posthog/ui/features/message-editor/draftStore";
-import { useTabSession } from "@posthog/ui/features/navigation/useActiveSession";
-import { usePanelLayoutStore } from "@posthog/ui/features/panels/panelLayoutStore";
-import { getLeafPanel } from "@posthog/ui/features/panels/panelStoreHelpers";
-import { useTileLayoutStore } from "@posthog/ui/features/tab-tiling/tileLayoutStore";
+} from "@flind/ui/features/canvas/stores/channelPaneStore";
+import { useCurrentChannelStore } from "@flind/ui/features/canvas/stores/currentChannelStore";
+import { feedIdFromHref } from "@flind/ui/features/canvas/stores/taskFeedSelectionStore";
+import { SHORTCUTS } from "@flind/ui/features/command/keyboard-shortcuts";
+import { useInboxReportById } from "@flind/ui/features/inbox/hooks/useInboxReports";
+import { useDraftStore } from "@flind/ui/features/message-editor/draftStore";
+import { useTabSession } from "@flind/ui/features/navigation/useActiveSession";
+import { usePanelLayoutStore } from "@flind/ui/features/panels/panelLayoutStore";
+import { getLeafPanel } from "@flind/ui/features/panels/panelStoreHelpers";
+import { useTileLayoutStore } from "@flind/ui/features/tab-tiling/tileLayoutStore";
 import {
   focusedTabIn,
   groupForTab,
   lastActiveIn,
   tabIdsIn,
   untileTab,
-} from "@posthog/ui/features/tab-tiling/tileTree";
-import { useFocusTab } from "@posthog/ui/features/tab-tiling/useFocusTab";
-import { getTaskInputSessionId } from "@posthog/ui/features/task-detail/taskInputSession";
-import { taskDetailQuery } from "@posthog/ui/features/tasks/queries";
-import { useTasks } from "@posthog/ui/features/tasks/useTasks";
+} from "@flind/ui/features/tab-tiling/tileTree";
+import { useFocusTab } from "@flind/ui/features/tab-tiling/useFocusTab";
+import { getTaskInputSessionId } from "@flind/ui/features/task-detail/taskInputSession";
+import { taskDetailQuery } from "@flind/ui/features/tasks/queries";
+import { useTasks } from "@flind/ui/features/tasks/useTasks";
 import {
   hrefPath,
   reportIdFromHref,
-} from "@posthog/ui/router/reportNavigation";
-import { useAppView } from "@posthog/ui/router/useAppView";
-import { track } from "@posthog/ui/shell/analytics";
-import { isMac } from "@posthog/ui/utils/platform";
+} from "@flind/ui/router/reportNavigation";
+import { useAppView } from "@flind/ui/router/useAppView";
+import { track } from "@flind/ui/shell/analytics";
+import { isMac } from "@flind/ui/utils/platform";
 import { useQuery } from "@tanstack/react-query";
 import {
   useNavigate,

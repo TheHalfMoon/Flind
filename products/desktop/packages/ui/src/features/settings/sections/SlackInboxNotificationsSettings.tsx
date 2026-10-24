@@ -2,17 +2,17 @@ import { SlackLogoIcon } from "@phosphor-icons/react";
 import {
   deriveEffectiveIntegrationId,
   getSlackIntegrationLabel,
-} from "@posthog/core/settings/slackNotificationTarget";
-import { useSignalSourceManager } from "@posthog/ui/features/inbox/hooks/useSignalSourceManager";
-import { useIntegrationSelectors } from "@posthog/ui/features/integrations/store";
+} from "@flind/core/settings/slackNotificationTarget";
+import { useSignalSourceManager } from "@flind/ui/features/inbox/hooks/useSignalSourceManager";
+import { useIntegrationSelectors } from "@flind/ui/features/integrations/store";
 import {
   SettingsCard,
   SettingsCardRow,
-} from "@posthog/ui/features/settings/components/SettingsCard";
-import { SettingsOptionSelect } from "@posthog/ui/features/settings/SettingsOptionSelect";
-import { SignalDefaultChannelSettings } from "@posthog/ui/features/settings/sections/SignalDefaultChannelSettings";
-import { SignalSlackNotificationsSettings } from "@posthog/ui/features/settings/sections/SignalSlackNotificationsSettings";
-import { SlackWorkspaceConnectionBlock } from "@posthog/ui/features/settings/sections/SlackWorkspaceConnection";
+} from "@flind/ui/features/settings/components/SettingsCard";
+import { SettingsOptionSelect } from "@flind/ui/features/settings/SettingsOptionSelect";
+import { SignalDefaultChannelSettings } from "@flind/ui/features/settings/sections/SignalDefaultChannelSettings";
+import { SignalSlackNotificationsSettings } from "@flind/ui/features/settings/sections/SignalSlackNotificationsSettings";
+import { SlackWorkspaceConnectionBlock } from "@flind/ui/features/settings/sections/SlackWorkspaceConnection";
 import { useMemo } from "react";
 
 interface SlackInboxNotificationsSettingsProps {

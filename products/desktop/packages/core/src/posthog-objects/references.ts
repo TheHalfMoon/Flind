@@ -2,12 +2,12 @@ import {
   buildObjectTagRef,
   parseObjectTagAttrs,
   resolveObjectKindName,
-} from "@posthog/core/inbox/objectTags";
+} from "@flind/core/inbox/objectTags";
 import {
   objectUrlLabel,
   type PostHogLinkContext,
   parsePostHogObjectUrl,
-} from "@posthog/core/posthog-objects/objectUrls";
+} from "@flind/core/posthog-objects/objectUrls";
 
 // Opening tags and closing tags are matched separately so an unmatched opener
 // costs one regex step instead of a lazy scan to the end of the message; the

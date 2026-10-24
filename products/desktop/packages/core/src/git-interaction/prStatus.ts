@@ -1,4 +1,4 @@
-import type { PrActionType, PrCheck } from "@posthog/shared";
+import type { PrActionType, PrCheck } from "@flind/shared";
 
 export type PrVisualIcon = "merged" | "pull-request";
 

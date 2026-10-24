@@ -1,4 +1,4 @@
-import { compactHomePath } from "@posthog/shared";
+import { compactHomePath } from "@flind/shared";
 import { Box, Flex, Text } from "@radix-ui/themes";
 import { useCallback, useEffect, useRef } from "react";
 import { isCancelOption, isSubmitOption } from "./constants";

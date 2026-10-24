@@ -1,5 +1,5 @@
 import { WarningCircleIcon } from "@phosphor-icons/react";
-import type { ContextWikiHealthFinding } from "@posthog/api-client/posthog-client";
+import type { ContextWikiHealthFinding } from "@flind/api-client/posthog-client";
 import {
   Button,
   Empty,
@@ -10,7 +10,7 @@ import {
   Heading,
   Text,
 } from "@flind/quill";
-import { LoadingState } from "@posthog/ui/primitives/LoadingState";
+import { LoadingState } from "@flind/ui/primitives/LoadingState";
 import { useMemo } from "react";
 import { useContextWikiHealthReport } from "../hooks/useContextWiki";
 

@@ -1,4 +1,4 @@
-import { hoggiePng } from "@posthog/shared/hoggies";
+import { hoggiePng } from "@flind/shared/hoggies";
 import { useEffect, useMemo, useState } from "react";
 import { BAND_COLORS, hoggieCatalog } from "./hoggies";
 import { type EditableItem, kindDefaultHedgehog } from "./items";

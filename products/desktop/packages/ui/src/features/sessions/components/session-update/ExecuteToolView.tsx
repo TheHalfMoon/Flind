@@ -1,6 +1,6 @@
 import { Terminal } from "@phosphor-icons/react";
-import { compactHomePath } from "@posthog/shared";
-import { Tooltip } from "@posthog/ui/primitives/Tooltip";
+import { compactHomePath } from "@flind/shared";
+import { Tooltip } from "@flind/ui/primitives/Tooltip";
 import { ToolRow } from "./ToolRow";
 import {
   ContentPre,

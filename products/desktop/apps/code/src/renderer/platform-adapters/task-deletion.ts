@@ -4,11 +4,11 @@ import type {
   TaskDeletionFocusSession,
   TaskDeletionView,
   TaskWorkspace,
-} from "@posthog/core/tasks/identifiers";
-import { useFocusStore } from "@posthog/ui/features/focus/focusStore";
-import { pinnedTasksApi } from "@posthog/ui/features/sidebar/taskMetaApi";
-import { getAppViewSnapshot } from "@posthog/ui/router/useAppView";
-import { openTaskInput } from "@posthog/ui/router/useOpenTask";
+} from "@flind/core/tasks/identifiers";
+import { useFocusStore } from "@flind/ui/features/focus/focusStore";
+import { pinnedTasksApi } from "@flind/ui/features/sidebar/taskMetaApi";
+import { getAppViewSnapshot } from "@flind/ui/router/useAppView";
+import { openTaskInput } from "@flind/ui/router/useOpenTask";
 import { trpcClient } from "@renderer/trpc/client";
 
 export const taskDeletionWorkspaceClient: ITaskDeletionWorkspaceClient = {

@@ -7,7 +7,7 @@ import {
   Laptop as LaptopIcon,
   MagnifyingGlass,
 } from "@phosphor-icons/react";
-import type { RestoreOutcome } from "@posthog/core/archive/archivedTasksController";
+import type { RestoreOutcome } from "@flind/core/archive/archivedTasksController";
 import {
   type ArchivedTaskWithDetails,
   deriveUniqueRepos,
@@ -16,12 +16,12 @@ import {
   type ArchiveSortColumn as SortColumn,
   type ArchiveSortState as SortState,
   withRepoNames,
-} from "@posthog/core/archive/archiveListView";
-import { useHostTRPC } from "@posthog/host-router/react";
-import type { WorkspaceMode } from "@posthog/shared";
-import { taskDetailQuery } from "@posthog/ui/features/tasks/queries";
-import { LoadingState } from "@posthog/ui/primitives/LoadingState";
-import { openTask } from "@posthog/ui/router/useOpenTask";
+} from "@flind/core/archive/archiveListView";
+import { useHostTRPC } from "@flind/host-router/react";
+import type { WorkspaceMode } from "@flind/shared";
+import { taskDetailQuery } from "@flind/ui/features/tasks/queries";
+import { LoadingState } from "@flind/ui/primitives/LoadingState";
+import { openTask } from "@flind/ui/router/useOpenTask";
 import {
   AlertDialog,
   Box,

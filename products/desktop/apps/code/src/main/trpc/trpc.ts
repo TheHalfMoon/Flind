@@ -2,7 +2,7 @@ import {
   publicProcedure as baseProcedure,
   router as baseRouter,
   middleware,
-} from "@posthog/host-trpc/trpc";
+} from "@flind/host-trpc/trpc";
 import log from "electron-log/main";
 
 const CALL_RATE_WINDOW_MS = 2000;

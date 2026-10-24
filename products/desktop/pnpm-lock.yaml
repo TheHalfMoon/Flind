@@ -115,7 +115,7 @@ importers:
       '@biomejs/biome':
         specifier: 2.2.4
         version: 2.2.4
-      '@posthog/shared':
+      '@flind/shared':
         specifier: workspace:*
         version: link:packages/shared
       fflate:
@@ -160,16 +160,16 @@ importers:
       '@flind/agent':
         specifier: link:../../../../packages/agent/packages/agent
         version: link:../../../../packages/agent/packages/agent
-      '@posthog/api-client':
+      '@flind/api-client':
         specifier: workspace:*
         version: link:../../packages/api-client
-      '@posthog/core':
+      '@flind/core':
         specifier: workspace:*
         version: link:../../packages/core
-      '@posthog/di':
+      '@flind/di':
         specifier: workspace:*
         version: link:../../packages/di
-      '@posthog/electron-trpc':
+      '@flind/electron-trpc':
         specifier: workspace:*
         version: link:../../packages/electron-trpc
       '@flind/enricher':
@@ -181,28 +181,28 @@ importers:
       '@posthog/hedgehog-mode':
         specifier: ^0.0.53
         version: 0.0.53(prop-types@15.8.1)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
-      '@posthog/host-router':
+      '@flind/host-router':
         specifier: workspace:*
         version: link:../../packages/host-router
-      '@posthog/host-trpc':
+      '@flind/host-trpc':
         specifier: workspace:*
         version: link:../../packages/host-trpc
-      '@posthog/platform':
+      '@flind/platform':
         specifier: workspace:*
         version: link:../../packages/platform
       '@flind/quill':
         specifier: 'catalog:'
         version: 0.3.0-beta.29(@base-ui/react@1.3.0(@types/react@19.2.17)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(tailwindcss@4.3.1)
-      '@posthog/shared':
+      '@flind/shared':
         specifier: workspace:*
         version: link:../../packages/shared
-      '@posthog/ui':
+      '@flind/ui':
         specifier: workspace:*
         version: link:../../packages/ui
-      '@posthog/workspace-client':
+      '@flind/workspace-client':
         specifier: workspace:*
         version: link:../../packages/workspace-client
-      '@posthog/workspace-server':
+      '@flind/workspace-server':
         specifier: workspace:*
         version: link:../../packages/workspace-server
       '@radix-ui/themes':
@@ -428,16 +428,16 @@ importers:
       '@modelcontextprotocol/sdk':
         specifier: ^1.29.0
         version: 1.29.0(supports-color@8.1.1)(zod@4.4.3)
-      '@posthog/api-client':
+      '@flind/api-client':
         specifier: workspace:*
         version: link:../../packages/api-client
-      '@posthog/core':
+      '@flind/core':
         specifier: workspace:*
         version: link:../../packages/core
       '@posthog/react-native-plugin':
         specifier: ^2.12.6
         version: 2.12.6(react-native@0.86.0(@babel/core@7.29.0(supports-color@8.1.1))(@react-native/metro-config@0.86.0(@babel/core@7.29.0(supports-color@8.1.1))(supports-color@8.1.1))(@types/react@19.2.17)(react@19.2.6)(supports-color@8.1.1))(react@19.2.6)
-      '@posthog/shared':
+      '@flind/shared':
         specifier: workspace:*
         version: link:../../packages/shared
       '@react-native-async-storage/async-storage':
@@ -630,16 +630,16 @@ importers:
       '@modelcontextprotocol/sdk':
         specifier: ^1.29.0
         version: 1.29.0(supports-color@8.1.1)(zod@4.4.3)
-      '@posthog/api-client':
+      '@flind/api-client':
         specifier: workspace:*
         version: link:../../packages/api-client
       '@posthog/brand':
         specifier: 'catalog:'
         version: 0.11.0(react@19.2.6)
-      '@posthog/core':
+      '@flind/core':
         specifier: workspace:*
         version: link:../../packages/core
-      '@posthog/shared':
+      '@flind/shared':
         specifier: workspace:*
         version: link:../../packages/shared
       '@shopify/flash-list':
@@ -790,34 +790,34 @@ importers:
       '@flind/agent':
         specifier: link:../../../../packages/agent/packages/agent
         version: link:../../../../packages/agent/packages/agent
-      '@posthog/api-client':
+      '@flind/api-client':
         specifier: workspace:*
         version: link:../../packages/api-client
-      '@posthog/core':
+      '@flind/core':
         specifier: workspace:*
         version: link:../../packages/core
-      '@posthog/di':
+      '@flind/di':
         specifier: workspace:*
         version: link:../../packages/di
       '@flind/harness':
         specifier: link:../../../../packages/agent/packages/harness
         version: link:../../../../packages/agent/packages/harness
-      '@posthog/host-router':
+      '@flind/host-router':
         specifier: workspace:*
         version: link:../../packages/host-router
-      '@posthog/host-trpc':
+      '@flind/host-trpc':
         specifier: workspace:*
         version: link:../../packages/host-trpc
-      '@posthog/platform':
+      '@flind/platform':
         specifier: workspace:*
         version: link:../../packages/platform
-      '@posthog/shared':
+      '@flind/shared':
         specifier: workspace:*
         version: link:../../packages/shared
-      '@posthog/ui':
+      '@flind/ui':
         specifier: workspace:*
         version: link:../../packages/ui
-      '@posthog/workspace-client':
+      '@flind/workspace-client':
         specifier: workspace:*
         version: link:../../packages/workspace-client
       '@tanstack/react-query':
@@ -884,14 +884,14 @@ importers:
 
   packages/api-client:
     dependencies:
-      '@posthog/shared':
+      '@flind/shared':
         specifier: workspace:*
         version: link:../shared
       zod:
         specifier: 4.4.3
         version: 4.4.3
     devDependencies:
-      '@posthog/tsconfig':
+      '@flind/tsconfig':
         specifier: workspace:*
         version: link:../../tooling/typescript
       prettier:
@@ -927,19 +927,19 @@ importers:
       '@flind/agent':
         specifier: link:../../../../packages/agent/packages/agent
         version: link:../../../../packages/agent/packages/agent
-      '@posthog/api-client':
+      '@flind/api-client':
         specifier: workspace:*
         version: link:../api-client
-      '@posthog/di':
+      '@flind/di':
         specifier: workspace:*
         version: link:../di
-      '@posthog/platform':
+      '@flind/platform':
         specifier: workspace:*
         version: link:../platform
-      '@posthog/shared':
+      '@flind/shared':
         specifier: workspace:*
         version: link:../shared
-      '@posthog/workspace-client':
+      '@flind/workspace-client':
         specifier: workspace:*
         version: link:../workspace-client
       '@tanstack/react-query':
@@ -967,7 +967,7 @@ importers:
         specifier: ^4.5.0
         version: 4.5.7(@types/react@19.2.17)(immer@11.1.3)(react@19.2.6)
     devDependencies:
-      '@posthog/tsconfig':
+      '@flind/tsconfig':
         specifier: workspace:*
         version: link:../../tooling/typescript
       typescript:
@@ -983,7 +983,7 @@ importers:
         specifier: 'catalog:'
         version: 7.11.0(reflect-metadata@0.2.2)
     devDependencies:
-      '@posthog/tsconfig':
+      '@flind/tsconfig':
         specifier: workspace:*
         version: link:../../tooling/typescript
       '@types/react':
@@ -1040,22 +1040,22 @@ importers:
       '@flind/agent':
         specifier: link:../../../../packages/agent/packages/agent
         version: link:../../../../packages/agent/packages/agent
-      '@posthog/core':
+      '@flind/core':
         specifier: workspace:*
         version: link:../core
-      '@posthog/host-trpc':
+      '@flind/host-trpc':
         specifier: workspace:*
         version: link:../host-trpc
-      '@posthog/platform':
+      '@flind/platform':
         specifier: workspace:*
         version: link:../platform
-      '@posthog/shared':
+      '@flind/shared':
         specifier: workspace:*
         version: link:../shared
-      '@posthog/workspace-client':
+      '@flind/workspace-client':
         specifier: workspace:*
         version: link:../workspace-client
-      '@posthog/workspace-server':
+      '@flind/workspace-server':
         specifier: workspace:*
         version: link:../workspace-server
       '@trpc/client':
@@ -1068,7 +1068,7 @@ importers:
         specifier: 4.4.3
         version: 4.4.3
     devDependencies:
-      '@posthog/tsconfig':
+      '@flind/tsconfig':
         specifier: workspace:*
         version: link:../../tooling/typescript
       '@tanstack/react-query':
@@ -1099,7 +1099,7 @@ importers:
         specifier: 'catalog:'
         version: 2.2.6
     devDependencies:
-      '@posthog/tsconfig':
+      '@flind/tsconfig':
         specifier: workspace:*
         version: link:../../tooling/typescript
       inversify:
@@ -1253,31 +1253,31 @@ importers:
       '@flind/agent':
         specifier: link:../../../../packages/agent/packages/agent
         version: link:../../../../packages/agent/packages/agent
-      '@posthog/api-client':
+      '@flind/api-client':
         specifier: workspace:*
         version: link:../api-client
-      '@posthog/core':
+      '@flind/core':
         specifier: workspace:*
         version: link:../core
-      '@posthog/di':
+      '@flind/di':
         specifier: workspace:*
         version: link:../di
       '@flind/git':
         specifier: link:../../../../packages/agent/packages/git
         version: link:../../../../packages/agent/packages/git
-      '@posthog/host-router':
+      '@flind/host-router':
         specifier: workspace:*
         version: link:../host-router
-      '@posthog/platform':
+      '@flind/platform':
         specifier: workspace:*
         version: link:../platform
       '@flind/quill-charts':
         specifier: 0.3.0-beta.29
         version: 0.3.0-beta.29(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
-      '@posthog/shared':
+      '@flind/shared':
         specifier: workspace:*
         version: link:../shared
-      '@posthog/workspace-client':
+      '@flind/workspace-client':
         specifier: workspace:*
         version: link:../workspace-client
       '@radix-ui/react-collapsible':
@@ -1437,7 +1437,7 @@ importers:
       '@flind/quill':
         specifier: 'catalog:'
         version: 0.3.0-beta.29(@base-ui/react@1.3.0(@types/react@19.2.17)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(tailwindcss@4.2.2)
-      '@posthog/tsconfig':
+      '@flind/tsconfig':
         specifier: workspace:*
         version: link:../../tooling/typescript
       '@radix-ui/themes':
@@ -1513,10 +1513,10 @@ importers:
         specifier: 'catalog:'
         version: 2.2.6
     devDependencies:
-      '@posthog/tsconfig':
+      '@flind/tsconfig':
         specifier: workspace:*
         version: link:../../tooling/typescript
-      '@posthog/workspace-server':
+      '@flind/workspace-server':
         specifier: workspace:*
         version: link:../workspace-server
       '@tanstack/react-query':
@@ -1564,7 +1564,7 @@ importers:
       '@flind/agent':
         specifier: link:../../../../packages/agent/packages/agent
         version: link:../../../../packages/agent/packages/agent
-      '@posthog/di':
+      '@flind/di':
         specifier: workspace:*
         version: link:../di
       '@flind/enricher':
@@ -1576,10 +1576,10 @@ importers:
       '@flind/harness':
         specifier: link:../../../../packages/agent/packages/harness
         version: link:../../../../packages/agent/packages/harness
-      '@posthog/platform':
+      '@flind/platform':
         specifier: workspace:*
         version: link:../platform
-      '@posthog/shared':
+      '@flind/shared':
         specifier: workspace:*
         version: link:../shared
       '@trpc/server':
@@ -1622,7 +1622,7 @@ importers:
       '@inversifyjs/strongly-typed':
         specifier: 2.2.0
         version: 2.2.0(inversify@7.11.0(reflect-metadata@0.2.2))
-      '@posthog/tsconfig':
+      '@flind/tsconfig':
         specifier: workspace:*
         version: link:../../tooling/typescript
       '@types/better-sqlite3':
@@ -1663,7 +1663,7 @@ importers:
       '@posthog/brand':
         specifier: 'catalog:'
         version: 0.11.0(react@19.2.6)
-      '@posthog/shared':
+      '@flind/shared':
         specifier: workspace:*
         version: link:../../packages/shared
       posthog-js:
@@ -21064,7 +21064,7 @@ snapshots:
 
   '@posthog/browser-common@0.9.11':
     dependencies:
-      '@posthog/core': 1.60.1
+      '@flind/core': 1.60.1
       '@posthog/types': 1.416.0
       preact: 10.29.8
     transitivePeerDependencies:
@@ -30749,7 +30749,7 @@ snapshots:
   posthog-js@1.438.21(@types/react@19.2.17)(react@19.2.6):
     dependencies:
       '@posthog/browser-common': 0.9.11
-      '@posthog/core': 1.60.1
+      '@flind/core': 1.60.1
       '@posthog/types': 1.416.0
       core-js: 3.50.0
       dompurify: 3.4.13
@@ -30766,14 +30766,14 @@ snapshots:
 
   posthog-node@5.57.0(@opentelemetry/api@1.9.1)(rxjs@7.8.2):
     dependencies:
-      '@posthog/core': 1.60.0
+      '@flind/core': 1.60.0
     optionalDependencies:
       '@opentelemetry/api': 1.9.1
       rxjs: 7.8.2
 
   posthog-react-native@4.83.0(7f9b9eac940620dd64b56959abca1524):
     dependencies:
-      '@posthog/core': 1.60.1
+      '@flind/core': 1.60.1
       '@posthog/types': 1.416.0
     optionalDependencies:
       '@posthog/react-native-plugin': 2.12.6(react-native@0.86.0(@babel/core@7.29.0(supports-color@8.1.1))(@react-native/metro-config@0.86.0(@babel/core@7.29.0(supports-color@8.1.1))(supports-color@8.1.1))(@types/react@19.2.17)(react@19.2.6)(supports-color@8.1.1))(react@19.2.6)

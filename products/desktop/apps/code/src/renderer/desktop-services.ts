@@ -1,22 +1,22 @@
-import { codexCloudAccountModule } from "@posthog/core/integrations/codexCloudAccount.module";
+import { codexCloudAccountModule } from "@flind/core/integrations/codexCloudAccount.module";
 import {
   CODEX_CLOUD_ACCOUNT_HOST,
   type CodexCloudAccountHost,
-} from "@posthog/core/integrations/codexCloudAccountService";
-import { SETTINGS_BACKUP_FILES } from "@posthog/platform/settings-backup-files";
-import { CLAUDE_SUBSCRIPTION_TOKEN_SETTINGS } from "@posthog/ui/features/settings/claudeSubscriptionTokenSettings";
+} from "@flind/core/integrations/codexCloudAccountService";
+import { SETTINGS_BACKUP_FILES } from "@flind/platform/settings-backup-files";
+import { CLAUDE_SUBSCRIPTION_TOKEN_SETTINGS } from "@flind/ui/features/settings/claudeSubscriptionTokenSettings";
 // Desktop host service bindings live here as features move into packages.
 // Importing the renderer container performs today's existing bindings.
 import "@renderer/di/container";
 import {
   setPosthogApiClientAppVersion,
   setPosthogApiClientLogger,
-} from "@posthog/api-client/posthog-client";
-import { archiveModule } from "@posthog/core/archive/archive.module";
+} from "@flind/api-client/posthog-client";
+import { archiveModule } from "@flind/core/archive/archive.module";
 import {
   ARCHIVE_CLIENT,
   type ArchiveClient,
-} from "@posthog/core/archive/identifiers";
+} from "@flind/core/archive/identifiers";
 import {
   AUTORESEARCH_GATE,
   AUTORESEARCH_SESSION_CLIENT,
@@ -24,76 +24,76 @@ import {
   type AutoresearchGate,
   type AutoresearchSessionClient,
   type AutoresearchStorageClient,
-} from "@posthog/core/autoresearch/identifiers";
+} from "@flind/core/autoresearch/identifiers";
 import {
   LINEAR_OAUTH_FLOW,
   type LinearOAuthFlow,
   REPORT_MODEL_RESOLVER,
   type ReportModelResolver,
-} from "@posthog/core/inbox/identifiers";
-import { selectModelFromOptions } from "@posthog/core/inbox/reportTaskCreation";
+} from "@flind/core/inbox/identifiers";
+import { selectModelFromOptions } from "@flind/core/inbox/reportTaskCreation";
 import {
   GITHUB_CONNECT_CLIENT as INTEGRATIONS_GITHUB_CONNECT_CLIENT,
   type GithubConnectClient as IntegrationsGithubConnectClient,
   REPOSITORIES_CLIENT,
   REPOSITORIES_SERVICE,
   type RepositoriesClient,
-} from "@posthog/core/integrations/identifiers";
-import { RepositoriesService } from "@posthog/core/integrations/repositoriesService";
+} from "@flind/core/integrations/identifiers";
+import { RepositoriesService } from "@flind/core/integrations/repositoriesService";
 import {
   GITHUB_CONNECT_CLIENT,
   type GithubConnectClient,
-} from "@posthog/core/onboarding/identifiers";
+} from "@flind/core/onboarding/identifiers";
 import {
   SESSION_SERVICE,
   type SessionService,
-} from "@posthog/core/sessions/sessionService";
-import { SETUP_STORE } from "@posthog/core/setup/identifiers";
+} from "@flind/core/sessions/sessionService";
+import { SETUP_STORE } from "@flind/core/setup/identifiers";
 import {
   SPEECH_SETTINGS_PROVIDER,
   SPEECH_USER_NAME_PROVIDER,
   type SpeechSettingsProvider,
   type UserNameProvider,
-} from "@posthog/core/speech/identifiers";
-import { resolveService } from "@posthog/di/container";
-import { ROOT_LOGGER, type RootLogger } from "@posthog/di/logger";
-import { DISK_CACHE_IMAGES } from "@posthog/platform/disk-cache";
+} from "@flind/core/speech/identifiers";
+import { resolveService } from "@flind/di/container";
+import { ROOT_LOGGER, type RootLogger } from "@flind/di/logger";
+import { DISK_CACHE_IMAGES } from "@flind/platform/disk-cache";
 import {
   HOST_CAPABILITIES,
   type HostCapabilities,
-} from "@posthog/platform/host-capabilities";
+} from "@flind/platform/host-capabilities";
 import {
   type INotifications,
   NOTIFICATIONS_SERVICE,
   type NotificationTarget,
-} from "@posthog/platform/notifications";
-import { type ISpeech, SPEECH_SERVICE } from "@posthog/platform/speech";
+} from "@flind/platform/notifications";
+import { type ISpeech, SPEECH_SERVICE } from "@flind/platform/speech";
 import {
   type Adapter,
   AUTORESEARCH_FLAG,
   type CloudRegion,
-} from "@posthog/shared";
+} from "@flind/shared";
 import {
   AUTH_SIDE_EFFECTS,
   type IAuthSideEffects,
-} from "@posthog/ui/features/auth/identifiers";
-import { authKeys } from "@posthog/ui/features/auth/useCurrentUser";
-import { useThreadPanelStore } from "@posthog/ui/features/canvas/stores/threadPanelStore";
+} from "@flind/ui/features/auth/identifiers";
+import { authKeys } from "@flind/ui/features/auth/useCurrentUser";
+import { useThreadPanelStore } from "@flind/ui/features/canvas/stores/threadPanelStore";
 import {
   FEATURE_FLAGS,
   type FeatureFlags,
-} from "@posthog/ui/features/feature-flags/identifiers";
+} from "@flind/ui/features/feature-flags/identifiers";
 import {
   FILE_WATCHER_CLIENT,
   type FileWatcherClient,
-} from "@posthog/ui/features/file-watcher/identifiers";
-import { GIT_CACHE_KEY_PROVIDER } from "@posthog/ui/features/git-interaction/gitCacheProvider";
+} from "@flind/ui/features/file-watcher/identifiers";
+import { GIT_CACHE_KEY_PROVIDER } from "@flind/ui/features/git-interaction/gitCacheProvider";
 import {
   UiGithubConnectClient,
   UiRepositoriesClient,
-} from "@posthog/ui/features/integrations/integrationsClientImpl";
-import { NAVIGATION_TASK_BINDER } from "@posthog/ui/features/navigation/taskBinder";
-import { navigationTaskBinder } from "@posthog/ui/features/navigation/taskBinderImpl";
+} from "@flind/ui/features/integrations/integrationsClientImpl";
+import { NAVIGATION_TASK_BINDER } from "@flind/ui/features/navigation/taskBinder";
+import { navigationTaskBinder } from "@flind/ui/features/navigation/taskBinderImpl";
 import {
   ACTIVE_VIEW_PROVIDER,
   type IActiveView,
@@ -101,37 +101,37 @@ import {
   type ISpeechNotifySettings,
   NOTIFICATION_SETTINGS_PROVIDER,
   SPEECH_NOTIFY_SETTINGS,
-} from "@posthog/ui/features/notifications/identifiers";
-import { resolveActiveNotificationTarget } from "@posthog/ui/features/notifications/routeNotification";
-import { OnboardingGithubConnectClient } from "@posthog/ui/features/onboarding/githubConnectClientImpl";
+} from "@flind/ui/features/notifications/identifiers";
+import { resolveActiveNotificationTarget } from "@flind/ui/features/notifications/routeNotification";
+import { OnboardingGithubConnectClient } from "@flind/ui/features/onboarding/githubConnectClientImpl";
 import {
   AGENT_PROMPT_SENDER,
   type AgentPromptSender,
-} from "@posthog/ui/features/sessions/agentPromptSender";
+} from "@flind/ui/features/sessions/agentPromptSender";
 import {
   notificationsPaused,
   useSettingsStore,
-} from "@posthog/ui/features/settings/settingsStore";
+} from "@flind/ui/features/settings/settingsStore";
 import {
   type ISpeechKeyStore,
   SPEECH_KEY_STORE,
-} from "@posthog/ui/features/settings/speechKeyStore";
-import { getCurrentMatches } from "@posthog/ui/router/navigationBridge";
-import { HEDGEHOG_MODE_HOST } from "@posthog/ui/shell/hedgehogModeHost";
-import { posthogFeatureFlags } from "@posthog/ui/shell/posthogAnalyticsImpl";
-import type { ImperativeQueryClient } from "@posthog/ui/shell/queryClient";
-import { IMPERATIVE_QUERY_CLIENT } from "@posthog/ui/shell/queryClient";
+} from "@flind/ui/features/settings/speechKeyStore";
+import { getCurrentMatches } from "@flind/ui/router/navigationBridge";
+import { HEDGEHOG_MODE_HOST } from "@flind/ui/shell/hedgehogModeHost";
+import { posthogFeatureFlags } from "@flind/ui/shell/posthogAnalyticsImpl";
+import type { ImperativeQueryClient } from "@flind/ui/shell/queryClient";
+import { IMPERATIVE_QUERY_CLIENT } from "@flind/ui/shell/queryClient";
 import {
   FILE_PATH_RESOLVER,
   type FilePathResolver,
-} from "@posthog/ui/utils/getFilePath";
+} from "@flind/ui/utils/getFilePath";
 import {
   isSpeechSupported,
   playAudioBase64,
   speakSystemVoice,
   stopSpeech,
-} from "@posthog/ui/utils/speech";
-import { ELEVENLABS_API_KEY_STORE_KEY } from "@posthog/workspace-server/services/speech/identifiers";
+} from "@flind/ui/utils/speech";
+import { ELEVENLABS_API_KEY_STORE_KEY } from "@flind/workspace-server/services/speech/identifiers";
 import { container } from "@renderer/di/container";
 import { RendererAuthSideEffects } from "@renderer/platform-adapters/auth-side-effects";
 import { desktopDiskCacheImages } from "@renderer/platform-adapters/desktop-disk-cache-images";

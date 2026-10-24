@@ -1,9 +1,9 @@
 import { CaretDownIcon, CaretRightIcon } from "@phosphor-icons/react";
-import { inboxReportKeys } from "@posthog/core/inbox/inboxQuery";
-import type { CommitContent } from "@posthog/shared/types";
-import { DiffBlock } from "@posthog/ui/features/inbox/components/detail/DiffBlock";
-import { useAuthenticatedQuery } from "@posthog/ui/hooks/useAuthenticatedQuery";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
+import { inboxReportKeys } from "@flind/core/inbox/inboxQuery";
+import type { CommitContent } from "@flind/shared/types";
+import { DiffBlock } from "@flind/ui/features/inbox/components/detail/DiffBlock";
+import { useAuthenticatedQuery } from "@flind/ui/hooks/useAuthenticatedQuery";
+import { Spinner } from "@flind/ui/primitives/Spinner";
 import { Box, Flex, Text } from "@radix-ui/themes";
 import { useState } from "react";
 

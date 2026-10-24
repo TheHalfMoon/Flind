@@ -10,11 +10,11 @@ import {
 import {
   channelDisplayLabel,
   channelDisplayReference,
-} from "@posthog/core/canvas/channelName";
+} from "@flind/core/canvas/channelName";
 import type {
   InjectedBlock,
   InjectedBlockKind,
-} from "@posthog/core/editor/injectedBlocks";
+} from "@flind/core/editor/injectedBlocks";
 
 export interface InjectedBlockPresentation {
   icon: Icon;

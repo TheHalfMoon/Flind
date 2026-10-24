@@ -135,9 +135,9 @@ jobs:
             - name: Build workspace packages
               run: |
                   node scripts/build-agent-workspace.mjs
-                  pnpm --filter @posthog/electron-trpc run build
-                  pnpm --filter @posthog/platform run build
-                  pnpm --filter @posthog/shared run build
+                  pnpm --filter @flind/electron-trpc run build
+                  pnpm --filter @flind/platform run build
+                  pnpm --filter @flind/shared run build
 
             # build/Assets.car is gitignored, so compile it here. actool only handles the .icon
             # bundle with Xcode 26, which this job gets from its macOS 26 runner's default
@@ -360,9 +360,9 @@ jobs:
               shell: bash
               run: |
                   node scripts/build-agent-workspace.mjs
-                  pnpm --filter @posthog/electron-trpc run build
-                  pnpm --filter @posthog/platform run build
-                  pnpm --filter @posthog/shared run build
+                  pnpm --filter @flind/electron-trpc run build
+                  pnpm --filter @flind/platform run build
+                  pnpm --filter @flind/shared run build
 
             # Two separate steps: in a multi-line pwsh script only the last
             # command's exit code fails the step, so a broken electron-vite
@@ -483,9 +483,9 @@ jobs:
             - name: Build workspace packages
               run: |
                   node scripts/build-agent-workspace.mjs
-                  pnpm --filter @posthog/electron-trpc run build
-                  pnpm --filter @posthog/platform run build
-                  pnpm --filter @posthog/shared run build
+                  pnpm --filter @flind/electron-trpc run build
+                  pnpm --filter @flind/platform run build
+                  pnpm --filter @flind/shared run build
 
             - name: Build app
               env:

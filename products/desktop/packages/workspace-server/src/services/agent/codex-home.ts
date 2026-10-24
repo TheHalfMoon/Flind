@@ -1,7 +1,7 @@
 import * as fs from "node:fs";
 import * as os from "node:os";
 import * as path from "node:path";
-import { tomlBasicString } from "@posthog/shared";
+import { tomlBasicString } from "@flind/shared";
 import {
   findSkillDirs,
   getUserSkillsDir,

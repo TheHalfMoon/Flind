@@ -1,12 +1,12 @@
-import { publicProcedure, router } from "@posthog/host-trpc/trpc";
-import { MCP_CALLBACK_SERVICE } from "@posthog/workspace-server/services/mcp-callback/identifiers";
-import type { McpCallbackService } from "@posthog/workspace-server/services/mcp-callback/mcp-callback";
+import { publicProcedure, router } from "@flind/host-trpc/trpc";
+import { MCP_CALLBACK_SERVICE } from "@flind/workspace-server/services/mcp-callback/identifiers";
+import type { McpCallbackService } from "@flind/workspace-server/services/mcp-callback/mcp-callback";
 import {
   getCallbackUrlOutput,
   McpCallbackEvent,
   openAndWaitInput,
   openAndWaitOutput,
-} from "@posthog/workspace-server/services/mcp-callback/schemas";
+} from "@flind/workspace-server/services/mcp-callback/schemas";
 
 export const mcpCallbackRouter = router({
   /**

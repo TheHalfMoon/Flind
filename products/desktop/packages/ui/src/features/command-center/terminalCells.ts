@@ -1,4 +1,4 @@
-import { getTerminalCellId } from "@posthog/core/command-center/grid";
+import { getTerminalCellId } from "@flind/core/command-center/grid";
 import { destroyShellTerminal } from "../terminal/destroyShellTerminal";
 
 export function getTerminalCellStateKey(terminalId: string): string {

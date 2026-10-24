@@ -1,4 +1,4 @@
-import type { Task } from "@posthog/shared";
+import type { Task } from "@flind/shared";
 import { createElement } from "react";
 import { act, create } from "react-test-renderer";
 import { describe, expect, it, vi } from "vitest";

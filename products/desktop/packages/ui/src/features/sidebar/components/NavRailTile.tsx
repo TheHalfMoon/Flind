@@ -1,5 +1,5 @@
 import { cn } from "@flind/quill";
-import { useNavRailMetrics } from "@posthog/ui/features/sidebar/navRailSize";
+import { useNavRailMetrics } from "@flind/ui/features/sidebar/navRailSize";
 import type { ComponentPropsWithRef, ReactNode } from "react";
 
 interface NavRailTileProps extends ComponentPropsWithRef<"button"> {

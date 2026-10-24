@@ -1,5 +1,5 @@
-import { xmlToPlainText } from "@posthog/core/message-editor/content";
-import type { Task } from "@posthog/shared/domain-types";
+import { xmlToPlainText } from "@flind/core/message-editor/content";
+import type { Task } from "@flind/shared/domain-types";
 
 export const REGENERATE_INTERVAL = 7;
 

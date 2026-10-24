@@ -1,11 +1,11 @@
-import type { TaskUsage } from "@posthog/api-client/posthog-client";
+import type { TaskUsage } from "@flind/api-client/posthog-client";
 import {
   CONTEXT_CATEGORIES,
   formatCostUsd,
   formatTokensCompact,
   getOverallUsageColor,
-} from "@posthog/ui/features/sessions/contextColors";
-import type { ContextUsage } from "@posthog/ui/features/sessions/hooks/useContextUsage";
+} from "@flind/ui/features/sessions/contextColors";
+import type { ContextUsage } from "@flind/ui/features/sessions/hooks/useContextUsage";
 
 interface ContextBreakdownPopoverProps {
   usage: ContextUsage;

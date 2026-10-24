@@ -1,4 +1,4 @@
-import type { SignalReport } from "@posthog/shared/domain-types";
+import type { SignalReport } from "@flind/shared/domain-types";
 import { describe, expect, it } from "vitest";
 import {
   buildBulkActionEvents,

@@ -1,8 +1,8 @@
-import { useIsOrgAdmin } from "@posthog/ui/features/auth/useOrgRole";
-import { useSignalSourceManager } from "@posthog/ui/features/inbox/hooks/useSignalSourceManager";
-import { useIntegrationSelectors } from "@posthog/ui/features/integrations/store";
-import { SettingsCardRow } from "@posthog/ui/features/settings/components/SettingsCard";
-import { SlackChannelCombobox } from "@posthog/ui/features/settings/components/SlackChannelCombobox";
+import { useIsOrgAdmin } from "@flind/ui/features/auth/useOrgRole";
+import { useSignalSourceManager } from "@flind/ui/features/inbox/hooks/useSignalSourceManager";
+import { useIntegrationSelectors } from "@flind/ui/features/integrations/store";
+import { SettingsCardRow } from "@flind/ui/features/settings/components/SettingsCard";
+import { SlackChannelCombobox } from "@flind/ui/features/settings/components/SlackChannelCombobox";
 
 interface SignalDefaultChannelSettingsProps {
   /** Workspace whose channels are listed — shared with the per-user section. */

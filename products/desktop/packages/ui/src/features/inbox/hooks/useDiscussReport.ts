@@ -1,16 +1,16 @@
-import { buildDiscussReportPrompt } from "@posthog/core/inbox/reportActions";
-import { buildReportPromptContext } from "@posthog/core/inbox/reportPromptContext";
-import type { TaskCreationInput } from "@posthog/core/task-detail/taskService";
-import type { InboxReportActionSurface } from "@posthog/shared/analytics-events";
-import type { SignalReport, Task } from "@posthog/shared/types";
-import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { AUTH_SCOPED_QUERY_META } from "@posthog/ui/features/auth/useCurrentUser";
+import { buildDiscussReportPrompt } from "@flind/core/inbox/reportActions";
+import { buildReportPromptContext } from "@flind/core/inbox/reportPromptContext";
+import type { TaskCreationInput } from "@flind/core/task-detail/taskService";
+import type { InboxReportActionSurface } from "@flind/shared/analytics-events";
+import type { SignalReport, Task } from "@flind/shared/types";
+import { useOptionalAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { AUTH_SCOPED_QUERY_META } from "@flind/ui/features/auth/useCurrentUser";
 import {
   type InboxCloudTaskInputContext,
   useInboxCloudTaskRunner,
-} from "@posthog/ui/features/inbox/hooks/useInboxCloudTaskRunner";
-import { reportKeys } from "@posthog/ui/features/inbox/hooks/useInboxReports";
-import { logger } from "@posthog/ui/shell/logger";
+} from "@flind/ui/features/inbox/hooks/useInboxCloudTaskRunner";
+import { reportKeys } from "@flind/ui/features/inbox/hooks/useInboxReports";
+import { logger } from "@flind/ui/shell/logger";
 import { useQueryClient } from "@tanstack/react-query";
 import { useCallback, useRef, useState } from "react";
 

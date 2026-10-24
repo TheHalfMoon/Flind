@@ -10,11 +10,11 @@ import {
   GlobeIcon,
   UsersThreeIcon,
 } from "@phosphor-icons/react";
-import { extractRepoSelectionRepository } from "@posthog/core/inbox/artefacts";
+import { extractRepoSelectionRepository } from "@flind/core/inbox/artefacts";
 import {
   canCreateImplementationPr,
   canResolveReport,
-} from "@posthog/core/inbox/reportActions";
+} from "@flind/core/inbox/reportActions";
 import {
   ContextMenuContent,
   ContextMenuGroup,
@@ -30,21 +30,21 @@ import {
   isDismissalReasonSnooze,
   RESOLVE_REASON_OPTIONS,
   type ResolveReasonOptionValue,
-} from "@posthog/shared/dismissalReasons";
-import type { SignalReport } from "@posthog/shared/types";
-import { ReviewerSearchList } from "@posthog/ui/features/inbox/components/ReviewerSearchList";
-import { useCreatePrReport } from "@posthog/ui/features/inbox/hooks/useCreatePrReport";
-import { useInboxReportDismissAction } from "@posthog/ui/features/inbox/hooks/useInboxReportDismissAction";
-import { useInboxReportReadState } from "@posthog/ui/features/inbox/hooks/useInboxReportReadState";
-import { useInboxReportResolveAction } from "@posthog/ui/features/inbox/hooks/useInboxReportResolveAction";
-import { useInboxReportArtefacts } from "@posthog/ui/features/inbox/hooks/useInboxReports";
-import { useInboxRestoreReport } from "@posthog/ui/features/inbox/hooks/useInboxRestoreReport";
-import { useReportActionTracker } from "@posthog/ui/features/inbox/hooks/useReportActionTracker";
+} from "@flind/shared/dismissalReasons";
+import type { SignalReport } from "@flind/shared/types";
+import { ReviewerSearchList } from "@flind/ui/features/inbox/components/ReviewerSearchList";
+import { useCreatePrReport } from "@flind/ui/features/inbox/hooks/useCreatePrReport";
+import { useInboxReportDismissAction } from "@flind/ui/features/inbox/hooks/useInboxReportDismissAction";
+import { useInboxReportReadState } from "@flind/ui/features/inbox/hooks/useInboxReportReadState";
+import { useInboxReportResolveAction } from "@flind/ui/features/inbox/hooks/useInboxReportResolveAction";
+import { useInboxReportArtefacts } from "@flind/ui/features/inbox/hooks/useInboxReports";
+import { useInboxRestoreReport } from "@flind/ui/features/inbox/hooks/useInboxRestoreReport";
+import { useReportActionTracker } from "@flind/ui/features/inbox/hooks/useReportActionTracker";
 import {
   findContinuableImplementationTask,
   useReportTasks,
-} from "@posthog/ui/features/inbox/hooks/useReportTasks";
-import { copyInboxReportLink } from "@posthog/ui/features/inbox/utils/copyInboxReportLink";
+} from "@flind/ui/features/inbox/hooks/useReportTasks";
+import { copyInboxReportLink } from "@flind/ui/features/inbox/utils/copyInboxReportLink";
 import { Fragment, useRef, useState } from "react";
 
 export function InboxReportContextMenuContent({

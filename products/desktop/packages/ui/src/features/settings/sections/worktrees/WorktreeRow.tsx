@@ -1,8 +1,8 @@
 import { Trash } from "@phosphor-icons/react";
-import type { Task } from "@posthog/shared/domain-types";
-import { closeSettings } from "@posthog/ui/features/settings/hooks/useOpenSettings";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
-import { openTask } from "@posthog/ui/router/useOpenTask";
+import type { Task } from "@flind/shared/domain-types";
+import { closeSettings } from "@flind/ui/features/settings/hooks/useOpenSettings";
+import { Spinner } from "@flind/ui/primitives/Spinner";
+import { openTask } from "@flind/ui/router/useOpenTask";
 import { Button, Flex, Text } from "@radix-ui/themes";
 import { WorktreeSize } from "./WorktreeSize";
 

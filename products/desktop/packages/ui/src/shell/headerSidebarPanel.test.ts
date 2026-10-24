@@ -1,7 +1,7 @@
 import {
   getHeaderSidebarPanelLayout,
   type HeaderSidebarPanelLayout,
-} from "@posthog/ui/shell/headerSidebarPanel";
+} from "@flind/ui/shell/headerSidebarPanel";
 import { describe, expect, it } from "vitest";
 
 describe("getHeaderSidebarPanelLayout", () => {

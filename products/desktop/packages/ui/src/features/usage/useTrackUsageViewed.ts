@@ -1,8 +1,8 @@
 import {
   ANALYTICS_EVENTS,
   type UsageViewedProperties,
-} from "@posthog/shared/analytics-events";
-import { track } from "@posthog/ui/shell/analytics";
+} from "@flind/shared/analytics-events";
+import { track } from "@flind/ui/shell/analytics";
 import { useEffect, useRef } from "react";
 
 export interface TrackUsageViewedInput {

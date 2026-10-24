@@ -7,11 +7,11 @@ import {
   Heading,
   Text,
 } from "@flind/quill";
-import { hoggiePng } from "@posthog/shared/hoggies";
+import { hoggiePng } from "@flind/shared/hoggies";
 import {
   buildErrorReport,
   summarizeError,
-} from "@posthog/ui/primitives/errorReport";
+} from "@flind/ui/primitives/errorReport";
 import { useEffect, useRef, useState } from "react";
 
 /** How long the copy button confirms before it returns to its resting label. */

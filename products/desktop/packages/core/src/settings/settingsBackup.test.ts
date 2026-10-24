@@ -1,5 +1,5 @@
 import "reflect-metadata";
-import type { ISettingsBackupFiles } from "@posthog/platform/settings-backup-files";
+import type { ISettingsBackupFiles } from "@flind/platform/settings-backup-files";
 import { describe, expect, it, vi } from "vitest";
 import {
   type CustomSound,

@@ -1,4 +1,4 @@
-import { redirectFromLegacyPath } from "@posthog/ui/router/legacyPaths";
+import { redirectFromLegacyPath } from "@flind/ui/router/legacyPaths";
 import { createFileRoute } from "@tanstack/react-router";
 
 // Tasks, the inbox, agents and loops lost their `/code` prefix when the routes

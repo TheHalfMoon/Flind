@@ -1,9 +1,9 @@
 import fsp from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
-import type { RootLogger } from "@posthog/di/logger";
-import type { IAnalytics } from "@posthog/platform/analytics";
-import type { IWorkspaceSettings } from "@posthog/platform/workspace-settings";
+import type { RootLogger } from "@flind/di/logger";
+import type { IAnalytics } from "@flind/platform/analytics";
+import type { IWorkspaceSettings } from "@flind/platform/workspace-settings";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { createMockRepositoryRepository } from "../../db/repositories/repository-repository.mock";
 import { createMockWorkspaceRepository } from "../../db/repositories/workspace-repository.mock";

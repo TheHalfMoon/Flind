@@ -3,7 +3,7 @@ import type {
   SignalReport,
   Task,
   TaskRunStatus,
-} from "@posthog/shared/types";
+} from "@flind/shared/types";
 
 export function inboxStoryReport(
   overrides: Partial<SignalReport> = {},

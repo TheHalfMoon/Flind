@@ -6,9 +6,9 @@ import {
   DEFAULT_CHANNEL_ITEM_SORT,
   migrateLegacySources,
   migrateSourceFilter,
-} from "@posthog/core/canvas/channelItems";
-import type { SpaceActivityType } from "@posthog/ui/features/canvas/components/channelFeedDisplay";
-import { ALL_SPACE_ACTIVITY_TYPES } from "@posthog/ui/features/canvas/components/channelFeedDisplay";
+} from "@flind/core/canvas/channelItems";
+import type { SpaceActivityType } from "@flind/ui/features/canvas/components/channelFeedDisplay";
+import { ALL_SPACE_ACTIVITY_TYPES } from "@flind/ui/features/canvas/components/channelFeedDisplay";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 

@@ -5,7 +5,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@flind/quill";
-import { ChromeBar } from "@posthog/ui/primitives/ChromeBar";
+import { ChromeBar } from "@flind/ui/primitives/ChromeBar";
 import { type ReactElement, type ReactNode, useState } from "react";
 
 interface DocumentPreviewHeaderProps {

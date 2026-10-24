@@ -1,5 +1,5 @@
-import type { WorkspaceMode } from "@posthog/shared";
-import type { TaskRunStatus } from "@posthog/shared/domain-types";
+import type { WorkspaceMode } from "@flind/shared";
+import type { TaskRunStatus } from "@flind/shared/domain-types";
 import type { RunMode } from "./buildSidebarData";
 import type {
   TaskGroup as GenericTaskGroup,

@@ -1,5 +1,5 @@
-import { isSafeExternalUrl } from "@posthog/shared";
-import { openExternalUrl } from "@posthog/ui/shell/openExternal";
+import { isSafeExternalUrl } from "@flind/shared";
+import { openExternalUrl } from "@flind/ui/shell/openExternal";
 
 export async function openUrlInBrowser(url: string): Promise<void> {
   if (!isSafeExternalUrl(url)) return;

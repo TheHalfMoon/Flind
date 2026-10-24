@@ -1,5 +1,5 @@
 import { cn } from "@flind/quill";
-import { AnimatedLogo } from "@posthog/ui/primitives/AnimatedLogo";
+import { AnimatedLogo } from "@flind/ui/primitives/AnimatedLogo";
 
 interface LoadingScreenProps {
   logoSize?: number;

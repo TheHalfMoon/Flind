@@ -1,10 +1,10 @@
 import { WorkerPoolContextProvider } from "@pierre/diffs/react";
-import { useService } from "@posthog/di/react";
-import { DIFFS_HIGHLIGHTER_OPTIONS } from "@posthog/ui/features/sessions/diffHighlighterOptions";
+import { useService } from "@flind/di/react";
+import { DIFFS_HIGHLIGHTER_OPTIONS } from "@flind/ui/features/sessions/diffHighlighterOptions";
 import {
   DIFF_WORKER_FACTORY,
   type DiffWorkerFactory,
-} from "@posthog/ui/shell/diffWorkerHost";
+} from "@flind/ui/shell/diffWorkerHost";
 import { type ReactElement, type ReactNode, useMemo } from "react";
 
 export function DiffWorkerPool({

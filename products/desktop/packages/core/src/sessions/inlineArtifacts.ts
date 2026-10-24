@@ -1,4 +1,4 @@
-import { readMcpToolDescriptor } from "@posthog/shared";
+import { readMcpToolDescriptor } from "@flind/shared";
 
 const UPLOAD_ARTIFACT_TOOL = "upload_artifact";
 

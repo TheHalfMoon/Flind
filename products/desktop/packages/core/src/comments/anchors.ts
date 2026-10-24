@@ -1,7 +1,7 @@
 import {
   COMMENT_SCOPES,
   type CommentScope,
-} from "@posthog/api-client/posthog-client";
+} from "@flind/api-client/posthog-client";
 import { z } from "zod";
 
 const CONTEXT_LENGTH = 32;

@@ -1,8 +1,8 @@
 import {
   type ResolvedContextSource,
   resolveContextSources,
-} from "@posthog/core/canvas/contextSources";
-import { useMcpServers } from "@posthog/ui/features/mcp-servers/hooks/useMcpServers";
+} from "@flind/core/canvas/contextSources";
+import { useMcpServers } from "@flind/ui/features/mcp-servers/hooks/useMcpServers";
 import { useNavigate } from "@tanstack/react-router";
 import { useMemo } from "react";
 

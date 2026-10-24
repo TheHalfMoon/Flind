@@ -1,4 +1,4 @@
-import type { AnySignalReportArtefact } from "@posthog/shared/domain-types";
+import type { AnySignalReportArtefact } from "@flind/shared/domain-types";
 import { createElement } from "react";
 import { act, create } from "react-test-renderer";
 import { describe, expect, it, vi } from "vitest";

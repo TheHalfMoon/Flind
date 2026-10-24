@@ -1,13 +1,13 @@
 import {
   type CreateBranchResult,
   createBranch as createBranchCore,
-} from "@posthog/core/git-interaction/branchCreation";
+} from "@flind/core/git-interaction/branchCreation";
 import { invalidateGitBranchQueries } from "../gitCacheKeys";
 
 export {
   type CreateBranchResult,
   getBranchNameInputState,
-} from "@posthog/core/git-interaction/branchCreation";
+} from "@flind/core/git-interaction/branchCreation";
 
 interface BranchCreator {
   createBranch(repoPath: string, branchName: string): Promise<void>;

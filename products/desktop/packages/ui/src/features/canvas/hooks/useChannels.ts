@@ -1,10 +1,10 @@
-import type { TaskChannel, UserBasic } from "@posthog/shared/domain-types";
-import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { channelMembersQueryKey } from "@posthog/ui/features/canvas/hooks/useChannelMembers";
+import type { TaskChannel, UserBasic } from "@flind/shared/domain-types";
+import { useOptionalAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { channelMembersQueryKey } from "@flind/ui/features/canvas/hooks/useChannelMembers";
 import {
   TASK_CHANNELS_QUERY_KEY,
   useTaskChannels,
-} from "@posthog/ui/features/canvas/hooks/useTaskChannels";
+} from "@flind/ui/features/canvas/hooks/useTaskChannels";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useCallback, useMemo } from "react";
 

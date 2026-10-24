@@ -1,11 +1,11 @@
-import { SpaceSettings } from "@posthog/ui/features/canvas/components/SpaceSettings";
-import { SpaceTabbedPage } from "@posthog/ui/features/canvas/components/work/SpaceTabbedPage";
-import { useWorkLayout } from "@posthog/ui/features/canvas/hooks/useWorkLayout";
+import { SpaceSettings } from "@flind/ui/features/canvas/components/SpaceSettings";
+import { SpaceTabbedPage } from "@flind/ui/features/canvas/components/work/SpaceTabbedPage";
+import { useWorkLayout } from "@flind/ui/features/canvas/hooks/useWorkLayout";
 import {
   SpaceSettingsSkeleton,
   spaceRouteSkeleton,
   withRouteSkeleton,
-} from "@posthog/ui/router/routeSkeletons";
+} from "@flind/ui/router/routeSkeletons";
 import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/_shell/spaces/$channelId/settings")({

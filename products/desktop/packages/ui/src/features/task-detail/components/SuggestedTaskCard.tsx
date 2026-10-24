@@ -1,9 +1,9 @@
 import { X } from "@phosphor-icons/react";
-import type { DiscoveredTask } from "@posthog/core/setup/types";
+import type { DiscoveredTask } from "@flind/core/setup/types";
 import {
   CATEGORY_CONFIG,
   FALLBACK_CATEGORY_CONFIG,
-} from "@posthog/ui/features/setup/categoryConfig";
+} from "@flind/ui/features/setup/categoryConfig";
 import { Flex, Text, Tooltip } from "@radix-ui/themes";
 import { motion } from "framer-motion";
 

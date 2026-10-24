@@ -2,12 +2,12 @@ import { ArrowLeft, Trash } from "@phosphor-icons/react";
 import {
   type EnvironmentSetupPlan,
   stepError,
-} from "@posthog/core/settings/environmentSetup";
+} from "@flind/core/settings/environmentSetup";
 import { Button, Text } from "@flind/quill";
-import type { SandboxCustomImage } from "@posthog/shared/domain-types";
-import { AccessStep } from "@posthog/ui/features/settings/sections/environments/setup/steps/AccessStep";
-import { BaseImageStep } from "@posthog/ui/features/settings/sections/environments/setup/steps/BaseImageStep";
-import { EnvironmentStep } from "@posthog/ui/features/settings/sections/environments/setup/steps/EnvironmentStep";
+import type { SandboxCustomImage } from "@flind/shared/domain-types";
+import { AccessStep } from "@flind/ui/features/settings/sections/environments/setup/steps/AccessStep";
+import { BaseImageStep } from "@flind/ui/features/settings/sections/environments/setup/steps/BaseImageStep";
+import { EnvironmentStep } from "@flind/ui/features/settings/sections/environments/setup/steps/EnvironmentStep";
 import type { ReactNode } from "react";
 
 interface EnvironmentEditFormProps {

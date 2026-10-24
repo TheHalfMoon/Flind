@@ -1,15 +1,15 @@
-import type { ScoutRun } from "@posthog/api-client/posthog-client";
+import type { ScoutRun } from "@flind/api-client/posthog-client";
 import {
   runMatchesFilter,
   type ScoutRollup,
   type ScoutRunFilter,
   summarizeRunWindow,
-} from "@posthog/core/scouts/scoutPresentation";
-import { SCOUT_RUNS_WINDOW_LABEL } from "@posthog/core/scouts/scoutRunsWindow";
+} from "@flind/core/scouts/scoutPresentation";
+import { SCOUT_RUNS_WINDOW_LABEL } from "@flind/core/scouts/scoutRunsWindow";
 import { Skeleton, Tabs, TabsList, TabsTrigger } from "@flind/quill";
-import { ANALYTICS_EVENTS } from "@posthog/shared";
-import { useMinuteNow } from "@posthog/ui/hooks/useMinuteNow";
-import { track } from "@posthog/ui/shell/analytics";
+import { ANALYTICS_EVENTS } from "@flind/shared";
+import { useMinuteNow } from "@flind/ui/hooks/useMinuteNow";
+import { track } from "@flind/ui/shell/analytics";
 import { useMemo, useState } from "react";
 import { ScoutRunBoxes } from "./ScoutRunBoxes";
 import { ScoutRunsList } from "./ScoutRunsList";

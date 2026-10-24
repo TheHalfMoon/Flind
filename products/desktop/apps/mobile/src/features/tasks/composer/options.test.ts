@@ -2,7 +2,7 @@ import {
   type CloudTaskConfigOption,
   type CloudTaskConfigSelectGroup,
   restrictedModelMeta,
-} from "@posthog/shared";
+} from "@flind/shared";
 import { describe, expect, it } from "vitest";
 import {
   getAgentPresets,

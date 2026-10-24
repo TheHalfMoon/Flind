@@ -1,5 +1,5 @@
-import { ROOT_LOGGER, type RootLogger } from "@posthog/di/logger";
-import { isNotAuthenticatedError, TypedEventEmitter } from "@posthog/shared";
+import { ROOT_LOGGER, type RootLogger } from "@flind/di/logger";
+import { isNotAuthenticatedError, TypedEventEmitter } from "@flind/shared";
 import { inject, injectable, postConstruct, preDestroy } from "inversify";
 import type { AuthService } from "../auth/auth";
 import { AUTH_SERVICE } from "../auth/auth.module";

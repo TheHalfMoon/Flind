@@ -1,7 +1,7 @@
 import type {
   CachedPrUrlOutput,
   TaskPrStatus,
-} from "@posthog/workspace-server/services/workspace/schemas";
+} from "@flind/workspace-server/services/workspace/schemas";
 
 export const GIT_PR_STATUS_PROVIDER = Symbol.for(
   "posthog.host.gitPrStatusProvider",

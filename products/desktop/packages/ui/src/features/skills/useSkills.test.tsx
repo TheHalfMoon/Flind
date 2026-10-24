@@ -1,11 +1,11 @@
-import type { SkillInfo } from "@posthog/shared";
+import type { SkillInfo } from "@flind/shared";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { renderHook, waitFor } from "@testing-library/react";
 import type { ReactNode } from "react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 const listFn = vi.hoisted(() => vi.fn());
-vi.mock("@posthog/host-router/react", () => ({
+vi.mock("@flind/host-router/react", () => ({
   useHostTRPC: () => ({
     skills: {
       list: {

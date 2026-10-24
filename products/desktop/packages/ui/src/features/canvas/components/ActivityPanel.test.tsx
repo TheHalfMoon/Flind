@@ -1,4 +1,4 @@
-import type { Task } from "@posthog/shared/domain-types";
+import type { Task } from "@flind/shared/domain-types";
 import { act, fireEvent, render, screen } from "@testing-library/react";
 import {
   afterEach,
@@ -14,7 +14,7 @@ import {
 // is initialized after the hoisted mock factories.
 const loaded = vi.hoisted(() => ({ thread: true }));
 
-vi.mock("@posthog/ui/features/canvas/hooks/useThreadConversation", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useThreadConversation", () => ({
   useThreadConversation: () => ({
     timeline: [],
     hasLoadedThread: loaded.thread,
@@ -37,38 +37,38 @@ vi.mock("@posthog/ui/features/canvas/hooks/useThreadConversation", () => ({
 }));
 // The panel warms this from the task id before the task itself arrives, so it is mounted
 // even in the tests that never get a task.
-vi.mock("@posthog/ui/features/canvas/hooks/useTaskThread", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useTaskThread", () => ({
   useTaskThread: () => ({ messages: [], isLoading: false, hasLoaded: true }),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useTaskRuns", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useTaskRuns", () => ({
   useTaskRuns: () => ({ runs: [], isLoading: false, refreshRuns: vi.fn() }),
 }));
-vi.mock("@posthog/ui/features/canvas/components/ActivityTimeline", () => ({
+vi.mock("@flind/ui/features/canvas/components/ActivityTimeline", () => ({
   ActivityTimeline: () => <div>timeline body</div>,
 }));
-vi.mock("@posthog/ui/features/canvas/components/TaskArtifactsList", () => ({
+vi.mock("@flind/ui/features/canvas/components/TaskArtifactsList", () => ({
   TaskArtifactsList: () => <div>artifacts body</div>,
 }));
-vi.mock("@posthog/ui/features/canvas/components/TaskCommentsList", () => ({
+vi.mock("@flind/ui/features/canvas/components/TaskCommentsList", () => ({
   TaskCommentsList: () => <div>comments body</div>,
 }));
-vi.mock("@posthog/ui/features/canvas/components/ChannelFeedView", () => ({
+vi.mock("@flind/ui/features/canvas/components/ChannelFeedView", () => ({
   TaskSummaryRow: () => <div>task summary</div>,
 }));
-vi.mock("@posthog/ui/features/canvas/components/ThreadPanel", () => ({
+vi.mock("@flind/ui/features/canvas/components/ThreadPanel", () => ({
   AgentStatusLine: () => <div>agent status</div>,
   ThreadLoadingState: () => <div>loading</div>,
   ThreadReplyComposer: () => <div>composer</div>,
 }));
-vi.mock("@posthog/ui/features/tasks/queries", () => ({
+vi.mock("@flind/ui/features/tasks/queries", () => ({
   taskDetailQuery: () => ({ queryKey: ["task"], queryFn: vi.fn() }),
 }));
 vi.mock("@tanstack/react-query", () => ({
   useQuery: () => ({ data: undefined }),
 }));
-vi.mock("@posthog/ui/shell/analytics", () => ({ track: vi.fn() }));
+vi.mock("@flind/ui/shell/analytics", () => ({ track: vi.fn() }));
 
-import { useCommentNavigationStore } from "@posthog/ui/features/sessions/commentNavigationStore";
+import { useCommentNavigationStore } from "@flind/ui/features/sessions/commentNavigationStore";
 import { ActivityPanel } from "./ActivityPanel";
 
 const task = { id: "task-1", title: "Ship it" } as unknown as Task;

@@ -2,64 +2,64 @@ import {
   buildChannelItems,
   channelItemSources,
   DEFAULT_CHANNEL_ITEM_FILTERS,
-} from "@posthog/core/canvas/channelItems";
-import { isPersonalChannel } from "@posthog/core/canvas/channelName";
-import { insertTaskDedup } from "@posthog/core/tasks/taskDelete";
+} from "@flind/core/canvas/channelItems";
+import { isPersonalChannel } from "@flind/core/canvas/channelName";
+import { insertTaskDedup } from "@flind/core/tasks/taskDelete";
 import { cn } from "@flind/quill";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
-import type { Task } from "@posthog/shared/domain-types";
-import { isTerminalStatus } from "@posthog/shared/domain-types";
-import { useArchivedTaskIds } from "@posthog/ui/features/archive/useArchivedTaskIds";
-import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { useCurrentUser } from "@posthog/ui/features/auth/useCurrentUser";
-import { CHANNEL_TASK_SUGGESTIONS } from "@posthog/ui/features/canvas/channelTaskSuggestions";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
+import type { Task } from "@flind/shared/domain-types";
+import { isTerminalStatus } from "@flind/shared/domain-types";
+import { useArchivedTaskIds } from "@flind/ui/features/archive/useArchivedTaskIds";
+import { useOptionalAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { useCurrentUser } from "@flind/ui/features/auth/useCurrentUser";
+import { CHANNEL_TASK_SUGGESTIONS } from "@flind/ui/features/canvas/channelTaskSuggestions";
 import {
   ChannelFeedView,
   type PendingKickoff,
-} from "@posthog/ui/features/canvas/components/ChannelFeedView";
-import { ChannelHeader } from "@posthog/ui/features/canvas/components/ChannelHeader";
+} from "@flind/ui/features/canvas/components/ChannelFeedView";
+import { ChannelHeader } from "@flind/ui/features/canvas/components/ChannelHeader";
 import {
   ChannelHomeComposer,
   type ChannelHomeComposerHandle,
-} from "@posthog/ui/features/canvas/components/ChannelHomeComposer";
+} from "@flind/ui/features/canvas/components/ChannelHomeComposer";
 import {
   ChannelIntro,
   type ContextMdState,
-} from "@posthog/ui/features/canvas/components/ChannelIntro";
-import { CreateChannelModal } from "@posthog/ui/features/canvas/components/CreateChannelModal";
-import { ThreadSidebar } from "@posthog/ui/features/canvas/components/ThreadSidebar";
-import { SpaceActivityControls } from "@posthog/ui/features/canvas/components/work/SpaceActivityControls";
-import { useSpacePullRequests } from "@posthog/ui/features/canvas/components/work/useSpacePullRequests";
-import { CONTEXT_MD_TASK_TITLE_PREFIX } from "@posthog/ui/features/canvas/contextPrompt";
+} from "@flind/ui/features/canvas/components/ChannelIntro";
+import { CreateChannelModal } from "@flind/ui/features/canvas/components/CreateChannelModal";
+import { ThreadSidebar } from "@flind/ui/features/canvas/components/ThreadSidebar";
+import { SpaceActivityControls } from "@flind/ui/features/canvas/components/work/SpaceActivityControls";
+import { useSpacePullRequests } from "@flind/ui/features/canvas/components/work/useSpacePullRequests";
+import { CONTEXT_MD_TASK_TITLE_PREFIX } from "@flind/ui/features/canvas/contextPrompt";
 import {
   channelFeedQueryKey,
   useChannelFeed,
-} from "@posthog/ui/features/canvas/hooks/useChannelFeed";
-import { useChannelFeedMessages } from "@posthog/ui/features/canvas/hooks/useChannelFeedMessages";
-import { useChannelSessionFacts } from "@posthog/ui/features/canvas/hooks/useChannelItems";
+} from "@flind/ui/features/canvas/hooks/useChannelFeed";
+import { useChannelFeedMessages } from "@flind/ui/features/canvas/hooks/useChannelFeedMessages";
+import { useChannelSessionFacts } from "@flind/ui/features/canvas/hooks/useChannelItems";
 import {
   DEFAULT_CHANNEL_REPORTS_FILTERS,
   useChannelReports,
-} from "@posthog/ui/features/canvas/hooks/useChannelReports";
-import { useChannelsLayout } from "@posthog/ui/features/canvas/hooks/useChannelsLayout";
-import { useChannelTaskMutations } from "@posthog/ui/features/canvas/hooks/useChannelTasks";
-import { useDashboards } from "@posthog/ui/features/canvas/hooks/useDashboards";
-import { useFolderInstructions } from "@posthog/ui/features/canvas/hooks/useFolderInstructions";
-import { useTaskChannels } from "@posthog/ui/features/canvas/hooks/useTaskChannels";
-import { useChannelIntroStore } from "@posthog/ui/features/canvas/stores/channelIntroStore";
-import { useSpaceActivityViewStore } from "@posthog/ui/features/canvas/stores/spaceActivityViewStore";
+} from "@flind/ui/features/canvas/hooks/useChannelReports";
+import { useChannelsLayout } from "@flind/ui/features/canvas/hooks/useChannelsLayout";
+import { useChannelTaskMutations } from "@flind/ui/features/canvas/hooks/useChannelTasks";
+import { useDashboards } from "@flind/ui/features/canvas/hooks/useDashboards";
+import { useFolderInstructions } from "@flind/ui/features/canvas/hooks/useFolderInstructions";
+import { useTaskChannels } from "@flind/ui/features/canvas/hooks/useTaskChannels";
+import { useChannelIntroStore } from "@flind/ui/features/canvas/stores/channelIntroStore";
+import { useSpaceActivityViewStore } from "@flind/ui/features/canvas/stores/spaceActivityViewStore";
 import {
   type ThreadPanelTab,
   useThreadPanelStore,
-} from "@posthog/ui/features/canvas/stores/threadPanelStore";
-import { openRightPanelSide } from "@posthog/ui/features/navigation/rightPanelSide";
-import { usePinnedTasks } from "@posthog/ui/features/sidebar/usePinnedTasks";
-import { SuggestedPromptCard } from "@posthog/ui/features/task-detail/components/SuggestedPromptCard";
-import { taskDetailQuery } from "@posthog/ui/features/tasks/queries";
-import { useSetHeaderContent } from "@posthog/ui/hooks/useSetHeaderContent";
-import { toast } from "@posthog/ui/primitives/toast";
-import { navigateToChannelReportDetail } from "@posthog/ui/router/navigationBridge";
-import { track } from "@posthog/ui/shell/analytics";
+} from "@flind/ui/features/canvas/stores/threadPanelStore";
+import { openRightPanelSide } from "@flind/ui/features/navigation/rightPanelSide";
+import { usePinnedTasks } from "@flind/ui/features/sidebar/usePinnedTasks";
+import { SuggestedPromptCard } from "@flind/ui/features/task-detail/components/SuggestedPromptCard";
+import { taskDetailQuery } from "@flind/ui/features/tasks/queries";
+import { useSetHeaderContent } from "@flind/ui/hooks/useSetHeaderContent";
+import { toast } from "@flind/ui/primitives/toast";
+import { navigateToChannelReportDetail } from "@flind/ui/router/navigationBridge";
+import { track } from "@flind/ui/shell/analytics";
 import { useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "@tanstack/react-router";
 import {

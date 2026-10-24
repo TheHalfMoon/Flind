@@ -1,7 +1,7 @@
 import { randomUUID } from "node:crypto";
 import { open, rename, unlink, writeFile } from "node:fs/promises";
-import { MAX_SETTINGS_BACKUP_BYTES } from "@posthog/core/settings/schemas";
-import type { ISettingsBackupFiles } from "@posthog/platform/settings-backup-files";
+import { MAX_SETTINGS_BACKUP_BYTES } from "@flind/core/settings/schemas";
+import type { ISettingsBackupFiles } from "@flind/platform/settings-backup-files";
 import { app, dialog } from "electron";
 import { injectable } from "inversify";
 import { resolveDialogParent } from "./electron-dialog";

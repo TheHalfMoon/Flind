@@ -6,7 +6,7 @@ import {
   PlayIcon,
   TagIcon,
 } from "@phosphor-icons/react";
-import type { RecordingExport } from "@posthog/api-client/posthog-client";
+import type { RecordingExport } from "@flind/api-client/posthog-client";
 import {
   Button,
   Dialog,
@@ -17,18 +17,18 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@flind/quill";
-import type { Signal, SignalFindingContent } from "@posthog/shared/types";
-import { useAuthStateValue } from "@posthog/ui/features/auth/store";
-import { MarkdownRenderer } from "@posthog/ui/features/editor/components/MarkdownRenderer";
-import { getSourceProductMeta } from "@posthog/ui/features/inbox/components/utils/source-product-icons";
-import { useAuthenticatedQuery } from "@posthog/ui/hooks/useAuthenticatedQuery";
-import { RelativeTimestamp } from "@posthog/ui/primitives/RelativeTimestamp";
+import type { Signal, SignalFindingContent } from "@flind/shared/types";
+import { useAuthStateValue } from "@flind/ui/features/auth/store";
+import { MarkdownRenderer } from "@flind/ui/features/editor/components/MarkdownRenderer";
+import { getSourceProductMeta } from "@flind/ui/features/inbox/components/utils/source-product-icons";
+import { useAuthenticatedQuery } from "@flind/ui/hooks/useAuthenticatedQuery";
+import { RelativeTimestamp } from "@flind/ui/primitives/RelativeTimestamp";
 import {
   colonOffsetToSeconds,
   errorTrackingIssueUrl,
   sessionRecordingUrl,
   supportTicketUrl,
-} from "@posthog/ui/utils/posthogLinks";
+} from "@flind/ui/utils/posthogLinks";
 import { Badge, Box, Flex, Text } from "@radix-ui/themes";
 import { type ReactNode, useCallback, useMemo, useRef, useState } from "react";
 import { clipTimeForMoment } from "./recordingClipTime";

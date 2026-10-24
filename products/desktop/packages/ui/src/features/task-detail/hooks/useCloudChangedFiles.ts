@@ -1,4 +1,4 @@
-import type { ChangedFile, Task } from "@posthog/shared/domain-types";
+import type { ChangedFile, Task } from "@flind/shared/domain-types";
 import { useMemo } from "react";
 import {
   useBranchChangedFiles,

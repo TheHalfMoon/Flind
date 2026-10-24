@@ -1,6 +1,6 @@
-import { getTour } from "@posthog/core/tour/tourRegistry";
-import { useIsSettingsOpen } from "@posthog/ui/features/settings/hooks/useOpenSettings";
-import { useCommandMenuStore } from "@posthog/ui/shell/commandMenuStore";
+import { getTour } from "@flind/core/tour/tourRegistry";
+import { useIsSettingsOpen } from "@flind/ui/features/settings/hooks/useOpenSettings";
+import { useCommandMenuStore } from "@flind/ui/shell/commandMenuStore";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";

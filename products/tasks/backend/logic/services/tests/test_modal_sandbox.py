@@ -389,7 +389,7 @@ class TestAttachLocalPackageMounts:
                     "dependencies": {
                         "@openai/codex": "0.140.0",
                         "custom-runtime": "github:example/custom-runtime#v1.2.3",
-                        "@posthog/shared": "workspace:*",
+                        "@flind/shared": "workspace:*",
                         "zod": "^4.2.0",
                     },
                 }
@@ -407,7 +407,7 @@ class TestAttachLocalPackageMounts:
         shared_package = LocalPackage(
             name="shared",
             source_path=shared_source_path,
-            sandbox_install_path="/scripts/node_modules/@posthog/shared",
+            sandbox_install_path="/scripts/node_modules/@flind/shared",
         )
         base_image = MagicMock()
         system_dependency_image = MagicMock()
@@ -440,7 +440,7 @@ class TestAttachLocalPackageMounts:
         assert "[ -d " not in command
         assert "@openai/codex@0.140.0" not in command
         assert "custom-runtime@github:" not in command
-        assert "@posthog/shared" not in command
+        assert "@flind/shared" not in command
         dependency_image.run_commands.assert_called_once_with(
             "ln -sfn ../@flind/agent/dist/server/bin.js /scripts/node_modules/.bin/agent-server"
         )
@@ -451,7 +451,7 @@ class TestAttachLocalPackageMounts:
         )
         mounted_image.add_local_dir.assert_called_once_with(
             str(shared_build_output_path),
-            "/scripts/node_modules/@posthog/shared/dist",
+            "/scripts/node_modules/@flind/shared/dist",
             copy=False,
         )
         assert result is final_image

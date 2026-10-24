@@ -11,25 +11,25 @@ import {
   ItemDescription,
   ItemTitle,
 } from "@flind/quill";
-import { REGION_LABELS } from "@posthog/shared";
-import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
+import { REGION_LABELS } from "@flind/shared";
+import { useOptionalAuthenticatedClient } from "@flind/ui/features/auth/authClient";
 import {
   useAuthStateValue,
   useCurrentUser,
-} from "@posthog/ui/features/auth/authQueries";
-import { useLogoutMutation } from "@posthog/ui/features/auth/useAuthMutations";
-import { useClearGithubUserIntegrations } from "@posthog/ui/features/integrations/useClearGithubUserIntegrations";
-import { useOnboardingStore } from "@posthog/ui/features/onboarding/onboardingStore";
-import { openSettings } from "@posthog/ui/features/settings/hooks/useOpenSettings";
-import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
-import { useSetupStore } from "@posthog/ui/features/setup/setupStore";
-import { useTourStore } from "@posthog/ui/features/tour/tourStore";
+} from "@flind/ui/features/auth/authQueries";
+import { useLogoutMutation } from "@flind/ui/features/auth/useAuthMutations";
+import { useClearGithubUserIntegrations } from "@flind/ui/features/integrations/useClearGithubUserIntegrations";
+import { useOnboardingStore } from "@flind/ui/features/onboarding/onboardingStore";
+import { openSettings } from "@flind/ui/features/settings/hooks/useOpenSettings";
+import { useSettingsStore } from "@flind/ui/features/settings/settingsStore";
+import { useSetupStore } from "@flind/ui/features/setup/setupStore";
+import { useTourStore } from "@flind/ui/features/tour/tourStore";
 import {
   RouterDevtools,
   toggleRouterDevtools,
-} from "@posthog/ui/router/RouterDevtools";
-import { useThemeStore } from "@posthog/ui/shell/themeStore";
-import { clearApplicationStorage } from "@posthog/ui/utils/clearStorage";
+} from "@flind/ui/router/RouterDevtools";
+import { useThemeStore } from "@flind/ui/shell/themeStore";
+import { clearApplicationStorage } from "@flind/ui/utils/clearStorage";
 import { Box, Flex, Switch, Text, Tooltip } from "@radix-ui/themes";
 import { trpcClient, useTRPC } from "@renderer/trpc/client";
 import { useQuery } from "@tanstack/react-query";

@@ -1,4 +1,4 @@
-import type { ExperimentResultsPresentation } from "@posthog/api-client/evidence-previews";
+import type { ExperimentResultsPresentation } from "@flind/api-client/evidence-previews";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { ExperimentResultsSummary } from "./ExperimentResultsSummary";

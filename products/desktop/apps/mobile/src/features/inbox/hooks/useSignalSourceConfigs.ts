@@ -1,4 +1,4 @@
-import type { SignalSourceConfig } from "@posthog/api-client/posthog-client";
+import type { SignalSourceConfig } from "@flind/api-client/posthog-client";
 import { useQuery } from "@tanstack/react-query";
 import { useAuthStore } from "@/features/auth";
 import { getPostHogApiClient } from "@/lib/posthogApiClient";

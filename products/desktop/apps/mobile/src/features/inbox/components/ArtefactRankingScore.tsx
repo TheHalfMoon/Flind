@@ -1,14 +1,14 @@
 import { Text } from "@components/text";
-import { humanizeIdentifier } from "@posthog/core/inbox/activityLog";
+import { humanizeIdentifier } from "@flind/core/inbox/activityLog";
 import {
   formatRankingLift,
   formatRankingProbability,
   rankingLiftBarPercent,
-} from "@posthog/core/inbox/rankingFormat";
+} from "@flind/core/inbox/rankingFormat";
 import type {
   RankingHead,
   RankingScoreContent,
-} from "@posthog/shared/domain-types";
+} from "@flind/shared/domain-types";
 import { View } from "react-native";
 
 function RankingHeadRow({ head }: { head: RankingHead }) {

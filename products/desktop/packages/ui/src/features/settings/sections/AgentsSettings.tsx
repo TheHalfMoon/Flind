@@ -1,4 +1,4 @@
-import { AgentsView } from "@posthog/ui/features/agents/components/AgentsView";
+import { AgentsView } from "@flind/ui/features/agents/components/AgentsView";
 
 export function AgentsSettings() {
   return <AgentsView />;

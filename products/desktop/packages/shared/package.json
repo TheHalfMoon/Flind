@@ -1,5 +1,6 @@
 {
-  "name": "@posthog/shared",
+  "name": "@flind/shared",
+    "private": true,
   "version": "1.0.0",
   "description": "Shared utilities for PostHog",
   "type": "module",

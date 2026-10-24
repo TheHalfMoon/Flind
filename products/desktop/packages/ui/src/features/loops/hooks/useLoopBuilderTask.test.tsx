@@ -1,16 +1,16 @@
-import type { TaskCreationInput } from "@posthog/core/task-detail/taskService";
+import type { TaskCreationInput } from "@flind/core/task-detail/taskService";
 import {
   type InboxCloudTaskInputContext,
   useInboxCloudTaskRunner,
-} from "@posthog/ui/features/inbox/hooks/useInboxCloudTaskRunner";
+} from "@flind/ui/features/inbox/hooks/useInboxCloudTaskRunner";
 import { renderHook } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import { useLoopBuilderTask } from "./useLoopBuilderTask";
 
-vi.mock("@posthog/ui/features/inbox/hooks/useInboxCloudTaskRunner", () => ({
+vi.mock("@flind/ui/features/inbox/hooks/useInboxCloudTaskRunner", () => ({
   useInboxCloudTaskRunner: vi.fn(),
 }));
-vi.mock("@posthog/ui/features/auth/store", () => ({
+vi.mock("@flind/ui/features/auth/store", () => ({
   getAuthIdentity: () => "us:1",
   useAuthStore: { getState: () => ({ authState: {} }) },
 }));

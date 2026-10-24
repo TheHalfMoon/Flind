@@ -1,18 +1,18 @@
-import type { Task } from "@posthog/shared/domain-types";
-import { ThreadSidebar } from "@posthog/ui/features/canvas/components/ThreadSidebar";
-import { useChannels } from "@posthog/ui/features/canvas/hooks/useChannels";
-import { useChannelsLayout } from "@posthog/ui/features/canvas/hooks/useChannelsLayout";
-import { TaskDetail } from "@posthog/ui/features/task-detail/components/TaskDetail";
+import type { Task } from "@flind/shared/domain-types";
+import { ThreadSidebar } from "@flind/ui/features/canvas/components/ThreadSidebar";
+import { useChannels } from "@flind/ui/features/canvas/hooks/useChannels";
+import { useChannelsLayout } from "@flind/ui/features/canvas/hooks/useChannelsLayout";
+import { TaskDetail } from "@flind/ui/features/task-detail/components/TaskDetail";
 import {
   getCachedTask,
   getCachedTaskDetail,
   isTaskDetailNotFoundError,
   taskDetailQuery,
-} from "@posthog/ui/features/tasks/queries";
-import { pickFreshestTask } from "@posthog/ui/features/tasks/taskFreshness";
-import { useTasks } from "@posthog/ui/features/tasks/useTasks";
-import { TaskDetailSkeleton } from "@posthog/ui/router/routeSkeletons";
-import { yieldToPaint } from "@posthog/ui/router/yieldToPaint";
+} from "@flind/ui/features/tasks/queries";
+import { pickFreshestTask } from "@flind/ui/features/tasks/taskFreshness";
+import { useTasks } from "@flind/ui/features/tasks/useTasks";
+import { TaskDetailSkeleton } from "@flind/ui/router/routeSkeletons";
+import { yieldToPaint } from "@flind/ui/router/yieldToPaint";
 import { Button, Flex, Text } from "@radix-ui/themes";
 import { useQuery } from "@tanstack/react-query";
 import { createFileRoute, Navigate } from "@tanstack/react-router";

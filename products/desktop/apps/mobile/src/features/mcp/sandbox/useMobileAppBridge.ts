@@ -10,7 +10,7 @@ import type {
   ReadResourceResult,
   Tool,
 } from "@modelcontextprotocol/sdk/types.js";
-import { applyCspToHtml } from "@posthog/core/mcp-apps/csp";
+import { applyCspToHtml } from "@flind/core/mcp-apps/csp";
 import { useCallback, useEffect, useRef } from "react";
 import { Platform } from "react-native";
 import type { EdgeInsets } from "react-native-safe-area-context";

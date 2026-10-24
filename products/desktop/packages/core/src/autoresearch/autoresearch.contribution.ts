@@ -1,4 +1,4 @@
-import type { Contribution } from "@posthog/di/contribution";
+import type { Contribution } from "@flind/di/contribution";
 import { inject, injectable } from "inversify";
 import type { AutoresearchService } from "./autoresearch";
 import { AUTORESEARCH_SERVICE } from "./identifiers";

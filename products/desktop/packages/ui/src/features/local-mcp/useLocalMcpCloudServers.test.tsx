@@ -1,4 +1,4 @@
-import type { LocalMcpCloudClassification } from "@posthog/core/local-mcp/localMcpImport";
+import type { LocalMcpCloudClassification } from "@flind/core/local-mcp/localMcpImport";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { renderHook, waitFor } from "@testing-library/react";
 import type { ReactNode } from "react";
@@ -9,7 +9,7 @@ const mocks = vi.hoisted(() => ({
   getCloudAvailability: vi.fn(),
 }));
 
-vi.mock("@posthog/di/react", () => ({
+vi.mock("@flind/di/react", () => ({
   useServiceOptional: () => ({
     getCloudAvailability: mocks.getCloudAvailability,
   }),

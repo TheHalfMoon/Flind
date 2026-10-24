@@ -1,7 +1,7 @@
 import { Lifebuoy } from "@phosphor-icons/react";
-import { DotPatternBackground } from "@posthog/ui/primitives/DotPatternBackground";
-import { MathGridBackground } from "@posthog/ui/primitives/MathGridBackground";
-import { useThemeStore } from "@posthog/ui/shell/themeStore";
+import { DotPatternBackground } from "@flind/ui/primitives/DotPatternBackground";
+import { MathGridBackground } from "@flind/ui/primitives/MathGridBackground";
+import { useThemeStore } from "@flind/ui/shell/themeStore";
 import { Button, Flex, Theme } from "@radix-ui/themes";
 import type { ReactNode } from "react";
 import { DraggableTitleBar } from "./DraggableTitleBar";

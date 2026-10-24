@@ -1,19 +1,19 @@
 import { ArrowSquareOutIcon } from "@phosphor-icons/react";
-import { useService } from "@posthog/di/react";
+import { useService } from "@flind/di/react";
 import { Switch } from "@flind/quill";
-import { ANALYTICS_EVENTS } from "@posthog/shared";
+import { ANALYTICS_EVENTS } from "@flind/shared";
 import {
   DISCORD_PRESENCE_CLIENT,
   type DiscordPresenceClient,
   type DiscordPresenceState,
-} from "@posthog/ui/features/discord-presence/identifiers";
+} from "@flind/ui/features/discord-presence/identifiers";
 import {
   SettingsCard,
   SettingsCardRow,
   SettingsSection,
-} from "@posthog/ui/features/settings/components/SettingsCard";
-import { track } from "@posthog/ui/shell/analytics";
-import { openUrlInBrowser } from "@posthog/ui/utils/browser";
+} from "@flind/ui/features/settings/components/SettingsCard";
+import { track } from "@flind/ui/shell/analytics";
+import { openUrlInBrowser } from "@flind/ui/utils/browser";
 import { useEffect, useState } from "react";
 import { DiscordPresencePreview } from "./DiscordPresencePreview";
 

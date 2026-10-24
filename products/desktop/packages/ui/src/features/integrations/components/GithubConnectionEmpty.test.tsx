@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import { GithubConnectionEmpty } from "./GithubConnectionEmpty";
 
-vi.mock("@posthog/ui/utils/browser", () => ({
+vi.mock("@flind/ui/utils/browser", () => ({
   openUrlInBrowser: vi.fn(),
 }));
 

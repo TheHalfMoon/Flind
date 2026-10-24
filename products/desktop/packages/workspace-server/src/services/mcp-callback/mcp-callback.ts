@@ -2,17 +2,17 @@ import {
   ROOT_LOGGER,
   type RootLogger,
   type ScopedLogger,
-} from "@posthog/di/logger";
-import { APP_META_SERVICE, type IAppMeta } from "@posthog/platform/app-meta";
+} from "@flind/di/logger";
+import { APP_META_SERVICE, type IAppMeta } from "@flind/platform/app-meta";
 import {
   DEEP_LINK_SERVICE,
   type IDeepLinkRegistry,
-} from "@posthog/platform/deep-link";
+} from "@flind/platform/deep-link";
 import {
   type IUrlLauncher,
   URL_LAUNCHER_SERVICE,
-} from "@posthog/platform/url-launcher";
-import { TypedEventEmitter } from "@posthog/shared";
+} from "@flind/platform/url-launcher";
+import { TypedEventEmitter } from "@flind/shared";
 import { inject, injectable } from "inversify";
 import { MCP_CALLBACK_SERVER } from "./identifiers";
 import type { McpCallbackServer } from "./mcp-callback-server";

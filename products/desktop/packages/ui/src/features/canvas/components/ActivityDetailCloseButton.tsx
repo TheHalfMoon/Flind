@@ -5,7 +5,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@flind/quill";
-import { clearActivitySelection } from "@posthog/ui/features/canvas/stores/activityDetailStore";
+import { clearActivitySelection } from "@flind/ui/features/canvas/stores/activityDetailStore";
 
 export function ActivityDetailCloseButton() {
   return (

@@ -1,5 +1,5 @@
-import { useInTile } from "@posthog/ui/features/tab-tiling/tileContext";
-import { useHeaderStore } from "@posthog/ui/shell/headerStore";
+import { useInTile } from "@flind/ui/features/tab-tiling/tileContext";
+import { useHeaderStore } from "@flind/ui/shell/headerStore";
 import { type ReactNode, useLayoutEffect } from "react";
 
 /**

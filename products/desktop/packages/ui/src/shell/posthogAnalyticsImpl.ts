@@ -7,26 +7,26 @@ import "posthog-js/dist/posthog-recorder";
 import type {
   AnalyticsProperties,
   IAnalytics,
-} from "@posthog/platform/analytics";
+} from "@flind/platform/analytics";
 import {
   type Adapter,
   CLOUD_REGIONS,
   getCloudUrlFromRegion,
   type ModelAccess,
-} from "@posthog/shared";
+} from "@flind/shared";
 import {
   type EventPropertyMap,
   isInboxAnalyticsEvent,
   type UserIdentifyProperties,
-} from "@posthog/shared/analytics-events";
-import type { Task } from "@posthog/shared/domain-types";
-import type { FeatureFlags } from "@posthog/ui/features/feature-flags/identifiers";
-import type { PermissionRequest } from "@posthog/ui/features/sessions/sessionLogTypes";
+} from "@flind/shared/analytics-events";
+import type { Task } from "@flind/shared/domain-types";
+import type { FeatureFlags } from "@flind/ui/features/feature-flags/identifiers";
+import type { PermissionRequest } from "@flind/ui/features/sessions/sessionLogTypes";
 import type {
   AnalyticsTracker,
   AnalyticsUserGroups,
-} from "@posthog/ui/shell/analytics";
-import { logger } from "@posthog/ui/shell/logger";
+} from "@flind/ui/shell/analytics";
+import { logger } from "@flind/ui/shell/logger";
 
 const log = logger.scope("analytics");
 

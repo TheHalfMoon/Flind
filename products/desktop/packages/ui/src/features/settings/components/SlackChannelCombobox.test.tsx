@@ -1,4 +1,4 @@
-import type { SlackChannelOption } from "@posthog/shared/domain-types";
+import type { SlackChannelOption } from "@flind/shared/domain-types";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { useState } from "react";
@@ -20,7 +20,7 @@ const analyticsChannel: SlackChannelOption = {
   name: "analytics-platform",
 };
 
-vi.mock("@posthog/ui/features/inbox/hooks/useSlackChannels", () => ({
+vi.mock("@flind/ui/features/inbox/hooks/useSlackChannels", () => ({
   useSlackChannels: (
     _integrationId: number,
     options?: { search?: string },
@@ -32,7 +32,7 @@ vi.mock("@posthog/ui/features/inbox/hooks/useSlackChannels", () => ({
   }),
 }));
 
-vi.mock("@posthog/ui/primitives/hooks/useDebouncedValue", () => ({
+vi.mock("@flind/ui/primitives/hooks/useDebouncedValue", () => ({
   useDebouncedValue: <T,>(value: T) => ({
     debounced: value,
     isPending: false,

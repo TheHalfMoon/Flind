@@ -1,6 +1,6 @@
-import { CreatePrDialog } from "@posthog/ui/features/git-interaction/components/CreatePrDialog";
-import { useGitInteractionStore } from "@posthog/ui/features/git-interaction/state/gitInteractionStore";
-import type { CreatePrStep } from "@posthog/ui/features/git-interaction/types";
+import { CreatePrDialog } from "@flind/ui/features/git-interaction/components/CreatePrDialog";
+import { useGitInteractionStore } from "@flind/ui/features/git-interaction/state/gitInteractionStore";
+import type { CreatePrStep } from "@flind/ui/features/git-interaction/types";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 function setStoreState(overrides: {

@@ -1,4 +1,4 @@
-import { AGENT_SESSION_NOTIFIER } from "@posthog/core/notification/agentSessionNotifications";
+import { AGENT_SESSION_NOTIFIER } from "@flind/core/notification/agentSessionNotifications";
 import { ContainerModule } from "inversify";
 import { AgentSessionNotificationService } from "./agentSessionNotifications";
 import { NotificationBus } from "./notifications";

@@ -1,13 +1,13 @@
-import { useHostTRPC } from "@posthog/host-router/react";
+import { useHostTRPC } from "@flind/host-router/react";
 import { Button, Switch } from "@flind/quill";
-import { ANALYTICS_EVENTS } from "@posthog/shared";
-import { useAdapterSubscription } from "@posthog/ui/features/settings/adapterSubscription";
-import { SettingsCardRow } from "@posthog/ui/features/settings/components/SettingsCard";
-import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
-import { useSettingsPageStore } from "@posthog/ui/features/settings/stores/settingsPageStore";
-import { SUBSCRIPTION_LOGIN_ACTION } from "@posthog/ui/features/settings/subscriptionActions";
-import { track } from "@posthog/ui/shell/analytics";
-import { registerAdapterSubscription } from "@posthog/ui/shell/posthogAnalyticsImpl";
+import { ANALYTICS_EVENTS } from "@flind/shared";
+import { useAdapterSubscription } from "@flind/ui/features/settings/adapterSubscription";
+import { SettingsCardRow } from "@flind/ui/features/settings/components/SettingsCard";
+import { useSettingsStore } from "@flind/ui/features/settings/settingsStore";
+import { useSettingsPageStore } from "@flind/ui/features/settings/stores/settingsPageStore";
+import { SUBSCRIPTION_LOGIN_ACTION } from "@flind/ui/features/settings/subscriptionActions";
+import { track } from "@flind/ui/shell/analytics";
+import { registerAdapterSubscription } from "@flind/ui/shell/posthogAnalyticsImpl";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { type ReactElement, useEffect, useRef, useState } from "react";
 import {

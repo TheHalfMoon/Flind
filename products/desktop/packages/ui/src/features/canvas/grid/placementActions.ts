@@ -1,4 +1,4 @@
-import type { GridPlacement } from "@posthog/core/canvas/gridLayoutSchemas";
+import type { GridPlacement } from "@flind/core/canvas/gridLayoutSchemas";
 
 /** What a card's chrome and its tile can do to one placement. */
 export interface PlacementActions {

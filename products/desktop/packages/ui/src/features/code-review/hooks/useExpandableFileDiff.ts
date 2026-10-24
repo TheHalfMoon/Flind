@@ -2,8 +2,8 @@ import type { FileDiffMetadata } from "@pierre/diffs";
 import {
   buildExpandedFileDiff,
   canExpandFileDiff,
-} from "@posthog/core/code-review/fileDiffExpansion";
-import { useHostTRPC } from "@posthog/host-router/react";
+} from "@flind/core/code-review/fileDiffExpansion";
+import { useHostTRPC } from "@flind/host-router/react";
 import { useQuery } from "@tanstack/react-query";
 import { useMemo } from "react";
 import { REVIEW_FILE_CACHE_TIME_MS } from "../constants";

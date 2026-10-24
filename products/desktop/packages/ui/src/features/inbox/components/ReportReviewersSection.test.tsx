@@ -1,18 +1,18 @@
-import type { SignalReport } from "@posthog/shared/types";
+import type { SignalReport } from "@flind/shared/types";
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 
-vi.mock("@posthog/ui/features/inbox/hooks/useInboxReports", () => ({
+vi.mock("@flind/ui/features/inbox/hooks/useInboxReports", () => ({
   useInboxReportArtefacts: () => ({ data: { count: 0, results: [] } }),
   useUpdateSuggestedReviewers: () => ({ mutate: vi.fn(), isPending: false }),
 }));
 
-vi.mock("@posthog/ui/features/inbox/hooks/useReportActionTracker", () => ({
+vi.mock("@flind/ui/features/inbox/hooks/useReportActionTracker", () => ({
   useReportActionTracker: () => vi.fn(),
   useReportActionResultTracker: () => vi.fn(),
 }));
 
-vi.mock("@posthog/ui/features/inbox/components/ReviewerSearchList", () => ({
+vi.mock("@flind/ui/features/inbox/components/ReviewerSearchList", () => ({
   ReviewerSearchList: () => null,
 }));
 

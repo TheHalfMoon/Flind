@@ -7,7 +7,7 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 const getWorktreeLocation = vi.hoisted(() => vi.fn());
 const setWorktreeLocation = vi.hoisted(() => vi.fn());
 
-vi.mock("@posthog/host-router/react", () => ({
+vi.mock("@flind/host-router/react", () => ({
   useHostTRPCClient: () => ({
     os: {
       getWorktreeLocation: { query: getWorktreeLocation },

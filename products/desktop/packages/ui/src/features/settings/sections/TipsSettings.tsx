@@ -1,16 +1,16 @@
 import { Button, Switch } from "@flind/quill";
-import { ANALYTICS_EVENTS } from "@posthog/shared";
+import { ANALYTICS_EVENTS } from "@flind/shared";
 import {
   SettingsCard,
   SettingsCardRow,
   SettingsSection,
-} from "@posthog/ui/features/settings/components/SettingsCard";
+} from "@flind/ui/features/settings/components/SettingsCard";
 import {
   countRetiredHints,
   useSettingsStore,
-} from "@posthog/ui/features/settings/settingsStore";
-import { toast } from "@posthog/ui/primitives/toast";
-import { track } from "@posthog/ui/shell/analytics";
+} from "@flind/ui/features/settings/settingsStore";
+import { toast } from "@flind/ui/primitives/toast";
+import { track } from "@flind/ui/shell/analytics";
 
 /**
  * The switch over every tip, and a way back from the ones already hidden.

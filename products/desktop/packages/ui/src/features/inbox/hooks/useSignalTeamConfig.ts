@@ -1,4 +1,4 @@
-import type { SignalTeamConfig } from "@posthog/shared/domain-types";
+import type { SignalTeamConfig } from "@flind/shared/domain-types";
 import { useAuthenticatedQuery } from "../../../hooks/useAuthenticatedQuery";
 
 export function useSignalTeamConfig(options?: {

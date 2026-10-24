@@ -6,7 +6,7 @@ import {
   ListChecks,
   X,
 } from "@phosphor-icons/react";
-import { Tooltip } from "@posthog/ui/primitives/Tooltip";
+import { Tooltip } from "@flind/ui/primitives/Tooltip";
 import { Box, Flex, IconButton, Text } from "@radix-ui/themes";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";

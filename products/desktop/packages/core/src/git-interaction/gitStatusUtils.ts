@@ -1,4 +1,4 @@
-import type { GitFileStatus } from "@posthog/shared/domain-types";
+import type { GitFileStatus } from "@flind/shared/domain-types";
 
 type StatusColor = "green" | "orange" | "red" | "blue" | "gray";
 export interface StatusIndicator {

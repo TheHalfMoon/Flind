@@ -1,17 +1,17 @@
-import type { PostHogAPIClient } from "@posthog/api-client/posthog-client";
-import type { SpendAnalysisResponse } from "@posthog/api-client/spend-analysis";
+import type { PostHogAPIClient } from "@flind/api-client/posthog-client";
+import type { SpendAnalysisResponse } from "@flind/api-client/spend-analysis";
 import {
   type SpendAnalysisWindow,
   windowToDateFrom,
   windowToDays,
-} from "@posthog/core/billing/spendAnalysisFormat";
+} from "@flind/core/billing/spendAnalysisFormat";
 import {
   averageDailySpend,
   spendTotalsFromDays,
   utcDayIso,
-} from "@posthog/core/billing/spendLimits";
-import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { AUTH_SCOPED_QUERY_META } from "@posthog/ui/features/auth/useCurrentUser";
+} from "@flind/core/billing/spendLimits";
+import { useOptionalAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { AUTH_SCOPED_QUERY_META } from "@flind/ui/features/auth/useCurrentUser";
 import { useQuery } from "@tanstack/react-query";
 import { useMemo } from "react";
 

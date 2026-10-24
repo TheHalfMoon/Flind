@@ -1,4 +1,4 @@
-import type { IAppMeta } from "@posthog/platform/app-meta";
+import type { IAppMeta } from "@flind/platform/app-meta";
 import { app } from "electron";
 import { injectable } from "inversify";
 

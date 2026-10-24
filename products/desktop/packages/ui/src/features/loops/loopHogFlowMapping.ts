@@ -1,10 +1,10 @@
-import type { Schemas } from "@posthog/api-client/generated";
+import type { Schemas } from "@flind/api-client/generated";
 import {
   type HogFlowLoopBody,
   type HogFlowScheduleWrite,
   LOOPS_ORIGIN_PRODUCT,
-} from "@posthog/api-client/hogFlowLoops";
-import type { LoopSchemas } from "@posthog/ui/features/loops/loopSchemas";
+} from "@flind/api-client/hogFlowLoops";
+import type { LoopSchemas } from "@flind/ui/features/loops/loopSchemas";
 import type { LoopContextTargetDraft, LoopFormValues } from "./loopFormTypes";
 import {
   hogFlowScheduleToScheduleConfig,

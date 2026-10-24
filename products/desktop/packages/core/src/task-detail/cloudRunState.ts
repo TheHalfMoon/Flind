@@ -2,7 +2,7 @@ import {
   isTerminalStatus,
   type Task,
   type TaskRunStatus,
-} from "@posthog/shared/domain-types";
+} from "@flind/shared/domain-types";
 
 export interface CloudRunSessionLike {
   taskRunId?: string | null;

@@ -3,12 +3,12 @@ import {
   humanizeReportTitle,
   inboxStatusLabel,
   parseConventionalCommitTitle,
-} from "@posthog/core/inbox/reportPresentation";
+} from "@flind/core/inbox/reportPresentation";
 import type {
   SignalReport,
   SignalReportPriority,
   SignalReportStatus,
-} from "@posthog/shared/domain-types";
+} from "@flind/shared/domain-types";
 import { formatDistanceToNow } from "date-fns";
 import * as Haptics from "expo-haptics";
 import { GithubLogo, Lightning } from "phosphor-react-native";

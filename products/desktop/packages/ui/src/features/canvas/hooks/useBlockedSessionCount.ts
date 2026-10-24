@@ -1,7 +1,7 @@
-import { countSessionsByChannel } from "@posthog/core/canvas/channelUnread";
-import { useArchivedTaskIds } from "@posthog/ui/features/archive/useArchivedTaskIds";
-import { useSessionStore } from "@posthog/ui/features/sessions/sessionStore";
-import { useTasks } from "@posthog/ui/features/tasks/useTasks";
+import { countSessionsByChannel } from "@flind/core/canvas/channelUnread";
+import { useArchivedTaskIds } from "@flind/ui/features/archive/useArchivedTaskIds";
+import { useSessionStore } from "@flind/ui/features/sessions/sessionStore";
+import { useTasks } from "@flind/ui/features/tasks/useTasks";
 import { useMemo } from "react";
 
 const NO_BLOCKED: ReadonlySet<string> = new Set();

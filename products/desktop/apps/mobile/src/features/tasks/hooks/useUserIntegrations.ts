@@ -1,4 +1,4 @@
-import { combineUserGithubRepositories } from "@posthog/core/integrations/repositories";
+import { combineUserGithubRepositories } from "@flind/core/integrations/repositories";
 import { useQuery } from "@tanstack/react-query";
 import { useCallback, useMemo } from "react";
 import { useAuthStore } from "@/features/auth";

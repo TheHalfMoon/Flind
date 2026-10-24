@@ -4,7 +4,7 @@ import {
   DEFAULT_GATEWAY_MODEL,
   restrictedModelMeta,
   type SupportedReasoningEffort,
-} from "@posthog/shared";
+} from "@flind/shared";
 import { expect, it } from "vitest";
 import {
   resolveCloudComposerAdapterChange,

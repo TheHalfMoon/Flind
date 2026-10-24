@@ -13,25 +13,25 @@ import {
 import type {
   McpRecommendedServer,
   McpServerInstallation,
-} from "@posthog/api-client/posthog-client";
-import { resolveServerDetails } from "@posthog/core/mcp-servers/resolveServerName";
-import { getInstallationStatus } from "@posthog/core/mcp-servers/status";
+} from "@flind/api-client/posthog-client";
+import { resolveServerDetails } from "@flind/core/mcp-servers/resolveServerName";
+import { getInstallationStatus } from "@flind/core/mcp-servers/status";
 import {
   countActiveTools,
   countRemovedTools,
   countToolsByApproval,
   filterToolsByName,
   sortToolsForDisplay,
-} from "@posthog/core/mcp-servers/toolDerivation";
-import { ServerIcon } from "@posthog/ui/features/mcp-servers/components/parts/icons";
+} from "@flind/core/mcp-servers/toolDerivation";
+import { ServerIcon } from "@flind/ui/features/mcp-servers/components/parts/icons";
 import {
   STATUS_COLORS,
   STATUS_LABELS,
-} from "@posthog/ui/features/mcp-servers/components/parts/statusBadge";
-import { ToolRow } from "@posthog/ui/features/mcp-servers/components/parts/ToolRow";
-import { useMcpInstallationTools } from "@posthog/ui/features/mcp-servers/hooks/useMcpInstallationTools";
-import { LoadingState } from "@posthog/ui/primitives/LoadingState";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
+} from "@flind/ui/features/mcp-servers/components/parts/statusBadge";
+import { ToolRow } from "@flind/ui/features/mcp-servers/components/parts/ToolRow";
+import { useMcpInstallationTools } from "@flind/ui/features/mcp-servers/hooks/useMcpInstallationTools";
+import { LoadingState } from "@flind/ui/primitives/LoadingState";
+import { Spinner } from "@flind/ui/primitives/Spinner";
 import {
   Badge,
   Button,

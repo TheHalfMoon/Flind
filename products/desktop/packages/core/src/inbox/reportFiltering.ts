@@ -3,7 +3,7 @@ import type {
   SignalReportOrderingField,
   SignalReportPriority,
   SignalReportStatus,
-} from "@posthog/shared/types";
+} from "@flind/shared/types";
 
 export const INBOX_PIPELINE_STATUSES = [
   "ready",

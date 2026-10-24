@@ -1,7 +1,7 @@
 import {
   type CommandCenterSession,
   selectCommandCenterSession,
-} from "@posthog/core/command-center/cells";
+} from "@flind/core/command-center/cells";
 import { useMemo } from "react";
 import { shallow } from "zustand/shallow";
 import { useSessionStore } from "../../sessions/sessionStore";

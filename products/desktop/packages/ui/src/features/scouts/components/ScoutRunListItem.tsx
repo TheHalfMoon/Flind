@@ -1,5 +1,5 @@
 import { CaretRightIcon } from "@phosphor-icons/react";
-import type { ScoutRun } from "@posthog/api-client/posthog-client";
+import type { ScoutRun } from "@flind/api-client/posthog-client";
 import {
   deriveRunOutcome,
   formatRunDuration,
@@ -9,13 +9,13 @@ import {
   scoutRunOutcomeLabel,
   scoutRunOutputCount,
   scoutSummarySentence,
-} from "@posthog/core/scouts/scoutPresentation";
+} from "@flind/core/scouts/scoutPresentation";
 import { Badge } from "@flind/quill";
-import { ANALYTICS_EVENTS } from "@posthog/shared";
-import { MarkdownRenderer } from "@posthog/ui/features/editor/components/MarkdownRenderer";
-import { RelativeTimestamp } from "@posthog/ui/primitives/RelativeTimestamp";
-import { track } from "@posthog/ui/shell/analytics";
-import { getPostHogUrl } from "@posthog/ui/utils/urls";
+import { ANALYTICS_EVENTS } from "@flind/shared";
+import { MarkdownRenderer } from "@flind/ui/features/editor/components/MarkdownRenderer";
+import { RelativeTimestamp } from "@flind/ui/primitives/RelativeTimestamp";
+import { track } from "@flind/ui/shell/analytics";
+import { getPostHogUrl } from "@flind/ui/utils/urls";
 import { useState } from "react";
 import { ScoutRunReportLinks } from "./ScoutRunReportLinks";
 import { ScoutTaskRunLink } from "./ScoutTaskRunLink";

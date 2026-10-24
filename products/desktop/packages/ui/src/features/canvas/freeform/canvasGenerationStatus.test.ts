@@ -1,5 +1,5 @@
-import type { AgentSession } from "@posthog/shared";
-import type { TaskRun, TaskRunStatus } from "@posthog/shared/domain-types";
+import type { AgentSession } from "@flind/shared";
+import type { TaskRun, TaskRunStatus } from "@flind/shared/domain-types";
 import { describe, expect, it } from "vitest";
 import {
   hasCanvasGenerationStarted,

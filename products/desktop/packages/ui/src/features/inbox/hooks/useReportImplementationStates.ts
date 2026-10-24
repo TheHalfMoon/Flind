@@ -1,16 +1,16 @@
 import {
   type ReportImplementationState,
   reportImplementationTaskId,
-} from "@posthog/core/inbox/reportImplementation";
+} from "@flind/core/inbox/reportImplementation";
 import {
   REPORT_IMPLEMENTATION_SERVICE,
   type ReportImplementationService,
-} from "@posthog/core/inbox/reportImplementationService";
-import { useService } from "@posthog/di/react";
-import type { SignalReport } from "@posthog/shared/types";
-import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { AUTH_SCOPED_QUERY_META } from "@posthog/ui/features/auth/useCurrentUser";
-import { DESKTOP_INBOX_REFETCH_INTERVAL_MS } from "@posthog/ui/features/inbox/hooks/inboxPolling";
+} from "@flind/core/inbox/reportImplementationService";
+import { useService } from "@flind/di/react";
+import type { SignalReport } from "@flind/shared/types";
+import { useOptionalAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { AUTH_SCOPED_QUERY_META } from "@flind/ui/features/auth/useCurrentUser";
+import { DESKTOP_INBOX_REFETCH_INTERVAL_MS } from "@flind/ui/features/inbox/hooks/inboxPolling";
 import { useQuery } from "@tanstack/react-query";
 import { useRef } from "react";
 

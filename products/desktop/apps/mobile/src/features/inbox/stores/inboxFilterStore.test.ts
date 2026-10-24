@@ -1,4 +1,4 @@
-import type { SourceProduct } from "@posthog/shared";
+import type { SourceProduct } from "@flind/shared";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 vi.mock("@react-native-async-storage/async-storage", () => ({

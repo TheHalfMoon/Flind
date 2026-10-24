@@ -1,4 +1,4 @@
-import { resolveServiceOptional } from "@posthog/di/container";
+import { resolveServiceOptional } from "@flind/di/container";
 
 export interface FilePathResolver {
   resolve(file: File): string | undefined;

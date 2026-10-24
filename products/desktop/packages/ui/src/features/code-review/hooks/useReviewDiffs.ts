@@ -1,6 +1,6 @@
 import { parsePatchFiles } from "@pierre/diffs";
-import { contentHash } from "@posthog/core/code-review/contentHash";
-import { useHostTRPC } from "@posthog/host-router/react";
+import { contentHash } from "@flind/core/code-review/contentHash";
+import { useHostTRPC } from "@flind/host-router/react";
 import { useQuery } from "@tanstack/react-query";
 import { useCallback, useMemo } from "react";
 import { useDiffViewerStore } from "../../code-editor/diffViewerStore";

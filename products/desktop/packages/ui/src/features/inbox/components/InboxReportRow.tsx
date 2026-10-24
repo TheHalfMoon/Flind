@@ -1,12 +1,12 @@
-import type { ReportImplementationState } from "@posthog/core/inbox/reportImplementation";
-import type { SignalReport } from "@posthog/shared/types";
-import { InboxReportContextMenu } from "@posthog/ui/features/inbox/components/InboxReportContextMenu";
-import { InboxReportRowView } from "@posthog/ui/features/inbox/components/InboxReportRowView";
-import { ReportRestoreButton } from "@posthog/ui/features/inbox/components/ReportRestoreButton";
-import { SuggestedReviewerAvatarStack } from "@posthog/ui/features/inbox/components/SuggestedReviewerAvatarStack";
-import { useInboxReportDetailPrefetch } from "@posthog/ui/features/inbox/hooks/useInboxReportDetailPrefetch";
-import { navigateToInboxReportDetail } from "@posthog/ui/router/navigationBridge";
-import { openExternalUrl } from "@posthog/ui/shell/openExternal";
+import type { ReportImplementationState } from "@flind/core/inbox/reportImplementation";
+import type { SignalReport } from "@flind/shared/types";
+import { InboxReportContextMenu } from "@flind/ui/features/inbox/components/InboxReportContextMenu";
+import { InboxReportRowView } from "@flind/ui/features/inbox/components/InboxReportRowView";
+import { ReportRestoreButton } from "@flind/ui/features/inbox/components/ReportRestoreButton";
+import { SuggestedReviewerAvatarStack } from "@flind/ui/features/inbox/components/SuggestedReviewerAvatarStack";
+import { useInboxReportDetailPrefetch } from "@flind/ui/features/inbox/hooks/useInboxReportDetailPrefetch";
+import { navigateToInboxReportDetail } from "@flind/ui/router/navigationBridge";
+import { openExternalUrl } from "@flind/ui/shell/openExternal";
 
 export function InboxReportRow({
   report,

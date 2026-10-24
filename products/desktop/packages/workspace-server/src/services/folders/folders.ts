@@ -4,7 +4,7 @@ import {
   ROOT_LOGGER,
   type RootLogger,
   type ScopedLogger,
-} from "@posthog/di/logger";
+} from "@flind/di/logger";
 import {
   getLinkedWorktreeMainPath,
   getRemoteUrl,
@@ -13,11 +13,11 @@ import {
 import { InitRepositorySaga } from "@flind/git/sagas/init";
 import { parseGithubUrl } from "@flind/git/utils";
 import { WorktreeManager } from "@flind/git/worktree";
-import { DIALOG_SERVICE, type IDialog } from "@posthog/platform/dialog";
+import { DIALOG_SERVICE, type IDialog } from "@flind/platform/dialog";
 import {
   type IWorkspaceSettings,
   WORKSPACE_SETTINGS_SERVICE,
-} from "@posthog/platform/workspace-settings";
+} from "@flind/platform/workspace-settings";
 import { inject, injectable } from "inversify";
 import {
   REPOSITORY_REPOSITORY,

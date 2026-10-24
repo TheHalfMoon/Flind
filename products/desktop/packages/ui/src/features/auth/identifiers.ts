@@ -1,4 +1,4 @@
-import type { CloudRegion } from "@posthog/shared";
+import type { CloudRegion } from "@flind/shared";
 
 /**
  * Host-side cross-feature coordination triggered by auth mutations (query-cache

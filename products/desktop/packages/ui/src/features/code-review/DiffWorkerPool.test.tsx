@@ -1,6 +1,6 @@
-import { ServiceProvider } from "@posthog/di/react";
-import { CodePreview } from "@posthog/ui/features/sessions/components/session-update/CodePreview";
-import { DIFF_WORKER_FACTORY } from "@posthog/ui/shell/diffWorkerHost";
+import { ServiceProvider } from "@flind/di/react";
+import { CodePreview } from "@flind/ui/features/sessions/components/session-update/CodePreview";
+import { DIFF_WORKER_FACTORY } from "@flind/ui/shell/diffWorkerHost";
 import { render, waitFor } from "@testing-library/react";
 import { Container } from "inversify";
 import type { ReactNode } from "react";

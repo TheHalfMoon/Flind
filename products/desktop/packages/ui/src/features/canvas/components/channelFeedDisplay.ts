@@ -1,8 +1,8 @@
-import type { DashboardRecord } from "@posthog/core/canvas/dashboardSchemas";
-import { stripInjectedBlocks } from "@posthog/core/editor/injectedBlocks";
-import type { SignalReport, Task } from "@posthog/shared/domain-types";
-import type { SpacePullRequest } from "@posthog/ui/features/canvas/components/work/useSpacePullRequests";
-import type { ChannelFeedSystemMessage } from "@posthog/ui/features/canvas/hooks/useChannelFeedMessages";
+import type { DashboardRecord } from "@flind/core/canvas/dashboardSchemas";
+import { stripInjectedBlocks } from "@flind/core/editor/injectedBlocks";
+import type { SignalReport, Task } from "@flind/shared/domain-types";
+import type { SpacePullRequest } from "@flind/ui/features/canvas/components/work/useSpacePullRequests";
+import type { ChannelFeedSystemMessage } from "@flind/ui/features/canvas/hooks/useChannelFeedMessages";
 
 const incompleteContextBlock =
   /<(?:channel_context|canvas_generation_instructions|posthog_trusted_context|posthog_untrusted_context|posthog_context|user_custom_instructions|onboarding_brief|slack_thread_context)\b[\s\S]*$/;

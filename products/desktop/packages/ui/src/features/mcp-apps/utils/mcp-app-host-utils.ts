@@ -7,7 +7,7 @@
 
 import type { McpUiDisplayMode } from "@modelcontextprotocol/ext-apps/app-bridge";
 import type { CallToolResult } from "@modelcontextprotocol/sdk/types.js";
-import { omitNullCallToolResultFields } from "@posthog/shared";
+import { omitNullCallToolResultFields } from "@flind/shared";
 
 export const INLINE_MAX_HEIGHT = 600;
 export const FULLSCREEN_HEADER_HEIGHT = 48;

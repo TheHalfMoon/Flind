@@ -1,7 +1,7 @@
 import type {
   AnalyticsProperties,
   IAnalytics,
-} from "@posthog/platform/analytics";
+} from "@flind/platform/analytics";
 import { PostHog } from "posthog-node";
 import { getAppVersion } from "../utils/env";
 import { uuidv7 } from "../utils/uuidv7";

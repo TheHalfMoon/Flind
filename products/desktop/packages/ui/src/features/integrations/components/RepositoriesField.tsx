@@ -7,9 +7,9 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@flind/quill";
-import { GitHubRepoPicker } from "@posthog/ui/features/folder-picker/GitHubRepoPicker";
-import { useIntegrationSelectors } from "@posthog/ui/features/integrations/store";
-import { useGithubRepositories } from "@posthog/ui/features/integrations/useIntegrations";
+import { GitHubRepoPicker } from "@flind/ui/features/folder-picker/GitHubRepoPicker";
+import { useIntegrationSelectors } from "@flind/ui/features/integrations/store";
+import { useGithubRepositories } from "@flind/ui/features/integrations/useIntegrations";
 import { useState } from "react";
 
 export const MAX_REPOSITORIES = 10;

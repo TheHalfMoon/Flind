@@ -6,8 +6,8 @@ import {
   type ImageProps,
   RNHostView,
 } from "@expo/ui/swift-ui";
-import { formatRelativeAge } from "@posthog/shared";
-import type { Task } from "@posthog/shared/domain-types";
+import { formatRelativeAge } from "@flind/shared";
+import type { Task } from "@flind/shared/domain-types";
 import { type ReactElement, useEffect } from "react";
 import {
   ActivityIndicator,

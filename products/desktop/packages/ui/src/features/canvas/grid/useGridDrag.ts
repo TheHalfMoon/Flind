@@ -1,7 +1,7 @@
 import type {
   GridDefinition,
   GridPlacement,
-} from "@posthog/core/canvas/gridLayoutSchemas";
+} from "@flind/core/canvas/gridLayoutSchemas";
 import { type RefObject, useState } from "react";
 import {
   cellFromPoint,

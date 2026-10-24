@@ -1,17 +1,17 @@
-import { sanitizeBranchName } from "@posthog/core/git-interaction/branchName";
-import type { DiffStats } from "@posthog/core/git-interaction/diffStats";
-import { partitionByStaged } from "@posthog/core/git-interaction/diffStats";
-import { computeGitInteractionState } from "@posthog/core/git-interaction/gitInteractionLogic";
-import type { GitInteractionService } from "@posthog/core/git-interaction/gitInteractionService";
-import { GIT_INTERACTION_SERVICE } from "@posthog/core/git-interaction/identifiers";
+import { sanitizeBranchName } from "@flind/core/git-interaction/branchName";
+import type { DiffStats } from "@flind/core/git-interaction/diffStats";
+import { partitionByStaged } from "@flind/core/git-interaction/diffStats";
+import { computeGitInteractionState } from "@flind/core/git-interaction/gitInteractionLogic";
+import type { GitInteractionService } from "@flind/core/git-interaction/gitInteractionService";
+import { GIT_INTERACTION_SERVICE } from "@flind/core/git-interaction/identifiers";
 import {
   deriveCreatePrPlan,
   deriveStagingPlan,
-} from "@posthog/core/git-interaction/stagingPlan";
-import { useService } from "@posthog/di/react";
-import { useHostTRPC } from "@posthog/host-router/react";
-import type { ChangedFile } from "@posthog/shared/domain-types";
-import { useConnectivity } from "@posthog/ui/hooks/useConnectivity";
+} from "@flind/core/git-interaction/stagingPlan";
+import { useService } from "@flind/di/react";
+import { useHostTRPC } from "@flind/host-router/react";
+import type { ChangedFile } from "@flind/shared/domain-types";
+import { useConnectivity } from "@flind/ui/hooks/useConnectivity";
 import { useQueryClient } from "@tanstack/react-query";
 import { useMemo, useRef } from "react";
 import { WORKSPACE_QUERY_KEY } from "../workspace/identifiers";

@@ -4,17 +4,17 @@ import {
   isScoutSuggestedReviewer,
   suggestedReviewerDisplayName,
   suggestedReviewerSourceLabel,
-} from "@posthog/core/inbox/artefacts";
+} from "@flind/core/inbox/artefacts";
 import {
   Button,
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "@flind/quill";
-import type { SuggestedReviewer } from "@posthog/shared/types";
-import { ReviewerAvatar } from "@posthog/ui/features/inbox/components/ReviewerAvatar";
-import { InboxBadge } from "@posthog/ui/features/inbox/components/utils/InboxBadge";
-import { SuggestedReviewerAvatar } from "@posthog/ui/features/inbox/components/utils/SuggestedReviewerAvatar";
+import type { SuggestedReviewer } from "@flind/shared/types";
+import { ReviewerAvatar } from "@flind/ui/features/inbox/components/ReviewerAvatar";
+import { InboxBadge } from "@flind/ui/features/inbox/components/utils/InboxBadge";
+import { SuggestedReviewerAvatar } from "@flind/ui/features/inbox/components/utils/SuggestedReviewerAvatar";
 import { useState } from "react";
 
 const MAX_VISIBLE_SUGGESTIONS = 5;

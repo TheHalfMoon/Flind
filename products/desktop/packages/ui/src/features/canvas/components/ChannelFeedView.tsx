@@ -7,7 +7,7 @@ import {
   PlusIcon,
   RobotIcon,
 } from "@phosphor-icons/react";
-import { taskFeedRunStatus } from "@posthog/core/canvas/channelFeed";
+import { taskFeedRunStatus } from "@flind/core/canvas/channelFeed";
 import {
   type ChannelItemFilters,
   type ChannelItemGrouping,
@@ -17,21 +17,21 @@ import {
   DEFAULT_CHANNEL_ITEM_SORT,
   filterChannelItems,
   hasActiveChannelItemFilters,
-} from "@posthog/core/canvas/channelItems";
-import type { DashboardRecord } from "@posthog/core/canvas/dashboardSchemas";
+} from "@flind/core/canvas/channelItems";
+import type { DashboardRecord } from "@flind/core/canvas/dashboardSchemas";
 import {
   RUN_STATUS_LABELS,
   runStatusVariant,
-} from "@posthog/core/canvas/runStatus";
-import { buildThreadTimeline } from "@posthog/core/canvas/threadTimeline";
+} from "@flind/core/canvas/runStatus";
+import { buildThreadTimeline } from "@flind/core/canvas/threadTimeline";
 import {
   parsePrNumber,
   summarizePrChecks,
-} from "@posthog/core/git-interaction/prStatus";
-import { xmlToPlainText } from "@posthog/core/message-editor/content";
-import type { TaskData } from "@posthog/core/sidebar/sidebarData.types";
-import { isTaskActivelyRunning } from "@posthog/core/sidebar/taskRunning";
-import { taskStarter } from "@posthog/core/tasks/taskStatusPresentation";
+} from "@flind/core/git-interaction/prStatus";
+import { xmlToPlainText } from "@flind/core/message-editor/content";
+import type { TaskData } from "@flind/core/sidebar/sidebarData.types";
+import { isTaskActivelyRunning } from "@flind/core/sidebar/taskRunning";
+import { taskStarter } from "@flind/core/tasks/taskStatusPresentation";
 import {
   AvatarGroup,
   Badge,
@@ -52,22 +52,22 @@ import {
   formatRelativeTimeShort,
   mergePrUrls,
   readPrUrls,
-} from "@posthog/shared";
+} from "@flind/shared";
 import type {
   SignalReport,
   Task,
   TaskRunStatus,
   UserBasic,
-} from "@posthog/shared/domain-types";
-import { useArchivedTaskIds } from "@posthog/ui/features/archive/useArchivedTaskIds";
-import { useArchiveTask } from "@posthog/ui/features/archive/useArchiveTask";
-import { UserAvatar } from "@posthog/ui/features/auth/UserAvatar";
-import { TaskTabIcon } from "@posthog/ui/features/browser-tabs/TaskTabIcon";
+} from "@flind/shared/domain-types";
+import { useArchivedTaskIds } from "@flind/ui/features/archive/useArchivedTaskIds";
+import { useArchiveTask } from "@flind/ui/features/archive/useArchiveTask";
+import { UserAvatar } from "@flind/ui/features/auth/UserAvatar";
+import { TaskTabIcon } from "@flind/ui/features/browser-tabs/TaskTabIcon";
 import {
   ActivityPresenceAvatar,
   canvasAuthor,
-} from "@posthog/ui/features/canvas/components/ChannelItemPresence";
-import { iconForTemplate } from "@posthog/ui/features/canvas/components/canvasTemplateIcon";
+} from "@flind/ui/features/canvas/components/ChannelItemPresence";
+import { iconForTemplate } from "@flind/ui/features/canvas/components/canvasTemplateIcon";
 import {
   buildFeedSections,
   entryKey,
@@ -79,54 +79,54 @@ import {
   mergeFeedEntries,
   type SpaceActivityType,
   stripContextBlocks,
-} from "@posthog/ui/features/canvas/components/channelFeedDisplay";
+} from "@flind/ui/features/canvas/components/channelFeedDisplay";
 import {
   FeedRowContextMenu,
   FeedSelection,
   useFeedRowSelection,
-} from "@posthog/ui/features/canvas/components/FeedSelection";
-import { ReportFeedRow } from "@posthog/ui/features/canvas/components/ReportFeedRow";
-import { ReportFilterControls } from "@posthog/ui/features/canvas/components/ReportFilterControls";
+} from "@flind/ui/features/canvas/components/FeedSelection";
+import { ReportFeedRow } from "@flind/ui/features/canvas/components/ReportFeedRow";
+import { ReportFilterControls } from "@flind/ui/features/canvas/components/ReportFilterControls";
 import {
   TaskRowContextMenu,
   TaskRowDropdownMenu,
   type TaskRowMenuProps,
-} from "@posthog/ui/features/canvas/components/TaskRowMenu";
-import { buildRows } from "@posthog/ui/features/canvas/components/taskArtifactRows";
-import { PrFeedRow } from "@posthog/ui/features/canvas/components/work/PrFeedRow";
-import type { SpacePullRequest } from "@posthog/ui/features/canvas/components/work/useSpacePullRequests";
-import type { ChannelFeedSystemMessage } from "@posthog/ui/features/canvas/hooks/useChannelFeedMessages";
-import type { ChannelReportsFilters } from "@posthog/ui/features/canvas/hooks/useChannelReports";
-import { useChannelTaskData } from "@posthog/ui/features/canvas/hooks/useChannelTaskData";
-import { useMarkTaskActivityRead } from "@posthog/ui/features/canvas/hooks/useMarkTaskActivityRead";
-import { useTaskThread } from "@posthog/ui/features/canvas/hooks/useTaskThread";
-import type { ThreadPanelTab } from "@posthog/ui/features/canvas/stores/threadPanelStore";
-import { taskCardNavigation } from "@posthog/ui/features/canvas/taskCardNavigation";
-import { canvasArtifactOpenHandler } from "@posthog/ui/features/canvas/utils/canvasArtifactNavigation";
-import { userDisplayName } from "@posthog/ui/features/canvas/utils/userDisplay";
-import { useCommandCenterStore } from "@posthog/ui/features/command-center/commandCenterStore";
-import { placeTaskInCommandCenter } from "@posthog/ui/features/command-center/placeTaskInCommandCenter";
-import { MarkdownRenderer } from "@posthog/ui/features/editor/components/MarkdownRenderer";
-import { usePrArtifact } from "@posthog/ui/features/git-interaction/usePrArtifact";
-import { usePrTitles } from "@posthog/ui/features/git-interaction/usePrDetails";
-import { usePanelLayoutStore } from "@posthog/ui/features/panels/panelLayoutStore";
-import { usePrChecks } from "@posthog/ui/features/pr-review/usePrChecks";
-import { StopCloudRunDialog } from "@posthog/ui/features/sessions/components/StopCloudRunDialog";
-import { ArchiveRunningTaskDialog } from "@posthog/ui/features/sidebar/components/ArchiveRunningTaskDialog";
-import { SESSION_ROW_ATTRIBUTE } from "@posthog/ui/features/sidebar/useMarqueeSelection";
-import { usePinnedTasks } from "@posthog/ui/features/sidebar/usePinnedTasks";
+} from "@flind/ui/features/canvas/components/TaskRowMenu";
+import { buildRows } from "@flind/ui/features/canvas/components/taskArtifactRows";
+import { PrFeedRow } from "@flind/ui/features/canvas/components/work/PrFeedRow";
+import type { SpacePullRequest } from "@flind/ui/features/canvas/components/work/useSpacePullRequests";
+import type { ChannelFeedSystemMessage } from "@flind/ui/features/canvas/hooks/useChannelFeedMessages";
+import type { ChannelReportsFilters } from "@flind/ui/features/canvas/hooks/useChannelReports";
+import { useChannelTaskData } from "@flind/ui/features/canvas/hooks/useChannelTaskData";
+import { useMarkTaskActivityRead } from "@flind/ui/features/canvas/hooks/useMarkTaskActivityRead";
+import { useTaskThread } from "@flind/ui/features/canvas/hooks/useTaskThread";
+import type { ThreadPanelTab } from "@flind/ui/features/canvas/stores/threadPanelStore";
+import { taskCardNavigation } from "@flind/ui/features/canvas/taskCardNavigation";
+import { canvasArtifactOpenHandler } from "@flind/ui/features/canvas/utils/canvasArtifactNavigation";
+import { userDisplayName } from "@flind/ui/features/canvas/utils/userDisplay";
+import { useCommandCenterStore } from "@flind/ui/features/command-center/commandCenterStore";
+import { placeTaskInCommandCenter } from "@flind/ui/features/command-center/placeTaskInCommandCenter";
+import { MarkdownRenderer } from "@flind/ui/features/editor/components/MarkdownRenderer";
+import { usePrArtifact } from "@flind/ui/features/git-interaction/usePrArtifact";
+import { usePrTitles } from "@flind/ui/features/git-interaction/usePrDetails";
+import { usePanelLayoutStore } from "@flind/ui/features/panels/panelLayoutStore";
+import { usePrChecks } from "@flind/ui/features/pr-review/usePrChecks";
+import { StopCloudRunDialog } from "@flind/ui/features/sessions/components/StopCloudRunDialog";
+import { ArchiveRunningTaskDialog } from "@flind/ui/features/sidebar/components/ArchiveRunningTaskDialog";
+import { SESSION_ROW_ATTRIBUTE } from "@flind/ui/features/sidebar/useMarqueeSelection";
+import { usePinnedTasks } from "@flind/ui/features/sidebar/usePinnedTasks";
 import {
   type SidebarPrState,
   useTaskPrStatus,
-} from "@posthog/ui/features/sidebar/useTaskPrStatus";
-import { useRenameTask } from "@posthog/ui/features/tasks/useTaskMutations";
-import { FileIcon } from "@posthog/ui/primitives/FileIcon";
-import { useInView } from "@posthog/ui/primitives/hooks/useInView";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
-import { toast } from "@posthog/ui/primitives/toast";
-import { navigateToChannelDashboard } from "@posthog/ui/router/navigationBridge";
-import { openExternalUrl } from "@posthog/ui/shell/openExternal";
-import { parseHttpsUrl } from "@posthog/ui/utils/posthogLinks";
+} from "@flind/ui/features/sidebar/useTaskPrStatus";
+import { useRenameTask } from "@flind/ui/features/tasks/useTaskMutations";
+import { FileIcon } from "@flind/ui/primitives/FileIcon";
+import { useInView } from "@flind/ui/primitives/hooks/useInView";
+import { Spinner } from "@flind/ui/primitives/Spinner";
+import { toast } from "@flind/ui/primitives/toast";
+import { navigateToChannelDashboard } from "@flind/ui/router/navigationBridge";
+import { openExternalUrl } from "@flind/ui/shell/openExternal";
+import { parseHttpsUrl } from "@flind/ui/utils/posthogLinks";
 import { Text } from "@radix-ui/themes";
 import { Link } from "@tanstack/react-router";
 import {

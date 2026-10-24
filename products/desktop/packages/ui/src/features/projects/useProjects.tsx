@@ -1,8 +1,8 @@
-import type { OrgProjectsMap } from "@posthog/core/auth/schemas";
-import { ROOT_LOGGER, type RootLogger } from "@posthog/di/logger";
-import { useService } from "@posthog/di/react";
-import { useAuthStateValue } from "@posthog/ui/features/auth/store";
-import { useSelectProjectMutation } from "@posthog/ui/features/auth/useAuthMutations";
+import type { OrgProjectsMap } from "@flind/core/auth/schemas";
+import { ROOT_LOGGER, type RootLogger } from "@flind/di/logger";
+import { useService } from "@flind/di/react";
+import { useAuthStateValue } from "@flind/ui/features/auth/store";
+import { useSelectProjectMutation } from "@flind/ui/features/auth/useAuthMutations";
 import { useEffect, useMemo } from "react";
 
 export interface ProjectInfo {

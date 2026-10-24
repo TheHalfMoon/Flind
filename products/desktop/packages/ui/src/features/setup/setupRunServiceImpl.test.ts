@@ -2,7 +2,7 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 
 const startMutate = vi.fn(async (_input: Record<string, unknown>) => {});
 
-vi.mock("@posthog/di/container", () => ({
+vi.mock("@flind/di/container", () => ({
   resolveService: () => ({ agent: { start: { mutate: startMutate } } }),
 }));
 

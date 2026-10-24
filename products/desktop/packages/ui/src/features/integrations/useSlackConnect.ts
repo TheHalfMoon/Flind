@@ -6,9 +6,9 @@ import {
   deriveConnectFlags,
   slackInvalidationKeys,
   toConnectError,
-} from "@posthog/core/integrations/connectMachine";
-import { useHostTRPCClient } from "@posthog/host-router/react";
-import { useAuthStateValue } from "@posthog/ui/features/auth/store";
+} from "@flind/core/integrations/connectMachine";
+import { useHostTRPCClient } from "@flind/host-router/react";
+import { useAuthStateValue } from "@flind/ui/features/auth/store";
 import { type QueryClient, useQueryClient } from "@tanstack/react-query";
 import { useCallback, useEffect, useMemo, useReducer, useRef } from "react";
 import { useSlackIntegrationCallback } from "./useSlackIntegrationCallback";

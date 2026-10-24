@@ -1,4 +1,4 @@
-import { useService } from "@posthog/di/react";
+import { useService } from "@flind/di/react";
 import { useEffect, useRef, useState } from "react";
 import { useMeQuery } from "../features/auth/useMeQuery";
 import { useSettingsStore } from "../features/settings/settingsStore";

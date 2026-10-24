@@ -1,5 +1,5 @@
 import { Text } from "@flind/quill";
-import Logo from "@posthog/ui/primitives/Logo";
+import Logo from "@flind/ui/primitives/Logo";
 
 /**
  * The hedgehog mark beside the product name. Logo's own wordmark is brand

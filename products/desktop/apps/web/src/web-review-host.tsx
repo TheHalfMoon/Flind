@@ -1,6 +1,6 @@
 import WorkerUrl from "@pierre/diffs/worker/worker.js?worker&url";
-import type { ReviewHost } from "@posthog/ui/features/code-review/reviewHost";
-import { ChangesPanel } from "@posthog/ui/features/task-detail/components/ChangesPanel";
+import type { ReviewHost } from "@flind/ui/features/code-review/reviewHost";
+import { ChangesPanel } from "@flind/ui/features/task-detail/components/ChangesPanel";
 
 // Diff rendering is pure browser code — a web worker over a Vite-resolved asset
 // URL plus the ChangesPanel React component — so this mirrors the desktop

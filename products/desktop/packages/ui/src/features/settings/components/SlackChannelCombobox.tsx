@@ -4,7 +4,7 @@ import {
   mergeVisibleChannels,
   parseChannelIdFromTargetValue,
   parseChannelNameFromTargetValue,
-} from "@posthog/core/settings/slackNotificationTarget";
+} from "@flind/core/settings/slackNotificationTarget";
 import {
   Button,
   Combobox,
@@ -15,9 +15,9 @@ import {
   ComboboxList,
   ComboboxTrigger,
 } from "@flind/quill";
-import { useSlackChannels } from "@posthog/ui/features/inbox/hooks/useSlackChannels";
-import { ModalInlineComboboxContent } from "@posthog/ui/features/settings/ModalInlineComboboxContent";
-import { useDebouncedValue } from "@posthog/ui/primitives/hooks/useDebouncedValue";
+import { useSlackChannels } from "@flind/ui/features/inbox/hooks/useSlackChannels";
+import { ModalInlineComboboxContent } from "@flind/ui/features/settings/ModalInlineComboboxContent";
+import { useDebouncedValue } from "@flind/ui/primitives/hooks/useDebouncedValue";
 import { useMemo, useRef, useState } from "react";
 
 const OFF_VALUE = "__off__";

@@ -1,4 +1,4 @@
-import type { UserBasic } from "@posthog/shared/domain-types";
+import type { UserBasic } from "@flind/shared/domain-types";
 import { useQuery } from "@tanstack/react-query";
 import { useMemo } from "react";
 import { useAuthStore } from "@/features/auth";

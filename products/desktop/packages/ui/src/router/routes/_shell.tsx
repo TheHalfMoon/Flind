@@ -1,5 +1,5 @@
-import { ShellLayout } from "@posthog/ui/features/canvas/components/ShellLayout";
-import { useShellOwnsHeader } from "@posthog/ui/features/canvas/hooks/useShellOwnsHeader";
+import { ShellLayout } from "@flind/ui/features/canvas/components/ShellLayout";
+import { useShellOwnsHeader } from "@flind/ui/features/canvas/hooks/useShellOwnsHeader";
 import { createFileRoute, Outlet } from "@tanstack/react-router";
 
 /**

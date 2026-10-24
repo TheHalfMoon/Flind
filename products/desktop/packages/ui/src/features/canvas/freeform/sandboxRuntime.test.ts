@@ -1,7 +1,7 @@
 import {
   CANVAS_SDK_MODULE_SOURCE,
   CANVAS_SDK_SPECIFIER,
-} from "@posthog/shared";
+} from "@flind/shared";
 import { describe, expect, it, vi } from "vitest";
 import builderSource from "../../../../../../../canvas/packages/canvas_builder/build.mjs?raw";
 import {

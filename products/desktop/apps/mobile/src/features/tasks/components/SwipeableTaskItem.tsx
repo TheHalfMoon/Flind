@@ -1,5 +1,5 @@
-import { isTaskRunning } from "@posthog/core/tasks/taskArchive";
-import type { Task } from "@posthog/shared";
+import { isTaskRunning } from "@flind/core/tasks/taskArchive";
+import type { Task } from "@flind/shared";
 import * as Haptics from "expo-haptics";
 import { Archive, ArrowCounterClockwise } from "phosphor-react-native";
 import { useEffect, useRef } from "react";

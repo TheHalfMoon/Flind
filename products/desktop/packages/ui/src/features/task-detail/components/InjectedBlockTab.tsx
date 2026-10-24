@@ -1,6 +1,6 @@
-import type { InjectedBlock } from "@posthog/core/editor/injectedBlocks";
-import { MarkdownRenderer } from "@posthog/ui/features/editor/components/MarkdownRenderer";
-import { INJECTED_BLOCK_PRESENTATION } from "@posthog/ui/features/sessions/components/session-update/injectedBlocks";
+import type { InjectedBlock } from "@flind/core/editor/injectedBlocks";
+import { MarkdownRenderer } from "@flind/ui/features/editor/components/MarkdownRenderer";
+import { INJECTED_BLOCK_PRESENTATION } from "@flind/ui/features/sessions/components/session-update/injectedBlocks";
 
 interface InjectedBlockTabProps {
   block: InjectedBlock;

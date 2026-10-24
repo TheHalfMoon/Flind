@@ -1,5 +1,5 @@
-import type { InboxReviewerScope } from "@posthog/shared/analytics-events";
-import type { SignalReport } from "@posthog/shared/types";
+import type { InboxReviewerScope } from "@flind/shared/analytics-events";
+import type { SignalReport } from "@flind/shared/types";
 
 /**
  * Statuses that are out of the inbox entirely (user-suppressed, resolved, or

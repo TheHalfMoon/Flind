@@ -1,5 +1,5 @@
 import "reflect-metadata";
-import type { ISecureStoreService } from "@posthog/workspace-server/services/secure-store/identifiers";
+import type { ISecureStoreService } from "@flind/workspace-server/services/secure-store/identifiers";
 import { describe, expect, it, vi } from "vitest";
 
 vi.mock("@main/utils/logger", () => ({

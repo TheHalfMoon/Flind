@@ -6,13 +6,13 @@ import {
   PackageIcon,
   SlackLogoIcon,
 } from "@phosphor-icons/react";
-import type { ResourceComment } from "@posthog/api-client/posthog-client";
+import type { ResourceComment } from "@flind/api-client/posthog-client";
 import {
   getPostHogObjectArtifactMetadata,
   type RunArtifactVersions,
   runArtifactVersionKey,
-} from "@posthog/core/canvas/runArtifactSchemas";
-import type { ThreadTimelineRow } from "@posthog/core/canvas/threadTimeline";
+} from "@flind/core/canvas/runArtifactSchemas";
+import type { ThreadTimelineRow } from "@flind/core/canvas/threadTimeline";
 import {
   Badge,
   Button,
@@ -29,39 +29,39 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@flind/quill";
-import { formatRelativeTimeShort } from "@posthog/shared";
-import type { Task, TaskThreadMessage } from "@posthog/shared/domain-types";
-import { useMeQuery } from "@posthog/ui/features/auth/useMeQuery";
-import { iconForTemplate } from "@posthog/ui/features/canvas/components/canvasTemplateIcon";
+import { formatRelativeTimeShort } from "@flind/shared";
+import type { Task, TaskThreadMessage } from "@flind/shared/domain-types";
+import { useMeQuery } from "@flind/ui/features/auth/useMeQuery";
+import { iconForTemplate } from "@flind/ui/features/canvas/components/canvasTemplateIcon";
 import {
   buildRows,
   commentTargets,
   type RunFile,
-} from "@posthog/ui/features/canvas/components/taskArtifactRows";
-import { useTaskRuns } from "@posthog/ui/features/canvas/hooks/useTaskRuns";
-import { canvasArtifactOpenHandler } from "@posthog/ui/features/canvas/utils/canvasArtifactNavigation";
-import { openPrInReview } from "@posthog/ui/features/code-review/openPrInReview";
-import { usePrArtifact } from "@posthog/ui/features/git-interaction/usePrArtifact";
-import { useOpenInboxReport } from "@posthog/ui/features/inbox/hooks/useOpenInboxReport";
-import { usePanelLayoutStore } from "@posthog/ui/features/panels/panelLayoutStore";
-import { usePrComments } from "@posthog/ui/features/pr-review/usePrComments";
-import { usePrReviewThreads } from "@posthog/ui/features/pr-review/usePrReviewThreads";
-import { buildCommentThreads } from "@posthog/ui/features/sessions/components/commentViewTypes";
-import { useCompletedArtifactUploads } from "@posthog/ui/features/sessions/components/countArtifactUploads";
-import { useCommentsForTargetsQuery } from "@posthog/ui/features/sessions/components/useComments";
-import { useSessionSelector } from "@posthog/ui/features/sessions/sessionStore";
-import { useArtifactDownload } from "@posthog/ui/features/sessions/useArtifactDownload";
+} from "@flind/ui/features/canvas/components/taskArtifactRows";
+import { useTaskRuns } from "@flind/ui/features/canvas/hooks/useTaskRuns";
+import { canvasArtifactOpenHandler } from "@flind/ui/features/canvas/utils/canvasArtifactNavigation";
+import { openPrInReview } from "@flind/ui/features/code-review/openPrInReview";
+import { usePrArtifact } from "@flind/ui/features/git-interaction/usePrArtifact";
+import { useOpenInboxReport } from "@flind/ui/features/inbox/hooks/useOpenInboxReport";
+import { usePanelLayoutStore } from "@flind/ui/features/panels/panelLayoutStore";
+import { usePrComments } from "@flind/ui/features/pr-review/usePrComments";
+import { usePrReviewThreads } from "@flind/ui/features/pr-review/usePrReviewThreads";
+import { buildCommentThreads } from "@flind/ui/features/sessions/components/commentViewTypes";
+import { useCompletedArtifactUploads } from "@flind/ui/features/sessions/components/countArtifactUploads";
+import { useCommentsForTargetsQuery } from "@flind/ui/features/sessions/components/useComments";
+import { useSessionSelector } from "@flind/ui/features/sessions/sessionStore";
+import { useArtifactDownload } from "@flind/ui/features/sessions/useArtifactDownload";
 import {
   ArtifactCard,
   stopCardOpen,
-} from "@posthog/ui/primitives/ArtifactCard";
-import { FileIcon } from "@posthog/ui/primitives/FileIcon";
-import { openExternalUrl } from "@posthog/ui/shell/openExternal";
-import { formatFileSize } from "@posthog/ui/utils/formatFileSize";
+} from "@flind/ui/primitives/ArtifactCard";
+import { FileIcon } from "@flind/ui/primitives/FileIcon";
+import { openExternalUrl } from "@flind/ui/shell/openExternal";
+import { formatFileSize } from "@flind/ui/utils/formatFileSize";
 import {
   getObjectKind,
   POSTHOG_OBJECT_ICON_COLOR,
-} from "@posthog/ui/utils/objectKinds";
+} from "@flind/ui/utils/objectKinds";
 import { useMemo, useState } from "react";
 
 const EMPTY_COMMENTS: ResourceComment[] = [];

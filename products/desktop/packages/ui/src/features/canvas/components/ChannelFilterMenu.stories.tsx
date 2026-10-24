@@ -9,8 +9,8 @@ import {
   hasActiveChannelItemFilters,
   MOBILE_SOURCE,
   WEB_SOURCE,
-} from "@posthog/core/canvas/channelItems";
-import { EditListItemAppearanceDialog } from "@posthog/ui/features/sidebar/components/EditListItemAppearanceDialog";
+} from "@flind/core/canvas/channelItems";
+import { EditListItemAppearanceDialog } from "@flind/ui/features/sidebar/components/EditListItemAppearanceDialog";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
 import { ChannelFilterMenu } from "./ChannelFilterMenu";

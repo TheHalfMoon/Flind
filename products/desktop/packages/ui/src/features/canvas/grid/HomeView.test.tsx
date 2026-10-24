@@ -7,7 +7,7 @@ const HOME_KEY = ["dashboards", "home"];
 
 const mocks = vi.hoisted(() => ({ home: vi.fn() }));
 
-vi.mock("@posthog/host-router/react", () => ({
+vi.mock("@flind/host-router/react", () => ({
   useHostTRPC: () => ({
     dashboards: {
       home: {

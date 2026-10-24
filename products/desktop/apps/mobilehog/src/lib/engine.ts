@@ -2,9 +2,9 @@ import {
   type CloudTaskEngine,
   type CloudTaskFetch,
   createCloudTaskEngine,
-} from "@posthog/core/cloud-task/cloud-task-engine";
-import { CloudTaskEvent } from "@posthog/core/cloud-task/schemas";
-import type { CloudTaskUpdatePayload } from "@posthog/shared";
+} from "@flind/core/cloud-task/cloud-task-engine";
+import { CloudTaskEvent } from "@flind/core/cloud-task/schemas";
+import type { CloudTaskUpdatePayload } from "@flind/shared";
 import { fetch } from "expo/fetch";
 import {
   authedFetch,

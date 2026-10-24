@@ -1,5 +1,5 @@
 import { CaretDown, Lightning } from "@phosphor-icons/react";
-import { propertyDisplayName } from "@posthog/core/canvas/blockLibrary/propertyNames";
+import { propertyDisplayName } from "@flind/core/canvas/blockLibrary/propertyNames";
 import {
   Button,
   Combobox,
@@ -15,8 +15,8 @@ import {
   TOP_EVENTS_HOGQL,
   useSavedInsights,
   useTopValues,
-} from "@posthog/ui/features/canvas/blocks/pickerQueries";
-import { useDebouncedValue } from "@posthog/ui/primitives/hooks/useDebouncedValue";
+} from "@flind/ui/features/canvas/blocks/pickerQueries";
+import { useDebouncedValue } from "@flind/ui/primitives/hooks/useDebouncedValue";
 import { useCallback, useMemo, useRef, useState } from "react";
 
 const CUSTOM_PREFIX = "__custom__:";

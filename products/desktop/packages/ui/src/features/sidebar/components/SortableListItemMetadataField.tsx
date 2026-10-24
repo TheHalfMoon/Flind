@@ -11,7 +11,7 @@ import { Checkbox, cn, Label } from "@flind/quill";
 import {
   LIST_ITEM_METADATA_LABELS,
   type ListItemMetadataField,
-} from "@posthog/ui/features/sidebar/listItemAppearance";
+} from "@flind/ui/features/sidebar/listItemAppearance";
 import type { ComponentType, RefCallback } from "react";
 
 const FIELD_ICONS: Record<

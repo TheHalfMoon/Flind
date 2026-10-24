@@ -1,4 +1,4 @@
-import type { AgentConversationEvent } from "@posthog/shared";
+import type { AgentConversationEvent } from "@flind/shared";
 import { describe, expect, it } from "vitest";
 import { buildAgentConversationItems } from "./buildConversationItems";
 

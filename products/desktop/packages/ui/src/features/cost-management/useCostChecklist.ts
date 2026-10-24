@@ -1,11 +1,11 @@
 import {
   buildCostChecklist,
   type CostChecklistItem,
-} from "@posthog/core/billing/costChecklist";
-import { LEAN_SKILLS } from "@posthog/core/billing/leanSkills";
-import { useSandboxCustomImages } from "@posthog/ui/features/settings/sections/environments/useSandboxCustomImages";
-import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
-import { useSkills } from "@posthog/ui/features/skills/useSkills";
+} from "@flind/core/billing/costChecklist";
+import { LEAN_SKILLS } from "@flind/core/billing/leanSkills";
+import { useSandboxCustomImages } from "@flind/ui/features/settings/sections/environments/useSandboxCustomImages";
+import { useSettingsStore } from "@flind/ui/features/settings/settingsStore";
+import { useSkills } from "@flind/ui/features/skills/useSkills";
 import { useMemo } from "react";
 
 /**

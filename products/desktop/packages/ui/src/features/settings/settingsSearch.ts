@@ -1,7 +1,7 @@
 import {
   SETTINGS_PAGE_LABELS,
   type SettingsCategory,
-} from "@posthog/ui/features/settings/types";
+} from "@flind/ui/features/settings/types";
 
 export interface SettingsSearchEntry {
   category: SettingsCategory;

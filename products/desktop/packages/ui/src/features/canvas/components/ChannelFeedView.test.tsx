@@ -1,6 +1,6 @@
-import { buildChannelItems } from "@posthog/core/canvas/channelItems";
-import type { Task } from "@posthog/shared/domain-types";
-import { useTaskSelectionStore } from "@posthog/ui/features/sidebar/taskSelectionStore";
+import { buildChannelItems } from "@flind/core/canvas/channelItems";
+import type { Task } from "@flind/shared/domain-types";
+import { useTaskSelectionStore } from "@flind/ui/features/sidebar/taskSelectionStore";
 import { Theme } from "@radix-ui/themes";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
@@ -29,19 +29,19 @@ vi.mock("@tanstack/react-router", () => ({
 const { channelTaskData } = vi.hoisted(() => ({
   channelTaskData: { current: undefined as unknown },
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useChannelTaskData", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannelTaskData", () => ({
   useChannelTaskData: () => channelTaskData.current,
 }));
-vi.mock("@posthog/ui/features/sidebar/useTaskPrStatus", () => ({
+vi.mock("@flind/ui/features/sidebar/useTaskPrStatus", () => ({
   useTaskPrStatus: () => ({ prState: null }),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useTaskThread", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useTaskThread", () => ({
   useTaskThread: () => ({ messages: [] }),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useMarkTaskActivityRead", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useMarkTaskActivityRead", () => ({
   useMarkTaskActivityRead: () => ({ mutate: vi.fn() }),
 }));
-vi.mock("@posthog/ui/features/sidebar/usePinnedTasks", () => ({
+vi.mock("@flind/ui/features/sidebar/usePinnedTasks", () => ({
   usePinnedTasks: () => ({
     togglePin: vi.fn(),
     pinnedTaskIds: new Set<string>(),
@@ -50,66 +50,66 @@ vi.mock("@posthog/ui/features/sidebar/usePinnedTasks", () => ({
   }),
 }));
 const { archiveTask } = vi.hoisted(() => ({ archiveTask: vi.fn() }));
-vi.mock("@posthog/ui/features/archive/useArchiveTask", () => ({
+vi.mock("@flind/ui/features/archive/useArchiveTask", () => ({
   useArchiveTask: () => ({ archiveTask }),
   useArchiveCacheKeys: () => [],
   archiveTasksImperative: vi.fn(),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useChannelTasksRunState", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannelTasksRunState", () => ({
   useChannelTasksRunState: () => [],
 }));
-vi.mock("@posthog/ui/features/tasks/useLiveTaskIds", () => ({
+vi.mock("@flind/ui/features/tasks/useLiveTaskIds", () => ({
   useLiveTaskIds: () => [],
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useChannelTasks", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannelTasks", () => ({
   useChannelTaskMutations: () => ({ fileTask: vi.fn() }),
 }));
 vi.mock(
-  "@posthog/ui/features/sidebar/components/ArchiveRunningTaskDialog",
+  "@flind/ui/features/sidebar/components/ArchiveRunningTaskDialog",
   () => ({
     ArchiveRunningTaskDialog: ({ open }: { open: boolean }) =>
       open ? <div>Archive running task?</div> : null,
   }),
 );
-vi.mock("@posthog/ui/features/sessions/components/StopCloudRunDialog", () => ({
+vi.mock("@flind/ui/features/sessions/components/StopCloudRunDialog", () => ({
   StopCloudRunDialog: ({ open, title }: { open: boolean; title: string }) =>
     open ? <div>{title}</div> : null,
 }));
 const { archivedTaskIds } = vi.hoisted(() => ({
   archivedTaskIds: { current: new Set<string>() },
 }));
-vi.mock("@posthog/ui/features/archive/useArchivedTaskIds", () => ({
+vi.mock("@flind/ui/features/archive/useArchivedTaskIds", () => ({
   useArchivedTaskIds: () => archivedTaskIds.current,
 }));
-vi.mock("@posthog/ui/features/tasks/useTaskMutations", () => ({
+vi.mock("@flind/ui/features/tasks/useTaskMutations", () => ({
   useRenameTask: () => ({ renameTask: vi.fn() }),
 }));
-vi.mock("@posthog/ui/features/command-center/commandCenterStore", () => ({
+vi.mock("@flind/ui/features/command-center/commandCenterStore", () => ({
   useCommandCenterStore: (
     selector: (state: { cells: (string | null)[] }) => unknown,
   ) => selector({ cells: [null] }),
 }));
-vi.mock("@posthog/ui/features/command-center/placeTaskInCommandCenter", () => ({
+vi.mock("@flind/ui/features/command-center/placeTaskInCommandCenter", () => ({
   placeTaskInCommandCenter: vi.fn(),
 }));
-vi.mock("@posthog/ui/features/feature-flags/useFeatureFlag", () => ({
+vi.mock("@flind/ui/features/feature-flags/useFeatureFlag", () => ({
   useFeatureFlag: () => true,
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useChannels", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannels", () => ({
   useChannels: () => ({
     channels: [{ id: "channel-1", name: "Personal space", starred: false }],
   }),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useFileTaskToChannel", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useFileTaskToChannel", () => ({
   useFileTaskToChannel: () => vi.fn(),
 }));
-vi.mock("@posthog/ui/features/browser-tabs/useOpenBrowserTab", () => ({
+vi.mock("@flind/ui/features/browser-tabs/useOpenBrowserTab", () => ({
   useOpenBrowserTab: () => vi.fn(),
 }));
-vi.mock("@posthog/ui/features/browser-tabs/TaskTabIcon", () => ({
+vi.mock("@flind/ui/features/browser-tabs/TaskTabIcon", () => ({
   TaskTabIcon: () => <span />,
 }));
-vi.mock("@posthog/ui/primitives/hooks/useInView", () => ({
+vi.mock("@flind/ui/primitives/hooks/useInView", () => ({
   useInView: () => [vi.fn(), true],
 }));
 

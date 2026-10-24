@@ -1,12 +1,12 @@
-import type { PostHogAPIClient } from "@posthog/api-client/posthog-client";
-import type { SandboxCustomImage } from "@posthog/shared/domain-types";
+import type { PostHogAPIClient } from "@flind/api-client/posthog-client";
+import type { SandboxCustomImage } from "@flind/shared/domain-types";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 const notifySpy = vi.fn();
-vi.mock("@posthog/di/container", () => ({
+vi.mock("@flind/di/container", () => ({
   resolveServiceOptional: () => ({ notify: notifySpy }),
 }));
-vi.mock("@posthog/ui/features/notifications/notifications", () => ({
+vi.mock("@flind/ui/features/notifications/notifications", () => ({
   NotificationBus: class {},
 }));
 

@@ -1,4 +1,4 @@
-import type { ArchivedTaskWithRepo } from "@posthog/core/archive/archiveListView";
+import type { ArchivedTaskWithRepo } from "@flind/core/archive/archiveListView";
 import { describe, expect, it } from "vitest";
 import {
   getVisibleArchivedTasks,

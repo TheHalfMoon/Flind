@@ -1,5 +1,5 @@
 import { cn } from "@flind/quill";
-import { cachedImageUrl } from "@posthog/ui/shell/cachedImageUrl";
+import { cachedImageUrl } from "@flind/ui/shell/cachedImageUrl";
 import posthogIcon from "../../assets/posthog-icon.svg";
 
 const SIZE = {

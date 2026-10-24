@@ -1,10 +1,10 @@
-import { posthogToolMeta } from "@posthog/shared";
+import { posthogToolMeta } from "@flind/shared";
 import {
   CreatedPrCard,
   UploadedArtifactCard,
-} from "@posthog/ui/features/sessions/components/session-update/InlineArtifactCard";
-import type { ToolCall } from "@posthog/ui/features/sessions/types";
-import { SessionTaskIdProvider } from "@posthog/ui/features/sessions/useSessionTaskId";
+} from "@flind/ui/features/sessions/components/session-update/InlineArtifactCard";
+import type { ToolCall } from "@flind/ui/features/sessions/types";
+import { SessionTaskIdProvider } from "@flind/ui/features/sessions/useSessionTaskId";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta: Meta<typeof UploadedArtifactCard> = {

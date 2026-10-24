@@ -2,9 +2,9 @@ import {
   type CloudRegion,
   getCloudUrlFromRegion,
   REGION_LABELS,
-} from "@posthog/shared";
-import { useAuthStore } from "@posthog/ui/features/auth/store";
-import { getPostHogUrl } from "@posthog/ui/utils/urls";
+} from "@flind/shared";
+import { useAuthStore } from "@flind/ui/features/auth/store";
+import { getPostHogUrl } from "@flind/ui/utils/urls";
 
 export interface LinkOverrides {
   projectId?: number | null;

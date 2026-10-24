@@ -1,4 +1,4 @@
-import { UsageMeter } from "@posthog/ui/features/billing/UsageMeter";
+import { UsageMeter } from "@flind/ui/features/billing/UsageMeter";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta: Meta<typeof UsageMeter> = {

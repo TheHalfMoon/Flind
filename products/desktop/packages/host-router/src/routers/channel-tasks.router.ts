@@ -3,10 +3,10 @@ import {
   fileChannelTaskInput,
   listChannelTasksInput,
   unfileChannelTaskInput,
-} from "@posthog/core/canvas/channelTaskSchemas";
-import { CHANNEL_TASKS_SERVICE } from "@posthog/core/canvas/identifiers";
-import type { IChannelTasksService } from "@posthog/core/canvas/services";
-import { publicProcedure, router } from "@posthog/host-trpc/trpc";
+} from "@flind/core/canvas/channelTaskSchemas";
+import { CHANNEL_TASKS_SERVICE } from "@flind/core/canvas/identifiers";
+import type { IChannelTasksService } from "@flind/core/canvas/services";
+import { publicProcedure, router } from "@flind/host-trpc/trpc";
 import { z } from "zod";
 
 export const channelTasksRouter = router({

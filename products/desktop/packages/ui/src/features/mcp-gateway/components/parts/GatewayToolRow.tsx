@@ -2,13 +2,13 @@ import { CaretDown, CaretRight, Lock } from "@phosphor-icons/react";
 import type {
   McpApprovalState,
   McpResolvedToolPolicy,
-} from "@posthog/api-client/posthog-client";
+} from "@flind/api-client/posthog-client";
 import {
   AGENT_POLICY_STATES,
   isPolicyStateAllowedByCeiling,
   resolvePolicyStateForScope,
-} from "@posthog/core/mcp-gateway/gatewayServers";
-import { ToolPolicyToggle } from "@posthog/ui/features/mcp-servers/components/parts/ToolPolicyToggle";
+} from "@flind/core/mcp-gateway/gatewayServers";
+import { ToolPolicyToggle } from "@flind/ui/features/mcp-servers/components/parts/ToolPolicyToggle";
 import { Badge, Flex, Text, Tooltip } from "@radix-ui/themes";
 import { useState } from "react";
 

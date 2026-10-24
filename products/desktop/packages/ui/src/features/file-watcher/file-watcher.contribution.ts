@@ -1,5 +1,5 @@
-import type { Contribution } from "@posthog/di/contribution";
-import { ROOT_LOGGER, type RootLogger } from "@posthog/di/logger";
+import type { Contribution } from "@flind/di/contribution";
+import { ROOT_LOGGER, type RootLogger } from "@flind/di/logger";
 import { inject, injectable } from "inversify";
 
 @injectable()

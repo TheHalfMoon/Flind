@@ -1,12 +1,12 @@
 import {
   piSubagentToolDetailsSchema,
   readAgentToolName,
-} from "@posthog/shared";
-import type { ConversationItem } from "@posthog/ui/features/sessions/components/buildConversationItems";
+} from "@flind/shared";
+import type { ConversationItem } from "@flind/ui/features/sessions/components/buildConversationItems";
 import {
   isSubagentSpawnTool,
   isWorkflowTool,
-} from "@posthog/ui/features/sessions/components/session-update/collaborationTools";
+} from "@flind/ui/features/sessions/components/session-update/collaborationTools";
 
 type GroupCounts = {
   execute: number;

@@ -5,12 +5,12 @@ import {
   ROOT_LOGGER,
   type RootLogger,
   type ScopedLogger,
-} from "@posthog/di/logger";
+} from "@flind/di/logger";
 import {
   type IUrlLauncher,
   URL_LAUNCHER_SERVICE,
-} from "@posthog/platform/url-launcher";
-import { parseMcpToolName, TypedEventEmitter } from "@posthog/shared";
+} from "@flind/platform/url-launcher";
+import { parseMcpToolName, TypedEventEmitter } from "@flind/shared";
 import { inject, injectable } from "inversify";
 import {
   BUILTIN_POSTHOG_SERVER_NAME,

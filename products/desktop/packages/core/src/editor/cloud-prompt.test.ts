@@ -5,7 +5,7 @@ import {
   serializeCloudPrompt,
   stripAbsoluteFileTags,
   stripTrailingAttachmentSummary,
-} from "@posthog/core/editor/cloud-prompt";
+} from "@flind/core/editor/cloud-prompt";
 
 import { beforeEach, describe, expect, it, vi } from "vitest";
 

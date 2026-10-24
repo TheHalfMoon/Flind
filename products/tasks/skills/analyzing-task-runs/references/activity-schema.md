@@ -62,7 +62,7 @@ because of the agent's edit is not a blocker.
 | Value                    | `blocker_name` is...                                         | Example name               |
 | ------------------------ | ------------------------------------------------------------ | -------------------------- |
 | `missing_binary`         | the binary that was not found                                | `gh`                       |
-| `missing_package`        | the package or module that could not be imported or resolved | `@posthog/shared`          |
+| `missing_package`        | the package or module that could not be imported or resolved | `@flind/shared`          |
 | `service_down`           | the service or port that refused a connection                | `port 5432`                |
 | `missing_build_artifact` | the file or directory that had to be built first             | `dist/index.js`            |
 | `missing_credential`     | the token, key, or login that was absent                     | `GH_TOKEN`                 |

@@ -1,5 +1,5 @@
-import { CANVAS_DRAG_TYPE } from "@posthog/ui/features/canvas/canvasDrag";
-import { TASK_DRAG_TYPE } from "@posthog/ui/features/sidebar/taskDrag";
+import { CANVAS_DRAG_TYPE } from "@flind/ui/features/canvas/canvasDrag";
+import { TASK_DRAG_TYPE } from "@flind/ui/features/sidebar/taskDrag";
 import { useEffect, useState } from "react";
 
 export type NativeDragKind = "task" | "canvas";

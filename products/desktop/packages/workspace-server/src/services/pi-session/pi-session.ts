@@ -15,14 +15,14 @@ import {
   type PiQueueSnapshot,
   type RpcExtensionUIResponse,
 } from "@flind/agent/pi/types";
-import { ROOT_LOGGER, type RootLogger } from "@posthog/di/logger";
+import { ROOT_LOGGER, type RootLogger } from "@flind/di/logger";
 import {
   type AgentConversationEvent,
   type McpToolPermissionDecision,
   type McpToolPermissionRequest,
   type PiRuntimeHealth,
   TypedEventEmitter,
-} from "@posthog/shared";
+} from "@flind/shared";
 import { inject, injectable } from "inversify";
 import { TASK_METADATA_REPOSITORY } from "../../db/identifiers";
 import type { ITaskMetadataRepository } from "../../db/repositories/task-metadata-repository";

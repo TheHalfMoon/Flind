@@ -1,10 +1,10 @@
 import { useDroppable } from "@dnd-kit/react";
-import { useService } from "@posthog/di/react";
+import { useService } from "@flind/di/react";
 import { cn } from "@flind/quill";
 import {
   BROWSER_TABS_CLIENT,
   type BrowserTabsClient,
-} from "@posthog/ui/features/browser-tabs/browserTabsClient";
+} from "@flind/ui/features/browser-tabs/browserTabsClient";
 import { type CSSProperties, type DragEvent, useState } from "react";
 import { nativeDragKindOf } from "./nativeDrag";
 import { dropIntoTile } from "./tileDrop";

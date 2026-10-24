@@ -1,11 +1,11 @@
-import { parseCloneProgress } from "@posthog/core/clone/cloneProgress";
+import { parseCloneProgress } from "@flind/core/clone/cloneProgress";
 import {
   findCloneForRepo,
   isRepoCloning,
-} from "@posthog/core/clone/cloneSelectors";
-import { getTaskRepository } from "@posthog/shared";
-import type { Task } from "@posthog/shared/domain-types";
-import { useWorkspaceTRPC } from "@posthog/workspace-client/trpc";
+} from "@flind/core/clone/cloneSelectors";
+import { getTaskRepository } from "@flind/shared";
+import type { Task } from "@flind/shared/domain-types";
+import { useWorkspaceTRPC } from "@flind/workspace-client/trpc";
 import { useQuery } from "@tanstack/react-query";
 import { cloneStore } from "../../clone/cloneStore";
 import { useWorkspace } from "../../workspace/useWorkspace";

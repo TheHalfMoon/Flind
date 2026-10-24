@@ -1,5 +1,5 @@
 import { Cube } from "@phosphor-icons/react";
-import type { Task } from "@posthog/shared/domain-types";
+import type { Task } from "@flind/shared/domain-types";
 import { Badge } from "../../../primitives/Badge";
 import { Tooltip } from "../../../primitives/Tooltip";
 import { openSettings } from "../../settings/hooks/useOpenSettings";

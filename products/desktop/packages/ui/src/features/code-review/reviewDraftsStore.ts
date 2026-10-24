@@ -1,4 +1,4 @@
-import type { DraftComment } from "@posthog/core/code-review/types";
+import type { DraftComment } from "@flind/core/code-review/types";
 import { create } from "zustand";
 
 interface ReviewDraftsStoreState {

@@ -1,21 +1,21 @@
 import {
   handleShareLinkClick,
   interceptShareLinkClicks,
-} from "@posthog/ui/utils/shareLinks";
+} from "@flind/ui/utils/shareLinks";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 const navigateToChannel = vi.fn();
 const navigateToChannelDashboard = vi.fn();
 const navigateToChannelTask = vi.fn();
 
-vi.mock("@posthog/ui/router/navigationBridge", () => ({
+vi.mock("@flind/ui/router/navigationBridge", () => ({
   navigateToChannel: (...args: unknown[]) => navigateToChannel(...args),
   navigateToChannelDashboard: (...args: unknown[]) =>
     navigateToChannelDashboard(...args),
   navigateToChannelTask: (...args: unknown[]) => navigateToChannelTask(...args),
 }));
 
-vi.mock("@posthog/ui/utils/urls", () => ({
+vi.mock("@flind/ui/utils/urls", () => ({
   getPostHogUrl: (path: string) => `https://us.posthog.com${path}`,
 }));
 

@@ -1,8 +1,8 @@
 import {
   ANONYMOUS_AUTH_STATE,
   useAuthStore,
-} from "@posthog/ui/features/auth/store";
-import { MarkdownRenderer } from "@posthog/ui/features/editor/components/MarkdownRenderer";
+} from "@flind/ui/features/auth/store";
+import { MarkdownRenderer } from "@flind/ui/features/editor/components/MarkdownRenderer";
 import type { Decorator, Meta, StoryObj } from "@storybook/react-vite";
 import { useEffect } from "react";
 

@@ -1,4 +1,4 @@
-import type { AgentSession, SessionStatus } from "@posthog/shared";
+import type { AgentSession, SessionStatus } from "@flind/shared";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { SessionService, type SessionServiceDeps } from "./sessionService";
 import { sessionStore, sessionStoreSetters } from "./sessionStore";

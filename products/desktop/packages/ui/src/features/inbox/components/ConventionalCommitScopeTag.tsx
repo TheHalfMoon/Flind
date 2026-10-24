@@ -2,8 +2,8 @@ import { cn } from "@flind/quill";
 import {
   formatConventionalCommitTag,
   getConventionalCommitTypeMeta,
-} from "@posthog/ui/features/inbox/components/conventionalCommitTypeMeta";
-import { InboxBadge } from "@posthog/ui/features/inbox/components/utils/InboxBadge";
+} from "@flind/ui/features/inbox/components/conventionalCommitTypeMeta";
+import { InboxBadge } from "@flind/ui/features/inbox/components/utils/InboxBadge";
 import type { ReactNode } from "react";
 
 interface ConventionalCommitScopeTagProps {

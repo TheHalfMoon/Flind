@@ -1,4 +1,4 @@
-import type { McpAgentGrantScope } from "@posthog/api-client/posthog-client";
+import type { McpAgentGrantScope } from "@flind/api-client/posthog-client";
 import {
   Tooltip,
   TooltipContent,

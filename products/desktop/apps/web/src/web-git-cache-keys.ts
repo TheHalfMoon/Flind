@@ -1,4 +1,4 @@
-import type { GitCacheKeyProvider } from "@posthog/ui/features/git-interaction/gitCacheProvider";
+import type { GitCacheKeyProvider } from "@flind/ui/features/git-interaction/gitCacheProvider";
 import type { QueryFilters } from "@tanstack/react-query";
 
 // The desktop adapter maps these proc-name lookups onto the real tRPC options

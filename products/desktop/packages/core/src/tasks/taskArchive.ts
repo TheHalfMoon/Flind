@@ -1,4 +1,4 @@
-import { isTerminalStatus } from "@posthog/shared/domain-types";
+import { isTerminalStatus } from "@flind/shared/domain-types";
 
 export function isTaskRunning(task: {
   latest_run?: { status: string | null };

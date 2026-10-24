@@ -1,4 +1,4 @@
-import { ErrorBoundaryFallback } from "@posthog/ui/primitives/ErrorBoundaryFallback";
+import { ErrorBoundaryFallback } from "@flind/ui/primitives/ErrorBoundaryFallback";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { fn } from "storybook/test";
 

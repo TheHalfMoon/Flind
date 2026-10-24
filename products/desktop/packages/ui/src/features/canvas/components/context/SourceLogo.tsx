@@ -1,7 +1,7 @@
 import { PlugsIcon } from "@phosphor-icons/react";
-import type { ContextSource } from "@posthog/core/canvas/contextSources";
-import { ServerIcon } from "@posthog/ui/features/mcp-servers/components/parts/icons";
-import { SlackMark } from "@posthog/ui/primitives/SlackMark";
+import type { ContextSource } from "@flind/core/canvas/contextSources";
+import { ServerIcon } from "@flind/ui/features/mcp-servers/components/parts/icons";
+import { SlackMark } from "@flind/ui/primitives/SlackMark";
 import atlassianMark from "../../../../assets/services/atlassian.svg";
 import boxMark from "../../../../assets/services/box.svg";
 import figmaMark from "../../../../assets/services/figma.svg";

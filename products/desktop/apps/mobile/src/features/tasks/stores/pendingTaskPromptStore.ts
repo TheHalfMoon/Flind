@@ -1,4 +1,4 @@
-import { buildPendingPromptKey } from "@posthog/core/tasks/pendingPrompts";
+import { buildPendingPromptKey } from "@flind/core/tasks/pendingPrompts";
 import { create } from "zustand";
 import type { SessionNotificationAttachment } from "../types";
 

@@ -2,9 +2,9 @@ import {
   InboxMetaRow,
   InboxMetaSeparator,
   InboxMetaText,
-} from "@posthog/ui/features/inbox/components/InboxMetaRow";
-import { InboxMetaSourceStack } from "@posthog/ui/features/inbox/components/InboxMetaSourceStack";
-import { getSourceProductMeta } from "@posthog/ui/features/inbox/components/utils/source-product-icons";
+} from "@flind/ui/features/inbox/components/InboxMetaRow";
+import { InboxMetaSourceStack } from "@flind/ui/features/inbox/components/InboxMetaSourceStack";
+import { getSourceProductMeta } from "@flind/ui/features/inbox/components/utils/source-product-icons";
 
 interface InboxCardSourceMetaProps {
   repoSlug?: string | null;

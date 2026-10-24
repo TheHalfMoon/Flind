@@ -2,16 +2,16 @@ import { SparkleIcon } from "@phosphor-icons/react";
 import type {
   ScoutConfig,
   ScoutSuggestionItem,
-} from "@posthog/api-client/posthog-client";
+} from "@flind/api-client/posthog-client";
 import {
   suggestionActionLabel,
   suggestionMetaLine,
-} from "@posthog/core/scouts/scoutSuggestions";
+} from "@flind/core/scouts/scoutSuggestions";
 import { Badge, Button } from "@flind/quill";
-import { ANALYTICS_EVENTS } from "@posthog/shared";
-import { useProjectTimezone } from "@posthog/ui/features/projects/useProjectTimezone";
-import { formatTimezoneAbbreviation } from "@posthog/ui/primitives/timezone";
-import { track } from "@posthog/ui/shell/analytics";
+import { ANALYTICS_EVENTS } from "@flind/shared";
+import { useProjectTimezone } from "@flind/ui/features/projects/useProjectTimezone";
+import { formatTimezoneAbbreviation } from "@flind/ui/primitives/timezone";
+import { track } from "@flind/ui/shell/analytics";
 import type { ScoutConfigUpdate } from "../hooks/useScoutConfigMutations";
 
 /**

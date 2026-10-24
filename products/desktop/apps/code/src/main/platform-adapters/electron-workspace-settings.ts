@@ -1,4 +1,4 @@
-import type { IWorkspaceSettings } from "@posthog/platform/workspace-settings";
+import type { IWorkspaceSettings } from "@flind/platform/workspace-settings";
 import { injectable } from "inversify";
 import {
   getAllWorktreeLocations,

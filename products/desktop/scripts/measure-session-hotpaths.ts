@@ -1,5 +1,5 @@
 import { performance } from "node:perf_hooks";
-import type { AcpMessage } from "@posthog/shared";
+import type { AcpMessage } from "@flind/shared";
 import {
   createContextUsageTracker,
   extractContextUsage,

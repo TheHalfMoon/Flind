@@ -1,8 +1,8 @@
-import { resolveService } from "@posthog/di/container";
+import { resolveService } from "@flind/di/container";
 import {
   HOST_TRPC_CLIENT,
   type HostTrpcClient,
-} from "@posthog/host-router/client";
+} from "@flind/host-router/client";
 
 // Non-React accessor for the host tRPC client, for use in Zustand stores and
 // subscription registrars (which run outside the React tree, so they can't use

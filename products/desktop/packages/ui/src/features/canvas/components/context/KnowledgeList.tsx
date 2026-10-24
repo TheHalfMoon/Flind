@@ -14,15 +14,15 @@ import {
   type ContextObject,
   isHttpUrl,
   urlHost,
-} from "@posthog/core/canvas/contextDocument";
+} from "@flind/core/canvas/contextDocument";
 import {
   fileDisplayName,
   isSpaceFile,
-} from "@posthog/core/canvas/contextFiles";
+} from "@flind/core/canvas/contextFiles";
 import {
   type ContextSource,
   parseContextSourceInput,
-} from "@posthog/core/canvas/contextSources";
+} from "@flind/core/canvas/contextSources";
 import {
   Button,
   cn,
@@ -35,10 +35,10 @@ import {
 import {
   type ContextSources,
   useContextSources,
-} from "@posthog/ui/features/canvas/hooks/useContextSources";
-import { useWatchedObjectPreview } from "@posthog/ui/features/canvas/hooks/useWatchedObjectPreview";
-import { useContextWikiPageMutation } from "@posthog/ui/features/context-wiki/hooks/useContextWiki";
-import { openExternalUrl } from "@posthog/ui/shell/openExternal";
+} from "@flind/ui/features/canvas/hooks/useContextSources";
+import { useWatchedObjectPreview } from "@flind/ui/features/canvas/hooks/useWatchedObjectPreview";
+import { useContextWikiPageMutation } from "@flind/ui/features/context-wiki/hooks/useContextWiki";
+import { openExternalUrl } from "@flind/ui/shell/openExternal";
 import { type ReactNode, useState } from "react";
 import { AddContextDialog, type AddContextMode } from "./AddContextDialog";
 import { BrokenBlockNotice } from "./BrokenBlockNotice";

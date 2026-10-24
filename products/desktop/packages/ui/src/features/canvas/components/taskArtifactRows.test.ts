@@ -1,4 +1,4 @@
-import type { Task, TaskRun } from "@posthog/shared";
+import type { Task, TaskRun } from "@flind/shared";
 import { describe, expect, it } from "vitest";
 import {
   type ArtifactRow,

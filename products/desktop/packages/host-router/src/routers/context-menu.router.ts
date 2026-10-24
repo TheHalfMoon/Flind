@@ -1,5 +1,5 @@
-import type { ContextMenuService } from "@posthog/core/context-menu/context-menu";
-import { CONTEXT_MENU_CONTROLLER } from "@posthog/core/context-menu/identifiers";
+import type { ContextMenuService } from "@flind/core/context-menu/context-menu";
+import { CONTEXT_MENU_CONTROLLER } from "@flind/core/context-menu/identifiers";
 import {
   archivedTaskContextMenuInput,
   archivedTaskContextMenuOutput,
@@ -20,8 +20,8 @@ import {
   tabContextMenuOutput,
   taskContextMenuInput,
   taskContextMenuOutput,
-} from "@posthog/core/context-menu/schemas";
-import { publicProcedure, router } from "@posthog/host-trpc/trpc";
+} from "@flind/core/context-menu/schemas";
+import { publicProcedure, router } from "@flind/host-trpc/trpc";
 
 export const contextMenuRouter = router({
   confirmDeleteTask: publicProcedure

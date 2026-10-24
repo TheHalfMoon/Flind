@@ -1,7 +1,7 @@
 import type {
   UpdateAvailableInfo,
   UpdateDownloadProgress,
-} from "@posthog/platform/updater";
+} from "@flind/platform/updater";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { UpdatesEvent } from "./schemas";
 

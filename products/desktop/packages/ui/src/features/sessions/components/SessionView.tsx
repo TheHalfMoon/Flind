@@ -1,70 +1,70 @@
 import { Pause, Warning } from "@phosphor-icons/react";
-import type { FileAttachment } from "@posthog/core/message-editor/content";
-import { getCloudRuntimeOptions } from "@posthog/core/sessions/cloudRunOptions";
-import { hasSessionPromptEvent } from "@posthog/core/sessions/sessionEvents";
+import type { FileAttachment } from "@flind/core/message-editor/content";
+import { getCloudRuntimeOptions } from "@flind/core/sessions/cloudRunOptions";
+import { hasSessionPromptEvent } from "@flind/core/sessions/sessionEvents";
 import {
   createLatestPlanTracker,
   SESSION_SERVICE,
   type SessionService,
-} from "@posthog/core/sessions/sessionService";
+} from "@flind/core/sessions/sessionService";
 import {
   CONTEXT_WINDOW_OPTION_CATEGORY,
   FAST_MODE_OPTION_CATEGORY,
-} from "@posthog/core/task-detail/previewConfig";
-import { useService } from "@posthog/di/react";
+} from "@flind/core/task-detail/previewConfig";
+import { useService } from "@flind/di/react";
 import {
   type AcpMessage,
   FAST_MODE_FLAG,
   isTerminalStatus,
-} from "@posthog/shared";
-import type { Task } from "@posthog/shared/domain-types";
+} from "@flind/shared";
+import type { Task } from "@flind/shared/domain-types";
 import {
   spendStopMessage,
   useSpendStop,
-} from "@posthog/ui/features/billing/useSpendStop";
-import { showOfflineToast } from "@posthog/ui/features/connectivity/connectivityToast";
-import { useFeatureFlag } from "@posthog/ui/features/feature-flags/useFeatureFlag";
-import { getCodeCommandInputError } from "@posthog/ui/features/message-editor/commands";
-import type { AttachmentUploadStatus } from "@posthog/ui/features/message-editor/components/AttachmentsBar";
+} from "@flind/ui/features/billing/useSpendStop";
+import { showOfflineToast } from "@flind/ui/features/connectivity/connectivityToast";
+import { useFeatureFlag } from "@flind/ui/features/feature-flags/useFeatureFlag";
+import { getCodeCommandInputError } from "@flind/ui/features/message-editor/commands";
+import type { AttachmentUploadStatus } from "@flind/ui/features/message-editor/components/AttachmentsBar";
 import {
   PromptInput,
   type EditorHandle as PromptInputHandle,
-} from "@posthog/ui/features/message-editor/components/PromptInput";
-import { useDraftStore } from "@posthog/ui/features/message-editor/draftStore";
-import { useAutoFocusOnTyping } from "@posthog/ui/features/message-editor/useAutoFocusOnTyping";
-import { resolveAndAttachDroppedFiles } from "@posthog/ui/features/message-editor/utils/persistFile";
-import { PermissionSelector } from "@posthog/ui/features/permissions/PermissionSelector";
-import { CloudStreamDisconnectedBanner } from "@posthog/ui/features/sessions/components/CloudSessionLifecycle";
-import { ComposerWidth } from "@posthog/ui/features/sessions/components/ComposerWidth";
-import { ContextUsageIndicator } from "@posthog/ui/features/sessions/components/ContextUsageIndicator";
-import { AcpChatThread } from "@posthog/ui/features/sessions/components/chat-thread/ChatThread";
-import type { PromptRecallHandler } from "@posthog/ui/features/sessions/components/chat-thread/composerPromptRecall";
+} from "@flind/ui/features/message-editor/components/PromptInput";
+import { useDraftStore } from "@flind/ui/features/message-editor/draftStore";
+import { useAutoFocusOnTyping } from "@flind/ui/features/message-editor/useAutoFocusOnTyping";
+import { resolveAndAttachDroppedFiles } from "@flind/ui/features/message-editor/utils/persistFile";
+import { PermissionSelector } from "@flind/ui/features/permissions/PermissionSelector";
+import { CloudStreamDisconnectedBanner } from "@flind/ui/features/sessions/components/CloudSessionLifecycle";
+import { ComposerWidth } from "@flind/ui/features/sessions/components/ComposerWidth";
+import { ContextUsageIndicator } from "@flind/ui/features/sessions/components/ContextUsageIndicator";
+import { AcpChatThread } from "@flind/ui/features/sessions/components/chat-thread/ChatThread";
+import type { PromptRecallHandler } from "@flind/ui/features/sessions/components/chat-thread/composerPromptRecall";
 import {
   copyFromContextMenu,
   getGithubRefUrlFromEventTarget,
-} from "@posthog/ui/features/sessions/components/copyContextTarget";
-import { DropZoneOverlay } from "@posthog/ui/features/sessions/components/DropZoneOverlay";
-import { ModelSwitchCacheDialog } from "@posthog/ui/features/sessions/components/ModelSwitchCacheDialog";
-import { PermissionDock } from "@posthog/ui/features/sessions/components/PermissionDock";
-import { PlanStatusBar } from "@posthog/ui/features/sessions/components/PlanStatusBar";
-import { QueuedMessagesDock } from "@posthog/ui/features/sessions/components/QueuedMessagesDock";
-import { ReasoningLevelSelector } from "@posthog/ui/features/sessions/components/ReasoningLevelSelector";
-import { RawLogsView } from "@posthog/ui/features/sessions/components/raw-logs/RawLogsView";
-import { SessionSummaryPanel } from "@posthog/ui/features/sessions/components/SessionSummaryPanel";
-import { SideQuestionCard } from "@posthog/ui/features/sessions/components/SideQuestionCard";
-import { SteerQueueToggle } from "@posthog/ui/features/sessions/components/SteerQueueToggle";
+} from "@flind/ui/features/sessions/components/copyContextTarget";
+import { DropZoneOverlay } from "@flind/ui/features/sessions/components/DropZoneOverlay";
+import { ModelSwitchCacheDialog } from "@flind/ui/features/sessions/components/ModelSwitchCacheDialog";
+import { PermissionDock } from "@flind/ui/features/sessions/components/PermissionDock";
+import { PlanStatusBar } from "@flind/ui/features/sessions/components/PlanStatusBar";
+import { QueuedMessagesDock } from "@flind/ui/features/sessions/components/QueuedMessagesDock";
+import { ReasoningLevelSelector } from "@flind/ui/features/sessions/components/ReasoningLevelSelector";
+import { RawLogsView } from "@flind/ui/features/sessions/components/raw-logs/RawLogsView";
+import { SessionSummaryPanel } from "@flind/ui/features/sessions/components/SessionSummaryPanel";
+import { SideQuestionCard } from "@flind/ui/features/sessions/components/SideQuestionCard";
+import { SteerQueueToggle } from "@flind/ui/features/sessions/components/SteerQueueToggle";
 import {
   isSubmittedContentUnchanged,
   shouldSubmitComposerOptimistically,
   submitComposerPrompt,
-} from "@posthog/ui/features/sessions/components/submitComposerPrompt";
-import { usePendingModelSwitch } from "@posthog/ui/features/sessions/components/usePendingModelSwitch";
-import { CHAT_CONTENT_MAX_WIDTH } from "@posthog/ui/features/sessions/constants";
-import { useAutoCompact } from "@posthog/ui/features/sessions/hooks/useAutoCompact";
-import { useContextUsage } from "@posthog/ui/features/sessions/hooks/useContextUsage";
-import { useCancelQueuedMessageEdit } from "@posthog/ui/features/sessions/hooks/useEditQueuedMessage";
-import { useSessionEventsResidency } from "@posthog/ui/features/sessions/hooks/useSessionEventsResidency";
-import { useToggleMessagingMode } from "@posthog/ui/features/sessions/hooks/useToggleMessagingMode";
+} from "@flind/ui/features/sessions/components/submitComposerPrompt";
+import { usePendingModelSwitch } from "@flind/ui/features/sessions/components/usePendingModelSwitch";
+import { CHAT_CONTENT_MAX_WIDTH } from "@flind/ui/features/sessions/constants";
+import { useAutoCompact } from "@flind/ui/features/sessions/hooks/useAutoCompact";
+import { useContextUsage } from "@flind/ui/features/sessions/hooks/useContextUsage";
+import { useCancelQueuedMessageEdit } from "@flind/ui/features/sessions/hooks/useEditQueuedMessage";
+import { useSessionEventsResidency } from "@flind/ui/features/sessions/hooks/useSessionEventsResidency";
+import { useToggleMessagingMode } from "@flind/ui/features/sessions/hooks/useToggleMessagingMode";
 import {
   useConfigOptionForTask,
   useModeConfigOptionForTask,
@@ -72,18 +72,18 @@ import {
   usePendingPermissionsForTask,
   useSessionSelector,
   useThoughtLevelConfigOptionForTask,
-} from "@posthog/ui/features/sessions/sessionStore";
+} from "@flind/ui/features/sessions/sessionStore";
 import {
   useSessionViewActions,
   useShowRawLogs,
-} from "@posthog/ui/features/sessions/sessionViewStore";
-import type { Plan } from "@posthog/ui/features/sessions/types";
-import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
-import { useIsWorkspaceCloudRun } from "@posthog/ui/features/workspace/useWorkspace";
-import { useConnectivity } from "@posthog/ui/hooks/useConnectivity";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
-import { toast } from "@posthog/ui/primitives/toast";
-import { pendingTaskPromptStoreApi } from "@posthog/ui/shell/pendingTaskPromptStore";
+} from "@flind/ui/features/sessions/sessionViewStore";
+import type { Plan } from "@flind/ui/features/sessions/types";
+import { useSettingsStore } from "@flind/ui/features/settings/settingsStore";
+import { useIsWorkspaceCloudRun } from "@flind/ui/features/workspace/useWorkspace";
+import { useConnectivity } from "@flind/ui/hooks/useConnectivity";
+import { Spinner } from "@flind/ui/primitives/Spinner";
+import { toast } from "@flind/ui/primitives/toast";
+import { pendingTaskPromptStoreApi } from "@flind/ui/shell/pendingTaskPromptStore";
 import { Box, Button, ContextMenu, Flex, Text } from "@radix-ui/themes";
 import {
   type ReactNode,

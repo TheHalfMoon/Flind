@@ -1,4 +1,4 @@
-import type { SignalReport } from "@posthog/shared/types";
+import type { SignalReport } from "@flind/shared/types";
 
 /**
  * The Desktop reports inbox follows web's actionable report grouping. Both

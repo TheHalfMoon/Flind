@@ -1,5 +1,5 @@
 import { Check, Copy } from "@phosphor-icons/react";
-import type { McpServiceAccountWithToken } from "@posthog/api-client/posthog-client";
+import type { McpServiceAccountWithToken } from "@flind/api-client/posthog-client";
 import {
   Button,
   Callout,

@@ -1,4 +1,4 @@
-import { GITHUB_REF_URL_ATTR } from "@posthog/ui/features/editor/components/GithubRefChip";
+import { GITHUB_REF_URL_ATTR } from "@flind/ui/features/editor/components/GithubRefChip";
 import { describe, expect, it, vi } from "vitest";
 import {
   copyFromContextMenu,

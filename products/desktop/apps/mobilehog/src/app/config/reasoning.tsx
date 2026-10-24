@@ -1,4 +1,4 @@
-import { getReasoningEffortOptions } from "@posthog/shared";
+import { getReasoningEffortOptions } from "@flind/shared";
 import { useRouter } from "expo-router";
 import { ScrollView, View } from "react-native";
 import { SheetHeader } from "@/components/SheetHeader";

@@ -1,5 +1,5 @@
-import type { AgentSession } from "@posthog/shared";
-import type { CloudTaskUpdatePayload } from "@posthog/shared/domain-types";
+import type { AgentSession } from "@flind/shared";
+import type { CloudTaskUpdatePayload } from "@flind/shared/domain-types";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { SessionService, type SessionServiceDeps } from "./sessionService";
 

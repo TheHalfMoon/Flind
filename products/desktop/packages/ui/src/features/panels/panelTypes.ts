@@ -4,7 +4,7 @@ import type {
   PanelId,
   SplitDirection,
   TabId,
-} from "@posthog/core/panels/panelTypes";
+} from "@flind/core/panels/panelTypes";
 
 export type { GroupId, PanelId, SplitDirection, TabId };
 export type TabData = CoreTabData;

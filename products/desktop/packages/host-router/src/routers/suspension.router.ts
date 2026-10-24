@@ -1,5 +1,5 @@
-import { publicProcedure, router } from "@posthog/host-trpc/trpc";
-import { SUSPENSION_SERVICE } from "@posthog/workspace-server/services/suspension/identifiers";
+import { publicProcedure, router } from "@flind/host-trpc/trpc";
+import { SUSPENSION_SERVICE } from "@flind/workspace-server/services/suspension/identifiers";
 import {
   listSuspendedTasksOutput,
   restoreTaskInput,
@@ -9,8 +9,8 @@ import {
   suspendTaskOutput,
   suspensionSettingsOutput,
   updateSuspensionSettingsInput,
-} from "@posthog/workspace-server/services/suspension/schemas";
-import type { SuspensionService } from "@posthog/workspace-server/services/suspension/suspension";
+} from "@flind/workspace-server/services/suspension/schemas";
+import type { SuspensionService } from "@flind/workspace-server/services/suspension/suspension";
 
 export const suspensionRouter = router({
   suspend: publicProcedure

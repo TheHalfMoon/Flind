@@ -2,7 +2,7 @@ import type {
   McpAgentGrantScope,
   McpAuthType,
   McpGatewayInstallSharingOptions,
-} from "@posthog/api-client/posthog-client";
+} from "@flind/api-client/posthog-client";
 import { isValidMcpUrl } from "../mcp-servers/customServerForm";
 
 export interface GatewayAddServerValues {

@@ -11,7 +11,7 @@ import {
   type GoalStatus,
   type GoalTarget,
   goalStatus,
-} from "@posthog/core/canvas/contextDocument";
+} from "@flind/core/canvas/contextDocument";
 import {
   Button,
   cn,
@@ -25,13 +25,13 @@ import {
 import {
   statusColor,
   useGoalPalette,
-} from "@posthog/ui/features/canvas/goalColors";
-import type { GoalMeasureTask } from "@posthog/ui/features/canvas/goalMeasureTasks";
+} from "@flind/ui/features/canvas/goalColors";
+import type { GoalMeasureTask } from "@flind/ui/features/canvas/goalMeasureTasks";
 import {
   useGoalMeasure,
   useGoalTrend,
-} from "@posthog/ui/features/canvas/hooks/useGoalMeasure";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
+} from "@flind/ui/features/canvas/hooks/useGoalMeasure";
+import { Spinner } from "@flind/ui/primitives/Spinner";
 import { type ReactNode, useState } from "react";
 import { BrokenBlockNotice } from "./BrokenBlockNotice";
 import { GoalComposer } from "./GoalComposer";

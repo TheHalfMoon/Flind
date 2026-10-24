@@ -2,19 +2,19 @@ import { Robot } from "@phosphor-icons/react";
 import type {
   ArtifactPayload,
   CommentEventPayload,
-} from "@posthog/core/canvas/activityEvents";
+} from "@flind/core/canvas/activityEvents";
 import {
   type GroupedActivityRow,
   groupActivityRows,
-} from "@posthog/core/canvas/activityGrouping";
+} from "@flind/core/canvas/activityGrouping";
 import {
   buildActivityTimeline,
   type UserMessageLike,
-} from "@posthog/core/canvas/activityTimeline";
-import type { ThreadTimelineRow } from "@posthog/core/canvas/threadTimeline";
-import { commentScopeFromWire } from "@posthog/core/comments/anchors";
-import { DEFAULT_TAB_IDS } from "@posthog/core/panels/panelConstants";
-import { findTabInTree } from "@posthog/core/panels/panelTree";
+} from "@flind/core/canvas/activityTimeline";
+import type { ThreadTimelineRow } from "@flind/core/canvas/threadTimeline";
+import { commentScopeFromWire } from "@flind/core/comments/anchors";
+import { DEFAULT_TAB_IDS } from "@flind/core/panels/panelConstants";
+import { findTabInTree } from "@flind/core/panels/panelTree";
 import {
   Collapsible,
   CollapsibleContent,
@@ -26,7 +26,7 @@ import type {
   TaskCommentThreadSummary,
   TaskThreadMessage,
   UserBasic,
-} from "@posthog/shared/domain-types";
+} from "@flind/shared/domain-types";
 import {
   ActivityEventRow,
   ArtifactEventDetail,
@@ -41,20 +41,20 @@ import {
   RunStatusRow,
   ThreadReplyRow,
   TimelineRow,
-} from "@posthog/ui/features/canvas/components/activityRows";
-import { MentionText } from "@posthog/ui/features/canvas/components/MentionText";
-import { ThreadArtifactCard } from "@posthog/ui/features/canvas/components/ThreadPanel";
-import { userDisplayName } from "@posthog/ui/features/canvas/utils/userDisplay";
-import { usePanelLayoutStore } from "@posthog/ui/features/panels/panelLayoutStore";
-import { useCommentNavigationStore } from "@posthog/ui/features/sessions/commentNavigationStore";
-import type { buildConversationItems } from "@posthog/ui/features/sessions/components/buildConversationItems";
-import { INJECTED_BLOCK_PRESENTATION } from "@posthog/ui/features/sessions/components/session-update/injectedBlocks";
-import { MentionChip } from "@posthog/ui/features/sessions/components/session-update/parseFileMentions";
-import { splitUserMessage } from "@posthog/ui/features/sessions/components/session-update/userMessageDisplay";
+} from "@flind/ui/features/canvas/components/activityRows";
+import { MentionText } from "@flind/ui/features/canvas/components/MentionText";
+import { ThreadArtifactCard } from "@flind/ui/features/canvas/components/ThreadPanel";
+import { userDisplayName } from "@flind/ui/features/canvas/utils/userDisplay";
+import { usePanelLayoutStore } from "@flind/ui/features/panels/panelLayoutStore";
+import { useCommentNavigationStore } from "@flind/ui/features/sessions/commentNavigationStore";
+import type { buildConversationItems } from "@flind/ui/features/sessions/components/buildConversationItems";
+import { INJECTED_BLOCK_PRESENTATION } from "@flind/ui/features/sessions/components/session-update/injectedBlocks";
+import { MentionChip } from "@flind/ui/features/sessions/components/session-update/parseFileMentions";
+import { splitUserMessage } from "@flind/ui/features/sessions/components/session-update/userMessageDisplay";
 import {
   useHasTranscriptListener,
   useThreadNavigationStore,
-} from "@posthog/ui/features/sessions/threadNavigationStore";
+} from "@flind/ui/features/sessions/threadNavigationStore";
 import { Fragment, useMemo } from "react";
 
 type ConversationItem = ReturnType<

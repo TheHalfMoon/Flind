@@ -1,22 +1,22 @@
 import type {
   CreateResourceCommentRequest,
   ResourceComment,
-} from "@posthog/api-client/posthog-client";
+} from "@flind/api-client/posthog-client";
 import {
   type CommentTarget,
   commentTargetKey,
-} from "@posthog/core/comments/anchors";
+} from "@flind/core/comments/anchors";
 import {
   SESSION_SERVICE,
   type SessionService,
-} from "@posthog/core/sessions/sessionService";
-import { useService } from "@posthog/di/react";
+} from "@flind/core/sessions/sessionService";
+import { useService } from "@flind/di/react";
 import {
   getAuthIdentity,
   useAuthStateValue,
-} from "@posthog/ui/features/auth/store";
-import { AUTH_SCOPED_QUERY_META } from "@posthog/ui/features/auth/useCurrentUser";
-import { toast } from "@posthog/ui/primitives/toast";
+} from "@flind/ui/features/auth/store";
+import { AUTH_SCOPED_QUERY_META } from "@flind/ui/features/auth/useCurrentUser";
+import { toast } from "@flind/ui/primitives/toast";
 import {
   type QueryClient,
   type QueryKey,

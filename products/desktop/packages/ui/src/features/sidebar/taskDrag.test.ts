@@ -1,7 +1,7 @@
 import type {
   TaskData,
   TaskGroup,
-} from "@posthog/core/sidebar/sidebarData.types";
+} from "@flind/core/sidebar/sidebarData.types";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import {
   dragSiblingCandidates,

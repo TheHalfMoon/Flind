@@ -29,7 +29,7 @@ vi.mock("../tiptap/useTiptapEditor", () => ({
   }),
 }));
 
-vi.mock("@posthog/ui/features/settings/settingsStore", () => ({
+vi.mock("@flind/ui/features/settings/settingsStore", () => ({
   useSettingsStore: (selector: (s: typeof settingsState) => unknown) =>
     selector(settingsState),
 }));

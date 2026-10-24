@@ -73,7 +73,7 @@ A browser-style tab strip across the top of the Channels space, rendered in the 
 - No bespoke window-to-window messaging and no new event-bus abstraction is introduced.
 
 ### Multi-window (net-new host capability)
-- The host gains a window manager: today the app is single-window (`window.ts`) and the platform exposes only a single-window interface. This grows into create/track/focus/bounds for multiple `BrowserWindow`s, behind a `@posthog/platform` interface with a per-host adapter (Electron adapter; web adapter uses `window.open`).
+- The host gains a window manager: today the app is single-window (`window.ts`) and the platform exposes only a single-window interface. This grows into create/track/focus/bounds for multiple `BrowserWindow`s, behind a `@flind/platform` interface with a per-host adapter (Electron adapter; web adapter uses `window.open`).
 - **Sequencing of drag:** in-strip drag-reorder ships in this PRD. Tearing a tab into a new OS window ships via a **menu action** ("Move to new window" / "Open in split") that spawns the window programmatically. Literal drag-the-tab-out-of-the-window-to-spawn is explicitly a follow-up (it requires native pointer tracking and main-process cursor-position window creation; HTML5 DnD does not cross OS windows).
 
 ### Back / forward — per-window tab-tagged action stack

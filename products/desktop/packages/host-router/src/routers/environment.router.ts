@@ -1,5 +1,5 @@
-import type { ServiceResolver } from "@posthog/host-trpc/context";
-import { publicProcedure, router } from "@posthog/host-trpc/trpc";
+import type { ServiceResolver } from "@flind/host-trpc/context";
+import { publicProcedure, router } from "@flind/host-trpc/trpc";
 import {
   createEnvironmentInput,
   deleteEnvironmentInput,
@@ -7,7 +7,7 @@ import {
   getEnvironmentInput,
   listEnvironmentsInput,
   updateEnvironmentInput,
-} from "@posthog/workspace-server/services/environment/schemas";
+} from "@flind/workspace-server/services/environment/schemas";
 import {
   ENVIRONMENT_CLIENT,
   type HostEnvironmentClient,

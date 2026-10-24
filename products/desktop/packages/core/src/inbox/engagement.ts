@@ -3,8 +3,8 @@ import type {
   InboxReportActionSurface,
   InboxReviewerScope,
   InboxViewedProperties,
-} from "@posthog/shared/analytics-events";
-import type { SignalReport } from "@posthog/shared/domain-types";
+} from "@flind/shared/analytics-events";
+import type { SignalReport } from "@flind/shared/domain-types";
 import {
   isPullRequestReport,
   isReportTabReport,

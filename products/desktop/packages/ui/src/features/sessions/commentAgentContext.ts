@@ -1,5 +1,5 @@
-import type { CommentAnchor } from "@posthog/core/comments/anchors";
-import type { CommentAgentContext } from "@posthog/core/sessions/commentToAgent";
+import type { CommentAnchor } from "@flind/core/comments/anchors";
+import type { CommentAgentContext } from "@flind/core/sessions/commentToAgent";
 
 export type CommentResource = {
   kind: "artifact" | "canvas" | "task";

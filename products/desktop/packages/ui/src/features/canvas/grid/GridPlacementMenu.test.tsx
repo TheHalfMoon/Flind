@@ -1,4 +1,4 @@
-import type { GridPlacement } from "@posthog/core/canvas/gridLayoutSchemas";
+import type { GridPlacement } from "@flind/core/canvas/gridLayoutSchemas";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";

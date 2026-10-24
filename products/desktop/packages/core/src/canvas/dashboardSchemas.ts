@@ -1,7 +1,7 @@
 import {
   CANVAS_PLATFORM_MANIFEST,
   canvasBuildStatusSchema,
-} from "@posthog/shared";
+} from "@flind/shared";
 import { z } from "zod";
 import { canvasBuildRecordSchema } from "./canvasBuildSchemas";
 import { canvasAgentRequestInputSchema } from "./freeformSchemas";

@@ -1,17 +1,17 @@
-import { getAuthIdentity } from "@posthog/core/auth/authIdentity";
+import { getAuthIdentity } from "@flind/core/auth/authIdentity";
 import {
   buildPriorityFilterParam,
   buildSignalReportListOrdering,
   buildSuggestedReviewerFilterParam,
   INBOX_REPORTS_TAB_STATUS_FILTER,
-} from "@posthog/core/inbox/reportFiltering";
-import { INBOX_SCOPE_FOR_YOU } from "@posthog/core/inbox/reportMembership";
-import type { SignalReport } from "@posthog/shared/types";
-import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { useAuthStateValue } from "@posthog/ui/features/auth/store";
-import { useCurrentUser } from "@posthog/ui/features/auth/useCurrentUser";
-import { useActivityFilterStore } from "@posthog/ui/features/canvas/stores/activityFilterStore";
-import { useInboxReports } from "@posthog/ui/features/inbox/hooks/useInboxReports";
+} from "@flind/core/inbox/reportFiltering";
+import { INBOX_SCOPE_FOR_YOU } from "@flind/core/inbox/reportMembership";
+import type { SignalReport } from "@flind/shared/types";
+import { useOptionalAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { useAuthStateValue } from "@flind/ui/features/auth/store";
+import { useCurrentUser } from "@flind/ui/features/auth/useCurrentUser";
+import { useActivityFilterStore } from "@flind/ui/features/canvas/stores/activityFilterStore";
+import { useInboxReports } from "@flind/ui/features/inbox/hooks/useInboxReports";
 
 const INBOX_ACTIVITY_PREVIEW_LIMIT = 3;
 const INBOX_ACTIVITY_REFETCH_INTERVAL_MS = 60_000;

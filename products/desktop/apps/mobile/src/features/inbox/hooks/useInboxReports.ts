@@ -7,9 +7,9 @@ import {
   INBOX_ACTIONABLE_ACTIONABILITY_FILTER,
   INBOX_DISMISSED_STATUS_FILTER,
   INBOX_REFETCH_INTERVAL_MS,
-} from "@posthog/core/inbox/reportFiltering";
-import { isRestorableReport } from "@posthog/core/inbox/reportMembership";
-import type { DismissalReasonOptionValue } from "@posthog/shared";
+} from "@flind/core/inbox/reportFiltering";
+import { isRestorableReport } from "@flind/core/inbox/reportMembership";
+import type { DismissalReasonOptionValue } from "@flind/shared";
 import type {
   AvailableSuggestedReviewersResponse,
   CommitDiffResponse,
@@ -23,7 +23,7 @@ import type {
   SuggestedReviewer,
   SuggestedReviewersArtefact,
   SuggestedReviewerWriteEntry,
-} from "@posthog/shared/domain-types";
+} from "@flind/shared/domain-types";
 import {
   useInfiniteQuery,
   useMutation,

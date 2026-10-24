@@ -1,4 +1,4 @@
-import type { Workspace } from "@posthog/shared";
+import type { Workspace } from "@flind/shared";
 import { inject, injectable } from "inversify";
 import type { ExternalAppAction } from "../context-menu/schemas";
 import type { FocusSagaResult } from "../focus/service";

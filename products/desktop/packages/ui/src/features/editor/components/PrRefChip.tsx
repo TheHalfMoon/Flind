@@ -1,5 +1,5 @@
 import { GitPullRequestIcon } from "@phosphor-icons/react";
-import { getPrVisualConfig } from "@posthog/core/git-interaction/prStatus";
+import { getPrVisualConfig } from "@flind/core/git-interaction/prStatus";
 import {
   cn,
   Skeleton,
@@ -7,9 +7,9 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@flind/quill";
-import { GithubRefChipLink } from "@posthog/ui/features/editor/components/GithubRefChip";
-import { getPrVisualIcon } from "@posthog/ui/features/git-interaction/prIcon";
-import { PR_TONE_TEXT } from "@posthog/ui/features/git-interaction/prTone";
+import { GithubRefChipLink } from "@flind/ui/features/editor/components/GithubRefChip";
+import { getPrVisualIcon } from "@flind/ui/features/git-interaction/prIcon";
+import { PR_TONE_TEXT } from "@flind/ui/features/git-interaction/prTone";
 import type { ReactElement, ReactNode } from "react";
 
 const CI_STATUS_LABELS = {

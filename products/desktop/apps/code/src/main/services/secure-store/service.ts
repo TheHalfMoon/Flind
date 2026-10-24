@@ -4,7 +4,7 @@ import { logger } from "@main/utils/logger";
 import {
   CLAUDE_SUBSCRIPTION_TOKEN_STORE,
   type ClaudeSubscriptionTokenStore,
-} from "@posthog/core/cloud-task/identifiers";
+} from "@flind/core/cloud-task/identifiers";
 import { inject, injectable, optional } from "inversify";
 
 const log = logger.scope("secureStore");

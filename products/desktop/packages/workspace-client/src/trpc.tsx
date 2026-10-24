@@ -1,4 +1,4 @@
-import type { AppRouter } from "@posthog/workspace-server/trpc";
+import type { AppRouter } from "@flind/workspace-server/trpc";
 import { createTRPCContext } from "@trpc/tanstack-react-query";
 
 export const {

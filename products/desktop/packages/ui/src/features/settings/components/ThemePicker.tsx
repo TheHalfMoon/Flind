@@ -1,6 +1,6 @@
 import { Check } from "@phosphor-icons/react";
 import { cn } from "@flind/quill";
-import type { ThemePreference } from "@posthog/ui/shell/themeStore";
+import type { ThemePreference } from "@flind/ui/shell/themeStore";
 import type { CSSProperties } from "react";
 
 interface ThemePalette {

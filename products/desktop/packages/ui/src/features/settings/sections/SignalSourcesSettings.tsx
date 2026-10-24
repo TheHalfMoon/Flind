@@ -1,15 +1,15 @@
 import { ArrowRightIcon } from "@phosphor-icons/react";
-import { DataSourceSetup } from "@posthog/ui/features/inbox/components/DataSourceSetup";
+import { DataSourceSetup } from "@flind/ui/features/inbox/components/DataSourceSetup";
 import {
   SignalSourceToggles,
   SignalSourceTogglesSkeleton,
-} from "@posthog/ui/features/inbox/components/SignalSourceToggles";
-import { useSignalSourceManager } from "@posthog/ui/features/inbox/hooks/useSignalSourceManager";
-import { useRepositoryIntegration } from "@posthog/ui/features/integrations/useIntegrations";
-import { openSettings } from "@posthog/ui/features/settings/hooks/useOpenSettings";
-import { AutostartBaseBranchesSettings } from "@posthog/ui/features/settings/sections/AutostartBaseBranchesSettings";
-import { GitHubIntegrationSection } from "@posthog/ui/features/settings/sections/GitHubIntegrationSection";
-import { SlackInboxNotificationsSettings } from "@posthog/ui/features/settings/sections/SlackInboxNotificationsSettings";
+} from "@flind/ui/features/inbox/components/SignalSourceToggles";
+import { useSignalSourceManager } from "@flind/ui/features/inbox/hooks/useSignalSourceManager";
+import { useRepositoryIntegration } from "@flind/ui/features/integrations/useIntegrations";
+import { openSettings } from "@flind/ui/features/settings/hooks/useOpenSettings";
+import { AutostartBaseBranchesSettings } from "@flind/ui/features/settings/sections/AutostartBaseBranchesSettings";
+import { GitHubIntegrationSection } from "@flind/ui/features/settings/sections/GitHubIntegrationSection";
+import { SlackInboxNotificationsSettings } from "@flind/ui/features/settings/sections/SlackInboxNotificationsSettings";
 import { Box, Flex, Text, Tooltip } from "@radix-ui/themes";
 
 interface SignalSourcesSettingsProps {

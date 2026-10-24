@@ -1,4 +1,4 @@
-import { cachedImageUrl } from "@posthog/ui/shell/cachedImageUrl";
+import { cachedImageUrl } from "@flind/ui/shell/cachedImageUrl";
 import { useState } from "react";
 import type { Components } from "react-markdown";
 

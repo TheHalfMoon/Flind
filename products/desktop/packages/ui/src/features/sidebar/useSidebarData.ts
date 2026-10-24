@@ -8,15 +8,15 @@ import {
   partitionAndSortTasks,
   type SidebarTask,
   sliceVisibleTasks,
-} from "@posthog/core/sidebar/buildSidebarData";
-import { groupByRepository } from "@posthog/core/sidebar/groupTasks";
+} from "@flind/core/sidebar/buildSidebarData";
+import { groupByRepository } from "@flind/core/sidebar/groupTasks";
 import type {
   SidebarData,
   TaskData,
-} from "@posthog/core/sidebar/sidebarData.types";
-import { computeSummaryIds } from "@posthog/core/sidebar/summaryIds";
-import type { AppView } from "@posthog/ui/router/useAppView";
-import { useReportSourceNavType } from "@posthog/ui/router/useAppView";
+} from "@flind/core/sidebar/sidebarData.types";
+import { computeSummaryIds } from "@flind/core/sidebar/summaryIds";
+import type { AppView } from "@flind/ui/router/useAppView";
+import { useReportSourceNavType } from "@flind/ui/router/useAppView";
 import { useEffect, useMemo, useRef } from "react";
 import { useArchivedTaskIds } from "../archive/useArchivedTaskIds";
 import { useFolders } from "../folders/useFolders";

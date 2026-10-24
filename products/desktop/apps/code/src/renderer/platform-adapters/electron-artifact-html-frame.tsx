@@ -2,7 +2,7 @@ import { Button, Text } from "@flind/quill";
 import {
   ARTIFACT_HTML_BRIDGE_MARKER,
   type ArtifactHtmlFrameProps,
-} from "@posthog/ui/features/sessions/components/artifactHtmlFrameHost";
+} from "@flind/ui/features/sessions/components/artifactHtmlFrameHost";
 import {
   useCallback,
   useEffect,

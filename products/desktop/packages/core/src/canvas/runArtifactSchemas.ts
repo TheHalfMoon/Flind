@@ -1,4 +1,4 @@
-import { formatRelativeTimeLong } from "@posthog/shared";
+import { formatRelativeTimeLong } from "@flind/shared";
 import { z } from "zod";
 
 export const postHogObjectArtifactMetadataSchema = z.object({

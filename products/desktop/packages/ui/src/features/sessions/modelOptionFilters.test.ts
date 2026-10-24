@@ -13,9 +13,9 @@ const GATED_FLAG = "acme-gated-model";
 // exercised at all. Naming a real model here would instead tie these cases to a rollout
 // that ends, which is how the open-weights models stayed hidden after their flags were
 // fully rolled out.
-vi.mock("@posthog/shared/model-catalog", async (importOriginal) => {
+vi.mock("@flind/shared/model-catalog", async (importOriginal) => {
   const actual =
-    await importOriginal<typeof import("@posthog/shared/model-catalog")>();
+    await importOriginal<typeof import("@flind/shared/model-catalog")>();
   return {
     ...actual,
     accessFlagForModel: (modelId: string): string | undefined =>

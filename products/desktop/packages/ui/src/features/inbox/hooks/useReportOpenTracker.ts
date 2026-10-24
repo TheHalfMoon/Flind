@@ -2,12 +2,12 @@ import {
   type InboxDetailTab,
   inboxDetailTabReports,
   reportAgeHours,
-} from "@posthog/core/inbox/engagement";
-import type { InboxReportCloseMethod } from "@posthog/shared/analytics-events";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
-import type { SignalReport } from "@posthog/shared/types";
-import { useInboxAllReports } from "@posthog/ui/features/inbox/hooks/useInboxAllReports";
-import { track } from "@posthog/ui/shell/analytics";
+} from "@flind/core/inbox/engagement";
+import type { InboxReportCloseMethod } from "@flind/shared/analytics-events";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
+import type { SignalReport } from "@flind/shared/types";
+import { useInboxAllReports } from "@flind/ui/features/inbox/hooks/useInboxAllReports";
+import { track } from "@flind/ui/shell/analytics";
 import { useEffect, useRef } from "react";
 
 export type { InboxDetailTab };

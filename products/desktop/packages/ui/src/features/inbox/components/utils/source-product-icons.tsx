@@ -18,9 +18,9 @@ import {
   TicketIcon,
   VideoIcon,
 } from "@phosphor-icons/react";
-import { JiraIcon } from "@posthog/ui/features/inbox/components/utils/JiraIcon";
-import { PgAnalyzeIcon } from "@posthog/ui/features/inbox/components/utils/PgAnalyzeIcon";
-import type { SourceProduct } from "@posthog/ui/features/inbox/stores/inboxSignalsFilterStore";
+import { JiraIcon } from "@flind/ui/features/inbox/components/utils/JiraIcon";
+import { PgAnalyzeIcon } from "@flind/ui/features/inbox/components/utils/PgAnalyzeIcon";
+import type { SourceProduct } from "@flind/ui/features/inbox/stores/inboxSignalsFilterStore";
 import type { ComponentType } from "react";
 
 interface SourceProductMeta {

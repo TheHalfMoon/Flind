@@ -1,8 +1,8 @@
 import {
   ANONYMOUS_AUTH_STATE,
   useAuthStore,
-} from "@posthog/ui/features/auth/store";
-import { PostHogObjectPage } from "@posthog/ui/features/posthog-objects/PostHogObjectPage";
+} from "@flind/ui/features/auth/store";
+import { PostHogObjectPage } from "@flind/ui/features/posthog-objects/PostHogObjectPage";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta: Meta<typeof PostHogObjectPage> = {

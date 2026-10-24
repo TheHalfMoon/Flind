@@ -1,6 +1,6 @@
 import { UsersThreeIcon } from "@phosphor-icons/react";
-import type { TeamSkillInfo } from "@posthog/core/skills/teamSkillsService";
-import { ResizableSidebar } from "@posthog/ui/primitives/ResizableSidebar";
+import type { TeamSkillInfo } from "@flind/core/skills/teamSkillsService";
+import { ResizableSidebar } from "@flind/ui/primitives/ResizableSidebar";
 import { useMemo, useState } from "react";
 import { SkillListSkeleton } from "./SkillSkeletons";
 import { SkillsToolbar } from "./SkillsToolbar";

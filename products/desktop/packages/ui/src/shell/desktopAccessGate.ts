@@ -1,4 +1,4 @@
-import type { AuthState } from "@posthog/core/auth/schemas";
+import type { AuthState } from "@flind/core/auth/schemas";
 
 type DesktopAccessStatus = AuthState["desktopAccess"]["status"];
 

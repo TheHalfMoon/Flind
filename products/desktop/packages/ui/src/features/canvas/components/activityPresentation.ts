@@ -1,10 +1,10 @@
 import {
   channelDisplayLabel,
   PERSONAL_CHANNEL_LABEL,
-} from "@posthog/core/canvas/channelName";
-import type { TaskActivityItem } from "@posthog/core/canvas/taskActivity";
-import { formatRelativeAge } from "@posthog/shared";
-import { userDisplayName } from "@posthog/ui/features/canvas/utils/userDisplay";
+} from "@flind/core/canvas/channelName";
+import type { TaskActivityItem } from "@flind/core/canvas/taskActivity";
+import { formatRelativeAge } from "@flind/shared";
+import { userDisplayName } from "@flind/ui/features/canvas/utils/userDisplay";
 
 export type AgentActivityIconKind = "chat" | "check" | "question";
 

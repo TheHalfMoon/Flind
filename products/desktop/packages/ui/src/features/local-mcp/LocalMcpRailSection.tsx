@@ -1,5 +1,5 @@
 import { Plugs } from "@phosphor-icons/react";
-import type { LocalMcpCloudClassification } from "@posthog/core/local-mcp/localMcpImport";
+import type { LocalMcpCloudClassification } from "@flind/core/local-mcp/localMcpImport";
 import { Flex, Text } from "@radix-ui/themes";
 
 const AVAILABILITY_LABELS: Record<

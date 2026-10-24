@@ -1,19 +1,19 @@
 import type {
   EvidenceDetailSection,
   ExperimentResultsPresentation,
-} from "@posthog/api-client/evidence-previews";
+} from "@flind/api-client/evidence-previews";
 import type {
   FlagAudience,
   FlagCondition,
-} from "@posthog/api-client/flag-audience";
-import type { PostHogAPIClient } from "@posthog/api-client/posthog-client";
+} from "@flind/api-client/flag-audience";
+import type { PostHogAPIClient } from "@flind/api-client/posthog-client";
 import {
   type ChartHeadlineStat,
   chartHeadlineStat,
   planReportChart,
   type ReportChartData,
   shapeReportChartData,
-} from "@posthog/core/inbox/reportCharts";
+} from "@flind/core/inbox/reportCharts";
 import type { EvidenceLinkTarget } from "../../utils/evidenceLinks";
 
 /**

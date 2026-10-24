@@ -1,26 +1,26 @@
 import { ArrowSquareOutIcon } from "@phosphor-icons/react";
-import { groupRunArtifactVersions } from "@posthog/core/canvas/runArtifactSchemas";
+import { groupRunArtifactVersions } from "@flind/core/canvas/runArtifactSchemas";
 import { Button } from "@flind/quill";
-import { openPrInReview } from "@posthog/ui/features/code-review/openPrInReview";
-import { usePrArtifact } from "@posthog/ui/features/git-interaction/usePrArtifact";
-import { openRightPanelSide } from "@posthog/ui/features/navigation/rightPanelSide";
-import { usePanelLayoutStore } from "@posthog/ui/features/panels/panelLayoutStore";
-import { readUploadedArtifactName } from "@posthog/ui/features/sessions/components/session-update/inlineArtifacts";
+import { openPrInReview } from "@flind/ui/features/code-review/openPrInReview";
+import { usePrArtifact } from "@flind/ui/features/git-interaction/usePrArtifact";
+import { openRightPanelSide } from "@flind/ui/features/navigation/rightPanelSide";
+import { usePanelLayoutStore } from "@flind/ui/features/panels/panelLayoutStore";
+import { readUploadedArtifactName } from "@flind/ui/features/sessions/components/session-update/inlineArtifacts";
 import {
   type ToolViewProps,
   useToolCallStatus,
-} from "@posthog/ui/features/sessions/components/session-update/toolCallUtils";
-import { useSessionSelector } from "@posthog/ui/features/sessions/sessionStore";
-import { useRunArtifacts } from "@posthog/ui/features/sessions/useRunArtifacts";
-import { useSessionTaskId } from "@posthog/ui/features/sessions/useSessionTaskId";
+} from "@flind/ui/features/sessions/components/session-update/toolCallUtils";
+import { useSessionSelector } from "@flind/ui/features/sessions/sessionStore";
+import { useRunArtifacts } from "@flind/ui/features/sessions/useRunArtifacts";
+import { useSessionTaskId } from "@flind/ui/features/sessions/useSessionTaskId";
 import {
   ArtifactCard,
   stopCardOpen,
-} from "@posthog/ui/primitives/ArtifactCard";
-import { FileIcon } from "@posthog/ui/primitives/FileIcon";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
-import { openExternalUrl } from "@posthog/ui/shell/openExternal";
-import { formatFileSize } from "@posthog/ui/utils/formatFileSize";
+} from "@flind/ui/primitives/ArtifactCard";
+import { FileIcon } from "@flind/ui/primitives/FileIcon";
+import { Spinner } from "@flind/ui/primitives/Spinner";
+import { openExternalUrl } from "@flind/ui/shell/openExternal";
+import { formatFileSize } from "@flind/ui/utils/formatFileSize";
 import { useMemo } from "react";
 
 /** Opens the session's artifacts panel, where the run's other deliverables are. */

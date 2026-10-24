@@ -1,4 +1,4 @@
-import { TypedEventEmitter } from "@posthog/shared";
+import { TypedEventEmitter } from "@flind/shared";
 import { injectable, preDestroy } from "inversify";
 import { logger } from "../../utils/logger";
 import { settingsStore } from "../settingsStore";

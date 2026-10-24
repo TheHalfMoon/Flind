@@ -1,5 +1,5 @@
-import type { AgentConversationEvent } from "@posthog/shared";
-import { buildAgentConversationItems } from "@posthog/ui/features/sessions/components/buildConversationItems";
+import type { AgentConversationEvent } from "@flind/shared";
+import { buildAgentConversationItems } from "@flind/ui/features/sessions/components/buildConversationItems";
 import { renderHook } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { useAgentConversationItems } from "./useAgentConversationItems";

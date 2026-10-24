@@ -1,6 +1,6 @@
-import type { Contribution } from "@posthog/di/contribution";
-import { ROOT_LOGGER, type RootLogger } from "@posthog/di/logger";
-import { sleepWithBackoff } from "@posthog/shared";
+import type { Contribution } from "@flind/di/contribution";
+import { ROOT_LOGGER, type RootLogger } from "@flind/di/logger";
+import { sleepWithBackoff } from "@flind/shared";
 import { inject, injectable } from "inversify";
 import {
   BROWSER_TABS_CLIENT,

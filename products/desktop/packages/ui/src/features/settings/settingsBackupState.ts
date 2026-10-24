@@ -1,8 +1,8 @@
 import type {
   SettingsBackupSnapshot,
   SettingsBackupState,
-} from "@posthog/core/settings/settingsBackup";
-import { useThemeStore } from "@posthog/ui/shell/themeStore";
+} from "@flind/core/settings/settingsBackup";
+import { useThemeStore } from "@flind/ui/shell/themeStore";
 import { useSettingsStore } from "./settingsStore";
 
 export const settingsBackupState: SettingsBackupState = {

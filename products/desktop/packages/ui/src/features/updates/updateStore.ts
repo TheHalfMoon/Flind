@@ -2,13 +2,13 @@ import {
   getUpdateUiStatus,
   type UpdateUiStatus,
   updateStore,
-} from "@posthog/core/updates/updateStore";
-import { useService } from "@posthog/di/react";
+} from "@flind/core/updates/updateStore";
+import { useService } from "@flind/di/react";
 import {
   UPDATES_CLIENT,
   type UpdatesClient,
-} from "@posthog/ui/features/updates/updatesClient";
-import { logger } from "@posthog/ui/shell/logger";
+} from "@flind/ui/features/updates/updatesClient";
+import { logger } from "@flind/ui/shell/logger";
 import { useStore } from "zustand";
 
 const log = logger.scope("update-store");

@@ -1,7 +1,7 @@
 import type {
   SignalReportArtefactsResponse,
   SuggestedReviewersArtefact,
-} from "@posthog/shared/domain-types";
+} from "@flind/shared/domain-types";
 
 type ReportArtefact = SignalReportArtefactsResponse["results"][number];
 

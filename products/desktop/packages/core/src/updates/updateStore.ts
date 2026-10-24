@@ -1,4 +1,4 @@
-import type { UpdatesStatusPayload } from "@posthog/core/updates/schemas";
+import type { UpdatesStatusPayload } from "@flind/core/updates/schemas";
 import { createStore } from "zustand/vanilla";
 
 export type UpdateUiStatus =

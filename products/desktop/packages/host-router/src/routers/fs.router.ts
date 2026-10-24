@@ -1,8 +1,8 @@
-import { publicProcedure, router } from "@posthog/host-trpc/trpc";
+import { publicProcedure, router } from "@flind/host-trpc/trpc";
 import {
   FS_SERVICE,
   type FsCapability,
-} from "@posthog/workspace-server/services/fs/identifiers";
+} from "@flind/workspace-server/services/fs/identifiers";
 import {
   boundedReadResult,
   listRepoFilesInput,
@@ -17,7 +17,7 @@ import {
   readRepoFilesOutput,
   readWorkspaceFileInput,
   writeRepoFileInput,
-} from "@posthog/workspace-server/services/fs/schemas";
+} from "@flind/workspace-server/services/fs/schemas";
 
 export const fsRouter = router({
   listRepoFiles: publicProcedure

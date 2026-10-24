@@ -20,12 +20,12 @@ import {
   DESKTOP_HOME_FLAG,
   LOOPS_FLAG,
   SAVED_SEARCHES_RAIL_FLAG,
-} from "@posthog/shared";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
-import { useOpenBrowserTab } from "@posthog/ui/features/browser-tabs/useOpenBrowserTab";
-import { useSpacesTabs } from "@posthog/ui/features/browser-tabs/useSpacesTabs";
-import { ActivityHoverCard } from "@posthog/ui/features/canvas/components/ActivityHoverCard";
-import { ChannelsFab } from "@posthog/ui/features/canvas/components/ChannelsFab";
+} from "@flind/shared";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
+import { useOpenBrowserTab } from "@flind/ui/features/browser-tabs/useOpenBrowserTab";
+import { useSpacesTabs } from "@flind/ui/features/browser-tabs/useSpacesTabs";
+import { ActivityHoverCard } from "@flind/ui/features/canvas/components/ActivityHoverCard";
+import { ChannelsFab } from "@flind/ui/features/canvas/components/ChannelsFab";
 import {
   isRailDestinationActive,
   pickRailDestination,
@@ -36,37 +36,37 @@ import {
   stepRailDestination,
   visibleRailDestinations,
   visibleWorkRailDestinations,
-} from "@posthog/ui/features/canvas/components/railDestinations";
-import { useProjectTaskFeeds } from "@posthog/ui/features/canvas/hooks/useProjectTaskFeeds";
-import { useRailPane } from "@posthog/ui/features/canvas/hooks/useRailSurface";
-import { useTaskActivity } from "@posthog/ui/features/canvas/hooks/useTaskActivity";
-import { useWorkLayout } from "@posthog/ui/features/canvas/hooks/useWorkLayout";
+} from "@flind/ui/features/canvas/components/railDestinations";
+import { useProjectTaskFeeds } from "@flind/ui/features/canvas/hooks/useProjectTaskFeeds";
+import { useRailPane } from "@flind/ui/features/canvas/hooks/useRailSurface";
+import { useTaskActivity } from "@flind/ui/features/canvas/hooks/useTaskActivity";
+import { useWorkLayout } from "@flind/ui/features/canvas/hooks/useWorkLayout";
 import {
   type NavRailPane,
   railPaneFoldsIntoWork,
-} from "@posthog/ui/features/canvas/railPane";
-import { useActivityFilterStore } from "@posthog/ui/features/canvas/stores/activityFilterStore";
-import { useCurrentChannelStore } from "@posthog/ui/features/canvas/stores/currentChannelStore";
+} from "@flind/ui/features/canvas/railPane";
+import { useActivityFilterStore } from "@flind/ui/features/canvas/stores/activityFilterStore";
+import { useCurrentChannelStore } from "@flind/ui/features/canvas/stores/currentChannelStore";
 import {
   closeWorkActivity,
   useWorkActivityStore,
-} from "@posthog/ui/features/canvas/stores/workActivityStore";
+} from "@flind/ui/features/canvas/stores/workActivityStore";
 import {
   formatHotkey,
   GLOBAL_HOTKEY_OPTIONS,
   SHORTCUTS,
-} from "@posthog/ui/features/command/keyboard-shortcuts";
-import { useCommandCenterActiveCount } from "@posthog/ui/features/command-center/useCommandCenterActiveCount";
-import { useContextLayerFlag } from "@posthog/ui/features/feature-flags/useContextLayerFlag";
-import { useFeatureFlag } from "@posthog/ui/features/feature-flags/useFeatureFlag";
-import { useInboxDecisionCount } from "@posthog/ui/features/inbox/hooks/useInboxDecisionCount";
-import { openSettings } from "@posthog/ui/features/settings/hooks/useOpenSettings";
-import { NavRailTile } from "@posthog/ui/features/sidebar/components/NavRailTile";
-import { ProjectSwitcher } from "@posthog/ui/features/sidebar/components/ProjectSwitcher";
-import { useNavRailMetrics } from "@posthog/ui/features/sidebar/navRailSize";
-import { CountBadge } from "@posthog/ui/primitives/CountBadge";
-import { track } from "@posthog/ui/shell/analytics";
-import { useCommandMenuStore } from "@posthog/ui/shell/commandMenuStore";
+} from "@flind/ui/features/command/keyboard-shortcuts";
+import { useCommandCenterActiveCount } from "@flind/ui/features/command-center/useCommandCenterActiveCount";
+import { useContextLayerFlag } from "@flind/ui/features/feature-flags/useContextLayerFlag";
+import { useFeatureFlag } from "@flind/ui/features/feature-flags/useFeatureFlag";
+import { useInboxDecisionCount } from "@flind/ui/features/inbox/hooks/useInboxDecisionCount";
+import { openSettings } from "@flind/ui/features/settings/hooks/useOpenSettings";
+import { NavRailTile } from "@flind/ui/features/sidebar/components/NavRailTile";
+import { ProjectSwitcher } from "@flind/ui/features/sidebar/components/ProjectSwitcher";
+import { useNavRailMetrics } from "@flind/ui/features/sidebar/navRailSize";
+import { CountBadge } from "@flind/ui/primitives/CountBadge";
+import { track } from "@flind/ui/shell/analytics";
+import { useCommandMenuStore } from "@flind/ui/shell/commandMenuStore";
 import {
   type ComponentPropsWithRef,
   type MouseEvent,

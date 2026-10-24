@@ -1,5 +1,5 @@
-import type { PostHogAPIClient } from "@posthog/api-client/posthog-client";
-import type { ProvisionedTaskChannels } from "@posthog/shared/domain-types";
+import type { PostHogAPIClient } from "@flind/api-client/posthog-client";
+import type { ProvisionedTaskChannels } from "@flind/shared/domain-types";
 
 export type FirstRunClient = Pick<
   PostHogAPIClient,

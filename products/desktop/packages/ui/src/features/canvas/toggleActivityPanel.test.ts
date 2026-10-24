@@ -1,9 +1,9 @@
-import { useCurrentChannelStore } from "@posthog/ui/features/canvas/stores/currentChannelStore";
-import { useThreadPanelStore } from "@posthog/ui/features/canvas/stores/threadPanelStore";
+import { useCurrentChannelStore } from "@flind/ui/features/canvas/stores/currentChannelStore";
+import { useThreadPanelStore } from "@flind/ui/features/canvas/stores/threadPanelStore";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 const { track } = vi.hoisted(() => ({ track: vi.fn() }));
-vi.mock("@posthog/ui/shell/analytics", () => ({ track }));
+vi.mock("@flind/ui/shell/analytics", () => ({ track }));
 
 import { toggleActivityPanel } from "./toggleActivityPanel";
 

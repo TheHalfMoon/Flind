@@ -1,9 +1,9 @@
-import type { ScoutConfig } from "@posthog/api-client/posthog-client";
-import type { ScoutDetailTab } from "@posthog/core/scouts/scoutDetailTabs";
+import type { ScoutConfig } from "@flind/api-client/posthog-client";
+import type { ScoutDetailTab } from "@flind/core/scouts/scoutDetailTabs";
 import {
   deriveScoutLifecycle,
   scoutHealthNotice,
-} from "@posthog/core/scouts/scoutPresentation";
+} from "@flind/core/scouts/scoutPresentation";
 import {
   Badge,
   Button,
@@ -12,7 +12,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@flind/quill";
-import { RelativeTimestamp } from "@posthog/ui/primitives/RelativeTimestamp";
+import { RelativeTimestamp } from "@flind/ui/primitives/RelativeTimestamp";
 import type { ScoutConfigUpdate } from "../hooks/useScoutConfigMutations";
 
 /**

@@ -1,4 +1,4 @@
-import { AnimatedLogo } from "@posthog/ui/primitives/AnimatedLogo";
+import { AnimatedLogo } from "@flind/ui/primitives/AnimatedLogo";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {

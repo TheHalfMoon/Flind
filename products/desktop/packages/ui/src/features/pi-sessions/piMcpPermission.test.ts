@@ -2,7 +2,7 @@ import {
   MCP_TOOL_PERMISSION_OPTIONS,
   readMcpInstallationId,
   readMcpToolDescriptor,
-} from "@posthog/shared";
+} from "@flind/shared";
 import { describe, expect, it } from "vitest";
 import { buildPiMcpPermissionToolCall } from "./piMcpPermission";
 

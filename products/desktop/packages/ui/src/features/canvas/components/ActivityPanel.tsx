@@ -4,19 +4,19 @@ import {
   XIcon,
 } from "@phosphor-icons/react";
 import { Button, Tabs, TabsList, TabsTrigger } from "@flind/quill";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
-import type { Task } from "@posthog/shared/domain-types";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
+import type { Task } from "@flind/shared/domain-types";
 import {
   ActivityPanelBody,
   type ActivityTab,
-} from "@posthog/ui/features/canvas/components/ActivityPanelBody";
-import { TaskSummaryRow } from "@posthog/ui/features/canvas/components/ChannelFeedView";
-import { ThreadLoadingState } from "@posthog/ui/features/canvas/components/ThreadPanel";
-import { useTaskThread } from "@posthog/ui/features/canvas/hooks/useTaskThread";
-import { useThreadPanelStore } from "@posthog/ui/features/canvas/stores/threadPanelStore";
-import { useCommentFocusRequest } from "@posthog/ui/features/sessions/useCommentFocusRequest";
-import { taskDetailQuery } from "@posthog/ui/features/tasks/queries";
-import { track } from "@posthog/ui/shell/analytics";
+} from "@flind/ui/features/canvas/components/ActivityPanelBody";
+import { TaskSummaryRow } from "@flind/ui/features/canvas/components/ChannelFeedView";
+import { ThreadLoadingState } from "@flind/ui/features/canvas/components/ThreadPanel";
+import { useTaskThread } from "@flind/ui/features/canvas/hooks/useTaskThread";
+import { useThreadPanelStore } from "@flind/ui/features/canvas/stores/threadPanelStore";
+import { useCommentFocusRequest } from "@flind/ui/features/sessions/useCommentFocusRequest";
+import { taskDetailQuery } from "@flind/ui/features/tasks/queries";
+import { track } from "@flind/ui/shell/analytics";
 import { useQuery } from "@tanstack/react-query";
 import { useCallback, useEffect, useState } from "react";
 

@@ -1,5 +1,5 @@
-import { SIDEBAR_MIN_WIDTH } from "@posthog/ui/features/sidebar/constants";
-import { createSidebarStore } from "@posthog/ui/shell/createSidebarStore";
+import { SIDEBAR_MIN_WIDTH } from "@flind/ui/features/sidebar/constants";
+import { createSidebarStore } from "@flind/ui/shell/createSidebarStore";
 
 export const useChannelsSidebarStore = createSidebarStore({
   name: "channels-sidebar",

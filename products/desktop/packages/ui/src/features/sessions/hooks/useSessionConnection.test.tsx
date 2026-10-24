@@ -1,4 +1,4 @@
-import type { Task } from "@posthog/shared/domain-types";
+import type { Task } from "@flind/shared/domain-types";
 import { renderHook } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
@@ -16,7 +16,7 @@ const mocks = vi.hoisted(() => {
   };
 });
 
-vi.mock("@posthog/di/react", () => ({
+vi.mock("@flind/di/react", () => ({
   useService: () => mocks.sessionService,
 }));
 
@@ -24,11 +24,11 @@ vi.mock("@tanstack/react-query", () => ({
   useQueryClient: () => ({ invalidateQueries: vi.fn() }),
 }));
 
-vi.mock("@posthog/ui/hooks/useConnectivity", () => ({
+vi.mock("@flind/ui/hooks/useConnectivity", () => ({
   useConnectivity: () => ({ isOnline: true }),
 }));
 
-vi.mock("@posthog/ui/features/auth/store", () => ({
+vi.mock("@flind/ui/features/auth/store", () => ({
   useAuthStateValue: (selector: (state: Record<string, unknown>) => unknown) =>
     selector({
       status: "unauthenticated",
@@ -38,11 +38,11 @@ vi.mock("@posthog/ui/features/auth/store", () => ({
     }),
 }));
 
-vi.mock("@posthog/ui/features/auth/authClient", () => ({
+vi.mock("@flind/ui/features/auth/authClient", () => ({
   useOptionalAuthenticatedClient: () => ({}),
 }));
 
-vi.mock("@posthog/ui/features/auth/useCurrentUser", () => ({
+vi.mock("@flind/ui/features/auth/useCurrentUser", () => ({
   useCurrentUser: () => ({ data: mocks.currentUser }),
 }));
 

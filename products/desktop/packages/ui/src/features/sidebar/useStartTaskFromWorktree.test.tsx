@@ -1,4 +1,4 @@
-import type { Task } from "@posthog/shared/domain-types";
+import type { Task } from "@flind/shared/domain-types";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { act, renderHook, waitFor } from "@testing-library/react";
 import type { ReactNode } from "react";
@@ -16,27 +16,27 @@ const queryFilterMock = vi.hoisted(() =>
   })),
 );
 
-vi.mock("@posthog/di/react", () => ({
+vi.mock("@flind/di/react", () => ({
   useService: () => ({ createTask: createTaskMock }),
 }));
-vi.mock("@posthog/host-router/react", () => ({
+vi.mock("@flind/host-router/react", () => ({
   useHostTRPC: () => ({
     workspace: { listAdoptableWorktrees: { queryFilter: queryFilterMock } },
   }),
 }));
-vi.mock("@posthog/ui/features/tasks/useTaskCrudMutations", () => ({
+vi.mock("@flind/ui/features/tasks/useTaskCrudMutations", () => ({
   useCreateTask: () => ({ invalidateTasks: invalidateTasksMock }),
 }));
-vi.mock("@posthog/ui/features/notifications/errorDetails", () => ({
+vi.mock("@flind/ui/features/notifications/errorDetails", () => ({
   toastError: toastErrorMock,
 }));
-vi.mock("@posthog/ui/features/provisioning/store", () => ({
+vi.mock("@flind/ui/features/provisioning/store", () => ({
   useProvisioningStore: { getState: () => ({ setFailed: setFailedMock }) },
 }));
-vi.mock("@posthog/ui/router/useOpenTask", () => ({
+vi.mock("@flind/ui/router/useOpenTask", () => ({
   openTask: openTaskMock,
 }));
-vi.mock("@posthog/ui/shell/analytics", () => ({
+vi.mock("@flind/ui/shell/analytics", () => ({
   track: trackMock,
 }));
 

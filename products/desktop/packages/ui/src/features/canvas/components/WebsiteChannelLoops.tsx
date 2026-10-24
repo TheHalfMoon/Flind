@@ -1,7 +1,7 @@
-import { channelDisplayReference } from "@posthog/core/canvas/channelName";
-import { ChannelHeader } from "@posthog/ui/features/canvas/components/ChannelHeader";
-import { useWorkLayout } from "@posthog/ui/features/canvas/hooks/useWorkLayout";
-import { useSetHeaderContent } from "@posthog/ui/hooks/useSetHeaderContent";
+import { channelDisplayReference } from "@flind/core/canvas/channelName";
+import { ChannelHeader } from "@flind/ui/features/canvas/components/ChannelHeader";
+import { useWorkLayout } from "@flind/ui/features/canvas/hooks/useWorkLayout";
+import { useSetHeaderContent } from "@flind/ui/hooks/useSetHeaderContent";
 import { type ReactNode, useMemo } from "react";
 import { LoopBuilderComposer } from "../../loops/components/LoopBuilderComposer";
 import { LoopsSkeleton } from "../../loops/components/LoopFallbacks";

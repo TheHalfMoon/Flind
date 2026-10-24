@@ -12,9 +12,9 @@ import {
   inboxPriorityFilterLabel,
   inboxSortOptionKey,
   inboxSourceFilterLabel,
-} from "@posthog/ui/features/inbox/filterOptions";
-import { useInboxSourceFilterOptions } from "@posthog/ui/features/inbox/hooks/useInboxSourceFilterOptions";
-import { useInboxSignalsFilterStore } from "@posthog/ui/features/inbox/stores/inboxSignalsFilterStore";
+} from "@flind/ui/features/inbox/filterOptions";
+import { useInboxSourceFilterOptions } from "@flind/ui/features/inbox/hooks/useInboxSourceFilterOptions";
+import { useInboxSignalsFilterStore } from "@flind/ui/features/inbox/stores/inboxSignalsFilterStore";
 import { Flex, Popover } from "@radix-ui/themes";
 import { type ReactNode, useId, useMemo } from "react";
 

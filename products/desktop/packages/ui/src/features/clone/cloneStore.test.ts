@@ -1,4 +1,4 @@
-import { cloneStore } from "@posthog/ui/features/clone/cloneStore";
+import { cloneStore } from "@flind/ui/features/clone/cloneStore";
 import { beforeEach, describe, expect, it } from "vitest";
 
 const reset = () => cloneStore.setState({ operations: {} });

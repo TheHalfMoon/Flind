@@ -1,4 +1,4 @@
-import type { GatewayBlockedStatus } from "@posthog/shared";
+import type { GatewayBlockedStatus } from "@flind/shared";
 
 export interface AuthProxyAuth {
   authenticatedFetch(url: string, init?: RequestInit): Promise<Response>;

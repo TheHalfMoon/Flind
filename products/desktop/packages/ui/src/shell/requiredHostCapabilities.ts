@@ -1,26 +1,26 @@
-import { REPORT_MODEL_RESOLVER } from "@posthog/core/inbox/identifiers";
+import { REPORT_MODEL_RESOLVER } from "@flind/core/inbox/identifiers";
 import {
   SPEECH_SETTINGS_PROVIDER,
   SPEECH_USER_NAME_PROVIDER,
-} from "@posthog/core/speech/identifiers";
-import type { HostCapabilityRequirement } from "@posthog/di/hostCapabilities";
-import { FEEDBACK_CONTEXT_SERVICE } from "@posthog/platform/feedback-context";
-import { HOST_CAPABILITIES } from "@posthog/platform/host-capabilities";
-import { SPEECH_SERVICE } from "@posthog/platform/speech";
-import { AUTH_SIDE_EFFECTS } from "@posthog/ui/features/auth/identifiers";
-import { REVIEW_HOST } from "@posthog/ui/features/code-review/reviewHost";
-import { CONNECTIVITY_CLIENT } from "@posthog/ui/features/connectivity/connectivityClient";
-import { FEATURE_FLAGS } from "@posthog/ui/features/feature-flags/identifiers";
-import { GIT_CACHE_KEY_PROVIDER } from "@posthog/ui/features/git-interaction/gitCacheProvider";
-import { SPEECH_NOTIFY_SETTINGS } from "@posthog/ui/features/notifications/identifiers";
-import { AGENT_PROMPT_SENDER } from "@posthog/ui/features/sessions/agentPromptSender";
-import { UPDATES_CLIENT } from "@posthog/ui/features/updates/updatesClient";
-import { DIFF_WORKER_FACTORY } from "@posthog/ui/shell/diffWorkerHost";
+} from "@flind/core/speech/identifiers";
+import type { HostCapabilityRequirement } from "@flind/di/hostCapabilities";
+import { FEEDBACK_CONTEXT_SERVICE } from "@flind/platform/feedback-context";
+import { HOST_CAPABILITIES } from "@flind/platform/host-capabilities";
+import { SPEECH_SERVICE } from "@flind/platform/speech";
+import { AUTH_SIDE_EFFECTS } from "@flind/ui/features/auth/identifiers";
+import { REVIEW_HOST } from "@flind/ui/features/code-review/reviewHost";
+import { CONNECTIVITY_CLIENT } from "@flind/ui/features/connectivity/connectivityClient";
+import { FEATURE_FLAGS } from "@flind/ui/features/feature-flags/identifiers";
+import { GIT_CACHE_KEY_PROVIDER } from "@flind/ui/features/git-interaction/gitCacheProvider";
+import { SPEECH_NOTIFY_SETTINGS } from "@flind/ui/features/notifications/identifiers";
+import { AGENT_PROMPT_SENDER } from "@flind/ui/features/sessions/agentPromptSender";
+import { UPDATES_CLIENT } from "@flind/ui/features/updates/updatesClient";
+import { DIFF_WORKER_FACTORY } from "@flind/ui/shell/diffWorkerHost";
 
 /**
  * Host capabilities every host mounting the shared app must bind.
  *
- * The contract: shared `@posthog/ui` / `@posthog/core` resolve these tokens via
+ * The contract: shared `@flind/ui` / `@flind/core` resolve these tokens via
  * `useService` / `resolveService`, so any host that renders the shared UI has to
  * provide an implementation. Unlike a `TypedContainer<HostBindings>` (which only
  * type-checks the provider side) or a tRPC procedure stub (which may legitimately

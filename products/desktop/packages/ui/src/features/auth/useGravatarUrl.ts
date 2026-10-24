@@ -1,4 +1,4 @@
-import { useGravatarRefreshStore } from "@posthog/ui/features/auth/gravatarRefreshStore";
+import { useGravatarRefreshStore } from "@flind/ui/features/auth/gravatarRefreshStore";
 import { useEffect, useState } from "react";
 
 const DEFAULT_GRAVATAR_SIZE = 96;

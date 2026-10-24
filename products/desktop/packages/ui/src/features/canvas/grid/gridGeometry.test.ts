@@ -1,4 +1,4 @@
-import type { GridPlacement } from "@posthog/core/canvas/gridLayoutSchemas";
+import type { GridPlacement } from "@flind/core/canvas/gridLayoutSchemas";
 import { describe, expect, it } from "vitest";
 import {
   cellFromPoint,

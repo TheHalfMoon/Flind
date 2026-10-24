@@ -1,4 +1,4 @@
-import type { HostTrpcClient } from "@posthog/host-router/client";
+import type { HostTrpcClient } from "@flind/host-router/client";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import type { ImperativeQueryClient } from "../../shell/queryClient";
 

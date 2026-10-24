@@ -2,7 +2,7 @@ import {
   buildEnableFocusParams,
   canFocusWorkspace,
   focusTerminalKey,
-} from "@posthog/core/workspace/focusWorkspace";
+} from "@flind/core/workspace/focusWorkspace";
 import { useCallback, useMemo } from "react";
 import { toast } from "../../primitives/toast";
 import {

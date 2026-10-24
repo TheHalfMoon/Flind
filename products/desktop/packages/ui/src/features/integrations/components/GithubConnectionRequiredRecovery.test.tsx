@@ -1,4 +1,4 @@
-import type { Task } from "@posthog/shared/domain-types";
+import type { Task } from "@flind/shared/domain-types";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { act } from "react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
@@ -26,28 +26,28 @@ const installRequestState = vi.hoisted(() => ({
   install_url: "https://github.com/apps/posthog/installations/new",
 }));
 
-vi.mock("@posthog/core/sessions/sessionService", () => ({
+vi.mock("@flind/core/sessions/sessionService", () => ({
   SESSION_SERVICE: Symbol.for("test.session-service"),
 }));
-vi.mock("@posthog/di/react", () => ({ useService: () => sessionService }));
-vi.mock("@posthog/ui/features/auth/store", () => ({
+vi.mock("@flind/di/react", () => ({ useService: () => sessionService }));
+vi.mock("@flind/ui/features/auth/store", () => ({
   useAuthStateValue: (selector: (state: unknown) => unknown) =>
     selector({ currentProjectId: 1, cloudRegion: "us" }),
 }));
-vi.mock("@posthog/ui/features/folders/useFolders", () => ({
+vi.mock("@flind/ui/features/folders/useFolders", () => ({
   useFolders: () => ({ folders: [] }),
 }));
-vi.mock("@posthog/ui/features/integrations/useIntegrations", () => ({
+vi.mock("@flind/ui/features/integrations/useIntegrations", () => ({
   useIntegrations: () => ({
     isPending: integrationState.isLoadingIntegrations,
   }),
   useUserGithubIntegrations: () => ({ data: [], isSuccess: true }),
 }));
-vi.mock("@posthog/ui/features/integrations/useGithubInstallRequests", () => ({
+vi.mock("@flind/ui/features/integrations/useGithubInstallRequests", () => ({
   useGithubInstallRequests: () => ({ data: installRequestState }),
 }));
 vi.mock(
-  "@posthog/ui/features/integrations/useDismissGithubInstallRequest",
+  "@flind/ui/features/integrations/useDismissGithubInstallRequest",
   () => ({
     useDismissGithubInstallRequest: () => ({
       mutate: vi.fn(),
@@ -55,22 +55,22 @@ vi.mock(
     }),
   }),
 );
-vi.mock("@posthog/ui/features/integrations/store", () => ({
+vi.mock("@flind/ui/features/integrations/store", () => ({
   useIntegrationSelectors: () => ({
     hasGithubIntegration: integrationState.hasGithubIntegration,
   }),
 }));
-vi.mock("@posthog/ui/shell/useHostCapabilities", () => ({
+vi.mock("@flind/ui/shell/useHostCapabilities", () => ({
   useHostCapabilities: () => ({ localWorkspaces: false }),
 }));
-vi.mock("@posthog/ui/router/useOpenTask", () => ({ openTaskInput: vi.fn() }));
-vi.mock("@posthog/ui/primitives/toast", () => ({
+vi.mock("@flind/ui/router/useOpenTask", () => ({ openTaskInput: vi.fn() }));
+vi.mock("@flind/ui/primitives/toast", () => ({
   toast: { error: vi.fn() },
 }));
-vi.mock("@posthog/ui/shell/logger", () => ({
+vi.mock("@flind/ui/shell/logger", () => ({
   logger: { scope: () => ({ error: vi.fn(), info: vi.fn(), warn: vi.fn() }) },
 }));
-vi.mock("@posthog/ui/features/integrations/useGithubUserConnect", () => ({
+vi.mock("@flind/ui/features/integrations/useGithubUserConnect", () => ({
   useGithubConnect: ({
     onConnected,
     projectHasTeamIntegration,

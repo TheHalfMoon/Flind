@@ -1,5 +1,5 @@
-import { getObjectKind } from "@posthog/core/inbox/objectTags";
-import { isSafeExternalUrl } from "@posthog/shared";
+import { getObjectKind } from "@flind/core/inbox/objectTags";
+import { isSafeExternalUrl } from "@flind/shared";
 import { type ReactElement, useState } from "react";
 import { Linking, Pressable, StyleSheet, Text } from "react-native";
 import { useAuth } from "@/lib/auth";

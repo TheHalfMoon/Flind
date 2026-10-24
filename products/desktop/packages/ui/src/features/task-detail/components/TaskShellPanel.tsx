@@ -6,8 +6,8 @@ import {
   EmptyMedia,
   EmptyTitle,
 } from "@flind/quill";
-import type { Task } from "@posthog/shared/domain-types";
-import { LoadingState } from "@posthog/ui/primitives/LoadingState";
+import type { Task } from "@flind/shared/domain-types";
+import { LoadingState } from "@flind/ui/primitives/LoadingState";
 import { type ReactNode, useEffect } from "react";
 import { usePanelLayoutStore } from "../../panels/panelLayoutStore";
 import { useSessionSelector } from "../../sessions/sessionStore";

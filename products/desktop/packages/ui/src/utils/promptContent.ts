@@ -1,5 +1,5 @@
 import type { ContentBlock } from "@agentclientprotocol/sdk";
-import { getFileName } from "@posthog/shared";
+import { getFileName } from "@flind/shared";
 
 const ATTACHMENT_URI_PREFIX = "attachment://";
 

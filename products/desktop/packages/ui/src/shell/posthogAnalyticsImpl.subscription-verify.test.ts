@@ -1,12 +1,12 @@
-import { setRootContainer } from "@posthog/di/container";
-import type { Adapter } from "@posthog/shared";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
-import { ANALYTICS_TRACKER, track } from "@posthog/ui/shell/analytics";
+import { setRootContainer } from "@flind/di/container";
+import type { Adapter } from "@flind/shared";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
+import { ANALYTICS_TRACKER, track } from "@flind/ui/shell/analytics";
 import {
   initializePostHog,
   posthogAnalyticsTracker,
   registerAdapterSubscription,
-} from "@posthog/ui/shell/posthogAnalyticsImpl";
+} from "@flind/ui/shell/posthogAnalyticsImpl";
 import posthog from "posthog-js/dist/module.full.no-external";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 

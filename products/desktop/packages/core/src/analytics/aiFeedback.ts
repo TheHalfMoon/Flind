@@ -5,7 +5,7 @@ import type {
   AiMetricProperties,
   AiQualityRating,
   FeedbackType,
-} from "@posthog/shared/analytics-events";
+} from "@flind/shared/analytics-events";
 
 /** Sanity cap shared with the inbox note's FEEDBACK_NOTE_MAX_LENGTH. Capture only
  * rejects megabyte-scale events (and drops them whole, not truncated), so the cap

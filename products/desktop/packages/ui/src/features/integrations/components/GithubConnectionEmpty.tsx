@@ -9,8 +9,8 @@ import {
   EmptyMedia,
   EmptyTitle,
 } from "@flind/quill";
-import { GithubConnectionIcon } from "@posthog/ui/features/integrations/components/GithubConnectionIcon";
-import { openUrlInBrowser } from "@posthog/ui/utils/browser";
+import { GithubConnectionIcon } from "@flind/ui/features/integrations/components/GithubConnectionIcon";
+import { openUrlInBrowser } from "@flind/ui/utils/browser";
 import type { ReactNode } from "react";
 
 const GITHUB_DOCS_URL = "https://posthog.com/docs/libraries/github?tab=Desktop";

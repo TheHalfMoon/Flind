@@ -1,5 +1,5 @@
 import type { SessionConfigOption } from "@agentclientprotocol/sdk";
-import type { AcpMessage, AgentSession } from "@posthog/shared";
+import type { AcpMessage, AgentSession } from "@flind/shared";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { sessionStore, sessionStoreSetters } from "../sessions/sessionStore";
 import {

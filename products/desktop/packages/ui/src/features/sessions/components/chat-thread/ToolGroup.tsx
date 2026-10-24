@@ -4,9 +4,9 @@ import {
   ChatMarkerIcon,
   cn,
 } from "@flind/quill";
-import { readAgentToolName } from "@posthog/shared";
-import type { ToolCall } from "@posthog/ui/features/sessions/types";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
+import { readAgentToolName } from "@flind/shared";
+import type { ToolCall } from "@flind/ui/features/sessions/types";
+import { Spinner } from "@flind/ui/primitives/Spinner";
 import {
   AnimatePresence,
   domAnimation,

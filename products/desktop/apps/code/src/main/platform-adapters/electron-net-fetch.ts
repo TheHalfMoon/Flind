@@ -1,4 +1,4 @@
-import type { FetchLike } from "@posthog/core/auth/auth";
+import type { FetchLike } from "@flind/core/auth/auth";
 import { net } from "electron";
 
 /**

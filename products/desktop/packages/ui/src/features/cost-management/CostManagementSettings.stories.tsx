@@ -1,5 +1,5 @@
-import type { CostChecklistItem } from "@posthog/core/billing/costChecklist";
-import { CostManagementView } from "@posthog/ui/features/cost-management/CostManagementView";
+import type { CostChecklistItem } from "@flind/core/billing/costChecklist";
+import { CostManagementView } from "@flind/ui/features/cost-management/CostManagementView";
 import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof CostManagementView> = {

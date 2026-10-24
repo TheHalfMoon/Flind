@@ -1,5 +1,5 @@
 import { Kbd } from "@flind/quill";
-import { formatHotkey } from "@posthog/ui/features/command/keyboard-shortcuts";
+import { formatHotkey } from "@flind/ui/features/command/keyboard-shortcuts";
 
 interface SidebarKbdHintProps {
   /** Raw shortcut string from SHORTCUTS, e.g. "mod+k". */

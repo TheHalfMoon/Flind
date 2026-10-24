@@ -1,5 +1,5 @@
-import type { Task } from "@posthog/shared";
-import type { UserBasic } from "@posthog/shared/domain-types";
+import type { Task } from "@flind/shared";
+import type { UserBasic } from "@flind/shared/domain-types";
 import { createElement, type ReactElement } from "react";
 import { Pressable } from "react-native";
 import { act, create, type ReactTestRenderer } from "react-test-renderer";

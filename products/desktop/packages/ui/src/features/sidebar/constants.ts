@@ -1,4 +1,4 @@
-import type { SidebarNavItem } from "@posthog/shared/analytics-events";
+import type { SidebarNavItem } from "@flind/shared/analytics-events";
 
 export const SIDEBAR_MIN_WIDTH = 240;
 

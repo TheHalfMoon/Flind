@@ -2,7 +2,7 @@ import { Kbd } from "@flind/quill";
 import {
   formatHotkey,
   SHORTCUTS,
-} from "@posthog/ui/features/command/keyboard-shortcuts";
+} from "@flind/ui/features/command/keyboard-shortcuts";
 
 /**
  * Someone reaching for the nav's edge is often after the room, not the width, so

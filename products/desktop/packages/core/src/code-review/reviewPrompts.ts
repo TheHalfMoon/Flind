@@ -1,5 +1,5 @@
 import type { AnnotationSide } from "@pierre/diffs";
-import type { PrReviewComment } from "@posthog/shared";
+import type { PrReviewComment } from "@flind/shared";
 import type { DraftComment } from "./types";
 
 function escapeXmlAttr(value: string): string {

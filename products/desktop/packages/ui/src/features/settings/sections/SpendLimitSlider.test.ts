@@ -1,4 +1,4 @@
-import { niceCeil } from "@posthog/core/billing/spendLimits";
+import { niceCeil } from "@flind/core/billing/spendLimits";
 import { describe, expect, it } from "vitest";
 import { clampSpendLine, resolveScale, sliderStep } from "./SpendLimitSlider";
 

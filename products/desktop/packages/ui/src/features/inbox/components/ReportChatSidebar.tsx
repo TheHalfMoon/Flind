@@ -6,27 +6,27 @@ import {
 import {
   isContentEmpty,
   textToContent,
-} from "@posthog/core/message-editor/content";
+} from "@flind/core/message-editor/content";
 import { Button, Textarea } from "@flind/quill";
-import type { InboxReportActionSurface } from "@posthog/shared";
-import type { SignalReport } from "@posthog/shared/types";
-import { useTaskChannels } from "@posthog/ui/features/canvas/hooks/useTaskChannels";
-import { useDiscussReport } from "@posthog/ui/features/inbox/hooks/useDiscussReport";
-import { useReportActionTracker } from "@posthog/ui/features/inbox/hooks/useReportActionTracker";
+import type { InboxReportActionSurface } from "@flind/shared";
+import type { SignalReport } from "@flind/shared/types";
+import { useTaskChannels } from "@flind/ui/features/canvas/hooks/useTaskChannels";
+import { useDiscussReport } from "@flind/ui/features/inbox/hooks/useDiscussReport";
+import { useReportActionTracker } from "@flind/ui/features/inbox/hooks/useReportActionTracker";
 import {
   findContinuableImplementationTask,
   findLatestDiscussionTask,
   findPendingStartedTaskId,
   useReportTasks,
-} from "@posthog/ui/features/inbox/hooks/useReportTasks";
-import { useReportChatPanelStore } from "@posthog/ui/features/inbox/stores/reportChatPanelStore";
-import { useDraftStore } from "@posthog/ui/features/message-editor/draftStore";
-import { EmbeddedSessionView } from "@posthog/ui/features/sessions/components/EmbeddedSessionView";
-import { SessionStartupStatus } from "@posthog/ui/features/sessions/components/SessionStartupStatus";
-import { taskDetailQuery } from "@posthog/ui/features/tasks/queries";
-import { ChromeBar } from "@posthog/ui/primitives/ChromeBar";
-import { ResizableSidebar } from "@posthog/ui/primitives/ResizableSidebar";
-import { useOpenTask } from "@posthog/ui/router/useOpenTask";
+} from "@flind/ui/features/inbox/hooks/useReportTasks";
+import { useReportChatPanelStore } from "@flind/ui/features/inbox/stores/reportChatPanelStore";
+import { useDraftStore } from "@flind/ui/features/message-editor/draftStore";
+import { EmbeddedSessionView } from "@flind/ui/features/sessions/components/EmbeddedSessionView";
+import { SessionStartupStatus } from "@flind/ui/features/sessions/components/SessionStartupStatus";
+import { taskDetailQuery } from "@flind/ui/features/tasks/queries";
+import { ChromeBar } from "@flind/ui/primitives/ChromeBar";
+import { ResizableSidebar } from "@flind/ui/primitives/ResizableSidebar";
+import { useOpenTask } from "@flind/ui/router/useOpenTask";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useCallback, useEffect, useState } from "react";
 

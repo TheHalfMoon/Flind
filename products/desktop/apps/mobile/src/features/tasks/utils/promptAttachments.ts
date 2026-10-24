@@ -1,6 +1,6 @@
-// Mirrors the artifact-ref parsing in @posthog/core/sessions/promptContent;
-// mobile does not depend on @posthog/core, so the two are kept in sync by hand.
-import { getFileName, isRasterImageFile } from "@posthog/shared";
+// Mirrors the artifact-ref parsing in @flind/core/sessions/promptContent;
+// mobile does not depend on @flind/core, so the two are kept in sync by hand.
+import { getFileName, isRasterImageFile } from "@flind/shared";
 import type {
   CloudArtifactRef,
   SessionEvent,

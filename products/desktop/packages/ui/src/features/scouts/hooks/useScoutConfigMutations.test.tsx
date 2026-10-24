@@ -1,4 +1,4 @@
-import type { ScoutConfig } from "@posthog/api-client/posthog-client";
+import type { ScoutConfig } from "@flind/api-client/posthog-client";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { act, renderHook, waitFor } from "@testing-library/react";
 import type { ReactNode } from "react";
@@ -6,19 +6,19 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 
 const updateScoutConfig = vi.hoisted(() => vi.fn());
 
-vi.mock("@posthog/ui/features/auth/store", () => ({
+vi.mock("@flind/ui/features/auth/store", () => ({
   useAuthStateValue: (
     select: (state: { currentProjectId: number | null }) => unknown,
   ) => select({ currentProjectId: 42 }),
 }));
-vi.mock("@posthog/ui/features/auth/authClient", () => ({
+vi.mock("@flind/ui/features/auth/authClient", () => ({
   useAuthenticatedClient: () => ({ updateScoutConfig }),
 }));
 const toastError = vi.hoisted(() => vi.fn());
-vi.mock("@posthog/ui/primitives/toast", () => ({
+vi.mock("@flind/ui/primitives/toast", () => ({
   toast: { error: toastError },
 }));
-vi.mock("@posthog/ui/shell/analytics", () => ({ track: vi.fn() }));
+vi.mock("@flind/ui/shell/analytics", () => ({ track: vi.fn() }));
 
 import { scoutQueryKeys } from "./scoutQueryKeys";
 import { useScoutConfigMutations } from "./useScoutConfigMutations";

@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 
-vi.mock("@posthog/ui/features/inbox/hooks/useInboxReports", () => ({
+vi.mock("@flind/ui/features/inbox/hooks/useInboxReports", () => ({
   useInboxReportArtefacts: () => ({ data: { results: [] } }),
 }));
 vi.mock("./ArtefactLogList", () => ({ ArtefactLogList: () => null }));

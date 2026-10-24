@@ -2,8 +2,8 @@ import {
   type ContextBreakdown,
   type ContextUsage,
   createContextUsageTracker,
-} from "@posthog/core/sessions/contextUsage";
-import type { AcpMessage } from "@posthog/shared";
+} from "@flind/core/sessions/contextUsage";
+import type { AcpMessage } from "@flind/shared";
 import { useMemo, useRef } from "react";
 
 export type { ContextBreakdown, ContextUsage };

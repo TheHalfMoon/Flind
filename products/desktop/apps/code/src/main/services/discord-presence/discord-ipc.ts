@@ -1,7 +1,7 @@
 import { randomUUID } from "node:crypto";
 import net from "node:net";
 import path from "node:path";
-import { TypedEventEmitter } from "@posthog/shared";
+import { TypedEventEmitter } from "@flind/shared";
 import { logger } from "../../utils/logger";
 
 const log = logger.scope("discord-ipc");

@@ -1,16 +1,16 @@
 import {
   activityCanvasId,
   type TaskActivityItem,
-} from "@posthog/core/canvas/taskActivity";
-import { useArchiveTask } from "@posthog/ui/features/archive/useArchiveTask";
-import type { TaskRowMenuProps } from "@posthog/ui/features/canvas/components/TaskRowMenu";
-import { useCommandCenterStore } from "@posthog/ui/features/command-center/commandCenterStore";
+} from "@flind/core/canvas/taskActivity";
+import { useArchiveTask } from "@flind/ui/features/archive/useArchiveTask";
+import type { TaskRowMenuProps } from "@flind/ui/features/canvas/components/TaskRowMenu";
+import { useCommandCenterStore } from "@flind/ui/features/command-center/commandCenterStore";
 import {
   placeCanvasInCommandCenter,
   placeTaskInCommandCenter,
-} from "@posthog/ui/features/command-center/placeTaskInCommandCenter";
-import { usePinnedTasks } from "@posthog/ui/features/sidebar/usePinnedTasks";
-import { toast } from "@posthog/ui/primitives/toast";
+} from "@flind/ui/features/command-center/placeTaskInCommandCenter";
+import { usePinnedTasks } from "@flind/ui/features/sidebar/usePinnedTasks";
+import { toast } from "@flind/ui/primitives/toast";
 import { useCallback, useEffect, useRef } from "react";
 
 /**

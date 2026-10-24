@@ -10,7 +10,7 @@ import {
   vi,
 } from "vitest";
 
-vi.mock("@posthog/ui/shell/rendererStorage", () => ({
+vi.mock("@flind/ui/shell/rendererStorage", () => ({
   electronStorage: {
     getItem: () => null,
     setItem: () => {},
@@ -18,7 +18,7 @@ vi.mock("@posthog/ui/shell/rendererStorage", () => ({
   },
 }));
 
-import { useDraftStore } from "@posthog/ui/features/message-editor/draftStore";
+import { useDraftStore } from "@flind/ui/features/message-editor/draftStore";
 import { Editor } from "@tiptap/core";
 import { getEditorExtensions } from "./extensions";
 import { useDraftSync } from "./useDraftSync";

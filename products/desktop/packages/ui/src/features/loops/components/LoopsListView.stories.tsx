@@ -1,5 +1,5 @@
-import type { UserBasic } from "@posthog/shared/domain-types";
-import type { LoopSchemas } from "@posthog/ui/features/loops/loopSchemas";
+import type { UserBasic } from "@flind/shared/domain-types";
+import type { LoopSchemas } from "@flind/ui/features/loops/loopSchemas";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import type { LoopSpace } from "../loopScopes";
 import { LoopsListViewPresentation } from "./LoopsListView";

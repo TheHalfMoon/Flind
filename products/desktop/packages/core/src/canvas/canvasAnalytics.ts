@@ -4,7 +4,7 @@ import type {
   ContextActionProperties,
   SpaceContextMode,
   TaskCreateProperties,
-} from "@posthog/shared/analytics-events";
+} from "@flind/shared/analytics-events";
 
 /** The dashboardId a canvas thread persists to ("dashboard:<id>" → "<id>"). */
 export function dashboardIdFromThread(threadId: string): string {

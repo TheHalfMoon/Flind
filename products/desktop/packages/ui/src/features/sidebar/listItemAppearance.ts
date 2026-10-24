@@ -1,6 +1,6 @@
-import { repositoryLabel } from "@posthog/core/sidebar/groupTasks";
-import type { TaskData } from "@posthog/core/sidebar/sidebarData.types";
-import { formatAbsoluteDateTime, formatRelativeAge } from "@posthog/shared";
+import { repositoryLabel } from "@flind/core/sidebar/groupTasks";
+import type { TaskData } from "@flind/core/sidebar/sidebarData.types";
+import { formatAbsoluteDateTime, formatRelativeAge } from "@flind/shared";
 
 export const LIST_ITEM_METADATA_FIELDS = [
   "space",

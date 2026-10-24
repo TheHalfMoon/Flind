@@ -1,6 +1,6 @@
-import { publicProcedure, router } from "@posthog/host-trpc/trpc";
-import { PI_SESSION_SERVICE } from "@posthog/workspace-server/services/pi-session/identifiers";
-import type { PiSessionService } from "@posthog/workspace-server/services/pi-session/pi-session";
+import { publicProcedure, router } from "@flind/host-trpc/trpc";
+import { PI_SESSION_SERVICE } from "@flind/workspace-server/services/pi-session/identifiers";
+import type { PiSessionService } from "@flind/workspace-server/services/pi-session/pi-session";
 import {
   piExtensionUIResponseInput,
   piQueueSnapshotOutput,
@@ -14,7 +14,7 @@ import {
   respondMcpToolPermissionInput,
   resumePiSessionInput,
   startPiSessionInput,
-} from "@posthog/workspace-server/services/pi-session/schemas";
+} from "@flind/workspace-server/services/pi-session/schemas";
 
 const getService = (container: { get<T>(token: symbol): T }) =>
   container.get<PiSessionService>(PI_SESSION_SERVICE);

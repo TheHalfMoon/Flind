@@ -5,27 +5,27 @@ import {
   GITHUB_CONNECTION_REQUIRED_MESSAGE,
   GITHUB_INSTALL_PENDING_MESSAGE,
   isGithubConnectionRequiredError,
-} from "@posthog/core/integrations/connectErrors";
+} from "@flind/core/integrations/connectErrors";
 import {
   SESSION_SERVICE,
   type SessionService,
-} from "@posthog/core/sessions/sessionService";
-import { useService } from "@posthog/di/react";
+} from "@flind/core/sessions/sessionService";
+import { useService } from "@flind/di/react";
 import {
   buildLocalCodeSnapshotPrompt,
   getTaskRepository,
   normalizeRepoKey,
-} from "@posthog/shared";
-import type { Task } from "@posthog/shared/domain-types";
-import { useAuthStateValue } from "@posthog/ui/features/auth/store";
-import { useFolders } from "@posthog/ui/features/folders/useFolders";
-import { useIntegrationSelectors } from "@posthog/ui/features/integrations/store";
-import { useGithubConnect } from "@posthog/ui/features/integrations/useGithubUserConnect";
-import { useIntegrations } from "@posthog/ui/features/integrations/useIntegrations";
-import { toast } from "@posthog/ui/primitives/toast";
-import { openTaskInput } from "@posthog/ui/router/useOpenTask";
-import { logger } from "@posthog/ui/shell/logger";
-import { useHostCapabilities } from "@posthog/ui/shell/useHostCapabilities";
+} from "@flind/shared";
+import type { Task } from "@flind/shared/domain-types";
+import { useAuthStateValue } from "@flind/ui/features/auth/store";
+import { useFolders } from "@flind/ui/features/folders/useFolders";
+import { useIntegrationSelectors } from "@flind/ui/features/integrations/store";
+import { useGithubConnect } from "@flind/ui/features/integrations/useGithubUserConnect";
+import { useIntegrations } from "@flind/ui/features/integrations/useIntegrations";
+import { toast } from "@flind/ui/primitives/toast";
+import { openTaskInput } from "@flind/ui/router/useOpenTask";
+import { logger } from "@flind/ui/shell/logger";
+import { useHostCapabilities } from "@flind/ui/shell/useHostCapabilities";
 import {
   type ReactElement,
   useCallback,

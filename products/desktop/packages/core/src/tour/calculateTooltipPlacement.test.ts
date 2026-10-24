@@ -1,7 +1,7 @@
 import {
   calculateTooltipPlacement,
   type Rect,
-} from "@posthog/core/tour/calculateTooltipPlacement";
+} from "@flind/core/tour/calculateTooltipPlacement";
 import { describe, expect, it } from "vitest";
 
 function rect(partial: Partial<Rect>): Rect {

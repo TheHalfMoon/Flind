@@ -5,14 +5,14 @@ import {
   Plus,
   StopCircle,
 } from "@phosphor-icons/react";
-import type { AutoresearchService } from "@posthog/core/autoresearch/autoresearch";
-import { AUTORESEARCH_SERVICE } from "@posthog/core/autoresearch/identifiers";
+import type { AutoresearchService } from "@flind/core/autoresearch/autoresearch";
+import { AUTORESEARCH_SERVICE } from "@flind/core/autoresearch/identifiers";
 import type {
   AutoresearchRun,
   AutoresearchRunStatus,
-} from "@posthog/core/autoresearch/schemas";
-import { summarizeRun } from "@posthog/core/autoresearch/stats";
-import { useServiceOptional } from "@posthog/di/react";
+} from "@flind/core/autoresearch/schemas";
+import { summarizeRun } from "@flind/core/autoresearch/stats";
+import { useServiceOptional } from "@flind/di/react";
 import {
   Empty,
   EmptyDescription,
@@ -21,7 +21,7 @@ import {
   EmptyTitle,
 } from "@flind/quill";
 import { MetricCard } from "@flind/quill-charts";
-import type { AcpMessage } from "@posthog/shared";
+import type { AcpMessage } from "@flind/shared";
 import { Badge, Button, Callout, Flex, Select, Text } from "@radix-ui/themes";
 import { useEffect, useMemo, useState } from "react";
 import { useContextUsage } from "../sessions/hooks/useContextUsage";

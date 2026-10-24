@@ -1,9 +1,9 @@
-import { useArchivedTaskIds } from "@posthog/ui/features/archive/useArchivedTaskIds";
+import { useArchivedTaskIds } from "@flind/ui/features/archive/useArchivedTaskIds";
 import {
   getAuthIdentity,
   useAuthStateValue,
-} from "@posthog/ui/features/auth/store";
-import { useTaskSummaries } from "@posthog/ui/features/tasks/useTasks";
+} from "@flind/ui/features/auth/store";
+import { useTaskSummaries } from "@flind/ui/features/tasks/useTasks";
 import { useEffect, useMemo, useState } from "react";
 import {
   type BuilderRunSummaries,

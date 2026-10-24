@@ -1,21 +1,21 @@
 import type {
   ExternalDataSource,
   SignalSourceConfig,
-} from "@posthog/api-client/posthog-client";
-import { effectiveGithubSourceRepos } from "@posthog/core/integrations/githubSourceRepos";
+} from "@flind/api-client/posthog-client";
+import { effectiveGithubSourceRepos } from "@flind/core/integrations/githubSourceRepos";
 import {
   ANALYTICS_EVENTS,
   EXTERNAL_INBOX_SOURCES,
   type SignalRecordKind,
   sourceNeedsFullRefresh,
-} from "@posthog/shared";
-import { useAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { useAuthStateValue } from "@posthog/ui/features/auth/store";
-import type { SignalSourceValues } from "@posthog/ui/features/inbox/components/SignalSourceToggles";
-import { useExternalDataSources } from "@posthog/ui/features/inbox/hooks/useExternalDataSources";
-import { useSignalSourceConfigs } from "@posthog/ui/features/inbox/hooks/useSignalSourceConfigs";
-import { toast } from "@posthog/ui/primitives/toast";
-import { track } from "@posthog/ui/shell/analytics";
+} from "@flind/shared";
+import { useAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { useAuthStateValue } from "@flind/ui/features/auth/store";
+import type { SignalSourceValues } from "@flind/ui/features/inbox/components/SignalSourceToggles";
+import { useExternalDataSources } from "@flind/ui/features/inbox/hooks/useExternalDataSources";
+import { useSignalSourceConfigs } from "@flind/ui/features/inbox/hooks/useSignalSourceConfigs";
+import { toast } from "@flind/ui/primitives/toast";
+import { track } from "@flind/ui/shell/analytics";
 import { useQueryClient } from "@tanstack/react-query";
 import { useCallback, useMemo, useRef, useState } from "react";
 

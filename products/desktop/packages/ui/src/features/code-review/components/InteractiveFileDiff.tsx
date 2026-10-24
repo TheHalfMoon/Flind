@@ -5,8 +5,8 @@ import {
   buildCommentMergedOptions,
   buildDraftAnnotations,
   buildHunkAnnotations,
-} from "@posthog/core/code-review/diffAnnotations";
-import { buildFileAnnotations } from "@posthog/core/code-review/prCommentAnnotations";
+} from "@flind/core/code-review/diffAnnotations";
+import { buildFileAnnotations } from "@flind/core/code-review/prCommentAnnotations";
 import { useCallback, useMemo, useRef, useState } from "react";
 import { useInView } from "../../../primitives/hooks/useInView";
 import { DIFF_METRICS, REVIEW_PREFETCH_ROOT_MARGIN } from "../constants";

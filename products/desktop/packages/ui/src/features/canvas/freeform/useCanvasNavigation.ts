@@ -1,15 +1,15 @@
 import {
   type CanvasNavIntent,
   canvasConnectorProviderSchema,
-} from "@posthog/core/canvas/freeformSchemas";
-import { useCreateAndOpenDashboard } from "@posthog/ui/features/canvas/hooks/useDashboards";
-import type { SettingsCategory } from "@posthog/ui/features/settings/types";
+} from "@flind/core/canvas/freeformSchemas";
+import { useCreateAndOpenDashboard } from "@flind/ui/features/canvas/hooks/useDashboards";
+import type { SettingsCategory } from "@flind/ui/features/settings/types";
 import {
   navigateToChannelDashboard,
   navigateToChannelTask,
   navigateToSettings,
-} from "@posthog/ui/router/navigationBridge";
-import { openTaskInput } from "@posthog/ui/router/useOpenTask";
+} from "@flind/ui/router/navigationBridge";
+import { openTaskInput } from "@flind/ui/router/useOpenTask";
 import { useCallback } from "react";
 
 /** The settings page where a viewer connects a connector provider. */

@@ -2,8 +2,8 @@ import type {
   McpGatewayServer,
   McpGatewayUser,
   McpServiceAccount,
-} from "@posthog/api-client/posthog-client";
-import { gatewayKeys } from "@posthog/ui/features/mcp-gateway/hooks/gatewayKeys";
+} from "@flind/api-client/posthog-client";
+import { gatewayKeys } from "@flind/ui/features/mcp-gateway/hooks/gatewayKeys";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { act, renderHook, waitFor } from "@testing-library/react";
 import type { ReactNode } from "react";
@@ -25,19 +25,19 @@ const mocks = vi.hoisted(() => ({
   },
 }));
 
-vi.mock("@posthog/ui/features/auth/authClient", () => ({
+vi.mock("@flind/ui/features/auth/authClient", () => ({
   useOptionalAuthenticatedClient: () => ({
     getMcpServiceAccounts: mocks.getAccounts,
     setMcpServiceAccountAccess: mocks.setAccess,
   }),
 }));
 
-vi.mock("@posthog/ui/features/auth/useCurrentUser", async (importOriginal) => ({
+vi.mock("@flind/ui/features/auth/useCurrentUser", async (importOriginal) => ({
   ...(await importOriginal<Record<string, unknown>>()),
   useCurrentUser: () => ({ data: mocks.currentUser }),
 }));
 
-vi.mock("@posthog/ui/primitives/toast", () => ({
+vi.mock("@flind/ui/primitives/toast", () => ({
   toast: {
     error: vi.fn(),
     success: vi.fn(),

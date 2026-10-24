@@ -1,20 +1,20 @@
 import {
   ANONYMOUS_AUTH_STATE,
   useAuthStore,
-} from "@posthog/ui/features/auth/store";
+} from "@flind/ui/features/auth/store";
 import {
   type TaskFeed,
   useTaskFeedsStore,
-} from "@posthog/ui/features/canvas/stores/taskFeedsStore";
+} from "@flind/ui/features/canvas/stores/taskFeedsStore";
 import { act, renderHook } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 let currentUserId = "user-1";
 
-vi.mock("@posthog/ui/features/auth/authClient", () => ({
+vi.mock("@flind/ui/features/auth/authClient", () => ({
   useOptionalAuthenticatedClient: () => null,
 }));
-vi.mock("@posthog/ui/features/auth/useCurrentUser", () => ({
+vi.mock("@flind/ui/features/auth/useCurrentUser", () => ({
   useCurrentUser: () => ({ data: { uuid: currentUserId } }),
 }));
 

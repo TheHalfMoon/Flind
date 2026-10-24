@@ -1,7 +1,7 @@
 import {
   capPendingPrompts,
   listPendingPromptsNewestFirst,
-} from "@posthog/core/tasks/pendingPrompts";
+} from "@flind/core/tasks/pendingPrompts";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";

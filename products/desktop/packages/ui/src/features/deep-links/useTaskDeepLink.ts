@@ -1,7 +1,7 @@
-import { useHostTRPCClient } from "@posthog/host-router/react";
-import { useAuthStateValue } from "@posthog/ui/features/auth/store";
-import { useHandleOpenTask } from "@posthog/ui/features/deep-links/useHandleOpenTask";
-import { logger } from "@posthog/ui/shell/logger";
+import { useHostTRPCClient } from "@flind/host-router/react";
+import { useAuthStateValue } from "@flind/ui/features/auth/store";
+import { useHandleOpenTask } from "@flind/ui/features/deep-links/useHandleOpenTask";
+import { logger } from "@flind/ui/shell/logger";
 import { useEffect, useRef } from "react";
 
 const log = logger.scope("task-deep-link");

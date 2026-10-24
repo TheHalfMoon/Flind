@@ -1,5 +1,5 @@
 import { Text } from "@components/text";
-import { buildDiscussReportPrompt } from "@posthog/shared";
+import { buildDiscussReportPrompt } from "@flind/shared";
 import * as Haptics from "expo-haptics";
 import { ChatCircle } from "phosphor-react-native";
 import { useEffect, useState } from "react";

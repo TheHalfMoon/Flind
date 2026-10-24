@@ -1,4 +1,4 @@
-import { type AgentSession, isJsonRpcRequest } from "@posthog/shared";
+import { type AgentSession, isJsonRpcRequest } from "@flind/shared";
 import { isNotification, POSTHOG_NOTIFICATIONS } from "./acpNotifications";
 
 interface CloudRunIdleScanState {

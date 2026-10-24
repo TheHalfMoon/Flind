@@ -2,8 +2,8 @@ import {
   SETTINGS_BACKUP_SERVICE,
   SETTINGS_BACKUP_STATE,
   SettingsBackupService,
-} from "@posthog/core/settings/settingsBackup";
-import { CONTRIBUTION } from "@posthog/di/contribution";
+} from "@flind/core/settings/settingsBackup";
+import { CONTRIBUTION } from "@flind/di/contribution";
 import { ContainerModule } from "inversify";
 import { CustomInstructionsSyncContribution } from "./customInstructionsSync.contribution";
 import { ServerAgentInstructionsContribution } from "./serverAgentInstructions.contribution";

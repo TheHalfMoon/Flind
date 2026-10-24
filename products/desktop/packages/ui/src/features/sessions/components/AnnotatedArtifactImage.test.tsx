@@ -1,10 +1,10 @@
-import type { ResourceComment } from "@posthog/api-client/posthog-client";
+import type { ResourceComment } from "@flind/api-client/posthog-client";
 import { render, screen } from "@testing-library/react";
 import type { ReactNode } from "react";
 import { describe, expect, it, vi } from "vitest";
 import { AnnotatedArtifactImage } from "./AnnotatedArtifactImage";
 
-vi.mock("@posthog/ui/primitives/SafeImagePreview", () => ({
+vi.mock("@flind/ui/primitives/SafeImagePreview", () => ({
   ZoomableImage: ({ overlay }: { overlay: (scale: number) => ReactNode }) =>
     overlay(1),
 }));

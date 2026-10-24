@@ -1,15 +1,15 @@
-import type { Schemas } from "@posthog/api-client";
-import type { Task } from "@posthog/shared/domain-types";
+import type { Schemas } from "@flind/api-client";
+import type { Task } from "@flind/shared/domain-types";
 import {
   channelFeedQueryKey,
   channelFeedQueryRoot,
-} from "@posthog/ui/features/canvas/hooks/useChannelFeed";
+} from "@flind/ui/features/canvas/hooks/useChannelFeed";
 import {
   type SpaceTaskPage,
   spaceTreeTasksQueryRoot,
-} from "@posthog/ui/features/canvas/hooks/useRecentSpaceTasks";
-import { TASK_CHANNELS_QUERY_KEY } from "@posthog/ui/features/canvas/hooks/useTaskChannels";
-import { taskFeedResultsQueryKey } from "@posthog/ui/features/canvas/hooks/useTaskFeedResults";
+} from "@flind/ui/features/canvas/hooks/useRecentSpaceTasks";
+import { TASK_CHANNELS_QUERY_KEY } from "@flind/ui/features/canvas/hooks/useTaskChannels";
+import { taskFeedResultsQueryKey } from "@flind/ui/features/canvas/hooks/useTaskFeedResults";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { renderHook, waitFor } from "@testing-library/react";
 import { act, type ReactNode } from "react";
@@ -23,11 +23,11 @@ const mockClient = vi.hoisted(() => ({
 }));
 const mockUpdateSessionTaskTitle = vi.hoisted(() => vi.fn());
 
-vi.mock("@posthog/ui/features/auth/authClient", () => ({
+vi.mock("@flind/ui/features/auth/authClient", () => ({
   useOptionalAuthenticatedClient: () => mockClient,
 }));
 
-vi.mock("@posthog/di/react", () => ({
+vi.mock("@flind/di/react", () => ({
   useService: () => ({
     updateSessionTaskTitle: mockUpdateSessionTaskTitle,
   }),

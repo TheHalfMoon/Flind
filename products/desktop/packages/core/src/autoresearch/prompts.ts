@@ -4,8 +4,8 @@
  * transcript. Prompt builders and the report parser are two sides of the same
  * contract. Keep them in sync.
  */
-import type { AcpMessage } from "@posthog/shared";
-import { isJsonRpcNotification, isJsonRpcRequest } from "@posthog/shared";
+import type { AcpMessage } from "@flind/shared";
+import { isJsonRpcNotification, isJsonRpcRequest } from "@flind/shared";
 import type {
   AutoresearchDraftConfig,
   AutoresearchInterruptionReason,

@@ -1,7 +1,7 @@
 import {
   type CloudEventSummary,
   getCloudEventSummary,
-} from "@posthog/core/task-detail/cloudToolChanges";
+} from "@flind/core/task-detail/cloudToolChanges";
 import { useSessionSelector } from "../../sessions/useSession";
 
 export function useCloudEventSummary(

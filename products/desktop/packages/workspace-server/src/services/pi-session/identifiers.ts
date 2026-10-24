@@ -3,7 +3,7 @@ import type {
   PiRpcClientOptions,
 } from "@flind/agent/pi/rpc-client";
 import type { PiRuntime } from "@flind/agent/pi/runtime";
-import type { TaskContextInput } from "@posthog/shared/task-context";
+import type { TaskContextInput } from "@flind/shared/task-context";
 
 export interface PiRpcClientFactory {
   create(

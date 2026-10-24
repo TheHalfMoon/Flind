@@ -4,7 +4,7 @@ import {
   objectWebPath,
   parseObjectTagAttrs,
   resolveObjectKindName,
-} from "@posthog/core/inbox/objectTags";
+} from "@flind/core/inbox/objectTags";
 import type { Token, TokenizerExtension } from "marked";
 
 // Agents embed PostHog objects in replies as tags, e.g.

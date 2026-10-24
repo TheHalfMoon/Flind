@@ -1,4 +1,4 @@
-import type { PrReviewComment } from "@posthog/shared";
+import type { PrReviewComment } from "@flind/shared";
 import { describe, expect, it } from "vitest";
 import {
   buildAskAboutPrCommentPrompt,

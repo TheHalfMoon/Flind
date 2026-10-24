@@ -1,7 +1,7 @@
-import { countActiveTaskCells } from "@posthog/core/command-center/grid";
-import { useCommandCenterStore } from "@posthog/ui/features/command-center/commandCenterStore";
-import { useSidebarStore } from "@posthog/ui/features/sidebar/sidebarStore";
-import { useTasks } from "@posthog/ui/features/tasks/useTasks";
+import { countActiveTaskCells } from "@flind/core/command-center/grid";
+import { useCommandCenterStore } from "@flind/ui/features/command-center/commandCenterStore";
+import { useSidebarStore } from "@flind/ui/features/sidebar/sidebarStore";
+import { useTasks } from "@flind/ui/features/tasks/useTasks";
 import { useMemo } from "react";
 
 /**

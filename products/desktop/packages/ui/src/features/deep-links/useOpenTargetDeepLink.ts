@@ -1,20 +1,20 @@
-import { useService } from "@posthog/di/react";
-import { useHostTRPCClient } from "@posthog/host-router/react";
-import type { NotificationTarget } from "@posthog/platform/notifications";
+import { useService } from "@flind/di/react";
+import { useHostTRPCClient } from "@flind/host-router/react";
+import type { NotificationTarget } from "@flind/platform/notifications";
 import {
   BROWSER_TABS_CLIENT,
   type BrowserTabsClient,
-} from "@posthog/ui/features/browser-tabs/browserTabsClient";
+} from "@flind/ui/features/browser-tabs/browserTabsClient";
 import {
   type BrowserTabDestination,
   focusOrOpenBrowserTab,
-} from "@posthog/ui/features/browser-tabs/imperativeTabNavigation";
-import { useHandleOpenTask } from "@posthog/ui/features/deep-links/useHandleOpenTask";
+} from "@flind/ui/features/browser-tabs/imperativeTabNavigation";
+import { useHandleOpenTask } from "@flind/ui/features/deep-links/useHandleOpenTask";
 import {
   navigateToChannelDashboard,
   setOpenTargetHandler,
-} from "@posthog/ui/router/navigationBridge";
-import { logger } from "@posthog/ui/shell/logger";
+} from "@flind/ui/router/navigationBridge";
+import { logger } from "@flind/ui/shell/logger";
 import { useCallback, useEffect } from "react";
 
 const log = logger.scope("open-target-deep-link");

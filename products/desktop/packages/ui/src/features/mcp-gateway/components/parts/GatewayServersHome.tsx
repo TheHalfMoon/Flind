@@ -8,19 +8,19 @@ import {
 import type {
   McpGatewayServer,
   McpRecommendedServer,
-} from "@posthog/api-client/posthog-client";
-import { MCP_CATEGORIES } from "@posthog/api-client/posthog-client";
+} from "@flind/api-client/posthog-client";
+import { MCP_CATEGORIES } from "@flind/api-client/posthog-client";
 import {
   type GatewayConnectCredentials,
   gatewayConnectAuthType,
   gatewayConnectNeedsCredentials,
   templateConnectNeedsCredentials,
-} from "@posthog/core/mcp-gateway/gatewayConnect";
+} from "@flind/core/mcp-gateway/gatewayConnect";
 import {
   filterCatalogTemplates,
   filterGatewayServers,
   getGatewayConnectionStatus,
-} from "@posthog/core/mcp-gateway/gatewayServers";
+} from "@flind/core/mcp-gateway/gatewayServers";
 import {
   Empty,
   EmptyDescription,
@@ -31,14 +31,14 @@ import {
 import {
   AvatarStack,
   gatewayUserName,
-} from "@posthog/ui/features/mcp-gateway/components/parts/avatars";
-import { GatewayConnectDialog } from "@posthog/ui/features/mcp-gateway/components/parts/GatewayConnectDialog";
-import type { GatewayRoute } from "@posthog/ui/features/mcp-gateway/gatewayRoute";
-import { useGatewayConfig } from "@posthog/ui/features/mcp-gateway/hooks/useGatewayConfig";
-import { useGatewayServers } from "@posthog/ui/features/mcp-gateway/hooks/useGatewayServers";
-import { ServerIcon } from "@posthog/ui/features/mcp-servers/components/parts/icons";
-import { LoadingState } from "@posthog/ui/primitives/LoadingState";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
+} from "@flind/ui/features/mcp-gateway/components/parts/avatars";
+import { GatewayConnectDialog } from "@flind/ui/features/mcp-gateway/components/parts/GatewayConnectDialog";
+import type { GatewayRoute } from "@flind/ui/features/mcp-gateway/gatewayRoute";
+import { useGatewayConfig } from "@flind/ui/features/mcp-gateway/hooks/useGatewayConfig";
+import { useGatewayServers } from "@flind/ui/features/mcp-gateway/hooks/useGatewayServers";
+import { ServerIcon } from "@flind/ui/features/mcp-servers/components/parts/icons";
+import { LoadingState } from "@flind/ui/primitives/LoadingState";
+import { Spinner } from "@flind/ui/primitives/Spinner";
 import {
   Badge,
   Button,

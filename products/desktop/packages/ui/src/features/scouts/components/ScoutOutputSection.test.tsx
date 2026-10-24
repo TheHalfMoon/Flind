@@ -1,4 +1,4 @@
-import type { ScoutRun } from "@posthog/api-client/posthog-client";
+import type { ScoutRun } from "@flind/api-client/posthog-client";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
@@ -7,10 +7,10 @@ const mocks = vi.hoisted(() => ({
   emissions: vi.fn(),
   reports: vi.fn(),
 }));
-vi.mock("@posthog/ui/features/inbox/hooks/useOpenInboxReport", () => ({
+vi.mock("@flind/ui/features/inbox/hooks/useOpenInboxReport", () => ({
   useOpenInboxReport: () => mocks.openReport,
 }));
-vi.mock("@posthog/ui/features/inbox/hooks/useInboxReports", () => ({
+vi.mock("@flind/ui/features/inbox/hooks/useInboxReports", () => ({
   useInboxReportById: (id: string) => ({
     data: {
       title:
@@ -23,17 +23,17 @@ vi.mock("@posthog/ui/features/inbox/hooks/useInboxReports", () => ({
   }),
 }));
 vi.mock("framer-motion", () => ({ useInView: () => true }));
-vi.mock("@posthog/ui/shell/analytics", () => ({ track: vi.fn() }));
+vi.mock("@flind/ui/shell/analytics", () => ({ track: vi.fn() }));
 vi.mock("../hooks/useScoutRunEmissions", () => ({
   useScoutRunEmissions: mocks.emissions,
 }));
 vi.mock("../hooks/useScoutEmissionReports", () => ({
   useScoutEmissionReports: mocks.reports,
 }));
-vi.mock("@posthog/ui/primitives/RelativeTimestamp", () => ({
+vi.mock("@flind/ui/primitives/RelativeTimestamp", () => ({
   RelativeTimestamp: () => <span>Run time</span>,
 }));
-vi.mock("@posthog/ui/features/editor/components/MarkdownRenderer", () => ({
+vi.mock("@flind/ui/features/editor/components/MarkdownRenderer", () => ({
   MarkdownRenderer: ({ content }: { content: string }) => <p>{content}</p>,
 }));
 vi.mock("./ScoutFindingDiscussButton", () => ({

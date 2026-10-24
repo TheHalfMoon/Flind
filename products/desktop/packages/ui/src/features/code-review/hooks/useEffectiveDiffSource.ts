@@ -1,9 +1,9 @@
 import {
   type ResolvedDiffSource,
   resolveDiffSource,
-} from "@posthog/core/code-review/resolveDiffSource";
-import { EMPTY_DIFF_STATS } from "@posthog/core/code-review/selectTaskDiffStats";
-import { useHostTRPC } from "@posthog/host-router/react";
+} from "@flind/core/code-review/resolveDiffSource";
+import { EMPTY_DIFF_STATS } from "@flind/core/code-review/selectTaskDiffStats";
+import { useHostTRPC } from "@flind/host-router/react";
 import { useQuery } from "@tanstack/react-query";
 import { useDiffViewerStore } from "../../code-editor/diffViewerStore";
 import { useDiffStats } from "../../diff-stats/useDiffStats";

@@ -1,6 +1,6 @@
 import { Button, Text } from "@flind/quill";
-import type { SandboxCustomImage } from "@posthog/shared/domain-types";
-import { useSandboxCustomImageDetail } from "@posthog/ui/features/settings/sections/environments/useSandboxCustomImages";
+import type { SandboxCustomImage } from "@flind/shared/domain-types";
+import { useSandboxCustomImageDetail } from "@flind/ui/features/settings/sections/environments/useSandboxCustomImages";
 import { useCallback, useEffect, useRef } from "react";
 
 interface BuildLogPaneProps {

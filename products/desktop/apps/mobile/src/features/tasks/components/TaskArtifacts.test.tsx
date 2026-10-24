@@ -1,4 +1,4 @@
-import type { TaskRunArtifact } from "@posthog/shared";
+import type { TaskRunArtifact } from "@flind/shared";
 import { createElement } from "react";
 import { act, create } from "react-test-renderer";
 import { beforeEach, describe, expect, it, vi } from "vitest";

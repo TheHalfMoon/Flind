@@ -1,11 +1,11 @@
-import { reportAgeHours } from "@posthog/core/inbox/engagement";
+import { reportAgeHours } from "@flind/core/inbox/engagement";
 import type {
   InboxReportActionSurface,
   InboxReportFeedbackSentiment,
-} from "@posthog/shared";
-import { ANALYTICS_EVENTS } from "@posthog/shared";
-import type { SignalReport } from "@posthog/shared/types";
-import { track } from "@posthog/ui/shell/analytics";
+} from "@flind/shared";
+import { ANALYTICS_EVENTS } from "@flind/shared";
+import type { SignalReport } from "@flind/shared/types";
+import { track } from "@flind/ui/shell/analytics";
 import { useCallback, useMemo } from "react";
 
 export const FEEDBACK_NOTE_MAX_LENGTH = 4000;

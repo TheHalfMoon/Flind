@@ -1,10 +1,10 @@
 import {
   ANALYTICS_EVENTS,
   type ChannelsSurface,
-} from "@posthog/shared/analytics-events";
-import { toast } from "@posthog/ui/primitives/toast";
-import { track } from "@posthog/ui/shell/analytics";
-import { channelShareUrl } from "@posthog/ui/utils/posthogLinks";
+} from "@flind/shared/analytics-events";
+import { toast } from "@flind/ui/primitives/toast";
+import { track } from "@flind/ui/shell/analytics";
+import { channelShareUrl } from "@flind/ui/utils/posthogLinks";
 
 /**
  * Copy a channel's — or, with `taskId`, a thread's — shareable https link

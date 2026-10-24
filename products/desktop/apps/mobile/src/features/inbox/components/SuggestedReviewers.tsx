@@ -3,12 +3,12 @@ import {
   orderSuggestedReviewers,
   reviewerMatchesAvailable,
   toSuggestedReviewerWriteContent,
-} from "@posthog/core/inbox/artefacts";
+} from "@flind/core/inbox/artefacts";
 import type {
   AvailableSuggestedReviewer,
   SuggestedReviewer,
   SuggestedReviewersArtefact,
-} from "@posthog/shared/domain-types";
+} from "@flind/shared/domain-types";
 import { Eye, Plus, X } from "phosphor-react-native";
 import { useMemo, useState } from "react";
 import {

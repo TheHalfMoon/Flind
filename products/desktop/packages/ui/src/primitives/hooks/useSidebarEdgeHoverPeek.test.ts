@@ -3,7 +3,7 @@ import {
   PEEK_REVEAL_THRESHOLD,
   shouldCloseOnExit,
   shouldRevealOnEdge,
-} from "@posthog/ui/primitives/hooks/useSidebarEdgeHoverPeek";
+} from "@flind/ui/primitives/hooks/useSidebarEdgeHoverPeek";
 import { describe, expect, it } from "vitest";
 
 describe("shouldRevealOnEdge", () => {

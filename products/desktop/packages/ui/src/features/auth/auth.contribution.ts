@@ -1,16 +1,16 @@
-import type { AuthState } from "@posthog/core/auth/schemas";
+import type { AuthState } from "@flind/core/auth/schemas";
 import {
   SESSION_SERVICE,
   type SessionService,
-} from "@posthog/core/sessions/sessionService";
-import type { Contribution } from "@posthog/di/contribution";
+} from "@flind/core/sessions/sessionService";
+import type { Contribution } from "@flind/di/contribution";
 import {
   HOST_TRPC_CLIENT,
   type HostTrpcClient,
-} from "@posthog/host-router/client";
-import { withTimeout } from "@posthog/shared";
-import { toast } from "@posthog/ui/primitives/toast";
-import { logger } from "@posthog/ui/shell/logger";
+} from "@flind/host-router/client";
+import { withTimeout } from "@flind/shared";
+import { toast } from "@flind/ui/primitives/toast";
+import { logger } from "@flind/ui/shell/logger";
 import { inject, injectable } from "inversify";
 import { useAuthStore } from "./store";
 

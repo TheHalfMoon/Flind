@@ -1,8 +1,8 @@
-import { useHostTRPC } from "@posthog/host-router/react";
-import { getCloudUrlFromRegion } from "@posthog/shared";
-import { useAuthStateValue } from "@posthog/ui/features/auth/store";
-import { stripDisabledModels } from "@posthog/ui/features/sessions/modelOptionFilters";
-import { useModelRolloutFlags } from "@posthog/ui/features/sessions/useModelRolloutFlags";
+import { useHostTRPC } from "@flind/host-router/react";
+import { getCloudUrlFromRegion } from "@flind/shared";
+import { useAuthStateValue } from "@flind/ui/features/auth/store";
+import { stripDisabledModels } from "@flind/ui/features/sessions/modelOptionFilters";
+import { useModelRolloutFlags } from "@flind/ui/features/sessions/useModelRolloutFlags";
 import { useQuery } from "@tanstack/react-query";
 import { useMemo } from "react";
 

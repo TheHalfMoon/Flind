@@ -7,7 +7,7 @@ import {
   writeFileSync,
 } from "node:fs";
 import { join } from "node:path";
-import type { ClaudeSubscriptionTokenStore } from "@posthog/core/cloud-task/identifiers";
+import type { ClaudeSubscriptionTokenStore } from "@flind/core/cloud-task/identifiers";
 import { safeStorage } from "electron";
 
 export class ElectronClaudeSubscriptionTokenStore

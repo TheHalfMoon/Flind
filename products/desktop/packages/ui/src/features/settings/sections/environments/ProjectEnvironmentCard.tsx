@@ -1,5 +1,5 @@
 import { Folder as FolderIcon, Plus } from "@phosphor-icons/react";
-import type { Environment } from "@posthog/workspace-client/environment";
+import type { Environment } from "@flind/workspace-client/environment";
 import { Flex, IconButton, Text } from "@radix-ui/themes";
 import type { RegisteredFolder } from "../../../folders/types";
 import { EnvironmentRow } from "./EnvironmentRow";

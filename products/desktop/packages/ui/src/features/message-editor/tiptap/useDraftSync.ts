@@ -2,8 +2,8 @@ import {
   type EditorContent,
   type FileAttachment,
   isContentEmpty,
-} from "@posthog/core/message-editor/content";
-import { useDraftStore } from "@posthog/ui/features/message-editor/draftStore";
+} from "@flind/core/message-editor/content";
+import { useDraftStore } from "@flind/ui/features/message-editor/draftStore";
 import type { Editor } from "@tiptap/core";
 import { useCallback, useLayoutEffect, useRef, useState } from "react";
 import {

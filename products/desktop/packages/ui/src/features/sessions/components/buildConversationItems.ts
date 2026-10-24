@@ -7,9 +7,9 @@ import {
   POSTHOG_NOTIFICATIONS,
   type ProcessKilledParams,
 } from "@flind/agent/acp-extensions";
-import { extractPromptDisplayContent } from "@posthog/core/sessions/promptContent";
-import { isSteerPromptParams } from "@posthog/core/sessions/sessionEvents";
-import { isSessionStartupPhase } from "@posthog/core/sessions/sessionStartup";
+import { extractPromptDisplayContent } from "@flind/core/sessions/promptContent";
+import { isSteerPromptParams } from "@flind/core/sessions/sessionEvents";
+import { isSessionStartupPhase } from "@flind/core/sessions/sessionStartup";
 import {
   type AcpMessage,
   type AgentConversationEvent,
@@ -19,23 +19,23 @@ import {
   isJsonRpcResponse,
   readParentToolCallId,
   type UserShellExecuteParams,
-} from "@posthog/shared";
+} from "@flind/shared";
 import {
   type GitActionType,
   parseGitActionMessage,
-} from "@posthog/ui/features/sessions/components/GitActionMessage";
-import type { UserShellExecute } from "@posthog/ui/features/sessions/components/session-update/UserShellExecuteView";
+} from "@flind/ui/features/sessions/components/GitActionMessage";
+import type { UserShellExecute } from "@flind/ui/features/sessions/components/session-update/UserShellExecuteView";
 import type {
   CompactBoundaryMetadata,
   ConversationSessionUpdate,
   ToolCall,
-} from "@posthog/ui/features/sessions/types";
-import type { UserMessageAttachment } from "@posthog/ui/features/sessions/userMessageTypes";
+} from "@flind/ui/features/sessions/types";
+import type { UserMessageAttachment } from "@flind/ui/features/sessions/userMessageTypes";
 import {
   extractSkillButtonId,
   type SkillButtonId,
-} from "@posthog/ui/features/skill-buttons/prompts";
-import type { Step, StepStatus } from "@posthog/ui/primitives/StepList";
+} from "@flind/ui/features/skill-buttons/prompts";
+import type { Step, StepStatus } from "@flind/ui/primitives/StepList";
 import type { RenderItem } from "./session-update/SessionUpdateView";
 
 export interface TurnContext {

@@ -1,4 +1,4 @@
-// Port of desktop `@posthog/core/inbox/reportMembership`. Pure functions that
+// Port of desktop `@flind/core/inbox/reportMembership`. Pure functions that
 // decide which tab a report belongs to and how the scope filter applies.
 // Keep behaviour identical to desktop – this is the source of truth for tab IA.
 

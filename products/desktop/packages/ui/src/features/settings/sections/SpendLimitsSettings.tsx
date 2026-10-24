@@ -1,26 +1,26 @@
-import { formatUsd } from "@posthog/core/billing/spendAnalysisFormat";
+import { formatUsd } from "@flind/core/billing/spendAnalysisFormat";
 import {
   projectedMonthUsd,
   type SpendLimits,
   type SpendLimitsPatch,
   suggestedSpendLimits,
   utcDayIso,
-} from "@posthog/core/billing/spendLimits";
+} from "@flind/core/billing/spendLimits";
 import {
   type SpendSnapshot,
   useSpendTotals,
-} from "@posthog/ui/features/billing/useSpendTotals";
+} from "@flind/ui/features/billing/useSpendTotals";
 import {
   USER_SPEND_LIMIT_FLAG,
   USER_SPEND_LIMIT_QUERY_KEY,
   useSetUserSpendLimit,
   useUserSpendLimit,
-} from "@posthog/ui/features/billing/useUserSpendLimit";
-import { useFeatureFlag } from "@posthog/ui/features/feature-flags/useFeatureFlag";
-import { SettingsSubsection } from "@posthog/ui/features/settings/components/SettingsSubsection";
-import { SpendLimitCard } from "@posthog/ui/features/settings/sections/SpendLimitCard";
-import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
-import { toast } from "@posthog/ui/primitives/toast";
+} from "@flind/ui/features/billing/useUserSpendLimit";
+import { useFeatureFlag } from "@flind/ui/features/feature-flags/useFeatureFlag";
+import { SettingsSubsection } from "@flind/ui/features/settings/components/SettingsSubsection";
+import { SpendLimitCard } from "@flind/ui/features/settings/sections/SpendLimitCard";
+import { useSettingsStore } from "@flind/ui/features/settings/settingsStore";
+import { toast } from "@flind/ui/primitives/toast";
 import { useQueryClient } from "@tanstack/react-query";
 import { useEffect } from "react";
 

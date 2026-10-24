@@ -9,11 +9,11 @@ import {
   DropdownMenuRadioGroup,
   DropdownMenuSeparator,
 } from "@flind/quill";
-import { isSelectGroup } from "@posthog/shared";
-import { gateRestrictedModelPick } from "@posthog/ui/features/billing/modelGate";
-import { ModelCostFooter } from "@posthog/ui/features/sessions/components/ModelCostChip";
-import { ModelRadioItem } from "@posthog/ui/features/sessions/components/ModelRadioItem";
-import { toPickerOption } from "@posthog/ui/features/sessions/modelPickerOption";
+import { isSelectGroup } from "@flind/shared";
+import { gateRestrictedModelPick } from "@flind/ui/features/billing/modelGate";
+import { ModelCostFooter } from "@flind/ui/features/sessions/components/ModelCostChip";
+import { ModelRadioItem } from "@flind/ui/features/sessions/components/ModelRadioItem";
+import { toPickerOption } from "@flind/ui/features/sessions/modelPickerOption";
 import { Fragment } from "react";
 import { flattenSelectOptions } from "../sessionStore";
 

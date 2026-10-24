@@ -1,14 +1,14 @@
-import type { FileAttachment } from "@posthog/core/message-editor/content";
+import type { FileAttachment } from "@flind/core/message-editor/content";
 import {
   isGifFile,
   isRasterImageFile,
   parseImageDataUrl,
-} from "@posthog/shared";
+} from "@flind/shared";
 import {
   Attachment,
   type AttachmentUploadStatus,
-} from "@posthog/ui/features/message-editor/components/Attachment";
-import { SafeImagePreview } from "@posthog/ui/primitives/SafeImagePreview";
+} from "@flind/ui/features/message-editor/components/Attachment";
+import { SafeImagePreview } from "@flind/ui/primitives/SafeImagePreview";
 import { Dialog, Flex, Text } from "@radix-ui/themes";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useRef } from "react";

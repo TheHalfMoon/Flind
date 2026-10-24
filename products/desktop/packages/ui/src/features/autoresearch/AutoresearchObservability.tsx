@@ -9,8 +9,8 @@ import {
   Terminal,
   TestTube,
 } from "@phosphor-icons/react";
-import type { AutoresearchRun } from "@posthog/core/autoresearch/schemas";
-import { getAutoresearchElapsedMs } from "@posthog/core/autoresearch/stats";
+import type { AutoresearchRun } from "@flind/core/autoresearch/schemas";
+import { getAutoresearchElapsedMs } from "@flind/core/autoresearch/stats";
 import {
   Collapsible,
   CollapsibleContent,
@@ -22,7 +22,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@flind/quill";
-import type { AcpMessage } from "@posthog/shared";
+import type { AcpMessage } from "@flind/shared";
 import { Badge, Progress, Text } from "@radix-ui/themes";
 import { useEffect, useMemo, useState } from "react";
 import { formatDuration } from "../sessions/components/GeneratingIndicator";

@@ -1,5 +1,5 @@
-import type { ContextWikiPageProposal } from "@posthog/api-client/posthog-client";
-import { LoadingState } from "@posthog/ui/primitives/LoadingState";
+import type { ContextWikiPageProposal } from "@flind/api-client/posthog-client";
+import { LoadingState } from "@flind/ui/primitives/LoadingState";
 import { type ReactElement, useState } from "react";
 import {
   useApplyContextWikiProposal,

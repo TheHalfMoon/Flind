@@ -1,10 +1,10 @@
-import type { PrCheck } from "@posthog/core/git/router-schemas";
+import type { PrCheck } from "@flind/core/git/router-schemas";
 import {
   type PrCiStatus,
   PrRefChip,
-} from "@posthog/ui/features/editor/components/PrRefChip";
-import { usePrDetails } from "@posthog/ui/features/git-interaction/usePrDetails";
-import { usePrChecks } from "@posthog/ui/features/pr-review/usePrChecks";
+} from "@flind/ui/features/editor/components/PrRefChip";
+import { usePrDetails } from "@flind/ui/features/git-interaction/usePrDetails";
+import { usePrChecks } from "@flind/ui/features/pr-review/usePrChecks";
 import { type ReactElement, type ReactNode, useState } from "react";
 
 function summarizeCiStatus(

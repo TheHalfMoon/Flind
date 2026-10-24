@@ -1,4 +1,4 @@
-import type { Signal } from "@posthog/shared/domain-types";
+import type { Signal } from "@flind/shared/domain-types";
 import { describe, expect, it } from "vitest";
 import {
   conversationsTicketRef,

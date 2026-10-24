@@ -13,7 +13,7 @@ import {
   type TabsSnapshot,
   type TabTarget,
   TypedEventEmitter,
-} from "@posthog/shared";
+} from "@flind/shared";
 import { inject, injectable } from "inversify";
 import { BROWSER_TABS_REPOSITORY } from "../../db/identifiers";
 import type { IBrowserTabsRepository } from "../../db/repositories/browser-tabs-repository";

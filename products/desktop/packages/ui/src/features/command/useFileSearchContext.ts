@@ -1,8 +1,8 @@
-import { useFileSearchStore } from "@posthog/ui/features/command/fileSearchStore";
-import { usePanelLayoutStore } from "@posthog/ui/features/panels/panelLayoutStore";
-import { useCwd } from "@posthog/ui/features/sidebar/useCwd";
-import { useAppView } from "@posthog/ui/router/useAppView";
-import { useActiveRepoStore } from "@posthog/ui/shell/activeRepoStore";
+import { useFileSearchStore } from "@flind/ui/features/command/fileSearchStore";
+import { usePanelLayoutStore } from "@flind/ui/features/panels/panelLayoutStore";
+import { useCwd } from "@flind/ui/features/sidebar/useCwd";
+import { useAppView } from "@flind/ui/router/useAppView";
+import { useActiveRepoStore } from "@flind/ui/shell/activeRepoStore";
 import { useCallback } from "react";
 
 export interface FileSearchContext {

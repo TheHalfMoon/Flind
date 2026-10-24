@@ -3,13 +3,13 @@ import {
   groupReportSignals,
   type SignalSourceGroup,
   shouldGroupSignals,
-} from "@posthog/core/inbox/signalGrouping";
-import type { Signal } from "@posthog/shared/types";
+} from "@flind/core/inbox/signalGrouping";
+import type { Signal } from "@flind/shared/types";
 import {
   SignalCard,
   signalCardSourceLine,
-} from "@posthog/ui/features/inbox/components/detail/SignalCard";
-import { getSourceProductMeta } from "@posthog/ui/features/inbox/components/utils/source-product-icons";
+} from "@flind/ui/features/inbox/components/detail/SignalCard";
+import { getSourceProductMeta } from "@flind/ui/features/inbox/components/utils/source-product-icons";
 import { useState } from "react";
 
 interface SignalsListProps {

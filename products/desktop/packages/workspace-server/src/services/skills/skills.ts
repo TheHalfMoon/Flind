@@ -4,7 +4,7 @@ import {
   isIgnoredSkillPath,
   SKILL_EXISTS_MARKER,
   stripFrontmatter,
-} from "@posthog/shared";
+} from "@flind/shared";
 import { inject, injectable } from "inversify";
 import { WATCHER_SERVICE } from "../../di/tokens";
 import type { FoldersService } from "../folders/folders";

@@ -3,7 +3,7 @@ import {
   ROOT_LOGGER,
   type RootLogger,
   type ScopedLogger,
-} from "@posthog/di/logger";
+} from "@flind/di/logger";
 import { createGitClient } from "@flind/git/client";
 import { deleteCheckpoint } from "@flind/git/sagas/checkpoint";
 import { forceRemove } from "@flind/git/utils";
@@ -11,8 +11,8 @@ import { WorktreeManager } from "@flind/git/worktree";
 import {
   type IWorkspaceSettings,
   WORKSPACE_SETTINGS_SERVICE,
-} from "@posthog/platform/workspace-settings";
-import { TypedEventEmitter } from "@posthog/shared";
+} from "@flind/platform/workspace-settings";
+import { TypedEventEmitter } from "@flind/shared";
 import { inject, injectable } from "inversify";
 import {
   ARCHIVE_REPOSITORY,

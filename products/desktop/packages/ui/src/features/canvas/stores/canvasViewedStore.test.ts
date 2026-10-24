@@ -6,7 +6,7 @@ async function freshStore(
   stored: Record<string, number>,
 ): Promise<typeof import("./canvasViewedStore").useCanvasViewedStore> {
   vi.resetModules();
-  vi.doMock("@posthog/ui/shell/rendererStorage", () => ({
+  vi.doMock("@flind/ui/shell/rendererStorage", () => ({
     electronStorage: {
       getItem: async () => {
         await new Promise((resolve) => setTimeout(resolve, readDelayMs));

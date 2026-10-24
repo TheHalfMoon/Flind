@@ -1,12 +1,12 @@
-import type { ResourceComment } from "@posthog/api-client/posthog-client";
-import { commentTargetKey } from "@posthog/core/comments/anchors";
-import type { PrConversationComment, PrReviewThread } from "@posthog/shared";
-import type { UserBasic } from "@posthog/shared/domain-types";
-import type { CommentSource } from "@posthog/ui/features/canvas/components/taskArtifactRows";
+import type { ResourceComment } from "@flind/api-client/posthog-client";
+import { commentTargetKey } from "@flind/core/comments/anchors";
+import type { PrConversationComment, PrReviewThread } from "@flind/shared";
+import type { UserBasic } from "@flind/shared/domain-types";
+import type { CommentSource } from "@flind/ui/features/canvas/components/taskArtifactRows";
 import {
   buildCommentThreads,
   readCommentContext,
-} from "@posthog/ui/features/sessions/components/commentViewTypes";
+} from "@flind/ui/features/sessions/components/commentViewTypes";
 
 export type CommentEntry = {
   id: string;

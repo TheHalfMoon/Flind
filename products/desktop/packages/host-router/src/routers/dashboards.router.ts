@@ -2,7 +2,7 @@ import {
   canvasBuildActionInputSchema,
   canvasBuildLifecycleSchema,
   canvasBuildRecordSchema,
-} from "@posthog/core/canvas/canvasBuildSchemas";
+} from "@flind/core/canvas/canvasBuildSchemas";
 import {
   canvasActionDefinitionSchema,
   canvasActionInvokeInput,
@@ -34,16 +34,16 @@ import {
   revertCanvasInput,
   setGenerationTaskInput,
   setPinnedInput,
-} from "@posthog/core/canvas/dashboardSchemas";
+} from "@flind/core/canvas/dashboardSchemas";
 import {
   canvasLayoutInput,
   canvasLayoutResultSchema,
   patchLayoutInput,
   publishLayoutInput,
-} from "@posthog/core/canvas/gridLayoutSchemas";
-import { DASHBOARDS_SERVICE } from "@posthog/core/canvas/identifiers";
-import type { IDashboardsService } from "@posthog/core/canvas/services";
-import { publicProcedure, router } from "@posthog/host-trpc/trpc";
+} from "@flind/core/canvas/gridLayoutSchemas";
+import { DASHBOARDS_SERVICE } from "@flind/core/canvas/identifiers";
+import type { IDashboardsService } from "@flind/core/canvas/services";
+import { publicProcedure, router } from "@flind/host-trpc/trpc";
 import { z } from "zod";
 
 export const dashboardsRouter = router({

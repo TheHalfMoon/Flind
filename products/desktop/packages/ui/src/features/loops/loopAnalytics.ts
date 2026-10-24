@@ -2,8 +2,8 @@ import type {
   LoopEnabledToggledProperties,
   LoopSavedProperties,
   LoopViewedProperties,
-} from "@posthog/shared/analytics-events";
-import type { LoopSchemas } from "@posthog/ui/features/loops/loopSchemas";
+} from "@flind/shared/analytics-events";
+import type { LoopSchemas } from "@flind/ui/features/loops/loopSchemas";
 
 function triggerFlags(triggers: LoopSchemas.Loop["triggers"]) {
   return {

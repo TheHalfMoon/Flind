@@ -1,4 +1,4 @@
-import { useTaskViewed } from "@posthog/ui/features/sidebar/useTaskViewed";
+import { useTaskViewed } from "@flind/ui/features/sidebar/useTaskViewed";
 import { useEffect } from "react";
 
 export function useMarkTaskViewed(taskId: string): void {

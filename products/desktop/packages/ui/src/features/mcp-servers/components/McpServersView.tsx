@@ -1,17 +1,17 @@
 import type {
   McpRecommendedServer,
   McpServerInstallation,
-} from "@posthog/api-client/posthog-client";
-import { MCP_GATEWAY_FLAG } from "@posthog/shared";
-import { useFeatureFlag } from "@posthog/ui/features/feature-flags/useFeatureFlag";
-import { useLocalMcpCloudServers } from "@posthog/ui/features/local-mcp/useLocalMcpCloudServers";
-import { McpGatewayView } from "@posthog/ui/features/mcp-gateway/components/McpGatewayView";
-import { AddCustomServerForm } from "@posthog/ui/features/mcp-server-manager/AddCustomServerForm";
-import { MarketplaceView } from "@posthog/ui/features/mcp-servers/components/parts/MarketplaceView";
-import { McpInstalledRail } from "@posthog/ui/features/mcp-servers/components/parts/McpInstalledRail";
-import { useMcpServers } from "@posthog/ui/features/mcp-servers/hooks/useMcpServers";
-import { LoadingState } from "@posthog/ui/primitives/LoadingState";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
+} from "@flind/api-client/posthog-client";
+import { MCP_GATEWAY_FLAG } from "@flind/shared";
+import { useFeatureFlag } from "@flind/ui/features/feature-flags/useFeatureFlag";
+import { useLocalMcpCloudServers } from "@flind/ui/features/local-mcp/useLocalMcpCloudServers";
+import { McpGatewayView } from "@flind/ui/features/mcp-gateway/components/McpGatewayView";
+import { AddCustomServerForm } from "@flind/ui/features/mcp-server-manager/AddCustomServerForm";
+import { MarketplaceView } from "@flind/ui/features/mcp-servers/components/parts/MarketplaceView";
+import { McpInstalledRail } from "@flind/ui/features/mcp-servers/components/parts/McpInstalledRail";
+import { useMcpServers } from "@flind/ui/features/mcp-servers/hooks/useMcpServers";
+import { LoadingState } from "@flind/ui/primitives/LoadingState";
+import { Spinner } from "@flind/ui/primitives/Spinner";
 import {
   AlertDialog,
   Box,

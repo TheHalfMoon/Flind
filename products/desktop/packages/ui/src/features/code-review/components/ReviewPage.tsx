@@ -1,12 +1,12 @@
 import type { parsePatchFiles } from "@pierre/diffs";
-import type { ResolvedDiffSource } from "@posthog/core/code-review/resolveDiffSource";
-import type { PrCommentThread } from "@posthog/core/code-review/types";
+import type { ResolvedDiffSource } from "@flind/core/code-review/resolveDiffSource";
+import type { PrCommentThread } from "@flind/core/code-review/types";
 import {
   orderPathsLikeChangeTree,
   sortByChangeTreeOrder,
-} from "@posthog/core/git-interaction/changeTree";
-import { useHostTRPC } from "@posthog/host-router/react";
-import type { ChangedFile, Task } from "@posthog/shared/domain-types";
+} from "@flind/core/git-interaction/changeTree";
+import { useHostTRPC } from "@flind/host-router/react";
+import type { ChangedFile, Task } from "@flind/shared/domain-types";
 import { Flex, Text } from "@radix-ui/themes";
 import { useQueryClient } from "@tanstack/react-query";
 import { useCallback, useEffect, useMemo } from "react";

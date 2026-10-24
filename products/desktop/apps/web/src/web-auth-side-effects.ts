@@ -1,18 +1,18 @@
-import type { CloudRegion } from "@posthog/shared";
+import type { CloudRegion } from "@flind/shared";
 import {
   clearAuthScopedQueries,
   refreshAuthStateQuery,
-} from "@posthog/ui/features/auth/authQueries";
-import { useAuthUiStateStore } from "@posthog/ui/features/auth/authUiStateStore";
-import type { IAuthSideEffects } from "@posthog/ui/features/auth/identifiers";
+} from "@flind/ui/features/auth/authQueries";
+import { useAuthUiStateStore } from "@flind/ui/features/auth/authUiStateStore";
+import type { IAuthSideEffects } from "@flind/ui/features/auth/identifiers";
 import {
   BROWSER_TABS_CLIENT,
   type BrowserTabsClient,
-} from "@posthog/ui/features/browser-tabs/browserTabsClient";
-import { resetCurrentChannel } from "@posthog/ui/features/canvas/stores/currentChannelStore";
-import { resetInboxReportActionDrafts } from "@posthog/ui/features/inbox/stores/inboxReportActionDraftStore";
-import { useOnboardingStore } from "@posthog/ui/features/onboarding/onboardingStore";
-import { openTaskInput } from "@posthog/ui/router/useOpenTask";
+} from "@flind/ui/features/browser-tabs/browserTabsClient";
+import { resetCurrentChannel } from "@flind/ui/features/canvas/stores/currentChannelStore";
+import { resetInboxReportActionDrafts } from "@flind/ui/features/inbox/stores/inboxReportActionDraftStore";
+import { useOnboardingStore } from "@flind/ui/features/onboarding/onboardingStore";
+import { openTaskInput } from "@flind/ui/router/useOpenTask";
 import { inject, injectable } from "inversify";
 
 // Web counterpart of the desktop RendererAuthSideEffects. Identical store/query

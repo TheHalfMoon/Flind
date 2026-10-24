@@ -1,6 +1,6 @@
 import "./mocks/electron-trpc";
 import "./mocks/renderer-storage";
-import { useThemeStore } from "@posthog/ui/shell/themeStore";
+import { useThemeStore } from "@flind/ui/shell/themeStore";
 import { Theme } from "@radix-ui/themes";
 import "@radix-ui/themes/styles.css";
 import type { Preview } from "@storybook/react-vite";

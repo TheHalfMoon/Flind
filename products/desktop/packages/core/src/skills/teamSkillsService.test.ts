@@ -1,7 +1,7 @@
 import type {
   LlmSkillListItem,
   PostHogAPIClient,
-} from "@posthog/api-client/posthog-client";
+} from "@flind/api-client/posthog-client";
 import { describe, expect, it, vi } from "vitest";
 import type { SkillsWorkspaceClient } from "./teamSkillsService";
 import {

@@ -1,10 +1,10 @@
-import { TaskFeedDetailPane } from "@posthog/ui/features/canvas/components/TaskFeedDetailPane";
-import { TaskFeedHome } from "@posthog/ui/features/canvas/components/TaskFeedHome";
-import { useChannelsLayout } from "@posthog/ui/features/canvas/hooks/useChannelsLayout";
+import { TaskFeedDetailPane } from "@flind/ui/features/canvas/components/TaskFeedDetailPane";
+import { TaskFeedHome } from "@flind/ui/features/canvas/components/TaskFeedHome";
+import { useChannelsLayout } from "@flind/ui/features/canvas/hooks/useChannelsLayout";
 import {
   ChannelSkeleton,
   withRouteSkeleton,
-} from "@posthog/ui/router/routeSkeletons";
+} from "@flind/ui/router/routeSkeletons";
 import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/_shell/feeds/$feedId")({

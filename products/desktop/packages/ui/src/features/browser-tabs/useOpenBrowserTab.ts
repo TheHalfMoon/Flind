@@ -1,10 +1,10 @@
-import { ROOT_LOGGER, type RootLogger } from "@posthog/di/logger";
-import { useService } from "@posthog/di/react";
-import { openTab, primaryWindow } from "@posthog/shared";
+import { ROOT_LOGGER, type RootLogger } from "@flind/di/logger";
+import { useService } from "@flind/di/react";
+import { openTab, primaryWindow } from "@flind/shared";
 import {
   BROWSER_TABS_CLIENT,
   type BrowserTabsClient,
-} from "@posthog/ui/features/browser-tabs/browserTabsClient";
+} from "@flind/ui/features/browser-tabs/browserTabsClient";
 import { useRouter } from "@tanstack/react-router";
 import { useCallback } from "react";
 import { pushTabHistoryEntry } from "./tabHistory";

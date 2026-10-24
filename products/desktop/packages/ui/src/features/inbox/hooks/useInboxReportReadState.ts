@@ -1,12 +1,12 @@
 import {
   getAuthIdentity,
   useAuthStateValue,
-} from "@posthog/ui/features/auth/store";
-import { useCurrentUser } from "@posthog/ui/features/auth/useCurrentUser";
-import { useInboxReportReadStore } from "@posthog/ui/features/inbox/stores/inboxReportReadStore";
-import { useAuthenticatedMutation } from "@posthog/ui/hooks/useAuthenticatedMutation";
-import { useAuthenticatedQuery } from "@posthog/ui/hooks/useAuthenticatedQuery";
-import { toast } from "@posthog/ui/primitives/toast";
+} from "@flind/ui/features/auth/store";
+import { useCurrentUser } from "@flind/ui/features/auth/useCurrentUser";
+import { useInboxReportReadStore } from "@flind/ui/features/inbox/stores/inboxReportReadStore";
+import { useAuthenticatedMutation } from "@flind/ui/hooks/useAuthenticatedMutation";
+import { useAuthenticatedQuery } from "@flind/ui/hooks/useAuthenticatedQuery";
+import { toast } from "@flind/ui/primitives/toast";
 import { useQueryClient } from "@tanstack/react-query";
 import { useCallback } from "react";
 

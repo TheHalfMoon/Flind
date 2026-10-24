@@ -1,9 +1,9 @@
 import type {
   SignalReportPriority,
   SourceProduct,
-} from "@posthog/shared/types";
-import type { InboxSortField } from "@posthog/ui/features/inbox/filterOptions";
-import type { InboxPrFilter } from "@posthog/ui/features/inbox/stores/inboxSignalsFilterStore";
+} from "@flind/shared/types";
+import type { InboxSortField } from "@flind/ui/features/inbox/filterOptions";
+import type { InboxPrFilter } from "@flind/ui/features/inbox/stores/inboxSignalsFilterStore";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 

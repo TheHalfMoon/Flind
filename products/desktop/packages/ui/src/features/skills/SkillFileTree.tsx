@@ -4,11 +4,11 @@ import {
   PlusIcon,
   TrashIcon,
 } from "@phosphor-icons/react";
-import type { SkillFileEntry } from "@posthog/shared";
+import type { SkillFileEntry } from "@flind/shared";
 import {
   TreeDirectoryRow,
   TreeFileRow,
-} from "@posthog/ui/primitives/TreeDirectoryRow";
+} from "@flind/ui/primitives/TreeDirectoryRow";
 import { type ReactNode, useMemo, useState } from "react";
 
 interface TreeDir {

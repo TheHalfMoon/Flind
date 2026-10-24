@@ -2,7 +2,7 @@ import {
   type SessionState,
   sessionStore,
   sessionStoreSetters,
-} from "@posthog/core/sessions/sessionStore";
+} from "@flind/core/sessions/sessionStore";
 import {
   type Adapter,
   type AgentSession,
@@ -12,7 +12,7 @@ import {
   getCurrentModeFromConfigOptions,
   type OptimisticItem,
   type QueuedMessage,
-} from "@posthog/shared";
+} from "@flind/shared";
 import { useStore } from "zustand";
 
 // --- Type re-exports ---

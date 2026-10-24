@@ -2,7 +2,7 @@ import type {
   CodexAuthTokens,
   PostHogAPIClient,
   UserCodexIntegration,
-} from "@posthog/api-client/posthog-client";
+} from "@flind/api-client/posthog-client";
 import { inject, injectable } from "inversify";
 
 export const CODEX_CLOUD_ACCOUNT_HOST = Symbol.for(

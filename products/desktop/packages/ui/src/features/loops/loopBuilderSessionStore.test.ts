@@ -5,7 +5,7 @@ import {
   useLoopBuilderSessionStore,
 } from "./loopBuilderSessionStore";
 
-vi.mock("@posthog/ui/shell/rendererStorage", () => ({
+vi.mock("@flind/ui/shell/rendererStorage", () => ({
   electronStorage: {
     getItem: async () => null,
     setItem: async () => {},

@@ -1,5 +1,5 @@
 import { CaretRight, FolderIcon, FolderOpenIcon } from "@phosphor-icons/react";
-import { FileIcon } from "@posthog/ui/primitives/FileIcon";
+import { FileIcon } from "@flind/ui/primitives/FileIcon";
 import { Box, Flex } from "@radix-ui/themes";
 import type { ReactNode } from "react";
 

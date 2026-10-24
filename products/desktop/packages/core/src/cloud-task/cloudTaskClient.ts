@@ -1,4 +1,4 @@
-import type { CloudTaskUpdatePayload } from "@posthog/shared/domain-types";
+import type { CloudTaskUpdatePayload } from "@flind/shared/domain-types";
 import type { SendCommandInput, SendCommandOutput } from "./schemas";
 
 export const CLOUD_TASK_CLIENT = Symbol.for("posthog.cloudTask.client");

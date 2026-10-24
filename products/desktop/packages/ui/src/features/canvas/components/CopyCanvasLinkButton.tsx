@@ -5,7 +5,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@flind/quill";
-import { copyCanvasLink } from "@posthog/ui/features/canvas/utils/copyCanvasLink";
+import { copyCanvasLink } from "@flind/ui/features/canvas/utils/copyCanvasLink";
 import type { ReactElement } from "react";
 
 // Header affordance on a canvas, beside its name the way a thread's copy button

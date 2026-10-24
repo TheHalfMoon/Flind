@@ -1,20 +1,20 @@
 import {
   SESSION_SERVICE,
   type SessionService,
-} from "@posthog/core/sessions/sessionService";
-import { useService } from "@posthog/di/react";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
+} from "@flind/core/sessions/sessionService";
+import { useService } from "@flind/di/react";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
 import {
   SessionSummaryPanelView,
   type SessionSummaryState,
-} from "@posthog/ui/features/sessions/components/SessionSummaryPanelView";
+} from "@flind/ui/features/sessions/components/SessionSummaryPanelView";
 import {
   SESSION_SUMMARY_LABEL,
   startSessionSummary,
-} from "@posthog/ui/features/sessions/sessionSummary";
-import { useSideQuestionStore } from "@posthog/ui/features/sessions/sideQuestionStore";
-import { toast } from "@posthog/ui/primitives/toast";
-import { track } from "@posthog/ui/shell/analytics";
+} from "@flind/ui/features/sessions/sessionSummary";
+import { useSideQuestionStore } from "@flind/ui/features/sessions/sideQuestionStore";
+import { toast } from "@flind/ui/primitives/toast";
+import { track } from "@flind/ui/shell/analytics";
 
 interface SessionSummaryPanelProps {
   taskId: string;

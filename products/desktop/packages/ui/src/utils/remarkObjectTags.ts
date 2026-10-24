@@ -3,8 +3,8 @@ import {
   type PostHogLinkContext,
   type PostHogObjectUrlRef,
   parsePostHogObjectUrl,
-} from "@posthog/core/posthog-objects/objectUrls";
-import { unescapeXmlAttr } from "@posthog/shared";
+} from "@flind/core/posthog-objects/objectUrls";
+import { unescapeXmlAttr } from "@flind/shared";
 import type { Link, Parent, PhrasingContent, Root, RootContent } from "mdast";
 import { CHART_BLOCK_MARKER } from "./chartBlocks";
 import { OBJECT_LINK_HREF } from "./evidenceLinks";

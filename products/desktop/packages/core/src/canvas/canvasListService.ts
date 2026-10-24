@@ -1,4 +1,4 @@
-import { formatShortDayLabel, getLocalDayKey } from "@posthog/shared";
+import { formatShortDayLabel, getLocalDayKey } from "@flind/shared";
 import { injectable } from "inversify";
 import type { DashboardRecord } from "./dashboardSchemas";
 

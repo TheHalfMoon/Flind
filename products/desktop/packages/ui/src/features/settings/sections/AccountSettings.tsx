@@ -1,27 +1,27 @@
 import { ArrowSquareOut, ArrowsClockwise, Camera } from "@phosphor-icons/react";
-import { avatarColor } from "@posthog/core/auth/avatarColor";
-import { getGravatarRefresh } from "@posthog/core/auth/gravatarRefresh";
-import { buildPostHogUrl } from "@posthog/core/settings/posthogUrl";
+import { avatarColor } from "@flind/core/auth/avatarColor";
+import { getGravatarRefresh } from "@flind/core/auth/gravatarRefresh";
+import { buildPostHogUrl } from "@flind/core/settings/posthogUrl";
 import { Avatar, AvatarFallback, Button, cn } from "@flind/quill";
-import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { useGravatarRefreshStore } from "@posthog/ui/features/auth/gravatarRefreshStore";
-import { useAuthStateValue } from "@posthog/ui/features/auth/store";
-import type { AvatarPerson } from "@posthog/ui/features/auth/UserAvatar";
-import { useCurrentUser } from "@posthog/ui/features/auth/useCurrentUser";
-import { useGravatarUrl } from "@posthog/ui/features/auth/useGravatarUrl";
+import { useOptionalAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { useGravatarRefreshStore } from "@flind/ui/features/auth/gravatarRefreshStore";
+import { useAuthStateValue } from "@flind/ui/features/auth/store";
+import type { AvatarPerson } from "@flind/ui/features/auth/UserAvatar";
+import { useCurrentUser } from "@flind/ui/features/auth/useCurrentUser";
+import { useGravatarUrl } from "@flind/ui/features/auth/useGravatarUrl";
 import {
   type ImageProbeResult,
   useImageProbe,
-} from "@posthog/ui/features/auth/useImageProbe";
-import { getUserInitials } from "@posthog/ui/features/auth/userInitials";
-import { userDisplayName } from "@posthog/ui/features/canvas/utils/userDisplay";
+} from "@flind/ui/features/auth/useImageProbe";
+import { getUserInitials } from "@flind/ui/features/auth/userInitials";
+import { userDisplayName } from "@flind/ui/features/canvas/utils/userDisplay";
 import {
   SettingsCard,
   SettingsCardRow,
   SettingsSection,
-} from "@posthog/ui/features/settings/components/SettingsCard";
-import { Spin } from "@posthog/ui/primitives/Spinner";
-import { Tooltip } from "@posthog/ui/primitives/Tooltip";
+} from "@flind/ui/features/settings/components/SettingsCard";
+import { Spin } from "@flind/ui/primitives/Spinner";
+import { Tooltip } from "@flind/ui/primitives/Tooltip";
 import { useCallback } from "react";
 
 const GRAVATAR_MANAGE_URL = "https://gravatar.com/profile/avatars";

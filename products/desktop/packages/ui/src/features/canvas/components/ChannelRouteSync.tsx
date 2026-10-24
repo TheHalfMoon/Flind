@@ -1,15 +1,15 @@
-import { useChannelsLayout } from "@posthog/ui/features/canvas/hooks/useChannelsLayout";
-import { useCurrentChannel } from "@posthog/ui/features/canvas/hooks/useCurrentChannel";
+import { useChannelsLayout } from "@flind/ui/features/canvas/hooks/useChannelsLayout";
+import { useCurrentChannel } from "@flind/ui/features/canvas/hooks/useCurrentChannel";
 import {
   clearKeepListForRoute,
   shouldKeepListForRoute,
   showChannelPane,
-} from "@posthog/ui/features/canvas/stores/channelPaneStore";
-import { useCurrentChannelStore } from "@posthog/ui/features/canvas/stores/currentChannelStore";
+} from "@flind/ui/features/canvas/stores/channelPaneStore";
+import { useCurrentChannelStore } from "@flind/ui/features/canvas/stores/currentChannelStore";
 import {
   reportSourceHrefFromLocation,
   resolveNavigationSource,
-} from "@posthog/ui/router/reportNavigation";
+} from "@flind/ui/router/reportNavigation";
 import { useParams, useRouterState } from "@tanstack/react-router";
 import { useEffect, useRef } from "react";
 

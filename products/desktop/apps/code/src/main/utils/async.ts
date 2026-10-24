@@ -1,6 +1,6 @@
 import { logger } from "./logger";
 
-export { withTimeout } from "@posthog/shared";
+export { withTimeout } from "@flind/shared";
 
 const log = logger.scope("async-utils");
 

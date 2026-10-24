@@ -3,7 +3,7 @@ import type {
   CanvasCommentHighlight,
   CanvasNavIntent,
   CanvasTextSelection,
-} from "@posthog/core/canvas/freeformSchemas";
+} from "@flind/core/canvas/freeformSchemas";
 import { create } from "zustand";
 
 // A warm-iframe pool for canvases. The expensive part of opening a canvas is the

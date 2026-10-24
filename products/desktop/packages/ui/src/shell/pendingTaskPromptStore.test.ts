@@ -1,7 +1,7 @@
 import {
   pendingTaskPromptStoreApi,
   usePendingTaskPromptStore,
-} from "@posthog/ui/shell/pendingTaskPromptStore";
+} from "@flind/ui/shell/pendingTaskPromptStore";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 function resetStore(): void {

@@ -1,4 +1,4 @@
-import { useAuthenticatedQuery } from "@posthog/ui/hooks/useAuthenticatedQuery";
+import { useAuthenticatedQuery } from "@flind/ui/hooks/useAuthenticatedQuery";
 
 export function useMeQuery() {
   return useAuthenticatedQuery(

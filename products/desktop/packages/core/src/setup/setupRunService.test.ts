@@ -1,14 +1,14 @@
 import type {
   ISetupRunService,
   ISetupStore,
-} from "@posthog/core/setup/identifiers";
-import { SetupRunService } from "@posthog/core/setup/setupRunService";
+} from "@flind/core/setup/identifiers";
+import { SetupRunService } from "@flind/core/setup/setupRunService";
 import type {
   ActivityEntry,
   EnricherStatus,
-} from "@posthog/core/setup/setupState";
-import type { DiscoveredTask } from "@posthog/core/setup/types";
-import type { RootLogger } from "@posthog/di/logger";
+} from "@flind/core/setup/setupState";
+import type { DiscoveredTask } from "@flind/core/setup/types";
+import type { RootLogger } from "@flind/di/logger";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 const REPO = "/repo/a";

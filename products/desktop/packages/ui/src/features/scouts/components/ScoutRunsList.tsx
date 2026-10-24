@@ -1,4 +1,4 @@
-import type { ScoutRun } from "@posthog/api-client/posthog-client";
+import type { ScoutRun } from "@flind/api-client/posthog-client";
 import { Skeleton } from "@flind/quill";
 import { ScoutRunListItem } from "./ScoutRunListItem";
 

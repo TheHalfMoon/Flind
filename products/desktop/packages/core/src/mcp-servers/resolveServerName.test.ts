@@ -1,7 +1,7 @@
 import type {
   McpRecommendedServer,
   McpServerInstallation,
-} from "@posthog/api-client/types";
+} from "@flind/api-client/types";
 import { describe, expect, it } from "vitest";
 import {
   resolveServerDetails,

@@ -1,18 +1,18 @@
 import { FileTextIcon } from "@phosphor-icons/react";
 import { Button } from "@flind/quill";
-import { useRailSurface } from "@posthog/ui/features/canvas/hooks/useRailSurface";
-import { InboxDetailFrameView } from "@posthog/ui/features/inbox/components/InboxDetailFrameView";
-import { InboxPanePresentation } from "@posthog/ui/features/inbox/components/InboxPanePresentation";
-import { InboxPaneRow } from "@posthog/ui/features/inbox/components/InboxPaneRow";
+import { useRailSurface } from "@flind/ui/features/canvas/hooks/useRailSurface";
+import { InboxDetailFrameView } from "@flind/ui/features/inbox/components/InboxDetailFrameView";
+import { InboxPanePresentation } from "@flind/ui/features/inbox/components/InboxPanePresentation";
+import { InboxPaneRow } from "@flind/ui/features/inbox/components/InboxPaneRow";
 import {
   inboxStoryImplementations,
   inboxStoryReport,
-} from "@posthog/ui/features/inbox/components/inboxStoryFixtures";
+} from "@flind/ui/features/inbox/components/inboxStoryFixtures";
 import {
   ReportTriageFocusView,
   type ReportTriageFocusViewProps,
-} from "@posthog/ui/features/inbox/components/ReportTriageFocusView";
-import { isInboxTriagePath } from "@posthog/ui/features/inbox/triageRoute";
+} from "@flind/ui/features/inbox/components/ReportTriageFocusView";
+import { isInboxTriagePath } from "@flind/ui/features/inbox/triageRoute";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useNavigate, useRouterState } from "@tanstack/react-router";
 import { type ReactNode, useEffect, useState } from "react";

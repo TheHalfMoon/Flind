@@ -1,4 +1,4 @@
-import { githubIssueStateColor } from "@posthog/core/message-editor/githubIssueChip";
+import { githubIssueStateColor } from "@flind/core/message-editor/githubIssueChip";
 import {
   Item,
   ItemContent,

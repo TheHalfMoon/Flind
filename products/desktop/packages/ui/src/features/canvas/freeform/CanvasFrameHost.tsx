@@ -1,4 +1,4 @@
-import { ErrorBoundary } from "@posthog/ui/shell/ErrorBoundary";
+import { ErrorBoundary } from "@flind/ui/shell/ErrorBoundary";
 import type { CSSProperties } from "react";
 import { useCanvasFrameStore } from "./canvasFrameStore";
 import { FreeformCanvas } from "./FreeformCanvas";

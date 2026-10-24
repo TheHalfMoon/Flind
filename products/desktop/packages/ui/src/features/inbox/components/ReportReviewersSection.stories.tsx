@@ -1,4 +1,4 @@
-import type { SignalReport, SuggestedReviewer } from "@posthog/shared/types";
+import type { SignalReport, SuggestedReviewer } from "@flind/shared/types";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { ReportReviewersSectionView } from "./ReportReviewersSection";
 

@@ -6,8 +6,8 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@flind/quill";
-import { useSideQuestionStore } from "@posthog/ui/features/sessions/sideQuestionStore";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
+import { useSideQuestionStore } from "@flind/ui/features/sessions/sideQuestionStore";
+import { Spinner } from "@flind/ui/primitives/Spinner";
 import { MarkdownRenderer } from "../../editor/components/MarkdownRenderer";
 
 interface SideQuestionCardProps {

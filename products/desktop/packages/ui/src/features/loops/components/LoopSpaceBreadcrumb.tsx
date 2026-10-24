@@ -1,9 +1,9 @@
-import { ChannelBreadcrumb } from "@posthog/ui/features/canvas/components/ChannelBreadcrumb";
+import { ChannelBreadcrumb } from "@flind/ui/features/canvas/components/ChannelBreadcrumb";
 import {
   channelPageIcon,
   channelPageLabel,
-} from "@posthog/ui/features/canvas/components/channelPages";
-import { useChannels } from "@posthog/ui/features/canvas/hooks/useChannels";
+} from "@flind/ui/features/canvas/components/channelPages";
+import { useChannels } from "@flind/ui/features/canvas/hooks/useChannels";
 import { useNavigate } from "@tanstack/react-router";
 
 /**

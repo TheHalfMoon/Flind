@@ -1,4 +1,4 @@
-import type { McpInstallationTool } from "@posthog/api-client/types";
+import type { McpInstallationTool } from "@flind/api-client/types";
 import { describe, expect, it } from "vitest";
 import {
   countActiveTools,

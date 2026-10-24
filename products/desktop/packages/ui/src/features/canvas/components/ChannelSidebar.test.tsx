@@ -1,14 +1,14 @@
-import type { ChannelItemModel } from "@posthog/core/canvas/channelItems";
+import type { ChannelItemModel } from "@flind/core/canvas/channelItems";
 import {
   DEFAULT_CHANNEL_ITEM_GROUPING,
   DEFAULT_CHANNEL_ITEM_SORT,
   DESKTOP_SOURCE,
-} from "@posthog/core/canvas/channelItems";
-import { useAuthStore } from "@posthog/ui/features/auth/store";
+} from "@flind/core/canvas/channelItems";
+import { useAuthStore } from "@flind/ui/features/auth/store";
 import {
   DEFAULT_SIDEBAR_CHANNEL_ITEM_FILTERS,
   useSidebarStore,
-} from "@posthog/ui/features/sidebar/sidebarStore";
+} from "@flind/ui/features/sidebar/sidebarStore";
 import { Theme } from "@radix-ui/themes";
 import { fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
@@ -23,7 +23,7 @@ const mocks = vi.hoisted(() => ({
   open: vi.fn(),
 }));
 
-vi.mock("@posthog/ui/features/canvas/hooks/useChannelItems", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannelItems", () => ({
   useChannelItems: () => ({
     items: mocks.items,
     actions: { open: mocks.open, togglePin: vi.fn(), archive: vi.fn() },
@@ -32,14 +32,14 @@ vi.mock("@posthog/ui/features/canvas/hooks/useChannelItems", () => ({
     channelMissing: mocks.channelMissing,
   }),
 }));
-vi.mock("@posthog/ui/features/feature-flags/useFeatureFlag", () => ({
+vi.mock("@flind/ui/features/feature-flags/useFeatureFlag", () => ({
   useFeatureFlag: (flag: string) =>
     flag === "posthog-desktop-channel-reports"
       ? mocks.channelReportsFlag
       : false,
 }));
 // Reaches for a QueryClient and auth this suite has no stack for.
-vi.mock("@posthog/ui/features/inbox/hooks/useOpenInboxReport", () => ({
+vi.mock("@flind/ui/features/inbox/hooks/useOpenInboxReport", () => ({
   useOpenInboxReport: () => vi.fn(),
 }));
 vi.mock("@tanstack/react-router", () => ({
@@ -49,50 +49,50 @@ vi.mock("@tanstack/react-router", () => ({
 
 // Both mount their own query stacks; this suite is about the list's own
 // loading-vs-empty decisions.
-vi.mock("@posthog/ui/features/canvas/components/ChannelBackRow", () => ({
+vi.mock("@flind/ui/features/canvas/components/ChannelBackRow", () => ({
   ChannelBackRow: () => null,
 }));
 // The row menu's spaces list reaches for a QueryClient the unit test has no
 // stack for. Stubbed at the module boundary, as ShellLayout.test.tsx does for
 // the same reason.
-vi.mock("@posthog/ui/features/canvas/hooks/useChannels", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannels", () => ({
   useChannels: () => ({ channels: [] }),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useFileTaskToChannel", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useFileTaskToChannel", () => ({
   useFileTaskToChannel: () => vi.fn(),
 }));
-vi.mock("@posthog/ui/features/browser-tabs/useOpenBrowserTab", () => ({
+vi.mock("@flind/ui/features/browser-tabs/useOpenBrowserTab", () => ({
   useOpenBrowserTab: () => vi.fn(),
 }));
-vi.mock("@posthog/ui/shell/analytics", () => ({
+vi.mock("@flind/ui/shell/analytics", () => ({
   track: vi.fn(),
 }));
-vi.mock("@posthog/ui/features/auth/authClient", () => ({
+vi.mock("@flind/ui/features/auth/authClient", () => ({
   useOptionalAuthenticatedClient: () => null,
 }));
-vi.mock("@posthog/ui/features/auth/useCurrentUser", () => ({
+vi.mock("@flind/ui/features/auth/useCurrentUser", () => ({
   useCurrentUser: () => ({ data: { id: 1, email: "u@posthog.com" } }),
 }));
-vi.mock("@posthog/ui/features/tasks/useTaskMutations", () => ({
+vi.mock("@flind/ui/features/tasks/useTaskMutations", () => ({
   useRenameTask: () => ({ renameTask: vi.fn() }),
 }));
-vi.mock("@posthog/ui/features/tasks/useTasks", () => ({
+vi.mock("@flind/ui/features/tasks/useTasks", () => ({
   useTasks: () => ({ data: [] }),
 }));
 // A row's status dot reaches for live session state and a per-task PR query.
-vi.mock("@posthog/ui/features/canvas/hooks/useChannelTaskStatus", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannelTaskStatus", () => ({
   useChannelTaskStatus: () => null,
 }));
 // The bulk bar's actions span the archive, pin, and filing query stacks. What
 // the bar does has its own suites; this one is about the list's own states.
-vi.mock("@posthog/ui/features/sidebar/useSidebarBulkActions", () => ({
+vi.mock("@flind/ui/features/sidebar/useSidebarBulkActions", () => ({
   useSidebarBulkActions: () => ({ selectedCount: 0 }),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useChannelTasksRunState", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannelTasksRunState", () => ({
   useChannelTasksRunState: () => [],
 }));
 
-import { useTaskSelectionStore } from "@posthog/ui/features/sidebar/taskSelectionStore";
+import { useTaskSelectionStore } from "@flind/ui/features/sidebar/taskSelectionStore";
 import { ChannelSidebar } from "./ChannelSidebar";
 
 function item(overrides: Partial<ChannelItemModel> = {}): ChannelItemModel {

@@ -41,7 +41,7 @@ gap="2">` → `<div className="flex items-center gap-2">`, `Text` → quill `Tex
 
 The feature is deliberately split so the rules are portable and testable:
 
-- **`@posthog/shared` (`browser-tabs.ts`, `browser-tabs-schemas.ts`)** — pure,
+- **`@flind/shared` (`browser-tabs.ts`, `browser-tabs-schemas.ts`)** — pure,
   host-neutral logic: the domain shapes (`BrowserTab` / `BrowserWindow` /
   `TabsSnapshot` / `TabLocation` / `TabViewState` / `RailVisit`), the transforms
   (`openTab`, `setTabTarget`, `closeTab`, `closeTabs`, `setTabOrder`),
@@ -49,7 +49,7 @@ The feature is deliberately split so the rules are portable and testable:
   `primaryWindow`. No React, no I/O. This is where behaviour is unit-tested.
   Back/forward is driven by router history + `decideTabNavigation`, not a
   separate action stack.
-- **`@posthog/workspace-server` (`services/browser-tabs/`, `db/`)** — the
+- **`@flind/workspace-server` (`services/browser-tabs/`, `db/`)** — the
   authoritative single-instance `BrowserTabsService` in the main process. Owns
   the durable snapshot in sqlite (`browser_tabs` / `browser_windows`), applies
   the shared transforms, and emits `snapshotChange` for cross-window fan-out.
@@ -57,9 +57,9 @@ The feature is deliberately split so the rules are portable and testable:
 - **host-router (`routers/browser-tabs.router.ts`)** — one-line forwards over the
   service + the snapshot subscription. Renderer calls it via `useHostTRPC`;
   resolved from the main container (bound in `apps/code` main `di`).
-- **`@posthog/core` (`browser-tabs/browserTabsStore.ts`)** — renderer mirror of
+- **`@flind/core` (`browser-tabs/browserTabsStore.ts`)** — renderer mirror of
   the snapshot, seeded once and kept live by the subscription.
-- **this folder (`@posthog/ui`)** — `BrowserTabStrip` (container; mounted in the
+- **this folder (`@flind/ui`)** — `BrowserTabStrip` (container; mounted in the
   Channels title bar in `router/routes/__root.tsx`), `TabStrip` (presentational),
   `TaskTabMarks` (a session tab's status dot, in the session
   list's vocabulary), the client facade, the boot contribution that seeds +
@@ -219,7 +219,7 @@ retarget its originating background tab as described below. `railHistoryStore`
 - Tabs, order, windows, and each tab's `href` + `viewState` persist to sqlite;
   the full session (all windows + their tabs + active tab) is restored on launch.
   Desktop and web both seed `/activity` when the primary window has no tabs.
-- `rewriteSavedLocation` (in `@posthog/shared`) runs over persisted hrefs on
+- `rewriteSavedLocation` (in `@flind/shared`) runs over persisted hrefs on
   load, so a snapshot written before the routes were flattened does not restore
   tabs onto `/website/*` routes that no longer exist.
 - Per-tab `scrollState` is reserved but **unwired**. Router history restores native
@@ -301,7 +301,7 @@ retarget its originating background tab as described below. `railHistoryStore`
 
 ## Testing
 
-- **Pure behaviour** is tested in `@posthog/shared` (`browser-tabs.test.ts`):
+- **Pure behaviour** is tested in `@flind/shared` (`browser-tabs.test.ts`):
   `openTab` (always appends, never dedups), close (neighbour /
   secondary-window / primary-landing), `closeTabs` (bulk close + anchor focus),
   `setTabOrder`, `setTabTarget` (href + view state + label cache move together),
@@ -363,5 +363,5 @@ The feature lives in `features/tab-tiling/`; this section keeps the model and th
 ## Dev note
 
 Changes to the main process (a new migration, service method, or router
-procedure) or to `@posthog/shared` (vite pre-bundles it) need a **`pnpm dev`
+procedure) or to `@flind/shared` (vite pre-bundles it) need a **`pnpm dev`
 restart** to run live — HMR alone won't apply them.

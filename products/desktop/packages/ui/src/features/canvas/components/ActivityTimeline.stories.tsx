@@ -1,14 +1,14 @@
-import { buildThreadTimeline } from "@posthog/core/canvas/threadTimeline";
+import { buildThreadTimeline } from "@flind/core/canvas/threadTimeline";
 import type {
   Task,
   TaskCommentThreadSummary,
   TaskThreadMessage,
-} from "@posthog/shared/domain-types";
-import { ActivityTimeline } from "@posthog/ui/features/canvas/components/ActivityTimeline";
+} from "@flind/shared/domain-types";
+import { ActivityTimeline } from "@flind/ui/features/canvas/components/ActivityTimeline";
 import {
   CommitFilesList,
   DetailBlock,
-} from "@posthog/ui/features/canvas/components/activityRows";
+} from "@flind/ui/features/canvas/components/activityRows";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const shy = {

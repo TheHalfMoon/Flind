@@ -11,10 +11,10 @@ From the **repository root**:
 pnpm install
 
 # Build and run on iOS simulator
-pnpm --filter @posthog/mobile ios
+pnpm --filter @flind/mobile ios
 
 # Start the development server (after initial build)
-pnpm --filter @posthog/mobile start
+pnpm --filter @flind/mobile start
 ```
 
 > First-time iOS setup also requires the **watchOS SDK** to be installed in Xcode — see [Prerequisites](#prerequisites).
@@ -61,11 +61,11 @@ src/features/
 
 Mobile and desktop use the same cloud-task architecture. New work must preserve these ownership rules:
 
-- `@flind/agent-contracts` owns runtime contracts and Zod schemas; `@posthog/shared` re-exports them for desktop code.
-- `@posthog/api-client` owns authenticated PostHog HTTPS transport and its request/response types.
-- `@posthog/core` owns cloud-task orchestration and headless presentation decisions, including sessions, queues, permissions, models, repositories, and inbox rules.
+- `@flind/agent-contracts` owns runtime contracts and Zod schemas; `@flind/shared` re-exports them for desktop code.
+- `@flind/api-client` owns authenticated PostHog HTTPS transport and its request/response types.
+- `@flind/core` owns cloud-task orchestration and headless presentation decisions, including sessions, queues, permissions, models, repositories, and inbox rules.
 - `apps/mobile` owns Expo lifecycle, React Native rendering, gestures, sheets, notifications, audio, secure storage, and small persisted view-state stores.
-- `@posthog/ui` owns the DOM/Quill renderer and web view state.
+- `@flind/ui` owns the DOM/Quill renderer and web view state.
 
 Do not add a mobile API facade, duplicate a shared type, or re-export a core helper through a mobile file. Import the owning package directly. If desktop and mobile need different visuals, add a headless descriptor or decision function to core and keep two thin renderers.
 
@@ -124,46 +124,46 @@ src/
 
 ### From Repository Root
 
-All commands use `pnpm --filter @posthog/mobile <script>` to target this workspace package. (`-F` is a shorter alias for `--filter`.)
+All commands use `pnpm --filter @flind/mobile <script>` to target this workspace package. (`-F` is a shorter alias for `--filter`.)
 
 **Development server:**
 ```bash
-pnpm --filter @posthog/mobile start          # Start Expo dev server
-pnpm --filter @posthog/mobile start:clear    # Start with cleared Metro cache
+pnpm --filter @flind/mobile start          # Start Expo dev server
+pnpm --filter @flind/mobile start:clear    # Start with cleared Metro cache
 ```
 
 **Build and run:**
 ```bash
-pnpm --filter @posthog/mobile ios            # iOS simulator
-pnpm --filter @posthog/mobile ios:device     # iOS device (requires Apple Developer account)
-pnpm --filter @posthog/mobile android        # Android emulator/device
+pnpm --filter @flind/mobile ios            # iOS simulator
+pnpm --filter @flind/mobile ios:device     # iOS device (requires Apple Developer account)
+pnpm --filter @flind/mobile android        # Android emulator/device
 ```
 
 **Native code generation:**
 ```bash
-pnpm --filter @posthog/mobile prebuild         # Generate ios/ and android/ folders
-pnpm --filter @posthog/mobile prebuild:clean   # Delete and regenerate (when adding native deps)
+pnpm --filter @flind/mobile prebuild         # Generate ios/ and android/ folders
+pnpm --filter @flind/mobile prebuild:clean   # Delete and regenerate (when adding native deps)
 ```
 
 **EAS builds:**
 ```bash
-pnpm --filter @posthog/mobile build:dev          # Development build (iOS, cloud)
-pnpm --filter @posthog/mobile build:dev:local    # Development build (iOS, local)
-pnpm --filter @posthog/mobile build:preview      # Preview build (iOS)
-pnpm --filter @posthog/mobile build:production   # Production build (iOS)
+pnpm --filter @flind/mobile build:dev          # Development build (iOS, cloud)
+pnpm --filter @flind/mobile build:dev:local    # Development build (iOS, local)
+pnpm --filter @flind/mobile build:preview      # Preview build (iOS)
+pnpm --filter @flind/mobile build:production   # Production build (iOS)
 ```
 
 **TestFlight:**
 ```bash
-pnpm --filter @posthog/mobile testflight     # Submit to TestFlight
+pnpm --filter @flind/mobile testflight     # Submit to TestFlight
 ```
 
 **Utilities:**
 ```bash
 pnpm install                                  # Installs all workspaces, including mobile
-pnpm --filter @posthog/mobile lint            # Run Biome check
-pnpm --filter @posthog/mobile lint:fix        # Run Biome check with auto-fix
-pnpm --filter @posthog/mobile format          # Run Biome format
+pnpm --filter @flind/mobile lint            # Run Biome check
+pnpm --filter @flind/mobile lint:fix        # Run Biome check with auto-fix
+pnpm --filter @flind/mobile format          # Run Biome format
 ```
 
 ### From apps/mobile/ Directory

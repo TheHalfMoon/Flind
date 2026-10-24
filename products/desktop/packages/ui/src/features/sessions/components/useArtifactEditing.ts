@@ -1,7 +1,7 @@
-import { runArtifactVersionKey } from "@posthog/core/canvas/runArtifactSchemas";
-import type { SessionService } from "@posthog/core/sessions/sessionService";
-import type { TaskRunArtifact } from "@posthog/shared";
-import { toast } from "@posthog/ui/primitives/toast";
+import { runArtifactVersionKey } from "@flind/core/canvas/runArtifactSchemas";
+import type { SessionService } from "@flind/core/sessions/sessionService";
+import type { TaskRunArtifact } from "@flind/shared";
+import { toast } from "@flind/ui/primitives/toast";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRef, useState } from "react";
 import {

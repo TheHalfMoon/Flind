@@ -7,12 +7,12 @@ import {
   useChatMessageScroller,
   useChatMessageScrollerVisibility,
 } from "@flind/quill";
-import type { ConversationItem } from "@posthog/ui/features/sessions/components/buildConversationItems";
-import { userMessageDisplayText } from "@posthog/ui/features/sessions/components/session-update/userMessageDisplay";
+import type { ConversationItem } from "@flind/ui/features/sessions/components/buildConversationItems";
+import { userMessageDisplayText } from "@flind/ui/features/sessions/components/session-update/userMessageDisplay";
 import {
   OverflowTickerText,
   useOverflowTickerReveal,
-} from "@posthog/ui/primitives/OverflowTickerText";
+} from "@flind/ui/primitives/OverflowTickerText";
 import { useCallback, useMemo, useRef, useState } from "react";
 
 /** Ticks drawn in the collapsed rail. The tick window slides with the reading

@@ -3,24 +3,24 @@ import {
   INBOX_ACTIONABLE_ACTIONABILITY_FILTER,
   INBOX_ACTIONABLE_REPORT_STATUS_FILTER,
   sortInboxReports,
-} from "@posthog/core/inbox/reportFiltering";
+} from "@flind/core/inbox/reportFiltering";
 import {
   needsImplementationDecision,
   type ReportImplementationState,
-} from "@posthog/core/inbox/reportImplementation";
-import type { InboxScope } from "@posthog/core/inbox/reportMembership";
+} from "@flind/core/inbox/reportImplementation";
+import type { InboxScope } from "@flind/core/inbox/reportMembership";
 import type {
   SignalReport,
   SignalReportPriority,
   SignalReportStatus,
   SourceProduct,
-} from "@posthog/shared/types";
-import { useInboxAllReports } from "@posthog/ui/features/inbox/hooks/useInboxAllReports";
-import { useReportImplementationStates } from "@posthog/ui/features/inbox/hooks/useReportImplementationStates";
+} from "@flind/shared/types";
+import { useInboxAllReports } from "@flind/ui/features/inbox/hooks/useInboxAllReports";
+import { useReportImplementationStates } from "@flind/ui/features/inbox/hooks/useReportImplementationStates";
 import {
   type InboxReportStateFilter,
   useInboxSignalsFilterStore,
-} from "@posthog/ui/features/inbox/stores/inboxSignalsFilterStore";
+} from "@flind/ui/features/inbox/stores/inboxSignalsFilterStore";
 import { useEffect, useMemo } from "react";
 
 const AUTOPAGE_REPORT_LIMIT = 400;

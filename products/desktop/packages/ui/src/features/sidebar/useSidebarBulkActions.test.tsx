@@ -1,4 +1,4 @@
-import type { TaskData } from "@posthog/core/sidebar/sidebarData.types";
+import type { TaskData } from "@flind/core/sidebar/sidebarData.types";
 import { act, renderHook, waitFor } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { useArchivingTasksStore } from "./archivingTasksStore";
@@ -21,20 +21,20 @@ const hoisted = vi.hoisted(() => ({
   },
 }));
 
-vi.mock("@posthog/ui/features/archive/useArchiveTask", () => ({
+vi.mock("@flind/ui/features/archive/useArchiveTask", () => ({
   archiveTasksImperative: hoisted.archiveTasksImperative,
   useArchiveCacheKeys: () => ({}),
 }));
 
-vi.mock("@posthog/ui/features/canvas/hooks/useChannels", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannels", () => ({
   useChannels: hoisted.useChannels,
 }));
 
-vi.mock("@posthog/ui/features/canvas/hooks/useChannelTasks", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannelTasks", () => ({
   useChannelTaskMutations: () => ({ fileTask: hoisted.fileTask }),
 }));
 
-vi.mock("@posthog/ui/features/command-center/placeTaskInCommandCenter", () => ({
+vi.mock("@flind/ui/features/command-center/placeTaskInCommandCenter", () => ({
   placeTasksInCommandCenter: hoisted.placeTasksInCommandCenter,
 }));
 
@@ -46,11 +46,11 @@ vi.mock("./usePinnedTasks", () => ({
   }),
 }));
 
-vi.mock("@posthog/ui/features/tasks/useTasks", () => ({
+vi.mock("@flind/ui/features/tasks/useTasks", () => ({
   useTasks: hoisted.useTasks,
 }));
 
-vi.mock("@posthog/ui/primitives/toast", () => ({ toast: hoisted.toast }));
+vi.mock("@flind/ui/primitives/toast", () => ({ toast: hoisted.toast }));
 
 vi.mock("@tanstack/react-query", () => ({ useQueryClient: () => ({}) }));
 

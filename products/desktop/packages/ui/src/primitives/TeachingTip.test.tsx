@@ -1,8 +1,8 @@
 import {
   DEFAULT_HINT_MAX,
   useSettingsStore,
-} from "@posthog/ui/features/settings/settingsStore";
-import { useRendererWindowFocusStore } from "@posthog/ui/shell/rendererWindowFocusStore";
+} from "@flind/ui/features/settings/settingsStore";
+import { useRendererWindowFocusStore } from "@flind/ui/shell/rendererWindowFocusStore";
 import { Theme } from "@radix-ui/themes";
 import {
   act,

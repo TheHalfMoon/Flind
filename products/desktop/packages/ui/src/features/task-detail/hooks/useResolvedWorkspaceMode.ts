@@ -1,4 +1,4 @@
-import type { WorkspaceMode } from "@posthog/shared";
+import type { WorkspaceMode } from "@flind/shared";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useHostCapabilities } from "../../../shell/useHostCapabilities";
 import { useFeatureFlagsLoaded } from "../../feature-flags/useFeatureFlagsLoaded";

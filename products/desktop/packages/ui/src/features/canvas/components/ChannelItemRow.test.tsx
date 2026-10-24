@@ -1,22 +1,22 @@
-import type { ChannelItemModel } from "@posthog/core/canvas/channelItems";
+import type { ChannelItemModel } from "@flind/core/canvas/channelItems";
 import { Autocomplete, AutocompleteList } from "@flind/quill";
-import { formatRelativeTimeShort } from "@posthog/shared";
-import type { Task } from "@posthog/shared/domain-types";
-import { useArchiveShortcut } from "@posthog/ui/features/archive/useArchiveShortcut";
-import { CANVAS_DRAG_TYPE } from "@posthog/ui/features/canvas/canvasDrag";
-import { useArchivingTasksStore } from "@posthog/ui/features/sidebar/archivingTasksStore";
-import type { TaskStatusInput } from "@posthog/ui/features/sidebar/components/items/taskStatusVocabulary";
+import { formatRelativeTimeShort } from "@flind/shared";
+import type { Task } from "@flind/shared/domain-types";
+import { useArchiveShortcut } from "@flind/ui/features/archive/useArchiveShortcut";
+import { CANVAS_DRAG_TYPE } from "@flind/ui/features/canvas/canvasDrag";
+import { useArchivingTasksStore } from "@flind/ui/features/sidebar/archivingTasksStore";
+import type { TaskStatusInput } from "@flind/ui/features/sidebar/components/items/taskStatusVocabulary";
 import {
   beginSidebarPeek,
   cancelSidebarPeek,
   endSidebarPeek,
   useSidebarPeekStore,
-} from "@posthog/ui/features/sidebar/sidebarPeekStore";
+} from "@flind/ui/features/sidebar/sidebarPeekStore";
 import {
   TASK_DRAG_TYPE,
   TASK_IDS_DRAG_TYPE,
-} from "@posthog/ui/features/sidebar/taskDrag";
-import { useTaskSelectionStore } from "@posthog/ui/features/sidebar/taskSelectionStore";
+} from "@flind/ui/features/sidebar/taskDrag";
+import { useTaskSelectionStore } from "@flind/ui/features/sidebar/taskSelectionStore";
 import { Theme } from "@radix-ui/themes";
 import {
   act,
@@ -43,44 +43,44 @@ const mocks = vi.hoisted(() => ({
   },
   openBrowserTab: vi.fn(),
 }));
-vi.mock("@posthog/ui/features/auth/useCurrentUser", () => ({
+vi.mock("@flind/ui/features/auth/useCurrentUser", () => ({
   useCurrentUser: () => ({
     data: { id: mocks.currentUserId, uuid: mocks.currentUserUuid },
   }),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useChannelTaskStatus", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannelTaskStatus", () => ({
   useChannelTaskStatus: () => mocks.status,
 }));
 // The row menu's spaces list and filing mutation are tRPC-backed. The
 // handoff dialog's channels lookup rides the same mock.
-vi.mock("@posthog/ui/features/canvas/hooks/useChannels", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannels", () => ({
   useChannels: () => ({ channels: [{ id: "channel-1", name: "code" }] }),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useFileTaskToChannel", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useFileTaskToChannel", () => ({
   useFileTaskToChannel: () => vi.fn(),
 }));
-vi.mock("@posthog/ui/features/browser-tabs/useOpenBrowserTab", () => ({
+vi.mock("@flind/ui/features/browser-tabs/useOpenBrowserTab", () => ({
   useOpenBrowserTab: () => mocks.openBrowserTab,
 }));
-vi.mock("@posthog/ui/features/feature-flags/useFeatureFlag", () => ({
+vi.mock("@flind/ui/features/feature-flags/useFeatureFlag", () => ({
   useFeatureFlag: () => true,
 }));
 vi.mock(
-  "@posthog/ui/features/task-detail/components/TaskAnalysisButton",
+  "@flind/ui/features/task-detail/components/TaskAnalysisButton",
   () => ({
     useTaskAnalysis: () => mocks.analysis,
   }),
 );
 // The handoff dialog is tested on its own; here it only opens.
 vi.mock(
-  "@posthog/ui/features/task-detail/components/HandoffTaskDialog",
+  "@flind/ui/features/task-detail/components/HandoffTaskDialog",
   () => ({
     HandoffTaskDialog: () => null,
   }),
 );
 
-import { usePendingCanvasDeleteStore } from "@posthog/ui/features/canvas/stores/pendingCanvasDeleteStore";
-import { useSidebarStore } from "@posthog/ui/features/sidebar/sidebarStore";
+import { usePendingCanvasDeleteStore } from "@flind/ui/features/canvas/stores/pendingCanvasDeleteStore";
+import { useSidebarStore } from "@flind/ui/features/sidebar/sidebarStore";
 import { ChannelItemPreviewCardProvider } from "./ChannelItemHoverCard";
 import { ChannelItemRow } from "./ChannelItemRow";
 

@@ -1,6 +1,6 @@
 import { MagnifyingGlass } from "@phosphor-icons/react";
-import type { AutoresearchRun } from "@posthog/core/autoresearch/schemas";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
+import type { AutoresearchRun } from "@flind/core/autoresearch/schemas";
+import { Spinner } from "@flind/ui/primitives/Spinner";
 import { Badge, Skeleton, Text } from "@radix-ui/themes";
 
 export interface SessionActivity {

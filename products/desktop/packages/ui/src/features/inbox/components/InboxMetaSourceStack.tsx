@@ -1,6 +1,6 @@
 import { Tooltip, TooltipContent, TooltipTrigger } from "@flind/quill";
-import { InboxMetaText } from "@posthog/ui/features/inbox/components/InboxMetaRow";
-import { getSourceProductMeta } from "@posthog/ui/features/inbox/components/utils/source-product-icons";
+import { InboxMetaText } from "@flind/ui/features/inbox/components/InboxMetaRow";
+import { getSourceProductMeta } from "@flind/ui/features/inbox/components/utils/source-product-icons";
 
 interface InboxMetaSourceStackProps {
   /**

@@ -9,10 +9,10 @@ import {
   openRightPanelSide,
   SIDE_ORDER,
   SIDES,
-} from "@posthog/ui/features/navigation/rightPanelSide";
-import type { RightPanelSide } from "@posthog/ui/features/navigation/rightPanelStore";
-import { TIP_KEYS } from "@posthog/ui/features/settings/tipKeys";
-import { TeachingTip } from "@posthog/ui/primitives/TeachingTip";
+} from "@flind/ui/features/navigation/rightPanelSide";
+import type { RightPanelSide } from "@flind/ui/features/navigation/rightPanelStore";
+import { TIP_KEYS } from "@flind/ui/features/settings/tipKeys";
+import { TeachingTip } from "@flind/ui/primitives/TeachingTip";
 
 /** The one lesson this switcher teaches: where a run's deliverables land. */
 const ARTIFACTS_PANEL_TIP = TIP_KEYS.sessionArtifactsLocation;

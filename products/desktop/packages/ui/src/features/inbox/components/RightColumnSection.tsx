@@ -1,7 +1,7 @@
 import {
   DetailSection,
   type DetailSectionProps,
-} from "@posthog/ui/features/inbox/components/DetailSection";
+} from "@flind/ui/features/inbox/components/DetailSection";
 
 /**
  * Right-column sections share the main column's card chrome so the detail

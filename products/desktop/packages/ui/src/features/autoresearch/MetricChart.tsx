@@ -1,7 +1,7 @@
 import type {
   AutoresearchDirection,
   AutoresearchIteration,
-} from "@posthog/core/autoresearch/schemas";
+} from "@flind/core/autoresearch/schemas";
 import {
   LineChart,
   ReferenceLine,

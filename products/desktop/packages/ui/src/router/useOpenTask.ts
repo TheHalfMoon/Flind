@@ -1,28 +1,28 @@
-import type { EditorContent } from "@posthog/core/message-editor/content";
-import { resolveService, resolveServiceOptional } from "@posthog/di/container";
-import { ANALYTICS_EVENTS } from "@posthog/shared";
-import type { Task } from "@posthog/shared/domain-types";
+import type { EditorContent } from "@flind/core/message-editor/content";
+import { resolveService, resolveServiceOptional } from "@flind/di/container";
+import { ANALYTICS_EVENTS } from "@flind/shared";
+import type { Task } from "@flind/shared/domain-types";
 import {
   BROWSER_TABS_CLIENT,
   type BrowserTabsClient,
-} from "@posthog/ui/features/browser-tabs/browserTabsClient";
+} from "@flind/ui/features/browser-tabs/browserTabsClient";
 import {
   focusOrOpenBrowserTab,
   navigateBrowserTab,
   openInNewBrowserTabSync,
-} from "@posthog/ui/features/browser-tabs/imperativeTabNavigation";
-import { useCurrentChannelStore } from "@posthog/ui/features/canvas/stores/currentChannelStore";
+} from "@flind/ui/features/browser-tabs/imperativeTabNavigation";
+import { useCurrentChannelStore } from "@flind/ui/features/canvas/stores/currentChannelStore";
 import {
   NAVIGATION_TASK_BINDER,
   type NavigationTaskBinder,
-} from "@posthog/ui/features/navigation/taskBinder";
-import { useTaskInputPrefillStore } from "@posthog/ui/features/task-detail/stores/taskInputPrefillStore";
-import { taskDetailQuery } from "@posthog/ui/features/tasks/queries";
-import { setActiveTaskContext, track } from "@posthog/ui/shell/analytics";
+} from "@flind/ui/features/navigation/taskBinder";
+import { useTaskInputPrefillStore } from "@flind/ui/features/task-detail/stores/taskInputPrefillStore";
+import { taskDetailQuery } from "@flind/ui/features/tasks/queries";
+import { setActiveTaskContext, track } from "@flind/ui/shell/analytics";
 import {
   IMPERATIVE_QUERY_CLIENT,
   type ImperativeQueryClient,
-} from "@posthog/ui/shell/queryClient";
+} from "@flind/ui/shell/queryClient";
 import { useCallback } from "react";
 import * as nav from "./navigationBridge";
 

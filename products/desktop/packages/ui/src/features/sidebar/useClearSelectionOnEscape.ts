@@ -1,4 +1,4 @@
-import { useScopedTaskSelectionStore } from "@posthog/ui/features/sidebar/TaskSelectionScope";
+import { useScopedTaskSelectionStore } from "@flind/ui/features/sidebar/TaskSelectionScope";
 import { useEffect } from "react";
 
 function isEditableTarget(target: EventTarget | null): boolean {

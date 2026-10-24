@@ -2,39 +2,39 @@ import {
   isContentEmpty,
   textToContent,
   xmlToContent,
-} from "@posthog/core/message-editor/content";
+} from "@flind/core/message-editor/content";
 import {
   combineQueuedCloudPrompts,
   promptToQueuedEditorContent,
-} from "@posthog/core/sessions/cloudPrompt";
+} from "@flind/core/sessions/cloudPrompt";
 import {
   SESSION_SERVICE,
   type SessionService,
-} from "@posthog/core/sessions/sessionService";
-import { useService } from "@posthog/di/react";
-import { useHostTRPCClient } from "@posthog/host-router/react";
-import { sessionSupportsSideQuestion } from "@posthog/shared";
-import type { Task } from "@posthog/shared/domain-types";
+} from "@flind/core/sessions/sessionService";
+import { useService } from "@flind/di/react";
+import { useHostTRPCClient } from "@flind/host-router/react";
+import { sessionSupportsSideQuestion } from "@flind/shared";
+import type { Task } from "@flind/shared/domain-types";
 import {
   resolveLocalSkillPrompt,
   rewriteLocalSkillCommandPrompt,
   tryExecuteCodeCommand,
-} from "@posthog/ui/features/message-editor/commands";
-import { useDraftStore } from "@posthog/ui/features/message-editor/draftStore";
-import { useMessagingMode } from "@posthog/ui/features/sessions/hooks/useMessagingMode";
+} from "@flind/ui/features/message-editor/commands";
+import { useDraftStore } from "@flind/ui/features/message-editor/draftStore";
+import { useMessagingMode } from "@flind/ui/features/sessions/hooks/useMessagingMode";
 import {
   type AgentSession,
   sessionStoreSetters,
-} from "@posthog/ui/features/sessions/sessionStore";
-import { fireSideQuestion } from "@posthog/ui/features/sessions/sideQuestionStore";
-import { useTaskViewed } from "@posthog/ui/features/sidebar/useTaskViewed";
+} from "@flind/ui/features/sessions/sessionStore";
+import { fireSideQuestion } from "@flind/ui/features/sessions/sideQuestionStore";
+import { useTaskViewed } from "@flind/ui/features/sidebar/useTaskViewed";
 import {
   SHELL_CLIENT,
   type ShellClient,
-} from "@posthog/ui/features/terminal/shellClient";
-import { toast } from "@posthog/ui/primitives/toast";
-import { getAppViewSnapshot } from "@posthog/ui/router/useAppView";
-import { logger } from "@posthog/ui/shell/logger";
+} from "@flind/ui/features/terminal/shellClient";
+import { toast } from "@flind/ui/primitives/toast";
+import { getAppViewSnapshot } from "@flind/ui/router/useAppView";
+import { logger } from "@flind/ui/shell/logger";
 import { useCallback, useRef } from "react";
 
 const log = logger.scope("session-callbacks");

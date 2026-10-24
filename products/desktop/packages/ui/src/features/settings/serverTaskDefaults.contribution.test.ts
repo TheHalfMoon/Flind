@@ -1,10 +1,10 @@
-import type { TaskDefaults } from "@posthog/api-client/posthog-client";
-import type { HostTrpcClient } from "@posthog/host-router/client";
+import type { TaskDefaults } from "@flind/api-client/posthog-client";
+import type { HostTrpcClient } from "@flind/host-router/client";
 import {
   ANONYMOUS_AUTH_STATE,
   useAuthStore,
-} from "@posthog/ui/features/auth/store";
-import { registerRendererStateStorage } from "@posthog/ui/shell/rendererStorage";
+} from "@flind/ui/features/auth/store";
+import { registerRendererStateStorage } from "@flind/ui/shell/rendererStorage";
 import { describe, expect, it, vi } from "vitest";
 import { ServerTaskDefaultsContribution } from "./serverTaskDefaults.contribution";
 import { useSettingsStore } from "./settingsStore";
@@ -18,7 +18,7 @@ registerRendererStateStorage({
 const getMyTaskRunConfig = vi.fn();
 const setMyTaskDefaults = vi.fn().mockResolvedValue(undefined);
 
-vi.mock("@posthog/ui/features/auth/authClient", () => ({
+vi.mock("@flind/ui/features/auth/authClient", () => ({
   createAuthenticatedClient: () => ({ getMyTaskRunConfig, setMyTaskDefaults }),
 }));
 

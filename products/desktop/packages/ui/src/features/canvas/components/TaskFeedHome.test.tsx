@@ -8,19 +8,19 @@ let taskResultsError: Error | null = null;
 const refetch = vi.fn();
 
 vi.mock("@tanstack/react-router", () => ({ useNavigate: () => vi.fn() }));
-vi.mock("@posthog/ui/hooks/useSetHeaderContent", () => ({
+vi.mock("@flind/ui/hooks/useSetHeaderContent", () => ({
   useSetHeaderContent: vi.fn(),
 }));
-vi.mock("@posthog/ui/features/canvas/components/SavedSearchSwitcher", () => ({
+vi.mock("@flind/ui/features/canvas/components/SavedSearchSwitcher", () => ({
   SavedSearchSwitcher: () => null,
 }));
-vi.mock("@posthog/ui/features/canvas/components/ChannelFeedView", () => ({
+vi.mock("@flind/ui/features/canvas/components/ChannelFeedView", () => ({
   ChannelFeedView: ({ intro }: { intro?: ReactNode }) => intro,
 }));
-vi.mock("@posthog/ui/features/canvas/components/TaskFeedModal", () => ({
+vi.mock("@flind/ui/features/canvas/components/TaskFeedModal", () => ({
   TaskFeedModal: () => null,
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useProjectTaskFeeds", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useProjectTaskFeeds", () => ({
   useProjectTaskFeed: () => ({
     id: "feed-1",
     projectId: 1,
@@ -30,7 +30,7 @@ vi.mock("@posthog/ui/features/canvas/hooks/useProjectTaskFeeds", () => ({
     createdAt: "2026-08-01T00:00:00Z",
   }),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useTaskFeedResults", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useTaskFeedResults", () => ({
   useTaskFeedResults: () => ({
     canRetry: true,
     error: taskResultsError,
@@ -45,9 +45,9 @@ vi.mock("@posthog/ui/features/canvas/hooks/useTaskFeedResults", () => ({
     tasks: [],
   }),
 }));
-vi.mock("@posthog/ui/shell/analytics", () => ({ track: vi.fn() }));
+vi.mock("@flind/ui/shell/analytics", () => ({ track: vi.fn() }));
 
-import { useTaskFeedsStore } from "@posthog/ui/features/canvas/stores/taskFeedsStore";
+import { useTaskFeedsStore } from "@flind/ui/features/canvas/stores/taskFeedsStore";
 import { TaskFeedHome } from "./TaskFeedHome";
 
 describe("TaskFeedHome", () => {

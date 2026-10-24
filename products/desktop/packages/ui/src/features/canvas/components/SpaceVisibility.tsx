@@ -10,12 +10,12 @@ import {
 import {
   type Channel,
   useChannelMutations,
-} from "@posthog/ui/features/canvas/hooks/useChannels";
+} from "@flind/ui/features/canvas/hooks/useChannels";
 import {
   SettingsCard,
   SettingsCardRow,
-} from "@posthog/ui/features/settings/components/SettingsCard";
-import { toast } from "@posthog/ui/primitives/toast";
+} from "@flind/ui/features/settings/components/SettingsCard";
+import { toast } from "@flind/ui/primitives/toast";
 import { useState } from "react";
 
 type SharedType = "public" | "private";

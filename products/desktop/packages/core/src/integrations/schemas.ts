@@ -1,4 +1,4 @@
-import { CLOUD_REGIONS } from "@posthog/shared";
+import { CLOUD_REGIONS } from "@flind/shared";
 import { z } from "zod";
 
 export const cloudRegion = z.enum(CLOUD_REGIONS);

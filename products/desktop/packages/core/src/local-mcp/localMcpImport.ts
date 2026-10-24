@@ -3,8 +3,8 @@ import type {
   CloudMcpServerRelayDesignation,
   LocalMcpServerDescriptor,
   McpServerConnection,
-} from "@posthog/shared";
-import { isPrivateIpv4Octets, isPrivateIpv6Literal } from "@posthog/shared";
+} from "@flind/shared";
+import { isPrivateIpv4Octets, isPrivateIpv6Literal } from "@flind/shared";
 import { inject, injectable } from "inversify";
 import { LOCAL_MCP_WORKSPACE_CLIENT } from "./identifiers";
 

@@ -1,6 +1,6 @@
-import { publicProcedure, router } from "@posthog/host-trpc/trpc";
-import type { IAnalytics } from "@posthog/platform/analytics";
-import { ANALYTICS_SERVICE } from "@posthog/platform/analytics";
+import { publicProcedure, router } from "@flind/host-trpc/trpc";
+import type { IAnalytics } from "@flind/platform/analytics";
+import { ANALYTICS_SERVICE } from "@flind/platform/analytics";
 import { z } from "zod";
 
 export const analyticsRouter = router({

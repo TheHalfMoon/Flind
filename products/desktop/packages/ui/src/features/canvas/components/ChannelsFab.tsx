@@ -17,21 +17,21 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@flind/quill";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
-import { CreateChannelModal } from "@posthog/ui/features/canvas/components/CreateChannelModal";
-import { useChannelsLayout } from "@posthog/ui/features/canvas/hooks/useChannelsLayout";
-import { useCreateAndOpenDashboard } from "@posthog/ui/features/canvas/hooks/useDashboards";
-import { useTaskChannels } from "@posthog/ui/features/canvas/hooks/useTaskChannels";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
+import { CreateChannelModal } from "@flind/ui/features/canvas/components/CreateChannelModal";
+import { useChannelsLayout } from "@flind/ui/features/canvas/hooks/useChannelsLayout";
+import { useCreateAndOpenDashboard } from "@flind/ui/features/canvas/hooks/useDashboards";
+import { useTaskChannels } from "@flind/ui/features/canvas/hooks/useTaskChannels";
 import {
   formatHotkey,
   SHORTCUTS,
-} from "@posthog/ui/features/command/keyboard-shortcuts";
-import { isContentEmpty } from "@posthog/ui/features/message-editor/content";
-import { useDraftStore } from "@posthog/ui/features/message-editor/draftStore";
-import { useNavRailMetrics } from "@posthog/ui/features/sidebar/navRailSize";
-import { isTaskInputSessionId } from "@posthog/ui/features/task-detail/taskInputSession";
-import { openTaskInput } from "@posthog/ui/router/useOpenTask";
-import { track } from "@posthog/ui/shell/analytics";
+} from "@flind/ui/features/command/keyboard-shortcuts";
+import { isContentEmpty } from "@flind/ui/features/message-editor/content";
+import { useDraftStore } from "@flind/ui/features/message-editor/draftStore";
+import { useNavRailMetrics } from "@flind/ui/features/sidebar/navRailSize";
+import { isTaskInputSessionId } from "@flind/ui/features/task-detail/taskInputSession";
+import { openTaskInput } from "@flind/ui/router/useOpenTask";
+import { track } from "@flind/ui/shell/analytics";
 import { useState } from "react";
 
 /**

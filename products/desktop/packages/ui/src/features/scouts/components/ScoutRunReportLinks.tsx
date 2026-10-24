@@ -1,9 +1,9 @@
-import type { ScoutRun } from "@posthog/api-client/posthog-client";
-import { deriveHeadline } from "@posthog/core/inbox/reportPresentation";
-import { scoutRunReports } from "@posthog/core/scouts/scoutPresentation";
+import type { ScoutRun } from "@flind/api-client/posthog-client";
+import { deriveHeadline } from "@flind/core/inbox/reportPresentation";
+import { scoutRunReports } from "@flind/core/scouts/scoutPresentation";
 import { Badge, Button, Skeleton } from "@flind/quill";
-import { useInboxReportById } from "@posthog/ui/features/inbox/hooks/useInboxReports";
-import { useOpenInboxReport } from "@posthog/ui/features/inbox/hooks/useOpenInboxReport";
+import { useInboxReportById } from "@flind/ui/features/inbox/hooks/useInboxReports";
+import { useOpenInboxReport } from "@flind/ui/features/inbox/hooks/useOpenInboxReport";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
 

@@ -1,4 +1,4 @@
-import type { ExperimentResultsPresentation } from "@posthog/api-client/evidence-previews";
+import type { ExperimentResultsPresentation } from "@flind/api-client/evidence-previews";
 import { Accordion, Skeleton, Text } from "@flind/quill";
 import type { ReactElement } from "react";
 import { ExperimentMetricResult } from "./ExperimentMetricResult";

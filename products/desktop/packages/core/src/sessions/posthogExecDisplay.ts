@@ -1,4 +1,4 @@
-import { formatMcpToolLabel, parseMcpToolName } from "@posthog/shared";
+import { formatMcpToolLabel, parseMcpToolName } from "@flind/shared";
 
 const POSTHOG_SERVER_RE = /^(?:plugin_)?posthog(?:_[^_]+)*$/;
 const POSTHOG_VERB_RE =

@@ -1,5 +1,5 @@
-import { toast } from "@posthog/ui/primitives/toast";
-import { logger } from "@posthog/ui/shell/logger";
+import { toast } from "@flind/ui/primitives/toast";
+import { logger } from "@flind/ui/shell/logger";
 import type { UseUnarchiveTask } from "./useUnarchiveTask";
 
 const log = logger.scope("undo-archive");

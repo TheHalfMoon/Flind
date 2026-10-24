@@ -1,4 +1,4 @@
-import { ApiRequestError } from "@posthog/api-client/fetcher";
+import { ApiRequestError } from "@flind/api-client/fetcher";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { beforeEach, describe, expect, it, vi } from "vitest";

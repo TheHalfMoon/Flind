@@ -13,11 +13,11 @@ import {
   RadioGroupItem,
   Textarea,
 } from "@flind/quill";
-import { REFUND_REASON_OPTIONS } from "@posthog/shared";
+import { REFUND_REASON_OPTIONS } from "@flind/shared";
 import type {
   SignalReport,
   SignalReportRefundReason,
-} from "@posthog/shared/types";
+} from "@flind/shared/types";
 import { useId, useState } from "react";
 
 export interface RefundReportDialogProps {

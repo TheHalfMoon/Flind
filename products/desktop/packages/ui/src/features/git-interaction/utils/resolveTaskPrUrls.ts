@@ -1,4 +1,4 @@
-import { mergePrUrls } from "@posthog/shared";
+import { mergePrUrls } from "@flind/shared";
 
 export interface TaskPrUrls {
   primaryUrl: string | null;

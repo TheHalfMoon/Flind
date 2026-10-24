@@ -1,4 +1,4 @@
-import { pickThinkingActivity } from "@posthog/core/sessions/thinkingActivities";
+import { pickThinkingActivity } from "@flind/core/sessions/thinkingActivities";
 import { Brain } from "phosphor-react-native";
 import { useState } from "react";
 import { Pressable, Text, View } from "react-native";

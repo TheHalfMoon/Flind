@@ -1,4 +1,4 @@
-import type { Workspace, WorkspaceInfo } from "@posthog/shared";
+import type { Workspace, WorkspaceInfo } from "@flind/shared";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { act, renderHook } from "@testing-library/react";
 import type { ReactNode } from "react";
@@ -9,7 +9,7 @@ const WORKTREES_FILTER = { queryKey: ["worktrees", "/repo"] };
 
 const createFn = vi.hoisted(() => vi.fn());
 
-vi.mock("@posthog/host-router/react", () => ({
+vi.mock("@flind/host-router/react", () => ({
   useHostTRPC: () => ({
     workspace: {
       getAll: {

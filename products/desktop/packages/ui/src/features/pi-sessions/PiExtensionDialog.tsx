@@ -1,5 +1,5 @@
 import type { RpcExtensionUIResponse } from "@flind/agent/pi/types";
-import type { PiExtensionDialogRequest } from "@posthog/core/pi-runtime/piExtensionStore";
+import type { PiExtensionDialogRequest } from "@flind/core/pi-runtime/piExtensionStore";
 import {
   Button,
   Dialog,

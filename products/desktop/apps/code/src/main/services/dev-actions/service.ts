@@ -1,8 +1,8 @@
 import {
   DEV_HOST_ACTIONS_SERVICE,
   type IDevHostActions,
-} from "@posthog/platform/dev-host-actions";
-import { TypedEventEmitter } from "@posthog/shared";
+} from "@flind/platform/dev-host-actions";
+import { TypedEventEmitter } from "@flind/shared";
 import { inject, injectable } from "inversify";
 import { DEV_NETWORK_SERVICE } from "../../di/tokens";
 import { getUserDataDir } from "../../utils/env";

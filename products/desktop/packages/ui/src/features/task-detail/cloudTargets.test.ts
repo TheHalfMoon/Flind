@@ -1,7 +1,7 @@
 import type {
   SandboxCustomImage,
   SandboxEnvironment,
-} from "@posthog/shared/domain-types";
+} from "@flind/shared/domain-types";
 import { describe, expect, it } from "vitest";
 import {
   buildCloudTargetOptions,

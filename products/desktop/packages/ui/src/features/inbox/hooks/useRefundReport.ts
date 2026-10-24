@@ -1,14 +1,14 @@
-import { inboxReportKeys } from "@posthog/core/inbox/inboxQuery";
-import { computeRefundEligibility } from "@posthog/core/inbox/refundEligibility";
-import { SIGNALS_PR_REFUNDS_FLAG } from "@posthog/shared";
+import { inboxReportKeys } from "@flind/core/inbox/inboxQuery";
+import { computeRefundEligibility } from "@flind/core/inbox/refundEligibility";
+import { SIGNALS_PR_REFUNDS_FLAG } from "@flind/shared";
 import type {
   SignalReport,
   SignalReportRefundReason,
-} from "@posthog/shared/types";
-import { useAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { useFeatureFlag } from "@posthog/ui/features/feature-flags/useFeatureFlag";
-import { useReportActionTracker } from "@posthog/ui/features/inbox/hooks/useReportActionTracker";
-import { toast } from "@posthog/ui/primitives/toast";
+} from "@flind/shared/types";
+import { useAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { useFeatureFlag } from "@flind/ui/features/feature-flags/useFeatureFlag";
+import { useReportActionTracker } from "@flind/ui/features/inbox/hooks/useReportActionTracker";
+import { toast } from "@flind/ui/primitives/toast";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 /**

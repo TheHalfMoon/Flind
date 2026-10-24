@@ -6,7 +6,7 @@ import {
   type IconProps,
   ShapesIcon,
 } from "@phosphor-icons/react";
-import { LoopIcon } from "@posthog/ui/primitives/LoopIcon";
+import { LoopIcon } from "@flind/ui/primitives/LoopIcon";
 import type { ComponentType, ReactNode } from "react";
 
 /**

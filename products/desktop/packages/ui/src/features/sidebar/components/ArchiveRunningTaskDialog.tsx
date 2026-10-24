@@ -1,5 +1,5 @@
 import { Warning } from "@phosphor-icons/react";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
+import { Spinner } from "@flind/ui/primitives/Spinner";
 import { AlertDialog, Button, Flex, Text } from "@radix-ui/themes";
 import { useState } from "react";
 

@@ -1,4 +1,4 @@
-import type { SpendAnalysisDayRow } from "@posthog/api-client/spend-analysis";
+import type { SpendAnalysisDayRow } from "@flind/api-client/spend-analysis";
 
 export type SpendLimitLevel = "warn" | "stop";
 export type SpendLimitPeriod = "day" | "month";

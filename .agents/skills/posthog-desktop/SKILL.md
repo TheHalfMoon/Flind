@@ -5,7 +5,7 @@ description: >
   workspace imported from the now-archived PostHog/code repo, with posthog/posthog the only
   source of truth for PRs, CI and publishing, and not part of the root frontend or Django build.
   Use when the user says /posthog-desktop, or works on the Electron desktop app, apps/code, apps/web,
-  apps/mobile, packages/core, packages/ui, packages/workspace-server, @posthog/api-client,
+  apps/mobile, packages/core, packages/ui, packages/workspace-server, @flind/api-client,
   @flind/agent, or the agent framework. Pins the working directory to products/desktop, swaps
   in that tree's toolchain and conventions in place of the monorepo's, and defines the few paths
   outside the tree that may be touched (Django APIs the app calls, desktop-* CI at the root).
@@ -99,6 +99,6 @@ Prefer these over monorepo equivalents while in this tree.
 
 - `pnpm typecheck` and `pnpm lint` from `products/desktop/`, plus `pnpm test` for touched packages.
 - After touching `packages/core`: `biome lint packages/core`, zero `noRestrictedImports`.
-- After touching `@posthog/platform`: rebuild or typecheck its `dist/`.
+- After touching `@flind/platform`: rebuild or typecheck its `dist/`.
 - After moving logic out of `apps/code`: `node scripts/check-host-boundaries.mjs --prune`.
 - Confirm the diff touches nothing outside `products/desktop/` — or name what it touches and why.

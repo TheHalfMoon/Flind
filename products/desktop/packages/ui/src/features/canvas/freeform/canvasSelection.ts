@@ -1,5 +1,5 @@
-import type { CanvasTextSelection } from "@posthog/core/canvas/freeformSchemas";
-import type { CaptureBounds } from "@posthog/ui/features/code-editor/components/selectionScreenshot";
+import type { CanvasTextSelection } from "@flind/core/canvas/freeformSchemas";
+import type { CaptureBounds } from "@flind/ui/features/code-editor/components/selectionScreenshot";
 
 export type HostCanvasTextSelection = CanvasTextSelection & {
   frame?: CaptureBounds;

@@ -1,8 +1,8 @@
-import { WebsiteChannelHistory } from "@posthog/ui/features/canvas/components/WebsiteChannelHistory";
+import { WebsiteChannelHistory } from "@flind/ui/features/canvas/components/WebsiteChannelHistory";
 import {
   ChannelSkeleton,
   withRouteSkeleton,
-} from "@posthog/ui/router/routeSkeletons";
+} from "@flind/ui/router/routeSkeletons";
 import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/_shell/spaces/$channelId/history")({

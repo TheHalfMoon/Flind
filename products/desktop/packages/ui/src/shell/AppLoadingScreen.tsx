@@ -1,7 +1,7 @@
 import { Skeleton } from "@flind/quill";
-import { EXTERNAL_LINKS } from "@posthog/shared";
-import { Button } from "@posthog/ui/primitives/Button";
-import { openExternalUrl } from "@posthog/ui/shell/openExternal";
+import { EXTERNAL_LINKS } from "@flind/shared";
+import { Button } from "@flind/ui/primitives/Button";
+import { openExternalUrl } from "@flind/ui/shell/openExternal";
 import { useEffect, useState } from "react";
 
 // The gate spans bootstrap (20s deadline in core auth), the access check and

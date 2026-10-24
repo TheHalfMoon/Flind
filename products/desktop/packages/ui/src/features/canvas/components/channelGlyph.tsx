@@ -3,7 +3,7 @@ import {
   type IconWeight,
   LockSimpleIcon,
 } from "@phosphor-icons/react";
-import { PERSONAL_CHANNEL_LABEL } from "@posthog/ui/features/canvas/hooks/useTaskChannels";
+import { PERSONAL_CHANNEL_LABEL } from "@flind/ui/features/canvas/hooks/useTaskChannels";
 import type { ReactNode } from "react";
 
 /**

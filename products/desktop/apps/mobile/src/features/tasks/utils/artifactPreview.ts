@@ -1,4 +1,4 @@
-import { isRasterImageFile } from "@posthog/shared";
+import { isRasterImageFile } from "@flind/shared";
 
 export type ArtifactPreviewKind = "image" | "markdown" | "html" | "unsupported";
 

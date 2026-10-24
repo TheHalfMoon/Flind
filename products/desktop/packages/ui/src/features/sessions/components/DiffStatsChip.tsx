@@ -1,11 +1,11 @@
 import { GitDiff } from "@phosphor-icons/react";
-import type { Task } from "@posthog/shared/domain-types";
-import { useDiffStatsToggle } from "@posthog/ui/features/code-review/hooks/useDiffStatsToggle";
+import type { Task } from "@flind/shared/domain-types";
+import { useDiffStatsToggle } from "@flind/ui/features/code-review/hooks/useDiffStatsToggle";
 import {
   formatHotkey,
   SHORTCUTS,
-} from "@posthog/ui/features/command/keyboard-shortcuts";
-import { Tooltip } from "@posthog/ui/primitives/Tooltip";
+} from "@flind/ui/features/command/keyboard-shortcuts";
+import { Tooltip } from "@flind/ui/primitives/Tooltip";
 import { Flex, Text } from "@radix-ui/themes";
 
 interface DiffStatsChipProps {

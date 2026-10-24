@@ -1,4 +1,4 @@
-import type { NotificationTarget } from "@posthog/platform/notifications";
+import type { NotificationTarget } from "@flind/platform/notifications";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { renderHook, waitFor } from "@testing-library/react";
 import type { ReactNode } from "react";
@@ -26,12 +26,12 @@ const focusOrOpenBrowserTab = vi.hoisted(() =>
   vi.fn().mockResolvedValue("opened"),
 );
 
-vi.mock("@posthog/ui/features/browser-tabs/imperativeTabNavigation", () => ({
+vi.mock("@flind/ui/features/browser-tabs/imperativeTabNavigation", () => ({
   focusOrOpenBrowserTab,
 }));
-vi.mock("@posthog/di/react", () => ({ useService: () => ({ openTask }) }));
+vi.mock("@flind/di/react", () => ({ useService: () => ({ openTask }) }));
 
-vi.mock("@posthog/host-router/react", () => ({
+vi.mock("@flind/host-router/react", () => ({
   useHostTRPCClient: () => ({
     deepLink: {
       getPendingOpenTarget: { query: getPendingOpenTarget },
@@ -39,19 +39,19 @@ vi.mock("@posthog/host-router/react", () => ({
     },
   }),
 }));
-vi.mock("@posthog/ui/router/navigationBridge", () => ({
+vi.mock("@flind/ui/router/navigationBridge", () => ({
   navigateToChannelDashboard,
   setOpenTargetHandler: vi.fn(),
 }));
-vi.mock("@posthog/ui/router/useOpenTask", () => ({ openTask: routerOpenTask }));
-vi.mock("@posthog/ui/features/sidebar/useTaskViewed", () => ({
+vi.mock("@flind/ui/router/useOpenTask", () => ({ openTask: routerOpenTask }));
+vi.mock("@flind/ui/features/sidebar/useTaskViewed", () => ({
   useTaskViewed: () => ({ markAsViewed }),
 }));
-vi.mock("@posthog/ui/shell/logger", () => ({
+vi.mock("@flind/ui/shell/logger", () => ({
   logger: { scope: () => ({ info: vi.fn(), error: vi.fn(), warn: vi.fn() }) },
 }));
-vi.mock("@posthog/ui/primitives/toast", () => ({ toast: { error: vi.fn() } }));
-vi.mock("@posthog/ui/features/feature-flags/useFeatureFlag", () => ({
+vi.mock("@flind/ui/primitives/toast", () => ({ toast: { error: vi.fn() } }));
+vi.mock("@flind/ui/features/feature-flags/useFeatureFlag", () => ({
   useFeatureFlag: () => false,
 }));
 

@@ -1,4 +1,4 @@
-import type { SkillInfo } from "@posthog/shared";
+import type { SkillInfo } from "@flind/shared";
 import { describe, expect, it } from "vitest";
 import { analyzeSkills, OVERSIZED_SKILL_MD_BYTES } from "./analyzeSkills";
 

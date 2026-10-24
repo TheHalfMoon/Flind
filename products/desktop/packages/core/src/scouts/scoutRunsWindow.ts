@@ -1,7 +1,7 @@
 import type {
   ScoutRun,
   ScoutRunsQueryParams,
-} from "@posthog/api-client/posthog-client";
+} from "@flind/api-client/posthog-client";
 
 /**
  * The fleet run window every scout stat describes. The backend caps each

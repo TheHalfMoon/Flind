@@ -1,11 +1,11 @@
-import { TEAM_SKILLS_SERVICE } from "@posthog/core/skills/identifiers";
+import { TEAM_SKILLS_SERVICE } from "@flind/core/skills/identifiers";
 import {
   markInstalledTeamSkills,
   type TeamSkillsService,
-} from "@posthog/core/skills/teamSkillsService";
-import { useService } from "@posthog/di/react";
-import type { SkillInfo } from "@posthog/shared";
-import { useAuthenticatedQuery } from "@posthog/ui/hooks/useAuthenticatedQuery";
+} from "@flind/core/skills/teamSkillsService";
+import { useService } from "@flind/di/react";
+import type { SkillInfo } from "@flind/shared";
+import { useAuthenticatedQuery } from "@flind/ui/hooks/useAuthenticatedQuery";
 import { useMemo } from "react";
 
 export const teamSkillsKeys = {

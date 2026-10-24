@@ -1,4 +1,4 @@
-import type { TaskChannel } from "@posthog/shared/domain-types";
+import type { TaskChannel } from "@flind/shared/domain-types";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { act, renderHook, waitFor } from "@testing-library/react";
 import type { ReactNode } from "react";
@@ -10,7 +10,7 @@ const mockClient = vi.hoisted(() => ({
   starTaskChannel: vi.fn(),
   updateTaskChannelAutoArchive: vi.fn(),
 }));
-vi.mock("@posthog/ui/features/auth/authClient", () => ({
+vi.mock("@flind/ui/features/auth/authClient", () => ({
   useOptionalAuthenticatedClient: () => mockClient,
 }));
 

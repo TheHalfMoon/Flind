@@ -41,7 +41,7 @@ ARTIFACT_TOKEN_SALT = "posthog.canvas.artifact.v1"
 # its own bucket and the next one, i.e. between one and two hours.
 ARTIFACT_TOKEN_BUCKET_SECONDS = 3600
 
-# Generated from the desktop's sandboxRuntime.ts by `pnpm --filter @posthog/ui
+# Generated from the desktop's sandboxRuntime.ts by `pnpm --filter @flind/ui
 # generate-web-sandbox`. Do not edit it by hand.
 SANDBOX_DOCUMENT_PATH = Path(__file__).parent / "sandbox" / "sandbox_document.html"
 ARTIFACT_PERMISSIONS_POLICY = "camera=(), microphone=(), geolocation=(), payment=(), usb=()"

@@ -2,7 +2,7 @@ import {
   type AgentSession,
   type QueuedMessage,
   sendableQueuePrefixLength,
-} from "@posthog/shared";
+} from "@flind/shared";
 import { afterEach, describe, expect, it } from "vitest";
 import { sessionStore, sessionStoreSetters } from "./sessionStore";
 

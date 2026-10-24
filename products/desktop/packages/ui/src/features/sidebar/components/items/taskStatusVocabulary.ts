@@ -9,8 +9,8 @@ import {
 import {
   getOriginProductMeta,
   type TaskIconProps,
-} from "@posthog/ui/features/sidebar/components/items/TaskIcon";
-import { SlackMark } from "@posthog/ui/primitives/SlackMark";
+} from "@flind/ui/features/sidebar/components/items/TaskIcon";
+import { SlackMark } from "@flind/ui/primitives/SlackMark";
 
 /**
  * The task state a status dot / badge stack is drawn from: what the shipped

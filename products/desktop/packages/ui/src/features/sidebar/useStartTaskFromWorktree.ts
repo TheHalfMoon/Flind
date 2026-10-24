@@ -1,19 +1,19 @@
 import {
   buildWorktreeAdoptionInput,
   getErrorTitle,
-} from "@posthog/core/task-detail/taskInput";
+} from "@flind/core/task-detail/taskInput";
 import {
   TASK_SERVICE,
   type TaskService,
-} from "@posthog/core/task-detail/taskService";
-import { useService } from "@posthog/di/react";
-import { useHostTRPC } from "@posthog/host-router/react";
-import { ANALYTICS_EVENTS } from "@posthog/shared";
-import { toastError } from "@posthog/ui/features/notifications/errorDetails";
-import { useProvisioningStore } from "@posthog/ui/features/provisioning/store";
-import { useCreateTask } from "@posthog/ui/features/tasks/useTaskCrudMutations";
-import { openTask } from "@posthog/ui/router/useOpenTask";
-import { track } from "@posthog/ui/shell/analytics";
+} from "@flind/core/task-detail/taskService";
+import { useService } from "@flind/di/react";
+import { useHostTRPC } from "@flind/host-router/react";
+import { ANALYTICS_EVENTS } from "@flind/shared";
+import { toastError } from "@flind/ui/features/notifications/errorDetails";
+import { useProvisioningStore } from "@flind/ui/features/provisioning/store";
+import { useCreateTask } from "@flind/ui/features/tasks/useTaskCrudMutations";
+import { openTask } from "@flind/ui/router/useOpenTask";
+import { track } from "@flind/ui/shell/analytics";
 import { useQueryClient } from "@tanstack/react-query";
 import { useCallback, useState } from "react";
 

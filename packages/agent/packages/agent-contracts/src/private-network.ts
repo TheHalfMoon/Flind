@@ -5,7 +5,7 @@
  * endpoint), carrier-grade NAT (100.64/10, which also covers Tailscale IPs),
  * or the benchmarking range (198.18/15). Shared by every private/public host
  * classifier in this monorepo so the range table can't drift between them —
- * see `@posthog/core`'s `isPrivateHostname` and the web-fetch tool's
+ * see `@flind/core`'s `isPrivateHostname` and the web-fetch tool's
  * `isBlockedHost`.
  */
 export function isPrivateIpv4Octets(a: number, b: number): boolean {
@@ -47,7 +47,7 @@ function ipv4MappedOctets(
  * Whether a bracket-free, lowercased IPv6 literal is non-public: loopback
  * (`::1`), unspecified (`::`/`::0`), link-local (fe80::/10), unique-local
  * (fc00::/7), or an IPv4-mapped address whose embedded IPv4 is private. Shared
- * by `@posthog/core`'s `isPrivateHostname` and the web-fetch tool's
+ * by `@flind/core`'s `isPrivateHostname` and the web-fetch tool's
  * `isBlockedHost` so the IPv6-literal kernel can't drift between them; each
  * still layers its own non-literal rules (bare intranet names, `.local`
  * suffixes) on top.

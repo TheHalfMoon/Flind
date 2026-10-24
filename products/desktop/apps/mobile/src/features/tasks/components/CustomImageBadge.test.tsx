@@ -1,4 +1,4 @@
-import type { Task, TaskRun } from "@posthog/shared";
+import type { Task, TaskRun } from "@flind/shared";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { createElement } from "react";
 import { act, create } from "react-test-renderer";

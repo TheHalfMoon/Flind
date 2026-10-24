@@ -16,17 +16,17 @@ const cloudTargetOptionsState = vi.hoisted(() => ({
   toggleFavorite: vi.fn(),
 }));
 
-vi.mock("@posthog/ui/features/settings/adapterSubscription", () => ({
+vi.mock("@flind/ui/features/settings/adapterSubscription", () => ({
   useAdapterSubscription: () => ({
     flagEnabled: false,
     subscriptionOn: false,
     loggedIn: false,
   }),
 }));
-vi.mock("@posthog/ui/features/settings/hooks/useOpenSettings", () => ({
+vi.mock("@flind/ui/features/settings/hooks/useOpenSettings", () => ({
   openSettings: vi.fn(),
 }));
-vi.mock("@posthog/ui/shell/useHostCapabilities", () => ({
+vi.mock("@flind/ui/shell/useHostCapabilities", () => ({
   useHostCapabilities: () => ({ localWorkspaces: true }),
 }));
 vi.mock("../hooks/useCloudModeEnabled", () => ({

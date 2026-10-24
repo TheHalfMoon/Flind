@@ -6,7 +6,7 @@ import {
   SelectValue,
   Text,
 } from "@flind/quill";
-import type { NetworkAccessLevel } from "@posthog/shared/domain-types";
+import type { NetworkAccessLevel } from "@flind/shared/domain-types";
 
 const NETWORK_ACCESS_OPTIONS: {
   value: NetworkAccessLevel;

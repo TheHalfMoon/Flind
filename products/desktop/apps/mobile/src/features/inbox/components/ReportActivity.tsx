@@ -1,6 +1,6 @@
 import { Text } from "@components/text";
-import { attributionLabel } from "@posthog/core/inbox/activityLog";
-import type { AnySignalReportArtefact } from "@posthog/shared/domain-types";
+import { attributionLabel } from "@flind/core/inbox/activityLog";
+import type { AnySignalReportArtefact } from "@flind/shared/domain-types";
 import { ClockCounterClockwise } from "phosphor-react-native";
 import { useMemo } from "react";
 import { View } from "react-native";

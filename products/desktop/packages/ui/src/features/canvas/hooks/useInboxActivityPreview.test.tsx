@@ -12,20 +12,20 @@ const mocks = vi.hoisted(() => ({
   })),
 }));
 
-vi.mock("@posthog/ui/features/auth/store", () => ({
+vi.mock("@flind/ui/features/auth/store", () => ({
   useAuthStateValue: () => "us:1",
 }));
-vi.mock("@posthog/ui/features/auth/authClient", () => ({
+vi.mock("@flind/ui/features/auth/authClient", () => ({
   useOptionalAuthenticatedClient: () => ({}),
 }));
-vi.mock("@posthog/ui/features/auth/useCurrentUser", () => ({
+vi.mock("@flind/ui/features/auth/useCurrentUser", () => ({
   useCurrentUser: () => mocks.currentUser,
 }));
-vi.mock("@posthog/ui/features/inbox/hooks/useInboxReports", () => ({
+vi.mock("@flind/ui/features/inbox/hooks/useInboxReports", () => ({
   useInboxReports: mocks.useInboxReports,
 }));
 
-import { useActivityFilterStore } from "@posthog/ui/features/canvas/stores/activityFilterStore";
+import { useActivityFilterStore } from "@flind/ui/features/canvas/stores/activityFilterStore";
 import { useInboxActivityPreview } from "./useInboxActivityPreview";
 
 describe("useInboxActivityPreview", () => {

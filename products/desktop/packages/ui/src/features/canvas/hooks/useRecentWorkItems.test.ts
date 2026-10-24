@@ -1,6 +1,6 @@
-import type { ChannelSessionFacts } from "@posthog/core/canvas/channelItems";
-import type { DashboardRecord } from "@posthog/core/canvas/dashboardSchemas";
-import type { Task } from "@posthog/shared/domain-types";
+import type { ChannelSessionFacts } from "@flind/core/canvas/channelItems";
+import type { DashboardRecord } from "@flind/core/canvas/dashboardSchemas";
+import type { Task } from "@flind/shared/domain-types";
 import { describe, expect, it } from "vitest";
 import {
   RECENT_WORK_CAP,

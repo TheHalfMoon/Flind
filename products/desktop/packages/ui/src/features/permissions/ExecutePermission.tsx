@@ -1,5 +1,5 @@
-import { compactHomePath } from "@posthog/shared";
-import { ActionSelector } from "@posthog/ui/primitives/ActionSelector";
+import { compactHomePath } from "@flind/shared";
+import { ActionSelector } from "@flind/ui/primitives/ActionSelector";
 import { Box, Code } from "@radix-ui/themes";
 import {
   type BasePermissionProps,

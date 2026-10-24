@@ -1,4 +1,4 @@
-import { browserTabsStore } from "@posthog/core/browser-tabs/browserTabsStore";
+import { browserTabsStore } from "@flind/core/browser-tabs/browserTabsStore";
 import { Theme } from "@radix-ui/themes";
 import { act, render, screen } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
@@ -23,68 +23,68 @@ const mocks = vi.hoisted(() => ({
   historyTabId: undefined as string | undefined,
 }));
 
-vi.mock("@posthog/ui/features/canvas/hooks/useWorkLayout", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useWorkLayout", () => ({
   useWorkLayout: () => false,
 }));
-vi.mock("@posthog/ui/shell/analytics", () => ({
+vi.mock("@flind/ui/shell/analytics", () => ({
   track: (...args: unknown[]) => mocks.track(...args),
 }));
 
-vi.mock("@posthog/ui/features/feature-flags/useFeatureFlag", () => ({
+vi.mock("@flind/ui/features/feature-flags/useFeatureFlag", () => ({
   useFeatureFlag: (key: string) => mocks.featureFlags.get(key) ?? true,
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useChannelsLayout", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannelsLayout", () => ({
   useChannelsLayout: () => mocks.channelsLayout,
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useChannels", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannels", () => ({
   useChannels: () => ({
     channels: mocks.channels,
     isLoading: mocks.channelsLoading,
   }),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useMarkChannelSeen", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useMarkChannelSeen", () => ({
   useMarkChannelSeen: (channelId: string | undefined) =>
     mocks.markChannelSeen(channelId),
 }));
-vi.mock("@posthog/ui/features/archive/useArchivedTaskIds", () => ({
+vi.mock("@flind/ui/features/archive/useArchivedTaskIds", () => ({
   useArchivedTaskIds: () => mocks.archivedTaskIds,
 }));
-vi.mock("@posthog/ui/router/navigationBridge", () => ({
+vi.mock("@flind/ui/router/navigationBridge", () => ({
   navigateToArchived: (...args: unknown[]) => mocks.navigateToArchived(...args),
 }));
 
 // The sidebar's children each mount their own query stack; this suite is about
 // the shell's own decisions, so they're stubbed out.
-vi.mock("@posthog/ui/features/canvas/components/ActivityFeedList", () => ({
+vi.mock("@flind/ui/features/canvas/components/ActivityFeedList", () => ({
   ActivityFeedList: () => <div data-testid="activity-feed" />,
 }));
-vi.mock("@posthog/ui/features/canvas/components/ChannelSidebar", () => ({
+vi.mock("@flind/ui/features/canvas/components/ChannelSidebar", () => ({
   ChannelSidebar: ({ channelId }: { channelId: string }) => (
     <div data-testid="channel-sidebar">{channelId}</div>
   ),
 }));
-vi.mock("@posthog/ui/features/canvas/components/ChannelsList", () => ({
+vi.mock("@flind/ui/features/canvas/components/ChannelsList", () => ({
   ChannelsList: () => <div data-testid="channels-list" />,
 }));
-vi.mock("@posthog/ui/features/canvas/components/ChannelsFab", () => ({
+vi.mock("@flind/ui/features/canvas/components/ChannelsFab", () => ({
   ChannelsFab: () => null,
 }));
-vi.mock("@posthog/ui/features/sidebar/components/SidebarNavSection", () => ({
+vi.mock("@flind/ui/features/sidebar/components/SidebarNavSection", () => ({
   SidebarNavSection: () => <div data-testid="sidebar-nav-section" />,
 }));
-vi.mock("@posthog/ui/features/sidebar/components/TasksHeader", () => ({
+vi.mock("@flind/ui/features/sidebar/components/TasksHeader", () => ({
   TasksHeader: () => <div data-testid="tasks-header" />,
 }));
-vi.mock("@posthog/ui/features/sidebar/components/SidebarMenu", () => ({
+vi.mock("@flind/ui/features/sidebar/components/SidebarMenu", () => ({
   SidebarMenu: () => <div data-testid="sidebar-menu" />,
 }));
-vi.mock("@posthog/ui/features/sidebar/components/ProjectSwitcher", () => ({
+vi.mock("@flind/ui/features/sidebar/components/ProjectSwitcher", () => ({
   ProjectSwitcher: () => null,
 }));
-vi.mock("@posthog/ui/features/sidebar/components/UpdateBanner", () => ({
+vi.mock("@flind/ui/features/sidebar/components/UpdateBanner", () => ({
   UpdateBanner: () => null,
 }));
-vi.mock("@posthog/ui/features/workspace/useWorkspace", () => ({
+vi.mock("@flind/ui/features/workspace/useWorkspace", () => ({
   useWorkspaces: () => ({ data: {}, isFetched: true }),
 }));
 vi.mock("@tanstack/react-router", () => ({
@@ -114,13 +114,13 @@ vi.mock("@tanstack/react-router", () => ({
     }),
 }));
 
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
 import {
   showChannelList,
   useChannelPaneStore,
-} from "@posthog/ui/features/canvas/stores/channelPaneStore";
-import { useCurrentChannelStore } from "@posthog/ui/features/canvas/stores/currentChannelStore";
-import { useSidebarStore } from "@posthog/ui/features/sidebar/sidebarStore";
+} from "@flind/ui/features/canvas/stores/channelPaneStore";
+import { useCurrentChannelStore } from "@flind/ui/features/canvas/stores/currentChannelStore";
+import { useSidebarStore } from "@flind/ui/features/sidebar/sidebarStore";
 import { ChannelRouteSync } from "./ChannelRouteSync";
 import { ChannelsSidebar } from "./ChannelsSidebar";
 

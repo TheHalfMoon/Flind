@@ -1,13 +1,13 @@
 import { Text } from "@components/text";
-import type { RecordingExport } from "@posthog/api-client/posthog-client";
+import type { RecordingExport } from "@flind/api-client/posthog-client";
 import {
   EXTERNAL_INBOX_SOURCE_BY_PRODUCT,
   type SourceProduct,
-} from "@posthog/shared";
+} from "@flind/shared";
 import type {
   Signal,
   SignalFindingContent,
-} from "@posthog/shared/domain-types";
+} from "@flind/shared/domain-types";
 import { useQuery } from "@tanstack/react-query";
 import {
   ArrowSquareOut,

@@ -1,9 +1,9 @@
 import {
   SESSION_SERVICE,
   type SessionService,
-} from "@posthog/core/sessions/sessionService";
-import { useService } from "@posthog/di/react";
-import { toast } from "@posthog/ui/primitives/toast";
+} from "@flind/core/sessions/sessionService";
+import { useService } from "@flind/di/react";
+import { toast } from "@flind/ui/primitives/toast";
 import { useCallback, useState } from "react";
 
 export interface ArtifactDownloadRef {

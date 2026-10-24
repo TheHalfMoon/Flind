@@ -19,8 +19,8 @@ Then restart the stack. The login screen posts email and password to `/api/login
 ```bash
 cd products/desktop
 pnpm install
-pnpm --filter @posthog/mobilehog ios     # first build
-pnpm --filter @posthog/mobilehog start   # afterwards
+pnpm --filter @flind/mobile-studio ios     # first build
+pnpm --filter @flind/mobile-studio start   # afterwards
 ```
 
 The host lives in `src/config.ts`. Use your LAN IP instead of `localhost` on a real phone.

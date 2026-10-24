@@ -1,9 +1,9 @@
 import {
   buildArchiveListOrdering,
   INBOX_DISMISSED_STATUS_FILTER,
-} from "@posthog/core/inbox/reportFiltering";
-import { DESKTOP_INBOX_REFETCH_INTERVAL_MS } from "@posthog/ui/features/inbox/hooks/inboxPolling";
-import { useInboxReportsInfinite } from "@posthog/ui/features/inbox/hooks/useInboxReports";
+} from "@flind/core/inbox/reportFiltering";
+import { DESKTOP_INBOX_REFETCH_INTERVAL_MS } from "@flind/ui/features/inbox/hooks/inboxPolling";
+import { useInboxReportsInfinite } from "@flind/ui/features/inbox/hooks/useInboxReports";
 
 /**
  * Archived reports for the Archive tab — suppressed (user-dismissed) and

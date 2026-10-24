@@ -1,6 +1,6 @@
-import { mapAuthErrorMessage } from "@posthog/core/auth/authErrors";
-import { useHostTRPCClient } from "@posthog/host-router/react";
-import type { CloudRegion } from "@posthog/shared";
+import { mapAuthErrorMessage } from "@flind/core/auth/authErrors";
+import { useHostTRPCClient } from "@flind/host-router/react";
+import type { CloudRegion } from "@flind/shared";
 import { useState } from "react";
 import { useAuthUiStateStore } from "./authUiStateStore";
 import { useLoginMutation } from "./useAuthMutations";

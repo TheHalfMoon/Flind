@@ -5,26 +5,26 @@ import { CaretDown, CaretRight, Stack } from "@phosphor-icons/react";
 import {
   SESSION_SERVICE,
   type SessionService,
-} from "@posthog/core/sessions/sessionService";
-import { useService } from "@posthog/di/react";
-import { QueuedMessageView } from "@posthog/ui/features/sessions/components/session-update/QueuedMessageView";
+} from "@flind/core/sessions/sessionService";
+import { useService } from "@flind/di/react";
+import { QueuedMessageView } from "@flind/ui/features/sessions/components/session-update/QueuedMessageView";
 import {
   useCancelQueuedMessageEdit,
   useEditQueuedMessage,
-} from "@posthog/ui/features/sessions/hooks/useEditQueuedMessage";
-import { useSupportsNativeSteer } from "@posthog/ui/features/sessions/hooks/useMessagingMode";
+} from "@flind/ui/features/sessions/hooks/useEditQueuedMessage";
+import { useSupportsNativeSteer } from "@flind/ui/features/sessions/hooks/useMessagingMode";
 import {
   sessionStoreSetters,
   useSessionIsCloud,
   useSessionSelector,
   useSessionStore,
-} from "@posthog/ui/features/sessions/sessionStore";
+} from "@flind/ui/features/sessions/sessionStore";
 import {
   useQueueCollapsed,
   useSessionViewActions,
-} from "@posthog/ui/features/sessions/sessionViewStore";
-import { useQueuedMessagesForTask } from "@posthog/ui/features/sessions/useSession";
-import { toast } from "@posthog/ui/primitives/toast";
+} from "@flind/ui/features/sessions/sessionViewStore";
+import { useQueuedMessagesForTask } from "@flind/ui/features/sessions/useSession";
+import { toast } from "@flind/ui/primitives/toast";
 import * as Collapsible from "@radix-ui/react-collapsible";
 import { Box, Flex, Text } from "@radix-ui/themes";
 import {

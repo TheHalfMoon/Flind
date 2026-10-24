@@ -1,10 +1,10 @@
-import type { McpGatewayServer } from "@posthog/api-client/posthog-client";
+import type { McpGatewayServer } from "@flind/api-client/posthog-client";
 import { Theme } from "@radix-ui/themes";
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import { GatewayRail } from "./GatewayRail";
 
-vi.mock("@posthog/ui/features/mcp-servers/components/parts/icons", () => ({
+vi.mock("@flind/ui/features/mcp-servers/components/parts/icons", () => ({
   ServerIcon: () => <div aria-hidden="true" />,
 }));
 

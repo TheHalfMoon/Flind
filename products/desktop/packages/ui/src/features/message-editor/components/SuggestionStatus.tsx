@@ -1,4 +1,4 @@
-import { Spinner } from "@posthog/ui/primitives/Spinner";
+import { Spinner } from "@flind/ui/primitives/Spinner";
 
 interface SuggestionStatusProps {
   loading: boolean;

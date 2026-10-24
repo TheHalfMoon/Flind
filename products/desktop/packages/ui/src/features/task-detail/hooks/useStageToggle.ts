@@ -1,5 +1,5 @@
-import type { ChangedFile } from "@posthog/shared/domain-types";
-import { useWorkspaceTRPC } from "@posthog/workspace-client/trpc";
+import type { ChangedFile } from "@flind/shared/domain-types";
+import { useWorkspaceTRPC } from "@flind/workspace-client/trpc";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useCallback } from "react";
 import { logger } from "../../../shell/logger";

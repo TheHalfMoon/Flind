@@ -1,9 +1,9 @@
-import { resolveService } from "@posthog/di/container";
+import { resolveService } from "@flind/di/container";
 import type {
   EventPropertyMap,
   UserIdentifyProperties,
-} from "@posthog/shared/analytics-events";
-import type { Task } from "@posthog/shared/domain-types";
+} from "@flind/shared/analytics-events";
+import type { Task } from "@flind/shared/domain-types";
 
 type TrackArgs<K extends keyof EventPropertyMap> =
   EventPropertyMap[K] extends never

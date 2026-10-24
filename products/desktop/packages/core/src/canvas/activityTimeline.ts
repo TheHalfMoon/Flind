@@ -8,8 +8,8 @@
 import {
   type ActivityEvent,
   parseActivityEvent,
-} from "@posthog/core/canvas/activityEvents";
-import type { ThreadMessageLike } from "@posthog/core/canvas/threadTimeline";
+} from "@flind/core/canvas/activityEvents";
+import type { ThreadMessageLike } from "@flind/core/canvas/threadTimeline";
 
 export interface CommentThreadLike {
   id: string;

@@ -1,4 +1,4 @@
-import { parseFeedQuery, suggestFeedName } from "@posthog/core/tasks/feedQuery";
+import { parseFeedQuery, suggestFeedName } from "@flind/core/tasks/feedQuery";
 import {
   Button,
   cn,
@@ -11,25 +11,25 @@ import {
   DialogTitle,
   Input,
 } from "@flind/quill";
-import { formatRelativeTimeShort } from "@posthog/shared";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
-import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { useAuthStateValue } from "@posthog/ui/features/auth/store";
-import { useCurrentUser } from "@posthog/ui/features/auth/useCurrentUser";
-import { FeedQueryInput } from "@posthog/ui/features/canvas/components/FeedQueryInput";
-import { unfinishedFilterKeys } from "@posthog/ui/features/canvas/components/feedQuerySuggestionUtils";
-import { useChannels } from "@posthog/ui/features/canvas/hooks/useChannels";
+import { formatRelativeTimeShort } from "@flind/shared";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
+import { useOptionalAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { useAuthStateValue } from "@flind/ui/features/auth/store";
+import { useCurrentUser } from "@flind/ui/features/auth/useCurrentUser";
+import { FeedQueryInput } from "@flind/ui/features/canvas/components/FeedQueryInput";
+import { unfinishedFilterKeys } from "@flind/ui/features/canvas/components/feedQuerySuggestionUtils";
+import { useChannels } from "@flind/ui/features/canvas/hooks/useChannels";
 import {
   useFeedQueryPlan,
   useTaskFeedResults,
-} from "@posthog/ui/features/canvas/hooks/useTaskFeedResults";
+} from "@flind/ui/features/canvas/hooks/useTaskFeedResults";
 import {
   type TaskFeed,
   useTaskFeedsStore,
-} from "@posthog/ui/features/canvas/stores/taskFeedsStore";
-import { useDebouncedValue } from "@posthog/ui/primitives/hooks/useDebouncedValue";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
-import { track } from "@posthog/ui/shell/analytics";
+} from "@flind/ui/features/canvas/stores/taskFeedsStore";
+import { useDebouncedValue } from "@flind/ui/primitives/hooks/useDebouncedValue";
+import { Spinner } from "@flind/ui/primitives/Spinner";
+import { track } from "@flind/ui/shell/analytics";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 const MAX_FEED_NAME_LENGTH = 80;

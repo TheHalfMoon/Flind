@@ -1,9 +1,9 @@
-import { ApiRequestError } from "@posthog/api-client/fetcher";
+import { ApiRequestError } from "@flind/api-client/fetcher";
 import {
   type ApiClient,
   createApiClient,
   type Fetcher,
-} from "@posthog/api-client/generated";
+} from "@flind/api-client/generated";
 import { describe, expect, it, vi } from "vitest";
 import { emptyLoopFormValues } from "./loopFormTypes";
 import {

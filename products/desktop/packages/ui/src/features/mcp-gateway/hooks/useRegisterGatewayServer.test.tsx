@@ -1,8 +1,8 @@
-import type { GatewayInstallRequest } from "@posthog/core/mcp-gateway/gatewayAddServer";
+import type { GatewayInstallRequest } from "@flind/core/mcp-gateway/gatewayAddServer";
 import {
   gatewayKeys,
   YOU_SCOPE,
-} from "@posthog/ui/features/mcp-gateway/hooks/gatewayKeys";
+} from "@flind/ui/features/mcp-gateway/hooks/gatewayKeys";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { act, renderHook, waitFor } from "@testing-library/react";
 import type { ReactNode } from "react";
@@ -17,7 +17,7 @@ const mocks = vi.hoisted(() => ({
   toastWarning: vi.fn(),
 }));
 
-vi.mock("@posthog/ui/features/auth/authClient", () => ({
+vi.mock("@flind/ui/features/auth/authClient", () => ({
   useOptionalAuthenticatedClient: () => ({
     installCustomMcpServer: mocks.installCustom,
     getMcpGatewayServers: mocks.getServers,
@@ -25,7 +25,7 @@ vi.mock("@posthog/ui/features/auth/authClient", () => ({
   }),
 }));
 
-vi.mock("@posthog/host-router/react", () => ({
+vi.mock("@flind/host-router/react", () => ({
   useHostTRPCClient: () => ({
     mcpCallback: {
       getCallbackUrl: { query: mocks.getCallbackUrl },
@@ -34,7 +34,7 @@ vi.mock("@posthog/host-router/react", () => ({
   }),
 }));
 
-vi.mock("@posthog/ui/primitives/toast", () => ({
+vi.mock("@flind/ui/primitives/toast", () => ({
   toast: { error: vi.fn(), success: vi.fn(), warning: mocks.toastWarning },
 }));
 

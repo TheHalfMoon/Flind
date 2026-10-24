@@ -1,7 +1,7 @@
 import {
   IMPORTED_USER_PROMPT_META_KEY,
   type StoredLogEntry,
-} from "@posthog/shared";
+} from "@flind/shared";
 import { describe, expect, it, vi } from "vitest";
 import { POSTHOG_NOTIFICATIONS } from "./acpNotifications";
 import {

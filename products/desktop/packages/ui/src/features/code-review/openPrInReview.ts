@@ -1,4 +1,4 @@
-import { useReviewNavigationStore } from "@posthog/ui/features/code-review/reviewNavigationStore";
+import { useReviewNavigationStore } from "@flind/ui/features/code-review/reviewNavigationStore";
 
 /** Open a PR in the task's in-app review pane. Callers that also offer an
  *  "open on GitHub" affordance pair this with `openExternalUrl`. */

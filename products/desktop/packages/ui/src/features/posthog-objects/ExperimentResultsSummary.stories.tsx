@@ -1,5 +1,5 @@
-import type { ExperimentResultsPresentation } from "@posthog/api-client/evidence-previews";
-import { ExperimentResultsSummary } from "@posthog/ui/features/posthog-objects/ExperimentResultsSummary";
+import type { ExperimentResultsPresentation } from "@flind/api-client/evidence-previews";
+import { ExperimentResultsSummary } from "@flind/ui/features/posthog-objects/ExperimentResultsSummary";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const results: ExperimentResultsPresentation = {

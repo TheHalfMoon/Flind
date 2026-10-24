@@ -1,8 +1,8 @@
-import type { SpaceSetupChoice } from "@posthog/core/canvas/spaceSetup";
+import type { SpaceSetupChoice } from "@flind/core/canvas/spaceSetup";
 import {
   type RadioCardOption,
   RadioCards,
-} from "@posthog/ui/primitives/RadioCards";
+} from "@flind/ui/primitives/RadioCards";
 
 const OPTIONS: readonly RadioCardOption<SpaceSetupChoice>[] = [
   {

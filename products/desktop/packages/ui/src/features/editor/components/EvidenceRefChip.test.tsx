@@ -1,9 +1,9 @@
-import { POSTHOG_OBJECT_KINDS } from "@posthog/core/message-editor/content";
-import { ServiceProvider } from "@posthog/di/react";
-import { BROWSER_TABS_CLIENT } from "@posthog/ui/features/browser-tabs/browserTabsClient";
-import { useDraftStore } from "@posthog/ui/features/message-editor/draftStore";
-import { usePanelLayoutStore } from "@posthog/ui/features/panels/panelLayoutStore";
-import { SessionTaskIdProvider } from "@posthog/ui/features/sessions/useSessionTaskId";
+import { POSTHOG_OBJECT_KINDS } from "@flind/core/message-editor/content";
+import { ServiceProvider } from "@flind/di/react";
+import { BROWSER_TABS_CLIENT } from "@flind/ui/features/browser-tabs/browserTabsClient";
+import { useDraftStore } from "@flind/ui/features/message-editor/draftStore";
+import { usePanelLayoutStore } from "@flind/ui/features/panels/panelLayoutStore";
+import { SessionTaskIdProvider } from "@flind/ui/features/sessions/useSessionTaskId";
 import { Theme } from "@radix-ui/themes";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
@@ -14,7 +14,7 @@ const mocks = vi.hoisted(() => ({
   getSignalReport: vi.fn(async (id: string) => ({ id })),
 }));
 
-vi.mock("@posthog/ui/router/navigationBridge", () => ({
+vi.mock("@flind/ui/router/navigationBridge", () => ({
   navigateToReport: mocks.openReport,
 }));
 
@@ -40,7 +40,7 @@ vi.mock("../../../hooks/useAuthenticatedQuery", () => ({
   }),
 }));
 
-import { setRootContainer } from "@posthog/di/container";
+import { setRootContainer } from "@flind/di/container";
 import { Container } from "inversify";
 import { ANALYTICS_TRACKER } from "../../../shell/analytics";
 import { openExternalUrl } from "../../../shell/openExternal";

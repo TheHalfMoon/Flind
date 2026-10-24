@@ -1,4 +1,4 @@
-import type { IMainWindow } from "@posthog/platform/main-window";
+import type { IMainWindow } from "@flind/platform/main-window";
 import { app, type BrowserWindow } from "electron";
 import { injectable } from "inversify";
 import { adjustWindowZoom, ZOOM_STEP } from "../zoom";

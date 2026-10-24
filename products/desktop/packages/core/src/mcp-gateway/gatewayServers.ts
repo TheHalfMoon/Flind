@@ -6,8 +6,8 @@ import type {
   McpGatewayServer,
   McpGatewayYourConnection,
   McpResolvedToolPolicy,
-} from "@posthog/api-client/posthog-client";
-import { formatRelativeTimeShort, getLocalDayDiff } from "@posthog/shared";
+} from "@flind/api-client/posthog-client";
+import { formatRelativeTimeShort, getLocalDayDiff } from "@flind/shared";
 
 /** The rail lists the servers the caller has connected, under the rail search. */
 export function railConnectedServers(

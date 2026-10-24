@@ -1,13 +1,13 @@
-import { ROOT_LOGGER, type RootLogger } from "@posthog/di/logger";
+import { ROOT_LOGGER, type RootLogger } from "@flind/di/logger";
 import {
   DEEP_LINK_SERVICE,
   type IDeepLinkRegistry,
-} from "@posthog/platform/deep-link";
+} from "@flind/platform/deep-link";
 import {
   type IMainWindow,
   MAIN_WINDOW_SERVICE,
-} from "@posthog/platform/main-window";
-import { TypedEventEmitter } from "@posthog/shared";
+} from "@flind/platform/main-window";
+import { TypedEventEmitter } from "@flind/shared";
 import { inject, injectable } from "inversify";
 import type { LinkLogger } from "./identifiers";
 

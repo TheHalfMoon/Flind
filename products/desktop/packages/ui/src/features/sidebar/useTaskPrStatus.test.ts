@@ -6,7 +6,7 @@ import { useTaskPrStatus } from "./useTaskPrStatus";
 let queryData: unknown;
 let lastQueryOptions: { enabled?: boolean } | undefined;
 
-vi.mock("@posthog/host-router/react", () => ({
+vi.mock("@flind/host-router/react", () => ({
   useHostTRPC: () => ({
     workspace: {
       getTaskPrStatus: {

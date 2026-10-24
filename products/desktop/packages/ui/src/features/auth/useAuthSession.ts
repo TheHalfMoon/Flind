@@ -1,11 +1,11 @@
-import { useHostTRPCClient } from "@posthog/host-router/react";
-import { USAGE_QUERY_KEY } from "@posthog/ui/features/billing/useUsage";
+import { useHostTRPCClient } from "@flind/host-router/react";
+import { USAGE_QUERY_KEY } from "@flind/ui/features/billing/useUsage";
 import {
   identifyUser,
   resetUser,
   setUserGroups,
-} from "@posthog/ui/shell/analytics";
-import { logger } from "@posthog/ui/shell/logger";
+} from "@flind/ui/shell/analytics";
+import { logger } from "@flind/ui/shell/logger";
 import { useQueryClient } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { useOptionalAuthenticatedClient } from "./authClient";

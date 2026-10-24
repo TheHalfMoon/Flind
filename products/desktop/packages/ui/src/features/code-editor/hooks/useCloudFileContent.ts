@@ -1,7 +1,7 @@
 import {
   type CloudFileContent,
   extractCloudFileContent,
-} from "@posthog/core/task-detail/cloudToolChanges";
+} from "@flind/core/task-detail/cloudToolChanges";
 import { useMemo } from "react";
 import { useCloudEventSummary } from "../../task-detail/hooks/useCloudEventSummary";
 

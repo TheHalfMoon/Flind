@@ -1,12 +1,12 @@
 import {
   TASK_THREAD_SERVICE,
   type TaskThreadService,
-} from "@posthog/core/canvas/taskThreadService";
-import { useService } from "@posthog/di/react";
-import type { TaskThreadMessage } from "@posthog/shared/domain-types";
-import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { useMarkTaskActivityRead } from "@posthog/ui/features/canvas/hooks/useMarkTaskActivityRead";
-import { useAuthenticatedQuery } from "@posthog/ui/hooks/useAuthenticatedQuery";
+} from "@flind/core/canvas/taskThreadService";
+import { useService } from "@flind/di/react";
+import type { TaskThreadMessage } from "@flind/shared/domain-types";
+import { useOptionalAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { useMarkTaskActivityRead } from "@flind/ui/features/canvas/hooks/useMarkTaskActivityRead";
+import { useAuthenticatedQuery } from "@flind/ui/hooks/useAuthenticatedQuery";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useEffect, useMemo, useRef } from "react";
 

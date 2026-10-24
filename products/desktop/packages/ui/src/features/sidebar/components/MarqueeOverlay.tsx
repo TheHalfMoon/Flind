@@ -1,4 +1,4 @@
-import type { MarqueeRect } from "@posthog/ui/features/sidebar/useMarqueeSelection";
+import type { MarqueeRect } from "@flind/ui/features/sidebar/useMarqueeSelection";
 import type { ReactElement } from "react";
 
 /**

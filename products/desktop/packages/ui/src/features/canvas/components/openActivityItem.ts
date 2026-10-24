@@ -1,16 +1,16 @@
-import type { TaskActivityItem } from "@posthog/core/canvas/taskActivity";
-import { selectActivityItem } from "@posthog/ui/features/canvas/stores/activityDetailStore";
-import { useCanvasChatPanelStore } from "@posthog/ui/features/canvas/stores/canvasChatPanelStore";
-import { useThreadPanelStore } from "@posthog/ui/features/canvas/stores/threadPanelStore";
+import type { TaskActivityItem } from "@flind/core/canvas/taskActivity";
+import { selectActivityItem } from "@flind/ui/features/canvas/stores/activityDetailStore";
+import { useCanvasChatPanelStore } from "@flind/ui/features/canvas/stores/canvasChatPanelStore";
+import { useThreadPanelStore } from "@flind/ui/features/canvas/stores/threadPanelStore";
 import {
   canvasCommentFocusKey,
   useCommentNavigationStore,
-} from "@posthog/ui/features/sessions/commentNavigationStore";
+} from "@flind/ui/features/sessions/commentNavigationStore";
 import {
   navigateToChannelDashboard,
   navigateToChannelTask,
   navigateToTaskDetail,
-} from "@posthog/ui/router/navigationBridge";
+} from "@flind/ui/router/navigationBridge";
 
 /** Where a feed row goes on a surface that navigates. The rail's docked feed
  *  reads its row in place instead, so the row hands activation out. */

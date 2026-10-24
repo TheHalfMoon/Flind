@@ -4,14 +4,14 @@ import { MentionText } from "./MentionText";
 
 const navigateToChannelDashboard = vi.fn();
 
-vi.mock("@posthog/ui/router/navigationBridge", () => ({
+vi.mock("@flind/ui/router/navigationBridge", () => ({
   navigateToChannel: vi.fn(),
   navigateToChannelDashboard: (...args: unknown[]) =>
     navigateToChannelDashboard(...args),
   navigateToChannelTask: vi.fn(),
 }));
 
-vi.mock("@posthog/ui/utils/urls", () => ({
+vi.mock("@flind/ui/utils/urls", () => ({
   getPostHogUrl: (path: string) => `https://us.posthog.com${path}`,
 }));
 

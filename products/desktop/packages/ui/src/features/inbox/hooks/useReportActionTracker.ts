@@ -4,10 +4,10 @@ import type {
   InboxReportActionProperties,
   InboxReportActionSurface,
   InboxReportActionType,
-} from "@posthog/shared";
-import { ANALYTICS_EVENTS } from "@posthog/shared";
-import type { SignalReport } from "@posthog/shared/types";
-import { track } from "@posthog/ui/shell/analytics";
+} from "@flind/shared";
+import { ANALYTICS_EVENTS } from "@flind/shared";
+import type { SignalReport } from "@flind/shared/types";
+import { track } from "@flind/ui/shell/analytics";
 import { useCallback } from "react";
 
 type Extras = Partial<

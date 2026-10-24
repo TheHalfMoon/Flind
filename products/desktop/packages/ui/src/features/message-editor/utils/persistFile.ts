@@ -1,4 +1,4 @@
-import type { FileAttachment } from "@posthog/core/message-editor/content";
+import type { FileAttachment } from "@flind/core/message-editor/content";
 import {
   type PersistedFile,
   persistBrowserFile as persistBrowserFileCore,
@@ -6,9 +6,9 @@ import {
   persistImageFilePath as persistImageFilePathCore,
   persistTextContent as persistTextContentCore,
   resolveDroppedFile as resolveDroppedFileCore,
-} from "@posthog/core/message-editor/persistFile";
-import { toast } from "@posthog/ui/primitives/toast";
-import { getFilePath } from "@posthog/ui/utils/getFilePath";
+} from "@flind/core/message-editor/persistFile";
+import { toast } from "@flind/ui/primitives/toast";
+import { getFilePath } from "@flind/ui/utils/getFilePath";
 import { filePersistHost } from "../hostApi";
 
 export type { PersistedFile };

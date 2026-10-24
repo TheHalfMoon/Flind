@@ -2,9 +2,9 @@ import { GitPullRequest } from "@phosphor-icons/react";
 import {
   type DiffStats,
   formatFileCountLabel,
-} from "@posthog/core/git-interaction/diffStats";
-import { buildCreatePrFlowErrorPrompt } from "@posthog/core/git-interaction/errorPrompts";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
+} from "@flind/core/git-interaction/diffStats";
+import { buildCreatePrFlowErrorPrompt } from "@flind/core/git-interaction/errorPrompts";
+import { Spinner } from "@flind/ui/primitives/Spinner";
 import {
   Button,
   Checkbox,

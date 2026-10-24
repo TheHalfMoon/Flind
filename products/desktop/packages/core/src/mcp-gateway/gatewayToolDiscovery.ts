@@ -1,4 +1,4 @@
-import type { McpGatewayServer } from "@posthog/api-client/posthog-client";
+import type { McpGatewayServer } from "@flind/api-client/posthog-client";
 import { normalizeGatewayServerUrl } from "./gatewayServers";
 
 /**

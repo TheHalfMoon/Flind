@@ -1,24 +1,24 @@
-import { ROOT_LOGGER, type RootLogger } from "@posthog/di/logger";
+import { ROOT_LOGGER, type RootLogger } from "@flind/di/logger";
 import {
   APP_LIFECYCLE_SERVICE,
   type IAppLifecycle,
-} from "@posthog/platform/app-lifecycle";
-import { APP_META_SERVICE, type IAppMeta } from "@posthog/platform/app-meta";
+} from "@flind/platform/app-lifecycle";
+import { APP_META_SERVICE, type IAppMeta } from "@flind/platform/app-meta";
 import {
   type IMainWindow,
   MAIN_WINDOW_SERVICE,
-} from "@posthog/platform/main-window";
+} from "@flind/platform/main-window";
 import {
   type IUpdater,
   UPDATER_SERVICE,
   type UpdateAvailableInfo,
   type UpdateDownloadProgress,
-} from "@posthog/platform/updater";
+} from "@flind/platform/updater";
 import {
   type SagaLogger,
   TypedEventEmitter,
   withTimeout,
-} from "@posthog/shared";
+} from "@flind/shared";
 import { inject, injectable, postConstruct, preDestroy } from "inversify";
 import { type IUpdateLifecycle, UPDATE_LIFECYCLE_SERVICE } from "./identifiers";
 import {

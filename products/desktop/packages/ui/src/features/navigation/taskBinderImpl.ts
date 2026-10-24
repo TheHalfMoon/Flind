@@ -1,21 +1,21 @@
-import { resolveService } from "@posthog/di/container";
+import { resolveService } from "@flind/di/container";
 import {
   HOST_TRPC_CLIENT,
   type HostTrpcClient,
-} from "@posthog/host-router/client";
-import { expandTildePath, getTaskRepository } from "@posthog/shared";
-import type { Task } from "@posthog/shared/domain-types";
+} from "@flind/host-router/client";
+import { expandTildePath, getTaskRepository } from "@flind/shared";
+import type { Task } from "@flind/shared/domain-types";
 import type {
   EnsureWorkspaceResult,
   NavigationTaskBinder,
-} from "@posthog/ui/features/navigation/taskBinder";
-import { useProvisioningStore } from "@posthog/ui/features/provisioning/store";
-import { WORKSPACE_QUERY_KEY } from "@posthog/ui/features/workspace/identifiers";
-import { logger } from "@posthog/ui/shell/logger";
+} from "@flind/ui/features/navigation/taskBinder";
+import { useProvisioningStore } from "@flind/ui/features/provisioning/store";
+import { WORKSPACE_QUERY_KEY } from "@flind/ui/features/workspace/identifiers";
+import { logger } from "@flind/ui/shell/logger";
 import {
   IMPERATIVE_QUERY_CLIENT,
   type ImperativeQueryClient,
-} from "@posthog/ui/shell/queryClient";
+} from "@flind/ui/shell/queryClient";
 
 const log = logger.scope("navigation-store");
 

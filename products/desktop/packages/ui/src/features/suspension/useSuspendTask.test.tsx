@@ -11,7 +11,7 @@ const workspaceClient = vi.hoisted(() => ({
 
 const SUSPENDED_TASK_IDS_KEY = ["suspension", "suspendedTaskIds"];
 
-vi.mock("@posthog/host-router/react", () => ({
+vi.mock("@flind/host-router/react", () => ({
   useHostTRPC: () => ({
     suspension: {
       suspendedTaskIds: {
@@ -30,13 +30,13 @@ vi.mock("@posthog/host-router/react", () => ({
     workspace: { getAll: { query: () => workspaceClient.getAll() } },
   }),
 }));
-vi.mock("@posthog/ui/features/focus/focusStore", () => ({
+vi.mock("@flind/ui/features/focus/focusStore", () => ({
   useFocusStore: { getState: () => ({ session: null, disableFocus: vi.fn() }) },
 }));
-vi.mock("@posthog/ui/features/terminal/destroyTaskTerminals", () => ({
+vi.mock("@flind/ui/features/terminal/destroyTaskTerminals", () => ({
   destroyTaskTerminals,
 }));
-vi.mock("@posthog/ui/shell/logger", () => ({
+vi.mock("@flind/ui/shell/logger", () => ({
   logger: { scope: () => ({ info: vi.fn(), error: vi.fn() }) },
 }));
 

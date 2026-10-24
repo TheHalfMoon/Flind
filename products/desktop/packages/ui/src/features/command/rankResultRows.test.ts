@@ -1,8 +1,8 @@
-import type { Command } from "@posthog/ui/features/command/commandRow";
+import type { Command } from "@flind/ui/features/command/commandRow";
 import {
   type ResultRow,
   rankResultRows,
-} from "@posthog/ui/features/command/rankResultRows";
+} from "@flind/ui/features/command/rankResultRows";
 import { describe, expect, it } from "vitest";
 
 const row = (

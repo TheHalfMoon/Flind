@@ -2,10 +2,10 @@ import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import type { ReactNode } from "react";
 import { describe, expect, it, vi } from "vitest";
 
-vi.mock("@posthog/di/react", () => ({
+vi.mock("@flind/di/react", () => ({
   useServiceOptional: () => undefined,
 }));
-vi.mock("@posthog/ui/features/canvas/components/MentionComposer", () => ({
+vi.mock("@flind/ui/features/canvas/components/MentionComposer", () => ({
   MentionComposer: ({
     value,
     onValueChange,

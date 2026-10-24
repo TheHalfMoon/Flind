@@ -1,11 +1,11 @@
 import {
   getOptimisticPrState,
   PR_ACTION_LABELS,
-} from "@posthog/core/git-interaction/prStatus";
-import { useHostTRPC } from "@posthog/host-router/react";
-import type { PrActionType } from "@posthog/shared";
-import { showOfflineToast } from "@posthog/ui/features/connectivity/connectivityToast";
-import { useConnectivity } from "@posthog/ui/hooks/useConnectivity";
+} from "@flind/core/git-interaction/prStatus";
+import { useHostTRPC } from "@flind/host-router/react";
+import type { PrActionType } from "@flind/shared";
+import { showOfflineToast } from "@flind/ui/features/connectivity/connectivityToast";
+import { useConnectivity } from "@flind/ui/hooks/useConnectivity";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "../../primitives/toast";
 

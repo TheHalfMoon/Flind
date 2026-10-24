@@ -1,7 +1,7 @@
 import type {
   LocalMcpServerDescriptor,
   LocalMcpTransport,
-} from "@posthog/shared";
+} from "@flind/shared";
 import { z } from "zod";
 
 const localMcpTransportSchema: z.ZodType<LocalMcpTransport> = z.union([

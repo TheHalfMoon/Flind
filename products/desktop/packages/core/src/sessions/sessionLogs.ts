@@ -1,4 +1,4 @@
-import type { Adapter, StoredLogEntry } from "@posthog/shared";
+import type { Adapter, StoredLogEntry } from "@flind/shared";
 
 export interface ParsedSessionLogs {
   rawEntries: StoredLogEntry[];

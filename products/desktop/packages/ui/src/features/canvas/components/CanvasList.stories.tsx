@@ -1,8 +1,8 @@
 import {
   CanvasListService,
   DEFAULT_CANVAS_LIST_SETTINGS,
-} from "@posthog/core/canvas/canvasListService";
-import type { DashboardRecord } from "@posthog/core/canvas/dashboardSchemas";
+} from "@flind/core/canvas/canvasListService";
+import type { DashboardRecord } from "@flind/core/canvas/dashboardSchemas";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { type ReactElement, useMemo, useState } from "react";
 import { expect, waitFor } from "storybook/test";

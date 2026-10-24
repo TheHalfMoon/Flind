@@ -1,5 +1,5 @@
 {
-  "name": "@posthog/workspace-client",
+  "name": "@flind/workspace-client",
   "version": "1.0.0",
   "description": "Client for a workspace-server (local OR sandbox-via-relay). Thin tRPC client; routes via api-client to resolve sandbox endpoints. Runs in any JS environment.",
   "private": true,
@@ -25,8 +25,8 @@
     "react": "catalog:"
   },
   "devDependencies": {
-    "@posthog/tsconfig": "workspace:*",
-    "@posthog/workspace-server": "workspace:*",
+    "@flind/tsconfig": "workspace:*",
+    "@flind/workspace-server": "workspace:*",
     "@tanstack/react-query": "catalog:",
     "@trpc/tanstack-react-query": "catalog:",
     "@types/react": "catalog:",

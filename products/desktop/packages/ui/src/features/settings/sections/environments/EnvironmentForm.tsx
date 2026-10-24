@@ -2,8 +2,8 @@ import { ArrowLeft, Trash } from "@phosphor-icons/react";
 import {
   type Environment,
   slugifyEnvironmentName,
-} from "@posthog/workspace-client/environment";
-import { useWorkspaceTRPC } from "@posthog/workspace-client/trpc";
+} from "@flind/workspace-client/environment";
+import { useWorkspaceTRPC } from "@flind/workspace-client/trpc";
 import { Button, Flex, Text, TextArea, TextField } from "@radix-ui/themes";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";

@@ -1,7 +1,7 @@
 import type {
   ExperimentMetricResultPresentation,
   ExperimentVariantResultPresentation,
-} from "@posthog/api-client/evidence-previews";
+} from "@flind/api-client/evidence-previews";
 import {
   AccordionContent,
   AccordionItem,

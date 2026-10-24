@@ -10,8 +10,8 @@ import {
   buildCompletedProps,
   buildStepCompletedProps,
   type StepCompletedContext,
-} from "@posthog/core/onboarding/analytics";
-import type { OnboardingStep } from "@posthog/core/onboarding/steps";
+} from "@flind/core/onboarding/analytics";
+import type { OnboardingStep } from "@flind/core/onboarding/steps";
 import {
   Button,
   ButtonGroup,
@@ -22,24 +22,24 @@ import {
   ItemTitle,
   Text,
 } from "@flind/quill";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
-import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { useAuthStateValue } from "@posthog/ui/features/auth/store";
-import { useLogoutMutation } from "@posthog/ui/features/auth/useAuthMutations";
-import { useCurrentUser } from "@posthog/ui/features/auth/useCurrentUser";
-import { ConsentStep } from "@posthog/ui/features/consent/ConsentStep";
-import { useUserGithubIntegrations } from "@posthog/ui/features/integrations/useIntegrations";
-import { ConnectGitHubStep } from "@posthog/ui/features/onboarding/components/ConnectGitHubStep";
-import { InstallCliStep } from "@posthog/ui/features/onboarding/components/InstallCliStep";
-import { useOnboardingFlow } from "@posthog/ui/features/onboarding/hooks/useOnboardingFlow";
-import { useOnboardingStore } from "@posthog/ui/features/onboarding/onboardingStore";
-import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
-import { shipIt } from "@posthog/ui/primitives/confetti";
-import { FullScreenLayout } from "@posthog/ui/primitives/FullScreenLayout";
-import { ProductWordmark } from "@posthog/ui/primitives/ProductWordmark";
-import { openTaskInput } from "@posthog/ui/router/useOpenTask";
-import { track } from "@posthog/ui/shell/analytics";
-import { isMac, isWindows } from "@posthog/ui/utils/platform";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
+import { useOptionalAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { useAuthStateValue } from "@flind/ui/features/auth/store";
+import { useLogoutMutation } from "@flind/ui/features/auth/useAuthMutations";
+import { useCurrentUser } from "@flind/ui/features/auth/useCurrentUser";
+import { ConsentStep } from "@flind/ui/features/consent/ConsentStep";
+import { useUserGithubIntegrations } from "@flind/ui/features/integrations/useIntegrations";
+import { ConnectGitHubStep } from "@flind/ui/features/onboarding/components/ConnectGitHubStep";
+import { InstallCliStep } from "@flind/ui/features/onboarding/components/InstallCliStep";
+import { useOnboardingFlow } from "@flind/ui/features/onboarding/hooks/useOnboardingFlow";
+import { useOnboardingStore } from "@flind/ui/features/onboarding/onboardingStore";
+import { useSettingsStore } from "@flind/ui/features/settings/settingsStore";
+import { shipIt } from "@flind/ui/primitives/confetti";
+import { FullScreenLayout } from "@flind/ui/primitives/FullScreenLayout";
+import { ProductWordmark } from "@flind/ui/primitives/ProductWordmark";
+import { openTaskInput } from "@flind/ui/router/useOpenTask";
+import { track } from "@flind/ui/shell/analytics";
+import { isMac, isWindows } from "@flind/ui/utils/platform";
 import { AnimatePresence, motion } from "framer-motion";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useHotkeys } from "react-hotkeys-hook";

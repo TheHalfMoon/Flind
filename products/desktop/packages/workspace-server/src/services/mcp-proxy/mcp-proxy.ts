@@ -4,7 +4,7 @@ import {
   ROOT_LOGGER,
   type RootLogger,
   type ScopedLogger,
-} from "@posthog/di/logger";
+} from "@flind/di/logger";
 import { inject, injectable, preDestroy } from "inversify";
 import { hopByHop } from "../proxy-stream/hop-by-hop";
 import { streamBodyToResponse } from "../proxy-stream/proxy-stream";

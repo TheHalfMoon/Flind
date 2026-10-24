@@ -2,9 +2,9 @@ import { type ChildProcess, spawn } from "node:child_process";
 import { randomBytes } from "node:crypto";
 import { createServer } from "node:net";
 import path from "node:path";
-import { TypedEventEmitter } from "@posthog/shared";
-import { POSTHOG_CODE_INTERNAL_CHILD_ENV } from "@posthog/shared/constants";
-import type { WorkspaceConnection } from "@posthog/workspace-client/client";
+import { TypedEventEmitter } from "@flind/shared";
+import { POSTHOG_CODE_INTERNAL_CHILD_ENV } from "@flind/shared/constants";
+import type { WorkspaceConnection } from "@flind/workspace-client/client";
 import { injectable } from "inversify";
 import { logger } from "../../utils/logger.js";
 

@@ -1,5 +1,5 @@
 import { Command, type Icon, MagnifyingGlass } from "@phosphor-icons/react";
-import { DotsCircleSpinner } from "@posthog/ui/primitives/DotsCircleSpinner";
+import { DotsCircleSpinner } from "@flind/ui/primitives/DotsCircleSpinner";
 import type { ToolCall, ToolCallContent } from "../../types";
 import { iconForToolKind } from "./toolIcons";
 

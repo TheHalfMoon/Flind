@@ -1,4 +1,4 @@
-import { TimezoneConversionTooltip } from "@posthog/ui/primitives/TimezoneConversionTooltip";
+import { TimezoneConversionTooltip } from "@flind/ui/primitives/TimezoneConversionTooltip";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta: Meta<typeof TimezoneConversionTooltip> = {

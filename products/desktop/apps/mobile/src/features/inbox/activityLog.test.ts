@@ -1,8 +1,8 @@
 import {
   attributionLabel,
   taskRunLabel,
-} from "@posthog/core/inbox/activityLog";
-import type { AnySignalReportArtefact } from "@posthog/shared/domain-types";
+} from "@flind/core/inbox/activityLog";
+import type { AnySignalReportArtefact } from "@flind/shared/domain-types";
 import { describe, expect, it } from "vitest";
 import {
   parseDiffLines,

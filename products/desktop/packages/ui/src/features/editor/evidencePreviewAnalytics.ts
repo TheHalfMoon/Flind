@@ -1,6 +1,6 @@
-import type { PostHogAPIClient } from "@posthog/api-client/posthog-client";
-import { resolveServiceOptional } from "@posthog/di/container";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
+import type { PostHogAPIClient } from "@flind/api-client/posthog-client";
+import { resolveServiceOptional } from "@flind/di/container";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
 import {
   ANALYTICS_TRACKER,
   type AnalyticsTracker,

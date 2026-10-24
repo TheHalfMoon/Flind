@@ -1,4 +1,4 @@
-import type { AcpMessage, StoredLogEntry } from "@posthog/shared";
+import type { AcpMessage, StoredLogEntry } from "@flind/shared";
 import { describe, expect, it } from "vitest";
 import { convertStoredEntriesToEvents } from "./sessionEvents";
 import { reconcileLiveEventsWithHydratedEvents } from "./sessionService";

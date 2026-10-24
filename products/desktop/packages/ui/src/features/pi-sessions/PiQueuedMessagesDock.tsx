@@ -1,5 +1,5 @@
-import type { PiQueueSnapshot } from "@posthog/core/pi-runtime/piSessionController";
-import { QueuedMessageView } from "@posthog/ui/features/sessions/components/session-update/QueuedMessageView";
+import type { PiQueueSnapshot } from "@flind/core/pi-runtime/piSessionController";
+import { QueuedMessageView } from "@flind/ui/features/sessions/components/session-update/QueuedMessageView";
 
 interface PiQueuedMessagesDockProps {
   queue: PiQueueSnapshot;

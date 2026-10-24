@@ -1,8 +1,8 @@
 import type {
   PiModelSelection,
   PiThinkingLevel,
-} from "@posthog/core/pi-runtime/piSessionController";
-import { electronStorage } from "@posthog/ui/shell/rendererStorage";
+} from "@flind/core/pi-runtime/piSessionController";
+import { electronStorage } from "@flind/ui/shell/rendererStorage";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 

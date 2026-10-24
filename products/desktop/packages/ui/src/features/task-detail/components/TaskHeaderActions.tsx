@@ -1,20 +1,20 @@
-import type { Task } from "@posthog/shared/domain-types";
-import { AutoresearchHeaderButton } from "@posthog/ui/features/autoresearch/AutoresearchHeaderButton";
-import { useDiffStatsToggle } from "@posthog/ui/features/code-review/hooks/useDiffStatsToggle";
+import type { Task } from "@flind/shared/domain-types";
+import { AutoresearchHeaderButton } from "@flind/ui/features/autoresearch/AutoresearchHeaderButton";
+import { useDiffStatsToggle } from "@flind/ui/features/code-review/hooks/useDiffStatsToggle";
 import {
   formatHotkey,
   SHORTCUTS,
-} from "@posthog/ui/features/command/keyboard-shortcuts";
-import { DiffStatsBadge } from "@posthog/ui/features/diff-stats/DiffStatsBadge";
-import { BranchSelector } from "@posthog/ui/features/git-interaction/components/BranchSelector";
-import { TaskActionsMenu } from "@posthog/ui/features/git-interaction/components/TaskActionsMenu";
-import { useReviewInRightPanel } from "@posthog/ui/features/navigation/useReviewInRightPanel";
+} from "@flind/ui/features/command/keyboard-shortcuts";
+import { DiffStatsBadge } from "@flind/ui/features/diff-stats/DiffStatsBadge";
+import { BranchSelector } from "@flind/ui/features/git-interaction/components/BranchSelector";
+import { TaskActionsMenu } from "@flind/ui/features/git-interaction/components/TaskActionsMenu";
+import { useReviewInRightPanel } from "@flind/ui/features/navigation/useReviewInRightPanel";
 import {
   useIsCloudTask,
   useWorkspace,
   useWorkspaceLoaded,
-} from "@posthog/ui/features/workspace/useWorkspace";
-import { Tooltip } from "@posthog/ui/primitives/Tooltip";
+} from "@flind/ui/features/workspace/useWorkspace";
+import { Tooltip } from "@flind/ui/primitives/Tooltip";
 import { TaskOverflowMenu } from "./TaskOverflowMenu";
 
 function TaskDiffStatsBadge({ task }: { task: Task }) {

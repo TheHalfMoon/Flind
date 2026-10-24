@@ -1,4 +1,4 @@
-import type { PrVisualConfig } from "@posthog/core/git-interaction/prStatus";
+import type { PrVisualConfig } from "@flind/core/git-interaction/prStatus";
 
 /**
  * A pull request's lifecycle color, as classes for the surfaces that wear it.

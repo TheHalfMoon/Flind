@@ -1,10 +1,10 @@
 import type { RequestPermissionRequest } from "@agentclientprotocol/sdk";
-import { BEDROCK_GATEWAY_VARIANTS, CLOUD_REGIONS } from "@posthog/shared";
-import { effortLevelSchema } from "@posthog/shared/domain-types";
+import { BEDROCK_GATEWAY_VARIANTS, CLOUD_REGIONS } from "@flind/shared";
+import { effortLevelSchema } from "@flind/shared/domain-types";
 import { z } from "zod";
 import { USER_AGENT_INSTRUCTIONS_MAX_LENGTH } from "../os/schemas";
 
-export type { EffortLevel } from "@posthog/shared/domain-types";
+export type { EffortLevel } from "@flind/shared/domain-types";
 
 // Session credentials schema
 export const credentialsSchema = z.object({

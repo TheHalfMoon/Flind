@@ -1,5 +1,5 @@
-import { useHostTRPC } from "@posthog/host-router/react";
-import type { PrReviewThread } from "@posthog/shared";
+import { useHostTRPC } from "@flind/host-router/react";
+import type { PrReviewThread } from "@flind/shared";
 import { useQueries, useQuery } from "@tanstack/react-query";
 import { useMemo } from "react";
 import type { PrCommentThread } from "../code-review/prCommentAnnotations";

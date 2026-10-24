@@ -4,7 +4,7 @@ import {
   type EditorContent,
   textToContent,
   xmlToContent,
-} from "@posthog/core/message-editor/content";
+} from "@flind/core/message-editor/content";
 
 const MAX_RECOVERABLE_PROMPTS = 20;
 

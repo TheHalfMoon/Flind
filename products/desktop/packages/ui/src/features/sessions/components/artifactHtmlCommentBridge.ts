@@ -1,7 +1,7 @@
 import {
   resolveTextCommentAnchor,
   type TextCommentAnchor,
-} from "@posthog/core/comments/anchors";
+} from "@flind/core/comments/anchors";
 import {
   COMMENT_ACTION_BUTTON_THEMES,
   COMMENT_ACTION_ICON_SVG,

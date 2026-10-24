@@ -1,4 +1,4 @@
-import type { CanvasVersion } from "@posthog/core/canvas/dashboardSchemas";
+import type { CanvasVersion } from "@flind/core/canvas/dashboardSchemas";
 
 // The run whose chat the canvas side panel shows: the current person's own run
 // on this canvas. Another person's run never shows, even while it is in flight,

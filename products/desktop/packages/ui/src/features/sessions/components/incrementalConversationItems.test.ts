@@ -1,4 +1,4 @@
-import type { AcpMessage, AgentConversationEvent } from "@posthog/shared";
+import type { AcpMessage, AgentConversationEvent } from "@flind/shared";
 import { describe, expect, it } from "vitest";
 import {
   type BuildResult,

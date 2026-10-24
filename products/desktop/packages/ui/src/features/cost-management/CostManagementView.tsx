@@ -1,8 +1,8 @@
-import type { CostChecklistItem } from "@posthog/core/billing/costChecklist";
-import { ContextCompactionSettings } from "@posthog/ui/features/cost-management/ContextCompactionSettings";
-import { CostChecklistPanel } from "@posthog/ui/features/cost-management/CostChecklistPanel";
-import { SettingsSubsection } from "@posthog/ui/features/settings/components/SettingsSubsection";
-import { SpendLimitsSettings } from "@posthog/ui/features/settings/sections/SpendLimitsSettings";
+import type { CostChecklistItem } from "@flind/core/billing/costChecklist";
+import { ContextCompactionSettings } from "@flind/ui/features/cost-management/ContextCompactionSettings";
+import { CostChecklistPanel } from "@flind/ui/features/cost-management/CostChecklistPanel";
+import { SettingsSubsection } from "@flind/ui/features/settings/components/SettingsSubsection";
+import { SpendLimitsSettings } from "@flind/ui/features/settings/sections/SpendLimitsSettings";
 
 interface CostManagementViewProps {
   items: CostChecklistItem[];

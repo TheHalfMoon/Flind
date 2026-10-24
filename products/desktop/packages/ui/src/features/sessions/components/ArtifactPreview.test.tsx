@@ -1,5 +1,5 @@
-import type { ResourceComment } from "@posthog/api-client/posthog-client";
-import { useCommentNavigationStore } from "@posthog/ui/features/sessions/commentNavigationStore";
+import type { ResourceComment } from "@flind/api-client/posthog-client";
+import { useCommentNavigationStore } from "@flind/ui/features/sessions/commentNavigationStore";
 import { TooltipProvider } from "@radix-ui/react-tooltip";
 import {
   act,
@@ -48,11 +48,11 @@ const artifactMocks = vi.hoisted(() => ({
   openArtifactTab: vi.fn(),
 }));
 
-vi.mock("@posthog/core/sessions/sessionService", () => ({
+vi.mock("@flind/core/sessions/sessionService", () => ({
   SESSION_SERVICE: Symbol("SESSION_SERVICE"),
 }));
 
-vi.mock("@posthog/di/react", () => ({
+vi.mock("@flind/di/react", () => ({
   useService: () => ({
     getCloudRunArtifacts: artifactMocks.getCloudRunArtifacts,
     getCloudAttachmentPreviewUrl: artifactMocks.getCloudAttachmentPreviewUrl,
@@ -61,26 +61,26 @@ vi.mock("@posthog/di/react", () => ({
   useServiceOptional: () => null,
 }));
 
-vi.mock("@posthog/ui/features/auth/store", () => ({
+vi.mock("@flind/ui/features/auth/store", () => ({
   getAuthIdentity: vi.fn(),
   useAuthStateValue: () => auth.identity,
 }));
 
-vi.mock("@posthog/ui/features/auth/useCurrentUser", () => ({
+vi.mock("@flind/ui/features/auth/useCurrentUser", () => ({
   AUTH_SCOPED_QUERY_META: { authScoped: true },
 }));
 
-vi.mock("@posthog/ui/features/panels/panelLayoutStore", () => ({
+vi.mock("@flind/ui/features/panels/panelLayoutStore", () => ({
   usePanelLayoutStore: () => artifactMocks.openArtifactTab,
 }));
 
-vi.mock("@posthog/ui/features/posthog-objects/PostHogObjectPage", () => ({
+vi.mock("@flind/ui/features/posthog-objects/PostHogObjectPage", () => ({
   PostHogObjectPage: ({ fallbackName }: { fallbackName: string }) => (
     <div data-testid="posthog-object-page">{fallbackName}</div>
   ),
 }));
 
-vi.mock("@posthog/ui/features/canvas/hooks/useTaskRuns", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useTaskRuns", () => ({
   useTaskRuns: () => ({
     runs: taskRuns.data,
     isLoading: taskRuns.isLoading,
@@ -88,11 +88,11 @@ vi.mock("@posthog/ui/features/canvas/hooks/useTaskRuns", () => ({
   }),
 }));
 
-vi.mock("@posthog/ui/features/canvas/hooks/useOrgMembers", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useOrgMembers", () => ({
   useOrgMembers: () => ({ members: [] }),
 }));
 
-vi.mock("@posthog/ui/features/canvas/components/MentionComposer", () => ({
+vi.mock("@flind/ui/features/canvas/components/MentionComposer", () => ({
   MentionComposer: ({
     value,
     onValueChange,

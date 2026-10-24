@@ -1,7 +1,7 @@
 import { Text } from "@components/text";
 import type { McpUiDisplayMode } from "@modelcontextprotocol/ext-apps/app-bridge";
 import type { CallToolResult } from "@modelcontextprotocol/sdk/types.js";
-import { isSafeExternalUrl, parseMcpToolName } from "@posthog/shared";
+import { isSafeExternalUrl, parseMcpToolName } from "@flind/shared";
 import * as WebBrowser from "expo-web-browser";
 import { ArrowsIn, ArrowsOut, Warning } from "phosphor-react-native";
 import { useCallback, useMemo, useRef, useState } from "react";

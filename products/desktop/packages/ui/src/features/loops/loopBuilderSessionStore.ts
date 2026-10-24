@@ -1,7 +1,7 @@
 import {
   electronStorage,
   flushRendererStateWrites,
-} from "@posthog/ui/shell/rendererStorage";
+} from "@flind/ui/shell/rendererStorage";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 

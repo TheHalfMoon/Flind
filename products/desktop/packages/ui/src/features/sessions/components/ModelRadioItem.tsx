@@ -1,5 +1,5 @@
 import { Lock, Prohibit } from "@phosphor-icons/react";
-import type { ModelPickerOption } from "@posthog/core/billing/modelPricing";
+import type { ModelPickerOption } from "@flind/core/billing/modelPricing";
 import {
   DropdownMenuRadioItem,
   Tooltip,
@@ -7,8 +7,8 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@flind/quill";
-import { isRestrictedModel } from "@posthog/ui/features/billing/modelGate";
-import { ModelCostChip } from "@posthog/ui/features/sessions/components/ModelCostChip";
+import { isRestrictedModel } from "@flind/ui/features/billing/modelGate";
+import { ModelCostChip } from "@flind/ui/features/sessions/components/ModelCostChip";
 
 const TOOLTIP_DELAY_MS = 150;
 

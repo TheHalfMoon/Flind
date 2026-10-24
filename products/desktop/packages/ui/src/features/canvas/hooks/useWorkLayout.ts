@@ -1,6 +1,6 @@
-import { DESKTOP_WORK_LAYOUT_FLAG } from "@posthog/shared";
-import { useChannelsLayout } from "@posthog/ui/features/canvas/hooks/useChannelsLayout";
-import { useFeatureFlag } from "@posthog/ui/features/feature-flags/useFeatureFlag";
+import { DESKTOP_WORK_LAYOUT_FLAG } from "@flind/shared";
+import { useChannelsLayout } from "@flind/ui/features/canvas/hooks/useChannelsLayout";
+import { useFeatureFlag } from "@flind/ui/features/feature-flags/useFeatureFlag";
 
 export function useWorkLayout(): boolean {
   const channelsLayout = useChannelsLayout();

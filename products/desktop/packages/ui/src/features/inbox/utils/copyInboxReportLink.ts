@@ -1,7 +1,7 @@
-import { buildInboxDeeplink } from "@posthog/shared/deeplink";
-import type { SignalReport } from "@posthog/shared/types";
-import { toast } from "@posthog/ui/primitives/toast";
-import { inboxReportUrl } from "@posthog/ui/utils/posthogLinks";
+import { buildInboxDeeplink } from "@flind/shared/deeplink";
+import type { SignalReport } from "@flind/shared/types";
+import { toast } from "@flind/ui/primitives/toast";
+import { inboxReportUrl } from "@flind/ui/utils/posthogLinks";
 
 export type InboxReportLinkTarget = "web" | "desktop";
 

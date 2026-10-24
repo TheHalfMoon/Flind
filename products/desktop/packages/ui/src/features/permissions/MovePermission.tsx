@@ -1,4 +1,4 @@
-import { ActionSelector } from "@posthog/ui/primitives/ActionSelector";
+import { ActionSelector } from "@flind/ui/primitives/ActionSelector";
 import { type BasePermissionProps, toSelectorOptions } from "./types";
 
 export function MovePermission({

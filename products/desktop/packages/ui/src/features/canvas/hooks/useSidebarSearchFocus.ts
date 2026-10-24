@@ -1,4 +1,4 @@
-import { useSidebarSearchStore } from "@posthog/ui/features/canvas/stores/sidebarSearchStore";
+import { useSidebarSearchStore } from "@flind/ui/features/canvas/stores/sidebarSearchStore";
 import { type RefObject, useEffect } from "react";
 
 export function useSidebarSearchFocus(

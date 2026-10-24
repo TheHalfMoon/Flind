@@ -2,8 +2,8 @@ import type {
   BuiltInCompletionSound,
   CompletionSound,
   CustomSound,
-} from "@posthog/ui/features/settings/settingsStore";
-import { logger } from "@posthog/ui/shell/logger";
+} from "@flind/ui/features/settings/settingsStore";
+import { logger } from "@flind/ui/shell/logger";
 import bubblesUrl from "../assets/sounds/bubbles.mp3";
 import daniloUrl from "../assets/sounds/danilo.mp3";
 import dropUrl from "../assets/sounds/drop.mp3";

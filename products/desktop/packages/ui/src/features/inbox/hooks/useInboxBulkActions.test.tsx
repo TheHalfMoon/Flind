@@ -1,6 +1,6 @@
-import { inboxReportDetailQueryKey } from "@posthog/core/inbox/inboxQuery";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
-import type { SignalReport } from "@posthog/shared/types";
+import { inboxReportDetailQueryKey } from "@flind/core/inbox/inboxQuery";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
+import type { SignalReport } from "@flind/shared/types";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { act, renderHook, waitFor } from "@testing-library/react";
 import type { ReactNode } from "react";
@@ -13,21 +13,21 @@ const mocks = vi.hoisted(() => ({
   error: vi.fn(),
 }));
 
-vi.mock("@posthog/ui/features/auth/authClient", () => ({
+vi.mock("@flind/ui/features/auth/authClient", () => ({
   useOptionalAuthenticatedClient: () => ({
     updateSignalReportState: mocks.updateState,
   }),
 }));
 
-vi.mock("@posthog/ui/features/auth/useCurrentUser", () => ({
+vi.mock("@flind/ui/features/auth/useCurrentUser", () => ({
   useCurrentUser: () => ({ data: { uuid: "user-1" } }),
 }));
 
-vi.mock("@posthog/ui/shell/analytics", () => ({
+vi.mock("@flind/ui/shell/analytics", () => ({
   track: mocks.track,
 }));
 
-vi.mock("@posthog/ui/primitives/toast", () => ({
+vi.mock("@flind/ui/primitives/toast", () => ({
   toast: { success: mocks.success, error: mocks.error },
 }));
 

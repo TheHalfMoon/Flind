@@ -1,5 +1,5 @@
-import type { AgentSession } from "@posthog/shared";
-import type { TaskRun } from "@posthog/shared/domain-types";
+import type { AgentSession } from "@flind/shared";
+import type { TaskRun } from "@flind/shared/domain-types";
 import { describe, expect, it } from "vitest";
 import { cloudAccessFor, cloudModelAccessFromState } from "./cloudModelAccess";
 import {

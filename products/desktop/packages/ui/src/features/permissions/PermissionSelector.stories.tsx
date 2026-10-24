@@ -8,7 +8,7 @@ import {
   buildQuestionToolCallData,
   type QuestionItem,
 } from "@flind/agent/adapters/claude/questions/utils";
-import { PermissionSelector } from "@posthog/ui/features/permissions/PermissionSelector";
+import { PermissionSelector } from "@flind/ui/features/permissions/PermissionSelector";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 function buildToolCallData(

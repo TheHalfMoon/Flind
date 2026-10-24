@@ -1,4 +1,4 @@
-import { useTaskSummaries } from "@posthog/ui/features/tasks/useTasks";
+import { useTaskSummaries } from "@flind/ui/features/tasks/useTasks";
 import { renderHook } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import {
@@ -7,7 +7,7 @@ import {
 } from "../loopBuilderSessionStore";
 import { useLoopBuilderSessions } from "./useLoopBuilderSessions";
 
-vi.mock("@posthog/ui/shell/rendererStorage", () => ({
+vi.mock("@flind/ui/shell/rendererStorage", () => ({
   electronStorage: {
     getItem: async () => null,
     setItem: async () => {},
@@ -15,13 +15,13 @@ vi.mock("@posthog/ui/shell/rendererStorage", () => ({
   },
   flushRendererStateWrites: async () => {},
 }));
-vi.mock("@posthog/ui/features/tasks/useTasks", () => ({
+vi.mock("@flind/ui/features/tasks/useTasks", () => ({
   useTaskSummaries: vi.fn(),
 }));
-vi.mock("@posthog/ui/features/archive/useArchivedTaskIds", () => ({
+vi.mock("@flind/ui/features/archive/useArchivedTaskIds", () => ({
   useArchivedTaskIds: () => new Set<string>(),
 }));
-vi.mock("@posthog/ui/features/auth/store", () => ({
+vi.mock("@flind/ui/features/auth/store", () => ({
   getAuthIdentity: () => "us:1",
   useAuthStateValue: () => "us:1",
 }));

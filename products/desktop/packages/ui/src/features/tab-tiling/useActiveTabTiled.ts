@@ -1,4 +1,4 @@
-import { useActiveTabId } from "@posthog/ui/features/browser-tabs/useActiveTabId";
+import { useActiveTabId } from "@flind/ui/features/browser-tabs/useActiveTabId";
 import { useTileLayoutStore } from "./tileLayoutStore";
 import { groupForTab } from "./tileTree";
 

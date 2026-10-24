@@ -1,9 +1,9 @@
 import {
   activityCanvasId,
   type TaskActivityItem,
-} from "@posthog/core/canvas/taskActivity";
-import { formatShortDayLabel, getLocalDayKey } from "@posthog/shared";
-import type { SignalReport } from "@posthog/shared/types";
+} from "@flind/core/canvas/taskActivity";
+import { formatShortDayLabel, getLocalDayKey } from "@flind/shared";
+import type { SignalReport } from "@flind/shared/types";
 
 export type ActivityFeedItem =
   | {

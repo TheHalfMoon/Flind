@@ -1,6 +1,6 @@
-import { publicProcedure, router } from "@posthog/host-trpc/trpc";
-import type { ILogsService } from "@posthog/workspace-server/services/local-logs/identifiers";
-import { LOGS_SERVICE } from "@posthog/workspace-server/services/local-logs/identifiers";
+import { publicProcedure, router } from "@flind/host-trpc/trpc";
+import type { ILogsService } from "@flind/workspace-server/services/local-logs/identifiers";
+import { LOGS_SERVICE } from "@flind/workspace-server/services/local-logs/identifiers";
 import {
   fetchS3LogsInput,
   fetchS3LogsOutput,
@@ -11,7 +11,7 @@ import {
   readLocalLogsTailInput,
   readLocalLogsTailOutput,
   writeLocalLogsInput,
-} from "@posthog/workspace-server/services/local-logs/schemas";
+} from "@flind/workspace-server/services/local-logs/schemas";
 
 export const logsRouter = router({
   fetchS3Logs: publicProcedure

@@ -3,7 +3,7 @@ import { Badge, Button, Text } from "@flind/quill";
 import type {
   NetworkAccessLevel,
   SandboxEnvironment,
-} from "@posthog/shared/domain-types";
+} from "@flind/shared/domain-types";
 
 const ACCESS_LABELS: Record<NetworkAccessLevel, string> = {
   full: "Full network",

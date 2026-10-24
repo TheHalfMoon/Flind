@@ -8,7 +8,7 @@ import {
   PlayIcon,
   TrashIcon,
 } from "@phosphor-icons/react";
-import { hogFlowRequestDetail } from "@posthog/api-client/hogFlowLoops";
+import { hogFlowRequestDetail } from "@flind/api-client/hogFlowLoops";
 import {
   AlertDialog,
   AlertDialogClose,
@@ -20,25 +20,25 @@ import {
   Badge,
   Button,
 } from "@flind/quill";
-import { getCloudUrlFromRegion } from "@posthog/shared";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
-import { UserAvatar } from "@posthog/ui/features/auth/UserAvatar";
-import { assertCloudUsageAvailable } from "@posthog/ui/features/billing/preflightCloudUsage";
-import { useChannelsLayout } from "@posthog/ui/features/canvas/hooks/useChannelsLayout";
-import { useOrgMembers } from "@posthog/ui/features/canvas/hooks/useOrgMembers";
-import { userDisplayName } from "@posthog/ui/features/canvas/utils/userDisplay";
-import type { LoopSchemas } from "@posthog/ui/features/loops/loopSchemas";
-import { useSetHeaderContent } from "@posthog/ui/hooks/useSetHeaderContent";
-import { TimezoneTimestamp } from "@posthog/ui/primitives/TimezoneTimestamp";
-import { systemTimezone } from "@posthog/ui/primitives/timezone";
-import { toast } from "@posthog/ui/primitives/toast";
+import { getCloudUrlFromRegion } from "@flind/shared";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
+import { UserAvatar } from "@flind/ui/features/auth/UserAvatar";
+import { assertCloudUsageAvailable } from "@flind/ui/features/billing/preflightCloudUsage";
+import { useChannelsLayout } from "@flind/ui/features/canvas/hooks/useChannelsLayout";
+import { useOrgMembers } from "@flind/ui/features/canvas/hooks/useOrgMembers";
+import { userDisplayName } from "@flind/ui/features/canvas/utils/userDisplay";
+import type { LoopSchemas } from "@flind/ui/features/loops/loopSchemas";
+import { useSetHeaderContent } from "@flind/ui/hooks/useSetHeaderContent";
+import { TimezoneTimestamp } from "@flind/ui/primitives/TimezoneTimestamp";
+import { systemTimezone } from "@flind/ui/primitives/timezone";
+import { toast } from "@flind/ui/primitives/toast";
 import {
   navigateToLoops,
   navigateToSpaceLoops,
-} from "@posthog/ui/router/navigationBridge";
-import { getRouterOrNull } from "@posthog/ui/router/routerRef";
-import { track } from "@posthog/ui/shell/analytics";
-import { openExternalUrl } from "@posthog/ui/shell/openExternal";
+} from "@flind/ui/router/navigationBridge";
+import { getRouterOrNull } from "@flind/ui/router/routerRef";
+import { track } from "@flind/ui/shell/analytics";
+import { openExternalUrl } from "@flind/ui/shell/openExternal";
 import { Flex, Text } from "@radix-ui/themes";
 import type { ParsedHistoryState } from "@tanstack/history";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";

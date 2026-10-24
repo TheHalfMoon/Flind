@@ -1,4 +1,4 @@
-import type { Signal } from "@posthog/shared/types";
+import type { Signal } from "@flind/shared/types";
 
 /**
  * Under this many signals, a flat list reads fine; grouping would be more

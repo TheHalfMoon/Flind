@@ -1,4 +1,4 @@
-import { formatDuration } from "@posthog/ui/features/sessions/components/GeneratingIndicator";
+import { formatDuration } from "@flind/ui/features/sessions/components/GeneratingIndicator";
 import { describe, expect, it } from "vitest";
 
 describe("formatDuration", () => {

@@ -6,14 +6,14 @@ import {
   StorefrontIcon,
   WarningIcon,
 } from "@phosphor-icons/react";
-import type { SkillIssue } from "@posthog/core/skills/analyzeSkills";
+import type { SkillIssue } from "@flind/core/skills/analyzeSkills";
 import {
   Switch,
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "@flind/quill";
-import type { SkillInfo, SkillSource } from "@posthog/shared";
+import type { SkillInfo, SkillSource } from "@flind/shared";
 import { useEffect, useRef } from "react";
 import { SkillListCard } from "./SkillListCard";
 import { SkillChip } from "./SkillPanelHeader";

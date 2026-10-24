@@ -1,6 +1,6 @@
-import { latestActivityForChannel } from "@posthog/core/canvas/channelUnread";
-import { useMentionActivity } from "@posthog/ui/features/canvas/hooks/useMentionActivity";
-import { useChannelSeenStore } from "@posthog/ui/features/canvas/stores/channelSeenStore";
+import { latestActivityForChannel } from "@flind/core/canvas/channelUnread";
+import { useMentionActivity } from "@flind/ui/features/canvas/hooks/useMentionActivity";
+import { useChannelSeenStore } from "@flind/ui/features/canvas/stores/channelSeenStore";
 import { useEffect } from "react";
 
 /**

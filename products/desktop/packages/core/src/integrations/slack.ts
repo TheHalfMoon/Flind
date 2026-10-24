@@ -2,24 +2,24 @@ import {
   ROOT_LOGGER,
   type RootLogger,
   type ScopedLogger,
-} from "@posthog/di/logger";
+} from "@flind/di/logger";
 import {
   DEEP_LINK_SERVICE,
   type IDeepLinkRegistry,
-} from "@posthog/platform/deep-link";
+} from "@flind/platform/deep-link";
 import {
   type IMainWindow,
   MAIN_WINDOW_SERVICE,
-} from "@posthog/platform/main-window";
+} from "@flind/platform/main-window";
 import {
   type IUrlLauncher,
   URL_LAUNCHER_SERVICE,
-} from "@posthog/platform/url-launcher";
+} from "@flind/platform/url-launcher";
 import {
   type CloudRegion,
   getCloudUrlFromRegion,
   TypedEventEmitter,
-} from "@posthog/shared";
+} from "@flind/shared";
 import { inject, injectable } from "inversify";
 import type { StartIntegrationFlowOutput } from "./schemas";
 

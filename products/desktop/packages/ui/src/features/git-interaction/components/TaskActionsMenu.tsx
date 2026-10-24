@@ -9,7 +9,7 @@ import {
   GitPullRequest,
   Link,
 } from "@phosphor-icons/react";
-import { getPrVisualConfig } from "@posthog/core/git-interaction/prStatus";
+import { getPrVisualConfig } from "@flind/core/git-interaction/prStatus";
 import { parseGithubUrl } from "@flind/git/utils";
 import {
   ButtonGroup,
@@ -28,8 +28,8 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@flind/quill";
-import type { PrActionType } from "@posthog/shared";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
+import type { PrActionType } from "@flind/shared";
+import { Spinner } from "@flind/ui/primitives/Spinner";
 import { ChevronDown } from "lucide-react";
 import type { ReactElement, ReactNode } from "react";
 import { toast } from "../../../primitives/toast";

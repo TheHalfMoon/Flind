@@ -1,6 +1,6 @@
-import type { ThreadTimelineRow } from "@posthog/core/canvas/threadTimeline";
-import type { Task, TaskRun, TaskRunArtifact } from "@posthog/shared";
-import type { TaskThreadMessage } from "@posthog/shared/domain-types";
+import type { ThreadTimelineRow } from "@flind/core/canvas/threadTimeline";
+import type { Task, TaskRun, TaskRunArtifact } from "@flind/shared";
+import type { TaskThreadMessage } from "@flind/shared/domain-types";
 import {
   fireEvent,
   render,
@@ -22,43 +22,43 @@ const mocks = vi.hoisted(() => ({
   taskRunsRefreshKeys: [] as number[],
 }));
 
-vi.mock("@posthog/core/sessions/sessionService", () => ({
+vi.mock("@flind/core/sessions/sessionService", () => ({
   SESSION_SERVICE: Symbol("SESSION_SERVICE"),
 }));
-vi.mock("@posthog/di/react", () => ({
+vi.mock("@flind/di/react", () => ({
   useService: () => ({
     getCloudAttachmentPreviewUrl: mocks.getCloudAttachmentPreviewUrl,
   }),
 }));
 
-vi.mock("@posthog/ui/shell/openExternal", () => ({
+vi.mock("@flind/ui/shell/openExternal", () => ({
   openExternalUrl: (url: string) => mocks.openExternalUrl(url),
 }));
 
-vi.mock("@posthog/ui/features/auth/useMeQuery", () => ({
+vi.mock("@flind/ui/features/auth/useMeQuery", () => ({
   useMeQuery: () => ({ data: { id: 42, first_name: "Sam" } }),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useTaskRuns", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useTaskRuns", () => ({
   useTaskRuns: (_taskId: string | undefined, refreshKey = 0) => {
     mocks.taskRunsRefreshKeys.push(refreshKey);
     return { runs: mocks.runs, isLoading: false };
   },
 }));
 
-vi.mock("@posthog/ui/features/sessions/sessionStore", () => ({
+vi.mock("@flind/ui/features/sessions/sessionStore", () => ({
   useSessionSelector: (_taskId: string, select: (s: unknown) => unknown) =>
     select({
       events: mocks.sessionEvents,
       cloudArtifacts: mocks.sessionArtifacts,
     }),
 }));
-vi.mock("@posthog/ui/features/panels/panelLayoutStore", () => ({
+vi.mock("@flind/ui/features/panels/panelLayoutStore", () => ({
   usePanelLayoutStore: () => mocks.openArtifactTab,
 }));
-vi.mock("@posthog/ui/features/inbox/hooks/useOpenInboxReport", () => ({
+vi.mock("@flind/ui/features/inbox/hooks/useOpenInboxReport", () => ({
   useOpenInboxReport: () => mocks.openInboxReport,
 }));
-vi.mock("@posthog/ui/features/git-interaction/usePrArtifact", () => ({
+vi.mock("@flind/ui/features/git-interaction/usePrArtifact", () => ({
   usePrArtifact: (url: string) => ({
     safeUrl: url,
     title: `Pull request #${url.split("/").at(-1)}`,
@@ -67,13 +67,13 @@ vi.mock("@posthog/ui/features/git-interaction/usePrArtifact", () => ({
     iconColor: "currentColor",
   }),
 }));
-vi.mock("@posthog/ui/features/pr-review/usePrComments", () => ({
+vi.mock("@flind/ui/features/pr-review/usePrComments", () => ({
   usePrComments: () => ({ data: undefined }),
 }));
-vi.mock("@posthog/ui/features/pr-review/usePrReviewThreads", () => ({
+vi.mock("@flind/ui/features/pr-review/usePrReviewThreads", () => ({
   usePrReviewThreads: () => ({ data: undefined }),
 }));
-vi.mock("@posthog/ui/features/sessions/components/useComments", () => ({
+vi.mock("@flind/ui/features/sessions/components/useComments", () => ({
   useCommentsForTargetsQuery: () => ({
     isError: mocks.commentsError,
     data: [
@@ -105,7 +105,7 @@ vi.mock("@posthog/ui/features/sessions/components/useComments", () => ({
   }),
 }));
 
-import { useReviewNavigationStore } from "@posthog/ui/features/code-review/reviewNavigationStore";
+import { useReviewNavigationStore } from "@flind/ui/features/code-review/reviewNavigationStore";
 import { TaskArtifactsList } from "./TaskArtifactsList";
 
 const task = {

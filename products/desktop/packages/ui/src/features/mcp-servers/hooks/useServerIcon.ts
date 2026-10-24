@@ -1,5 +1,5 @@
-import { mcpKeys } from "@posthog/ui/features/mcp-server-manager/useMcpConnect";
-import { useAuthenticatedQuery } from "@posthog/ui/hooks/useAuthenticatedQuery";
+import { mcpKeys } from "@flind/ui/features/mcp-server-manager/useMcpConnect";
+import { useAuthenticatedQuery } from "@flind/ui/hooks/useAuthenticatedQuery";
 
 /**
  * Object URL for an MCP server's brand icon from the authenticated logo.dev

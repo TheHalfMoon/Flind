@@ -3,10 +3,10 @@ import type {
   SessionConfigOption,
   SessionConfigSelectGroup,
 } from "@agentclientprotocol/sdk";
-import { ApiRequestError } from "@posthog/api-client/fetcher";
-import type { AcpMessage } from "@posthog/shared";
-import type { Task } from "@posthog/shared/domain-types";
-import type { AgentSession } from "@posthog/ui/features/sessions/sessionStore";
+import { ApiRequestError } from "@flind/api-client/fetcher";
+import type { AcpMessage } from "@flind/shared";
+import type { Task } from "@flind/shared/domain-types";
+import type { AgentSession } from "@flind/ui/features/sessions/sessionStore";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 // --- Hoisted Mocks ---
@@ -102,7 +102,7 @@ const mockGetConfigOptionByCategory = vi.hoisted(() =>
   ),
 );
 
-vi.mock("@posthog/ui/features/sessions/sessionStore", () => ({
+vi.mock("@flind/ui/features/sessions/sessionStore", () => ({
   sessionStoreSetters: mockSessionStoreSetters,
   getConfigOptionByCategory: mockGetConfigOptionByCategory,
   mergeConfigOptions: vi.fn((live: unknown[], _persisted: unknown[]) => live),
@@ -169,13 +169,13 @@ const mockAuth = vi.hoisted(() => ({
   }),
 }));
 
-vi.mock("@posthog/ui/features/auth/authQueries", () => ({
+vi.mock("@flind/ui/features/auth/authQueries", () => ({
   AUTH_SCOPED_QUERY_META: { authScoped: true },
   clearAuthScopedQueries: vi.fn(),
   getAuthIdentity: vi.fn(),
   fetchAuthState: mockAuth.fetchAuthState,
 }));
-vi.mock("@posthog/ui/features/auth/authClientImperative", () => ({
+vi.mock("@flind/ui/features/auth/authClientImperative", () => ({
   getAuthenticatedClient: mockAuth.getAuthenticatedClient,
   createAuthenticatedClient: mockAuth.createAuthenticatedClient,
 }));
@@ -197,7 +197,7 @@ const mockSessionConfigStore = vi.hoisted(() => ({
 }));
 
 vi.mock(
-  "@posthog/ui/features/sessions/sessionConfigStore",
+  "@flind/ui/features/sessions/sessionConfigStore",
   () => mockSessionConfigStore,
 );
 
@@ -217,13 +217,13 @@ const mockSessionAdapterStore = vi.hoisted(() => ({
 }));
 
 vi.mock(
-  "@posthog/ui/features/sessions/sessionAdapterStore",
+  "@flind/ui/features/sessions/sessionAdapterStore",
   () => mockSessionAdapterStore,
 );
 
 const mockGetIsOnline = vi.hoisted(() => vi.fn(() => true));
 
-vi.mock("@posthog/core/connectivity/connectivityStore", () => ({
+vi.mock("@flind/core/connectivity/connectivityStore", () => ({
   getIsOnline: () => mockGetIsOnline(),
 }));
 
@@ -290,10 +290,10 @@ const mockSettingsState = vi.hoisted(() => ({
 }));
 
 vi.mock(
-  "@posthog/ui/features/settings/settingsStore",
+  "@flind/ui/features/settings/settingsStore",
   async (importOriginal) => ({
     ...(await importOriginal<
-      typeof import("@posthog/ui/features/settings/settingsStore")
+      typeof import("@flind/ui/features/settings/settingsStore")
     >()),
     useSettingsStore: {
       getState: () => mockSettingsState,
@@ -301,14 +301,14 @@ vi.mock(
   }),
 );
 
-vi.mock("@posthog/ui/features/sidebar/taskMetaApi", () => ({
+vi.mock("@flind/ui/features/sidebar/taskMetaApi", () => ({
   taskViewedApi: {
     markActivity: vi.fn(),
     markAsViewed: vi.fn(),
   },
 }));
 
-vi.mock("@posthog/ui/shell/posthogAnalyticsImpl", () => ({
+vi.mock("@flind/ui/shell/posthogAnalyticsImpl", () => ({
   track: vi.fn(),
   buildPermissionToolMetadata: vi.fn(() => ({})),
   posthogFeatureFlags: {
@@ -327,10 +327,10 @@ vi.mock("../../shell/logger", () => ({
     }),
   },
 }));
-vi.mock("@posthog/ui/primitives/toast", () => ({
+vi.mock("@flind/ui/primitives/toast", () => ({
   toast: mockToast,
 }));
-vi.mock("@posthog/di/container", () => ({
+vi.mock("@flind/di/container", () => ({
   resolveService: (token: unknown) => {
     if (token === Symbol.for("posthog.host.trpcClient")) {
       return {
@@ -367,11 +367,11 @@ vi.mock("@posthog/di/container", () => ({
     throw new Error(`resolveService: unmocked token ${String(token)}`);
   },
 }));
-vi.mock("@posthog/shared", async (importOriginal) => ({
-  ...(await importOriginal<typeof import("@posthog/shared")>()),
+vi.mock("@flind/shared", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@flind/shared")>()),
   getCloudUrlFromRegion: () => "https://api.anthropic.com",
   getConfigOptionByCategory: mockGetConfigOptionByCategory,
-  mergeConfigOptions: (await importOriginal<typeof import("@posthog/shared")>())
+  mergeConfigOptions: (await importOriginal<typeof import("@flind/shared")>())
     .mergeConfigOptions,
   flattenSelectOptions: vi.fn(
     (options: Array<{ options?: unknown[] }> | undefined) => {
@@ -399,10 +399,10 @@ const mockHasSessionPromptEventForTaskRun = vi.hoisted(() =>
   vi.fn(() => false),
 );
 
-vi.mock("@posthog/core/sessions/sessionEvents", async () => {
+vi.mock("@flind/core/sessions/sessionEvents", async () => {
   const actual = await vi.importActual<
-    typeof import("@posthog/core/sessions/sessionEvents")
-  >("@posthog/core/sessions/sessionEvents");
+    typeof import("@flind/core/sessions/sessionEvents")
+  >("@flind/core/sessions/sessionEvents");
   return {
     collapseSupersededToolCallUpdates: actual.collapseSupersededToolCallUpdates,
     convertStoredEntriesToEvents: mockConvertStoredEntriesToEvents,
@@ -921,7 +921,7 @@ describe("SessionService", () => {
     });
 
     it("records the session's gateway mode on the start event", async () => {
-      const { track } = await import("@posthog/ui/shell/posthogAnalyticsImpl");
+      const { track } = await import("@flind/ui/shell/posthogAnalyticsImpl");
       const service = getSessionService();
       mockSessionStoreSetters.getSessionByTaskId.mockReturnValue(undefined);
       mockBuildAuthenticatedClient.mockReturnValue({

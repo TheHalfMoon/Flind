@@ -4,7 +4,7 @@ import {
   ROOT_LOGGER,
   type RootLogger,
   type ScopedLogger,
-} from "@posthog/di/logger";
+} from "@flind/di/logger";
 import { createGitClient } from "@flind/git/client";
 import {
   anyBranchRefExists,
@@ -20,12 +20,12 @@ import { WorktreeManager } from "@flind/git/worktree";
 import {
   ANALYTICS_SERVICE,
   type IAnalytics,
-} from "@posthog/platform/analytics";
+} from "@flind/platform/analytics";
 import {
   type IWorkspaceSettings,
   WORKSPACE_SETTINGS_SERVICE,
-} from "@posthog/platform/workspace-settings";
-import { ANALYTICS_EVENTS, TypedEventEmitter } from "@posthog/shared";
+} from "@flind/platform/workspace-settings";
+import { ANALYTICS_EVENTS, TypedEventEmitter } from "@flind/shared";
 import { inject, injectable } from "inversify";
 import {
   DATABASE_SERVICE,

@@ -1,7 +1,7 @@
 import {
   MODEL_COST_BASELINE_NAME,
   type ModelCostInfo,
-} from "@posthog/core/billing/modelPricing";
+} from "@flind/core/billing/modelPricing";
 
 /** The exact rates behind a multiplier, for the chip's title. */
 export function modelCostTitle(cost: ModelCostInfo): string {

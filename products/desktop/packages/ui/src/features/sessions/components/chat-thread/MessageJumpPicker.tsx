@@ -12,9 +12,9 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@flind/quill";
-import { CommandKeyHints } from "@posthog/ui/features/command/CommandKeyHints";
-import type { ConversationItem } from "@posthog/ui/features/sessions/components/buildConversationItems";
-import { userMessageDisplayText } from "@posthog/ui/features/sessions/components/session-update/userMessageDisplay";
+import { CommandKeyHints } from "@flind/ui/features/command/CommandKeyHints";
+import type { ConversationItem } from "@flind/ui/features/sessions/components/buildConversationItems";
+import { userMessageDisplayText } from "@flind/ui/features/sessions/components/session-update/userMessageDisplay";
 import { Flex } from "@radix-ui/themes";
 import { useCallback, useMemo, useState } from "react";
 

@@ -10,43 +10,43 @@ import {
   TableRow,
   Text,
 } from "@flind/quill";
-import { buildImageDataUrl } from "@posthog/shared";
-import { useWorkspaceFileAsBase64 } from "@posthog/ui/features/code-editor/hooks/useFileContent";
-import { ArtifactRefChip } from "@posthog/ui/features/editor/components/ArtifactRefChip";
-import { EvidenceRefChip } from "@posthog/ui/features/editor/components/EvidenceRefChip";
-import { githubRefChipFor } from "@posthog/ui/features/editor/components/githubRefChipFor";
-import { MessageChartCard } from "@posthog/ui/features/editor/components/MessageChartCard";
+import { buildImageDataUrl } from "@flind/shared";
+import { useWorkspaceFileAsBase64 } from "@flind/ui/features/code-editor/hooks/useFileContent";
+import { ArtifactRefChip } from "@flind/ui/features/editor/components/ArtifactRefChip";
+import { EvidenceRefChip } from "@flind/ui/features/editor/components/EvidenceRefChip";
+import { githubRefChipFor } from "@flind/ui/features/editor/components/githubRefChipFor";
+import { MessageChartCard } from "@flind/ui/features/editor/components/MessageChartCard";
 import {
   markOpenLinkDestination,
   parseOpenFence,
   splitMarkdownBlocks,
-} from "@posthog/ui/features/editor/components/splitMarkdownBlocks";
-import { useObjectTagRemarkPlugins } from "@posthog/ui/features/editor/usePostHogLinkContext";
+} from "@flind/ui/features/editor/components/splitMarkdownBlocks";
+import { useObjectTagRemarkPlugins } from "@flind/ui/features/editor/usePostHogLinkContext";
 import {
   BareFileLink,
   hasDirectoryPath,
   InlineFileLink,
   looksLikeBareFilename,
-} from "@posthog/ui/features/sessions/components/session-update/fileLinkChips";
-import { useSessionTaskId } from "@posthog/ui/features/sessions/useSessionTaskId";
-import { useCwd } from "@posthog/ui/features/sidebar/useCwd";
-import { useThrottledValue } from "@posthog/ui/hooks/useThrottledValue";
-import { HighlightedCode } from "@posthog/ui/primitives/HighlightedCode";
-import { MermaidDiagram } from "@posthog/ui/primitives/MermaidDiagram";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
-import { useCopy } from "@posthog/ui/primitives/useCopy";
-import { parseArtifactLink } from "@posthog/ui/utils/artifactLinks";
+} from "@flind/ui/features/sessions/components/session-update/fileLinkChips";
+import { useSessionTaskId } from "@flind/ui/features/sessions/useSessionTaskId";
+import { useCwd } from "@flind/ui/features/sidebar/useCwd";
+import { useThrottledValue } from "@flind/ui/hooks/useThrottledValue";
+import { HighlightedCode } from "@flind/ui/primitives/HighlightedCode";
+import { MermaidDiagram } from "@flind/ui/primitives/MermaidDiagram";
+import { Spinner } from "@flind/ui/primitives/Spinner";
+import { useCopy } from "@flind/ui/primitives/useCopy";
+import { parseArtifactLink } from "@flind/ui/utils/artifactLinks";
 import {
   CHART_BLOCK_MARKER,
   chartBlockKey,
   isGeneratedChartBlock,
   parseChartBlock,
-} from "@posthog/ui/utils/chartBlocks";
+} from "@flind/ui/utils/chartBlocks";
 import {
   OBJECT_LINK_HREF,
   parseEvidenceLink,
-} from "@posthog/ui/utils/evidenceLinks";
-import { MERMAID_LANGUAGE } from "@posthog/ui/utils/mermaidBlocks";
+} from "@flind/ui/utils/evidenceLinks";
+import { MERMAID_LANGUAGE } from "@flind/ui/utils/mermaidBlocks";
 import { IconButton } from "@radix-ui/themes";
 import { memo, type ReactNode, useEffect, useMemo, useRef } from "react";
 import Markdown, { type Components, defaultUrlTransform } from "react-markdown";

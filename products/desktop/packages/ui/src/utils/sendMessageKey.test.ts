@@ -1,5 +1,5 @@
-import type { SendMessagesWith } from "@posthog/ui/features/settings/settingsStore";
-import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
+import type { SendMessagesWith } from "@flind/ui/features/settings/settingsStore";
+import { useSettingsStore } from "@flind/ui/features/settings/settingsStore";
 import { beforeEach, describe, expect, it } from "vitest";
 import { isSendMessageSubmitKey } from "./sendMessageKey";
 

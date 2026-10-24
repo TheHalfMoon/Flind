@@ -1,11 +1,11 @@
 import {
   SESSION_SERVICE,
   type SessionService,
-} from "@posthog/core/sessions/sessionService";
-import { useService } from "@posthog/di/react";
-import { useMessagingMode } from "@posthog/ui/features/sessions/hooks/useMessagingMode";
-import { useMessagingModeStore } from "@posthog/ui/features/sessions/messagingModeStore";
-import { sessionStoreSetters } from "@posthog/ui/features/sessions/sessionStore";
+} from "@flind/core/sessions/sessionService";
+import { useService } from "@flind/di/react";
+import { useMessagingMode } from "@flind/ui/features/sessions/hooks/useMessagingMode";
+import { useMessagingModeStore } from "@flind/ui/features/sessions/messagingModeStore";
+import { sessionStoreSetters } from "@flind/ui/features/sessions/sessionStore";
 import { useCallback } from "react";
 
 /**

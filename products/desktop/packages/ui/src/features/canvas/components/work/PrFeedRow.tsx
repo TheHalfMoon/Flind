@@ -2,15 +2,15 @@ import {
   getPrVisualConfig,
   parsePrNumber,
   summarizePrChecks,
-} from "@posthog/core/git-interaction/prStatus";
-import { taskStarter } from "@posthog/core/tasks/taskStatusPresentation";
+} from "@flind/core/git-interaction/prStatus";
+import { taskStarter } from "@flind/core/tasks/taskStatusPresentation";
 import { Badge, Card, CardContent } from "@flind/quill";
-import { formatRelativeTimeShort } from "@posthog/shared";
-import { ActivityPresenceAvatar } from "@posthog/ui/features/canvas/components/ChannelItemPresence";
-import type { SpacePullRequest } from "@posthog/ui/features/canvas/components/work/useSpacePullRequests";
-import { getPrVisualIcon } from "@posthog/ui/features/git-interaction/prIcon";
-import { usePrChecks } from "@posthog/ui/features/pr-review/usePrChecks";
-import { openExternalUrl } from "@posthog/ui/shell/openExternal";
+import { formatRelativeTimeShort } from "@flind/shared";
+import { ActivityPresenceAvatar } from "@flind/ui/features/canvas/components/ChannelItemPresence";
+import type { SpacePullRequest } from "@flind/ui/features/canvas/components/work/useSpacePullRequests";
+import { getPrVisualIcon } from "@flind/ui/features/git-interaction/prIcon";
+import { usePrChecks } from "@flind/ui/features/pr-review/usePrChecks";
+import { openExternalUrl } from "@flind/ui/shell/openExternal";
 
 function CiDot({ ci }: { ci: { label: string; color: string } }) {
   return (

@@ -1,4 +1,4 @@
-import { CodeBlock } from "@posthog/ui/primitives/CodeBlock";
+import { CodeBlock } from "@flind/ui/primitives/CodeBlock";
 import { memo, useMemo } from "react";
 import type { Components } from "react-markdown";
 import { MarkdownRenderer } from "./MarkdownRenderer";

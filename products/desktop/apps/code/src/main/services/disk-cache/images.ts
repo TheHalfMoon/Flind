@@ -1,7 +1,7 @@
 import type { DiskCacheNamespace } from "@main/services/disk-cache/service";
 import { logger } from "@main/utils/logger";
 import { redactUrl } from "@main/utils/network-log";
-import type { FetchLike } from "@posthog/core/auth/auth";
+import type { FetchLike } from "@flind/core/auth/auth";
 import {
   fromCachedImageUrl,
   isCacheableImageUrl,

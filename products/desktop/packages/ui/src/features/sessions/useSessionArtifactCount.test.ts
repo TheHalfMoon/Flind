@@ -1,8 +1,8 @@
-import type { TaskRunArtifact } from "@posthog/shared";
+import type { TaskRunArtifact } from "@flind/shared";
 import {
   countArtifacts,
   isAgentWorking,
-} from "@posthog/ui/features/sessions/useSessionArtifactCount";
+} from "@flind/ui/features/sessions/useSessionArtifactCount";
 import { describe, expect, it } from "vitest";
 
 describe("isAgentWorking", () => {

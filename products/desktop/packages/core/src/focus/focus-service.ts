@@ -1,5 +1,5 @@
-import { TypedEventEmitter } from "@posthog/shared";
-import type { FocusBranchRenamedEvent } from "@posthog/workspace-client/types";
+import { TypedEventEmitter } from "@flind/shared";
+import type { FocusBranchRenamedEvent } from "@flind/workspace-client/types";
 import { inject, injectable, preDestroy } from "inversify";
 import {
   FOCUS_SESSION_STORE,

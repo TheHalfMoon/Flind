@@ -2,8 +2,8 @@ import {
   type AcpMessage,
   type AgentSession,
   ANALYTICS_EVENTS,
-} from "@posthog/shared";
-import type { Task } from "@posthog/shared/domain-types";
+} from "@flind/shared";
+import type { Task } from "@flind/shared/domain-types";
 import { describe, expect, it, vi } from "vitest";
 import {
   type ConnectParams,

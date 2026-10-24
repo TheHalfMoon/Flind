@@ -2,7 +2,7 @@ import { ArchiveIcon } from "@phosphor-icons/react";
 import {
   formatHotkey,
   SHORTCUTS,
-} from "@posthog/ui/features/command/keyboard-shortcuts";
+} from "@flind/ui/features/command/keyboard-shortcuts";
 import type { ComponentType, ReactElement, ReactNode } from "react";
 
 export interface TaskArchiveMenuParts {

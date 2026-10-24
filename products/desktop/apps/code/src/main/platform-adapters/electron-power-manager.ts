@@ -1,7 +1,7 @@
 import { execFile } from "node:child_process";
 import { readdir } from "node:fs/promises";
 import { promisify } from "node:util";
-import type { IPowerManager } from "@posthog/platform/power-manager";
+import type { IPowerManager } from "@flind/platform/power-manager";
 import { powerMonitor, powerSaveBlocker } from "electron";
 import { injectable } from "inversify";
 

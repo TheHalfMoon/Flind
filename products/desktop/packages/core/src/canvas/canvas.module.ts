@@ -20,7 +20,7 @@ import {
 import { PROJECT_API_CLIENT, ProjectApiClient } from "./projectApiClient";
 
 // Host-agnostic canvas services (dashboards + freeform canvas data). They only
-// need AuthService + fetch, so they live in @posthog/core and any host (desktop,
+// need AuthService + fetch, so they live in @flind/core and any host (desktop,
 // web, server) can bind them by loading this module.
 export const canvasCoreModule = new ContainerModule(({ bind }) => {
   bind(ProjectApiClient).toSelf().inSingletonScope();

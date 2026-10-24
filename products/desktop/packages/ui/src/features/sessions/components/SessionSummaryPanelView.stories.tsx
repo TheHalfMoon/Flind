@@ -1,4 +1,4 @@
-import { CHAT_CONTENT_MAX_WIDTH } from "@posthog/ui/features/sessions/constants";
+import { CHAT_CONTENT_MAX_WIDTH } from "@flind/ui/features/sessions/constants";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { SessionSummaryPanelView } from "./SessionSummaryPanelView";
 

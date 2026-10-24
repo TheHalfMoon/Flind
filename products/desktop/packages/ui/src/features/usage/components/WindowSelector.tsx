@@ -1,4 +1,4 @@
-import type { SpendAnalysisWindow } from "@posthog/core/billing/spendAnalysisFormat";
+import type { SpendAnalysisWindow } from "@flind/core/billing/spendAnalysisFormat";
 import { SegmentedControl } from "@radix-ui/themes";
 
 const WINDOW_OPTIONS: { value: SpendAnalysisWindow; label: string }[] = [

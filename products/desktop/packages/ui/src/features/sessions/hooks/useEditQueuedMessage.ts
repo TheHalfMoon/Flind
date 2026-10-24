@@ -3,21 +3,21 @@ import {
   isContentEmpty,
   textToContent,
   xmlToContent,
-} from "@posthog/core/message-editor/content";
+} from "@flind/core/message-editor/content";
 import {
   combineQueuedCloudPrompts,
   promptToQueuedEditorContent,
-} from "@posthog/core/sessions/cloudPrompt";
+} from "@flind/core/sessions/cloudPrompt";
 import {
   SESSION_SERVICE,
   type SessionService,
-} from "@posthog/core/sessions/sessionService";
-import { useService } from "@posthog/di/react";
-import { useDraftStore } from "@posthog/ui/features/message-editor/draftStore";
+} from "@flind/core/sessions/sessionService";
+import { useService } from "@flind/di/react";
+import { useDraftStore } from "@flind/ui/features/message-editor/draftStore";
 import {
   type QueuedMessage,
   useSessionIsCloud,
-} from "@posthog/ui/features/sessions/sessionStore";
+} from "@flind/ui/features/sessions/sessionStore";
 import { useCallback } from "react";
 
 /**

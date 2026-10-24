@@ -1,5 +1,5 @@
 import { PreviewCard } from "@base-ui/react/preview-card";
-import type { ScoutConfig } from "@posthog/api-client/posthog-client";
+import type { ScoutConfig } from "@flind/api-client/posthog-client";
 import { Card } from "@flind/quill";
 import type { ReactElement } from "react";
 

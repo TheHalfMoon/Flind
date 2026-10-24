@@ -7,7 +7,7 @@ import {
   Trash,
   UploadSimple,
 } from "@phosphor-icons/react";
-import { MAX_CUSTOM_SOUND_SECONDS } from "@posthog/ui/utils/customSound";
+import { MAX_CUSTOM_SOUND_SECONDS } from "@flind/ui/utils/customSound";
 import {
   Button,
   Card,

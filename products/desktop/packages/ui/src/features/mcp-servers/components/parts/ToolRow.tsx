@@ -2,8 +2,8 @@ import { CaretDown, CaretRight, Lock } from "@phosphor-icons/react";
 import type {
   McpApprovalState,
   McpInstallationTool,
-} from "@posthog/api-client/posthog-client";
-import { isPolicyStateAllowedByCeiling } from "@posthog/core/mcp-gateway/gatewayServers";
+} from "@flind/api-client/posthog-client";
+import { isPolicyStateAllowedByCeiling } from "@flind/core/mcp-gateway/gatewayServers";
 import { Badge, Flex, Text } from "@radix-ui/themes";
 import { useState } from "react";
 import { ToolPolicyToggle } from "./ToolPolicyToggle";

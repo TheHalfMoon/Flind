@@ -1,16 +1,16 @@
 import { ArrowClockwise, Check, X } from "@phosphor-icons/react";
-import { useService } from "@posthog/di/react";
+import { useService } from "@flind/di/react";
 import {
   getActionSessionId,
   useActionStore,
-} from "@posthog/ui/features/actions/actionStore";
+} from "@flind/ui/features/actions/actionStore";
 import {
   SHELL_CLIENT,
   type ShellClient,
-} from "@posthog/ui/features/terminal/shellClient";
-import { terminalManager } from "@posthog/ui/features/terminal/TerminalManager";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
-import { Tooltip } from "@posthog/ui/primitives/Tooltip";
+} from "@flind/ui/features/terminal/shellClient";
+import { terminalManager } from "@flind/ui/features/terminal/TerminalManager";
+import { Spinner } from "@flind/ui/primitives/Spinner";
+import { Tooltip } from "@flind/ui/primitives/Tooltip";
 import { useCallback, useState } from "react";
 
 interface ActionTabIconProps {

@@ -1,4 +1,4 @@
-import type { SignalReport } from "@posthog/shared/types";
+import type { SignalReport } from "@flind/shared/types";
 import { describe, expect, it } from "vitest";
 
 import { deriveReportVerdict } from "./reportVerdict";

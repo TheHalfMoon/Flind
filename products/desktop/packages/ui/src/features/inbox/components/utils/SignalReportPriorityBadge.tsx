@@ -1,5 +1,5 @@
-import type { SignalReportPriority } from "@posthog/shared/domain-types";
-import { InboxBadge } from "@posthog/ui/features/inbox/components/utils/InboxBadge";
+import type { SignalReportPriority } from "@flind/shared/domain-types";
+import { InboxBadge } from "@flind/ui/features/inbox/components/utils/InboxBadge";
 import type { ReactNode } from "react";
 
 type BadgeVariant = "destructive" | "warning" | "default";

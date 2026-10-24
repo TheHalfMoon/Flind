@@ -1,4 +1,4 @@
-import type { SagaLogger, TaskCreationInput } from "@posthog/shared";
+import type { SagaLogger, TaskCreationInput } from "@flind/shared";
 import type { ITaskCreationHost } from "./taskCreationHost";
 
 export async function resolveTaskRepository(

@@ -1,9 +1,9 @@
-import type { AgentSession } from "@posthog/shared";
+import type { AgentSession } from "@flind/shared";
 import {
   isTerminalStatus,
   type TaskRun,
   type TaskRunStatus,
-} from "@posthog/shared/domain-types";
+} from "@flind/shared/domain-types";
 
 export interface CanvasGenerationStatusInput {
   /** The canvas's in-flight generation task id, or null if none. */

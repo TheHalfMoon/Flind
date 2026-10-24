@@ -1,5 +1,5 @@
-import { publicProcedure, router } from "@posthog/host-trpc/trpc";
-import { SKILLS_SERVICE } from "@posthog/workspace-server/services/skills/identifiers";
+import { publicProcedure, router } from "@flind/host-trpc/trpc";
+import { SKILLS_SERVICE } from "@flind/workspace-server/services/skills/identifiers";
 import {
   bundleLocalSkillInput,
   bundleLocalSkillOutput,
@@ -22,9 +22,9 @@ import {
   skillContentsInput,
   skillContentsOutput,
   skillPathOutput,
-} from "@posthog/workspace-server/services/skills/schemas";
-import type { SkillsService } from "@posthog/workspace-server/services/skills/skills";
-import { SKILLS_MARKETPLACE_SERVICE } from "@posthog/workspace-server/services/skills-marketplace/identifiers";
+} from "@flind/workspace-server/services/skills/schemas";
+import type { SkillsService } from "@flind/workspace-server/services/skills/skills";
+import { SKILLS_MARKETPLACE_SERVICE } from "@flind/workspace-server/services/skills-marketplace/identifiers";
 import {
   marketplaceInstallInput,
   marketplaceInstallOutput,
@@ -32,8 +32,8 @@ import {
   marketplaceSearchInput,
   marketplaceSearchOutput,
   marketplaceSkillRef,
-} from "@posthog/workspace-server/services/skills-marketplace/schemas";
-import type { SkillsMarketplaceService } from "@posthog/workspace-server/services/skills-marketplace/skills-marketplace";
+} from "@flind/workspace-server/services/skills-marketplace/schemas";
+import type { SkillsMarketplaceService } from "@flind/workspace-server/services/skills-marketplace/skills-marketplace";
 
 export const skillsRouter = router({
   list: publicProcedure

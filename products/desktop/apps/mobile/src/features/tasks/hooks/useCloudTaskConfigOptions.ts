@@ -6,7 +6,7 @@ import {
   type CloudTaskConfigSelectGroup,
   type GatewayModel,
   isRestrictedModelOption,
-} from "@posthog/shared";
+} from "@flind/shared";
 import { useQuery } from "@tanstack/react-query";
 import { useMemo } from "react";
 import { useAuthStore } from "@/features/auth";

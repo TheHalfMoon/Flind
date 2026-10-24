@@ -1,8 +1,8 @@
-import type { Schemas } from "@posthog/api-client";
+import type { Schemas } from "@flind/api-client";
 import {
   SESSION_SERVICE,
   type SessionService,
-} from "@posthog/core/sessions/sessionService";
+} from "@flind/core/sessions/sessionService";
 import {
   applyRenameToDetail,
   applyRenameToList,
@@ -14,19 +14,19 @@ import {
   rollbackPageData,
   rollbackSummaryData,
   shouldRollbackSessionTitle,
-} from "@posthog/core/tasks/taskRename";
-import { useService } from "@posthog/di/react";
-import type { Task } from "@posthog/shared/domain-types";
-import { channelFeedQueryRoot } from "@posthog/ui/features/canvas/hooks/useChannelFeed";
+} from "@flind/core/tasks/taskRename";
+import { useService } from "@flind/di/react";
+import type { Task } from "@flind/shared/domain-types";
+import { channelFeedQueryRoot } from "@flind/ui/features/canvas/hooks/useChannelFeed";
 import {
   type SpaceTaskPage,
   spaceTreeTasksQueryRoot,
-} from "@posthog/ui/features/canvas/hooks/useRecentSpaceTasks";
-import { TASK_CHANNELS_QUERY_KEY } from "@posthog/ui/features/canvas/hooks/useTaskChannels";
-import { taskFeedResultsQueryRoot } from "@posthog/ui/features/canvas/hooks/useTaskFeedResults";
-import { reportImplementationStatesQueryRoot } from "@posthog/ui/features/inbox/hooks/useReportImplementationStates";
-import { taskKeys } from "@posthog/ui/features/tasks/taskKeys";
-import { useAuthenticatedMutation } from "@posthog/ui/hooks/useAuthenticatedMutation";
+} from "@flind/ui/features/canvas/hooks/useRecentSpaceTasks";
+import { TASK_CHANNELS_QUERY_KEY } from "@flind/ui/features/canvas/hooks/useTaskChannels";
+import { taskFeedResultsQueryRoot } from "@flind/ui/features/canvas/hooks/useTaskFeedResults";
+import { reportImplementationStatesQueryRoot } from "@flind/ui/features/inbox/hooks/useReportImplementationStates";
+import { taskKeys } from "@flind/ui/features/tasks/taskKeys";
+import { useAuthenticatedMutation } from "@flind/ui/hooks/useAuthenticatedMutation";
 import { useQueryClient } from "@tanstack/react-query";
 import { useCallback } from "react";
 

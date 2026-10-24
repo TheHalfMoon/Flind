@@ -4,11 +4,11 @@ import {
   buildChannelContextText,
   buildCustomInstructionsText,
   buildPromptBlocks,
-} from "@posthog/core/editor/prompt-builder";
+} from "@flind/core/editor/prompt-builder";
 import type {
   ConnectParams,
   SessionService,
-} from "@posthog/core/sessions/sessionService";
+} from "@flind/core/sessions/sessionService";
 import {
   getTaskRepository,
   Saga,
@@ -16,9 +16,9 @@ import {
   type TaskCreationInput,
   type TaskCreationOutput,
   type Workspace,
-} from "@posthog/shared";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
-import type { Task } from "@posthog/shared/domain-types";
+} from "@flind/shared";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
+import type { Task } from "@flind/shared/domain-types";
 import type { FileReadClient } from "../files/identifiers";
 import type { PiRunner } from "../pi-runtime/piRunner";
 import type { TaskCreationApiClient } from "./taskCreationApiClient";

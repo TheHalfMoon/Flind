@@ -1,14 +1,14 @@
 import { ArrowSquareOutIcon } from "@phosphor-icons/react";
 import { Button } from "@flind/quill";
-import { useAuthStateValue } from "@posthog/ui/features/auth/store";
-import { useIntegrationSelectors } from "@posthog/ui/features/integrations/store";
-import { useIntegrations } from "@posthog/ui/features/integrations/useIntegrations";
-import { useSlackConnect } from "@posthog/ui/features/integrations/useSlackConnect";
-import { SettingsSection } from "@posthog/ui/features/settings/components/SettingsCard";
-import { SlackCommentNotificationsSettings } from "@posthog/ui/features/settings/sections/SlackCommentNotificationsSettings";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
-import { openUrlInBrowser } from "@posthog/ui/utils/browser";
-import { getPostHogUrl } from "@posthog/ui/utils/urls";
+import { useAuthStateValue } from "@flind/ui/features/auth/store";
+import { useIntegrationSelectors } from "@flind/ui/features/integrations/store";
+import { useIntegrations } from "@flind/ui/features/integrations/useIntegrations";
+import { useSlackConnect } from "@flind/ui/features/integrations/useSlackConnect";
+import { SettingsSection } from "@flind/ui/features/settings/components/SettingsCard";
+import { SlackCommentNotificationsSettings } from "@flind/ui/features/settings/sections/SlackCommentNotificationsSettings";
+import { Spinner } from "@flind/ui/primitives/Spinner";
+import { openUrlInBrowser } from "@flind/ui/utils/browser";
+import { getPostHogUrl } from "@flind/ui/utils/urls";
 import { SlackInboxNotificationsSettings } from "./SlackInboxNotificationsSettings";
 import {
   SlackWorkspaceConnection,

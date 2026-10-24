@@ -1,8 +1,8 @@
 import type {
   McpGatewayMemberSummary,
   McpGatewayServer,
-} from "@posthog/api-client/posthog-client";
-import { gatewayKeys } from "@posthog/ui/features/mcp-gateway/hooks/gatewayKeys";
+} from "@flind/api-client/posthog-client";
+import { gatewayKeys } from "@flind/ui/features/mcp-gateway/hooks/gatewayKeys";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { act, renderHook, waitFor } from "@testing-library/react";
 import type { ReactNode } from "react";
@@ -15,14 +15,14 @@ const mocks = vi.hoisted(() => ({
   infoToast: vi.fn(),
 }));
 
-vi.mock("@posthog/ui/features/auth/authClient", () => ({
+vi.mock("@flind/ui/features/auth/authClient", () => ({
   useOptionalAuthenticatedClient: () => ({
     getMcpGatewayMembers: mocks.getMembers,
     setMcpGatewayMemberAccess: mocks.setMemberAccess,
   }),
 }));
 
-vi.mock("@posthog/ui/primitives/toast", () => ({
+vi.mock("@flind/ui/primitives/toast", () => ({
   toast: {
     error: vi.fn(),
     success: mocks.successToast,

@@ -1,6 +1,6 @@
-import type { TaskActivityItem } from "@posthog/core/canvas/taskActivity";
-import type { SignalReport } from "@posthog/shared/types";
-import { getRouterOrNull } from "@posthog/ui/router/routerRef";
+import type { TaskActivityItem } from "@flind/core/canvas/taskActivity";
+import type { SignalReport } from "@flind/shared/types";
+import { getRouterOrNull } from "@flind/ui/router/routerRef";
 import { useRouterState } from "@tanstack/react-router";
 
 export type ActivitySelection =

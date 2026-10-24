@@ -1,4 +1,4 @@
-import { GithubConnectionRequiredDialog } from "@posthog/ui/features/integrations/components/GithubConnectionRequiredDialog";
+import { GithubConnectionRequiredDialog } from "@flind/ui/features/integrations/components/GithubConnectionRequiredDialog";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta: Meta<typeof GithubConnectionRequiredDialog> = {

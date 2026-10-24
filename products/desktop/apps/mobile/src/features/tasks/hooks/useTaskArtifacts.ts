@@ -1,4 +1,4 @@
-import type { TaskRunArtifact } from "@posthog/shared";
+import type { TaskRunArtifact } from "@flind/shared";
 import { useQuery } from "@tanstack/react-query";
 import { getProjectId } from "@/lib/api";
 import { getTaskRun } from "../api";

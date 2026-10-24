@@ -1,4 +1,4 @@
-import type { CloudTaskUpdatePayload } from "@posthog/shared/domain-types";
+import type { CloudTaskUpdatePayload } from "@flind/shared/domain-types";
 import { describe, expect, it, vi } from "vitest";
 import {
   type CloudTaskSubscriptionHandlers,

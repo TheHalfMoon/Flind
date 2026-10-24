@@ -1,4 +1,4 @@
-import * as core from "@posthog/core/panels/panelTree";
+import * as core from "@flind/core/panels/panelTree";
 import type { PanelNode, Tab } from "./panelTypes";
 
 export const findTabInTree = core.findTabInTree as (

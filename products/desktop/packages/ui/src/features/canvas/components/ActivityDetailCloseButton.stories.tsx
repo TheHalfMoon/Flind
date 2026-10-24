@@ -1,4 +1,4 @@
-import { ActivityDetailCloseButton } from "@posthog/ui/features/canvas/components/ActivityDetailCloseButton";
+import { ActivityDetailCloseButton } from "@flind/ui/features/canvas/components/ActivityDetailCloseButton";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta: Meta<typeof ActivityDetailCloseButton> = {

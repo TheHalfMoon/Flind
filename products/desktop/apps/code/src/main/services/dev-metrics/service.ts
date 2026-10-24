@@ -1,8 +1,8 @@
 import {
   APP_METRICS_SERVICE,
   type IAppMetrics,
-} from "@posthog/platform/app-metrics";
-import { TypedEventEmitter } from "@posthog/shared";
+} from "@flind/platform/app-metrics";
+import { TypedEventEmitter } from "@flind/shared";
 import { inject, injectable, preDestroy } from "inversify";
 import { logger } from "../../utils/logger";
 import {

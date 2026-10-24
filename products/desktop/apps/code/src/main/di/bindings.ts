@@ -1,5 +1,5 @@
-import type { AuthService, FetchLike } from "@posthog/core/auth/auth";
-import type { AUTH_SERVICE } from "@posthog/core/auth/auth.module";
+import type { AuthService, FetchLike } from "@flind/core/auth/auth";
+import type { AUTH_SERVICE } from "@flind/core/auth/auth.module";
 import type {
   AUTH_CONNECTIVITY,
   AUTH_FETCH,
@@ -9,7 +9,7 @@ import type {
   AUTH_SESSION_STORE,
   AUTH_TOKEN_CIPHER,
   AUTH_TOKEN_OVERRIDE,
-} from "@posthog/core/auth/identifiers";
+} from "@flind/core/auth/identifiers";
 import type {
   CLAUDE_SUBSCRIPTION_TOKEN_STORE,
   CLOUD_TASK_AUTH,
@@ -17,15 +17,15 @@ import type {
   ICloudTaskAuth,
   MCP_RELAY_EXECUTOR,
   McpRelayExecutor,
-} from "@posthog/core/cloud-task/identifiers";
+} from "@flind/core/cloud-task/identifiers";
 import type {
   CONTEXT_MENU_EXTERNAL_APPS_SERVICE,
   IContextMenuExternalApps,
-} from "@posthog/core/context-menu/identifiers";
+} from "@flind/core/context-menu/identifiers";
 import type {
   CUSTOM_CLOUD_STORE,
   CustomCloudStore,
-} from "@posthog/core/custom-cloud/identifiers";
+} from "@flind/core/custom-cloud/identifiers";
 import type {
   FOCUS_SESSION_STORE,
   FOCUS_WORKSPACE_CLIENT,
@@ -33,32 +33,32 @@ import type {
   FocusSessionStore,
   FocusWorkspaceClient,
   FocusWorktreePaths,
-} from "@posthog/core/focus/host-focus";
+} from "@flind/core/focus/host-focus";
 import type {
   FOCUS_SERVICE,
   IFocusService,
-} from "@posthog/core/focus/identifiers";
+} from "@flind/core/focus/identifiers";
 import type {
   GitWorkspaceLookup,
   HostGitWorkspaceClient,
-} from "@posthog/core/git/host-git";
+} from "@flind/core/git/host-git";
 import type {
   GIT_AGENT_SERVICE,
   GIT_WORKSPACE_CLIENT,
   GIT_WORKSPACE_LOOKUP,
-} from "@posthog/core/git/identifiers";
+} from "@flind/core/git/identifiers";
 import type {
   GIT_DIFF_SOURCE,
   GitDiffSource,
-} from "@posthog/core/git-pr/identifiers";
-import type { GitHubIntegrationService } from "@posthog/core/integrations/github";
+} from "@flind/core/git-pr/identifiers";
+import type { GitHubIntegrationService } from "@flind/core/integrations/github";
 import type {
   GITHUB_INTEGRATION_SERVICE,
   SLACK_INTEGRATION_SERVICE,
-} from "@posthog/core/integrations/identifiers";
-import type { SlackIntegrationService } from "@posthog/core/integrations/slack";
-import type { CanvasLinkService } from "@posthog/core/links/canvas-link";
-import type { ChannelLinkService } from "@posthog/core/links/channel-link";
+} from "@flind/core/integrations/identifiers";
+import type { SlackIntegrationService } from "@flind/core/integrations/slack";
+import type { CanvasLinkService } from "@flind/core/links/canvas-link";
+import type { ChannelLinkService } from "@flind/core/links/channel-link";
 import type {
   CANVAS_LINK_SERVICE,
   CHANNEL_LINK_SERVICE,
@@ -68,96 +68,96 @@ import type {
   OPEN_TARGET_LINK_SERVICE,
   SCOUT_LINK_SERVICE,
   TASK_LINK_SERVICE,
-} from "@posthog/core/links/identifiers";
-import type { InboxLinkService } from "@posthog/core/links/inbox-link";
-import type { LoopLinkService } from "@posthog/core/links/loop-link";
-import type { NewTaskLinkService } from "@posthog/core/links/new-task-link";
-import type { OpenTargetLinkService } from "@posthog/core/links/open-target-link";
-import type { ScoutLinkService } from "@posthog/core/links/scout-link";
-import type { TaskLinkService } from "@posthog/core/links/task-link";
-import type { GatewayTokenService } from "@posthog/core/llm-gateway/gateway-token";
+} from "@flind/core/links/identifiers";
+import type { InboxLinkService } from "@flind/core/links/inbox-link";
+import type { LoopLinkService } from "@flind/core/links/loop-link";
+import type { NewTaskLinkService } from "@flind/core/links/new-task-link";
+import type { OpenTargetLinkService } from "@flind/core/links/open-target-link";
+import type { ScoutLinkService } from "@flind/core/links/scout-link";
+import type { TaskLinkService } from "@flind/core/links/task-link";
+import type { GatewayTokenService } from "@flind/core/llm-gateway/gateway-token";
 import type {
   GATEWAY_TOKEN_HOST,
   GATEWAY_TOKEN_SERVICE,
   GatewayTokenHost,
   LLM_GATEWAY_HOST,
   LlmGatewayHost,
-} from "@posthog/core/llm-gateway/identifiers";
-import type { LlmGatewayService } from "@posthog/core/llm-gateway/llm-gateway";
-import type { MCP_APPS_SERVICE } from "@posthog/core/mcp-apps/identifiers";
-import type { McpAppsService } from "@posthog/core/mcp-apps/mcp-apps";
-import type { NOTIFICATION_SERVICE } from "@posthog/core/notification/identifiers";
-import type { NotificationService } from "@posthog/core/notification/notification";
+} from "@flind/core/llm-gateway/identifiers";
+import type { LlmGatewayService } from "@flind/core/llm-gateway/llm-gateway";
+import type { MCP_APPS_SERVICE } from "@flind/core/mcp-apps/identifiers";
+import type { McpAppsService } from "@flind/core/mcp-apps/mcp-apps";
+import type { NOTIFICATION_SERVICE } from "@flind/core/notification/identifiers";
+import type { NotificationService } from "@flind/core/notification/notification";
 import type {
   OAUTH_HOST,
   OAUTH_SERVICE,
   OAuthHost,
-} from "@posthog/core/oauth/identifiers";
-import type { OAuthService } from "@posthog/core/oauth/oauth";
-import type { PROVISIONING_SERVICE } from "@posthog/core/provisioning/identifiers";
-import type { ProvisioningService } from "@posthog/core/provisioning/provisioning";
-import type { SLEEP_SERVICE } from "@posthog/core/sleep/identifiers";
-import type { SleepService } from "@posthog/core/sleep/sleep";
-import type { UI_AUTH, UI_SERVICE } from "@posthog/core/ui/identifiers";
-import type { UIService } from "@posthog/core/ui/ui";
-import type { UPDATE_LIFECYCLE_SERVICE } from "@posthog/core/updates/identifiers";
-import type { UpdatesService } from "@posthog/core/updates/updates";
-import type { USAGE_HOST, UsageHost } from "@posthog/core/usage/identifiers";
-import type { ROOT_LOGGER, RootLogger } from "@posthog/di/logger";
+} from "@flind/core/oauth/identifiers";
+import type { OAuthService } from "@flind/core/oauth/oauth";
+import type { PROVISIONING_SERVICE } from "@flind/core/provisioning/identifiers";
+import type { ProvisioningService } from "@flind/core/provisioning/provisioning";
+import type { SLEEP_SERVICE } from "@flind/core/sleep/identifiers";
+import type { SleepService } from "@flind/core/sleep/sleep";
+import type { UI_AUTH, UI_SERVICE } from "@flind/core/ui/identifiers";
+import type { UIService } from "@flind/core/ui/ui";
+import type { UPDATE_LIFECYCLE_SERVICE } from "@flind/core/updates/identifiers";
+import type { UpdatesService } from "@flind/core/updates/updates";
+import type { USAGE_HOST, UsageHost } from "@flind/core/usage/identifiers";
+import type { ROOT_LOGGER, RootLogger } from "@flind/di/logger";
 import type {
   CONNECTIVITY_CLIENT,
   HostConnectivityClient,
-} from "@posthog/host-router/ports/connectivity-client";
+} from "@flind/host-router/ports/connectivity-client";
 import type {
   ENVIRONMENT_CLIENT,
   HostEnvironmentClient,
-} from "@posthog/host-router/ports/environment-client";
+} from "@flind/host-router/ports/environment-client";
 import type {
   FILE_WATCHER_CONTROL,
   HostFileWatcherControl,
-} from "@posthog/host-router/ports/file-watcher-control";
+} from "@flind/host-router/ports/file-watcher-control";
 import type {
   GIT_PR_STATUS_PROVIDER,
   IGitPrStatus,
-} from "@posthog/host-router/ports/git-pr-status";
+} from "@flind/host-router/ports/git-pr-status";
 import type {
   ANALYTICS_SERVICE,
   IAnalytics,
-} from "@posthog/platform/analytics";
-import type { APP_LIFECYCLE_SERVICE } from "@posthog/platform/app-lifecycle";
-import type { APP_META_SERVICE } from "@posthog/platform/app-meta";
-import type { APP_METRICS_SERVICE } from "@posthog/platform/app-metrics";
-import type { BUNDLED_RESOURCES_SERVICE } from "@posthog/platform/bundled-resources";
-import type { CLIPBOARD_SERVICE } from "@posthog/platform/clipboard";
-import type { CONTEXT_MENU_SERVICE } from "@posthog/platform/context-menu";
-import type { CRYPTO_SERVICE } from "@posthog/platform/crypto";
-import type { DEEP_LINK_SERVICE } from "@posthog/platform/deep-link";
-import type { DEV_HOST_ACTIONS_SERVICE } from "@posthog/platform/dev-host-actions";
-import type { DIALOG_SERVICE } from "@posthog/platform/dialog";
-import type { DISK_CACHE_SERVICE } from "@posthog/platform/disk-cache";
-import type { FEEDBACK_CONTEXT_SERVICE } from "@posthog/platform/feedback-context";
-import type { FILE_ICON_SERVICE } from "@posthog/platform/file-icon";
-import type { IMAGE_PROCESSOR_SERVICE } from "@posthog/platform/image-processor";
-import type { MAIN_WINDOW_SERVICE } from "@posthog/platform/main-window";
-import type { NOTIFIER_SERVICE } from "@posthog/platform/notifier";
-import type { POWER_MANAGER_SERVICE } from "@posthog/platform/power-manager";
-import type { SCREEN_CAPTURE_SERVICE } from "@posthog/platform/screen-capture";
-import type { SECURE_STORAGE_SERVICE } from "@posthog/platform/secure-storage";
+} from "@flind/platform/analytics";
+import type { APP_LIFECYCLE_SERVICE } from "@flind/platform/app-lifecycle";
+import type { APP_META_SERVICE } from "@flind/platform/app-meta";
+import type { APP_METRICS_SERVICE } from "@flind/platform/app-metrics";
+import type { BUNDLED_RESOURCES_SERVICE } from "@flind/platform/bundled-resources";
+import type { CLIPBOARD_SERVICE } from "@flind/platform/clipboard";
+import type { CONTEXT_MENU_SERVICE } from "@flind/platform/context-menu";
+import type { CRYPTO_SERVICE } from "@flind/platform/crypto";
+import type { DEEP_LINK_SERVICE } from "@flind/platform/deep-link";
+import type { DEV_HOST_ACTIONS_SERVICE } from "@flind/platform/dev-host-actions";
+import type { DIALOG_SERVICE } from "@flind/platform/dialog";
+import type { DISK_CACHE_SERVICE } from "@flind/platform/disk-cache";
+import type { FEEDBACK_CONTEXT_SERVICE } from "@flind/platform/feedback-context";
+import type { FILE_ICON_SERVICE } from "@flind/platform/file-icon";
+import type { IMAGE_PROCESSOR_SERVICE } from "@flind/platform/image-processor";
+import type { MAIN_WINDOW_SERVICE } from "@flind/platform/main-window";
+import type { NOTIFIER_SERVICE } from "@flind/platform/notifier";
+import type { POWER_MANAGER_SERVICE } from "@flind/platform/power-manager";
+import type { SCREEN_CAPTURE_SERVICE } from "@flind/platform/screen-capture";
+import type { SECURE_STORAGE_SERVICE } from "@flind/platform/secure-storage";
 import type {
   ISettingsBackupFiles,
   SETTINGS_BACKUP_FILES,
-} from "@posthog/platform/settings-backup-files";
-import type { STORAGE_PATHS_SERVICE } from "@posthog/platform/storage-paths";
-import type { UPDATER_SERVICE } from "@posthog/platform/updater";
-import type { URL_LAUNCHER_SERVICE } from "@posthog/platform/url-launcher";
-import type { WORKSPACE_SETTINGS_SERVICE } from "@posthog/platform/workspace-settings";
-import type { WorkspaceClient } from "@posthog/workspace-client/client";
-import type { DatabaseService } from "@posthog/workspace-server/db/service";
+} from "@flind/platform/settings-backup-files";
+import type { STORAGE_PATHS_SERVICE } from "@flind/platform/storage-paths";
+import type { UPDATER_SERVICE } from "@flind/platform/updater";
+import type { URL_LAUNCHER_SERVICE } from "@flind/platform/url-launcher";
+import type { WORKSPACE_SETTINGS_SERVICE } from "@flind/platform/workspace-settings";
+import type { WorkspaceClient } from "@flind/workspace-client/client";
+import type { DatabaseService } from "@flind/workspace-server/db/service";
 import type {
   CONNECTIVITY_SERVICE as WS_CONNECTIVITY_SERVICE,
   GIT_SERVICE as WS_GIT_SERVICE,
-} from "@posthog/workspace-server/di/tokens";
-import type { AgentService } from "@posthog/workspace-server/services/agent/agent";
+} from "@flind/workspace-server/di/tokens";
+import type { AgentService } from "@flind/workspace-server/services/agent/agent";
 import type {
   AGENT_AUTH,
   AGENT_LOGGER,
@@ -165,90 +165,90 @@ import type {
   AGENT_REPO_FILES,
   AGENT_SERVICE,
   AGENT_SLEEP_COORDINATOR,
-} from "@posthog/workspace-server/services/agent/identifiers";
+} from "@flind/workspace-server/services/agent/identifiers";
 import type {
   ARCHIVE_FILE_WATCHER,
   ARCHIVE_SESSION_CANCELLER,
-} from "@posthog/workspace-server/services/archive/identifiers";
+} from "@flind/workspace-server/services/archive/identifiers";
 import type {
   ArchiveFileWatcher,
   SessionCanceller,
-} from "@posthog/workspace-server/services/archive/ports";
+} from "@flind/workspace-server/services/archive/ports";
 import type {
   AUTH_PROXY_AUTH,
   GATEWAY_CREDENTIAL_SOURCE,
-} from "@posthog/workspace-server/services/auth-proxy/identifiers";
+} from "@flind/workspace-server/services/auth-proxy/identifiers";
 import type {
   AuthProxyAuth,
   GatewayCredentialSource,
-} from "@posthog/workspace-server/services/auth-proxy/ports";
-import type { ConnectivityService } from "@posthog/workspace-server/services/connectivity/service";
+} from "@flind/workspace-server/services/auth-proxy/ports";
+import type { ConnectivityService } from "@flind/workspace-server/services/connectivity/service";
 import type {
   ENRICHMENT_AUTH,
   ENRICHMENT_FILE_READER,
-} from "@posthog/workspace-server/services/enrichment/identifiers";
+} from "@flind/workspace-server/services/enrichment/identifiers";
 import type {
   EnrichmentAuth,
   EnrichmentFileReader,
-} from "@posthog/workspace-server/services/enrichment/ports";
-import type { ExternalAppsService } from "@posthog/workspace-server/services/external-apps/external-apps";
-import type { EXTERNAL_APPS_STORE } from "@posthog/workspace-server/services/external-apps/identifiers";
-import type { ExternalAppsStore } from "@posthog/workspace-server/services/external-apps/ports";
+} from "@flind/workspace-server/services/enrichment/ports";
+import type { ExternalAppsService } from "@flind/workspace-server/services/external-apps/external-apps";
+import type { EXTERNAL_APPS_STORE } from "@flind/workspace-server/services/external-apps/identifiers";
+import type { ExternalAppsStore } from "@flind/workspace-server/services/external-apps/ports";
 import type {
   FS_SERVICE,
   FsCapability,
-} from "@posthog/workspace-server/services/fs/identifiers";
-import type { GitService } from "@posthog/workspace-server/services/git/service";
+} from "@flind/workspace-server/services/fs/identifiers";
+import type { GitService } from "@flind/workspace-server/services/git/service";
 import type {
   ILogsService,
   LOGS_SERVICE,
-} from "@posthog/workspace-server/services/local-logs/identifiers";
-import type { MCP_PROXY_AUTH } from "@posthog/workspace-server/services/mcp-proxy/identifiers";
-import type { McpProxyAuth } from "@posthog/workspace-server/services/mcp-proxy/ports";
+} from "@flind/workspace-server/services/local-logs/identifiers";
+import type { MCP_PROXY_AUTH } from "@flind/workspace-server/services/mcp-proxy/identifiers";
+import type { McpProxyAuth } from "@flind/workspace-server/services/mcp-proxy/ports";
 import type {
   MCP_RELAY_SERVICE,
   McpRelayService,
-} from "@posthog/workspace-server/services/mcp-relay/identifiers";
+} from "@flind/workspace-server/services/mcp-relay/identifiers";
 import type {
   PI_RPC_CLIENT_FACTORY,
   PI_RUNTIME_FACTORY,
   PiRpcClientFactory,
   PiRuntimeFactory,
-} from "@posthog/workspace-server/services/pi-session/identifiers";
-import type { PosthogPluginService } from "@posthog/workspace-server/services/posthog-plugin/posthog-plugin";
-import type { ProcessTrackingService } from "@posthog/workspace-server/services/process-tracking/process-tracking";
+} from "@flind/workspace-server/services/pi-session/identifiers";
+import type { PosthogPluginService } from "@flind/workspace-server/services/posthog-plugin/posthog-plugin";
+import type { ProcessTrackingService } from "@flind/workspace-server/services/process-tracking/process-tracking";
 import type {
   ISecureStoreService,
   SECURE_STORE_SERVICE,
-} from "@posthog/workspace-server/services/secure-store/identifiers";
+} from "@flind/workspace-server/services/secure-store/identifiers";
 import type {
   ISpeechSynthesizer,
   SPEECH_SYNTHESIZER_SERVICE,
-} from "@posthog/workspace-server/services/speech/identifiers";
+} from "@flind/workspace-server/services/speech/identifiers";
 import type {
   SUSPENSION_FILE_WATCHER,
   SUSPENSION_SERVICE,
   SUSPENSION_SESSION_CANCELLER,
-} from "@posthog/workspace-server/services/suspension/identifiers";
+} from "@flind/workspace-server/services/suspension/identifiers";
 import type {
   SuspensionFileWatcher,
   SessionCanceller as SuspensionSessionCanceller,
-} from "@posthog/workspace-server/services/suspension/ports";
-import type { SuspensionService } from "@posthog/workspace-server/services/suspension/suspension";
-import type { WatcherRegistryService } from "@posthog/workspace-server/services/watcher-registry/watcher-registry";
+} from "@flind/workspace-server/services/suspension/ports";
+import type { SuspensionService } from "@flind/workspace-server/services/suspension/suspension";
+import type { WatcherRegistryService } from "@flind/workspace-server/services/watcher-registry/watcher-registry";
 import type {
   WORKSPACE_AGENT,
   WORKSPACE_FILE_WATCHER,
   WORKSPACE_FOCUS,
   WORKSPACE_PROVISIONING,
-} from "@posthog/workspace-server/services/workspace/identifiers";
+} from "@flind/workspace-server/services/workspace/identifiers";
 import type {
   WorkspaceAgent,
   WorkspaceFileWatcher,
   WorkspaceFocus,
   WorkspaceProvisioning,
-} from "@posthog/workspace-server/services/workspace/ports";
-import type { WorkspaceService } from "@posthog/workspace-server/services/workspace/workspace";
+} from "@flind/workspace-server/services/workspace/ports";
+import type { WorkspaceService } from "@flind/workspace-server/services/workspace/workspace";
 import type { FileWatcherBridge } from "../index";
 import type { ElectronAppLifecycle } from "../platform-adapters/electron-app-lifecycle";
 import type { ElectronAppMeta } from "../platform-adapters/electron-app-meta";

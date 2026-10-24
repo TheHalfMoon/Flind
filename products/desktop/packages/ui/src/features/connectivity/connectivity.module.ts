@@ -1,4 +1,4 @@
-import { CONTRIBUTION } from "@posthog/di/contribution";
+import { CONTRIBUTION } from "@flind/di/contribution";
 import { ContainerModule } from "inversify";
 import { ConnectivityEventsContribution } from "./connectivity-events.contribution";
 import { NetworkReconnectContribution } from "./network-reconnect.contribution";

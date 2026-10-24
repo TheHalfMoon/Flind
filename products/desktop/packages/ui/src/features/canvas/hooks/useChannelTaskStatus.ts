@@ -1,14 +1,14 @@
-import type { ChannelItemModel } from "@posthog/core/canvas/channelItems";
-import { deriveSessionLifecycleState } from "@posthog/core/sessions/sessionViewState";
-import type { Task } from "@posthog/shared/domain-types";
-import { useChannelTaskData } from "@posthog/ui/features/canvas/hooks/useChannelTaskData";
+import type { ChannelItemModel } from "@flind/core/canvas/channelItems";
+import { deriveSessionLifecycleState } from "@flind/core/sessions/sessionViewState";
+import type { Task } from "@flind/shared/domain-types";
+import { useChannelTaskData } from "@flind/ui/features/canvas/hooks/useChannelTaskData";
 import {
   useSessionForTask,
   useSessionStore,
-} from "@posthog/ui/features/sessions/sessionStore";
-import type { TaskStatusInput } from "@posthog/ui/features/sidebar/components/items/taskStatusVocabulary";
-import { useTaskPrStatus } from "@posthog/ui/features/sidebar/useTaskPrStatus";
-import { useWorkspace } from "@posthog/ui/features/workspace/useWorkspace";
+} from "@flind/ui/features/sessions/sessionStore";
+import type { TaskStatusInput } from "@flind/ui/features/sidebar/components/items/taskStatusVocabulary";
+import { useTaskPrStatus } from "@flind/ui/features/sidebar/useTaskPrStatus";
+import { useWorkspace } from "@flind/ui/features/workspace/useWorkspace";
 
 export interface TaskStatusOptions {
   /**

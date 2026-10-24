@@ -1,6 +1,6 @@
-import type { McpAuditQuickFilter } from "@posthog/api-client/posthog-client";
-import { gatewayKeys } from "@posthog/ui/features/mcp-gateway/hooks/gatewayKeys";
-import { useAuthenticatedQuery } from "@posthog/ui/hooks/useAuthenticatedQuery";
+import type { McpAuditQuickFilter } from "@flind/api-client/posthog-client";
+import { gatewayKeys } from "@flind/ui/features/mcp-gateway/hooks/gatewayKeys";
+import { useAuthenticatedQuery } from "@flind/ui/hooks/useAuthenticatedQuery";
 import { keepPreviousData } from "@tanstack/react-query";
 
 export const AUDIT_PAGE_SIZE = 10;

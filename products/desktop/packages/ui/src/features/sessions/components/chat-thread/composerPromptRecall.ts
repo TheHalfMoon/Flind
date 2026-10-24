@@ -1,5 +1,5 @@
-import { stripTrailingAttachmentSummary } from "@posthog/core/editor/cloud-prompt";
-import { stripInjectedBlocks } from "@posthog/core/editor/injectedBlocks";
+import { stripTrailingAttachmentSummary } from "@flind/core/editor/cloud-prompt";
+import { stripInjectedBlocks } from "@flind/core/editor/injectedBlocks";
 
 export interface RecallableMessage {
   id: string;

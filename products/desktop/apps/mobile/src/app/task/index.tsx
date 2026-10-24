@@ -2,8 +2,8 @@ import { Text } from "@components/text";
 import {
   DEFAULT_CLAUDE_EXECUTION_MODE,
   getAvailableModesForAdapter,
-} from "@posthog/core/sessions/executionModes";
-import { resolveCloudComposerModelChange } from "@posthog/core/task-detail/composerModelPolicy";
+} from "@flind/core/sessions/executionModes";
+import { resolveCloudComposerModelChange } from "@flind/core/task-detail/composerModelPolicy";
 import {
   type Adapter,
   DEFAULT_GATEWAY_MODEL,
@@ -15,7 +15,7 @@ import {
   serializeCloudPrompt,
   supports1MContext,
   supportsFastMode,
-} from "@posthog/shared";
+} from "@flind/shared";
 import { LinearGradient } from "expo-linear-gradient";
 import { Stack, useLocalSearchParams, useRouter } from "expo-router";
 import {

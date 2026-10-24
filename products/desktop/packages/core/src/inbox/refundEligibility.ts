@@ -1,4 +1,4 @@
-import type { SignalReport } from "@posthog/shared/types";
+import type { SignalReport } from "@flind/shared/types";
 
 // Copy per backend `refund_ineligibility_reason`. `already_refunded` and
 // `billing_exempt` never reach the button (it is hidden for those), so only

@@ -1,5 +1,5 @@
 import { BookOpenTextIcon, LockSimpleIcon } from "@phosphor-icons/react";
-import { ContextWikiUnavailableError } from "@posthog/api-client/posthog-client";
+import { ContextWikiUnavailableError } from "@flind/api-client/posthog-client";
 import {
   Button,
   Empty,
@@ -13,17 +13,17 @@ import {
   TabsList,
   TabsTrigger,
 } from "@flind/quill";
-import { useSetHeaderContent } from "@posthog/ui/hooks/useSetHeaderContent";
-import { FileExplorer } from "@posthog/ui/primitives/FileExplorer";
-import { LoadingState } from "@posthog/ui/primitives/LoadingState";
+import { useSetHeaderContent } from "@flind/ui/hooks/useSetHeaderContent";
+import { FileExplorer } from "@flind/ui/primitives/FileExplorer";
+import { LoadingState } from "@flind/ui/primitives/LoadingState";
 import {
   PageHeader,
   PageHeaderDescription,
   PageHeaderHeading,
   PageHeaderTitle,
   PageHeaderTitleRow,
-} from "@posthog/ui/primitives/PageHeader";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
+} from "@flind/ui/primitives/PageHeader";
+import { Spinner } from "@flind/ui/primitives/Spinner";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import {
   useContextWikiTree,

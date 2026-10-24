@@ -1,4 +1,4 @@
-import { posthogToolMeta } from "@posthog/shared";
+import { posthogToolMeta } from "@flind/shared";
 import { describe, expect, it } from "vitest";
 import { isUploadArtifactCall } from "./inlineArtifacts";
 import { isShowActionsCall, readShowActions } from "./showActions";

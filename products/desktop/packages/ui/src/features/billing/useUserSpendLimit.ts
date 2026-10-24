@@ -1,11 +1,11 @@
-import type { UserSpendLimit } from "@posthog/api-client/spend-limit";
-import { USER_SPEND_LIMIT_FLAG } from "@posthog/shared";
-import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { AUTH_SCOPED_QUERY_META } from "@posthog/ui/features/auth/useCurrentUser";
-import { useFeatureFlag } from "@posthog/ui/features/feature-flags/useFeatureFlag";
+import type { UserSpendLimit } from "@flind/api-client/spend-limit";
+import { USER_SPEND_LIMIT_FLAG } from "@flind/shared";
+import { useOptionalAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { AUTH_SCOPED_QUERY_META } from "@flind/ui/features/auth/useCurrentUser";
+import { useFeatureFlag } from "@flind/ui/features/feature-flags/useFeatureFlag";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
-export { USER_SPEND_LIMIT_FLAG } from "@posthog/shared";
+export { USER_SPEND_LIMIT_FLAG } from "@flind/shared";
 
 export const USER_SPEND_LIMIT_QUERY_KEY = [
   "billing",

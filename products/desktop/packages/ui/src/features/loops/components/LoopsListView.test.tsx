@@ -1,4 +1,4 @@
-import type { LoopSchemas } from "@posthog/ui/features/loops/loopSchemas";
+import type { LoopSchemas } from "@flind/ui/features/loops/loopSchemas";
 import { Theme } from "@radix-ui/themes";
 import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";

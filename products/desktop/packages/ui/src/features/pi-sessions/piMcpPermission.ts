@@ -1,6 +1,6 @@
-import type { McpToolPermissionRequest } from "@posthog/shared";
-import { mcpToolKey, posthogToolMeta } from "@posthog/shared";
-import type { PermissionToolCall } from "@posthog/ui/features/permissions/types";
+import type { McpToolPermissionRequest } from "@flind/shared";
+import { mcpToolKey, posthogToolMeta } from "@flind/shared";
+import type { PermissionToolCall } from "@flind/ui/features/permissions/types";
 
 export function buildPiMcpPermissionToolCall(
   request: McpToolPermissionRequest,

@@ -1,8 +1,8 @@
 import {
   selectAvailableTasks,
   workspaceIdSet,
-} from "@posthog/core/command-center/eligibility";
-import type { Task } from "@posthog/shared/domain-types";
+} from "@flind/core/command-center/eligibility";
+import type { Task } from "@flind/shared/domain-types";
 import { useMemo } from "react";
 import { useArchivedTaskIds } from "../../archive/useArchivedTaskIds";
 import { useTasks } from "../../tasks/useTasks";

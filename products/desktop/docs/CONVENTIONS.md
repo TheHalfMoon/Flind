@@ -4,7 +4,7 @@ These conventions expand the rules in [AGENTS.md](../AGENTS.md).
 
 ## Business Logic
 
-Put business logic in `@posthog/core` services:
+Put business logic in `@flind/core` services:
 
 - orchestration
 - retries
@@ -63,8 +63,8 @@ Stores are state cells. Actions set state. No async, no clients, no retries, no 
 
 Placement:
 
-- Domain facts read by business logic: `@posthog/core`, `zustand/vanilla`.
-- View state: `@posthog/ui`, `zustand`.
+- Domain facts read by business logic: `@flind/core`, `zustand/vanilla`.
+- View state: `@flind/ui`, `zustand`.
 
 Separate state and actions.
 

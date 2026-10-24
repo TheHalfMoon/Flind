@@ -1,5 +1,5 @@
-import type { TaskCreationOutput } from "@posthog/shared";
-import type { Task } from "@posthog/shared/types";
+import type { TaskCreationOutput } from "@flind/shared";
+import type { Task } from "@flind/shared/types";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { act, renderHook, waitFor } from "@testing-library/react";
 import type { ReactNode } from "react";
@@ -13,37 +13,37 @@ const mocks = vi.hoisted(() => ({
   error: vi.fn(),
   track: vi.fn(),
 }));
-vi.mock("@posthog/di/react", () => ({
+vi.mock("@flind/di/react", () => ({
   useService: () => ({ createTask: mocks.createTask }),
 }));
-vi.mock("@posthog/ui/features/auth/store", () => ({
+vi.mock("@flind/ui/features/auth/store", () => ({
   useAuthStateValue: (selector: (state: { cloudRegion: string }) => unknown) =>
     selector({ cloudRegion: "us" }),
 }));
-vi.mock("@posthog/ui/features/inbox/hooks/resolveDefaultModel", () => ({
+vi.mock("@flind/ui/features/inbox/hooks/resolveDefaultModel", () => ({
   resolveDefaultModel: mocks.resolveModel,
 }));
-vi.mock("@posthog/ui/features/inbox/hooks/useInboxReports", () => ({
+vi.mock("@flind/ui/features/inbox/hooks/useInboxReports", () => ({
   reportKeys: { artefacts: (id: string) => ["artefacts", id] },
 }));
-vi.mock("@posthog/ui/features/integrations/useIntegrations", () => ({
+vi.mock("@flind/ui/features/integrations/useIntegrations", () => ({
   useUserRepositoryIntegration: () => ({
     getUserIntegrationIdForRepo: () => "integration-1",
   }),
 }));
-vi.mock("@posthog/ui/features/settings/settingsStore", () => ({
+vi.mock("@flind/ui/features/settings/settingsStore", () => ({
   useSettingsStore: { getState: () => ({}) },
 }));
-vi.mock("@posthog/ui/features/tasks/useTaskCrudMutations", () => ({
+vi.mock("@flind/ui/features/tasks/useTaskCrudMutations", () => ({
   useCreateTask: () => ({ invalidateTasks: vi.fn() }),
 }));
-vi.mock("@posthog/ui/hooks/useConnectivity", () => ({
+vi.mock("@flind/ui/hooks/useConnectivity", () => ({
   useConnectivity: () => ({ isOnline: true }),
 }));
-vi.mock("@posthog/ui/features/notifications/errorDetails", () => ({
+vi.mock("@flind/ui/features/notifications/errorDetails", () => ({
   toastError: vi.fn(),
 }));
-vi.mock("@posthog/ui/primitives/toast", () => ({
+vi.mock("@flind/ui/primitives/toast", () => ({
   toast: {
     loading: vi.fn(),
     dismiss: vi.fn(),
@@ -51,9 +51,9 @@ vi.mock("@posthog/ui/primitives/toast", () => ({
     success: mocks.success,
   },
 }));
-vi.mock("@posthog/ui/router/useOpenTask", () => ({ openTask: mocks.openTask }));
-vi.mock("@posthog/ui/shell/analytics", () => ({ track: mocks.track }));
-vi.mock("@posthog/ui/shell/logger", () => ({
+vi.mock("@flind/ui/router/useOpenTask", () => ({ openTask: mocks.openTask }));
+vi.mock("@flind/ui/shell/analytics", () => ({ track: mocks.track }));
+vi.mock("@flind/ui/shell/logger", () => ({
   logger: { scope: () => ({ error: mocks.error }) },
 }));
 

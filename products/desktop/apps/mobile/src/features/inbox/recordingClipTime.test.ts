@@ -1,7 +1,7 @@
 import type {
   RecordingClipSegment,
   RecordingExport,
-} from "@posthog/api-client/posthog-client";
+} from "@flind/api-client/posthog-client";
 import { describe, expect, it } from "vitest";
 import { clipTimeForMoment } from "./recordingClipTime";
 

@@ -1,7 +1,7 @@
-import { ANALYTICS_EVENTS } from "@posthog/shared";
-import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
-import { toast } from "@posthog/ui/primitives/toast";
-import { track } from "@posthog/ui/shell/analytics";
+import { ANALYTICS_EVENTS } from "@flind/shared";
+import { useSettingsStore } from "@flind/ui/features/settings/settingsStore";
+import { toast } from "@flind/ui/primitives/toast";
+import { track } from "@flind/ui/shell/analytics";
 import {
   blobToDataUrl,
   DURATION_TOLERANCE_MS,
@@ -20,7 +20,7 @@ import {
   shouldOfferTrim,
   type TrimBounds,
   trimmedDurationMs,
-} from "@posthog/ui/utils/customSound";
+} from "@flind/ui/utils/customSound";
 import { useCallback, useEffect, useMemo, useReducer, useRef } from "react";
 
 interface CapturedClip {

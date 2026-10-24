@@ -1,4 +1,4 @@
-import { useHostTRPC } from "@posthog/host-router/react";
+import { useHostTRPC } from "@flind/host-router/react";
 import {
   Button,
   Dialog,
@@ -11,9 +11,9 @@ import {
 import {
   AuthTerminalPanel,
   type AuthTerminalStatus,
-} from "@posthog/ui/features/settings/components/AuthTerminalPanel";
-import { destroyTerminalSession } from "@posthog/ui/features/terminal/destroyShellTerminal";
-import { secureRandomString } from "@posthog/ui/utils/random";
+} from "@flind/ui/features/settings/components/AuthTerminalPanel";
+import { destroyTerminalSession } from "@flind/ui/features/terminal/destroyShellTerminal";
+import { secureRandomString } from "@flind/ui/utils/random";
 import { useQuery } from "@tanstack/react-query";
 import { type ReactElement, useCallback, useEffect, useState } from "react";
 

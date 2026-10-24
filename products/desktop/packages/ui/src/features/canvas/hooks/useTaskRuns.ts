@@ -1,5 +1,5 @@
-import type { TaskRun } from "@posthog/shared/domain-types";
-import { useAuthenticatedQuery } from "@posthog/ui/hooks/useAuthenticatedQuery";
+import type { TaskRun } from "@flind/shared/domain-types";
+import { useAuthenticatedQuery } from "@flind/ui/hooks/useAuthenticatedQuery";
 import { useCallback } from "react";
 
 const TASK_RUNS_POLL_INTERVAL_MS = 30_000;

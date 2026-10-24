@@ -1,4 +1,4 @@
-import type { WorkspaceMode } from "@posthog/shared";
+import type { WorkspaceMode } from "@flind/shared";
 import type { LocalWorkspaceMode } from "../../settings/settingsStore";
 
 export interface WorkspaceModePreferenceInput {

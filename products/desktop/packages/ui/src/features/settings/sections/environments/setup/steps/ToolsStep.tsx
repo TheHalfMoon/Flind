@@ -3,7 +3,7 @@ import {
   type EnvironmentSetupPlan,
   stepError,
   withToolToggled,
-} from "@posthog/core/settings/environmentSetup";
+} from "@flind/core/settings/environmentSetup";
 import {
   IMAGE_PRESET_TOOLS,
   IMAGE_TOOL_CATEGORIES,
@@ -11,7 +11,7 @@ import {
   isDirectlyInstallable,
   toolInstallMethod,
   toolsSizeMb,
-} from "@posthog/core/settings/imagePreset";
+} from "@flind/core/settings/imagePreset";
 import {
   Checkbox,
   Input,
@@ -21,7 +21,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@flind/quill";
-import { StepBody } from "@posthog/ui/features/settings/sections/environments/setup/StepBody";
+import { StepBody } from "@flind/ui/features/settings/sections/environments/setup/StepBody";
 import { useId, useState } from "react";
 
 const TOOLTIP_DELAY_MS = 400;

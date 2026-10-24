@@ -1,5 +1,5 @@
-import { CHANNELS_LAYOUT_FLAG } from "@posthog/shared";
-import { useFeatureFlag } from "@posthog/ui/features/feature-flags/useFeatureFlag";
+import { CHANNELS_LAYOUT_FLAG } from "@flind/shared";
+import { useFeatureFlag } from "@flind/ui/features/feature-flags/useFeatureFlag";
 
 /**
  * The single gate for the new channels layout — read this, not the raw flag.

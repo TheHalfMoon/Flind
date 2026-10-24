@@ -2,7 +2,7 @@ import type {
   McpGatewayServer,
   McpGatewayYourConnection,
   McpResolvedToolPolicy,
-} from "@posthog/api-client/posthog-client";
+} from "@flind/api-client/posthog-client";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import {
   canEditGatewayPolicyScope,

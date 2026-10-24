@@ -1,8 +1,8 @@
 import { ArrowRightIcon } from "@phosphor-icons/react";
-import { useActivityFilterStore } from "@posthog/ui/features/canvas/stores/activityFilterStore";
-import { useInboxReviewerScopeStore } from "@posthog/ui/features/inbox/stores/inboxReviewerScopeStore";
-import { useInboxSignalsFilterStore } from "@posthog/ui/features/inbox/stores/inboxSignalsFilterStore";
-import { navigateToInboxReports } from "@posthog/ui/router/navigationBridge";
+import { useActivityFilterStore } from "@flind/ui/features/canvas/stores/activityFilterStore";
+import { useInboxReviewerScopeStore } from "@flind/ui/features/inbox/stores/inboxReviewerScopeStore";
+import { useInboxSignalsFilterStore } from "@flind/ui/features/inbox/stores/inboxSignalsFilterStore";
+import { navigateToInboxReports } from "@flind/ui/router/navigationBridge";
 import type { ReactElement } from "react";
 import { ActivityRowSurface } from "./ActivityRowSurface";
 

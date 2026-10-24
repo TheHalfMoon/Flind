@@ -48,7 +48,7 @@ const PI_MODELS = vi.hoisted(() => [
   },
 ]);
 
-vi.mock("@posthog/ui/features/auth/store", () => ({
+vi.mock("@flind/ui/features/auth/store", () => ({
   useAuthStateValue: (
     selector: (state: {
       cloudRegion: string;
@@ -62,10 +62,10 @@ vi.mock("@posthog/ui/features/auth/store", () => ({
       status: "authenticated",
     }),
 }));
-vi.mock("@posthog/ui/features/feature-flags/useFeatureFlag", () => ({
+vi.mock("@flind/ui/features/feature-flags/useFeatureFlag", () => ({
   useFeatureFlag: () => true,
 }));
-vi.mock("@posthog/ui/features/settings/hooks/useTaskAgentDefaults", () => ({
+vi.mock("@flind/ui/features/settings/hooks/useTaskAgentDefaults", () => ({
   useTaskAgentDefaults: () => ({
     teamPreferences: {
       runtime: "acp",
@@ -81,10 +81,10 @@ vi.mock("@posthog/ui/features/settings/hooks/useTaskAgentDefaults", () => ({
     reset: vi.fn(),
   }),
 }));
-vi.mock("@posthog/ui/features/pi-sessions/usePiModelCatalog", () => ({
+vi.mock("@flind/ui/features/pi-sessions/usePiModelCatalog", () => ({
   usePiModelCatalog: () => ({ data: PI_MODELS, isPending: false }),
 }));
-vi.mock("@posthog/ui/features/task-detail/hooks/usePreviewConfig", () => ({
+vi.mock("@flind/ui/features/task-detail/hooks/usePreviewConfig", () => ({
   usePreviewConfig: (adapter: string) => {
     previewState.lastAdapter = adapter;
     const models =

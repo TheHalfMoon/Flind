@@ -1,6 +1,6 @@
-import type { SignalReport, Task } from "@posthog/shared/types";
-import type { ReportTaskData } from "@posthog/ui/features/inbox/hooks/useReportTasks";
-import { useReportChatPanelStore } from "@posthog/ui/features/inbox/stores/reportChatPanelStore";
+import type { SignalReport, Task } from "@flind/shared/types";
+import type { ReportTaskData } from "@flind/ui/features/inbox/hooks/useReportTasks";
+import { useReportChatPanelStore } from "@flind/ui/features/inbox/stores/reportChatPanelStore";
 import { act, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { beforeEach, describe, expect, it, vi } from "vitest";
@@ -41,8 +41,8 @@ const {
   fireAction: vi.fn(),
 }));
 
-vi.mock("@posthog/core/inbox/inboxQuery", async (importOriginal) => ({
-  ...(await importOriginal<typeof import("@posthog/core/inbox/inboxQuery")>()),
+vi.mock("@flind/core/inbox/inboxQuery", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@flind/core/inbox/inboxQuery")>()),
   updateInboxReportCaches,
   resolveInboxReportDetailCache,
 }));
@@ -56,39 +56,39 @@ vi.mock("@tanstack/react-query", async (importOriginal) => {
 });
 
 vi.mock(
-  "@posthog/ui/features/inbox/hooks/useReportTasks",
+  "@flind/ui/features/inbox/hooks/useReportTasks",
   async (importOriginal) => {
     const actual =
       await importOriginal<
-        typeof import("@posthog/ui/features/inbox/hooks/useReportTasks")
+        typeof import("@flind/ui/features/inbox/hooks/useReportTasks")
       >();
     return { ...actual, useReportTasks };
   },
 );
 
-vi.mock("@posthog/ui/features/inbox/hooks/useCreatePrReport", () => ({
+vi.mock("@flind/ui/features/inbox/hooks/useCreatePrReport", () => ({
   useCreatePrReport,
 }));
 
-vi.mock("@posthog/ui/features/inbox/hooks/useDiscussReport", () => ({
+vi.mock("@flind/ui/features/inbox/hooks/useDiscussReport", () => ({
   useDiscussReport,
 }));
 
-vi.mock("@posthog/ui/features/canvas/hooks/useTaskChannels", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useTaskChannels", () => ({
   useTaskChannels: () => ({
     generalChannel: { id: "general-channel" },
     isLoading: false,
   }),
 }));
 
-vi.mock("@posthog/ui/features/inbox/hooks/useInboxReportDismissAction", () => ({
+vi.mock("@flind/ui/features/inbox/hooks/useInboxReportDismissAction", () => ({
   useInboxReportDismissAction: () => ({
     dialog: null,
     openDialog: openDismissDialog,
   }),
 }));
 
-vi.mock("@posthog/ui/features/inbox/hooks/useInboxReportResolveAction", () => ({
+vi.mock("@flind/ui/features/inbox/hooks/useInboxReportResolveAction", () => ({
   useInboxReportResolveAction: () => ({
     dialog: null,
     isPending: false,
@@ -96,20 +96,20 @@ vi.mock("@posthog/ui/features/inbox/hooks/useInboxReportResolveAction", () => ({
   }),
 }));
 
-vi.mock("@posthog/ui/features/inbox/hooks/useInboxReports", () => ({
+vi.mock("@flind/ui/features/inbox/hooks/useInboxReports", () => ({
   useInboxReportArtefacts,
 }));
 
-vi.mock("@posthog/ui/features/inbox/hooks/useReportActionTracker", () => ({
+vi.mock("@flind/ui/features/inbox/hooks/useReportActionTracker", () => ({
   useReportActionTracker: () => fireAction,
 }));
 
-vi.mock("@posthog/ui/router/useOpenTask", () => ({
+vi.mock("@flind/ui/router/useOpenTask", () => ({
   openTaskInput,
   useOpenTask: () => openTask,
 }));
 
-vi.mock("@posthog/ui/shell/openExternal", () => ({
+vi.mock("@flind/ui/shell/openExternal", () => ({
   openExternalUrl,
 }));
 

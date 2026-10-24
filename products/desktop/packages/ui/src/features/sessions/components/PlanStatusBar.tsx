@@ -1,11 +1,11 @@
 import { CaretDown, CaretRight } from "@phosphor-icons/react";
-import { CHAT_CONTENT_MAX_WIDTH } from "@posthog/ui/features/sessions/constants";
-import type { Plan } from "@posthog/ui/features/sessions/types";
+import { CHAT_CONTENT_MAX_WIDTH } from "@flind/ui/features/sessions/constants";
+import type { Plan } from "@flind/ui/features/sessions/types";
 import {
   StepIcon,
   StepList,
   type StepStatus,
-} from "@posthog/ui/primitives/StepList";
+} from "@flind/ui/primitives/StepList";
 import { Box, Flex, Text } from "@radix-ui/themes";
 import { useMemo, useState } from "react";
 

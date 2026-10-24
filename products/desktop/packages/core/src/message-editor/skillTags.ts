@@ -1,4 +1,4 @@
-import { type UploadableSkillSource, unescapeXmlAttr } from "@posthog/shared";
+import { type UploadableSkillSource, unescapeXmlAttr } from "@flind/shared";
 
 const SKILL_TAG_REGEX = /<skill\b([^>]*?)\s*\/>/g;
 const XML_ATTR_REGEX = /(\w+)="([^"]*)"/g;

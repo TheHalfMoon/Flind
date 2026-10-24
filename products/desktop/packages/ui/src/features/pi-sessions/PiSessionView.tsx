@@ -3,23 +3,23 @@ import {
   isContentEmpty,
   textToContent,
   xmlToContent,
-} from "@posthog/core/message-editor/content";
+} from "@flind/core/message-editor/content";
 import {
   PI_EXTENSION_CONTROLLER,
   PI_SESSION_CONTROLLER,
-} from "@posthog/core/pi-runtime/identifiers";
-import type { PiExtensionController } from "@posthog/core/pi-runtime/piExtensionController";
+} from "@flind/core/pi-runtime/identifiers";
+import type { PiExtensionController } from "@flind/core/pi-runtime/piExtensionController";
 import {
   createEmptyPiExtensionTaskState,
   type PiExtensionTaskState,
-} from "@posthog/core/pi-runtime/piExtensionStore";
+} from "@flind/core/pi-runtime/piExtensionStore";
 import {
   PiOperationError,
   type PiSessionController,
-} from "@posthog/core/pi-runtime/piSessionController";
-import type { PiControllerSessionState } from "@posthog/core/pi-runtime/piSessionStore";
-import { toPiContextUsage } from "@posthog/core/pi-runtime/piSessionUsage";
-import { useService } from "@posthog/di/react";
+} from "@flind/core/pi-runtime/piSessionController";
+import type { PiControllerSessionState } from "@flind/core/pi-runtime/piSessionStore";
+import { toPiContextUsage } from "@flind/core/pi-runtime/piSessionUsage";
+import { useService } from "@flind/di/react";
 import {
   Button,
   Empty,
@@ -29,29 +29,29 @@ import {
   EmptyTitle,
   Skeleton,
 } from "@flind/quill";
-import { MCP_TOOL_PERMISSION_OPTIONS } from "@posthog/shared";
-import type { Task } from "@posthog/shared/domain-types";
-import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { useCurrentUser } from "@posthog/ui/features/auth/useCurrentUser";
-import { useUsageLimitStore } from "@posthog/ui/features/billing/usageLimitStore";
+import { MCP_TOOL_PERMISSION_OPTIONS } from "@flind/shared";
+import type { Task } from "@flind/shared/domain-types";
+import { useOptionalAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { useCurrentUser } from "@flind/ui/features/auth/useCurrentUser";
+import { useUsageLimitStore } from "@flind/ui/features/billing/usageLimitStore";
 import {
   spendStopMessage,
   useSpendStop,
-} from "@posthog/ui/features/billing/useSpendStop";
-import { PromptInput } from "@posthog/ui/features/message-editor/components/PromptInput";
-import { useDraftStore } from "@posthog/ui/features/message-editor/draftStore";
-import { PermissionSelector } from "@posthog/ui/features/permissions/PermissionSelector";
-import { CloudStreamDisconnectedBanner } from "@posthog/ui/features/sessions/components/CloudSessionLifecycle";
-import { ContextUsageIndicator } from "@posthog/ui/features/sessions/components/ContextUsageIndicator";
-import { ChatThread } from "@posthog/ui/features/sessions/components/chat-thread/ChatThread";
-import type { PromptRecallHandler } from "@posthog/ui/features/sessions/components/chat-thread/composerPromptRecall";
-import { CHAT_CONTENT_MAX_WIDTH } from "@posthog/ui/features/sessions/constants";
-import { useMessagingModeStore } from "@posthog/ui/features/sessions/messagingModeStore";
-import { useWorkspace } from "@posthog/ui/features/workspace/useWorkspace";
-import { useConnectivity } from "@posthog/ui/hooks/useConnectivity";
-import { toast } from "@posthog/ui/primitives/toast";
-import { TaskDetailSkeleton } from "@posthog/ui/router/routeSkeletons";
-import { logger } from "@posthog/ui/shell/logger";
+} from "@flind/ui/features/billing/useSpendStop";
+import { PromptInput } from "@flind/ui/features/message-editor/components/PromptInput";
+import { useDraftStore } from "@flind/ui/features/message-editor/draftStore";
+import { PermissionSelector } from "@flind/ui/features/permissions/PermissionSelector";
+import { CloudStreamDisconnectedBanner } from "@flind/ui/features/sessions/components/CloudSessionLifecycle";
+import { ContextUsageIndicator } from "@flind/ui/features/sessions/components/ContextUsageIndicator";
+import { ChatThread } from "@flind/ui/features/sessions/components/chat-thread/ChatThread";
+import type { PromptRecallHandler } from "@flind/ui/features/sessions/components/chat-thread/composerPromptRecall";
+import { CHAT_CONTENT_MAX_WIDTH } from "@flind/ui/features/sessions/constants";
+import { useMessagingModeStore } from "@flind/ui/features/sessions/messagingModeStore";
+import { useWorkspace } from "@flind/ui/features/workspace/useWorkspace";
+import { useConnectivity } from "@flind/ui/hooks/useConnectivity";
+import { toast } from "@flind/ui/primitives/toast";
+import { TaskDetailSkeleton } from "@flind/ui/router/routeSkeletons";
+import { logger } from "@flind/ui/shell/logger";
 import {
   type ReactElement,
   useCallback,

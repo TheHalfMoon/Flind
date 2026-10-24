@@ -1,6 +1,6 @@
-import { HostTRPCProvider } from "@posthog/host-router/react";
-import { ThemeWrapper } from "@posthog/ui/primitives/ThemeWrapper";
-import { WorkspaceClientProvider } from "@posthog/workspace-client/provider";
+import { HostTRPCProvider } from "@flind/host-router/react";
+import { ThemeWrapper } from "@flind/ui/primitives/ThemeWrapper";
+import { WorkspaceClientProvider } from "@flind/workspace-client/provider";
 import { QueryClientProvider } from "@tanstack/react-query";
 import type React from "react";
 import { HotkeysProvider } from "react-hotkeys-hook";
@@ -8,7 +8,7 @@ import { queryClient } from "./web-container";
 import { hostTrpcClient } from "./web-trpc";
 
 // Web transport wiring — the per-host counterpart of apps/code's Providers.tsx.
-// @posthog/ui consumes the HOST router context (useHostTRPCClient), so web needs
+// @flind/ui consumes the HOST router context (useHostTRPCClient), so web needs
 // HostTRPCProvider over the in-process client. No electron TrpcRouter context.
 //
 // It also mounts WorkspaceClientProvider with connection={null}: several

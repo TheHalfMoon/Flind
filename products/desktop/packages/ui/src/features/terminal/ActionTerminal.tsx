@@ -1,7 +1,7 @@
 import {
   getActionSessionId,
   useActionStore,
-} from "@posthog/ui/features/actions/actionStore";
+} from "@flind/ui/features/actions/actionStore";
 import { useCallback, useEffect, useMemo } from "react";
 import { Terminal } from "./Terminal";
 

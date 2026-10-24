@@ -1,10 +1,10 @@
-import { inboxReportKeys } from "@posthog/core/inbox/inboxQuery";
+import { inboxReportKeys } from "@flind/core/inbox/inboxQuery";
 import {
   type ReportChartData,
   type ReportChartPlan,
   shapeReportChartData,
-} from "@posthog/core/inbox/reportCharts";
-import { useAuthenticatedQuery } from "@posthog/ui/hooks/useAuthenticatedQuery";
+} from "@flind/core/inbox/reportCharts";
+import { useAuthenticatedQuery } from "@flind/ui/hooks/useAuthenticatedQuery";
 import type { UseQueryResult } from "@tanstack/react-query";
 
 /**

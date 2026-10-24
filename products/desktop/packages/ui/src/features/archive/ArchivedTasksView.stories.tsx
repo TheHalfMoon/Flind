@@ -1,9 +1,9 @@
-import type { ArchivedTask } from "@posthog/shared";
-import type { Task } from "@posthog/shared/domain-types";
+import type { ArchivedTask } from "@flind/shared";
+import type { Task } from "@flind/shared/domain-types";
 import {
   ArchivedTasksViewPresentation,
   type ArchivedTaskWithDetails,
-} from "@posthog/ui/features/archive/ArchivedTasksView";
+} from "@flind/ui/features/archive/ArchivedTasksView";
 import { Box } from "@radix-ui/themes";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 

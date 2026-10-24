@@ -1,8 +1,8 @@
 import { Button, cn } from "@flind/quill";
-import { LOOPS_FLAG } from "@posthog/shared";
-import { CHANNEL_SECTIONS } from "@posthog/ui/features/canvas/channelSections";
-import { ChannelPinnedMenu } from "@posthog/ui/features/canvas/components/ChannelPinnedMenu";
-import { useFeatureFlag } from "@posthog/ui/features/feature-flags/useFeatureFlag";
+import { LOOPS_FLAG } from "@flind/shared";
+import { CHANNEL_SECTIONS } from "@flind/ui/features/canvas/channelSections";
+import { ChannelPinnedMenu } from "@flind/ui/features/canvas/components/ChannelPinnedMenu";
+import { useFeatureFlag } from "@flind/ui/features/feature-flags/useFeatureFlag";
 import { Link, useRouterState } from "@tanstack/react-router";
 
 const TABS = CHANNEL_SECTIONS.map((s) => ({

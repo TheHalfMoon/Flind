@@ -1,6 +1,6 @@
-import { POSTHOG_NOTIFICATIONS } from "@posthog/core/sessions/acpNotifications";
-import { formatProcessKilledNotice } from "@posthog/core/sessions/processKilledNotice";
-import { pickThinkingActivity } from "@posthog/core/sessions/thinkingActivities";
+import { POSTHOG_NOTIFICATIONS } from "@flind/core/sessions/acpNotifications";
+import { formatProcessKilledNotice } from "@flind/core/sessions/processKilledNotice";
+import { pickThinkingActivity } from "@flind/core/sessions/thinkingActivities";
 import {
   ArrowDown,
   Brain,

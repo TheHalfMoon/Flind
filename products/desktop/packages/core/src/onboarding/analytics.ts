@@ -3,7 +3,7 @@ import type {
   OnboardingCompletedProperties,
   OnboardingStepCompletedProperties,
   OnboardingStepId,
-} from "@posthog/shared/analytics-events";
+} from "@flind/shared/analytics-events";
 
 export function durationSeconds(startedAtMs: number, nowMs: number): number {
   return Math.round((nowMs - startedAtMs) / 1000);

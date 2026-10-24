@@ -1,41 +1,41 @@
 import { ArrowRightIcon, MagnifyingGlassIcon } from "@phosphor-icons/react";
-import { UNTITLED_CANVAS_NAME } from "@posthog/core/canvas/canvasNaming";
-import { channelDisplayLabel } from "@posthog/core/canvas/channelName";
-import type { DashboardRecord } from "@posthog/core/canvas/dashboardSchemas";
+import { UNTITLED_CANVAS_NAME } from "@flind/core/canvas/canvasNaming";
+import { channelDisplayLabel } from "@flind/core/canvas/channelName";
+import type { DashboardRecord } from "@flind/core/canvas/dashboardSchemas";
 import {
   type FeedQueryToken,
   feedQueryTypeScope,
   type ParsedFeedQuery,
   parseFeedQuery,
   type TypeValue,
-} from "@posthog/core/tasks/feedQuery";
-import { singleLineTitle } from "@posthog/shared";
-import type { Task } from "@posthog/shared/domain-types";
-import { iconForTemplate } from "@posthog/ui/features/canvas/components/canvasTemplateIcon";
-import { useFeedQuerySuggestions } from "@posthog/ui/features/canvas/components/feedQuerySuggestions";
-import { applyFeedQuerySuggestion } from "@posthog/ui/features/canvas/components/feedQuerySuggestionUtils";
-import { useCanvasQueryResults } from "@posthog/ui/features/canvas/hooks/useCanvasQueryResults";
-import { useChannels } from "@posthog/ui/features/canvas/hooks/useChannels";
-import { useProjectTaskFeeds } from "@posthog/ui/features/canvas/hooks/useProjectTaskFeeds";
-import { useTaskFeedResults } from "@posthog/ui/features/canvas/hooks/useTaskFeedResults";
+} from "@flind/core/tasks/feedQuery";
+import { singleLineTitle } from "@flind/shared";
+import type { Task } from "@flind/shared/domain-types";
+import { iconForTemplate } from "@flind/ui/features/canvas/components/canvasTemplateIcon";
+import { useFeedQuerySuggestions } from "@flind/ui/features/canvas/components/feedQuerySuggestions";
+import { applyFeedQuerySuggestion } from "@flind/ui/features/canvas/components/feedQuerySuggestionUtils";
+import { useCanvasQueryResults } from "@flind/ui/features/canvas/hooks/useCanvasQueryResults";
+import { useChannels } from "@flind/ui/features/canvas/hooks/useChannels";
+import { useProjectTaskFeeds } from "@flind/ui/features/canvas/hooks/useProjectTaskFeeds";
+import { useTaskFeedResults } from "@flind/ui/features/canvas/hooks/useTaskFeedResults";
 import type {
   Command,
   CommandSection,
-} from "@posthog/ui/features/command/commandRow";
+} from "@flind/ui/features/command/commandRow";
 import {
   canvasRowParts,
   taskRowParts,
-} from "@posthog/ui/features/command/commandRowFacts";
-import { canvasHref } from "@posthog/ui/features/command/commandRowHref";
-import { commandRowMeta } from "@posthog/ui/features/command/commandRowMeta";
-import { TaskCommandIcon } from "@posthog/ui/features/command/TaskCommandIcon";
-import { closeSettings } from "@posthog/ui/features/settings/hooks/useOpenSettings";
-import { useDebouncedValue } from "@posthog/ui/primitives/hooks/useDebouncedValue";
+} from "@flind/ui/features/command/commandRowFacts";
+import { canvasHref } from "@flind/ui/features/command/commandRowHref";
+import { commandRowMeta } from "@flind/ui/features/command/commandRowMeta";
+import { TaskCommandIcon } from "@flind/ui/features/command/TaskCommandIcon";
+import { closeSettings } from "@flind/ui/features/settings/hooks/useOpenSettings";
+import { useDebouncedValue } from "@flind/ui/primitives/hooks/useDebouncedValue";
 import {
   navigateToChannelDashboard,
   navigateToFeed,
-} from "@posthog/ui/router/navigationBridge";
-import { openTask } from "@posthog/ui/router/useOpenTask";
+} from "@flind/ui/router/navigationBridge";
+import { openTask } from "@flind/ui/router/useOpenTask";
 import { useMemo } from "react";
 
 const FEED_QUERY_DEBOUNCE_MS = 300;

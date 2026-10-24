@@ -10,12 +10,12 @@
 import {
   type ActivityEvent,
   prRepository,
-} from "@posthog/core/canvas/activityEvents";
+} from "@flind/core/canvas/activityEvents";
 import type {
   ActivityRow,
   CommentThreadLike,
-} from "@posthog/core/canvas/activityTimeline";
-import type { ThreadMessageLike } from "@posthog/core/canvas/threadTimeline";
+} from "@flind/core/canvas/activityTimeline";
+import type { ThreadMessageLike } from "@flind/core/canvas/threadTimeline";
 
 /** The kinds that collapse. Every other kind names something the reader has to act on. */
 export type GroupableActivityEvent = Extract<

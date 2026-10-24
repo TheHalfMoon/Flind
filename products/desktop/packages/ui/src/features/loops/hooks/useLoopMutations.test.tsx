@@ -6,7 +6,7 @@ import { runLoopHogFlow } from "../loopHogFlowWrites";
 import { loopsKeys } from "./loopsKeys";
 import { useRunLoop } from "./useLoopMutations";
 
-vi.mock("@posthog/api-client/hogFlowLoops", () => ({
+vi.mock("@flind/api-client/hogFlowLoops", () => ({
   deleteHogFlow: vi.fn(),
 }));
 vi.mock("../loopHogFlowWrites", () => ({

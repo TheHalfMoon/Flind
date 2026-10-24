@@ -1,7 +1,7 @@
 import { type FileDiffMetadata, processFile } from "@pierre/diffs";
-import type { PrCommentThread } from "@posthog/core/code-review/types";
-import { isBinaryFile } from "@posthog/shared";
-import type { ChangedFile } from "@posthog/shared/domain-types";
+import type { PrCommentThread } from "@flind/core/code-review/types";
+import { isBinaryFile } from "@flind/shared";
+import type { ChangedFile } from "@flind/shared/domain-types";
 import { type ReactNode, useMemo } from "react";
 import { DeferredDiffPlaceholder, DiffFileHeader } from "../reviewShellParts";
 import type { DiffOptions } from "../types";

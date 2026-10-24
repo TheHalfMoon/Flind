@@ -1,5 +1,5 @@
-import type { ScoutEmissionReportLink } from "@posthog/api-client/posthog-client";
-import { useAuthenticatedQuery } from "@posthog/ui/hooks/useAuthenticatedQuery";
+import type { ScoutEmissionReportLink } from "@flind/api-client/posthog-client";
+import { useAuthenticatedQuery } from "@flind/ui/hooks/useAuthenticatedQuery";
 import { keepPreviousData } from "@tanstack/react-query";
 import { useMemo } from "react";
 import { useAuthStateValue } from "../../auth/store";

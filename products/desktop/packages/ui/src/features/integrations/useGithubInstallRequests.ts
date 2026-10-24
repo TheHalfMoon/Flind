@@ -1,6 +1,6 @@
-import { hasPendingInstallRequest } from "@posthog/core/integrations/installRequests";
-import { githubInstallRequestKeys } from "@posthog/core/integrations/repositoryKeys";
-import { useAuthenticatedQuery } from "@posthog/ui/hooks/useAuthenticatedQuery";
+import { hasPendingInstallRequest } from "@flind/core/integrations/installRequests";
+import { githubInstallRequestKeys } from "@flind/core/integrations/repositoryKeys";
+import { useAuthenticatedQuery } from "@flind/ui/hooks/useAuthenticatedQuery";
 
 export const GITHUB_INSTALL_REQUESTS_QUERY_KEY =
   githubInstallRequestKeys.list();

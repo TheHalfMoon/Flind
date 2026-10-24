@@ -15,7 +15,7 @@ import {
   ROOT_LOGGER,
   type RootLogger,
   type ScopedLogger,
-} from "@posthog/di/logger";
+} from "@flind/di/logger";
 import { inject, injectable, preDestroy } from "inversify";
 import type { McpRelayExecution, McpRelayService } from "./identifiers";
 

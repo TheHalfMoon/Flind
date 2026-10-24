@@ -1,5 +1,5 @@
-import { MAIN_WINDOW_SERVICE } from "@posthog/platform/main-window";
-import type { INotifier, NotifyOptions } from "@posthog/platform/notifier";
+import { MAIN_WINDOW_SERVICE } from "@flind/platform/main-window";
+import type { INotifier, NotifyOptions } from "@flind/platform/notifier";
 import { app, Notification } from "electron";
 import { inject, injectable } from "inversify";
 import type { ElectronMainWindow } from "./electron-main-window";

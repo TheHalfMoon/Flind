@@ -1,26 +1,26 @@
 import type {
   GitInteractionEffects,
   IGitWriteClient,
-} from "@posthog/core/git-interaction/gitInteractionService";
-import { resolveService } from "@posthog/di/container";
+} from "@flind/core/git-interaction/gitInteractionService";
+import { resolveService } from "@flind/di/container";
 import {
   HOST_TRPC_CLIENT,
   type HostTrpcClient,
-} from "@posthog/host-router/client";
+} from "@flind/host-router/client";
 import {
   ANALYTICS_EVENTS,
   buildPrOutput,
   mergePrUrls,
   promotePrUrl,
   readPrUrls,
-} from "@posthog/shared";
-import { getAuthenticatedClient } from "@posthog/ui/features/auth/authClientImperative";
-import { useOnboardingStore } from "@posthog/ui/features/onboarding/onboardingStore";
-import { useSessionStore } from "@posthog/ui/features/sessions/sessionStore";
-import { celebrate } from "@posthog/ui/primitives/confetti";
-import { track } from "@posthog/ui/shell/analytics";
-import { logger } from "@posthog/ui/shell/logger";
-import { openExternalUrl } from "@posthog/ui/shell/openExternal";
+} from "@flind/shared";
+import { getAuthenticatedClient } from "@flind/ui/features/auth/authClientImperative";
+import { useOnboardingStore } from "@flind/ui/features/onboarding/onboardingStore";
+import { useSessionStore } from "@flind/ui/features/sessions/sessionStore";
+import { celebrate } from "@flind/ui/primitives/confetti";
+import { track } from "@flind/ui/shell/analytics";
+import { logger } from "@flind/ui/shell/logger";
+import { openExternalUrl } from "@flind/ui/shell/openExternal";
 
 const log = logger.scope("git-interaction");
 

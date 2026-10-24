@@ -1,11 +1,11 @@
-import { buildChannelItems } from "@posthog/core/canvas/channelItems";
+import { buildChannelItems } from "@flind/core/canvas/channelItems";
 import type {
   Task,
   TaskChannel,
   TaskRun,
   UserBasic,
-} from "@posthog/shared/domain-types";
-import { TASK_CHANNELS_QUERY_KEY } from "@posthog/ui/features/canvas/hooks/useTaskChannels";
+} from "@flind/shared/domain-types";
+import { TASK_CHANNELS_QUERY_KEY } from "@flind/ui/features/canvas/hooks/useTaskChannels";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useQueryClient } from "@tanstack/react-query";
 import { ChannelFeedView } from "./ChannelFeedView";

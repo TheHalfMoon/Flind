@@ -1,11 +1,11 @@
-import { formatBulkArchiveWarning } from "@posthog/core/sidebar/selection";
+import { formatBulkArchiveWarning } from "@flind/core/sidebar/selection";
 import type {
   ContextMenuAction,
   ContextMenuItem,
   IContextMenu,
   ShowContextMenuOptions,
-} from "@posthog/platform/context-menu";
-import type { ConfirmOptions, IDialog } from "@posthog/platform/dialog";
+} from "@flind/platform/context-menu";
+import type { ConfirmOptions, IDialog } from "@flind/platform/dialog";
 import { describe, expect, it } from "vitest";
 import { ContextMenuService } from "./context-menu";
 import type { IContextMenuExternalApps } from "./identifiers";

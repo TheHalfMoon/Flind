@@ -1,6 +1,6 @@
-import { publicProcedure, router } from "@posthog/host-trpc/trpc";
-import type { AdditionalDirectoriesService } from "@posthog/workspace-server/services/additional-directories/additional-directories";
-import { ADDITIONAL_DIRECTORIES_SERVICE } from "@posthog/workspace-server/services/additional-directories/identifiers";
+import { publicProcedure, router } from "@flind/host-trpc/trpc";
+import type { AdditionalDirectoriesService } from "@flind/workspace-server/services/additional-directories/additional-directories";
+import { ADDITIONAL_DIRECTORIES_SERVICE } from "@flind/workspace-server/services/additional-directories/identifiers";
 import { z } from "zod";
 
 const pathInput = z.object({ path: z.string().min(1) });

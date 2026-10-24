@@ -1,4 +1,4 @@
-import type { Schemas } from "@posthog/api-client/generated";
+import type { Schemas } from "@flind/api-client/generated";
 import { describe, expect, it } from "vitest";
 import { summarizeNotificationDestinations } from "./loopDisplay";
 import {

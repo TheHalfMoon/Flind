@@ -6,19 +6,19 @@ import {
 import {
   REPORT_IMPLEMENTATION_LABELS,
   type ReportImplementationState,
-} from "@posthog/core/inbox/reportImplementation";
+} from "@flind/core/inbox/reportImplementation";
 import {
   deriveHeadline,
   humanizeReportTitle,
   parseConventionalCommitTitle,
   parsePrUrl,
-} from "@posthog/core/inbox/reportPresentation";
-import { dismissalReasonLabel } from "@posthog/shared/dismissalReasons";
-import type { SignalReport } from "@posthog/shared/types";
-import { ConventionalCommitScopeTag } from "@posthog/ui/features/inbox/components/ConventionalCommitScopeTag";
-import { InboxMetaSourceStack } from "@posthog/ui/features/inbox/components/InboxMetaSourceStack";
-import { SignalReportPriorityBadge } from "@posthog/ui/features/inbox/components/utils/SignalReportPriorityBadge";
-import { RelativeTimestamp } from "@posthog/ui/primitives/RelativeTimestamp";
+} from "@flind/core/inbox/reportPresentation";
+import { dismissalReasonLabel } from "@flind/shared/dismissalReasons";
+import type { SignalReport } from "@flind/shared/types";
+import { ConventionalCommitScopeTag } from "@flind/ui/features/inbox/components/ConventionalCommitScopeTag";
+import { InboxMetaSourceStack } from "@flind/ui/features/inbox/components/InboxMetaSourceStack";
+import { SignalReportPriorityBadge } from "@flind/ui/features/inbox/components/utils/SignalReportPriorityBadge";
+import { RelativeTimestamp } from "@flind/ui/primitives/RelativeTimestamp";
 import type { HTMLAttributes, ReactNode } from "react";
 
 export interface InboxReportRowViewProps {

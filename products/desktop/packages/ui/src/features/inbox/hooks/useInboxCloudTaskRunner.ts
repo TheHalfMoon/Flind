@@ -2,41 +2,41 @@ import { isSupportedReasoningEffort } from "@flind/agent/adapters/reasoning-effo
 import {
   REPORT_MODEL_RESOLVER,
   type ReportModelResolver,
-} from "@posthog/core/inbox/identifiers";
-import { inboxReportKeys } from "@posthog/core/inbox/inboxQuery";
+} from "@flind/core/inbox/identifiers";
+import { inboxReportKeys } from "@flind/core/inbox/inboxQuery";
 import {
   isUsageLimitResult,
   TASK_SERVICE,
   type TaskCreationInput,
   type TaskService,
-} from "@posthog/core/task-detail/taskService";
-import { useService } from "@posthog/di/react";
+} from "@flind/core/task-detail/taskService";
+import { useService } from "@flind/di/react";
 import {
   type Adapter,
   ANALYTICS_EVENTS,
   defaultEligibleModel,
   getCloudUrlFromRegion,
-} from "@posthog/shared";
+} from "@flind/shared";
 import type {
   InboxReportActionFailureCode,
   InboxReportActionSurface,
   InboxReportActionType,
-} from "@posthog/shared/analytics-events";
-import type { Task } from "@posthog/shared/domain-types";
-import { useAuthStateValue } from "@posthog/ui/features/auth/store";
-import { showOfflineToast } from "@posthog/ui/features/connectivity/connectivityToast";
-import { isSignalReportTaskCapError } from "@posthog/ui/features/inbox/hooks/inboxCloudTaskErrors";
-import { resolveDefaultModel } from "@posthog/ui/features/inbox/hooks/resolveDefaultModel";
-import { reportKeys } from "@posthog/ui/features/inbox/hooks/useInboxReports";
-import { useUserRepositoryIntegration } from "@posthog/ui/features/integrations/useIntegrations";
-import { toastError } from "@posthog/ui/features/notifications/errorDetails";
-import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
-import { useCreateTask } from "@posthog/ui/features/tasks/useTaskCrudMutations";
-import { useConnectivity } from "@posthog/ui/hooks/useConnectivity";
-import { toast } from "@posthog/ui/primitives/toast";
-import { openTask } from "@posthog/ui/router/useOpenTask";
-import { track } from "@posthog/ui/shell/analytics";
-import { logger } from "@posthog/ui/shell/logger";
+} from "@flind/shared/analytics-events";
+import type { Task } from "@flind/shared/domain-types";
+import { useAuthStateValue } from "@flind/ui/features/auth/store";
+import { showOfflineToast } from "@flind/ui/features/connectivity/connectivityToast";
+import { isSignalReportTaskCapError } from "@flind/ui/features/inbox/hooks/inboxCloudTaskErrors";
+import { resolveDefaultModel } from "@flind/ui/features/inbox/hooks/resolveDefaultModel";
+import { reportKeys } from "@flind/ui/features/inbox/hooks/useInboxReports";
+import { useUserRepositoryIntegration } from "@flind/ui/features/integrations/useIntegrations";
+import { toastError } from "@flind/ui/features/notifications/errorDetails";
+import { useSettingsStore } from "@flind/ui/features/settings/settingsStore";
+import { useCreateTask } from "@flind/ui/features/tasks/useTaskCrudMutations";
+import { useConnectivity } from "@flind/ui/hooks/useConnectivity";
+import { toast } from "@flind/ui/primitives/toast";
+import { openTask } from "@flind/ui/router/useOpenTask";
+import { track } from "@flind/ui/shell/analytics";
+import { logger } from "@flind/ui/shell/logger";
 import { useQueryClient } from "@tanstack/react-query";
 import { useCallback, useRef, useState } from "react";
 

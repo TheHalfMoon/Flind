@@ -1,4 +1,4 @@
-import { requestErrorStatus } from "@posthog/api-client/fetcher";
+import { requestErrorStatus } from "@flind/api-client/fetcher";
 import { readApiErrorBody } from "./apiErrorBody";
 
 export interface GithubConnectError {

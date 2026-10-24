@@ -15,10 +15,10 @@ import type {
   FlagRule,
   FlagValue,
   FlagVariant,
-} from "@posthog/api-client/flag-audience";
+} from "@flind/api-client/flag-audience";
 import { Card, CardContent, Text } from "@flind/quill";
-import { useEvidenceUrl } from "@posthog/ui/features/editor/components/EvidenceRefChip";
-import { openExternalUrl } from "@posthog/ui/shell/openExternal";
+import { useEvidenceUrl } from "@flind/ui/features/editor/components/EvidenceRefChip";
+import { openExternalUrl } from "@flind/ui/shell/openExternal";
 import type { ReactNode } from "react";
 
 const VARIANT_COLORS = [

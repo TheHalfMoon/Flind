@@ -8,7 +8,7 @@
 ## How the agent reaches sandboxes (no Docker image in the code repo)
 
 The artifact is the npm package `@flind/agent` (bin `agent-server`, `packages/agent/package.json:92-94`),
-built by tsup (bundles `@posthog/shared`, `@flind/git`, `@flind/enricher`; also vendors the Claude CLI binary
+built by tsup (bundles `@flind/shared`, `@flind/git`, `@flind/enricher`; also vendors the Claude CLI binary
 into `dist/claude-cli/`). CI auto-tags `agent-v*` on main pushes and publishes to npm; the sandbox base image in
 THIS repo (`products/tasks/backend/sandbox/images/Dockerfile.sandbox-base:109-115`) does
 `npm install @flind/agent@latest` at image build, and the workflow starts `./node_modules/.bin/agent-server --port 47821`.

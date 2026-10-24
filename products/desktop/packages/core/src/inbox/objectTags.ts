@@ -1,4 +1,4 @@
-import { unescapeXmlAttr } from "@posthog/shared";
+import { unescapeXmlAttr } from "@flind/shared";
 
 import {
   FALLBACK_OBJECT_KIND_DATA,

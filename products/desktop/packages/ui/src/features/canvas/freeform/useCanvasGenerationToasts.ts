@@ -1,19 +1,19 @@
 import {
   type CanvasBuildLifecycle,
   hasActiveCanvasBuild,
-} from "@posthog/core/canvas/canvasBuildSchemas";
-import { useServiceOptional } from "@posthog/di/react";
-import { useHostTRPC } from "@posthog/host-router/react";
+} from "@flind/core/canvas/canvasBuildSchemas";
+import { useServiceOptional } from "@flind/di/react";
+import { useHostTRPC } from "@flind/host-router/react";
 import {
   type CanvasTerminalStatus,
   hasCanvasGenerationStarted,
   isCanvasGenerating,
   resolveCanvasGenerationStatus,
-} from "@posthog/ui/features/canvas/freeform/canvasGenerationStatus";
-import { useCanvasGenerationTrackerStore } from "@posthog/ui/features/canvas/stores/canvasGenerationTrackerStore";
-import { NotificationBus } from "@posthog/ui/features/notifications/notifications";
-import { useSessionStore } from "@posthog/ui/features/sessions/sessionStore";
-import { taskDetailQuery } from "@posthog/ui/features/tasks/queries";
+} from "@flind/ui/features/canvas/freeform/canvasGenerationStatus";
+import { useCanvasGenerationTrackerStore } from "@flind/ui/features/canvas/stores/canvasGenerationTrackerStore";
+import { NotificationBus } from "@flind/ui/features/notifications/notifications";
+import { useSessionStore } from "@flind/ui/features/sessions/sessionStore";
+import { taskDetailQuery } from "@flind/ui/features/tasks/queries";
 import { useQueries, useQueryClient } from "@tanstack/react-query";
 import { useEffect, useMemo, useRef } from "react";
 

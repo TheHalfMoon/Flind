@@ -1,4 +1,4 @@
-import type { MentionActivityItem } from "@posthog/core/canvas/mentionActivity";
+import type { MentionActivityItem } from "@flind/core/canvas/mentionActivity";
 
 /**
  * Which channels have activity the viewer hasn't seen — the signal behind the

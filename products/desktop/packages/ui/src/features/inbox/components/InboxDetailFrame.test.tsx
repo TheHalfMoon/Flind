@@ -1,10 +1,10 @@
 import { FileTextIcon } from "@phosphor-icons/react";
-import type { SignalReport } from "@posthog/shared/types";
+import type { SignalReport } from "@flind/shared/types";
 import {
   ANONYMOUS_AUTH_STATE,
   useAuthStore,
-} from "@posthog/ui/features/auth/store";
-import { useInboxReportReadStore } from "@posthog/ui/features/inbox/stores/inboxReportReadStore";
+} from "@flind/ui/features/auth/store";
+import { useInboxReportReadStore } from "@flind/ui/features/inbox/stores/inboxReportReadStore";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { act, render, screen } from "@testing-library/react";
 import type { PropsWithChildren } from "react";
@@ -17,36 +17,36 @@ const readClient = vi.hoisted(() => ({
   ),
 }));
 
-vi.mock("@posthog/ui/features/auth/authClient", async (importOriginal) => ({
+vi.mock("@flind/ui/features/auth/authClient", async (importOriginal) => ({
   ...(await importOriginal<
-    typeof import("@posthog/ui/features/auth/authClient")
+    typeof import("@flind/ui/features/auth/authClient")
   >()),
   useOptionalAuthenticatedClient: () => readClient,
 }));
 
-vi.mock("@posthog/ui/features/auth/useCurrentUser", () => ({
+vi.mock("@flind/ui/features/auth/useCurrentUser", () => ({
   AUTH_SCOPED_QUERY_META: {},
   useCurrentUser: () => ({ data: { uuid: "reader-1" } }),
 }));
 
-vi.mock("@posthog/ui/features/inbox/components/ReportBreadcrumbs", () => ({
+vi.mock("@flind/ui/features/inbox/components/ReportBreadcrumbs", () => ({
   ReportBreadcrumbs: () => null,
 }));
 
-vi.mock("@posthog/ui/features/inbox/hooks/useInboxReportDismissAction", () => ({
+vi.mock("@flind/ui/features/inbox/hooks/useInboxReportDismissAction", () => ({
   useInboxReportDismissAction: () => ({
     actionButton: null,
     dialog: null,
   }),
 }));
 
-vi.mock("@posthog/ui/features/inbox/hooks/useInboxReports", () => ({
+vi.mock("@flind/ui/features/inbox/hooks/useInboxReports", () => ({
   useInboxReportSignals: () => ({ data: { report: null, signals: [] } }),
   useInboxReportArtefacts: () => ({ data: { results: [] } }),
 }));
 
 vi.mock(
-  "@posthog/ui/features/inbox/components/utils/SignalReportSummaryMarkdown",
+  "@flind/ui/features/inbox/components/utils/SignalReportSummaryMarkdown",
   () => ({ SignalReportSummaryMarkdown: () => null }),
 );
 

@@ -1,8 +1,8 @@
 import type { SessionConfigOption } from "@agentclientprotocol/sdk";
-import { useHostTRPCClient } from "@posthog/host-router/react";
-import { getCloudUrlFromRegion } from "@posthog/shared";
-import { useAuthStateValue } from "@posthog/ui/features/auth/store";
-import type { LoopSchemas } from "@posthog/ui/features/loops/loopSchemas";
+import { useHostTRPCClient } from "@flind/host-router/react";
+import { getCloudUrlFromRegion } from "@flind/shared";
+import { useAuthStateValue } from "@flind/ui/features/auth/store";
+import type { LoopSchemas } from "@flind/ui/features/loops/loopSchemas";
 import { useQuery } from "@tanstack/react-query";
 
 /**

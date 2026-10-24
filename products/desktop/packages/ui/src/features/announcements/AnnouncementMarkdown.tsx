@@ -1,5 +1,5 @@
-import { isPostHogCodeDeeplink } from "@posthog/shared";
-import { MarkdownRenderer } from "@posthog/ui/features/editor/components/MarkdownRenderer";
+import { isPostHogCodeDeeplink } from "@flind/shared";
+import { MarkdownRenderer } from "@flind/ui/features/editor/components/MarkdownRenderer";
 import { useMemo } from "react";
 import type { Components } from "react-markdown";
 import { useOpenAnnouncementCta } from "./announcementCta";

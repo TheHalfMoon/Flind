@@ -2,7 +2,7 @@ import {
   type BrowserTab,
   DEFAULT_TAB_HREF,
   type TabsSnapshot,
-} from "@posthog/shared";
+} from "@flind/shared";
 import { describe, expect, it } from "vitest";
 import type { IBrowserTabsRepository } from "../../db/repositories/browser-tabs-repository";
 import { BrowserTabsService } from "./service";

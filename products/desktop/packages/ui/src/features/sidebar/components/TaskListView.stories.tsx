@@ -1,6 +1,6 @@
-import type { TaskData } from "@posthog/core/sidebar/sidebarData.types";
-import { useArchivingTasksStore } from "@posthog/ui/features/sidebar/archivingTasksStore";
-import { useSidebarStore } from "@posthog/ui/features/sidebar/sidebarStore";
+import type { TaskData } from "@flind/core/sidebar/sidebarData.types";
+import { useArchivingTasksStore } from "@flind/ui/features/sidebar/archivingTasksStore";
+import { useSidebarStore } from "@flind/ui/features/sidebar/sidebarStore";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useEffect, useState } from "react";
 import { fn } from "storybook/test";

@@ -15,7 +15,7 @@ import {
   type SourceFilter,
   sameSources,
   WEB_SOURCE,
-} from "@posthog/core/canvas/channelItems";
+} from "@flind/core/canvas/channelItems";
 import {
   Button,
   cn,
@@ -31,12 +31,12 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@flind/quill";
-import { cnHeaderButton } from "@posthog/ui/features/canvas/components/channelHeaderButton";
-import { getOriginProductMeta } from "@posthog/ui/features/sidebar/components/items/TaskIcon";
+import { cnHeaderButton } from "@flind/ui/features/canvas/components/channelHeaderButton";
+import { getOriginProductMeta } from "@flind/ui/features/sidebar/components/items/TaskIcon";
 import {
   DOT_TONE_VAR,
   type DotTone,
-} from "@posthog/ui/features/sidebar/components/items/taskStatusVocabulary";
+} from "@flind/ui/features/sidebar/components/items/taskStatusVocabulary";
 
 interface Option<T extends string> {
   value: T;

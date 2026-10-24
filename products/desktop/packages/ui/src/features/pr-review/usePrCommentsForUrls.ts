@@ -1,5 +1,5 @@
-import { useHostTRPC } from "@posthog/host-router/react";
-import type { PrConversationComment } from "@posthog/shared";
+import { useHostTRPC } from "@flind/host-router/react";
+import type { PrConversationComment } from "@flind/shared";
 import { useQueries } from "@tanstack/react-query";
 
 type PrCommentsResult = {

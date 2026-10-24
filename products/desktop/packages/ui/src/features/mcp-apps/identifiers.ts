@@ -1,4 +1,4 @@
-import type { ToolViewProps } from "@posthog/ui/features/sessions/components/session-update/toolCallUtils";
+import type { ToolViewProps } from "@flind/ui/features/sessions/components/session-update/toolCallUtils";
 import type { ComponentType } from "react";
 
 export type McpAppHostComponent = ComponentType<

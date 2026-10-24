@@ -1,5 +1,5 @@
-import { makeAttachmentUri } from "@posthog/core/sessions/promptContent";
-import type { AcpMessage } from "@posthog/shared";
+import { makeAttachmentUri } from "@flind/core/sessions/promptContent";
+import type { AcpMessage } from "@flind/shared";
 import { describe, expect, it } from "vitest";
 import {
   buildConversationItems,

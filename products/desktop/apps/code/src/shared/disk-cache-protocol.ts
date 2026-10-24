@@ -1,4 +1,4 @@
-import { isPrivateHostname } from "@posthog/core/local-mcp/localMcpImport";
+import { isPrivateHostname } from "@flind/core/local-mcp/localMcpImport";
 
 export const DISK_CACHE_SCHEME = "posthog-cache";
 

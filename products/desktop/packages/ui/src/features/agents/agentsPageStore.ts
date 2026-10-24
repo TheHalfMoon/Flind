@@ -1,8 +1,8 @@
 import {
   SCOUT_DETAIL_TABS,
   type ScoutDetailTab,
-} from "@posthog/core/scouts/scoutDetailTabs";
-import { getRouterOrNull } from "@posthog/ui/router/routerRef";
+} from "@flind/core/scouts/scoutDetailTabs";
+import { getRouterOrNull } from "@flind/ui/router/routerRef";
 import { useRouterState } from "@tanstack/react-router";
 import { useMemo } from "react";
 

@@ -20,22 +20,22 @@ const {
 // Mock only the Web Audio seam; the pure trim logic (detectSilenceBounds,
 // shouldOfferTrim, resolveSaveClip, encodeWavDataUrl) stays real so this test
 // exercises the real wiring end to end.
-vi.mock("@posthog/ui/utils/customSound", async (importOriginal) => {
+vi.mock("@flind/ui/utils/customSound", async (importOriginal) => {
   const actual =
-    await importOriginal<typeof import("@posthog/ui/utils/customSound")>();
+    await importOriginal<typeof import("@flind/ui/utils/customSound")>();
   return { ...actual, decodeAudioClip, blobToDataUrl };
 });
 
-vi.mock("@posthog/ui/features/settings/settingsStore", () => ({
+vi.mock("@flind/ui/features/settings/settingsStore", () => ({
   useSettingsStore: (selector: (s: unknown) => unknown) =>
     selector({ addCustomSound, setCompletionSound }),
 }));
 
-vi.mock("@posthog/ui/primitives/toast", () => ({
+vi.mock("@flind/ui/primitives/toast", () => ({
   toast: { success: vi.fn(), error: vi.fn(), info: vi.fn() },
 }));
 
-vi.mock("@posthog/ui/shell/analytics", () => ({ track }));
+vi.mock("@flind/ui/shell/analytics", () => ({ track }));
 
 import { AddCustomSoundDialog } from "./AddCustomSoundDialog";
 

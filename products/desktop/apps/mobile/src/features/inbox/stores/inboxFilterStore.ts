@@ -1,10 +1,10 @@
-import { INBOX_PIPELINE_STATUSES } from "@posthog/core/inbox/reportFiltering";
-import type { SourceProduct } from "@posthog/shared";
+import { INBOX_PIPELINE_STATUSES } from "@flind/core/inbox/reportFiltering";
+import type { SourceProduct } from "@flind/shared";
 import type {
   SignalReportOrderingField,
   SignalReportPriority,
   SignalReportStatus,
-} from "@posthog/shared/domain-types";
+} from "@flind/shared/domain-types";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";

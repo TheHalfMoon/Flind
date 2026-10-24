@@ -1,5 +1,5 @@
-import type { NotificationTarget } from "@posthog/platform/notifications";
-import type { SettingsCategory } from "@posthog/ui/features/settings/types";
+import type { NotificationTarget } from "@flind/platform/notifications";
+import type { SettingsCategory } from "@flind/ui/features/settings/types";
 import {
   navigationSourceHref,
   reportNavigationState,

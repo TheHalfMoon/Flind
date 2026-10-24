@@ -1,5 +1,5 @@
-import { posthogToolMeta } from "@posthog/shared";
-import type { ConversationItem } from "@posthog/ui/features/sessions/components/buildConversationItems";
+import { posthogToolMeta } from "@flind/shared";
+import type { ConversationItem } from "@flind/ui/features/sessions/components/buildConversationItems";
 import { describe, expect, it } from "vitest";
 import { groupToolRuns } from "./groupToolRuns";
 

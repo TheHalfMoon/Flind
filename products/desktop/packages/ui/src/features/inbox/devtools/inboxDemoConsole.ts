@@ -1,15 +1,15 @@
-import { resolveService } from "@posthog/di/container";
+import { resolveService } from "@flind/di/container";
 import type {
   SignalReport,
   SignalReportArtefact,
   SignalReportArtefactsResponse,
   SignalReportsResponse,
-} from "@posthog/shared/domain-types";
-import { logger } from "@posthog/ui/shell/logger";
+} from "@flind/shared/domain-types";
+import { logger } from "@flind/ui/shell/logger";
 import {
   IMPERATIVE_QUERY_CLIENT,
   type ImperativeQueryClient,
-} from "@posthog/ui/shell/queryClient";
+} from "@flind/ui/shell/queryClient";
 
 function queryClientInstance(): ImperativeQueryClient {
   return resolveService<ImperativeQueryClient>(IMPERATIVE_QUERY_CLIENT);

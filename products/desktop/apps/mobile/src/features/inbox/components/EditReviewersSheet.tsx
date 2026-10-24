@@ -2,11 +2,11 @@ import { Text } from "@components/text";
 import {
   buildReviewerOptions,
   reviewerMatchesAvailable,
-} from "@posthog/core/inbox/artefacts";
+} from "@flind/core/inbox/artefacts";
 import type {
   AvailableSuggestedReviewer,
   SuggestedReviewer,
-} from "@posthog/shared/domain-types";
+} from "@flind/shared/domain-types";
 import { MagnifyingGlass } from "phosphor-react-native";
 import { useMemo, useState } from "react";
 import {

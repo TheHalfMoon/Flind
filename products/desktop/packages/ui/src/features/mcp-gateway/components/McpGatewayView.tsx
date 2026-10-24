@@ -1,19 +1,19 @@
-import { GatewayAddServer } from "@posthog/ui/features/mcp-gateway/components/parts/GatewayAddServer";
-import { GatewayAgentDetail } from "@posthog/ui/features/mcp-gateway/components/parts/GatewayAgentDetail";
-import { GatewayAuditLog } from "@posthog/ui/features/mcp-gateway/components/parts/GatewayAuditLog";
-import { GatewayMemberDetail } from "@posthog/ui/features/mcp-gateway/components/parts/GatewayMemberDetail";
-import { GatewayRail } from "@posthog/ui/features/mcp-gateway/components/parts/GatewayRail";
-import { GatewayServerDetail } from "@posthog/ui/features/mcp-gateway/components/parts/GatewayServerDetail";
-import { GatewayServersHome } from "@posthog/ui/features/mcp-gateway/components/parts/GatewayServersHome";
-import { GatewayTeamSettings } from "@posthog/ui/features/mcp-gateway/components/parts/GatewayTeamSettings";
-import { GatewayTeamView } from "@posthog/ui/features/mcp-gateway/components/parts/GatewayTeamView";
+import { GatewayAddServer } from "@flind/ui/features/mcp-gateway/components/parts/GatewayAddServer";
+import { GatewayAgentDetail } from "@flind/ui/features/mcp-gateway/components/parts/GatewayAgentDetail";
+import { GatewayAuditLog } from "@flind/ui/features/mcp-gateway/components/parts/GatewayAuditLog";
+import { GatewayMemberDetail } from "@flind/ui/features/mcp-gateway/components/parts/GatewayMemberDetail";
+import { GatewayRail } from "@flind/ui/features/mcp-gateway/components/parts/GatewayRail";
+import { GatewayServerDetail } from "@flind/ui/features/mcp-gateway/components/parts/GatewayServerDetail";
+import { GatewayServersHome } from "@flind/ui/features/mcp-gateway/components/parts/GatewayServersHome";
+import { GatewayTeamSettings } from "@flind/ui/features/mcp-gateway/components/parts/GatewayTeamSettings";
+import { GatewayTeamView } from "@flind/ui/features/mcp-gateway/components/parts/GatewayTeamView";
 import {
   type GatewayRoute,
   isRouteAllowed,
-} from "@posthog/ui/features/mcp-gateway/gatewayRoute";
-import { useGatewayConfig } from "@posthog/ui/features/mcp-gateway/hooks/useGatewayConfig";
-import { useGatewayServers } from "@posthog/ui/features/mcp-gateway/hooks/useGatewayServers";
-import { DotPatternBackground } from "@posthog/ui/primitives/DotPatternBackground";
+} from "@flind/ui/features/mcp-gateway/gatewayRoute";
+import { useGatewayConfig } from "@flind/ui/features/mcp-gateway/hooks/useGatewayConfig";
+import { useGatewayServers } from "@flind/ui/features/mcp-gateway/hooks/useGatewayServers";
+import { DotPatternBackground } from "@flind/ui/primitives/DotPatternBackground";
 import { useQueryClient } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 

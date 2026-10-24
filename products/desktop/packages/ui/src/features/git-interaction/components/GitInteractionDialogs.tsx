@@ -10,8 +10,8 @@ import {
 import {
   type DiffStats,
   formatFileCountLabel,
-} from "@posthog/core/git-interaction/diffStats";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
+} from "@flind/core/git-interaction/diffStats";
+import { Spinner } from "@flind/ui/primitives/Spinner";
 import { CheckIcon } from "@radix-ui/react-icons";
 import {
   Box,

@@ -140,7 +140,7 @@ export default defineConfig(({ mode }) => {
           input: {
             bootstrap: path.resolve(__dirname, "src/main/bootstrap.ts"),
             "workspace-server": require.resolve(
-              "@posthog/workspace-server/serve",
+              "@flind/workspace-server/serve",
             ),
           },
           output: {

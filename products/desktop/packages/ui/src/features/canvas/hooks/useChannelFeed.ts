@@ -1,5 +1,5 @@
-import type { Task } from "@posthog/shared/domain-types";
-import { useAuthenticatedQuery } from "@posthog/ui/hooks/useAuthenticatedQuery";
+import type { Task } from "@flind/shared/domain-types";
+import { useAuthenticatedQuery } from "@flind/ui/hooks/useAuthenticatedQuery";
 import { useMemo } from "react";
 import {
   SPACE_QUERY_GC_TIME_MS,

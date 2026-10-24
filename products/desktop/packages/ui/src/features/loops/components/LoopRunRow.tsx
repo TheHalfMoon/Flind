@@ -8,14 +8,14 @@ import {
   X,
 } from "@phosphor-icons/react";
 import { Button, cn } from "@flind/quill";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
-import type { LoopSchemas } from "@posthog/ui/features/loops/loopSchemas";
-import { StopCloudRunDialog } from "@posthog/ui/features/sessions/components/StopCloudRunDialog";
-import { Badge } from "@posthog/ui/primitives/Badge";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
-import { toast } from "@posthog/ui/primitives/toast";
-import { navigateToTaskDetail } from "@posthog/ui/router/navigationBridge";
-import { track } from "@posthog/ui/shell/analytics";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
+import type { LoopSchemas } from "@flind/ui/features/loops/loopSchemas";
+import { StopCloudRunDialog } from "@flind/ui/features/sessions/components/StopCloudRunDialog";
+import { Badge } from "@flind/ui/primitives/Badge";
+import { Spinner } from "@flind/ui/primitives/Spinner";
+import { toast } from "@flind/ui/primitives/toast";
+import { navigateToTaskDetail } from "@flind/ui/router/navigationBridge";
+import { track } from "@flind/ui/shell/analytics";
 import { type ReactNode, useState } from "react";
 
 function statusColor(

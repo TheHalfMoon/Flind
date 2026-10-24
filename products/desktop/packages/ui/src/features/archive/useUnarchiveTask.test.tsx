@@ -2,8 +2,8 @@ import type {
   ContextMenuOutcome,
   DeleteOutcome,
   RestoreOutcome,
-} from "@posthog/core/archive/archivedTasksController";
-import { WORKSPACE_QUERY_KEY } from "@posthog/ui/features/workspace/identifiers";
+} from "@flind/core/archive/archivedTasksController";
+import { WORKSPACE_QUERY_KEY } from "@flind/ui/features/workspace/identifiers";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { act, renderHook } from "@testing-library/react";
 import type { ReactNode } from "react";
@@ -19,7 +19,7 @@ const controller = vi.hoisted(() => ({
 
 const apiClient = vi.hoisted(() => ({ setTaskArchived: vi.fn() }));
 
-vi.mock("@posthog/di/react", () => ({
+vi.mock("@flind/di/react", () => ({
   useService: () => controller,
 }));
 
@@ -28,13 +28,13 @@ const archiveSync = vi.hoisted(() => ({
   retryServerUnarchive: vi.fn(),
 }));
 
-vi.mock("@posthog/ui/features/auth/authClient", () => ({
+vi.mock("@flind/ui/features/auth/authClient", () => ({
   useOptionalAuthenticatedClient: () => apiClient,
 }));
 
-vi.mock("@posthog/ui/features/archive/useServerArchiveSync", () => archiveSync);
+vi.mock("@flind/ui/features/archive/useServerArchiveSync", () => archiveSync);
 
-vi.mock("@posthog/host-router/react", () => ({
+vi.mock("@flind/host-router/react", () => ({
   useHostTRPC: () => ({
     archive: {
       pathFilter: () => ARCHIVE_FILTER,

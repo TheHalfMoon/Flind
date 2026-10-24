@@ -4,7 +4,7 @@ import {
   GitPullRequest,
   HardDrives,
 } from "@phosphor-icons/react";
-import type { ResolvedDiffSource } from "@posthog/core/code-review/resolveDiffSource";
+import type { ResolvedDiffSource } from "@flind/core/code-review/resolveDiffSource";
 import {
   Button,
   DropdownMenu,
@@ -12,7 +12,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@flind/quill";
-import { useDiffViewerStore } from "@posthog/ui/features/code-editor/diffViewerStore";
+import { useDiffViewerStore } from "@flind/ui/features/code-editor/diffViewerStore";
 
 interface DiffSourceSelectorProps {
   taskId: string;

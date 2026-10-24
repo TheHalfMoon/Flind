@@ -7,9 +7,9 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@flind/quill";
-import { CodeBlock } from "@posthog/ui/primitives/CodeBlock";
-import { openTaskInput } from "@posthog/ui/router/useOpenTask";
-import { formatCapturedLogs } from "@posthog/ui/shell/logCapture";
+import { CodeBlock } from "@flind/ui/primitives/CodeBlock";
+import { openTaskInput } from "@flind/ui/router/useOpenTask";
+import { formatCapturedLogs } from "@flind/ui/shell/logCapture";
 import { serializeError } from "./errorDetails";
 import { useErrorDetailsStore } from "./errorDetailsStore";
 

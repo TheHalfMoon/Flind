@@ -1,8 +1,8 @@
 import { Text } from "@components/text";
-import { isRestorableReport } from "@posthog/core/inbox/reportMembership";
-import { inboxStatusLabel } from "@posthog/core/inbox/reportPresentation";
-import { dismissalReasonLabel } from "@posthog/shared";
-import type { SignalReport } from "@posthog/shared/domain-types";
+import { isRestorableReport } from "@flind/core/inbox/reportMembership";
+import { inboxStatusLabel } from "@flind/core/inbox/reportPresentation";
+import { dismissalReasonLabel } from "@flind/shared";
+import type { SignalReport } from "@flind/shared/domain-types";
 import * as Haptics from "expo-haptics";
 import { ArrowCounterClockwise, Tray } from "phosphor-react-native";
 import { memo, useCallback, useEffect, useRef, useState } from "react";

@@ -5,8 +5,8 @@ import {
   isImageBuildInProgress,
   type SandboxCustomImage,
   type SandboxCustomImageStatus,
-} from "@posthog/shared/domain-types";
-import { imageFailureDetail } from "@posthog/ui/features/settings/sections/environments/imageBuildWatcher";
+} from "@flind/shared/domain-types";
+import { imageFailureDetail } from "@flind/ui/features/settings/sections/environments/imageBuildWatcher";
 
 /** The API's status values as words, so no underscore reaches the screen. */
 const STATUS_LABELS: Record<SandboxCustomImageStatus, string> = {

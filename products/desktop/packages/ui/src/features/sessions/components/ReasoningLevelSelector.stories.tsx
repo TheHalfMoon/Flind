@@ -2,11 +2,11 @@ import type { SessionConfigOption } from "@agentclientprotocol/sdk";
 import {
   subscriptionModelAccess,
   type WorkspaceModeForAccess,
-} from "@posthog/ui/features/settings/adapterSubscription";
+} from "@flind/ui/features/settings/adapterSubscription";
 import {
   type AgentAdapter,
   useSettingsStore,
-} from "@posthog/ui/features/settings/settingsStore";
+} from "@flind/ui/features/settings/settingsStore";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { type ReactElement, useState } from "react";
 import { within } from "storybook/test";

@@ -2,8 +2,8 @@ import type {
   AgentTurnFeedbackProperties,
   InboxTriageEndedProperties,
   InboxTriageStartedProperties,
-} from "@posthog/shared";
-import { ANALYTICS_EVENTS as SHARED_ANALYTICS_EVENTS } from "@posthog/shared";
+} from "@flind/shared";
+import { ANALYTICS_EVENTS as SHARED_ANALYTICS_EVENTS } from "@flind/shared";
 import { type PostHog, usePostHog } from "posthog-react-native";
 import { useEffect, useMemo } from "react";
 

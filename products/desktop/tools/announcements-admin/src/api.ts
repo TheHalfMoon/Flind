@@ -1,8 +1,8 @@
-import { ANNOUNCEMENTS_FLAG } from "@posthog/shared";
+import { ANNOUNCEMENTS_FLAG } from "@flind/shared";
 import {
   type AnnouncementsPayload,
   announcementsPayloadSchema,
-} from "@posthog/shared/announcements";
+} from "@flind/shared/announcements";
 import { FLIND_HOST, PROJECT_ID } from "./config";
 
 export interface FlagRecord {

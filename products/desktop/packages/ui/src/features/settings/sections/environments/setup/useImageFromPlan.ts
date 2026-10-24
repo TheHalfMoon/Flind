@@ -3,13 +3,13 @@ import {
   type EnvironmentSetupPlan,
   planImageInput,
   planSpecInput,
-} from "@posthog/core/settings/environmentSetup";
+} from "@flind/core/settings/environmentSetup";
 import {
   buildImageSpec,
   imageSpecToYaml,
-} from "@posthog/core/settings/imageSpec";
-import type { SandboxCustomImage } from "@posthog/shared/domain-types";
-import { useSandboxCustomImages } from "@posthog/ui/features/settings/sections/environments/useSandboxCustomImages";
+} from "@flind/core/settings/imageSpec";
+import type { SandboxCustomImage } from "@flind/shared/domain-types";
+import { useSandboxCustomImages } from "@flind/ui/features/settings/sections/environments/useSandboxCustomImages";
 
 export interface ImageFromPlan {
   /** Creates the image the plan describes, or null when it builds none. */

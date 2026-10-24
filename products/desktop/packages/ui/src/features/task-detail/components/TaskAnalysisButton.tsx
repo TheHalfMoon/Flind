@@ -2,9 +2,9 @@ import {
   ANALYTICS_EVENTS,
   isTerminalStatus,
   TASK_ANALYSIS_FLAG,
-} from "@posthog/shared";
-import type { Task } from "@posthog/shared/domain-types";
-import { toastError } from "@posthog/ui/features/notifications/errorDetails";
+} from "@flind/shared";
+import type { Task } from "@flind/shared/domain-types";
+import { toastError } from "@flind/ui/features/notifications/errorDetails";
 import { useAuthenticatedMutation } from "../../../hooks/useAuthenticatedMutation";
 import { track } from "../../../shell/analytics";
 import { useFeatureFlag } from "../../feature-flags/useFeatureFlag";

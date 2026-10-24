@@ -2,7 +2,7 @@ import { DropdownMenu, DropdownMenuContent } from "@flind/quill";
 import {
   FilterMenuTrigger,
   FilterRadioSubMenu,
-} from "@posthog/ui/primitives/FilterMenu";
+} from "@flind/ui/primitives/FilterMenu";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
 

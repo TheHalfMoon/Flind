@@ -1,49 +1,49 @@
-import { findGroupFolder } from "@posthog/core/sidebar/groupTasks";
+import { findGroupFolder } from "@flind/core/sidebar/groupTasks";
 import {
   computeOrderedVisibleTasks,
   computePriorTaskIds,
   formatArchiveResult,
   formatBulkResult,
-} from "@posthog/core/sidebar/selection";
-import { isTaskActivelyRunning } from "@posthog/core/sidebar/taskRunning";
-import { resolveBulkTaskContextMenuIntent } from "@posthog/core/tasks/contextMenuActions";
-import { useHostTRPCClient } from "@posthog/host-router/react";
-import type { Task, UserBasic } from "@posthog/shared/types";
+} from "@flind/core/sidebar/selection";
+import { isTaskActivelyRunning } from "@flind/core/sidebar/taskRunning";
+import { resolveBulkTaskContextMenuIntent } from "@flind/core/tasks/contextMenuActions";
+import { useHostTRPCClient } from "@flind/host-router/react";
+import type { Task, UserBasic } from "@flind/shared/types";
 import {
   archiveTasksImperative,
   useArchiveCacheKeys,
   useArchiveTask,
-} from "@posthog/ui/features/archive/useArchiveTask";
-import { useAuthStateValue } from "@posthog/ui/features/auth/store";
-import { useCurrentUser } from "@posthog/ui/features/auth/useCurrentUser";
-import { useCommandCenterStore } from "@posthog/ui/features/command-center/commandCenterStore";
-import { placeTaskInCommandCenter } from "@posthog/ui/features/command-center/placeTaskInCommandCenter";
-import { useExternalAppAction } from "@posthog/ui/features/external-apps/useExternalAppAction";
-import { useFolders } from "@posthog/ui/features/folders/useFolders";
-import { StopCloudRunDialog } from "@posthog/ui/features/sessions/components/StopCloudRunDialog";
-import { useArchivingTasksStore } from "@posthog/ui/features/sidebar/archivingTasksStore";
-import { withSidebarPeekHeld } from "@posthog/ui/features/sidebar/sidebarPeekStore";
-import { useSidebarStore } from "@posthog/ui/features/sidebar/sidebarStore";
+} from "@flind/ui/features/archive/useArchiveTask";
+import { useAuthStateValue } from "@flind/ui/features/auth/store";
+import { useCurrentUser } from "@flind/ui/features/auth/useCurrentUser";
+import { useCommandCenterStore } from "@flind/ui/features/command-center/commandCenterStore";
+import { placeTaskInCommandCenter } from "@flind/ui/features/command-center/placeTaskInCommandCenter";
+import { useExternalAppAction } from "@flind/ui/features/external-apps/useExternalAppAction";
+import { useFolders } from "@flind/ui/features/folders/useFolders";
+import { StopCloudRunDialog } from "@flind/ui/features/sessions/components/StopCloudRunDialog";
+import { useArchivingTasksStore } from "@flind/ui/features/sidebar/archivingTasksStore";
+import { withSidebarPeekHeld } from "@flind/ui/features/sidebar/sidebarPeekStore";
+import { useSidebarStore } from "@flind/ui/features/sidebar/sidebarStore";
 import {
   openSidebarTask,
   resolveSidebarTask,
-} from "@posthog/ui/features/sidebar/sidebarTaskInteractions";
-import { useTaskSelectionStore } from "@posthog/ui/features/sidebar/taskSelectionStore";
-import { useBulkArchiveConfirm } from "@posthog/ui/features/sidebar/useBulkArchiveConfirm";
-import { useClearSelectionOnEscape } from "@posthog/ui/features/sidebar/useClearSelectionOnEscape";
-import { useMarqueeSelection } from "@posthog/ui/features/sidebar/useMarqueeSelection";
-import { usePinnedTasks } from "@posthog/ui/features/sidebar/usePinnedTasks";
-import { useSidebarBulkActions } from "@posthog/ui/features/sidebar/useSidebarBulkActions";
-import { useSidebarData } from "@posthog/ui/features/sidebar/useSidebarData";
-import { HandoffTaskDialog } from "@posthog/ui/features/task-detail/components/HandoffTaskDialog";
-import { useTaskContextMenu } from "@posthog/ui/features/tasks/useTaskContextMenu";
-import { useRenameTask } from "@posthog/ui/features/tasks/useTaskMutations";
-import { useTasks } from "@posthog/ui/features/tasks/useTasks";
-import { useWorkspaces } from "@posthog/ui/features/workspace/useWorkspace";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
-import { toast } from "@posthog/ui/primitives/toast";
-import { useAppView } from "@posthog/ui/router/useAppView";
-import { logger } from "@posthog/ui/shell/logger";
+} from "@flind/ui/features/sidebar/sidebarTaskInteractions";
+import { useTaskSelectionStore } from "@flind/ui/features/sidebar/taskSelectionStore";
+import { useBulkArchiveConfirm } from "@flind/ui/features/sidebar/useBulkArchiveConfirm";
+import { useClearSelectionOnEscape } from "@flind/ui/features/sidebar/useClearSelectionOnEscape";
+import { useMarqueeSelection } from "@flind/ui/features/sidebar/useMarqueeSelection";
+import { usePinnedTasks } from "@flind/ui/features/sidebar/usePinnedTasks";
+import { useSidebarBulkActions } from "@flind/ui/features/sidebar/useSidebarBulkActions";
+import { useSidebarData } from "@flind/ui/features/sidebar/useSidebarData";
+import { HandoffTaskDialog } from "@flind/ui/features/task-detail/components/HandoffTaskDialog";
+import { useTaskContextMenu } from "@flind/ui/features/tasks/useTaskContextMenu";
+import { useRenameTask } from "@flind/ui/features/tasks/useTaskMutations";
+import { useTasks } from "@flind/ui/features/tasks/useTasks";
+import { useWorkspaces } from "@flind/ui/features/workspace/useWorkspace";
+import { Spinner } from "@flind/ui/primitives/Spinner";
+import { toast } from "@flind/ui/primitives/toast";
+import { useAppView } from "@flind/ui/router/useAppView";
+import { logger } from "@flind/ui/shell/logger";
 import { Box, Flex } from "@radix-ui/themes";
 import { useQueryClient } from "@tanstack/react-query";
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";

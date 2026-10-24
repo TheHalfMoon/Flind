@@ -1,11 +1,11 @@
 import { GearSix, Lifebuoy, SignOut } from "@phosphor-icons/react";
 import { Button } from "@flind/quill";
-import { useLogoutMutation } from "@posthog/ui/features/auth/useAuthMutations";
-import { useIsOrgAdmin } from "@posthog/ui/features/auth/useOrgRole";
-import { SHORTCUTS } from "@posthog/ui/features/command/keyboard-shortcuts";
-import { openSettingsDialog } from "@posthog/ui/features/settings/SettingsDialog";
-import { ProjectSwitcher } from "@posthog/ui/features/sidebar/components/ProjectSwitcher";
-import { FullScreenLayout } from "@posthog/ui/primitives/FullScreenLayout";
+import { useLogoutMutation } from "@flind/ui/features/auth/useAuthMutations";
+import { useIsOrgAdmin } from "@flind/ui/features/auth/useOrgRole";
+import { SHORTCUTS } from "@flind/ui/features/command/keyboard-shortcuts";
+import { openSettingsDialog } from "@flind/ui/features/settings/SettingsDialog";
+import { ProjectSwitcher } from "@flind/ui/features/sidebar/components/ProjectSwitcher";
+import { FullScreenLayout } from "@flind/ui/primitives/FullScreenLayout";
 import type { ReactNode } from "react";
 import { useHotkeys } from "react-hotkeys-hook";
 import { ConsentErrorContent } from "./ConsentErrorContent";

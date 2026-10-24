@@ -1,4 +1,4 @@
-import { toast } from "@posthog/ui/primitives/toast";
+import { toast } from "@flind/ui/primitives/toast";
 
 // API error messages routinely arrive as a string with a JSON payload embedded
 // in them (e.g. `Failed request: [400] {"detail":"..."}`). Pull that payload

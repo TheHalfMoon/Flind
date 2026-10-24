@@ -1,4 +1,4 @@
-import { ActionSelector } from "@posthog/ui/primitives/ActionSelector";
+import { ActionSelector } from "@flind/ui/primitives/ActionSelector";
 import { Link, Text } from "@radix-ui/themes";
 import {
   type BasePermissionProps,

@@ -1,7 +1,7 @@
 import type {
   McpGatewayServer,
   McpRecommendedServer,
-} from "@posthog/api-client/posthog-client";
+} from "@flind/api-client/posthog-client";
 import { Theme } from "@radix-ui/themes";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
@@ -16,7 +16,7 @@ const mocks = vi.hoisted(() => ({
   setAllEnabled: vi.fn(),
 }));
 
-vi.mock("@posthog/ui/features/mcp-gateway/hooks/useGatewayConfig", () => ({
+vi.mock("@flind/ui/features/mcp-gateway/hooks/useGatewayConfig", () => ({
   useGatewayConfig: () => ({
     allowCustomServers: true,
     allowMemberAgentAccess: true,
@@ -25,7 +25,7 @@ vi.mock("@posthog/ui/features/mcp-gateway/hooks/useGatewayConfig", () => ({
   }),
 }));
 
-vi.mock("@posthog/ui/features/mcp-gateway/hooks/useGatewayServers", () => ({
+vi.mock("@flind/ui/features/mcp-gateway/hooks/useGatewayServers", () => ({
   useGatewayServers: () => ({
     servers: mocks.servers,
     recommendedTemplates: mocks.recommendedTemplates,
@@ -36,7 +36,7 @@ vi.mock("@posthog/ui/features/mcp-gateway/hooks/useGatewayServers", () => ({
   }),
 }));
 
-vi.mock("@posthog/ui/features/mcp-servers/components/parts/icons", () => ({
+vi.mock("@flind/ui/features/mcp-servers/components/parts/icons", () => ({
   ServerIcon: () => <div aria-hidden="true" />,
 }));
 

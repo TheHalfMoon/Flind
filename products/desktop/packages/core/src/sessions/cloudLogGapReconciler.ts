@@ -1,4 +1,4 @@
-import type { StoredLogEntry } from "@posthog/shared";
+import type { StoredLogEntry } from "@flind/shared";
 import {
   type CloudLogGapDeficiency,
   type CloudLogGapReconcileRequest,

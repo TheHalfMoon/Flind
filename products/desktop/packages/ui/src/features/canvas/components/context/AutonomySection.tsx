@@ -1,6 +1,6 @@
-import type { AutonomyLevel } from "@posthog/core/canvas/contextDocument";
+import type { AutonomyLevel } from "@flind/core/canvas/contextDocument";
 import { Text } from "@flind/quill";
-import { SettingsSegmented } from "@posthog/ui/features/settings/components/SettingsSegmented";
+import { SettingsSegmented } from "@flind/ui/features/settings/components/SettingsSegmented";
 import { SectionHeader } from "./SectionHeader";
 
 const LEVELS: { value: AutonomyLevel; label: string; description: string }[] = [

@@ -1,13 +1,13 @@
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 import { DesktopAccessScreen } from "./DesktopAccessScreen";
 
 const { track } = vi.hoisted(() => ({ track: vi.fn() }));
-vi.mock("@posthog/ui/shell/analytics", () => ({ track }));
+vi.mock("@flind/ui/shell/analytics", () => ({ track }));
 const { openExternalUrl } = vi.hoisted(() => ({ openExternalUrl: vi.fn() }));
-vi.mock("@posthog/ui/shell/openExternal", () => ({ openExternalUrl }));
+vi.mock("@flind/ui/shell/openExternal", () => ({ openExternalUrl }));
 
 const orgProjectsMap = {
   "org-1": {

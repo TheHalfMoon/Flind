@@ -2,8 +2,8 @@ import {
   ROOT_LOGGER,
   type RootLogger,
   type ScopedLogger,
-} from "@posthog/di/logger";
-import { type ISpeech, SPEECH_SERVICE } from "@posthog/platform/speech";
+} from "@flind/di/logger";
+import { type ISpeech, SPEECH_SERVICE } from "@flind/platform/speech";
 import { inject, injectable } from "inversify";
 import { composeUtterance } from "./composeUtterance";
 import {

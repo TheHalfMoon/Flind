@@ -1,7 +1,7 @@
 import { Warning } from "@phosphor-icons/react";
-import { formatResetTime } from "@posthog/core/billing/usageDisplay";
-import type { UsageLimitContent } from "@posthog/core/billing/usageLimitContent";
-import { usageLimitContent } from "@posthog/core/billing/usageLimitContent";
+import { formatResetTime } from "@flind/core/billing/usageDisplay";
+import type { UsageLimitContent } from "@flind/core/billing/usageLimitContent";
+import { usageLimitContent } from "@flind/core/billing/usageLimitContent";
 import {
   AlertDialog,
   AlertDialogContent,
@@ -11,7 +11,7 @@ import {
   AlertDialogTitle,
   Button,
 } from "@flind/quill";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
 import { useEffect } from "react";
 import { track } from "../../shell/analytics";
 import { openExternalUrl } from "../../shell/openExternal";

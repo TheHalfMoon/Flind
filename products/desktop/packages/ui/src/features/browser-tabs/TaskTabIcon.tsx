@@ -1,9 +1,9 @@
 import { CodeIcon } from "@phosphor-icons/react";
-import type { Task } from "@posthog/shared/domain-types";
-import { useChannelTaskData } from "@posthog/ui/features/canvas/hooks/useChannelTaskData";
-import { TaskIcon } from "@posthog/ui/features/sidebar/components/items/TaskIcon";
-import { useTaskPrStatus } from "@posthog/ui/features/sidebar/useTaskPrStatus";
-import { useWorkspace } from "@posthog/ui/features/workspace/useWorkspace";
+import type { Task } from "@flind/shared/domain-types";
+import { useChannelTaskData } from "@flind/ui/features/canvas/hooks/useChannelTaskData";
+import { TaskIcon } from "@flind/ui/features/sidebar/components/items/TaskIcon";
+import { useTaskPrStatus } from "@flind/ui/features/sidebar/useTaskPrStatus";
+import { useWorkspace } from "@flind/ui/features/workspace/useWorkspace";
 
 /**
  * The same status icon the Channels sidebar shows for a task (cloud run status,

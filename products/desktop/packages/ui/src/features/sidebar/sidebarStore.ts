@@ -8,10 +8,10 @@ import {
   FIRST_PARTY_CLIENT_SOURCES,
   migrateLegacySources,
   migrateSourceFilter,
-} from "@posthog/core/canvas/channelItems";
-import { ALL_WORKSPACE_MODES } from "@posthog/core/sidebar/buildSidebarData";
-import type { WorkspaceMode } from "@posthog/shared";
-import type { PreferredWorkSectionHeights } from "@posthog/ui/features/canvas/workSectionLayout";
+} from "@flind/core/canvas/channelItems";
+import { ALL_WORKSPACE_MODES } from "@flind/core/sidebar/buildSidebarData";
+import type { WorkspaceMode } from "@flind/shared";
+import type { PreferredWorkSectionHeights } from "@flind/ui/features/canvas/workSectionLayout";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { SIDEBAR_MIN_WIDTH } from "./constants";

@@ -1,11 +1,11 @@
-import type { UsageOutput } from "@posthog/core/usage/schemas";
+import type { UsageOutput } from "@flind/core/usage/schemas";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 const refresh = vi.fn();
 const getLatest = vi.fn();
 const track = vi.fn();
 
-vi.mock("@posthog/di/container", () => ({
+vi.mock("@flind/di/container", () => ({
   resolveService: () => ({
     usageMonitor: {
       refresh: { mutate: () => refresh() },
@@ -14,11 +14,11 @@ vi.mock("@posthog/di/container", () => ({
   }),
 }));
 
-vi.mock("@posthog/ui/shell/analytics", () => ({
+vi.mock("@flind/ui/shell/analytics", () => ({
   track: (...args: unknown[]) => track(...args),
 }));
 
-vi.mock("@posthog/ui/shell/logger", () => ({
+vi.mock("@flind/ui/shell/logger", () => ({
   logger: {
     scope: () => ({
       info: () => {},
@@ -29,7 +29,7 @@ vi.mock("@posthog/ui/shell/logger", () => ({
   },
 }));
 
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
 import { assertCloudUsageAvailable } from "./preflightCloudUsage";
 import { useUsageLimitStore } from "./usageLimitStore";
 

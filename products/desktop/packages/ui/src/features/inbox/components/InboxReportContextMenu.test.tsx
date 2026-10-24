@@ -1,9 +1,9 @@
-import type { SignalReport } from "@posthog/shared/types";
+import type { SignalReport } from "@flind/shared/types";
 import {
   ANONYMOUS_AUTH_STATE,
   useAuthStore,
-} from "@posthog/ui/features/auth/store";
-import { useInboxReportReadStore } from "@posthog/ui/features/inbox/stores/inboxReportReadStore";
+} from "@flind/ui/features/auth/store";
+import { useInboxReportReadStore } from "@flind/ui/features/inbox/stores/inboxReportReadStore";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
@@ -36,19 +36,19 @@ const readClient = vi.hoisted(() => ({
   ),
 }));
 
-vi.mock("@posthog/ui/features/auth/authClient", async (importOriginal) => ({
+vi.mock("@flind/ui/features/auth/authClient", async (importOriginal) => ({
   ...(await importOriginal<
-    typeof import("@posthog/ui/features/auth/authClient")
+    typeof import("@flind/ui/features/auth/authClient")
   >()),
   useOptionalAuthenticatedClient: () => readClient,
 }));
 
-vi.mock("@posthog/ui/features/auth/useCurrentUser", () => ({
+vi.mock("@flind/ui/features/auth/useCurrentUser", () => ({
   AUTH_SCOPED_QUERY_META: {},
   useCurrentUser: () => ({ data: { uuid: mocks.readerUuid } }),
 }));
 
-vi.mock("@posthog/ui/features/inbox/hooks/useInboxReportResolveAction", () => ({
+vi.mock("@flind/ui/features/inbox/hooks/useInboxReportResolveAction", () => ({
   useInboxReportResolveAction: () => {
     mocks.actionHooksMounted += 1;
     return {
@@ -60,7 +60,7 @@ vi.mock("@posthog/ui/features/inbox/hooks/useInboxReportResolveAction", () => ({
   },
 }));
 
-vi.mock("@posthog/ui/features/inbox/hooks/useInboxReportDismissAction", () => ({
+vi.mock("@flind/ui/features/inbox/hooks/useInboxReportDismissAction", () => ({
   useInboxReportDismissAction: () => ({
     actionButton: null,
     dialog: null,
@@ -69,14 +69,14 @@ vi.mock("@posthog/ui/features/inbox/hooks/useInboxReportDismissAction", () => ({
   }),
 }));
 
-vi.mock("@posthog/ui/features/inbox/hooks/useInboxRestoreReport", () => ({
+vi.mock("@flind/ui/features/inbox/hooks/useInboxRestoreReport", () => ({
   useInboxRestoreReport: () => ({
     isPending: false,
     mutate: mocks.restore,
   }),
 }));
 
-vi.mock("@posthog/ui/features/inbox/hooks/useCreatePrReport", () => ({
+vi.mock("@flind/ui/features/inbox/hooks/useCreatePrReport", () => ({
   useCreatePrReport: (options: { surface?: string; reportId: string }) => {
     mocks.createPrOptions = options;
     return {
@@ -86,7 +86,7 @@ vi.mock("@posthog/ui/features/inbox/hooks/useCreatePrReport", () => ({
   },
 }));
 
-vi.mock("@posthog/ui/features/inbox/hooks/useReportTasks", () => ({
+vi.mock("@flind/ui/features/inbox/hooks/useReportTasks", () => ({
   useReportTasks: () => ({
     data: mocks.reportTasks,
     isLoading: false,
@@ -97,22 +97,22 @@ vi.mock("@posthog/ui/features/inbox/hooks/useReportTasks", () => ({
   ) => tasks?.find((entry) => entry.purpose === "implementation")?.task ?? null,
 }));
 
-vi.mock("@posthog/ui/features/inbox/hooks/useInboxReports", () => ({
+vi.mock("@flind/ui/features/inbox/hooks/useInboxReports", () => ({
   useInboxReportArtefacts: () => ({ data: { results: [] } }),
 }));
 
-vi.mock("@posthog/ui/features/inbox/hooks/useReportActionTracker", () => ({
+vi.mock("@flind/ui/features/inbox/hooks/useReportActionTracker", () => ({
   useReportActionTracker: (_report: unknown, surface?: string) => {
     mocks.trackerSurface = surface;
     return mocks.trackAction;
   },
 }));
 
-vi.mock("@posthog/ui/features/inbox/components/ReviewerSearchList", () => ({
+vi.mock("@flind/ui/features/inbox/components/ReviewerSearchList", () => ({
   ReviewerSearchList: () => <div>Reviewer picker</div>,
 }));
 
-vi.mock("@posthog/ui/features/inbox/utils/copyInboxReportLink", () => ({
+vi.mock("@flind/ui/features/inbox/utils/copyInboxReportLink", () => ({
   copyInboxReportLink: mocks.copyLink,
 }));
 

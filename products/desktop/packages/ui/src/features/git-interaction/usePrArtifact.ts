@@ -2,10 +2,10 @@ import type { Icon } from "@phosphor-icons/react";
 import {
   getPrVisualConfig,
   parsePrNumber,
-} from "@posthog/core/git-interaction/prStatus";
-import { getPrVisualIcon } from "@posthog/ui/features/git-interaction/prIcon";
-import { usePrDetails } from "@posthog/ui/features/git-interaction/usePrDetails";
-import { parseHttpsUrl } from "@posthog/ui/utils/posthogLinks";
+} from "@flind/core/git-interaction/prStatus";
+import { getPrVisualIcon } from "@flind/ui/features/git-interaction/prIcon";
+import { usePrDetails } from "@flind/ui/features/git-interaction/usePrDetails";
+import { parseHttpsUrl } from "@flind/ui/utils/posthogLinks";
 
 export function usePrArtifact(url: string | null): {
   safeUrl: string | null;

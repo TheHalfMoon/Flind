@@ -1,4 +1,4 @@
-import type { INotifier, NotifyOptions } from "@posthog/platform/notifier";
+import type { INotifier, NotifyOptions } from "@flind/platform/notifier";
 import { describe, expect, it, vi } from "vitest";
 import { NotificationService } from "./notification";
 

@@ -1,8 +1,8 @@
-import type { ScoutConfig } from "@posthog/api-client/posthog-client";
+import type { ScoutConfig } from "@flind/api-client/posthog-client";
 import type {
   ScoutCreatorIndex,
   ScoutRollup,
-} from "@posthog/core/scouts/scoutPresentation";
+} from "@flind/core/scouts/scoutPresentation";
 import {
   Table,
   TableBody,
@@ -11,7 +11,7 @@ import {
   TableHeader,
   TableRow,
 } from "@flind/quill";
-import { useMinuteNow } from "@posthog/ui/hooks/useMinuteNow";
+import { useMinuteNow } from "@flind/ui/hooks/useMinuteNow";
 import { useVirtualizer } from "@tanstack/react-virtual";
 import { useRef } from "react";
 import type { ScoutConfigUpdate } from "../hooks/useScoutConfigMutations";

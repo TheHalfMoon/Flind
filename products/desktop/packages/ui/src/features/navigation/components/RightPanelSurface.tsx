@@ -2,7 +2,7 @@ import {
   type PanelGeometry,
   PUSH_MAX_CSS,
   ROW_CEILING_CSS,
-} from "@posthog/ui/features/navigation/rightPanelGeometry";
+} from "@flind/ui/features/navigation/rightPanelGeometry";
 import type { ReactNode, RefObject } from "react";
 
 /** How long the panel takes to slide in, widen, or go away. */

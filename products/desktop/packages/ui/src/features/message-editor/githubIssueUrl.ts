@@ -1,1 +1,1 @@
-export { parseGithubIssueUrl } from "@posthog/core/message-editor/githubIssueUrl";
+export { parseGithubIssueUrl } from "@flind/core/message-editor/githubIssueUrl";

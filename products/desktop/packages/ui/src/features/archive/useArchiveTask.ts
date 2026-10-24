@@ -1,4 +1,4 @@
-import type { Schemas } from "@posthog/api-client";
+import type { Schemas } from "@flind/api-client";
 import {
   type ArchiveCacheWriter,
   type ArchiveOrchestrationDeps,
@@ -6,30 +6,30 @@ import {
   archiveTask,
   archiveTasks,
   shouldNavigateAwayForBulkArchive,
-} from "@posthog/core/archive/archiveOrchestration";
+} from "@flind/core/archive/archiveOrchestration";
 import {
   SESSION_SERVICE,
   type SessionService,
-} from "@posthog/core/sessions/sessionService";
-import { sessionStoreSetters } from "@posthog/core/sessions/sessionStore";
-import { resolveService } from "@posthog/di/container";
+} from "@flind/core/sessions/sessionService";
+import { sessionStoreSetters } from "@flind/core/sessions/sessionStore";
+import { resolveService } from "@flind/di/container";
 import {
   HOST_TRPC_CLIENT,
   type HostTrpcClient,
-} from "@posthog/host-router/client";
-import { useHostTRPC } from "@posthog/host-router/react";
-import type { Task } from "@posthog/shared/domain-types";
-import { useReviewViewedStore } from "@posthog/ui/features/code-review/reviewViewedStore";
-import { useCommandCenterStore } from "@posthog/ui/features/command-center/commandCenterStore";
-import { useFocusStore } from "@posthog/ui/features/focus/focusStore";
-import { useArchivingTasksStore } from "@posthog/ui/features/sidebar/archivingTasksStore";
-import { pinnedTasksApi } from "@posthog/ui/features/sidebar/taskMetaApi";
-import { taskKeys } from "@posthog/ui/features/tasks/taskKeys";
-import { destroyTaskTerminals } from "@posthog/ui/features/terminal/destroyTaskTerminals";
-import { toast } from "@posthog/ui/primitives/toast";
-import { getAppViewSnapshot } from "@posthog/ui/router/useAppView";
-import { openTaskInput } from "@posthog/ui/router/useOpenTask";
-import { logger } from "@posthog/ui/shell/logger";
+} from "@flind/host-router/client";
+import { useHostTRPC } from "@flind/host-router/react";
+import type { Task } from "@flind/shared/domain-types";
+import { useReviewViewedStore } from "@flind/ui/features/code-review/reviewViewedStore";
+import { useCommandCenterStore } from "@flind/ui/features/command-center/commandCenterStore";
+import { useFocusStore } from "@flind/ui/features/focus/focusStore";
+import { useArchivingTasksStore } from "@flind/ui/features/sidebar/archivingTasksStore";
+import { pinnedTasksApi } from "@flind/ui/features/sidebar/taskMetaApi";
+import { taskKeys } from "@flind/ui/features/tasks/taskKeys";
+import { destroyTaskTerminals } from "@flind/ui/features/terminal/destroyTaskTerminals";
+import { toast } from "@flind/ui/primitives/toast";
+import { getAppViewSnapshot } from "@flind/ui/router/useAppView";
+import { openTaskInput } from "@flind/ui/router/useOpenTask";
+import { logger } from "@flind/ui/shell/logger";
 import { type QueryClient, useQueryClient } from "@tanstack/react-query";
 import { useMemo } from "react";
 import { undoArchive } from "./undoArchive";

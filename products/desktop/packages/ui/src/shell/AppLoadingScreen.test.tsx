@@ -3,11 +3,11 @@ import { act, render, screen } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { AppLoadingScreen } from "./AppLoadingScreen";
 
-vi.mock("@posthog/ui/shell/openExternal", () => ({
+vi.mock("@flind/ui/shell/openExternal", () => ({
   openExternalUrl: vi.fn(),
 }));
 
-import { openExternalUrl } from "@posthog/ui/shell/openExternal";
+import { openExternalUrl } from "@flind/ui/shell/openExternal";
 
 const STALL_TIMEOUT_MS = 30_000;
 

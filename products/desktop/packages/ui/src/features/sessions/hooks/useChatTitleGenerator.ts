@@ -1,33 +1,33 @@
-import type { Schemas } from "@posthog/api-client";
+import type { Schemas } from "@flind/api-client";
 import {
   canApplyTitleFromPrompts,
   decideTitleGeneration,
   formatPromptsForTitleInput,
   isAutoTitleLocked,
   selectPromptsForTitle,
-} from "@posthog/core/sessions/chatTitle";
-import { extractUserPromptsFromEvents } from "@posthog/core/sessions/sessionEvents";
-import type { SessionService } from "@posthog/core/sessions/sessionService";
-import { SESSION_SERVICE } from "@posthog/core/sessions/sessionService";
-import { TITLE_GENERATOR_SERVICE } from "@posthog/core/sessions/titleGeneratorIdentifiers";
-import type { TitleGeneratorService } from "@posthog/core/sessions/titleGeneratorService";
-import { useService } from "@posthog/di/react";
-import type { Task } from "@posthog/shared/domain-types";
-import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { useAuthStateValue } from "@posthog/ui/features/auth/store";
-import { useCurrentUser } from "@posthog/ui/features/auth/useCurrentUser";
-import { countUserPrompts } from "@posthog/ui/features/sessions/hooks/promptCount";
+} from "@flind/core/sessions/chatTitle";
+import { extractUserPromptsFromEvents } from "@flind/core/sessions/sessionEvents";
+import type { SessionService } from "@flind/core/sessions/sessionService";
+import { SESSION_SERVICE } from "@flind/core/sessions/sessionService";
+import { TITLE_GENERATOR_SERVICE } from "@flind/core/sessions/titleGeneratorIdentifiers";
+import type { TitleGeneratorService } from "@flind/core/sessions/titleGeneratorService";
+import { useService } from "@flind/di/react";
+import type { Task } from "@flind/shared/domain-types";
+import { useOptionalAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { useAuthStateValue } from "@flind/ui/features/auth/store";
+import { useCurrentUser } from "@flind/ui/features/auth/useCurrentUser";
+import { countUserPrompts } from "@flind/ui/features/sessions/hooks/promptCount";
 import {
   sessionStoreSetters,
   useSessionStore,
-} from "@posthog/ui/features/sessions/sessionStore";
+} from "@flind/ui/features/sessions/sessionStore";
 import {
   type TitleGenerationEntry,
   titleGenerationStoreApi,
-} from "@posthog/ui/features/sessions/titleGenerationStore";
-import { taskKeys } from "@posthog/ui/features/tasks/taskKeys";
-import { logger } from "@posthog/ui/shell/logger";
-import { titleAttachmentStoreApi } from "@posthog/ui/shell/titleAttachmentStore";
+} from "@flind/ui/features/sessions/titleGenerationStore";
+import { taskKeys } from "@flind/ui/features/tasks/taskKeys";
+import { logger } from "@flind/ui/shell/logger";
+import { titleAttachmentStoreApi } from "@flind/ui/shell/titleAttachmentStore";
 import { type QueryClient, useQueryClient } from "@tanstack/react-query";
 import { useEffect } from "react";
 

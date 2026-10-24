@@ -1,6 +1,6 @@
-import type { Integration } from "@posthog/core/integrations/selectors";
-import { getSlackIntegrationLabel } from "@posthog/core/settings/slackNotificationTarget";
-import { SettingsOptionSelect } from "@posthog/ui/features/settings/SettingsOptionSelect";
+import type { Integration } from "@flind/core/integrations/selectors";
+import { getSlackIntegrationLabel } from "@flind/core/settings/slackNotificationTarget";
+import { SettingsOptionSelect } from "@flind/ui/features/settings/SettingsOptionSelect";
 
 interface SlackWorkspaceSelectProps {
   integrations: Integration[];

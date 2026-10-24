@@ -1,10 +1,10 @@
-import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
-import { useThemeStore } from "@posthog/ui/shell/themeStore";
+import { useSettingsStore } from "@flind/ui/features/settings/settingsStore";
+import { useThemeStore } from "@flind/ui/shell/themeStore";
 import { Box } from "@radix-ui/themes";
 import "@xterm/xterm/css/xterm.css";
 
-import { resolveTerminalFontFamily } from "@posthog/core/terminal/resolveTerminalFontFamily";
-import { terminalManager } from "@posthog/ui/features/terminal/TerminalManager";
+import { resolveTerminalFontFamily } from "@flind/core/terminal/resolveTerminalFontFamily";
+import { terminalManager } from "@flind/ui/features/terminal/TerminalManager";
 import { useCallback, useEffect, useRef } from "react";
 
 export interface TerminalProps {

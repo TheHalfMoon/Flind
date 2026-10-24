@@ -2,12 +2,12 @@ import {
   navigateToChannel,
   navigateToChannelDashboard,
   navigateToChannelTask,
-} from "@posthog/ui/router/navigationBridge";
+} from "@flind/ui/router/navigationBridge";
 import {
   parseShareLink,
   type ShareLinkTarget,
-} from "@posthog/ui/utils/posthogLinks";
-import { getPostHogUrl } from "@posthog/ui/utils/urls";
+} from "@flind/ui/utils/posthogLinks";
+import { getPostHogUrl } from "@flind/ui/utils/urls";
 
 export function navigateToShareTarget(target: ShareLinkTarget): void {
   switch (target.kind) {

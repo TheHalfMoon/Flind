@@ -1,4 +1,4 @@
-import type { SignalReport } from "@posthog/shared/domain-types";
+import type { SignalReport } from "@flind/shared/domain-types";
 import { useCallback, useEffect, useRef } from "react";
 import {
   ANALYTICS_EVENTS,

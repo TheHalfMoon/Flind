@@ -2,8 +2,8 @@ import {
   CANVAS_CONNECTOR_PERMISSION_SERVICE,
   type CanvasConnectorPermission,
   type CanvasConnectorPermissionService,
-} from "@posthog/core/canvas/canvasConnectorPermissionService";
-import { useService } from "@posthog/di/react";
+} from "@flind/core/canvas/canvasConnectorPermissionService";
+import { useService } from "@flind/di/react";
 import { useCallback, useEffect, useMemo, useRef } from "react";
 
 export function useCanvasConnectorPermission(

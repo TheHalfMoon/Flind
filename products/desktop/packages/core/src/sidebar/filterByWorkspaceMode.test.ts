@@ -1,4 +1,4 @@
-import type { WorkspaceMode } from "@posthog/shared";
+import type { WorkspaceMode } from "@flind/shared";
 import { describe, expect, it } from "vitest";
 import { ALL_WORKSPACE_MODES, filterByWorkspaceMode } from "./buildSidebarData";
 import type { TaskData } from "./sidebarData.types";

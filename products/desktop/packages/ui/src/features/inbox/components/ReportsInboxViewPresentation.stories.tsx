@@ -1,17 +1,17 @@
 import {
   deriveReportImplementationState,
   needsImplementationDecision,
-} from "@posthog/core/inbox/reportImplementation";
-import type { SignalReport } from "@posthog/shared/types";
-import { InboxReportContextMenu } from "@posthog/ui/features/inbox/components/InboxReportContextMenu";
-import { InboxReportFilters } from "@posthog/ui/features/inbox/components/InboxReportFilters";
-import { InboxReportRowView } from "@posthog/ui/features/inbox/components/InboxReportRowView";
-import { InboxScopeSelect } from "@posthog/ui/features/inbox/components/InboxScopeSelect";
+} from "@flind/core/inbox/reportImplementation";
+import type { SignalReport } from "@flind/shared/types";
+import { InboxReportContextMenu } from "@flind/ui/features/inbox/components/InboxReportContextMenu";
+import { InboxReportFilters } from "@flind/ui/features/inbox/components/InboxReportFilters";
+import { InboxReportRowView } from "@flind/ui/features/inbox/components/InboxReportRowView";
+import { InboxScopeSelect } from "@flind/ui/features/inbox/components/InboxScopeSelect";
 import {
   inboxStoryImplementations,
   inboxStoryReport,
-} from "@posthog/ui/features/inbox/components/inboxStoryFixtures";
-import { ReportsInboxViewPresentation } from "@posthog/ui/features/inbox/components/ReportsInboxViewPresentation";
+} from "@flind/ui/features/inbox/components/inboxStoryFixtures";
+import { ReportsInboxViewPresentation } from "@flind/ui/features/inbox/components/ReportsInboxViewPresentation";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const reviewAndMerge = [

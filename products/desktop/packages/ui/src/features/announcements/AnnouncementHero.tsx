@@ -1,5 +1,5 @@
-import type { AnnouncementHero as HeroConfig } from "@posthog/shared/announcements";
-import { hoggiePng } from "@posthog/shared/hoggies";
+import type { AnnouncementHero as HeroConfig } from "@flind/shared/announcements";
+import { hoggiePng } from "@flind/shared/hoggies";
 import { useState } from "react";
 
 const DEFAULT_COLOR = "#2f80fa";

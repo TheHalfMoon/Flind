@@ -1,7 +1,7 @@
 import type {
   ExternalAppsFocusCoordinator,
   ExternalAppsWorkspaceClient,
-} from "@posthog/core/external-apps/identifiers";
+} from "@flind/core/external-apps/identifiers";
 
 // External apps (open in a local editor, reveal in Finder, copy a local path)
 // are inherently local-filesystem features. The cloud-only web host has none,

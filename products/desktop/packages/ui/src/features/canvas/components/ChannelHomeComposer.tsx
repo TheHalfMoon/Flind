@@ -1,22 +1,22 @@
 import type {
   PiModelSelection,
   PiThinkingLevel,
-} from "@posthog/core/pi-runtime/piSessionController";
+} from "@flind/core/pi-runtime/piSessionController";
 import {
   isValidConfigValue,
   syntheticPiModelSelection,
-} from "@posthog/core/task-detail/configOptions";
-import { preferredRunsOnPi } from "@posthog/core/task-detail/previewConfig";
+} from "@flind/core/task-detail/configOptions";
+import { preferredRunsOnPi } from "@flind/core/task-detail/previewConfig";
 import {
   type AgentRuntime,
   adapterForModelId,
   PI_HARNESS_FLAG,
-} from "@posthog/shared";
-import type { Task } from "@posthog/shared/domain-types";
+} from "@flind/shared";
+import type { Task } from "@flind/shared/domain-types";
 import {
   subscriptionModelAccess,
   useAdapterSubscription,
-} from "@posthog/ui/features/settings/adapterSubscription";
+} from "@flind/ui/features/settings/adapterSubscription";
 import {
   forwardRef,
   useCallback,

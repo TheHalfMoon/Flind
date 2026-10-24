@@ -1,15 +1,15 @@
-import { useHostTRPC } from "@posthog/host-router/react";
+import { useHostTRPC } from "@flind/host-router/react";
 import { Button, Progress } from "@flind/quill";
 import {
   ANALYTICS_EVENTS,
   type AnnouncementProperties,
-} from "@posthog/shared/analytics-events";
+} from "@flind/shared/analytics-events";
 import {
   useInstallUpdate,
   useUpdateView,
-} from "@posthog/ui/features/updates/updateStore";
-import { track } from "@posthog/ui/shell/analytics";
-import { openExternalUrl } from "@posthog/ui/shell/openExternal";
+} from "@flind/ui/features/updates/updateStore";
+import { track } from "@flind/ui/shell/analytics";
+import { openExternalUrl } from "@flind/ui/shell/openExternal";
 import { useMutation } from "@tanstack/react-query";
 import { useEffect, useRef, useState } from "react";
 

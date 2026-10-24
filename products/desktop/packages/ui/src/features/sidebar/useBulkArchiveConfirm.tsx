@@ -1,5 +1,5 @@
-import { BulkArchiveConfirmDialog } from "@posthog/ui/features/sidebar/components/BulkArchiveConfirmDialog";
-import type { SidebarBulkActions } from "@posthog/ui/features/sidebar/useSidebarBulkActions";
+import { BulkArchiveConfirmDialog } from "@flind/ui/features/sidebar/components/BulkArchiveConfirmDialog";
+import type { SidebarBulkActions } from "@flind/ui/features/sidebar/useSidebarBulkActions";
 import { type ReactElement, useCallback, useState } from "react";
 
 export interface BulkArchiveConfirm {

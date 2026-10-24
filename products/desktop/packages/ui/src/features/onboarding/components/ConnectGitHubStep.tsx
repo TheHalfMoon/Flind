@@ -1,14 +1,14 @@
 import { ArrowLeft, ArrowRight } from "@phosphor-icons/react";
-import { isAnyIntegrationStale } from "@posthog/core/onboarding/githubConnectPanel";
+import { isAnyIntegrationStale } from "@flind/core/onboarding/githubConnectPanel";
 import { Button, Heading, Text } from "@flind/quill";
-import type { OnboardingStepCompletedProperties } from "@posthog/shared/analytics-events";
-import { GithubConnectionEmpty } from "@posthog/ui/features/integrations/components/GithubConnectionEmpty";
+import type { OnboardingStepCompletedProperties } from "@flind/shared/analytics-events";
+import { GithubConnectionEmpty } from "@flind/ui/features/integrations/components/GithubConnectionEmpty";
 import {
   useUserGithubIntegrations,
   useUserRepositoryIntegration,
-} from "@posthog/ui/features/integrations/useIntegrations";
-import { OptionalBadge } from "@posthog/ui/features/onboarding/components/OptionalBadge";
-import { StepActions } from "@posthog/ui/features/onboarding/components/StepActions";
+} from "@flind/ui/features/integrations/useIntegrations";
+import { OptionalBadge } from "@flind/ui/features/onboarding/components/OptionalBadge";
+import { StepActions } from "@flind/ui/features/onboarding/components/StepActions";
 import { motion, useReducedMotion } from "framer-motion";
 import { GitHubConnectPanel } from "./GitHubConnectPanel";
 

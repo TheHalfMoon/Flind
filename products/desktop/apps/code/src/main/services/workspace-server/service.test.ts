@@ -13,7 +13,7 @@ vi.mock("../../utils/logger.js", () => ({
   },
 }));
 
-import type { WorkspaceConnection } from "@posthog/workspace-client/client";
+import type { WorkspaceConnection } from "@flind/workspace-client/client";
 import {
   WorkspaceServerEvent,
   WorkspaceServerService,

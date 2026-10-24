@@ -1,5 +1,5 @@
 import { Text } from "@components/text";
-import { buildReviewerOptions } from "@posthog/core/inbox/artefacts";
+import { buildReviewerOptions } from "@flind/core/inbox/artefacts";
 import { useMemo } from "react";
 import {
   ActivityIndicator,

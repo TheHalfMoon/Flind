@@ -10,7 +10,7 @@ import {
 } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { secureStoreRouter } from "@posthog/host-router/routers/secure-store.router";
+import { secureStoreRouter } from "@flind/host-router/routers/secure-store.router";
 import {
   afterAll,
   afterEach,

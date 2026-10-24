@@ -1,4 +1,4 @@
-import type { AcpMessage } from "@posthog/shared";
+import type { AcpMessage } from "@flind/shared";
 import { describe, expect, it } from "vitest";
 import {
   countCompletedArtifactUploads,

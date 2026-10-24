@@ -1,6 +1,6 @@
-import { ActivityFeedList } from "@posthog/ui/features/canvas/components/ActivityFeedList";
-import { openActivityItem } from "@posthog/ui/features/canvas/components/openActivityItem";
-import { closeWorkActivity } from "@posthog/ui/features/canvas/stores/workActivityStore";
+import { ActivityFeedList } from "@flind/ui/features/canvas/components/ActivityFeedList";
+import { openActivityItem } from "@flind/ui/features/canvas/components/openActivityItem";
+import { closeWorkActivity } from "@flind/ui/features/canvas/stores/workActivityStore";
 
 export function WorkActivityColumn({ className }: { className?: string }) {
   return (

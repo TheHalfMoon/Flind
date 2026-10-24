@@ -1,5 +1,5 @@
-import { TRIAGE_FOCUS_FLAG } from "@posthog/shared";
-import { useFeatureFlag } from "@posthog/ui/features/feature-flags/useFeatureFlag";
+import { TRIAGE_FOCUS_FLAG } from "@flind/shared";
+import { useFeatureFlag } from "@flind/ui/features/feature-flags/useFeatureFlag";
 
 /**
  * On by default in dev builds so focus mode can be iterated on locally;

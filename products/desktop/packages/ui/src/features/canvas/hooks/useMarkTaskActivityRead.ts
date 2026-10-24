@@ -1,9 +1,9 @@
 import type {
   TaskActivityPage,
   TaskActivityReadMarker,
-} from "@posthog/shared/domain-types";
-import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { TASK_ACTIVITY_QUERY_KEY } from "@posthog/ui/features/canvas/hooks/useTaskActivity";
+} from "@flind/shared/domain-types";
+import { useOptionalAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { TASK_ACTIVITY_QUERY_KEY } from "@flind/ui/features/canvas/hooks/useTaskActivity";
 import type { InfiniteData } from "@tanstack/react-query";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 

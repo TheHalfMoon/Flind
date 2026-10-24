@@ -1,8 +1,8 @@
 import {
   parseTimestamps,
   type RawTaskTimestamp,
-} from "@posthog/core/sidebar/taskMeta";
-import { useHostTRPC, useHostTRPCClient } from "@posthog/host-router/react";
+} from "@flind/core/sidebar/taskMeta";
+import { useHostTRPC, useHostTRPCClient } from "@flind/host-router/react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useCallback, useMemo, useRef } from "react";
 

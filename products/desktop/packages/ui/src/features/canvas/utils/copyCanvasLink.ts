@@ -1,10 +1,10 @@
 import {
   ANALYTICS_EVENTS,
   type ChannelsSurface,
-} from "@posthog/shared/analytics-events";
-import { toast } from "@posthog/ui/primitives/toast";
-import { track } from "@posthog/ui/shell/analytics";
-import { canvasShareUrl } from "@posthog/ui/utils/posthogLinks";
+} from "@flind/shared/analytics-events";
+import { toast } from "@flind/ui/primitives/toast";
+import { track } from "@flind/ui/shell/analytics";
+import { canvasShareUrl } from "@flind/ui/utils/posthogLinks";
 
 /**
  * Copy a canvas's shareable https link (`<instance>/code/canvas/<channelId>/

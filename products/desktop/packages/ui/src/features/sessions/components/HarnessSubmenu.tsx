@@ -5,8 +5,8 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
 } from "@flind/quill";
-import { RUNTIME_OPTIONS } from "@posthog/shared/model-catalog";
-import type { AgentAdapter } from "@posthog/ui/features/settings/settingsStore";
+import { RUNTIME_OPTIONS } from "@flind/shared/model-catalog";
+import type { AgentAdapter } from "@flind/ui/features/settings/settingsStore";
 
 export type AgentHarness = AgentAdapter | "pi";
 

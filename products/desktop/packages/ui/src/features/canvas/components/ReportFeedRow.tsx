@@ -1,19 +1,19 @@
 import { FileTextIcon, GitPullRequestIcon } from "@phosphor-icons/react";
-import { isDismissedReport } from "@posthog/core/inbox/reportMembership";
+import { isDismissedReport } from "@flind/core/inbox/reportMembership";
 import {
   deriveHeadline,
   humanizeReportTitle,
-} from "@posthog/core/inbox/reportPresentation";
+} from "@flind/core/inbox/reportPresentation";
 import { Button, Card, CardContent } from "@flind/quill";
-import { formatRelativeTimeShort } from "@posthog/shared";
-import type { SignalReport } from "@posthog/shared/types";
-import { ReportRestoreButton } from "@posthog/ui/features/inbox/components/ReportRestoreButton";
+import { formatRelativeTimeShort } from "@flind/shared";
+import type { SignalReport } from "@flind/shared/types";
+import { ReportRestoreButton } from "@flind/ui/features/inbox/components/ReportRestoreButton";
 import {
   ReportStateMonogram,
   reportRunState,
-} from "@posthog/ui/features/inbox/components/ReportStateMonogram";
-import { InboxBadge } from "@posthog/ui/features/inbox/components/utils/InboxBadge";
-import { useInboxReportDismissAction } from "@posthog/ui/features/inbox/hooks/useInboxReportDismissAction";
+} from "@flind/ui/features/inbox/components/ReportStateMonogram";
+import { InboxBadge } from "@flind/ui/features/inbox/components/utils/InboxBadge";
+import { useInboxReportDismissAction } from "@flind/ui/features/inbox/hooks/useInboxReportDismissAction";
 import { useMemo } from "react";
 
 /**

@@ -1,12 +1,12 @@
-import { buildCreateCanvasReportPrompt } from "@posthog/core/inbox/reportActions";
-import { buildPostHogUrl } from "@posthog/core/settings/posthogUrl";
-import type { TaskCreationInput } from "@posthog/core/task-detail/taskService";
-import type { Task } from "@posthog/shared/types";
-import { useAuthStateValue } from "@posthog/ui/features/auth/store";
+import { buildCreateCanvasReportPrompt } from "@flind/core/inbox/reportActions";
+import { buildPostHogUrl } from "@flind/core/settings/posthogUrl";
+import type { TaskCreationInput } from "@flind/core/task-detail/taskService";
+import type { Task } from "@flind/shared/types";
+import { useAuthStateValue } from "@flind/ui/features/auth/store";
 import {
   type InboxCloudTaskInputContext,
   useInboxCloudTaskRunner,
-} from "@posthog/ui/features/inbox/hooks/useInboxCloudTaskRunner";
+} from "@flind/ui/features/inbox/hooks/useInboxCloudTaskRunner";
 import { useCallback, useRef } from "react";
 
 interface UseCreateCanvasReportOptions {

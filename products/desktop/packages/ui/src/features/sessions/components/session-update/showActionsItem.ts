@@ -1,6 +1,6 @@
-import { isShowActionsCall } from "@posthog/core/sessions/showActions";
-import type { ConversationItem } from "@posthog/ui/features/sessions/components/buildConversationItems";
-import type { ToolCall } from "@posthog/ui/features/sessions/types";
+import { isShowActionsCall } from "@flind/core/sessions/showActions";
+import type { ConversationItem } from "@flind/ui/features/sessions/components/buildConversationItems";
+import type { ToolCall } from "@flind/ui/features/sessions/types";
 
 export function isShowActionsItem(
   item: ConversationItem,

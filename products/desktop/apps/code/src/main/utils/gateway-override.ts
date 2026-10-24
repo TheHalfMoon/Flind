@@ -1,8 +1,8 @@
 import type {
   GatewayTokenHost,
   GatewayTokenOverride,
-} from "@posthog/core/llm-gateway/identifiers";
-import { validateAiGatewayUrl } from "@posthog/shared";
+} from "@flind/core/llm-gateway/identifiers";
+import { validateAiGatewayUrl } from "@flind/shared";
 
 const URL_VAR = "POSTHOG_CODE_AI_GATEWAY_URL";
 const TOKEN_VAR = "POSTHOG_CODE_AI_GATEWAY_TOKEN";

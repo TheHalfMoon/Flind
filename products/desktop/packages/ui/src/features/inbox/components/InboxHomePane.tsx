@@ -9,17 +9,17 @@ import {
   EmptyTitle,
   Kbd,
 } from "@flind/quill";
-import { useTriageFocusEnabled } from "@posthog/ui/features/feature-flags/useTriageFocusEnabled";
-import { useInboxSectionedReports } from "@posthog/ui/features/inbox/hooks/useInboxSectionedReports";
-import { useInboxTriageHotkey } from "@posthog/ui/features/inbox/hooks/useInboxTriageHotkey";
-import { useSelfDrivingSetupStatus } from "@posthog/ui/features/inbox/hooks/useSelfDrivingSetupStatus";
+import { useTriageFocusEnabled } from "@flind/ui/features/feature-flags/useTriageFocusEnabled";
+import { useInboxSectionedReports } from "@flind/ui/features/inbox/hooks/useInboxSectionedReports";
+import { useInboxTriageHotkey } from "@flind/ui/features/inbox/hooks/useInboxTriageHotkey";
+import { useSelfDrivingSetupStatus } from "@flind/ui/features/inbox/hooks/useSelfDrivingSetupStatus";
 import {
   hasActiveReportsListFilters,
   useInboxSignalsFilterStore,
-} from "@posthog/ui/features/inbox/stores/inboxSignalsFilterStore";
-import { INBOX_TRIAGE_ROUTE } from "@posthog/ui/features/inbox/triageRoute";
-import { OpenSidebarButton } from "@posthog/ui/features/sidebar/components/OpenSidebarButton";
-import { navigateToSettings } from "@posthog/ui/router/navigationBridge";
+} from "@flind/ui/features/inbox/stores/inboxSignalsFilterStore";
+import { INBOX_TRIAGE_ROUTE } from "@flind/ui/features/inbox/triageRoute";
+import { OpenSidebarButton } from "@flind/ui/features/sidebar/components/OpenSidebarButton";
+import { navigateToSettings } from "@flind/ui/router/navigationBridge";
 import { Link } from "@tanstack/react-router";
 import type { ReactElement } from "react";
 

@@ -1,4 +1,4 @@
-import { useAuthenticatedQuery } from "@posthog/ui/hooks/useAuthenticatedQuery";
+import { useAuthenticatedQuery } from "@flind/ui/hooks/useAuthenticatedQuery";
 import { useAuthStateValue } from "../auth/store";
 
 /** The project's IANA timezone, or null while it is unknown. Scout cron schedules resolve in it. */

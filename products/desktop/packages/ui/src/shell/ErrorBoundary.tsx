@@ -1,9 +1,9 @@
 import {
   type ErrorBoundaryProps,
   ErrorBoundary as UiErrorBoundary,
-} from "@posthog/ui/primitives/ErrorBoundary";
-import { captureException } from "@posthog/ui/shell/analytics";
-import { logger } from "@posthog/ui/shell/logger";
+} from "@flind/ui/primitives/ErrorBoundary";
+import { captureException } from "@flind/ui/shell/analytics";
+import { logger } from "@flind/ui/shell/logger";
 
 const log = logger.scope("error-boundary");
 

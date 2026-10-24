@@ -1,5 +1,5 @@
-import { ApiRequestError } from "@posthog/api-client/fetcher";
-import type { Schemas } from "@posthog/api-client/generated";
+import { ApiRequestError } from "@flind/api-client/fetcher";
+import type { Schemas } from "@flind/api-client/generated";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { beforeEach, describe, expect, it, vi } from "vitest";
@@ -20,25 +20,25 @@ const mocks = vi.hoisted(() => ({
   toastError: vi.fn(),
 }));
 
-vi.mock("@posthog/ui/features/canvas/hooks/useChannelsLayout", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannelsLayout", () => ({
   useChannelsLayout: () => false,
 }));
-vi.mock("@posthog/ui/features/sidebar/sidebarStore", () => ({
+vi.mock("@flind/ui/features/sidebar/sidebarStore", () => ({
   useSidebarStore: (
     selector: (state: { channelsEnabled: boolean }) => unknown,
   ) => selector({ channelsEnabled: false }),
 }));
-vi.mock("@posthog/ui/hooks/useSetHeaderContent", () => ({
+vi.mock("@flind/ui/hooks/useSetHeaderContent", () => ({
   useSetHeaderContent: () => {},
 }));
-vi.mock("@posthog/ui/primitives/toast", () => ({
+vi.mock("@flind/ui/primitives/toast", () => ({
   toast: { error: mocks.toastError, success: vi.fn() },
 }));
-vi.mock("@posthog/ui/router/navigationBridge", () => ({
+vi.mock("@flind/ui/router/navigationBridge", () => ({
   navigateToLoopDetail: vi.fn(),
   navigateToLoops: vi.fn(),
 }));
-vi.mock("@posthog/ui/shell/analytics", () => ({ track: vi.fn() }));
+vi.mock("@flind/ui/shell/analytics", () => ({ track: vi.fn() }));
 vi.mock("../hooks/useLoop", () => ({
   useLoopHogFlow: () => ({ data: mocks.hogFlow }),
 }));

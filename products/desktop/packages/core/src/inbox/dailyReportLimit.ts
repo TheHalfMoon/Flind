@@ -1,4 +1,4 @@
-import type { SignalTeamConfig } from "@posthog/shared/types";
+import type { SignalTeamConfig } from "@flind/shared/types";
 
 /** Ceiling matches the backend int4 column max, so an over-range value is rejected before the request. */
 const MAX_DAILY_REPORT_LIMIT = 2147483647;

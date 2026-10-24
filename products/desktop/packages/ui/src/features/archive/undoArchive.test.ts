@@ -4,10 +4,10 @@ import type { UseUnarchiveTask } from "./useUnarchiveTask";
 const toastSuccess = vi.hoisted(() => vi.fn());
 const toastError = vi.hoisted(() => vi.fn());
 
-vi.mock("@posthog/ui/primitives/toast", () => ({
+vi.mock("@flind/ui/primitives/toast", () => ({
   toast: { success: toastSuccess, error: toastError },
 }));
-vi.mock("@posthog/ui/shell/logger", () => ({
+vi.mock("@flind/ui/shell/logger", () => ({
   logger: { scope: () => ({ error: vi.fn(), info: vi.fn(), warn: vi.fn() }) },
 }));
 

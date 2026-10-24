@@ -1,5 +1,5 @@
-import type { InboxReportActionProperties } from "@posthog/shared/analytics-events";
-import type { SignalReport } from "@posthog/shared/domain-types";
+import type { InboxReportActionProperties } from "@flind/shared/analytics-events";
+import type { SignalReport } from "@flind/shared/domain-types";
 import { reportAgeHours } from "./engagement";
 
 export interface ReportListSnapshotEntry {

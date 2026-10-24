@@ -1,5 +1,5 @@
 {
-  "name": "@posthog/host-router",
+  "name": "@flind/host-router",
   "version": "1.0.0",
   "description": "Aggregated Electron main (host) tRPC router. Sits above core + workspace-server: composes their colocated host feature routers into one root HostRouter type, and exposes the renderer useHostTRPC hook. The renderer imports HostRouter type-only (no node code enters the bundle), mirroring how workspace-client consumes workspace-server.",
   "private": true,
@@ -17,12 +17,12 @@
   "dependencies": {
     "@agentclientprotocol/sdk": "0.22.1",
     "@flind/agent": "link:../../../../packages/agent/packages/agent",
-    "@posthog/core": "workspace:*",
-    "@posthog/host-trpc": "workspace:*",
-    "@posthog/platform": "workspace:*",
-    "@posthog/shared": "workspace:*",
-    "@posthog/workspace-client": "workspace:*",
-    "@posthog/workspace-server": "workspace:*",
+    "@flind/core": "workspace:*",
+    "@flind/host-trpc": "workspace:*",
+    "@flind/platform": "workspace:*",
+    "@flind/shared": "workspace:*",
+    "@flind/workspace-client": "workspace:*",
+    "@flind/workspace-server": "workspace:*",
     "@trpc/client": "catalog:",
     "inversify": "catalog:",
     "zod": "^4.4.3"
@@ -33,7 +33,7 @@
     "react": "catalog:"
   },
   "devDependencies": {
-    "@posthog/tsconfig": "workspace:*",
+    "@flind/tsconfig": "workspace:*",
     "@tanstack/react-query": "catalog:",
     "@trpc/tanstack-react-query": "catalog:",
     "@types/react": "catalog:",

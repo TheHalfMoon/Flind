@@ -1,9 +1,9 @@
 import {
   type ISpeechQueue,
   SPEECH_QUEUE_SERVICE,
-} from "@posthog/core/speech/identifiers";
-import type { NotificationTarget } from "@posthog/platform/notifications";
-import { logger } from "@posthog/ui/shell/logger";
+} from "@flind/core/speech/identifiers";
+import type { NotificationTarget } from "@flind/platform/notifications";
+import { logger } from "@flind/ui/shell/logger";
 import { inject, injectable } from "inversify";
 import {
   ACTIVE_VIEW_PROVIDER,

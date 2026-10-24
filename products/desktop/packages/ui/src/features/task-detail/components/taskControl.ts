@@ -1,4 +1,4 @@
-import type { Task } from "@posthog/shared/domain-types";
+import type { Task } from "@flind/shared/domain-types";
 
 // Mirrors the server's legacy unchanneled task-control origins.
 const TEAM_VISIBLE_ORIGIN_PRODUCTS = new Set([

@@ -4,12 +4,12 @@ import {
   type FileAttachment,
   isContentEmpty,
   type MentionChip,
-} from "@posthog/core/message-editor/content";
-import { buildGithubRefPlaceholderChip } from "@posthog/core/message-editor/githubIssueChip";
+} from "@flind/core/message-editor/content";
+import { buildGithubRefPlaceholderChip } from "@flind/core/message-editor/githubIssueChip";
 import {
   type ParsedGithubIssueUrl,
   parseGithubIssueUrl,
-} from "@posthog/core/message-editor/githubIssueUrl";
+} from "@flind/core/message-editor/githubIssueUrl";
 import {
   type AutoConvertedPaste,
   buildMarkdownLink,
@@ -18,18 +18,18 @@ import {
   isRepeatOfAutoConvertedPaste,
   isUrlOnly,
   shouldAutoConvertLongText,
-} from "@posthog/core/message-editor/paste";
+} from "@flind/core/message-editor/paste";
 import {
   formatHotkey,
   SHORTCUTS,
-} from "@posthog/ui/features/command/keyboard-shortcuts";
-import type { PromptRecallHandler } from "@posthog/ui/features/sessions/components/chat-thread/composerPromptRecall";
-import { sessionStoreSetters } from "@posthog/ui/features/sessions/sessionStore";
-import { useSettingsStore as useFeatureSettingsStore } from "@posthog/ui/features/settings/settingsStore";
-import { TIP_KEYS } from "@posthog/ui/features/settings/tipKeys";
-import { hintToast } from "@posthog/ui/primitives/hintToast";
-import { toast } from "@posthog/ui/primitives/toast";
-import { isSendMessageSubmitKey } from "@posthog/ui/utils/sendMessageKey";
+} from "@flind/ui/features/command/keyboard-shortcuts";
+import type { PromptRecallHandler } from "@flind/ui/features/sessions/components/chat-thread/composerPromptRecall";
+import { sessionStoreSetters } from "@flind/ui/features/sessions/sessionStore";
+import { useSettingsStore as useFeatureSettingsStore } from "@flind/ui/features/settings/settingsStore";
+import { TIP_KEYS } from "@flind/ui/features/settings/tipKeys";
+import { hintToast } from "@flind/ui/primitives/hintToast";
+import { toast } from "@flind/ui/primitives/toast";
+import { isSendMessageSubmitKey } from "@flind/ui/utils/sendMessageKey";
 import { Fragment, type Node as ProseMirrorNode } from "@tiptap/pm/model";
 import { TextSelection } from "@tiptap/pm/state";
 import type { EditorView } from "@tiptap/pm/view";

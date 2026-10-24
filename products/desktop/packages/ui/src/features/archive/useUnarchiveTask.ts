@@ -4,16 +4,16 @@ import {
   type ContextMenuOutcome,
   type DeleteOutcome,
   type RestoreOutcome,
-} from "@posthog/core/archive/archivedTasksController";
-import { useService } from "@posthog/di/react";
-import { useHostTRPC } from "@posthog/host-router/react";
+} from "@flind/core/archive/archivedTasksController";
+import { useService } from "@flind/di/react";
+import { useHostTRPC } from "@flind/host-router/react";
 import {
   forgetServerArchive,
   retryServerUnarchive,
-} from "@posthog/ui/features/archive/useServerArchiveSync";
-import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { WORKSPACE_QUERY_KEY } from "@posthog/ui/features/workspace/identifiers";
-import { logger } from "@posthog/ui/shell/logger";
+} from "@flind/ui/features/archive/useServerArchiveSync";
+import { useOptionalAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { WORKSPACE_QUERY_KEY } from "@flind/ui/features/workspace/identifiers";
+import { logger } from "@flind/ui/shell/logger";
 import { useQueryClient } from "@tanstack/react-query";
 import { useCallback } from "react";
 

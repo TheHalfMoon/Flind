@@ -1,4 +1,4 @@
-import { UserAvatar } from "@posthog/ui/features/auth/UserAvatar";
+import { UserAvatar } from "@flind/ui/features/auth/UserAvatar";
 
 interface ReviewerAvatarProps {
   name?: string | null;

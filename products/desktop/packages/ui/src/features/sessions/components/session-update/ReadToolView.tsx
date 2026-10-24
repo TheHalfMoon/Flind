@@ -1,5 +1,5 @@
 import { FileText } from "@phosphor-icons/react";
-import { SafeImagePreview } from "@posthog/ui/primitives/SafeImagePreview";
+import { SafeImagePreview } from "@flind/ui/primitives/SafeImagePreview";
 import { CodePreview } from "./CodePreview";
 import { FileMentionChip } from "./FileMentionChip";
 import { ToolRow } from "./ToolRow";

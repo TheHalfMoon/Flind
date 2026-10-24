@@ -1,4 +1,4 @@
-import type { RootLogger } from "@posthog/di/logger";
+import type { RootLogger } from "@flind/di/logger";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import type { AuthService } from "../auth/auth";
 import type { AuthState } from "../auth/schemas";

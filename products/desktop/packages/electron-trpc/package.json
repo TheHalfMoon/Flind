@@ -1,5 +1,6 @@
 {
-  "name": "@posthog/electron-trpc",
+  "name": "@flind/electron-trpc",
+    "private": true,
   "description": "Electron support for tRPC (forked with HMR fix)",
   "version": "0.1.0",
   "type": "module",

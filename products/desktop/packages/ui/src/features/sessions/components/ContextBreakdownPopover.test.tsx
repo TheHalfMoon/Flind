@@ -1,4 +1,4 @@
-import type { ContextUsage } from "@posthog/ui/features/sessions/hooks/useContextUsage";
+import type { ContextUsage } from "@flind/ui/features/sessions/hooks/useContextUsage";
 import { Theme } from "@radix-ui/themes";
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";

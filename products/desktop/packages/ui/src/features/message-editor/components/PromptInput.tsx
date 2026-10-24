@@ -1,19 +1,19 @@
 import "./message-editor.css";
 import type { SessionConfigOption } from "@agentclientprotocol/sdk";
 import { ArrowUp, StopCircle } from "@phosphor-icons/react";
-import type { FileAttachment } from "@posthog/core/message-editor/content";
+import type { FileAttachment } from "@flind/core/message-editor/content";
 import {
   Button,
   InputGroup,
   InputGroupAddon,
   TooltipProvider,
 } from "@flind/quill";
-import { SHORTCUTS } from "@posthog/ui/features/command/keyboard-shortcuts";
-import type { PromptRecallHandler } from "@posthog/ui/features/sessions/components/chat-thread/composerPromptRecall";
-import { cycleModeOption } from "@posthog/ui/features/sessions/sessionStore";
-import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
-import { shouldFocusOnBackgroundClick } from "@posthog/ui/utils/backgroundClick";
-import { hasOpenOverlay } from "@posthog/ui/utils/overlay";
+import { SHORTCUTS } from "@flind/ui/features/command/keyboard-shortcuts";
+import type { PromptRecallHandler } from "@flind/ui/features/sessions/components/chat-thread/composerPromptRecall";
+import { cycleModeOption } from "@flind/ui/features/sessions/sessionStore";
+import { useSettingsStore } from "@flind/ui/features/settings/settingsStore";
+import { shouldFocusOnBackgroundClick } from "@flind/ui/utils/backgroundClick";
+import { hasOpenOverlay } from "@flind/ui/utils/overlay";
 import { Flex, Text, Tooltip } from "@radix-ui/themes";
 import { EditorContent } from "@tiptap/react";
 import clsx from "clsx";

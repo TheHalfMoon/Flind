@@ -1,5 +1,5 @@
 import http from "node:http";
-import type { RootLogger } from "@posthog/di/logger";
+import type { RootLogger } from "@flind/di/logger";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { AuthProxyService, MAX_BODY_BYTES, PROXY_TIMEOUTS } from "./auth-proxy";
 import type {

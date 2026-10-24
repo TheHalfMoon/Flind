@@ -2,10 +2,10 @@ import { Shuffle } from "@phosphor-icons/react";
 import {
   type EnvironmentSetupPlan,
   withImageName,
-} from "@posthog/core/settings/environmentSetup";
-import { randomImageName } from "@posthog/core/settings/imagePreset";
+} from "@flind/core/settings/environmentSetup";
+import { randomImageName } from "@flind/core/settings/imagePreset";
 import { Button, Input, Label, Text } from "@flind/quill";
-import { StepFieldError } from "@posthog/ui/features/settings/sections/environments/setup/StepFieldError";
+import { StepFieldError } from "@flind/ui/features/settings/sections/environments/setup/StepFieldError";
 import { useId } from "react";
 
 interface ImageNameFieldProps {

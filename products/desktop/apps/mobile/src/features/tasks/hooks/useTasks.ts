@@ -1,5 +1,5 @@
-import { filterAndSortTasks } from "@posthog/core/tasks/taskActivity";
-import type { Task } from "@posthog/shared";
+import { filterAndSortTasks } from "@flind/core/tasks/taskActivity";
+import type { Task } from "@flind/shared";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useAuthStore, useUserQuery } from "@/features/auth";
 import { logger } from "@/lib/logger";

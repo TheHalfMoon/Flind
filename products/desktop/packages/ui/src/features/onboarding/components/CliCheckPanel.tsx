@@ -1,6 +1,6 @@
 import { CheckCircle } from "@phosphor-icons/react";
-import { PANEL_SHADOW } from "@posthog/ui/features/onboarding/components/onboardingStyles";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
+import { PANEL_SHADOW } from "@flind/ui/features/onboarding/components/onboardingStyles";
+import { Spinner } from "@flind/ui/primitives/Spinner";
 import { Box, Flex, Text } from "@radix-ui/themes";
 import type { ReactNode } from "react";
 

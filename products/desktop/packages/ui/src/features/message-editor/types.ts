@@ -3,12 +3,12 @@ import type {
   EditorContent,
   FileAttachment,
   MentionChip,
-} from "@posthog/core/message-editor/content";
+} from "@flind/core/message-editor/content";
 import type {
   GithubRefKind,
   GithubRefState,
   UploadableSkillSource,
-} from "@posthog/shared";
+} from "@flind/shared";
 
 export interface LocalSkillCommand {
   name: string;

@@ -1,14 +1,14 @@
 import {
   compactCount,
   type EvidencePreview,
-} from "@posthog/api-client/evidence-previews";
+} from "@flind/api-client/evidence-previews";
 import { Card, CardContent, Text } from "@flind/quill";
 import {
   TimeSeriesBarChart,
   TimeSeriesLineChart,
   useChartTheme,
 } from "@flind/quill-charts";
-import { EvidenceSparkline } from "@posthog/ui/features/editor/components/EvidenceRefChip";
+import { EvidenceSparkline } from "@flind/ui/features/editor/components/EvidenceRefChip";
 
 /**
  * A daily series as a real chart with hover values. The hover chip keeps the

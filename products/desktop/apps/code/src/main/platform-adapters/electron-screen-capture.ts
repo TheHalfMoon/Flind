@@ -1,9 +1,9 @@
-import { MAIN_WINDOW_SERVICE } from "@posthog/platform/main-window";
+import { MAIN_WINDOW_SERVICE } from "@flind/platform/main-window";
 import type {
   CaptureRegion,
   IScreenCapture,
-} from "@posthog/platform/screen-capture";
-import { withTimeout } from "@posthog/shared";
+} from "@flind/platform/screen-capture";
+import { withTimeout } from "@flind/shared";
 import { inject, injectable } from "inversify";
 import type { ElectronMainWindow } from "./electron-main-window";
 

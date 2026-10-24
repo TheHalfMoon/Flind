@@ -6,17 +6,17 @@ import {
   deriveConnectFlags,
   githubInvalidationKeys,
   toConnectError,
-} from "@posthog/core/integrations/connectMachine";
-import type { GithubConnectService } from "@posthog/core/integrations/githubConnectService";
-import { GITHUB_CONNECT_SERVICE } from "@posthog/core/integrations/identifiers";
-import { useService } from "@posthog/di/react";
-import { useAuthStateValue } from "@posthog/ui/features/auth/store";
-import { useIsOrgAdmin } from "@posthog/ui/features/auth/useOrgRole";
+} from "@flind/core/integrations/connectMachine";
+import type { GithubConnectService } from "@flind/core/integrations/githubConnectService";
+import { GITHUB_CONNECT_SERVICE } from "@flind/core/integrations/identifiers";
+import { useService } from "@flind/di/react";
+import { useAuthStateValue } from "@flind/ui/features/auth/store";
+import { useIsOrgAdmin } from "@flind/ui/features/auth/useOrgRole";
 import { type QueryClient, useQueryClient } from "@tanstack/react-query";
 import { useCallback, useEffect, useMemo, useReducer, useRef } from "react";
 import { useGitHubIntegrationCallback } from "./useGitHubIntegrationCallback";
 
-export { describeGithubConnectError } from "@posthog/core/integrations/connectErrors";
+export { describeGithubConnectError } from "@flind/core/integrations/connectErrors";
 
 const IS_DEV = import.meta.env.DEV;
 

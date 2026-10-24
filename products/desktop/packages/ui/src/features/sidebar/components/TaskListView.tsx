@@ -5,35 +5,35 @@ import { GitBranch, Trash, Wrench } from "@phosphor-icons/react";
 import {
   findGroupFolder,
   groupTasksByRelativeDate,
-} from "@posthog/core/sidebar/groupTasks";
-import { mostRecentRunEnvironment } from "@posthog/core/sidebar/runEnvironment";
+} from "@flind/core/sidebar/groupTasks";
+import { mostRecentRunEnvironment } from "@flind/core/sidebar/runEnvironment";
 import type {
   TaskData,
   TaskGroup,
-} from "@posthog/core/sidebar/sidebarData.types";
+} from "@flind/core/sidebar/sidebarData.types";
 import { cn, MenuLabel, Text } from "@flind/quill";
-import { hoggiePng } from "@posthog/shared/hoggies";
-import { useFilingTasksStore } from "@posthog/ui/features/canvas/stores/filingTasksStore";
-import { useFolders } from "@posthog/ui/features/folders/useFolders";
-import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
-import { DragBatchLabel } from "@posthog/ui/features/sidebar/components/DragBatchLabel";
-import { DraggableFolder } from "@posthog/ui/features/sidebar/components/DraggableFolder";
-import { GroupWorktreesSection } from "@posthog/ui/features/sidebar/components/GroupWorktreesSection";
-import { taskMetadata } from "@posthog/ui/features/sidebar/components/ListItemMetadata";
-import { SidebarSection } from "@posthog/ui/features/sidebar/components/SidebarSection";
-import { TaskRow } from "@posthog/ui/features/sidebar/components/TaskRow";
-import { useSidebarStore } from "@posthog/ui/features/sidebar/sidebarStore";
+import { hoggiePng } from "@flind/shared/hoggies";
+import { useFilingTasksStore } from "@flind/ui/features/canvas/stores/filingTasksStore";
+import { useFolders } from "@flind/ui/features/folders/useFolders";
+import { useSettingsStore } from "@flind/ui/features/settings/settingsStore";
+import { DragBatchLabel } from "@flind/ui/features/sidebar/components/DragBatchLabel";
+import { DraggableFolder } from "@flind/ui/features/sidebar/components/DraggableFolder";
+import { GroupWorktreesSection } from "@flind/ui/features/sidebar/components/GroupWorktreesSection";
+import { taskMetadata } from "@flind/ui/features/sidebar/components/ListItemMetadata";
+import { SidebarSection } from "@flind/ui/features/sidebar/components/SidebarSection";
+import { TaskRow } from "@flind/ui/features/sidebar/components/TaskRow";
+import { useSidebarStore } from "@flind/ui/features/sidebar/sidebarStore";
 import {
   dragSiblingCandidates,
   taskDragSiblings,
-} from "@posthog/ui/features/sidebar/taskDrag";
+} from "@flind/ui/features/sidebar/taskDrag";
 import {
   getPinnedInsertionIndex,
   type TaskTimestampKey,
-} from "@posthog/ui/features/sidebar/taskListDragAndDrop";
-import { usePinDrag } from "@posthog/ui/features/sidebar/usePinDrag";
-import { useAppView } from "@posthog/ui/router/useAppView";
-import { openTaskInput } from "@posthog/ui/router/useOpenTask";
+} from "@flind/ui/features/sidebar/taskListDragAndDrop";
+import { usePinDrag } from "@flind/ui/features/sidebar/usePinDrag";
+import { useAppView } from "@flind/ui/router/useAppView";
+import { openTaskInput } from "@flind/ui/router/useOpenTask";
 import {
   AnimatePresence,
   LayoutGroup,

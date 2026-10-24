@@ -1,4 +1,4 @@
-import type { Workspace, WorkspaceMode } from "@posthog/shared";
+import type { Workspace, WorkspaceMode } from "@flind/shared";
 
 export interface CreateWorkspaceRequest {
   taskId: string;

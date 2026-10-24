@@ -6,13 +6,13 @@ import {
   ItemMedia,
   ItemTitle,
 } from "@flind/quill";
-import { EXTERNAL_LINKS, getLocalDayDiff } from "@posthog/shared";
-import type { TaskChannel } from "@posthog/shared/domain-types";
-import { mentionChipClass } from "@posthog/ui/features/canvas/components/MentionText";
-import { useChannelsLayout } from "@posthog/ui/features/canvas/hooks/useChannelsLayout";
-import { userDisplayName } from "@posthog/ui/features/canvas/utils/userDisplay";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
-import { openExternalUrl } from "@posthog/ui/shell/openExternal";
+import { EXTERNAL_LINKS, getLocalDayDiff } from "@flind/shared";
+import type { TaskChannel } from "@flind/shared/domain-types";
+import { mentionChipClass } from "@flind/ui/features/canvas/components/MentionText";
+import { useChannelsLayout } from "@flind/ui/features/canvas/hooks/useChannelsLayout";
+import { userDisplayName } from "@flind/ui/features/canvas/utils/userDisplay";
+import { Spinner } from "@flind/ui/primitives/Spinner";
+import { openExternalUrl } from "@flind/ui/shell/openExternal";
 import { Heading, Text } from "@radix-ui/themes";
 import { FileCheckCorner, FilePlusCorner, Info, X } from "lucide-react";
 

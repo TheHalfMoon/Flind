@@ -1,6 +1,6 @@
-import { TipsSection } from "@posthog/ui/features/settings/sections/TipsSettings";
-import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
-import { TIP_KEYS } from "@posthog/ui/features/settings/tipKeys";
+import { TipsSection } from "@flind/ui/features/settings/sections/TipsSettings";
+import { useSettingsStore } from "@flind/ui/features/settings/settingsStore";
+import { TIP_KEYS } from "@flind/ui/features/settings/tipKeys";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta: Meta<typeof TipsSection> = {

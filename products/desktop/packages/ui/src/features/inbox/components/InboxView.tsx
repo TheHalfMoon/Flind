@@ -1,12 +1,12 @@
 import { EnvelopeSimpleIcon } from "@phosphor-icons/react";
-import { isInboxDetailPath } from "@posthog/core/inbox/reportMembership";
-import { useChannelsLayout } from "@posthog/ui/features/canvas/hooks/useChannelsLayout";
-import { InboxHomePane } from "@posthog/ui/features/inbox/components/InboxHomePane";
-import { InboxTriagePane } from "@posthog/ui/features/inbox/components/InboxTriagePane";
-import { ReportsInboxView } from "@posthog/ui/features/inbox/components/ReportsInboxView";
-import { resetReportOpenTrackerHistory } from "@posthog/ui/features/inbox/hooks/useReportOpenTracker";
-import { isInboxTriagePath } from "@posthog/ui/features/inbox/triageRoute";
-import { useSetHeaderContent } from "@posthog/ui/hooks/useSetHeaderContent";
+import { isInboxDetailPath } from "@flind/core/inbox/reportMembership";
+import { useChannelsLayout } from "@flind/ui/features/canvas/hooks/useChannelsLayout";
+import { InboxHomePane } from "@flind/ui/features/inbox/components/InboxHomePane";
+import { InboxTriagePane } from "@flind/ui/features/inbox/components/InboxTriagePane";
+import { ReportsInboxView } from "@flind/ui/features/inbox/components/ReportsInboxView";
+import { resetReportOpenTrackerHistory } from "@flind/ui/features/inbox/hooks/useReportOpenTracker";
+import { isInboxTriagePath } from "@flind/ui/features/inbox/triageRoute";
+import { useSetHeaderContent } from "@flind/ui/hooks/useSetHeaderContent";
 import { Outlet, useRouterState } from "@tanstack/react-router";
 import { useEffect, useMemo } from "react";
 

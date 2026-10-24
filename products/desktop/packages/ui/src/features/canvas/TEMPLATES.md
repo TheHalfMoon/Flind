@@ -14,9 +14,9 @@ A canvas is an agent-authored browser app that runs in a sandboxed iframe and us
 
 ## Where things live
 
-- Template metadata: `@posthog/core/canvas/canvasTemplates.ts` and `canvasTemplatesService.ts`.
-- Agent task routing: `@posthog/core/canvas/generationPrompt.ts`.
+- Template metadata: `@flind/core/canvas/canvasTemplates.ts` and `canvasTemplatesService.ts`.
+- Agent task routing: `@flind/core/canvas/generationPrompt.ts`.
 - The iframe and `ph` bridge: `features/canvas/freeform/` and
-  `@posthog/core/canvas/canvasDataService.ts`.
-- Source, versions, drafts, and builds: `@posthog/core/canvas/dashboardsService.ts` and
+  `@flind/core/canvas/canvasDataService.ts`.
+- Source, versions, drafts, and builds: `@flind/core/canvas/dashboardsService.ts` and
   `dashboardSchemas.ts`.

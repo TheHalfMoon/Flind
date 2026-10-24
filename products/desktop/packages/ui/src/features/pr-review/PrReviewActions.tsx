@@ -5,7 +5,7 @@ import {
   GitMergeIcon,
   XCircleIcon,
 } from "@phosphor-icons/react";
-import type { PrMergeMethod } from "@posthog/core/git/router-schemas";
+import type { PrMergeMethod } from "@flind/core/git/router-schemas";
 import {
   Button,
   ButtonGroup,
@@ -14,7 +14,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@flind/quill";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
+import { Spinner } from "@flind/ui/primitives/Spinner";
 import { useState } from "react";
 import { useApprovePr } from "./useApprovePr";
 import { useMarkPrReady } from "./useMarkPrReady";

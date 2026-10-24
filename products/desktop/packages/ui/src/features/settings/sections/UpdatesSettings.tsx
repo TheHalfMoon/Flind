@@ -2,20 +2,20 @@ import { CheckCircle, XCircle } from "@phosphor-icons/react";
 import {
   deriveUpdateStatus,
   resolveCheckResultAction,
-} from "@posthog/core/settings/updateStatus";
-import { useHostTRPC } from "@posthog/host-router/react";
+} from "@flind/core/settings/updateStatus";
+import { useHostTRPC } from "@flind/host-router/react";
 import { Button, Switch } from "@flind/quill";
-import { ANALYTICS_EVENTS } from "@posthog/shared";
+import { ANALYTICS_EVENTS } from "@flind/shared";
 import {
   SettingsCard,
   SettingsCardRow,
   SettingsSection,
-} from "@posthog/ui/features/settings/components/SettingsCard";
-import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
-import { useWhatsNewStore } from "@posthog/ui/features/updates/whatsNewStore";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
-import { track } from "@posthog/ui/shell/analytics";
-import { logger } from "@posthog/ui/shell/logger";
+} from "@flind/ui/features/settings/components/SettingsCard";
+import { useSettingsStore } from "@flind/ui/features/settings/settingsStore";
+import { useWhatsNewStore } from "@flind/ui/features/updates/whatsNewStore";
+import { Spinner } from "@flind/ui/primitives/Spinner";
+import { track } from "@flind/ui/shell/analytics";
+import { logger } from "@flind/ui/shell/logger";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useSubscription } from "@trpc/tanstack-react-query";
 import { useCallback, useEffect, useRef, useState } from "react";

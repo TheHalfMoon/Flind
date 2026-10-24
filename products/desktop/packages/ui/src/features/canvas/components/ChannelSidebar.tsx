@@ -3,7 +3,7 @@ import {
   PackageIcon,
   ShapesIcon,
 } from "@phosphor-icons/react";
-import type { ChannelItemModel } from "@posthog/core/canvas/channelItems";
+import type { ChannelItemModel } from "@flind/core/canvas/channelItems";
 import {
   Empty,
   EmptyDescription,
@@ -14,21 +14,21 @@ import {
   TabsList,
   TabsTrigger,
 } from "@flind/quill";
-import { LOOPS_FLAG } from "@posthog/shared";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
-import { ChannelBackRow } from "@posthog/ui/features/canvas/components/ChannelBackRow";
-import { ChannelItemsPane } from "@posthog/ui/features/canvas/components/ChannelItemsPane";
+import { LOOPS_FLAG } from "@flind/shared";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
+import { ChannelBackRow } from "@flind/ui/features/canvas/components/ChannelBackRow";
+import { ChannelItemsPane } from "@flind/ui/features/canvas/components/ChannelItemsPane";
 import {
   type ChannelPageKey,
   channelPageLabel,
-} from "@posthog/ui/features/canvas/components/channelPages";
-import { useChannelItems } from "@posthog/ui/features/canvas/hooks/useChannelItems";
-import { useChannels } from "@posthog/ui/features/canvas/hooks/useChannels";
-import { SHORTCUTS } from "@posthog/ui/features/command/keyboard-shortcuts";
-import { useFeatureFlag } from "@posthog/ui/features/feature-flags/useFeatureFlag";
-import { SidebarKbdHint } from "@posthog/ui/features/sidebar/components/items/SidebarKbdHint";
-import { SidebarItem } from "@posthog/ui/features/sidebar/components/SidebarItem";
-import { track } from "@posthog/ui/shell/analytics";
+} from "@flind/ui/features/canvas/components/channelPages";
+import { useChannelItems } from "@flind/ui/features/canvas/hooks/useChannelItems";
+import { useChannels } from "@flind/ui/features/canvas/hooks/useChannels";
+import { SHORTCUTS } from "@flind/ui/features/command/keyboard-shortcuts";
+import { useFeatureFlag } from "@flind/ui/features/feature-flags/useFeatureFlag";
+import { SidebarKbdHint } from "@flind/ui/features/sidebar/components/items/SidebarKbdHint";
+import { SidebarItem } from "@flind/ui/features/sidebar/components/SidebarItem";
+import { track } from "@flind/ui/shell/analytics";
 import { useNavigate, useRouterState } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 

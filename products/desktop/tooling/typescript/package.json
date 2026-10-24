@@ -1,5 +1,5 @@
 {
-  "name": "@posthog/tsconfig",
+  "name": "@flind/tsconfig",
   "private": true,
   "version": "0.1.0",
   "description": "Shared TypeScript configurations for PostHog workspace",

@@ -1,3 +1,3 @@
-import { createDialogStore } from "@posthog/ui/utils/createDialogStore";
+import { createDialogStore } from "@flind/ui/utils/createDialogStore";
 
 export const useWhatsNewStore = createDialogStore();

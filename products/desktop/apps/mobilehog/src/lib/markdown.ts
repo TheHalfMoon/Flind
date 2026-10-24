@@ -1,4 +1,4 @@
-import { isSafeExternalUrl } from "@posthog/shared";
+import { isSafeExternalUrl } from "@flind/shared";
 import { Marked, type Token, type Tokens } from "marked";
 import { objectTagExtensions } from "@/lib/objectTags";
 

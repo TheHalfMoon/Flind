@@ -1,1 +1,1 @@
-export { getStatusIndicator } from "@posthog/core/git-interaction/gitStatusUtils";
+export { getStatusIndicator } from "@flind/core/git-interaction/gitStatusUtils";

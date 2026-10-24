@@ -1,34 +1,34 @@
-import type { Task } from "@posthog/shared/domain-types";
+import type { Task } from "@flind/shared/domain-types";
 import { Theme } from "@radix-ui/themes";
 import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 vi.mock("@tanstack/react-router", () => ({ useNavigate: () => vi.fn() }));
-vi.mock("@posthog/ui/features/archive/useArchivedTaskIds", () => ({
+vi.mock("@flind/ui/features/archive/useArchivedTaskIds", () => ({
   useArchivedTaskIds: () => new Set<string>(),
 }));
-vi.mock("@posthog/ui/features/archive/useArchiveTask", () => ({
+vi.mock("@flind/ui/features/archive/useArchiveTask", () => ({
   useArchiveTask: () => ({ archiveTask: vi.fn() }),
 }));
-vi.mock("@posthog/ui/features/sidebar/usePinnedTasks", () => ({
+vi.mock("@flind/ui/features/sidebar/usePinnedTasks", () => ({
   usePinnedTasks: () => ({
     pinnedTaskIds: new Set<string>(),
     togglePin: vi.fn(),
     setPinnedMany: vi.fn(),
   }),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useChannelItems", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannelItems", () => ({
   useChannelSessionFacts: () => ({
     needsInputTaskIds: new Set<string>(),
     viewedTimestamps: {},
     workspaceByTaskId: new Map(),
   }),
 }));
-vi.mock("@posthog/ui/features/command-center/commandCenterStore", () => ({
+vi.mock("@flind/ui/features/command-center/commandCenterStore", () => ({
   useCommandCenterStore: () => [] as string[],
 }));
-vi.mock("@posthog/ui/features/canvas/components/ChannelItemsPane", () => ({
+vi.mock("@flind/ui/features/canvas/components/ChannelItemsPane", () => ({
   ChannelItemsPane: ({
     items,
     actions,
@@ -45,14 +45,14 @@ vi.mock("@posthog/ui/features/canvas/components/ChannelItemsPane", () => ({
     </div>
   ),
 }));
-vi.mock("@posthog/ui/features/canvas/components/FeedQueryInput", () => ({
+vi.mock("@flind/ui/features/canvas/components/FeedQueryInput", () => ({
   FeedQueryHighlight: ({ query }: { query: string }) => <span>{query}</span>,
 }));
-vi.mock("@posthog/ui/features/canvas/components/TaskFeedModal", () => ({
+vi.mock("@flind/ui/features/canvas/components/TaskFeedModal", () => ({
   TaskFeedModal: ({ open }: { open: boolean }) =>
     open ? <div>Edit saved search</div> : null,
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useTaskFeedResults", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useTaskFeedResults", () => ({
   useTaskFeedResults: () => ({
     error: null,
     errorMessage: null,
@@ -69,13 +69,13 @@ vi.mock("@posthog/ui/features/canvas/hooks/useTaskFeedResults", () => ({
     ],
   }),
 }));
-vi.mock("@posthog/ui/shell/analytics", () => ({ track: vi.fn() }));
+vi.mock("@flind/ui/shell/analytics", () => ({ track: vi.fn() }));
 
-import { useTaskFeedSelectionStore } from "@posthog/ui/features/canvas/stores/taskFeedSelectionStore";
-import { useTaskFeedsStore } from "@posthog/ui/features/canvas/stores/taskFeedsStore";
+import { useTaskFeedSelectionStore } from "@flind/ui/features/canvas/stores/taskFeedSelectionStore";
+import { useTaskFeedsStore } from "@flind/ui/features/canvas/stores/taskFeedsStore";
 import { TaskFeedPane } from "./TaskFeedPane";
 
-vi.mock("@posthog/ui/features/canvas/hooks/useProjectTaskFeeds", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useProjectTaskFeeds", () => ({
   useProjectTaskFeeds: () => useTaskFeedsStore.getState().feeds,
   useProjectTaskFeed: (feedId: string) =>
     useTaskFeedsStore.getState().feeds.find((feed) => feed.id === feedId),

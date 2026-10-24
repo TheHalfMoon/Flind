@@ -2,15 +2,15 @@ import type { SessionConfigOption } from "@agentclientprotocol/sdk";
 import {
   resolveInitialPlanApprovalOption,
   selectPlanPermissionOptions,
-} from "@posthog/core/sessions/permissionResponse";
-import type { ExecutionMode } from "@posthog/shared";
-import { ModeSelector } from "@posthog/ui/features/message-editor/components/ModeSelector";
-import { MODE_LABELS } from "@posthog/ui/features/sessions/modeStyles";
-import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
+} from "@flind/core/sessions/permissionResponse";
+import type { ExecutionMode } from "@flind/shared";
+import { ModeSelector } from "@flind/ui/features/message-editor/components/ModeSelector";
+import { MODE_LABELS } from "@flind/ui/features/sessions/modeStyles";
+import { useSettingsStore } from "@flind/ui/features/settings/settingsStore";
 import {
   ActionSelector,
   InlineEditableText,
-} from "@posthog/ui/primitives/ActionSelector";
+} from "@flind/ui/primitives/ActionSelector";
 import { Box, Flex, Text } from "@radix-ui/themes";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { type BasePermissionProps, toSelectorOptions } from "./types";

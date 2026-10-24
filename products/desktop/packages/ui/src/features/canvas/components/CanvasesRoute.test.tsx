@@ -6,15 +6,15 @@ const mocks = vi.hoisted(() => ({
   markCanvasViewed: vi.fn(),
 }));
 
-vi.mock("@posthog/ui/features/canvas/components/WebsiteDashboard", () => ({
+vi.mock("@flind/ui/features/canvas/components/WebsiteDashboard", () => ({
   WebsiteDashboard: ({ dashboardId }: { dashboardId: string }) => (
     <div>{dashboardId}</div>
   ),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useSelectedCanvasId", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useSelectedCanvasId", () => ({
   useSelectedCanvasId: () => mocks.canvasId,
 }));
-vi.mock("@posthog/ui/features/canvas/stores/canvasViewedStore", () => ({
+vi.mock("@flind/ui/features/canvas/stores/canvasViewedStore", () => ({
   useCanvasViewedStore: (
     selector: (state: {
       markCanvasViewed: typeof mocks.markCanvasViewed;

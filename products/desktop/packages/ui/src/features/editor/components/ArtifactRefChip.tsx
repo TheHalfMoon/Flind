@@ -1,11 +1,11 @@
-import { usePanelLayoutStore } from "@posthog/ui/features/panels/panelLayoutStore";
-import { useArtifactDownload } from "@posthog/ui/features/sessions/useArtifactDownload";
-import { useRunArtifacts } from "@posthog/ui/features/sessions/useRunArtifacts";
-import { useSessionTaskId } from "@posthog/ui/features/sessions/useSessionTaskId";
-import { ArtifactChip } from "@posthog/ui/primitives/ArtifactChip";
-import type { ArtifactLinkTarget } from "@posthog/ui/utils/artifactLinks";
-import { findArtifactForLink } from "@posthog/ui/utils/artifactLinks";
-import { formatFileSize } from "@posthog/ui/utils/formatFileSize";
+import { usePanelLayoutStore } from "@flind/ui/features/panels/panelLayoutStore";
+import { useArtifactDownload } from "@flind/ui/features/sessions/useArtifactDownload";
+import { useRunArtifacts } from "@flind/ui/features/sessions/useRunArtifacts";
+import { useSessionTaskId } from "@flind/ui/features/sessions/useSessionTaskId";
+import { ArtifactChip } from "@flind/ui/primitives/ArtifactChip";
+import type { ArtifactLinkTarget } from "@flind/ui/utils/artifactLinks";
+import { findArtifactForLink } from "@flind/ui/utils/artifactLinks";
+import { formatFileSize } from "@flind/ui/utils/formatFileSize";
 import type { ReactNode } from "react";
 
 /**

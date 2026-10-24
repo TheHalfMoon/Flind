@@ -4,17 +4,17 @@ import {
   resolveMenuCheckFromStatus,
   resolveMenuCheckResult,
   updateStore,
-} from "@posthog/core/updates/updateStore";
-import { resolveService } from "@posthog/di/container";
-import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
-import { useUpdateModalStore } from "@posthog/ui/features/updates/updateModalStore";
+} from "@flind/core/updates/updateStore";
+import { resolveService } from "@flind/di/container";
+import { useSettingsStore } from "@flind/ui/features/settings/settingsStore";
+import { useUpdateModalStore } from "@flind/ui/features/updates/updateModalStore";
 import {
   UPDATES_CLIENT,
   type UpdatesClient,
-} from "@posthog/ui/features/updates/updatesClient";
-import { toast } from "@posthog/ui/primitives/toast";
-import { logger } from "@posthog/ui/shell/logger";
-import { useRendererWindowFocusStore } from "@posthog/ui/shell/rendererWindowFocusStore";
+} from "@flind/ui/features/updates/updatesClient";
+import { toast } from "@flind/ui/primitives/toast";
+import { logger } from "@flind/ui/shell/logger";
+import { useRendererWindowFocusStore } from "@flind/ui/shell/rendererWindowFocusStore";
 import { hostTrpcClient } from "@renderer/trpc/client";
 
 const log = logger.scope("updates-host");

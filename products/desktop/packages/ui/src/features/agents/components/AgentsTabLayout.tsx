@@ -1,9 +1,9 @@
 import {
   type AgentsTab,
   useAgentsPageActions,
-} from "@posthog/ui/features/agents/agentsPageStore";
-import { leaveSettings } from "@posthog/ui/features/settings/hooks/useOpenSettings";
-import { TabStrip } from "@posthog/ui/primitives/TabStrip";
+} from "@flind/ui/features/agents/agentsPageStore";
+import { leaveSettings } from "@flind/ui/features/settings/hooks/useOpenSettings";
+import { TabStrip } from "@flind/ui/primitives/TabStrip";
 import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 

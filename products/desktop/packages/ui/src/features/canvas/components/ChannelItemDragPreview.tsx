@@ -1,10 +1,10 @@
-import type { ChannelItemModel } from "@posthog/core/canvas/channelItems";
+import type { ChannelItemModel } from "@flind/core/canvas/channelItems";
 import { cn } from "@flind/quill";
-import { ChannelItemRowView } from "@posthog/ui/features/canvas/components/ChannelItemRow";
-import { useChannelTaskStatus } from "@posthog/ui/features/canvas/hooks/useChannelTaskStatus";
-import { DragBatchLabel } from "@posthog/ui/features/sidebar/components/DragBatchLabel";
-import { getPinDropAction } from "@posthog/ui/features/sidebar/taskListDragAndDrop";
-import type { PinDrag } from "@posthog/ui/features/sidebar/usePinDrag";
+import { ChannelItemRowView } from "@flind/ui/features/canvas/components/ChannelItemRow";
+import { useChannelTaskStatus } from "@flind/ui/features/canvas/hooks/useChannelTaskStatus";
+import { DragBatchLabel } from "@flind/ui/features/sidebar/components/DragBatchLabel";
+import { getPinDropAction } from "@flind/ui/features/sidebar/taskListDragAndDrop";
+import type { PinDrag } from "@flind/ui/features/sidebar/usePinDrag";
 import {
   AnimatePresence,
   type MotionValue,

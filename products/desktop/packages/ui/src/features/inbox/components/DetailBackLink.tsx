@@ -1,5 +1,5 @@
 import { ArrowLeftIcon } from "@phosphor-icons/react";
-import { useInboxTriageOrigin } from "@posthog/ui/features/inbox/hooks/useInboxBackTarget";
+import { useInboxTriageOrigin } from "@flind/ui/features/inbox/hooks/useInboxBackTarget";
 import { Link } from "@tanstack/react-router";
 import type { ReactElement } from "react";
 

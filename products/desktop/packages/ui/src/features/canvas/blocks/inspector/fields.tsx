@@ -10,7 +10,7 @@ import {
   ToggleGroup,
   ToggleGroupItem,
 } from "@flind/quill";
-import { settingsToggleItemClassName } from "@posthog/ui/features/settings/components/SettingsSegmented";
+import { settingsToggleItemClassName } from "@flind/ui/features/settings/components/SettingsSegmented";
 import { type ReactNode, useEffect, useId, useState } from "react";
 
 export type MathValue = "total" | "dau" | "weekly_active" | "monthly_active";

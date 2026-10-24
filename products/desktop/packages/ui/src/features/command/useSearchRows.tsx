@@ -1,26 +1,26 @@
-import { channelDisplayName } from "@posthog/core/canvas/channelName";
-import { singleLineTitle } from "@posthog/shared";
-import type { CommandMenuAction } from "@posthog/shared/analytics-events";
-import type { Task, TaskSearchResult } from "@posthog/shared/domain-types";
-import type { CommandSection } from "@posthog/ui/features/command/commandRow";
+import { channelDisplayName } from "@flind/core/canvas/channelName";
+import { singleLineTitle } from "@flind/shared";
+import type { CommandMenuAction } from "@flind/shared/analytics-events";
+import type { Task, TaskSearchResult } from "@flind/shared/domain-types";
+import type { CommandSection } from "@flind/ui/features/command/commandRow";
 import {
   searchResultDetail,
   searchResultParts,
   searchResultRecency,
-} from "@posthog/ui/features/command/commandRowFacts";
-import { searchResultHref } from "@posthog/ui/features/command/commandRowHref";
-import { commandRowMeta } from "@posthog/ui/features/command/commandRowMeta";
-import type { ResultRow } from "@posthog/ui/features/command/rankResultRows";
-import { searchResultIcon } from "@posthog/ui/features/command/searchResultIcon";
-import { closeSettings } from "@posthog/ui/features/settings/hooks/useOpenSettings";
+} from "@flind/ui/features/command/commandRowFacts";
+import { searchResultHref } from "@flind/ui/features/command/commandRowHref";
+import { commandRowMeta } from "@flind/ui/features/command/commandRowMeta";
+import type { ResultRow } from "@flind/ui/features/command/rankResultRows";
+import { searchResultIcon } from "@flind/ui/features/command/searchResultIcon";
+import { closeSettings } from "@flind/ui/features/settings/hooks/useOpenSettings";
 import {
   navigateToCanvases,
   navigateToChannel,
   navigateToChannelDashboard,
   navigateToChannelTask,
   navigateToTaskDetail,
-} from "@posthog/ui/router/navigationBridge";
-import { openTask } from "@posthog/ui/router/useOpenTask";
+} from "@flind/ui/router/navigationBridge";
+import { openTask } from "@flind/ui/router/useOpenTask";
 import { useMemo } from "react";
 
 type SearchChannel = { id: string; name: string };

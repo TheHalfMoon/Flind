@@ -1,5 +1,5 @@
-import { ANALYTICS_EVENTS } from "@posthog/shared";
-import type { SignalReport } from "@posthog/shared/types";
+import { ANALYTICS_EVENTS } from "@flind/shared";
+import type { SignalReport } from "@flind/shared/types";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { act, renderHook } from "@testing-library/react";
 import type { ReactNode } from "react";
@@ -12,19 +12,19 @@ const mocks = vi.hoisted(() => ({
   error: vi.fn(),
 }));
 
-vi.mock("@posthog/ui/features/auth/authClient", () => ({
+vi.mock("@flind/ui/features/auth/authClient", () => ({
   useAuthenticatedClient: () => ({
     refundSignalReport: mocks.refundSignalReport,
   }),
 }));
 
-vi.mock("@posthog/ui/features/feature-flags/useFeatureFlag", () => ({
+vi.mock("@flind/ui/features/feature-flags/useFeatureFlag", () => ({
   useFeatureFlag: () => true,
 }));
 
-vi.mock("@posthog/ui/shell/analytics", () => ({ track: mocks.track }));
+vi.mock("@flind/ui/shell/analytics", () => ({ track: mocks.track }));
 
-vi.mock("@posthog/ui/primitives/toast", () => ({
+vi.mock("@flind/ui/primitives/toast", () => ({
   toast: { success: mocks.success, error: mocks.error },
 }));
 

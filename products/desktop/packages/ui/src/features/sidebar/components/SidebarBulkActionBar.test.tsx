@@ -1,4 +1,4 @@
-import type { SidebarBulkActions } from "@posthog/ui/features/sidebar/useSidebarBulkActions";
+import type { SidebarBulkActions } from "@flind/ui/features/sidebar/useSidebarBulkActions";
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import { SidebarBulkActionBar } from "./SidebarBulkActionBar";

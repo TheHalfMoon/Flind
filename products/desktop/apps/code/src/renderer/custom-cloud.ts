@@ -1,5 +1,5 @@
-import { configureCustomCloud } from "@posthog/shared";
-import { logger } from "@posthog/ui/shell/logger";
+import { configureCustomCloud } from "@flind/shared";
+import { logger } from "@flind/ui/shell/logger";
 import { trpcClient } from "@renderer/trpc/client";
 
 const log = logger.scope("custom-cloud");

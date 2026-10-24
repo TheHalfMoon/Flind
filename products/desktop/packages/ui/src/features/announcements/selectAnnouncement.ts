@@ -1,9 +1,9 @@
-import { isVersionNewer } from "@posthog/core/updates/version";
+import { isVersionNewer } from "@flind/core/updates/version";
 import {
   type Announcement,
   announcementSchema,
   announcementsEnvelopeSchema,
-} from "@posthog/shared/announcements";
+} from "@flind/shared/announcements";
 
 export interface ActiveAnnouncement {
   announcement: Announcement;

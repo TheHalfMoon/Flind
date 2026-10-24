@@ -1,5 +1,5 @@
 import type { SessionConfigOption } from "@agentclientprotocol/sdk";
-import { modelHarnessMeta } from "@posthog/shared";
+import { modelHarnessMeta } from "@flind/shared";
 import { describe, expect, it } from "vitest";
 import {
   flattenConfigValues,

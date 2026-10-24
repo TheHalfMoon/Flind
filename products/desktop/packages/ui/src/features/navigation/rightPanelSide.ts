@@ -5,13 +5,13 @@ import {
   PackageIcon,
   PulseIcon,
 } from "@phosphor-icons/react";
-import { useReviewNavigationStore } from "@posthog/ui/features/code-review/reviewNavigationStore";
+import { useReviewNavigationStore } from "@flind/ui/features/code-review/reviewNavigationStore";
 import {
   DEFAULT_RIGHT_PANEL_SIDE,
   type RightPanelSide,
   resolveRightPanelSide,
   useRightPanelStore,
-} from "@posthog/ui/features/navigation/rightPanelStore";
+} from "@flind/ui/features/navigation/rightPanelStore";
 
 /**
  * Changes rides the review store, so every entry point into a review lands on

@@ -1,7 +1,7 @@
 import { Button, Host, Image, Menu } from "@expo/ui/swift-ui";
 import { frame } from "@expo/ui/swift-ui/modifiers";
-import { isSafeGitHubPullRequestUrl } from "@posthog/shared";
-import type { Task } from "@posthog/shared/domain-types";
+import { isSafeGitHubPullRequestUrl } from "@flind/shared";
+import type { Task } from "@flind/shared/domain-types";
 import { useNavigation, useRouter } from "expo-router";
 import { Linking, Pressable, StyleSheet, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";

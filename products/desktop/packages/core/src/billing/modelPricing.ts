@@ -1,10 +1,10 @@
-import { isCustomModelOption } from "@posthog/shared";
+import { isCustomModelOption } from "@flind/shared";
 import {
   COST_BASELINE_LABEL,
   COST_BASELINE_MODEL,
   catalogModelFor,
   type ModelCost,
-} from "@posthog/shared/model-catalog";
+} from "@flind/shared/model-catalog";
 
 /**
  * Rates and rendered strings both come from the generated catalog, which takes

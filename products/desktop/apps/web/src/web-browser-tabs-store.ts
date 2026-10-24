@@ -14,7 +14,7 @@ import {
   type TabTarget,
   TypedEventEmitter,
   tabsSnapshotSchema,
-} from "@posthog/shared";
+} from "@flind/shared";
 import { readValidated, writeJson } from "./web-local-store";
 
 // Per-device browser-tab strip for the web host, backed by localStorage.

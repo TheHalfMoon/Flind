@@ -1,14 +1,14 @@
 import { Button, Text } from "@flind/quill";
-import type { BrowserTab } from "@posthog/shared";
-import { WebsiteDashboard } from "@posthog/ui/features/canvas/components/WebsiteDashboard";
-import { TaskDetail } from "@posthog/ui/features/task-detail/components/TaskDetail";
+import type { BrowserTab } from "@flind/shared";
+import { WebsiteDashboard } from "@flind/ui/features/canvas/components/WebsiteDashboard";
+import { TaskDetail } from "@flind/ui/features/task-detail/components/TaskDetail";
 import {
   getCachedTask,
   getCachedTaskDetail,
   taskDetailQuery,
-} from "@posthog/ui/features/tasks/queries";
-import { pickFreshestTask } from "@posthog/ui/features/tasks/taskFreshness";
-import { TaskDetailSkeleton } from "@posthog/ui/router/routeSkeletons";
+} from "@flind/ui/features/tasks/queries";
+import { pickFreshestTask } from "@flind/ui/features/tasks/taskFreshness";
+import { TaskDetailSkeleton } from "@flind/ui/router/routeSkeletons";
 import { useQuery } from "@tanstack/react-query";
 import { memo } from "react";
 import { TileRouter } from "./TileRouter";

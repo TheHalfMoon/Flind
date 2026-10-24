@@ -1,7 +1,7 @@
 import { EnvelopeSimple } from "@phosphor-icons/react";
 import { Badge } from "@flind/quill";
-import { SHORTCUTS } from "@posthog/ui/features/command/keyboard-shortcuts";
-import { Tooltip } from "@posthog/ui/primitives/Tooltip";
+import { SHORTCUTS } from "@flind/ui/features/command/keyboard-shortcuts";
+import { Tooltip } from "@flind/ui/primitives/Tooltip";
 import type { MouseEventHandler } from "react";
 import { SidebarItem } from "../SidebarItem";
 import { SidebarCountBadge } from "./SidebarCountBadge";

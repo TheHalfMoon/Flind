@@ -1,4 +1,4 @@
-import type { TaskRunStatus } from "@posthog/shared/domain-types";
+import type { TaskRunStatus } from "@flind/shared/domain-types";
 import { describe, expect, it } from "vitest";
 import {
   deriveTaskData,

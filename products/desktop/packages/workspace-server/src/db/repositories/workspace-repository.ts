@@ -1,4 +1,4 @@
-import { mergePrUrls, promotePrUrl, type WorkspaceMode } from "@posthog/shared";
+import { mergePrUrls, promotePrUrl, type WorkspaceMode } from "@flind/shared";
 import { eq, isNotNull } from "drizzle-orm";
 import { inject, injectable } from "inversify";
 import { DATABASE_SERVICE } from "../identifiers";
@@ -8,7 +8,7 @@ import type { DatabaseService } from "../service";
 
 export type Workspace = typeof workspaces.$inferSelect;
 export type NewWorkspace = typeof workspaces.$inferInsert;
-export type { WorkspaceMode } from "@posthog/shared";
+export type { WorkspaceMode } from "@flind/shared";
 
 type CachedPrState = "open" | "merged" | "closed" | "draft";
 

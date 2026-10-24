@@ -1,9 +1,9 @@
-import { resolveService } from "@posthog/di/container";
+import { resolveService } from "@flind/di/container";
 import {
   HOST_TRPC_CLIENT,
   type HostTrpcClient,
-} from "@posthog/host-router/client";
-import { logger } from "@posthog/ui/shell/logger";
+} from "@flind/host-router/client";
+import { logger } from "@flind/ui/shell/logger";
 
 const log = logger.scope("clear-storage");
 

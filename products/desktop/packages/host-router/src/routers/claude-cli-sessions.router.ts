@@ -1,8 +1,8 @@
-import { publicProcedure, router } from "@posthog/host-trpc/trpc";
+import { publicProcedure, router } from "@flind/host-trpc/trpc";
 import {
   CLAUDE_CLI_SESSIONS_SERVICE,
   type ClaudeCliSessionsService,
-} from "@posthog/workspace-server/services/claude-cli-sessions/identifiers";
+} from "@flind/workspace-server/services/claude-cli-sessions/identifiers";
 import {
   deleteImportedCliSessionInput,
   deleteImportRecordInput,
@@ -11,7 +11,7 @@ import {
   listCliSessionsInput,
   listCliSessionsOutput,
   recordCliImportInput,
-} from "@posthog/workspace-server/services/claude-cli-sessions/schemas";
+} from "@flind/workspace-server/services/claude-cli-sessions/schemas";
 
 export const claudeCliSessionsRouter = router({
   list: publicProcedure

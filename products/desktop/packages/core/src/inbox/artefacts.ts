@@ -3,7 +3,7 @@ import type {
   RepoSelectionArtefact,
   SuggestedReviewer,
   SuggestedReviewerWriteEntry,
-} from "@posthog/shared/types";
+} from "@flind/shared/types";
 
 export interface ReviewerOption {
   uuid: string;

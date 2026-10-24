@@ -1,5 +1,5 @@
 import { CaretDownIcon, SparkleIcon } from "@phosphor-icons/react";
-import { parsePrUrl } from "@posthog/core/inbox/reportPresentation";
+import { parsePrUrl } from "@flind/core/inbox/reportPresentation";
 import {
   Button,
   Combobox,
@@ -10,15 +10,15 @@ import {
   ComboboxList,
   ComboboxTrigger,
 } from "@flind/quill";
-import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
+import { useOptionalAuthenticatedClient } from "@flind/ui/features/auth/authClient";
 import {
   getAuthIdentity,
   useAuthStateValue,
-} from "@posthog/ui/features/auth/store";
-import { useCurrentUser } from "@posthog/ui/features/auth/useCurrentUser";
-import { useTeamSkills } from "@posthog/ui/features/skills/useTeamSkills";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
-import { openTaskInput } from "@posthog/ui/router/useOpenTask";
+} from "@flind/ui/features/auth/store";
+import { useCurrentUser } from "@flind/ui/features/auth/useCurrentUser";
+import { useTeamSkills } from "@flind/ui/features/skills/useTeamSkills";
+import { Spinner } from "@flind/ui/primitives/Spinner";
+import { openTaskInput } from "@flind/ui/router/useOpenTask";
 import { Link } from "@tanstack/react-router";
 import { useRef, useState } from "react";
 import { usePrSkillUsageStore } from "./prSkillUsageStore";

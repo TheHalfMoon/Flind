@@ -11,23 +11,23 @@ const { acceptBetaTerms, approveAiDataProcessing, track, writeText } =
     writeText: vi.fn(),
   }));
 
-vi.mock("@posthog/ui/features/auth/authClient", () => ({
+vi.mock("@flind/ui/features/auth/authClient", () => ({
   useAuthenticatedClient: () => ({
     acceptDesktopBetaTerms: acceptBetaTerms,
     approveAiDataProcessing,
   }),
 }));
 
-vi.mock("@posthog/ui/features/auth/useCurrentUser", () => ({
+vi.mock("@flind/ui/features/auth/useCurrentUser", () => ({
   authKeys: { currentUsers: () => ["auth", "current-user"] },
   useCurrentUser: () => ({
     data: { organization: { id: "org-id", name: "Example Org" } },
   }),
 }));
 
-vi.mock("@posthog/ui/shell/analytics", () => ({ track }));
+vi.mock("@flind/ui/shell/analytics", () => ({ track }));
 
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
 import { ConsentPanel } from "./ConsentPanel";
 
 function renderPanel(

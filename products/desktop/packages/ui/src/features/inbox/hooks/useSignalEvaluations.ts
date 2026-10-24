@@ -1,9 +1,9 @@
-import type { Evaluation } from "@posthog/api-client/posthog-client";
-import { getCloudUrlFromRegion } from "@posthog/shared";
-import { useAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { useAuthStateValue } from "@posthog/ui/features/auth/store";
-import { useEvaluations } from "@posthog/ui/features/inbox/hooks/useEvaluations";
-import { toast } from "@posthog/ui/primitives/toast";
+import type { Evaluation } from "@flind/api-client/posthog-client";
+import { getCloudUrlFromRegion } from "@flind/shared";
+import { useAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { useAuthStateValue } from "@flind/ui/features/auth/store";
+import { useEvaluations } from "@flind/ui/features/inbox/hooks/useEvaluations";
+import { toast } from "@flind/ui/primitives/toast";
 import { useQueryClient } from "@tanstack/react-query";
 import { useCallback, useMemo, useState } from "react";
 

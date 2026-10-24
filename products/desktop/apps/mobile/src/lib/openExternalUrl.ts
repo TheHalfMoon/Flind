@@ -1,4 +1,4 @@
-import { isSafeExternalUrl } from "@posthog/shared";
+import { isSafeExternalUrl } from "@flind/shared";
 import { Linking } from "react-native";
 import { logger } from "@/lib/logger";
 

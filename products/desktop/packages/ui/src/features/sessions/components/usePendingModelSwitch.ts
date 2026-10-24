@@ -1,8 +1,8 @@
 import type { SessionConfigOption } from "@agentclientprotocol/sdk";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
-import { flattenSelectOptions } from "@posthog/ui/features/sessions/sessionStore";
-import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
-import { track } from "@posthog/ui/shell/analytics";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
+import { flattenSelectOptions } from "@flind/ui/features/sessions/sessionStore";
+import { useSettingsStore } from "@flind/ui/features/settings/settingsStore";
+import { track } from "@flind/ui/shell/analytics";
 import { useCallback, useState } from "react";
 
 export interface PendingModelSwitch {

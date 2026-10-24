@@ -1,7 +1,7 @@
 import { ChartLineUp } from "@phosphor-icons/react";
-import type { AutoresearchService } from "@posthog/core/autoresearch/autoresearch";
-import { AUTORESEARCH_SERVICE } from "@posthog/core/autoresearch/identifiers";
-import { useServiceOptional } from "@posthog/di/react";
+import type { AutoresearchService } from "@flind/core/autoresearch/autoresearch";
+import { AUTORESEARCH_SERVICE } from "@flind/core/autoresearch/identifiers";
+import { useServiceOptional } from "@flind/di/react";
 import { Button } from "@flind/quill";
 import { useEffect } from "react";
 import { Tooltip } from "../../primitives/Tooltip";

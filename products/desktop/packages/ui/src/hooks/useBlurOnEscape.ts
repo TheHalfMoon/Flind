@@ -1,5 +1,5 @@
-import { SHORTCUTS } from "@posthog/ui/features/command/keyboard-shortcuts";
-import { hasOpenOverlay } from "@posthog/ui/utils/overlay";
+import { SHORTCUTS } from "@flind/ui/features/command/keyboard-shortcuts";
+import { hasOpenOverlay } from "@flind/ui/utils/overlay";
 import { useHotkeys } from "react-hotkeys-hook";
 
 export function useBlurOnEscape() {

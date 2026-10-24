@@ -1,4 +1,4 @@
-import type { TourDefinition } from "@posthog/core/tour/types";
+import type { TourDefinition } from "@flind/core/tour/types";
 
 const TOUR_REGISTRY: Record<string, TourDefinition> = {};
 

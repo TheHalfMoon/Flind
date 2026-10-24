@@ -1,4 +1,4 @@
-import { LoadingState } from "@posthog/ui/primitives/LoadingState";
+import { LoadingState } from "@flind/ui/primitives/LoadingState";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {

@@ -1,5 +1,5 @@
 import { CheckIcon } from "@phosphor-icons/react";
-import type { ScoutConfig } from "@posthog/api-client/posthog-client";
+import type { ScoutConfig } from "@flind/api-client/posthog-client";
 import {
   computeFleetSummary,
   computeScoutRollups,
@@ -11,16 +11,16 @@ import {
   type ScoutOrigin,
   scoutCreatorKey,
   sortConfigsForDisplay,
-} from "@posthog/core/scouts/scoutPresentation";
-import { SCOUT_RUNS_WINDOW_LABEL } from "@posthog/core/scouts/scoutRunsWindow";
-import { suggestionBrief } from "@posthog/core/scouts/scoutSuggestions";
+} from "@flind/core/scouts/scoutPresentation";
+import { SCOUT_RUNS_WINDOW_LABEL } from "@flind/core/scouts/scoutRunsWindow";
+import { suggestionBrief } from "@flind/core/scouts/scoutSuggestions";
 import { Button, Skeleton, Tabs, TabsList, TabsTrigger } from "@flind/quill";
-import { ANALYTICS_EVENTS } from "@posthog/shared";
-import { leaveSettings } from "@posthog/ui/features/settings/hooks/useOpenSettings";
-import { SettingsOptionSelect } from "@posthog/ui/features/settings/SettingsOptionSelect";
-import { useMinuteNow } from "@posthog/ui/hooks/useMinuteNow";
-import { SearchInput } from "@posthog/ui/primitives/SearchInput";
-import { track } from "@posthog/ui/shell/analytics";
+import { ANALYTICS_EVENTS } from "@flind/shared";
+import { leaveSettings } from "@flind/ui/features/settings/hooks/useOpenSettings";
+import { SettingsOptionSelect } from "@flind/ui/features/settings/SettingsOptionSelect";
+import { useMinuteNow } from "@flind/ui/hooks/useMinuteNow";
+import { SearchInput } from "@flind/ui/primitives/SearchInput";
+import { track } from "@flind/ui/shell/analytics";
 import { Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { useMeQuery } from "../../auth/useMeQuery";

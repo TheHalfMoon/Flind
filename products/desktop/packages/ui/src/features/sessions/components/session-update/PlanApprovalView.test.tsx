@@ -1,4 +1,4 @@
-import type { ToolCall } from "@posthog/ui/features/sessions/types";
+import type { ToolCall } from "@flind/ui/features/sessions/types";
 import { Theme } from "@radix-ui/themes";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";

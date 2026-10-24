@@ -6,10 +6,10 @@ import {
   EmptyMedia,
   EmptyTitle,
 } from "@flind/quill";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
-import { useCanvasAvailability } from "@posthog/ui/features/canvas/hooks/useDashboards";
-import { LoadingState } from "@posthog/ui/primitives/LoadingState";
-import { track } from "@posthog/ui/shell/analytics";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
+import { useCanvasAvailability } from "@flind/ui/features/canvas/hooks/useDashboards";
+import { LoadingState } from "@flind/ui/primitives/LoadingState";
+import { track } from "@flind/ui/shell/analytics";
 import { useEffect } from "react";
 
 // Shown in place of a canvas that would not open. A canvas link carries no

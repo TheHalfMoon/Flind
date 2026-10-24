@@ -1,4 +1,4 @@
-import type { ExecutionMode } from "@posthog/shared";
+import type { ExecutionMode } from "@flind/shared";
 import { createElement } from "react";
 import { act, create, type ReactTestRenderer } from "react-test-renderer";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";

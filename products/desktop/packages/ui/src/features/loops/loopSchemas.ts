@@ -1,4 +1,4 @@
-import type { EffortLevel } from "@posthog/shared/domain-types";
+import type { EffortLevel } from "@flind/shared/domain-types";
 
 export namespace LoopSchemas {
   export type LoopTriggerTypeEnum = "schedule" | "github";

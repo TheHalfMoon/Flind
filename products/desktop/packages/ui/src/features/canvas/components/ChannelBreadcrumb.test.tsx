@@ -30,19 +30,19 @@ vi.mock("@tanstack/react-router", () => ({
     select: (state: { location: { pathname: string } }) => T;
   }) => select({ location: { pathname: router.pathname } }),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useChannelsLayout", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannelsLayout", () => ({
   useChannelsLayout: () => true,
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useChannels", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannels", () => ({
   useChannels: () => ({ channels: channels.current, isLoading: false }),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useChannelStars", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannelStars", () => ({
   useChannelStarMutations: () => ({
     star: channels.star,
     unstar: channels.unstar,
   }),
 }));
-vi.mock("@posthog/ui/features/canvas/utils/copyChannelLink", () => ({
+vi.mock("@flind/ui/features/canvas/utils/copyChannelLink", () => ({
   copyChannelLink: channels.copyLink,
 }));
 

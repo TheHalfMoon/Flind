@@ -1,5 +1,5 @@
-import type { AgentSession } from "@posthog/shared";
-import { isTerminalStatus } from "@posthog/shared/domain-types";
+import type { AgentSession } from "@flind/shared";
+import { isTerminalStatus } from "@flind/shared/domain-types";
 
 // Above the Command Center's 3x3 grid so fully-visible layouts never evict.
 export const MAX_CONNECTED_SESSIONS = 12;

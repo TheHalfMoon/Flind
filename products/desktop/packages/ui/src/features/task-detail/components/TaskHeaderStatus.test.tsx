@@ -1,5 +1,5 @@
-import type { Task } from "@posthog/shared/domain-types";
-import type { TaskStatusInput } from "@posthog/ui/features/sidebar/components/items/taskStatusVocabulary";
+import type { Task } from "@flind/shared/domain-types";
+import type { TaskStatusInput } from "@flind/ui/features/sidebar/components/items/taskStatusVocabulary";
 import { Theme } from "@radix-ui/themes";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
@@ -14,16 +14,16 @@ const mocks = vi.hoisted(() => ({
   openExternalUrl: vi.fn(),
   toast: { success: vi.fn(), error: vi.fn() },
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useChannelTaskStatus", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannelTaskStatus", () => ({
   useTaskStatusInput: () => mocks.status,
 }));
-vi.mock("@posthog/ui/features/sidebar/usePinnedTasks", () => ({
+vi.mock("@flind/ui/features/sidebar/usePinnedTasks", () => ({
   usePinnedTasks: () => ({ togglePin: mocks.togglePin }),
 }));
-vi.mock("@posthog/ui/shell/openExternal", () => ({
+vi.mock("@flind/ui/shell/openExternal", () => ({
   openExternalUrl: mocks.openExternalUrl,
 }));
-vi.mock("@posthog/ui/primitives/toast", () => ({ toast: mocks.toast }));
+vi.mock("@flind/ui/primitives/toast", () => ({ toast: mocks.toast }));
 
 import { TaskHeaderMark, TaskHeaderMarks } from "./TaskHeaderStatus";
 

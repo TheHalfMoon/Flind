@@ -1,24 +1,24 @@
 import { DEFAULT_GATEWAY_MODEL } from "@flind/agent/gateway-models";
-import { getIsOnline } from "@posthog/core/connectivity/connectivityStore";
+import { getIsOnline } from "@flind/core/connectivity/connectivityStore";
 import {
   AGENT_SESSION_NOTIFIER,
   type AgentSessionNotifier,
-} from "@posthog/core/notification/agentSessionNotifications";
-import { CloudArtifactService } from "@posthog/core/sessions/cloudArtifactService";
+} from "@flind/core/notification/agentSessionNotifications";
+import { CloudArtifactService } from "@flind/core/sessions/cloudArtifactService";
 import {
   combineQueuedCloudPrompts,
   getCloudPromptTransport,
-} from "@posthog/core/sessions/cloudPrompt";
+} from "@flind/core/sessions/cloudPrompt";
 import {
   SessionService,
   type SessionServiceDeps,
-} from "@posthog/core/sessions/sessionService";
-import { extractSkillButtonId } from "@posthog/core/skill-buttons/prompts";
-import { resolveService } from "@posthog/di/container";
+} from "@flind/core/sessions/sessionService";
+import { extractSkillButtonId } from "@flind/core/skill-buttons/prompts";
+import { resolveService } from "@flind/di/container";
 import {
   HOST_TRPC_CLIENT,
   type HostTrpcClient,
-} from "@posthog/host-router/client";
+} from "@flind/host-router/client";
 import {
   BEDROCK_GATEWAY_VARIANTS,
   BEDROCK_LLM_GATEWAY_FLAG,
@@ -28,37 +28,37 @@ import {
   CODEX_OWN_SUBSCRIPTION_CLOUD_FLAG,
   CODEX_OWN_SUBSCRIPTION_FLAG,
   SPOKEN_NARRATION_FLAG,
-} from "@posthog/shared";
+} from "@flind/shared";
 import {
   createAuthenticatedClient,
   getAuthenticatedClient,
-} from "@posthog/ui/features/auth/authClientImperative";
-import { fetchAuthState } from "@posthog/ui/features/auth/authQueries";
-import { useUsageLimitStore } from "@posthog/ui/features/billing/usageLimitStore";
+} from "@flind/ui/features/auth/authClientImperative";
+import { fetchAuthState } from "@flind/ui/features/auth/authQueries";
+import { useUsageLimitStore } from "@flind/ui/features/billing/usageLimitStore";
 import {
   FEATURE_FLAGS,
   type FeatureFlags,
-} from "@posthog/ui/features/feature-flags/identifiers";
-import { useAddDirectoryDialogStore } from "@posthog/ui/features/folder-picker/addDirectoryDialogStore";
-import { SpeechNotifier } from "@posthog/ui/features/notifications/speechNotifier";
-import { useSessionAdapterStore } from "@posthog/ui/features/sessions/sessionAdapterStore";
+} from "@flind/ui/features/feature-flags/identifiers";
+import { useAddDirectoryDialogStore } from "@flind/ui/features/folder-picker/addDirectoryDialogStore";
+import { SpeechNotifier } from "@flind/ui/features/notifications/speechNotifier";
+import { useSessionAdapterStore } from "@flind/ui/features/sessions/sessionAdapterStore";
 import {
   getPersistedConfigOptions,
   removePersistedConfigOptions,
   setPersistedConfigOptions,
-} from "@posthog/ui/features/sessions/sessionConfigStore";
-import { sessionStoreSetters } from "@posthog/ui/features/sessions/sessionStore";
+} from "@flind/ui/features/sessions/sessionConfigStore";
+import { sessionStoreSetters } from "@flind/ui/features/sessions/sessionStore";
 import {
   getEffectiveCustomInstructions,
   useSettingsStore,
-} from "@posthog/ui/features/settings/settingsStore";
-import { taskViewedApi } from "@posthog/ui/features/sidebar/taskMetaApi";
-import { WORKSPACE_QUERY_KEY } from "@posthog/ui/features/workspace/identifiers";
-import { toast } from "@posthog/ui/primitives/toast";
+} from "@flind/ui/features/settings/settingsStore";
+import { taskViewedApi } from "@flind/ui/features/sidebar/taskMetaApi";
+import { WORKSPACE_QUERY_KEY } from "@flind/ui/features/workspace/identifiers";
+import { toast } from "@flind/ui/primitives/toast";
 import {
   buildPermissionToolMetadata,
   track,
-} from "@posthog/ui/shell/posthogAnalyticsImpl";
+} from "@flind/ui/shell/posthogAnalyticsImpl";
 import { logger } from "../../shell/logger";
 import {
   IMPERATIVE_QUERY_CLIENT,

@@ -1,7 +1,7 @@
 import {
   hrefPath,
   reportSourceHrefFromHref,
-} from "@posthog/ui/router/reportNavigation";
+} from "@flind/ui/router/reportNavigation";
 
 /**
  * Which rail destination the app is on, and whether that destination owns the

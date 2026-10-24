@@ -84,11 +84,11 @@ vi.mock("node:os", () => ({
   default: { homedir: () => "/mock/home", tmpdir: () => "/mock/tmp" },
 }));
 
-import type { RootLogger } from "@posthog/di/logger";
-import type { IAnalytics } from "@posthog/platform/analytics";
-import type { IAppMeta } from "@posthog/platform/app-meta";
-import type { IBundledResources } from "@posthog/platform/bundled-resources";
-import type { IStoragePaths } from "@posthog/platform/storage-paths";
+import type { RootLogger } from "@flind/di/logger";
+import type { IAnalytics } from "@flind/platform/analytics";
+import type { IAppMeta } from "@flind/platform/app-meta";
+import type { IBundledResources } from "@flind/platform/bundled-resources";
+import type { IStoragePaths } from "@flind/platform/storage-paths";
 import { PosthogPluginService } from "./posthog-plugin";
 
 /** Expose private members for testing without `as any`. */

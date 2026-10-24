@@ -2,7 +2,7 @@ import {
   DEFAULT_NAV_RAIL_SIZE,
   type NavRailSize,
   useSettingsStore,
-} from "@posthog/ui/features/settings/settingsStore";
+} from "@flind/ui/features/settings/settingsStore";
 
 export interface NavRailMetrics {
   /** Sits outside the sidebar, so anything measuring from the window's left

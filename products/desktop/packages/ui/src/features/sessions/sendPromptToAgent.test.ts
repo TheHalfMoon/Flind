@@ -1,4 +1,4 @@
-import { toast } from "@posthog/ui/primitives/toast";
+import { toast } from "@flind/ui/primitives/toast";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { DEFAULT_TAB_IDS } from "../panels/panelConstants";
 import { AGENT_PROMPT_SENDER } from "./agentPromptSender";
@@ -19,11 +19,11 @@ const { mockSender, reviewState, panelState, findTabInTree } = vi.hoisted(
   }),
 );
 
-vi.mock("@posthog/ui/primitives/toast", () => ({
+vi.mock("@flind/ui/primitives/toast", () => ({
   toast: { error: vi.fn(), info: vi.fn(), success: vi.fn() },
 }));
 
-vi.mock("@posthog/di/container", () => ({
+vi.mock("@flind/di/container", () => ({
   resolveService: (token: unknown) => {
     if (token === AGENT_PROMPT_SENDER) return mockSender;
     throw new Error(`resolveService: unmocked token ${String(token)}`);

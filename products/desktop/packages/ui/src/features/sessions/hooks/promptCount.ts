@@ -1,6 +1,6 @@
-import { createAppendOnlyTracker } from "@posthog/core/sessions/appendOnlyTracker";
-import { extractUserPromptsFromEvents } from "@posthog/core/sessions/sessionEvents";
-import type { AcpMessage } from "@posthog/shared";
+import { createAppendOnlyTracker } from "@flind/core/sessions/appendOnlyTracker";
+import { extractUserPromptsFromEvents } from "@flind/core/sessions/sessionEvents";
+import type { AcpMessage } from "@flind/shared";
 
 function createPromptCountTracker() {
   return createAppendOnlyTracker<{ count: number }, number>({

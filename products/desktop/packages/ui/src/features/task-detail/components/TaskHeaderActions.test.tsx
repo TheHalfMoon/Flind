@@ -1,4 +1,4 @@
-import type { Task } from "@posthog/shared/domain-types";
+import type { Task } from "@flind/shared/domain-types";
 import { render, screen } from "@testing-library/react";
 import type { ReactNode } from "react";
 import { describe, expect, it, vi } from "vitest";
@@ -9,11 +9,11 @@ const { useWorkspace, useWorkspaceLoaded } = vi.hoisted(() => ({
 }));
 
 vi.mock(
-  "@posthog/ui/features/workspace/useWorkspace",
+  "@flind/ui/features/workspace/useWorkspace",
   async (importOriginal) => {
     const actual =
       await importOriginal<
-        typeof import("@posthog/ui/features/workspace/useWorkspace")
+        typeof import("@flind/ui/features/workspace/useWorkspace")
       >();
     return {
       useWorkspace,
@@ -23,7 +23,7 @@ vi.mock(
     };
   },
 );
-vi.mock("@posthog/ui/features/code-review/hooks/useDiffStatsToggle", () => ({
+vi.mock("@flind/ui/features/code-review/hooks/useDiffStatsToggle", () => ({
   useDiffStatsToggle: () => ({
     filesChanged: 0,
     linesAdded: 0,
@@ -32,17 +32,17 @@ vi.mock("@posthog/ui/features/code-review/hooks/useDiffStatsToggle", () => ({
     toggle: vi.fn(),
   }),
 }));
-vi.mock("@posthog/ui/features/autoresearch/AutoresearchHeaderButton", () => ({
+vi.mock("@flind/ui/features/autoresearch/AutoresearchHeaderButton", () => ({
   AutoresearchHeaderButton: () => null,
 }));
 vi.mock(
-  "@posthog/ui/features/git-interaction/components/BranchSelector",
+  "@flind/ui/features/git-interaction/components/BranchSelector",
   () => ({
     BranchSelector: () => null,
   }),
 );
 vi.mock(
-  "@posthog/ui/features/git-interaction/components/TaskActionsMenu",
+  "@flind/ui/features/git-interaction/components/TaskActionsMenu",
   () => ({
     // Renders the cloud verdict, which is what this row derives.
     TaskActionsMenu: ({ isCloud }: { isCloud: boolean }) => (
@@ -55,15 +55,15 @@ vi.mock(
 vi.mock("./TaskOverflowMenu", () => ({
   TaskOverflowMenu: () => <div>task actions</div>,
 }));
-vi.mock("@posthog/ui/features/diff-stats/DiffStatsBadge", () => ({
+vi.mock("@flind/ui/features/diff-stats/DiffStatsBadge", () => ({
   DiffStatsBadge: () => null,
 }));
 // Reads the route, which these renders don't provide. The Code scene's answer
 // is false, and that is the row this test covers.
-vi.mock("@posthog/ui/features/navigation/useReviewInRightPanel", () => ({
+vi.mock("@flind/ui/features/navigation/useReviewInRightPanel", () => ({
   useReviewInRightPanel: () => false,
 }));
-vi.mock("@posthog/ui/primitives/Tooltip", () => ({
+vi.mock("@flind/ui/primitives/Tooltip", () => ({
   Tooltip: ({ children }: { children: ReactNode }) => children,
 }));
 

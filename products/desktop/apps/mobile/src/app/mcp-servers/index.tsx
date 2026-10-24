@@ -2,7 +2,7 @@ import { Text } from "@components/text";
 import type {
   McpRecommendedServer,
   McpServerInstallation,
-} from "@posthog/api-client/types";
+} from "@flind/api-client/types";
 import { useRouter } from "expo-router";
 import { MagnifyingGlass, Plus, PuzzlePiece } from "phosphor-react-native";
 import { useMemo, useState } from "react";

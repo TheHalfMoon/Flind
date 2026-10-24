@@ -1,8 +1,8 @@
 import { PlusIcon, SparkleIcon } from "@phosphor-icons/react";
-import { buildDiscoveredTaskPrompt } from "@posthog/core/setup/buildDiscoveredTaskPrompt";
-import type { DiscoveredTask } from "@posthog/core/setup/types";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
-import { openTaskInput } from "@posthog/ui/router/useOpenTask";
+import { buildDiscoveredTaskPrompt } from "@flind/core/setup/buildDiscoveredTaskPrompt";
+import type { DiscoveredTask } from "@flind/core/setup/types";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
+import { openTaskInput } from "@flind/ui/router/useOpenTask";
 import {
   Box,
   Dialog,

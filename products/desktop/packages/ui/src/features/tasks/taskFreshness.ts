@@ -1,4 +1,4 @@
-import type { Task } from "@posthog/shared/domain-types";
+import type { Task } from "@flind/shared/domain-types";
 
 function parseTime(value: string | null | undefined): number {
   const timestamp = value ? Date.parse(value) : Number.NEGATIVE_INFINITY;

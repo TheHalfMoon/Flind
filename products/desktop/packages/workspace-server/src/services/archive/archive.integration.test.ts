@@ -28,22 +28,22 @@ let testWorktreeBasePath = "";
 import {
   createMockArchiveRepository,
   type MockArchiveRepository,
-} from "@posthog/workspace-server/db/repositories/archive-repository.mock";
-import type { IRepositoryRepository } from "@posthog/workspace-server/db/repositories/repository-repository";
-import { createMockRepositoryRepository } from "@posthog/workspace-server/db/repositories/repository-repository.mock";
-import { createMockSuspensionRepository } from "@posthog/workspace-server/db/repositories/suspension-repository.mock";
+} from "@flind/workspace-server/db/repositories/archive-repository.mock";
+import type { IRepositoryRepository } from "@flind/workspace-server/db/repositories/repository-repository";
+import { createMockRepositoryRepository } from "@flind/workspace-server/db/repositories/repository-repository.mock";
+import { createMockSuspensionRepository } from "@flind/workspace-server/db/repositories/suspension-repository.mock";
 import {
   createMockTaskMetadataRepository,
   type MockTaskMetadataRepository,
-} from "@posthog/workspace-server/db/repositories/task-metadata-repository.mock";
+} from "@flind/workspace-server/db/repositories/task-metadata-repository.mock";
 import {
   createMockWorkspaceRepository,
   type MockWorkspaceRepository,
-} from "@posthog/workspace-server/db/repositories/workspace-repository.mock";
+} from "@flind/workspace-server/db/repositories/workspace-repository.mock";
 import {
   createMockWorktreeRepository,
   type MockWorktreeRepository,
-} from "@posthog/workspace-server/db/repositories/worktree-repository.mock";
+} from "@flind/workspace-server/db/repositories/worktree-repository.mock";
 import { ArchiveService } from "./archive";
 
 async function createTempRepo(): Promise<string> {

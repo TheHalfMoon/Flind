@@ -1,7 +1,7 @@
-# @posthog/web
+# @flind/web
 
-Browser host for PostHog Desktop. Boots the same `@posthog/ui` shell and
-`@posthog/core` services as the desktop app, with web platform adapters —
+Browser host for PostHog Desktop. Boots the same `@flind/ui` shell and
+`@flind/core` services as the desktop app, with web platform adapters —
 no Electron, no local workspace-server. Scope today: auth + cloud tasks
 (local workspaces, terminal, and local git need a workspace backend and are
 out of scope for the web host's first iteration).
@@ -9,7 +9,7 @@ out of scope for the web host's first iteration).
 ## Run
 
 ```bash
-pnpm --filter @posthog/web dev   # Vite on http://localhost:5273
+pnpm --filter @flind/web dev   # Vite on http://localhost:5273
 ```
 
 No separate backend process: the host router slice runs in the browser
@@ -23,7 +23,7 @@ to-do list for widening the web surface.
 ## Testing
 
 ```bash
-pnpm --filter @posthog/web test:e2e   # Playwright: happy-path browser e2e
+pnpm --filter @flind/web test:e2e   # Playwright: happy-path browser e2e
 ```
 
 - **`tests/e2e/`** drives stock Chromium against the Vite dev server (Playwright
@@ -37,7 +37,7 @@ pnpm --filter @posthog/web test:e2e   # Playwright: happy-path browser e2e
   jsdom unit test that imported the whole composition root was tried but dropped
   — evaluating the entire app graph took ~30s+ per run, and the e2e already
   covers it.) The capability *mechanism* is unit-tested in
-  `@posthog/di` (`hostCapabilities.test.ts`).
+  `@flind/di` (`hostCapabilities.test.ts`).
 
 ## Auth
 
@@ -60,7 +60,7 @@ and are cleared, forcing a clean re-auth.
 Build a static bundle and serve it:
 
 ```bash
-pnpm --filter @posthog/web build   # Vite output: apps/web/dist
+pnpm --filter @flind/web build   # Vite output: apps/web/dist
 ```
 
 Serve `dist/` as a single-page app with a fallback to `index.html` for unknown
@@ -161,7 +161,7 @@ or backend change, not just configuration.
   `getIntegrations()`, not a callback relay) but gated on backend support for the
   `posthog_web` connect origin (see Hosting). Even with that mapping, the GitHub
   *user* flow (`POST /api/users/@me/integrations/github/start/`) hardcodes
-  `connect_from: "posthog_code"` in `@posthog/api-client` and returns **400** on
+  `connect_from: "posthog_code"` in `@flind/api-client` and returns **400** on
   web — it needs a host-parameterized `connect_from`. Where a project already has
   the integration connected, the settings pages render the connected/manage state
   correctly.

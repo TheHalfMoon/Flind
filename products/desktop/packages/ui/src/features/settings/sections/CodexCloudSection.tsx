@@ -1,17 +1,17 @@
-import type { CodexCloudTerminal } from "@posthog/core/integrations/codexCloudAccountService";
+import type { CodexCloudTerminal } from "@flind/core/integrations/codexCloudAccountService";
 import { Button, Switch } from "@flind/quill";
-import { ANALYTICS_EVENTS } from "@posthog/shared";
-import { setCloudSubscriptionOn } from "@posthog/ui/features/settings/adapterSubscription";
+import { ANALYTICS_EVENTS } from "@flind/shared";
+import { setCloudSubscriptionOn } from "@flind/ui/features/settings/adapterSubscription";
 import {
   useCodexCloudAccount,
   useCodexCloudAccountService,
   useDisconnectCodexCloudAccount,
-} from "@posthog/ui/features/settings/codexCloudAccount";
-import { CodexCloudAuthTerminalDialog } from "@posthog/ui/features/settings/sections/CodexCloudAuthTerminalDialog";
-import { destroyTerminalSession } from "@posthog/ui/features/terminal/destroyShellTerminal";
-import { toast } from "@posthog/ui/primitives/toast";
-import { track } from "@posthog/ui/shell/analytics";
-import { secureRandomString } from "@posthog/ui/utils/random";
+} from "@flind/ui/features/settings/codexCloudAccount";
+import { CodexCloudAuthTerminalDialog } from "@flind/ui/features/settings/sections/CodexCloudAuthTerminalDialog";
+import { destroyTerminalSession } from "@flind/ui/features/terminal/destroyShellTerminal";
+import { toast } from "@flind/ui/primitives/toast";
+import { track } from "@flind/ui/shell/analytics";
+import { secureRandomString } from "@flind/ui/utils/random";
 import { useMutation } from "@tanstack/react-query";
 import {
   type ReactElement,

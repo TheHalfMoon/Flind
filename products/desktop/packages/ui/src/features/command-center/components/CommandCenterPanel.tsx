@@ -10,10 +10,10 @@ import {
   Terminal,
   X,
 } from "@phosphor-icons/react";
-import { getAuthIdentity } from "@posthog/core/auth/authIdentity";
-import { isBrainrotCell } from "@posthog/core/command-center/grid";
-import { readRunMode } from "@posthog/core/sidebar/buildSidebarData";
-import { resolveEffectiveCloudStatus } from "@posthog/core/task-detail/cloudRunState";
+import { getAuthIdentity } from "@flind/core/auth/authIdentity";
+import { isBrainrotCell } from "@flind/core/command-center/grid";
+import { readRunMode } from "@flind/core/sidebar/buildSidebarData";
+import { resolveEffectiveCloudStatus } from "@flind/core/task-detail/cloudRunState";
 import {
   Button,
   Empty,
@@ -24,19 +24,19 @@ import {
   EmptyTitle,
   Text as QuillText,
 } from "@flind/quill";
-import { ANALYTICS_EVENTS, type WorkspaceMode } from "@posthog/shared";
-import type { Task } from "@posthog/shared/domain-types";
-import { FreeformCanvasView } from "@posthog/ui/features/canvas/freeform/FreeformCanvasView";
-import { GridCanvasView } from "@posthog/ui/features/canvas/grid/GridCanvasView";
-import { useDashboard } from "@posthog/ui/features/canvas/hooks/useDashboards";
-import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
-import { destroyShellTerminal } from "@posthog/ui/features/terminal/destroyShellTerminal";
-import { ShellTerminal } from "@posthog/ui/features/terminal/ShellTerminal";
-import { LoadingState } from "@posthog/ui/primitives/LoadingState";
-import { openTask } from "@posthog/ui/router/useOpenTask";
-import { track } from "@posthog/ui/shell/analytics";
-import { useHostCapabilities } from "@posthog/ui/shell/useHostCapabilities";
-import { secureRandomString } from "@posthog/ui/utils/random";
+import { ANALYTICS_EVENTS, type WorkspaceMode } from "@flind/shared";
+import type { Task } from "@flind/shared/domain-types";
+import { FreeformCanvasView } from "@flind/ui/features/canvas/freeform/FreeformCanvasView";
+import { GridCanvasView } from "@flind/ui/features/canvas/grid/GridCanvasView";
+import { useDashboard } from "@flind/ui/features/canvas/hooks/useDashboards";
+import { useSettingsStore } from "@flind/ui/features/settings/settingsStore";
+import { destroyShellTerminal } from "@flind/ui/features/terminal/destroyShellTerminal";
+import { ShellTerminal } from "@flind/ui/features/terminal/ShellTerminal";
+import { LoadingState } from "@flind/ui/primitives/LoadingState";
+import { openTask } from "@flind/ui/router/useOpenTask";
+import { track } from "@flind/ui/shell/analytics";
+import { useHostCapabilities } from "@flind/ui/shell/useHostCapabilities";
+import { secureRandomString } from "@flind/ui/utils/random";
 import { Flex, Text } from "@radix-ui/themes";
 import { useNavigate } from "@tanstack/react-router";
 import {

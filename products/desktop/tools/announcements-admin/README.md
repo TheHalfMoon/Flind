@@ -22,7 +22,7 @@ login redirects back to the deployed origin.
 
 ## Payload schema
 
-Shared with the app: `@posthog/shared/announcements`
+Shared with the app: `@flind/shared/announcements`
 (`packages/shared/src/announcements.ts`). See
 `products/desktop/docs/ANNOUNCEMENTS.md` for how the app consumes it.
 
@@ -33,11 +33,11 @@ Set `VITE_POSTHOG_API_KEY`, `VITE_POSTHOG_API_HOST`, and
 PostHog. The tool does not capture announcement content or URLs.
 
 The site is not deployed by CI.
-Rebuild and republish it from `master` after any change to this tool, `@posthog/shared`, or the `@posthog/brand` catalog version.
+Rebuild and republish it from `master` after any change to this tool, `@flind/shared`, or the `@posthog/brand` catalog version.
 Otherwise the live site keeps the old hoggies and defaults.
 
 ```bash
-# @posthog/shared links @flind/agent-contracts from outside this workspace,
+# @flind/shared links @flind/agent-contracts from outside this workspace,
 # so the recursive build below does not reach it.
 (cd ../../packages/agent && pnpm install --frozen-lockfile && pnpm --filter @flind/agent-contracts build)
 pnpm --filter "@flind/announcements-admin..." build

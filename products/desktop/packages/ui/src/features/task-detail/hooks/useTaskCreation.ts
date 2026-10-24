@@ -1,18 +1,18 @@
-import { buildTaskSpaceContextProps } from "@posthog/core/canvas/canvasAnalytics";
-import { partitionLocalMcpServersForRun } from "@posthog/core/local-mcp/localMcpImport";
+import { buildTaskSpaceContextProps } from "@flind/core/canvas/canvasAnalytics";
+import { partitionLocalMcpServersForRun } from "@flind/core/local-mcp/localMcpImport";
 import {
   getErrorTitle,
   prepareTaskInput,
-} from "@posthog/core/task-detail/taskInput";
+} from "@flind/core/task-detail/taskInput";
 import {
   isUsageLimitResult,
   TASK_SERVICE,
   type TaskService,
-} from "@posthog/core/task-detail/taskService";
-import { pendingPromptRecordFromContent } from "@posthog/core/tasks/pendingPrompts";
-import { useService, useServiceOptional } from "@posthog/di/react";
-import type { HostTrpcClient } from "@posthog/host-router/client";
-import { useHostTRPC, useHostTRPCClient } from "@posthog/host-router/react";
+} from "@flind/core/task-detail/taskService";
+import { pendingPromptRecordFromContent } from "@flind/core/tasks/pendingPrompts";
+import { useService, useServiceOptional } from "@flind/di/react";
+import type { HostTrpcClient } from "@flind/host-router/client";
+import { useHostTRPC, useHostTRPCClient } from "@flind/host-router/react";
 import {
   type Adapter,
   type AgentRuntime,
@@ -20,23 +20,23 @@ import {
   type ModelAccess,
   type TaskCreationInput,
   type WorkspaceMode,
-} from "@posthog/shared";
-import type { ExecutionMode, Task } from "@posthog/shared/domain-types";
-import { SIMPLIFIED_TECHNICAL_ENGLISH_INSTRUCTION } from "@posthog/shared/product-engineer-prompt";
-import { getCurrentBrowserTabId } from "@posthog/ui/features/browser-tabs/imperativeTabNavigation";
-import { useTaskChannels } from "@posthog/ui/features/canvas/hooks/useTaskChannels";
-import { useTaskRepositoryDraftStore } from "@posthog/ui/features/canvas/stores/taskRepositoryDraftStore";
+} from "@flind/shared";
+import type { ExecutionMode, Task } from "@flind/shared/domain-types";
+import { SIMPLIFIED_TECHNICAL_ENGLISH_INSTRUCTION } from "@flind/shared/product-engineer-prompt";
+import { getCurrentBrowserTabId } from "@flind/ui/features/browser-tabs/imperativeTabNavigation";
+import { useTaskChannels } from "@flind/ui/features/canvas/hooks/useTaskChannels";
+import { useTaskRepositoryDraftStore } from "@flind/ui/features/canvas/stores/taskRepositoryDraftStore";
 import {
   subscriptionModelAccess,
   useAdapterSubscription,
-} from "@posthog/ui/features/settings/adapterSubscription";
+} from "@flind/ui/features/settings/adapterSubscription";
 import {
   CLAUDE_SUBSCRIPTION_TOKEN_SETTINGS,
   type ClaudeSubscriptionTokenSettings,
-} from "@posthog/ui/features/settings/claudeSubscriptionTokenSettings";
-import { settleFailedPromptRecord } from "@posthog/ui/features/task-detail/pendingPromptActions";
-import { useTaskInputPrefillStore } from "@posthog/ui/features/task-detail/stores/taskInputPrefillStore";
-import { openTask } from "@posthog/ui/router/useOpenTask";
+} from "@flind/ui/features/settings/claudeSubscriptionTokenSettings";
+import { settleFailedPromptRecord } from "@flind/ui/features/task-detail/pendingPromptActions";
+import { useTaskInputPrefillStore } from "@flind/ui/features/task-detail/stores/taskInputPrefillStore";
+import { openTask } from "@flind/ui/router/useOpenTask";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useCallback, useState } from "react";
 import { useConnectivity } from "../../../hooks/useConnectivity";

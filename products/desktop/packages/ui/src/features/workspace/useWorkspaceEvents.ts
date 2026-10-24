@@ -1,4 +1,4 @@
-import { useHostTRPCClient } from "@posthog/host-router/react";
+import { useHostTRPCClient } from "@flind/host-router/react";
 import { useEffect } from "react";
 import { toast } from "../../primitives/toast";
 

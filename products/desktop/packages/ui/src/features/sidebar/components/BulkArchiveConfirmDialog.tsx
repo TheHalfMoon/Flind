@@ -1,7 +1,7 @@
 import {
   formatBulkArchiveWarning,
   sessionsLabel,
-} from "@posthog/core/sidebar/selection";
+} from "@flind/core/sidebar/selection";
 import {
   AlertDialog,
   AlertDialogContent,

@@ -1,10 +1,10 @@
-import { resolveService } from "@posthog/di/container";
+import { resolveService } from "@flind/di/container";
 import {
   HOST_TRPC_CLIENT,
   type HostTrpcClient,
-} from "@posthog/host-router/client";
-import type { HostRouter } from "@posthog/host-router/router";
-import type { GithubRef } from "@posthog/shared";
+} from "@flind/host-router/client";
+import type { HostRouter } from "@flind/host-router/router";
+import type { GithubRef } from "@flind/shared";
 import {
   createTRPCOptionsProxy,
   type TRPCOptionsProxy,

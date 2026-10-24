@@ -1,5 +1,5 @@
-import { useHostTRPC } from "@posthog/host-router/react";
-import type { PrReviewThread } from "@posthog/shared";
+import { useHostTRPC } from "@flind/host-router/react";
+import type { PrReviewThread } from "@flind/shared";
 import { useQueries } from "@tanstack/react-query";
 
 /** Inline review threads for several PRs at once. See `usePrCommentsForUrls`. */

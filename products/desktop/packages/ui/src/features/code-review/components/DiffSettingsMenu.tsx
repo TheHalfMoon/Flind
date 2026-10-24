@@ -7,7 +7,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@flind/quill";
-import { useDiffViewerStore } from "@posthog/ui/features/code-editor/diffViewerStore";
+import { useDiffViewerStore } from "@flind/ui/features/code-editor/diffViewerStore";
 import type { CommentFileFilter } from "../commentFileFilter";
 import { CommentFilterSubmenu } from "./CommentFilterSubmenu";
 

@@ -6,7 +6,7 @@ import {
   FunnelSimple,
   UsersThree,
 } from "@phosphor-icons/react";
-import type { SuggestedPrompt } from "@posthog/ui/features/task-detail/components/SuggestedPromptCard";
+import type { SuggestedPrompt } from "@flind/ui/features/task-detail/components/SuggestedPromptCard";
 
 // Starter prompts shown below the centered composer on an empty freeform
 // canvas. Clicking a card drops its `prompt` into the composer, ready to

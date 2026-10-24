@@ -17,8 +17,8 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@flind/quill";
-import type { SignalReport } from "@posthog/shared/types";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
+import type { SignalReport } from "@flind/shared/types";
+import { Spinner } from "@flind/ui/primitives/Spinner";
 import type { ReactNode } from "react";
 
 export interface ReportsInboxViewPresentationProps {

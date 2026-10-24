@@ -1,9 +1,9 @@
-import type { TaskChannel } from "@posthog/shared/domain-types";
-import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import type { Channel } from "@posthog/ui/features/canvas/hooks/useChannels";
-import { useChannels } from "@posthog/ui/features/canvas/hooks/useChannels";
-import { TASK_CHANNELS_QUERY_KEY } from "@posthog/ui/features/canvas/hooks/useTaskChannels";
-import { toast } from "@posthog/ui/primitives/toast";
+import type { TaskChannel } from "@flind/shared/domain-types";
+import { useOptionalAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import type { Channel } from "@flind/ui/features/canvas/hooks/useChannels";
+import { useChannels } from "@flind/ui/features/canvas/hooks/useChannels";
+import { TASK_CHANNELS_QUERY_KEY } from "@flind/ui/features/canvas/hooks/useTaskChannels";
+import { toast } from "@flind/ui/primitives/toast";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useCallback, useMemo } from "react";
 

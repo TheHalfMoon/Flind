@@ -1,4 +1,4 @@
-import type { SlackChannelOption } from "@posthog/shared/domain-types";
+import type { SlackChannelOption } from "@flind/shared/domain-types";
 
 export interface SlackIntegrationLike {
   id: number;

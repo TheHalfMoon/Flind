@@ -1,23 +1,23 @@
 import { Text } from "@components/text";
-import { computeRefundEligibility } from "@posthog/core/inbox/refundEligibility";
-import { buildCreatePrReportPrompt } from "@posthog/core/inbox/reportActions";
+import { computeRefundEligibility } from "@flind/core/inbox/refundEligibility";
+import { buildCreatePrReportPrompt } from "@flind/core/inbox/reportActions";
 import {
   formatSignalReportSummaryMarkdown,
   humanizeReportTitle,
   inboxStatusLabel,
   parseConventionalCommitTitle,
-} from "@posthog/core/inbox/reportPresentation";
+} from "@flind/core/inbox/reportPresentation";
 import {
   DISMISSAL_REASON_OPTIONS,
   SIGNALS_PR_REFUNDS_FLAG,
-} from "@posthog/shared";
+} from "@flind/shared";
 import type {
   ActionabilityJudgmentContent,
   SignalFindingContent,
   SignalReportPriority,
   SignalReportStatus,
   SuggestedReviewersArtefact,
-} from "@posthog/shared/domain-types";
+} from "@flind/shared/domain-types";
 import { differenceInHours, format, formatDistanceToNow } from "date-fns";
 import * as Haptics from "expo-haptics";
 import { useLocalSearchParams, useRouter } from "expo-router";

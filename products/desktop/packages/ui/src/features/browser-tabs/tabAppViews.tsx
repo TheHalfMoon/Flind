@@ -13,7 +13,7 @@ import {
   SquaresFourIcon,
   TrayIcon,
 } from "@phosphor-icons/react";
-import type { AppViewType } from "@posthog/ui/router/useAppView";
+import type { AppViewType } from "@flind/ui/router/useAppView";
 import type { ReactNode } from "react";
 
 export type TabAppView = Extract<

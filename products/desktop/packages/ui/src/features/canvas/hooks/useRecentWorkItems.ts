@@ -1,22 +1,22 @@
-import { TASK_LIST_MAX_PAGE_SIZE } from "@posthog/api-client/posthog-client";
+import { TASK_LIST_MAX_PAGE_SIZE } from "@flind/api-client/posthog-client";
 import {
   buildChannelItems,
   type ChannelItemModel,
   type ChannelSessionFacts,
-} from "@posthog/core/canvas/channelItems";
-import type { DashboardRecord } from "@posthog/core/canvas/dashboardSchemas";
-import type { Task } from "@posthog/shared/domain-types";
-import { useArchivedTaskIds } from "@posthog/ui/features/archive/useArchivedTaskIds";
-import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { useCurrentUser } from "@posthog/ui/features/auth/useCurrentUser";
-import { useChannelSessionFacts } from "@posthog/ui/features/canvas/hooks/useChannelItems";
-import { useAllCanvases } from "@posthog/ui/features/canvas/hooks/useDashboards";
-import { useCanvasViewedStore } from "@posthog/ui/features/canvas/stores/canvasViewedStore";
-import { usePinnedTasks } from "@posthog/ui/features/sidebar/usePinnedTasks";
+} from "@flind/core/canvas/channelItems";
+import type { DashboardRecord } from "@flind/core/canvas/dashboardSchemas";
+import type { Task } from "@flind/shared/domain-types";
+import { useArchivedTaskIds } from "@flind/ui/features/archive/useArchivedTaskIds";
+import { useOptionalAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { useCurrentUser } from "@flind/ui/features/auth/useCurrentUser";
+import { useChannelSessionFacts } from "@flind/ui/features/canvas/hooks/useChannelItems";
+import { useAllCanvases } from "@flind/ui/features/canvas/hooks/useDashboards";
+import { useCanvasViewedStore } from "@flind/ui/features/canvas/stores/canvasViewedStore";
+import { usePinnedTasks } from "@flind/ui/features/sidebar/usePinnedTasks";
 import {
   usePinnedTaskRecords,
   useTasks,
-} from "@posthog/ui/features/tasks/useTasks";
+} from "@flind/ui/features/tasks/useTasks";
 import { useMemo } from "react";
 
 export const RECENT_WORK_CAP = 50;

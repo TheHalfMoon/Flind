@@ -1,5 +1,5 @@
 import { CrownSimpleIcon } from "@phosphor-icons/react";
-import type { PresenceTier } from "@posthog/core/canvas/presence";
+import type { PresenceTier } from "@flind/core/canvas/presence";
 import {
   AvatarGroup,
   cn,
@@ -8,12 +8,12 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@flind/quill";
-import type { UserBasic } from "@posthog/shared/domain-types";
+import type { UserBasic } from "@flind/shared/domain-types";
 import {
   type AvatarPerson,
   UserAvatar,
-} from "@posthog/ui/features/auth/UserAvatar";
-import { userDisplayName } from "@posthog/ui/features/canvas/utils/userDisplay";
+} from "@flind/ui/features/auth/UserAvatar";
+import { userDisplayName } from "@flind/ui/features/canvas/utils/userDisplay";
 
 type AvatarSize = "lg" | "default" | "sm" | "xs";
 

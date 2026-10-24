@@ -1,7 +1,7 @@
 import type {
   AvailableSuggestedReviewer,
   SuggestedReviewer,
-} from "@posthog/shared/types";
+} from "@flind/shared/types";
 import { describe, expect, it } from "vitest";
 import {
   buildReviewerOptions,

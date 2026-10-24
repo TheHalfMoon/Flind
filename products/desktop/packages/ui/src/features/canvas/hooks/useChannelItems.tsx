@@ -4,30 +4,30 @@ import {
   type ChannelItemOwner,
   type ChannelSessionFacts,
   type ChannelWorkspaceFacts,
-} from "@posthog/core/canvas/channelItems";
-import { formatBulkResult } from "@posthog/core/sidebar/selection";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
-import { useArchivedTaskIds } from "@posthog/ui/features/archive/useArchivedTaskIds";
-import { useArchiveTask } from "@posthog/ui/features/archive/useArchiveTask";
-import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { useCurrentUser } from "@posthog/ui/features/auth/useCurrentUser";
-import type { ChannelItemActions } from "@posthog/ui/features/canvas/components/ChannelItemRow";
-import { deleteCanvasWithUndo } from "@posthog/ui/features/canvas/deleteCanvasWithUndo";
-import { useChannelFeed } from "@posthog/ui/features/canvas/hooks/useChannelFeed";
-import { useChannels } from "@posthog/ui/features/canvas/hooks/useChannels";
-import { useChannelTasks } from "@posthog/ui/features/canvas/hooks/useChannelTasks";
+} from "@flind/core/canvas/channelItems";
+import { formatBulkResult } from "@flind/core/sidebar/selection";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
+import { useArchivedTaskIds } from "@flind/ui/features/archive/useArchivedTaskIds";
+import { useArchiveTask } from "@flind/ui/features/archive/useArchiveTask";
+import { useOptionalAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { useCurrentUser } from "@flind/ui/features/auth/useCurrentUser";
+import type { ChannelItemActions } from "@flind/ui/features/canvas/components/ChannelItemRow";
+import { deleteCanvasWithUndo } from "@flind/ui/features/canvas/deleteCanvasWithUndo";
+import { useChannelFeed } from "@flind/ui/features/canvas/hooks/useChannelFeed";
+import { useChannels } from "@flind/ui/features/canvas/hooks/useChannels";
+import { useChannelTasks } from "@flind/ui/features/canvas/hooks/useChannelTasks";
 import {
   useDashboardMutations,
   useDashboards,
   usePrimeCanvasView,
-} from "@posthog/ui/features/canvas/hooks/useDashboards";
-import { usePinnedTasks } from "@posthog/ui/features/sidebar/usePinnedTasks";
-import { useSidebarSessionMap } from "@posthog/ui/features/sidebar/useSidebarSessionMap";
-import { useTaskViewed } from "@posthog/ui/features/sidebar/useTaskViewed";
-import { useTasks } from "@posthog/ui/features/tasks/useTasks";
-import { useWorkspaces } from "@posthog/ui/features/workspace/useWorkspace";
-import { toast } from "@posthog/ui/primitives/toast";
-import { track } from "@posthog/ui/shell/analytics";
+} from "@flind/ui/features/canvas/hooks/useDashboards";
+import { usePinnedTasks } from "@flind/ui/features/sidebar/usePinnedTasks";
+import { useSidebarSessionMap } from "@flind/ui/features/sidebar/useSidebarSessionMap";
+import { useTaskViewed } from "@flind/ui/features/sidebar/useTaskViewed";
+import { useTasks } from "@flind/ui/features/tasks/useTasks";
+import { useWorkspaces } from "@flind/ui/features/workspace/useWorkspace";
+import { toast } from "@flind/ui/primitives/toast";
+import { track } from "@flind/ui/shell/analytics";
 import { useNavigate } from "@tanstack/react-router";
 import { useCallback, useMemo } from "react";
 

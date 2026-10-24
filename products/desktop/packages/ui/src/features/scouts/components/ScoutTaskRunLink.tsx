@@ -1,7 +1,7 @@
 import { ArrowSquareOutIcon } from "@phosphor-icons/react";
-import type { ScoutRun } from "@posthog/api-client/posthog-client";
-import { ANALYTICS_EVENTS } from "@posthog/shared";
-import { track } from "@posthog/ui/shell/analytics";
+import type { ScoutRun } from "@flind/api-client/posthog-client";
+import { ANALYTICS_EVENTS } from "@flind/shared";
+import { track } from "@flind/ui/shell/analytics";
 
 /**
  * "Open task run" link to a scout run in PostHog Cloud, shared by the scout

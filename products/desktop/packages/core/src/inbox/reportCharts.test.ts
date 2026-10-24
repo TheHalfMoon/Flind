@@ -1,4 +1,4 @@
-import type { SignalReportChartSize } from "@posthog/shared/types";
+import type { SignalReportChartSize } from "@flind/shared/types";
 import { describe, expect, it } from "vitest";
 import {
   chartHeadlineStat,

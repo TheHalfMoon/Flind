@@ -1,9 +1,9 @@
-import type { SignalReportPriority } from "@posthog/shared/domain-types";
-import { useSignalSourceManager } from "@posthog/ui/features/inbox/hooks/useSignalSourceManager";
-import { useIntegrationSelectors } from "@posthog/ui/features/integrations/store";
-import { SettingsCardRow } from "@posthog/ui/features/settings/components/SettingsCard";
-import { SlackChannelCombobox } from "@posthog/ui/features/settings/components/SlackChannelCombobox";
-import { SettingsOptionSelect } from "@posthog/ui/features/settings/SettingsOptionSelect";
+import type { SignalReportPriority } from "@flind/shared/domain-types";
+import { useSignalSourceManager } from "@flind/ui/features/inbox/hooks/useSignalSourceManager";
+import { useIntegrationSelectors } from "@flind/ui/features/integrations/store";
+import { SettingsCardRow } from "@flind/ui/features/settings/components/SettingsCard";
+import { SlackChannelCombobox } from "@flind/ui/features/settings/components/SlackChannelCombobox";
+import { SettingsOptionSelect } from "@flind/ui/features/settings/SettingsOptionSelect";
 
 const NOTIFY_ALL_VALUE = "__all__";
 

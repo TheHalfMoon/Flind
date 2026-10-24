@@ -1,19 +1,19 @@
-import { leanSkillById } from "@posthog/core/billing/leanSkills";
-import { ANALYTICS_EVENTS, formatModelId } from "@posthog/shared";
-import { CostManagementView } from "@posthog/ui/features/cost-management/CostManagementView";
-import { CustomImageBuildDialog } from "@posthog/ui/features/cost-management/CustomImageBuildDialog";
-import { LeanSkillDialog } from "@posthog/ui/features/cost-management/LeanSkillDialog";
+import { leanSkillById } from "@flind/core/billing/leanSkills";
+import { ANALYTICS_EVENTS, formatModelId } from "@flind/shared";
+import { CostManagementView } from "@flind/ui/features/cost-management/CostManagementView";
+import { CustomImageBuildDialog } from "@flind/ui/features/cost-management/CustomImageBuildDialog";
+import { LeanSkillDialog } from "@flind/ui/features/cost-management/LeanSkillDialog";
 import {
   useCostChecklist,
   useInstalledLeanSkills,
-} from "@posthog/ui/features/cost-management/useCostChecklist";
-import { openSettings } from "@posthog/ui/features/settings/hooks/useOpenSettings";
-import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
-import { skillErrorDescription } from "@posthog/ui/features/skills/skillErrors";
-import { useInstallMarketplaceSkill } from "@posthog/ui/features/skills/useMarketplace";
-import { useDeleteSkill } from "@posthog/ui/features/skills/useSkillMutations";
-import { toast } from "@posthog/ui/primitives/toast";
-import { track } from "@posthog/ui/shell/analytics";
+} from "@flind/ui/features/cost-management/useCostChecklist";
+import { openSettings } from "@flind/ui/features/settings/hooks/useOpenSettings";
+import { useSettingsStore } from "@flind/ui/features/settings/settingsStore";
+import { skillErrorDescription } from "@flind/ui/features/skills/skillErrors";
+import { useInstallMarketplaceSkill } from "@flind/ui/features/skills/useMarketplace";
+import { useDeleteSkill } from "@flind/ui/features/skills/useSkillMutations";
+import { toast } from "@flind/ui/primitives/toast";
+import { track } from "@flind/ui/shell/analytics";
 import { useState } from "react";
 
 export function CostManagementSettings() {

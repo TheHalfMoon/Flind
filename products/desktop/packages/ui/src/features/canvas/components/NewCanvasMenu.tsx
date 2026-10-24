@@ -11,9 +11,9 @@ import {
 import {
   type CreateSurface,
   trackAndCreateCanvas,
-} from "@posthog/ui/features/canvas/createCanvasAnalytics";
-import { useCanvasTemplates } from "@posthog/ui/features/canvas/hooks/useCanvasTemplates";
-import { useCreateAndOpenDashboard } from "@posthog/ui/features/canvas/hooks/useDashboards";
+} from "@flind/ui/features/canvas/createCanvasAnalytics";
+import { useCanvasTemplates } from "@flind/ui/features/canvas/hooks/useCanvasTemplates";
+import { useCreateAndOpenDashboard } from "@flind/ui/features/canvas/hooks/useDashboards";
 import { useState } from "react";
 
 // The list of template options shared by the canvas-create surfaces (the

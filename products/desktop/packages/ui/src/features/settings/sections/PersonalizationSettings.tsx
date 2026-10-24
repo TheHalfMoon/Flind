@@ -1,18 +1,18 @@
-import { buildPostHogUrl } from "@posthog/core/settings/posthogUrl";
+import { buildPostHogUrl } from "@flind/core/settings/posthogUrl";
 import { Switch, Textarea } from "@flind/quill";
-import { ANALYTICS_EVENTS } from "@posthog/shared";
-import { useAuthStateValue } from "@posthog/ui/features/auth/store";
+import { ANALYTICS_EVENTS } from "@flind/shared";
+import { useAuthStateValue } from "@flind/ui/features/auth/store";
 import {
   SettingsCard,
   SettingsCardRow,
   SettingsSection,
-} from "@posthog/ui/features/settings/components/SettingsCard";
+} from "@flind/ui/features/settings/components/SettingsCard";
 import {
   type SyncedCustomInstructions,
   useSettingsStore,
-} from "@posthog/ui/features/settings/settingsStore";
-import { useDebounce } from "@posthog/ui/primitives/hooks/useDebounce";
-import { track } from "@posthog/ui/shell/analytics";
+} from "@flind/ui/features/settings/settingsStore";
+import { useDebounce } from "@flind/ui/primitives/hooks/useDebounce";
+import { track } from "@flind/ui/shell/analytics";
 import { useCallback, useEffect, useState } from "react";
 
 const MAX_INSTRUCTIONS_LENGTH = 2000;

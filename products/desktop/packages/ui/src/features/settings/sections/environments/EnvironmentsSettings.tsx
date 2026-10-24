@@ -1,7 +1,7 @@
 import { Cloud, HardDrives } from "@phosphor-icons/react";
-import { useSettingsPageStore } from "@posthog/ui/features/settings/stores/settingsPageStore";
-import { navigateToSettings } from "@posthog/ui/router/navigationBridge";
-import { useHostCapabilities } from "@posthog/ui/shell/useHostCapabilities";
+import { useSettingsPageStore } from "@flind/ui/features/settings/stores/settingsPageStore";
+import { navigateToSettings } from "@flind/ui/router/navigationBridge";
+import { useHostCapabilities } from "@flind/ui/shell/useHostCapabilities";
 import { Flex, SegmentedControl, Text } from "@radix-ui/themes";
 import { useRouterState } from "@tanstack/react-router";
 import { CloudEnvironmentsSettings } from "./CloudEnvironmentsSettings";

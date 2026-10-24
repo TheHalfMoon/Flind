@@ -9,10 +9,10 @@ const mocks = vi.hoisted(() => ({
   search: {} as Record<string, unknown>,
 }));
 
-vi.mock("@posthog/ui/features/canvas/hooks/useWorkLayout", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useWorkLayout", () => ({
   useWorkLayout: () => false,
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useChannelsLayout", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannelsLayout", () => ({
   useChannelsLayout: () => mocks.channelsLayout,
 }));
 vi.mock("@tanstack/react-router", () => ({

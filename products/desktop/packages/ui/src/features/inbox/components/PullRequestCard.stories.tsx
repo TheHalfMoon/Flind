@@ -2,7 +2,7 @@ import type {
   SignalReport,
   SignalReportArtefactsResponse,
   SuggestedReviewersArtefact,
-} from "@posthog/shared/types";
+} from "@flind/shared/types";
 import type { Meta, StoryObj } from "@storybook/react";
 import type { ReactNode } from "react";
 import { PullRequestCardView } from "./PullRequestCard";

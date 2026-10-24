@@ -1,5 +1,5 @@
-import type { TaskSummaryDTO } from "@posthog/api-client/task-normalization";
-import { useAuthenticatedInfiniteQuery } from "@posthog/ui/hooks/useAuthenticatedInfiniteQuery";
+import type { TaskSummaryDTO } from "@flind/api-client/task-normalization";
+import { useAuthenticatedInfiniteQuery } from "@flind/ui/hooks/useAuthenticatedInfiniteQuery";
 import { useMemo } from "react";
 
 const ARCHIVED_TASKS_PAGE_SIZE = 50;

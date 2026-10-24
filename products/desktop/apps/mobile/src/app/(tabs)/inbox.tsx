@@ -1,7 +1,7 @@
-import { buildInboxViewedProperties } from "@posthog/core/inbox/engagement";
-import { INBOX_PIPELINE_STATUSES } from "@posthog/core/inbox/reportFiltering";
-import type { InboxReviewerScope } from "@posthog/shared";
-import type { SignalReport } from "@posthog/shared/domain-types";
+import { buildInboxViewedProperties } from "@flind/core/inbox/engagement";
+import { INBOX_PIPELINE_STATUSES } from "@flind/core/inbox/reportFiltering";
+import type { InboxReviewerScope } from "@flind/shared";
+import type { SignalReport } from "@flind/shared/domain-types";
 import { useFocusEffect, useRouter } from "expo-router";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { View } from "react-native";

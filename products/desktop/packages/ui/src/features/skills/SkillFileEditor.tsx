@@ -1,6 +1,6 @@
 import { Button } from "@flind/quill";
-import type { SkillInfo } from "@posthog/shared";
-import { toast } from "@posthog/ui/primitives/toast";
+import type { SkillInfo } from "@flind/shared";
+import { toast } from "@flind/ui/primitives/toast";
 import { useRef, useState } from "react";
 import { SkillCodeEditor } from "./SkillCodeEditor";
 import { skillErrorDescription } from "./skillErrors";

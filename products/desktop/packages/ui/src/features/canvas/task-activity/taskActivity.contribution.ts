@@ -1,14 +1,14 @@
-import type { Contribution } from "@posthog/di/contribution";
-import type { Task, TaskActivityPage } from "@posthog/shared/domain-types";
+import type { Contribution } from "@flind/di/contribution";
+import type { Task, TaskActivityPage } from "@flind/shared/domain-types";
 import {
   NotificationBus,
   type TaskActivitySignal,
-} from "@posthog/ui/features/notifications/notifications";
-import { taskKeys } from "@posthog/ui/features/tasks/taskKeys";
+} from "@flind/ui/features/notifications/notifications";
+import { taskKeys } from "@flind/ui/features/tasks/taskKeys";
 import {
   IMPERATIVE_QUERY_CLIENT,
   type ImperativeQueryClient,
-} from "@posthog/ui/shell/queryClient";
+} from "@flind/ui/shell/queryClient";
 import type { InfiniteData } from "@tanstack/react-query";
 import { inject, injectable } from "inversify";
 import { TASK_ACTIVITY_QUERY_KEY } from "./taskActivityQuery";

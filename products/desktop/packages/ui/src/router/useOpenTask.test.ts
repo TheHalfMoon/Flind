@@ -11,11 +11,11 @@ vi.mock("./navigationBridge", () => ({
   navigateToTaskDetail: vi.fn(),
   navigateToFolderSettings: vi.fn(),
 }));
-vi.mock("@posthog/di/container", () => ({
+vi.mock("@flind/di/container", () => ({
   resolveService: vi.fn(),
   resolveServiceOptional: vi.fn(),
 }));
-vi.mock("@posthog/ui/shell/analytics", () => ({
+vi.mock("@flind/ui/shell/analytics", () => ({
   track: vi.fn(),
   setActiveTaskContext: vi.fn(),
 }));
@@ -23,8 +23,8 @@ vi.mock("@posthog/ui/shell/analytics", () => ({
 import {
   resetCurrentChannel,
   useCurrentChannelStore,
-} from "@posthog/ui/features/canvas/stores/currentChannelStore";
-import { useTaskInputPrefillStore } from "@posthog/ui/features/task-detail/stores/taskInputPrefillStore";
+} from "@flind/ui/features/canvas/stores/currentChannelStore";
+import { useTaskInputPrefillStore } from "@flind/ui/features/task-detail/stores/taskInputPrefillStore";
 import { openTaskInput } from "./useOpenTask";
 
 describe("openTaskInput channel scoping", () => {

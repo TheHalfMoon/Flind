@@ -1,29 +1,29 @@
-import { toSuggestedReviewerWriteContent } from "@posthog/core/inbox/artefacts";
-import { selectSuggestedReviewersArtefact } from "@posthog/core/inbox/reportArtefacts";
+import { toSuggestedReviewerWriteContent } from "@flind/core/inbox/artefacts";
+import { selectSuggestedReviewersArtefact } from "@flind/core/inbox/reportArtefacts";
 import {
   Button,
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@flind/quill";
-import type { InboxReportActionSurface } from "@posthog/shared";
+import type { InboxReportActionSurface } from "@flind/shared";
 import type {
   SignalReport,
   SignalReportArtefactsResponse,
   SuggestedReviewer,
-} from "@posthog/shared/types";
-import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { useCurrentUser } from "@posthog/ui/features/auth/useCurrentUser";
-import { SuggestedReviewersList } from "@posthog/ui/features/inbox/components/SuggestedReviewersList";
-import { SuggestedReviewerAvatar } from "@posthog/ui/features/inbox/components/utils/SuggestedReviewerAvatar";
+} from "@flind/shared/types";
+import { useOptionalAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { useCurrentUser } from "@flind/ui/features/auth/useCurrentUser";
+import { SuggestedReviewersList } from "@flind/ui/features/inbox/components/SuggestedReviewersList";
+import { SuggestedReviewerAvatar } from "@flind/ui/features/inbox/components/utils/SuggestedReviewerAvatar";
 import {
   useInboxReportArtefacts,
   useUpdateSuggestedReviewers,
-} from "@posthog/ui/features/inbox/hooks/useInboxReports";
+} from "@flind/ui/features/inbox/hooks/useInboxReports";
 import {
   useReportActionResultTracker,
   useReportActionTracker,
-} from "@posthog/ui/features/inbox/hooks/useReportActionTracker";
+} from "@flind/ui/features/inbox/hooks/useReportActionTracker";
 
 const MAX_VISIBLE = 4;
 // Keep this stable because autocapture insights and UI tests can depend on it.

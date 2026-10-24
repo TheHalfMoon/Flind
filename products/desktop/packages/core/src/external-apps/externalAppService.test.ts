@@ -1,4 +1,4 @@
-import type { Workspace } from "@posthog/shared";
+import type { Workspace } from "@flind/shared";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { ExternalAppService } from "./externalAppService";
 import type {

@@ -1,25 +1,25 @@
 import {
   buildChannelItems,
   type ChannelItemModel,
-} from "@posthog/core/canvas/channelItems";
+} from "@flind/core/canvas/channelItems";
 import {
   type ChannelPresence,
   liveUuidsFromTasks,
   NO_LIVE_UUIDS,
   presenceByChannel,
-} from "@posthog/core/canvas/presence";
-import type { Task, UserBasic } from "@posthog/shared/domain-types";
-import { useArchivedTaskIds } from "@posthog/ui/features/archive/useArchivedTaskIds";
-import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { AUTH_SCOPED_QUERY_META } from "@posthog/ui/features/auth/useCurrentUser";
-import { useBlockedTaskIds } from "@posthog/ui/features/canvas/hooks/useBlockedSessionCount";
+} from "@flind/core/canvas/presence";
+import type { Task, UserBasic } from "@flind/shared/domain-types";
+import { useArchivedTaskIds } from "@flind/ui/features/archive/useArchivedTaskIds";
+import { useOptionalAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { AUTH_SCOPED_QUERY_META } from "@flind/ui/features/auth/useCurrentUser";
+import { useBlockedTaskIds } from "@flind/ui/features/canvas/hooks/useBlockedSessionCount";
 import {
   type TaskTimestamps,
   wantsAttention,
-} from "@posthog/ui/features/canvas/hooks/useUnreadSessionCount";
-import { usePinnedTasks } from "@posthog/ui/features/sidebar/usePinnedTasks";
-import { useTaskViewed } from "@posthog/ui/features/sidebar/useTaskViewed";
-import { useNow } from "@posthog/ui/hooks/useNow";
+} from "@flind/ui/features/canvas/hooks/useUnreadSessionCount";
+import { usePinnedTasks } from "@flind/ui/features/sidebar/usePinnedTasks";
+import { useTaskViewed } from "@flind/ui/features/sidebar/useTaskViewed";
+import { useNow } from "@flind/ui/hooks/useNow";
 import { useQueries, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useCallback, useMemo, useRef } from "react";
 import {

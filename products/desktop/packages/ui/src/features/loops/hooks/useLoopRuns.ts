@@ -1,6 +1,6 @@
-import { listHogFlowTasks } from "@posthog/api-client/hogFlowLoops";
-import { AUTH_SCOPED_QUERY_META } from "@posthog/ui/features/auth/useCurrentUser";
-import type { LoopSchemas } from "@posthog/ui/features/loops/loopSchemas";
+import { listHogFlowTasks } from "@flind/api-client/hogFlowLoops";
+import { AUTH_SCOPED_QUERY_META } from "@flind/ui/features/auth/useCurrentUser";
+import type { LoopSchemas } from "@flind/ui/features/loops/loopSchemas";
 import { useQuery } from "@tanstack/react-query";
 import { taskToLoopRun } from "../loopHogFlowMapping";
 import { loopsKeys } from "./loopsKeys";

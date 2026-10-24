@@ -8,21 +8,21 @@ import {
   setupSteps,
   setupStepsComplete,
   stepError,
-} from "@posthog/core/settings/environmentSetup";
-import { isDirectlyInstallable } from "@posthog/core/settings/imagePreset";
+} from "@flind/core/settings/environmentSetup";
+import { isDirectlyInstallable } from "@flind/core/settings/imagePreset";
 import { Button, Card, Text } from "@flind/quill";
-import type { SandboxCustomImage } from "@posthog/shared/domain-types";
-import { AccessStep } from "@posthog/ui/features/settings/sections/environments/setup/steps/AccessStep";
-import { BaseImageStep } from "@posthog/ui/features/settings/sections/environments/setup/steps/BaseImageStep";
+import type { SandboxCustomImage } from "@flind/shared/domain-types";
+import { AccessStep } from "@flind/ui/features/settings/sections/environments/setup/steps/AccessStep";
+import { BaseImageStep } from "@flind/ui/features/settings/sections/environments/setup/steps/BaseImageStep";
 import {
   EnvironmentStep,
   type SetupEnvironmentOption,
-} from "@posthog/ui/features/settings/sections/environments/setup/steps/EnvironmentStep";
-import { ImageDetailsStep } from "@posthog/ui/features/settings/sections/environments/setup/steps/ImageDetailsStep";
-import { ReviewStep } from "@posthog/ui/features/settings/sections/environments/setup/steps/ReviewStep";
-import { SetupStep } from "@posthog/ui/features/settings/sections/environments/setup/steps/SetupStep";
-import { ToolsStep } from "@posthog/ui/features/settings/sections/environments/setup/steps/ToolsStep";
-import { Stepper } from "@posthog/ui/primitives/Stepper";
+} from "@flind/ui/features/settings/sections/environments/setup/steps/EnvironmentStep";
+import { ImageDetailsStep } from "@flind/ui/features/settings/sections/environments/setup/steps/ImageDetailsStep";
+import { ReviewStep } from "@flind/ui/features/settings/sections/environments/setup/steps/ReviewStep";
+import { SetupStep } from "@flind/ui/features/settings/sections/environments/setup/steps/SetupStep";
+import { ToolsStep } from "@flind/ui/features/settings/sections/environments/setup/steps/ToolsStep";
+import { Stepper } from "@flind/ui/primitives/Stepper";
 import { type ReactElement, useState } from "react";
 
 /** Write the spec and build it, or hand the plan to a builder session. */

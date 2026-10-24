@@ -3,15 +3,15 @@ import {
   isPlanDirty,
   planEnvironmentInput,
   planFromEnvironment,
-} from "@posthog/core/settings/environmentSetup";
+} from "@flind/core/settings/environmentSetup";
 import type {
   SandboxCustomImage,
   SandboxEnvironment,
-} from "@posthog/shared/domain-types";
-import { EnvironmentEditForm } from "@posthog/ui/features/settings/sections/environments/setup/EnvironmentEditForm";
-import { useSandboxCustomImages } from "@posthog/ui/features/settings/sections/environments/useSandboxCustomImages";
-import { useSandboxEnvironments } from "@posthog/ui/features/settings/sections/environments/useSandboxEnvironments";
-import { LoadingState } from "@posthog/ui/primitives/LoadingState";
+} from "@flind/shared/domain-types";
+import { EnvironmentEditForm } from "@flind/ui/features/settings/sections/environments/setup/EnvironmentEditForm";
+import { useSandboxCustomImages } from "@flind/ui/features/settings/sections/environments/useSandboxCustomImages";
+import { useSandboxEnvironments } from "@flind/ui/features/settings/sections/environments/useSandboxEnvironments";
+import { LoadingState } from "@flind/ui/primitives/LoadingState";
 import { useState } from "react";
 
 interface EnvironmentEditPageProps {

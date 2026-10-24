@@ -1,5 +1,5 @@
-import type { IDeepLinkRegistry } from "@posthog/platform/deep-link";
-import type { IMainWindow } from "@posthog/platform/main-window";
+import type { IDeepLinkRegistry } from "@flind/platform/deep-link";
+import type { IMainWindow } from "@flind/platform/main-window";
 import { describe, expect, it, vi } from "vitest";
 import { SlackIntegrationEvent, SlackIntegrationService } from "./slack";
 

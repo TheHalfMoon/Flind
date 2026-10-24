@@ -9,29 +9,29 @@ import {
   ListMagnifyingGlassIcon,
   ShapesIcon,
 } from "@phosphor-icons/react";
-import type { RailVisit } from "@posthog/shared";
-import type { SidebarNavItem } from "@posthog/shared/analytics-events";
-import { readMirror } from "@posthog/ui/features/browser-tabs/tabsSync";
-import { SpacesIcon } from "@posthog/ui/features/canvas/components/SpacesIcon";
+import type { RailVisit } from "@flind/shared";
+import type { SidebarNavItem } from "@flind/shared/analytics-events";
+import { readMirror } from "@flind/ui/features/browser-tabs/tabsSync";
+import { SpacesIcon } from "@flind/ui/features/canvas/components/SpacesIcon";
 import {
   isRestorableVisitHref,
   type NavRailPane,
   railPaneFoldsIntoWork,
-} from "@posthog/ui/features/canvas/railPane";
+} from "@flind/ui/features/canvas/railPane";
 import {
   applyTabViewState,
   showChannelList,
-} from "@posthog/ui/features/canvas/stores/channelPaneStore";
-import { useCurrentChannelStore } from "@posthog/ui/features/canvas/stores/currentChannelStore";
-import { requestSidebarSearchFocus } from "@posthog/ui/features/canvas/stores/sidebarSearchStore";
+} from "@flind/ui/features/canvas/stores/channelPaneStore";
+import { useCurrentChannelStore } from "@flind/ui/features/canvas/stores/currentChannelStore";
+import { requestSidebarSearchFocus } from "@flind/ui/features/canvas/stores/sidebarSearchStore";
 import {
   formatHotkey,
   SHORTCUTS,
-} from "@posthog/ui/features/command/keyboard-shortcuts";
-import { isInboxTriagePath } from "@posthog/ui/features/inbox/triageRoute";
-import { useSidebarStore } from "@posthog/ui/features/sidebar/sidebarStore";
-import type { CountBadgeTone } from "@posthog/ui/primitives/CountBadge";
-import { LoopIcon } from "@posthog/ui/primitives/LoopIcon";
+} from "@flind/ui/features/command/keyboard-shortcuts";
+import { isInboxTriagePath } from "@flind/ui/features/inbox/triageRoute";
+import { useSidebarStore } from "@flind/ui/features/sidebar/sidebarStore";
+import type { CountBadgeTone } from "@flind/ui/primitives/CountBadge";
+import { LoopIcon } from "@flind/ui/primitives/LoopIcon";
 import {
   navigateToActivity,
   navigateToCanvases,
@@ -43,9 +43,9 @@ import {
   navigateToLoops,
   navigateToSpaces,
   navigateToSpacesContext,
-} from "@posthog/ui/router/navigationBridge";
-import { hrefPath } from "@posthog/ui/router/reportNavigation";
-import { getRouterOrNull } from "@posthog/ui/router/routerRef";
+} from "@flind/ui/router/navigationBridge";
+import { hrefPath } from "@flind/ui/router/reportNavigation";
+import { getRouterOrNull } from "@flind/ui/router/routerRef";
 import type { ComponentType } from "react";
 
 export interface RailCounts {

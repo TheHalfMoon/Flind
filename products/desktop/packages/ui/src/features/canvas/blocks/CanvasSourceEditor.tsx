@@ -1,31 +1,31 @@
 import "./blocks.css";
-import { CANVAS_ENTRY_PATH } from "@posthog/core/canvas/blockLibrary/blockProject";
-import { parseParamSchema } from "@posthog/core/canvas/blockLibrary/params";
-import type { SourceRange } from "@posthog/core/canvas/blockLibrary/sourceEdits";
+import { CANVAS_ENTRY_PATH } from "@flind/core/canvas/blockLibrary/blockProject";
+import { parseParamSchema } from "@flind/core/canvas/blockLibrary/params";
+import type { SourceRange } from "@flind/core/canvas/blockLibrary/sourceEdits";
 import {
   type CanvasNavIntent,
   canvasToHostMessageSchema,
-} from "@posthog/core/canvas/freeformSchemas";
+} from "@flind/core/canvas/freeformSchemas";
 import {
   type CanvasEditSelection,
   useCanvasSourceEntry,
   useCanvasSourceStore,
-} from "@posthog/ui/features/canvas/blocks/canvasSourceStore";
+} from "@flind/ui/features/canvas/blocks/canvasSourceStore";
 import {
   CANVAS_EDITOR_CHANNEL,
   postToCanvasEditor,
-} from "@posthog/ui/features/canvas/blocks/editorFrame";
-import { SourceDragOverlay } from "@posthog/ui/features/canvas/blocks/SourceDragOverlay";
+} from "@flind/ui/features/canvas/blocks/editorFrame";
+import { SourceDragOverlay } from "@flind/ui/features/canvas/blocks/SourceDragOverlay";
 import {
   activeSourceDrag,
   beginSourceDrag,
   type SourceDropHit,
-} from "@posthog/ui/features/canvas/blocks/sourceDrag";
-import { useCanvasSourceActions } from "@posthog/ui/features/canvas/blocks/useCanvasSourceActions";
-import { createCanvasHostMessageRouter } from "@posthog/ui/features/canvas/freeform/canvasHostMessageRouter";
-import { buildSandboxDocument } from "@posthog/ui/features/canvas/freeform/sandboxRuntime";
-import { openExternalUrl } from "@posthog/ui/shell/openExternal";
-import { useThemeStore } from "@posthog/ui/shell/themeStore";
+} from "@flind/ui/features/canvas/blocks/sourceDrag";
+import { useCanvasSourceActions } from "@flind/ui/features/canvas/blocks/useCanvasSourceActions";
+import { createCanvasHostMessageRouter } from "@flind/ui/features/canvas/freeform/canvasHostMessageRouter";
+import { buildSandboxDocument } from "@flind/ui/features/canvas/freeform/sandboxRuntime";
+import { openExternalUrl } from "@flind/ui/shell/openExternal";
+import { useThemeStore } from "@flind/ui/shell/themeStore";
 import {
   useCallback,
   useEffect,

@@ -1,4 +1,4 @@
-import type { PrDiffStats } from "@posthog/core/git/router-schemas";
+import type { PrDiffStats } from "@flind/core/git/router-schemas";
 import { createContext, useContext } from "react";
 
 export interface PrDiffStatsBatchContextValue {

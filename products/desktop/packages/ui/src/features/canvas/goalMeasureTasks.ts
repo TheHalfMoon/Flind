@@ -1,5 +1,5 @@
-import type { ContextGoal } from "@posthog/core/canvas/contextDocument";
-import { isTerminalStatus, type Task } from "@posthog/shared/domain-types";
+import type { ContextGoal } from "@flind/core/canvas/contextDocument";
+import { isTerminalStatus, type Task } from "@flind/shared/domain-types";
 
 export interface GoalMeasureTask {
   taskId: string;

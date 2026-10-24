@@ -1,6 +1,6 @@
-import type { ArchivedTask } from "@posthog/shared";
-import { formatRelativeTimeLong } from "@posthog/shared";
-import type { Task } from "@posthog/shared/domain-types";
+import type { ArchivedTask } from "@flind/shared";
+import { formatRelativeTimeLong } from "@flind/shared";
+import type { Task } from "@flind/shared/domain-types";
 
 export interface ArchivedTaskDetails
   extends Pick<Task, "id" | "title" | "repository"> {

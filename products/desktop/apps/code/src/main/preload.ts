@@ -1,4 +1,4 @@
-import { exposeElectronTRPC } from "@posthog/electron-trpc/main";
+import { exposeElectronTRPC } from "@flind/electron-trpc/main";
 import { contextBridge, ipcRenderer, webUtils } from "electron";
 import { sanitizeArtifactBridgeMessage } from "../shared/artifact-preview-message";
 import {

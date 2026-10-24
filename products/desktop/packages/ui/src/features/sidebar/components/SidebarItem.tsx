@@ -1,9 +1,9 @@
 import { Button, cn } from "@flind/quill";
-import type { SidebarItemAction } from "@posthog/ui/features/sidebar/types";
+import type { SidebarItemAction } from "@flind/ui/features/sidebar/types";
 import {
   OverflowTickerText,
   useOverflowTickerReveal,
-} from "@posthog/ui/primitives/OverflowTickerText";
+} from "@flind/ui/primitives/OverflowTickerText";
 import type { ComponentPropsWithRef } from "react";
 
 export const INDENT_SIZE = 8;

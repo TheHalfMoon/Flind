@@ -1,4 +1,4 @@
-import type { Task, UserBasic } from "@posthog/shared/domain-types";
+import type { Task, UserBasic } from "@flind/shared/domain-types";
 
 /**
  * How long an item counts as "someone is here right now". Within this window of

@@ -13,21 +13,21 @@ const activityMocks = vi.hoisted(() => ({
   } | null,
 }));
 
-vi.mock("@posthog/ui/features/feature-flags/useFeatureFlag", () => ({
+vi.mock("@flind/ui/features/feature-flags/useFeatureFlag", () => ({
   useFeatureFlag: () => false,
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useWorkLayout", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useWorkLayout", () => ({
   useWorkLayout: () => false,
 }));
-vi.mock("@posthog/ui/features/canvas/stores/activityDetailStore", () => ({
+vi.mock("@flind/ui/features/canvas/stores/activityDetailStore", () => ({
   clearActivitySelection: activityMocks.clearSelection,
   useActivitySelection: () => activityMocks.selection,
 }));
 
-vi.mock("@posthog/ui/features/canvas/hooks/useChannelsLayout", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannelsLayout", () => ({
   useChannelsLayout: () => true,
 }));
-vi.mock("@posthog/host-router/react", () => ({
+vi.mock("@flind/host-router/react", () => ({
   useHostTRPC: () => ({
     channelTasks: {
       list: {
@@ -48,8 +48,8 @@ vi.mock("@posthog/host-router/react", () => ({
     },
   }),
 }));
-vi.mock("@posthog/ui/shell/analytics", () => ({ track: vi.fn() }));
-vi.mock("@posthog/ui/features/canvas/hooks/useSelectedCanvasId", () => ({
+vi.mock("@flind/ui/shell/analytics", () => ({ track: vi.fn() }));
+vi.mock("@flind/ui/features/canvas/hooks/useSelectedCanvasId", () => ({
   useSelectedCanvasId: () => undefined,
 }));
 vi.mock("@tanstack/react-router", () => ({
@@ -89,60 +89,60 @@ vi.mock("@tanstack/react-router", () => ({
     }),
 }));
 vi.mock(
-  "@posthog/ui/features/task-detail/components/TaskHeaderActions",
+  "@flind/ui/features/task-detail/components/TaskHeaderActions",
   () => ({
     TaskHeaderActions: () => <div />,
   }),
 );
-vi.mock("@posthog/ui/features/tasks/useTasks", () => ({
+vi.mock("@flind/ui/features/tasks/useTasks", () => ({
   useTasks: () => ({
     data: [{ id: "task-1", title: "T", updated_at: "2026-01-01T00:00:00Z" }],
   }),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useChannelTasks", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannelTasks", () => ({
   useChannelTasks: () => ({ tasks: [], isLoading: false }),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useChannels", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannels", () => ({
   useChannels: () => ({ channels: [{ id: "chan-1", name: "space" }] }),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useInboxActivityPreview", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useInboxActivityPreview", () => ({
   useInboxActivityPreview: () => ({ reports: [] }),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useChannelStars", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannelStars", () => ({
   useChannelStarMutations: () => ({ star: vi.fn(), unstar: vi.fn() }),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useDashboards", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useDashboards", () => ({
   useDashboard: () => ({ dashboard: null }),
   useCanvasVersions: () => ({ versions: [] }),
   useDashboardMutations: () => ({}),
 }));
-vi.mock("@posthog/ui/features/sessions/components/useComments", () => ({
+vi.mock("@flind/ui/features/sessions/components/useComments", () => ({
   useCommentsQuery: () => ({ data: [] }),
 }));
-vi.mock("@posthog/ui/features/canvas/stores/dashboardEditStore", () => ({
+vi.mock("@flind/ui/features/canvas/stores/dashboardEditStore", () => ({
   useDashboardEditStore: () => vi.fn(),
   useIsDashboardEditing: () => false,
 }));
-vi.mock("@posthog/ui/features/canvas/components/NewCanvasMenu", () => ({
+vi.mock("@flind/ui/features/canvas/components/NewCanvasMenu", () => ({
   NewCanvasMenu: () => null,
 }));
-vi.mock("@posthog/ui/features/canvas/freeform/CanvasFrameHost", () => ({
+vi.mock("@flind/ui/features/canvas/freeform/CanvasFrameHost", () => ({
   CanvasFrameHost: () => null,
 }));
-vi.mock("@posthog/ui/features/navigation/components/RightPanel", () => ({
+vi.mock("@flind/ui/features/navigation/components/RightPanel", () => ({
   RightPanel: () => null,
 }));
-vi.mock("@posthog/ui/features/sidebar/useTaskViewed", () => ({
+vi.mock("@flind/ui/features/sidebar/useTaskViewed", () => ({
   useTaskViewed: () => ({ markAsViewed: vi.fn() }),
 }));
-vi.mock("@posthog/ui/router/routeSkeletons", () => ({
+vi.mock("@flind/ui/router/routeSkeletons", () => ({
   TaskDetailSkeleton: () => <div>skeleton</div>,
 }));
 
 // Stands in for the real task view, which cannot be imported here. The task
 // identity is deliberately unstable, the way a live query's is mid-refetch.
 let taskDetailRenders = 0;
-vi.mock("@posthog/ui/features/task-detail/components/TaskDetail", () => ({
+vi.mock("@flind/ui/features/task-detail/components/TaskDetail", () => ({
   TaskDetail: ({
     task,
     channelName,
@@ -160,7 +160,7 @@ vi.mock("@posthog/ui/features/task-detail/components/TaskDetail", () => ({
   },
 }));
 
-import { useSetHeaderContent } from "@posthog/ui/hooks/useSetHeaderContent";
+import { useSetHeaderContent } from "@flind/ui/hooks/useSetHeaderContent";
 import { ActivityDetailPane } from "./ActivityDetailPane";
 import { ShellLayout } from "./ShellLayout";
 import { SpaceHeaderRow } from "./SpaceHeaderRow";

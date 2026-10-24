@@ -1,5 +1,5 @@
-import type { AgentSession, WorkspaceMode } from "@posthog/shared";
-import type { Task } from "@posthog/shared/domain-types";
+import type { AgentSession, WorkspaceMode } from "@flind/shared";
+import type { Task } from "@flind/shared/domain-types";
 import { narrowFullTask } from "../sidebar/buildSidebarData";
 import {
   getCanvasCellId,

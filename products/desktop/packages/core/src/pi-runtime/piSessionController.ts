@@ -12,7 +12,7 @@ import {
   ROOT_LOGGER,
   type RootLogger,
   type ScopedLogger,
-} from "@posthog/di/logger";
+} from "@flind/di/logger";
 import {
   type AgentConversationEvent,
   classifyPromptFailure,
@@ -22,7 +22,7 @@ import {
   type PiRuntimeHealth,
   type PromptFailure,
   type TaskRunStatus,
-} from "@posthog/shared";
+} from "@flind/shared";
 import { inject, injectable, optional } from "inversify";
 import type { AuthService } from "../auth/auth";
 import { AUTH_SERVICE } from "../auth/auth.module";

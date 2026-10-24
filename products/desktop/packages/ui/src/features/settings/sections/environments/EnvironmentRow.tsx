@@ -1,7 +1,7 @@
 import {
   type Environment,
   slugifyEnvironmentName,
-} from "@posthog/workspace-client/environment";
+} from "@flind/workspace-client/environment";
 import { Button, Flex, Text } from "@radix-ui/themes";
 
 interface EnvironmentRowProps {

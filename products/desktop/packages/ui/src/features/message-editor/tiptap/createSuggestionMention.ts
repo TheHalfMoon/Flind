@@ -1,4 +1,4 @@
-import { createSuggestionLoader } from "@posthog/core/message-editor/suggestionLoader";
+import { createSuggestionLoader } from "@flind/core/message-editor/suggestionLoader";
 import type { Editor } from "@tiptap/core";
 import Mention, { type MentionOptions } from "@tiptap/extension-mention";
 import { ReactRenderer } from "@tiptap/react";

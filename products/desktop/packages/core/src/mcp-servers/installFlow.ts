@@ -1,7 +1,7 @@
 import type {
   McpAuthType,
   McpServerInstallation,
-} from "@posthog/api-client/types";
+} from "@flind/api-client/types";
 
 interface OAuthRedirect {
   redirect_url: string;

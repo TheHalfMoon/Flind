@@ -5,8 +5,8 @@ import {
   setTabTarget as setTabTargetLocal,
   setWindowActiveTab,
   type TabIdentity,
-} from "@posthog/shared";
-import { getRouterOrNull } from "@posthog/ui/router/routerRef";
+} from "@flind/shared";
+import { getRouterOrNull } from "@flind/ui/router/routerRef";
 import type { BrowserTabsClient } from "./browserTabsClient";
 import { pushTabHistoryEntry } from "./tabHistory";
 import {

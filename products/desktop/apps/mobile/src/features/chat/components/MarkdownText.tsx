@@ -1,4 +1,4 @@
-import { parseObjectTags } from "@posthog/core/inbox/objectTags";
+import { parseObjectTags } from "@flind/core/inbox/objectTags";
 import { useMemo } from "react";
 import { ScrollView, Text, View } from "react-native";
 import { getCloudUrlFromRegion, useAuthStore } from "@/features/auth";

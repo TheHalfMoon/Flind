@@ -1,10 +1,10 @@
-import { ActivityDetailPane } from "@posthog/ui/features/canvas/components/ActivityDetailPane";
-import { ActivityView } from "@posthog/ui/features/canvas/components/ActivityView";
-import { useChannelsLayout } from "@posthog/ui/features/canvas/hooks/useChannelsLayout";
+import { ActivityDetailPane } from "@flind/ui/features/canvas/components/ActivityDetailPane";
+import { ActivityView } from "@flind/ui/features/canvas/components/ActivityView";
+import { useChannelsLayout } from "@flind/ui/features/canvas/hooks/useChannelsLayout";
 import {
   type ActivitySearch,
   parseActivitySearch,
-} from "@posthog/ui/features/canvas/stores/activityDetailStore";
+} from "@flind/ui/features/canvas/stores/activityDetailStore";
 import { createFileRoute } from "@tanstack/react-router";
 
 // Activity: every task the viewer is involved in — created, @-mentioned in, or

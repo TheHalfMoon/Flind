@@ -1,5 +1,5 @@
-import type { SignalReport } from "@posthog/shared/types";
-import { useInboxReportActionDraftStore } from "@posthog/ui/features/inbox/stores/inboxReportActionDraftStore";
+import type { SignalReport } from "@flind/shared/types";
+import { useInboxReportActionDraftStore } from "@flind/ui/features/inbox/stores/inboxReportActionDraftStore";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   act,
@@ -22,13 +22,13 @@ const mocks = vi.hoisted(() => ({
   toastError: vi.fn(),
 }));
 
-vi.mock("@posthog/ui/features/auth/authClient", () => ({
+vi.mock("@flind/ui/features/auth/authClient", () => ({
   useOptionalAuthenticatedClient: () => ({
     updateSignalReportState: mocks.updateState,
   }),
 }));
 
-vi.mock("@posthog/ui/features/inbox/hooks/useReportActionTracker", () => ({
+vi.mock("@flind/ui/features/inbox/hooks/useReportActionTracker", () => ({
   useReportActionTracker: (...args: unknown[]) => {
     mocks.actionTrackerArgs = args;
     return mocks.trackAction;
@@ -39,7 +39,7 @@ vi.mock("@posthog/ui/features/inbox/hooks/useReportActionTracker", () => ({
   },
 }));
 
-vi.mock("@posthog/ui/primitives/toast", () => ({
+vi.mock("@flind/ui/primitives/toast", () => ({
   toast: { success: mocks.toastSuccess, error: mocks.toastError },
 }));
 

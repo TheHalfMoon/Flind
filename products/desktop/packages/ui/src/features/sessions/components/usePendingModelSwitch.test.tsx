@@ -1,11 +1,11 @@
 import type { SessionConfigOption } from "@agentclientprotocol/sdk";
-import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
+import { useSettingsStore } from "@flind/ui/features/settings/settingsStore";
 import { act, renderHook } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { usePendingModelSwitch } from "./usePendingModelSwitch";
 
 const { trackMock } = vi.hoisted(() => ({ trackMock: vi.fn() }));
-vi.mock("@posthog/ui/shell/analytics", () => ({ track: trackMock }));
+vi.mock("@flind/ui/shell/analytics", () => ({ track: trackMock }));
 
 function modelOption(): SessionConfigOption {
   return {

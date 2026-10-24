@@ -1,5 +1,5 @@
-import type { TourDefinition } from "@posthog/core/tour/types";
-import { hoggiePng } from "@posthog/shared/hoggies";
+import type { TourDefinition } from "@flind/core/tour/types";
+import { hoggiePng } from "@flind/shared/hoggies";
 
 export const createFirstTaskTour: TourDefinition = {
   id: "create-first-task",

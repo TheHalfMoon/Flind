@@ -1,4 +1,4 @@
-import type { GatewayLimitCause } from "@posthog/shared";
+import type { GatewayLimitCause } from "@flind/shared";
 
 export interface UsageLimitContent {
   title: string;

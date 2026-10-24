@@ -10,24 +10,24 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@flind/quill";
-import { LOOPS_FLAG } from "@posthog/shared";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
-import { channelGlyph } from "@posthog/ui/features/canvas/components/channelGlyph";
-import { useChannelStarToggle } from "@posthog/ui/features/canvas/hooks/useChannelStars";
+import { LOOPS_FLAG } from "@flind/shared";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
+import { channelGlyph } from "@flind/ui/features/canvas/components/channelGlyph";
+import { useChannelStarToggle } from "@flind/ui/features/canvas/hooks/useChannelStars";
 import {
   type Channel,
   useChannels,
-} from "@posthog/ui/features/canvas/hooks/useChannels";
-import { useMarkChannelSeen } from "@posthog/ui/features/canvas/hooks/useMarkChannelSeen";
+} from "@flind/ui/features/canvas/hooks/useChannels";
+import { useMarkChannelSeen } from "@flind/ui/features/canvas/hooks/useMarkChannelSeen";
 import {
   useChannelContextWikiPage,
   useContextWikiPage,
-} from "@posthog/ui/features/context-wiki/hooks/useContextWiki";
-import { useContextLayerFlag } from "@posthog/ui/features/feature-flags/useContextLayerFlag";
-import { useFeatureFlag } from "@posthog/ui/features/feature-flags/useFeatureFlag";
-import { useSetHeaderContent } from "@posthog/ui/hooks/useSetHeaderContent";
-import { PANE_INSET } from "@posthog/ui/primitives/ChromeBar";
-import { track } from "@posthog/ui/shell/analytics";
+} from "@flind/ui/features/context-wiki/hooks/useContextWiki";
+import { useContextLayerFlag } from "@flind/ui/features/feature-flags/useContextLayerFlag";
+import { useFeatureFlag } from "@flind/ui/features/feature-flags/useFeatureFlag";
+import { useSetHeaderContent } from "@flind/ui/hooks/useSetHeaderContent";
+import { PANE_INSET } from "@flind/ui/primitives/ChromeBar";
+import { track } from "@flind/ui/shell/analytics";
 import { useNavigate, useRouter } from "@tanstack/react-router";
 import { type ReactNode, useEffect, useMemo } from "react";
 

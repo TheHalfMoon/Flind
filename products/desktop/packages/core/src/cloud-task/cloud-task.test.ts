@@ -1,4 +1,4 @@
-import { ANALYTICS_EVENTS, TRANSCRIPT_TAIL_WINDOW } from "@posthog/shared";
+import { ANALYTICS_EVENTS, TRANSCRIPT_TAIL_WINDOW } from "@flind/shared";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { CloudTaskEvent } from "./schemas";
 

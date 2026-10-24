@@ -1,4 +1,4 @@
-import type { GithubRefKind } from "@posthog/shared";
+import type { GithubRefKind } from "@flind/shared";
 
 export type { GithubRefKind };
 

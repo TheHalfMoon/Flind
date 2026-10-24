@@ -321,7 +321,7 @@ export const getPrChangedFilesInput = z.object({ prUrl: z.string() });
 // Also carries the PR's live status (`state`/`merged`/`draft`) so list cards
 // can render it from the single batched GraphQL request instead of firing one
 // REST call per visible PR. Mirrors `prDiffStatsSchema` in
-// `@posthog/core/git/router-schemas`.
+// `@flind/core/git/router-schemas`.
 export const prDiffStatsSchema = z.object({
   additions: z.number(),
   deletions: z.number(),
@@ -447,9 +447,9 @@ export type {
   PrConversationComment,
   PrInfoByUrlOutput,
   PrMergeMethod,
-} from "@posthog/shared";
+} from "@flind/shared";
 // Native PR review schemas (PR overview, approve/merge, CI checks,
-// conversation comments) are defined once in `@posthog/shared`'s git domain
+// conversation comments) are defined once in `@flind/shared`'s git domain
 // and re-exported here for the tRPC procedure definitions and GitService.
 export {
   approvePrInput,
@@ -463,7 +463,7 @@ export {
   mergePrInput,
   mergePrOutput,
   prConversationCommentSchema,
-} from "@posthog/shared";
+} from "@flind/shared";
 
 export const getPrTemplateInput = directoryPathInput;
 

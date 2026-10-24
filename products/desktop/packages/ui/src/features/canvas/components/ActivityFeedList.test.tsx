@@ -1,5 +1,5 @@
-import type { TaskActivityItem } from "@posthog/core/canvas/taskActivity";
-import type { SignalReport } from "@posthog/shared/types";
+import type { TaskActivityItem } from "@flind/core/canvas/taskActivity";
+import type { SignalReport } from "@flind/shared/types";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import type { ReactElement, ReactNode } from "react";
@@ -89,16 +89,16 @@ vi.mock("@flind/quill", async (importOriginal) => ({
     </button>
   ),
 }));
-vi.mock("@posthog/ui/features/archive/useArchivedTaskIds", () => ({
+vi.mock("@flind/ui/features/archive/useArchivedTaskIds", () => ({
   useArchivedTaskIds: () => new Set<string>(),
 }));
-vi.mock("@posthog/ui/features/auth/authClient", () => ({
+vi.mock("@flind/ui/features/auth/authClient", () => ({
   useOptionalAuthenticatedClient: () => ({}),
 }));
-vi.mock("@posthog/ui/features/auth/useCurrentUser", () => ({
+vi.mock("@flind/ui/features/auth/useCurrentUser", () => ({
   useCurrentUser: () => ({ data: null }),
 }));
-vi.mock("@posthog/ui/features/canvas/components/ActivityActionsMenu", () => ({
+vi.mock("@flind/ui/features/canvas/components/ActivityActionsMenu", () => ({
   ActivityActionsMenu: ({ onMarkAllRead }: { onMarkAllRead: () => void }) => (
     <>
       <button type="button" aria-label="Activity actions" />
@@ -108,9 +108,9 @@ vi.mock("@posthog/ui/features/canvas/components/ActivityActionsMenu", () => ({
     </>
   ),
 }));
-vi.mock("@posthog/ui/features/canvas/components/ActivityRow", async () => {
+vi.mock("@flind/ui/features/canvas/components/ActivityRow", async () => {
   const { ActivityRowSurface } = await import(
-    "@posthog/ui/features/canvas/components/ActivityRowSurface"
+    "@flind/ui/features/canvas/components/ActivityRowSurface"
   );
   return {
     ActivityRow: ({
@@ -141,10 +141,10 @@ vi.mock("@posthog/ui/features/canvas/components/ActivityRow", async () => {
   };
 });
 vi.mock(
-  "@posthog/ui/features/canvas/components/InboxActivityOverflowRow",
+  "@flind/ui/features/canvas/components/InboxActivityOverflowRow",
   async () => {
     const { ActivityRowSurface } = await import(
-      "@posthog/ui/features/canvas/components/ActivityRowSurface"
+      "@flind/ui/features/canvas/components/ActivityRowSurface"
     );
     return {
       InboxActivityOverflowRow: ({
@@ -169,9 +169,9 @@ vi.mock(
     };
   },
 );
-vi.mock("@posthog/ui/features/canvas/components/InboxActivityRow", async () => {
+vi.mock("@flind/ui/features/canvas/components/InboxActivityRow", async () => {
   const { ActivityRowSurface } = await import(
-    "@posthog/ui/features/canvas/components/ActivityRowSurface"
+    "@flind/ui/features/canvas/components/ActivityRowSurface"
   );
   return {
     InboxActivityRow: ({
@@ -204,7 +204,7 @@ vi.mock("@posthog/ui/features/canvas/components/InboxActivityRow", async () => {
     ),
   };
 });
-vi.mock("@posthog/ui/features/canvas/hooks/useActivityTaskMenu", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useActivityTaskMenu", () => ({
   useActivityTaskMenu: () => (item: TaskActivityItem) => ({
     kind: "task",
     id: item.taskId,
@@ -213,19 +213,19 @@ vi.mock("@posthog/ui/features/canvas/hooks/useActivityTaskMenu", () => ({
     onTogglePin: vi.fn(),
   }),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useChannels", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannels", () => ({
   useChannels: () => ({ channels: [] }),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useMarkTaskActivityRead", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useMarkTaskActivityRead", () => ({
   useMarkTaskActivityRead: () => ({
     mutate: mocks.markRead,
     isPending: false,
   }),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useLocalDayStart", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useLocalDayStart", () => ({
   useLocalDayStart: () => new Date(2026, 7, 25).getTime(),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useTaskActivity", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useTaskActivity", () => ({
   useTaskActivity: () => ({
     items: mocks.items,
     unreadCount: mocks.unreadCount,
@@ -235,7 +235,7 @@ vi.mock("@posthog/ui/features/canvas/hooks/useTaskActivity", () => ({
     fetchNextPage: mocks.fetchNextPage,
   }),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useInboxActivityPreview", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useInboxActivityPreview", () => ({
   useInboxActivityPreview: () => ({
     reports: mocks.inboxReports,
     totalCount: mocks.inboxReportCount,
@@ -243,15 +243,15 @@ vi.mock("@posthog/ui/features/canvas/hooks/useInboxActivityPreview", () => ({
     isIncluded: true,
   }),
 }));
-vi.mock("@posthog/ui/features/inbox/hooks/useInboxSourceFilterOptions", () => ({
+vi.mock("@flind/ui/features/inbox/hooks/useInboxSourceFilterOptions", () => ({
   useInboxSourceFilterOptions: () => [],
 }));
-vi.mock("@posthog/ui/primitives/hooks/useInView", () => ({
+vi.mock("@flind/ui/primitives/hooks/useInView", () => ({
   useInView: () => [vi.fn(), true],
 }));
-vi.mock("@posthog/ui/shell/analytics", () => ({ track: vi.fn() }));
+vi.mock("@flind/ui/shell/analytics", () => ({ track: vi.fn() }));
 
-import { useActivityFilterStore } from "@posthog/ui/features/canvas/stores/activityFilterStore";
+import { useActivityFilterStore } from "@flind/ui/features/canvas/stores/activityFilterStore";
 import { ActivityFeedList } from "./ActivityFeedList";
 
 describe("ActivityFeedList", () => {

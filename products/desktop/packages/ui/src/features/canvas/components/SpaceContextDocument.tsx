@@ -1,5 +1,5 @@
 import { FileTextIcon } from "@phosphor-icons/react";
-import { ContextWikiUnavailableError } from "@posthog/api-client/posthog-client";
+import { ContextWikiUnavailableError } from "@flind/api-client/posthog-client";
 import {
   Button,
   Empty,
@@ -9,16 +9,16 @@ import {
   EmptyMedia,
   EmptyTitle,
 } from "@flind/quill";
-import { useChannels } from "@posthog/ui/features/canvas/hooks/useChannels";
-import { useChannelsLayout } from "@posthog/ui/features/canvas/hooks/useChannelsLayout";
+import { useChannels } from "@flind/ui/features/canvas/hooks/useChannels";
+import { useChannelsLayout } from "@flind/ui/features/canvas/hooks/useChannelsLayout";
 import {
   type ContextDocumentStore,
   useLegacyContextDocumentStore,
   useWikiContextDocumentStore,
-} from "@posthog/ui/features/canvas/hooks/useContextDocumentStore";
-import { useChannelContextWikiPage } from "@posthog/ui/features/context-wiki/hooks/useContextWiki";
-import { useContextLayerFlag } from "@posthog/ui/features/feature-flags/useContextLayerFlag";
-import { LoadingState } from "@posthog/ui/primitives/LoadingState";
+} from "@flind/ui/features/canvas/hooks/useContextDocumentStore";
+import { useChannelContextWikiPage } from "@flind/ui/features/context-wiki/hooks/useContextWiki";
+import { useContextLayerFlag } from "@flind/ui/features/feature-flags/useContextLayerFlag";
+import { LoadingState } from "@flind/ui/primitives/LoadingState";
 import type { ReactNode } from "react";
 
 export interface ResolvedContextDocument {

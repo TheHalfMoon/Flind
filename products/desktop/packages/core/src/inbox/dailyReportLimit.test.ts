@@ -1,4 +1,4 @@
-import type { SignalTeamConfig } from "@posthog/shared/types";
+import type { SignalTeamConfig } from "@flind/shared/types";
 import { describe, expect, it } from "vitest";
 import {
   dailyReportLimitFieldValue,

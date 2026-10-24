@@ -1,12 +1,12 @@
 import { ArrowLeft, Plugs, Sliders } from "@phosphor-icons/react";
-import { formatAgo } from "@posthog/core/mcp-gateway/gatewayServers";
-import { UserAvatar } from "@posthog/ui/features/auth/UserAvatar";
-import { gatewayUserName } from "@posthog/ui/features/mcp-gateway/components/parts/avatars";
-import type { GatewayRoute } from "@posthog/ui/features/mcp-gateway/gatewayRoute";
-import { useGatewayMembers } from "@posthog/ui/features/mcp-gateway/hooks/useGatewayMembers";
-import { useGatewayServers } from "@posthog/ui/features/mcp-gateway/hooks/useGatewayServers";
-import { ServerIcon } from "@posthog/ui/features/mcp-servers/components/parts/icons";
-import { LoadingState } from "@posthog/ui/primitives/LoadingState";
+import { formatAgo } from "@flind/core/mcp-gateway/gatewayServers";
+import { UserAvatar } from "@flind/ui/features/auth/UserAvatar";
+import { gatewayUserName } from "@flind/ui/features/mcp-gateway/components/parts/avatars";
+import type { GatewayRoute } from "@flind/ui/features/mcp-gateway/gatewayRoute";
+import { useGatewayMembers } from "@flind/ui/features/mcp-gateway/hooks/useGatewayMembers";
+import { useGatewayServers } from "@flind/ui/features/mcp-gateway/hooks/useGatewayServers";
+import { ServerIcon } from "@flind/ui/features/mcp-servers/components/parts/icons";
+import { LoadingState } from "@flind/ui/primitives/LoadingState";
 import { Badge, Button, Flex, Separator, Switch, Text } from "@radix-ui/themes";
 
 /** Admin view of one member: which servers they can reach, per-server revoke. */

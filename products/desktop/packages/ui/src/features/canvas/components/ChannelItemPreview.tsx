@@ -1,5 +1,5 @@
 import { ChatCircleIcon } from "@phosphor-icons/react";
-import type { ChannelItemModel } from "@posthog/core/canvas/channelItems";
+import type { ChannelItemModel } from "@flind/core/canvas/channelItems";
 import {
   Avatar,
   AvatarFallback,
@@ -15,28 +15,28 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@flind/quill";
-import { formatAbsoluteDateTime, formatRelativeAge } from "@posthog/shared";
-import { UserAvatar } from "@posthog/ui/features/auth/UserAvatar";
-import { iconForTemplate } from "@posthog/ui/features/canvas/components/canvasTemplateIcon";
+import { formatAbsoluteDateTime, formatRelativeAge } from "@flind/shared";
+import { UserAvatar } from "@flind/ui/features/auth/UserAvatar";
+import { iconForTemplate } from "@flind/ui/features/canvas/components/canvasTemplateIcon";
 import {
   TaskRowMenuList,
   type TaskRowMenuProps,
-} from "@posthog/ui/features/canvas/components/TaskRowMenu";
-import { channelItemAuthor } from "@posthog/ui/features/canvas/hooks/useChannelItemFacts";
-import { useChannelTaskStatus } from "@posthog/ui/features/canvas/hooks/useChannelTaskStatus";
-import { useLatestTurnMessage } from "@posthog/ui/features/canvas/hooks/useLatestTurnMessage";
-import { getOriginProductMeta } from "@posthog/ui/features/sidebar/components/items/TaskIcon";
-import { TaskDotMark } from "@posthog/ui/features/sidebar/components/items/TaskStatusDot";
+} from "@flind/ui/features/canvas/components/TaskRowMenu";
+import { channelItemAuthor } from "@flind/ui/features/canvas/hooks/useChannelItemFacts";
+import { useChannelTaskStatus } from "@flind/ui/features/canvas/hooks/useChannelTaskStatus";
+import { useLatestTurnMessage } from "@flind/ui/features/canvas/hooks/useLatestTurnMessage";
+import { getOriginProductMeta } from "@flind/ui/features/sidebar/components/items/TaskIcon";
+import { TaskDotMark } from "@flind/ui/features/sidebar/components/items/TaskStatusDot";
 import {
   type TaskBadge,
   type TaskDot,
   TONE_ICON_VAR,
   taskBadges,
   taskDot,
-} from "@posthog/ui/features/sidebar/components/items/taskStatusVocabulary";
-import { CopyButton } from "@posthog/ui/primitives/CopyButton";
-import { FactLabel, FactList } from "@posthog/ui/primitives/FactList";
-import { openExternalUrl } from "@posthog/ui/shell/openExternal";
+} from "@flind/ui/features/sidebar/components/items/taskStatusVocabulary";
+import { CopyButton } from "@flind/ui/primitives/CopyButton";
+import { FactLabel, FactList } from "@flind/ui/primitives/FactList";
+import { openExternalUrl } from "@flind/ui/shell/openExternal";
 import { type ReactNode, useEffect } from "react";
 
 /** Matches the rows' own tooltip delay, so the card doesn't feel slower. */

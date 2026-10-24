@@ -1,22 +1,22 @@
-import { hasProseBeyondAttachments } from "@posthog/core/editor/cloud-prompt";
+import { hasProseBeyondAttachments } from "@flind/core/editor/cloud-prompt";
 import {
   formatAttachmentSnippet,
   readAttachmentSnippets,
-} from "@posthog/core/files/attachmentText";
+} from "@flind/core/files/attachmentText";
 import {
   FILE_READ_CLIENT,
   type FileReadClient,
-} from "@posthog/core/files/identifiers";
-import { LLM_GATEWAY_SERVICE } from "@posthog/core/llm-gateway/identifiers";
+} from "@flind/core/files/identifiers";
+import { LLM_GATEWAY_SERVICE } from "@flind/core/llm-gateway/identifiers";
 import {
   HELPER_GATEWAY_MODEL,
   type LlmGatewayService,
-} from "@posthog/core/llm-gateway/llm-gateway";
-import { xmlToContent } from "@posthog/core/message-editor/content";
-import { isLoadingGithubRefTitle } from "@posthog/core/message-editor/githubIssueChip";
-import { parseGithubIssueUrl } from "@posthog/core/message-editor/githubIssueUrl";
-import { parseXmlAttrs } from "@posthog/core/message-editor/skillTags";
-import { escapeXmlAttr } from "@posthog/shared";
+} from "@flind/core/llm-gateway/llm-gateway";
+import { xmlToContent } from "@flind/core/message-editor/content";
+import { isLoadingGithubRefTitle } from "@flind/core/message-editor/githubIssueChip";
+import { parseGithubIssueUrl } from "@flind/core/message-editor/githubIssueUrl";
+import { parseXmlAttrs } from "@flind/core/message-editor/skillTags";
+import { escapeXmlAttr } from "@flind/shared";
 import { inject, injectable } from "inversify";
 import {
   type GithubPrTitleClient,

@@ -1,6 +1,6 @@
-import { getDiscardInfo } from "@posthog/core/task-detail/discardInfo";
-import type { ChangedFile } from "@posthog/shared/domain-types";
-import { useWorkspaceTRPC } from "@posthog/workspace-client/trpc";
+import { getDiscardInfo } from "@flind/core/task-detail/discardInfo";
+import type { ChangedFile } from "@flind/shared/domain-types";
+import { useWorkspaceTRPC } from "@flind/workspace-client/trpc";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useCallback } from "react";
 import { showMessageBox } from "../../../utils/dialog";

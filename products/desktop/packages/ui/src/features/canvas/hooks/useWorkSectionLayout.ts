@@ -5,7 +5,7 @@ import {
   WORK_SECTION_HEADER_HEIGHT,
   type WorkSectionHeights,
   type WorkSectionId,
-} from "@posthog/ui/features/canvas/workSectionLayout";
+} from "@flind/ui/features/canvas/workSectionLayout";
 import {
   type KeyboardEvent,
   type PointerEvent,

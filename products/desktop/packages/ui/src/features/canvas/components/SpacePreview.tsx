@@ -8,16 +8,16 @@ import {
   ItemSeparator,
   ItemTitle,
 } from "@flind/quill";
-import { formatRelativeAge } from "@posthog/shared";
-import type { UserBasic } from "@posthog/shared/domain-types";
+import { formatRelativeAge } from "@flind/shared";
+import type { UserBasic } from "@flind/shared/domain-types";
 import {
   type ChannelActionItem,
   ChannelActionList,
-} from "@posthog/ui/features/canvas/components/channelActions";
-import { PresenceAvatars } from "@posthog/ui/features/canvas/components/PresenceAvatars";
-import type { Channel } from "@posthog/ui/features/canvas/hooks/useChannels";
-import { useSpaceOverview } from "@posthog/ui/features/canvas/hooks/useRecentSpaceTasks";
-import { DOT_TONE_VAR } from "@posthog/ui/features/sidebar/components/items/taskStatusVocabulary";
+} from "@flind/ui/features/canvas/components/channelActions";
+import { PresenceAvatars } from "@flind/ui/features/canvas/components/PresenceAvatars";
+import type { Channel } from "@flind/ui/features/canvas/hooks/useChannels";
+import { useSpaceOverview } from "@flind/ui/features/canvas/hooks/useRecentSpaceTasks";
+import { DOT_TONE_VAR } from "@flind/ui/features/sidebar/components/items/taskStatusVocabulary";
 
 /** What the card is about: the space that is being pointed at. */
 export interface SpacePreviewPayload {

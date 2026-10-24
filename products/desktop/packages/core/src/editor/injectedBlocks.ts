@@ -1,4 +1,4 @@
-import { unescapeXmlAttr } from "@posthog/shared";
+import { unescapeXmlAttr } from "@flind/shared";
 
 export const CHANNEL_CONTEXT_TAG = "channel_context";
 export const CANVAS_INSTRUCTIONS_TAG = "canvas_generation_instructions";

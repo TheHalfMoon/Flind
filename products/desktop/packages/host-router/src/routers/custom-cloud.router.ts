@@ -1,11 +1,11 @@
-import type { AuthService } from "@posthog/core/auth/auth";
-import { AUTH_SERVICE } from "@posthog/core/auth/auth.module";
+import type { AuthService } from "@flind/core/auth/auth";
+import { AUTH_SERVICE } from "@flind/core/auth/auth.module";
 import {
   CUSTOM_CLOUD_STORE,
   type CustomCloudStore,
-} from "@posthog/core/custom-cloud/identifiers";
-import { publicProcedure, router } from "@posthog/host-trpc/trpc";
-import { customCloudSchema } from "@posthog/shared";
+} from "@flind/core/custom-cloud/identifiers";
+import { publicProcedure, router } from "@flind/host-trpc/trpc";
+import { customCloudSchema } from "@flind/shared";
 
 export const customCloudRouter = router({
   get: publicProcedure

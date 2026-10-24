@@ -13,9 +13,9 @@ import {
 import {
   oneDark,
   oneLight,
-} from "@posthog/ui/features/code-editor/theme/editorTheme";
-import { getLanguageExtension } from "@posthog/ui/features/code-editor/utils/languages";
-import { useThemeStore } from "@posthog/ui/shell/themeStore";
+} from "@flind/ui/features/code-editor/theme/editorTheme";
+import { getLanguageExtension } from "@flind/ui/features/code-editor/utils/languages";
+import { useThemeStore } from "@flind/ui/shell/themeStore";
 import { useMemo } from "react";
 import { postHogEnrichmentExtension } from "../extensions/postHogEnrichment";
 

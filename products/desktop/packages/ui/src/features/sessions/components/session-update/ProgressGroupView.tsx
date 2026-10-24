@@ -1,5 +1,5 @@
 import { ListChecks } from "@phosphor-icons/react";
-import { type Step, StepList } from "@posthog/ui/primitives/StepList";
+import { type Step, StepList } from "@flind/ui/primitives/StepList";
 import { useEffect, useState } from "react";
 import { ToolRow } from "./ToolRow";
 

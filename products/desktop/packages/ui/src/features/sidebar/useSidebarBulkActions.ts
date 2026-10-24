@@ -3,29 +3,29 @@ import {
   computeBulkPinDirection,
   formatBulkResult,
   sessionsLabel,
-} from "@posthog/core/sidebar/selection";
-import type { TaskData } from "@posthog/core/sidebar/sidebarData.types";
-import { isTaskActivelyRunning } from "@posthog/core/sidebar/taskRunning";
+} from "@flind/core/sidebar/selection";
+import type { TaskData } from "@flind/core/sidebar/sidebarData.types";
+import { isTaskActivelyRunning } from "@flind/core/sidebar/taskRunning";
 import {
   archiveTasksImperative,
   useArchiveCacheKeys,
-} from "@posthog/ui/features/archive/useArchiveTask";
-import type { Channel } from "@posthog/ui/features/canvas/hooks/useChannels";
-import { useChannels } from "@posthog/ui/features/canvas/hooks/useChannels";
-import { useChannelTaskMutations } from "@posthog/ui/features/canvas/hooks/useChannelTasks";
-import { placeTasksInCommandCenter } from "@posthog/ui/features/command-center/placeTaskInCommandCenter";
-import { useArchivingTasksStore } from "@posthog/ui/features/sidebar/archivingTasksStore";
-import { useScopedTaskSelectionStore } from "@posthog/ui/features/sidebar/TaskSelectionScope";
-import { usePinnedTasks } from "@posthog/ui/features/sidebar/usePinnedTasks";
-import { useLiveTaskIds } from "@posthog/ui/features/tasks/useLiveTaskIds";
-import { toast } from "@posthog/ui/primitives/toast";
-import { logger } from "@posthog/ui/shell/logger";
+} from "@flind/ui/features/archive/useArchiveTask";
+import type { Channel } from "@flind/ui/features/canvas/hooks/useChannels";
+import { useChannels } from "@flind/ui/features/canvas/hooks/useChannels";
+import { useChannelTaskMutations } from "@flind/ui/features/canvas/hooks/useChannelTasks";
+import { placeTasksInCommandCenter } from "@flind/ui/features/command-center/placeTaskInCommandCenter";
+import { useArchivingTasksStore } from "@flind/ui/features/sidebar/archivingTasksStore";
+import { useScopedTaskSelectionStore } from "@flind/ui/features/sidebar/TaskSelectionScope";
+import { usePinnedTasks } from "@flind/ui/features/sidebar/usePinnedTasks";
+import { useLiveTaskIds } from "@flind/ui/features/tasks/useLiveTaskIds";
+import { toast } from "@flind/ui/primitives/toast";
+import { logger } from "@flind/ui/shell/logger";
 import { useQueryClient } from "@tanstack/react-query";
 import { useCallback, useMemo, useState } from "react";
 
 const log = logger.scope("sidebar-bulk-actions");
 
-/** Clause after "Disabled because …" (see `@posthog/ui/primitives/Button`). */
+/** Clause after "Disabled because …" (see `@flind/ui/primitives/Button`). */
 const NO_SELECTION = "you haven't selected any sessions";
 const NO_CHANNELS = "this project has no channels to file to";
 

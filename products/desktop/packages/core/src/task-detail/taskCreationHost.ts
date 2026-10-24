@@ -1,11 +1,11 @@
 import type { ContentBlock } from "@agentclientprotocol/sdk";
-import type { CloudSkillBundleRef } from "@posthog/core/sessions/cloudArtifactIdentifiers";
+import type { CloudSkillBundleRef } from "@flind/core/sessions/cloudArtifactIdentifiers";
 import type {
   ExecutionMode,
   Workspace,
   WorkspaceInfo,
   WorkspaceMode,
-} from "@posthog/shared";
+} from "@flind/shared";
 import type { TaskCreationApiClient } from "./taskCreationApiClient";
 
 export interface CloudPromptTransport {

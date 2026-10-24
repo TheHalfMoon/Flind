@@ -1,4 +1,4 @@
-import { useCommentNavigationStore } from "@posthog/ui/features/sessions/commentNavigationStore";
+import { useCommentNavigationStore } from "@flind/ui/features/sessions/commentNavigationStore";
 import { useEffect, useRef } from "react";
 
 /**

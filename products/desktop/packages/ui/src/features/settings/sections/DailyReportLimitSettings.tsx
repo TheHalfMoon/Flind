@@ -2,9 +2,9 @@ import {
   dailyReportLimitFieldValue,
   describeDailyReportLimit,
   parseDailyReportLimit,
-} from "@posthog/core/inbox/dailyReportLimit";
+} from "@flind/core/inbox/dailyReportLimit";
 import { Button, Input, Text } from "@flind/quill";
-import type { SignalTeamConfig } from "@posthog/shared/types";
+import type { SignalTeamConfig } from "@flind/shared/types";
 import { useState } from "react";
 
 interface DailyReportLimitSettingsProps {

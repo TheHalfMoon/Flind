@@ -3,8 +3,8 @@ import type {
   CanvasTextSelection,
   CanvasToHostMessage,
   HostToCanvasMessage,
-} from "@posthog/core/canvas/freeformSchemas";
-import { isSafeGitHubPullRequestUrl, isSafePostHogUrl } from "@posthog/shared";
+} from "@flind/core/canvas/freeformSchemas";
+import { isSafeGitHubPullRequestUrl, isSafePostHogUrl } from "@flind/shared";
 
 // Canvas code can post open-external without a gesture, so opens are limited.
 const EXTERNAL_OPEN_MIN_INTERVAL_MS = 1_000;

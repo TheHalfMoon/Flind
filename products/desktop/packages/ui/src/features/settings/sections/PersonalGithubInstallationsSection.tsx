@@ -1,34 +1,34 @@
 import { ArrowSquareOutIcon, GithubLogoIcon } from "@phosphor-icons/react";
-import type { UserGitHubIntegration } from "@posthog/api-client/posthog-client";
-import { isAlreadyDisconnectedError } from "@posthog/core/integrations/connectErrors";
-import { buildGithubDisconnectDescription } from "@posthog/core/integrations/disconnectCopy";
+import type { UserGitHubIntegration } from "@flind/api-client/posthog-client";
+import { isAlreadyDisconnectedError } from "@flind/core/integrations/connectErrors";
+import { buildGithubDisconnectDescription } from "@flind/core/integrations/disconnectCopy";
 import {
   describeGithubRepoAccess,
   formatGithubAccountLabel,
   githubInstallationSettingsUrl,
-} from "@posthog/core/settings/githubRepoSummary";
+} from "@flind/core/settings/githubRepoSummary";
 import { Button, Text } from "@flind/quill";
-import { formatRelativeTimeLong } from "@posthog/shared";
-import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { useAuthStateValue } from "@posthog/ui/features/auth/store";
-import { DisconnectIntegrationDialog } from "@posthog/ui/features/integrations/components/DisconnectIntegrationDialog";
-import { GithubRepoSummary } from "@posthog/ui/features/integrations/components/GithubRepoSummary";
+import { formatRelativeTimeLong } from "@flind/shared";
+import { useOptionalAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { useAuthStateValue } from "@flind/ui/features/auth/store";
+import { DisconnectIntegrationDialog } from "@flind/ui/features/integrations/components/DisconnectIntegrationDialog";
+import { GithubRepoSummary } from "@flind/ui/features/integrations/components/GithubRepoSummary";
 import {
   describeGithubConnectError,
   invalidateGithubQueries,
   useGithubUserConnect,
-} from "@posthog/ui/features/integrations/useGithubUserConnect";
+} from "@flind/ui/features/integrations/useGithubUserConnect";
 import {
   useUserGithubIntegrations,
   useUserRepositoryIntegration,
-} from "@posthog/ui/features/integrations/useIntegrations";
+} from "@flind/ui/features/integrations/useIntegrations";
 import {
   SettingsCard,
   SettingsSection,
-} from "@posthog/ui/features/settings/components/SettingsCard";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
-import { toast } from "@posthog/ui/primitives/toast";
-import { openUrlInBrowser } from "@posthog/ui/utils/browser";
+} from "@flind/ui/features/settings/components/SettingsCard";
+import { Spinner } from "@flind/ui/primitives/Spinner";
+import { toast } from "@flind/ui/primitives/toast";
+import { openUrlInBrowser } from "@flind/ui/utils/browser";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 

@@ -19,8 +19,8 @@ import {
   inboxReportStateFilterLabel,
   inboxSortOptionFromKey,
   inboxSortOptionKey,
-} from "@posthog/ui/features/inbox/filterOptions";
-import { useInboxSignalsFilterStore } from "@posthog/ui/features/inbox/stores/inboxSignalsFilterStore";
+} from "@flind/ui/features/inbox/filterOptions";
+import { useInboxSignalsFilterStore } from "@flind/ui/features/inbox/stores/inboxSignalsFilterStore";
 
 export function InboxReportFilters(): React.JSX.Element {
   const sortField = useInboxSignalsFilterStore((state) => state.sortField);

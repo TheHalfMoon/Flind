@@ -1,7 +1,7 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 
 const error = vi.hoisted(() => vi.fn());
-vi.mock("@posthog/ui/shell/logger", () => ({
+vi.mock("@flind/ui/shell/logger", () => ({
   logger: {
     scope: () => ({ error, warn: vi.fn(), info: vi.fn(), debug: vi.fn() }),
   },

@@ -3,14 +3,14 @@ import type {
   ExternalDataSourceSchema,
   PostHogAPIClient,
   SignalSourceConfig,
-} from "@posthog/api-client/posthog-client";
+} from "@flind/api-client/posthog-client";
 import {
   EXTERNAL_INBOX_SOURCES,
   type SignalRecordKind,
   sourceNeedsFullRefresh,
   type ToggleableSourceProduct,
-} from "@posthog/shared";
-import type { SignalUserAutonomyConfig } from "@posthog/shared/domain-types";
+} from "@flind/shared";
+import type { SignalUserAutonomyConfig } from "@flind/shared/domain-types";
 import { injectable } from "inversify";
 
 export type SignalSourceProduct = ToggleableSourceProduct;

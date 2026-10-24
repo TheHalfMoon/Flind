@@ -2,26 +2,26 @@ import type {
   McpGatewayServer,
   McpGatewayServerUpdate,
   McpRecommendedServer,
-} from "@posthog/api-client/posthog-client";
+} from "@flind/api-client/posthog-client";
 import {
   connectGatewayServer,
   type GatewayConnectCredentials,
-} from "@posthog/core/mcp-gateway/gatewayConnect";
-import { recommendedCatalogTemplates } from "@posthog/core/mcp-gateway/gatewayServers";
+} from "@flind/core/mcp-gateway/gatewayConnect";
+import { recommendedCatalogTemplates } from "@flind/core/mcp-gateway/gatewayServers";
 import {
   discoverGatewayTools,
   type GatewayServerMatch,
-} from "@posthog/core/mcp-gateway/gatewayToolDiscovery";
-import { reauthorizeWithOAuth } from "@posthog/core/mcp-servers/installFlow";
-import { useHostTRPC, useHostTRPCClient } from "@posthog/host-router/react";
-import { gatewayKeys } from "@posthog/ui/features/mcp-gateway/hooks/gatewayKeys";
+} from "@flind/core/mcp-gateway/gatewayToolDiscovery";
+import { reauthorizeWithOAuth } from "@flind/core/mcp-servers/installFlow";
+import { useHostTRPC, useHostTRPCClient } from "@flind/host-router/react";
+import { gatewayKeys } from "@flind/ui/features/mcp-gateway/hooks/gatewayKeys";
 import {
   createOAuthCallback,
   mcpKeys,
-} from "@posthog/ui/features/mcp-server-manager/useMcpConnect";
-import { useAuthenticatedMutation } from "@posthog/ui/hooks/useAuthenticatedMutation";
-import { useAuthenticatedQuery } from "@posthog/ui/hooks/useAuthenticatedQuery";
-import { toast } from "@posthog/ui/primitives/toast";
+} from "@flind/ui/features/mcp-server-manager/useMcpConnect";
+import { useAuthenticatedMutation } from "@flind/ui/hooks/useAuthenticatedMutation";
+import { useAuthenticatedQuery } from "@flind/ui/hooks/useAuthenticatedQuery";
+import { toast } from "@flind/ui/primitives/toast";
 import { useQueryClient } from "@tanstack/react-query";
 import { useSubscription } from "@trpc/tanstack-react-query";
 import { useCallback, useMemo } from "react";

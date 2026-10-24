@@ -1,12 +1,12 @@
-import type { ScoutDetailTab } from "@posthog/core/scouts/scoutDetailTabs";
+import type { ScoutDetailTab } from "@flind/core/scouts/scoutDetailTabs";
 import type {
   AgentsPageSearch,
   AgentsTab,
-} from "@posthog/ui/features/agents/agentsPageStore";
-import { SettingsLayout } from "@posthog/ui/features/settings/components/SettingsLayout";
-import { useSettingsPageStore } from "@posthog/ui/features/settings/stores/settingsPageStore";
-import { resolveSettingsCategory } from "@posthog/ui/features/settings/types";
-import { validSourceHref } from "@posthog/ui/router/reportNavigation";
+} from "@flind/ui/features/agents/agentsPageStore";
+import { SettingsLayout } from "@flind/ui/features/settings/components/SettingsLayout";
+import { useSettingsPageStore } from "@flind/ui/features/settings/stores/settingsPageStore";
+import { resolveSettingsCategory } from "@flind/ui/features/settings/types";
+import { validSourceHref } from "@flind/ui/router/reportNavigation";
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect } from "react";
 

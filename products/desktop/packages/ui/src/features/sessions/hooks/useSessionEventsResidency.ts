@@ -1,8 +1,8 @@
 import {
   SESSION_SERVICE,
   type SessionService,
-} from "@posthog/core/sessions/sessionService";
-import { useService } from "@posthog/di/react";
+} from "@flind/core/sessions/sessionService";
+import { useService } from "@flind/di/react";
 import { useEffect } from "react";
 
 /** Mounted viewers per taskId, so one view unmounting can't schedule an

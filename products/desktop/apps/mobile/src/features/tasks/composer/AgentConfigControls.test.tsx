@@ -1,7 +1,7 @@
 import type {
   CloudTaskConfigOption,
   CloudTaskConfigSelectGroup,
-} from "@posthog/shared";
+} from "@flind/shared";
 import { createElement, type ReactNode } from "react";
 import { act, create } from "react-test-renderer";
 import { describe, expect, it, vi } from "vitest";

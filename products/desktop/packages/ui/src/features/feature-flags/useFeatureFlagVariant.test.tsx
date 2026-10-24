@@ -9,7 +9,7 @@ const { flags } = vi.hoisted(() => ({
   },
 }));
 
-vi.mock("@posthog/di/react", () => ({ useService: () => flags }));
+vi.mock("@flind/di/react", () => ({ useService: () => flags }));
 
 describe("useFeatureFlagVariant", () => {
   beforeEach(() => {

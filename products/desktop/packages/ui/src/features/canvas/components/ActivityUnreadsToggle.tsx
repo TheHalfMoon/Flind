@@ -2,9 +2,9 @@ import { Label, Switch } from "@flind/quill";
 import {
   ANALYTICS_EVENTS,
   type ChannelsSurface,
-} from "@posthog/shared/analytics-events";
-import { useActivityFilterStore } from "@posthog/ui/features/canvas/stores/activityFilterStore";
-import { track } from "@posthog/ui/shell/analytics";
+} from "@flind/shared/analytics-events";
+import { useActivityFilterStore } from "@flind/ui/features/canvas/stores/activityFilterStore";
+import { track } from "@flind/ui/shell/analytics";
 import { useId } from "react";
 
 /** Narrows both Activity surfaces down to what hasn't been read yet. */

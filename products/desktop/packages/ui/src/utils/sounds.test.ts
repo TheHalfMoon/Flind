@@ -1,7 +1,7 @@
 import type {
   CompletionSound,
   CustomSound,
-} from "@posthog/ui/features/settings/settingsStore";
+} from "@flind/ui/features/settings/settingsStore";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { playbackRateForTaskDuration, resolveSoundUrl } from "./sounds";
 

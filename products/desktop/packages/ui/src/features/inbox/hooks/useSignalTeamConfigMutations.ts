@@ -1,7 +1,7 @@
-import { signalsConfigKeys } from "@posthog/core/inbox/inboxQuery";
-import type { SignalTeamConfig } from "@posthog/shared/types";
-import { useAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { toast } from "@posthog/ui/primitives/toast";
+import { signalsConfigKeys } from "@flind/core/inbox/inboxQuery";
+import type { SignalTeamConfig } from "@flind/shared/types";
+import { useAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { toast } from "@flind/ui/primitives/toast";
 import { useQueryClient } from "@tanstack/react-query";
 import { useCallback } from "react";
 

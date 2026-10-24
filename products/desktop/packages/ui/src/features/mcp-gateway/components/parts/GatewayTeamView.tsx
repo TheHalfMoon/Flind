@@ -3,16 +3,16 @@ import type {
   McpGatewayMemberSummary,
   McpGatewayServer,
   McpServiceAccount,
-} from "@posthog/api-client/posthog-client";
-import { UserAvatar } from "@posthog/ui/features/auth/UserAvatar";
+} from "@flind/api-client/posthog-client";
+import { UserAvatar } from "@flind/ui/features/auth/UserAvatar";
 import {
   gatewayUserName,
   RobotAvatar,
-} from "@posthog/ui/features/mcp-gateway/components/parts/avatars";
-import type { GatewayRoute } from "@posthog/ui/features/mcp-gateway/gatewayRoute";
-import { useGatewayMembers } from "@posthog/ui/features/mcp-gateway/hooks/useGatewayMembers";
-import { useGatewayServers } from "@posthog/ui/features/mcp-gateway/hooks/useGatewayServers";
-import { useServiceAccounts } from "@posthog/ui/features/mcp-gateway/hooks/useServiceAccounts";
+} from "@flind/ui/features/mcp-gateway/components/parts/avatars";
+import type { GatewayRoute } from "@flind/ui/features/mcp-gateway/gatewayRoute";
+import { useGatewayMembers } from "@flind/ui/features/mcp-gateway/hooks/useGatewayMembers";
+import { useGatewayServers } from "@flind/ui/features/mcp-gateway/hooks/useGatewayServers";
+import { useServiceAccounts } from "@flind/ui/features/mcp-gateway/hooks/useServiceAccounts";
 import {
   Badge,
   Flex,

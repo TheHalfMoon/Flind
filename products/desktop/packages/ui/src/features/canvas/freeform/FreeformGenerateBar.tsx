@@ -1,11 +1,11 @@
 import { Tooltip, TooltipContent, TooltipTrigger } from "@flind/quill";
-import { useGenerateFreeformCanvas } from "@posthog/ui/features/canvas/hooks/useGenerateFreeformCanvas";
-import { PromptInput } from "@posthog/ui/features/message-editor/components/PromptInput";
-import type { EditorHandle } from "@posthog/ui/features/message-editor/types";
+import { useGenerateFreeformCanvas } from "@flind/ui/features/canvas/hooks/useGenerateFreeformCanvas";
+import { PromptInput } from "@flind/ui/features/message-editor/components/PromptInput";
+import type { EditorHandle } from "@flind/ui/features/message-editor/types";
 import {
   type WorkspaceMode,
   WorkspaceModeSelect,
-} from "@posthog/ui/features/task-detail/components/WorkspaceModeSelect";
+} from "@flind/ui/features/task-detail/components/WorkspaceModeSelect";
 import { forwardRef, useState } from "react";
 
 // Composer that kicks off freeform canvas generation as a dedicated task: the

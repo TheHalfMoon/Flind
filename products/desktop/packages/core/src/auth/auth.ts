@@ -1,9 +1,9 @@
-import { isAuthFailureResponse } from "@posthog/api-client/fetcher";
-import { ROOT_LOGGER, type RootLogger } from "@posthog/di/logger";
+import { isAuthFailureResponse } from "@flind/api-client/fetcher";
+import { ROOT_LOGGER, type RootLogger } from "@flind/di/logger";
 import {
   type IPowerManager,
   POWER_MANAGER_SERVICE,
-} from "@posthog/platform/power-manager";
+} from "@flind/platform/power-manager";
 import {
   type BackoffOptions,
   type CloudRegion,
@@ -15,7 +15,7 @@ import {
   sleepWithBackoff,
   TypedEventEmitter,
   withTimeout,
-} from "@posthog/shared";
+} from "@flind/shared";
 import {
   inject,
   injectable,

@@ -1,4 +1,4 @@
-import type { WorkspaceClient } from "@posthog/workspace-client/client";
+import type { WorkspaceClient } from "@flind/workspace-client/client";
 
 export const ENVIRONMENT_CLIENT = Symbol.for("posthog.host.environmentClient");
 

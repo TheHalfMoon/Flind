@@ -1,67 +1,67 @@
 import { ArchiveIcon } from "@phosphor-icons/react";
 import { cn, Separator } from "@flind/quill";
-import { useArchivedTaskIds } from "@posthog/ui/features/archive/useArchivedTaskIds";
-import { usePendingTabViewState } from "@posthog/ui/features/browser-tabs/usePendingTabViewState";
-import { ActivityFeedList } from "@posthog/ui/features/canvas/components/ActivityFeedList";
-import { CanvasesPane } from "@posthog/ui/features/canvas/components/CanvasesPane";
-import { ChannelItemPreviewCardProvider } from "@posthog/ui/features/canvas/components/ChannelItemHoverCard";
-import { ChannelSidebar } from "@posthog/ui/features/canvas/components/ChannelSidebar";
-import { ChannelsFab } from "@posthog/ui/features/canvas/components/ChannelsFab";
-import { ChannelsList } from "@posthog/ui/features/canvas/components/ChannelsList";
-import { useChannelsSidebarStore } from "@posthog/ui/features/canvas/components/channelsSidebarStore";
-import { openActivityItemInRail } from "@posthog/ui/features/canvas/components/openActivityItem";
-import { TaskFeedPane } from "@posthog/ui/features/canvas/components/TaskFeedPane";
-import { WorkActivityColumn } from "@posthog/ui/features/canvas/components/work/WorkActivityColumn";
-import { WorkColumn } from "@posthog/ui/features/canvas/components/work/WorkColumn";
-import { useChannelPaneSwipe } from "@posthog/ui/features/canvas/hooks/useChannelPaneSwipe";
-import { useChannelsLayout } from "@posthog/ui/features/canvas/hooks/useChannelsLayout";
-import { useChannelsWorld } from "@posthog/ui/features/canvas/hooks/useChannelsWorld";
-import { useCurrentChannel } from "@posthog/ui/features/canvas/hooks/useCurrentChannel";
-import { useMarkChannelSeen } from "@posthog/ui/features/canvas/hooks/useMarkChannelSeen";
-import { useRailSurface } from "@posthog/ui/features/canvas/hooks/useRailSurface";
-import { useTrackChannelsSpaceViewed } from "@posthog/ui/features/canvas/hooks/useTrackChannelsSpaceViewed";
-import { useWorkLayout } from "@posthog/ui/features/canvas/hooks/useWorkLayout";
+import { useArchivedTaskIds } from "@flind/ui/features/archive/useArchivedTaskIds";
+import { usePendingTabViewState } from "@flind/ui/features/browser-tabs/usePendingTabViewState";
+import { ActivityFeedList } from "@flind/ui/features/canvas/components/ActivityFeedList";
+import { CanvasesPane } from "@flind/ui/features/canvas/components/CanvasesPane";
+import { ChannelItemPreviewCardProvider } from "@flind/ui/features/canvas/components/ChannelItemHoverCard";
+import { ChannelSidebar } from "@flind/ui/features/canvas/components/ChannelSidebar";
+import { ChannelsFab } from "@flind/ui/features/canvas/components/ChannelsFab";
+import { ChannelsList } from "@flind/ui/features/canvas/components/ChannelsList";
+import { useChannelsSidebarStore } from "@flind/ui/features/canvas/components/channelsSidebarStore";
+import { openActivityItemInRail } from "@flind/ui/features/canvas/components/openActivityItem";
+import { TaskFeedPane } from "@flind/ui/features/canvas/components/TaskFeedPane";
+import { WorkActivityColumn } from "@flind/ui/features/canvas/components/work/WorkActivityColumn";
+import { WorkColumn } from "@flind/ui/features/canvas/components/work/WorkColumn";
+import { useChannelPaneSwipe } from "@flind/ui/features/canvas/hooks/useChannelPaneSwipe";
+import { useChannelsLayout } from "@flind/ui/features/canvas/hooks/useChannelsLayout";
+import { useChannelsWorld } from "@flind/ui/features/canvas/hooks/useChannelsWorld";
+import { useCurrentChannel } from "@flind/ui/features/canvas/hooks/useCurrentChannel";
+import { useMarkChannelSeen } from "@flind/ui/features/canvas/hooks/useMarkChannelSeen";
+import { useRailSurface } from "@flind/ui/features/canvas/hooks/useRailSurface";
+import { useTrackChannelsSpaceViewed } from "@flind/ui/features/canvas/hooks/useTrackChannelsSpaceViewed";
+import { useWorkLayout } from "@flind/ui/features/canvas/hooks/useWorkLayout";
 import {
   type NavRailPane,
   railPaneFoldsIntoWork,
-} from "@posthog/ui/features/canvas/railPane";
+} from "@flind/ui/features/canvas/railPane";
 import {
   selectActivityReport,
   useActivitySelection,
-} from "@posthog/ui/features/canvas/stores/activityDetailStore";
+} from "@flind/ui/features/canvas/stores/activityDetailStore";
 import {
   showChannelList,
   showChannelPane,
   useChannelPaneStore,
-} from "@posthog/ui/features/canvas/stores/channelPaneStore";
-import { useCurrentChannelStore } from "@posthog/ui/features/canvas/stores/currentChannelStore";
-import { useWorkActivityStore } from "@posthog/ui/features/canvas/stores/workActivityStore";
-import { InboxPane } from "@posthog/ui/features/inbox/components/InboxPane";
-import { useOnboardingStore } from "@posthog/ui/features/onboarding/onboardingStore";
-import { NavResizeTooltip } from "@posthog/ui/features/sidebar/components/NavResizeTooltip";
-import { ProjectSwitcher } from "@posthog/ui/features/sidebar/components/ProjectSwitcher";
-import { SidebarMenu } from "@posthog/ui/features/sidebar/components/SidebarMenu";
-import { SidebarNavSection } from "@posthog/ui/features/sidebar/components/SidebarNavSection";
-import { TasksHeader } from "@posthog/ui/features/sidebar/components/TasksHeader";
-import { UpdateBanner } from "@posthog/ui/features/sidebar/components/UpdateBanner";
-import { CHANNELS_SIDEBAR_MIN_WIDTH } from "@posthog/ui/features/sidebar/constants";
-import { useNavRailMetrics } from "@posthog/ui/features/sidebar/navRailSize";
+} from "@flind/ui/features/canvas/stores/channelPaneStore";
+import { useCurrentChannelStore } from "@flind/ui/features/canvas/stores/currentChannelStore";
+import { useWorkActivityStore } from "@flind/ui/features/canvas/stores/workActivityStore";
+import { InboxPane } from "@flind/ui/features/inbox/components/InboxPane";
+import { useOnboardingStore } from "@flind/ui/features/onboarding/onboardingStore";
+import { NavResizeTooltip } from "@flind/ui/features/sidebar/components/NavResizeTooltip";
+import { ProjectSwitcher } from "@flind/ui/features/sidebar/components/ProjectSwitcher";
+import { SidebarMenu } from "@flind/ui/features/sidebar/components/SidebarMenu";
+import { SidebarNavSection } from "@flind/ui/features/sidebar/components/SidebarNavSection";
+import { TasksHeader } from "@flind/ui/features/sidebar/components/TasksHeader";
+import { UpdateBanner } from "@flind/ui/features/sidebar/components/UpdateBanner";
+import { CHANNELS_SIDEBAR_MIN_WIDTH } from "@flind/ui/features/sidebar/constants";
+import { useNavRailMetrics } from "@flind/ui/features/sidebar/navRailSize";
 import {
   beginSidebarPeek,
   cancelSidebarPeek,
   endSidebarPeek,
   useSidebarPeekStore,
-} from "@posthog/ui/features/sidebar/sidebarPeekStore";
-import { useSidebarStore } from "@posthog/ui/features/sidebar/sidebarStore";
-import { useWorkspaces } from "@posthog/ui/features/workspace/useWorkspace";
-import { ErrorBoundary } from "@posthog/ui/primitives/ErrorBoundary";
-import { useSidebarEdgeHoverPeek } from "@posthog/ui/primitives/hooks/useSidebarEdgeHoverPeek";
-import { ResizableSidebar } from "@posthog/ui/primitives/ResizableSidebar";
-import { navigateToArchived } from "@posthog/ui/router/navigationBridge";
+} from "@flind/ui/features/sidebar/sidebarPeekStore";
+import { useSidebarStore } from "@flind/ui/features/sidebar/sidebarStore";
+import { useWorkspaces } from "@flind/ui/features/workspace/useWorkspace";
+import { ErrorBoundary } from "@flind/ui/primitives/ErrorBoundary";
+import { useSidebarEdgeHoverPeek } from "@flind/ui/primitives/hooks/useSidebarEdgeHoverPeek";
+import { ResizableSidebar } from "@flind/ui/primitives/ResizableSidebar";
+import { navigateToArchived } from "@flind/ui/router/navigationBridge";
 import {
   reportSourceHrefFromLocation,
   resolveNavigationSource,
-} from "@posthog/ui/router/reportNavigation";
+} from "@flind/ui/router/reportNavigation";
 import { useParams, useRouterState } from "@tanstack/react-router";
 import {
   type ComponentProps,

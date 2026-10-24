@@ -5,9 +5,9 @@ import {
   InputGroupButton,
   Label,
 } from "@flind/quill";
-import type { UserBasic } from "@posthog/shared/domain-types";
-import { MentionComposer } from "@posthog/ui/features/canvas/components/MentionComposer";
-import { useMentionsDisabledReason } from "@posthog/ui/features/sessions/mentionAvailability";
+import type { UserBasic } from "@flind/shared/domain-types";
+import { MentionComposer } from "@flind/ui/features/canvas/components/MentionComposer";
+import { useMentionsDisabledReason } from "@flind/ui/features/sessions/mentionAvailability";
 import { useId, useState } from "react";
 import { mentionIdsFromContent } from "./commentMentions";
 

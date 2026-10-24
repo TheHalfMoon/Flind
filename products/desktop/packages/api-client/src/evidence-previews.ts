@@ -6,7 +6,7 @@
 // The per-kind shaping is kept here (pure, unit-tested) so the client method
 // stays a thin "fetch by kind, shape result" dispatch.
 
-import type { SignalReport } from "@posthog/shared/domain-types";
+import type { SignalReport } from "@flind/shared/domain-types";
 import {
   type FlagAudience,
   type FlagCondition,

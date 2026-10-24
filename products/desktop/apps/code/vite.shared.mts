@@ -89,7 +89,7 @@ export const workspaceAliases: Alias[] = [
     replacement: path.resolve(__dirname, "../../packages/shared/src/$1"),
   },
   {
-    find: "@posthog/shared",
+    find: "@flind/shared",
     replacement: path.resolve(__dirname, "../../packages/shared/src/index.ts"),
   },
   {
@@ -146,7 +146,7 @@ export const workspaceAliases: Alias[] = [
 export const mainAliases: Alias[] = [
   ...baseAliases,
   {
-    find: "@posthog/electron-trpc/main",
+    find: "@flind/electron-trpc/main",
     replacement: path.resolve(
       __dirname,
       "../../packages/electron-trpc/src/main/index.ts",
@@ -185,7 +185,7 @@ export const rendererAliases: Alias[] = [
     replacement: path.resolve(__dirname, "./src/renderer/utils"),
   },
   {
-    find: "@posthog/electron-trpc/renderer",
+    find: "@flind/electron-trpc/renderer",
     replacement: path.resolve(
       __dirname,
       "../../packages/electron-trpc/src/renderer/index.ts",

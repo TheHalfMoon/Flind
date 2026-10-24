@@ -3,7 +3,7 @@ import {
   getTaskRepository,
   normalizeRepoKey,
   parseRepository,
-} from "@posthog/shared";
+} from "@flind/shared";
 
 export interface TaskRepositoryInfo {
   fullPath: string;

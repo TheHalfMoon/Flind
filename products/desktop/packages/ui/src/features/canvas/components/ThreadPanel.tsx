@@ -11,7 +11,7 @@ import type {
   ThreadAgentStatus,
   ThreadArtifact,
   ThreadTimelineRow,
-} from "@posthog/core/canvas/threadTimeline";
+} from "@flind/core/canvas/threadTimeline";
 import {
   Avatar,
   AvatarFallback,
@@ -43,22 +43,22 @@ import type {
   Task,
   TaskThreadMessage,
   UserBasic,
-} from "@posthog/shared/domain-types";
-import { UserAvatar } from "@posthog/ui/features/auth/UserAvatar";
-import { TaskCard } from "@posthog/ui/features/canvas/components/ChannelFeedView";
-import { iconForTemplate } from "@posthog/ui/features/canvas/components/canvasTemplateIcon";
-import { MentionComposer } from "@posthog/ui/features/canvas/components/MentionComposer";
-import { MentionText } from "@posthog/ui/features/canvas/components/MentionText";
-import { ThreadTimestamp } from "@posthog/ui/features/canvas/components/ThreadTimestamp";
-import { usePinnedAutoScroll } from "@posthog/ui/features/canvas/hooks/usePinnedAutoScroll";
-import { useThreadConversation } from "@posthog/ui/features/canvas/hooks/useThreadConversation";
-import { canvasArtifactOpenHandler } from "@posthog/ui/features/canvas/utils/canvasArtifactNavigation";
-import { userDisplayName } from "@posthog/ui/features/canvas/utils/userDisplay";
-import { openPrInReview } from "@posthog/ui/features/code-review/openPrInReview";
-import { usePrArtifact } from "@posthog/ui/features/git-interaction/usePrArtifact";
-import { taskDetailQuery } from "@posthog/ui/features/tasks/queries";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
-import { openExternalUrl } from "@posthog/ui/shell/openExternal";
+} from "@flind/shared/domain-types";
+import { UserAvatar } from "@flind/ui/features/auth/UserAvatar";
+import { TaskCard } from "@flind/ui/features/canvas/components/ChannelFeedView";
+import { iconForTemplate } from "@flind/ui/features/canvas/components/canvasTemplateIcon";
+import { MentionComposer } from "@flind/ui/features/canvas/components/MentionComposer";
+import { MentionText } from "@flind/ui/features/canvas/components/MentionText";
+import { ThreadTimestamp } from "@flind/ui/features/canvas/components/ThreadTimestamp";
+import { usePinnedAutoScroll } from "@flind/ui/features/canvas/hooks/usePinnedAutoScroll";
+import { useThreadConversation } from "@flind/ui/features/canvas/hooks/useThreadConversation";
+import { canvasArtifactOpenHandler } from "@flind/ui/features/canvas/utils/canvasArtifactNavigation";
+import { userDisplayName } from "@flind/ui/features/canvas/utils/userDisplay";
+import { openPrInReview } from "@flind/ui/features/code-review/openPrInReview";
+import { usePrArtifact } from "@flind/ui/features/git-interaction/usePrArtifact";
+import { taskDetailQuery } from "@flind/ui/features/tasks/queries";
+import { Spinner } from "@flind/ui/primitives/Spinner";
+import { openExternalUrl } from "@flind/ui/shell/openExternal";
 import { useQuery } from "@tanstack/react-query";
 
 export function ThreadMessageRow({

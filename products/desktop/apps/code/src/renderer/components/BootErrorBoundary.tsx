@@ -1,5 +1,5 @@
-import { DARK_APP_BACKGROUND_COLOR } from "@posthog/shared/constants";
-import { logger } from "@posthog/ui/shell/logger";
+import { DARK_APP_BACKGROUND_COLOR } from "@flind/shared/constants";
+import { logger } from "@flind/ui/shell/logger";
 import React, { useEffect, useRef } from "react";
 
 const log = logger.scope("boot-error");

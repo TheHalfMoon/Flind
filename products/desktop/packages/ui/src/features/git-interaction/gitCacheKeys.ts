@@ -1,4 +1,4 @@
-import { resolveService } from "@posthog/di/container";
+import { resolveService } from "@flind/di/container";
 import {
   IMPERATIVE_QUERY_CLIENT,
   type ImperativeQueryClient,

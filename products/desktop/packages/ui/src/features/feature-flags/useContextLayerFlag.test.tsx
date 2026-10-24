@@ -1,4 +1,4 @@
-import { CONTEXT_LAYER_FLAG } from "@posthog/shared";
+import { CONTEXT_LAYER_FLAG } from "@flind/shared";
 import { renderHook } from "@testing-library/react";
 import { expect, it, vi } from "vitest";
 import { useContextLayerFlag } from "./useContextLayerFlag";

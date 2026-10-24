@@ -1,6 +1,6 @@
-import type { AgentSession, StoredLogEntry } from "@posthog/shared";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
-import type { Task } from "@posthog/shared/domain-types";
+import type { AgentSession, StoredLogEntry } from "@flind/shared";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
+import type { Task } from "@flind/shared/domain-types";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import {
   type ReconcileTaskConnectionParams,

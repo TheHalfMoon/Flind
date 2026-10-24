@@ -2,7 +2,7 @@ import type {
   DownscaledImage,
   DownscaleOptions,
   IImageProcessor,
-} from "@posthog/platform/image-processor";
+} from "@flind/platform/image-processor";
 import { nativeImage } from "electron";
 import { injectable } from "inversify";
 

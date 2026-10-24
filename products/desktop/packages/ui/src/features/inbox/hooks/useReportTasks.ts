@@ -1,13 +1,13 @@
-import { requestErrorStatus } from "@posthog/api-client/fetcher";
-import type { PostHogAPIClient } from "@posthog/api-client/posthog-client";
-import { humanizeIdentifier } from "@posthog/core/inbox/activityLog";
+import { requestErrorStatus } from "@flind/api-client/fetcher";
+import type { PostHogAPIClient } from "@flind/api-client/posthog-client";
+import { humanizeIdentifier } from "@flind/core/inbox/activityLog";
 import type {
   SignalReportStatus,
   Task,
   TaskRunArtefactContent,
-} from "@posthog/shared/types";
-import { isTerminalStatus } from "@posthog/shared/types";
-import { useAuthenticatedQuery } from "@posthog/ui/hooks/useAuthenticatedQuery";
+} from "@flind/shared/types";
+import { isTerminalStatus } from "@flind/shared/types";
+import { useAuthenticatedQuery } from "@flind/ui/hooks/useAuthenticatedQuery";
 
 // Task↔report associations are unlabelled — a task's purpose is derived from the report's
 // `task_run` artefacts (the signals pipeline writes product="signals" with one of these types;

@@ -56,7 +56,7 @@ app.setName(
       : "PostHog",
 );
 
-// Set userData path for @posthog/code
+// Set userData path for @flind/code
 const appDataPath = app.getPath("appData");
 const userDataPath =
   process.env.POSTHOG_E2E_USER_DATA_DIR ??

@@ -12,25 +12,25 @@ import {
   formatUsageQuantity,
   formatUsdAmount,
   isCodeUsageFreeTier,
-} from "@posthog/core/billing/usageDisplay";
-import type { UsageOutput } from "@posthog/core/usage/schemas";
-import { BILLING_FLAG, CLOUD_COMPUTE_BILLING_FLAG } from "@posthog/shared";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
-import { useAuthStateValue } from "@posthog/ui/features/auth/store";
-import { UsageMeter } from "@posthog/ui/features/billing/UsageMeter";
+} from "@flind/core/billing/usageDisplay";
+import type { UsageOutput } from "@flind/core/usage/schemas";
+import { BILLING_FLAG, CLOUD_COMPUTE_BILLING_FLAG } from "@flind/shared";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
+import { useAuthStateValue } from "@flind/ui/features/auth/store";
+import { UsageMeter } from "@flind/ui/features/billing/UsageMeter";
 import {
   type SpendSnapshot,
   useSpendTotalsState,
-} from "@posthog/ui/features/billing/useSpendTotals";
-import { useUsage } from "@posthog/ui/features/billing/useUsage";
-import { useFeatureFlag } from "@posthog/ui/features/feature-flags/useFeatureFlag";
-import { SettingsSubsection } from "@posthog/ui/features/settings/components/SettingsSubsection";
-import { PersonalSpendTotals } from "@posthog/ui/features/usage/components/PersonalSpendTotals";
-import { SpendAnalysisSection } from "@posthog/ui/features/usage/components/SpendAnalysisSection";
-import { useTrackUsageViewed } from "@posthog/ui/features/usage/useTrackUsageViewed";
-import { LoadingState } from "@posthog/ui/primitives/LoadingState";
-import { track } from "@posthog/ui/shell/analytics";
-import { getBillingUrl } from "@posthog/ui/utils/urls";
+} from "@flind/ui/features/billing/useSpendTotals";
+import { useUsage } from "@flind/ui/features/billing/useUsage";
+import { useFeatureFlag } from "@flind/ui/features/feature-flags/useFeatureFlag";
+import { SettingsSubsection } from "@flind/ui/features/settings/components/SettingsSubsection";
+import { PersonalSpendTotals } from "@flind/ui/features/usage/components/PersonalSpendTotals";
+import { SpendAnalysisSection } from "@flind/ui/features/usage/components/SpendAnalysisSection";
+import { useTrackUsageViewed } from "@flind/ui/features/usage/useTrackUsageViewed";
+import { LoadingState } from "@flind/ui/primitives/LoadingState";
+import { track } from "@flind/ui/shell/analytics";
+import { getBillingUrl } from "@flind/ui/utils/urls";
 import { Button, Callout, Flex, Text } from "@radix-ui/themes";
 import { type ReactNode, useEffect, useState } from "react";
 

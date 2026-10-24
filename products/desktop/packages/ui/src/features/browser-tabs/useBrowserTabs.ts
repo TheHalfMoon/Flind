@@ -1,5 +1,5 @@
-import { browserTabsStore } from "@posthog/core/browser-tabs/browserTabsStore";
-import { createSelectors } from "@posthog/ui/hooks/createSelectors";
+import { browserTabsStore } from "@flind/core/browser-tabs/browserTabsStore";
+import { createSelectors } from "@flind/ui/hooks/createSelectors";
 
 const tabs = createSelectors(browserTabsStore);
 

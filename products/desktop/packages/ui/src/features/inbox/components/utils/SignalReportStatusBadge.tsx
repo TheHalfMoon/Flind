@@ -1,6 +1,6 @@
-import { inboxStatusLabel } from "@posthog/core/inbox/reportPresentation";
-import type { SignalReportStatus } from "@posthog/shared/domain-types";
-import { InboxBadge } from "@posthog/ui/features/inbox/components/utils/InboxBadge";
+import { inboxStatusLabel } from "@flind/core/inbox/reportPresentation";
+import type { SignalReportStatus } from "@flind/shared/domain-types";
+import { InboxBadge } from "@flind/ui/features/inbox/components/utils/InboxBadge";
 import { Tooltip } from "@radix-ui/themes";
 
 const STATUS_TOOLTIPS: Record<string, string> = {

@@ -1,7 +1,7 @@
-import type { UserBasic } from "@posthog/shared/domain-types";
-import { useAuthStateValue } from "@posthog/ui/features/auth/store";
-import { userDisplayName } from "@posthog/ui/features/canvas/utils/userDisplay";
-import { useAuthenticatedQuery } from "@posthog/ui/hooks/useAuthenticatedQuery";
+import type { UserBasic } from "@flind/shared/domain-types";
+import { useAuthStateValue } from "@flind/ui/features/auth/store";
+import { userDisplayName } from "@flind/ui/features/canvas/utils/userDisplay";
+import { useAuthenticatedQuery } from "@flind/ui/hooks/useAuthenticatedQuery";
 import { useMemo } from "react";
 
 // Membership churn is slow; one fetch per session window is plenty.

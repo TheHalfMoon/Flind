@@ -10,15 +10,15 @@ import {
 import type {
   McpGatewayServer,
   McpRecommendedServer,
-} from "@posthog/api-client/posthog-client";
+} from "@flind/api-client/posthog-client";
 import {
   formatAgo,
   type GatewayRailStatus,
   getGatewayRailStatus,
   railConnectedServers,
-} from "@posthog/core/mcp-gateway/gatewayServers";
-import type { GatewayRoute } from "@posthog/ui/features/mcp-gateway/gatewayRoute";
-import { ServerIcon } from "@posthog/ui/features/mcp-servers/components/parts/icons";
+} from "@flind/core/mcp-gateway/gatewayServers";
+import type { GatewayRoute } from "@flind/ui/features/mcp-gateway/gatewayRoute";
+import { ServerIcon } from "@flind/ui/features/mcp-servers/components/parts/icons";
 import {
   Flex,
   IconButton,

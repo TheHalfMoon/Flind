@@ -1,19 +1,19 @@
-import type { ScoutRun } from "@posthog/api-client/posthog-client";
+import type { ScoutRun } from "@flind/api-client/posthog-client";
 import {
   deriveRunOutcome,
   formatRunDuration,
   runDurationSeconds,
   type ScoutRunOutcome,
   scoutRunOutcomeLabel,
-} from "@posthog/core/scouts/scoutPresentation";
+} from "@flind/core/scouts/scoutPresentation";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@flind/quill";
-import { formatRelativeTimeLong } from "@posthog/shared";
-import { getPostHogUrl } from "@posthog/ui/utils/urls";
+import { formatRelativeTimeLong } from "@flind/shared";
+import { getPostHogUrl } from "@flind/ui/utils/urls";
 
 // Quiet is the common, healthy baseline so it recedes to gray; saturated
 // color only means something happened – iris payoff, red/amber trouble.

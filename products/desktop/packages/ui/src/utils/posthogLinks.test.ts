@@ -6,10 +6,10 @@ import {
   parseShareLink,
   sessionRecordingUrl,
   supportTicketUrl,
-} from "@posthog/ui/utils/posthogLinks";
+} from "@flind/ui/utils/posthogLinks";
 import { describe, expect, it, vi } from "vitest";
 
-vi.mock("@posthog/ui/utils/urls", () => ({
+vi.mock("@flind/ui/utils/urls", () => ({
   getPostHogUrl: (path: string) => `https://us.posthog.com${path}`,
 }));
 

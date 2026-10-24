@@ -1,14 +1,14 @@
 import "reflect-metadata";
-// Side effect: registers the web persistence backend for @posthog/ui stores
+// Side effect: registers the web persistence backend for @flind/ui stores
 // before any of the imports below create them.
 import "./web-storage";
-import "@posthog/ui/styles/globals.css";
-import { setPosthogApiClientTaskClientProvenance } from "@posthog/api-client/posthog-client";
-import { AUTH_SERVICE } from "@posthog/core/auth/auth.module";
-import { boot } from "@posthog/di/contribution";
-import { ServiceProvider } from "@posthog/di/react";
-import App from "@posthog/ui/shell/App";
-import { initializePostHog } from "@posthog/ui/shell/posthogAnalyticsImpl";
+import "@flind/ui/styles/globals.css";
+import { setPosthogApiClientTaskClientProvenance } from "@flind/api-client/posthog-client";
+import { AUTH_SERVICE } from "@flind/core/auth/auth.module";
+import { boot } from "@flind/di/contribution";
+import { ServiceProvider } from "@flind/di/react";
+import App from "@flind/ui/shell/App";
+import { initializePostHog } from "@flind/ui/shell/posthogAnalyticsImpl";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { Providers } from "./Providers";

@@ -1,9 +1,9 @@
-import type { ResourceComment } from "@posthog/api-client/posthog-client";
+import type { ResourceComment } from "@flind/api-client/posthog-client";
 import {
   type CommentContext,
   isThreadResolved,
   parseCommentContext,
-} from "@posthog/core/comments/anchors";
+} from "@flind/core/comments/anchors";
 
 export type HighlightResolution = "exact" | "reanchored" | "orphaned";
 export type CommentLocateRequest = { id: string; nonce: number };

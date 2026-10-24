@@ -2,7 +2,7 @@ import { CardsThreeIcon, ListIcon } from "@phosphor-icons/react";
 import {
   DEFAULT_CHANNEL_ITEM_FILTERS,
   hasActiveChannelItemFilters,
-} from "@posthog/core/canvas/channelItems";
+} from "@flind/core/canvas/channelItems";
 import {
   ToggleGroup,
   ToggleGroupItem,
@@ -10,12 +10,12 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@flind/quill";
-import { ChannelFilterMenu } from "@posthog/ui/features/canvas/components/ChannelFilterMenu";
-import type { SpaceActivityType } from "@posthog/ui/features/canvas/components/channelFeedDisplay";
+import { ChannelFilterMenu } from "@flind/ui/features/canvas/components/ChannelFilterMenu";
+import type { SpaceActivityType } from "@flind/ui/features/canvas/components/channelFeedDisplay";
 import {
   type SpaceActivityView,
   useSpaceActivityViewStore,
-} from "@posthog/ui/features/canvas/stores/spaceActivityViewStore";
+} from "@flind/ui/features/canvas/stores/spaceActivityViewStore";
 
 const GROUPINGS = ["date", "repository"] as const;
 

@@ -1,7 +1,7 @@
-import { useService } from "@posthog/di/react";
-import { useHostTRPCClient } from "@posthog/host-router/react";
-import type { CloudRegion } from "@posthog/shared";
-import { clearCapturedLogs } from "@posthog/ui/shell/logCapture";
+import { useService } from "@flind/di/react";
+import { useHostTRPCClient } from "@flind/host-router/react";
+import type { CloudRegion } from "@flind/shared";
+import { clearCapturedLogs } from "@flind/ui/shell/logCapture";
 import { useMutation } from "@tanstack/react-query";
 import { AUTH_SIDE_EFFECTS, type IAuthSideEffects } from "./identifiers";
 

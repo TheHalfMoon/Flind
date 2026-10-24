@@ -1,8 +1,8 @@
-import { publicProcedure, router } from "@posthog/host-trpc/trpc";
+import { publicProcedure, router } from "@flind/host-trpc/trpc";
 import {
   FEEDBACK_CONTEXT_SERVICE,
   type IFeedbackContext,
-} from "@posthog/platform/feedback-context";
+} from "@flind/platform/feedback-context";
 import {
   feedbackLogsOutput,
   feedbackScreenshotOutput,

@@ -1,4 +1,4 @@
-import type { Task } from "@posthog/shared/domain-types";
+import type { Task } from "@flind/shared/domain-types";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { renderHook } from "@testing-library/react";
 import type { ReactNode } from "react";
@@ -28,7 +28,7 @@ const capturedMutationFns = vi.hoisted(
   () => [] as Array<(client: unknown, vars: string) => Promise<unknown>>,
 );
 
-vi.mock("@posthog/ui/hooks/useAuthenticatedMutation", () => ({
+vi.mock("@flind/ui/hooks/useAuthenticatedMutation", () => ({
   useAuthenticatedMutation: (
     fn: (client: unknown, vars: string) => Promise<unknown>,
   ) => {
@@ -36,14 +36,14 @@ vi.mock("@posthog/ui/hooks/useAuthenticatedMutation", () => ({
     return { mutateAsync, isPending: false };
   },
 }));
-vi.mock("@posthog/di/react", () => ({
+vi.mock("@flind/di/react", () => ({
   useService: () => deletionService,
 }));
-vi.mock("@posthog/ui/features/terminal/destroyTaskTerminals", () => ({
+vi.mock("@flind/ui/features/terminal/destroyTaskTerminals", () => ({
   destroyTaskTerminals,
 }));
 
-import type { SessionService } from "@posthog/core/sessions/sessionService";
+import type { SessionService } from "@flind/core/sessions/sessionService";
 import { taskKeys } from "./taskKeys";
 import {
   releaseDeletedTaskResources,

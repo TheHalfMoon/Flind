@@ -1,4 +1,4 @@
-import { useThemeStore } from "@posthog/ui/shell/themeStore";
+import { useThemeStore } from "@flind/ui/shell/themeStore";
 import type { ComponentPropsWithoutRef, CSSProperties, ReactNode } from "react";
 import { forwardRef, useEffect } from "react";
 import {

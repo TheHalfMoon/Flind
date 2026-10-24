@@ -1,7 +1,7 @@
 import type {
   ActivityEntry,
   SetupStoreState,
-} from "@posthog/core/setup/setupState";
+} from "@flind/core/setup/setupState";
 import {
   DEFAULT_DISCOVERY,
   dropAgentTasksForRepo,
@@ -13,18 +13,18 @@ import {
   pushEntry,
   updateDiscovery,
   updateEnricher,
-} from "@posthog/core/setup/setupState";
-import type { DiscoveredTask } from "@posthog/core/setup/types";
-import { logger } from "@posthog/ui/shell/logger";
+} from "@flind/core/setup/setupState";
+import type { DiscoveredTask } from "@flind/core/setup/types";
+import { logger } from "@flind/ui/shell/logger";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-export type { ActivityEntry } from "@posthog/core/setup/setupState";
+export type { ActivityEntry } from "@flind/core/setup/setupState";
 export {
   isTaskForRepo,
   selectRepoDiscovery,
   selectRepoEnricher,
-} from "@posthog/core/setup/setupState";
+} from "@flind/core/setup/setupState";
 
 const log = logger.scope("setup-store");
 

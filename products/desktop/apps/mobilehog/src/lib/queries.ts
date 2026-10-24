@@ -1,5 +1,5 @@
-import type { GatewayModel } from "@posthog/shared";
-import type { Task } from "@posthog/shared/domain-types";
+import type { GatewayModel } from "@flind/shared";
+import type { Task } from "@flind/shared/domain-types";
 import {
   useInfiniteQuery,
   useMutation,

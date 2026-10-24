@@ -1,19 +1,19 @@
-import type { Contribution } from "@posthog/di/contribution";
+import type { Contribution } from "@flind/di/contribution";
 import {
   type Adapter,
   CLAUDE_OWN_SUBSCRIPTION_FLAG,
   CODEX_OWN_SUBSCRIPTION_FLAG,
-} from "@posthog/shared";
+} from "@flind/shared";
 import {
   registerSubscriptionAtBoot,
   type SubscriptionStatus,
-} from "@posthog/ui/features/settings/adapterSubscription";
+} from "@flind/ui/features/settings/adapterSubscription";
 import {
   initializePostHog,
   posthogFeatureFlags,
   registerAppVersion,
   registerHostInfo,
-} from "@posthog/ui/shell/posthogAnalyticsImpl";
+} from "@flind/ui/shell/posthogAnalyticsImpl";
 import { trpcClient } from "@renderer/trpc/client";
 import { logger } from "@utils/logger";
 import { injectable } from "inversify";
@@ -84,7 +84,7 @@ export class InboxDemoDevContribution implements Contribution {
     if (import.meta.env.PROD) {
       return;
     }
-    void import("@posthog/ui/features/inbox/devtools/inboxDemoConsole").then(
+    void import("@flind/ui/features/inbox/devtools/inboxDemoConsole").then(
       ({ registerInboxDemoConsoleCommand }) => {
         registerInboxDemoConsoleCommand();
       },

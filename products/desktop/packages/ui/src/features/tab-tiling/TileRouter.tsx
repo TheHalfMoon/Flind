@@ -1,5 +1,5 @@
-import type { BrowserTab } from "@posthog/shared";
-import { writeBackgroundTabTarget } from "@posthog/ui/features/browser-tabs/imperativeTabNavigation";
+import type { BrowserTab } from "@flind/shared";
+import { writeBackgroundTabTarget } from "@flind/ui/features/browser-tabs/imperativeTabNavigation";
 import {
   createMemoryHistory,
   createRouter,

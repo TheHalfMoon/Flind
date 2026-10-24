@@ -1,6 +1,6 @@
 import { ipcInstrumentationLink } from "@features/dev-toolbar/ipcInstrumentationLink";
-import { ipcLink } from "@posthog/electron-trpc/renderer";
-import type { HostRouter } from "@posthog/host-router/router";
+import { ipcLink } from "@flind/electron-trpc/renderer";
+import type { HostRouter } from "@flind/host-router/router";
 import { createTRPCClient } from "@trpc/client";
 import {
   createTRPCContext,

@@ -1,4 +1,4 @@
-import type { Task, UserBasic } from "@posthog/shared/domain-types";
+import type { Task, UserBasic } from "@flind/shared/domain-types";
 import { describe, expect, it } from "vitest";
 import {
   buildChannelItems,

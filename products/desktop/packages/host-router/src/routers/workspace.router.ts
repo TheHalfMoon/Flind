@@ -1,6 +1,6 @@
-import type { ServiceResolver } from "@posthog/host-trpc/context";
-import { publicProcedure, router } from "@posthog/host-trpc/trpc";
-import { WORKSPACE_SERVICE } from "@posthog/workspace-server/services/workspace/identifiers";
+import type { ServiceResolver } from "@flind/host-trpc/context";
+import { publicProcedure, router } from "@flind/host-trpc/trpc";
+import { WORKSPACE_SERVICE } from "@flind/workspace-server/services/workspace/identifiers";
 import {
   cachedPrUrlInput,
   cachedPrUrlOutput,
@@ -46,18 +46,18 @@ import {
   unlinkBranchInput,
   verifyWorkspaceInput,
   verifyWorkspaceOutput,
-} from "@posthog/workspace-server/services/workspace/schemas";
+} from "@flind/workspace-server/services/workspace/schemas";
 import {
   type WorkspaceService,
   WorkspaceServiceEvent,
   type WorkspaceServiceEvents,
-} from "@posthog/workspace-server/services/workspace/workspace";
-import { WORKSPACE_METADATA_SERVICE } from "@posthog/workspace-server/services/workspace-metadata/identifiers";
-import type { WorkspaceMetadataService } from "@posthog/workspace-server/services/workspace-metadata/workspace-metadata";
+} from "@flind/workspace-server/services/workspace/workspace";
+import { WORKSPACE_METADATA_SERVICE } from "@flind/workspace-server/services/workspace-metadata/identifiers";
+import type { WorkspaceMetadataService } from "@flind/workspace-server/services/workspace-metadata/workspace-metadata";
 import {
   getWorktreeFileUsage,
   getWorktreeSize,
-} from "@posthog/workspace-server/services/worktree-query/worktree-query";
+} from "@flind/workspace-server/services/worktree-query/worktree-query";
 import {
   GIT_PR_STATUS_PROVIDER,
   type IGitPrStatus,

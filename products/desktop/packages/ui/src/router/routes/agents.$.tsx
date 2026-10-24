@@ -1,4 +1,4 @@
-import type { AgentsPageSearch } from "@posthog/ui/features/agents/agentsPageStore";
+import type { AgentsPageSearch } from "@flind/ui/features/agents/agentsPageStore";
 import { createFileRoute, redirect } from "@tanstack/react-router";
 
 // The agents pages became the Agents settings page, which has one URL for all

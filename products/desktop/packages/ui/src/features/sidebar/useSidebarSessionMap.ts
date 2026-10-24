@@ -1,5 +1,5 @@
-import { computeSidebarSessionSignature } from "@posthog/core/sidebar/buildSidebarData";
-import type { AgentSession } from "@posthog/shared";
+import { computeSidebarSessionSignature } from "@flind/core/sidebar/buildSidebarData";
+import type { AgentSession } from "@flind/shared";
 import { useMemo } from "react";
 import { useSessionStore } from "../sessions/sessionStore";
 

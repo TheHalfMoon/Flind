@@ -1,6 +1,6 @@
 import { BlueprintIcon } from "@phosphor-icons/react";
-import type { CanvasListViewModel } from "@posthog/core/canvas/canvasListService";
-import type { DashboardRecord } from "@posthog/core/canvas/dashboardSchemas";
+import type { CanvasListViewModel } from "@flind/core/canvas/canvasListService";
+import type { DashboardRecord } from "@flind/core/canvas/dashboardSchemas";
 import {
   Autocomplete,
   AutocompleteItem,
@@ -13,8 +13,8 @@ import {
   EmptyTitle,
   MenuLabel,
 } from "@flind/quill";
-import { formatAbsoluteDateTime, formatRelativeAge } from "@posthog/shared";
-import { LoadingState } from "@posthog/ui/primitives/LoadingState";
+import { formatAbsoluteDateTime, formatRelativeAge } from "@flind/shared";
+import { LoadingState } from "@flind/ui/primitives/LoadingState";
 import { defaultRangeExtractor, useVirtualizer } from "@tanstack/react-virtual";
 import {
   type ReactElement,

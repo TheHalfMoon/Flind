@@ -1,4 +1,4 @@
-import type { SignalReport, SignalReportPriority } from "@posthog/shared/types";
+import type { SignalReport, SignalReportPriority } from "@flind/shared/types";
 
 import {
   isDismissedReport,

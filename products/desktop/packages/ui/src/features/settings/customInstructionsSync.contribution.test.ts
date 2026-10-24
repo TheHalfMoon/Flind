@@ -1,5 +1,5 @@
-import type { HostTrpcClient } from "@posthog/host-router/client";
-import { registerRendererStateStorage } from "@posthog/ui/shell/rendererStorage";
+import type { HostTrpcClient } from "@flind/host-router/client";
+import { registerRendererStateStorage } from "@flind/ui/shell/rendererStorage";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { CustomInstructionsSyncContribution } from "./customInstructionsSync.contribution";
 import { useSettingsStore } from "./settingsStore";

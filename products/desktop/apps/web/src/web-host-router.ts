@@ -1,26 +1,26 @@
 import { getLlmGatewayUrl } from "@flind/agent/posthog-api";
-import type { AuthService } from "@posthog/core/auth/auth";
-import { AUTH_SERVICE } from "@posthog/core/auth/auth.module";
-import { TEAM_SKILLS_SERVICE } from "@posthog/core/skills/identifiers";
-import type { TeamSkillsService } from "@posthog/core/skills/teamSkillsService";
-import { resolveService } from "@posthog/di/container";
+import type { AuthService } from "@flind/core/auth/auth";
+import { AUTH_SERVICE } from "@flind/core/auth/auth.module";
+import { TEAM_SKILLS_SERVICE } from "@flind/core/skills/identifiers";
+import type { TeamSkillsService } from "@flind/core/skills/teamSkillsService";
+import { resolveService } from "@flind/di/container";
 import { fetchPosthogPiModelCatalog } from "@flind/harness/extensions/posthog-provider/model-catalog";
-import { analyticsRouter } from "@posthog/host-router/routers/analytics.router";
-import { authRouter } from "@posthog/host-router/routers/auth.router";
-import { canvasDataRouter } from "@posthog/host-router/routers/canvas-data.router";
-import { canvasTemplatesRouter } from "@posthog/host-router/routers/canvas-templates.router";
-import { channelTasksRouter } from "@posthog/host-router/routers/channel-tasks.router";
-import { cloudTaskRouter } from "@posthog/host-router/routers/cloud-task.router";
-import { dashboardsRouter } from "@posthog/host-router/routers/dashboards.router";
-import { publicProcedure, router } from "@posthog/host-trpc/trpc";
+import { analyticsRouter } from "@flind/host-router/routers/analytics.router";
+import { authRouter } from "@flind/host-router/routers/auth.router";
+import { canvasDataRouter } from "@flind/host-router/routers/canvas-data.router";
+import { canvasTemplatesRouter } from "@flind/host-router/routers/canvas-templates.router";
+import { channelTasksRouter } from "@flind/host-router/routers/channel-tasks.router";
+import { cloudTaskRouter } from "@flind/host-router/routers/cloud-task.router";
+import { dashboardsRouter } from "@flind/host-router/routers/dashboards.router";
+import { publicProcedure, router } from "@flind/host-trpc/trpc";
 import {
   CLOUD_REGIONS,
   type CloudRegion,
   getCloudUrlFromRegion,
   tabsSnapshotSchema,
   tabViewStateSchema,
-} from "@posthog/shared";
-import { getAuthenticatedClient } from "@posthog/ui/features/auth/authClientImperative";
+} from "@flind/shared";
+import { getAuthenticatedClient } from "@flind/ui/features/auth/authClientImperative";
 import { z } from "zod";
 import { getWebPreviewConfigOptions } from "./web-agent-config";
 import { webArchiveStore } from "./web-archive-store";

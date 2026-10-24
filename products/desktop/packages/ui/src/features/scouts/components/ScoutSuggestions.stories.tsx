@@ -1,8 +1,8 @@
 import type {
   ScoutConfig,
   ScoutSuggestionItem,
-} from "@posthog/api-client/posthog-client";
-import { AgentsTabLayout } from "@posthog/ui/features/agents/components/AgentsTabLayout";
+} from "@flind/api-client/posthog-client";
+import { AgentsTabLayout } from "@flind/ui/features/agents/components/AgentsTabLayout";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { ScoutSuggestions } from "./ScoutSuggestions";
 

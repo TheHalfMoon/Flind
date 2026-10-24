@@ -1,4 +1,4 @@
-import type { AutoresearchIteration } from "@posthog/core/autoresearch/schemas";
+import type { AutoresearchIteration } from "@flind/core/autoresearch/schemas";
 import { Theme } from "@radix-ui/themes";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";

@@ -1,4 +1,4 @@
-import { isAbsolutePath } from "@posthog/shared";
+import { isAbsolutePath } from "@flind/shared";
 import { Flex, Text } from "@radix-ui/themes";
 import { memo, useCallback } from "react";
 import { FileIcon } from "../../../../primitives/FileIcon";

@@ -1,4 +1,4 @@
-import type { CloudRegion } from "@posthog/shared";
+import type { CloudRegion } from "@flind/shared";
 import type {
   CancelFlowOutput,
   RefreshTokenOutput,

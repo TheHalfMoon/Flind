@@ -2,10 +2,10 @@ import {
   deriveTaskRunState,
   narrowFullTask,
   type TaskSession,
-} from "@posthog/core/sidebar/buildSidebarData";
-import type { Task } from "@posthog/shared/domain-types";
-import type { BulkSessionInfo } from "@posthog/ui/features/sidebar/useSidebarBulkActions";
-import { useSidebarSessionMap } from "@posthog/ui/features/sidebar/useSidebarSessionMap";
+} from "@flind/core/sidebar/buildSidebarData";
+import type { Task } from "@flind/shared/domain-types";
+import type { BulkSessionInfo } from "@flind/ui/features/sidebar/useSidebarBulkActions";
+import { useSidebarSessionMap } from "@flind/ui/features/sidebar/useSidebarSessionMap";
 import { useMemo } from "react";
 
 /**

@@ -1,12 +1,12 @@
 import type { PiRemoteRpcClient } from "@flind/agent/pi/remote-rpc-client";
-import type { AuthService } from "@posthog/core/auth/auth";
-import type { AgentSessionNotifier } from "@posthog/core/notification/agentSessionNotifications";
-import type { TaskService } from "@posthog/core/task-detail/taskService";
-import type { RootLogger } from "@posthog/di/logger";
+import type { AuthService } from "@flind/core/auth/auth";
+import type { AgentSessionNotifier } from "@flind/core/notification/agentSessionNotifications";
+import type { TaskService } from "@flind/core/task-detail/taskService";
+import type { RootLogger } from "@flind/di/logger";
 import type {
   AgentConversationEvent,
   McpToolPermissionRequest,
-} from "@posthog/shared";
+} from "@flind/shared";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import {
   type PiConversationEventContext,

@@ -1,4 +1,4 @@
-import type { AuthService } from "@posthog/core/auth/auth";
+import type { AuthService } from "@flind/core/auth/auth";
 import { describe, expect, it, vi } from "vitest";
 import { FeedbackSubmissionService } from "./feedbackAttachmentService";
 

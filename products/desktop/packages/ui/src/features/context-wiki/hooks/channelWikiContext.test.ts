@@ -1,13 +1,13 @@
 import { describe, expect, it, vi } from "vitest";
 
-// The real client pulls in @posthog/shared, which this package's vitest config
+// The real client pulls in @flind/shared, which this package's vitest config
 // does not resolve; only the 403 marker class matters here.
-vi.mock("@posthog/api-client/posthog-client", () => ({
+vi.mock("@flind/api-client/posthog-client", () => ({
   ContextWikiUnavailableError: class ContextWikiUnavailableError extends Error {},
 }));
 
 const { ContextWikiUnavailableError } = await import(
-  "@posthog/api-client/posthog-client"
+  "@flind/api-client/posthog-client"
 );
 const { channelWikiContextFrom } = await import("./useContextWiki");
 

@@ -1,5 +1,5 @@
 import { cn } from "@flind/quill";
-import { useDialogFocus } from "@posthog/ui/features/settings/components/useDialogFocus";
+import { useDialogFocus } from "@flind/ui/features/settings/components/useDialogFocus";
 import { type ReactNode, useRef } from "react";
 import { createPortal } from "react-dom";
 import { useHotkeys } from "react-hotkeys-hook";

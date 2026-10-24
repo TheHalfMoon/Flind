@@ -2,7 +2,7 @@ import { execSync } from "node:child_process";
 import * as fs from "node:fs/promises";
 import * as os from "node:os";
 import * as path from "node:path";
-import type { RootLogger } from "@posthog/di/logger";
+import type { RootLogger } from "@flind/di/logger";
 import { listFilesContainingText } from "@flind/git/queries";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { EnrichmentService } from "./enrichment";

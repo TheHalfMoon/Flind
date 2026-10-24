@@ -1,4 +1,4 @@
-import { logger } from "@posthog/ui/shell/logger";
+import { logger } from "@flind/ui/shell/logger";
 
 const log = logger.scope("renderer");
 

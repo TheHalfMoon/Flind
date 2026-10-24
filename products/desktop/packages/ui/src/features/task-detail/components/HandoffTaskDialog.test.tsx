@@ -1,4 +1,4 @@
-import type { Task } from "@posthog/shared/domain-types";
+import type { Task } from "@flind/shared/domain-types";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
@@ -18,16 +18,16 @@ const mockChannels = vi.hoisted(() => ({
   channels: [] as Array<{ id: string; channelType: string }>,
 }));
 
-vi.mock("@posthog/ui/features/auth/useCurrentUser", () => ({
+vi.mock("@flind/ui/features/auth/useCurrentUser", () => ({
   useCurrentUser: () => ({ data: { id: currentUserId.id } }),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useOrgMembers", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useOrgMembers", () => ({
   useOrgMembers: () => ({ members: mockMembers.members, isLoading: false }),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useChannels", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannels", () => ({
   useChannels: () => ({ channels: mockChannels.channels }),
 }));
-vi.mock("@posthog/ui/features/tasks/useTaskMutations", () => ({
+vi.mock("@flind/ui/features/tasks/useTaskMutations", () => ({
   useHandoffTask: () => ({ mutate: mockHandoffMutate, isPending: false }),
 }));
 vi.mock("../../../primitives/toast", () => ({

@@ -1,4 +1,4 @@
-import type { ConnectivityStatusOutput } from "@posthog/workspace-server/services/connectivity/schemas";
+import type { ConnectivityStatusOutput } from "@flind/workspace-server/services/connectivity/schemas";
 
 export const CONNECTIVITY_CLIENT = Symbol.for(
   "posthog.host.connectivityClient",

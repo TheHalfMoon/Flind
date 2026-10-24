@@ -1,7 +1,7 @@
-import { registerTour } from "@posthog/core/tour/tourRegistry";
-import { useOnboardingStore } from "@posthog/ui/features/onboarding/onboardingStore";
-import { useTourStore } from "@posthog/ui/features/tour/tourStore";
-import { createFirstTaskTour } from "@posthog/ui/features/tour/tours/createFirstTaskTour";
+import { registerTour } from "@flind/core/tour/tourRegistry";
+import { useOnboardingStore } from "@flind/ui/features/onboarding/onboardingStore";
+import { useTourStore } from "@flind/ui/features/tour/tourStore";
+import { createFirstTaskTour } from "@flind/ui/features/tour/tours/createFirstTaskTour";
 
 export function initTours(): void {
   registerTour(createFirstTaskTour);

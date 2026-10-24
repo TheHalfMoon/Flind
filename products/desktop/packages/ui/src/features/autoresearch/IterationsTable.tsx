@@ -1,8 +1,8 @@
 import type {
   AutoresearchDirection,
   AutoresearchIteration,
-} from "@posthog/core/autoresearch/schemas";
-import { computeBest } from "@posthog/core/autoresearch/stats";
+} from "@flind/core/autoresearch/schemas";
+import { computeBest } from "@flind/core/autoresearch/stats";
 import {
   Collapsible,
   CollapsibleContent,

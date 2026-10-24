@@ -1,16 +1,16 @@
-import { ROOT_LOGGER, type RootLogger } from "@posthog/di/logger";
+import { ROOT_LOGGER, type RootLogger } from "@flind/di/logger";
 import {
   aiGatewayDenialCode,
   aiGatewayRemintReason,
   GATEWAY_BLOCKED_ERROR_TYPES,
   isAnthropicModelId,
-} from "@posthog/shared";
+} from "@flind/shared";
 import {
   buildAiGatewayReservedHeaders,
   buildPosthogProjectHeaderRecord,
   buildPosthogPropertiesHeaderRecord,
   type PosthogProperties,
-} from "@posthog/shared/posthog-property-headers";
+} from "@flind/shared/posthog-property-headers";
 import { inject, injectable } from "inversify";
 import type { AuthService } from "../auth/auth";
 import { AUTH_SERVICE } from "../auth/auth.module";

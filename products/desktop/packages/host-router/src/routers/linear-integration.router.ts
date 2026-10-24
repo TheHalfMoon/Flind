@@ -1,10 +1,10 @@
-import { LINEAR_INTEGRATION_SERVICE } from "@posthog/core/integrations/identifiers";
-import type { LinearIntegrationService } from "@posthog/core/integrations/linear";
+import { LINEAR_INTEGRATION_SERVICE } from "@flind/core/integrations/identifiers";
+import type { LinearIntegrationService } from "@flind/core/integrations/linear";
 import {
   startIntegrationFlowInput,
   startIntegrationFlowOutput,
-} from "@posthog/core/integrations/schemas";
-import { publicProcedure, router } from "@posthog/host-trpc/trpc";
+} from "@flind/core/integrations/schemas";
+import { publicProcedure, router } from "@flind/host-trpc/trpc";
 
 export const linearIntegrationRouter = router({
   startFlow: publicProcedure

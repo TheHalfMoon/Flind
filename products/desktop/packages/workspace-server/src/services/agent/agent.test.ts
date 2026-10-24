@@ -188,8 +188,8 @@ vi.mock("node:fs", async (importOriginal) => {
 
 // --- Import after mocks ---
 import { fetchGatewayModels } from "@flind/agent/gateway-models";
-import { PRODUCT_ENGINEER_PROMPT } from "@posthog/shared/product-engineer-prompt";
-import { RICH_OUTPUT_PROMPT_LEAD } from "@posthog/shared/rich-output-prompt";
+import { PRODUCT_ENGINEER_PROMPT } from "@flind/shared/product-engineer-prompt";
+import { RICH_OUTPUT_PROMPT_LEAD } from "@flind/shared/rich-output-prompt";
 import {
   AgentService,
   buildAutoApproveOutcome,

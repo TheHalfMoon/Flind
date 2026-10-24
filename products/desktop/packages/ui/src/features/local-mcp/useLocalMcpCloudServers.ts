@@ -1,10 +1,10 @@
-import { LOCAL_MCP_IMPORT_SERVICE } from "@posthog/core/local-mcp/identifiers";
+import { LOCAL_MCP_IMPORT_SERVICE } from "@flind/core/local-mcp/identifiers";
 import type {
   LocalMcpCloudClassification,
   LocalMcpImportService,
-} from "@posthog/core/local-mcp/localMcpImport";
-import { useServiceOptional } from "@posthog/di/react";
-import { LOCAL_MCP_IMPORT_FLAG } from "@posthog/shared";
+} from "@flind/core/local-mcp/localMcpImport";
+import { useServiceOptional } from "@flind/di/react";
+import { LOCAL_MCP_IMPORT_FLAG } from "@flind/shared";
 import { useQuery } from "@tanstack/react-query";
 import { useFeatureFlag } from "../feature-flags/useFeatureFlag";
 

@@ -2,7 +2,7 @@ import type {
   BulkTaskAction,
   ExternalAppAction,
   TaskAction,
-} from "@posthog/core/context-menu/schemas";
+} from "@flind/core/context-menu/schemas";
 
 export type TaskContextMenuIntent =
   | { type: "rename" }

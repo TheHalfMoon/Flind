@@ -11,7 +11,7 @@ import {
   pathToFileUri,
   serializeCloudPrompt,
   unescapeXmlAttr,
-} from "@posthog/shared";
+} from "@flind/shared";
 import type { EditorContent } from "../message-editor/content";
 import { skillTagsToSlashCommands } from "../message-editor/skillTags";
 

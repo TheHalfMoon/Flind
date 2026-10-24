@@ -1,9 +1,9 @@
-import type { McpResolvedToolPolicy } from "@posthog/api-client/posthog-client";
+import type { McpResolvedToolPolicy } from "@flind/api-client/posthog-client";
 import {
   gatewayKeys,
   TEAM_SCOPE,
   YOU_SCOPE,
-} from "@posthog/ui/features/mcp-gateway/hooks/gatewayKeys";
+} from "@flind/ui/features/mcp-gateway/hooks/gatewayKeys";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { act, renderHook, waitFor } from "@testing-library/react";
 import type { ReactNode } from "react";
@@ -15,7 +15,7 @@ const mocks = vi.hoisted(() => ({
   refreshTools: vi.fn(),
 }));
 
-vi.mock("@posthog/ui/features/auth/authClient", () => ({
+vi.mock("@flind/ui/features/auth/authClient", () => ({
   useOptionalAuthenticatedClient: () => ({
     getMcpGatewayToolPolicies: mocks.getPolicies,
     upsertMcpGatewayToolPolicies: mocks.upsertPolicies,
@@ -23,19 +23,19 @@ vi.mock("@posthog/ui/features/auth/authClient", () => ({
   }),
 }));
 
-vi.mock("@posthog/ui/primitives/toast", () => ({
+vi.mock("@flind/ui/primitives/toast", () => ({
   toast: { error: vi.fn() },
 }));
 
 // Keep the real retry budget but collapse the backoff so the tests stay fast.
-vi.mock("@posthog/core/mcp-servers/toolRefresh", async (importOriginal) => ({
+vi.mock("@flind/core/mcp-servers/toolRefresh", async (importOriginal) => ({
   ...(await importOriginal<
-    typeof import("@posthog/core/mcp-servers/toolRefresh")
+    typeof import("@flind/core/mcp-servers/toolRefresh")
   >()),
   autoRefreshRetryDelayMs: () => 5,
 }));
 
-import { toast } from "@posthog/ui/primitives/toast";
+import { toast } from "@flind/ui/primitives/toast";
 
 import {
   resetGatewayToolAutoDiscovery,

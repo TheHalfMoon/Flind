@@ -1,16 +1,16 @@
 import { PreviewCard } from "@base-ui/react/preview-card";
-import type { ChannelItemModel } from "@posthog/core/canvas/channelItems";
+import type { ChannelItemModel } from "@flind/core/canvas/channelItems";
 import { Card } from "@flind/quill";
 import {
   ChannelItemPreview,
   type ChannelItemPreviewPayload,
-} from "@posthog/ui/features/canvas/components/ChannelItemPreview";
+} from "@flind/ui/features/canvas/components/ChannelItemPreview";
 import {
   SpacePreview,
   type SpacePreviewPayload,
-} from "@posthog/ui/features/canvas/components/SpacePreview";
-import type { TaskRowMenuProps } from "@posthog/ui/features/canvas/components/TaskRowMenu";
-import { useIsPinDragging } from "@posthog/ui/features/sidebar/pinDragStore";
+} from "@flind/ui/features/canvas/components/SpacePreview";
+import type { TaskRowMenuProps } from "@flind/ui/features/canvas/components/TaskRowMenu";
+import { useIsPinDragging } from "@flind/ui/features/sidebar/pinDragStore";
 import {
   createContext,
   type ReactNode,

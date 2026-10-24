@@ -1,7 +1,7 @@
 import { ArrowsClockwise, WifiHigh, WifiSlash } from "@phosphor-icons/react";
-import { useService } from "@posthog/di/react";
-import { useConnectivity } from "@posthog/ui/hooks/useConnectivity";
-import { Spin } from "@posthog/ui/primitives/Spinner";
+import { useService } from "@flind/di/react";
+import { useConnectivity } from "@flind/ui/hooks/useConnectivity";
+import { Spin } from "@flind/ui/primitives/Spinner";
 import { Box } from "@radix-ui/themes";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";

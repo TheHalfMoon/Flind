@@ -1,9 +1,9 @@
-import { connectivityStore } from "@posthog/core/connectivity/connectivityStore";
+import { connectivityStore } from "@flind/core/connectivity/connectivityStore";
 import {
   SESSION_SERVICE,
   type SessionService,
-} from "@posthog/core/sessions/sessionService";
-import type { Contribution } from "@posthog/di/contribution";
+} from "@flind/core/sessions/sessionService";
+import type { Contribution } from "@flind/di/contribution";
 import { inject, injectable } from "inversify";
 
 /**

@@ -50,13 +50,13 @@ vi.mock("node:fs/promises", () => {
   return { default: fns, ...fns };
 });
 
-import type { IWorkspaceSettings } from "@posthog/platform/workspace-settings";
-import { createMockArchiveRepository } from "@posthog/workspace-server/db/repositories/archive-repository.mock";
-import { createMockRepositoryRepository } from "@posthog/workspace-server/db/repositories/repository-repository.mock";
-import { createMockSuspensionRepository } from "@posthog/workspace-server/db/repositories/suspension-repository.mock";
-import type { Workspace } from "@posthog/workspace-server/db/repositories/workspace-repository";
-import { createMockWorkspaceRepository } from "@posthog/workspace-server/db/repositories/workspace-repository.mock";
-import { createMockWorktreeRepository } from "@posthog/workspace-server/db/repositories/worktree-repository.mock";
+import type { IWorkspaceSettings } from "@flind/platform/workspace-settings";
+import { createMockArchiveRepository } from "@flind/workspace-server/db/repositories/archive-repository.mock";
+import { createMockRepositoryRepository } from "@flind/workspace-server/db/repositories/repository-repository.mock";
+import { createMockSuspensionRepository } from "@flind/workspace-server/db/repositories/suspension-repository.mock";
+import type { Workspace } from "@flind/workspace-server/db/repositories/workspace-repository";
+import { createMockWorkspaceRepository } from "@flind/workspace-server/db/repositories/workspace-repository.mock";
+import { createMockWorktreeRepository } from "@flind/workspace-server/db/repositories/worktree-repository.mock";
 import type { ProcessTrackingService } from "../process-tracking/process-tracking";
 import type { SessionCanceller, SuspensionFileWatcher } from "./ports";
 import { SuspensionService } from "./suspension";

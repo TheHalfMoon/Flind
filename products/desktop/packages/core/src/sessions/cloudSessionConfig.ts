@@ -4,7 +4,7 @@ import {
   getConfigOptionByCategory,
   getReasoningEffortOptions,
   type StoredLogEntry,
-} from "@posthog/shared";
+} from "@flind/shared";
 import { clampEffortToAvailable } from "../task-detail/previewConfig";
 import {
   getAvailableModesForAdapter,

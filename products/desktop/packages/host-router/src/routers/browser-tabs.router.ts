@@ -1,6 +1,6 @@
-import type { ServiceResolver } from "@posthog/host-trpc/context";
-import { publicProcedure, router } from "@posthog/host-trpc/trpc";
-import { BROWSER_TABS_SERVICE } from "@posthog/workspace-server/di/tokens";
+import type { ServiceResolver } from "@flind/host-trpc/context";
+import { publicProcedure, router } from "@flind/host-trpc/trpc";
+import { BROWSER_TABS_SERVICE } from "@flind/workspace-server/di/tokens";
 import {
   browserTabsSnapshotOutput,
   closeTabInput,
@@ -9,8 +9,8 @@ import {
   setActiveTabInput,
   setTabOrderInput,
   setTabTargetInput,
-} from "@posthog/workspace-server/services/browser-tabs/schemas";
-import type { IBrowserTabsService } from "@posthog/workspace-server/services/browser-tabs/service";
+} from "@flind/workspace-server/services/browser-tabs/schemas";
+import type { IBrowserTabsService } from "@flind/workspace-server/services/browser-tabs/service";
 import { z } from "zod";
 
 const svc = (container: ServiceResolver) =>

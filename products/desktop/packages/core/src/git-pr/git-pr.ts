@@ -1,4 +1,4 @@
-import { ROOT_LOGGER, type RootLogger } from "@posthog/di/logger";
+import { ROOT_LOGGER, type RootLogger } from "@flind/di/logger";
 import { inject, injectable } from "inversify";
 import { LLM_GATEWAY_SERVICE } from "../llm-gateway/identifiers";
 import {

@@ -1,6 +1,6 @@
-import type { FlagAudience, FlagRule } from "@posthog/api-client/flag-audience";
-import type { EvidenceCardData } from "@posthog/ui/features/editor/evidencePreview";
-import { PostHogObjectPageView } from "@posthog/ui/features/posthog-objects/PostHogObjectPage";
+import type { FlagAudience, FlagRule } from "@flind/api-client/flag-audience";
+import type { EvidenceCardData } from "@flind/ui/features/editor/evidencePreview";
+import { PostHogObjectPageView } from "@flind/ui/features/posthog-objects/PostHogObjectPage";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const DAYS = [

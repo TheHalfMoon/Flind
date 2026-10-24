@@ -1,9 +1,9 @@
 import {
   latestAgentMessage,
   persistedTurnMessage,
-} from "@posthog/core/sessions/latestTurnMessage";
-import type { Task } from "@posthog/shared/domain-types";
-import { useSessionSelector } from "@posthog/ui/features/sessions/useSession";
+} from "@flind/core/sessions/latestTurnMessage";
+import type { Task } from "@flind/shared/domain-types";
+import { useSessionSelector } from "@flind/ui/features/sessions/useSession";
 
 /**
  * The last thing the agent said on a task, for a surface showing it without

@@ -1,9 +1,9 @@
 import { toolInfoFromToolUse } from "@flind/agent/adapters/claude/conversion/tool-use-to-acp";
-import { ToolCallBlock } from "@posthog/ui/features/sessions/components/session-update/ToolCallBlock";
+import { ToolCallBlock } from "@flind/ui/features/sessions/components/session-update/ToolCallBlock";
 import type {
   CodeToolKind,
   ToolCall,
-} from "@posthog/ui/features/sessions/types";
+} from "@flind/ui/features/sessions/types";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 function buildToolCallData(

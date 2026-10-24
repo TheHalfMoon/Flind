@@ -1,7 +1,7 @@
 import {
   type Announcement,
   announcementSchema,
-} from "@posthog/shared/announcements";
+} from "@flind/shared/announcements";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { RequiredUpdateModal } from "./RequiredUpdateModal";
 

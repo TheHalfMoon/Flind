@@ -19,9 +19,9 @@ config.resolver.extraNodeModules = {
   react: path.resolve(monorepoRoot, "node_modules/react"),
 };
 
-// @posthog/shared's package exports point at dist/, which only exists after a
+// @flind/shared's package exports point at dist/, which only exists after a
 // build. Resolve it to source so Babel transpiles it like the other packages.
-const SHARED_PACKAGE = "@posthog/shared";
+const SHARED_PACKAGE = "@flind/shared";
 const sharedSrc = path.resolve(monorepoRoot, "packages/shared/src");
 const upstreamResolveRequest = config.resolver.resolveRequest;
 

@@ -1,5 +1,5 @@
 import { ChatMarker, ChatMarkerContent } from "@flind/quill";
-import type { CompactBoundaryMetadata } from "@posthog/ui/features/sessions/types";
+import type { CompactBoundaryMetadata } from "@flind/ui/features/sessions/types";
 
 interface CompactBoundaryDisplayMetadata {
   trigger?: "manual" | "auto";

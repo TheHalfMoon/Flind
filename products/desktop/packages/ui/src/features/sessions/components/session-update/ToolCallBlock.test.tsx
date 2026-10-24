@@ -1,6 +1,6 @@
-import { ServiceProvider } from "@posthog/di/react";
-import { createPiToolCallRecord, posthogToolMeta } from "@posthog/shared";
-import type { ToolCall } from "@posthog/ui/features/sessions/types";
+import { ServiceProvider } from "@flind/di/react";
+import { createPiToolCallRecord, posthogToolMeta } from "@flind/shared";
+import type { ToolCall } from "@flind/ui/features/sessions/types";
 import { Theme } from "@radix-ui/themes";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { Container } from "inversify";

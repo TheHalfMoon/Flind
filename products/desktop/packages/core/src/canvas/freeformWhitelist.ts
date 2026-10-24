@@ -1,4 +1,4 @@
-import { CANVAS_PLATFORM_MANIFEST } from "@posthog/shared";
+import { CANVAS_PLATFORM_MANIFEST } from "@flind/shared";
 
 // The package whitelist for freeform-React canvases (Q16: curated, PostHog-
 // anchored). Every entry is a package the agent may import; anything else is

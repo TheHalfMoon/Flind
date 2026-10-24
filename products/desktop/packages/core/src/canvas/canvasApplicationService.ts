@@ -1,24 +1,24 @@
-import { channelDisplayReference } from "@posthog/core/canvas/channelName";
+import { channelDisplayReference } from "@flind/core/canvas/channelName";
 import {
   REPORT_MODEL_RESOLVER,
   type ReportModelResolver,
-} from "@posthog/core/inbox/identifiers";
-import { TITLE_GENERATOR_SERVICE } from "@posthog/core/sessions/titleGeneratorIdentifiers";
-import type { TitleGeneratorService } from "@posthog/core/sessions/titleGeneratorService";
-import { TASK_SERVICE } from "@posthog/core/task-detail/identifiers";
-import type { TaskService } from "@posthog/core/task-detail/taskService";
+} from "@flind/core/inbox/identifiers";
+import { TITLE_GENERATOR_SERVICE } from "@flind/core/sessions/titleGeneratorIdentifiers";
+import type { TitleGeneratorService } from "@flind/core/sessions/titleGeneratorService";
+import { TASK_SERVICE } from "@flind/core/task-detail/identifiers";
+import type { TaskService } from "@flind/core/task-detail/taskService";
 import {
   ROOT_LOGGER,
   type RootLogger,
   type ScopedLogger,
-} from "@posthog/di/logger";
+} from "@flind/di/logger";
 import {
   type Adapter,
   type CloudRegion,
   getCloudUrlFromRegion,
   type Task,
   type WorkspaceMode,
-} from "@posthog/shared";
+} from "@flind/shared";
 import { inject, injectable } from "inversify";
 import { isPlaceholderCanvasName } from "./canvasNaming";
 import {

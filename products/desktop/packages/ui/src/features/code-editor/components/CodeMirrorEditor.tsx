@@ -1,7 +1,7 @@
 import { openSearchPanel } from "@codemirror/search";
 import { RangeSetBuilder, StateField } from "@codemirror/state";
 import { Decoration, type DecorationSet, EditorView } from "@codemirror/view";
-import type { SerializedEnrichment } from "@posthog/shared";
+import type { SerializedEnrichment } from "@flind/shared";
 import { Box, Flex, Text } from "@radix-ui/themes";
 import { useEffect, useMemo, useRef } from "react";
 import { setEnrichmentEffect } from "../extensions/postHogEnrichment";

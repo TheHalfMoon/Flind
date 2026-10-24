@@ -1,5 +1,5 @@
-import type { GitStateSnapshot } from "@posthog/core/git/router-schemas";
-import { resolveService } from "@posthog/di/container";
+import type { GitStateSnapshot } from "@flind/core/git/router-schemas";
+import { resolveService } from "@flind/di/container";
 import type { QueryClient } from "@tanstack/react-query";
 import {
   GIT_CACHE_KEY_PROVIDER,

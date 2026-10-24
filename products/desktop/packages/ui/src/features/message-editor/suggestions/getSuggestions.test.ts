@@ -1,4 +1,4 @@
-import type { AcpMessage, Adapter } from "@posthog/shared";
+import type { AcpMessage, Adapter } from "@flind/shared";
 import { beforeEach, describe, expect, it } from "vitest";
 import { useSessionStore } from "../../sessions/sessionStore";
 import { useDraftStore } from "../draftStore";

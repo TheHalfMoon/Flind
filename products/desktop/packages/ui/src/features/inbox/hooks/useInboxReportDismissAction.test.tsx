@@ -1,5 +1,5 @@
-import type { SignalReport } from "@posthog/shared/types";
-import { useInboxReportActionDraftStore } from "@posthog/ui/features/inbox/stores/inboxReportActionDraftStore";
+import type { SignalReport } from "@flind/shared/types";
+import { useInboxReportActionDraftStore } from "@flind/ui/features/inbox/stores/inboxReportActionDraftStore";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { act, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
@@ -13,27 +13,27 @@ const mocks = vi.hoisted(() => ({
   track: vi.fn(),
 }));
 
-vi.mock("@posthog/ui/features/auth/authClient", () => ({
+vi.mock("@flind/ui/features/auth/authClient", () => ({
   useOptionalAuthenticatedClient: () => ({
     updateSignalReportState: mocks.updateState,
   }),
 }));
 
-vi.mock("@posthog/ui/features/auth/useCurrentUser", async (importOriginal) => {
+vi.mock("@flind/ui/features/auth/useCurrentUser", async (importOriginal) => {
   const actual =
     await importOriginal<
-      typeof import("@posthog/ui/features/auth/useCurrentUser")
+      typeof import("@flind/ui/features/auth/useCurrentUser")
     >();
   return { ...actual, useCurrentUser: () => ({ data: { uuid: "me" } }) };
 });
 
-vi.mock("@posthog/ui/primitives/toast", () => ({
+vi.mock("@flind/ui/primitives/toast", () => ({
   toast: { success: mocks.toastSuccess, error: mocks.toastError },
 }));
 
-vi.mock("@posthog/ui/shell/analytics", async (importOriginal) => {
+vi.mock("@flind/ui/shell/analytics", async (importOriginal) => {
   const actual =
-    await importOriginal<typeof import("@posthog/ui/shell/analytics")>();
+    await importOriginal<typeof import("@flind/ui/shell/analytics")>();
   return { ...actual, track: mocks.track };
 });
 

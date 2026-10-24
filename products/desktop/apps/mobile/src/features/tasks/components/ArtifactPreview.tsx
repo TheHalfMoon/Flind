@@ -1,5 +1,5 @@
-import { applyCspToHtml } from "@posthog/core/mcp-apps/csp";
-import type { TaskRunArtifact } from "@posthog/shared";
+import { applyCspToHtml } from "@flind/core/mcp-apps/csp";
+import type { TaskRunArtifact } from "@flind/shared";
 import { useQuery } from "@tanstack/react-query";
 import {
   ArrowSquareOut,

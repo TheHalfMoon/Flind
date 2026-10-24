@@ -14,11 +14,11 @@ import {
   buildAskAboutPrCommentPrompt,
   buildChatAboutPrCommentPrompt,
   buildFixPrCommentPrompt,
-} from "@posthog/core/code-review/reviewPrompts";
+} from "@flind/core/code-review/reviewPrompts";
 import { Button } from "@flind/quill";
-import type { PrReviewComment } from "@posthog/shared";
-import { formatRelativeTimeShort } from "@posthog/shared";
-import { cachedImageUrl } from "@posthog/ui/shell/cachedImageUrl";
+import type { PrReviewComment } from "@flind/shared";
+import { formatRelativeTimeShort } from "@flind/shared";
+import { cachedImageUrl } from "@flind/ui/shell/cachedImageUrl";
 import { Avatar, Badge, Box, Flex, Text } from "@radix-ui/themes";
 import {
   type ReactNode,

@@ -1,8 +1,8 @@
-import type { DashboardRecord } from "@posthog/core/canvas/dashboardSchemas";
-import { planCanvasQuery } from "@posthog/core/tasks/canvasQuery";
-import { parseFeedQuery } from "@posthog/core/tasks/feedQuery";
-import { useAllCanvases } from "@posthog/ui/features/canvas/hooks/useDashboards";
-import { useFeedQueryContext } from "@posthog/ui/features/canvas/hooks/useTaskFeedResults";
+import type { DashboardRecord } from "@flind/core/canvas/dashboardSchemas";
+import { planCanvasQuery } from "@flind/core/tasks/canvasQuery";
+import { parseFeedQuery } from "@flind/core/tasks/feedQuery";
+import { useAllCanvases } from "@flind/ui/features/canvas/hooks/useDashboards";
+import { useFeedQueryContext } from "@flind/ui/features/canvas/hooks/useTaskFeedResults";
 import { useMemo } from "react";
 
 /** Canvases across every visible space that match a `type:canvas` query, newest first. */

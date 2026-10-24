@@ -1,4 +1,4 @@
-import type { AnySignalReportArtefact } from "@posthog/shared/types";
+import type { AnySignalReportArtefact } from "@flind/shared/types";
 
 const ROUTINE_PIPELINE_ARTEFACTS = new Set([
   "actionability_judgment",

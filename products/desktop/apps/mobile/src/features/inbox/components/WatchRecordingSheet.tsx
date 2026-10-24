@@ -1,5 +1,5 @@
 import { Text } from "@components/text";
-import type { RecordingExport } from "@posthog/api-client/posthog-client";
+import type { RecordingExport } from "@flind/api-client/posthog-client";
 import { useVideoPlayer, VideoView } from "expo-video";
 import { ArrowSquareOut, X } from "phosphor-react-native";
 import { useMemo } from "react";

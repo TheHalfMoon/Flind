@@ -1,4 +1,4 @@
-import { isSafeExternalUrl } from "@posthog/shared";
+import { isSafeExternalUrl } from "@flind/shared";
 import { z } from "zod";
 
 export const claudePermissionsOutput = z.object({

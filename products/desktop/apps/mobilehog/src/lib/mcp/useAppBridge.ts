@@ -6,8 +6,8 @@ import {
   type McpUiResourceCsp,
 } from "@modelcontextprotocol/ext-apps/app-bridge";
 import type { CallToolResult, Tool } from "@modelcontextprotocol/sdk/types.js";
-import { applyCspToHtml } from "@posthog/core/mcp-apps/csp";
-import { isSafeExternalUrl } from "@posthog/shared";
+import { applyCspToHtml } from "@flind/core/mcp-apps/csp";
+import { isSafeExternalUrl } from "@flind/shared";
 import * as WebBrowser from "expo-web-browser";
 import {
   useCallback,

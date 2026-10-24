@@ -15,8 +15,8 @@ import {
   type TaskStatusInput,
   TONE_ICON_VAR,
   taskBadges,
-} from "@posthog/ui/features/sidebar/components/items/taskStatusVocabulary";
-import { DotsCircleSpinner } from "@posthog/ui/primitives/DotsCircleSpinner";
+} from "@flind/ui/features/sidebar/components/items/taskStatusVocabulary";
+import { DotsCircleSpinner } from "@flind/ui/primitives/DotsCircleSpinner";
 import type { ReactElement, ReactNode } from "react";
 
 const DOT_SIZE = 8;

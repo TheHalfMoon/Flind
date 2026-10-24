@@ -3,22 +3,22 @@ import {
   type ISetupStore,
   SETUP_RUN_SERVICE,
   SETUP_STORE,
-} from "@posthog/core/setup/identifiers";
-import { buildDiscoveryPrompt } from "@posthog/core/setup/prompts";
+} from "@flind/core/setup/identifiers";
+import { buildDiscoveryPrompt } from "@flind/core/setup/prompts";
 import {
   handleSessionUpdate,
   nextActivityId,
-} from "@posthog/core/setup/sessionUpdate";
+} from "@flind/core/setup/sessionUpdate";
 import {
   buildPosthogSetupSuggestion,
   buildSdkHealthSuggestion,
   buildStaleFlagSuggestion,
-} from "@posthog/core/setup/suggestions";
+} from "@flind/core/setup/suggestions";
 import {
   buildTaskDiscoverySchema,
   type DiscoveredTask,
-} from "@posthog/core/setup/types";
-import { ROOT_LOGGER, type RootLogger } from "@posthog/di/logger";
+} from "@flind/core/setup/types";
+import { ROOT_LOGGER, type RootLogger } from "@flind/di/logger";
 import { inject, injectable } from "inversify";
 
 function sleep(ms: number, signal?: AbortSignal): Promise<void> {

@@ -9,31 +9,31 @@ const mocks = vi.hoisted(() => ({
   navigateToChannel: vi.fn(),
 }));
 
-vi.mock("@posthog/ui/features/canvas/hooks/useChannelsLayout", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannelsLayout", () => ({
   useChannelsLayout: () => mocks.channelsLayout,
 }));
-vi.mock("@posthog/ui/features/browser-tabs/useSpacesTabs", () => ({
+vi.mock("@flind/ui/features/browser-tabs/useSpacesTabs", () => ({
   useSpacesTabs: () => mocks.spacesTabs,
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useStarredChannelSlots", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useStarredChannelSlots", () => ({
   useStarredChannelSlots: () => ({
     slots: mocks.slots,
     rest: [],
     slotFor: () => undefined,
   }),
 }));
-vi.mock("@posthog/ui/router/navigationBridge", () => ({
+vi.mock("@flind/ui/router/navigationBridge", () => ({
   navigateToChannel: (...args: unknown[]) => mocks.navigateToChannel(...args),
 }));
-vi.mock("@posthog/ui/shell/analytics", () => ({ track: vi.fn() }));
+vi.mock("@flind/ui/shell/analytics", () => ({ track: vi.fn() }));
 
 import {
   showChannelPane,
   useChannelPaneStore,
-} from "@posthog/ui/features/canvas/stores/channelPaneStore";
-import { useCurrentChannelStore } from "@posthog/ui/features/canvas/stores/currentChannelStore";
-import { useSidebarSearchStore } from "@posthog/ui/features/canvas/stores/sidebarSearchStore";
-import { useSidebarStore } from "@posthog/ui/features/sidebar/sidebarStore";
+} from "@flind/ui/features/canvas/stores/channelPaneStore";
+import { useCurrentChannelStore } from "@flind/ui/features/canvas/stores/currentChannelStore";
+import { useSidebarSearchStore } from "@flind/ui/features/canvas/stores/sidebarSearchStore";
+import { useSidebarStore } from "@flind/ui/features/sidebar/sidebarStore";
 import { ChannelHotkeys } from "./ChannelHotkeys";
 
 function press(key: string, modifiers: Partial<KeyboardEventInit> = {}) {

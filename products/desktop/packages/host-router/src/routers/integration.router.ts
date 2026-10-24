@@ -1,10 +1,10 @@
-import { INTEGRATION_SERVICE } from "@posthog/core/integrations/identifiers";
-import type { IntegrationService } from "@posthog/core/integrations/integration";
+import { INTEGRATION_SERVICE } from "@flind/core/integrations/identifiers";
+import type { IntegrationService } from "@flind/core/integrations/integration";
 import {
   startGenericIntegrationFlowInput,
   startIntegrationFlowOutput,
-} from "@posthog/core/integrations/schemas";
-import { publicProcedure, router } from "@posthog/host-trpc/trpc";
+} from "@flind/core/integrations/schemas";
+import { publicProcedure, router } from "@flind/host-trpc/trpc";
 
 /**
  * Generic OAuth integration flow starter, parameterized by `kind`. Replaces the need for a

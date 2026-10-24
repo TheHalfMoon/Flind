@@ -87,9 +87,9 @@ COPYFILE_DISABLE=1 tar -cf - \
       cd /work/products/desktop
       pnpm install --frozen-lockfile
       node scripts/build-agent-workspace.mjs
-      pnpm --filter @posthog/electron-trpc build
-      pnpm --filter @posthog/platform build
-      pnpm --filter @posthog/shared build
+      pnpm --filter @flind/electron-trpc build
+      pnpm --filter @flind/platform build
+      pnpm --filter @flind/shared build
       cd apps/code
       pnpm exec electron-vite build
       if [ -n "${MAKE_TARGETS:-}" ]; then

@@ -2,7 +2,7 @@ import type {
   McpCategory,
   McpRecommendedServer,
   McpServerInstallation,
-} from "@posthog/api-client/types";
+} from "@flind/api-client/types";
 
 export function filterServersByCategory(
   servers: McpRecommendedServer[],

@@ -4,8 +4,8 @@ import {
   ChatMessageScrollerContent,
   ChatMessageScrollerViewport,
 } from "@flind/quill";
-import type { ConversationItem } from "@posthog/ui/features/sessions/components/buildConversationItems";
-import { MessageMinimap } from "@posthog/ui/features/sessions/components/chat-thread/MessageMinimap";
+import type { ConversationItem } from "@flind/ui/features/sessions/components/buildConversationItems";
+import { MessageMinimap } from "@flind/ui/features/sessions/components/chat-thread/MessageMinimap";
 import {
   computeStickyAnchor,
   type FlatThreadRow,
@@ -20,11 +20,11 @@ import {
   THREAD_AT_END_THRESHOLD,
   type ThreadFollowState,
   type ThreadScrollResume,
-} from "@posthog/ui/features/sessions/components/chat-thread/threadVirtualization";
+} from "@flind/ui/features/sessions/components/chat-thread/threadVirtualization";
 import {
   CHAT_CONTENT_MAX_WIDTH,
   CHAT_CONTENT_PADDING_INLINE,
-} from "@posthog/ui/features/sessions/constants";
+} from "@flind/ui/features/sessions/constants";
 import { useVirtualizer, type Virtualizer } from "@tanstack/react-virtual";
 import {
   type KeyboardEvent as ReactKeyboardEvent,

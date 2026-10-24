@@ -1,4 +1,4 @@
-import { AgentRunDetail } from "@posthog/ui/features/inbox/components/AgentRunDetail";
+import { AgentRunDetail } from "@flind/ui/features/inbox/components/AgentRunDetail";
 import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/inbox/runs/$reportId")({

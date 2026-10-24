@@ -1,12 +1,12 @@
-import type { Contribution } from "@posthog/di/contribution";
+import type { Contribution } from "@flind/di/contribution";
 import {
   HOST_TRPC_CLIENT,
   type HostTrpcClient,
-} from "@posthog/host-router/client";
-import { createAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { useAuthStore } from "@posthog/ui/features/auth/store";
-import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
-import { logger } from "@posthog/ui/shell/logger";
+} from "@flind/host-router/client";
+import { createAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { useAuthStore } from "@flind/ui/features/auth/store";
+import { useSettingsStore } from "@flind/ui/features/settings/settingsStore";
+import { logger } from "@flind/ui/shell/logger";
 import { inject, injectable } from "inversify";
 import {
   getLocalInstructionsContent,

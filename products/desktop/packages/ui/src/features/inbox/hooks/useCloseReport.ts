@@ -1,11 +1,11 @@
-import { isDismissedReport } from "@posthog/core/inbox/reportMembership";
-import type { SignalReport } from "@posthog/shared/types";
-import { useInboxTriageOrigin } from "@posthog/ui/features/inbox/hooks/useInboxBackTarget";
-import { navigateToReportSource } from "@posthog/ui/router/navigationBridge";
+import { isDismissedReport } from "@flind/core/inbox/reportMembership";
+import type { SignalReport } from "@flind/shared/types";
+import { useInboxTriageOrigin } from "@flind/ui/features/inbox/hooks/useInboxBackTarget";
+import { navigateToReportSource } from "@flind/ui/router/navigationBridge";
 import {
   resolveNavigationSource,
   useReportSourceHref,
-} from "@posthog/ui/router/reportNavigation";
+} from "@flind/ui/router/reportNavigation";
 import { useEffect, useMemo, useRef } from "react";
 
 /**

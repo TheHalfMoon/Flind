@@ -4,10 +4,10 @@ import {
   canvasDataQueryInput,
   canvasLoadInsightInput,
   savedInsightSchema,
-} from "@posthog/core/canvas/freeformSchemas";
-import { CANVAS_DATA_SERVICE } from "@posthog/core/canvas/identifiers";
-import type { ICanvasDataService } from "@posthog/core/canvas/services";
-import { publicProcedure, router } from "@posthog/host-trpc/trpc";
+} from "@flind/core/canvas/freeformSchemas";
+import { CANVAS_DATA_SERVICE } from "@flind/core/canvas/identifiers";
+import type { ICanvasDataService } from "@flind/core/canvas/services";
+import { publicProcedure, router } from "@flind/host-trpc/trpc";
 import { z } from "zod";
 
 // The data avenue behind a freeform canvas's `ph.*` shims. One-line forwards to

@@ -1,6 +1,6 @@
-import type { ContextGoal } from "@posthog/core/canvas/contextDocument";
-import type { Adapter, AgentRuntime } from "@posthog/shared";
-import type { EffortLevel } from "@posthog/shared/domain-types";
+import type { ContextGoal } from "@flind/core/canvas/contextDocument";
+import type { Adapter, AgentRuntime } from "@flind/shared";
+import type { EffortLevel } from "@flind/shared/domain-types";
 
 // Builds the prompt for the task that generates a space's CONTEXT.md. The
 // task runs as a normal repo-less agent task (no repo picked up front), so the

@@ -1,7 +1,7 @@
 import type {
   CanvasLayoutResult,
   LayoutOperation,
-} from "@posthog/core/canvas/gridLayoutSchemas";
+} from "@flind/core/canvas/gridLayoutSchemas";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { act, renderHook } from "@testing-library/react";
 import type { ReactNode } from "react";
@@ -14,7 +14,7 @@ const mocks = vi.hoisted(() => ({
   toastError: vi.fn(),
 }));
 
-vi.mock("@posthog/host-router/react", () => ({
+vi.mock("@flind/host-router/react", () => ({
   useHostTRPC: () => ({
     dashboards: {
       layout: { queryKey: () => LAYOUT_KEY },
@@ -28,7 +28,7 @@ vi.mock("@posthog/host-router/react", () => ({
   }),
 }));
 
-vi.mock("@posthog/ui/features/notifications/errorDetails", () => ({
+vi.mock("@flind/ui/features/notifications/errorDetails", () => ({
   toastError: mocks.toastError,
 }));
 

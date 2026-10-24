@@ -1,4 +1,4 @@
-import type { DashboardRecord } from "@posthog/core/canvas/dashboardSchemas";
+import type { DashboardRecord } from "@flind/core/canvas/dashboardSchemas";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
@@ -13,28 +13,28 @@ const mocks = vi.hoisted(() => ({
   },
 }));
 
-vi.mock("@posthog/ui/features/auth/useMeQuery", () => ({
+vi.mock("@flind/ui/features/auth/useMeQuery", () => ({
   useMeQuery: () => ({ data: null }),
 }));
-vi.mock("@posthog/di/react", async () => {
+vi.mock("@flind/di/react", async () => {
   const { CanvasListService } = await import(
-    "@posthog/core/canvas/canvasListService"
+    "@flind/core/canvas/canvasListService"
   );
   return { useService: () => new CanvasListService() };
 });
-vi.mock("@posthog/ui/features/canvas/components/CanvasFilterMenu", () => ({
+vi.mock("@flind/ui/features/canvas/components/CanvasFilterMenu", () => ({
   CanvasFilterMenu: () => <button type="button">Filter canvases</button>,
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useChannels", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannels", () => ({
   useChannels: () => ({ channels: [], isLoading: false }),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useDashboards", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useDashboards", () => ({
   useAllCanvases: () => ({ dashboards: mocks.dashboards, isLoading: false }),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useSelectedCanvasId", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useSelectedCanvasId", () => ({
   useSelectedCanvasId: () => undefined,
 }));
-vi.mock("@posthog/ui/features/canvas/stores/canvasViewedStore", () => {
+vi.mock("@flind/ui/features/canvas/stores/canvasViewedStore", () => {
   const useCanvasViewedStore = Object.assign(
     (selector: (state: typeof mocks.viewedState) => unknown): unknown =>
       selector(mocks.viewedState),
@@ -48,7 +48,7 @@ vi.mock("@posthog/ui/features/canvas/stores/canvasViewedStore", () => {
   );
   return { useCanvasViewedStore };
 });
-vi.mock("@posthog/ui/shell/analytics", () => ({ track: mocks.track }));
+vi.mock("@flind/ui/shell/analytics", () => ({ track: mocks.track }));
 vi.mock("@tanstack/react-router", async (importOriginal) => ({
   ...(await importOriginal<typeof import("@tanstack/react-router")>()),
   useNavigate: () => mocks.navigate,

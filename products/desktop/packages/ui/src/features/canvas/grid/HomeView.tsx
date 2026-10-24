@@ -1,5 +1,5 @@
 import { WarningIcon } from "@phosphor-icons/react";
-import { useHostTRPC } from "@posthog/host-router/react";
+import { useHostTRPC } from "@flind/host-router/react";
 import {
   Button,
   Empty,
@@ -10,9 +10,9 @@ import {
   EmptyTitle,
   Heading,
 } from "@flind/quill";
-import { AUTH_SCOPED_QUERY_META } from "@posthog/ui/features/auth/useCurrentUser";
-import { useCanvasChatPanelStore } from "@posthog/ui/features/canvas/stores/canvasChatPanelStore";
-import { LoadingState } from "@posthog/ui/primitives/LoadingState";
+import { AUTH_SCOPED_QUERY_META } from "@flind/ui/features/auth/useCurrentUser";
+import { useCanvasChatPanelStore } from "@flind/ui/features/canvas/stores/canvasChatPanelStore";
+import { LoadingState } from "@flind/ui/primitives/LoadingState";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { GridCanvasView } from "./GridCanvasView";

@@ -5,10 +5,10 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 
 const navigate = vi.fn();
 vi.mock("@tanstack/react-router", () => ({ useNavigate: () => navigate }));
-vi.mock("@posthog/ui/features/canvas/components/FeedQueryHighlight", () => ({
+vi.mock("@flind/ui/features/canvas/components/FeedQueryHighlight", () => ({
   FeedQueryHighlight: ({ query }: { query: string }) => <span>{query}</span>,
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useProjectTaskFeeds", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useProjectTaskFeeds", () => ({
   useProjectTaskFeeds: () => useTaskFeedsStore.getState().feeds,
 }));
 vi.mock("@flind/quill", async (importOriginal) => {
@@ -34,7 +34,7 @@ vi.mock("@flind/quill", async (importOriginal) => {
   };
 });
 
-import { useTaskFeedsStore } from "@posthog/ui/features/canvas/stores/taskFeedsStore";
+import { useTaskFeedsStore } from "@flind/ui/features/canvas/stores/taskFeedsStore";
 import type { ReactElement, ReactNode } from "react";
 import { SavedSearchSwitcher } from "./SavedSearchSwitcher";
 

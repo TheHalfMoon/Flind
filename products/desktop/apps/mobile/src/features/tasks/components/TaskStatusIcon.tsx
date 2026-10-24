@@ -1,4 +1,4 @@
-import type { Task } from "@posthog/shared";
+import type { Task } from "@flind/shared";
 import {
   ChatCircle,
   CheckCircle,

@@ -1,5 +1,5 @@
 import type { Icon } from "@phosphor-icons/react";
-import type { ExecutionMode } from "@posthog/shared/domain-types";
+import type { ExecutionMode } from "@flind/shared/domain-types";
 import { Flex, Text } from "@radix-ui/themes";
 
 export interface SuggestedPrompt {

@@ -1,4 +1,4 @@
-import type { SkillInfo, SkillSource } from "@posthog/shared";
+import type { SkillInfo, SkillSource } from "@flind/shared";
 
 export type SkillIssueType =
   | "missing-description"

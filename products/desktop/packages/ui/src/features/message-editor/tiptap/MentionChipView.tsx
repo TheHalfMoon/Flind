@@ -13,8 +13,8 @@ import {
   XIcon,
 } from "@phosphor-icons/react";
 import { Chip, cn } from "@flind/quill";
-import { Tooltip } from "@posthog/ui/primitives/Tooltip";
-import { getObjectKind } from "@posthog/ui/utils/objectKinds";
+import { Tooltip } from "@flind/ui/primitives/Tooltip";
+import { getObjectKind } from "@flind/ui/utils/objectKinds";
 import { type NodeViewProps, NodeViewWrapper } from "@tiptap/react";
 import { CommentContextPreview } from "../components/CommentContextPreview";
 import { CommentContextThumbnail } from "../components/CommentContextThumbnail";

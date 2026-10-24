@@ -8,8 +8,8 @@ import {
   isCustomCloudHost,
   type McpServerConnection,
   type McpToolPolicy,
-} from "@posthog/shared";
-import { POSTHOG_PROJECT_ID_HEADER } from "@posthog/shared/posthog-property-headers";
+} from "@flind/shared";
+import { POSTHOG_PROJECT_ID_HEADER } from "@flind/shared/posthog-property-headers";
 import { inject, injectable } from "inversify";
 import type { AuthProxyService } from "../auth-proxy/auth-proxy";
 import {

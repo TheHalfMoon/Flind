@@ -1,4 +1,4 @@
-import type { FocusControllerDeps } from "@posthog/core/focus/service";
+import type { FocusControllerDeps } from "@flind/core/focus/service";
 
 export type { FocusControllerDeps };
 

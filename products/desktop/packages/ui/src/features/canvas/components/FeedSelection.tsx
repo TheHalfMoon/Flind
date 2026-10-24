@@ -1,17 +1,17 @@
-import type { ChannelItemModel } from "@posthog/core/canvas/channelItems";
-import type { Task } from "@posthog/shared/domain-types";
+import type { ChannelItemModel } from "@flind/core/canvas/channelItems";
+import type { Task } from "@flind/shared/domain-types";
 import {
   type TaskRowBulkMenu,
   TaskRowContextMenu,
   type TaskRowMenuProps,
-} from "@posthog/ui/features/canvas/components/TaskRowMenu";
-import { useChannelItemSelection } from "@posthog/ui/features/canvas/hooks/useChannelItemSelection";
-import { MarqueeOverlay } from "@posthog/ui/features/sidebar/components/MarqueeOverlay";
-import { SidebarBulkActionBar } from "@posthog/ui/features/sidebar/components/SidebarBulkActionBar";
+} from "@flind/ui/features/canvas/components/TaskRowMenu";
+import { useChannelItemSelection } from "@flind/ui/features/canvas/hooks/useChannelItemSelection";
+import { MarqueeOverlay } from "@flind/ui/features/sidebar/components/MarqueeOverlay";
+import { SidebarBulkActionBar } from "@flind/ui/features/sidebar/components/SidebarBulkActionBar";
 import {
   TaskSelectionScope,
   useScopedTaskSelectionStore,
-} from "@posthog/ui/features/sidebar/TaskSelectionScope";
+} from "@flind/ui/features/sidebar/TaskSelectionScope";
 import {
   createContext,
   type MouseEvent,

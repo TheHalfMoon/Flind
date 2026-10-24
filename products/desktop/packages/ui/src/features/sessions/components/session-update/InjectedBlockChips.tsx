@@ -1,7 +1,7 @@
-import type { InjectedBlock } from "@posthog/core/editor/injectedBlocks";
-import { usePanelLayoutStore } from "@posthog/ui/features/panels/panelLayoutStore";
-import { INJECTED_BLOCK_PRESENTATION } from "@posthog/ui/features/sessions/components/session-update/injectedBlocks";
-import { MentionChip } from "@posthog/ui/features/sessions/components/session-update/parseFileMentions";
+import type { InjectedBlock } from "@flind/core/editor/injectedBlocks";
+import { usePanelLayoutStore } from "@flind/ui/features/panels/panelLayoutStore";
+import { INJECTED_BLOCK_PRESENTATION } from "@flind/ui/features/sessions/components/session-update/injectedBlocks";
+import { MentionChip } from "@flind/ui/features/sessions/components/session-update/parseFileMentions";
 
 interface InjectedBlockChipsProps {
   blocks: InjectedBlock[];

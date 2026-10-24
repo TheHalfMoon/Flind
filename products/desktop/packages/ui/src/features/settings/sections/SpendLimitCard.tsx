@@ -1,16 +1,16 @@
-import { formatUsdCompact } from "@posthog/core/billing/spendAnalysisFormat";
+import { formatUsdCompact } from "@flind/core/billing/spendAnalysisFormat";
 import {
   type SpendLimitPeriod,
   type SpendLimits,
   type SpendLimitsPatch,
   STARTER_SPEND_LINES,
-} from "@posthog/core/billing/spendLimits";
+} from "@flind/core/billing/spendLimits";
 import { Switch, Text } from "@flind/quill";
 import {
   clampSpendLine,
   SpendLimitSlider,
-} from "@posthog/ui/features/settings/sections/SpendLimitSlider";
-import { navigateToSettings } from "@posthog/ui/router/navigationBridge";
+} from "@flind/ui/features/settings/sections/SpendLimitSlider";
+import { navigateToSettings } from "@flind/ui/router/navigationBridge";
 
 interface SpendLimitCardProps {
   scope: SpendLimitPeriod;

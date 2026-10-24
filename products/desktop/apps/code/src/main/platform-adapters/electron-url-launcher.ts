@@ -1,4 +1,4 @@
-import type { IUrlLauncher } from "@posthog/platform/url-launcher";
+import type { IUrlLauncher } from "@flind/platform/url-launcher";
 import { shell } from "electron";
 import { injectable } from "inversify";
 

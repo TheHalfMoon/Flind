@@ -1,8 +1,8 @@
-import type { NotificationTarget } from "@posthog/platform/notifications";
+import type { NotificationTarget } from "@flind/platform/notifications";
 import type {
   CompletionSound,
   CustomSound,
-} from "@posthog/ui/features/settings/settingsStore";
+} from "@flind/ui/features/settings/settingsStore";
 
 export interface NotificationSettings {
   desktopNotifications: boolean;

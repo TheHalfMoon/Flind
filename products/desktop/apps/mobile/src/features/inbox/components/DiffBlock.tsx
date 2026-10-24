@@ -1,5 +1,5 @@
 import { Text } from "@components/text";
-import { parseDiffLines } from "@posthog/core/inbox/activityLog";
+import { parseDiffLines } from "@flind/core/inbox/activityLog";
 import { ScrollView, View } from "react-native";
 
 const LINE_CLASS: Record<string, string> = {

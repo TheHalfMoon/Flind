@@ -1,7 +1,7 @@
-import type { TaskRunArtifact } from "@posthog/shared";
-import { MarkdownRenderer } from "@posthog/ui/features/editor/components/MarkdownRenderer";
-import { ChatMarkdown } from "@posthog/ui/features/sessions/components/chat-thread/ChatMarkdown";
-import { SessionTaskIdProvider } from "@posthog/ui/features/sessions/useSessionTaskId";
+import type { TaskRunArtifact } from "@flind/shared";
+import { MarkdownRenderer } from "@flind/ui/features/editor/components/MarkdownRenderer";
+import { ChatMarkdown } from "@flind/ui/features/sessions/components/chat-thread/ChatMarkdown";
+import { SessionTaskIdProvider } from "@flind/ui/features/sessions/useSessionTaskId";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { beforeEach, describe, expect, it, vi } from "vitest";
@@ -20,15 +20,15 @@ const manifest = vi.hoisted(() => ({
 const openArtifactTab = vi.hoisted(() => vi.fn());
 const download = vi.hoisted(() => vi.fn());
 
-vi.mock("@posthog/ui/features/sessions/useRunArtifacts", () => ({
+vi.mock("@flind/ui/features/sessions/useRunArtifacts", () => ({
   useRunArtifacts: () => manifest,
 }));
 
-vi.mock("@posthog/ui/features/sessions/useArtifactDownload", () => ({
+vi.mock("@flind/ui/features/sessions/useArtifactDownload", () => ({
   useArtifactDownload: () => ({ download, downloadingId: null }),
 }));
 
-vi.mock("@posthog/ui/features/panels/panelLayoutStore", () => ({
+vi.mock("@flind/ui/features/panels/panelLayoutStore", () => ({
   usePanelLayoutStore: (selector: (state: unknown) => unknown) =>
     selector({ openArtifactTab }),
 }));

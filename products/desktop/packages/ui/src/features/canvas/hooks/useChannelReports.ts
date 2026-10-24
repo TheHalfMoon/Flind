@@ -6,15 +6,15 @@ import {
   type ReportStatusCounts,
   type ReportStatusFilter,
   splitChannelReportSections,
-} from "@posthog/core/inbox/reportChannelScope";
+} from "@flind/core/inbox/reportChannelScope";
 import {
   buildSuggestedReviewerFilterParam,
   INBOX_DISMISSED_STATUS_FILTER,
-} from "@posthog/core/inbox/reportFiltering";
-import type { SignalReport, SignalReportPriority } from "@posthog/shared/types";
-import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { useCurrentUser } from "@posthog/ui/features/auth/useCurrentUser";
-import { useInboxReportsInfinite } from "@posthog/ui/features/inbox/hooks/useInboxReports";
+} from "@flind/core/inbox/reportFiltering";
+import type { SignalReport, SignalReportPriority } from "@flind/shared/types";
+import { useOptionalAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { useCurrentUser } from "@flind/ui/features/auth/useCurrentUser";
+import { useInboxReportsInfinite } from "@flind/ui/features/inbox/hooks/useInboxReports";
 import { keepPreviousData } from "@tanstack/react-query";
 import { useMemo } from "react";
 

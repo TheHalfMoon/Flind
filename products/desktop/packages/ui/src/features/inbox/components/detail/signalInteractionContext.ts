@@ -1,4 +1,4 @@
-import type { Signal } from "@posthog/shared/domain-types";
+import type { Signal } from "@flind/shared/domain-types";
 import { createContext, useContext } from "react";
 
 export type SignalInteractionAction =

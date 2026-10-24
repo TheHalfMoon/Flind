@@ -1,9 +1,9 @@
-import type { AgentSession } from "@posthog/shared";
-import type { Task } from "@posthog/shared/domain-types";
+import type { AgentSession } from "@flind/shared";
+import type { Task } from "@flind/shared/domain-types";
 import { renderHook } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-vi.mock("@posthog/ui/shell/rendererStorage", () => ({
+vi.mock("@flind/ui/shell/rendererStorage", () => ({
   electronStorage: {
     getItem: () => null,
     setItem: () => {},
@@ -18,20 +18,20 @@ const sessionService = vi.hoisted(() => ({
   cancelPrompt: vi.fn(),
 }));
 
-vi.mock("@posthog/core/sessions/sessionService", () => ({
+vi.mock("@flind/core/sessions/sessionService", () => ({
   SESSION_SERVICE: Symbol.for("test.session-service"),
 }));
 
-vi.mock("@posthog/ui/features/terminal/shellClient", () => ({
+vi.mock("@flind/ui/features/terminal/shellClient", () => ({
   SHELL_CLIENT: Symbol.for("test.shell-client"),
 }));
 
-vi.mock("@posthog/di/react", () => ({
+vi.mock("@flind/di/react", () => ({
   useService: (token: symbol) =>
     token === Symbol.for("test.session-service") ? sessionService : {},
 }));
 
-vi.mock("@posthog/host-router/react", () => ({
+vi.mock("@flind/host-router/react", () => ({
   useHostTRPCClient: () => ({ skills: { list: { query: async () => [] } } }),
 }));
 
@@ -39,12 +39,12 @@ const taskViewed = vi.hoisted(() => ({
   markActivity: vi.fn(),
   markAsViewed: vi.fn(),
 }));
-vi.mock("@posthog/ui/features/sidebar/useTaskViewed", () => ({
+vi.mock("@flind/ui/features/sidebar/useTaskViewed", () => ({
   useTaskViewed: () => taskViewed,
 }));
 
 const messagingMode = vi.hoisted(() => ({ value: "queue" }));
-vi.mock("@posthog/ui/features/sessions/hooks/useMessagingMode", () => ({
+vi.mock("@flind/ui/features/sessions/hooks/useMessagingMode", () => ({
   useMessagingMode: () => messagingMode.value,
 }));
 
@@ -53,7 +53,7 @@ vi.mock("@posthog/ui/features/sessions/hooks/useMessagingMode", () => ({
 const tryExecuteCodeCommand = vi.hoisted(() =>
   vi.fn(async (_text: string, _ctx: Record<string, unknown>) => false),
 );
-vi.mock("@posthog/ui/features/message-editor/commands", () => ({
+vi.mock("@flind/ui/features/message-editor/commands", () => ({
   tryExecuteCodeCommand,
   rewriteLocalSkillCommandPrompt: () => null,
   resolveLocalSkillPrompt: async (text: string) => text,
@@ -71,14 +71,14 @@ const sessionState = vi.hoisted(() => ({
 const dequeueMessages = vi.hoisted(() =>
   vi.fn(() => [] as Array<{ id: string; content: string; queuedAt: number }>),
 );
-vi.mock("@posthog/ui/features/sessions/sessionStore", () => ({
+vi.mock("@flind/ui/features/sessions/sessionStore", () => ({
   sessionStoreSetters: {
     getSessionByTaskId: () => sessionState,
     dequeueMessages,
   },
 }));
 
-vi.mock("@posthog/ui/router/useAppView", () => ({
+vi.mock("@flind/ui/router/useAppView", () => ({
   getAppViewSnapshot: () => null,
 }));
 
@@ -86,11 +86,11 @@ const { toastError, toastInfo } = vi.hoisted(() => ({
   toastError: vi.fn(),
   toastInfo: vi.fn(),
 }));
-vi.mock("@posthog/ui/primitives/toast", () => ({
+vi.mock("@flind/ui/primitives/toast", () => ({
   toast: { error: toastError, info: toastInfo },
 }));
 
-import { useDraftStore } from "@posthog/ui/features/message-editor/draftStore";
+import { useDraftStore } from "@flind/ui/features/message-editor/draftStore";
 import { useSessionCallbacks } from "./useSessionCallbacks";
 
 const TASK = "task-1";

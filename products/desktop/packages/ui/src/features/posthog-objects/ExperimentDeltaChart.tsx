@@ -1,5 +1,5 @@
 import { InfoIcon } from "@phosphor-icons/react";
-import type { ExperimentVariantResultPresentation } from "@posthog/api-client/evidence-previews";
+import type { ExperimentVariantResultPresentation } from "@flind/api-client/evidence-previews";
 import { Text, Tooltip, TooltipContent, TooltipTrigger } from "@flind/quill";
 import type { ReactElement } from "react";
 

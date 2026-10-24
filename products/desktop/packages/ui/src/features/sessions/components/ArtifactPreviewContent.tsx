@@ -1,9 +1,9 @@
 import { CrosshairSimpleIcon, XIcon } from "@phosphor-icons/react";
-import type { ResourceComment } from "@posthog/api-client/posthog-client";
+import type { ResourceComment } from "@flind/api-client/posthog-client";
 import type {
   CommentAnchor,
   CommentTarget,
-} from "@posthog/core/comments/anchors";
+} from "@flind/core/comments/anchors";
 import {
   Button,
   Tooltip,
@@ -13,10 +13,10 @@ import {
 import {
   isAllowedImageMimeType,
   isAllowedVideoMimeType,
-} from "@posthog/shared";
-import type { UserBasic } from "@posthog/shared/domain-types";
-import { ChromeBar } from "@posthog/ui/primitives/ChromeBar";
-import { LoadingState } from "@posthog/ui/primitives/LoadingState";
+} from "@flind/shared";
+import type { UserBasic } from "@flind/shared/domain-types";
+import { ChromeBar } from "@flind/ui/primitives/ChromeBar";
+import { LoadingState } from "@flind/ui/primitives/LoadingState";
 import type {
   Dispatch,
   ReactElement,

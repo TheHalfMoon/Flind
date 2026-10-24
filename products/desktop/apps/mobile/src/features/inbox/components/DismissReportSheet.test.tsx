@@ -1,7 +1,7 @@
 import {
   DISMISSAL_REASON_OPTIONS,
   isDismissalReasonSnooze,
-} from "@posthog/shared";
+} from "@flind/shared";
 import { createElement } from "react";
 import { act, create, type ReactTestInstance } from "react-test-renderer";
 import { beforeEach, describe, expect, it, vi } from "vitest";

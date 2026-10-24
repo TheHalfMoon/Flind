@@ -1,7 +1,7 @@
 import type {
   ScoutSuggestionItem,
   ScoutSuggestionProposedConfig,
-} from "@posthog/api-client/posthog-client";
+} from "@flind/api-client/posthog-client";
 import {
   formatScoutScheduleShort,
   scoutScheduleNamesClockTime,

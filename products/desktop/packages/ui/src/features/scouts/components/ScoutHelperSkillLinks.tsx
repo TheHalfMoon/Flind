@@ -1,8 +1,8 @@
-import type { ScoutSurface } from "@posthog/shared";
-import { ANALYTICS_EVENTS } from "@posthog/shared";
-import { useSkillsSelectionActions } from "@posthog/ui/features/skills/skillsSelectionStore";
-import { settingsSourceHref } from "@posthog/ui/router/reportNavigation";
-import { track } from "@posthog/ui/shell/analytics";
+import type { ScoutSurface } from "@flind/shared";
+import { ANALYTICS_EVENTS } from "@flind/shared";
+import { useSkillsSelectionActions } from "@flind/ui/features/skills/skillsSelectionStore";
+import { settingsSourceHref } from "@flind/ui/router/reportNavigation";
+import { track } from "@flind/ui/shell/analytics";
 import { Text } from "@radix-ui/themes";
 import { Link } from "@tanstack/react-router";
 

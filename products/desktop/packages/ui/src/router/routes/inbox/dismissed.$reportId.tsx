@@ -1,5 +1,5 @@
-import { asInboxBackTarget } from "@posthog/ui/features/inbox/hooks/useInboxBackTarget";
-import { reportNavigationState } from "@posthog/ui/router/reportNavigation";
+import { asInboxBackTarget } from "@flind/ui/features/inbox/hooks/useInboxBackTarget";
+import { reportNavigationState } from "@flind/ui/router/reportNavigation";
 import { createFileRoute, redirect } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/inbox/dismissed/$reportId")({

@@ -1,15 +1,15 @@
 import {
   type CanvasBuildLifecycle,
   hasActiveCanvasBuild,
-} from "@posthog/core/canvas/canvasBuildSchemas";
-import type { DashboardRecord } from "@posthog/core/canvas/dashboardSchemas";
-import { applyLayoutOperations } from "@posthog/core/canvas/gridLayoutOperations";
+} from "@flind/core/canvas/canvasBuildSchemas";
+import type { DashboardRecord } from "@flind/core/canvas/dashboardSchemas";
+import { applyLayoutOperations } from "@flind/core/canvas/gridLayoutOperations";
 import type {
   CanvasLayoutResult,
   LayoutOperation,
-} from "@posthog/core/canvas/gridLayoutSchemas";
-import { useHostTRPC } from "@posthog/host-router/react";
-import { toastError } from "@posthog/ui/features/notifications/errorDetails";
+} from "@flind/core/canvas/gridLayoutSchemas";
+import { useHostTRPC } from "@flind/host-router/react";
+import { toastError } from "@flind/ui/features/notifications/errorDetails";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useCallback, useEffect, useRef } from "react";
 

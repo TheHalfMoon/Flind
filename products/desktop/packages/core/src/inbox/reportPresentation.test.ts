@@ -1,7 +1,7 @@
 import type {
   SignalReportActionability,
   SignalReportStatus,
-} from "@posthog/shared/types";
+} from "@flind/shared/types";
 import { describe, expect, it } from "vitest";
 import {
   deriveHeadline,

@@ -1,4 +1,4 @@
-import type { IDevHostActions } from "@posthog/platform/dev-host-actions";
+import type { IDevHostActions } from "@flind/platform/dev-host-actions";
 import { app, BrowserWindow, shell } from "electron";
 import { injectable } from "inversify";
 

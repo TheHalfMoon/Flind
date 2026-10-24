@@ -1,4 +1,4 @@
-import type { UserCodexIntegration } from "@posthog/api-client/posthog-client";
+import type { UserCodexIntegration } from "@flind/api-client/posthog-client";
 import { describe, expect, it, vi } from "vitest";
 import {
   CodexCloudAccountService,

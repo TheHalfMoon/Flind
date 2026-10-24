@@ -1,4 +1,4 @@
-import { appendOutputChunk } from "@posthog/core/provisioning/output";
+import { appendOutputChunk } from "@flind/core/provisioning/output";
 import { create } from "zustand";
 
 interface ProvisioningStoreState {

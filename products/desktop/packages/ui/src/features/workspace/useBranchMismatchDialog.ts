@@ -4,9 +4,9 @@ import {
   buildCheckoutBranchRequest,
   decideBeforeSubmit,
   resolveSwitchErrorMessage,
-} from "@posthog/core/workspace/branchMismatchDialog";
-import { useHostTRPC } from "@posthog/host-router/react";
-import { ANALYTICS_EVENTS } from "@posthog/shared";
+} from "@flind/core/workspace/branchMismatchDialog";
+import { useHostTRPC } from "@flind/host-router/react";
+import { ANALYTICS_EVENTS } from "@flind/shared";
 import { useMutation } from "@tanstack/react-query";
 import { useCallback, useRef, useState } from "react";
 import { track } from "../../shell/analytics";

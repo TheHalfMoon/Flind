@@ -2,13 +2,13 @@ import { open } from "node:fs/promises";
 import {
   FEEDBACK_SUBMISSION_SERVICE,
   type IFeedbackSubmissionService,
-} from "@posthog/core/feedback/feedbackAttachmentService";
+} from "@flind/core/feedback/feedbackAttachmentService";
 import type {
   FeedbackSubmissionInput,
   IFeedbackContext,
-} from "@posthog/platform/feedback-context";
-import { MAIN_WINDOW_SERVICE } from "@posthog/platform/main-window";
-import { withTimeout } from "@posthog/shared";
+} from "@flind/platform/feedback-context";
+import { MAIN_WINDOW_SERVICE } from "@flind/platform/main-window";
+import { withTimeout } from "@flind/shared";
 import { inject, injectable } from "inversify";
 import { getAppVersion } from "../utils/env";
 import { getLogFilePath } from "../utils/logger";

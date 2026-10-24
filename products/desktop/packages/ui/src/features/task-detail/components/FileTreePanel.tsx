@@ -1,8 +1,8 @@
 import { Cloud } from "@phosphor-icons/react";
-import { toRelativePath } from "@posthog/shared";
-import type { Task } from "@posthog/shared/domain-types";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
-import { useWorkspaceTRPC } from "@posthog/workspace-client/trpc";
+import { toRelativePath } from "@flind/shared";
+import type { Task } from "@flind/shared/domain-types";
+import { Spinner } from "@flind/ui/primitives/Spinner";
+import { useWorkspaceTRPC } from "@flind/workspace-client/trpc";
 import { Box, Button, Flex, Text } from "@radix-ui/themes";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { PanelMessage } from "../../../primitives/PanelMessage";

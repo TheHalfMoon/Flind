@@ -1,6 +1,6 @@
 import { ArrowUp, Trash } from "@phosphor-icons/react";
 import type { AnnotationSide } from "@pierre/diffs";
-import { buildInlineCommentPrompt } from "@posthog/core/code-review/reviewPrompts";
+import { buildInlineCommentPrompt } from "@flind/core/code-review/reviewPrompts";
 import {
   Checkbox,
   InputGroup,

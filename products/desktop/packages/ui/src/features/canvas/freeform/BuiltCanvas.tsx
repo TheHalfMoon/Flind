@@ -1,17 +1,17 @@
-import { assertCanvasCapability } from "@posthog/core/canvas/canvasCapabilities";
+import { assertCanvasCapability } from "@flind/core/canvas/canvasCapabilities";
 import {
   type CanvasCommentHighlight,
   type CanvasNavIntent,
   type CanvasTheme,
   canvasToHostMessageSchema,
-} from "@posthog/core/canvas/freeformSchemas";
-import type { CanvasCapabilities } from "@posthog/shared";
-import { isSafeGitHubPullRequestUrl } from "@posthog/shared";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
-import { track } from "@posthog/ui/shell/analytics";
-import { logger } from "@posthog/ui/shell/logger";
-import { openExternalUrl } from "@posthog/ui/shell/openExternal";
-import { useThemeStore } from "@posthog/ui/shell/themeStore";
+} from "@flind/core/canvas/freeformSchemas";
+import type { CanvasCapabilities } from "@flind/shared";
+import { isSafeGitHubPullRequestUrl } from "@flind/shared";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
+import { track } from "@flind/ui/shell/analytics";
+import { logger } from "@flind/ui/shell/logger";
+import { openExternalUrl } from "@flind/ui/shell/openExternal";
+import { useThemeStore } from "@flind/ui/shell/themeStore";
 import { useEffect, useLayoutEffect, useRef } from "react";
 import { createCanvasHostMessageRouter } from "./canvasHostMessageRouter";
 import {

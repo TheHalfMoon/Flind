@@ -1,8 +1,8 @@
 import {
   ONBOARDING_STEPS,
   type OnboardingStep,
-} from "@posthog/core/onboarding/steps";
-import { logger } from "@posthog/ui/shell/logger";
+} from "@flind/core/onboarding/steps";
+import { logger } from "@flind/ui/shell/logger";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 

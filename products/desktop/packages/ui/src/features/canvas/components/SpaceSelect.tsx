@@ -14,8 +14,8 @@ import {
   ComboboxTrigger,
   cn,
 } from "@flind/quill";
-import { channelGlyph } from "@posthog/ui/features/canvas/components/channelGlyph";
-import { useChannels } from "@posthog/ui/features/canvas/hooks/useChannels";
+import { channelGlyph } from "@flind/ui/features/canvas/components/channelGlyph";
+import { useChannels } from "@flind/ui/features/canvas/hooks/useChannels";
 import { useMemo, useRef } from "react";
 
 interface SpaceGroup {

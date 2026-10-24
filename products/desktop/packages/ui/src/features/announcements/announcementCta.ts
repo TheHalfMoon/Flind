@@ -1,6 +1,6 @@
-import { useHostTRPCClient } from "@posthog/host-router/react";
-import { getDeeplinkProtocol, isPostHogCodeDeeplink } from "@posthog/shared";
-import { openExternalUrl } from "@posthog/ui/shell/openExternal";
+import { useHostTRPCClient } from "@flind/host-router/react";
+import { getDeeplinkProtocol, isPostHogCodeDeeplink } from "@flind/shared";
+import { openExternalUrl } from "@flind/ui/shell/openExternal";
 import { useCallback } from "react";
 
 // Payloads are authored with the production scheme; dev builds register

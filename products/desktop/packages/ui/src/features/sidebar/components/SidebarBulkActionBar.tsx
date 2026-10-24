@@ -6,8 +6,8 @@ import {
   SquaresFourIcon,
   XIcon,
 } from "@phosphor-icons/react";
-import { channelDisplayLabel } from "@posthog/core/canvas/channelName";
-import { sessionsLabel } from "@posthog/core/sidebar/selection";
+import { channelDisplayLabel } from "@flind/core/canvas/channelName";
+import { sessionsLabel } from "@flind/core/sidebar/selection";
 import {
   Button,
   cn,
@@ -19,7 +19,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@flind/quill";
-import type { SidebarBulkActions } from "@posthog/ui/features/sidebar/useSidebarBulkActions";
+import type { SidebarBulkActions } from "@flind/ui/features/sidebar/useSidebarBulkActions";
 import type { ReactElement, ReactNode } from "react";
 
 interface SidebarBulkActionBarProps {

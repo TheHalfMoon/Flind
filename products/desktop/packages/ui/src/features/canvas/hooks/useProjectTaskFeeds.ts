@@ -1,11 +1,11 @@
-import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { useAuthStateValue } from "@posthog/ui/features/auth/store";
-import { useCurrentUser } from "@posthog/ui/features/auth/useCurrentUser";
+import { useOptionalAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { useAuthStateValue } from "@flind/ui/features/auth/store";
+import { useCurrentUser } from "@flind/ui/features/auth/useCurrentUser";
 import {
   ownedProjectFeeds,
   type TaskFeed,
   useTaskFeedsStore,
-} from "@posthog/ui/features/canvas/stores/taskFeedsStore";
+} from "@flind/ui/features/canvas/stores/taskFeedsStore";
 import { useMemo } from "react";
 
 export function useProjectTaskFeeds(): TaskFeed[] {

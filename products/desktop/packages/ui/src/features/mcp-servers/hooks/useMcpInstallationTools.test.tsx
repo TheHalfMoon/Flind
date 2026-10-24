@@ -1,4 +1,4 @@
-import type { McpInstallationTool } from "@posthog/api-client/posthog-client";
+import type { McpInstallationTool } from "@flind/api-client/posthog-client";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { act, renderHook, waitFor } from "@testing-library/react";
 import type { ReactNode } from "react";
@@ -18,11 +18,11 @@ const mockTrpc = vi.hoisted(() => ({
   },
 }));
 
-vi.mock("@posthog/ui/features/auth/authClient", () => ({
+vi.mock("@flind/ui/features/auth/authClient", () => ({
   useOptionalAuthenticatedClient: () => mockClient,
 }));
 
-vi.mock("@posthog/host-router/react", () => ({
+vi.mock("@flind/host-router/react", () => ({
   useHostTRPC: () => mockTrpc,
 }));
 
@@ -30,7 +30,7 @@ vi.mock("@trpc/tanstack-react-query", () => ({
   useSubscription: vi.fn(),
 }));
 
-vi.mock("@posthog/ui/primitives/toast", () => ({
+vi.mock("@flind/ui/primitives/toast", () => ({
   toast: {
     error: vi.fn(),
     success: vi.fn(),
@@ -38,14 +38,14 @@ vi.mock("@posthog/ui/primitives/toast", () => ({
 }));
 
 // Keep the real retry budget but collapse the backoff so the tests stay fast.
-vi.mock("@posthog/core/mcp-servers/toolRefresh", async (importOriginal) => ({
+vi.mock("@flind/core/mcp-servers/toolRefresh", async (importOriginal) => ({
   ...(await importOriginal<
-    typeof import("@posthog/core/mcp-servers/toolRefresh")
+    typeof import("@flind/core/mcp-servers/toolRefresh")
   >()),
   autoRefreshRetryDelayMs: () => 5,
 }));
 
-import { toast } from "@posthog/ui/primitives/toast";
+import { toast } from "@flind/ui/primitives/toast";
 
 import { useMcpInstallationTools } from "./useMcpInstallationTools";
 

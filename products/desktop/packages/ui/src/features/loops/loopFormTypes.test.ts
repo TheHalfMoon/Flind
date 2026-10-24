@@ -1,5 +1,5 @@
-import type { LoopSchemas } from "@posthog/ui/features/loops/loopSchemas";
-import { systemTimezone } from "@posthog/ui/primitives/timezone";
+import type { LoopSchemas } from "@flind/ui/features/loops/loopSchemas";
+import { systemTimezone } from "@flind/ui/primitives/timezone";
 import { describe, expect, it } from "vitest";
 import {
   emptyLoopFormValues,

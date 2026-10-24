@@ -1,10 +1,10 @@
-import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { useCurrentUser } from "@posthog/ui/features/auth/useCurrentUser";
+import { useOptionalAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { useCurrentUser } from "@flind/ui/features/auth/useCurrentUser";
 import {
   buildSuggestedReviewerFilterOptions,
   type SuggestedReviewerFilterOption,
-} from "@posthog/ui/features/inbox/filterOptions";
-import { useInboxAvailableSuggestedReviewers } from "@posthog/ui/features/inbox/hooks/useInboxReports";
+} from "@flind/ui/features/inbox/filterOptions";
+import { useInboxAvailableSuggestedReviewers } from "@flind/ui/features/inbox/hooks/useInboxReports";
 import { useMemo } from "react";
 
 interface InboxScopeOptions {

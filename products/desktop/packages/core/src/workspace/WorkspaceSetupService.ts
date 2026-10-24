@@ -2,7 +2,7 @@ import {
   ROOT_LOGGER,
   type RootLogger,
   type ScopedLogger,
-} from "@posthog/di/logger";
+} from "@flind/di/logger";
 import { inject, injectable } from "inversify";
 import {
   WORKSPACE_SETUP_GIT_CLIENT,

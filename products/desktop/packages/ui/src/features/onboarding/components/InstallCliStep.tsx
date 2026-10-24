@@ -10,27 +10,27 @@ import {
   Play,
   Warning,
 } from "@phosphor-icons/react";
-import { useHostTRPC, useHostTRPCClient } from "@posthog/host-router/react";
-import { EXTERNAL_LINKS } from "@posthog/shared";
+import { useHostTRPC, useHostTRPCClient } from "@flind/host-router/react";
+import { EXTERNAL_LINKS } from "@flind/shared";
 import {
   ANALYTICS_EVENTS,
   type OnboardingStepCompletedProperties,
-} from "@posthog/shared/analytics-events";
-import { hoggiePng } from "@posthog/shared/hoggies";
+} from "@flind/shared/analytics-events";
+import { hoggiePng } from "@flind/shared/hoggies";
 import {
   CliCheckPanel,
   InstalledBadge,
-} from "@posthog/ui/features/onboarding/components/CliCheckPanel";
-import { OptionalBadge } from "@posthog/ui/features/onboarding/components/OptionalBadge";
-import { StepActions } from "@posthog/ui/features/onboarding/components/StepActions";
-import { Terminal } from "@posthog/ui/features/terminal/Terminal";
-import { terminalManager } from "@posthog/ui/features/terminal/TerminalManager";
-import { OnboardingHogTip } from "@posthog/ui/primitives/OnboardingHogTip";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
-import { Tooltip } from "@posthog/ui/primitives/Tooltip";
-import { track } from "@posthog/ui/shell/analytics";
-import { openExternalUrl } from "@posthog/ui/shell/openExternal";
-import { isMac } from "@posthog/ui/utils/platform";
+} from "@flind/ui/features/onboarding/components/CliCheckPanel";
+import { OptionalBadge } from "@flind/ui/features/onboarding/components/OptionalBadge";
+import { StepActions } from "@flind/ui/features/onboarding/components/StepActions";
+import { Terminal } from "@flind/ui/features/terminal/Terminal";
+import { terminalManager } from "@flind/ui/features/terminal/TerminalManager";
+import { OnboardingHogTip } from "@flind/ui/primitives/OnboardingHogTip";
+import { Spinner } from "@flind/ui/primitives/Spinner";
+import { Tooltip } from "@flind/ui/primitives/Tooltip";
+import { track } from "@flind/ui/shell/analytics";
+import { openExternalUrl } from "@flind/ui/shell/openExternal";
+import { isMac } from "@flind/ui/utils/platform";
 import { Box, Button, Flex, IconButton, Text } from "@radix-ui/themes";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { motion } from "framer-motion";

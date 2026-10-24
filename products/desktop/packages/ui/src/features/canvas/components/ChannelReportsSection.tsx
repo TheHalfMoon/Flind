@@ -1,5 +1,5 @@
 import { FileMagnifyingGlassIcon } from "@phosphor-icons/react";
-import type { ReportChannelView } from "@posthog/core/inbox/reportChannelScope";
+import type { ReportChannelView } from "@flind/core/inbox/reportChannelScope";
 import {
   Empty,
   EmptyDescription,
@@ -8,15 +8,15 @@ import {
   EmptyTitle,
   Skeleton,
 } from "@flind/quill";
-import type { SignalReport } from "@posthog/shared/types";
-import { ReportRow } from "@posthog/ui/features/canvas/components/ReportRow";
+import type { SignalReport } from "@flind/shared/types";
+import { ReportRow } from "@flind/ui/features/canvas/components/ReportRow";
 import {
   type ChannelReportsFilters,
   useChannelReports,
-} from "@posthog/ui/features/canvas/hooks/useChannelReports";
-import { useOpenInboxReport } from "@posthog/ui/features/inbox/hooks/useOpenInboxReport";
-import { useInView } from "@posthog/ui/primitives/hooks/useInView";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
+} from "@flind/ui/features/canvas/hooks/useChannelReports";
+import { useOpenInboxReport } from "@flind/ui/features/inbox/hooks/useOpenInboxReport";
+import { useInView } from "@flind/ui/primitives/hooks/useInView";
+import { Spinner } from "@flind/ui/primitives/Spinner";
 import { useEffect, useMemo } from "react";
 
 /**

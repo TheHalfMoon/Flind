@@ -1,5 +1,5 @@
-import type { FixWithAgentPrompt } from "@posthog/core/git-interaction/errorPrompts";
-import { useAppView } from "@posthog/ui/router/useAppView";
+import type { FixWithAgentPrompt } from "@flind/core/git-interaction/errorPrompts";
+import { useAppView } from "@flind/ui/router/useAppView";
 import { useCallback } from "react";
 import { sendPromptToAgent } from "../sessions/sendPromptToAgent";
 import { useSessionSelector } from "../sessions/useSession";

@@ -5,8 +5,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@flind/quill";
-import type { SignalReport } from "@posthog/shared/types";
-import { copyInboxReportLink } from "@posthog/ui/features/inbox/utils/copyInboxReportLink";
+import type { SignalReport } from "@flind/shared/types";
+import { copyInboxReportLink } from "@flind/ui/features/inbox/utils/copyInboxReportLink";
 import type { ReactElement } from "react";
 
 interface InboxReportCopyLinkMenuProps {

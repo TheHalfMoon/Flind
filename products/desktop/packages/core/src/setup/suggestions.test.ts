@@ -3,7 +3,7 @@ import {
   buildSdkHealthSuggestion,
   buildStaleFlagSuggestion,
   type StaleFlagPayload,
-} from "@posthog/core/setup/suggestions";
+} from "@flind/core/setup/suggestions";
 import { describe, expect, it } from "vitest";
 
 describe("buildStaleFlagSuggestion", () => {

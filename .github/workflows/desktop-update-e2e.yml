@@ -111,9 +111,9 @@ jobs:
             - name: Build workspace packages
               run: |
                   node scripts/build-agent-workspace.mjs
-                  pnpm --filter @posthog/electron-trpc run build
-                  pnpm --filter @posthog/platform run build
-                  pnpm --filter @posthog/shared run build
+                  pnpm --filter @flind/electron-trpc run build
+                  pnpm --filter @flind/platform run build
+                  pnpm --filter @flind/shared run build
 
             - name: Build old + new update pair (and 3.0.0 chain feed)
               working-directory: products/desktop/apps/code

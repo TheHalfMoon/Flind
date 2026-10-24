@@ -14,7 +14,7 @@ const settingsState = vi.hoisted(() => ({
   setHedgehogMode: () => {},
 }));
 
-vi.mock("@posthog/di/react", () => ({
+vi.mock("@flind/di/react", () => ({
   useService: () => ({ mount: mocks.mount }),
 }));
 

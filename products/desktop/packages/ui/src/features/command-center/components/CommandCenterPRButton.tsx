@@ -1,4 +1,4 @@
-import type { WorkspaceMode } from "@posthog/shared";
+import type { WorkspaceMode } from "@flind/shared";
 import { PRBadgeLink } from "../../git-interaction/components/PRBadgeLink";
 import { usePrDetails } from "../../git-interaction/usePrDetails";
 import { useTaskPrUrls } from "../../git-interaction/useTaskPrUrl";

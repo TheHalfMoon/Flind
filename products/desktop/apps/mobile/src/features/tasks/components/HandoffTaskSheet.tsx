@@ -1,7 +1,7 @@
 import { Text } from "@components/text";
-import { getUserInitials } from "@posthog/core/auth/userInitials";
-import type { Task } from "@posthog/shared";
-import type { UserBasic } from "@posthog/shared/domain-types";
+import { getUserInitials } from "@flind/core/auth/userInitials";
+import type { Task } from "@flind/shared";
+import type { UserBasic } from "@flind/shared/domain-types";
 import * as Haptics from "expo-haptics";
 import { Check, MagnifyingGlass } from "phosphor-react-native";
 import { useMemo, useState } from "react";

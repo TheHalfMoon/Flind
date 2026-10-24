@@ -1,5 +1,5 @@
-import type { LoopSchemas } from "@posthog/ui/features/loops/loopSchemas";
-import { systemTimezone } from "@posthog/ui/primitives/timezone";
+import type { LoopSchemas } from "@flind/ui/features/loops/loopSchemas";
+import { systemTimezone } from "@flind/ui/primitives/timezone";
 
 /** A trigger row in the create/edit form. `key` is a client-only stable
  * identity for list rendering. */

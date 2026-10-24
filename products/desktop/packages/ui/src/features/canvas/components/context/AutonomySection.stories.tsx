@@ -1,5 +1,5 @@
-import type { AutonomyLevel } from "@posthog/core/canvas/contextDocument";
-import { AutonomySection } from "@posthog/ui/features/canvas/components/context/AutonomySection";
+import type { AutonomyLevel } from "@flind/core/canvas/contextDocument";
+import { AutonomySection } from "@flind/ui/features/canvas/components/context/AutonomySection";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
 

@@ -1,9 +1,9 @@
-import { INBOX_SCOPE_ENTIRE_PROJECT } from "@posthog/core/inbox/reportMembership";
+import { INBOX_SCOPE_ENTIRE_PROJECT } from "@flind/core/inbox/reportMembership";
 import type {
   SignalReport,
   SignalReportsQueryParams,
   SignalReportsResponse,
-} from "@posthog/shared/domain-types";
+} from "@flind/shared/domain-types";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { renderHook, waitFor } from "@testing-library/react";
 import type { ReactNode } from "react";
@@ -21,22 +21,22 @@ const filterMocks = vi.hoisted(() => ({
   sourceProductFilter: [] as string[],
 }));
 
-vi.mock("@posthog/ui/features/auth/authClient", () => ({
+vi.mock("@flind/ui/features/auth/authClient", () => ({
   useOptionalAuthenticatedClient: () => mockClient,
 }));
 
-vi.mock("@posthog/ui/features/auth/useCurrentUser", () => ({
+vi.mock("@flind/ui/features/auth/useCurrentUser", () => ({
   AUTH_SCOPED_QUERY_META: {},
   useCurrentUser: () => ({ data: { uuid: "user-1" } }),
 }));
 
-vi.mock("@posthog/ui/features/inbox/stores/inboxReviewerScopeStore", () => ({
+vi.mock("@flind/ui/features/inbox/stores/inboxReviewerScopeStore", () => ({
   useInboxReviewerScopeStore: (
     selector: (state: { scope: string }) => unknown,
   ) => selector({ scope: INBOX_SCOPE_ENTIRE_PROJECT }),
 }));
 
-vi.mock("@posthog/ui/features/inbox/stores/inboxSignalsFilterStore", () => ({
+vi.mock("@flind/ui/features/inbox/stores/inboxSignalsFilterStore", () => ({
   useInboxSignalsFilterStore: (selector: (state: unknown) => unknown) =>
     selector({
       searchQuery: "",

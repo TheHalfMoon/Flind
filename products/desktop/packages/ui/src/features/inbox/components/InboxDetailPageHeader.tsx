@@ -1,6 +1,6 @@
-import { humanizeReportTitle } from "@posthog/core/inbox/reportPresentation";
-import { DetailBackLink } from "@posthog/ui/features/inbox/components/DetailBackLink";
-import { InboxMetaRow } from "@posthog/ui/features/inbox/components/InboxMetaRow";
+import { humanizeReportTitle } from "@flind/core/inbox/reportPresentation";
+import { DetailBackLink } from "@flind/ui/features/inbox/components/DetailBackLink";
+import { InboxMetaRow } from "@flind/ui/features/inbox/components/InboxMetaRow";
 import type { ReactNode } from "react";
 
 interface InboxDetailPageHeaderProps {

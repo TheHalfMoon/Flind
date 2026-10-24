@@ -1,7 +1,7 @@
-import { INBOX_ACTIONABLE_REPORT_STATUS_FILTER } from "@posthog/core/inbox/reportFiltering";
-import type { ReportImplementationState } from "@posthog/core/inbox/reportImplementation";
-import type { SignalReport } from "@posthog/shared/types";
-import { useInboxSignalsFilterStore } from "@posthog/ui/features/inbox/stores/inboxSignalsFilterStore";
+import { INBOX_ACTIONABLE_REPORT_STATUS_FILTER } from "@flind/core/inbox/reportFiltering";
+import type { ReportImplementationState } from "@flind/core/inbox/reportImplementation";
+import type { SignalReport } from "@flind/shared/types";
+import { useInboxSignalsFilterStore } from "@flind/ui/features/inbox/stores/inboxSignalsFilterStore";
 import { render, renderHook, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import type { ReactNode } from "react";
@@ -45,7 +45,7 @@ const mocks = vi.hoisted(() => ({
 }));
 
 vi.mock(
-  "@posthog/ui/features/inbox/hooks/useReportImplementationStates",
+  "@flind/ui/features/inbox/hooks/useReportImplementationStates",
   () => ({
     useReportImplementationStates: () => ({
       states: mocks.implementationStates,
@@ -54,7 +54,7 @@ vi.mock(
   }),
 );
 
-vi.mock("@posthog/ui/features/feature-flags/useTriageFocusEnabled", () => ({
+vi.mock("@flind/ui/features/feature-flags/useTriageFocusEnabled", () => ({
   useTriageFocusEnabled: () => mocks.triageFocusEnabled,
 }));
 
@@ -64,7 +64,7 @@ vi.mock("@tanstack/react-router", () => ({
   useNavigate: () => mocks.navigate,
 }));
 
-vi.mock("@posthog/ui/features/inbox/hooks/useInboxAllReports", () => ({
+vi.mock("@flind/ui/features/inbox/hooks/useInboxAllReports", () => ({
   useInboxAllReports: (options: {
     applySourceFilter?: boolean;
     applySearchFilter?: boolean;
@@ -121,7 +121,7 @@ vi.mock("@posthog/ui/features/inbox/hooks/useInboxAllReports", () => ({
   },
 }));
 
-vi.mock("@posthog/ui/features/inbox/hooks/useInboxSectionCounts", () => ({
+vi.mock("@flind/ui/features/inbox/hooks/useInboxSectionCounts", () => ({
   useInboxSectionCounts: () => ({
     reviewAndMerge: mocks.activeReports.filter(
       (report) => report.status === "ready" && !!report.implementation_pr_url,
@@ -141,19 +141,19 @@ vi.mock("@posthog/ui/features/inbox/hooks/useInboxSectionCounts", () => ({
   }),
 }));
 
-vi.mock("@posthog/ui/features/inbox/hooks/useSelfDrivingSetupStatus", () => ({
+vi.mock("@flind/ui/features/inbox/hooks/useSelfDrivingSetupStatus", () => ({
   useSelfDrivingSetupStatus: () => ({
     isLoading: mocks.setupStatusLoading,
     isConfigured: mocks.setupConfigured,
   }),
 }));
 
-vi.mock("@posthog/ui/features/inbox/hooks/useTrackReportsInboxViewed", () => ({
+vi.mock("@flind/ui/features/inbox/hooks/useTrackReportsInboxViewed", () => ({
   useTrackReportsInboxViewed: () => undefined,
 }));
 
 vi.mock(
-  "@posthog/ui/features/inbox/hooks/useInboxReportDetailPrefetch",
+  "@flind/ui/features/inbox/hooks/useInboxReportDetailPrefetch",
   () => ({
     useInboxReportDetailPrefetch: () => ({
       prefetch: mocks.prefetchRoute,
@@ -166,30 +166,30 @@ vi.mock(
   }),
 );
 
-vi.mock("@posthog/ui/router/navigationBridge", () => ({
+vi.mock("@flind/ui/router/navigationBridge", () => ({
   navigateToSettings: mocks.navigateToSettings,
   navigateToInboxReportDetail: mocks.navigateToInboxReportDetail,
 }));
 
 vi.mock(
-  "@posthog/ui/features/inbox/components/SuggestedReviewerAvatarStack",
+  "@flind/ui/features/inbox/components/SuggestedReviewerAvatarStack",
   () => ({ SuggestedReviewerAvatarStack: () => null }),
 );
 
 vi.mock(
-  "@posthog/ui/features/inbox/components/utils/SignalReportPriorityBadge",
+  "@flind/ui/features/inbox/components/utils/SignalReportPriorityBadge",
   () => ({ SignalReportPriorityBadge: () => null }),
 );
 
-vi.mock("@posthog/ui/features/inbox/components/ReportRestoreButton", () => ({
+vi.mock("@flind/ui/features/inbox/components/ReportRestoreButton", () => ({
   ReportRestoreButton: () => null,
 }));
 
-vi.mock("@posthog/ui/features/inbox/components/InboxReportContextMenu", () => ({
+vi.mock("@flind/ui/features/inbox/components/InboxReportContextMenu", () => ({
   InboxReportContextMenu: ({ children }: { children: ReactNode }) => children,
 }));
 
-vi.mock("@posthog/ui/features/inbox/components/ReportTriageFocus", () => ({
+vi.mock("@flind/ui/features/inbox/components/ReportTriageFocus", () => ({
   ReportTriageFocus: (props: {
     initialReportId?: string;
     reports: SignalReport[];
@@ -200,15 +200,15 @@ vi.mock("@posthog/ui/features/inbox/components/ReportTriageFocus", () => ({
   },
 }));
 
-vi.mock("@posthog/ui/features/inbox/components/InboxReportFilters", () => ({
+vi.mock("@flind/ui/features/inbox/components/InboxReportFilters", () => ({
   InboxReportFilters: () => null,
 }));
 
-vi.mock("@posthog/ui/features/inbox/components/InboxScopeSelect", () => ({
+vi.mock("@flind/ui/features/inbox/components/InboxScopeSelect", () => ({
   InboxScopeSelect: () => null,
 }));
 
-vi.mock("@posthog/ui/features/canvas/hooks/useChannelsLayout", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannelsLayout", () => ({
   useChannelsLayout: () => false,
 }));
 

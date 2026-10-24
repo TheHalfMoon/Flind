@@ -1,6 +1,6 @@
 import { Text } from "@components/text";
-import { partitionInboxReports } from "@posthog/core/inbox/reportInboxSections";
-import type { SignalReport } from "@posthog/shared/domain-types";
+import { partitionInboxReports } from "@flind/core/inbox/reportInboxSections";
+import type { SignalReport } from "@flind/shared/domain-types";
 import { Tray } from "phosphor-react-native";
 import { useMemo, useState } from "react";
 import {

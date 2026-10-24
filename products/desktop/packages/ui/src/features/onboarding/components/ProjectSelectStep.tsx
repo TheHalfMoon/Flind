@@ -15,22 +15,22 @@ import {
   Skeleton,
   Text,
 } from "@flind/quill";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
-import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { OAuthControls } from "@posthog/ui/features/auth/OAuthControls";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
+import { useOptionalAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { OAuthControls } from "@flind/ui/features/auth/OAuthControls";
 import {
   useAuthStateFetched,
   useAuthStateValue,
-} from "@posthog/ui/features/auth/store";
-import { useSelectProjectMutation } from "@posthog/ui/features/auth/useAuthMutations";
-import { useCurrentUser } from "@posthog/ui/features/auth/useCurrentUser";
+} from "@flind/ui/features/auth/store";
+import { useSelectProjectMutation } from "@flind/ui/features/auth/useAuthMutations";
+import { useCurrentUser } from "@flind/ui/features/auth/useCurrentUser";
 import {
   type ProjectInfo,
   useProjects,
-} from "@posthog/ui/features/projects/useProjects";
-import { track } from "@posthog/ui/shell/analytics";
-import { logger } from "@posthog/ui/shell/logger";
-import { FIELD_CONTENT_CLASS } from "@posthog/ui/styles/fieldTrigger";
+} from "@flind/ui/features/projects/useProjects";
+import { track } from "@flind/ui/shell/analytics";
+import { logger } from "@flind/ui/shell/logger";
+import { FIELD_CONTENT_CLASS } from "@flind/ui/styles/fieldTrigger";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useMemo, useRef, useState } from "react";
 import { StepActions } from "./StepActions";

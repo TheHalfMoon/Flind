@@ -1,4 +1,4 @@
-import type { McpServerInstallation } from "@posthog/api-client/types";
+import type { McpServerInstallation } from "@flind/api-client/types";
 import { describe, expect, it } from "vitest";
 import { getInstallationStatus } from "./status";
 

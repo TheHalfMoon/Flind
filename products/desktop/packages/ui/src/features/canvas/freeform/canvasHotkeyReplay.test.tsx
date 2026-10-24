@@ -1,4 +1,4 @@
-import type { CanvasToHostMessage } from "@posthog/core/canvas/freeformSchemas";
+import type { CanvasToHostMessage } from "@flind/core/canvas/freeformSchemas";
 import { renderHook } from "@testing-library/react";
 import { useHotkeys } from "react-hotkeys-hook";
 import { afterEach, describe, expect, it, type Mock, vi } from "vitest";

@@ -1,4 +1,4 @@
-import type { ScoutScratchpadEntry } from "@posthog/api-client/posthog-client";
+import type { ScoutScratchpadEntry } from "@flind/api-client/posthog-client";
 
 /**
  * Read-only view helpers over the scout fleet's durable memory

@@ -1,6 +1,6 @@
-import { primaryWindow } from "@posthog/shared";
-import { useTileLayoutStore } from "@posthog/ui/features/tab-tiling/tileLayoutStore";
-import { focusedTabIn } from "@posthog/ui/features/tab-tiling/tileTree";
+import { primaryWindow } from "@flind/shared";
+import { useTileLayoutStore } from "@flind/ui/features/tab-tiling/tileLayoutStore";
+import { focusedTabIn } from "@flind/ui/features/tab-tiling/tileTree";
 import { useRouterState } from "@tanstack/react-router";
 import { useTabsSnapshot } from "./useBrowserTabs";
 

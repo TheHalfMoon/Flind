@@ -1,16 +1,16 @@
 import { ChatCircle, Plus } from "@phosphor-icons/react";
-import { useServiceOptional } from "@posthog/di/react";
+import { useServiceOptional } from "@flind/di/react";
 import {
   type IScreenCapture,
   SCREEN_CAPTURE_SERVICE,
-} from "@posthog/platform/screen-capture";
-import type { UserBasic } from "@posthog/shared/domain-types";
-import type { EditorSelection } from "@posthog/ui/features/code-editor/components/CodeMirrorEditor";
-import { CommentAnnotation } from "@posthog/ui/features/code-review/components/CommentAnnotation";
-import { CommentComposer } from "@posthog/ui/features/sessions/components/CommentComposer";
-import { SelectionCommentActionButton } from "@posthog/ui/features/sessions/components/SelectionCommentActionButton";
-import { computeCommentActionPlacement } from "@posthog/ui/features/sessions/components/selectionCommentAction";
-import { Tooltip } from "@posthog/ui/primitives/Tooltip";
+} from "@flind/platform/screen-capture";
+import type { UserBasic } from "@flind/shared/domain-types";
+import type { EditorSelection } from "@flind/ui/features/code-editor/components/CodeMirrorEditor";
+import { CommentAnnotation } from "@flind/ui/features/code-review/components/CommentAnnotation";
+import { CommentComposer } from "@flind/ui/features/sessions/components/CommentComposer";
+import { SelectionCommentActionButton } from "@flind/ui/features/sessions/components/SelectionCommentActionButton";
+import { computeCommentActionPlacement } from "@flind/ui/features/sessions/components/selectionCommentAction";
+import { Tooltip } from "@flind/ui/primitives/Tooltip";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import {

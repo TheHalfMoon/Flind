@@ -1,9 +1,9 @@
 import { ArrowSquareOutIcon, ChatCircleIcon } from "@phosphor-icons/react";
-import { MarkdownRenderer } from "@posthog/ui/features/editor/components/MarkdownRenderer";
-import { NestedButton } from "@posthog/ui/primitives/NestedButton";
-import { RelativeTimestamp } from "@posthog/ui/primitives/RelativeTimestamp";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
-import { cachedImageUrl } from "@posthog/ui/shell/cachedImageUrl";
+import { MarkdownRenderer } from "@flind/ui/features/editor/components/MarkdownRenderer";
+import { NestedButton } from "@flind/ui/primitives/NestedButton";
+import { RelativeTimestamp } from "@flind/ui/primitives/RelativeTimestamp";
+import { Spinner } from "@flind/ui/primitives/Spinner";
+import { cachedImageUrl } from "@flind/ui/shell/cachedImageUrl";
 import { useMemo, useState } from "react";
 import { openExternalUrl } from "../../shell/openExternal";
 import { PrSectionHeader } from "./PrSectionHeader";

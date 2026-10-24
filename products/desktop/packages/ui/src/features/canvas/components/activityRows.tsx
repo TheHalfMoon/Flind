@@ -28,11 +28,11 @@ import {
   type CommitsPushedPayload,
   type PrPayload,
   prLabel,
-} from "@posthog/core/canvas/activityEvents";
-import type { GroupableActivityEvent } from "@posthog/core/canvas/activityGrouping";
-import { commentScopeFromWire } from "@posthog/core/comments/anchors";
-import type { ChangedFile } from "@posthog/core/git/router-schemas";
-import { xmlToContent } from "@posthog/core/message-editor/content";
+} from "@flind/core/canvas/activityEvents";
+import type { GroupableActivityEvent } from "@flind/core/canvas/activityGrouping";
+import { commentScopeFromWire } from "@flind/core/comments/anchors";
+import type { ChangedFile } from "@flind/core/git/router-schemas";
+import { xmlToContent } from "@flind/core/message-editor/content";
 import {
   Button,
   ChatBubble,
@@ -40,23 +40,23 @@ import {
   cn,
   Skeleton,
 } from "@flind/quill";
-import { splitMentionSegments } from "@posthog/shared";
+import { splitMentionSegments } from "@flind/shared";
 import type {
   TaskCommentThreadSummary,
   UserBasic,
-} from "@posthog/shared/domain-types";
-import { UserAvatar } from "@posthog/ui/features/auth/UserAvatar";
-import { MentionText } from "@posthog/ui/features/canvas/components/MentionText";
-import { ThreadTimestamp } from "@posthog/ui/features/canvas/components/ThreadTimestamp";
-import { userDisplayName } from "@posthog/ui/features/canvas/utils/userDisplay";
-import { useCommitChangedFiles } from "@posthog/ui/features/git-interaction/useGitQueries";
-import { ChatMarkdown } from "@posthog/ui/features/sessions/components/chat-thread/ChatMarkdown";
-import { useCommentsQuery } from "@posthog/ui/features/sessions/components/useComments";
-import { useArtifactDownload } from "@posthog/ui/features/sessions/useArtifactDownload";
-import { ArtifactChip } from "@posthog/ui/primitives/ArtifactChip";
-import { openExternalUrl } from "@posthog/ui/shell/openExternal";
-import { getObjectKind } from "@posthog/ui/utils/objectKinds";
-import { parseHttpsUrl } from "@posthog/ui/utils/posthogLinks";
+} from "@flind/shared/domain-types";
+import { UserAvatar } from "@flind/ui/features/auth/UserAvatar";
+import { MentionText } from "@flind/ui/features/canvas/components/MentionText";
+import { ThreadTimestamp } from "@flind/ui/features/canvas/components/ThreadTimestamp";
+import { userDisplayName } from "@flind/ui/features/canvas/utils/userDisplay";
+import { useCommitChangedFiles } from "@flind/ui/features/git-interaction/useGitQueries";
+import { ChatMarkdown } from "@flind/ui/features/sessions/components/chat-thread/ChatMarkdown";
+import { useCommentsQuery } from "@flind/ui/features/sessions/components/useComments";
+import { useArtifactDownload } from "@flind/ui/features/sessions/useArtifactDownload";
+import { ArtifactChip } from "@flind/ui/primitives/ArtifactChip";
+import { openExternalUrl } from "@flind/ui/shell/openExternal";
+import { getObjectKind } from "@flind/ui/utils/objectKinds";
+import { parseHttpsUrl } from "@flind/ui/utils/posthogLinks";
 import { type ReactNode, useMemo, useState } from "react";
 
 export function TimelineRow({

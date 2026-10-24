@@ -19,7 +19,7 @@ export interface AutoresearchRunUpsert {
 
 /**
  * Persisted autoresearch runs. The run itself is an opaque JSON blob owned
- * by @posthog/core; this repository only stores it and answers the two
+ * by @flind/core; this repository only stores it and answers the two
  * queries the app needs: a task history and the open runs worth
  * resuming after a restart.
  */

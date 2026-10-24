@@ -6,22 +6,22 @@ import {
 import {
   describeGithubConnectError,
   GITHUB_CONNECT_TIMEOUT_MESSAGE,
-} from "@posthog/core/integrations/connectErrors";
+} from "@flind/core/integrations/connectErrors";
 import {
   describeGithubRepoAccess,
   formatGithubAccountLabel,
-} from "@posthog/core/settings/githubRepoSummary";
+} from "@flind/core/settings/githubRepoSummary";
 import { Button, Text } from "@flind/quill";
-import { useAuthStateValue } from "@posthog/ui/features/auth/store";
-import { useIsOrgAdmin } from "@posthog/ui/features/auth/useOrgRole";
-import { GithubInstallRequestsBanner } from "@posthog/ui/features/integrations/components/GithubInstallRequestsBanner";
-import { RequestIntegrationAccessForm } from "@posthog/ui/features/integrations/components/RequestIntegrationAccessForm";
-import { useIntegrationSelectors } from "@posthog/ui/features/integrations/store";
-import { useGithubConnect } from "@posthog/ui/features/integrations/useGithubUserConnect";
-import { useRepositoryIntegration } from "@posthog/ui/features/integrations/useIntegrations";
-import { openSettings } from "@posthog/ui/features/settings/hooks/useOpenSettings";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
-import { Tooltip } from "@posthog/ui/primitives/Tooltip";
+import { useAuthStateValue } from "@flind/ui/features/auth/store";
+import { useIsOrgAdmin } from "@flind/ui/features/auth/useOrgRole";
+import { GithubInstallRequestsBanner } from "@flind/ui/features/integrations/components/GithubInstallRequestsBanner";
+import { RequestIntegrationAccessForm } from "@flind/ui/features/integrations/components/RequestIntegrationAccessForm";
+import { useIntegrationSelectors } from "@flind/ui/features/integrations/store";
+import { useGithubConnect } from "@flind/ui/features/integrations/useGithubUserConnect";
+import { useRepositoryIntegration } from "@flind/ui/features/integrations/useIntegrations";
+import { openSettings } from "@flind/ui/features/settings/hooks/useOpenSettings";
+import { Spinner } from "@flind/ui/primitives/Spinner";
+import { Tooltip } from "@flind/ui/primitives/Tooltip";
 
 interface GitHubIntegrationSectionProps {
   hasGithubIntegration: boolean;

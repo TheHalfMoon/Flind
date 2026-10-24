@@ -1,18 +1,18 @@
 import { ArrowDownIcon } from "@phosphor-icons/react";
 import { Button } from "@flind/quill";
-import type { Task } from "@posthog/shared/domain-types";
-import { ActivityTimeline } from "@posthog/ui/features/canvas/components/ActivityTimeline";
-import { ActivityLoadingState } from "@posthog/ui/features/canvas/components/activityRows";
-import { TaskArtifactsList } from "@posthog/ui/features/canvas/components/TaskArtifactsList";
-import { TaskCommentsList } from "@posthog/ui/features/canvas/components/TaskCommentsList";
-import { AgentStatusLine } from "@posthog/ui/features/canvas/components/ThreadPanel";
-import { useThreadConversation } from "@posthog/ui/features/canvas/hooks/useThreadConversation";
-import { mergeConversationItems } from "@posthog/ui/features/sessions/components/mergeConversationItems";
-import { useConversationItems } from "@posthog/ui/features/sessions/hooks/useConversationItems";
+import type { Task } from "@flind/shared/domain-types";
+import { ActivityTimeline } from "@flind/ui/features/canvas/components/ActivityTimeline";
+import { ActivityLoadingState } from "@flind/ui/features/canvas/components/activityRows";
+import { TaskArtifactsList } from "@flind/ui/features/canvas/components/TaskArtifactsList";
+import { TaskCommentsList } from "@flind/ui/features/canvas/components/TaskCommentsList";
+import { AgentStatusLine } from "@flind/ui/features/canvas/components/ThreadPanel";
+import { useThreadConversation } from "@flind/ui/features/canvas/hooks/useThreadConversation";
+import { mergeConversationItems } from "@flind/ui/features/sessions/components/mergeConversationItems";
+import { useConversationItems } from "@flind/ui/features/sessions/hooks/useConversationItems";
 import {
   useOptimisticItemsForTask,
   useSessionIsCloud,
-} from "@posthog/ui/features/sessions/sessionStore";
+} from "@flind/ui/features/sessions/sessionStore";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 export type ActivityTab = "timeline" | "artifacts" | "comments";

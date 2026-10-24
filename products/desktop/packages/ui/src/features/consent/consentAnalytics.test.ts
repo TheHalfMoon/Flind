@@ -1,13 +1,13 @@
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
 import { renderHook, waitFor } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import type { OrgConsent } from "./useOrgConsent";
 
-vi.mock("@posthog/ui/shell/analytics", () => ({
+vi.mock("@flind/ui/shell/analytics", () => ({
   track: vi.fn(),
 }));
 
-import { track } from "@posthog/ui/shell/analytics";
+import { track } from "@flind/ui/shell/analytics";
 import { useConsentAnalytics } from "./consentAnalytics";
 
 const blockedConsent: OrgConsent = {

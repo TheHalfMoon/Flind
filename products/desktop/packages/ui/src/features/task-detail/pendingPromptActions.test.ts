@@ -1,10 +1,10 @@
-import { browserTabsStore } from "@posthog/core/browser-tabs/browserTabsStore";
-import type { TabsSnapshot } from "@posthog/shared";
-import { useTaskInputPrefillStore } from "@posthog/ui/features/task-detail/stores/taskInputPrefillStore";
+import { browserTabsStore } from "@flind/core/browser-tabs/browserTabsStore";
+import type { TabsSnapshot } from "@flind/shared";
+import { useTaskInputPrefillStore } from "@flind/ui/features/task-detail/stores/taskInputPrefillStore";
 import {
   pendingTaskPromptStoreApi,
   usePendingTaskPromptStore,
-} from "@posthog/ui/shell/pendingTaskPromptStore";
+} from "@flind/ui/shell/pendingTaskPromptStore";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import {
   recoverPendingPrompt,

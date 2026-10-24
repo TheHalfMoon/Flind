@@ -1,6 +1,6 @@
-import type { SignalReport, Task } from "@posthog/shared/types";
-import type { ReportTaskData } from "@posthog/ui/features/inbox/hooks/useReportTasks";
-import { useReportChatPanelStore } from "@posthog/ui/features/inbox/stores/reportChatPanelStore";
+import type { SignalReport, Task } from "@flind/shared/types";
+import type { ReportTaskData } from "@flind/ui/features/inbox/hooks/useReportTasks";
+import { useReportChatPanelStore } from "@flind/ui/features/inbox/stores/reportChatPanelStore";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { beforeEach, describe, expect, it, vi } from "vitest";
@@ -8,11 +8,11 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 const { useReportTasks } = vi.hoisted(() => ({ useReportTasks: vi.fn() }));
 
 vi.mock(
-  "@posthog/ui/features/inbox/hooks/useReportTasks",
+  "@flind/ui/features/inbox/hooks/useReportTasks",
   async (importOriginal) => {
     const actual =
       await importOriginal<
-        typeof import("@posthog/ui/features/inbox/hooks/useReportTasks")
+        typeof import("@flind/ui/features/inbox/hooks/useReportTasks")
       >();
     return { ...actual, useReportTasks };
   },

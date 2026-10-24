@@ -1,4 +1,4 @@
-import type { TooltipPlacement } from "@posthog/core/tour/types";
+import type { TooltipPlacement } from "@flind/core/tour/types";
 
 const TOOLTIP_MARGIN = 12;
 const VIEWPORT_PADDING = 8;

@@ -1,4 +1,4 @@
-import type { ISecureStorage } from "@posthog/platform/secure-storage";
+import type { ISecureStorage } from "@flind/platform/secure-storage";
 import { safeStorage } from "electron";
 import { injectable } from "inversify";
 

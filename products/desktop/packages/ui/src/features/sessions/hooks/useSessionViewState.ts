@@ -1,12 +1,12 @@
-import { deriveSessionViewState } from "@posthog/core/sessions/sessionViewState";
-import type { Task } from "@posthog/shared/domain-types";
+import { deriveSessionViewState } from "@flind/core/sessions/sessionViewState";
+import type { Task } from "@flind/shared/domain-types";
 import {
   useSessionForTask,
   useSessionStore,
-} from "@posthog/ui/features/sessions/sessionStore";
-import { useCwd } from "@posthog/ui/features/sidebar/useCwd";
-import { useIsCloudTask } from "@posthog/ui/features/workspace/useIsCloudTask";
-import { useWorkspace } from "@posthog/ui/features/workspace/useWorkspace";
+} from "@flind/ui/features/sessions/sessionStore";
+import { useCwd } from "@flind/ui/features/sidebar/useCwd";
+import { useIsCloudTask } from "@flind/ui/features/workspace/useIsCloudTask";
+import { useWorkspace } from "@flind/ui/features/workspace/useWorkspace";
 
 export function useSessionViewState(taskId: string, task: Task) {
   const session = useSessionForTask(taskId);

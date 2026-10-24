@@ -1,13 +1,13 @@
-import type { AcpMessage } from "@posthog/shared";
-import { RawLogEntry } from "@posthog/ui/features/sessions/components/raw-logs/RawLogEntry";
-import { RawLogsHeader } from "@posthog/ui/features/sessions/components/raw-logs/RawLogsHeader";
-import { VirtualizedList } from "@posthog/ui/features/sessions/components/VirtualizedList";
+import type { AcpMessage } from "@flind/shared";
+import { RawLogEntry } from "@flind/ui/features/sessions/components/raw-logs/RawLogEntry";
+import { RawLogsHeader } from "@flind/ui/features/sessions/components/raw-logs/RawLogsHeader";
+import { VirtualizedList } from "@flind/ui/features/sessions/components/VirtualizedList";
 import {
   useSearchQuery,
   useSessionViewActions,
   useShowSearch,
-} from "@posthog/ui/features/sessions/sessionViewStore";
-import { Divider } from "@posthog/ui/primitives/Divider";
+} from "@flind/ui/features/sessions/sessionViewStore";
+import { Divider } from "@flind/ui/primitives/Divider";
 import { Box, Flex } from "@radix-ui/themes";
 import { useCallback, useMemo, useRef } from "react";
 

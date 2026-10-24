@@ -7,22 +7,22 @@ import {
   readAutonomy,
   serializeContextDocument,
   withAutonomy,
-} from "@posthog/core/canvas/contextDocument";
-import { spaceFilesFolder } from "@posthog/core/canvas/contextFiles";
+} from "@flind/core/canvas/contextDocument";
+import { spaceFilesFolder } from "@flind/core/canvas/contextFiles";
 import { Button, cn, Text } from "@flind/quill";
-import { SPACE_SETUP_FLAG } from "@posthog/shared";
-import { CreateChannelModal } from "@posthog/ui/features/canvas/components/CreateChannelModal";
+import { SPACE_SETUP_FLAG } from "@flind/shared";
+import { CreateChannelModal } from "@flind/ui/features/canvas/components/CreateChannelModal";
 import {
   buildGoalMeasurePrompt,
   GOAL_MEASURE_AGENT,
   goalMeasureTaskTitle,
-} from "@posthog/ui/features/canvas/contextPrompt";
-import { goalMeasureTasks } from "@posthog/ui/features/canvas/goalMeasureTasks";
-import { useChannelFeed } from "@posthog/ui/features/canvas/hooks/useChannelFeed";
-import type { ContextDocumentStore } from "@posthog/ui/features/canvas/hooks/useContextDocumentStore";
-import { useGenerateContext } from "@posthog/ui/features/canvas/hooks/useGenerateContext";
-import { useFeatureFlag } from "@posthog/ui/features/feature-flags/useFeatureFlag";
-import { LoadingState } from "@posthog/ui/primitives/LoadingState";
+} from "@flind/ui/features/canvas/contextPrompt";
+import { goalMeasureTasks } from "@flind/ui/features/canvas/goalMeasureTasks";
+import { useChannelFeed } from "@flind/ui/features/canvas/hooks/useChannelFeed";
+import type { ContextDocumentStore } from "@flind/ui/features/canvas/hooks/useContextDocumentStore";
+import { useGenerateContext } from "@flind/ui/features/canvas/hooks/useGenerateContext";
+import { useFeatureFlag } from "@flind/ui/features/feature-flags/useFeatureFlag";
+import { LoadingState } from "@flind/ui/primitives/LoadingState";
 import {
   PageHeader,
   PageHeaderActions,
@@ -30,10 +30,10 @@ import {
   PageHeaderHeading,
   PageHeaderTitle,
   PageHeaderTitleRow,
-} from "@posthog/ui/primitives/PageHeader";
-import { RelativeTimestamp } from "@posthog/ui/primitives/RelativeTimestamp";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
-import { navigateToChannelTask } from "@posthog/ui/router/navigationBridge";
+} from "@flind/ui/primitives/PageHeader";
+import { RelativeTimestamp } from "@flind/ui/primitives/RelativeTimestamp";
+import { Spinner } from "@flind/ui/primitives/Spinner";
+import { navigateToChannelTask } from "@flind/ui/router/navigationBridge";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { AutonomySection } from "./AutonomySection";
 import { ContextEmptyHero } from "./ContextEmptyHero";

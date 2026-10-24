@@ -1,4 +1,4 @@
-import type { SuggestedReviewer } from "@posthog/shared/types";
+import type { SuggestedReviewer } from "@flind/shared/types";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { SuggestedReviewersList } from "./SuggestedReviewersList";
 

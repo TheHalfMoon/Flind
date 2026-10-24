@@ -1,4 +1,4 @@
-// Pure presentation helpers ported from desktop `@posthog/core/inbox/reportPresentation`.
+// Pure presentation helpers ported from desktop `@flind/core/inbox/reportPresentation`.
 // Shared across the Inbox cards/detail so the conventional-commit + headline parsing
 // lives in exactly one place.
 

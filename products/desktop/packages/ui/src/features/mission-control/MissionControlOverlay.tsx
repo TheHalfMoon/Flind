@@ -1,5 +1,5 @@
 import { Badge } from "@flind/quill";
-import LogosLandscape from "@posthog/ui/primitives/Logo";
+import LogosLandscape from "@flind/ui/primitives/Logo";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { useMissionControlStore } from "./missionControlStore";

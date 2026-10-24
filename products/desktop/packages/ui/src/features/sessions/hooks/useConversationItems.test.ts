@@ -2,13 +2,13 @@ import { renderHook } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 const warn = vi.hoisted(() => vi.fn());
-vi.mock("@posthog/ui/shell/logger", () => ({
+vi.mock("@flind/ui/shell/logger", () => ({
   logger: {
     scope: () => ({ error: vi.fn(), warn, info: vi.fn(), debug: vi.fn() }),
   },
 }));
 
-import type { AcpMessage } from "@posthog/shared";
+import type { AcpMessage } from "@flind/shared";
 import { useConversationItems } from "./useConversationItems";
 
 let ts = 1;

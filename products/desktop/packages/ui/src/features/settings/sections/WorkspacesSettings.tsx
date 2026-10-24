@@ -1,11 +1,11 @@
 import { Folder, X } from "@phosphor-icons/react";
-import { useHostTRPCClient } from "@posthog/host-router/react";
+import { useHostTRPCClient } from "@flind/host-router/react";
 import { Button } from "@flind/quill";
 import {
   SettingsCard,
   SettingsCardRow,
   SettingsSection,
-} from "@posthog/ui/features/settings/components/SettingsCard";
+} from "@flind/ui/features/settings/components/SettingsCard";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { toast } from "../../../primitives/toast";

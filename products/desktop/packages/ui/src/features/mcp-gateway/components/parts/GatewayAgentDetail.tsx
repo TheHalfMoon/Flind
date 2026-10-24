@@ -4,27 +4,27 @@ import type {
   McpAuditEvent,
   McpGatewayAgentAccess,
   McpGatewayServer,
-} from "@posthog/api-client/posthog-client";
+} from "@flind/api-client/posthog-client";
 import {
   AUDIT_DECISION_LABELS,
   agentShareMessage,
   credentialOwnerLabel,
   formatAgo,
   formatAuditTime,
-} from "@posthog/core/mcp-gateway/gatewayServers";
-import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { useCurrentUser } from "@posthog/ui/features/auth/useCurrentUser";
-import { AgentScopeToggle } from "@posthog/ui/features/mcp-gateway/components/parts/AgentScopeToggle";
+} from "@flind/core/mcp-gateway/gatewayServers";
+import { useOptionalAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { useCurrentUser } from "@flind/ui/features/auth/useCurrentUser";
+import { AgentScopeToggle } from "@flind/ui/features/mcp-gateway/components/parts/AgentScopeToggle";
 import {
   gatewayUserName,
   RobotAvatar,
-} from "@posthog/ui/features/mcp-gateway/components/parts/avatars";
-import type { GatewayRoute } from "@posthog/ui/features/mcp-gateway/gatewayRoute";
-import { useAgentRecentCalls } from "@posthog/ui/features/mcp-gateway/hooks/useGatewayAudit";
-import { useGatewayServers } from "@posthog/ui/features/mcp-gateway/hooks/useGatewayServers";
-import { useServiceAccounts } from "@posthog/ui/features/mcp-gateway/hooks/useServiceAccounts";
-import { ServerIcon } from "@posthog/ui/features/mcp-servers/components/parts/icons";
-import { LoadingState } from "@posthog/ui/primitives/LoadingState";
+} from "@flind/ui/features/mcp-gateway/components/parts/avatars";
+import type { GatewayRoute } from "@flind/ui/features/mcp-gateway/gatewayRoute";
+import { useAgentRecentCalls } from "@flind/ui/features/mcp-gateway/hooks/useGatewayAudit";
+import { useGatewayServers } from "@flind/ui/features/mcp-gateway/hooks/useGatewayServers";
+import { useServiceAccounts } from "@flind/ui/features/mcp-gateway/hooks/useServiceAccounts";
+import { ServerIcon } from "@flind/ui/features/mcp-servers/components/parts/icons";
+import { LoadingState } from "@flind/ui/primitives/LoadingState";
 import { Badge, Button, Flex, Separator, Switch, Text } from "@radix-ui/themes";
 import { useState } from "react";
 

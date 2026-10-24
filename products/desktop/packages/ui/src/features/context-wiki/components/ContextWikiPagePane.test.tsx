@@ -36,14 +36,14 @@ vi.mock("../hooks/useContextWiki", () => ({
   }),
 }));
 
-vi.mock("@posthog/ui/features/editor/components/MarkdownRenderer", () => ({
+vi.mock("@flind/ui/features/editor/components/MarkdownRenderer", () => ({
   MarkdownRenderer: ({ content }: { content: string }) => <div>{content}</div>,
 }));
 
-// The real client pulls in @posthog/shared, which this package's vitest config
+// The real client pulls in @flind/shared, which this package's vitest config
 // does not resolve. The pane only needs these two classes for the instanceof
 // checks on a failed save.
-vi.mock("@posthog/api-client/posthog-client", () => ({
+vi.mock("@flind/api-client/posthog-client", () => ({
   ContextWikiConflictError: class ContextWikiConflictError extends Error {
     currentHead: string | null;
     constructor(currentHead: string | null) {
@@ -55,7 +55,7 @@ vi.mock("@posthog/api-client/posthog-client", () => ({
 }));
 
 const { ContextWikiConflictError } = await import(
-  "@posthog/api-client/posthog-client"
+  "@flind/api-client/posthog-client"
 );
 
 describe("ContextWikiPagePane", () => {

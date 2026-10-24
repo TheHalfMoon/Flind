@@ -1,9 +1,9 @@
-import { useAuthenticatedQuery } from "@posthog/ui/hooks/useAuthenticatedQuery";
+import { useAuthenticatedQuery } from "@flind/ui/hooks/useAuthenticatedQuery";
 import { renderHook } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { useChannelFeedMessages } from "./useChannelFeedMessages";
 
-vi.mock("@posthog/ui/hooks/useAuthenticatedQuery", () => ({
+vi.mock("@flind/ui/hooks/useAuthenticatedQuery", () => ({
   useAuthenticatedQuery: vi.fn(() => ({ data: [], isLoading: false })),
 }));
 

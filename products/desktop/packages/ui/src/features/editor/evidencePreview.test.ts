@@ -1,4 +1,4 @@
-import type { PostHogAPIClient } from "@posthog/api-client/posthog-client";
+import type { PostHogAPIClient } from "@flind/api-client/posthog-client";
 import { describe, expect, it, vi } from "vitest";
 import { fetchEvidencePreview } from "./evidencePreview";
 

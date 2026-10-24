@@ -1,5 +1,5 @@
-import type { PostHogAPIClient } from "@posthog/api-client/posthog-client";
-import type { TaskThreadMessage } from "@posthog/shared/domain-types";
+import type { PostHogAPIClient } from "@flind/api-client/posthog-client";
+import type { TaskThreadMessage } from "@flind/shared/domain-types";
 import { injectable } from "inversify";
 
 export const TASK_THREAD_SERVICE = Symbol.for(

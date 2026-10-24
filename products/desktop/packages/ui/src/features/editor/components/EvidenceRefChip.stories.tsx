@@ -1,8 +1,8 @@
 import {
   EvidenceHoverCard,
   EvidenceRefChip,
-} from "@posthog/ui/features/editor/components/EvidenceRefChip";
-import { MarkdownRenderer } from "@posthog/ui/features/editor/components/MarkdownRenderer";
+} from "@flind/ui/features/editor/components/EvidenceRefChip";
+import { MarkdownRenderer } from "@flind/ui/features/editor/components/MarkdownRenderer";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta: Meta<typeof EvidenceRefChip> = {

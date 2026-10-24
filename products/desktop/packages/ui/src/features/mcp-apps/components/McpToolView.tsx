@@ -2,8 +2,8 @@ import { Plugs } from "@phosphor-icons/react";
 import {
   getPostHogExecDisplay,
   isPostHogExecTool,
-} from "@posthog/core/sessions/posthogExecDisplay";
-import { readMcpToolDescriptor } from "@posthog/shared";
+} from "@flind/core/sessions/posthogExecDisplay";
+import { readMcpToolDescriptor } from "@flind/shared";
 import { ToolRow } from "../../sessions/components/session-update/ToolRow";
 import {
   compactInput,

@@ -1,5 +1,5 @@
 import { Kbd, KbdGroup } from "@flind/quill";
-import { formatHotkeyParts } from "@posthog/ui/features/command/keyboard-shortcuts";
+import { formatHotkeyParts } from "@flind/ui/features/command/keyboard-shortcuts";
 import type { ReactNode } from "react";
 
 export function CommandKeyHints({

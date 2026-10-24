@@ -1,4 +1,4 @@
-import type { SyncedCustomInstructions } from "@posthog/ui/features/settings/settingsStore";
+import type { SyncedCustomInstructions } from "@flind/ui/features/settings/settingsStore";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { PersonalizationSettingsView } from "./PersonalizationSettings";
 

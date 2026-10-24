@@ -8,16 +8,16 @@ let taskQueryError: Error | null = null;
 let taskQueryErrorMessage: string | null = null;
 const refetch = vi.fn();
 
-vi.mock("@posthog/ui/features/auth/authClient", () => ({
+vi.mock("@flind/ui/features/auth/authClient", () => ({
   useOptionalAuthenticatedClient: () => null,
 }));
-vi.mock("@posthog/ui/features/auth/useCurrentUser", () => ({
+vi.mock("@flind/ui/features/auth/useCurrentUser", () => ({
   useCurrentUser: () => ({ data: { uuid: "user-1" } }),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useChannels", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannels", () => ({
   useChannels: () => ({ channels: [] }),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useTaskFeedResults", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useTaskFeedResults", () => ({
   useFeedQueryPlan: () => ({ plan: undefined }),
   useTaskFeedResults: () => ({
     tasks: [{ id: "task-1" }],
@@ -31,7 +31,7 @@ vi.mock("@posthog/ui/features/canvas/hooks/useTaskFeedResults", () => ({
     refetch,
   }),
 }));
-vi.mock("@posthog/ui/primitives/hooks/useDebouncedValue", () => ({
+vi.mock("@flind/ui/primitives/hooks/useDebouncedValue", () => ({
   useDebouncedValue: () => ({ debounced: "billing", isPending: false }),
 }));
 vi.mock("./FeedQueryInput", () => ({

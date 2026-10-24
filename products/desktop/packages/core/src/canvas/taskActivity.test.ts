@@ -1,4 +1,4 @@
-import type { TaskActivity, UserBasic } from "@posthog/shared/domain-types";
+import type { TaskActivity, UserBasic } from "@flind/shared/domain-types";
 import { describe, expect, it } from "vitest";
 import { toTaskActivityItems } from "./taskActivity";
 

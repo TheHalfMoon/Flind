@@ -5,8 +5,8 @@ import { promisify } from "node:util";
 import {
   CLIPBOARD_SERVICE,
   type IClipboard,
-} from "@posthog/platform/clipboard";
-import { FILE_ICON_SERVICE, type IFileIcon } from "@posthog/platform/file-icon";
+} from "@flind/platform/clipboard";
+import { FILE_ICON_SERVICE, type IFileIcon } from "@flind/platform/file-icon";
 import { inject, injectable } from "inversify";
 import { EXTERNAL_APPS_STORE } from "./identifiers";
 import type { ExternalAppsStore } from "./ports";

@@ -1,5 +1,5 @@
 import { ReadCvLogoIcon } from "@phosphor-icons/react";
-import type { SignalReport } from "@posthog/shared/types";
+import type { SignalReport } from "@flind/shared/types";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { beforeEach, describe, expect, it, vi } from "vitest";
@@ -9,7 +9,7 @@ const mocks = vi.hoisted(() => ({
   hasNextPage: false,
 }));
 
-vi.mock("@posthog/ui/features/inbox/hooks/useInboxAllReports", () => ({
+vi.mock("@flind/ui/features/inbox/hooks/useInboxAllReports", () => ({
   useInboxAllReports: () => ({
     scopedReports: mocks.reports,
     allReports: mocks.reports,
@@ -21,11 +21,11 @@ vi.mock("@posthog/ui/features/inbox/hooks/useInboxAllReports", () => ({
 }));
 
 // The filter bar owns its own data hooks; the empty state is what we assert on.
-vi.mock("@posthog/ui/features/inbox/components/InboxSearchFilterBar", () => ({
+vi.mock("@flind/ui/features/inbox/components/InboxSearchFilterBar", () => ({
   InboxSearchFilterBar: () => null,
 }));
 
-vi.mock("@posthog/ui/features/inbox/hooks/useInboxBulkActions", () => ({
+vi.mock("@flind/ui/features/inbox/hooks/useInboxBulkActions", () => ({
   buildSuppressDisabledReasonMap: () => new Map(),
   useInboxBulkActions: () => ({
     snoozeSelected: vi.fn(),
@@ -36,7 +36,7 @@ vi.mock("@posthog/ui/features/inbox/hooks/useInboxBulkActions", () => ({
   }),
 }));
 
-vi.mock("@posthog/ui/features/inbox/hooks/useInboxReportListSelection", () => ({
+vi.mock("@flind/ui/features/inbox/hooks/useInboxReportListSelection", () => ({
   useInboxReportListSelection: () => ({
     orderedSelectedIds: [],
     selectedCount: 0,
@@ -46,8 +46,8 @@ vi.mock("@posthog/ui/features/inbox/hooks/useInboxReportListSelection", () => ({
   }),
 }));
 
-import { InboxReportListTab } from "@posthog/ui/features/inbox/components/InboxReportListTab";
-import { useInboxSignalsFilterStore } from "@posthog/ui/features/inbox/stores/inboxSignalsFilterStore";
+import { InboxReportListTab } from "@flind/ui/features/inbox/components/InboxReportListTab";
+import { useInboxSignalsFilterStore } from "@flind/ui/features/inbox/stores/inboxSignalsFilterStore";
 
 const emptyState = {
   Icon: ReadCvLogoIcon,

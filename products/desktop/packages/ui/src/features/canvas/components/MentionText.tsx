@@ -8,14 +8,14 @@ import {
   TerminalIcon,
   WarningIcon,
 } from "@phosphor-icons/react";
-import type { MentionChip } from "@posthog/core/message-editor/content";
-import { xmlToContent } from "@posthog/core/message-editor/content";
+import type { MentionChip } from "@flind/core/message-editor/content";
+import { xmlToContent } from "@flind/core/message-editor/content";
 import { Chip } from "@flind/quill";
-import { splitMentionSegments } from "@posthog/shared";
-import { splitLinkSegments } from "@posthog/ui/features/canvas/utils/linkify";
-import { GithubRefChip } from "@posthog/ui/features/editor/components/GithubRefChip";
-import { parseGithubIssueUrl } from "@posthog/ui/features/message-editor/githubIssueUrl";
-import { handleShareLinkClick } from "@posthog/ui/utils/shareLinks";
+import { splitMentionSegments } from "@flind/shared";
+import { splitLinkSegments } from "@flind/ui/features/canvas/utils/linkify";
+import { GithubRefChip } from "@flind/ui/features/editor/components/GithubRefChip";
+import { parseGithubIssueUrl } from "@flind/ui/features/message-editor/githubIssueUrl";
+import { handleShareLinkClick } from "@flind/ui/utils/shareLinks";
 import { Fragment, useMemo } from "react";
 import "./mention-chip.css";
 

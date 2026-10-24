@@ -12,8 +12,8 @@ import {
   TestTube,
   Warning,
 } from "@phosphor-icons/react";
-import type { LoopSchemas } from "@posthog/ui/features/loops/loopSchemas";
-import { systemTimezone } from "@posthog/ui/primitives/timezone";
+import type { LoopSchemas } from "@flind/ui/features/loops/loopSchemas";
+import { systemTimezone } from "@flind/ui/primitives/timezone";
 import {
   type LoopFormValues,
   type LoopTriggerDraft,

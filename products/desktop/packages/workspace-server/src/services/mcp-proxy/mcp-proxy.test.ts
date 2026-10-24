@@ -1,4 +1,4 @@
-import type { RootLogger } from "@posthog/di/logger";
+import type { RootLogger } from "@flind/di/logger";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { McpProxyService } from "./mcp-proxy";
 import type { McpProxyAuth } from "./ports";

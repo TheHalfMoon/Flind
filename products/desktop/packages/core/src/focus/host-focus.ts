@@ -1,4 +1,4 @@
-import type { WorkspaceClient } from "@posthog/workspace-client/client";
+import type { WorkspaceClient } from "@flind/workspace-client/client";
 import type { FocusSession } from "./identifiers";
 
 export const FOCUS_WORKSPACE_CLIENT = Symbol.for(

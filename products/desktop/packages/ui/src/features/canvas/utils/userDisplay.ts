@@ -1,4 +1,4 @@
-import type { UserLike } from "@posthog/core/auth/userInitials";
+import type { UserLike } from "@flind/core/auth/userInitials";
 
 // Display name for a task/thread author, shared by the channel feed and the
 // thread panel.

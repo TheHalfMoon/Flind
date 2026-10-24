@@ -1,5 +1,5 @@
 import { ChatCircleIcon } from "@phosphor-icons/react";
-import type { CommentTarget } from "@posthog/core/comments/anchors";
+import type { CommentTarget } from "@flind/core/comments/anchors";
 import {
   Button,
   Popover,
@@ -9,7 +9,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@flind/quill";
-import { useOrgMembers } from "@posthog/ui/features/canvas/hooks/useOrgMembers";
+import { useOrgMembers } from "@flind/ui/features/canvas/hooks/useOrgMembers";
 import { useState } from "react";
 import { commentAgentContext } from "../commentAgentContext";
 import { sendCommentToAgent } from "../sendCommentToAgent";

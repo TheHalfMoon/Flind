@@ -8,15 +8,15 @@ import {
   AlertDialogTitle,
   Button,
 } from "@flind/quill";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
-import { TaskFeedModal } from "@posthog/ui/features/canvas/components/TaskFeedModal";
-import { useTaskFeedSelectionStore } from "@posthog/ui/features/canvas/stores/taskFeedSelectionStore";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
+import { TaskFeedModal } from "@flind/ui/features/canvas/components/TaskFeedModal";
+import { useTaskFeedSelectionStore } from "@flind/ui/features/canvas/stores/taskFeedSelectionStore";
 import {
   type TaskFeed,
   useTaskFeedsStore,
-} from "@posthog/ui/features/canvas/stores/taskFeedsStore";
-import { toast } from "@posthog/ui/primitives/toast";
-import { track } from "@posthog/ui/shell/analytics";
+} from "@flind/ui/features/canvas/stores/taskFeedsStore";
+import { toast } from "@flind/ui/primitives/toast";
+import { track } from "@flind/ui/shell/analytics";
 import { useNavigate } from "@tanstack/react-router";
 import { type ReactNode, useState } from "react";
 

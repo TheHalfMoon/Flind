@@ -1,4 +1,4 @@
-import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
+import { useSettingsStore } from "@flind/ui/features/settings/settingsStore";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { ModelSwitchCacheDialog } from "./ModelSwitchCacheDialog";

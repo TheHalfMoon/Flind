@@ -1,12 +1,12 @@
-import { isGeneralChannel } from "@posthog/core/canvas/channelName";
-import { rewriteLegacyHref } from "@posthog/ui/router/legacyPaths";
+import { isGeneralChannel } from "@flind/core/canvas/channelName";
+import { rewriteLegacyHref } from "@flind/ui/router/legacyPaths";
 import {
   ensureSession,
   type FirstRunClient,
   firstRun,
   isFirstRun,
-} from "@posthog/ui/shell/firstRun";
-import { stateStorage } from "@posthog/ui/shell/rendererStorage";
+} from "@flind/ui/shell/firstRun";
+import { stateStorage } from "@flind/ui/shell/rendererStorage";
 
 const storageKey = (identity: string): string =>
   `startup-location:v2:${identity}`;

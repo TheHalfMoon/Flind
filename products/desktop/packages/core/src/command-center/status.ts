@@ -2,8 +2,8 @@ import {
   type AcpMessage,
   getTaskRepository,
   parseRepository,
-} from "@posthog/shared";
-import type { Task, TaskRunStatus } from "@posthog/shared/domain-types";
+} from "@flind/shared";
+import type { Task, TaskRunStatus } from "@flind/shared/domain-types";
 import { createAppendOnlyTracker } from "../sessions/appendOnlyTracker";
 import {
   deriveTaskRunState,

@@ -1,4 +1,4 @@
-import { ApiRequestError } from "@posthog/api-client/fetcher";
+import { ApiRequestError } from "@flind/api-client/fetcher";
 import { describe, expect, it } from "vitest";
 import { shouldRetryWikiWrite, wikiWriteRetryDelay } from "./useContextWiki";
 

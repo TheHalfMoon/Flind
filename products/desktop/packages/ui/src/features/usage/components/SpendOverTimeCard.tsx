@@ -2,9 +2,9 @@ import { ChartBar } from "@phosphor-icons/react";
 import {
   formatTokens,
   formatUsd,
-} from "@posthog/core/billing/spendAnalysisFormat";
-import type { SpendAnalysisFilledDay } from "@posthog/core/billing/spendAnalysisTypes";
-import type { SpendLimits } from "@posthog/core/billing/spendLimits";
+} from "@flind/core/billing/spendAnalysisFormat";
+import type { SpendAnalysisFilledDay } from "@flind/core/billing/spendAnalysisTypes";
+import type { SpendLimits } from "@flind/core/billing/spendLimits";
 import {
   type GoalLineConfig,
   type Series,
@@ -15,7 +15,7 @@ import {
   TooltipSwatch,
   useChartTheme,
 } from "@flind/quill-charts";
-import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
+import { useSettingsStore } from "@flind/ui/features/settings/settingsStore";
 import { UsageCard } from "./UsageCard";
 
 interface SpendOverTimeCardProps {

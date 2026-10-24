@@ -1,16 +1,16 @@
-import type { TaskCreationInput } from "@posthog/core/task-detail/taskService";
-import type { ScoutChatType, ScoutSurface } from "@posthog/shared";
-import { ANALYTICS_EVENTS } from "@posthog/shared";
+import type { TaskCreationInput } from "@flind/core/task-detail/taskService";
+import type { ScoutChatType, ScoutSurface } from "@flind/shared";
+import { ANALYTICS_EVENTS } from "@flind/shared";
 import {
   type InboxCloudTaskInputContext,
   useInboxCloudTaskRunner,
-} from "@posthog/ui/features/inbox/hooks/useInboxCloudTaskRunner";
-import { useUserRepositoryIntegration } from "@posthog/ui/features/integrations/useIntegrations";
+} from "@flind/ui/features/inbox/hooks/useInboxCloudTaskRunner";
+import { useUserRepositoryIntegration } from "@flind/ui/features/integrations/useIntegrations";
 import {
   resolveDefaultCloudRepository,
   useSettingsStore,
-} from "@posthog/ui/features/settings/settingsStore";
-import { track } from "@posthog/ui/shell/analytics";
+} from "@flind/ui/features/settings/settingsStore";
+import { track } from "@flind/ui/shell/analytics";
 import { useCallback, useMemo } from "react";
 
 interface UseScoutChatTaskOptions {

@@ -1,9 +1,9 @@
-import type { SignalSourceConfig } from "@posthog/api-client/posthog-client";
+import type { SignalSourceConfig } from "@flind/api-client/posthog-client";
 import {
   EXTERNAL_INBOX_SOURCES,
   filterInboxSourceOptions,
   type SourceProduct,
-} from "@posthog/shared";
+} from "@flind/shared";
 
 export const SOURCE_PRODUCT_OPTIONS: { value: SourceProduct; label: string }[] =
   [

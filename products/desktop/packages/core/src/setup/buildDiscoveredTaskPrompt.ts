@@ -1,5 +1,5 @@
-import type { DiscoveredTask } from "@posthog/core/setup/types";
-import { SKILL_BUTTON_CATALOG } from "@posthog/core/skill-buttons/catalog";
+import type { DiscoveredTask } from "@flind/core/setup/types";
+import { SKILL_BUTTON_CATALOG } from "@flind/core/skill-buttons/catalog";
 
 function buildExperimentTaskPrompt(task: DiscoveredTask): string {
   const sections: string[] = [

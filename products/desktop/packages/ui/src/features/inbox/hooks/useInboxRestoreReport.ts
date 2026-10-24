@@ -1,7 +1,7 @@
-import { taskFeedResultsQueryRoot } from "@posthog/ui/features/canvas/hooks/useTaskFeedResults";
-import { reportKeys } from "@posthog/ui/features/inbox/hooks/useInboxReports";
-import { useAuthenticatedMutation } from "@posthog/ui/hooks/useAuthenticatedMutation";
-import { toast } from "@posthog/ui/primitives/toast";
+import { taskFeedResultsQueryRoot } from "@flind/ui/features/canvas/hooks/useTaskFeedResults";
+import { reportKeys } from "@flind/ui/features/inbox/hooks/useInboxReports";
+import { useAuthenticatedMutation } from "@flind/ui/hooks/useAuthenticatedMutation";
+import { toast } from "@flind/ui/primitives/toast";
 import { useQueryClient } from "@tanstack/react-query";
 
 /** Thrown when the report is no longer archived by the time Restore runs. */

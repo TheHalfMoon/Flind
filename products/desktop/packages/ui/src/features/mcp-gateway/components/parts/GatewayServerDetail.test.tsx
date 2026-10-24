@@ -1,4 +1,4 @@
-import type { McpGatewayServer } from "@posthog/api-client/posthog-client";
+import type { McpGatewayServer } from "@flind/api-client/posthog-client";
 import { Theme } from "@radix-ui/themes";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
@@ -12,16 +12,16 @@ const mocks = vi.hoisted(() => ({
   refresh: vi.fn(),
 }));
 
-vi.mock("@posthog/ui/features/auth/authClient", () => ({
+vi.mock("@flind/ui/features/auth/authClient", () => ({
   useOptionalAuthenticatedClient: () => null,
 }));
 
-vi.mock("@posthog/ui/features/auth/useCurrentUser", () => ({
+vi.mock("@flind/ui/features/auth/useCurrentUser", () => ({
   useCurrentUser: () => ({ data: mocks.currentUser }),
 }));
 
 vi.mock(
-  "@posthog/ui/features/mcp-gateway/hooks/useGatewayToolPolicies",
+  "@flind/ui/features/mcp-gateway/hooks/useGatewayToolPolicies",
   () => ({
     useGatewayToolPolicies: () => ({
       policies: [],
@@ -35,11 +35,11 @@ vi.mock(
   }),
 );
 
-vi.mock("@posthog/ui/features/mcp-gateway/hooks/useGatewayServers", () => ({
+vi.mock("@flind/ui/features/mcp-gateway/hooks/useGatewayServers", () => ({
   useGatewayServers: () => mocks.gateway,
 }));
 
-vi.mock("@posthog/ui/features/mcp-gateway/hooks/useGatewayMembers", () => ({
+vi.mock("@flind/ui/features/mcp-gateway/hooks/useGatewayMembers", () => ({
   useGatewayMembers: () => ({
     members: [],
     membersLoading: false,
@@ -47,7 +47,7 @@ vi.mock("@posthog/ui/features/mcp-gateway/hooks/useGatewayMembers", () => ({
   }),
 }));
 
-vi.mock("@posthog/ui/features/mcp-gateway/hooks/useServiceAccounts", () => ({
+vi.mock("@flind/ui/features/mcp-gateway/hooks/useServiceAccounts", () => ({
   useServiceAccounts: () => ({
     accounts: [],
     accountsLoading: false,
@@ -56,7 +56,7 @@ vi.mock("@posthog/ui/features/mcp-gateway/hooks/useServiceAccounts", () => ({
   }),
 }));
 
-vi.mock("@posthog/ui/features/mcp-servers/components/parts/icons", () => ({
+vi.mock("@flind/ui/features/mcp-servers/components/parts/icons", () => ({
   ServerIcon: () => <div aria-hidden="true" />,
 }));
 

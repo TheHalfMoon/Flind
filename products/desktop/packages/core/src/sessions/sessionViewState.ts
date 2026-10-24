@@ -1,9 +1,9 @@
-import type { AcpMessage, AgentSession, Workspace } from "@posthog/shared";
+import type { AcpMessage, AgentSession, Workspace } from "@flind/shared";
 import {
   isTerminalStatus,
   type Task,
   type TaskRunStatus,
-} from "@posthog/shared/domain-types";
+} from "@flind/shared/domain-types";
 import { isGithubConnectionRequiredError } from "../integrations/connectErrors";
 import { resolveEffectiveCloudStatus } from "../task-detail/cloudRunState";
 

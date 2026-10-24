@@ -1,6 +1,6 @@
-import type { UserBasic } from "@posthog/shared/domain-types";
-import { MemberRow } from "@posthog/ui/features/canvas/components/MemberRow";
-import { SettingsCard } from "@posthog/ui/features/settings/components/SettingsCard";
+import type { UserBasic } from "@flind/shared/domain-types";
+import { MemberRow } from "@flind/ui/features/canvas/components/MemberRow";
+import { SettingsCard } from "@flind/ui/features/settings/components/SettingsCard";
 
 export function MemberList({
   members,

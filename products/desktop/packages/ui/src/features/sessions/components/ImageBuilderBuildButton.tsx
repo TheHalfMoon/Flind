@@ -2,11 +2,11 @@ import { Info } from "@phosphor-icons/react";
 import {
   isImageBuildFailed,
   isImageBuildInProgress,
-} from "@posthog/shared/domain-types";
-import { imageFailureDetail } from "@posthog/ui/features/settings/sections/environments/imageBuildWatcher";
-import { useSandboxCustomImages } from "@posthog/ui/features/settings/sections/environments/useSandboxCustomImages";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
-import { Tooltip } from "@posthog/ui/primitives/Tooltip";
+} from "@flind/shared/domain-types";
+import { imageFailureDetail } from "@flind/ui/features/settings/sections/environments/imageBuildWatcher";
+import { useSandboxCustomImages } from "@flind/ui/features/settings/sections/environments/useSandboxCustomImages";
+import { Spinner } from "@flind/ui/primitives/Spinner";
+import { Tooltip } from "@flind/ui/primitives/Tooltip";
 import { Button, Flex, IconButton, Text } from "@radix-ui/themes";
 
 export function ImageBuilderBuildButton({ taskId }: { taskId: string }) {

@@ -1,12 +1,12 @@
 import { Text } from "@components/text";
-import { getCloudReasoningConfigOptionId } from "@posthog/core/sessions/cloudSessionConfig";
-import { getDefaultExecutionModeForAdapter } from "@posthog/core/sessions/executionModes";
+import { getCloudReasoningConfigOptionId } from "@flind/core/sessions/cloudSessionConfig";
+import { getDefaultExecutionModeForAdapter } from "@flind/core/sessions/executionModes";
 import {
   countUserMessages,
   getSessionActivityPhase,
-} from "@posthog/core/sessions/sessionActivity";
-import type { CloudComposerSelection } from "@posthog/core/task-detail/composerModelPolicy";
-import { isTaskRunning } from "@posthog/core/tasks/taskArchive";
+} from "@flind/core/sessions/sessionActivity";
+import type { CloudComposerSelection } from "@flind/core/task-detail/composerModelPolicy";
+import { isTaskRunning } from "@flind/core/tasks/taskArchive";
 import {
   type Adapter,
   DEFAULT_CODEX_MODEL,
@@ -18,7 +18,7 @@ import {
   type SupportedReasoningEffort,
   serializeCloudPrompt,
   type Task,
-} from "@posthog/shared";
+} from "@flind/shared";
 import { useQueryClient } from "@tanstack/react-query";
 import * as Haptics from "expo-haptics";
 import { useLocalSearchParams, useRouter } from "expo-router";

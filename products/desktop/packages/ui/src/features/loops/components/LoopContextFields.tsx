@@ -1,5 +1,5 @@
-import { channelDisplayLabel } from "@posthog/core/canvas/channelName";
-import { SettingsOptionSelect } from "@posthog/ui/features/settings/SettingsOptionSelect";
+import { channelDisplayLabel } from "@flind/core/canvas/channelName";
+import { SettingsOptionSelect } from "@flind/ui/features/settings/SettingsOptionSelect";
 import { useChannels } from "../../canvas/hooks/useChannels";
 import type { LoopContextTargetDraft } from "../loopFormTypes";
 

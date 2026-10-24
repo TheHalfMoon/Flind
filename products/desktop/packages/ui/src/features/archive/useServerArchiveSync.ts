@@ -1,14 +1,14 @@
 import {
   ARCHIVE_CLIENT,
   type ArchiveClient,
-} from "@posthog/core/archive/identifiers";
-import { pendingServerArchiveIds } from "@posthog/core/archive/serverArchiveSync";
-import { useService } from "@posthog/di/react";
-import { useServerArchiveSyncStore } from "@posthog/ui/features/archive/serverArchiveSyncStore";
-import { useArchivedTaskIds } from "@posthog/ui/features/archive/useArchivedTaskIds";
-import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { taskKeys } from "@posthog/ui/features/tasks/taskKeys";
-import { logger } from "@posthog/ui/shell/logger";
+} from "@flind/core/archive/identifiers";
+import { pendingServerArchiveIds } from "@flind/core/archive/serverArchiveSync";
+import { useService } from "@flind/di/react";
+import { useServerArchiveSyncStore } from "@flind/ui/features/archive/serverArchiveSyncStore";
+import { useArchivedTaskIds } from "@flind/ui/features/archive/useArchivedTaskIds";
+import { useOptionalAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { taskKeys } from "@flind/ui/features/tasks/taskKeys";
+import { logger } from "@flind/ui/shell/logger";
 import { useQueryClient } from "@tanstack/react-query";
 import { useEffect, useRef, useState } from "react";
 import { useServerArchiveScope } from "./useServerArchiveScope";

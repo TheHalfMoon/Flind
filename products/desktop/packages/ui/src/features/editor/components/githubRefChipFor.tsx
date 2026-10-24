@@ -1,6 +1,6 @@
-import { GithubPrRefChip } from "@posthog/ui/features/editor/components/GithubPrRefChip";
-import { GithubRefChip } from "@posthog/ui/features/editor/components/GithubRefChip";
-import { parseGithubIssueUrl } from "@posthog/ui/features/message-editor/githubIssueUrl";
+import { GithubPrRefChip } from "@flind/ui/features/editor/components/GithubPrRefChip";
+import { GithubRefChip } from "@flind/ui/features/editor/components/GithubRefChip";
+import { parseGithubIssueUrl } from "@flind/ui/features/message-editor/githubIssueUrl";
 import type { ReactElement, ReactNode } from "react";
 
 /**

@@ -1,4 +1,4 @@
-import type { TaskRunStatus } from "@posthog/shared/domain-types";
+import type { TaskRunStatus } from "@flind/shared/domain-types";
 
 // Unknown keys remain free text so pasted URLs and incomplete filters still search.
 export type FeedQueryKey =

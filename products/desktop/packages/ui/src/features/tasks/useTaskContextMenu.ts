@@ -1,17 +1,17 @@
 import {
   resolveExternalAppPath,
   resolveTaskContextMenuIntent,
-} from "@posthog/core/tasks/contextMenuActions";
-import { useHostTRPCClient } from "@posthog/host-router/react";
-import type { Task } from "@posthog/shared/domain-types";
-import { useArchiveTask } from "@posthog/ui/features/archive/useArchiveTask";
-import { useChannels } from "@posthog/ui/features/canvas/hooks/useChannels";
-import { useFileTaskToChannel } from "@posthog/ui/features/canvas/hooks/useFileTaskToChannel";
-import { useExternalAppAction } from "@posthog/ui/features/external-apps/useExternalAppAction";
-import { useRestoreTask } from "@posthog/ui/features/suspension/useRestoreTask";
-import { useSuspendTask } from "@posthog/ui/features/suspension/useSuspendTask";
-import { useDeleteTask } from "@posthog/ui/features/tasks/useTaskCrudMutations";
-import { logger } from "@posthog/ui/shell/logger";
+} from "@flind/core/tasks/contextMenuActions";
+import { useHostTRPCClient } from "@flind/host-router/react";
+import type { Task } from "@flind/shared/domain-types";
+import { useArchiveTask } from "@flind/ui/features/archive/useArchiveTask";
+import { useChannels } from "@flind/ui/features/canvas/hooks/useChannels";
+import { useFileTaskToChannel } from "@flind/ui/features/canvas/hooks/useFileTaskToChannel";
+import { useExternalAppAction } from "@flind/ui/features/external-apps/useExternalAppAction";
+import { useRestoreTask } from "@flind/ui/features/suspension/useRestoreTask";
+import { useSuspendTask } from "@flind/ui/features/suspension/useSuspendTask";
+import { useDeleteTask } from "@flind/ui/features/tasks/useTaskCrudMutations";
+import { logger } from "@flind/ui/shell/logger";
 import { useCallback, useState } from "react";
 
 const log = logger.scope("context-menu");

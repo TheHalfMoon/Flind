@@ -1,10 +1,10 @@
-import type { Task } from "@posthog/shared/domain-types";
-import { ActivityDetailCloseButton } from "@posthog/ui/features/canvas/components/ActivityDetailCloseButton";
-import { useActivitySelection } from "@posthog/ui/features/canvas/stores/activityDetailStore";
-import { useActiveTabTiled } from "@posthog/ui/features/tab-tiling/useActiveTabTiled";
-import { TaskHeaderActions } from "@posthog/ui/features/task-detail/components/TaskHeaderActions";
-import { ChromeBar } from "@posthog/ui/primitives/ChromeBar";
-import { useHeaderStore } from "@posthog/ui/shell/headerStore";
+import type { Task } from "@flind/shared/domain-types";
+import { ActivityDetailCloseButton } from "@flind/ui/features/canvas/components/ActivityDetailCloseButton";
+import { useActivitySelection } from "@flind/ui/features/canvas/stores/activityDetailStore";
+import { useActiveTabTiled } from "@flind/ui/features/tab-tiling/useActiveTabTiled";
+import { TaskHeaderActions } from "@flind/ui/features/task-detail/components/TaskHeaderActions";
+import { ChromeBar } from "@flind/ui/primitives/ChromeBar";
+import { useHeaderStore } from "@flind/ui/shell/headerStore";
 
 /**
  * The title row above the content pane. Subscribes to the header store itself:

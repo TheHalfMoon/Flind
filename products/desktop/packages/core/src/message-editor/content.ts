@@ -2,7 +2,7 @@ import {
   escapeXmlAttr,
   type UploadableSkillSource,
   unescapeXmlAttr,
-} from "@posthog/shared";
+} from "@flind/shared";
 import { isUploadableSkillSource, parseXmlAttrs } from "./skillTags";
 
 export const POSTHOG_OBJECT_KINDS = [

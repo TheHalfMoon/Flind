@@ -3,7 +3,7 @@ import {
   type CloudRegion,
   getCloudUrlFromRegion,
   type TaskCreationOutput,
-} from "@posthog/shared";
+} from "@flind/shared";
 import { inject, injectable } from "inversify";
 import { buildPostHogUrl } from "../settings/posthogUrl";
 import {

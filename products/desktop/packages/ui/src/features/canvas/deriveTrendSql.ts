@@ -1,4 +1,4 @@
-import type { GoalPeriod } from "@posthog/core/canvas/contextDocument";
+import type { GoalPeriod } from "@flind/core/canvas/contextDocument";
 import {
   COMMA,
   maskLiterals,

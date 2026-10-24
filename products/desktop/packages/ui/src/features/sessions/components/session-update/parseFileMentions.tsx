@@ -2,9 +2,9 @@ import { File, Folder, Warning } from "@phosphor-icons/react";
 import {
   hasMentionTags,
   SLASH_COMMAND_START,
-} from "@posthog/core/sessions/promptContent";
+} from "@flind/core/sessions/promptContent";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@flind/quill";
-import { unescapeXmlAttr } from "@posthog/shared";
+import { unescapeXmlAttr } from "@flind/shared";
 import { Text } from "@radix-ui/themes";
 import type { ReactNode } from "react";
 import { memo } from "react";

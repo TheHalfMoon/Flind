@@ -1,7 +1,7 @@
 import type {
   RecurringSchedule,
   RecurringScheduleFrequency,
-} from "@posthog/ui/primitives/nextRecurringRun";
+} from "@flind/ui/primitives/nextRecurringRun";
 
 export const DEFAULT_SCHEDULE_TIME = "09:00";
 

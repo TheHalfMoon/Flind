@@ -1,6 +1,6 @@
-import { rewriteSavedLocation } from "@posthog/shared";
-import type { ProvisionedTaskChannels } from "@posthog/shared/domain-types";
-import { stateStorage } from "@posthog/ui/shell/rendererStorage";
+import { rewriteSavedLocation } from "@flind/shared";
+import type { ProvisionedTaskChannels } from "@flind/shared/domain-types";
+import { stateStorage } from "@flind/ui/shell/rendererStorage";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { beginFirstRun, ensureSession, firstRun } from "./firstRun";
 import { resolveStartupLocation } from "./startupLocation";

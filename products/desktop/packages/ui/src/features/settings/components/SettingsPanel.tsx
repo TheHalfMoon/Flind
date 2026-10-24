@@ -25,21 +25,21 @@ import {
   X,
 } from "@phosphor-icons/react";
 import { Button, Input, MenuLabel } from "@flind/quill";
-import { SettingsPageContent } from "@posthog/ui/features/settings/components/SettingsPageContent";
-import { closeSettings } from "@posthog/ui/features/settings/hooks/useOpenSettings";
-import { useSettingsBackupAvailable } from "@posthog/ui/features/settings/hooks/useSettingsBackupAvailable";
+import { SettingsPageContent } from "@flind/ui/features/settings/components/SettingsPageContent";
+import { closeSettings } from "@flind/ui/features/settings/hooks/useOpenSettings";
+import { useSettingsBackupAvailable } from "@flind/ui/features/settings/hooks/useSettingsBackupAvailable";
 import {
   type SettingsSearchEntry,
   searchSettings,
-} from "@posthog/ui/features/settings/settingsSearch";
-import { getHiddenSettingsCategories } from "@posthog/ui/features/settings/settingsVisibility";
-import { useSettingsPageStore } from "@posthog/ui/features/settings/stores/settingsPageStore";
+} from "@flind/ui/features/settings/settingsSearch";
+import { getHiddenSettingsCategories } from "@flind/ui/features/settings/settingsVisibility";
+import { useSettingsPageStore } from "@flind/ui/features/settings/stores/settingsPageStore";
 import {
   SETTINGS_PAGE_LABELS,
   type SettingsCategory,
-} from "@posthog/ui/features/settings/types";
-import * as nav from "@posthog/ui/router/navigationBridge";
-import { useHostCapabilities } from "@posthog/ui/shell/useHostCapabilities";
+} from "@flind/ui/features/settings/types";
+import * as nav from "@flind/ui/router/navigationBridge";
+import { useHostCapabilities } from "@flind/ui/shell/useHostCapabilities";
 import { type ReactNode, useState } from "react";
 
 interface SidebarItem {

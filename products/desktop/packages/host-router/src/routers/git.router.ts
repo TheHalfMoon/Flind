@@ -3,12 +3,12 @@ import {
   type HostGitAgentService,
   type HostGitService,
   type HostGitWorkspaceClient,
-} from "@posthog/core/git/host-git";
+} from "@flind/core/git/host-git";
 import {
   GIT_AGENT_SERVICE,
   GIT_SERVICE,
   GIT_WORKSPACE_CLIENT,
-} from "@posthog/core/git/identifiers";
+} from "@flind/core/git/identifiers";
 import {
   approvePrInput,
   approvePrOutput,
@@ -109,11 +109,11 @@ import {
   updatePrByUrlOutput,
   validateRepoInput,
   validateRepoOutput,
-} from "@posthog/core/git/router-schemas";
-import type { GitPrService } from "@posthog/core/git-pr/git-pr";
-import { GIT_PR_SERVICE } from "@posthog/core/git-pr/identifiers";
-import type { ServiceResolver } from "@posthog/host-trpc/context";
-import { publicProcedure, router } from "@posthog/host-trpc/trpc";
+} from "@flind/core/git/router-schemas";
+import type { GitPrService } from "@flind/core/git-pr/git-pr";
+import { GIT_PR_SERVICE } from "@flind/core/git-pr/identifiers";
+import type { ServiceResolver } from "@flind/host-trpc/context";
+import { publicProcedure, router } from "@flind/host-trpc/trpc";
 import { z } from "zod";
 
 const getService = (container: ServiceResolver) =>

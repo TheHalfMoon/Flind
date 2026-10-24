@@ -1,4 +1,4 @@
-import type { OnboardingGithubConnectFlow } from "@posthog/shared/analytics-events";
+import type { OnboardingGithubConnectFlow } from "@flind/shared/analytics-events";
 import {
   GITHUB_CONNECT_TIMEOUT_MESSAGE,
   GITHUB_INSTALL_PENDING_MESSAGE,

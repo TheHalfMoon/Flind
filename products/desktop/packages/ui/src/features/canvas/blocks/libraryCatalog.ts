@@ -26,8 +26,8 @@ import {
   type BlockDefinition,
   type BlockGroup,
   blockDefinition,
-} from "@posthog/core/canvas/blockLibrary/blockDefinitions";
-import { componentLabel } from "@posthog/core/canvas/blockLibrary/params";
+} from "@flind/core/canvas/blockLibrary/blockDefinitions";
+import { componentLabel } from "@flind/core/canvas/blockLibrary/params";
 
 const ICONS: Record<string, Icon> = {
   Metric: NumberSquareOne,

@@ -1,5 +1,5 @@
-import type { GoalStatus } from "@posthog/core/canvas/contextDocument";
-import { useThemeStore } from "@posthog/ui/shell/themeStore";
+import type { GoalStatus } from "@flind/core/canvas/contextDocument";
+import { useThemeStore } from "@flind/ui/shell/themeStore";
 
 export interface GoalPalette {
   green: string;

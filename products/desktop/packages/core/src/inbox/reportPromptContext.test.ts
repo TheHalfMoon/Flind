@@ -1,4 +1,4 @@
-import type { Signal, SignalReport } from "@posthog/shared/types";
+import type { Signal, SignalReport } from "@flind/shared/types";
 import { describe, expect, it } from "vitest";
 
 import { buildReportPromptContext } from "./reportPromptContext";

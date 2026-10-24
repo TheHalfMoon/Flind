@@ -1,4 +1,4 @@
-import type { Announcement } from "@posthog/shared/announcements";
+import type { Announcement } from "@flind/shared/announcements";
 
 export interface EditableItem {
   kind: "announcement" | "required-update";

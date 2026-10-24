@@ -1,5 +1,5 @@
-import { type CloudRegion, getCloudUrlFromRegion } from "@posthog/shared";
-import { useAuthStore } from "@posthog/ui/features/auth/store";
+import { type CloudRegion, getCloudUrlFromRegion } from "@flind/shared";
+import { useAuthStore } from "@flind/ui/features/auth/store";
 
 export function getPostHogUrl(
   pathOrUrl: string,

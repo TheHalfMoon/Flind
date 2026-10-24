@@ -2,7 +2,7 @@ import {
   canvasArtifactManifestSchema,
   canvasBuildStatusSchema,
   canvasDiagnosticSchema,
-} from "@posthog/shared";
+} from "@flind/shared";
 import { z } from "zod";
 
 // Client-facing shape of a canvas's build lifecycle (the canvases builds

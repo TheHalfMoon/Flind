@@ -9,15 +9,15 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@flind/quill";
-import type { Adapter, ModelAccess } from "@posthog/shared";
+import type { Adapter, ModelAccess } from "@flind/shared";
 import {
   applyModelAccess,
   subscriptionModelAccess,
   useAdapterSubscription,
   type WorkspaceModeForAccess,
-} from "@posthog/ui/features/settings/adapterSubscription";
-import { openSettings } from "@posthog/ui/features/settings/hooks/useOpenSettings";
-import { SUBSCRIPTION_LOGIN_ACTION } from "@posthog/ui/features/settings/subscriptionActions";
+} from "@flind/ui/features/settings/adapterSubscription";
+import { openSettings } from "@flind/ui/features/settings/hooks/useOpenSettings";
+import { SUBSCRIPTION_LOGIN_ACTION } from "@flind/ui/features/settings/subscriptionActions";
 
 const PROVIDER_LABEL: Record<Adapter, string> = {
   claude: "Anthropic",

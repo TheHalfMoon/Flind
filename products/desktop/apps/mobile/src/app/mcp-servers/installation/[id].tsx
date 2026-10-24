@@ -1,5 +1,5 @@
 import { Text } from "@components/text";
-import type { McpApprovalState } from "@posthog/api-client/types";
+import type { McpApprovalState } from "@flind/api-client/types";
 import { router, useLocalSearchParams } from "expo-router";
 import {
   ArrowsClockwise,

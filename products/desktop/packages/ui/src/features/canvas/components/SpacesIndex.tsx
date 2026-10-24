@@ -16,21 +16,21 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@flind/quill";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
-import { CreateChannelModal } from "@posthog/ui/features/canvas/components/CreateChannelModal";
-import { channelGlyph } from "@posthog/ui/features/canvas/components/channelGlyph";
-import { PresenceAvatars } from "@posthog/ui/features/canvas/components/PresenceAvatars";
-import { SpacesIcon } from "@posthog/ui/features/canvas/components/SpacesIcon";
-import { useChannelStarToggle } from "@posthog/ui/features/canvas/hooks/useChannelStars";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
+import { CreateChannelModal } from "@flind/ui/features/canvas/components/CreateChannelModal";
+import { channelGlyph } from "@flind/ui/features/canvas/components/channelGlyph";
+import { PresenceAvatars } from "@flind/ui/features/canvas/components/PresenceAvatars";
+import { SpacesIcon } from "@flind/ui/features/canvas/components/SpacesIcon";
+import { useChannelStarToggle } from "@flind/ui/features/canvas/hooks/useChannelStars";
 import {
   type Channel,
   useChannels,
-} from "@posthog/ui/features/canvas/hooks/useChannels";
-import { useSpaceOverview } from "@posthog/ui/features/canvas/hooks/useRecentSpaceTasks";
-import { userDisplayName } from "@posthog/ui/features/canvas/utils/userDisplay";
-import { useSetHeaderContent } from "@posthog/ui/hooks/useSetHeaderContent";
-import { useInView } from "@posthog/ui/primitives/hooks/useInView";
-import { track } from "@posthog/ui/shell/analytics";
+} from "@flind/ui/features/canvas/hooks/useChannels";
+import { useSpaceOverview } from "@flind/ui/features/canvas/hooks/useRecentSpaceTasks";
+import { userDisplayName } from "@flind/ui/features/canvas/utils/userDisplay";
+import { useSetHeaderContent } from "@flind/ui/hooks/useSetHeaderContent";
+import { useInView } from "@flind/ui/primitives/hooks/useInView";
+import { track } from "@flind/ui/shell/analytics";
 import { Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 

@@ -1,11 +1,11 @@
-import type { Adapter } from "@posthog/shared";
+import type { Adapter } from "@flind/shared";
 import {
   adapterForModelId,
   DEFAULT_GATEWAY_MODEL,
   getReasoningEffortOptions,
   type SupportedReasoningEffort,
   supportsFastMode,
-} from "@posthog/shared";
+} from "@flind/shared";
 import { create } from "zustand";
 
 interface ComposerConfig {

@@ -1,5 +1,5 @@
-import { SessionFooter } from "@posthog/ui/features/sessions/components/SessionFooter";
-import type { ContextUsage } from "@posthog/ui/features/sessions/hooks/useContextUsage";
+import { SessionFooter } from "@flind/ui/features/sessions/components/SessionFooter";
+import type { ContextUsage } from "@flind/ui/features/sessions/hooks/useContextUsage";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta: Meta<typeof SessionFooter> = {

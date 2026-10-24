@@ -5,15 +5,15 @@ import {
   MagnifyingGlassIcon,
 } from "@phosphor-icons/react";
 import { Button } from "@flind/quill";
-import type { SignalReport } from "@posthog/shared/types";
-import { InboxDetailFrame } from "@posthog/ui/features/inbox/components/InboxDetailFrame";
-import { InboxReportCopyLinkMenu } from "@posthog/ui/features/inbox/components/InboxReportCopyLinkMenu";
-import { InboxReportDetailGate } from "@posthog/ui/features/inbox/components/InboxReportDetailGate";
-import { useReportPage } from "@posthog/ui/features/inbox/components/ReportPageContext";
-import { ReportTrackerIssueLink } from "@posthog/ui/features/inbox/components/utils/ReportTrackerIssueLink";
-import { useInboxBackTarget } from "@posthog/ui/features/inbox/hooks/useInboxBackTarget";
-import { useInboxRestoreReport } from "@posthog/ui/features/inbox/hooks/useInboxRestoreReport";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
+import type { SignalReport } from "@flind/shared/types";
+import { InboxDetailFrame } from "@flind/ui/features/inbox/components/InboxDetailFrame";
+import { InboxReportCopyLinkMenu } from "@flind/ui/features/inbox/components/InboxReportCopyLinkMenu";
+import { InboxReportDetailGate } from "@flind/ui/features/inbox/components/InboxReportDetailGate";
+import { useReportPage } from "@flind/ui/features/inbox/components/ReportPageContext";
+import { ReportTrackerIssueLink } from "@flind/ui/features/inbox/components/utils/ReportTrackerIssueLink";
+import { useInboxBackTarget } from "@flind/ui/features/inbox/hooks/useInboxBackTarget";
+import { useInboxRestoreReport } from "@flind/ui/features/inbox/hooks/useInboxRestoreReport";
+import { Spinner } from "@flind/ui/primitives/Spinner";
 import { useNavigate } from "@tanstack/react-router";
 
 interface DismissedReportDetailProps {

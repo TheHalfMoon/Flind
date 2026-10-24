@@ -13,8 +13,8 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@flind/quill";
-import { flattenSelectOptions } from "@posthog/ui/features/sessions/sessionStore";
-import { useRetainedConfigOption } from "@posthog/ui/features/sessions/useRetainedConfigOption";
+import { flattenSelectOptions } from "@flind/ui/features/sessions/sessionStore";
+import { useRetainedConfigOption } from "@flind/ui/features/sessions/useRetainedConfigOption";
 import { useRef, useState } from "react";
 
 interface ModeSelectorProps {

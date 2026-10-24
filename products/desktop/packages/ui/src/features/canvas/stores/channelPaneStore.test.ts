@@ -1,4 +1,4 @@
-import { useCurrentChannelStore } from "@posthog/ui/features/canvas/stores/currentChannelStore";
+import { useCurrentChannelStore } from "@flind/ui/features/canvas/stores/currentChannelStore";
 import { beforeEach, describe, expect, it } from "vitest";
 import { applyTabViewState, useChannelPaneStore } from "./channelPaneStore";
 

@@ -1,8 +1,8 @@
 import { useSortable } from "@dnd-kit/react/sortable";
-import { resolveWorkspaceForRepoPath } from "@posthog/core/panels/resolveWorkspaceForRepoPath";
-import { useHostTRPCClient } from "@posthog/host-router/react";
-import { useExternalAppAction } from "@posthog/ui/features/external-apps/useExternalAppAction";
-import type { TabData } from "@posthog/ui/features/panels/panelTypes";
+import { resolveWorkspaceForRepoPath } from "@flind/core/panels/resolveWorkspaceForRepoPath";
+import { useHostTRPCClient } from "@flind/host-router/react";
+import { useExternalAppAction } from "@flind/ui/features/external-apps/useExternalAppAction";
+import type { TabData } from "@flind/ui/features/panels/panelTypes";
 import { Cross2Icon } from "@radix-ui/react-icons";
 import { Box, Flex, IconButton, Text } from "@radix-ui/themes";
 import type React from "react";

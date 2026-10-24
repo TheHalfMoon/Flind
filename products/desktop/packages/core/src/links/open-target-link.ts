@@ -1,10 +1,10 @@
-import { ROOT_LOGGER, type RootLogger } from "@posthog/di/logger";
+import { ROOT_LOGGER, type RootLogger } from "@flind/di/logger";
 import {
   type IMainWindow,
   MAIN_WINDOW_SERVICE,
-} from "@posthog/platform/main-window";
-import type { NotificationTarget } from "@posthog/platform/notifications";
-import { TypedEventEmitter } from "@posthog/shared";
+} from "@flind/platform/main-window";
+import type { NotificationTarget } from "@flind/platform/notifications";
+import { TypedEventEmitter } from "@flind/shared";
 import { inject, injectable } from "inversify";
 import type { LinkLogger } from "./identifiers";
 

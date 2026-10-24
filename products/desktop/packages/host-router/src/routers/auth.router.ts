@@ -1,5 +1,5 @@
-import type { AuthService } from "@posthog/core/auth/auth";
-import { AUTH_SERVICE } from "@posthog/core/auth/auth.module";
+import type { AuthService } from "@flind/core/auth/auth";
+import { AUTH_SERVICE } from "@flind/core/auth/auth.module";
 import {
   AuthServiceEvent,
   authStateSchema,
@@ -8,8 +8,8 @@ import {
   selectProjectInput,
   switchOrgInput,
   validAccessTokenOutput,
-} from "@posthog/core/auth/schemas";
-import { publicProcedure, router } from "@posthog/host-trpc/trpc";
+} from "@flind/core/auth/schemas";
+import { publicProcedure, router } from "@flind/host-trpc/trpc";
 
 export const authRouter = router({
   getState: publicProcedure.output(authStateSchema).query(({ ctx }) => {

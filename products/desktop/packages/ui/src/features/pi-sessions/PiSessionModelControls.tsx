@@ -2,11 +2,11 @@ import type {
   PiModelSelection,
   PiSessionController,
   PiThinkingLevel,
-} from "@posthog/core/pi-runtime/piSessionController";
-import type { PiControllerSessionState } from "@posthog/core/pi-runtime/piSessionStore";
+} from "@flind/core/pi-runtime/piSessionController";
+import type { PiControllerSessionState } from "@flind/core/pi-runtime/piSessionStore";
 import { Skeleton } from "@flind/quill";
-import { isTerminalStatus } from "@posthog/shared/domain-types";
-import { isOfferedModel } from "@posthog/shared/model-catalog";
+import { isTerminalStatus } from "@flind/shared/domain-types";
+import { isOfferedModel } from "@flind/shared/model-catalog";
 import { useCallback } from "react";
 import { PiModelSelector } from "./PiSessionControls";
 import {

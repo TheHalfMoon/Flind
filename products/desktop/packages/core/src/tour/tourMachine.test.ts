@@ -6,8 +6,8 @@ import {
   type GetTour,
   startTour,
   type TourState,
-} from "@posthog/core/tour/tourMachine";
-import type { TourDefinition } from "@posthog/core/tour/types";
+} from "@flind/core/tour/tourMachine";
+import type { TourDefinition } from "@flind/core/tour/types";
 import { describe, expect, it } from "vitest";
 
 const tour: TourDefinition = {

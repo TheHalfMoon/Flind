@@ -1,4 +1,4 @@
-import { useAuthenticatedQuery } from "@posthog/ui/hooks/useAuthenticatedQuery";
+import { useAuthenticatedQuery } from "@flind/ui/hooks/useAuthenticatedQuery";
 import { useAuthStateValue } from "../../auth/store";
 import { scoutQueryKeys } from "./scoutQueryKeys";
 

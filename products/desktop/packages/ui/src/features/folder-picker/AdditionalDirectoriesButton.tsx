@@ -1,7 +1,7 @@
 import { Check, FolderOpen, FolderPlus } from "@phosphor-icons/react";
-import { ROOT_LOGGER, type RootLogger } from "@posthog/di/logger";
-import { useService } from "@posthog/di/react";
-import { useHostTRPCClient } from "@posthog/host-router/react";
+import { ROOT_LOGGER, type RootLogger } from "@flind/di/logger";
+import { useService } from "@flind/di/react";
+import { useHostTRPCClient } from "@flind/host-router/react";
 import {
   Button,
   DropdownMenu,
@@ -11,7 +11,7 @@ import {
   DropdownMenuTrigger,
   MenuLabel,
 } from "@flind/quill";
-import { useFolders } from "@posthog/ui/features/folders/useFolders";
+import { useFolders } from "@flind/ui/features/folders/useFolders";
 import { useMemo } from "react";
 
 interface AdditionalDirectoriesButtonProps {

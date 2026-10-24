@@ -1,5 +1,5 @@
-import type { ArchivedTask } from "@posthog/shared";
-import type { Task } from "@posthog/shared/domain-types";
+import type { ArchivedTask } from "@flind/shared";
+import type { Task } from "@flind/shared/domain-types";
 import { describe, expect, it } from "vitest";
 import {
   type ArchivedTaskWithDetails,

@@ -10,7 +10,7 @@ import {
 } from "node:fs/promises";
 import { join } from "node:path";
 import { logger } from "@main/utils/logger";
-import type { IDiskCache } from "@posthog/platform/disk-cache";
+import type { IDiskCache } from "@flind/platform/disk-cache";
 
 const log = logger.scope("diskCache");
 

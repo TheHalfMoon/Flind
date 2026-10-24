@@ -1,5 +1,5 @@
-import { connectivityStore } from "@posthog/core/connectivity/connectivityStore";
-import type { SessionService } from "@posthog/core/sessions/sessionService";
+import { connectivityStore } from "@flind/core/connectivity/connectivityStore";
+import type { SessionService } from "@flind/core/sessions/sessionService";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { NetworkReconnectContribution } from "./network-reconnect.contribution";
 

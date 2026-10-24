@@ -4,7 +4,7 @@ import {
   LoadingIcon,
   type ToolViewProps,
   useToolCallStatus,
-} from "@posthog/ui/features/sessions/components/session-update/toolCallUtils";
+} from "@flind/ui/features/sessions/components/session-update/toolCallUtils";
 import type { ConversationItem, TurnContext } from "../buildConversationItems";
 import { SessionUpdateView } from "./SessionUpdateView";
 import { isShowActionsItem } from "./showActionsItem";

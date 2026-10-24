@@ -4,24 +4,24 @@ import {
   DEFAULT_CANVAS_LIST_SETTINGS,
   DEFAULT_CANVAS_LIST_SORT,
   hasCustomizedCanvasList,
-} from "@posthog/core/canvas/canvasListService";
+} from "@flind/core/canvas/canvasListService";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuSeparator,
 } from "@flind/quill";
-import { CanvasFilterMultiSelectSubmenu } from "@posthog/ui/features/canvas/components/CanvasFilterMultiSelectSubmenu";
+import { CanvasFilterMultiSelectSubmenu } from "@flind/ui/features/canvas/components/CanvasFilterMultiSelectSubmenu";
 import {
   type CanvasFilterOption,
   type CanvasMultiSelectOption,
   summarizeCreatorSelection,
   summarizeSpaceSelection,
-} from "@posthog/ui/features/canvas/components/canvasFilterSelection";
+} from "@flind/ui/features/canvas/components/canvasFilterSelection";
 import {
   FilterClearItem,
   FilterMenuTrigger,
   FilterRadioSubMenu,
-} from "@posthog/ui/primitives/FilterMenu";
+} from "@flind/ui/primitives/FilterMenu";
 import type { ReactElement } from "react";
 
 const SORT_OPTIONS: readonly CanvasFilterOption<CanvasListSettings["sort"]>[] =

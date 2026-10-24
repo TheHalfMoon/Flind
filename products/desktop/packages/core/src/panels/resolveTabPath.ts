@@ -1,4 +1,4 @@
-import { isAbsolutePath } from "@posthog/shared";
+import { isAbsolutePath } from "@flind/shared";
 
 export function resolveTabAbsolutePath(
   relativePath: string,

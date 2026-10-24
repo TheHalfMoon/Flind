@@ -1,5 +1,5 @@
 import { Text } from "@components/text";
-import type { SupportedReasoningEffort } from "@posthog/shared";
+import type { SupportedReasoningEffort } from "@flind/shared";
 import {
   ArrowCounterClockwise,
   CaretDown,

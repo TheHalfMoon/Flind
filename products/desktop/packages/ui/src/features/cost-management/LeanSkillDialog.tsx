@@ -2,7 +2,7 @@ import { ArrowSquareOut } from "@phosphor-icons/react";
 import {
   type LeanSkill,
   leanSkillRepoUrl,
-} from "@posthog/core/billing/leanSkills";
+} from "@flind/core/billing/leanSkills";
 import {
   Button,
   Dialog,

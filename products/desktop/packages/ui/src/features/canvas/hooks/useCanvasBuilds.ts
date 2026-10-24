@@ -1,8 +1,8 @@
 import {
   type CanvasBuildLifecycle,
   hasActiveCanvasBuild,
-} from "@posthog/core/canvas/canvasBuildSchemas";
-import { useHostTRPC } from "@posthog/host-router/react";
+} from "@flind/core/canvas/canvasBuildSchemas";
+import { useHostTRPC } from "@flind/host-router/react";
 import { useQuery } from "@tanstack/react-query";
 
 // Poll while a build is in flight (publishes queue a server-side build), then

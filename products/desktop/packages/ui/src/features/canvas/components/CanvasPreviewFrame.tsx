@@ -1,8 +1,8 @@
-import { publishedCanvasBuild } from "@posthog/core/canvas/canvasBuildSchemas";
+import { publishedCanvasBuild } from "@flind/core/canvas/canvasBuildSchemas";
 import { Text } from "@flind/quill";
-import { BuiltCanvas } from "@posthog/ui/features/canvas/freeform/BuiltCanvas";
-import { useCanvasBuilds } from "@posthog/ui/features/canvas/hooks/useCanvasBuilds";
-import { useInView } from "@posthog/ui/primitives/hooks/useInView";
+import { BuiltCanvas } from "@flind/ui/features/canvas/freeform/BuiltCanvas";
+import { useCanvasBuilds } from "@flind/ui/features/canvas/hooks/useCanvasBuilds";
+import { useInView } from "@flind/ui/primitives/hooks/useInView";
 import { useCallback, useEffect, useState } from "react";
 
 const LAYOUT_WIDTH = 1200;

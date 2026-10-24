@@ -1,4 +1,4 @@
-import { primaryWindow, type TabViewState } from "@posthog/shared";
+import { primaryWindow, type TabViewState } from "@flind/shared";
 import { useRouterState } from "@tanstack/react-router";
 import { useTabsSnapshot } from "./useBrowserTabs";
 

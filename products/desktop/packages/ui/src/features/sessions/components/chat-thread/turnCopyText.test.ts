@@ -1,5 +1,5 @@
-import type { ConversationItem } from "@posthog/ui/features/sessions/components/buildConversationItems";
-import type { ToolGroupItem } from "@posthog/ui/features/sessions/components/chat-thread/ToolGroup";
+import type { ConversationItem } from "@flind/ui/features/sessions/components/buildConversationItems";
+import type { ToolGroupItem } from "@flind/ui/features/sessions/components/chat-thread/ToolGroup";
 import { describe, expect, it } from "vitest";
 import { buildTurnCopyText } from "./turnCopyText";
 

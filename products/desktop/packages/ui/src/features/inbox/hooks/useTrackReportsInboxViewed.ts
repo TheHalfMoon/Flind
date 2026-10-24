@@ -1,8 +1,8 @@
-import { buildInboxViewedProperties } from "@posthog/core/inbox/engagement";
-import type { InboxReviewerScope } from "@posthog/shared/analytics-events";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
-import type { SignalReport } from "@posthog/shared/types";
-import { track } from "@posthog/ui/shell/analytics";
+import { buildInboxViewedProperties } from "@flind/core/inbox/engagement";
+import type { InboxReviewerScope } from "@flind/shared/analytics-events";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
+import type { SignalReport } from "@flind/shared/types";
+import { track } from "@flind/ui/shell/analytics";
 import { useEffect, useRef } from "react";
 
 export function useTrackReportsInboxViewed({

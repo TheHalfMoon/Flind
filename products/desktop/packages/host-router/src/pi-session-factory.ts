@@ -5,7 +5,7 @@ import {
 import type {
   PiSession,
   PiSessionFactory,
-} from "@posthog/core/pi-runtime/piSessionController";
+} from "@flind/core/pi-runtime/piSessionController";
 import { inject, injectable } from "inversify";
 import type { HostTrpcClient } from "./client";
 import { HOST_TRPC_CLIENT } from "./client";

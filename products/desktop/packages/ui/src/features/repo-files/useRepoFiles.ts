@@ -1,11 +1,11 @@
-import { resolveService } from "@posthog/di/container";
+import { resolveService } from "@flind/di/container";
 import {
   HOST_TRPC_CLIENT,
   type HostTrpcClient,
-} from "@posthog/host-router/client";
-import { useHostTRPC } from "@posthog/host-router/react";
-import type { HostRouter } from "@posthog/host-router/router";
-import type { MentionItem } from "@posthog/shared/domain-types";
+} from "@flind/host-router/client";
+import { useHostTRPC } from "@flind/host-router/react";
+import type { HostRouter } from "@flind/host-router/router";
+import type { MentionItem } from "@flind/shared/domain-types";
 import { useQuery } from "@tanstack/react-query";
 import {
   createTRPCOptionsProxy,

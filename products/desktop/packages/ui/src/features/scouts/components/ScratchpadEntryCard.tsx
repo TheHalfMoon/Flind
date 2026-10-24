@@ -1,9 +1,9 @@
 import { CaretRightIcon, ClockIcon } from "@phosphor-icons/react";
-import type { ScoutScratchpadEntry } from "@posthog/api-client/posthog-client";
-import { splitScratchpadKey } from "@posthog/core/scouts/scoutScratchpad";
+import type { ScoutScratchpadEntry } from "@flind/api-client/posthog-client";
+import { splitScratchpadKey } from "@flind/core/scouts/scoutScratchpad";
 import { Badge } from "@flind/quill";
-import { MarkdownRenderer } from "@posthog/ui/features/editor/components/MarkdownRenderer";
-import { RelativeTimestamp } from "@posthog/ui/primitives/RelativeTimestamp";
+import { MarkdownRenderer } from "@flind/ui/features/editor/components/MarkdownRenderer";
+import { RelativeTimestamp } from "@flind/ui/primitives/RelativeTimestamp";
 
 // The key prefix (everything before the first colon) encodes the note's *kind* —
 // what the scout was doing when it wrote it. Surface it as a colored tag so the

@@ -2,10 +2,10 @@ import {
   BRAINROT_CELL,
   makeCanvasCellValue,
   makeTerminalCellValue,
-} from "@posthog/core/command-center/grid";
+} from "@flind/core/command-center/grid";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-vi.mock("@posthog/ui/shell/rendererStorage", () => ({
+vi.mock("@flind/ui/shell/rendererStorage", () => ({
   electronStorage: {
     getItem: () => null,
     setItem: () => {},

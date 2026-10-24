@@ -1,4 +1,4 @@
-import type { TaskActivityItem } from "@posthog/core/canvas/taskActivity";
+import type { TaskActivityItem } from "@flind/core/canvas/taskActivity";
 import { renderHook } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 
@@ -9,24 +9,24 @@ const hoisted = vi.hoisted(() => ({
   placeCanvasInCommandCenter: vi.fn(),
 }));
 
-vi.mock("@posthog/ui/features/sidebar/usePinnedTasks", () => ({
+vi.mock("@flind/ui/features/sidebar/usePinnedTasks", () => ({
   usePinnedTasks: () => ({
     pinnedTaskIds: new Set(["canvas-1"]),
     togglePin: hoisted.togglePin,
   }),
 }));
 
-vi.mock("@posthog/ui/features/archive/useArchiveTask", () => ({
+vi.mock("@flind/ui/features/archive/useArchiveTask", () => ({
   useArchiveTask: () => ({ archiveTask: hoisted.archiveTask }),
 }));
 
-vi.mock("@posthog/ui/features/command-center/commandCenterStore", () => ({
+vi.mock("@flind/ui/features/command-center/commandCenterStore", () => ({
   useCommandCenterStore: (
     selector: (state: { cells: (string | null)[] }) => unknown,
   ) => selector({ cells: [null] }),
 }));
 
-vi.mock("@posthog/ui/features/command-center/placeTaskInCommandCenter", () => ({
+vi.mock("@flind/ui/features/command-center/placeTaskInCommandCenter", () => ({
   placeTaskInCommandCenter: hoisted.placeTaskInCommandCenter,
   placeCanvasInCommandCenter: hoisted.placeCanvasInCommandCenter,
 }));

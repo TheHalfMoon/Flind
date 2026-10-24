@@ -1,4 +1,4 @@
-import type { SignalReport } from "@posthog/shared/domain-types";
+import type { SignalReport } from "@flind/shared/domain-types";
 import * as Haptics from "expo-haptics";
 import { useState } from "react";
 import { Image, StyleSheet, Text, View } from "react-native";

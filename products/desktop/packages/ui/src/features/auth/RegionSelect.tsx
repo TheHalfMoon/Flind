@@ -6,8 +6,8 @@ import {
   SelectValue,
   Text,
 } from "@flind/quill";
-import { type CloudRegion, describeRegion } from "@posthog/shared";
-import { Tooltip } from "@posthog/ui/primitives/Tooltip";
+import { type CloudRegion, describeRegion } from "@flind/shared";
+import { Tooltip } from "@flind/ui/primitives/Tooltip";
 import { getSelectableRegions } from "./selectableRegions";
 
 interface RegionSelectProps {

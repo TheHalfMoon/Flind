@@ -1,6 +1,6 @@
 import type { FileDiffMetadata } from "@pierre/diffs";
-import type { PrCommentThread } from "@posthog/core/code-review/types";
-import type { ChangedFile } from "@posthog/shared/domain-types";
+import type { PrCommentThread } from "@flind/core/code-review/types";
+import type { ChangedFile } from "@flind/shared/domain-types";
 import { render, screen } from "@testing-library/react";
 import type { ReactNode } from "react";
 import { describe, expect, it, vi } from "vitest";

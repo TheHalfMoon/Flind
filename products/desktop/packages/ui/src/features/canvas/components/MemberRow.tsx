@@ -1,8 +1,8 @@
 import { XIcon } from "@phosphor-icons/react";
 import { Badge, Button } from "@flind/quill";
-import type { UserBasic } from "@posthog/shared/domain-types";
-import { UserAvatar } from "@posthog/ui/features/auth/UserAvatar";
-import { userDisplayName } from "@posthog/ui/features/canvas/utils/userDisplay";
+import type { UserBasic } from "@flind/shared/domain-types";
+import { UserAvatar } from "@flind/ui/features/auth/UserAvatar";
+import { userDisplayName } from "@flind/ui/features/canvas/utils/userDisplay";
 
 export function MemberRow({
   member,

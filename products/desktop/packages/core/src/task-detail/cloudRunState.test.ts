@@ -1,4 +1,4 @@
-import type { Task, TaskRunStatus } from "@posthog/shared/domain-types";
+import type { Task, TaskRunStatus } from "@flind/shared/domain-types";
 import { describe, expect, it } from "vitest";
 import { deriveCloudRunState } from "./cloudRunState";
 

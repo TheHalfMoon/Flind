@@ -13,7 +13,7 @@ import type {
   PromptFailureKind,
   SessionStatus,
   TaskRunStatus,
-} from "@posthog/shared";
+} from "@flind/shared";
 import { createStore, type StoreApi } from "zustand/vanilla";
 
 export interface PiSessionError {

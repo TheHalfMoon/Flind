@@ -54,7 +54,7 @@ keep their own actions.
 Run the focus and submission checks with:
 
 ```bash
-pnpm --filter @posthog/ui test src/features/sessions/components/CommentComposer.integration.test.tsx
+pnpm --filter @flind/ui test src/features/sessions/components/CommentComposer.integration.test.tsx
 ```
 
 ## Continue a completed report chat
@@ -260,7 +260,7 @@ Stories must render deterministically: the preview freezes the clock (`mockdate`
 
 ## Boundary Checks
 
-After touching `@posthog/platform`, rebuild or typecheck its `dist/` before relying on downstream typechecks.
+After touching `@flind/platform`, rebuild or typecheck its `dist/` before relying on downstream typechecks.
 
 After touching `packages/core`, run:
 

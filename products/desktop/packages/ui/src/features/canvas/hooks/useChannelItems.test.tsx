@@ -1,4 +1,4 @@
-import type { ChannelItemModel } from "@posthog/core/canvas/channelItems";
+import type { ChannelItemModel } from "@flind/core/canvas/channelItems";
 import { renderHook } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import type { Channel } from "./useChannels";
@@ -30,40 +30,40 @@ const mocks = vi.hoisted(() => ({
   toastError: vi.fn(),
 }));
 
-vi.mock("@posthog/ui/features/canvas/hooks/useChannels", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannels", () => ({
   useChannels: () => mocks.channels,
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useDashboards", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useDashboards", () => ({
   useDashboards: () => mocks.dashboards,
   useDashboardMutations: () => ({ setPinned: mocks.setPinned }),
   usePrimeCanvasView: () => () => {},
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useChannelFeed", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannelFeed", () => ({
   useChannelFeed: () => mocks.feed,
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useChannelTasks", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannelTasks", () => ({
   useChannelTasks: () => mocks.filedTasks,
 }));
-vi.mock("@posthog/ui/features/tasks/useTasks", () => ({
+vi.mock("@flind/ui/features/tasks/useTasks", () => ({
   useTasks: (filters: unknown) => {
     mocks.useTasks(filters);
     return mocks.allTasks;
   },
 }));
-vi.mock("@posthog/ui/features/archive/useArchivedTaskIds", () => ({
+vi.mock("@flind/ui/features/archive/useArchivedTaskIds", () => ({
   useArchivedTaskIds: () => new Set<string>(),
 }));
-vi.mock("@posthog/ui/features/archive/useArchiveTask", () => ({
+vi.mock("@flind/ui/features/archive/useArchiveTask", () => ({
   useArchiveTask: () => ({ archiveTask: mocks.archiveTask }),
 }));
-vi.mock("@posthog/ui/features/sidebar/usePinnedTasks", () => ({
+vi.mock("@flind/ui/features/sidebar/usePinnedTasks", () => ({
   usePinnedTasks: () => ({
     pinnedTaskIds: new Set<string>(),
     togglePin: mocks.togglePin,
     setPinnedMany: mocks.setPinnedMany,
   }),
 }));
-vi.mock("@posthog/ui/primitives/toast", () => ({
+vi.mock("@flind/ui/primitives/toast", () => ({
   toast: {
     error: mocks.toastError,
     success: vi.fn(),
@@ -74,19 +74,19 @@ vi.mock("@posthog/ui/primitives/toast", () => ({
 // The session facts behind the status and environment filters. All three reach
 // the host — for live sessions, viewed timestamps and workspaces — and this
 // suite is about which items the hook builds, not what they say.
-vi.mock("@posthog/ui/features/sidebar/useSidebarSessionMap", () => ({
+vi.mock("@flind/ui/features/sidebar/useSidebarSessionMap", () => ({
   useSidebarSessionMap: () => new Map(),
 }));
-vi.mock("@posthog/ui/features/sidebar/useTaskViewed", () => ({
+vi.mock("@flind/ui/features/sidebar/useTaskViewed", () => ({
   useTaskViewed: () => ({ timestamps: {} }),
 }));
-vi.mock("@posthog/ui/features/workspace/useWorkspace", () => ({
+vi.mock("@flind/ui/features/workspace/useWorkspace", () => ({
   useWorkspaces: () => ({ data: undefined, isFetched: true }),
 }));
-vi.mock("@posthog/ui/features/auth/authClient", () => ({
+vi.mock("@flind/ui/features/auth/authClient", () => ({
   useOptionalAuthenticatedClient: () => undefined,
 }));
-vi.mock("@posthog/ui/features/auth/useCurrentUser", () => ({
+vi.mock("@flind/ui/features/auth/useCurrentUser", () => ({
   useCurrentUser: () => ({
     data: mocks.currentUser,
     isLoading: mocks.currentUserLoading,

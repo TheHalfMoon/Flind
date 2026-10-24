@@ -1,4 +1,4 @@
-import { useHostTRPC } from "@posthog/host-router/react";
+import { useHostTRPC } from "@flind/host-router/react";
 import { Skeleton } from "@radix-ui/themes";
 import { useQuery } from "@tanstack/react-query";
 

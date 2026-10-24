@@ -4,18 +4,18 @@ import {
   SETTINGS_BACKUP_SERVICE,
   type SettingsBackupService,
   SOUND_SETTINGS,
-} from "@posthog/core/settings/settingsBackup";
-import { useService } from "@posthog/di/react";
+} from "@flind/core/settings/settingsBackup";
+import { useService } from "@flind/di/react";
 import { Button } from "@flind/quill";
-import { ANALYTICS_EVENTS } from "@posthog/shared";
+import { ANALYTICS_EVENTS } from "@flind/shared";
 import {
   SettingsCard,
   SettingsSection,
-} from "@posthog/ui/features/settings/components/SettingsCard";
-import { SettingsSelect } from "@posthog/ui/features/settings/components/SettingsSelect";
-import { useSettingsBackupAvailable } from "@posthog/ui/features/settings/hooks/useSettingsBackupAvailable";
-import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
-import { track } from "@posthog/ui/shell/analytics";
+} from "@flind/ui/features/settings/components/SettingsCard";
+import { SettingsSelect } from "@flind/ui/features/settings/components/SettingsSelect";
+import { useSettingsBackupAvailable } from "@flind/ui/features/settings/hooks/useSettingsBackupAvailable";
+import { useSettingsStore } from "@flind/ui/features/settings/settingsStore";
+import { track } from "@flind/ui/shell/analytics";
 import { useMutation } from "@tanstack/react-query";
 import { Download, Upload } from "lucide-react";
 import { useState } from "react";

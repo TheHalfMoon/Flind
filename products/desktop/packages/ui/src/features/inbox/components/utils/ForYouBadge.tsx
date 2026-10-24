@@ -1,5 +1,5 @@
 import { EyeIcon } from "@phosphor-icons/react";
-import { InboxBadge } from "@posthog/ui/features/inbox/components/utils/InboxBadge";
+import { InboxBadge } from "@flind/ui/features/inbox/components/utils/InboxBadge";
 import { Tooltip } from "@radix-ui/themes";
 
 export function ForYouBadge() {

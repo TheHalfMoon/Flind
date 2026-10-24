@@ -1,5 +1,5 @@
 import { Eye, Paperclip } from "@phosphor-icons/react";
-import type { IFeedbackContext } from "@posthog/platform/feedback-context";
+import type { IFeedbackContext } from "@flind/platform/feedback-context";
 import {
   Button,
   Checkbox,

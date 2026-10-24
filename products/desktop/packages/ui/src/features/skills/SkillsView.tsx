@@ -4,7 +4,7 @@ import {
   LightbulbIcon,
   PlusIcon,
 } from "@phosphor-icons/react";
-import { analyzeSkills } from "@posthog/core/skills/analyzeSkills";
+import { analyzeSkills } from "@flind/core/skills/analyzeSkills";
 import {
   Button,
   DropdownMenu,
@@ -17,7 +17,7 @@ import {
   ToggleGroup,
   ToggleGroupItem,
 } from "@flind/quill";
-import type { SkillInfo, SkillSource } from "@posthog/shared";
+import type { SkillInfo, SkillSource } from "@flind/shared";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { ResizableSidebar } from "../../primitives/ResizableSidebar";
 import { MarketplaceBrowse } from "./MarketplaceBrowse";

@@ -1,8 +1,8 @@
 import { EditorView } from "@codemirror/view";
 import { MultiFileDiff } from "@pierre/diffs/react";
-import { compactHomePath, parseImageDataUrl } from "@posthog/shared";
-import { DiffWorkerPool } from "@posthog/ui/features/code-review/DiffWorkerPool";
-import { DIFFS_HIGHLIGHTER_OPTIONS } from "@posthog/ui/features/sessions/diffHighlighterOptions";
+import { compactHomePath, parseImageDataUrl } from "@flind/shared";
+import { DiffWorkerPool } from "@flind/ui/features/code-review/DiffWorkerPool";
+import { DIFFS_HIGHLIGHTER_OPTIONS } from "@flind/ui/features/sessions/diffHighlighterOptions";
 import { Code } from "@radix-ui/themes";
 import { useEffect, useMemo, useRef } from "react";
 import { SafeImagePreview } from "../../../../primitives/SafeImagePreview";

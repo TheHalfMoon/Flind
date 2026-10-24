@@ -1,8 +1,8 @@
 import { ClockCounterClockwiseIcon } from "@phosphor-icons/react";
-import { ArtefactLogList } from "@posthog/ui/features/inbox/components/detail/ArtefactLogList";
-import { selectUsefulReportActivity } from "@posthog/ui/features/inbox/components/detail/reportActivity";
-import { RightColumnSection } from "@posthog/ui/features/inbox/components/RightColumnSection";
-import { useInboxReportArtefacts } from "@posthog/ui/features/inbox/hooks/useInboxReports";
+import { ArtefactLogList } from "@flind/ui/features/inbox/components/detail/ArtefactLogList";
+import { selectUsefulReportActivity } from "@flind/ui/features/inbox/components/detail/reportActivity";
+import { RightColumnSection } from "@flind/ui/features/inbox/components/RightColumnSection";
+import { useInboxReportArtefacts } from "@flind/ui/features/inbox/hooks/useInboxReports";
 import type { ReactElement } from "react";
 
 /**

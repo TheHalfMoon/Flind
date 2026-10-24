@@ -1,4 +1,4 @@
-import type { TabsSnapshot } from "@posthog/shared";
+import type { TabsSnapshot } from "@flind/shared";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import type { BrowserTabsClient } from "./browserTabsClient";
 import {
@@ -18,7 +18,7 @@ const mocks = vi.hoisted(() => ({
   reseedMirror: vi.fn(),
 }));
 
-vi.mock("@posthog/ui/router/routerRef", () => ({
+vi.mock("@flind/ui/router/routerRef", () => ({
   getRouterOrNull: mocks.getRouterOrNull,
 }));
 vi.mock("./tabsSync", () => ({
@@ -28,8 +28,8 @@ vi.mock("./tabsSync", () => ({
   persistWrite: mocks.persistWrite,
   reseedMirror: mocks.reseedMirror,
 }));
-vi.mock("@posthog/shared", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@posthog/shared")>();
+vi.mock("@flind/shared", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@flind/shared")>();
   return { ...actual, setTabTarget: mocks.setTabTarget };
 });
 

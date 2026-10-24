@@ -2,56 +2,56 @@ import { ArrowSquareOutIcon, PlugsConnectedIcon } from "@phosphor-icons/react";
 import {
   REPORT_MODEL_RESOLVER,
   type ReportModelResolver,
-} from "@posthog/core/inbox/identifiers";
-import { classifyIntegrations } from "@posthog/core/integrations/selectors";
+} from "@flind/core/inbox/identifiers";
+import { classifyIntegrations } from "@flind/core/integrations/selectors";
 import {
   TASK_SERVICE,
   type TaskCreationInput,
   type TaskService,
-} from "@posthog/core/task-detail/taskService";
-import { useService } from "@posthog/di/react";
+} from "@flind/core/task-detail/taskService";
+import { useService } from "@flind/di/react";
 import { Button } from "@flind/quill";
 import {
   ANALYTICS_EVENTS,
   defaultEligibleModel,
   getCloudUrlFromRegion,
-} from "@posthog/shared";
-import { SELF_DRIVING_SETUP_TASK_FLAG } from "@posthog/shared/constants";
-import { useTrackAgentsViewed } from "@posthog/ui/features/agents/hooks/useTrackAgentsViewed";
-import { useAuthStateValue } from "@posthog/ui/features/auth/store";
-import { useFeatureFlag } from "@posthog/ui/features/feature-flags/useFeatureFlag";
-import { DataSourceSetup } from "@posthog/ui/features/inbox/components/DataSourceSetup";
+} from "@flind/shared";
+import { SELF_DRIVING_SETUP_TASK_FLAG } from "@flind/shared/constants";
+import { useTrackAgentsViewed } from "@flind/ui/features/agents/hooks/useTrackAgentsViewed";
+import { useAuthStateValue } from "@flind/ui/features/auth/store";
+import { useFeatureFlag } from "@flind/ui/features/feature-flags/useFeatureFlag";
+import { DataSourceSetup } from "@flind/ui/features/inbox/components/DataSourceSetup";
 import {
   ResponderAgentRoster,
   ResponderAgentRosterSkeleton,
-} from "@posthog/ui/features/inbox/components/ResponderAgentRoster";
+} from "@flind/ui/features/inbox/components/ResponderAgentRoster";
 import {
   RESPONDER_AGENT_GROUPS,
   type ResponderAgentSource,
-} from "@posthog/ui/features/inbox/components/responderAgentMeta";
-import { resolveDefaultModel } from "@posthog/ui/features/inbox/hooks/resolveDefaultModel";
-import { useSignalSourceManager } from "@posthog/ui/features/inbox/hooks/useSignalSourceManager";
+} from "@flind/ui/features/inbox/components/responderAgentMeta";
+import { resolveDefaultModel } from "@flind/ui/features/inbox/hooks/resolveDefaultModel";
+import { useSignalSourceManager } from "@flind/ui/features/inbox/hooks/useSignalSourceManager";
 import {
   useIntegrations,
   useRepositoryIntegration,
   useUserRepositoryIntegration,
-} from "@posthog/ui/features/integrations/useIntegrations";
-import { toastError } from "@posthog/ui/features/notifications/errorDetails";
-import { SettingsSubsection } from "@posthog/ui/features/settings/components/SettingsSubsection";
-import { DailyReportLimitSettings } from "@posthog/ui/features/settings/sections/DailyReportLimitSettings";
-import { GitHubIntegrationSection } from "@posthog/ui/features/settings/sections/GitHubIntegrationSection";
-import { SlackInboxNotificationsSettings } from "@posthog/ui/features/settings/sections/SlackInboxNotificationsSettings";
+} from "@flind/ui/features/integrations/useIntegrations";
+import { toastError } from "@flind/ui/features/notifications/errorDetails";
+import { SettingsSubsection } from "@flind/ui/features/settings/components/SettingsSubsection";
+import { DailyReportLimitSettings } from "@flind/ui/features/settings/sections/DailyReportLimitSettings";
+import { GitHubIntegrationSection } from "@flind/ui/features/settings/sections/GitHubIntegrationSection";
+import { SlackInboxNotificationsSettings } from "@flind/ui/features/settings/sections/SlackInboxNotificationsSettings";
 import {
   resolveDefaultCloudRepository,
   useSettingsStore,
-} from "@posthog/ui/features/settings/settingsStore";
-import { useCreateTask } from "@posthog/ui/features/tasks/useTaskCrudMutations";
-import { Badge } from "@posthog/ui/primitives/Badge";
-import { toast } from "@posthog/ui/primitives/toast";
-import { settingsSourceHref } from "@posthog/ui/router/reportNavigation";
-import { openTask } from "@posthog/ui/router/useOpenTask";
-import { track } from "@posthog/ui/shell/analytics";
-import { logger } from "@posthog/ui/shell/logger";
+} from "@flind/ui/features/settings/settingsStore";
+import { useCreateTask } from "@flind/ui/features/tasks/useTaskCrudMutations";
+import { Badge } from "@flind/ui/primitives/Badge";
+import { toast } from "@flind/ui/primitives/toast";
+import { settingsSourceHref } from "@flind/ui/router/reportNavigation";
+import { openTask } from "@flind/ui/router/useOpenTask";
+import { track } from "@flind/ui/shell/analytics";
+import { logger } from "@flind/ui/shell/logger";
 import { Box, Flex, Text, Tooltip } from "@radix-ui/themes";
 import { useQueryClient } from "@tanstack/react-query";
 import { Link } from "@tanstack/react-router";

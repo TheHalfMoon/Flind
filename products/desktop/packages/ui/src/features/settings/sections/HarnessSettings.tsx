@@ -1,16 +1,16 @@
 import { ArrowSquareOut, Check, Copy, Warning } from "@phosphor-icons/react";
-import { ANALYTICS_EVENTS } from "@posthog/shared";
+import { ANALYTICS_EVENTS } from "@flind/shared";
 import {
   SettingsCard,
   SettingsCardRow,
   SettingsSection,
-} from "@posthog/ui/features/settings/components/SettingsCard";
-import { ClaudeSubscriptionSettings } from "@posthog/ui/features/settings/sections/ClaudeSubscriptionSettings";
-import { CodexSubscriptionSettings } from "@posthog/ui/features/settings/sections/CodexSubscriptionSettings";
-import { PermissionsSettings } from "@posthog/ui/features/settings/sections/PermissionsSettings";
-import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
-import { Tooltip } from "@posthog/ui/primitives/Tooltip";
-import { track } from "@posthog/ui/shell/analytics";
+} from "@flind/ui/features/settings/components/SettingsCard";
+import { ClaudeSubscriptionSettings } from "@flind/ui/features/settings/sections/ClaudeSubscriptionSettings";
+import { CodexSubscriptionSettings } from "@flind/ui/features/settings/sections/CodexSubscriptionSettings";
+import { PermissionsSettings } from "@flind/ui/features/settings/sections/PermissionsSettings";
+import { useSettingsStore } from "@flind/ui/features/settings/settingsStore";
+import { Tooltip } from "@flind/ui/primitives/Tooltip";
+import { track } from "@flind/ui/shell/analytics";
 import {
   AlertDialog,
   Button,

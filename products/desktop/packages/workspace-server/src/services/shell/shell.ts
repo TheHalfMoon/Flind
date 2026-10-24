@@ -5,13 +5,13 @@ import {
   ROOT_LOGGER,
   type RootLogger,
   type ScopedLogger,
-} from "@posthog/di/logger";
+} from "@flind/di/logger";
 import {
   type IWorkspaceSettings,
   WORKSPACE_SETTINGS_SERVICE,
-} from "@posthog/platform/workspace-settings";
-import { TypedEventEmitter } from "@posthog/shared";
-import { POSTHOG_CODE_INTERNAL_CHILD_ENV } from "@posthog/shared/constants";
+} from "@flind/platform/workspace-settings";
+import { TypedEventEmitter } from "@flind/shared";
+import { POSTHOG_CODE_INTERNAL_CHILD_ENV } from "@flind/shared/constants";
 import { inject, injectable, preDestroy } from "inversify";
 import * as pty from "node-pty";
 import {

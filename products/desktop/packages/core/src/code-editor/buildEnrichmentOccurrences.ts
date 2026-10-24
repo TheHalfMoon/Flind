@@ -2,7 +2,7 @@ import type {
   SerializedEnrichment,
   SerializedEvent,
   SerializedFlag,
-} from "@posthog/shared";
+} from "@flind/shared";
 
 export type EnrichmentPopoverEntry =
   | { kind: "flag"; data: SerializedFlag }

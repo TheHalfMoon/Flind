@@ -1,8 +1,8 @@
 import { Text } from "@components/text";
-import { groupRunArtifactVersions } from "@posthog/core/canvas/runArtifactSchemas";
-import { parsePrUrl } from "@posthog/core/inbox/reportPresentation";
-import { readUploadedArtifactName } from "@posthog/core/sessions/inlineArtifacts";
-import type { TaskRunArtifact } from "@posthog/shared";
+import { groupRunArtifactVersions } from "@flind/core/canvas/runArtifactSchemas";
+import { parsePrUrl } from "@flind/core/inbox/reportPresentation";
+import { readUploadedArtifactName } from "@flind/core/sessions/inlineArtifacts";
+import type { TaskRunArtifact } from "@flind/shared";
 import { File as FileIcon, GitPullRequest } from "phosphor-react-native";
 import { useMemo, useState } from "react";
 import { ActivityIndicator, Pressable, View } from "react-native";

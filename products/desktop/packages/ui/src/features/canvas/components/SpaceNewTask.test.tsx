@@ -41,10 +41,10 @@ const NO_WIKI_PAGE = {
 
 // TaskInput is a huge hook-heavy component; stub it down to just the surface
 // this test cares about — a button that fires onContextChipClick when wired.
-vi.mock("@posthog/ui/features/canvas/hooks/useWorkLayout", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useWorkLayout", () => ({
   useWorkLayout: () => false,
 }));
-vi.mock("@posthog/ui/features/task-detail/components/TaskInput", () => ({
+vi.mock("@flind/ui/features/task-detail/components/TaskInput", () => ({
   TaskInput: (props: {
     allowNoRepo?: boolean;
     onContextChipClick?: () => void;
@@ -63,7 +63,7 @@ vi.mock("@posthog/ui/features/task-detail/components/TaskInput", () => ({
 }));
 
 // The raw channel rows SpaceNewTask reads repository defaults from.
-vi.mock("@posthog/ui/features/canvas/hooks/useTaskChannels", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useTaskChannels", () => ({
   useTaskChannels: () => ({
     channels: [
       {
@@ -80,7 +80,7 @@ vi.mock("@posthog/ui/features/canvas/hooks/useTaskChannels", () => ({
 
 // SpaceSelect (the spaceSelector chip) reads useChannels; keep its dependency
 // chain inert under the stubbed TaskInput.
-vi.mock("@posthog/ui/features/canvas/hooks/useChannels", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannels", () => ({
   useChannels: () => ({
     channels: [
       {
@@ -93,22 +93,22 @@ vi.mock("@posthog/ui/features/canvas/hooks/useChannels", () => ({
   }),
 }));
 
-vi.mock("@posthog/ui/features/canvas/hooks/useChannelsLayout", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannelsLayout", () => ({
   useChannelsLayout: () => true,
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useChannelTasks", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannelTasks", () => ({
   useChannelTaskMutations: () => ({ fileTask: vi.fn() }),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useFolderInstructions", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useFolderInstructions", () => ({
   useFolderInstructions,
 }));
-vi.mock("@posthog/ui/features/feature-flags/useContextLayerFlag", () => ({
+vi.mock("@flind/ui/features/feature-flags/useContextLayerFlag", () => ({
   useContextLayerFlag,
 }));
-vi.mock("@posthog/ui/features/context-wiki/hooks/useContextWiki", () => ({
+vi.mock("@flind/ui/features/context-wiki/hooks/useContextWiki", () => ({
   useChannelWikiContext,
 }));
-vi.mock("@posthog/ui/shell/analytics", () => ({ track }));
+vi.mock("@flind/ui/shell/analytics", () => ({ track }));
 vi.mock("@tanstack/react-query", () => ({
   useQueryClient: () => ({ setQueryData: vi.fn() }),
 }));
@@ -131,7 +131,7 @@ vi.mock("@tanstack/react-router", () => ({
     }),
 }));
 
-import { useTaskInputPrefillStore } from "@posthog/ui/features/task-detail/stores/taskInputPrefillStore";
+import { useTaskInputPrefillStore } from "@flind/ui/features/task-detail/stores/taskInputPrefillStore";
 import { SpaceNewTask } from "./SpaceNewTask";
 
 function renderNewTask() {

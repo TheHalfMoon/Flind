@@ -1,9 +1,9 @@
-import type { Workspace } from "@posthog/shared";
-import type { Task } from "@posthog/shared/domain-types";
+import type { Workspace } from "@flind/shared";
+import type { Task } from "@flind/shared/domain-types";
 import { renderHook } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-vi.mock("@posthog/ui/shell/rendererStorage", () => ({
+vi.mock("@flind/ui/shell/rendererStorage", () => ({
   electronStorage: {
     getItem: () => null,
     setItem: () => {},

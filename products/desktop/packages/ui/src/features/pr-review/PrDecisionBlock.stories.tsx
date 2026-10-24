@@ -1,6 +1,6 @@
-import { useHostTRPC } from "@posthog/host-router/react";
-import { PrDecisionBlock } from "@posthog/ui/features/pr-review/PrDecisionBlock";
-import { teamSkillsKeys } from "@posthog/ui/features/skills/useTeamSkills";
+import { useHostTRPC } from "@flind/host-router/react";
+import { PrDecisionBlock } from "@flind/ui/features/pr-review/PrDecisionBlock";
+import { teamSkillsKeys } from "@flind/ui/features/skills/useTeamSkills";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useQueryClient } from "@tanstack/react-query";
 

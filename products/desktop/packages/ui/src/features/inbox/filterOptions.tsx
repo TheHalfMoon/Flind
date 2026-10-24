@@ -11,19 +11,19 @@ import {
   TrendUp,
   VideoIcon,
 } from "@phosphor-icons/react";
-import { EXTERNAL_INBOX_SOURCES } from "@posthog/shared";
+import { EXTERNAL_INBOX_SOURCES } from "@flind/shared";
 import type {
   AvailableSuggestedReviewer,
   SignalReportOrderingField,
   SignalReportPriority,
   SourceProduct,
-} from "@posthog/shared/types";
-import { getSourceProductMeta } from "@posthog/ui/features/inbox/components/utils/source-product-icons";
+} from "@flind/shared/types";
+import { getSourceProductMeta } from "@flind/ui/features/inbox/components/utils/source-product-icons";
 import {
   DEFAULT_INBOX_REPORT_STATE_FILTER,
   type InboxReportStateFilter,
-} from "@posthog/ui/features/inbox/stores/inboxSignalsFilterStore";
-import type { FilterOption } from "@posthog/ui/primitives/FilterMenu";
+} from "@flind/ui/features/inbox/stores/inboxSignalsFilterStore";
+import type { FilterOption } from "@flind/ui/primitives/FilterMenu";
 import type { ReactNode } from "react";
 
 export type InboxSortField = Extract<

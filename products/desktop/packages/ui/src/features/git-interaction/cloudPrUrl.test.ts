@@ -1,5 +1,5 @@
-import type { Task } from "@posthog/shared/domain-types";
-import type { AgentSession } from "@posthog/ui/features/sessions/sessionStore";
+import type { Task } from "@flind/shared/domain-types";
+import type { AgentSession } from "@flind/ui/features/sessions/sessionStore";
 import { describe, expect, it } from "vitest";
 import { resolveCloudPrUrl, resolveCloudPrUrls } from "./cloudPrUrl";
 

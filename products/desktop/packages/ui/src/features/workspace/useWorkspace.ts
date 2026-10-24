@@ -1,6 +1,6 @@
-import { useHostTRPC } from "@posthog/host-router/react";
-import type { Workspace } from "@posthog/shared";
-import type { Task } from "@posthog/shared/domain-types";
+import { useHostTRPC } from "@flind/host-router/react";
+import type { Workspace } from "@flind/shared";
+import type { Task } from "@flind/shared/domain-types";
 import {
   type QueryClient,
   QueryObserver,

@@ -1,5 +1,5 @@
-import { getCloudUrlFromRegion } from "@posthog/shared";
-import { useAuthStateValue } from "@posthog/ui/features/auth/store";
+import { getCloudUrlFromRegion } from "@flind/shared";
+import { useAuthStateValue } from "@flind/ui/features/auth/store";
 
 export function usePostHogHost(): string | null {
   const cloudRegion = useAuthStateValue((state) => state.cloudRegion);

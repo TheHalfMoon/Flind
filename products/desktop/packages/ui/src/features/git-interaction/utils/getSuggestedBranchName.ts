@@ -1,8 +1,8 @@
 import {
   deriveBranchName,
   suggestBranchName,
-} from "@posthog/core/git-interaction/branchName";
-import type { Task } from "@posthog/shared/domain-types";
+} from "@flind/core/git-interaction/branchName";
+import type { Task } from "@flind/shared/domain-types";
 import type { QueryClient } from "@tanstack/react-query";
 import type { GitCacheKeyProvider } from "../gitCacheProvider";
 

@@ -1,6 +1,6 @@
-import type { ReportModelResolver } from "@posthog/core/inbox/identifiers";
-import type { Adapter } from "@posthog/shared";
-import { logger } from "@posthog/ui/shell/logger";
+import type { ReportModelResolver } from "@flind/core/inbox/identifiers";
+import type { Adapter } from "@flind/shared";
+import { logger } from "@flind/ui/shell/logger";
 import type { QueryClient } from "@tanstack/react-query";
 
 const log = logger.scope("resolve-default-model");

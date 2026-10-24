@@ -1,4 +1,4 @@
-import type { UserBasic } from "@posthog/shared/domain-types";
+import type { UserBasic } from "@flind/shared/domain-types";
 import { getSchema } from "@tiptap/core";
 import Mention from "@tiptap/extension-mention";
 import { Node as PmNode } from "@tiptap/pm/model";

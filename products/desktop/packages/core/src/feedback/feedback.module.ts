@@ -1,7 +1,7 @@
 import {
   FEEDBACK_SUBMISSION_SERVICE,
   FeedbackSubmissionService,
-} from "@posthog/core/feedback/feedbackAttachmentService";
+} from "@flind/core/feedback/feedbackAttachmentService";
 import { ContainerModule } from "inversify";
 
 export const feedbackCoreModule = new ContainerModule(({ bind }) => {

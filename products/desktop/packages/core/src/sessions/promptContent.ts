@@ -5,7 +5,7 @@ import {
   isRasterImageFile,
   pathToFileUri,
   unescapeXmlAttr,
-} from "@posthog/shared";
+} from "@flind/shared";
 import {
   ABSOLUTE_FILE_TAG_REGEX,
   normalizePromptText,

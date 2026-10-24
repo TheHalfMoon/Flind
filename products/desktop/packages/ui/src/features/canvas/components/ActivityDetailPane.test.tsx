@@ -1,4 +1,4 @@
-import type { SignalReport } from "@posthog/shared/types";
+import type { SignalReport } from "@flind/shared/types";
 import { fireEvent, render, screen } from "@testing-library/react";
 import type { ReactNode } from "react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
@@ -9,26 +9,26 @@ const mocks = vi.hoisted(() => ({
   clearSelection: vi.fn(),
 }));
 
-vi.mock("@posthog/ui/features/canvas/hooks/useChannels", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useChannels", () => ({
   useChannels: () => ({ channels: [] }),
 }));
-vi.mock("@posthog/ui/features/canvas/hooks/useInboxActivityPreview", () => ({
+vi.mock("@flind/ui/features/canvas/hooks/useInboxActivityPreview", () => ({
   useInboxActivityPreview: () => ({ reports: mocks.reports }),
 }));
-vi.mock("@posthog/ui/features/canvas/stores/activityDetailStore", () => ({
+vi.mock("@flind/ui/features/canvas/stores/activityDetailStore", () => ({
   clearActivitySelection: mocks.clearSelection,
   useActivitySelection: () => mocks.selection,
 }));
-vi.mock("@posthog/ui/features/tasks/useResolvedTask", () => ({
+vi.mock("@flind/ui/features/tasks/useResolvedTask", () => ({
   useResolvedTask: () => undefined,
 }));
-vi.mock("@posthog/ui/features/task-detail/components/TaskDetail", () => ({
+vi.mock("@flind/ui/features/task-detail/components/TaskDetail", () => ({
   TaskDetail: () => <div>Task detail</div>,
 }));
-vi.mock("@posthog/ui/router/routeSkeletons", () => ({
+vi.mock("@flind/ui/router/routeSkeletons", () => ({
   TaskDetailSkeleton: () => <div>Task loading</div>,
 }));
-vi.mock("@posthog/ui/features/inbox/components/ReportDetail", () => ({
+vi.mock("@flind/ui/features/inbox/components/ReportDetail", () => ({
   ReportDetail: ({
     reportId,
     cachedReport,

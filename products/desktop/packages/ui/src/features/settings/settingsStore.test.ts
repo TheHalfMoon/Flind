@@ -1,9 +1,9 @@
-import { EMPTY_SPEND_LIMITS } from "@posthog/core/billing/spendLimits";
-import { TIP_KEYS } from "@posthog/ui/features/settings/tipKeys";
+import { EMPTY_SPEND_LIMITS } from "@flind/core/billing/spendLimits";
+import { TIP_KEYS } from "@flind/ui/features/settings/tipKeys";
 import {
   flushRendererStateWrites,
   registerRendererStateStorage,
-} from "@posthog/ui/shell/rendererStorage";
+} from "@flind/ui/shell/rendererStorage";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import {
   type CompletionSound,

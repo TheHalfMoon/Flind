@@ -1,7 +1,7 @@
-import type { CloudTaskClient } from "@posthog/core/cloud-task/cloudTaskClient";
-import type { SendCommandInput } from "@posthog/core/cloud-task/schemas";
-import { SharedCloudTaskSubscriptions } from "@posthog/core/cloud-task/sharedCloudTaskSubscriptions";
-import type { CloudTaskUpdatePayload } from "@posthog/shared/domain-types";
+import type { CloudTaskClient } from "@flind/core/cloud-task/cloudTaskClient";
+import type { SendCommandInput } from "@flind/core/cloud-task/schemas";
+import { SharedCloudTaskSubscriptions } from "@flind/core/cloud-task/sharedCloudTaskSubscriptions";
+import type { CloudTaskUpdatePayload } from "@flind/shared/domain-types";
 import { inject, injectable } from "inversify";
 import { HOST_TRPC_CLIENT, type HostTrpcClient } from "./client";
 

@@ -1,8 +1,8 @@
 import {
   RIGHT_PANEL_DEFAULT_WIDTH,
   RIGHT_PANEL_MIN_WIDTH,
-} from "@posthog/ui/features/navigation/rightPanelGeometry";
-import { electronStorage } from "@posthog/ui/shell/rendererStorage";
+} from "@flind/ui/features/navigation/rightPanelGeometry";
+import { electronStorage } from "@flind/ui/shell/rendererStorage";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 

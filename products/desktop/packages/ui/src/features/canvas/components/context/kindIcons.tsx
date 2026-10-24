@@ -13,7 +13,7 @@ import {
   UserIcon,
   UsersThreeIcon,
 } from "@phosphor-icons/react";
-import type { ContextObjectKind } from "@posthog/core/canvas/contextDocument";
+import type { ContextObjectKind } from "@flind/core/canvas/contextDocument";
 import type { ReactNode } from "react";
 
 export const KIND_ICONS: Record<ContextObjectKind, ReactNode> = {

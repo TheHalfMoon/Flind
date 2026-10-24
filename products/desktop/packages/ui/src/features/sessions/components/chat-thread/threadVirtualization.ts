@@ -1,6 +1,6 @@
-import type { ConversationItem } from "@posthog/ui/features/sessions/components/buildConversationItems";
-import type { ToolGroupItem } from "@posthog/ui/features/sessions/components/chat-thread/ToolGroup";
-import { buildTurnCopyText } from "@posthog/ui/features/sessions/components/chat-thread/turnCopyText";
+import type { ConversationItem } from "@flind/ui/features/sessions/components/buildConversationItems";
+import type { ToolGroupItem } from "@flind/ui/features/sessions/components/chat-thread/ToolGroup";
+import { buildTurnCopyText } from "@flind/ui/features/sessions/components/chat-thread/turnCopyText";
 
 /** A row is either a parsed conversation item or a synthesized group of tool calls. */
 export type ThreadItem = ConversationItem | ToolGroupItem;

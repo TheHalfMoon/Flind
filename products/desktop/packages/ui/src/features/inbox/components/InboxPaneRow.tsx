@@ -1,18 +1,18 @@
-import type { ReportImplementationState } from "@posthog/core/inbox/reportImplementation";
-import { REPORT_IMPLEMENTATION_LABELS } from "@posthog/core/inbox/reportImplementation";
+import type { ReportImplementationState } from "@flind/core/inbox/reportImplementation";
+import { REPORT_IMPLEMENTATION_LABELS } from "@flind/core/inbox/reportImplementation";
 import {
   deriveHeadline,
   humanizeReportTitle,
   parsePrUrl,
-} from "@posthog/core/inbox/reportPresentation";
+} from "@flind/core/inbox/reportPresentation";
 import { AutocompleteItem, Button, cn } from "@flind/quill";
-import { formatRelativeAge } from "@posthog/shared";
-import type { SignalReport } from "@posthog/shared/types";
-import { InboxReportContextMenu } from "@posthog/ui/features/inbox/components/InboxReportContextMenu";
-import { PriorityMonogram } from "@posthog/ui/features/inbox/components/PriorityMonogram";
-import { useInboxReportDetailPrefetch } from "@posthog/ui/features/inbox/hooks/useInboxReportDetailPrefetch";
-import { useInboxReportReadState } from "@posthog/ui/features/inbox/hooks/useInboxReportReadState";
-import { navigateToInboxReportDetail } from "@posthog/ui/router/navigationBridge";
+import { formatRelativeAge } from "@flind/shared";
+import type { SignalReport } from "@flind/shared/types";
+import { InboxReportContextMenu } from "@flind/ui/features/inbox/components/InboxReportContextMenu";
+import { PriorityMonogram } from "@flind/ui/features/inbox/components/PriorityMonogram";
+import { useInboxReportDetailPrefetch } from "@flind/ui/features/inbox/hooks/useInboxReportDetailPrefetch";
+import { useInboxReportReadState } from "@flind/ui/features/inbox/hooks/useInboxReportReadState";
+import { navigateToInboxReportDetail } from "@flind/ui/router/navigationBridge";
 import type { ReactElement } from "react";
 
 /** One report in the rail's Self-driving list. */

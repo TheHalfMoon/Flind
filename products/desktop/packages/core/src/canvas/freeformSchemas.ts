@@ -1,4 +1,4 @@
-import { isSafeGitHubPullRequestUrl, isSafePostHogUrl } from "@posthog/shared";
+import { isSafeGitHubPullRequestUrl, isSafePostHogUrl } from "@flind/shared";
 import { z } from "zod";
 import { textCommentAnchorDataSchema } from "../comments/anchors";
 

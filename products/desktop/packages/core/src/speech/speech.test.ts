@@ -1,4 +1,4 @@
-import type { ISpeech } from "@posthog/platform/speech";
+import type { ISpeech } from "@flind/platform/speech";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import type { SpeechSettingsProvider, UserNameProvider } from "./identifiers";
 import { SpeechQueueService } from "./speech";

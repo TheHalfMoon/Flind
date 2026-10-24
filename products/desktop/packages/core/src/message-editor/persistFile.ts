@@ -1,4 +1,4 @@
-import { getImageMimeType, isRasterImageFile } from "@posthog/shared";
+import { getImageMimeType, isRasterImageFile } from "@flind/shared";
 import type { FileAttachment } from "./content";
 
 const CHUNK_SIZE = 8192;

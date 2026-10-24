@@ -5,7 +5,7 @@ import {
   type SupportedReasoningEffort,
   supports1MContext,
   supportsFastMode,
-} from "@posthog/shared";
+} from "@flind/shared";
 import type { ContextWindow } from "@/features/tasks/composer/options";
 
 export function buildCloudTaskRunConfig({

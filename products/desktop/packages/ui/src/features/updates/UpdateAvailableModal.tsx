@@ -1,4 +1,4 @@
-import { useHostTRPC } from "@posthog/host-router/react";
+import { useHostTRPC } from "@flind/host-router/react";
 import {
   Button,
   Dialog,
@@ -12,15 +12,15 @@ import {
   Skeleton,
   Text,
 } from "@flind/quill";
-import { useBlockingAnnouncementVisible } from "@posthog/ui/features/announcements/useAnnouncementVisible";
-import { ReleaseNotesSections } from "@posthog/ui/features/updates/ReleaseNotesSections";
-import { parseReleaseNotes } from "@posthog/ui/features/updates/releaseNotes";
-import { useUpdateModalStore } from "@posthog/ui/features/updates/updateModalStore";
+import { useBlockingAnnouncementVisible } from "@flind/ui/features/announcements/useAnnouncementVisible";
+import { ReleaseNotesSections } from "@flind/ui/features/updates/ReleaseNotesSections";
+import { parseReleaseNotes } from "@flind/ui/features/updates/releaseNotes";
+import { useUpdateModalStore } from "@flind/ui/features/updates/updateModalStore";
 import {
   useHasActiveUpdate,
   useInstallUpdate,
   useUpdateView,
-} from "@posthog/ui/features/updates/updateStore";
+} from "@flind/ui/features/updates/updateStore";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { type ReactElement, useEffect } from "react";
 

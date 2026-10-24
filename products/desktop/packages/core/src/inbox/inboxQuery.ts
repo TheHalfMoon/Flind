@@ -2,7 +2,7 @@ import type {
   SignalReport,
   SignalReportsQueryParams,
   SignalReportsResponse,
-} from "@posthog/shared/types";
+} from "@flind/shared/types";
 import type {
   InfiniteData,
   Query,

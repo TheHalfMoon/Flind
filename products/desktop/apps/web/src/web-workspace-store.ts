@@ -1,4 +1,4 @@
-import { type Workspace, workspaceSchema } from "@posthog/shared";
+import { type Workspace, workspaceSchema } from "@flind/shared";
 import { createRecordStore } from "./web-local-store";
 
 // Per-device cloud-workspace registry for the web host, backed by localStorage.

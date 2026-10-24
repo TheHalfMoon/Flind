@@ -1,6 +1,6 @@
-import type { TaskData } from "@posthog/core/sidebar/sidebarData.types";
-import type { Task } from "@posthog/shared/domain-types";
-import { SHORTCUTS } from "@posthog/ui/features/command/keyboard-shortcuts";
+import type { TaskData } from "@flind/core/sidebar/sidebarData.types";
+import type { Task } from "@flind/shared/domain-types";
+import { SHORTCUTS } from "@flind/ui/features/command/keyboard-shortcuts";
 import { useCallback, useMemo } from "react";
 import { useHotkeys } from "react-hotkeys-hook";
 

@@ -1,4 +1,4 @@
-import type { Adapter, TaskCreationInput } from "@posthog/shared";
+import type { Adapter, TaskCreationInput } from "@flind/shared";
 
 /** A selectable choice, either flat or wrapped in a labelled group. */
 export interface PreviewConfigChoice {

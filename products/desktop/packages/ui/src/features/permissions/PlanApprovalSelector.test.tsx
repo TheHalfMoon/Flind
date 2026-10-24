@@ -1,5 +1,5 @@
 import type { PermissionOption } from "@agentclientprotocol/sdk";
-import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
+import { useSettingsStore } from "@flind/ui/features/settings/settingsStore";
 import { Theme } from "@radix-ui/themes";
 import {
   act,

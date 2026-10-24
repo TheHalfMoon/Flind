@@ -1,5 +1,5 @@
-import type { AutoresearchRun } from "@posthog/core/autoresearch/schemas";
-import type { AcpMessage } from "@posthog/shared";
+import type { AutoresearchRun } from "@flind/core/autoresearch/schemas";
+import type { AcpMessage } from "@flind/shared";
 import { Theme } from "@radix-ui/themes";
 import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";

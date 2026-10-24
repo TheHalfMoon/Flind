@@ -6,8 +6,8 @@ import {
   runArtifactVersionKey,
   runArtifactVersionMetaLabel,
   runArtifactVersionShortLabel,
-} from "@posthog/core/canvas/runArtifactSchemas";
-import { formatRelativeTimeLong, type TaskRunArtifact } from "@posthog/shared";
+} from "@flind/core/canvas/runArtifactSchemas";
+import { formatRelativeTimeLong, type TaskRunArtifact } from "@flind/shared";
 import { useMutation } from "@tanstack/react-query";
 import {
   CaretDown,

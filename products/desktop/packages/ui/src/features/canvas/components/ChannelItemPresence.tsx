@@ -1,13 +1,13 @@
-import type { ChannelItemModel } from "@posthog/core/canvas/channelItems";
-import type { DashboardRecord } from "@posthog/core/canvas/dashboardSchemas";
-import { presenceTier } from "@posthog/core/canvas/presence";
+import type { ChannelItemModel } from "@flind/core/canvas/channelItems";
+import type { DashboardRecord } from "@flind/core/canvas/dashboardSchemas";
+import { presenceTier } from "@flind/core/canvas/presence";
 import {
   type AvatarPerson,
   UserAvatar,
-} from "@posthog/ui/features/auth/UserAvatar";
-import { PresenceAvatar } from "@posthog/ui/features/canvas/components/PresenceAvatars";
-import { userDisplayName } from "@posthog/ui/features/canvas/utils/userDisplay";
-import { useNow } from "@posthog/ui/hooks/useNow";
+} from "@flind/ui/features/auth/UserAvatar";
+import { PresenceAvatar } from "@flind/ui/features/canvas/components/PresenceAvatars";
+import { userDisplayName } from "@flind/ui/features/canvas/utils/userDisplay";
+import { useNow } from "@flind/ui/hooks/useNow";
 
 export function canvasAuthor(canvas: DashboardRecord): AvatarPerson | null {
   if (canvas.createdByUser) return canvas.createdByUser;

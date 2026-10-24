@@ -5,7 +5,7 @@ import {
   RevertCheckpointSaga,
 } from "@flind/git/sagas/checkpoint";
 import { type WorktreeInfo, WorktreeManager } from "@flind/git/worktree";
-import type { SagaLogger } from "@posthog/shared";
+import type { SagaLogger } from "@flind/shared";
 
 export interface RestoreWorktreeFromCheckpointParams {
   mainRepoPath: string;

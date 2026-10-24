@@ -1,22 +1,22 @@
-import { resolveInboxReportForRender } from "@posthog/core/inbox/inboxQuery";
+import { resolveInboxReportForRender } from "@flind/core/inbox/inboxQuery";
 import {
   isDismissedReport,
   isPullRequestReport,
   isReportTabReport,
-} from "@posthog/core/inbox/reportMembership";
-import type { SignalReport } from "@posthog/shared/types";
-import { DetailBackLink } from "@posthog/ui/features/inbox/components/DetailBackLink";
+} from "@flind/core/inbox/reportMembership";
+import type { SignalReport } from "@flind/shared/types";
+import { DetailBackLink } from "@flind/ui/features/inbox/components/DetailBackLink";
 import {
   asInboxBackTarget,
   type InboxListRoute,
   useInboxTriageOrigin,
-} from "@posthog/ui/features/inbox/hooks/useInboxBackTarget";
-import { useInboxReportById } from "@posthog/ui/features/inbox/hooks/useInboxReports";
+} from "@flind/ui/features/inbox/hooks/useInboxBackTarget";
+import { useInboxReportById } from "@flind/ui/features/inbox/hooks/useInboxReports";
 import {
   type InboxDetailTab,
   useReportOpenTracker,
-} from "@posthog/ui/features/inbox/hooks/useReportOpenTracker";
-import { LoadingState } from "@posthog/ui/primitives/LoadingState";
+} from "@flind/ui/features/inbox/hooks/useReportOpenTracker";
+import { LoadingState } from "@flind/ui/primitives/LoadingState";
 import { useNavigate } from "@tanstack/react-router";
 import { type ReactNode, useEffect } from "react";
 

@@ -2,7 +2,7 @@ import {
   type TabsSnapshot,
   tabsSnapshotSchema,
   tabViewStateSchema,
-} from "@posthog/shared";
+} from "@flind/shared";
 import { z } from "zod";
 
 /** tRPC output: the full durable tab/window snapshot. */

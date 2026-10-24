@@ -1,4 +1,4 @@
-import type { Adapter, ModelAccess } from "@posthog/shared";
+import type { Adapter, ModelAccess } from "@flind/shared";
 
 export type CloudModelAccess =
   | { kind: "posthog-gateway" }

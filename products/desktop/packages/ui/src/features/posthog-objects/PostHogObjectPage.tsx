@@ -1,10 +1,10 @@
 import { CheckIcon, CopyIcon } from "@phosphor-icons/react";
-import type { PostHogObjectArtifactMetadata } from "@posthog/core/canvas/runArtifactSchemas";
+import type { PostHogObjectArtifactMetadata } from "@flind/core/canvas/runArtifactSchemas";
 import {
   chartHeadlineStat,
   reportChartHeightClass,
   reportChartOpenTarget,
-} from "@posthog/core/inbox/reportCharts";
+} from "@flind/core/inbox/reportCharts";
 import {
   Badge,
   Button,
@@ -17,27 +17,27 @@ import {
   Skeleton,
   Text,
 } from "@flind/quill";
-import { getCloudUrlFromRegion } from "@posthog/shared";
-import { useAuthStateValue } from "@posthog/ui/features/auth/store";
-import { useEvidenceUrl } from "@posthog/ui/features/editor/components/EvidenceRefChip";
-import { MessageChartCard } from "@posthog/ui/features/editor/components/MessageChartCard";
+import { getCloudUrlFromRegion } from "@flind/shared";
+import { useAuthStateValue } from "@flind/ui/features/auth/store";
+import { useEvidenceUrl } from "@flind/ui/features/editor/components/EvidenceRefChip";
+import { MessageChartCard } from "@flind/ui/features/editor/components/MessageChartCard";
 import {
   EVIDENCE_PREVIEW_STALE_TIME,
   type EvidenceCardData,
   evidencePreviewQueryKey,
   fetchEvidencePreview,
-} from "@posthog/ui/features/editor/evidencePreview";
+} from "@flind/ui/features/editor/evidencePreview";
 import {
   type ReportChartCardState,
   ReportChartCardView,
-} from "@posthog/ui/features/inbox/components/detail/ReportChartCard";
-import { useAuthenticatedQuery } from "@posthog/ui/hooks/useAuthenticatedQuery";
-import { useCopy } from "@posthog/ui/primitives/useCopy";
-import { openExternalUrl } from "@posthog/ui/shell/openExternal";
+} from "@flind/ui/features/inbox/components/detail/ReportChartCard";
+import { useAuthenticatedQuery } from "@flind/ui/hooks/useAuthenticatedQuery";
+import { useCopy } from "@flind/ui/primitives/useCopy";
+import { openExternalUrl } from "@flind/ui/shell/openExternal";
 import {
   getObjectKind,
   POSTHOG_OBJECT_ICON_COLOR,
-} from "@posthog/ui/utils/objectKinds";
+} from "@flind/ui/utils/objectKinds";
 import { EditFlagInTaskPopover } from "./EditFlagInTaskPopover";
 import { ExperimentResultsSummary } from "./ExperimentResultsSummary";
 import { FlagAudienceCard } from "./FlagAudienceCard";

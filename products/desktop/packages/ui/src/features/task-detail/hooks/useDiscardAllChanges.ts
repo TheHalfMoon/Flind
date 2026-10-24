@@ -1,4 +1,4 @@
-import { useWorkspaceTRPC } from "@posthog/workspace-client/trpc";
+import { useWorkspaceTRPC } from "@flind/workspace-client/trpc";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useCallback } from "react";
 import { showMessageBox } from "../../../utils/dialog";

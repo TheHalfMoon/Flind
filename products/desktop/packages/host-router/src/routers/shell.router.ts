@@ -1,5 +1,5 @@
-import { publicProcedure, router } from "@posthog/host-trpc/trpc";
-import { SHELL_SERVICE } from "@posthog/workspace-server/services/shell/identifiers";
+import { publicProcedure, router } from "@flind/host-trpc/trpc";
+import { SHELL_SERVICE } from "@flind/workspace-server/services/shell/identifiers";
 import {
   createCommandInput,
   createInput,
@@ -10,8 +10,8 @@ import {
   type ShellEvents,
   sessionIdInput,
   writeInput,
-} from "@posthog/workspace-server/services/shell/schemas";
-import type { ShellService } from "@posthog/workspace-server/services/shell/shell";
+} from "@flind/workspace-server/services/shell/schemas";
+import type { ShellService } from "@flind/workspace-server/services/shell/shell";
 
 function subscribeFiltered<K extends keyof ShellEvents>(event: K) {
   return publicProcedure

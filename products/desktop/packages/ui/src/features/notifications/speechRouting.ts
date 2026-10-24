@@ -1,8 +1,8 @@
 import type {
   SpeechKind,
   SpeechSource,
-} from "@posthog/core/speech/identifiers";
-import type { SpokenFocusMode } from "@posthog/ui/features/settings/settingsStore";
+} from "@flind/core/speech/identifiers";
+import type { SpokenFocusMode } from "@flind/ui/features/settings/settingsStore";
 import type { NotificationChannel } from "./routeNotification";
 
 export type { SpeechKind, SpeechSource };

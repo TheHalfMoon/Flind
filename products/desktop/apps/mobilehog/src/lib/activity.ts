@@ -1,7 +1,7 @@
-import type { TaskActivityItem } from "@posthog/core/canvas/taskActivity";
-import { toTaskActivityItems } from "@posthog/core/canvas/taskActivity";
-import { formatRelativeAge, getRelativeDateGroup } from "@posthog/shared";
-import type { TaskActivityPage } from "@posthog/shared/domain-types";
+import type { TaskActivityItem } from "@flind/core/canvas/taskActivity";
+import { toTaskActivityItems } from "@flind/core/canvas/taskActivity";
+import { formatRelativeAge, getRelativeDateGroup } from "@flind/shared";
+import type { TaskActivityPage } from "@flind/shared/domain-types";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useAuth } from "@/lib/auth";
 import { getClient } from "@/lib/client";

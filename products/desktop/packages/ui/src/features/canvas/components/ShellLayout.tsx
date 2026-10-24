@@ -22,50 +22,50 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@flind/quill";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
-import { ChannelBreadcrumb } from "@posthog/ui/features/canvas/components/ChannelBreadcrumb";
-import { CopyCanvasLinkButton } from "@posthog/ui/features/canvas/components/CopyCanvasLinkButton";
-import { iconForTemplate } from "@posthog/ui/features/canvas/components/canvasTemplateIcon";
-import { NewCanvasMenu } from "@posthog/ui/features/canvas/components/NewCanvasMenu";
-import { SpaceHeaderRow } from "@posthog/ui/features/canvas/components/SpaceHeaderRow";
-import { deleteCanvasWithUndo } from "@posthog/ui/features/canvas/deleteCanvasWithUndo";
-import { CanvasFrameHost } from "@posthog/ui/features/canvas/freeform/CanvasFrameHost";
-import { canvasCommentTaskId } from "@posthog/ui/features/canvas/freeform/canvasCommentTask";
-import { useCanvasFrameStore } from "@posthog/ui/features/canvas/freeform/canvasFrameStore";
-import { CANVAS_QUERY_KEY } from "@posthog/ui/features/canvas/freeform/freeformDataBridge";
-import { useChannels } from "@posthog/ui/features/canvas/hooks/useChannels";
-import { useChannelsLayout } from "@posthog/ui/features/canvas/hooks/useChannelsLayout";
-import { useChannelTasks } from "@posthog/ui/features/canvas/hooks/useChannelTasks";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
+import { ChannelBreadcrumb } from "@flind/ui/features/canvas/components/ChannelBreadcrumb";
+import { CopyCanvasLinkButton } from "@flind/ui/features/canvas/components/CopyCanvasLinkButton";
+import { iconForTemplate } from "@flind/ui/features/canvas/components/canvasTemplateIcon";
+import { NewCanvasMenu } from "@flind/ui/features/canvas/components/NewCanvasMenu";
+import { SpaceHeaderRow } from "@flind/ui/features/canvas/components/SpaceHeaderRow";
+import { deleteCanvasWithUndo } from "@flind/ui/features/canvas/deleteCanvasWithUndo";
+import { CanvasFrameHost } from "@flind/ui/features/canvas/freeform/CanvasFrameHost";
+import { canvasCommentTaskId } from "@flind/ui/features/canvas/freeform/canvasCommentTask";
+import { useCanvasFrameStore } from "@flind/ui/features/canvas/freeform/canvasFrameStore";
+import { CANVAS_QUERY_KEY } from "@flind/ui/features/canvas/freeform/freeformDataBridge";
+import { useChannels } from "@flind/ui/features/canvas/hooks/useChannels";
+import { useChannelsLayout } from "@flind/ui/features/canvas/hooks/useChannelsLayout";
+import { useChannelTasks } from "@flind/ui/features/canvas/hooks/useChannelTasks";
 import {
   useCanvasVersions,
   useDashboard,
   useDashboardMutations,
-} from "@posthog/ui/features/canvas/hooks/useDashboards";
-import { useSelectedCanvasId } from "@posthog/ui/features/canvas/hooks/useSelectedCanvasId";
-import { useWorkLayout } from "@posthog/ui/features/canvas/hooks/useWorkLayout";
-import { useCanvasChatPanelStore } from "@posthog/ui/features/canvas/stores/canvasChatPanelStore";
+} from "@flind/ui/features/canvas/hooks/useDashboards";
+import { useSelectedCanvasId } from "@flind/ui/features/canvas/hooks/useSelectedCanvasId";
+import { useWorkLayout } from "@flind/ui/features/canvas/hooks/useWorkLayout";
+import { useCanvasChatPanelStore } from "@flind/ui/features/canvas/stores/canvasChatPanelStore";
 import {
   useDashboardEditStore,
   useIsDashboardEditing,
-} from "@posthog/ui/features/canvas/stores/dashboardEditStore";
-import { copyCanvasLink } from "@posthog/ui/features/canvas/utils/copyCanvasLink";
-import { RightPanel } from "@posthog/ui/features/navigation/components/RightPanel";
+} from "@flind/ui/features/canvas/stores/dashboardEditStore";
+import { copyCanvasLink } from "@flind/ui/features/canvas/utils/copyCanvasLink";
+import { RightPanel } from "@flind/ui/features/navigation/components/RightPanel";
 import {
   CONTENT_CHROME_RIGHT_VAR,
   SWITCHER_WIDTH_PX,
   useRightPanelOpen,
-} from "@posthog/ui/features/navigation/rightPanelSide";
-import { useActiveSession } from "@posthog/ui/features/navigation/useActiveSession";
-import { buildCommentThreads } from "@posthog/ui/features/sessions/components/commentViewTypes";
-import { useCommentsQuery } from "@posthog/ui/features/sessions/components/useComments";
+} from "@flind/ui/features/navigation/rightPanelSide";
+import { useActiveSession } from "@flind/ui/features/navigation/useActiveSession";
+import { buildCommentThreads } from "@flind/ui/features/sessions/components/commentViewTypes";
+import { useCommentsQuery } from "@flind/ui/features/sessions/components/useComments";
 import {
   MentionAvailabilityProvider,
   PRIVATE_SPACE_MENTIONS_DISABLED,
-} from "@posthog/ui/features/sessions/mentionAvailability";
-import { useTasks } from "@posthog/ui/features/tasks/useTasks";
-import { ChromeBar } from "@posthog/ui/primitives/ChromeBar";
-import { toast } from "@posthog/ui/primitives/toast";
-import { track } from "@posthog/ui/shell/analytics";
+} from "@flind/ui/features/sessions/mentionAvailability";
+import { useTasks } from "@flind/ui/features/tasks/useTasks";
+import { ChromeBar } from "@flind/ui/primitives/ChromeBar";
+import { toast } from "@flind/ui/primitives/toast";
+import { track } from "@flind/ui/shell/analytics";
 import { Flex } from "@radix-ui/themes";
 import { useQueryClient } from "@tanstack/react-query";
 import {

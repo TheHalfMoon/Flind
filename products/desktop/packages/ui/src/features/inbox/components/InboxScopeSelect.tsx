@@ -10,7 +10,7 @@ import {
   isTeammateInboxScope,
   parseTeammateInboxScope,
   teammateInboxScope,
-} from "@posthog/core/inbox/reportMembership";
+} from "@flind/core/inbox/reportMembership";
 import {
   Button,
   Combobox,
@@ -21,10 +21,10 @@ import {
   ComboboxList,
   ComboboxTrigger,
 } from "@flind/quill";
-import { ReviewerAvatar } from "@posthog/ui/features/inbox/components/ReviewerAvatar";
-import { getSuggestedReviewerDisplayName } from "@posthog/ui/features/inbox/filterOptions";
-import { useInboxScopeOptions } from "@posthog/ui/features/inbox/hooks/useInboxScopeOptions";
-import { useInboxReviewerScopeStore } from "@posthog/ui/features/inbox/stores/inboxReviewerScopeStore";
+import { ReviewerAvatar } from "@flind/ui/features/inbox/components/ReviewerAvatar";
+import { getSuggestedReviewerDisplayName } from "@flind/ui/features/inbox/filterOptions";
+import { useInboxScopeOptions } from "@flind/ui/features/inbox/hooks/useInboxScopeOptions";
+import { useInboxReviewerScopeStore } from "@flind/ui/features/inbox/stores/inboxReviewerScopeStore";
 import { useMemo, useRef, useState } from "react";
 
 const PICKER_ENTIRE_PROJECT_VALUE = "__entire-project__";

@@ -1,5 +1,5 @@
-import { MCP_APPS_SERVICE } from "@posthog/core/mcp-apps/identifiers";
-import type { McpAppsService } from "@posthog/core/mcp-apps/mcp-apps";
+import { MCP_APPS_SERVICE } from "@flind/core/mcp-apps/identifiers";
+import type { McpAppsService } from "@flind/core/mcp-apps/mcp-apps";
 import {
   getToolDefinitionInput,
   getUiResourceByUriInput,
@@ -12,8 +12,8 @@ import {
   proxyResourceReadInput,
   proxyToolCallInput,
   serverConfigChangedSubscriptionInput,
-} from "@posthog/core/mcp-apps/schemas";
-import { publicProcedure, router } from "@posthog/host-trpc/trpc";
+} from "@flind/core/mcp-apps/schemas";
+import { publicProcedure, router } from "@flind/host-trpc/trpc";
 
 export const mcpAppsRouter = router({
   getUiResource: publicProcedure

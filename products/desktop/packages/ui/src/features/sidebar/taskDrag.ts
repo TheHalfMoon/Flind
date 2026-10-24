@@ -1,10 +1,10 @@
-import { dedupeTaskIds } from "@posthog/core/sidebar/selection";
+import { dedupeTaskIds } from "@flind/core/sidebar/selection";
 import type {
   TaskData,
   TaskGroup,
-} from "@posthog/core/sidebar/sidebarData.types";
-import { taskDragIdsSchema } from "@posthog/ui/features/sidebar/schemas";
-import { useTaskSelectionStore } from "@posthog/ui/features/sidebar/taskSelectionStore";
+} from "@flind/core/sidebar/sidebarData.types";
+import { taskDragIdsSchema } from "@flind/ui/features/sidebar/schemas";
+import { useTaskSelectionStore } from "@flind/ui/features/sidebar/taskSelectionStore";
 
 export const TASK_DRAG_TYPE = "text/x-task-id";
 export const TASK_IDS_DRAG_TYPE = "application/x-posthog-task-ids";

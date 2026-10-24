@@ -1,7 +1,7 @@
 import type {
   AppProcessMetric,
   IAppMetrics,
-} from "@posthog/platform/app-metrics";
+} from "@flind/platform/app-metrics";
 import { app } from "electron";
 import { injectable } from "inversify";
 

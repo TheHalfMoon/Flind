@@ -1,4 +1,4 @@
-import type { PrConversationComment } from "@posthog/shared";
+import type { PrConversationComment } from "@flind/shared";
 import { describe, expect, it } from "vitest";
 import { combinePrCommentResults } from "./usePrCommentsForUrls";
 

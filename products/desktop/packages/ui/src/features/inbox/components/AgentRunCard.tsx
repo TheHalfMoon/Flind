@@ -2,18 +2,18 @@ import {
   isFinishedRunReport,
   isLiveRunReport,
   isQueuedRunReport,
-} from "@posthog/core/inbox/reportMembership";
-import { deriveHeadline } from "@posthog/core/inbox/reportPresentation";
-import { formatRelativeTimeLong } from "@posthog/shared";
-import type { SignalReport } from "@posthog/shared/types";
+} from "@flind/core/inbox/reportMembership";
+import { deriveHeadline } from "@flind/core/inbox/reportPresentation";
+import { formatRelativeTimeLong } from "@flind/shared";
+import type { SignalReport } from "@flind/shared/types";
 import {
   InboxMetaRow,
   InboxMetaSeparator,
   InboxMetaText,
-} from "@posthog/ui/features/inbox/components/InboxMetaRow";
-import { InboxMetaSourceStack } from "@posthog/ui/features/inbox/components/InboxMetaSourceStack";
-import { InboxBadge } from "@posthog/ui/features/inbox/components/utils/InboxBadge";
-import { hasKnownSourceProduct } from "@posthog/ui/features/inbox/components/utils/source-product-icons";
+} from "@flind/ui/features/inbox/components/InboxMetaRow";
+import { InboxMetaSourceStack } from "@flind/ui/features/inbox/components/InboxMetaSourceStack";
+import { InboxBadge } from "@flind/ui/features/inbox/components/utils/InboxBadge";
+import { hasKnownSourceProduct } from "@flind/ui/features/inbox/components/utils/source-product-icons";
 import { useNavigate } from "@tanstack/react-router";
 
 export type RunVariant = "queued" | "live" | "completed" | "failed";

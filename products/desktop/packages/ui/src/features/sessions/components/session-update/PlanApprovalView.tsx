@@ -1,5 +1,5 @@
 import { CaretDown, CaretRight, CheckCircle } from "@phosphor-icons/react";
-import { extractPlanText } from "@posthog/core/sessions/planApprovalPresentation";
+import { extractPlanText } from "@flind/core/sessions/planApprovalPresentation";
 import { Box, Flex, Text } from "@radix-ui/themes";
 import { useMemo, useState } from "react";
 import { PlanContent } from "../../../permissions/PlanContent";

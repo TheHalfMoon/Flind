@@ -1,7 +1,7 @@
 import type {
   McpApprovalState,
   McpInstallationTool,
-} from "@posthog/api-client/types";
+} from "@flind/api-client/types";
 
 interface ToolApprovalClient {
   updateMcpToolApproval: (

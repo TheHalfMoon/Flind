@@ -1,4 +1,4 @@
-import { TypedEventEmitter } from "@posthog/shared";
+import { TypedEventEmitter } from "@flind/shared";
 import type ElectronLog from "electron-log";
 import log from "electron-log/main";
 import { inject, injectable } from "inversify";

@@ -6,21 +6,21 @@ import {
   ROOT_LOGGER,
   type RootLogger,
   type ScopedLogger,
-} from "@posthog/di/logger";
+} from "@flind/di/logger";
 import {
   ANALYTICS_SERVICE,
   type IAnalytics,
-} from "@posthog/platform/analytics";
-import { APP_META_SERVICE, type IAppMeta } from "@posthog/platform/app-meta";
+} from "@flind/platform/analytics";
+import { APP_META_SERVICE, type IAppMeta } from "@flind/platform/app-meta";
 import {
   BUNDLED_RESOURCES_SERVICE,
   type IBundledResources,
-} from "@posthog/platform/bundled-resources";
+} from "@flind/platform/bundled-resources";
 import {
   type IStoragePaths,
   STORAGE_PATHS_SERVICE,
-} from "@posthog/platform/storage-paths";
-import { TypedEventEmitter } from "@posthog/shared";
+} from "@flind/platform/storage-paths";
+import { TypedEventEmitter } from "@flind/shared";
 import { inject, injectable, postConstruct, preDestroy } from "inversify";
 import { cleanupLegacyCodexMirror, getCodexSkillsDir } from "./codex-mirror";
 import {

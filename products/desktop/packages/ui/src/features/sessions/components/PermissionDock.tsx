@@ -6,11 +6,11 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@flind/quill";
-import { ComposerWidth } from "@posthog/ui/features/sessions/components/ComposerWidth";
+import { ComposerWidth } from "@flind/ui/features/sessions/components/ComposerWidth";
 import {
   usePermissionDockHeight,
   useSessionViewActions,
-} from "@posthog/ui/features/sessions/sessionViewStore";
+} from "@flind/ui/features/sessions/sessionViewStore";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 /** Shortest the dock goes, and the room the thread above always keeps. */

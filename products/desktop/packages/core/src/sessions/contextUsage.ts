@@ -1,4 +1,4 @@
-import type { AcpMessage } from "@posthog/shared";
+import type { AcpMessage } from "@flind/shared";
 import { createAppendOnlyTracker } from "./appendOnlyTracker";
 
 export interface ContextBreakdown {

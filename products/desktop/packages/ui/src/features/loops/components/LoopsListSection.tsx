@@ -1,4 +1,4 @@
-import type { LoopSchemas } from "@posthog/ui/features/loops/loopSchemas";
+import type { LoopSchemas } from "@flind/ui/features/loops/loopSchemas";
 import { type ReactNode, useMemo, useState } from "react";
 import {
   countLoops,

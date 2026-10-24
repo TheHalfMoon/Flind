@@ -1,6 +1,6 @@
 import { colors } from "@posthog/brand/colors";
 import { assets } from "@posthog/brand/hoggies/metadata";
-import { hoggiePng } from "@posthog/shared/hoggies";
+import { hoggiePng } from "@flind/shared/hoggies";
 
 interface Hoggie {
   /** PNG file stem, which is what goes into the payload. */

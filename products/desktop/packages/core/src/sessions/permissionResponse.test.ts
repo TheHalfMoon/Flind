@@ -1,5 +1,5 @@
 import type { SessionConfigOption } from "@agentclientprotocol/sdk";
-import type { PermissionRequest } from "@posthog/shared";
+import type { PermissionRequest } from "@flind/shared";
 import { describe, expect, it } from "vitest";
 import {
   formatPermissionAnswerPrompt,

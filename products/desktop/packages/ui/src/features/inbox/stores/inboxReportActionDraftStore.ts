@@ -1,7 +1,7 @@
 import type {
   DismissalReasonOptionValue,
   ResolveReasonOptionValue,
-} from "@posthog/shared/dismissalReasons";
+} from "@flind/shared/dismissalReasons";
 import { create } from "zustand";
 
 export interface InboxReportActionDraft<Reason> {

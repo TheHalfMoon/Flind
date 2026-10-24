@@ -1,14 +1,14 @@
-import { placementComponentBuild } from "@posthog/core/canvas/canvasBuildSchemas";
+import { placementComponentBuild } from "@flind/core/canvas/canvasBuildSchemas";
 import {
   type GridPlacement,
   pinnedComponentVersion,
-} from "@posthog/core/canvas/gridLayoutSchemas";
+} from "@flind/core/canvas/gridLayoutSchemas";
 import { Button, Text } from "@flind/quill";
-import type { CanvasCapabilities } from "@posthog/shared";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
-import { useCanvasBuilds } from "@posthog/ui/features/canvas/hooks/useCanvasBuilds";
-import { LoadingState } from "@posthog/ui/primitives/LoadingState";
-import { track } from "@posthog/ui/shell/analytics";
+import type { CanvasCapabilities } from "@flind/shared";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
+import { useCanvasBuilds } from "@flind/ui/features/canvas/hooks/useCanvasBuilds";
+import { LoadingState } from "@flind/ui/primitives/LoadingState";
+import { track } from "@flind/ui/shell/analytics";
 import { useQueryClient } from "@tanstack/react-query";
 import { useCallback, useMemo, useRef } from "react";
 import { BuiltCanvas } from "../freeform/BuiltCanvas";

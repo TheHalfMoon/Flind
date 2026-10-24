@@ -1,6 +1,6 @@
-import { publicProcedure, router } from "@posthog/host-trpc/trpc";
-import type { ExternalAppsService } from "@posthog/workspace-server/services/external-apps/external-apps";
-import { EXTERNAL_APPS_SERVICE } from "@posthog/workspace-server/services/external-apps/identifiers";
+import { publicProcedure, router } from "@flind/host-trpc/trpc";
+import type { ExternalAppsService } from "@flind/workspace-server/services/external-apps/external-apps";
+import { EXTERNAL_APPS_SERVICE } from "@flind/workspace-server/services/external-apps/identifiers";
 import {
   copyPathInput,
   getDetectedAppsOutput,
@@ -8,7 +8,7 @@ import {
   openInAppInput,
   openInAppOutput,
   setLastUsedInput,
-} from "@posthog/workspace-server/services/external-apps/schemas";
+} from "@flind/workspace-server/services/external-apps/schemas";
 
 export const externalAppsRouter = router({
   getDetectedApps: publicProcedure

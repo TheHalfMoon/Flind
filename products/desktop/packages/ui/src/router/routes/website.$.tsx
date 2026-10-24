@@ -1,4 +1,4 @@
-import { redirectFromLegacyPath } from "@posthog/ui/router/legacyPaths";
+import { redirectFromLegacyPath } from "@flind/ui/router/legacyPaths";
 import { createFileRoute } from "@tanstack/react-router";
 
 // The spaces and the pages beside them lost their `/website` prefix when the

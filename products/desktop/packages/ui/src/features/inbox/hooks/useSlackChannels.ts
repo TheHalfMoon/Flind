@@ -1,7 +1,7 @@
 import type {
   SlackChannelsQueryParams,
   SlackChannelsResponse,
-} from "@posthog/shared/domain-types";
+} from "@flind/shared/domain-types";
 import { useAuthenticatedQuery } from "../../../hooks/useAuthenticatedQuery";
 
 const DEFAULT_CHANNEL_PAGE_SIZE = 50;

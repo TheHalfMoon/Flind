@@ -1,6 +1,6 @@
 import { InfoIcon, PlusIcon, UsersThreeIcon } from "@phosphor-icons/react";
-import { toSuggestedReviewerWriteContent } from "@posthog/core/inbox/artefacts";
-import { selectSuggestedReviewersArtefact } from "@posthog/core/inbox/reportArtefacts";
+import { toSuggestedReviewerWriteContent } from "@flind/core/inbox/artefacts";
+import { selectSuggestedReviewersArtefact } from "@flind/core/inbox/reportArtefacts";
 import {
   Button,
   Popover,
@@ -10,19 +10,19 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@flind/quill";
-import type { SignalReport, SuggestedReviewer } from "@posthog/shared/types";
-import { DetailSection } from "@posthog/ui/features/inbox/components/DetailSection";
-import { ReviewerSearchList } from "@posthog/ui/features/inbox/components/ReviewerSearchList";
-import { SuggestedReviewersList } from "@posthog/ui/features/inbox/components/SuggestedReviewersList";
+import type { SignalReport, SuggestedReviewer } from "@flind/shared/types";
+import { DetailSection } from "@flind/ui/features/inbox/components/DetailSection";
+import { ReviewerSearchList } from "@flind/ui/features/inbox/components/ReviewerSearchList";
+import { SuggestedReviewersList } from "@flind/ui/features/inbox/components/SuggestedReviewersList";
 import {
   useInboxReportArtefacts,
   useUpdateSuggestedReviewers,
-} from "@posthog/ui/features/inbox/hooks/useInboxReports";
+} from "@flind/ui/features/inbox/hooks/useInboxReports";
 import {
   useReportActionResultTracker,
   useReportActionTracker,
-} from "@posthog/ui/features/inbox/hooks/useReportActionTracker";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
+} from "@flind/ui/features/inbox/hooks/useReportActionTracker";
+import { Spinner } from "@flind/ui/primitives/Spinner";
 import { useMemo, useState } from "react";
 
 export function ReportReviewersSection({ report }: { report: SignalReport }) {

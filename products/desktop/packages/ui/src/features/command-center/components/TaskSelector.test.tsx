@@ -3,11 +3,11 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-vi.mock("@posthog/ui/features/command-center/hooks/useAvailableTasks", () => ({
+vi.mock("@flind/ui/features/command-center/hooks/useAvailableTasks", () => ({
   useAvailableTasks: () => [],
 }));
 
-vi.mock("@posthog/ui/features/folders/useFolders", () => ({
+vi.mock("@flind/ui/features/folders/useFolders", () => ({
   useFolders: () => ({
     getRecentFolders: () => [
       { id: "folder-1", name: "one", path: "/one" },

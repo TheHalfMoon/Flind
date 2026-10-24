@@ -8,9 +8,9 @@ import type {
   IAuthSessionStore,
   IAuthTokenCipher,
   PersistAuthSessionRecord,
-} from "@posthog/core/auth/identifiers";
-import type { IPowerManager } from "@posthog/platform/power-manager";
-import type { CloudRegion } from "@posthog/shared";
+} from "@flind/core/auth/identifiers";
+import type { IPowerManager } from "@flind/platform/power-manager";
+import type { CloudRegion } from "@flind/shared";
 import { readJson, removeKeyStrict, writeJsonStrict } from "./web-local-store";
 
 // Web counterparts of the desktop auth adapters. Desktop persists the session

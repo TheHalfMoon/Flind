@@ -4,7 +4,7 @@ import {
   Sparkle,
   WarningCircle,
 } from "@phosphor-icons/react";
-import { blockReferencePrompt } from "@posthog/core/canvas/blockLibrary/blockReference";
+import { blockReferencePrompt } from "@flind/core/canvas/blockLibrary/blockReference";
 import { Button } from "@flind/quill";
 import {
   isRootSelection,
@@ -13,19 +13,19 @@ import {
   useCanvasLibraryOpen,
   useCanvasSourceEntry,
   useCanvasSourceStore,
-} from "@posthog/ui/features/canvas/blocks/canvasSourceStore";
-import { SourceInspector } from "@posthog/ui/features/canvas/blocks/inspector/SourceInspector";
+} from "@flind/ui/features/canvas/blocks/canvasSourceStore";
+import { SourceInspector } from "@flind/ui/features/canvas/blocks/inspector/SourceInspector";
 import {
   LIBRARY,
   LIBRARY_GROUPS,
   type LibraryEntry,
   libraryIcon,
   libraryLabel,
-} from "@posthog/ui/features/canvas/blocks/libraryCatalog";
-import { beginSourceDrag } from "@posthog/ui/features/canvas/blocks/sourceDrag";
-import { useCanvasSourceActions } from "@posthog/ui/features/canvas/blocks/useCanvasSourceActions";
-import { SearchInput } from "@posthog/ui/primitives/SearchInput";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
+} from "@flind/ui/features/canvas/blocks/libraryCatalog";
+import { beginSourceDrag } from "@flind/ui/features/canvas/blocks/sourceDrag";
+import { useCanvasSourceActions } from "@flind/ui/features/canvas/blocks/useCanvasSourceActions";
+import { SearchInput } from "@flind/ui/primitives/SearchInput";
+import { Spinner } from "@flind/ui/primitives/Spinner";
 import { type ReactNode, useMemo, useState } from "react";
 
 interface SaveStatus {

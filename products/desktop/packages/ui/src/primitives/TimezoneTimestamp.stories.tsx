@@ -1,4 +1,4 @@
-import { TimezoneTimestamp } from "@posthog/ui/primitives/TimezoneTimestamp";
+import { TimezoneTimestamp } from "@flind/ui/primitives/TimezoneTimestamp";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta: Meta<typeof TimezoneTimestamp> = {

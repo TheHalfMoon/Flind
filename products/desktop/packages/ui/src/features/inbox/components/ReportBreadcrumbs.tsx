@@ -1,22 +1,22 @@
-import { humanizeReportTitle } from "@posthog/core/inbox/reportPresentation";
-import { prettifyScoutSkillName } from "@posthog/core/scouts/scoutPresentation";
+import { humanizeReportTitle } from "@flind/core/inbox/reportPresentation";
+import { prettifyScoutSkillName } from "@flind/core/scouts/scoutPresentation";
 import { cn } from "@flind/quill";
-import type { SignalReport } from "@posthog/shared/types";
-import { useChannels } from "@posthog/ui/features/canvas/hooks/useChannels";
+import type { SignalReport } from "@flind/shared/types";
+import { useChannels } from "@flind/ui/features/canvas/hooks/useChannels";
 import {
   type InboxTriageOrigin,
   useInboxTriageOrigin,
-} from "@posthog/ui/features/inbox/hooks/useInboxBackTarget";
+} from "@flind/ui/features/inbox/hooks/useInboxBackTarget";
 import {
   BreadcrumbSegment,
   BreadcrumbSeparator,
-} from "@posthog/ui/primitives/Breadcrumb";
-import { LEADING_BUTTON_PULL } from "@posthog/ui/primitives/ChromeBar";
+} from "@flind/ui/primitives/Breadcrumb";
+import { LEADING_BUTTON_PULL } from "@flind/ui/primitives/ChromeBar";
 import {
   type NavigationSource,
   resolveNavigationSource,
   useReportSourceHref,
-} from "@posthog/ui/router/reportNavigation";
+} from "@flind/ui/router/reportNavigation";
 import { Link } from "@tanstack/react-router";
 import type { ReactElement } from "react";
 

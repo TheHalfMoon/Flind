@@ -9,13 +9,13 @@ import {
 import {
   formatHotkey,
   SHORTCUTS,
-} from "@posthog/ui/features/command/keyboard-shortcuts";
+} from "@flind/ui/features/command/keyboard-shortcuts";
 import {
   useMessagingMode,
   useSupportsNativeSteer,
-} from "@posthog/ui/features/sessions/hooks/useMessagingMode";
-import { useToggleMessagingMode } from "@posthog/ui/features/sessions/hooks/useToggleMessagingMode";
-import { useQueuedMessagesForTask } from "@posthog/ui/features/sessions/useSession";
+} from "@flind/ui/features/sessions/hooks/useMessagingMode";
+import { useToggleMessagingMode } from "@flind/ui/features/sessions/hooks/useToggleMessagingMode";
+import { useQueuedMessagesForTask } from "@flind/ui/features/sessions/useSession";
 
 interface SteerQueueToggleProps {
   taskId: string;

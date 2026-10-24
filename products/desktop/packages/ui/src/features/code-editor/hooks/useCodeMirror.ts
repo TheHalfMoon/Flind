@@ -1,6 +1,6 @@
 import { Compartment, EditorState, type Extension } from "@codemirror/state";
 import { EditorView } from "@codemirror/view";
-import { useHostTRPCClient } from "@posthog/host-router/react";
+import { useHostTRPCClient } from "@flind/host-router/react";
 import { useEffect, useRef } from "react";
 import { useFileContextMenu } from "../../sessions/components/useFileContextMenu";
 

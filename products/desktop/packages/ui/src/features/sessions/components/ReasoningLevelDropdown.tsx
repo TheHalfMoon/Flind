@@ -22,8 +22,8 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@flind/quill";
-import { Badge } from "@posthog/ui/primitives/Badge";
-import { openUrlInBrowser } from "@posthog/ui/utils/browser";
+import { Badge } from "@flind/ui/primitives/Badge";
+import { openUrlInBrowser } from "@flind/ui/utils/browser";
 import { Fragment, useRef, useState } from "react";
 
 export interface ReasoningLevelOption {

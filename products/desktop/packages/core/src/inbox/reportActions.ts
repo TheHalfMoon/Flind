@@ -1,6 +1,6 @@
-import { buildDiscussReportPrompt as buildSharedDiscussReportPrompt } from "@posthog/shared";
-import { buildInboxDeeplink } from "@posthog/shared/deeplink";
-import type { SignalReport } from "@posthog/shared/types";
+import { buildDiscussReportPrompt as buildSharedDiscussReportPrompt } from "@flind/shared";
+import { buildInboxDeeplink } from "@flind/shared/deeplink";
+import type { SignalReport } from "@flind/shared/types";
 
 /**
  * Should the Create PR action be offered on this report?

@@ -1,4 +1,4 @@
-import { rewriteSavedLocation, type TabsSnapshot } from "@posthog/shared";
+import { rewriteSavedLocation, type TabsSnapshot } from "@flind/shared";
 import { asc } from "drizzle-orm";
 import { inject, injectable } from "inversify";
 import { DATABASE_SERVICE } from "../identifiers";

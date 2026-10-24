@@ -1,5 +1,5 @@
-import { TWIG_CLOUD_MODE_FLAG } from "@posthog/shared";
-import { useHostCapabilities } from "@posthog/ui/shell/useHostCapabilities";
+import { TWIG_CLOUD_MODE_FLAG } from "@flind/shared";
+import { useHostCapabilities } from "@flind/ui/shell/useHostCapabilities";
 import { useFeatureFlag } from "../../feature-flags/useFeatureFlag";
 
 export function useCloudModeEnabled(): boolean {

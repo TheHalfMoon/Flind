@@ -1,6 +1,6 @@
-import { SIDEBAR_MIN_WIDTH } from "@posthog/ui/features/sidebar/constants";
-import { PEEK_CLOSE_MARGIN } from "@posthog/ui/primitives/hooks/useSidebarEdgeHoverPeek";
-import { ResizeHandle } from "@posthog/ui/primitives/ResizeHandle";
+import { SIDEBAR_MIN_WIDTH } from "@flind/ui/features/sidebar/constants";
+import { PEEK_CLOSE_MARGIN } from "@flind/ui/primitives/hooks/useSidebarEdgeHoverPeek";
+import { ResizeHandle } from "@flind/ui/primitives/ResizeHandle";
 import React from "react";
 
 // Linear-style drag-to-close: dragging the handle clamps at SIDEBAR_MIN_WIDTH,

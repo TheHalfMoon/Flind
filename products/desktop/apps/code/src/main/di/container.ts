@@ -1,4 +1,4 @@
-import { SETTINGS_BACKUP_FILES } from "@posthog/platform/settings-backup-files";
+import { SETTINGS_BACKUP_FILES } from "@flind/platform/settings-backup-files";
 import { ElectronSettingsBackupFiles } from "../platform-adapters/electron-settings-backup-files";
 import { desktopGatewayTokenHost } from "../utils/gateway-override";
 import "reflect-metadata";
@@ -11,8 +11,8 @@ import {
   getGatewayUsageUrl,
   getLlmGatewayUrl,
 } from "@flind/agent/posthog-api";
-import { AuthService } from "@posthog/core/auth/auth";
-import { AUTH_SERVICE } from "@posthog/core/auth/auth.module";
+import { AuthService } from "@flind/core/auth/auth";
+import { AUTH_SERVICE } from "@flind/core/auth/auth.module";
 import {
   AUTH_CONNECTIVITY,
   AUTH_FETCH,
@@ -22,39 +22,39 @@ import {
   AUTH_SESSION_STORE,
   AUTH_TOKEN_CIPHER,
   AUTH_TOKEN_OVERRIDE,
-} from "@posthog/core/auth/identifiers";
-import { canvasCoreModule } from "@posthog/core/canvas/canvas.module";
-import { cloudTaskModule } from "@posthog/core/cloud-task/cloud-task.module";
+} from "@flind/core/auth/identifiers";
+import { canvasCoreModule } from "@flind/core/canvas/canvas.module";
+import { cloudTaskModule } from "@flind/core/cloud-task/cloud-task.module";
 import {
   CLAUDE_SUBSCRIPTION_TOKEN_STORE,
   CLOUD_TASK_AUTH,
   CLOUD_TASK_SERVICE,
   MCP_RELAY_EXECUTOR,
-} from "@posthog/core/cloud-task/identifiers";
-import { contextMenuCoreModule } from "@posthog/core/context-menu/context-menu.module";
+} from "@flind/core/cloud-task/identifiers";
+import { contextMenuCoreModule } from "@flind/core/context-menu/context-menu.module";
 import {
   CONTEXT_MENU_CONTROLLER,
   CONTEXT_MENU_EXTERNAL_APPS_SERVICE,
-} from "@posthog/core/context-menu/identifiers";
-import { CUSTOM_CLOUD_STORE } from "@posthog/core/custom-cloud/identifiers";
-import { feedbackCoreModule } from "@posthog/core/feedback/feedback.module";
-import { FocusHostService } from "@posthog/core/focus/focus-service";
-import { FocusServiceEvent } from "@posthog/core/focus/identifiers";
-import { gitHostModule } from "@posthog/core/git/git-host.module";
+} from "@flind/core/context-menu/identifiers";
+import { CUSTOM_CLOUD_STORE } from "@flind/core/custom-cloud/identifiers";
+import { feedbackCoreModule } from "@flind/core/feedback/feedback.module";
+import { FocusHostService } from "@flind/core/focus/focus-service";
+import { FocusServiceEvent } from "@flind/core/focus/identifiers";
+import { gitHostModule } from "@flind/core/git/git-host.module";
 import type {
   GitWorkspaceLookup,
   HostGitWorkspaceClient,
-} from "@posthog/core/git/host-git";
+} from "@flind/core/git/host-git";
 import {
   GIT_AGENT_SERVICE,
   GIT_WORKSPACE_CLIENT,
   GIT_WORKSPACE_LOOKUP,
-} from "@posthog/core/git/identifiers";
-import { gitPrModule } from "@posthog/core/git-pr/git-pr.module";
-import { GIT_DIFF_SOURCE } from "@posthog/core/git-pr/identifiers";
-import { integrationsModule } from "@posthog/core/integrations/integrations.module";
-import { CanvasLinkService } from "@posthog/core/links/canvas-link";
-import { ChannelLinkService } from "@posthog/core/links/channel-link";
+} from "@flind/core/git/identifiers";
+import { gitPrModule } from "@flind/core/git-pr/git-pr.module";
+import { GIT_DIFF_SOURCE } from "@flind/core/git-pr/identifiers";
+import { integrationsModule } from "@flind/core/integrations/integrations.module";
+import { CanvasLinkService } from "@flind/core/links/canvas-link";
+import { ChannelLinkService } from "@flind/core/links/channel-link";
 import {
   CANVAS_LINK_SERVICE,
   CHANNEL_LINK_SERVICE,
@@ -64,80 +64,80 @@ import {
   OPEN_TARGET_LINK_SERVICE,
   SCOUT_LINK_SERVICE,
   TASK_LINK_SERVICE,
-} from "@posthog/core/links/identifiers";
-import { InboxLinkService } from "@posthog/core/links/inbox-link";
-import { LoopLinkService } from "@posthog/core/links/loop-link";
-import { NewTaskLinkService } from "@posthog/core/links/new-task-link";
-import { OpenTargetLinkService } from "@posthog/core/links/open-target-link";
-import { ScoutLinkService } from "@posthog/core/links/scout-link";
-import { TaskLinkService } from "@posthog/core/links/task-link";
-import type { GatewayTokenService } from "@posthog/core/llm-gateway/gateway-token";
+} from "@flind/core/links/identifiers";
+import { InboxLinkService } from "@flind/core/links/inbox-link";
+import { LoopLinkService } from "@flind/core/links/loop-link";
+import { NewTaskLinkService } from "@flind/core/links/new-task-link";
+import { OpenTargetLinkService } from "@flind/core/links/open-target-link";
+import { ScoutLinkService } from "@flind/core/links/scout-link";
+import { TaskLinkService } from "@flind/core/links/task-link";
+import type { GatewayTokenService } from "@flind/core/llm-gateway/gateway-token";
 import {
   GATEWAY_TOKEN_HOST,
   GATEWAY_TOKEN_SERVICE,
   LLM_GATEWAY_HOST,
   LLM_GATEWAY_SERVICE,
-} from "@posthog/core/llm-gateway/identifiers";
+} from "@flind/core/llm-gateway/identifiers";
 import {
   desktopUsageUrl,
   type LlmGatewayService,
-} from "@posthog/core/llm-gateway/llm-gateway";
-import { llmGatewayModule } from "@posthog/core/llm-gateway/llm-gateway.module";
-import { MCP_APPS_SERVICE } from "@posthog/core/mcp-apps/identifiers";
-import { mcpAppsModule } from "@posthog/core/mcp-apps/mcp-apps.module";
-import { NOTIFICATION_SERVICE } from "@posthog/core/notification/identifiers";
-import { NotificationService } from "@posthog/core/notification/notification";
+} from "@flind/core/llm-gateway/llm-gateway";
+import { llmGatewayModule } from "@flind/core/llm-gateway/llm-gateway.module";
+import { MCP_APPS_SERVICE } from "@flind/core/mcp-apps/identifiers";
+import { mcpAppsModule } from "@flind/core/mcp-apps/mcp-apps.module";
+import { NOTIFICATION_SERVICE } from "@flind/core/notification/identifiers";
+import { NotificationService } from "@flind/core/notification/notification";
 import {
   OAUTH_HOST,
   type OAuthCallbackReceiver,
-} from "@posthog/core/oauth/identifiers";
-import { oauthModule } from "@posthog/core/oauth/oauth.module";
-import { PROVISIONING_SERVICE } from "@posthog/core/provisioning/identifiers";
-import { ProvisioningService } from "@posthog/core/provisioning/provisioning";
-import { SLEEP_SERVICE } from "@posthog/core/sleep/identifiers";
-import { SleepService } from "@posthog/core/sleep/sleep";
-import { UI_AUTH } from "@posthog/core/ui/identifiers";
-import { uiModule } from "@posthog/core/ui/ui.module";
+} from "@flind/core/oauth/identifiers";
+import { oauthModule } from "@flind/core/oauth/oauth.module";
+import { PROVISIONING_SERVICE } from "@flind/core/provisioning/identifiers";
+import { ProvisioningService } from "@flind/core/provisioning/provisioning";
+import { SLEEP_SERVICE } from "@flind/core/sleep/identifiers";
+import { SleepService } from "@flind/core/sleep/sleep";
+import { UI_AUTH } from "@flind/core/ui/identifiers";
+import { uiModule } from "@flind/core/ui/ui.module";
 import {
   UPDATE_LIFECYCLE_SERVICE,
   UPDATES_SERVICE,
-} from "@posthog/core/updates/identifiers";
-import { updatesCoreModule } from "@posthog/core/updates/updates.module";
-import { USAGE_HOST } from "@posthog/core/usage/identifiers";
-import { usageMonitorModule } from "@posthog/core/usage/usage-monitor.module";
-import { ROOT_LOGGER, type RootLogger } from "@posthog/di/logger";
+} from "@flind/core/updates/identifiers";
+import { updatesCoreModule } from "@flind/core/updates/updates.module";
+import { USAGE_HOST } from "@flind/core/usage/identifiers";
+import { usageMonitorModule } from "@flind/core/usage/usage-monitor.module";
+import { ROOT_LOGGER, type RootLogger } from "@flind/di/logger";
 import { listFilesContainingText } from "@flind/git/queries";
-import { CONNECTIVITY_CLIENT } from "@posthog/host-router/ports/connectivity-client";
+import { CONNECTIVITY_CLIENT } from "@flind/host-router/ports/connectivity-client";
 import {
   GIT_PR_STATUS_PROVIDER,
   type IGitPrStatus,
-} from "@posthog/host-router/ports/git-pr-status";
-import { ANALYTICS_SERVICE } from "@posthog/platform/analytics";
-import { APP_LIFECYCLE_SERVICE } from "@posthog/platform/app-lifecycle";
-import { APP_META_SERVICE } from "@posthog/platform/app-meta";
-import { APP_METRICS_SERVICE } from "@posthog/platform/app-metrics";
-import { BUNDLED_RESOURCES_SERVICE } from "@posthog/platform/bundled-resources";
-import { CLIPBOARD_SERVICE } from "@posthog/platform/clipboard";
-import { CONTEXT_MENU_SERVICE } from "@posthog/platform/context-menu";
-import { CRYPTO_SERVICE } from "@posthog/platform/crypto";
-import { DEEP_LINK_SERVICE } from "@posthog/platform/deep-link";
-import { DEV_HOST_ACTIONS_SERVICE } from "@posthog/platform/dev-host-actions";
-import { DIALOG_SERVICE } from "@posthog/platform/dialog";
-import { DISK_CACHE_SERVICE } from "@posthog/platform/disk-cache";
-import { FEEDBACK_CONTEXT_SERVICE } from "@posthog/platform/feedback-context";
-import { FILE_ICON_SERVICE } from "@posthog/platform/file-icon";
-import { IMAGE_PROCESSOR_SERVICE } from "@posthog/platform/image-processor";
-import { MAIN_WINDOW_SERVICE } from "@posthog/platform/main-window";
-import { NOTIFIER_SERVICE } from "@posthog/platform/notifier";
-import { POWER_MANAGER_SERVICE } from "@posthog/platform/power-manager";
-import { SCREEN_CAPTURE_SERVICE } from "@posthog/platform/screen-capture";
-import { SECURE_STORAGE_SERVICE } from "@posthog/platform/secure-storage";
-import { STORAGE_PATHS_SERVICE } from "@posthog/platform/storage-paths";
-import { UPDATER_SERVICE } from "@posthog/platform/updater";
-import { URL_LAUNCHER_SERVICE } from "@posthog/platform/url-launcher";
-import { WORKSPACE_SETTINGS_SERVICE } from "@posthog/platform/workspace-settings";
-import type { WorkspaceClient } from "@posthog/workspace-client/client";
-import { databaseModule } from "@posthog/workspace-server/db/db.module";
+} from "@flind/host-router/ports/git-pr-status";
+import { ANALYTICS_SERVICE } from "@flind/platform/analytics";
+import { APP_LIFECYCLE_SERVICE } from "@flind/platform/app-lifecycle";
+import { APP_META_SERVICE } from "@flind/platform/app-meta";
+import { APP_METRICS_SERVICE } from "@flind/platform/app-metrics";
+import { BUNDLED_RESOURCES_SERVICE } from "@flind/platform/bundled-resources";
+import { CLIPBOARD_SERVICE } from "@flind/platform/clipboard";
+import { CONTEXT_MENU_SERVICE } from "@flind/platform/context-menu";
+import { CRYPTO_SERVICE } from "@flind/platform/crypto";
+import { DEEP_LINK_SERVICE } from "@flind/platform/deep-link";
+import { DEV_HOST_ACTIONS_SERVICE } from "@flind/platform/dev-host-actions";
+import { DIALOG_SERVICE } from "@flind/platform/dialog";
+import { DISK_CACHE_SERVICE } from "@flind/platform/disk-cache";
+import { FEEDBACK_CONTEXT_SERVICE } from "@flind/platform/feedback-context";
+import { FILE_ICON_SERVICE } from "@flind/platform/file-icon";
+import { IMAGE_PROCESSOR_SERVICE } from "@flind/platform/image-processor";
+import { MAIN_WINDOW_SERVICE } from "@flind/platform/main-window";
+import { NOTIFIER_SERVICE } from "@flind/platform/notifier";
+import { POWER_MANAGER_SERVICE } from "@flind/platform/power-manager";
+import { SCREEN_CAPTURE_SERVICE } from "@flind/platform/screen-capture";
+import { SECURE_STORAGE_SERVICE } from "@flind/platform/secure-storage";
+import { STORAGE_PATHS_SERVICE } from "@flind/platform/storage-paths";
+import { UPDATER_SERVICE } from "@flind/platform/updater";
+import { URL_LAUNCHER_SERVICE } from "@flind/platform/url-launcher";
+import { WORKSPACE_SETTINGS_SERVICE } from "@flind/platform/workspace-settings";
+import type { WorkspaceClient } from "@flind/workspace-client/client";
+import { databaseModule } from "@flind/workspace-server/db/db.module";
 import {
   ARCHIVE_REPOSITORY,
   AUTH_PREFERENCE_REPOSITORY,
@@ -148,15 +148,15 @@ import {
   SUSPENSION_REPOSITORY,
   WORKSPACE_REPOSITORY,
   WORKTREE_REPOSITORY,
-} from "@posthog/workspace-server/db/identifiers";
-import { repositoriesModule } from "@posthog/workspace-server/db/repositories.module";
+} from "@flind/workspace-server/db/identifiers";
+import { repositoriesModule } from "@flind/workspace-server/db/repositories.module";
 import {
   CONNECTIVITY_SERVICE as WS_CONNECTIVITY_SERVICE,
   GIT_SERVICE as WS_GIT_SERVICE,
-} from "@posthog/workspace-server/di/tokens";
-import { additionalDirectoriesModule } from "@posthog/workspace-server/services/additional-directories/additional-directories.module";
-import type { AgentService } from "@posthog/workspace-server/services/agent/agent";
-import { agentModule } from "@posthog/workspace-server/services/agent/agent.module";
+} from "@flind/workspace-server/di/tokens";
+import { additionalDirectoriesModule } from "@flind/workspace-server/services/additional-directories/additional-directories.module";
+import type { AgentService } from "@flind/workspace-server/services/agent/agent";
+import { agentModule } from "@flind/workspace-server/services/agent/agent.module";
 import {
   AGENT_AUTH,
   AGENT_LOGGER,
@@ -164,87 +164,87 @@ import {
   AGENT_REPO_FILES,
   AGENT_SERVICE,
   AGENT_SLEEP_COORDINATOR,
-} from "@posthog/workspace-server/services/agent/identifiers";
-import { AgentServiceEvent } from "@posthog/workspace-server/services/agent/schemas";
-import { archiveModule } from "@posthog/workspace-server/services/archive/archive.module";
+} from "@flind/workspace-server/services/agent/identifiers";
+import { AgentServiceEvent } from "@flind/workspace-server/services/agent/schemas";
+import { archiveModule } from "@flind/workspace-server/services/archive/archive.module";
 import {
   ARCHIVE_FILE_WATCHER,
   ARCHIVE_SESSION_CANCELLER,
-} from "@posthog/workspace-server/services/archive/identifiers";
-import { authProxyModule } from "@posthog/workspace-server/services/auth-proxy/auth-proxy.module";
+} from "@flind/workspace-server/services/archive/identifiers";
+import { authProxyModule } from "@flind/workspace-server/services/auth-proxy/auth-proxy.module";
 import {
   AUTH_PROXY_AUTH,
   GATEWAY_CREDENTIAL_SOURCE,
-} from "@posthog/workspace-server/services/auth-proxy/identifiers";
-import { browserTabsModule } from "@posthog/workspace-server/services/browser-tabs/browser-tabs.module";
-import { claudeCliSessionsModule } from "@posthog/workspace-server/services/claude-cli-sessions/claude-cli-sessions.module";
-import { ConnectivityService } from "@posthog/workspace-server/services/connectivity/service";
-import { enrichmentModule } from "@posthog/workspace-server/services/enrichment/enrichment.module";
+} from "@flind/workspace-server/services/auth-proxy/identifiers";
+import { browserTabsModule } from "@flind/workspace-server/services/browser-tabs/browser-tabs.module";
+import { claudeCliSessionsModule } from "@flind/workspace-server/services/claude-cli-sessions/claude-cli-sessions.module";
+import { ConnectivityService } from "@flind/workspace-server/services/connectivity/service";
+import { enrichmentModule } from "@flind/workspace-server/services/enrichment/enrichment.module";
 import {
   ENRICHMENT_AUTH,
   ENRICHMENT_FILE_READER,
-} from "@posthog/workspace-server/services/enrichment/identifiers";
-import { externalAppsModule } from "@posthog/workspace-server/services/external-apps/external-apps.module";
+} from "@flind/workspace-server/services/enrichment/identifiers";
+import { externalAppsModule } from "@flind/workspace-server/services/external-apps/external-apps.module";
 import {
   EXTERNAL_APPS_SERVICE,
   EXTERNAL_APPS_STORE,
-} from "@posthog/workspace-server/services/external-apps/identifiers";
-import type { ExternalAppsPreferences } from "@posthog/workspace-server/services/external-apps/types";
-import { foldersModule } from "@posthog/workspace-server/services/folders/folders.module";
-import { GitService } from "@posthog/workspace-server/services/git/service";
-import { TaskPrStatusService } from "@posthog/workspace-server/services/git/task-pr-status";
-import { LOGS_SERVICE } from "@posthog/workspace-server/services/local-logs/identifiers";
-import { localMcpModule } from "@posthog/workspace-server/services/local-mcp/local-mcp.module";
-import { mcpCallbackModule } from "@posthog/workspace-server/services/mcp-callback/mcp-callback.module";
-import { MCP_PROXY_AUTH } from "@posthog/workspace-server/services/mcp-proxy/identifiers";
-import { mcpProxyModule } from "@posthog/workspace-server/services/mcp-proxy/mcp-proxy.module";
-import { MCP_RELAY_SERVICE } from "@posthog/workspace-server/services/mcp-relay/identifiers";
-import { mcpRelayModule } from "@posthog/workspace-server/services/mcp-relay/mcp-relay.module";
-import { OAUTH_CALLBACK_SERVER } from "@posthog/workspace-server/services/oauth-callback/identifiers";
-import { oauthCallbackModule } from "@posthog/workspace-server/services/oauth-callback/oauth-callback.module";
-import { osModule } from "@posthog/workspace-server/services/os/os.module";
+} from "@flind/workspace-server/services/external-apps/identifiers";
+import type { ExternalAppsPreferences } from "@flind/workspace-server/services/external-apps/types";
+import { foldersModule } from "@flind/workspace-server/services/folders/folders.module";
+import { GitService } from "@flind/workspace-server/services/git/service";
+import { TaskPrStatusService } from "@flind/workspace-server/services/git/task-pr-status";
+import { LOGS_SERVICE } from "@flind/workspace-server/services/local-logs/identifiers";
+import { localMcpModule } from "@flind/workspace-server/services/local-mcp/local-mcp.module";
+import { mcpCallbackModule } from "@flind/workspace-server/services/mcp-callback/mcp-callback.module";
+import { MCP_PROXY_AUTH } from "@flind/workspace-server/services/mcp-proxy/identifiers";
+import { mcpProxyModule } from "@flind/workspace-server/services/mcp-proxy/mcp-proxy.module";
+import { MCP_RELAY_SERVICE } from "@flind/workspace-server/services/mcp-relay/identifiers";
+import { mcpRelayModule } from "@flind/workspace-server/services/mcp-relay/mcp-relay.module";
+import { OAUTH_CALLBACK_SERVER } from "@flind/workspace-server/services/oauth-callback/identifiers";
+import { oauthCallbackModule } from "@flind/workspace-server/services/oauth-callback/oauth-callback.module";
+import { osModule } from "@flind/workspace-server/services/os/os.module";
 import {
   PI_RPC_CLIENT_FACTORY,
   PI_RUNTIME_FACTORY,
   PI_SESSION_SERVICE,
-} from "@posthog/workspace-server/services/pi-session/identifiers";
-import type { PiSessionService } from "@posthog/workspace-server/services/pi-session/pi-session";
-import { piSessionModule } from "@posthog/workspace-server/services/pi-session/pi-session.module";
-import { POSTHOG_PLUGIN_SERVICE } from "@posthog/workspace-server/services/posthog-plugin/identifiers";
-import { posthogPluginModule } from "@posthog/workspace-server/services/posthog-plugin/posthog-plugin.module";
-import { PROCESS_TRACKING_SERVICE } from "@posthog/workspace-server/services/process-tracking/identifiers";
-import { processTrackingModule } from "@posthog/workspace-server/services/process-tracking/process-tracking.module";
-import { releaseFeedModule } from "@posthog/workspace-server/services/release-feed/release-feed.module";
-import { SECURE_STORE_SERVICE } from "@posthog/workspace-server/services/secure-store/identifiers";
-import { shellModule } from "@posthog/workspace-server/services/shell/shell.module";
-import { skillsModule } from "@posthog/workspace-server/services/skills/skills.module";
-import { skillsMarketplaceModule } from "@posthog/workspace-server/services/skills-marketplace/skills-marketplace.module";
-import { SPEECH_SYNTHESIZER_SERVICE } from "@posthog/workspace-server/services/speech/identifiers";
+} from "@flind/workspace-server/services/pi-session/identifiers";
+import type { PiSessionService } from "@flind/workspace-server/services/pi-session/pi-session";
+import { piSessionModule } from "@flind/workspace-server/services/pi-session/pi-session.module";
+import { POSTHOG_PLUGIN_SERVICE } from "@flind/workspace-server/services/posthog-plugin/identifiers";
+import { posthogPluginModule } from "@flind/workspace-server/services/posthog-plugin/posthog-plugin.module";
+import { PROCESS_TRACKING_SERVICE } from "@flind/workspace-server/services/process-tracking/identifiers";
+import { processTrackingModule } from "@flind/workspace-server/services/process-tracking/process-tracking.module";
+import { releaseFeedModule } from "@flind/workspace-server/services/release-feed/release-feed.module";
+import { SECURE_STORE_SERVICE } from "@flind/workspace-server/services/secure-store/identifiers";
+import { shellModule } from "@flind/workspace-server/services/shell/shell.module";
+import { skillsModule } from "@flind/workspace-server/services/skills/skills.module";
+import { skillsMarketplaceModule } from "@flind/workspace-server/services/skills-marketplace/skills-marketplace.module";
+import { SPEECH_SYNTHESIZER_SERVICE } from "@flind/workspace-server/services/speech/identifiers";
 import {
   SUSPENSION_FILE_WATCHER,
   SUSPENSION_SERVICE,
   SUSPENSION_SESSION_CANCELLER,
-} from "@posthog/workspace-server/services/suspension/identifiers";
-import { suspensionModule } from "@posthog/workspace-server/services/suspension/suspension.module";
-import { FileWatcherEventKind } from "@posthog/workspace-server/services/watcher/schemas";
-import { WATCHER_REGISTRY_SERVICE } from "@posthog/workspace-server/services/watcher-registry/identifiers";
-import { watcherRegistryModule } from "@posthog/workspace-server/services/watcher-registry/watcher-registry.module";
+} from "@flind/workspace-server/services/suspension/identifiers";
+import { suspensionModule } from "@flind/workspace-server/services/suspension/suspension.module";
+import { FileWatcherEventKind } from "@flind/workspace-server/services/watcher/schemas";
+import { WATCHER_REGISTRY_SERVICE } from "@flind/workspace-server/services/watcher-registry/identifiers";
+import { watcherRegistryModule } from "@flind/workspace-server/services/watcher-registry/watcher-registry.module";
 import {
   WORKSPACE_AGENT,
   WORKSPACE_FILE_WATCHER,
   WORKSPACE_FOCUS,
   WORKSPACE_PROVISIONING,
   WORKSPACE_SERVICE,
-} from "@posthog/workspace-server/services/workspace/identifiers";
+} from "@flind/workspace-server/services/workspace/identifiers";
 import type {
   WorkspaceAgent,
   WorkspaceFileWatcher,
   WorkspaceFocus,
   WorkspaceProvisioning,
-} from "@posthog/workspace-server/services/workspace/ports";
-import type { WorkspaceService } from "@posthog/workspace-server/services/workspace/workspace";
-import { workspaceModule } from "@posthog/workspace-server/services/workspace/workspace.module";
-import { workspaceMetadataModule } from "@posthog/workspace-server/services/workspace-metadata/workspace-metadata.module";
+} from "@flind/workspace-server/services/workspace/ports";
+import type { WorkspaceService } from "@flind/workspace-server/services/workspace/workspace";
+import { workspaceModule } from "@flind/workspace-server/services/workspace/workspace.module";
+import { workspaceMetadataModule } from "@flind/workspace-server/services/workspace-metadata/workspace-metadata.module";
 import ExternalAppsStoreImpl from "electron-store";
 import type { FileWatcherBridge } from "../index";
 import { DesktopPiRpcClientFactory } from "../platform-adapters/desktop-pi-rpc-client-factory";
@@ -849,7 +849,7 @@ container.bind(MAIN_DISCORD_PRESENCE_SERVICE).to(DiscordPresenceService);
 container.bind(MAIN_MISSION_CONTROL_SERVICE).to(MissionControlService);
 
 // Canvas / dashboards (project-bluebird). The host-agnostic dashboard services
-// live in @posthog/core (bound via canvasCoreModule) and resolve through
+// live in @flind/core (bound via canvasCoreModule) and resolve through
 // ctx.container in the host-router routers.
 container.load(canvasCoreModule);
 

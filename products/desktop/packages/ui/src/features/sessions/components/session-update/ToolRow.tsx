@@ -5,7 +5,7 @@ import {
   ChatMarkerIcon,
   cn,
 } from "@flind/quill";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
+import { Spinner } from "@flind/ui/primitives/Spinner";
 import type { ReactNode } from "react";
 import { StatusIndicators, ToolTitle } from "./toolCallUtils";
 

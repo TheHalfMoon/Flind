@@ -8,12 +8,12 @@ import {
   TableHeader,
   TableRow,
 } from "@flind/quill";
-import { channelGlyph } from "@posthog/ui/features/canvas/components/channelGlyph";
-import type { LoopSchemas } from "@posthog/ui/features/loops/loopSchemas";
-import { Badge } from "@posthog/ui/primitives/Badge";
-import { LoopIcon } from "@posthog/ui/primitives/LoopIcon";
-import { RelativeTimestamp } from "@posthog/ui/primitives/RelativeTimestamp";
-import { Tooltip } from "@posthog/ui/primitives/Tooltip";
+import { channelGlyph } from "@flind/ui/features/canvas/components/channelGlyph";
+import type { LoopSchemas } from "@flind/ui/features/loops/loopSchemas";
+import { Badge } from "@flind/ui/primitives/Badge";
+import { LoopIcon } from "@flind/ui/primitives/LoopIcon";
+import { RelativeTimestamp } from "@flind/ui/primitives/RelativeTimestamp";
+import { Tooltip } from "@flind/ui/primitives/Tooltip";
 import { Link } from "@tanstack/react-router";
 import { useSetLoopEnabled } from "../hooks/useLoopMutations";
 import {

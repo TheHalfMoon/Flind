@@ -1,5 +1,5 @@
 import { setTimeout as delay } from "node:timers/promises";
-import { TypedEventEmitter } from "@posthog/shared";
+import { TypedEventEmitter } from "@flind/shared";
 import { screen } from "electron";
 import { injectable, preDestroy } from "inversify";
 import { createWindowListSampler } from "../services/mission-control/cg-window-list";

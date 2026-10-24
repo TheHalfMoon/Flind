@@ -1,8 +1,8 @@
 import type {
   CanvasBuildLifecycle,
   CanvasBuildRecord,
-} from "@posthog/core/canvas/canvasBuildSchemas";
-import { useHostTRPC } from "@posthog/host-router/react";
+} from "@flind/core/canvas/canvasBuildSchemas";
+import { useHostTRPC } from "@flind/host-router/react";
 import { useQueryClient } from "@tanstack/react-query";
 import { useCallback, useEffect, useRef, useState } from "react";
 

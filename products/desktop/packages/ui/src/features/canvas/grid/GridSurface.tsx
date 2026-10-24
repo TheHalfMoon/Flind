@@ -2,7 +2,7 @@ import { SquaresFourIcon } from "@phosphor-icons/react";
 import type {
   GridDefinition,
   GridPlacement,
-} from "@posthog/core/canvas/gridLayoutSchemas";
+} from "@flind/core/canvas/gridLayoutSchemas";
 import {
   Empty,
   EmptyDescription,

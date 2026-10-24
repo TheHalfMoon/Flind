@@ -1,7 +1,7 @@
-import type { Task, TaskChannel } from "@posthog/shared/domain-types";
-import { NavRail } from "@posthog/ui/features/canvas/components/NavRail";
-import { TASK_CHANNELS_QUERY_KEY } from "@posthog/ui/features/canvas/hooks/useTaskChannels";
-import { taskKeys } from "@posthog/ui/features/tasks/taskKeys";
+import type { Task, TaskChannel } from "@flind/shared/domain-types";
+import { NavRail } from "@flind/ui/features/canvas/components/NavRail";
+import { TASK_CHANNELS_QUERY_KEY } from "@flind/ui/features/canvas/hooks/useTaskChannels";
+import { taskKeys } from "@flind/ui/features/tasks/taskKeys";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import type { ReactElement } from "react";

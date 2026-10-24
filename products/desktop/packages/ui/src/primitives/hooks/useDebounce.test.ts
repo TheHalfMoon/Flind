@@ -1,4 +1,4 @@
-import { useDebounce } from "@posthog/ui/primitives/hooks/useDebounce";
+import { useDebounce } from "@flind/ui/primitives/hooks/useDebounce";
 import { act, renderHook } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 

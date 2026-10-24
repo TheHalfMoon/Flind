@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from "vitest";
 
 const navigate = vi.hoisted(() => vi.fn());
-vi.mock("@posthog/ui/router/routerRef", () => ({
+vi.mock("@flind/ui/router/routerRef", () => ({
   getRouterOrNull: () => ({ navigate }),
 }));
 

@@ -1,9 +1,9 @@
 import { Prec } from "@codemirror/state";
 import { EditorView, keymap } from "@codemirror/view";
 import { cn } from "@flind/quill";
-import { formatHogQL } from "@posthog/ui/features/canvas/formatHogQL";
-import { useCodeMirror } from "@posthog/ui/features/code-editor/hooks/useCodeMirror";
-import { useEditorExtensions } from "@posthog/ui/features/code-editor/hooks/useEditorExtensions";
+import { formatHogQL } from "@flind/ui/features/canvas/formatHogQL";
+import { useCodeMirror } from "@flind/ui/features/code-editor/hooks/useCodeMirror";
+import { useEditorExtensions } from "@flind/ui/features/code-editor/hooks/useEditorExtensions";
 import {
   type Ref,
   useEffect,

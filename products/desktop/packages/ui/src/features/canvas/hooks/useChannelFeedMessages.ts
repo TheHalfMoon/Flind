@@ -1,10 +1,10 @@
-import { shouldPollChannelFeed } from "@posthog/core/canvas/channelFeed";
+import { shouldPollChannelFeed } from "@flind/core/canvas/channelFeed";
 import type {
   ChannelFeedMessage,
   UserBasic,
-} from "@posthog/shared/domain-types";
-import { userDisplayName } from "@posthog/ui/features/canvas/utils/userDisplay";
-import { useAuthenticatedQuery } from "@posthog/ui/hooks/useAuthenticatedQuery";
+} from "@flind/shared/domain-types";
+import { userDisplayName } from "@flind/ui/features/canvas/utils/userDisplay";
+import { useAuthenticatedQuery } from "@flind/ui/hooks/useAuthenticatedQuery";
 import { useMemo } from "react";
 
 // Multiplayer, like the task feed: poll so a teammate's announcement appears

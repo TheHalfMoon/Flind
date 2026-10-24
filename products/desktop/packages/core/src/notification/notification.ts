@@ -2,13 +2,13 @@ import {
   ROOT_LOGGER,
   type RootLogger,
   type ScopedLogger,
-} from "@posthog/di/logger";
+} from "@flind/di/logger";
 import {
   type IMainWindow,
   MAIN_WINDOW_SERVICE,
-} from "@posthog/platform/main-window";
-import type { NotificationTarget } from "@posthog/platform/notifications";
-import { type INotifier, NOTIFIER_SERVICE } from "@posthog/platform/notifier";
+} from "@flind/platform/main-window";
+import type { NotificationTarget } from "@flind/platform/notifications";
+import { type INotifier, NOTIFIER_SERVICE } from "@flind/platform/notifier";
 import { inject, injectable, postConstruct } from "inversify";
 import { OPEN_TARGET_LINK_SERVICE } from "../links/identifiers";
 import type { OpenTargetLinkService } from "../links/open-target-link";

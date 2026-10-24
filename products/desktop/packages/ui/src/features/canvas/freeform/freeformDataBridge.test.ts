@@ -1,5 +1,5 @@
-import { assertCanvasCapability } from "@posthog/core/canvas/canvasCapabilities";
-import type { CanvasCapabilities } from "@posthog/shared";
+import { assertCanvasCapability } from "@flind/core/canvas/canvasCapabilities";
+import type { CanvasCapabilities } from "@flind/shared";
 import { QueryClient } from "@tanstack/react-query";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { handleFreeformDataRequest } from "./freeformDataBridge";

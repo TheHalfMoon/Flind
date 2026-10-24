@@ -7,11 +7,11 @@ import { pinnedRecordsPollInterval, useTasks } from "./useTasks";
 
 const mocks = vi.hoisted(() => ({ getTasks: vi.fn() }));
 
-vi.mock("@posthog/ui/features/auth/authClient", () => ({
+vi.mock("@flind/ui/features/auth/authClient", () => ({
   useOptionalAuthenticatedClient: () => ({ getTasks: mocks.getTasks }),
 }));
 
-vi.mock("@posthog/ui/features/auth/useMeQuery", () => ({
+vi.mock("@flind/ui/features/auth/useMeQuery", () => ({
   useMeQuery: () => ({ data: { id: 42 } }),
 }));
 

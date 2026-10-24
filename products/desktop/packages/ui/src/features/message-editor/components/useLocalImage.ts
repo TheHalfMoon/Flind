@@ -1,5 +1,5 @@
-import { isClipboardAttachmentPath } from "@posthog/shared";
-import { readFileAsDataUrl } from "@posthog/ui/features/message-editor/hostApi";
+import { isClipboardAttachmentPath } from "@flind/shared";
+import { readFileAsDataUrl } from "@flind/ui/features/message-editor/hostApi";
 import { useQuery } from "@tanstack/react-query";
 
 export function useLocalImage(filePath: string | undefined): string | null {

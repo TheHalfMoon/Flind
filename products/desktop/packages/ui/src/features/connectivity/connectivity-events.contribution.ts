@@ -1,5 +1,5 @@
-import { connectivityStore } from "@posthog/core/connectivity/connectivityStore";
-import type { Contribution } from "@posthog/di/contribution";
+import { connectivityStore } from "@flind/core/connectivity/connectivityStore";
+import type { Contribution } from "@flind/di/contribution";
 import { inject, injectable } from "inversify";
 import {
   CONNECTIVITY_CLIENT,

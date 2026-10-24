@@ -1,16 +1,16 @@
 import { Text } from "@components/text";
-import { buildCreatePrReportPrompt } from "@posthog/core/inbox/reportActions";
+import { buildCreatePrReportPrompt } from "@flind/core/inbox/reportActions";
 import {
   formatSignalReportSummaryMarkdown,
   humanizeReportTitle,
   inboxStatusLabel,
   parseConventionalCommitTitle,
-} from "@posthog/core/inbox/reportPresentation";
+} from "@flind/core/inbox/reportPresentation";
 import type {
   SignalReport,
   SignalReportPriority,
   SignalReportStatus,
-} from "@posthog/shared/domain-types";
+} from "@flind/shared/domain-types";
 import { formatDistanceToNow } from "date-fns";
 import * as Haptics from "expo-haptics";
 import { useRouter } from "expo-router";

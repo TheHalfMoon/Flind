@@ -1,5 +1,5 @@
 import { Check, Prohibit, Shield } from "@phosphor-icons/react";
-import type { McpApprovalState } from "@posthog/api-client/posthog-client";
+import type { McpApprovalState } from "@flind/api-client/posthog-client";
 import { Tooltip } from "@radix-ui/themes";
 
 interface ToolPolicyToggleProps {

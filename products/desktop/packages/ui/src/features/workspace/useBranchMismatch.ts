@@ -1,7 +1,7 @@
 import {
   isBranchMismatch,
   shouldWarnBranchMismatch,
-} from "@posthog/core/workspace/branchMismatch";
+} from "@flind/core/workspace/branchMismatch";
 import { useCallback, useEffect, useRef } from "react";
 import { create } from "zustand";
 import { useWorkspace } from "./useWorkspace";

@@ -1,11 +1,11 @@
-import { sessionSupportsNativeSteer } from "@posthog/shared";
+import { sessionSupportsNativeSteer } from "@flind/shared";
 import {
   type MessagingMode,
   useMessagingModeStore,
-} from "@posthog/ui/features/sessions/messagingModeStore";
-import { useSessionStore } from "@posthog/ui/features/sessions/sessionStore";
-import { useSessionIsCloud } from "@posthog/ui/features/sessions/useSession";
-import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
+} from "@flind/ui/features/sessions/messagingModeStore";
+import { useSessionStore } from "@flind/ui/features/sessions/sessionStore";
+import { useSessionIsCloud } from "@flind/ui/features/sessions/useSession";
+import { useSettingsStore } from "@flind/ui/features/settings/settingsStore";
 
 /**
  * Effective messaging mode for a task: per-task override, else the global

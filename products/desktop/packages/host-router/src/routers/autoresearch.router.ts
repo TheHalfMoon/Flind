@@ -1,6 +1,6 @@
-import { publicProcedure, router } from "@posthog/host-trpc/trpc";
-import { AUTORESEARCH_RUN_REPOSITORY } from "@posthog/workspace-server/db/identifiers";
-import type { IAutoresearchRunRepository } from "@posthog/workspace-server/db/repositories/autoresearch-run-repository";
+import { publicProcedure, router } from "@flind/host-trpc/trpc";
+import { AUTORESEARCH_RUN_REPOSITORY } from "@flind/workspace-server/db/identifiers";
+import type { IAutoresearchRunRepository } from "@flind/workspace-server/db/repositories/autoresearch-run-repository";
 import { z } from "zod";
 
 const storedRunSchema = z.object({

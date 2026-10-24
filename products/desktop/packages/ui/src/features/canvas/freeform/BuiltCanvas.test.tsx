@@ -1,5 +1,5 @@
-import { openExternalUrl } from "@posthog/ui/shell/openExternal";
-import { useThemeStore } from "@posthog/ui/shell/themeStore";
+import { openExternalUrl } from "@flind/ui/shell/openExternal";
+import { useThemeStore } from "@flind/ui/shell/themeStore";
 import {
   act,
   fireEvent,
@@ -10,7 +10,7 @@ import {
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { BuiltCanvas } from "./BuiltCanvas";
 
-vi.mock("@posthog/ui/shell/openExternal", () => ({ openExternalUrl: vi.fn() }));
+vi.mock("@flind/ui/shell/openExternal", () => ({ openExternalUrl: vi.fn() }));
 
 describe("BuiltCanvas", () => {
   const capabilities = {

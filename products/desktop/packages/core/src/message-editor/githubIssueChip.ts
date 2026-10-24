@@ -1,4 +1,4 @@
-import type { GithubRefState } from "@posthog/shared";
+import type { GithubRefState } from "@flind/shared";
 import type { MentionChip } from "./content";
 import type { ParsedGithubIssueUrl } from "./githubIssueUrl";
 

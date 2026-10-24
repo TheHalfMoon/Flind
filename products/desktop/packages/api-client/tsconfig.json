@@ -1,5 +1,5 @@
 {
-  "extends": "@posthog/tsconfig/base.json",
+  "extends": "@flind/tsconfig/base.json",
   "compilerOptions": {
     "lib": ["ESNext", "DOM", "DOM.Iterable"]
   },

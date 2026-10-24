@@ -1,19 +1,19 @@
 import {
   CLOUD_USAGE_LIMIT_ERROR_MESSAGE,
   type TaskSessionStorageAccess,
-} from "@posthog/api-client/posthog-client";
-import { cloudAccessFor } from "@posthog/core/sessions/cloudModelAccess";
+} from "@flind/api-client/posthog-client";
+import { cloudAccessFor } from "@flind/core/sessions/cloudModelAccess";
 import {
   SESSION_SERVICE,
   type SessionService,
-} from "@posthog/core/sessions/sessionService";
-import { ROOT_LOGGER, type RootLogger } from "@posthog/di/logger";
+} from "@flind/core/sessions/sessionService";
+import { ROOT_LOGGER, type RootLogger } from "@flind/di/logger";
 import type {
   SagaResult,
   TaskCreationInput,
   TaskCreationOutput,
-} from "@posthog/shared";
-import type { Task, TaskRun } from "@posthog/shared/domain-types";
+} from "@flind/shared";
+import type { Task, TaskRun } from "@flind/shared/domain-types";
 import { inject, injectable } from "inversify";
 import { FILE_READ_CLIENT, type FileReadClient } from "../files/identifiers";
 import { extractFilePaths, xmlToContent } from "../message-editor/content";

@@ -1,4 +1,4 @@
-import { PullRequestView } from "@posthog/ui/features/pr-review/PullRequestView";
+import { PullRequestView } from "@flind/ui/features/pr-review/PullRequestView";
 import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/pr")({

@@ -1,10 +1,10 @@
-import type { ContextUsage } from "@posthog/core/sessions/contextUsage";
-import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
+import type { ContextUsage } from "@flind/core/sessions/contextUsage";
+import { useSettingsStore } from "@flind/ui/features/settings/settingsStore";
 import { act, renderHook } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { type AutoCompactArgs, useAutoCompact } from "./useAutoCompact";
 
-vi.mock("@posthog/ui/primitives/toast", () => ({
+vi.mock("@flind/ui/primitives/toast", () => ({
   toast: { info: vi.fn(), success: vi.fn(), error: vi.fn() },
 }));
 

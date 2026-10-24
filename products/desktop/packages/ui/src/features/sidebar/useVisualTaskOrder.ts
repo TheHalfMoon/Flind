@@ -1,7 +1,7 @@
 import type {
   SidebarData,
   TaskData,
-} from "@posthog/core/sidebar/sidebarData.types";
+} from "@flind/core/sidebar/sidebarData.types";
 import { useMemo } from "react";
 import { useSidebarStore } from "./sidebarStore";
 

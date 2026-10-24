@@ -1,4 +1,4 @@
-import { LoadingState } from "@posthog/ui/primitives/LoadingState";
+import { LoadingState } from "@flind/ui/primitives/LoadingState";
 
 // Default per-route pending UI. TanStack Router renders a route's
 // `pendingComponent` (falling back to this) the moment its loader is pending,

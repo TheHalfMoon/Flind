@@ -1,10 +1,10 @@
-import { getDeferredMessage } from "@posthog/core/code-review/reviewShellGeometry";
+import { getDeferredMessage } from "@flind/core/code-review/reviewShellGeometry";
 import {
   getImageMimeType,
   getVideoMimeType,
   isPlayableVideoFile,
   isRasterImageFile,
-} from "@posthog/shared";
+} from "@flind/shared";
 import type { ReactNode } from "react";
 import { useInView } from "../../../primitives/hooks/useInView";
 import { SafeImagePreview } from "../../../primitives/SafeImagePreview";

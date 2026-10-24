@@ -1,5 +1,5 @@
-import { CHANNEL_REPORTS_FLAG } from "@posthog/shared";
-import { useFeatureFlag } from "@posthog/ui/features/feature-flags/useFeatureFlag";
+import { CHANNEL_REPORTS_FLAG } from "@flind/shared";
+import { useFeatureFlag } from "@flind/ui/features/feature-flags/useFeatureFlag";
 
 /**
  * Whether spaces own reports (sidebar tab, feed cards, in-space detail) and the

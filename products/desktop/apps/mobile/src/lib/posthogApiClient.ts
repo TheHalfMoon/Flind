@@ -1,5 +1,5 @@
-import type { FetchImplementation } from "@posthog/api-client/fetcher";
-import { PostHogAPIClient } from "@posthog/api-client/posthog-client";
+import type { FetchImplementation } from "@flind/api-client/fetcher";
+import { PostHogAPIClient } from "@flind/api-client/posthog-client";
 import { fetch } from "expo/fetch";
 import * as Application from "expo-application";
 import Constants from "expo-constants";

@@ -1,4 +1,4 @@
-import { AI_FEEDBACK_TEXT_MAX_LENGTH } from "@posthog/core/analytics/aiFeedback";
+import { AI_FEEDBACK_TEXT_MAX_LENGTH } from "@flind/core/analytics/aiFeedback";
 import { describe, expect, it, vi } from "vitest";
 import {
   getCodeCommandInputError,
@@ -8,7 +8,7 @@ import {
 import type { EditorAvailableCommand } from "./types";
 
 const toastError = vi.hoisted(() => vi.fn());
-vi.mock("@posthog/ui/primitives/toast", () => ({
+vi.mock("@flind/ui/primitives/toast", () => ({
   toast: { error: toastError, success: vi.fn() },
 }));
 

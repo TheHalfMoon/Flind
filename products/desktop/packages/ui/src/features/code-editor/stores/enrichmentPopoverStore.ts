@@ -1,4 +1,4 @@
-import type { EnrichmentPopoverEntry } from "@posthog/core/code-editor/buildEnrichmentOccurrences";
+import type { EnrichmentPopoverEntry } from "@flind/core/code-editor/buildEnrichmentOccurrences";
 import { create } from "zustand";
 
 interface PopoverAnchorRect {

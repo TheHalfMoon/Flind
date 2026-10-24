@@ -2,7 +2,7 @@ import type {
   IUpdater,
   UpdateAvailableInfo,
   UpdateDownloadProgress,
-} from "@posthog/platform/updater";
+} from "@flind/platform/updater";
 import { app } from "electron";
 import log from "electron-log/main";
 import {

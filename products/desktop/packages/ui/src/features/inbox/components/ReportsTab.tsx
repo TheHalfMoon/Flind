@@ -1,7 +1,7 @@
 import { ReadCvLogoIcon } from "@phosphor-icons/react";
-import { isReportTabReport } from "@posthog/core/inbox/reportMembership";
-import { InboxReportListTab } from "@posthog/ui/features/inbox/components/InboxReportListTab";
-import { ReportCard } from "@posthog/ui/features/inbox/components/ReportCard";
+import { isReportTabReport } from "@flind/core/inbox/reportMembership";
+import { InboxReportListTab } from "@flind/ui/features/inbox/components/InboxReportListTab";
+import { ReportCard } from "@flind/ui/features/inbox/components/ReportCard";
 
 export function ReportsTab() {
   return (

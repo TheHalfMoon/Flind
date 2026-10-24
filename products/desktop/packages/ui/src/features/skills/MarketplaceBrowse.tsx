@@ -1,6 +1,6 @@
 import { DownloadSimpleIcon, StorefrontIcon } from "@phosphor-icons/react";
-import { useDebouncedValue } from "@posthog/ui/primitives/hooks/useDebouncedValue";
-import { ResizableSidebar } from "@posthog/ui/primitives/ResizableSidebar";
+import { useDebouncedValue } from "@flind/ui/primitives/hooks/useDebouncedValue";
+import { ResizableSidebar } from "@flind/ui/primitives/ResizableSidebar";
 import { useState } from "react";
 import { MarketplaceSkillPanel } from "./MarketplaceSkillPanel";
 import { SkillListCard } from "./SkillListCard";

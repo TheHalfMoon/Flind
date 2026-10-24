@@ -1,41 +1,41 @@
 import {
   REPORT_MODEL_RESOLVER,
   type ReportModelResolver,
-} from "@posthog/core/inbox/identifiers";
+} from "@flind/core/inbox/identifiers";
 import {
   TASK_SERVICE,
   type TaskService,
-} from "@posthog/core/task-detail/taskService";
-import { useService } from "@posthog/di/react";
-import { useHostTRPC } from "@posthog/host-router/react";
+} from "@flind/core/task-detail/taskService";
+import { useService } from "@flind/di/react";
+import { useHostTRPC } from "@flind/host-router/react";
 import {
   CONTEXT_LAYER_FLAG,
   getCloudUrlFromRegion,
   type WorkspaceMode,
-} from "@posthog/shared";
-import type { Task } from "@posthog/shared/domain-types";
-import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { useAuthStateValue } from "@posthog/ui/features/auth/store";
+} from "@flind/shared";
+import type { Task } from "@flind/shared/domain-types";
+import { useOptionalAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { useAuthStateValue } from "@flind/ui/features/auth/store";
 import {
   type AgentChoice,
   buildContextGenerationPrompt,
   contextMdTaskTitle,
-} from "@posthog/ui/features/canvas/contextPrompt";
-import { channelFeedQueryKey } from "@posthog/ui/features/canvas/hooks/useChannelFeed";
-import { channelFeedMessagesQueryKey } from "@posthog/ui/features/canvas/hooks/useChannelFeedMessages";
-import { useChannelTaskMutations } from "@posthog/ui/features/canvas/hooks/useChannelTasks";
+} from "@flind/ui/features/canvas/contextPrompt";
+import { channelFeedQueryKey } from "@flind/ui/features/canvas/hooks/useChannelFeed";
+import { channelFeedMessagesQueryKey } from "@flind/ui/features/canvas/hooks/useChannelFeedMessages";
+import { useChannelTaskMutations } from "@flind/ui/features/canvas/hooks/useChannelTasks";
 import {
   FEATURE_FLAGS,
   type FeatureFlags,
-} from "@posthog/ui/features/feature-flags/identifiers";
+} from "@flind/ui/features/feature-flags/identifiers";
 import {
   resolveFeatureFlagAfterLoad,
   useFeatureFlagsLoaded,
-} from "@posthog/ui/features/feature-flags/useFeatureFlagsLoaded";
-import { toastError } from "@posthog/ui/features/notifications/errorDetails";
-import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
-import { usePreviewConfig } from "@posthog/ui/features/task-detail/hooks/usePreviewConfig";
-import { useCreateTask } from "@posthog/ui/features/tasks/useTaskCrudMutations";
+} from "@flind/ui/features/feature-flags/useFeatureFlagsLoaded";
+import { toastError } from "@flind/ui/features/notifications/errorDetails";
+import { useSettingsStore } from "@flind/ui/features/settings/settingsStore";
+import { usePreviewConfig } from "@flind/ui/features/task-detail/hooks/usePreviewConfig";
+import { useCreateTask } from "@flind/ui/features/tasks/useTaskCrudMutations";
 import { useQueryClient } from "@tanstack/react-query";
 import { useCallback, useState } from "react";
 

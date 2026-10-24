@@ -1,14 +1,14 @@
-import { listLoopHogFlows } from "@posthog/api-client/hogFlowLoops";
+import { listLoopHogFlows } from "@flind/api-client/hogFlowLoops";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { renderHook, waitFor } from "@testing-library/react";
 import type { ReactNode } from "react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { useLoops } from "./useLoops";
 
-vi.mock("@posthog/api-client/hogFlowLoops", () => ({
+vi.mock("@flind/api-client/hogFlowLoops", () => ({
   listLoopHogFlows: vi.fn(),
 }));
-vi.mock("@posthog/ui/features/auth/useCurrentUser", () => ({
+vi.mock("@flind/ui/features/auth/useCurrentUser", () => ({
   AUTH_SCOPED_QUERY_META: {},
 }));
 vi.mock("./useLoopsClient", () => ({

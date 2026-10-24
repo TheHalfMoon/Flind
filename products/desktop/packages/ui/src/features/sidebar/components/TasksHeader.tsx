@@ -7,8 +7,8 @@ import {
   type Icon,
   MagnifyingGlass,
 } from "@phosphor-icons/react";
-import { ALL_WORKSPACE_MODES } from "@posthog/core/sidebar/buildSidebarData";
-import { useHostTRPCClient } from "@posthog/host-router/react";
+import { ALL_WORKSPACE_MODES } from "@flind/core/sidebar/buildSidebarData";
+import { useHostTRPCClient } from "@flind/host-router/react";
 import {
   Button,
   DropdownMenu,
@@ -24,18 +24,18 @@ import {
   DropdownMenuTrigger,
   MenuLabel,
 } from "@flind/quill";
-import type { WorkspaceMode } from "@posthog/shared";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
-import { useMeQuery } from "@posthog/ui/features/auth/useMeQuery";
-import { useFolders } from "@posthog/ui/features/folders/useFolders";
-import { EditListItemAppearanceDialog } from "@posthog/ui/features/sidebar/components/EditListItemAppearanceDialog";
-import { useSidebarStore } from "@posthog/ui/features/sidebar/sidebarStore";
-import { useHoldSidebarPeek } from "@posthog/ui/features/sidebar/useHoldSidebarPeek";
-import { Tooltip } from "@posthog/ui/primitives/Tooltip";
-import { toast } from "@posthog/ui/primitives/toast";
-import { track } from "@posthog/ui/shell/analytics";
-import { useCommandMenuStore } from "@posthog/ui/shell/commandMenuStore";
-import { logger } from "@posthog/ui/shell/logger";
+import type { WorkspaceMode } from "@flind/shared";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
+import { useMeQuery } from "@flind/ui/features/auth/useMeQuery";
+import { useFolders } from "@flind/ui/features/folders/useFolders";
+import { EditListItemAppearanceDialog } from "@flind/ui/features/sidebar/components/EditListItemAppearanceDialog";
+import { useSidebarStore } from "@flind/ui/features/sidebar/sidebarStore";
+import { useHoldSidebarPeek } from "@flind/ui/features/sidebar/useHoldSidebarPeek";
+import { Tooltip } from "@flind/ui/primitives/Tooltip";
+import { toast } from "@flind/ui/primitives/toast";
+import { track } from "@flind/ui/shell/analytics";
+import { useCommandMenuStore } from "@flind/ui/shell/commandMenuStore";
+import { logger } from "@flind/ui/shell/logger";
 import { useState } from "react";
 
 const log = logger.scope("tasks-header");

@@ -1,8 +1,8 @@
 import {
   contentToXml,
   type EditorContent,
-} from "@posthog/core/message-editor/content";
-import type { EditorHandle } from "@posthog/ui/features/message-editor/types";
+} from "@flind/core/message-editor/content";
+import type { EditorHandle } from "@flind/ui/features/message-editor/types";
 
 type ComposerEditor = Pick<EditorHandle, "clear" | "isEmpty" | "setContent">;
 

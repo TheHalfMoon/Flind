@@ -1,4 +1,4 @@
-import type { AcpMessage, AgentSession } from "@posthog/shared";
+import type { AcpMessage, AgentSession } from "@flind/shared";
 import { afterEach, describe, expect, it } from "vitest";
 import { sessionStore, sessionStoreSetters } from "./sessionStore";
 

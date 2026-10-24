@@ -1,4 +1,4 @@
-import { INBOX_TRIAGE_ROUTE } from "@posthog/ui/features/inbox/triageRoute";
+import { INBOX_TRIAGE_ROUTE } from "@flind/ui/features/inbox/triageRoute";
 import { useNavigate } from "@tanstack/react-router";
 import { useEffect } from "react";
 

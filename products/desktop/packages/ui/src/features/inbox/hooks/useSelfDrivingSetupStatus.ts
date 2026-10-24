@@ -1,5 +1,5 @@
-import { useSignalSourceConfigs } from "@posthog/ui/features/inbox/hooks/useSignalSourceConfigs";
-import { useScoutConfigs } from "@posthog/ui/features/scouts/hooks/useScoutConfigs";
+import { useSignalSourceConfigs } from "@flind/ui/features/inbox/hooks/useSignalSourceConfigs";
+import { useScoutConfigs } from "@flind/ui/features/scouts/hooks/useScoutConfigs";
 
 export interface SelfDrivingSetupStatus {
   isLoading: boolean;

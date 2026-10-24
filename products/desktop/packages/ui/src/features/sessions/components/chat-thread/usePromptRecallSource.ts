@@ -2,7 +2,7 @@ import {
   type PromptRecallHandler,
   type RecallableMessage,
   resolvePromptRecall,
-} from "@posthog/ui/features/sessions/components/chat-thread/composerPromptRecall";
+} from "@flind/ui/features/sessions/components/chat-thread/composerPromptRecall";
 import { type RefObject, useCallback, useEffect, useRef } from "react";
 
 export function usePromptRecallSource(

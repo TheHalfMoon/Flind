@@ -1,5 +1,5 @@
-import { Terminal } from "@posthog/ui/features/terminal/Terminal";
-import { useThemeStore } from "@posthog/ui/shell/themeStore";
+import { Terminal } from "@flind/ui/features/terminal/Terminal";
+import { useThemeStore } from "@flind/ui/shell/themeStore";
 import type { ReactElement } from "react";
 
 export type AuthTerminalStatus = "running" | "checking" | "done" | "failed";

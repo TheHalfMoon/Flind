@@ -1,7 +1,7 @@
-import { UI_SERVICE } from "@posthog/core/ui/identifiers";
-import { UIServiceEvent, type UIServiceEvents } from "@posthog/core/ui/schemas";
-import type { UIService } from "@posthog/core/ui/ui";
-import { publicProcedure, router } from "@posthog/host-trpc/trpc";
+import { UI_SERVICE } from "@flind/core/ui/identifiers";
+import { UIServiceEvent, type UIServiceEvents } from "@flind/core/ui/schemas";
+import type { UIService } from "@flind/core/ui/ui";
+import { publicProcedure, router } from "@flind/host-trpc/trpc";
 
 function subscribeToUIEvent<K extends keyof UIServiceEvents>(event: K) {
   return publicProcedure.subscription(async function* (opts) {

@@ -1,9 +1,9 @@
 import { Plus } from "@phosphor-icons/react";
 import { Badge } from "@flind/quill";
-import { SHORTCUTS } from "@posthog/ui/features/command/keyboard-shortcuts";
-import { isContentEmpty } from "@posthog/ui/features/message-editor/content";
-import { useDraftStore } from "@posthog/ui/features/message-editor/draftStore";
-import { isTaskInputSessionId } from "@posthog/ui/features/task-detail/taskInputSession";
+import { SHORTCUTS } from "@flind/ui/features/command/keyboard-shortcuts";
+import { isContentEmpty } from "@flind/ui/features/message-editor/content";
+import { useDraftStore } from "@flind/ui/features/message-editor/draftStore";
+import { isTaskInputSessionId } from "@flind/ui/features/task-detail/taskInputSession";
 import type { MouseEventHandler } from "react";
 import { SidebarItem } from "../SidebarItem";
 import { SidebarKbdHint } from "./SidebarKbdHint";

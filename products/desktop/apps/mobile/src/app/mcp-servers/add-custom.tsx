@@ -1,5 +1,5 @@
 import { Text } from "@components/text";
-import type { McpAuthType } from "@posthog/api-client/types";
+import type { McpAuthType } from "@flind/api-client/types";
 import { router } from "expo-router";
 import { Lock } from "phosphor-react-native";
 import { useState } from "react";

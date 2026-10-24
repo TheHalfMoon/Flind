@@ -1,4 +1,4 @@
-import type { InstallationStatus } from "@posthog/core/mcp-servers/status";
+import type { InstallationStatus } from "@flind/core/mcp-servers/status";
 
 export const STATUS_LABELS: Record<InstallationStatus, string> = {
   connected: "Connected",

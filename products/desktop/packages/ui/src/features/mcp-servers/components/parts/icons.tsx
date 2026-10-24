@@ -1,7 +1,7 @@
 import { Plugs } from "@phosphor-icons/react";
-import { iconDomainFromServerUrl } from "@posthog/core/mcp-servers/iconDomain";
-import { useServerIcon } from "@posthog/ui/features/mcp-servers/hooks/useServerIcon";
-import { useThemeStore } from "@posthog/ui/shell/themeStore";
+import { iconDomainFromServerUrl } from "@flind/core/mcp-servers/iconDomain";
+import { useServerIcon } from "@flind/ui/features/mcp-servers/hooks/useServerIcon";
+import { useThemeStore } from "@flind/ui/shell/themeStore";
 import { Flex } from "@radix-ui/themes";
 import { type ReactNode, useState } from "react";
 

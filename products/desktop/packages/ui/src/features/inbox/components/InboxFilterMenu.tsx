@@ -4,7 +4,7 @@ import {
   type InboxScope,
   parseTeammateInboxScope,
   teammateInboxScope,
-} from "@posthog/core/inbox/reportMembership";
+} from "@flind/core/inbox/reportMembership";
 import { DropdownMenu, DropdownMenuContent } from "@flind/quill";
 import {
   getSuggestedReviewerDisplayName,
@@ -16,17 +16,17 @@ import {
   inboxSortOptionFromKey,
   inboxSortOptionKey,
   isDefaultInboxReportStateFilter,
-} from "@posthog/ui/features/inbox/filterOptions";
-import { useInboxScopeOptions } from "@posthog/ui/features/inbox/hooks/useInboxScopeOptions";
-import { useInboxReviewerScopeStore } from "@posthog/ui/features/inbox/stores/inboxReviewerScopeStore";
-import { useInboxSignalsFilterStore } from "@posthog/ui/features/inbox/stores/inboxSignalsFilterStore";
+} from "@flind/ui/features/inbox/filterOptions";
+import { useInboxScopeOptions } from "@flind/ui/features/inbox/hooks/useInboxScopeOptions";
+import { useInboxReviewerScopeStore } from "@flind/ui/features/inbox/stores/inboxReviewerScopeStore";
+import { useInboxSignalsFilterStore } from "@flind/ui/features/inbox/stores/inboxSignalsFilterStore";
 import {
   FilterCheckboxSubMenu,
   FilterClearItem,
   FilterMenuTrigger,
   type FilterOption,
   FilterRadioSubMenu,
-} from "@posthog/ui/primitives/FilterMenu";
+} from "@flind/ui/primitives/FilterMenu";
 import { type ReactElement, useState } from "react";
 
 const DEFAULT_SORT_KEY = inboxSortOptionKey("created_at", "desc");

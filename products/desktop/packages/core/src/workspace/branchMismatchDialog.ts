@@ -2,7 +2,7 @@ import {
   ANALYTICS_EVENTS,
   type BranchMismatchActionProperties,
   type BranchMismatchWarningShownProperties,
-} from "@posthog/shared";
+} from "@flind/shared";
 
 export type BranchMismatchDialogAction =
   | "switch"

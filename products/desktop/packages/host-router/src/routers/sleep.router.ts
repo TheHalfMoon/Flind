@@ -1,6 +1,6 @@
-import { SLEEP_SERVICE } from "@posthog/core/sleep/identifiers";
-import type { SleepService } from "@posthog/core/sleep/sleep";
-import { publicProcedure, router } from "@posthog/host-trpc/trpc";
+import { SLEEP_SERVICE } from "@flind/core/sleep/identifiers";
+import type { SleepService } from "@flind/core/sleep/sleep";
+import { publicProcedure, router } from "@flind/host-trpc/trpc";
 import { z } from "zod";
 
 export const sleepRouter = router({

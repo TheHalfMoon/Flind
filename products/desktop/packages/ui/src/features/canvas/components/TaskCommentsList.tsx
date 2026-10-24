@@ -1,7 +1,7 @@
 import { ChatCircleIcon } from "@phosphor-icons/react";
-import type { ResourceComment } from "@posthog/api-client/posthog-client";
-import type { ThreadTimelineRow } from "@posthog/core/canvas/threadTimeline";
-import { commentTargetKey } from "@posthog/core/comments/anchors";
+import type { ResourceComment } from "@flind/api-client/posthog-client";
+import type { ThreadTimelineRow } from "@flind/core/canvas/threadTimeline";
+import { commentTargetKey } from "@flind/core/comments/anchors";
 import {
   Empty,
   EmptyDescription,
@@ -13,60 +13,60 @@ import type {
   Task,
   TaskThreadMessage,
   UserBasic,
-} from "@posthog/shared/domain-types";
+} from "@flind/shared/domain-types";
 import {
   ALL_SOURCES,
   CommentListHeader,
   type CommentStateFilter,
-} from "@posthog/ui/features/canvas/components/CommentListHeader";
-import { CommentThreadGroups } from "@posthog/ui/features/canvas/components/CommentThreadGroups";
+} from "@flind/ui/features/canvas/components/CommentListHeader";
+import { CommentThreadGroups } from "@flind/ui/features/canvas/components/CommentThreadGroups";
 import {
   buildRows,
   type CommentSource,
   commentSources,
   taskCommentTarget,
-} from "@posthog/ui/features/canvas/components/taskArtifactRows";
+} from "@flind/ui/features/canvas/components/taskArtifactRows";
 import {
   byNewestThread,
   prCommentThreads,
   resourceCommentThreads,
   type TaskCommentThread,
   threadSourceOptions,
-} from "@posthog/ui/features/canvas/components/taskCommentThreads";
-import { useOrgMembers } from "@posthog/ui/features/canvas/hooks/useOrgMembers";
-import { useTaskRuns } from "@posthog/ui/features/canvas/hooks/useTaskRuns";
-import { canvasArtifactOpenHandler } from "@posthog/ui/features/canvas/utils/canvasArtifactNavigation";
-import { usePrCommentActions } from "@posthog/ui/features/code-review/hooks/usePrCommentActions";
-import { openPrInReview } from "@posthog/ui/features/code-review/openPrInReview";
-import { useReviewNavigationStore } from "@posthog/ui/features/code-review/reviewNavigationStore";
-import { usePrTitles } from "@posthog/ui/features/git-interaction/usePrDetails";
+} from "@flind/ui/features/canvas/components/taskCommentThreads";
+import { useOrgMembers } from "@flind/ui/features/canvas/hooks/useOrgMembers";
+import { useTaskRuns } from "@flind/ui/features/canvas/hooks/useTaskRuns";
+import { canvasArtifactOpenHandler } from "@flind/ui/features/canvas/utils/canvasArtifactNavigation";
+import { usePrCommentActions } from "@flind/ui/features/code-review/hooks/usePrCommentActions";
+import { openPrInReview } from "@flind/ui/features/code-review/openPrInReview";
+import { useReviewNavigationStore } from "@flind/ui/features/code-review/reviewNavigationStore";
+import { usePrTitles } from "@flind/ui/features/git-interaction/usePrDetails";
 import {
   useActiveArtifactId,
   usePanelLayoutStore,
-} from "@posthog/ui/features/panels/panelLayoutStore";
-import { usePrCommentsForUrls } from "@posthog/ui/features/pr-review/usePrCommentsForUrls";
-import { usePrReviewThreadsForUrls } from "@posthog/ui/features/pr-review/usePrReviewThreadsForUrls";
+} from "@flind/ui/features/panels/panelLayoutStore";
+import { usePrCommentsForUrls } from "@flind/ui/features/pr-review/usePrCommentsForUrls";
+import { usePrReviewThreadsForUrls } from "@flind/ui/features/pr-review/usePrReviewThreadsForUrls";
 import {
   type CommentResource,
   commentAgentContext,
-} from "@posthog/ui/features/sessions/commentAgentContext";
+} from "@flind/ui/features/sessions/commentAgentContext";
 import {
   canvasCommentFocusKey,
   useCommentNavigationStore,
-} from "@posthog/ui/features/sessions/commentNavigationStore";
-import { CommentComposer } from "@posthog/ui/features/sessions/components/CommentComposer";
-import { CommentThreadCard } from "@posthog/ui/features/sessions/components/CommentThreadCard";
-import type { HighlightResolution } from "@posthog/ui/features/sessions/components/commentViewTypes";
-import { readCommentContext } from "@posthog/ui/features/sessions/components/commentViewTypes";
+} from "@flind/ui/features/sessions/commentNavigationStore";
+import { CommentComposer } from "@flind/ui/features/sessions/components/CommentComposer";
+import { CommentThreadCard } from "@flind/ui/features/sessions/components/CommentThreadCard";
+import type { HighlightResolution } from "@flind/ui/features/sessions/components/commentViewTypes";
+import { readCommentContext } from "@flind/ui/features/sessions/components/commentViewTypes";
 import {
   isOptimisticComment,
   useCommentsForTargetsQuery,
   useCommentsQuery,
   useCreateComment,
   useSetCommentResolved,
-} from "@posthog/ui/features/sessions/components/useComments";
-import { sendCommentToAgent } from "@posthog/ui/features/sessions/sendCommentToAgent";
-import { LoadingState } from "@posthog/ui/primitives/LoadingState";
+} from "@flind/ui/features/sessions/components/useComments";
+import { sendCommentToAgent } from "@flind/ui/features/sessions/sendCommentToAgent";
+import { LoadingState } from "@flind/ui/primitives/LoadingState";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 const EMPTY_COMMENTS: ResourceComment[] = [];

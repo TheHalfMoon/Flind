@@ -5,13 +5,13 @@ import {
   getGatewayUsageUrl,
   getLlmGatewayUrl,
 } from "@flind/agent/posthog-api";
-import { archiveModule } from "@posthog/core/archive/archive.module";
+import { archiveModule } from "@flind/core/archive/archive.module";
 import {
   ARCHIVE_CLIENT,
   type ArchiveClient,
-} from "@posthog/core/archive/identifiers";
-import type { AuthService } from "@posthog/core/auth/auth";
-import { AUTH_SERVICE, authCoreModule } from "@posthog/core/auth/auth.module";
+} from "@flind/core/archive/identifiers";
+import type { AuthService } from "@flind/core/auth/auth";
+import { AUTH_SERVICE, authCoreModule } from "@flind/core/auth/auth.module";
 import {
   AUTH_CONNECTIVITY,
   AUTH_OAUTH_FLOW_SERVICE,
@@ -24,99 +24,99 @@ import {
   type IAuthPreferenceStore,
   type IAuthSessionStore,
   type IAuthTokenCipher,
-} from "@posthog/core/auth/identifiers";
+} from "@flind/core/auth/identifiers";
 import {
   canvasApplicationModule,
   canvasCoreModule,
-} from "@posthog/core/canvas/canvas.module";
-import { taskThreadCoreModule } from "@posthog/core/canvas/taskThread.module";
-import type { CloudTaskService } from "@posthog/core/cloud-task/cloud-task";
-import { cloudTaskModule } from "@posthog/core/cloud-task/cloud-task.module";
+} from "@flind/core/canvas/canvas.module";
+import { taskThreadCoreModule } from "@flind/core/canvas/taskThread.module";
+import type { CloudTaskService } from "@flind/core/cloud-task/cloud-task";
+import { cloudTaskModule } from "@flind/core/cloud-task/cloud-task.module";
 import {
   CLOUD_TASK_CLIENT,
   type CloudTaskClient,
-} from "@posthog/core/cloud-task/cloudTaskClient";
+} from "@flind/core/cloud-task/cloudTaskClient";
 import {
   CLOUD_TASK_AUTH,
   CLOUD_TASK_SERVICE,
   type ICloudTaskAuth,
-} from "@posthog/core/cloud-task/identifiers";
-import { deepLinksCoreModule } from "@posthog/core/deep-links/deep-links.module";
+} from "@flind/core/cloud-task/identifiers";
+import { deepLinksCoreModule } from "@flind/core/deep-links/deep-links.module";
 import {
   GITHUB_ISSUE_CLIENT,
   type GitHubIssueClient,
-} from "@posthog/core/deep-links/identifiers";
-import type { ReadFileAsBase64 } from "@posthog/core/editor/cloud-prompt";
-import { externalAppsCoreModule } from "@posthog/core/external-apps/external-apps.module";
-import type { ExternalAppService } from "@posthog/core/external-apps/externalAppService";
+} from "@flind/core/deep-links/identifiers";
+import type { ReadFileAsBase64 } from "@flind/core/editor/cloud-prompt";
+import { externalAppsCoreModule } from "@flind/core/external-apps/external-apps.module";
+import type { ExternalAppService } from "@flind/core/external-apps/externalAppService";
 import {
   EXTERNAL_APPS_FOCUS_COORDINATOR,
   EXTERNAL_APPS_SERVICE,
   EXTERNAL_APPS_WORKSPACE_CLIENT,
   type ExternalAppsFocusCoordinator,
   type ExternalAppsWorkspaceClient,
-} from "@posthog/core/external-apps/identifiers";
-import { feedbackCoreModule } from "@posthog/core/feedback/feedback.module";
+} from "@flind/core/external-apps/identifiers";
+import { feedbackCoreModule } from "@flind/core/feedback/feedback.module";
 import {
   FEEDBACK_SUBMISSION_SERVICE,
   type IFeedbackSubmissionService,
-} from "@posthog/core/feedback/feedbackAttachmentService";
+} from "@flind/core/feedback/feedbackAttachmentService";
 import {
   FILE_READ_CLIENT,
   type FileReadClient,
-} from "@posthog/core/files/identifiers";
-import { gitInteractionModule } from "@posthog/core/git-interaction/git-interaction.module";
+} from "@flind/core/files/identifiers";
+import { gitInteractionModule } from "@flind/core/git-interaction/git-interaction.module";
 import type {
   GitInteractionEffects,
   GitInteractionService,
   IGitWriteClient,
-} from "@posthog/core/git-interaction/gitInteractionService";
+} from "@flind/core/git-interaction/gitInteractionService";
 import {
   GIT_INTERACTION_EFFECTS,
   GIT_INTERACTION_SERVICE,
   GIT_WRITE_CLIENT,
-} from "@posthog/core/git-interaction/identifiers";
+} from "@flind/core/git-interaction/identifiers";
 import {
   REPORT_MODEL_RESOLVER,
   type ReportModelResolver,
-} from "@posthog/core/inbox/identifiers";
-import { inboxCoreModule } from "@posthog/core/inbox/inbox.module";
-import { selectModelFromOptions } from "@posthog/core/inbox/reportTaskCreation";
-import { githubConnectModule } from "@posthog/core/integrations/githubConnect.module";
+} from "@flind/core/inbox/identifiers";
+import { inboxCoreModule } from "@flind/core/inbox/inbox.module";
+import { selectModelFromOptions } from "@flind/core/inbox/reportTaskCreation";
+import { githubConnectModule } from "@flind/core/integrations/githubConnect.module";
 import {
   GITHUB_CONNECT_CLIENT as INTEGRATIONS_GITHUB_CONNECT_CLIENT,
   type GithubConnectClient as IntegrationsGithubConnectClient,
   REPOSITORIES_CLIENT,
   REPOSITORIES_SERVICE,
   type RepositoriesClient,
-} from "@posthog/core/integrations/identifiers";
-import { RepositoriesService } from "@posthog/core/integrations/repositoriesService";
+} from "@flind/core/integrations/identifiers";
+import { RepositoriesService } from "@flind/core/integrations/repositoriesService";
 import {
   GATEWAY_TOKEN_HOST,
   type GatewayTokenHost,
   LLM_GATEWAY_HOST,
   LLM_GATEWAY_SERVICE,
   type LlmGatewayHost,
-} from "@posthog/core/llm-gateway/identifiers";
+} from "@flind/core/llm-gateway/identifiers";
 import {
   desktopUsageUrl,
   type LlmGatewayService,
-} from "@posthog/core/llm-gateway/llm-gateway";
-import { llmGatewayModule } from "@posthog/core/llm-gateway/llm-gateway.module";
+} from "@flind/core/llm-gateway/llm-gateway";
+import { llmGatewayModule } from "@flind/core/llm-gateway/llm-gateway.module";
 import {
   GITHUB_CONNECT_CLIENT as ONBOARDING_GITHUB_CONNECT_CLIENT,
   type GithubConnectClient as OnboardingGithubConnectContract,
-} from "@posthog/core/onboarding/identifiers";
-import { onboardingModule } from "@posthog/core/onboarding/onboarding.module";
-import { PI_RUNNER } from "@posthog/core/pi-runtime/identifiers";
-import { piRuntimeModule } from "@posthog/core/pi-runtime/pi-runtime.module";
-import type { PiRunner } from "@posthog/core/pi-runtime/piRunner";
+} from "@flind/core/onboarding/identifiers";
+import { onboardingModule } from "@flind/core/onboarding/onboarding.module";
+import { PI_RUNNER } from "@flind/core/pi-runtime/identifiers";
+import { piRuntimeModule } from "@flind/core/pi-runtime/pi-runtime.module";
+import type { PiRunner } from "@flind/core/pi-runtime/piRunner";
 import {
   LOCAL_PI_SESSION_FACTORY,
   PI_SESSION_PROVIDER,
   type PiSessionFactory,
   type PiSessionProvider,
-} from "@posthog/core/pi-runtime/piSessionController";
+} from "@flind/core/pi-runtime/piSessionController";
 import {
   type BundleLocalSkill,
   CLOUD_ARTIFACT_BUNDLE_LOCAL_SKILL,
@@ -124,139 +124,139 @@ import {
   CLOUD_ARTIFACT_RESOLVE_SKILL_DEPENDENCIES,
   CLOUD_ARTIFACT_SERVICE,
   type ResolveSkillBundleDependencies,
-} from "@posthog/core/sessions/cloudArtifactIdentifiers";
-import type { CloudArtifactService } from "@posthog/core/sessions/cloudArtifactService";
+} from "@flind/core/sessions/cloudArtifactIdentifiers";
+import type { CloudArtifactService } from "@flind/core/sessions/cloudArtifactService";
 import {
   SESSION_SERVICE,
   type SessionService,
-} from "@posthog/core/sessions/sessionService";
-import { sessionsModule } from "@posthog/core/sessions/sessions.module";
+} from "@flind/core/sessions/sessionService";
+import { sessionsModule } from "@flind/core/sessions/sessions.module";
 import {
   type GithubPrTitleClient,
   TITLE_GENERATOR_GITHUB_PR_TITLE_CLIENT,
   TITLE_GENERATOR_LOGGER,
   TITLE_GENERATOR_SERVICE,
   type TitleGeneratorLogger,
-} from "@posthog/core/sessions/titleGeneratorIdentifiers";
-import type { TitleGeneratorService } from "@posthog/core/sessions/titleGeneratorService";
-import { type ISetupStore, SETUP_STORE } from "@posthog/core/setup/identifiers";
-import { setupCoreModule } from "@posthog/core/setup/setup.module";
+} from "@flind/core/sessions/titleGeneratorIdentifiers";
+import type { TitleGeneratorService } from "@flind/core/sessions/titleGeneratorService";
+import { type ISetupStore, SETUP_STORE } from "@flind/core/setup/identifiers";
+import { setupCoreModule } from "@flind/core/setup/setup.module";
 import {
   SKILLS_WORKSPACE_CLIENT,
   TEAM_SKILLS_SERVICE,
-} from "@posthog/core/skills/identifiers";
-import { skillsCoreModule } from "@posthog/core/skills/skills.module";
+} from "@flind/core/skills/identifiers";
+import { skillsCoreModule } from "@flind/core/skills/skills.module";
 import type {
   SkillsWorkspaceClient,
   TeamSkillsService,
-} from "@posthog/core/skills/teamSkillsService";
+} from "@flind/core/skills/teamSkillsService";
 import {
   SPEECH_SETTINGS_PROVIDER,
   SPEECH_USER_NAME_PROVIDER,
   type SpeechSettingsProvider,
   type UserNameProvider,
-} from "@posthog/core/speech/identifiers";
-import { speechCoreModule } from "@posthog/core/speech/speech.module";
+} from "@flind/core/speech/identifiers";
+import { speechCoreModule } from "@flind/core/speech/speech.module";
 import {
   TASK_CREATION_EFFECTS,
   TASK_CREATION_HOST,
   TASK_SERVICE,
   WORKSPACE_SETUP_SAGA,
-} from "@posthog/core/task-detail/identifiers";
-import { taskDetailModule } from "@posthog/core/task-detail/task-detail.module";
-import type { TaskCreationEffects } from "@posthog/core/task-detail/taskCreationEffects";
-import type { ITaskCreationHost } from "@posthog/core/task-detail/taskCreationHost";
-import type { TaskService as TaskServiceType } from "@posthog/core/task-detail/taskService";
-import type { WorkspaceSetupSaga } from "@posthog/core/task-detail/workspaceSetupSaga";
+} from "@flind/core/task-detail/identifiers";
+import { taskDetailModule } from "@flind/core/task-detail/task-detail.module";
+import type { TaskCreationEffects } from "@flind/core/task-detail/taskCreationEffects";
+import type { ITaskCreationHost } from "@flind/core/task-detail/taskCreationHost";
+import type { TaskService as TaskServiceType } from "@flind/core/task-detail/taskService";
+import type { WorkspaceSetupSaga } from "@flind/core/task-detail/workspaceSetupSaga";
 import {
   type ITaskDeletionHost,
   type ITaskDeletionWorkspaceClient,
   TASK_DELETION_HOST,
   TASK_DELETION_SERVICE,
   TASK_DELETION_WORKSPACE_CLIENT,
-} from "@posthog/core/tasks/identifiers";
-import type { TaskDeletionService } from "@posthog/core/tasks/taskDeletionService";
-import { tasksModule } from "@posthog/core/tasks/tasks.module";
-import { resolveService, setRootContainer } from "@posthog/di/container";
-import { assertHostCapabilities } from "@posthog/di/hostCapabilities";
-import { ROOT_LOGGER, type RootLogger } from "@posthog/di/logger";
+} from "@flind/core/tasks/identifiers";
+import type { TaskDeletionService } from "@flind/core/tasks/taskDeletionService";
+import { tasksModule } from "@flind/core/tasks/tasks.module";
+import { resolveService, setRootContainer } from "@flind/di/container";
+import { assertHostCapabilities } from "@flind/di/hostCapabilities";
+import { ROOT_LOGGER, type RootLogger } from "@flind/di/logger";
 import {
   HOST_TRPC_CLIENT,
   type HostTrpcClient,
-} from "@posthog/host-router/client";
-import { TrpcCloudTaskClient } from "@posthog/host-router/cloud-task-client";
-import { TrpcPiRunner } from "@posthog/host-router/pi-runner";
-import { TrpcPiSessionFactory } from "@posthog/host-router/pi-session-factory";
+} from "@flind/host-router/client";
+import { TrpcCloudTaskClient } from "@flind/host-router/cloud-task-client";
+import { TrpcPiRunner } from "@flind/host-router/pi-runner";
+import { TrpcPiSessionFactory } from "@flind/host-router/pi-session-factory";
 import {
   ANALYTICS_SERVICE,
   type IAnalytics,
-} from "@posthog/platform/analytics";
+} from "@flind/platform/analytics";
 import {
   FEEDBACK_CONTEXT_SERVICE,
   type IFeedbackContext,
-} from "@posthog/platform/feedback-context";
+} from "@flind/platform/feedback-context";
 import {
   HOST_CAPABILITIES,
   type HostCapabilities,
-} from "@posthog/platform/host-capabilities";
+} from "@flind/platform/host-capabilities";
 import {
   type INotifications,
   NOTIFICATIONS_SERVICE,
-} from "@posthog/platform/notifications";
+} from "@flind/platform/notifications";
 import {
   type IPowerManager,
   POWER_MANAGER_SERVICE,
-} from "@posthog/platform/power-manager";
-import { type ISpeech, SPEECH_SERVICE } from "@posthog/platform/speech";
-import type { Adapter } from "@posthog/shared";
-import { sandboxProxyHtml } from "@posthog/shared/mcp-sandbox-proxy";
-import { authUiModule } from "@posthog/ui/features/auth/auth.module";
+} from "@flind/platform/power-manager";
+import { type ISpeech, SPEECH_SERVICE } from "@flind/platform/speech";
+import type { Adapter } from "@flind/shared";
+import { sandboxProxyHtml } from "@flind/shared/mcp-sandbox-proxy";
+import { authUiModule } from "@flind/ui/features/auth/auth.module";
 import {
   AUTH_SIDE_EFFECTS,
   type IAuthSideEffects,
-} from "@posthog/ui/features/auth/identifiers";
-import { browserTabsUiModule } from "@posthog/ui/features/browser-tabs/browser-tabs.module";
+} from "@flind/ui/features/auth/identifiers";
+import { browserTabsUiModule } from "@flind/ui/features/browser-tabs/browser-tabs.module";
 import {
   BROWSER_TABS_CLIENT,
   type BrowserTabsClient,
-} from "@posthog/ui/features/browser-tabs/browserTabsClient";
-import { taskActivityUiModule } from "@posthog/ui/features/canvas/task-activity/taskActivity.module";
+} from "@flind/ui/features/browser-tabs/browserTabsClient";
+import { taskActivityUiModule } from "@flind/ui/features/canvas/task-activity/taskActivity.module";
 import {
   REVIEW_HOST,
   type ReviewHost,
-} from "@posthog/ui/features/code-review/reviewHost";
-import { connectivityUiModule } from "@posthog/ui/features/connectivity/connectivity.module";
+} from "@flind/ui/features/code-review/reviewHost";
+import { connectivityUiModule } from "@flind/ui/features/connectivity/connectivity.module";
 import {
   CONNECTIVITY_CLIENT,
   type ConnectivityClient,
-} from "@posthog/ui/features/connectivity/connectivityClient";
+} from "@flind/ui/features/connectivity/connectivityClient";
 import {
   FEATURE_FLAGS,
   type FeatureFlags,
-} from "@posthog/ui/features/feature-flags/identifiers";
+} from "@flind/ui/features/feature-flags/identifiers";
 import {
   FILE_WATCHER_CLIENT,
   type FileWatcherClient,
-} from "@posthog/ui/features/file-watcher/identifiers";
+} from "@flind/ui/features/file-watcher/identifiers";
 import {
   GIT_CACHE_KEY_PROVIDER,
   type GitCacheKeyProvider,
-} from "@posthog/ui/features/git-interaction/gitCacheProvider";
+} from "@flind/ui/features/git-interaction/gitCacheProvider";
 import {
   gitInteractionEffects,
   gitWriteClient,
-} from "@posthog/ui/features/git-interaction/gitInteractionAdapter";
+} from "@flind/ui/features/git-interaction/gitInteractionAdapter";
 import {
   UiGithubConnectClient,
   UiRepositoriesClient,
-} from "@posthog/ui/features/integrations/integrationsClientImpl";
-import { McpAppHost } from "@posthog/ui/features/mcp-apps/components/McpAppHost";
+} from "@flind/ui/features/integrations/integrationsClientImpl";
+import { McpAppHost } from "@flind/ui/features/mcp-apps/components/McpAppHost";
 import {
   MCP_APP_HOST_COMPONENT,
   MCP_SANDBOX_PROXY_URL,
   type McpAppHostComponent,
   type McpSandboxProxyUrlProvider,
-} from "@posthog/ui/features/mcp-apps/identifiers";
+} from "@flind/ui/features/mcp-apps/identifiers";
 import {
   ACTIVE_VIEW_PROVIDER,
   type IActiveView,
@@ -264,48 +264,48 @@ import {
   type ISpeechNotifySettings,
   NOTIFICATION_SETTINGS_PROVIDER,
   SPEECH_NOTIFY_SETTINGS,
-} from "@posthog/ui/features/notifications/identifiers";
-import { notificationsUiModule } from "@posthog/ui/features/notifications/notifications.module";
-import { OnboardingGithubConnectClient } from "@posthog/ui/features/onboarding/githubConnectClientImpl";
+} from "@flind/ui/features/notifications/identifiers";
+import { notificationsUiModule } from "@flind/ui/features/notifications/notifications.module";
+import { OnboardingGithubConnectClient } from "@flind/ui/features/onboarding/githubConnectClientImpl";
 import {
   AGENT_PROMPT_SENDER,
   type AgentPromptSender,
-} from "@posthog/ui/features/sessions/agentPromptSender";
-import { getSessionService } from "@posthog/ui/features/sessions/sessionServiceHost";
-import { setupUiModule } from "@posthog/ui/features/setup/setup.module";
-import { taskCreationEffects } from "@posthog/ui/features/task-detail/taskCreationEffectsImpl";
-import { TrpcTaskCreationHost } from "@posthog/ui/features/task-detail/taskCreationHostImpl";
+} from "@flind/ui/features/sessions/agentPromptSender";
+import { getSessionService } from "@flind/ui/features/sessions/sessionServiceHost";
+import { setupUiModule } from "@flind/ui/features/setup/setup.module";
+import { taskCreationEffects } from "@flind/ui/features/task-detail/taskCreationEffectsImpl";
+import { TrpcTaskCreationHost } from "@flind/ui/features/task-detail/taskCreationHostImpl";
 import {
   SHELL_CLIENT,
   type ShellClient,
-} from "@posthog/ui/features/terminal/shellClient";
+} from "@flind/ui/features/terminal/shellClient";
 import {
   UPDATES_CLIENT,
   type UpdatesClient,
-} from "@posthog/ui/features/updates/updatesClient";
+} from "@flind/ui/features/updates/updatesClient";
 import {
   ANALYTICS_TRACKER,
   type AnalyticsTracker,
-} from "@posthog/ui/shell/analytics";
+} from "@flind/ui/shell/analytics";
 import {
   DIFF_WORKER_FACTORY,
   type DiffWorkerFactory,
-} from "@posthog/ui/shell/diffWorkerHost";
+} from "@flind/ui/shell/diffWorkerHost";
 import {
   HEDGEHOG_MODE_HOST,
   type HedgehogModeHost,
-} from "@posthog/ui/shell/hedgehogModeHost";
-import { HOST_LOGGER, type HostLogger } from "@posthog/ui/shell/logger";
+} from "@flind/ui/shell/hedgehogModeHost";
+import { HOST_LOGGER, type HostLogger } from "@flind/ui/shell/logger";
 import {
   posthogAnalyticsService,
   posthogAnalyticsTracker,
   posthogFeatureFlags,
-} from "@posthog/ui/shell/posthogAnalyticsImpl";
+} from "@flind/ui/shell/posthogAnalyticsImpl";
 import {
   IMPERATIVE_QUERY_CLIENT,
   type ImperativeQueryClient,
-} from "@posthog/ui/shell/queryClient";
-import { REQUIRED_HOST_CAPABILITIES } from "@posthog/ui/shell/requiredHostCapabilities";
+} from "@flind/ui/shell/queryClient";
+import { REQUIRED_HOST_CAPABILITIES } from "@flind/ui/shell/requiredHostCapabilities";
 import { QueryClient } from "@tanstack/react-query";
 import {
   WebAuthConnectivity,
@@ -455,7 +455,7 @@ const scoped = (name?: string): RootLogger => ({
   scope: (n: string) => scoped(n),
 });
 container.bind(ROOT_LOGGER).toConstantValue(scoped());
-// @posthog/ui's shell logger resolves HOST_LOGGER separately; bind it to the
+// @flind/ui's shell logger resolves HOST_LOGGER separately; bind it to the
 // same console logger so UI-side errors (e.g. failed mutations) actually surface
 // instead of silently no-op'ing.
 container.bind(HOST_LOGGER).toConstantValue(scoped());

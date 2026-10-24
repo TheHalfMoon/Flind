@@ -1,14 +1,14 @@
-import { buildCreatePrReportPrompt } from "@posthog/core/inbox/reportActions";
-import { buildPostHogUrl } from "@posthog/core/settings/posthogUrl";
-import type { TaskCreationInput } from "@posthog/core/task-detail/taskService";
-import type { InboxReportActionSurface } from "@posthog/shared/analytics-events";
-import type { Task } from "@posthog/shared/types";
-import { useAuthStateValue } from "@posthog/ui/features/auth/store";
+import { buildCreatePrReportPrompt } from "@flind/core/inbox/reportActions";
+import { buildPostHogUrl } from "@flind/core/settings/posthogUrl";
+import type { TaskCreationInput } from "@flind/core/task-detail/taskService";
+import type { InboxReportActionSurface } from "@flind/shared/analytics-events";
+import type { Task } from "@flind/shared/types";
+import { useAuthStateValue } from "@flind/ui/features/auth/store";
 import {
   type InboxCloudTaskInputContext,
   useInboxCloudTaskRunner,
-} from "@posthog/ui/features/inbox/hooks/useInboxCloudTaskRunner";
-import { useSignalTeamConfig } from "@posthog/ui/features/inbox/hooks/useSignalTeamConfig";
+} from "@flind/ui/features/inbox/hooks/useInboxCloudTaskRunner";
+import { useSignalTeamConfig } from "@flind/ui/features/inbox/hooks/useSignalTeamConfig";
 import { useCallback, useMemo, useRef } from "react";
 
 interface UseCreatePrReportOptions {

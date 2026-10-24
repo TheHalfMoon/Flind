@@ -1,11 +1,11 @@
-import { blockDefinition } from "@posthog/core/canvas/blockLibrary/blockDefinitions";
-import type { SourceDropTarget } from "@posthog/core/canvas/blockLibrary/sourceEdits";
-import type { CanvasEditSelection } from "@posthog/ui/features/canvas/blocks/canvasSourceStore";
+import { blockDefinition } from "@flind/core/canvas/blockLibrary/blockDefinitions";
+import type { SourceDropTarget } from "@flind/core/canvas/blockLibrary/sourceEdits";
+import type { CanvasEditSelection } from "@flind/ui/features/canvas/blocks/canvasSourceStore";
 import {
   canvasEditorFrame,
   postToCanvasEditor,
-} from "@posthog/ui/features/canvas/blocks/editorFrame";
-import { libraryLabel } from "@posthog/ui/features/canvas/blocks/libraryCatalog";
+} from "@flind/ui/features/canvas/blocks/editorFrame";
+import { libraryLabel } from "@flind/ui/features/canvas/blocks/libraryCatalog";
 import { create } from "zustand";
 
 export type SourceDragSource =

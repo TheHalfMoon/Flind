@@ -18,9 +18,9 @@ import {
   InputGroupButton,
   Text,
 } from "@flind/quill";
-import { MAX_REPOSITORIES } from "@posthog/ui/features/integrations/components/RepositoriesField";
-import { useGithubRepositories } from "@posthog/ui/features/integrations/useIntegrations";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
+import { MAX_REPOSITORIES } from "@flind/ui/features/integrations/components/RepositoriesField";
+import { useGithubRepositories } from "@flind/ui/features/integrations/useIntegrations";
+import { Spinner } from "@flind/ui/primitives/Spinner";
 import { useEffect, useRef, useState } from "react";
 
 // A repository full name always has a slash, so this can't collide with one.

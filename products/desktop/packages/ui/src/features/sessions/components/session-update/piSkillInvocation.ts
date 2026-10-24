@@ -1,4 +1,4 @@
-import { unescapeXmlAttr } from "@posthog/shared";
+import { unescapeXmlAttr } from "@flind/shared";
 
 const PI_SKILL_INVOCATION =
   /^<skill name="([^"]+)" location="[^"]+">\n[\s\S]*?\n<\/skill>(?:\n\n([\s\S]+))?$/;

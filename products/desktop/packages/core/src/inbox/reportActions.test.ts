@@ -1,5 +1,5 @@
-import { buildLocalCodeSnapshotPrompt } from "@posthog/shared";
-import type { SignalReport } from "@posthog/shared/types";
+import { buildLocalCodeSnapshotPrompt } from "@flind/shared";
+import type { SignalReport } from "@flind/shared/types";
 import { describe, expect, it } from "vitest";
 import {
   buildCreatePrReportPrompt,

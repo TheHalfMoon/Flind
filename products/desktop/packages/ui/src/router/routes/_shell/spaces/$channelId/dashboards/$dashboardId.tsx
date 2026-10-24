@@ -1,8 +1,8 @@
-import { WebsiteDashboard } from "@posthog/ui/features/canvas/components/WebsiteDashboard";
+import { WebsiteDashboard } from "@flind/ui/features/canvas/components/WebsiteDashboard";
 import {
   CanvasSkeleton,
   withRouteSkeleton,
-} from "@posthog/ui/router/routeSkeletons";
+} from "@flind/ui/router/routeSkeletons";
 import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute(

@@ -1,4 +1,4 @@
-import type { TabsSnapshot } from "@posthog/shared";
+import type { TabsSnapshot } from "@flind/shared";
 import { createStore } from "zustand/vanilla";
 
 /**

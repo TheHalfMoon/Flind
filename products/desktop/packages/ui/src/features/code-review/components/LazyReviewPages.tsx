@@ -1,5 +1,5 @@
-import type { Task } from "@posthog/shared/domain-types";
-import { LoadingState } from "@posthog/ui/primitives/LoadingState";
+import type { Task } from "@flind/shared/domain-types";
+import { LoadingState } from "@flind/ui/primitives/LoadingState";
 import { lazy, type ReactNode, Suspense } from "react";
 import { loadCloudReviewPage, loadReviewPage } from "./preloadReviewPages";
 

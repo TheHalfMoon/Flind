@@ -1,9 +1,9 @@
-import type { EditorContent } from "@posthog/core/message-editor/content";
-import type { QueuedMessage } from "@posthog/ui/features/sessions/sessionStore";
+import type { EditorContent } from "@flind/core/message-editor/content";
+import type { QueuedMessage } from "@flind/ui/features/sessions/sessionStore";
 import { act, renderHook } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-vi.mock("@posthog/ui/shell/rendererStorage", () => ({
+vi.mock("@flind/ui/shell/rendererStorage", () => ({
   electronStorage: {
     getItem: () => null,
     setItem: () => {},
@@ -16,20 +16,20 @@ const sessionService = vi.hoisted(() => ({
   clearEditingQueuedMessage: vi.fn(),
 }));
 
-vi.mock("@posthog/core/sessions/sessionService", () => ({
+vi.mock("@flind/core/sessions/sessionService", () => ({
   SESSION_SERVICE: Symbol.for("test.session-service"),
 }));
 
-vi.mock("@posthog/di/react", () => ({
+vi.mock("@flind/di/react", () => ({
   useService: () => sessionService,
 }));
 
 const cloudState = vi.hoisted(() => ({ isCloud: false }));
-vi.mock("@posthog/ui/features/sessions/sessionStore", () => ({
+vi.mock("@flind/ui/features/sessions/sessionStore", () => ({
   useSessionIsCloud: () => cloudState.isCloud,
 }));
 
-import { useDraftStore } from "@posthog/ui/features/message-editor/draftStore";
+import { useDraftStore } from "@flind/ui/features/message-editor/draftStore";
 import {
   useCancelQueuedMessageEdit,
   useEditQueuedMessage,

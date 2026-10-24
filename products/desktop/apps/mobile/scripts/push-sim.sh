@@ -15,7 +15,7 @@ TASK_RUN_ID="${4:-00000000-0000-0000-0000-000000000000}"
 
 # Verify a simulator is booted.
 if ! xcrun simctl list devices booted | grep -q "Booted"; then
-  echo "ERROR: no booted simulator. Start one with: pnpm --filter @posthog/mobile ios" >&2
+  echo "ERROR: no booted simulator. Start one with: pnpm --filter @flind/mobile ios" >&2
   exit 1
 fi
 

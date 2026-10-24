@@ -1,7 +1,7 @@
 import {
   type ISettingsBackupFiles,
   SETTINGS_BACKUP_FILES,
-} from "@posthog/platform/settings-backup-files";
+} from "@flind/platform/settings-backup-files";
 import { inject, injectable } from "inversify";
 import {
   type CustomSound,

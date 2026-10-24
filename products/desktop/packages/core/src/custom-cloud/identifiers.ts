@@ -1,4 +1,4 @@
-import type { CustomCloud } from "@posthog/shared";
+import type { CustomCloud } from "@flind/shared";
 
 export const CUSTOM_CLOUD_STORE = Symbol.for("posthog.core.customCloudStore");
 

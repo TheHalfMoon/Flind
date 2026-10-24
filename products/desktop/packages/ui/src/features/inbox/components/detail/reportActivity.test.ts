@@ -1,4 +1,4 @@
-import type { AnySignalReportArtefact } from "@posthog/shared/types";
+import type { AnySignalReportArtefact } from "@flind/shared/types";
 import { describe, expect, it } from "vitest";
 import { selectUsefulReportActivity } from "./reportActivity";
 

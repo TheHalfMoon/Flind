@@ -1,4 +1,4 @@
-import * as core from "@posthog/core/panels/panelStoreHelpers";
+import * as core from "@flind/core/panels/panelStoreHelpers";
 import type { TaskLayout } from "./panelLayoutStore";
 import type { LeafPanel, PanelNode } from "./panelTypes";
 

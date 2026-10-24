@@ -230,7 +230,7 @@ Everything later builds on this. Skills become directories in the UI.
 ### PR 4 — Validation + shadowing signals
 
 **Core (pure decisions, no I/O)**
-- `analyzeSkills(skills: SkillInfo[])` in `@posthog/core`: missing/empty
+- `analyzeSkills(skills: SkillInfo[])` in `@flind/core`: missing/empty
   description, frontmatter-name vs directory-name mismatch, oversized
   `SKILL.md` (context-cost warning), and name collisions across sources with
   explicit "which one wins" resolution.
@@ -296,7 +296,7 @@ Split into 5a (backend) / 5b (UI) if review size demands.
   `resolveLlmSkill(name)`, `listLlmSkillFiles(id)`. Zod schemas alongside.
 
 **core**
-- New `TeamSkillsService` (`@posthog/core`, api-client injected per the
+- New `TeamSkillsService` (`@flind/core`, api-client injected per the
   placement rules) exposing list/read, plus the merged local+team listing
   decision so the UI keeps one hook.
 
@@ -381,7 +381,7 @@ Split into 5a (backend) / 5b (UI) if review size demands.
 - E2E (Playwright, `tests/e2e/`): one flow per PR — render a multi-file skill;
   create/edit/delete; live-refresh on external edit; marketplace
   search→preview→install; team publish→install; codex import.
-- After `@posthog/shared` / `@posthog/platform` changes, rebuild/typecheck
+- After `@flind/shared` / `@flind/platform` changes, rebuild/typecheck
   dist; after `core` changes, `biome lint packages/core` with zero
   `noRestrictedImports`.
 

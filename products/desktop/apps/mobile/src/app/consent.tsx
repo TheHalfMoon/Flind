@@ -1,6 +1,6 @@
 import { Text } from "@components/text";
-import { EXTERNAL_LINKS } from "@posthog/shared";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
+import { EXTERNAL_LINKS } from "@flind/shared";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
 import { useQueryClient } from "@tanstack/react-query";
 import { router } from "expo-router";
 import { usePostHog } from "posthog-react-native";

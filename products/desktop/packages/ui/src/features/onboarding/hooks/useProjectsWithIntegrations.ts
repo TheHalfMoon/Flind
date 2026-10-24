@@ -1,4 +1,4 @@
-import { deriveProjectsWithIntegrations } from "@posthog/core/onboarding/projectsWithIntegrations";
+import { deriveProjectsWithIntegrations } from "@flind/core/onboarding/projectsWithIntegrations";
 import { useQueries } from "@tanstack/react-query";
 import { useMemo } from "react";
 import { useOptionalAuthenticatedClient } from "../../auth/authClient";

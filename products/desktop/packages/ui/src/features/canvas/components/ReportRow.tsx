@@ -1,11 +1,11 @@
 import { GitPullRequestIcon } from "@phosphor-icons/react";
-import { isDismissedReport } from "@posthog/core/inbox/reportMembership";
-import { humanizeReportTitle } from "@posthog/core/inbox/reportPresentation";
-import type { SignalReport } from "@posthog/shared/types";
-import { ReportRestoreButton } from "@posthog/ui/features/inbox/components/ReportRestoreButton";
-import { ReportStateMonogram } from "@posthog/ui/features/inbox/components/ReportStateMonogram";
-import { useInboxReportDismissAction } from "@posthog/ui/features/inbox/hooks/useInboxReportDismissAction";
-import { SidebarItem } from "@posthog/ui/features/sidebar/components/SidebarItem";
+import { isDismissedReport } from "@flind/core/inbox/reportMembership";
+import { humanizeReportTitle } from "@flind/core/inbox/reportPresentation";
+import type { SignalReport } from "@flind/shared/types";
+import { ReportRestoreButton } from "@flind/ui/features/inbox/components/ReportRestoreButton";
+import { ReportStateMonogram } from "@flind/ui/features/inbox/components/ReportStateMonogram";
+import { useInboxReportDismissAction } from "@flind/ui/features/inbox/hooks/useInboxReportDismissAction";
+import { SidebarItem } from "@flind/ui/features/sidebar/components/SidebarItem";
 
 /** One report in a space's Reports tab. Clicking opens the report detail. */
 export function ReportRow({

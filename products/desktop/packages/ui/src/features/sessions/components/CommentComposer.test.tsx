@@ -3,7 +3,7 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import type { ReactNode } from "react";
 import { describe, expect, it, vi } from "vitest";
 
-vi.mock("@posthog/ui/features/canvas/components/MentionComposer", () => ({
+vi.mock("@flind/ui/features/canvas/components/MentionComposer", () => ({
   MentionComposer: ({
     value,
     onValueChange,
@@ -24,7 +24,7 @@ vi.mock("@posthog/ui/features/canvas/components/MentionComposer", () => ({
   ),
 }));
 
-import { MentionAvailabilityProvider } from "@posthog/ui/features/sessions/mentionAvailability";
+import { MentionAvailabilityProvider } from "@flind/ui/features/sessions/mentionAvailability";
 import { CommentComposer } from "./CommentComposer";
 
 describe("CommentComposer", () => {

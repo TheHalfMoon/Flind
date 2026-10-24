@@ -1,4 +1,4 @@
-import type { EditorContent } from "@posthog/core/message-editor/content";
+import type { EditorContent } from "@flind/core/message-editor/content";
 import { expect, it, vi } from "vitest";
 import {
   shouldSubmitComposerOptimistically,

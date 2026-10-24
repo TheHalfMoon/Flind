@@ -1,7 +1,7 @@
-import { chartHeadlineStat } from "@posthog/core/inbox/reportCharts";
-import { MarkdownRenderer } from "@posthog/ui/features/editor/components/MarkdownRenderer";
-import { MessageChartCard } from "@posthog/ui/features/editor/components/MessageChartCard";
-import { ReportChartCardView } from "@posthog/ui/features/inbox/components/detail/ReportChartCard";
+import { chartHeadlineStat } from "@flind/core/inbox/reportCharts";
+import { MarkdownRenderer } from "@flind/ui/features/editor/components/MarkdownRenderer";
+import { MessageChartCard } from "@flind/ui/features/editor/components/MessageChartCard";
+import { ReportChartCardView } from "@flind/ui/features/inbox/components/detail/ReportChartCard";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta: Meta<typeof MessageChartCard> = {

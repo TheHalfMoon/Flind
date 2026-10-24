@@ -1,4 +1,4 @@
 export {
   computeDiffStats,
   type DiffStats,
-} from "@posthog/core/git-interaction/diffStats";
+} from "@flind/core/git-interaction/diffStats";

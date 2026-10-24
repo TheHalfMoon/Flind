@@ -1,10 +1,10 @@
 import { CaretDown } from "@phosphor-icons/react";
 import { cn } from "@flind/quill";
-import { ChatMarkdown } from "@posthog/ui/features/sessions/components/chat-thread/ChatMarkdown";
+import { ChatMarkdown } from "@flind/ui/features/sessions/components/chat-thread/ChatMarkdown";
 import {
   hasFileMentions,
   parseFileMentions,
-} from "@posthog/ui/features/sessions/components/session-update/parseFileMentions";
+} from "@flind/ui/features/sessions/components/session-update/parseFileMentions";
 import { useEffect, useRef, useState } from "react";
 
 /**

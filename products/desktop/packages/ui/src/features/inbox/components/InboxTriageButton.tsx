@@ -4,11 +4,11 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@flind/quill";
-import { useTriageFocusEnabled } from "@posthog/ui/features/feature-flags/useTriageFocusEnabled";
+import { useTriageFocusEnabled } from "@flind/ui/features/feature-flags/useTriageFocusEnabled";
 import {
   INBOX_TRIAGE_ROUTE,
   isInboxTriagePath,
-} from "@posthog/ui/features/inbox/triageRoute";
+} from "@flind/ui/features/inbox/triageRoute";
 import { Link, useRouterState } from "@tanstack/react-router";
 import type { ReactElement } from "react";
 

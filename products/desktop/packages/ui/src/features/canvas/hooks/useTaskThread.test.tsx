@@ -1,4 +1,4 @@
-import type { TaskThreadMessage } from "@posthog/shared/domain-types";
+import type { TaskThreadMessage } from "@flind/shared/domain-types";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { act, renderHook, waitFor } from "@testing-library/react";
 import type { ReactNode } from "react";
@@ -14,10 +14,10 @@ const mockTaskThreadService = vi.hoisted(() => ({
   postMessageToAgent: vi.fn(),
 }));
 
-vi.mock("@posthog/ui/features/auth/authClient", () => ({
+vi.mock("@flind/ui/features/auth/authClient", () => ({
   useOptionalAuthenticatedClient: () => mockClient,
 }));
-vi.mock("@posthog/di/react", () => ({
+vi.mock("@flind/di/react", () => ({
   useService: () => mockTaskThreadService,
 }));
 

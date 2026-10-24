@@ -1,6 +1,6 @@
 import { X } from "@phosphor-icons/react";
-import { useChannelsLayout } from "@posthog/ui/features/canvas/hooks/useChannelsLayout";
-import { MarkdownRenderer } from "@posthog/ui/features/editor/components/MarkdownRenderer";
+import { useChannelsLayout } from "@flind/ui/features/canvas/hooks/useChannelsLayout";
+import { MarkdownRenderer } from "@flind/ui/features/editor/components/MarkdownRenderer";
 import { Box, Flex, ScrollArea, Text, Tooltip } from "@radix-ui/themes";
 
 interface ChannelContextPanelProps {

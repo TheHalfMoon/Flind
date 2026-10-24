@@ -15,7 +15,7 @@ const mocks = vi.hoisted(() => ({
   },
 }));
 
-vi.mock("@posthog/ui/features/tasks/useLiveTaskIds", () => ({
+vi.mock("@flind/ui/features/tasks/useLiveTaskIds", () => ({
   useLiveTaskIds: () => new Set<string>(),
 }));
 vi.mock("../../sidebar/useTaskViewed", () => ({

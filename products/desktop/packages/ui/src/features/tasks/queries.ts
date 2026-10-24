@@ -1,14 +1,14 @@
-import { requestErrorStatus } from "@posthog/api-client/fetcher";
-import { resolveService } from "@posthog/di/container";
-import { NotAuthenticatedError } from "@posthog/shared";
-import type { Task } from "@posthog/shared/domain-types";
-import { getAuthenticatedClient } from "@posthog/ui/features/auth/authClientImperative";
-import { AUTH_SCOPED_QUERY_META } from "@posthog/ui/features/auth/useCurrentUser";
-import { taskKeys } from "@posthog/ui/features/tasks/taskKeys";
+import { requestErrorStatus } from "@flind/api-client/fetcher";
+import { resolveService } from "@flind/di/container";
+import { NotAuthenticatedError } from "@flind/shared";
+import type { Task } from "@flind/shared/domain-types";
+import { getAuthenticatedClient } from "@flind/ui/features/auth/authClientImperative";
+import { AUTH_SCOPED_QUERY_META } from "@flind/ui/features/auth/useCurrentUser";
+import { taskKeys } from "@flind/ui/features/tasks/taskKeys";
 import {
   IMPERATIVE_QUERY_CLIENT,
   type ImperativeQueryClient,
-} from "@posthog/ui/shell/queryClient";
+} from "@flind/ui/shell/queryClient";
 import { queryOptions } from "@tanstack/react-query";
 
 // Shared query definition so a route `loader` and the component (useQuery) hit

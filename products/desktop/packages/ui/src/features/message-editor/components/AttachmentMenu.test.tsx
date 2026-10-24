@@ -63,7 +63,7 @@ vi.mock("@tanstack/react-query", () => ({
   useQuery: () => ({ data: undefined }),
 }));
 
-vi.mock("@posthog/ui/primitives/toast", () => ({
+vi.mock("@flind/ui/primitives/toast", () => ({
   toast: {
     error: vi.fn(),
   },

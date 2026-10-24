@@ -1,10 +1,10 @@
 import { TerminalIcon } from "@phosphor-icons/react";
-import { humanizeIdentifier } from "@posthog/core/inbox/activityLog";
-import type { SignalReport } from "@posthog/shared/types";
-import { DetailSection } from "@posthog/ui/features/inbox/components/DetailSection";
-import { useReportTasks } from "@posthog/ui/features/inbox/hooks/useReportTasks";
-import { RelativeTimestamp } from "@posthog/ui/primitives/RelativeTimestamp";
-import { useOpenTask } from "@posthog/ui/router/useOpenTask";
+import { humanizeIdentifier } from "@flind/core/inbox/activityLog";
+import type { SignalReport } from "@flind/shared/types";
+import { DetailSection } from "@flind/ui/features/inbox/components/DetailSection";
+import { useReportTasks } from "@flind/ui/features/inbox/hooks/useReportTasks";
+import { RelativeTimestamp } from "@flind/ui/primitives/RelativeTimestamp";
+import { useOpenTask } from "@flind/ui/router/useOpenTask";
 
 export function ReportRunsSection({ report }: { report: SignalReport }) {
   const { data: runs } = useReportTasks(report.id, report.status);

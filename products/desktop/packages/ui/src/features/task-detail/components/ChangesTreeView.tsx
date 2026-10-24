@@ -4,9 +4,9 @@ import {
   compactChangeTree,
   orderedTreeDirs,
   orderedTreeFiles,
-} from "@posthog/core/git-interaction/changeTree";
-import type { ChangedFile } from "@posthog/shared/domain-types";
-import { TreeDirectoryRow } from "@posthog/ui/primitives/TreeDirectoryRow";
+} from "@flind/core/git-interaction/changeTree";
+import type { ChangedFile } from "@flind/shared/domain-types";
+import { TreeDirectoryRow } from "@flind/ui/primitives/TreeDirectoryRow";
 import { useCallback, useMemo, useState } from "react";
 
 interface ChangesTreeNodeProps {

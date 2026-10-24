@@ -1,5 +1,5 @@
-import { ANALYTICS_EVENTS } from "@posthog/shared";
-import { track } from "@posthog/ui/shell/analytics";
+import { ANALYTICS_EVENTS } from "@flind/shared";
+import { track } from "@flind/ui/shell/analytics";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 

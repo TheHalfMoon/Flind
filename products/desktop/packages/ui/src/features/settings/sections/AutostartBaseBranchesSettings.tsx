@@ -1,12 +1,12 @@
 import { X } from "@phosphor-icons/react";
 import { Button } from "@flind/quill";
-import { GitHubRepoPicker } from "@posthog/ui/features/folder-picker/GitHubRepoPicker";
-import { BranchSelector } from "@posthog/ui/features/git-interaction/components/BranchSelector";
+import { GitHubRepoPicker } from "@flind/ui/features/folder-picker/GitHubRepoPicker";
+import { BranchSelector } from "@flind/ui/features/git-interaction/components/BranchSelector";
 import {
   useGithubBranches,
   useGithubRepositories,
   useRepositoryIntegration,
-} from "@posthog/ui/features/integrations/useIntegrations";
+} from "@flind/ui/features/integrations/useIntegrations";
 import { Box, Flex, IconButton, Text } from "@radix-ui/themes";
 import { useState } from "react";
 

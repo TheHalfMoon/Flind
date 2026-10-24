@@ -14,7 +14,7 @@ import {
   TrashIcon,
   UserSwitchIcon,
 } from "@phosphor-icons/react";
-import { sessionsLabel } from "@posthog/core/sidebar/selection";
+import { sessionsLabel } from "@flind/core/sidebar/selection";
 import {
   Button,
   ContextMenu,
@@ -32,26 +32,26 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@flind/quill";
-import type { Task } from "@posthog/shared/domain-types";
+import type { Task } from "@flind/shared/domain-types";
 import {
   TaskArchiveMenuItem,
   type TaskArchiveMenuParts,
-} from "@posthog/ui/features/archive/TaskArchiveMenuItem";
-import { useArchiveShortcut } from "@posthog/ui/features/archive/useArchiveShortcut";
-import { useOpenBrowserTab } from "@posthog/ui/features/browser-tabs/useOpenBrowserTab";
-import { useChannels } from "@posthog/ui/features/canvas/hooks/useChannels";
-import { useFileTaskToChannel } from "@posthog/ui/features/canvas/hooks/useFileTaskToChannel";
-import { copyCanvasLink } from "@posthog/ui/features/canvas/utils/copyCanvasLink";
-import { copyChannelLink } from "@posthog/ui/features/canvas/utils/copyChannelLink";
-import { useSidebarPeekStore } from "@posthog/ui/features/sidebar/sidebarPeekStore";
-import { useHoldSidebarPeek } from "@posthog/ui/features/sidebar/useHoldSidebarPeek";
-import type { SidebarBulkActions } from "@posthog/ui/features/sidebar/useSidebarBulkActions";
-import { useTaskAnalysis } from "@posthog/ui/features/task-detail/components/TaskAnalysisButton";
+} from "@flind/ui/features/archive/TaskArchiveMenuItem";
+import { useArchiveShortcut } from "@flind/ui/features/archive/useArchiveShortcut";
+import { useOpenBrowserTab } from "@flind/ui/features/browser-tabs/useOpenBrowserTab";
+import { useChannels } from "@flind/ui/features/canvas/hooks/useChannels";
+import { useFileTaskToChannel } from "@flind/ui/features/canvas/hooks/useFileTaskToChannel";
+import { copyCanvasLink } from "@flind/ui/features/canvas/utils/copyCanvasLink";
+import { copyChannelLink } from "@flind/ui/features/canvas/utils/copyChannelLink";
+import { useSidebarPeekStore } from "@flind/ui/features/sidebar/sidebarPeekStore";
+import { useHoldSidebarPeek } from "@flind/ui/features/sidebar/useHoldSidebarPeek";
+import type { SidebarBulkActions } from "@flind/ui/features/sidebar/useSidebarBulkActions";
+import { useTaskAnalysis } from "@flind/ui/features/task-detail/components/TaskAnalysisButton";
 import {
   type MenuFlyoutItem,
   MenuSubFlyout,
   SearchableMenuFlyout,
-} from "@posthog/ui/primitives/SearchableMenuFlyout";
+} from "@flind/ui/primitives/SearchableMenuFlyout";
 import {
   type ComponentType,
   type ReactElement,

@@ -1,4 +1,4 @@
-import type { ChangedFile } from "@posthog/shared/domain-types";
+import type { ChangedFile } from "@flind/shared/domain-types";
 
 export interface DiscardInfo {
   message: string;

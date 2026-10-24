@@ -1,14 +1,14 @@
 import { Button, Switch } from "@flind/quill";
-import { NotificationDeliveryCard } from "@posthog/ui/features/settings/components/NotificationDeliveryCard";
+import { NotificationDeliveryCard } from "@flind/ui/features/settings/components/NotificationDeliveryCard";
 import {
   SettingsCard,
   SettingsCardRow,
   SettingsSection,
-} from "@posthog/ui/features/settings/components/SettingsCard";
-import { SettingsSegmented } from "@posthog/ui/features/settings/components/SettingsSegmented";
-import { SettingsSelect } from "@posthog/ui/features/settings/components/SettingsSelect";
-import { ThemePicker } from "@posthog/ui/features/settings/components/ThemePicker";
-import type { ThemePreference } from "@posthog/ui/shell/themeStore";
+} from "@flind/ui/features/settings/components/SettingsCard";
+import { SettingsSegmented } from "@flind/ui/features/settings/components/SettingsSegmented";
+import { SettingsSelect } from "@flind/ui/features/settings/components/SettingsSelect";
+import { ThemePicker } from "@flind/ui/features/settings/components/ThemePicker";
+import type { ThemePreference } from "@flind/ui/shell/themeStore";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
 

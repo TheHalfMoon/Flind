@@ -5,7 +5,7 @@ import type {
   AgentToolCallContent,
   AgentToolCallLocation,
   AgentToolKind,
-} from "@posthog/shared";
+} from "@flind/shared";
 
 export type CodeToolKind = AgentToolKind;
 export type ToolCallContent = AgentToolCallContent;

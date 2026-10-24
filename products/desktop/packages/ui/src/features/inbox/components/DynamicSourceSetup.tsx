@@ -5,13 +5,13 @@ import type {
   SourceFieldInputConfig,
   SourceFieldOauthAccountSelectConfig,
   SourceFieldOauthConfig,
-} from "@posthog/api-client/posthog-client";
-import { useHostTRPC } from "@posthog/host-router/react";
+} from "@flind/api-client/posthog-client";
+import { useHostTRPC } from "@flind/host-router/react";
 import { Button } from "@flind/quill";
-import { useAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { useAuthStateValue } from "@posthog/ui/features/auth/store";
-import { useSourceConfig } from "@posthog/ui/features/inbox/hooks/useSourceConfig";
-import { toast } from "@posthog/ui/primitives/toast";
+import { useAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { useAuthStateValue } from "@flind/ui/features/auth/store";
+import { useSourceConfig } from "@flind/ui/features/inbox/hooks/useSourceConfig";
+import { toast } from "@flind/ui/primitives/toast";
 import {
   Box,
   Flex,

@@ -1,8 +1,8 @@
-import { publicProcedure, router } from "@posthog/host-trpc/trpc";
+import { publicProcedure, router } from "@flind/host-trpc/trpc";
 import {
   type ISpeechSynthesizer,
   SPEECH_SYNTHESIZER_SERVICE,
-} from "@posthog/workspace-server/services/speech/identifiers";
+} from "@flind/workspace-server/services/speech/identifiers";
 import { z } from "zod";
 
 export const speechRouter = router({

@@ -7,17 +7,17 @@ import type {
   IAuthSessionStore,
   IAuthTokenCipher,
   PersistAuthSessionRecord,
-} from "@posthog/core/auth/identifiers";
+} from "@flind/core/auth/identifiers";
 import type {
   CancelFlowOutput,
   RefreshTokenOutput,
   StartFlowOutput,
-} from "@posthog/core/auth/oauth.schemas";
-import { OAUTH_SERVICE } from "@posthog/core/oauth/identifiers";
-import type { OAuthService } from "@posthog/core/oauth/oauth";
-import type { CloudRegion } from "@posthog/shared";
-import type { IAuthPreferenceRepository } from "@posthog/workspace-server/db/repositories/auth-preference-repository";
-import type { IAuthSessionRepository } from "@posthog/workspace-server/db/repositories/auth-session-repository";
+} from "@flind/core/auth/oauth.schemas";
+import { OAUTH_SERVICE } from "@flind/core/oauth/identifiers";
+import type { OAuthService } from "@flind/core/oauth/oauth";
+import type { CloudRegion } from "@flind/shared";
+import type { IAuthPreferenceRepository } from "@flind/workspace-server/db/repositories/auth-preference-repository";
+import type { IAuthSessionRepository } from "@flind/workspace-server/db/repositories/auth-session-repository";
 import { inject, injectable } from "inversify";
 import {
   AUTH_PREFERENCE_REPOSITORY,

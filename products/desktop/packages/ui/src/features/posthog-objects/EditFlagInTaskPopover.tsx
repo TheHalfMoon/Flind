@@ -6,9 +6,9 @@ import {
   Text,
   Textarea,
 } from "@flind/quill";
-import { sendPromptToAgent } from "@posthog/ui/features/sessions/sendPromptToAgent";
-import { toast } from "@posthog/ui/primitives/toast";
-import { isSendMessageSubmitKey } from "@posthog/ui/utils/sendMessageKey";
+import { sendPromptToAgent } from "@flind/ui/features/sessions/sendPromptToAgent";
+import { toast } from "@flind/ui/primitives/toast";
+import { isSendMessageSubmitKey } from "@flind/ui/utils/sendMessageKey";
 import { useCallback, useState } from "react";
 
 /** Appended to every edit so the agent shows the outcome before it writes. */

@@ -5,7 +5,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@flind/quill";
-import { useCloseReport } from "@posthog/ui/features/inbox/hooks/useCloseReport";
+import { useCloseReport } from "@flind/ui/features/inbox/hooks/useCloseReport";
 import type { ReactElement } from "react";
 
 /**

@@ -1,10 +1,10 @@
-import { readPrUrls } from "@posthog/shared";
+import { readPrUrls } from "@flind/shared";
 import type {
   Task,
   TaskRunEnvironment,
   TaskRunStatus,
   UserBasic,
-} from "@posthog/shared/domain-types";
+} from "@flind/shared/domain-types";
 
 export type TaskStatusPresentationKind =
   | "pr"

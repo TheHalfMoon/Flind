@@ -1,4 +1,4 @@
-import { BASE_CATEGORY_ENUM } from "@posthog/core/setup/types";
+import { BASE_CATEGORY_ENUM } from "@flind/core/setup/types";
 
 const DISCOVERY_PROMPT_BASE = `You are analyzing this codebase to find the highest-value first tasks for the developer.
 

@@ -3,20 +3,20 @@ import {
   type ExpandDirection,
   getExpandedLayout,
   getExpansionCellIndex,
-} from "@posthog/core/command-center/grid";
+} from "@flind/core/command-center/grid";
 import { Button } from "@flind/quill";
 import {
   CANVAS_DRAG_TYPE,
   readCanvasDragData,
-} from "@posthog/ui/features/canvas/canvasDrag";
+} from "@flind/ui/features/canvas/canvasDrag";
 import {
   consumeTaskDrop,
   readTaskDragData,
   TASK_DRAG_TYPE,
   TASK_IDS_DRAG_TYPE,
-} from "@posthog/ui/features/sidebar/taskDrag";
-import { useLiveTaskIds } from "@posthog/ui/features/tasks/useLiveTaskIds";
-import { destroyShellTerminal } from "@posthog/ui/features/terminal/destroyShellTerminal";
+} from "@flind/ui/features/sidebar/taskDrag";
+import { useLiveTaskIds } from "@flind/ui/features/tasks/useLiveTaskIds";
+import { destroyShellTerminal } from "@flind/ui/features/terminal/destroyShellTerminal";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { FOCUSABLE_SELECTOR } from "../../../utils/overlay";
 import { useTaskViewed } from "../../sidebar/useTaskViewed";

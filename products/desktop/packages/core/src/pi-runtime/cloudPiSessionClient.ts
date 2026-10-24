@@ -26,8 +26,8 @@ import {
   readPiExtensionMessage,
   type StoredLogEntry,
   type TaskRunStatus,
-} from "@posthog/shared";
-import type { CloudTaskUpdatePayload } from "@posthog/shared/domain-types";
+} from "@flind/shared";
+import type { CloudTaskUpdatePayload } from "@flind/shared/domain-types";
 import type { CloudTaskClient } from "../cloud-task/cloudTaskClient";
 import {
   isTerminalStatus,

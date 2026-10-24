@@ -1,5 +1,5 @@
-import type { GithubConnectClient } from "@posthog/core/onboarding/identifiers";
-import { getAuthenticatedClient } from "@posthog/ui/features/auth/authClientImperative";
+import type { GithubConnectClient } from "@flind/core/onboarding/identifiers";
+import { getAuthenticatedClient } from "@flind/ui/features/auth/authClientImperative";
 
 async function authedClient() {
   const client = await getAuthenticatedClient();

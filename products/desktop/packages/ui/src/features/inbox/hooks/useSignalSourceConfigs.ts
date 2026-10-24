@@ -1,4 +1,4 @@
-import type { SignalSourceConfig } from "@posthog/api-client/posthog-client";
+import type { SignalSourceConfig } from "@flind/api-client/posthog-client";
 import { useAuthenticatedQuery } from "../../../hooks/useAuthenticatedQuery";
 import { useAuthStateValue } from "../../auth/store";
 

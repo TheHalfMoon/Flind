@@ -1,7 +1,7 @@
 import type {
   SandboxCustomImage,
   SandboxEnvironment,
-} from "@posthog/shared/domain-types";
+} from "@flind/shared/domain-types";
 
 export type CloudTarget =
   | { kind: "default" }

@@ -1,4 +1,4 @@
-import type { ResourceComment } from "@posthog/api-client/posthog-client";
+import type { ResourceComment } from "@flind/api-client/posthog-client";
 import { describe, expect, it, vi } from "vitest";
 import { SessionService } from "./sessionService";
 

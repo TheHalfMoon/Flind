@@ -3,7 +3,7 @@ import type {
   HedgehogModeHandle,
   HedgehogModeHost,
   HedgehogModeMountOptions,
-} from "@posthog/ui/shell/hedgehogModeHost";
+} from "@flind/ui/shell/hedgehogModeHost";
 
 export class RendererHedgehogModeHost implements HedgehogModeHost {
   async mount(

@@ -1,6 +1,6 @@
 import { Tooltip, TooltipContent, TooltipTrigger } from "@flind/quill";
-import type { SignalReportActionability } from "@posthog/shared/domain-types";
-import { InboxBadge } from "@posthog/ui/features/inbox/components/utils/InboxBadge";
+import type { SignalReportActionability } from "@flind/shared/domain-types";
+import { InboxBadge } from "@flind/ui/features/inbox/components/utils/InboxBadge";
 import type { ReactNode } from "react";
 
 const ACTIONABILITY_STYLE: Record<

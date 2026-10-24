@@ -1,8 +1,8 @@
 import {
   fileDisplayName,
   newFileContent,
-} from "@posthog/core/canvas/contextFiles";
-import { useWikiContextDocumentStore } from "@posthog/ui/features/canvas/hooks/useContextDocumentStore";
+} from "@flind/core/canvas/contextFiles";
+import { useWikiContextDocumentStore } from "@flind/ui/features/canvas/hooks/useContextDocumentStore";
 import { MarkdownFileDialog } from "./MarkdownFileDialog";
 
 interface SpaceFileDialogProps {

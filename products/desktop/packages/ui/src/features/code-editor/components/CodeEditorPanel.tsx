@@ -1,18 +1,18 @@
-import { getRenderableKind } from "@posthog/core/code-editor/fileKind";
+import { getRenderableKind } from "@flind/core/code-editor/fileKind";
 import {
   collapseFileState,
   resolveMarkdownLink,
   selectFileSource,
-} from "@posthog/core/code-editor/fileSource";
-import { getRelativePath } from "@posthog/core/code-editor/pathUtils";
-import { buildFileLineReferencePrompt } from "@posthog/core/code-review/reviewPrompts";
-import { xmlToContent } from "@posthog/core/message-editor/content";
+} from "@flind/core/code-editor/fileSource";
+import { getRelativePath } from "@flind/core/code-editor/pathUtils";
+import { buildFileLineReferencePrompt } from "@flind/core/code-review/reviewPrompts";
+import { xmlToContent } from "@flind/core/message-editor/content";
 import {
   getImageMimeType,
   isRasterImageFile,
   parseImageDataUrl,
-} from "@posthog/shared";
-import type { Task } from "@posthog/shared/domain-types";
+} from "@flind/shared";
+import type { Task } from "@flind/shared/domain-types";
 import { Box, Flex } from "@radix-ui/themes";
 import { useCallback, useMemo } from "react";
 import type { Components } from "react-markdown";

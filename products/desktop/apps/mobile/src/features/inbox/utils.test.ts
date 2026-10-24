@@ -1,19 +1,19 @@
-import { buildInboxViewedProperties } from "@posthog/core/inbox/engagement";
+import { buildInboxViewedProperties } from "@flind/core/inbox/engagement";
 import {
   buildArchiveListOrdering,
   buildPriorityFilterParam,
   buildSignalReportListOrdering,
   INBOX_PIPELINE_STATUSES,
-} from "@posthog/core/inbox/reportFiltering";
-import { isRestorableReport } from "@posthog/core/inbox/reportMembership";
-import { formatSignalReportSummaryMarkdown } from "@posthog/core/inbox/reportPresentation";
-import { dismissalReasonLabel } from "@posthog/shared";
+} from "@flind/core/inbox/reportFiltering";
+import { isRestorableReport } from "@flind/core/inbox/reportMembership";
+import { formatSignalReportSummaryMarkdown } from "@flind/core/inbox/reportPresentation";
+import { dismissalReasonLabel } from "@flind/shared";
 import type {
   Signal,
   SignalReport,
   SignalReportOrderingField,
   SignalReportStatus,
-} from "@posthog/shared/domain-types";
+} from "@flind/shared/domain-types";
 import { describe, expect, it } from "vitest";
 import { sourceLine } from "./utils";
 

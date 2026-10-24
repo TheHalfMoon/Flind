@@ -24,11 +24,11 @@ vi.mock("@flind/quill", () => ({ toast: quill }));
 
 const settings = vi.hoisted(() => ({ toastNotifications: true }));
 
-vi.mock("@posthog/ui/features/settings/settingsStore", () => ({
+vi.mock("@flind/ui/features/settings/settingsStore", () => ({
   useSettingsStore: { getState: () => settings },
 }));
 
-import { useErrorDetailsStore } from "@posthog/ui/features/notifications/errorDetailsStore";
+import { useErrorDetailsStore } from "@flind/ui/features/notifications/errorDetailsStore";
 import { toast } from "./toast";
 
 beforeEach(() => {

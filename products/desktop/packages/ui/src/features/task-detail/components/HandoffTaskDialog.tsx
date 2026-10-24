@@ -19,13 +19,13 @@ import {
   FieldLabel,
   InputGroupAddon,
 } from "@flind/quill";
-import type { Task, UserBasic } from "@posthog/shared/domain-types";
-import { UserAvatar } from "@posthog/ui/features/auth/UserAvatar";
-import { useCurrentUser } from "@posthog/ui/features/auth/useCurrentUser";
-import { useChannels } from "@posthog/ui/features/canvas/hooks/useChannels";
-import { useOrgMembers } from "@posthog/ui/features/canvas/hooks/useOrgMembers";
-import { userDisplayName } from "@posthog/ui/features/canvas/utils/userDisplay";
-import { useHandoffTask } from "@posthog/ui/features/tasks/useTaskMutations";
+import type { Task, UserBasic } from "@flind/shared/domain-types";
+import { UserAvatar } from "@flind/ui/features/auth/UserAvatar";
+import { useCurrentUser } from "@flind/ui/features/auth/useCurrentUser";
+import { useChannels } from "@flind/ui/features/canvas/hooks/useChannels";
+import { useOrgMembers } from "@flind/ui/features/canvas/hooks/useOrgMembers";
+import { userDisplayName } from "@flind/ui/features/canvas/utils/userDisplay";
+import { useHandoffTask } from "@flind/ui/features/tasks/useTaskMutations";
 import { useMemo, useState } from "react";
 import { toast } from "../../../primitives/toast";
 import { logger } from "../../../shell/logger";

@@ -1,4 +1,4 @@
-import { withTimeout } from "@posthog/shared";
+import { withTimeout } from "@flind/shared";
 import type { CanvasConnectorPermission } from "./canvasConnectorPermissionService";
 import type { CanvasConnectorCallResult } from "./dashboardSchemas";
 import type { CanvasConnectorCallInput } from "./freeformSchemas";

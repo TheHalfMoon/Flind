@@ -1,14 +1,14 @@
-import { resolvePanelDrag } from "@posthog/ui/features/navigation/rightPanelGeometry";
+import { resolvePanelDrag } from "@flind/ui/features/navigation/rightPanelGeometry";
 import {
   currentRightPanelSide,
   openRightPanelSide,
-} from "@posthog/ui/features/navigation/rightPanelSide";
+} from "@flind/ui/features/navigation/rightPanelSide";
 import {
   DEFAULT_RIGHT_PANEL_SIDE,
   type RightPanelSide,
   useRightPanelStore,
-} from "@posthog/ui/features/navigation/rightPanelStore";
-import { ResizeHandle } from "@posthog/ui/primitives/ResizeHandle";
+} from "@flind/ui/features/navigation/rightPanelStore";
+import { ResizeHandle } from "@flind/ui/primitives/ResizeHandle";
 import React from "react";
 
 /**

@@ -4,7 +4,7 @@ import {
   PageHeaderHeading,
   PageHeaderTitle,
   PageHeaderTitleRow,
-} from "@posthog/ui/primitives/PageHeader";
+} from "@flind/ui/primitives/PageHeader";
 import type { ReactNode } from "react";
 
 export function LoopsPageLayout({

@@ -2,7 +2,7 @@ import { FunnelIcon, type IconProps } from "@phosphor-icons/react";
 import {
   INBOX_SCOPE_ENTIRE_PROJECT,
   INBOX_SCOPE_FOR_YOU,
-} from "@posthog/core/inbox/reportMembership";
+} from "@flind/core/inbox/reportMembership";
 import {
   Button,
   Empty,
@@ -12,27 +12,27 @@ import {
   EmptyMedia,
   EmptyTitle,
 } from "@flind/quill";
-import { isDismissalReasonSnooze } from "@posthog/shared/dismissalReasons";
-import type { SignalReport } from "@posthog/shared/types";
-import { CardSkeleton } from "@posthog/ui/features/inbox/components/CardSkeleton";
+import { isDismissalReasonSnooze } from "@flind/shared/dismissalReasons";
+import type { SignalReport } from "@flind/shared/types";
+import { CardSkeleton } from "@flind/ui/features/inbox/components/CardSkeleton";
 import {
   DismissReportDialog,
   type DismissReportDialogResult,
-} from "@posthog/ui/features/inbox/components/DismissReportDialog";
-import { InboxBulkSelectionBar } from "@posthog/ui/features/inbox/components/InboxBulkSelectionBar";
-import { InboxLoadMore } from "@posthog/ui/features/inbox/components/InboxLoadMore";
-import { InboxSearchFilterBar } from "@posthog/ui/features/inbox/components/InboxSearchFilterBar";
-import { useInboxAllReports } from "@posthog/ui/features/inbox/hooks/useInboxAllReports";
+} from "@flind/ui/features/inbox/components/DismissReportDialog";
+import { InboxBulkSelectionBar } from "@flind/ui/features/inbox/components/InboxBulkSelectionBar";
+import { InboxLoadMore } from "@flind/ui/features/inbox/components/InboxLoadMore";
+import { InboxSearchFilterBar } from "@flind/ui/features/inbox/components/InboxSearchFilterBar";
+import { useInboxAllReports } from "@flind/ui/features/inbox/hooks/useInboxAllReports";
 import {
   buildSuppressDisabledReasonMap,
   useInboxBulkActions,
-} from "@posthog/ui/features/inbox/hooks/useInboxBulkActions";
-import { useInboxReportListSelection } from "@posthog/ui/features/inbox/hooks/useInboxReportListSelection";
-import { useInboxReviewerScopeStore } from "@posthog/ui/features/inbox/stores/inboxReviewerScopeStore";
+} from "@flind/ui/features/inbox/hooks/useInboxBulkActions";
+import { useInboxReportListSelection } from "@flind/ui/features/inbox/hooks/useInboxReportListSelection";
+import { useInboxReviewerScopeStore } from "@flind/ui/features/inbox/stores/inboxReviewerScopeStore";
 import {
   hasActiveInboxFilters,
   useInboxSignalsFilterStore,
-} from "@posthog/ui/features/inbox/stores/inboxSignalsFilterStore";
+} from "@flind/ui/features/inbox/stores/inboxSignalsFilterStore";
 import {
   type ComponentType,
   Fragment,

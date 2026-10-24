@@ -2,7 +2,7 @@ import {
   createTaskSelectionStore,
   type TaskSelectionStoreHook,
   useTaskSelectionStore,
-} from "@posthog/ui/features/sidebar/taskSelectionStore";
+} from "@flind/ui/features/sidebar/taskSelectionStore";
 import { createContext, type ReactNode, useContext, useState } from "react";
 
 const TaskSelectionStoreContext = createContext<TaskSelectionStoreHook>(

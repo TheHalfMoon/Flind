@@ -2,17 +2,17 @@ import { MagnifyingGlassIcon } from "@phosphor-icons/react";
 import {
   TASK_SERVICE,
   type TaskService,
-} from "@posthog/core/task-detail/taskService";
-import { useService } from "@posthog/di/react";
+} from "@flind/core/task-detail/taskService";
+import { useService } from "@flind/di/react";
 import {
   ANALYTICS_EVENTS,
   type ClaudeSessionImportSource,
   formatRelativeTimeShort,
   type WorkspaceMode,
-} from "@posthog/shared";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
-import { openTask } from "@posthog/ui/router/useOpenTask";
-import { track } from "@posthog/ui/shell/analytics";
+} from "@flind/shared";
+import { Spinner } from "@flind/ui/primitives/Spinner";
+import { openTask } from "@flind/ui/router/useOpenTask";
+import { track } from "@flind/ui/shell/analytics";
 import { Dialog, Flex, ScrollArea, Text, TextField } from "@radix-ui/themes";
 import { useEffect, useState } from "react";
 import claudeMark from "../../../assets/services/claude.svg";

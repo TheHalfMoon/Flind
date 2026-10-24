@@ -1,4 +1,4 @@
-import { makeCanvasCellValue } from "@posthog/core/command-center/grid";
+import { makeCanvasCellValue } from "@flind/core/command-center/grid";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import {
   COMMAND_CENTER_INITIAL_STATE,
@@ -12,7 +12,7 @@ import {
   placeTasksInCommandCenterCell,
 } from "./placeTaskInCommandCenter";
 
-vi.mock("@posthog/ui/router/navigationBridge", () => ({
+vi.mock("@flind/ui/router/navigationBridge", () => ({
   navigateToCommandCenter: vi.fn(),
 }));
 

@@ -1,6 +1,6 @@
-import { useSettingsPageStore } from "@posthog/ui/features/settings/stores/settingsPageStore";
-import type { Environment } from "@posthog/workspace-client/environment";
-import { useWorkspaceTRPC } from "@posthog/workspace-client/trpc";
+import { useSettingsPageStore } from "@flind/ui/features/settings/stores/settingsPageStore";
+import type { Environment } from "@flind/workspace-client/environment";
+import { useWorkspaceTRPC } from "@flind/workspace-client/trpc";
 import { Flex, Text } from "@radix-ui/themes";
 import { useQueries } from "@tanstack/react-query";
 import { useCallback, useEffect, useMemo, useState } from "react";

@@ -1,25 +1,25 @@
-import { buildResolveRequest } from "@posthog/core/inbox/bulkActions";
+import { buildResolveRequest } from "@flind/core/inbox/bulkActions";
 import {
   type InboxReportCacheSnapshot,
   restoreInboxReportCaches,
   updateInboxReportCaches,
-} from "@posthog/core/inbox/inboxQuery";
-import type { InboxReportActionSurface } from "@posthog/shared/analytics-events";
-import type { ResolveReasonOptionValue } from "@posthog/shared/dismissalReasons";
-import type { SignalReport } from "@posthog/shared/types";
-import { taskFeedResultsQueryRoot } from "@posthog/ui/features/canvas/hooks/useTaskFeedResults";
+} from "@flind/core/inbox/inboxQuery";
+import type { InboxReportActionSurface } from "@flind/shared/analytics-events";
+import type { ResolveReasonOptionValue } from "@flind/shared/dismissalReasons";
+import type { SignalReport } from "@flind/shared/types";
+import { taskFeedResultsQueryRoot } from "@flind/ui/features/canvas/hooks/useTaskFeedResults";
 import {
   ResolveReportDialog,
   type ResolveReportDialogResult,
-} from "@posthog/ui/features/inbox/components/ResolveReportDialog";
-import { reportKeys } from "@posthog/ui/features/inbox/hooks/useInboxReports";
+} from "@flind/ui/features/inbox/components/ResolveReportDialog";
+import { reportKeys } from "@flind/ui/features/inbox/hooks/useInboxReports";
 import {
   useReportActionResultTracker,
   useReportActionTracker,
-} from "@posthog/ui/features/inbox/hooks/useReportActionTracker";
-import { useInboxReportActionDraftStore } from "@posthog/ui/features/inbox/stores/inboxReportActionDraftStore";
-import { useAuthenticatedMutation } from "@posthog/ui/hooks/useAuthenticatedMutation";
-import { toast } from "@posthog/ui/primitives/toast";
+} from "@flind/ui/features/inbox/hooks/useReportActionTracker";
+import { useInboxReportActionDraftStore } from "@flind/ui/features/inbox/stores/inboxReportActionDraftStore";
+import { useAuthenticatedMutation } from "@flind/ui/hooks/useAuthenticatedMutation";
+import { toast } from "@flind/ui/primitives/toast";
 import { useQueryClient } from "@tanstack/react-query";
 import {
   type ReactElement,

@@ -1,9 +1,9 @@
 import {
   type InjectedBlock,
   splitInjectedBlocks,
-} from "@posthog/core/editor/injectedBlocks";
-import { resolveMessageAttachments } from "@posthog/core/sessions/promptContent";
-import type { UserMessageAttachment } from "@posthog/ui/features/sessions/userMessageTypes";
+} from "@flind/core/editor/injectedBlocks";
+import { resolveMessageAttachments } from "@flind/core/sessions/promptContent";
+import type { UserMessageAttachment } from "@flind/ui/features/sessions/userMessageTypes";
 import {
   extractPeerAgentMessage,
   type PeerAgentMessage,

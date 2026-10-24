@@ -3,7 +3,7 @@ import {
   codeUsageMeter,
   isCodeUsageFreeTier,
   isUsageExceeded,
-} from "@posthog/core/billing/usageDisplay";
+} from "@flind/core/billing/usageDisplay";
 import { useUsage } from "./useUsage";
 
 export interface UsageMeterState {

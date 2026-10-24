@@ -1,4 +1,4 @@
-import type { GatewayPolicyScope } from "@posthog/ui/features/mcp-gateway/hooks/gatewayKeys";
+import type { GatewayPolicyScope } from "@flind/ui/features/mcp-gateway/hooks/gatewayKeys";
 
 /** In-page navigation state for the gateway scene (single flat route). */
 export type GatewayRoute =

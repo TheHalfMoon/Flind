@@ -8,7 +8,7 @@ import {
   SquaresFour,
   Wrench,
 } from "@phosphor-icons/react";
-import type { SuggestedPrompt } from "@posthog/ui/features/task-detail/components/SuggestedPromptCard";
+import type { SuggestedPrompt } from "@flind/ui/features/task-detail/components/SuggestedPromptCard";
 
 // Starter prompts shown as cards on the channels new-task
 // screen. Clicking a card drops its `prompt` into the composer, ready to

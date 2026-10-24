@@ -1,8 +1,8 @@
-import { stripTrailingAttachmentSummary } from "@posthog/core/editor/cloud-prompt";
+import { stripTrailingAttachmentSummary } from "@flind/core/editor/cloud-prompt";
 import {
   hasInjectedBlocks,
   stripInjectedBlocks,
-} from "@posthog/core/editor/injectedBlocks";
+} from "@flind/core/editor/injectedBlocks";
 import type { ConversationItem } from "./buildConversationItems";
 
 interface MergeConversationItemsArgs {

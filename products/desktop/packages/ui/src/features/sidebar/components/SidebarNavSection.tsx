@@ -1,19 +1,19 @@
-import { LOOPS_FLAG } from "@posthog/shared";
+import { LOOPS_FLAG } from "@flind/shared";
 import {
   ANALYTICS_EVENTS,
   type SidebarNavItem,
-} from "@posthog/shared/analytics-events";
-import { useOpenBrowserTab } from "@posthog/ui/features/browser-tabs/useOpenBrowserTab";
-import { useActivityFilterStore } from "@posthog/ui/features/canvas/stores/activityFilterStore";
-import { useCommandCenterActiveCount } from "@posthog/ui/features/command-center/useCommandCenterActiveCount";
-import { useContextLayerFlag } from "@posthog/ui/features/feature-flags/useContextLayerFlag";
-import { useFeatureFlag } from "@posthog/ui/features/feature-flags/useFeatureFlag";
-import { useInboxDecisionCount } from "@posthog/ui/features/inbox/hooks/useInboxDecisionCount";
-import { openSettings } from "@posthog/ui/features/settings/hooks/useOpenSettings";
+} from "@flind/shared/analytics-events";
+import { useOpenBrowserTab } from "@flind/ui/features/browser-tabs/useOpenBrowserTab";
+import { useActivityFilterStore } from "@flind/ui/features/canvas/stores/activityFilterStore";
+import { useCommandCenterActiveCount } from "@flind/ui/features/command-center/useCommandCenterActiveCount";
+import { useContextLayerFlag } from "@flind/ui/features/feature-flags/useContextLayerFlag";
+import { useFeatureFlag } from "@flind/ui/features/feature-flags/useFeatureFlag";
+import { useInboxDecisionCount } from "@flind/ui/features/inbox/hooks/useInboxDecisionCount";
+import { openSettings } from "@flind/ui/features/settings/hooks/useOpenSettings";
 import {
   NAV_ITEMS,
   type NavItemId,
-} from "@posthog/ui/features/sidebar/constants";
+} from "@flind/ui/features/sidebar/constants";
 import {
   navigateToActivity,
   navigateToCommandCenter,
@@ -21,14 +21,14 @@ import {
   navigateToInbox,
   navigateToLoops,
   navigateToSpacesContext,
-} from "@posthog/ui/router/navigationBridge";
+} from "@flind/ui/router/navigationBridge";
 import {
   useAppView,
   useReportSourceNavType,
-} from "@posthog/ui/router/useAppView";
-import { openTaskInput } from "@posthog/ui/router/useOpenTask";
-import { track } from "@posthog/ui/shell/analytics";
-import { useCommandMenuStore } from "@posthog/ui/shell/commandMenuStore";
+} from "@flind/ui/router/useAppView";
+import { openTaskInput } from "@flind/ui/router/useOpenTask";
+import { track } from "@flind/ui/shell/analytics";
+import { useCommandMenuStore } from "@flind/ui/shell/commandMenuStore";
 import { Box, Flex } from "@radix-ui/themes";
 import { useRouterState } from "@tanstack/react-router";
 import type { MouseEventHandler, ReactNode } from "react";

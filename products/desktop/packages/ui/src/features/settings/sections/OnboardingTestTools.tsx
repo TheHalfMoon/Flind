@@ -1,14 +1,14 @@
 import { Button } from "@flind/quill";
-import { useAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
+import { useAuthenticatedClient } from "@flind/ui/features/auth/authClient";
 import {
   SettingsCard,
   SettingsCardRow,
   SettingsSection,
-} from "@posthog/ui/features/settings/components/SettingsCard";
-import { leaveSettings } from "@posthog/ui/features/settings/hooks/useOpenSettings";
-import { OnboardingTestToolsDialog } from "@posthog/ui/features/settings/sections/OnboardingTestToolsDialog";
-import { toast } from "@posthog/ui/primitives/toast";
-import { navigateToChannelDashboard } from "@posthog/ui/router/navigationBridge";
+} from "@flind/ui/features/settings/components/SettingsCard";
+import { leaveSettings } from "@flind/ui/features/settings/hooks/useOpenSettings";
+import { OnboardingTestToolsDialog } from "@flind/ui/features/settings/sections/OnboardingTestToolsDialog";
+import { toast } from "@flind/ui/primitives/toast";
+import { navigateToChannelDashboard } from "@flind/ui/router/navigationBridge";
 import { type ReactElement, useState } from "react";
 
 export function OnboardingTestTools(): ReactElement {

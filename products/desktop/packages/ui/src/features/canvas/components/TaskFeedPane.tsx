@@ -3,7 +3,7 @@ import {
   PencilSimpleIcon,
   TrashIcon,
 } from "@phosphor-icons/react";
-import { buildChannelItems } from "@posthog/core/canvas/channelItems";
+import { buildChannelItems } from "@flind/core/canvas/channelItems";
 import {
   Button,
   cn,
@@ -14,26 +14,26 @@ import {
   EmptyTitle,
   Text,
 } from "@flind/quill";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
-import { useArchivedTaskIds } from "@posthog/ui/features/archive/useArchivedTaskIds";
-import { useArchiveTask } from "@posthog/ui/features/archive/useArchiveTask";
-import type { ChannelItemActions } from "@posthog/ui/features/canvas/components/ChannelItemRow";
-import { ChannelItemsPane } from "@posthog/ui/features/canvas/components/ChannelItemsPane";
-import { FeedQueryHighlight } from "@posthog/ui/features/canvas/components/FeedQueryInput";
-import { SavedSearchSwitcher } from "@posthog/ui/features/canvas/components/SavedSearchSwitcher";
-import { useChannelSessionFacts } from "@posthog/ui/features/canvas/hooks/useChannelItems";
-import { useProjectTaskFeed } from "@posthog/ui/features/canvas/hooks/useProjectTaskFeeds";
-import { useSavedSearchActions } from "@posthog/ui/features/canvas/hooks/useSavedSearchActions";
-import { useTaskFeedResults } from "@posthog/ui/features/canvas/hooks/useTaskFeedResults";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
+import { useArchivedTaskIds } from "@flind/ui/features/archive/useArchivedTaskIds";
+import { useArchiveTask } from "@flind/ui/features/archive/useArchiveTask";
+import type { ChannelItemActions } from "@flind/ui/features/canvas/components/ChannelItemRow";
+import { ChannelItemsPane } from "@flind/ui/features/canvas/components/ChannelItemsPane";
+import { FeedQueryHighlight } from "@flind/ui/features/canvas/components/FeedQueryInput";
+import { SavedSearchSwitcher } from "@flind/ui/features/canvas/components/SavedSearchSwitcher";
+import { useChannelSessionFacts } from "@flind/ui/features/canvas/hooks/useChannelItems";
+import { useProjectTaskFeed } from "@flind/ui/features/canvas/hooks/useProjectTaskFeeds";
+import { useSavedSearchActions } from "@flind/ui/features/canvas/hooks/useSavedSearchActions";
+import { useTaskFeedResults } from "@flind/ui/features/canvas/hooks/useTaskFeedResults";
 import {
   useTaskFeedSelection,
   useTaskFeedSelectionStore,
-} from "@posthog/ui/features/canvas/stores/taskFeedSelectionStore";
-import { usePinnedTasks } from "@posthog/ui/features/sidebar/usePinnedTasks";
-import { ChromeBar } from "@posthog/ui/primitives/ChromeBar";
-import { toast } from "@posthog/ui/primitives/toast";
-import { getRouterOrNull } from "@posthog/ui/router/routerRef";
-import { track } from "@posthog/ui/shell/analytics";
+} from "@flind/ui/features/canvas/stores/taskFeedSelectionStore";
+import { usePinnedTasks } from "@flind/ui/features/sidebar/usePinnedTasks";
+import { ChromeBar } from "@flind/ui/primitives/ChromeBar";
+import { toast } from "@flind/ui/primitives/toast";
+import { getRouterOrNull } from "@flind/ui/router/routerRef";
+import { track } from "@flind/ui/shell/analytics";
 import { useEffect, useMemo } from "react";
 
 export function TaskFeedPane({

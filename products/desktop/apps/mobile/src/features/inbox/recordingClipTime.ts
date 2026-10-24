@@ -1,4 +1,4 @@
-import type { RecordingExport } from "@posthog/api-client/posthog-client";
+import type { RecordingExport } from "@flind/api-client/posthog-client";
 
 export function clipTimeForMoment(
   clip: RecordingExport,

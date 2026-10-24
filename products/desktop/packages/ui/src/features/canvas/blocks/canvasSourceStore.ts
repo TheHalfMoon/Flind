@@ -1,11 +1,11 @@
-import type { PageInstance } from "@posthog/core/canvas/blockLibrary/blockReference";
-import type { ParamSchema } from "@posthog/core/canvas/blockLibrary/params";
+import type { PageInstance } from "@flind/core/canvas/blockLibrary/blockReference";
+import type { ParamSchema } from "@flind/core/canvas/blockLibrary/params";
 import type {
   GridGrowth,
   SourceFiles,
   SourceRange,
-} from "@posthog/core/canvas/blockLibrary/sourceEdits";
-import type { CanvasSourceProject } from "@posthog/core/canvas/dashboardSchemas";
+} from "@flind/core/canvas/blockLibrary/sourceEdits";
+import type { CanvasSourceProject } from "@flind/core/canvas/dashboardSchemas";
 import { create } from "zustand";
 
 const HISTORY_LIMIT = 80;

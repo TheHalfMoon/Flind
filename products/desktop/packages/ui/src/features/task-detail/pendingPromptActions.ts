@@ -1,10 +1,10 @@
-import { pendingPromptToContent } from "@posthog/core/tasks/pendingPrompts";
+import { pendingPromptToContent } from "@flind/core/tasks/pendingPrompts";
 import {
   isBrowserTabOpen,
   navigateBrowserTab,
-} from "@posthog/ui/features/browser-tabs/imperativeTabNavigation";
-import { openTaskInput } from "@posthog/ui/router/useOpenTask";
-import { pendingTaskPromptStoreApi } from "@posthog/ui/shell/pendingTaskPromptStore";
+} from "@flind/ui/features/browser-tabs/imperativeTabNavigation";
+import { openTaskInput } from "@flind/ui/router/useOpenTask";
+import { pendingTaskPromptStoreApi } from "@flind/ui/shell/pendingTaskPromptStore";
 
 /**
  * Drop a failed or interrupted prompt back into the new-task composer. The

@@ -30768,7 +30768,7 @@ snapshots:
 
   '@posthog/browser-common@0.9.11':
     dependencies:
-      '@posthog/core': 1.60.1
+      '@flind/core': 1.60.1
       '@posthog/types': 1.416.0
       preact: 10.29.3
 
@@ -30815,7 +30815,7 @@ snapshots:
 
   '@posthog/mcp@0.23.0(@modelcontextprotocol/sdk@1.29.0(@cfworker/json-schema@4.1.1)(supports-color@10.2.2)(zod@4.3.6))(posthog-node@5.57.0(@opentelemetry/api@1.9.0)(rxjs@7.8.1))':
     dependencies:
-      '@posthog/core': 1.59.1
+      '@flind/core': 1.59.1
       posthog-node: 5.57.0(@opentelemetry/api@1.9.0)(rxjs@7.8.1)
     optionalDependencies:
       '@modelcontextprotocol/sdk': 1.29.0(@cfworker/json-schema@4.1.1)(supports-color@10.2.2)(zod@4.3.6)
@@ -43247,12 +43247,12 @@ snapshots:
 
   posthog-js-lite@4.13.1:
     dependencies:
-      '@posthog/core': 1.59.4
+      '@flind/core': 1.59.4
 
   posthog-js@1.438.21(@types/react@18.3.27)(react@18.3.1):
     dependencies:
+      '@flind/core': 1.60.1
       '@posthog/browser-common': 0.9.11
-      '@posthog/core': 1.60.1
       '@posthog/types': 1.416.0
       core-js: 3.49.0
       dompurify: 3.4.13
@@ -43267,7 +43267,7 @@ snapshots:
 
   posthog-node@5.57.0(@opentelemetry/api@1.9.0)(rxjs@7.8.1):
     dependencies:
-      '@posthog/core': 1.60.0
+      '@flind/core': 1.60.0
     optionalDependencies:
       '@opentelemetry/api': 1.9.0
       rxjs: 7.8.1

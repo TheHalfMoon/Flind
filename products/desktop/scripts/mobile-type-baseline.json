@@ -15,7 +15,7 @@
       "TS2322 Type 'TaskSession | undefined' is not assignable to type 'SessionActivityState | null | undefined'.": 1
     },
     "src/features/inbox/components/DiffBlock.tsx": {
-      "TS2305 Module '\"@posthog/core/inbox/activityLog\"' has no exported member 'parseDiffLines'.": 1,
+      "TS2305 Module '\"@flind/core/inbox/activityLog\"' has no exported member 'parseDiffLines'.": 1,
       "TS7006 Parameter 'i' implicitly has an 'any' type.": 1,
       "TS7006 Parameter 'line' implicitly has an 'any' type.": 1
     },

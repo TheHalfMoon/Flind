@@ -1,5 +1,5 @@
-import type { PostHogAPIClient } from "@posthog/api-client/posthog-client";
-import { getAuthIdentity } from "@posthog/core/auth/authIdentity";
+import type { PostHogAPIClient } from "@flind/api-client/posthog-client";
+import { getAuthIdentity } from "@flind/core/auth/authIdentity";
 import { useQuery } from "@tanstack/react-query";
 import { useAuthStateValue } from "./store";
 

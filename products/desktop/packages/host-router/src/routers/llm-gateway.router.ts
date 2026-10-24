@@ -1,7 +1,7 @@
-import { LLM_GATEWAY_SERVICE } from "@posthog/core/llm-gateway/identifiers";
-import type { LlmGatewayService } from "@posthog/core/llm-gateway/llm-gateway";
-import { promptInput, promptOutput } from "@posthog/core/llm-gateway/schemas";
-import { publicProcedure, router } from "@posthog/host-trpc/trpc";
+import { LLM_GATEWAY_SERVICE } from "@flind/core/llm-gateway/identifiers";
+import type { LlmGatewayService } from "@flind/core/llm-gateway/llm-gateway";
+import { promptInput, promptOutput } from "@flind/core/llm-gateway/schemas";
+import { publicProcedure, router } from "@flind/host-trpc/trpc";
 
 export const llmGatewayRouter = router({
   prompt: publicProcedure

@@ -1,9 +1,9 @@
-import { readPrUrls, type WorkspaceMode } from "@posthog/shared";
+import { readPrUrls, type WorkspaceMode } from "@flind/shared";
 import {
   isTerminalStatus,
   type Task,
   type TaskRunStatus,
-} from "@posthog/shared/domain-types";
+} from "@flind/shared/domain-types";
 import { resolveEffectiveCloudStatus } from "../task-detail/cloudRunState";
 import { taskActivityAt } from "../tasks/taskActivity";
 import { getRepositoryInfo } from "./groupTasks";
@@ -70,7 +70,7 @@ export function readRunMode(state: unknown): RunMode {
 }
 
 // Accepts both the local `FullTask` shape and the canonical `Task` from
-// `@posthog/shared` so callers holding a real `Task` can narrow it directly,
+// `@flind/shared` so callers holding a real `Task` can narrow it directly,
 // without an `as unknown as FullTask` escape hatch.
 export function narrowFullTask(task: FullTask | Task): SidebarTask {
   const slackThreadUrl = task.latest_run?.state?.slack_thread_url;

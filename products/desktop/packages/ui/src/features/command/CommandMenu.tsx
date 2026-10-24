@@ -24,13 +24,13 @@ import {
   SquaresFourIcon,
   SunIcon,
 } from "@phosphor-icons/react";
-import { channelDisplayLabel } from "@posthog/core/canvas/channelName";
-import { workspaceIdSet } from "@posthog/core/command-center/eligibility";
-import { resolveService } from "@posthog/di/container";
+import { channelDisplayLabel } from "@flind/core/canvas/channelName";
+import { workspaceIdSet } from "@flind/core/command-center/eligibility";
+import { resolveService } from "@flind/di/container";
 import {
   HOST_TRPC_CLIENT,
   type HostTrpcClient,
-} from "@posthog/host-router/client";
+} from "@flind/host-router/client";
 import {
   Autocomplete,
   AutocompleteCollection,
@@ -46,81 +46,81 @@ import {
   Kbd,
   KbdGroup,
 } from "@flind/quill";
-import { LOOPS_FLAG, singleLineTitle } from "@posthog/shared";
+import { LOOPS_FLAG, singleLineTitle } from "@flind/shared";
 import {
   ANALYTICS_EVENTS,
   type CommandMenuAction,
-} from "@posthog/shared/analytics-events";
-import { useArchivedTaskIds } from "@posthog/ui/features/archive/useArchivedTaskIds";
-import { useTaskArchive } from "@posthog/ui/features/archive/useTaskArchive";
-import { useOpenBrowserTab } from "@posthog/ui/features/browser-tabs/useOpenBrowserTab";
-import { channelGlyph } from "@posthog/ui/features/canvas/components/channelGlyph";
+} from "@flind/shared/analytics-events";
+import { useArchivedTaskIds } from "@flind/ui/features/archive/useArchivedTaskIds";
+import { useTaskArchive } from "@flind/ui/features/archive/useTaskArchive";
+import { useOpenBrowserTab } from "@flind/ui/features/browser-tabs/useOpenBrowserTab";
+import { channelGlyph } from "@flind/ui/features/canvas/components/channelGlyph";
 import {
   EDITOR_TEXT_CLASS,
   FeedQueryHighlight,
-} from "@posthog/ui/features/canvas/components/FeedQueryInput";
-import { TaskFeedModal } from "@posthog/ui/features/canvas/components/TaskFeedModal";
-import { useChannels } from "@posthog/ui/features/canvas/hooks/useChannels";
-import { useChannelsLayout } from "@posthog/ui/features/canvas/hooks/useChannelsLayout";
-import { getDefaultReviewMode } from "@posthog/ui/features/code-review/getDefaultReviewMode";
-import { useReviewNavigationStore } from "@posthog/ui/features/code-review/reviewNavigationStore";
-import { CommandKeyHints } from "@posthog/ui/features/command/CommandKeyHints";
+} from "@flind/ui/features/canvas/components/FeedQueryInput";
+import { TaskFeedModal } from "@flind/ui/features/canvas/components/TaskFeedModal";
+import { useChannels } from "@flind/ui/features/canvas/hooks/useChannels";
+import { useChannelsLayout } from "@flind/ui/features/canvas/hooks/useChannelsLayout";
+import { getDefaultReviewMode } from "@flind/ui/features/code-review/getDefaultReviewMode";
+import { useReviewNavigationStore } from "@flind/ui/features/code-review/reviewNavigationStore";
+import { CommandKeyHints } from "@flind/ui/features/command/CommandKeyHints";
 import type {
   Command,
   CommandSection,
-} from "@posthog/ui/features/command/commandRow";
+} from "@flind/ui/features/command/commandRow";
 import {
   channelRowParts,
   taskRowParts,
   taskRowRecency,
-} from "@posthog/ui/features/command/commandRowFacts";
+} from "@flind/ui/features/command/commandRowFacts";
 import {
   channelHref,
   taskHref,
-} from "@posthog/ui/features/command/commandRowHref";
-import { commandRowMeta } from "@posthog/ui/features/command/commandRowMeta";
+} from "@flind/ui/features/command/commandRowHref";
+import { commandRowMeta } from "@flind/ui/features/command/commandRowMeta";
 import {
   addRecentCommand,
   matchesCommandSearch,
   prioritizeExactCommandMatches,
-} from "@posthog/ui/features/command/commandSearch";
-import { useFileSearchStore } from "@posthog/ui/features/command/fileSearchStore";
+} from "@flind/ui/features/command/commandSearch";
+import { useFileSearchStore } from "@flind/ui/features/command/fileSearchStore";
 import {
   formatHotkeyParts,
   SHORTCUTS,
-} from "@posthog/ui/features/command/keyboard-shortcuts";
-import { PaletteFilterChips } from "@posthog/ui/features/command/PaletteFilterChips";
+} from "@flind/ui/features/command/keyboard-shortcuts";
+import { PaletteFilterChips } from "@flind/ui/features/command/PaletteFilterChips";
 import {
   type ResultRow,
   rankResultRows,
-} from "@posthog/ui/features/command/rankResultRows";
-import { TaskCommandIcon } from "@posthog/ui/features/command/TaskCommandIcon";
-import { taskSearchDelay } from "@posthog/ui/features/command/taskSearchQuery";
+} from "@flind/ui/features/command/rankResultRows";
+import { TaskCommandIcon } from "@flind/ui/features/command/TaskCommandIcon";
+import { taskSearchDelay } from "@flind/ui/features/command/taskSearchQuery";
 import {
   matchSummary,
   useFeedQueryCommands,
-} from "@posthog/ui/features/command/useFeedQueryCommands";
-import { useFileSearchContext } from "@posthog/ui/features/command/useFileSearchContext";
-import { useSearchRows } from "@posthog/ui/features/command/useSearchRows";
-import { useTaskSearch } from "@posthog/ui/features/command/useTaskSearch";
-import { useFeatureFlag } from "@posthog/ui/features/feature-flags/useFeatureFlag";
-import { useFeedbackStore } from "@posthog/ui/features/feedback/feedbackStore";
-import { useFolders } from "@posthog/ui/features/folders/useFolders";
-import { useProvisioningStore } from "@posthog/ui/features/provisioning/store";
+} from "@flind/ui/features/command/useFeedQueryCommands";
+import { useFileSearchContext } from "@flind/ui/features/command/useFileSearchContext";
+import { useSearchRows } from "@flind/ui/features/command/useSearchRows";
+import { useTaskSearch } from "@flind/ui/features/command/useTaskSearch";
+import { useFeatureFlag } from "@flind/ui/features/feature-flags/useFeatureFlag";
+import { useFeedbackStore } from "@flind/ui/features/feedback/feedbackStore";
+import { useFolders } from "@flind/ui/features/folders/useFolders";
+import { useProvisioningStore } from "@flind/ui/features/provisioning/store";
 import {
   closeSettings,
   openSettings,
-} from "@posthog/ui/features/settings/hooks/useOpenSettings";
+} from "@flind/ui/features/settings/hooks/useOpenSettings";
 import {
   NOTIFICATION_PAUSE_MS,
   notificationsPaused,
   useSettingsStore,
-} from "@posthog/ui/features/settings/settingsStore";
-import { useSidebarStore } from "@posthog/ui/features/sidebar/sidebarStore";
-import { useTasks } from "@posthog/ui/features/tasks/useTasks";
-import { useWorkspaces } from "@posthog/ui/features/workspace/useWorkspace";
-import { LoopIcon } from "@posthog/ui/primitives/LoopIcon";
-import { toast } from "@posthog/ui/primitives/toast";
+} from "@flind/ui/features/settings/settingsStore";
+import { useSidebarStore } from "@flind/ui/features/sidebar/sidebarStore";
+import { useTasks } from "@flind/ui/features/tasks/useTasks";
+import { useWorkspaces } from "@flind/ui/features/workspace/useWorkspace";
+import { LoopIcon } from "@flind/ui/primitives/LoopIcon";
+import { toast } from "@flind/ui/primitives/toast";
 import {
   goBackInHistory,
   goForwardInHistory,
@@ -130,12 +130,12 @@ import {
   navigateToFeed,
   navigateToInbox,
   navigateToLoops,
-} from "@posthog/ui/router/navigationBridge";
-import { useAppView } from "@posthog/ui/router/useAppView";
-import { openTask, openTaskInput } from "@posthog/ui/router/useOpenTask";
-import { track } from "@posthog/ui/shell/analytics";
-import { showLogFolder } from "@posthog/ui/shell/openExternal";
-import { useThemeStore } from "@posthog/ui/shell/themeStore";
+} from "@flind/ui/router/navigationBridge";
+import { useAppView } from "@flind/ui/router/useAppView";
+import { openTask, openTaskInput } from "@flind/ui/router/useOpenTask";
+import { track } from "@flind/ui/shell/analytics";
+import { showLogFolder } from "@flind/ui/shell/openExternal";
+import { useThemeStore } from "@flind/ui/shell/themeStore";
 import {
   lazy,
   type KeyboardEvent as ReactKeyboardEvent,
@@ -155,7 +155,7 @@ interface CommandMenuProps {
 
 // Static-importing this pulls the task-creation stack onto the mod+K path.
 const CreateChannelModalLazy = lazy(() =>
-  import("@posthog/ui/features/canvas/components/CreateChannelModal").then(
+  import("@flind/ui/features/canvas/components/CreateChannelModal").then(
     (module) => ({ default: module.CreateChannelModal }),
   ),
 );

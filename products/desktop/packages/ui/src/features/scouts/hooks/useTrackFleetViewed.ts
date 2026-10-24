@@ -1,8 +1,8 @@
-import type { ScoutConfig } from "@posthog/api-client/posthog-client";
-import { getScoutOrigin } from "@posthog/core/scouts/scoutPresentation";
-import type { ScoutFleetSyncOutcome } from "@posthog/shared";
-import { ANALYTICS_EVENTS } from "@posthog/shared";
-import { track } from "@posthog/ui/shell/analytics";
+import type { ScoutConfig } from "@flind/api-client/posthog-client";
+import { getScoutOrigin } from "@flind/core/scouts/scoutPresentation";
+import type { ScoutFleetSyncOutcome } from "@flind/shared";
+import { ANALYTICS_EVENTS } from "@flind/shared";
+import { track } from "@flind/ui/shell/analytics";
 import { useEffect, useRef } from "react";
 import { useAuthStateValue } from "../../auth/store";
 

@@ -1,4 +1,4 @@
-import type { TaskSessionStorageAccess } from "@posthog/api-client/posthog-client";
+import type { TaskSessionStorageAccess } from "@flind/api-client/posthog-client";
 import type {
   Adapter,
   CloudMcpServerRelayDesignation,
@@ -6,8 +6,8 @@ import type {
   McpServerConnection,
   ModelAccess,
   PrAuthorshipMode,
-} from "@posthog/shared";
-import type { Task, TaskRun } from "@posthog/shared/domain-types";
+} from "@flind/shared";
+import type { Task, TaskRun } from "@flind/shared/domain-types";
 
 export interface CreateTaskRunClientOptions {
   environment?: "local" | "cloud";

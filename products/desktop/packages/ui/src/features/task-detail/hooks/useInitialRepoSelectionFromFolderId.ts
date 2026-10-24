@@ -1,4 +1,4 @@
-import { parseRepository, type WorkspaceMode } from "@posthog/shared";
+import { parseRepository, type WorkspaceMode } from "@flind/shared";
 import { useEffect, useRef } from "react";
 import type { RegisteredFolder } from "../../folders/types";
 import type { LocalWorkspaceMode } from "../../settings/settingsStore";

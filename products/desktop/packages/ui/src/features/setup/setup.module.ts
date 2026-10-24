@@ -1,4 +1,4 @@
-import { SETUP_RUN_SERVICE } from "@posthog/core/setup/identifiers";
+import { SETUP_RUN_SERVICE } from "@flind/core/setup/identifiers";
 import { ContainerModule } from "inversify";
 import { SetupRunServiceImpl } from "./setupRunServiceImpl";
 

@@ -1,4 +1,4 @@
-import type { AgentSession } from "@posthog/shared";
+import type { AgentSession } from "@flind/shared";
 import { describe, expect, it } from "vitest";
 import { getCellCount, type LayoutPreset } from "../command-center/grid";
 import {

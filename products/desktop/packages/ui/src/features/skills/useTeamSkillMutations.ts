@@ -1,8 +1,8 @@
-import { TEAM_SKILLS_SERVICE } from "@posthog/core/skills/identifiers";
-import type { TeamSkillsService } from "@posthog/core/skills/teamSkillsService";
-import { useService } from "@posthog/di/react";
-import { useHostTRPC } from "@posthog/host-router/react";
-import { useAuthenticatedMutation } from "@posthog/ui/hooks/useAuthenticatedMutation";
+import { TEAM_SKILLS_SERVICE } from "@flind/core/skills/identifiers";
+import type { TeamSkillsService } from "@flind/core/skills/teamSkillsService";
+import { useService } from "@flind/di/react";
+import { useHostTRPC } from "@flind/host-router/react";
+import { useAuthenticatedMutation } from "@flind/ui/hooks/useAuthenticatedMutation";
 import { useQueryClient } from "@tanstack/react-query";
 import { teamSkillsKeys } from "./useTeamSkills";
 

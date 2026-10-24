@@ -25,10 +25,10 @@ import {
   ItemTitle,
   MenuLabel,
 } from "@flind/quill";
-import type { Adapter, WorkspaceMode } from "@posthog/shared";
-import { useAdapterSubscription } from "@posthog/ui/features/settings/adapterSubscription";
-import { openSettings } from "@posthog/ui/features/settings/hooks/useOpenSettings";
-import { useHostCapabilities } from "@posthog/ui/shell/useHostCapabilities";
+import type { Adapter, WorkspaceMode } from "@flind/shared";
+import { useAdapterSubscription } from "@flind/ui/features/settings/adapterSubscription";
+import { openSettings } from "@flind/ui/features/settings/hooks/useOpenSettings";
+import { useHostCapabilities } from "@flind/ui/shell/useHostCapabilities";
 import { useCallback, useMemo, useRef, useState } from "react";
 import {
   type CloudTarget,

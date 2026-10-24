@@ -1,6 +1,6 @@
 import { Button } from "@flind/quill";
-import { GithubRepoSummary } from "@posthog/ui/features/integrations/components/GithubRepoSummary";
-import { SettingsCard } from "@posthog/ui/features/settings/components/SettingsCard";
+import { GithubRepoSummary } from "@flind/ui/features/integrations/components/GithubRepoSummary";
+import { SettingsCard } from "@flind/ui/features/settings/components/SettingsCard";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const repos = [

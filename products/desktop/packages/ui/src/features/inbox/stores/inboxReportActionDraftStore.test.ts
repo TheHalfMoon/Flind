@@ -1,7 +1,7 @@
 import {
   resetInboxReportActionDrafts,
   useInboxReportActionDraftStore,
-} from "@posthog/ui/features/inbox/stores/inboxReportActionDraftStore";
+} from "@flind/ui/features/inbox/stores/inboxReportActionDraftStore";
 import { beforeEach, describe, expect, it } from "vitest";
 
 describe("inboxReportActionDraftStore", () => {

@@ -1,10 +1,10 @@
 import { CaretDownIcon, ClockIcon, StackIcon } from "@phosphor-icons/react";
-import type { ScoutScratchpadEntry } from "@posthog/api-client/posthog-client";
+import type { ScoutScratchpadEntry } from "@flind/api-client/posthog-client";
 import {
   filterScratchpadEntries,
   groupScratchpadEntries,
   type ScratchpadGrouping,
-} from "@posthog/core/scouts/scoutScratchpad";
+} from "@flind/core/scouts/scoutScratchpad";
 import {
   Button,
   Empty,
@@ -17,8 +17,8 @@ import {
   TabsList,
   TabsTrigger,
 } from "@flind/quill";
-import { RelativeTimestamp } from "@posthog/ui/primitives/RelativeTimestamp";
-import { SearchInput } from "@posthog/ui/primitives/SearchInput";
+import { RelativeTimestamp } from "@flind/ui/primitives/RelativeTimestamp";
+import { SearchInput } from "@flind/ui/primitives/SearchInput";
 import { useMemo, useState } from "react";
 import { useScoutScratchpad } from "../hooks/useScoutScratchpad";
 import { ScratchpadEntryCard } from "./ScratchpadEntryCard";

@@ -16,16 +16,16 @@ import {
   isImageBuildFailed,
   isImageBuildInProgress,
   type SandboxCustomImage,
-} from "@posthog/shared/domain-types";
-import { CodeMirrorEditor } from "@posthog/ui/features/code-editor/components/CodeMirrorEditor";
-import { useHandleOpenTask } from "@posthog/ui/features/deep-links/useHandleOpenTask";
-import { BuildLogPane } from "@posthog/ui/features/settings/sections/environments/BuildLogPane";
-import { imageFailureDetail } from "@posthog/ui/features/settings/sections/environments/imageBuildWatcher";
+} from "@flind/shared/domain-types";
+import { CodeMirrorEditor } from "@flind/ui/features/code-editor/components/CodeMirrorEditor";
+import { useHandleOpenTask } from "@flind/ui/features/deep-links/useHandleOpenTask";
+import { BuildLogPane } from "@flind/ui/features/settings/sections/environments/BuildLogPane";
+import { imageFailureDetail } from "@flind/ui/features/settings/sections/environments/imageBuildWatcher";
 import {
   useSandboxCustomImageDetail,
   useSandboxCustomImages,
-} from "@posthog/ui/features/settings/sections/environments/useSandboxCustomImages";
-import { toast } from "@posthog/ui/primitives/toast";
+} from "@flind/ui/features/settings/sections/environments/useSandboxCustomImages";
+import { toast } from "@flind/ui/primitives/toast";
 import { useId, useState } from "react";
 
 interface ImageDetailPageProps {

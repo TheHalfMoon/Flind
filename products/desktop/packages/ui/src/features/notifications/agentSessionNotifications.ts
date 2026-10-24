@@ -1,8 +1,8 @@
 import type {
   AgentSessionNotification,
   AgentSessionNotifier,
-} from "@posthog/core/notification/agentSessionNotifications";
-import { logger } from "@posthog/ui/shell/logger";
+} from "@flind/core/notification/agentSessionNotifications";
+import { logger } from "@flind/ui/shell/logger";
 import { inject, injectable } from "inversify";
 import { NotificationBus } from "./notifications";
 import { SpeechNotifier } from "./speechNotifier";

@@ -18,20 +18,20 @@ import type {
   McpAgentGrantScope,
   McpApprovalState,
   McpGatewayServer,
-} from "@posthog/api-client/posthog-client";
+} from "@flind/api-client/posthog-client";
 import {
   type GatewayConnectCredentials,
   gatewayConnectAuthType,
   gatewayConnectNeedsCredentials,
-} from "@posthog/core/mcp-gateway/gatewayConnect";
+} from "@flind/core/mcp-gateway/gatewayConnect";
 import {
   agentShareMessage,
   canEditGatewayPolicyScope,
   countPoliciesByState,
   formatAgo,
   getGatewayServerRemovalAction,
-} from "@posthog/core/mcp-gateway/gatewayServers";
-import { usableInstallationId } from "@posthog/core/mcp-gateway/gatewayToolDiscovery";
+} from "@flind/core/mcp-gateway/gatewayServers";
+import { usableInstallationId } from "@flind/core/mcp-gateway/gatewayToolDiscovery";
 import {
   Button as QuillButton,
   Switch as QuillSwitch,
@@ -39,32 +39,32 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@flind/quill";
-import { useOptionalAuthenticatedClient } from "@posthog/ui/features/auth/authClient";
-import { UserAvatar } from "@posthog/ui/features/auth/UserAvatar";
-import { useCurrentUser } from "@posthog/ui/features/auth/useCurrentUser";
-import { AgentScopeToggle } from "@posthog/ui/features/mcp-gateway/components/parts/AgentScopeToggle";
+import { useOptionalAuthenticatedClient } from "@flind/ui/features/auth/authClient";
+import { UserAvatar } from "@flind/ui/features/auth/UserAvatar";
+import { useCurrentUser } from "@flind/ui/features/auth/useCurrentUser";
+import { AgentScopeToggle } from "@flind/ui/features/mcp-gateway/components/parts/AgentScopeToggle";
 import {
   gatewayUserName,
   RobotAvatar,
-} from "@posthog/ui/features/mcp-gateway/components/parts/avatars";
-import { GatewayConnectDialog } from "@posthog/ui/features/mcp-gateway/components/parts/GatewayConnectDialog";
-import { GatewayDeleteServerDialog } from "@posthog/ui/features/mcp-gateway/components/parts/GatewayDeleteServerDialog";
-import { GatewayToolRow } from "@posthog/ui/features/mcp-gateway/components/parts/GatewayToolRow";
-import { GiveAccessDialog } from "@posthog/ui/features/mcp-gateway/components/parts/GiveAccessDialog";
-import type { GatewayRoute } from "@posthog/ui/features/mcp-gateway/gatewayRoute";
+} from "@flind/ui/features/mcp-gateway/components/parts/avatars";
+import { GatewayConnectDialog } from "@flind/ui/features/mcp-gateway/components/parts/GatewayConnectDialog";
+import { GatewayDeleteServerDialog } from "@flind/ui/features/mcp-gateway/components/parts/GatewayDeleteServerDialog";
+import { GatewayToolRow } from "@flind/ui/features/mcp-gateway/components/parts/GatewayToolRow";
+import { GiveAccessDialog } from "@flind/ui/features/mcp-gateway/components/parts/GiveAccessDialog";
+import type { GatewayRoute } from "@flind/ui/features/mcp-gateway/gatewayRoute";
 import {
   type GatewayPolicyScope,
   TEAM_SCOPE,
   YOU_SCOPE,
-} from "@posthog/ui/features/mcp-gateway/hooks/gatewayKeys";
-import { useGatewayMembers } from "@posthog/ui/features/mcp-gateway/hooks/useGatewayMembers";
-import { useGatewayServers } from "@posthog/ui/features/mcp-gateway/hooks/useGatewayServers";
-import { useGatewayToolPolicies } from "@posthog/ui/features/mcp-gateway/hooks/useGatewayToolPolicies";
-import { useServiceAccounts } from "@posthog/ui/features/mcp-gateway/hooks/useServiceAccounts";
-import { ServerIcon } from "@posthog/ui/features/mcp-servers/components/parts/icons";
-import { LoadingState } from "@posthog/ui/primitives/LoadingState";
-import { Spinner } from "@posthog/ui/primitives/Spinner";
-import { toast } from "@posthog/ui/primitives/toast";
+} from "@flind/ui/features/mcp-gateway/hooks/gatewayKeys";
+import { useGatewayMembers } from "@flind/ui/features/mcp-gateway/hooks/useGatewayMembers";
+import { useGatewayServers } from "@flind/ui/features/mcp-gateway/hooks/useGatewayServers";
+import { useGatewayToolPolicies } from "@flind/ui/features/mcp-gateway/hooks/useGatewayToolPolicies";
+import { useServiceAccounts } from "@flind/ui/features/mcp-gateway/hooks/useServiceAccounts";
+import { ServerIcon } from "@flind/ui/features/mcp-servers/components/parts/icons";
+import { LoadingState } from "@flind/ui/primitives/LoadingState";
+import { Spinner } from "@flind/ui/primitives/Spinner";
+import { toast } from "@flind/ui/primitives/toast";
 import {
   Badge,
   Button,

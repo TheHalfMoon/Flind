@@ -2,12 +2,12 @@ import { logger } from "@main/utils/logger";
 import {
   type ISecureStoreService,
   SECURE_STORE_SERVICE,
-} from "@posthog/workspace-server/services/secure-store/identifiers";
+} from "@flind/workspace-server/services/secure-store/identifiers";
 import {
   ELEVENLABS_API_KEY_STORE_KEY,
   type ISpeechSynthesizer,
   type SpeechSynthesisResult,
-} from "@posthog/workspace-server/services/speech/identifiers";
+} from "@flind/workspace-server/services/speech/identifiers";
 import { inject, injectable } from "inversify";
 
 const log = logger.scope("speech");

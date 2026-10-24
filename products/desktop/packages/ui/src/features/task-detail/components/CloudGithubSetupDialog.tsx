@@ -2,12 +2,12 @@ import {
   describeGithubConnectError,
   GITHUB_CONNECT_TIMEOUT_MESSAGE,
   GITHUB_INSTALL_PENDING_MESSAGE,
-} from "@posthog/core/integrations/connectErrors";
-import { useAuthStateValue } from "@posthog/ui/features/auth/store";
-import { useGithubConnect } from "@posthog/ui/features/integrations/useGithubUserConnect";
-import { useRepositoryIntegration } from "@posthog/ui/features/integrations/useIntegrations";
-import { useRendererWindowFocusStore } from "@posthog/ui/shell/rendererWindowFocusStore";
-import { openUrlInBrowser } from "@posthog/ui/utils/browser";
+} from "@flind/core/integrations/connectErrors";
+import { useAuthStateValue } from "@flind/ui/features/auth/store";
+import { useGithubConnect } from "@flind/ui/features/integrations/useGithubUserConnect";
+import { useRepositoryIntegration } from "@flind/ui/features/integrations/useIntegrations";
+import { useRendererWindowFocusStore } from "@flind/ui/shell/rendererWindowFocusStore";
+import { openUrlInBrowser } from "@flind/ui/utils/browser";
 import { useReducedMotion } from "framer-motion";
 import {
   type ReactElement,

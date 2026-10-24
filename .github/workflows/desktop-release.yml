@@ -158,16 +158,16 @@ jobs:
               run: aws s3 cp s3://${{ vars.AWS_TWIG_APP_ASSETS_BUCKET }}/fonts/BerkeleyMono/ apps/code/assets/fonts/BerkeleyMono/ --recursive
 
             - name: Build electron-trpc package
-              run: pnpm --filter @posthog/electron-trpc run build
+              run: pnpm --filter @flind/electron-trpc run build
 
             - name: Build platform package
-              run: pnpm --filter @posthog/platform run build
+              run: pnpm --filter @flind/platform run build
 
             - name: Build agent workspace
               run: node scripts/build-agent-workspace.mjs
 
             - name: Build shared package
-              run: pnpm --filter @posthog/shared run build
+              run: pnpm --filter @flind/shared run build
 
             # build/Assets.car is gitignored, so compile it here. actool only handles the .icon
             # bundle with Xcode 26, which this job gets from its macOS 26 runner's default
@@ -456,16 +456,16 @@ jobs:
               run: pnpm install --frozen-lockfile
 
             - name: Build electron-trpc package
-              run: pnpm --filter @posthog/electron-trpc run build
+              run: pnpm --filter @flind/electron-trpc run build
 
             - name: Build platform package
-              run: pnpm --filter @posthog/platform run build
+              run: pnpm --filter @flind/platform run build
 
             - name: Build agent workspace
               run: node scripts/build-agent-workspace.mjs
 
             - name: Build shared package
-              run: pnpm --filter @posthog/shared run build
+              run: pnpm --filter @flind/shared run build
 
             # Two separate steps: in a multi-line pwsh script only the last
             # command's exit code fails the step, so a broken electron-vite
@@ -641,16 +641,16 @@ jobs:
               run: pnpm install --frozen-lockfile
 
             - name: Build electron-trpc package
-              run: pnpm --filter @posthog/electron-trpc run build
+              run: pnpm --filter @flind/electron-trpc run build
 
             - name: Build platform package
-              run: pnpm --filter @posthog/platform run build
+              run: pnpm --filter @flind/platform run build
 
             - name: Build agent workspace
               run: node scripts/build-agent-workspace.mjs
 
             - name: Build shared package
-              run: pnpm --filter @posthog/shared run build
+              run: pnpm --filter @flind/shared run build
 
             - name: Build release artifacts
               env:

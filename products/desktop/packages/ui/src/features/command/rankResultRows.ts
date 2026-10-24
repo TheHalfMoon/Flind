@@ -1,5 +1,5 @@
-import type { TaskSearchResult } from "@posthog/shared/domain-types";
-import type { Command } from "@posthog/ui/features/command/commandRow";
+import type { TaskSearchResult } from "@flind/shared/domain-types";
+import type { Command } from "@flind/ui/features/command/commandRow";
 
 export type ResultRow = {
   command: Command;

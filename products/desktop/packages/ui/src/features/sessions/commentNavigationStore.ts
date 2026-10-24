@@ -1,8 +1,8 @@
 import {
   type CommentTarget,
   commentTargetKey,
-} from "@posthog/core/comments/anchors";
-import type { HighlightResolution } from "@posthog/ui/features/sessions/components/commentViewTypes";
+} from "@flind/core/comments/anchors";
+import type { HighlightResolution } from "@flind/ui/features/sessions/components/commentViewTypes";
 import { create } from "zustand";
 
 type CommentFocusIntent = "navigate" | "reveal-thread" | "focus-only";

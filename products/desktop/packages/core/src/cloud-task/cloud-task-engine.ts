@@ -1,5 +1,5 @@
-import type { RootLogger, ScopedLogger } from "@posthog/di/logger";
-import type { IAnalytics } from "@posthog/platform/analytics";
+import type { RootLogger, ScopedLogger } from "@flind/di/logger";
+import type { IAnalytics } from "@flind/platform/analytics";
 import {
   type CloudTaskPermissionRequestUpdate,
   isTerminalStatus,
@@ -9,8 +9,8 @@ import {
   serializeError,
   type TaskRunStatus,
   TypedEventEmitter,
-} from "@posthog/shared";
-import { ANALYTICS_EVENTS } from "@posthog/shared/analytics-events";
+} from "@flind/shared";
+import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
 import { z } from "zod";
 import type {
   ClaudeSubscriptionTokenStore,
