@@ -3,7 +3,6 @@ import { useActions, useValues } from 'kea'
 
 import {
     IconCake,
-    IconConfetti,
     IconCopy,
     IconDatabase,
     IconDay,
@@ -141,7 +140,7 @@ function ThemeMenu(): JSX.Element {
 export function AccountMenu({ trigger, ...props }: AccountMenuProps): JSX.Element {
     const { user } = useValues(userLogic)
     const { currentOrganization } = useValues(organizationLogic)
-    const { isCloudOrDev, isCloud, preflight } = useValues(preflightLogic)
+    const { isCloudOrDev, preflight } = useValues(preflightLogic)
     const { featureFlags } = useValues(featureFlagLogic)
     const { billing, billingEntryUrl } = useValues(billingLogic)
     const { showInviteModal } = useActions(inviteLogic)
@@ -466,21 +465,6 @@ export function AccountMenu({ trigger, ...props }: AccountMenuProps): JSX.Elemen
                             ) : null}
                         </>
                     )}
-                    {!isCloud && (
-                        <DropdownMenuItem asChild>
-                            <Link
-                                to={urls.moveToPostHogCloud()}
-                                buttonProps={{
-                                    menuItem: true,
-                                }}
-                                data-attr="top-menu-item-upgrade-to-cloud"
-                            >
-                                <IconConfetti />
-                                Try PostHog Cloud
-                            </Link>
-                        </DropdownMenuItem>
-                    )}
-
                     <DropdownMenuSeparator />
 
                     <DropdownMenuItem asChild>

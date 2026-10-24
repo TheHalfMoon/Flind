@@ -270,7 +270,7 @@ export const sceneConfigurations: Record<Scene | string, SceneConfig> = {
     [Scene.Login2FA]: { onlyUnauthenticated: true, name: 'Login 2FA', layout: 'plain' },
     [Scene.Login]: { onlyUnauthenticated: true, name: 'Log in', layout: 'plain' },
     [Scene.Max]: { projectBased: true, name: 'Max', layout: 'app-raw-no-header', hideProjectNotice: true },
-    [Scene.MoveToPostHogCloud]: { name: 'Move to PostHog Cloud', hideProjectNotice: true },
+    [Scene.MoveToPostHogCloud]: { name: 'Flind Cloud migration unavailable', hideProjectNotice: true },
     [Scene.NewTab]: {
         projectBased: true,
         name: 'Search',
