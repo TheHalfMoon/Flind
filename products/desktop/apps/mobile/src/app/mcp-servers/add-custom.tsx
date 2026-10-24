@@ -51,7 +51,7 @@ export default function AddCustomMcpServerScreen() {
 
     setSubmitting(true);
     try {
-      await installCustomWithOAuth({
+      const result = await installCustomWithOAuth({
         name: name.trim(),
         url: url.trim(),
         auth_type: authType,
@@ -65,6 +65,10 @@ export default function AddCustomMcpServerScreen() {
             ? clientSecret.trim()
             : undefined,
       });
+      if (result === "cancelled") {
+        setSubmitting(false);
+        return;
+      }
       await installations.refetch();
       router.back();
     } catch (err) {

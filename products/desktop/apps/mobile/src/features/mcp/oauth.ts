@@ -16,6 +16,28 @@ export const OAUTH_CALLBACK_URL = "flind://mcp-oauth/callback";
 
 const INSTALL_SOURCE = "posthog-code" as const;
 
+/** Direct installation row or the status of an OAuth redirect handshake. */
+export type McpOAuthInstallResult =
+  | McpServerInstallation
+  | "completed"
+  | "cancelled";
+
+/** Verify the actual deep-link destination, not merely Expo's success flag.
+ *  Ignore errors, unexpected paths, and same-prefix lookalike callbacks. */
+export function isSuccessfulMcpOAuthCallback(value: string): boolean {
+  try {
+    const url = new URL(value);
+    return (
+      url.protocol === "flind:" &&
+      url.hostname === "mcp-oauth" &&
+      url.pathname === "/callback" &&
+      !url.searchParams.has("error")
+    );
+  } catch {
+    return false;
+  }
+}
+
 /**
  * Open the cloud-provided redirect URL in the system browser and wait for the
  * user to complete the OAuth dance. Resolves once the cloud bounces the
@@ -33,8 +55,9 @@ async function waitForOAuthCallback(
     OAUTH_CALLBACK_URL,
   );
 
-  if (result.type === "success") return "completed";
-  return "cancelled";
+  return result.type === "success" && isSuccessfulMcpOAuthCallback(result.url)
+    ? "completed"
+    : "cancelled";
 }
 
 /**
@@ -46,7 +69,7 @@ export async function installTemplateWithOAuth(
     InstallMcpTemplateOptions,
     "install_source" | "posthog_code_callback_url"
   >,
-): Promise<McpServerInstallation | "cancelled"> {
+): Promise<McpOAuthInstallResult> {
   const response: McpInstallResponse =
     await getPostHogApiClient().installMcpTemplate({
       ...options,
@@ -59,10 +82,9 @@ export async function installTemplateWithOAuth(
   const outcome = await waitForOAuthCallback(response.redirect_url);
   if (outcome === "cancelled") return "cancelled";
 
-  // Cloud has stored the refresh token on success — we don't get the
-  // installation row back from the OAuth dance, so callers refetch the
-  // installations list.
-  return "cancelled";
+  // Callback received; the cloud holds the installation record.
+  // The caller must refetch instead of incorrectly treating it as cancelled.
+  return "completed";
 }
 
 /** Same as install-template, for custom servers. */
@@ -71,7 +93,7 @@ export async function installCustomWithOAuth(
     InstallCustomMcpServerOptions,
     "install_source" | "posthog_code_callback_url"
   >,
-): Promise<McpServerInstallation | "cancelled"> {
+): Promise<McpOAuthInstallResult> {
   const response: McpInstallResponse =
     await getPostHogApiClient().installCustomMcpServer({
       ...options,
@@ -81,7 +103,7 @@ export async function installCustomWithOAuth(
 
   if (!isMcpOAuthRedirect(response)) return response;
   const outcome = await waitForOAuthCallback(response.redirect_url);
-  return outcome === "cancelled" ? "cancelled" : "cancelled";
+  return outcome;
 }
 
 /**
@@ -108,7 +130,7 @@ export function onOAuthCallback(handler: (url: string) => void): {
   remove(): void;
 } {
   const subscription = Linking.addEventListener("url", ({ url }) => {
-    if (url.startsWith(OAUTH_CALLBACK_URL)) handler(url);
+    if (isSuccessfulMcpOAuthCallback(url)) handler(url);
   });
   return subscription;
 }
