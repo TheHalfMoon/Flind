@@ -17,9 +17,8 @@ pub struct Token {
 
 impl Token {
     pub fn get_host(&self) -> String {
-        self.host
-            .clone()
-            .unwrap_or("https://us.posthog.com".to_string())
+        // Absence of an explicit host must never imply a third-party cloud.
+        self.host.clone().unwrap_or_default()
     }
 }
 
@@ -204,6 +203,21 @@ mod tests {
     }
 
     #[test]
+    fn token_host_never_defaults_to_inherited_provider() {
+        let token = Token {
+            host: None,
+            token: "phx_test".into(),
+            env_id: "42".into(),
+        };
+        assert_eq!(token.get_host(), "");
+        let configured = Token {
+            host: Some("http://localhost:8000".into()),
+            ..token
+        };
+        assert_eq!(configured.get_host(), "http://localhost:8000");
+    }
+
+    #[test]
     fn try_source_returns_none_when_required_missing() {
         let map = HashMap::new();
         assert!(try_source(lookup(&map)).is_none());
@@ -257,9 +271,9 @@ mod tests {
         let mut map = HashMap::new();
         map.insert("POSTHOG_CLI_API_KEY", "phx_abc");
         map.insert("POSTHOG_CLI_PROJECT_ID", "1");
-        map.insert("POSTHOG_CLI_HOST", "https://eu.posthog.com");
+        map.insert("POSTHOG_CLI_HOST", "https://eu.flind.example");
         let token = try_source(lookup(&map)).unwrap();
-        assert_eq!(token.host.as_deref(), Some("https://eu.posthog.com"));
+        assert_eq!(token.host.as_deref(), Some("https://eu.flind.example"));
     }
 
     #[test]

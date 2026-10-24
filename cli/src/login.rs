@@ -1,5 +1,5 @@
 use anyhow::{bail, Context, Error, Result};
-use inquire::{Select, Text};
+use inquire::Text;
 use serde::{Deserialize, Serialize};
 use std::io::IsTerminal;
 use std::time::Duration;
@@ -53,25 +53,17 @@ pub fn login(host_override: Option<String>) -> Result<()> {
     login_with_use_cases(host_override, DEFAULT_LOGIN_USE_CASES.to_vec())
 }
 
-pub fn login_with_use_cases(host_override: Option<String>, use_cases: Vec<&str>) -> Result<()> {
-    let host = if let Some(override_host) = host_override {
-        // Strip trailing slashes to avoid double slashes in URLs
-        override_host.trim_end_matches('/').to_string()
-    } else {
-        // Prompt user to select region or manual login
-        let options = vec!["US", "EU", "Manual"];
-        let selection = Select::new("Select your PostHog region:", options)
-            .with_help_message("Choose the region where your PostHog data is hosted, or 'Manual' to enter your own details")
-            .prompt()?;
+fn approved_login_host(host_override: Option<String>) -> Option<String> {
+    host_override
+        .map(|host| host.trim_end_matches('/').to_string())
+        .filter(|host| !host.is_empty())
+}
 
-        match selection {
-            "US" => "https://us.posthog.com".to_string(),
-            "EU" => "https://eu.posthog.com".to_string(),
-            "Manual" => {
-                return manual_login();
-            }
-            _ => unreachable!(),
-        }
+pub fn login_with_use_cases(host_override: Option<String>, use_cases: Vec<&str>) -> Result<()> {
+    // No region assumes a provider-owned endpoint. Without an explicit
+    // operator-selected host, use manual first-party configuration instead.
+    let Some(host) = approved_login_host(host_override) else {
+        return manual_login();
     };
 
     info!("🔐 Starting OAuth Device Flow authentication...");
@@ -346,18 +338,20 @@ fn complete_login(
 fn manual_login() -> Result<(), Error> {
     info!("🔐 Manual login...");
 
-    let host = Text::new("Enter the PostHog host URL")
-        .with_default("https://us.posthog.com")
+    let host = Text::new("Enter your Flind instance URL")
+        .with_help_message(
+            "Enter your administrator-provided HTTPS Flind URL or local development address.",
+        )
         .with_validator(host_validator)
         .prompt()?;
 
-    let env_id = Text::new("Enter your project ID (the number in your PostHog homepage URL)")
+    let env_id = Text::new("Enter your Flind project ID")
         .with_validator(env_id_validator)
         .prompt()?;
 
     let token = Text::new("Enter your personal API token")
         .with_validator(token_validator)
-        .with_help_message("See posthog.com/docs/api#private-endpoint-authentication. It will need to have the 'error tracking write' scope. To enable tooling, select the 'Agent CLI' preset.")
+        .with_help_message("Obtain a personal API token from your Flind workspace administrator with the permissions your workflow needs.")
         .prompt()?;
 
     let token = Token {
@@ -376,6 +370,20 @@ fn manual_login() -> Result<(), Error> {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn login_host_requires_explicit_instance_selection() {
+        assert_eq!(approved_login_host(None), None);
+        assert_eq!(approved_login_host(Some("///".into())), None);
+        assert_eq!(
+            approved_login_host(Some("https://my.flind.example/".into())),
+            Some("https://my.flind.example".into())
+        );
+        assert_eq!(
+            approved_login_host(Some("http://localhost:8000".into())),
+            Some("http://localhost:8000".into())
+        );
+    }
 
     #[test]
     fn default_login_requests_the_agent_cli_use_case() {
