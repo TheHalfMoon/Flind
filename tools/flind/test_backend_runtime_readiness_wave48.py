@@ -3,6 +3,7 @@ from contextlib import redirect_stdout
 from io import StringIO
 import json
 import subprocess
+import sys
 import unittest
 from unittest.mock import patch
 
@@ -64,6 +65,22 @@ class BackendRuntimeReadinessWave48Tests(unittest.TestCase):
         self.assertIn("-X", command)
         self.assertEqual(run.call_args.kwargs["timeout"], 4)
 
+    def test_python_exact_release_pin_current_environment(self):
+        status = ready.pinned_python_version()
+        self.assertIn("3.14.7", status.evidence)
+        self.assertIn("pinned", status.evidence)
+        self.assertEqual(status.ready, tuple(sys.version_info[:3]) == (3, 14, 7))
+
+    def test_python_pin_accepts_exact_patch_version(self):
+        status = ready.pinned_python_version(version=(3, 14, 7))
+        self.assertTrue(status.ready)
+        self.assertIn("matches", status.evidence)
+
+    def test_python_pin_refuses_nearby_patches(self):
+        for version in [(3, 14, 6), (3, 14, 8), (3, 13, 7)]:
+            with self.subTest(version=version):
+                self.assertFalse(ready.pinned_python_version(version=version).ready)
+
     @patch.object(ready.shutil, "which", return_value=None)
     def test_missing_psql_is_blocked(self, _which):
         self.assertFalse(ready.postgres_readonly_sql().ready)
@@ -81,6 +98,12 @@ class BackendRuntimeReadinessWave48Tests(unittest.TestCase):
         self.assertTrue(check.ready)
         self.assertEqual(create.call_args.args[0], ("127.0.0.1", 6379))
         self.assertEqual(conn.sent, b"*1\r\n$4\r\nPING\r\n")
+
+    @patch.object(ready.socket, "create_connection")
+    def test_redis_custom_port_still_loopback_only(self, create):
+        create.return_value = FakeSocket()
+        self.assertTrue(ready.redis_ping(port=16379).ready)
+        self.assertEqual(create.call_args.args[0], ("127.0.0.1", 16379))
 
     @patch.object(ready.socket, "create_connection")
     def test_redis_auth_failure_is_not_ready(self, create):
@@ -127,6 +150,7 @@ class BackendRuntimeReadinessWave48Tests(unittest.TestCase):
     def test_all_prerequisites_can_pass_without_claiming_release_e2e(self):
         names = ("postgres", "redis", "clickhouse", "django")
         with (
+            patch.object(ready, "pinned_python_version", return_value=ready.Check("python", True, "ok")),
             patch.object(ready, "postgres_readonly_sql", return_value=ready.Check(names[0], True, "ok")),
             patch.object(ready, "redis_ping", return_value=ready.Check(names[1], True, "ok")),
             patch.object(ready, "clickhouse_ping", return_value=ready.Check(names[2], True, "ok")),

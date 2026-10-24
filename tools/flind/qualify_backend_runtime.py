@@ -15,6 +15,7 @@ from http.client import HTTPConnection, HTTPException
 from pathlib import Path
 import subprocess
 import sys
+import tomllib
 from dataclasses import asdict, dataclass
 
 
@@ -45,9 +46,36 @@ def postgres_readonly_sql() -> Check:
         return Check("postgres", False, "Read-only SQL not available")
 
 
-def redis_ping() -> Check:
+def pinned_python_version(
+    version: tuple[int, int, int] | None = None,
+    project_root: Path | None = None,
+) -> Check:
+    """Require the exact Python patch pinned by Flind, not merely Django import."""
+    root = project_root or Path(__file__).resolve().parents[2]
     try:
-        with socket.create_connection(("127.0.0.1", 6379), timeout=1.5) as conn:
+        with (root / "pyproject.toml").open("rb") as f:
+            spec = tomllib.load(f)["project"]["requires-python"]
+        if not isinstance(spec, str) or not spec.startswith("=="):
+            return Check("python", False, "Exact Python requirement unavailable")
+        expected = tuple(int(piece) for piece in spec[2:].split("."))
+        if len(expected) != 3:
+            return Check("python", False, "Exact Python requirement unavailable")
+    except (OSError, KeyError, TypeError, ValueError):
+        return Check("python", False, "Exact Python requirement unavailable")
+    active = version or tuple(sys.version_info[:3])
+    correct = active == expected
+    return Check(
+        "python",
+        correct,
+        f"Python {'.'.join(map(str, active))}: "
+        + ("matches" if correct else "does not match")
+        + f" pinned {'.'.join(map(str, expected))}",
+    )
+
+
+def redis_ping(port: int = 6379) -> Check:
+    try:
+        with socket.create_connection(("127.0.0.1", port), timeout=1.5) as conn:
             conn.settimeout(1.5)
             conn.sendall(b"*1\r\n$4\r\nPING\r\n")
             response = conn.recv(64)
@@ -100,10 +128,10 @@ def docker_daemon() -> Check:
         return Check("docker", False, "Local Docker daemon unavailable", required=False)
 
 
-def qualify() -> dict:
+def qualify(redis_port: int = 6379) -> dict:
     checks = [
-        postgres_readonly_sql(), redis_ping(), clickhouse_ping(),
-        django_import(), docker_daemon(),
+        pinned_python_version(), postgres_readonly_sql(), redis_ping(redis_port),
+        clickhouse_ping(), django_import(), docker_daemon(),
     ]
     blockers = [c.name for c in checks if c.required and not c.ready]
     return {
@@ -122,8 +150,14 @@ def qualify() -> dict:
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--json", action="store_true", help="Emit machine-readable result")
+    parser.add_argument(
+        "--redis-port", type=int, default=6379,
+        help="Loopback-only Redis port for isolated local test instances",
+    )
     args = parser.parse_args(argv)
-    result = qualify()
+    if not 1 <= args.redis_port <= 65535:
+        parser.error("--redis-port must be between 1 and 65535")
+    result = qualify(args.redis_port)
     if args.json:
         print(json.dumps(result, indent=2, ensure_ascii=False))
     else:
