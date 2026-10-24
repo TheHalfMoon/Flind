@@ -90,5 +90,5 @@ configure the existing analytics API key and host for your local PostHog project
 For code changes, run the existing regression suites:
 
 ```sh
-pnpm --filter=@posthog/mcp exec vitest run --config vitest.hono.config.mts tests/hono/interview-recruitment.test.ts tests/hono/request-state-resolver.test.ts
+pnpm --filter=@flind/mcp exec vitest run --config vitest.hono.config.mts tests/hono/interview-recruitment.test.ts tests/hono/request-state-resolver.test.ts
 ```

@@ -1,5 +1,6 @@
 {
-    "name": "@posthog/nodejs",
+    "name": "@flind/nodejs",
+    "private": true,
     "version": "1.10.5",
     "description": "PostHog Node.js services",
     "license": "MIT",

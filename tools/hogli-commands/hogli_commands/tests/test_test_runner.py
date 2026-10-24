@@ -161,7 +161,7 @@ class TestDetectTestType:
     def test_nodejs_jest(self) -> None:
         config = detect_test_type("nodejs/tests/cdp/cdp-api.test.ts")
         assert config.test_type == "jest"
-        assert config.command[:4] == ["pnpm", "--filter=@posthog/nodejs", "exec", "jest"]
+        assert config.command[:4] == ["pnpm", "--filter=@flind/nodejs", "exec", "jest"]
 
     @parameterized.expand(
         [
@@ -484,9 +484,9 @@ class TestRunChanged:
 
         assert mock_run.call_count == 2
         commands = [call[0][0] for call in mock_run.call_args_list]
-        # One call for @flind/frontend, one for @posthog/nodejs
+        # One call for @flind/frontend, one for @flind/nodejs
         frontend_cmd = next(c for c in commands if "--filter=@flind/frontend" in c)
-        nodejs_cmd = next(c for c in commands if "--filter=@posthog/nodejs" in c)
+        nodejs_cmd = next(c for c in commands if "--filter=@flind/nodejs" in c)
         assert "frontend/src/scenes/dashboard/Dashboard.test.tsx" in frontend_cmd
         assert "frontend/src/lib/utils.test.ts" in frontend_cmd
         assert "nodejs/tests/cdp/cdp-api.test.ts" in nodejs_cmd
@@ -577,7 +577,7 @@ class TestRunGrouped:
         assert mock_run.call_count == 2
         commands = [call[0][0] for call in mock_run.call_args_list]
         frontend_cmd = next(c for c in commands if "--filter=@flind/frontend" in c)
-        nodejs_cmd = next(c for c in commands if "--filter=@posthog/nodejs" in c)
+        nodejs_cmd = next(c for c in commands if "--filter=@flind/nodejs" in c)
         assert "frontend/src/scenes/dashboard/Dashboard.test.tsx" in frontend_cmd
         assert "frontend/src/lib/utils.test.ts" in frontend_cmd
         assert "nodejs/tests/cdp/cdp-api.test.ts" in nodejs_cmd

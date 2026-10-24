@@ -1,5 +1,5 @@
 {
-  "_comment": "GENERATED from INGESTION_WARNING_TYPES in nodejs/src/ingestion/common/ingestion-warning-types.ts via `pnpm --filter=@posthog/nodejs gen:ingestion-warning-types`. Do not edit by hand; rust/common/ingestion_warnings/build.rs codegens the WarningType enum from this file.",
+  "_comment": "GENERATED from INGESTION_WARNING_TYPES in nodejs/src/ingestion/common/ingestion-warning-types.ts via `pnpm --filter=@flind/nodejs gen:ingestion-warning-types`. Do not edit by hand; rust/common/ingestion_warnings/build.rs codegens the WarningType enum from this file.",
   "types": [
     {
       "type": "cannot_merge_already_identified",

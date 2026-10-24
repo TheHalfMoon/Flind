@@ -216,7 +216,7 @@ jobs:
             - name: Install pnpm dependencies
               uses: ./.github/actions/pnpm-install
               with:
-                  install-command: pnpm --filter=@flind/root --filter=@posthog/mcp... --filter='./products/*' install --frozen-lockfile
+                  install-command: pnpm --filter=@flind/root --filter=@flind/mcp... --filter='./products/*' install --frozen-lockfile
                   token: ${{ steps.setup-gh-token.outputs.token || github.token }}
 
             - name: Check MCP code quality
@@ -249,7 +249,7 @@ jobs:
                     echo "::warning::The following generated files are out of date:"
                     git diff --name-only -- src/ui-apps/apps/generated/ src/resources/ui-apps.generated.ts
                     echo ""
-                    echo "::error::Generated UI app files are out of date. Run 'pnpm --filter=@posthog/mcp run generate:ui-apps' and commit the result."
+                    echo "::error::Generated UI app files are out of date. Run 'pnpm --filter=@flind/mcp run generate:ui-apps' and commit the result."
                     exit 1
                   fi
 
@@ -282,7 +282,7 @@ jobs:
             - name: Install pnpm dependencies
               uses: ./.github/actions/pnpm-install
               with:
-                  install-command: pnpm --filter=@posthog/mcp... --filter='./products/*' install --frozen-lockfile
+                  install-command: pnpm --filter=@flind/mcp... --filter='./products/*' install --frozen-lockfile
                   token: ${{ steps.setup-gh-token.outputs.token || github.token }}
 
             # The workers-pool project in vitest.config.mts parses wrangler.jsonc
@@ -298,12 +298,12 @@ jobs:
 
             - name: Run unit tests
               run: |
-                  pnpm --filter=@posthog/mcp run test -u
+                  pnpm --filter=@flind/mcp run test -u
 
                   if [ -n "$(git status --porcelain -- services/mcp/tests/unit)" ]; then
                     echo ""
                     git status --short -- services/mcp/tests/unit
-                    echo "::error::MCP unit test artifacts are out of date. Run 'pnpm --filter=@posthog/mcp run test -u' and commit the result."
+                    echo "::error::MCP unit test artifacts are out of date. Run 'pnpm --filter=@flind/mcp run test -u' and commit the result."
                     exit 1
                   fi
 
@@ -445,7 +445,7 @@ jobs:
             - name: Install pnpm dependencies
               uses: ./.github/actions/pnpm-install
               with:
-                  install-command: pnpm --filter=@posthog/mcp... --filter='./products/*' install --frozen-lockfile
+                  install-command: pnpm --filter=@flind/mcp... --filter='./products/*' install --frozen-lockfile
                   token: ${{ steps.setup-gh-token.outputs.token || github.token }}
 
             - name: Set up needed files

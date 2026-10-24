@@ -23,8 +23,8 @@ Full reference: [services/mcp/CONTRIBUTING.md](../../../services/mcp/CONTRIBUTIN
 # 3. Link tools to apps with ui_app: <key> in the tools section
 
 # 4. Generate entry points + registry, then build
-pnpm --filter=@posthog/mcp run generate:ui-apps
-pnpm --filter=@posthog/mcp run build
+pnpm --filter=@flind/mcp run generate:ui-apps
+pnpm --filter=@flind/mcp run build
 ```
 
 ## When to add a UI app
@@ -363,5 +363,5 @@ invalid keys are compile-time errors.
 ## CI validation
 
 CI checks that generated files are up to date in both `ci-mcp.yml` and `ci-mcp-ui-apps.yml`.
-If you change YAML `ui_apps` sections, run `pnpm --filter=@posthog/mcp run generate:ui-apps`
+If you change YAML `ui_apps` sections, run `pnpm --filter=@flind/mcp run generate:ui-apps`
 and commit the result.

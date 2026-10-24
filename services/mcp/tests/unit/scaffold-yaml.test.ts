@@ -226,7 +226,7 @@ describe('scaffold-yaml', () => {
         const addLine = content.split('\n').find((line) => line.startsWith('# Add one:'))
 
         expect(addLine).toBe(
-            `# Add one: pnpm --filter=@posthog/mcp run scaffold-yaml -- --add <operationId> --product error_tracking${flag ? ` ${flag}` : ''}`
+            `# Add one: pnpm --filter=@flind/mcp run scaffold-yaml -- --add <operationId> --product error_tracking${flag ? ` ${flag}` : ''}`
         )
     })
 

@@ -63,7 +63,7 @@ There is no hand-maintained Rust copy of the type list. A generator mirrors the 
 
 ```text
 INGESTION_WARNING_TYPES (all entries)                        # nodejs — source of truth
-  → pnpm --filter=@posthog/nodejs gen:ingestion-warning-types
+  → pnpm --filter=@flind/nodejs gen:ingestion-warning-types
   → rust/common/ingestion_warnings/warning_types.generated.json   # committed
   → build.rs → WarningType enum + ALL + as_str/category/severity/capture_produced
 ```
@@ -75,7 +75,7 @@ The artifact is committed _inside_ the Rust crate so the isolated Rust Docker/CI
 To add a **capture-produced** type:
 
 1. **Register it in nodejs** — add the type to `INGESTION_WARNING_TYPES` with `captureProduced: true` (see the nodejs steps above for `category`/`severity`, which the consumer owns). This also puts it on the `CAPTURE_PRODUCED_WARNING_TYPES` allowlist automatically.
-2. **Regenerate + commit the artifact** — run `pnpm --filter=@posthog/nodejs gen:ingestion-warning-types` and commit the updated `warning_types.generated.json`.
+2. **Regenerate + commit the artifact** — run `pnpm --filter=@flind/nodejs gen:ingestion-warning-types` and commit the updated `warning_types.generated.json`.
 3. **Put it on exactly one Rust emit route** in `src/registry.rs`. The variant, `as_str`, and `ALL` are generated — never hand-write them. The weld test forces you to pick a route and fails if you pick both.
    - **`from_tag`** when a `v1::Error::tag()` (or per-event drop detail) already names the condition: add the arm mapping the tag to the variant. It stays hand-written because it maps capture's error taxonomy onto the registry and is the allowlist that makes unregistered tags emit nothing.
    - **`DIRECT_EMIT`** when no tag names it, which is the case for most non-v1 pipelines. Two shapes qualify: the condition isn't a failure (a rate-limited event is ingested, degraded), or the pipeline has no tag vocabulary at all. The AI endpoints, the OTLP endpoint, and replay are all the second kind — they reject through their own typed conditions or match `CaptureError` variants directly, so a tag for them would be a string no `Error` ever produces.

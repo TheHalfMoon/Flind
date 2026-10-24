@@ -34,10 +34,10 @@ Run the full pipeline: `hogli build:openapi`
    no entry, and add the ones agents need:
 
    ```sh
-   pnpm --filter=@posthog/mcp run scaffold-yaml -- --product your_product \
+   pnpm --filter=@flind/mcp run scaffold-yaml -- --product your_product \
        --output ../../products/your_product/mcp/tools.yaml
-   pnpm --filter=@posthog/mcp run scaffold-yaml -- --candidates --product your_product
-   pnpm --filter=@posthog/mcp run scaffold-yaml -- --add your_product_things_list --product your_product
+   pnpm --filter=@flind/mcp run scaffold-yaml -- --candidates --product your_product
+   pnpm --filter=@flind/mcp run scaffold-yaml -- --add your_product_things_list --product your_product
    ```
 
    `--add` writes an enabled entry with the title and description from the spec.
@@ -79,7 +79,7 @@ When backend API endpoints are renamed or removed, YAML definitions need updatin
 The scaffold script handles this automatically:
 
 ```sh
-pnpm --filter=@posthog/mcp run scaffold-yaml -- --sync-all
+pnpm --filter=@flind/mcp run scaffold-yaml -- --sync-all
 ```
 
 This is idempotent and never adds entries, so a new endpoint does not change any YAML file.

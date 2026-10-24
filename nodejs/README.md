@@ -18,7 +18,7 @@ These are the defaults whenever `NODE_ENV=test`, which `jest.setup-env.ts` force
 
 ```bash
 # From the repo root, with the dev stack's Postgres/ClickHouse/Kafka/Redis running:
-pnpm --filter=@posthog/nodejs setup:test
+pnpm --filter=@flind/nodejs setup:test
 ```
 
 This runs Django's `setup_test_environment` (creates `test_posthog` and the ClickHouse `posthog_test` schema) plus the rust migrations for the persons, behavioral cohorts, and cyclotron test databases. Then:

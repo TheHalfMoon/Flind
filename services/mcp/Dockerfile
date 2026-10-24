@@ -44,7 +44,7 @@ COPY tools/openapi-codegen/package.json tools/openapi-codegen/package.json
 COPY packages/ packages/
 
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store \
-    pnpm install --frozen-lockfile --filter @posthog/mcp...
+    pnpm install --frozen-lockfile --filter @flind/mcp...
 
 COPY services/mcp/ services/mcp/
 COPY tools/openapi-codegen/ tools/openapi-codegen/

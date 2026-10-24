@@ -1,6 +1,6 @@
 # MCP tool definitions. Tools are opt-in: an operation is exposed only when it has an entry here.
-# List operations without an entry: pnpm --filter=@posthog/mcp run scaffold-yaml -- --candidates --product warehouse_sources
-# Add one: pnpm --filter=@posthog/mcp run scaffold-yaml -- --add <operationId> --product warehouse_sources
+# List operations without an entry: pnpm --filter=@flind/mcp run scaffold-yaml -- --candidates --product warehouse_sources
+# Add one: pnpm --filter=@flind/mcp run scaffold-yaml -- --add <operationId> --product warehouse_sources
 # To keep an operation off on purpose, set enabled: false and give a disabled_reason.
 category: Warehouse sources
 feature: warehouse_sources

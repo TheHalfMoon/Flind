@@ -1,5 +1,6 @@
 {
-    "name": "@posthog/mcp",
+    "name": "@flind/mcp",
+    "private": true,
     "version": "1.0.0",
     "description": "PostHog MCP server",
     "keywords": [

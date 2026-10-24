@@ -2494,7 +2494,7 @@ jobs:
             - name: Install pnpm dependencies
               uses: ./.depot/actions/pnpm-install
               with:
-                  install-command: pnpm --filter=@flind/root --filter=@flind/frontend... --filter=@posthog/mcp... install --frozen-lockfile
+                  install-command: pnpm --filter=@flind/root --filter=@flind/frontend... --filter=@flind/mcp... install --frozen-lockfile
                   token: ${{ steps.setup-gh-token.outputs.token || github.token }}
             - name: Install desktop API client generator
               working-directory: products/desktop
@@ -2540,7 +2540,7 @@ jobs:
                       echo ""
                       exit 1
                   fi
-                  pnpm --filter=@posthog/mcp run scaffold-yaml -- --sync-all
+                  pnpm --filter=@flind/mcp run scaffold-yaml -- --sync-all
                   if git diff --exit-code; then
                       echo "OpenAPI types are up to date"
                       echo "needs-commit=false" >> $GITHUB_OUTPUT

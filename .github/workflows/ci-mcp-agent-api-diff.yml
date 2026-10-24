@@ -53,7 +53,7 @@ jobs:
               # the action's token only feeds setup-node's rate-limited manifest lookups.
               uses: ./.github/actions/pnpm-install
               with:
-                  install-command: pnpm --filter=@posthog/mcp... install --frozen-lockfile
+                  install-command: pnpm --filter=@flind/mcp... install --frozen-lockfile
 
             # Guarded for branches that predate the scripts, and for a checkout without a base parent.
             # Exit 3 from the script means the comparison could not run. The post job is then
@@ -71,7 +71,7 @@ jobs:
                       exit 1
                   fi
                   mkdir -p agent-api-diff
-                  pnpm --filter=@posthog/mcp exec tsx scripts/agent-api-diff.ts --base-ref 'HEAD^1' > agent-api-diff/agent-api-diff.md
+                  pnpm --filter=@flind/mcp exec tsx scripts/agent-api-diff.ts --base-ref 'HEAD^1' > agent-api-diff/agent-api-diff.md
 
             - name: Upload agent API diff
               if: steps.diff.outcome == 'success'

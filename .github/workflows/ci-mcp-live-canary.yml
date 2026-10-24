@@ -42,11 +42,11 @@ jobs:
             - name: Install pnpm dependencies
               uses: ./.github/actions/pnpm-install
               with:
-                  install-command: pnpm --filter=@posthog/mcp... install --frozen-lockfile
+                  install-command: pnpm --filter=@flind/mcp... install --frozen-lockfile
 
             - name: Run live tests
               id: live
-              run: pnpm --filter=@posthog/mcp run test:live
+              run: pnpm --filter=@flind/mcp run test:live
 
             # Only the live test failing means the upstream artifact is unreachable or no longer
             # parses. Checkout and install failures are CI noise, so they do not post. A PR run

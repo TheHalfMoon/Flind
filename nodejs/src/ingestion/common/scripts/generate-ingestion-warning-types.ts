@@ -12,7 +12,7 @@ import { CAPTURE_PRODUCED_WARNING_TYPES, INGESTION_WARNING_TYPES } from '~/inges
  * `rust/common/ingestion_warnings/build.rs` generates the `WarningType` enum. Committing the artifact
  * (rather than reading the .ts from Rust) keeps the isolated Rust Docker/CI build context self-contained.
  *
- * Run: `pnpm --filter=@posthog/nodejs gen:ingestion-warning-types`
+ * Run: `pnpm --filter=@flind/nodejs gen:ingestion-warning-types`
  * The no-drift Jest test (`generate-ingestion-warning-types.test.ts`) fails CI if the committed
  * artifact and this output diverge.
  */
@@ -46,7 +46,7 @@ export function buildWarningTypesJson(): string {
         _comment:
             'GENERATED from INGESTION_WARNING_TYPES in ' +
             'nodejs/src/ingestion/common/ingestion-warning-types.ts via ' +
-            '`pnpm --filter=@posthog/nodejs gen:ingestion-warning-types`. Do not edit by hand; ' +
+            '`pnpm --filter=@flind/nodejs gen:ingestion-warning-types`. Do not edit by hand; ' +
             'rust/common/ingestion_warnings/build.rs codegens the WarningType enum from this file.',
         types,
     }

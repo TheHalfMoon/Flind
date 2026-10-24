@@ -79,8 +79,8 @@ function addCommandFlags(product: string, filePath: string | undefined): string 
 
 function yamlHeader(product: string, filePath: string | undefined): string {
     return `# MCP tool definitions. Tools are opt-in: an operation is exposed only when it has an entry here.
-# List operations without an entry: pnpm --filter=@posthog/mcp run scaffold-yaml -- --candidates --product ${product}
-# Add one: pnpm --filter=@posthog/mcp run scaffold-yaml -- --add <operationId> ${addCommandFlags(product, filePath)}
+# List operations without an entry: pnpm --filter=@flind/mcp run scaffold-yaml -- --candidates --product ${product}
+# Add one: pnpm --filter=@flind/mcp run scaffold-yaml -- --add <operationId> ${addCommandFlags(product, filePath)}
 # To keep an operation off on purpose, set enabled: false and give a disabled_reason.
 `
 }
@@ -427,7 +427,7 @@ function formatCandidates(
         `${candidates.length} operation(s) of "${product}" have no YAML entry:\n` +
         lines.map((line) => `  ${line}\n`).join('') +
         `\nAdd one as an enabled tool:\n` +
-        `  pnpm --filter=@posthog/mcp run scaffold-yaml -- --add <operationId> --product ${product}\n` +
+        `  pnpm --filter=@flind/mcp run scaffold-yaml -- --add <operationId> --product ${product}\n` +
         // Without --file the entry lands in the default file, and codegen builds its links from that file's url_prefix.
         (productFiles.some((file) => file !== defaultFile)
             ? (defaultFile

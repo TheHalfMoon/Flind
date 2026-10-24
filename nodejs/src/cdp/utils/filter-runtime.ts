@@ -152,7 +152,7 @@ export function renderFilterGlobalsFile(runtime: FilterRuntime): string {
         JSON.stringify(
             {
                 $comment:
-                    'Generated. Do not edit: run `pnpm --filter=@posthog/nodejs run build:filter-globals`. ' +
+                    'Generated. Do not edit: run `pnpm --filter=@flind/nodejs run build:filter-globals`. ' +
                     'roots are the data globals the CDP filter runtime builds for a hog function. callables are ' +
                     'the standard-library names the VM hands back as values and can then invoke, so they are the ' +
                     'ones a filter can pass as a callback. functions are every standard-library name a filter can ' +

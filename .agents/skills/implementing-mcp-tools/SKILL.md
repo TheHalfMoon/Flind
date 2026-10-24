@@ -15,14 +15,14 @@ Read the full guide at [docs/published/handbook/engineering/ai/implementing-mcp-
 #    ViewSets in products/<name>/backend/ are auto-attributed via module
 #    path. ViewSets elsewhere need
 #    @extend_schema(extensions={"x-product": "<product>"}).
-pnpm --filter=@posthog/mcp run scaffold-yaml -- --product your_product \
+pnpm --filter=@flind/mcp run scaffold-yaml -- --product your_product \
     --output ../../products/your_product/mcp/tools.yaml
 
 # 2. List the product's operations that have no YAML entry, then add the ones agents need.
 #    --add writes an enabled entry; title and description come from the API unless the YAML sets them.
 #    Add --file <path> to write to a YAML file other than the product's tools.yaml.
-pnpm --filter=@posthog/mcp run scaffold-yaml -- --candidates --product your_product
-pnpm --filter=@posthog/mcp run scaffold-yaml -- --add your_product_things_list --product your_product
+pnpm --filter=@flind/mcp run scaffold-yaml -- --candidates --product your_product
+pnpm --filter=@flind/mcp run scaffold-yaml -- --add your_product_things_list --product your_product
 
 # 3. Configure the entry — description, and annotations for PATCH/POST/PUT
 #    (scopes come from the API when omitted)
@@ -35,12 +35,12 @@ pnpm --filter=@posthog/mcp run scaffold-yaml -- --add your_product_things_list -
 hogli build:openapi
 
 # 6. Refresh the tool input schema snapshots (CI unit tests fail on a stale snapshot)
-pnpm --filter=@posthog/mcp exec vitest run tests/unit/tool-schema-snapshots.test.ts -u
+pnpm --filter=@flind/mcp exec vitest run tests/unit/tool-schema-snapshots.test.ts -u
 # A tool behind a new `feature_flag` needs that flag in the test's `featureFlags` map, set to the value that shows the tool:
 # true for a plain gate, the variant string for a variant gate, a non-true value for a `disable` gate.
 
 # 7. Only when the YAML uses ui_apps: regenerate the UI apps (CI checks they are current)
-pnpm --filter=@posthog/mcp run generate:ui-apps
+pnpm --filter=@flind/mcp run generate:ui-apps
 ```
 
 ## Before you scaffold: fix the backend first
@@ -134,7 +134,7 @@ or below 52 characters to fit within Cursor's 60-char combined limit.
 
 ### CI enforcement
 
-- `pnpm --filter=@posthog/mcp lint-tool-names` — validates length and pattern for YAML and JSON definitions
+- `pnpm --filter=@flind/mcp lint-tool-names` — validates length and pattern for YAML and JSON definitions
 - A vitest test validates all runtime `TOOL_MAP` and `GENERATED_TOOL_MAP` entries
 
 ## YAML definitions
@@ -259,7 +259,7 @@ Such an entry needs `disabled_reason: <why>`. Sync removes an `enabled: false` e
 ### Syncing after endpoint changes
 
 ```sh
-pnpm --filter=@posthog/mcp run scaffold-yaml -- --sync-all
+pnpm --filter=@flind/mcp run scaffold-yaml -- --sync-all
 ```
 
 Idempotent and never adds entries. It keeps every entry whose operation exists, updates renumbered `_N` operation IDs,

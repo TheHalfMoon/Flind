@@ -12,7 +12,7 @@ describe('warning types codegen', () => {
         const committed = fs.readFileSync(RUST_GENERATED_JSON_PATH, 'utf8')
         expect(committed).toEqual(buildWarningTypesJson())
         // If this fails, INGESTION_WARNING_TYPES changed without regenerating the artifact the
-        // Rust build reads. Run `pnpm --filter=@posthog/nodejs gen:ingestion-warning-types`.
+        // Rust build reads. Run `pnpm --filter=@flind/nodejs gen:ingestion-warning-types`.
     })
 
     it('artifact lists every registry type with its classification in stable sorted order', () => {

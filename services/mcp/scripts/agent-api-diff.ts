@@ -11,7 +11,7 @@
  * Callers must not read empty output as "no change" unless the exit code is 0.
  *
  * Usage:
- *   pnpm --filter=@posthog/mcp exec tsx scripts/agent-api-diff.ts [--base-ref HEAD^1] [--base-dir <dir>]
+ *   pnpm --filter=@flind/mcp exec tsx scripts/agent-api-diff.ts [--base-ref HEAD^1] [--base-dir <dir>]
  */
 import { spawnSync } from 'node:child_process'
 import * as fs from 'node:fs'

@@ -15,12 +15,12 @@ see [Writing skills](/handbook/engineering/ai/writing-skills).
 
 ```sh
 # 1. Only for a product with no YAML yet: create one with no tools
-pnpm --filter=@posthog/mcp run scaffold-yaml -- --product your_product \
+pnpm --filter=@flind/mcp run scaffold-yaml -- --product your_product \
     --output ../../products/your_product/mcp/tools.yaml
 
 # 2. List the operations without a YAML entry, then add the ones agents need as enabled tools
-pnpm --filter=@posthog/mcp run scaffold-yaml -- --candidates --product your_product
-pnpm --filter=@posthog/mcp run scaffold-yaml -- --add your_product_things_list --product your_product
+pnpm --filter=@flind/mcp run scaffold-yaml -- --candidates --product your_product
+pnpm --filter=@flind/mcp run scaffold-yaml -- --add your_product_things_list --product your_product
 
 # 3. Configure the YAML – adjust titles and descriptions, add annotations for PATCH/POST/PUT
 #    Place in products/<product>/mcp/*.yaml (preferred, e.g. actions, cohorts)
@@ -33,12 +33,12 @@ pnpm --filter=@posthog/mcp run scaffold-yaml -- --add your_product_things_list -
 hogli build:openapi
 
 # 6. Refresh the tool input schema snapshots (CI unit tests fail on a stale snapshot)
-pnpm --filter=@posthog/mcp exec vitest run tests/unit/tool-schema-snapshots.test.ts -u
+pnpm --filter=@flind/mcp exec vitest run tests/unit/tool-schema-snapshots.test.ts -u
 # A tool behind a new `feature_flag` needs that flag in the test's `featureFlags` map, set to the value that shows the tool:
 # true for a plain gate, the variant string for a variant gate, a non-true value for a `disable` gate.
 
 # 7. Only when the YAML uses ui_apps: regenerate the UI apps (CI checks they are current)
-pnpm --filter=@posthog/mcp run generate:ui-apps
+pnpm --filter=@flind/mcp run generate:ui-apps
 
 # 8. Merge to master – CI builds and distributes automatically
 ```
@@ -501,13 +501,13 @@ Product teams own their definitions and control which operations are exposed as 
 
    ```sh
    # Only for a product with no YAML yet: create one with no tools
-   pnpm --filter=@posthog/mcp run scaffold-yaml -- --product your_product \
+   pnpm --filter=@flind/mcp run scaffold-yaml -- --product your_product \
        --output ../../products/your_product/mcp/tools.yaml
    # List the product's operations that have no YAML entry
-   pnpm --filter=@posthog/mcp run scaffold-yaml -- --candidates --product your_product
+   pnpm --filter=@flind/mcp run scaffold-yaml -- --candidates --product your_product
    # Add one as an enabled tool
    # (--file <path> writes to a YAML file other than the product's tools.yaml)
-   pnpm --filter=@posthog/mcp run scaffold-yaml -- --add your_product_things_list --product your_product
+   pnpm --filter=@flind/mcp run scaffold-yaml -- --add your_product_things_list --product your_product
    ```
 
    To keep an operation off on purpose, for example when another tool supersedes it,
@@ -542,7 +542,7 @@ Product teams own their definitions and control which operations are exposed as 
    | OpenAI API       | `^[a-zA-Z0-9_-]+$`, 64 chars   | No dots allowed                                                       |
 
    With the server name "posthog" (7 chars) plus a separator, 52 characters is the safe zone.
-   CI runs `pnpm --filter=@posthog/mcp lint-tool-names` to enforce both length and pattern.
+   CI runs `pnpm --filter=@flind/mcp lint-tool-names` to enforce both length and pattern.
    If you hit the limit, shorten the domain prefix or use a more concise action name.
 
    ```yaml
@@ -717,7 +717,7 @@ Product teams own their definitions and control which operations are exposed as 
 When backend API endpoints change, sync the YAML definitions:
 
 ```sh
-pnpm --filter=@posthog/mcp run scaffold-yaml -- --sync-all
+pnpm --filter=@flind/mcp run scaffold-yaml -- --sync-all
 ```
 
 This is idempotent and never adds entries, so a new endpoint does not change any YAML file.

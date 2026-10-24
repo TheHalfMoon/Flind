@@ -164,7 +164,7 @@ jobs:
             - name: Install pnpm and dependencies
               uses: ./.github/actions/pnpm-install
               with:
-                  install-command: pnpm --filter=@posthog/nodejs... install --frozen-lockfile
+                  install-command: pnpm --filter=@flind/nodejs... install --frozen-lockfile
 
             - name: Regenerate Node proto stubs
               run: |

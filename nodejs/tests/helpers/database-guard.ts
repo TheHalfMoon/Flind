@@ -29,7 +29,7 @@ export function assertTestDatabaseName(databaseName: string, source: string): vo
             `test_behavioral_cohorts on Postgres; posthog_test on ClickHouse). This error\n` +
             `usually means DATABASE_URL, PERSONS_DATABASE_URL, CLICKHOUSE_DATABASE or similar\n` +
             `leaked in from your shell or IDE. Unset them, or create the test databases with\n` +
-            `\`pnpm --filter=@posthog/nodejs setup:test\`.`
+            `\`pnpm --filter=@flind/nodejs setup:test\`.`
     )
 }
 

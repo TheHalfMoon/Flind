@@ -523,16 +523,16 @@ build:
         cmd: pnpm --filter=@flind/frontend run openapi:types
         description: Generate TypeScript API types from the backend OpenAPI schema
     build:openapi-mcp-types:
-        cmd: pnpm --filter=@posthog/mcp run generate-mcp-types
+        cmd: pnpm --filter=@flind/mcp run generate-mcp-types
         description: Generate full TypeScript type namespace for MCP from OpenAPI schema
     build:openapi-mcp:
-        cmd: pnpm --filter=@posthog/mcp run generate-orval-schemas
+        cmd: pnpm --filter=@flind/mcp run generate-orval-schemas
         description: Generate Orval Zod schemas for MCP tool handlers
     build:openapi-mcp-tools:
-        cmd: pnpm --filter=@posthog/mcp run generate-tools
+        cmd: pnpm --filter=@flind/mcp run generate-tools
         description: Generate MCP tool handlers from YAML definitions + Orval schemas
     build:openapi-cli-agent-scopes:
-        cmd: pnpm --filter=@posthog/mcp run generate-cli-agent-scopes
+        cmd: pnpm --filter=@flind/mcp run generate-cli-agent-scopes
         description: Generate the CLI `agent` login use-case scope list from the MCP
             tool definitions (must run after build:openapi-mcp-tools)
     build:desktop-api-client:
@@ -541,7 +541,7 @@ build:
             schema. Locally, warns and skips when the desktop toolchain is not
             installed. In CI, a skipped regen fails
     build:openapi-exec-docs:
-        cmd: pnpm --filter=@posthog/mcp run generate-exec-docs
+        cmd: pnpm --filter=@flind/mcp run generate-exec-docs
         description: Render the MCP exec tool's command reference into the markdown
             fragment posthog.com embeds in the tools reference page
     build:openapi:
@@ -901,7 +901,7 @@ quality:
         click: hogli_commands.migration_deletions:cmd_lint_migration_deletions
         description: Block deleting historical Django migration files
     format:mcp:
-        cmd: pnpm run --filter @posthog/mcp format
+        cmd: pnpm run --filter @flind/mcp format
         description: Format MCP files
 auth:
     posthog:login:

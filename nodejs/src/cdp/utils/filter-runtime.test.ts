@@ -24,7 +24,7 @@ describe('filter-runtime', () => {
         const actual = committed()
         if (actual !== expected) {
             throw new Error(
-                `${FILTER_GLOBALS_RELATIVE_PATH} differs from the generator's output. Run: pnpm --filter=@posthog/nodejs run build:filter-globals\n` +
+                `${FILTER_GLOBALS_RELATIVE_PATH} differs from the generator's output. Run: pnpm --filter=@flind/nodejs run build:filter-globals\n` +
                     JSON.stringify({ expected: parseJSON(expected), actual: parseJSON(actual) }, null, 2)
             )
         }

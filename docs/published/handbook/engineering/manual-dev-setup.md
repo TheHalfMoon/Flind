@@ -158,14 +158,14 @@ The path can be absolute, repo-relative like `frontend/src/scenes/foo/fooLogic.t
   # Select 1 to proceed with default installation
   ```
 
-2. Run `pnpm --filter=@posthog/nodejs install` to install all required packages. We'll actually run the nodejs services in a later step.
+2. Run `pnpm --filter=@flind/nodejs install` to install all required packages. We'll actually run the nodejs services in a later step.
 
 > **Note:** If you face an error like `ld: symbol(s) not found for architecture arm64`, most probably your openssl build flags are coming from the wrong place. To fix this, run:
 
 ```bash
 export CPPFLAGS=-I/opt/homebrew/opt/openssl/include
 export LDFLAGS=-L/opt/homebrew/opt/openssl/lib
-pnpm --filter=@posthog/nodejs install
+pnpm --filter=@flind/nodejs install
 ```
 
 > **Note:** If you face an error like `import gyp  # noqa: E402`, most probably need to install `python-setuptools`. To fix this, run:

@@ -28,7 +28,7 @@
  * tool its redirect and leaves no trace.
  *
  * Usage:
- *   pnpm --filter=@posthog/mcp lint-tool-names
+ *   pnpm --filter=@flind/mcp lint-tool-names
  */
 import * as fs from 'node:fs'
 import * as path from 'node:path'

@@ -85,7 +85,7 @@ jobs:
               # Match services/mcp/Dockerfile exactly
               uses: ./.github/actions/pnpm-install
               with:
-                  install-command: pnpm --filter=@posthog/mcp... install --frozen-lockfile
+                  install-command: pnpm --filter=@flind/mcp... install --frozen-lockfile
                   token: ${{ steps.setup-gh-token.outputs.token || github.token }}
 
             - name: Check generated UI apps are up to date
@@ -96,7 +96,7 @@ jobs:
                     echo "::warning::The following generated files are out of date:"
                     git diff --name-only -- src/ui-apps/apps/generated/ src/resources/ui-apps.generated.ts
                     echo ""
-                    echo "::error::Generated UI app files are out of date. Run 'pnpm --filter=@posthog/mcp run generate:ui-apps' and commit the result."
+                    echo "::error::Generated UI app files are out of date. Run 'pnpm --filter=@flind/mcp run generate:ui-apps' and commit the result."
                     exit 1
                   fi
 
