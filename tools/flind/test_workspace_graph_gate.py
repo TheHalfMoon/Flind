@@ -56,7 +56,7 @@ class WorkspaceGraphGateTests(unittest.TestCase):
             ("some/legacy/package.json", {"name": "@post" + "hog/legacy", "private": True}),
         ])
         self.assertTrue(report["workspace_gate_passed"])
-        self.assertFalse(report["complete_identity_gate_passed"])
+        self.assertFalse(report["package_identity_gate_passed"])
         self.assertEqual(len(report["remaining_legacy_package_names"]), 1)
 
 

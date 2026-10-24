@@ -18,18 +18,18 @@ This runs without `node_modules` or a network connection. It checks tracked
 - Resolvable exact `workspace:*` dependency names in dependencies,
   devDependencies, optionalDependencies and peerDependencies.
 - `private: true` for every renamed `@flind/*` workspace package.
-- Explicit distinction between workspace graph integrity and **full**
-  source identity completion.
+- Explicit distinction between workspace graph integrity and tracked first-party **npm package-name** identity completion only.
 
-For a deliberate **strict identity check**, run:
+For a deliberate **strict npm-package-identity check**, run:
 
 ```bash
 python3 tools/flind/check_workspace_links.py --require-no-legacy
 ```
 
-The strict identity check currently exits **2**, not 0, because substantial
-first-party workspace package migration remains. Do not confuse a clean
-dependency graph with a finished standalone Flind product.
+The strict npm-package-identity check currently exits **2**, not 0, because substantial
+first-party workspace package migration remains. Even when all npm package names have migrated, the separate source-wide
+brand audit must still pass. Do not confuse a clean dependency graph or a
+clean package-name check with a finished standalone Flind product.
 
 ## Baseline (2026-10-24)
 

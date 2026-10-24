@@ -69,7 +69,7 @@ def inspect_packages(packages: Iterable[tuple[str, dict[str, Any]]]) -> dict[str
         "unresolved_workspace_dependencies": broken_edges,
         "unprotected_flind_packages": unprotected_flind_packages,
         "workspace_gate_passed": not (duplicate_names or broken_edges or unprotected_flind_packages),
-        "complete_identity_gate_passed": not legacy_packages,
+        "package_identity_gate_passed": not legacy_packages,
     }
 
 
@@ -93,13 +93,13 @@ def load_tracked_package_manifests(root: Path) -> list[tuple[str, dict[str, Any]
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--require-no-legacy", action="store_true", help="Also enforce first-party package identity completion")
+    parser.add_argument("--require-no-legacy", action="store_true", help="Require all tracked npm workspace package names to use their migrated first-party scope (not a full source identity audit)")
     args = parser.parse_args()
     result = inspect_packages(load_tracked_package_manifests(REPO_ROOT))
     print(json.dumps(result, indent=2, ensure_ascii=False))
     if not result["workspace_gate_passed"]:
         return 1
-    if args.require_no_legacy and not result["complete_identity_gate_passed"]:
+    if args.require_no_legacy and not result["package_identity_gate_passed"]:
         return 2
     return 0
 
