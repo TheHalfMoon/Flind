@@ -1,5 +1,6 @@
 {
-    "name": "@posthog/products-replay",
+    "name": "@flind/products-replay",
+    "private": true,
     "scripts": {
         "backend:test": "echo 'No backend tests'"
     },

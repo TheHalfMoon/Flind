@@ -702,6 +702,9 @@ importers:
       '@flind/products-feature-flags':
         specifier: workspace:*
         version: link:../products/feature_flags
+      '@flind/products-flind-ai':
+        specifier: workspace:*
+        version: link:../products/posthog_ai
       '@flind/products-games':
         specifier: workspace:*
         version: link:../products/games
@@ -732,6 +735,105 @@ importers:
       '@flind/products-mcp-store':
         specifier: workspace:*
         version: link:../products/mcp_store
+      '@flind/products-messaging':
+        specifier: workspace:*
+        version: link:../products/messaging
+      '@flind/products-metrics':
+        specifier: workspace:*
+        version: link:../products/metrics
+      '@flind/products-ml-inference':
+        specifier: workspace:*
+        version: link:../products/ml_inference
+      '@flind/products-notebooks':
+        specifier: workspace:*
+        version: link:../products/notebooks
+      '@flind/products-notifications':
+        specifier: workspace:*
+        version: link:../products/notifications
+      '@flind/products-persons':
+        specifier: workspace:*
+        version: link:../products/persons
+      '@flind/products-platform-features':
+        specifier: workspace:*
+        version: link:../products/platform_features
+      '@flind/products-product-analytics':
+        specifier: workspace:*
+        version: link:../products/product_analytics
+      '@flind/products-product-tours':
+        specifier: workspace:*
+        version: link:../products/product_tours
+      '@flind/products-pulse':
+        specifier: workspace:*
+        version: link:../products/pulse
+      '@flind/products-replay':
+        specifier: workspace:*
+        version: link:../products/replay
+      '@flind/products-replay-vision':
+        specifier: workspace:*
+        version: link:../products/replay_vision
+      '@flind/products-revenue-analytics':
+        specifier: workspace:*
+        version: link:../products/revenue_analytics
+      '@flind/products-review':
+        specifier: workspace:*
+        version: link:../products/review_hog
+      '@flind/products-security':
+        specifier: workspace:*
+        version: link:../products/security
+      '@flind/products-session-replay':
+        specifier: workspace:*
+        version: link:../products/session_replay
+      '@flind/products-signals':
+        specifier: workspace:*
+        version: link:../products/signals
+      '@flind/products-skills':
+        specifier: workspace:*
+        version: link:../products/skills
+      '@flind/products-stamp':
+        specifier: workspace:*
+        version: link:../products/stamphog
+      '@flind/products-streamlit-apps':
+        specifier: workspace:*
+        version: link:../products/streamlit_apps
+      '@flind/products-subscriptions':
+        specifier: workspace:*
+        version: link:../products/subscriptions
+      '@flind/products-surveys':
+        specifier: workspace:*
+        version: link:../products/surveys
+      '@flind/products-tasks':
+        specifier: workspace:*
+        version: link:../products/tasks
+      '@flind/products-today':
+        specifier: workspace:*
+        version: link:../products/today
+      '@flind/products-tracing':
+        specifier: workspace:*
+        version: link:../products/tracing
+      '@flind/products-uptime-monitoring':
+        specifier: workspace:*
+        version: link:../products/uptime_monitoring
+      '@flind/products-visual-review':
+        specifier: workspace:*
+        version: link:../products/visual_review
+      '@flind/products-warehouse-sources':
+        specifier: workspace:*
+        version: link:../products/warehouse_sources
+      '@flind/products-warehouse-suggestions':
+        specifier: workspace:*
+        version: link:../products/warehouse_suggestions
+      '@flind/products-web-analytics':
+        specifier: workspace:*
+        version: link:../products/web_analytics
+      '@flind/products-webmcp':
+        specifier: workspace:*
+        version: link:../products/webmcp
+      '@flind/products-wizard':
+        specifier: workspace:*
+        version: link:../products/wizard
+      '@flind/products-workflows':
+        specifier: workspace:*
+        version: link:../products/workflows
       '@flind/replay-shared':
         specifier: workspace:*
         version: link:../common/replay-shared
@@ -777,108 +879,6 @@ importers:
       '@posthog/icons':
         specifier: 'catalog:'
         version: 0.38.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@posthog/products-messaging':
-        specifier: workspace:*
-        version: link:../products/messaging
-      '@posthog/products-metrics':
-        specifier: workspace:*
-        version: link:../products/metrics
-      '@posthog/products-ml-inference':
-        specifier: workspace:*
-        version: link:../products/ml_inference
-      '@posthog/products-notebooks':
-        specifier: workspace:*
-        version: link:../products/notebooks
-      '@posthog/products-notifications':
-        specifier: workspace:*
-        version: link:../products/notifications
-      '@posthog/products-persons':
-        specifier: workspace:*
-        version: link:../products/persons
-      '@posthog/products-platform-features':
-        specifier: workspace:*
-        version: link:../products/platform_features
-      '@posthog/products-posthog-ai':
-        specifier: workspace:*
-        version: link:../products/posthog_ai
-      '@posthog/products-product-analytics':
-        specifier: workspace:*
-        version: link:../products/product_analytics
-      '@posthog/products-product-tours':
-        specifier: workspace:*
-        version: link:../products/product_tours
-      '@posthog/products-pulse':
-        specifier: workspace:*
-        version: link:../products/pulse
-      '@posthog/products-replay':
-        specifier: workspace:*
-        version: link:../products/replay
-      '@posthog/products-replay-vision':
-        specifier: workspace:*
-        version: link:../products/replay_vision
-      '@posthog/products-revenue-analytics':
-        specifier: workspace:*
-        version: link:../products/revenue_analytics
-      '@posthog/products-review-hog':
-        specifier: workspace:*
-        version: link:../products/review_hog
-      '@posthog/products-security':
-        specifier: workspace:*
-        version: link:../products/security
-      '@posthog/products-session-replay':
-        specifier: workspace:*
-        version: link:../products/session_replay
-      '@posthog/products-signals':
-        specifier: workspace:*
-        version: link:../products/signals
-      '@posthog/products-skills':
-        specifier: workspace:*
-        version: link:../products/skills
-      '@posthog/products-stamphog':
-        specifier: workspace:*
-        version: link:../products/stamphog
-      '@posthog/products-streamlit-apps':
-        specifier: workspace:*
-        version: link:../products/streamlit_apps
-      '@posthog/products-subscriptions':
-        specifier: workspace:*
-        version: link:../products/subscriptions
-      '@posthog/products-surveys':
-        specifier: workspace:*
-        version: link:../products/surveys
-      '@posthog/products-tasks':
-        specifier: workspace:*
-        version: link:../products/tasks
-      '@posthog/products-today':
-        specifier: workspace:*
-        version: link:../products/today
-      '@posthog/products-tracing':
-        specifier: workspace:*
-        version: link:../products/tracing
-      '@posthog/products-uptime-monitoring':
-        specifier: workspace:*
-        version: link:../products/uptime_monitoring
-      '@posthog/products-visual-review':
-        specifier: workspace:*
-        version: link:../products/visual_review
-      '@posthog/products-warehouse-sources':
-        specifier: workspace:*
-        version: link:../products/warehouse_sources
-      '@posthog/products-warehouse-suggestions':
-        specifier: workspace:*
-        version: link:../products/warehouse_suggestions
-      '@posthog/products-web-analytics':
-        specifier: workspace:*
-        version: link:../products/web_analytics
-      '@posthog/products-webmcp':
-        specifier: workspace:*
-        version: link:../products/webmcp
-      '@posthog/products-wizard':
-        specifier: workspace:*
-        version: link:../products/wizard
-      '@posthog/products-workflows':
-        specifier: workspace:*
-        version: link:../products/workflows
       '@posthog/quill':
         specifier: workspace:*
         version: link:../packages/quill/packages/quill

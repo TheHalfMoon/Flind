@@ -1,3 +1,4 @@
 {
-    "name": "@posthog/products-toolbar"
+    "name": "@flind/products-toolbar",
+    "private": true
 }

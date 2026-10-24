@@ -20,9 +20,9 @@ run_case() {
     local root="$workdir/$name" output status excluded_path product
     read -r -a exclusions <<<"$excluded_paths"
     mkdir -p "$root"
-    create_product "$root" warehouse_sources @posthog/products-warehouse-sources "$warehouse_report"
+    create_product "$root" warehouse_sources @flind/products-warehouse-sources "$warehouse_report"
     printf '%s\n' '<testsuite tests="1" failures="1" />' >"$root/products/warehouse_sources/junit-product-retry-failures.xml"
-    create_product "$root" warehouse_sources_queue @posthog/products-warehouse-sources-queue '<testsuite tests="1" failures="0" />'
+    create_product "$root" warehouse_sources_queue @flind/products-warehouse-sources-queue '<testsuite tests="1" failures="0" />'
     create_product "$root" other @posthog/products-other "$other_report"
 
     set +e
@@ -57,12 +57,12 @@ run_case() {
     echo "ok: $name"
 }
 
-run_case exact-package-match '--filter=@posthog/products-warehouse-sources-queue' 0 '' '<testsuite tests="1" failures="0" />'
-run_case selected-report-missing '--filter=@posthog/products-warehouse-sources' 1 '' '<testsuite tests="1" failures="0" />'
-run_case selected-report-passes '--filter=@posthog/products-warehouse-sources' 0 '<testsuite tests="1" failures="0" />' '<testsuite tests="1" failures="0" />'
-run_case selected-report-fails '--filter=@posthog/products-warehouse-sources' 1 '<testsuite tests="1" failures="1"><testcase><failure /></testcase></testsuite>' '<testsuite tests="1" failures="0" />'
+run_case exact-package-match '--filter=@flind/products-warehouse-sources-queue' 0 '' '<testsuite tests="1" failures="0" />'
+run_case selected-report-missing '--filter=@flind/products-warehouse-sources' 1 '' '<testsuite tests="1" failures="0" />'
+run_case selected-report-passes '--filter=@flind/products-warehouse-sources' 0 '<testsuite tests="1" failures="0" />' '<testsuite tests="1" failures="0" />'
+run_case selected-report-fails '--filter=@flind/products-warehouse-sources' 1 '<testsuite tests="1" failures="1"><testcase><failure /></testcase></testsuite>' '<testsuite tests="1" failures="0" />'
 run_case multiple-exclusions '--filter=@posthog/products-other' 0 '<testsuite tests="1" failures="0" />' '<testsuite tests="1" failures="0" />' 'products/warehouse_sources/junit-product.xml products/other/junit-product.xml'
-run_case no-exclusions-stages-a-failed-report '--filter=@posthog/products-warehouse-sources' 0 '<testsuite tests="1" failures="1"><testcase><failure /></testcase></testsuite>' '<testsuite tests="1" failures="0" />' ''
+run_case no-exclusions-stages-a-failed-report '--filter=@flind/products-warehouse-sources' 0 '<testsuite tests="1" failures="1"><testcase><failure /></testcase></testsuite>' '<testsuite tests="1" failures="0" />' ''
 
 retry_root="$workdir/retry-failures"
 mkdir -p "$retry_root"

@@ -5617,7 +5617,7 @@ export const SubscriptionResourceTypes = {
     AiPrompt: 'ai_prompt',
 } as const satisfies Record<string, SubscriptionResourceType>
 
-// TODO: migrate to SubscriptionApi from @posthog/products-subscriptions/frontend/generated/api.schemas.
+// TODO: migrate to SubscriptionApi from @flind/products-subscriptions/frontend/generated/api.schemas.
 // This hand-written interface predates the generated type and now requires
 // dual-maintenance for every backend field change.
 export interface SubscriptionType {

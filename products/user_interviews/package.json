@@ -1,5 +1,6 @@
 {
-    "name": "@posthog/products-user-interviews",
+    "name": "@flind/products-user-interviews",
+    "private": true,
     "scripts": {
         "backend:test": "echo 'vestigial app — no tests'"
     }

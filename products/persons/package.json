@@ -1,5 +1,6 @@
 {
-    "name": "@posthog/products-persons",
+    "name": "@flind/products-persons",
+    "private": true,
     "dependencies": {
         "@posthog/quill": "workspace:*",
         "fast-equals": "catalog:",

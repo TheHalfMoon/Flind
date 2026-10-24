@@ -1,5 +1,6 @@
 {
-    "name": "@posthog/products-streamlit-apps",
+    "name": "@flind/products-streamlit-apps",
+    "private": true,
     "scripts": {
         "backend:test": "pytest -c ../../pytest.ini --rootdir ../.. backend/tests -v --tb=short",
         "backend:contract-check": "echo 'Contract files unchanged'"

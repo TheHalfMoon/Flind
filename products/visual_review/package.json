@@ -1,5 +1,6 @@
 {
-    "name": "@posthog/products-visual-review",
+    "name": "@flind/products-visual-review",
+    "private": true,
     "scripts": {
         "backend:test": "pytest -c ../../pytest.ini --rootdir ../.. backend/tests -v --tb=short",
         "backend:test:unit": "pytest -c ../../pytest.ini --rootdir ../.. backend/tests -v -m 'not integration' --tb=short",

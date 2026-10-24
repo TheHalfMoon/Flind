@@ -1,5 +1,6 @@
 {
-    "name": "@posthog/products-slack-app",
+    "name": "@flind/products-slack-app",
+    "private": true,
     "scripts": {
         "backend:test": "pytest -c ../../pytest.ini --rootdir ../.. backend/tests backend/temporal -v --tb=short"
     }

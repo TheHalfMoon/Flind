@@ -1,5 +1,6 @@
 {
-    "name": "@posthog/products-session-replay",
+    "name": "@flind/products-session-replay",
+    "private": true,
     "dependencies": {
         "kea": "catalog:"
     },

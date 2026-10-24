@@ -1,5 +1,6 @@
 {
-    "name": "@posthog/products-tasks",
+    "name": "@flind/products-tasks",
+    "private": true,
     "scripts": {
         "backend:test": "pytest -c ../../pytest.ini --rootdir ../.. backend/tests backend/logic backend/management backend/temporal -v --tb=short"
     },

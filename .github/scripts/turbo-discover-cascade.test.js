@@ -186,9 +186,9 @@ test('the lib import name is read from the package manifest, and a manifest that
 test('affected lib packages carry the directory from the dry-run list, and products are not lib packages', () => {
     const testTasks = [
         { package: '@flind/owners-yaml', directory: 'packages/owners-yaml' },
-        { package: '@posthog/products-stamphog', directory: 'products/stamphog' },
+        { package: '@flind/products-stamp', directory: 'products/stamphog' },
     ]
-    const affected = [{ package: { name: '@flind/owners-yaml' } }, { package: { name: '@posthog/products-stamphog' } }]
+    const affected = [{ package: { name: '@flind/owners-yaml' } }, { package: { name: '@flind/products-stamp' } }]
 
     assert.deepEqual(getAffectedLibPackages(testTasks, affected), [
         { name: '@flind/owners-yaml', directory: 'packages/owners-yaml' },

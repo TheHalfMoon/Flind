@@ -1,5 +1,6 @@
 {
-    "name": "@posthog/products-review-hog",
+    "name": "@flind/products-review",
+    "private": true,
     "scripts": {
         "backend:test": "pytest -c ../../pytest.ini --rootdir ../.. backend/tests backend/reviewer/tests -v --tb=short",
         "backend:contract-check": "echo 'Contract files unchanged'"
