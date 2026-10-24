@@ -3,7 +3,7 @@ import * as path from 'path'
 import type { Plugin } from 'vite'
 
 // Storybook bundles source from several workspaces (the app, quill, the mcp ui-apps)
-// but CI installs only @posthog/storybook's dependency closure. So a bare dep can be
+// but CI installs only @flind/storybook's dependency closure. So a bare dep can be
 // absent from the importer's own node_modules yet present up an installed package's
 // chain — e.g. `lucide-react` imported from services/mcp source (aliased in via
 // `@posthog/mcp-ui`, and services/mcp is not in the closure) is installed under

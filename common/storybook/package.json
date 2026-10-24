@@ -1,5 +1,6 @@
 {
-    "name": "@posthog/storybook",
+    "name": "@flind/storybook",
+    "private": true,
     "scripts": {
         "build:products": "pnpm --filter=@flind/frontend build:products",
         "build:workers": "cd ../.. && node frontend/bin/watch-workers.mjs --outdir common/storybook/.workers",

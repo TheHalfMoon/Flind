@@ -297,7 +297,7 @@ jobs:
                   restore-keys: pnpm-${{ runner.os }}-
 
             - name: Install dependencies
-              run: pnpm --filter=@posthog/storybook... install --frozen-lockfile
+              run: pnpm --filter=@flind/storybook... install --frozen-lockfile
 
             # Vite's dependency optimization cache (node_modules/.vite) is the most
             # expensive part of the build — without it, Vite re-bundles every module
@@ -314,8 +314,8 @@ jobs:
               env:
                   NODE_OPTIONS: --max-old-space-size=32768
               run: |
-                  bin/turbo --filter=@posthog/storybook prepare
-                  pnpm --filter=@posthog/storybook build --test
+                  bin/turbo --filter=@flind/storybook prepare
+                  pnpm --filter=@flind/storybook build --test
 
             - name: Save Vite build cache
               if: github.ref == 'refs/heads/master'
@@ -655,7 +655,7 @@ jobs:
                   restore-keys: pnpm-${{ runner.os }}-
 
             - name: Install package.json dependencies with pnpm
-              run: pnpm --filter=@posthog/storybook... install --frozen-lockfile
+              run: pnpm --filter=@flind/storybook... install --frozen-lockfile
 
             # Inside the playwright container pnpm keeps its store on the workspace mount.
             # actions/cache keys an entry on key plus path, so this is a separate entry
@@ -674,13 +674,13 @@ jobs:
                   path: common/storybook/dist
 
             - name: Serve Storybook in the background
-              # http-server and wait-on are devDependencies of @posthog/storybook.
+              # http-server and wait-on are devDependencies of @flind/storybook.
               # Run via `pnpm --filter` so pnpm resolves them from common/storybook/node_modules/.bin
               # (no global install) and cd's into the package — `dist` is relative to common/storybook.
               run: |
                   retries=5
                   max_timeout=30
-                  pnpm --filter=@posthog/storybook exec http-server dist --port 6006 --silent &
+                  pnpm --filter=@flind/storybook exec http-server dist --port 6006 --silent &
                   server_pid=$!
                   echo "Started http-server with PID: $server_pid"
 
@@ -689,7 +689,7 @@ jobs:
 
                   while [ $retries -gt 0 ]; do
                       echo "Checking if Storybook is available (retries left: $retries, timeout: ${max_timeout}s)..."
-                      if pnpm --filter=@posthog/storybook exec wait-on http://127.0.0.1:6006 --timeout $max_timeout; then
+                      if pnpm --filter=@flind/storybook exec wait-on http://127.0.0.1:6006 --timeout $max_timeout; then
                           echo "✅ Storybook is available at http://127.0.0.1:6006"
                           break
                       fi
@@ -699,7 +699,7 @@ jobs:
                           # Check if server is still running
                           if ! kill -0 $server_pid 2>/dev/null; then
                               echo "❌ http-server process is no longer running, restarting it..."
-                              pnpm --filter=@posthog/storybook exec http-server dist --port 6006 --silent &
+                              pnpm --filter=@flind/storybook exec http-server dist --port 6006 --silent &
                               server_pid=$!
                               echo "Restarted http-server with PID: $server_pid"
                               sleep 2
@@ -748,9 +748,9 @@ jobs:
                           echo "::error::Selective mode did not provide affected story files"
                           exit 1
                       fi
-                      pnpm --filter=@posthog/storybook test:visual:ci:update --browsers ${{ matrix.browser }} --shard ${{ matrix.shard }}/${{ matrix.shard_count }} -- "${AFFECTED_FILES[@]}"
+                      pnpm --filter=@flind/storybook test:visual:ci:update --browsers ${{ matrix.browser }} --shard ${{ matrix.shard }}/${{ matrix.shard_count }} -- "${AFFECTED_FILES[@]}"
                   else
-                      pnpm --filter=@posthog/storybook test:visual:ci:update --browsers ${{ matrix.browser }} --shard ${{ matrix.shard }}/${{ matrix.shard_count }}
+                      pnpm --filter=@flind/storybook test:visual:ci:update --browsers ${{ matrix.browser }} --shard ${{ matrix.shard }}/${{ matrix.shard_count }}
                   fi
 
             # Upload snapshots to Visual Review (runs in parallel across shards), or verify
@@ -986,7 +986,7 @@ jobs:
                   restore-keys: pnpm-${{ runner.os }}-
 
             - name: Install dependencies
-              run: pnpm --filter=@posthog/storybook... install --frozen-lockfile
+              run: pnpm --filter=@flind/storybook... install --frozen-lockfile
 
             - name: Download Storybook build artifact
               uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7.0.0
@@ -997,9 +997,9 @@ jobs:
             - name: Serve Storybook
               # Resolve http-server/wait-on from common/storybook's devDependencies (no global install).
               run: |
-                  pnpm --filter=@posthog/storybook exec http-server dist --port 6006 --silent &
+                  pnpm --filter=@flind/storybook exec http-server dist --port 6006 --silent &
                   sleep 2
-                  pnpm --filter=@posthog/storybook exec wait-on http://127.0.0.1:6006 --timeout 30
+                  pnpm --filter=@flind/storybook exec wait-on http://127.0.0.1:6006 --timeout 30
 
             - name: Verify changed stories are stable
               id: flake-verify

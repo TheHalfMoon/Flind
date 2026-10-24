@@ -730,7 +730,7 @@ jobs:
 
             - name: Install package.json dependencies with pnpm
               run: |
-                  pnpm --filter=@posthog/playwright... install --frozen-lockfile
+                  pnpm --filter=@flind/playwright... install --frozen-lockfile
                   bin/turbo --filter=@flind/frontend prepare
 
             - name: Log in to Docker Hub
@@ -923,7 +923,7 @@ jobs:
 
             # Install Playwright browsers while we wait for PostHog to be ready
             - name: Install Playwright browsers
-              run: pnpm --filter=@posthog/playwright exec playwright install chromium --with-deps
+              run: pnpm --filter=@flind/playwright exec playwright install chromium --with-deps
 
             - name: Wait for PostHog to be ready
               uses: iFaxity/wait-on-action@1fe019e0475491e9e8c4f421b6914ccc3ed8f99c # v1.2.1
@@ -973,7 +973,7 @@ jobs:
                   # Word-splitting is intentional: SELECT_SPECS is a space-separated list
                   # of controlled spec paths (from the area map + on-disk globs).
                   # shellcheck disable=SC2086
-                  pnpm --filter=@posthog/playwright exec playwright test $specs --workers="$PLAYWRIGHT_WORKERS" --update-snapshots
+                  pnpm --filter=@flind/playwright exec playwright test $specs --workers="$PLAYWRIGHT_WORKERS" --update-snapshots
                   rc=$?
                   echo "test_seconds=$(( $(date +%s) - start ))" >> "$GITHUB_OUTPUT"
                   exit "$rc"

@@ -15,7 +15,7 @@ import { billingJson } from '~/mocks/fixtures/_billing'
  * Run against a local PostHog:
  *
  *   BASE_URL=http://localhost:8010 \
- *     pnpm --filter=@posthog/playwright exec playwright test products/billing/frontend/e2e/billing-usage-spend.spec.ts
+ *     pnpm --filter=@flind/playwright exec playwright test products/billing/frontend/e2e/billing-usage-spend.spec.ts
  */
 
 interface Series {

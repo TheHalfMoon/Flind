@@ -218,7 +218,7 @@ The visualizers and the resolution states above are safe; `AppWrapper` and `useT
 Keep presentational components in their own module rather than importing them from an SDK-coupled one.
 
 The Storybook dev server resolves the SDK anyway, so it renders such a story happily and only the production build fails.
-Verify with `pnpm --filter=@posthog/storybook build` rather than `start`.
+Verify with `pnpm --filter=@flind/storybook build` rather than `start`.
 
 ### Theming
 

@@ -481,7 +481,7 @@ jobs:
             - name: Install pnpm dependencies
               uses: ./.github/actions/pnpm-install
               with:
-                  install-command: pnpm --filter=@posthog/playwright... install --frozen-lockfile
+                  install-command: pnpm --filter=@flind/playwright... install --frozen-lockfile
                   token: ${{ steps.setup-gh-token.outputs.token || github.token }}
 
             - name: Prepare frontend
@@ -593,7 +593,7 @@ jobs:
                   restore-keys: pnpm-${{ runner.os }}-
 
             - name: Install package.json dependencies with pnpm
-              run: pnpm --filter=@posthog/playwright... install --frozen-lockfile
+              run: pnpm --filter=@flind/playwright... install --frozen-lockfile
 
             - name: Prepare frontend
               run: bin/turbo --filter=@flind/frontend prepare
@@ -823,7 +823,7 @@ jobs:
             - name: Install pnpm dependencies
               uses: ./.github/actions/pnpm-install
               with:
-                  install-command: pnpm --filter=@posthog/playwright... install --no-frozen-lockfile
+                  install-command: pnpm --filter=@flind/playwright... install --no-frozen-lockfile
                   token: ${{ steps.setup-gh-token.outputs.token || github.token }}
 
             - name: Prepare frontend

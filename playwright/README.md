@@ -30,10 +30,10 @@ This uses `bin/mprocs-e2e.yaml` under the hood. If you need to reset the E2E dat
 To run tests against an already-running PostHog instance:
 
 ```bash
-LOGIN_USERNAME='my@email.address' LOGIN_PASSWORD="the-password" BASE_URL='http://localhost:8010' pnpm --filter=@posthog/playwright exec playwright test --ui
+LOGIN_USERNAME='my@email.address' LOGIN_PASSWORD="the-password" BASE_URL='http://localhost:8010' pnpm --filter=@flind/playwright exec playwright test --ui
 ```
 
-You might need to install Playwright first: `pnpm --filter=@posthog/playwright exec playwright install`
+You might need to install Playwright first: `pnpm --filter=@flind/playwright exec playwright install`
 
 ## Writing tests with Claude Code
 

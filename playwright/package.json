@@ -1,5 +1,6 @@
 {
-    "name": "@posthog/playwright",
+    "name": "@flind/playwright",
+    "private": true,
     "scripts": {
         "build:products": "pnpm --filter=@flind/frontend build:products",
         "test": "pnpm build:products && playwright test"

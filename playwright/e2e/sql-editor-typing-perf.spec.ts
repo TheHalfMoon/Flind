@@ -9,7 +9,7 @@ import { expect, PlaywrightWorkspaceSetupResult, test } from '../utils/workspace
 // explicitly:
 //
 //   RUN_PERF_BENCH=1 BASE_URL='http://localhost:8010' \
-//     pnpm --filter=@posthog/playwright exec playwright test sql-editor-typing-perf --workers 1
+//     pnpm --filter=@flind/playwright exec playwright test sql-editor-typing-perf --workers 1
 //
 // Each test drives a fixed burst of input at a large query and reports main-thread long-task
 // time via PerformanceObserver. To compare before/after a change, run it, `git stash` the

@@ -63,7 +63,7 @@ fi
 TEST_DECL_RE='^[[:space:]]*test(\.(skip|fixme|only|fail))?\('
 
 # Convert a repo-relative spec path to one relative to playwright/ (the CI step's cwd:
-# `pnpm --filter=@posthog/playwright exec playwright test`). Files outside that dir need `../`.
+# `pnpm --filter=@flind/playwright exec playwright test`). Files outside that dir need `../`.
 playwright_path() {
     local f="$1"
     if [[ "$f" == playwright/* ]]; then
@@ -190,7 +190,7 @@ set +e
 # the verification report is the one that matters (the main tests passed).
 # Fail fast once instability is detected so the job doesn't burn the full timeout
 # on the remaining repeated runs.
-pnpm --filter=@posthog/playwright exec playwright test "${targets[@]}" \
+pnpm --filter=@flind/playwright exec playwright test "${targets[@]}" \
     --workers=1 --repeat-each="$REPEAT_COUNT" --retries=0 --max-failures=1
 test_exit=$?
 set -e

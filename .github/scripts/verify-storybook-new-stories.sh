@@ -104,7 +104,7 @@ run_stories() {
     # CI, so finding no matching tests here is not a failure.
     # Keep STORYBOOK_SKIP_TAGS in sync with the visual-regression shards in ci-storybook.yml.
     if STORYBOOK_SKIP_TAGS="test-skip,test-skip-${browser}" \
-        pnpm --filter=@posthog/storybook exec test-storybook \
+        pnpm --filter=@flind/storybook exec test-storybook \
         "$snapshot_flag" --no-index-json --maxWorkers=1 \
         --browsers "$browser" \
         -- "${pattern_args[@]}" --passWithNoTests 2>&1 | tee "/tmp/storybook-verify-${run_name}.log"; then
