@@ -99,7 +99,7 @@ describe("createPostHogApiClient", () => {
         appVersion: "1.2.3",
         githubConnectFrom: "posthog_mobile",
         taskClientProvenance: "posthog_mobile",
-        userAgent: "posthog/mobile.hog.dev; version: 1.2.3",
+        userAgent: "flind/mobile; version: 1.2.3",
       },
     });
   });
@@ -130,7 +130,7 @@ describe("createPostHogApiClient", () => {
 
     expect(mocks.instances[0]?.options).toMatchObject({
       appVersion: "4.5.6",
-      userAgent: "posthog/mobile.hog.dev; version: 4.5.6",
+      userAgent: "flind/mobile; version: 4.5.6",
     });
   });
 

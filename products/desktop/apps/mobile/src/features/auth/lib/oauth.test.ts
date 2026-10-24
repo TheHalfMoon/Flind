@@ -24,10 +24,14 @@ function mockResponse(status: number, body: unknown): Response {
 describe("refreshAccessToken", () => {
   beforeEach(() => {
     global.fetch = vi.fn() as unknown as typeof fetch;
+    // Hosted endpoints and OAuth registrations must be explicit in Flind.
+    vi.stubEnv("EXPO_PUBLIC_FLIND_API_US_URL", "https://us.flind.example");
+    vi.stubEnv("EXPO_PUBLIC_FLIND_OAUTH_US_CLIENT_ID", "flind-test-client");
   });
 
   afterEach(() => {
     global.fetch = originalFetch;
+    vi.unstubAllEnvs();
   });
 
   it("returns the parsed token response on success", async () => {

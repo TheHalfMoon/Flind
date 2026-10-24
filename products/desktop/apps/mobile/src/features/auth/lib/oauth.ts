@@ -31,6 +31,8 @@ export async function exchangeCodeForToken(
 
   const response = await fetch(`${cloudUrl}/oauth/token`, {
     method: "POST",
+    // Never follow redirects with OAuth authorization codes or refresh tokens.
+    redirect: "error",
     headers: {
       "Content-Type": "application/json",
     },
@@ -88,6 +90,8 @@ export async function refreshAccessToken(
   try {
     response = await fetch(`${cloudUrl}/oauth/token`, {
       method: "POST",
+      // Never follow redirects with OAuth authorization codes or refresh tokens.
+      redirect: "error",
       headers: {
         "Content-Type": "application/json",
       },

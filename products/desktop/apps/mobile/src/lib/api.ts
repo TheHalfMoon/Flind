@@ -20,7 +20,7 @@ export type FetchInit = NonNullable<Parameters<typeof fetch>[1]>;
 
 const log = logger.scope("api");
 
-const USER_AGENT = `posthog/mobile.hog.dev; version: ${Constants.expoConfig?.version ?? "unknown"}`;
+const USER_AGENT = `flind/mobile; version: ${Constants.expoConfig?.version ?? "unknown"}`;
 
 export function getHeaders(): Record<string, string> {
   const { oauthAccessToken } = useAuthStore.getState();
