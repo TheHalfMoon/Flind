@@ -1,5 +1,6 @@
 {
-    "name": "@posthog/products-ai-training",
+    "name": "@flind/products-ai-training",
+    "private": true,
     "scripts": {
         "backend:test": "pytest -c ../../pytest.ini --rootdir ../.. backend/tests -v --tb=short",
         "backend:contract-check": "echo 'Contract files unchanged'"

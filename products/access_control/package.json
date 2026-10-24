@@ -1,5 +1,6 @@
 {
-    "name": "@posthog/products-access-control",
+    "name": "@flind/products-access-control",
+    "private": true,
     "scripts": {
         "backend:test": "pytest -c ../../pytest.ini --rootdir ../.. backend/tests -v --tb=short"
     }

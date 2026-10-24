@@ -594,12 +594,45 @@ importers:
       '@flind/llm-normalizer':
         specifier: workspace:*
         version: link:../packages/llm-normalizer
+      '@flind/products-access-control':
+        specifier: workspace:*
+        version: link:../products/access_control
+      '@flind/products-account-audits':
+        specifier: workspace:*
+        version: link:../products/account_audits
+      '@flind/products-ai-gateway':
+        specifier: workspace:*
+        version: link:../products/ai_gateway
+      '@flind/products-ai-training':
+        specifier: workspace:*
+        version: link:../products/ai_training
+      '@flind/products-analytics-platform':
+        specifier: workspace:*
+        version: link:../products/analytics_platform
       '@flind/products-annotations':
         specifier: workspace:*
         version: link:../products/annotations
+      '@flind/products-apm':
+        specifier: workspace:*
+        version: link:../products/apm
+      '@flind/products-authorization':
+        specifier: workspace:*
+        version: link:../products/authorization
+      '@flind/products-batch-exports':
+        specifier: workspace:*
+        version: link:../products/batch_exports
       '@flind/products-customer-analytics':
         specifier: workspace:*
         version: link:../products/customer_analytics
+      '@flind/products-data-tools':
+        specifier: workspace:*
+        version: link:../products/data_tools
+      '@flind/products-exports':
+        specifier: workspace:*
+        version: link:../products/exports
+      '@flind/products-games':
+        specifier: workspace:*
+        version: link:../products/games
       '@flind/replay-shared':
         specifier: workspace:*
         version: link:../common/replay-shared
@@ -645,45 +678,21 @@ importers:
       '@posthog/icons':
         specifier: 'catalog:'
         version: 0.38.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@posthog/products-access-control':
-        specifier: workspace:*
-        version: link:../products/access_control
-      '@posthog/products-account-audits':
-        specifier: workspace:*
-        version: link:../products/account_audits
       '@posthog/products-actions':
         specifier: workspace:*
         version: link:../products/actions
-      '@posthog/products-ai-gateway':
-        specifier: workspace:*
-        version: link:../products/ai_gateway
       '@posthog/products-ai-observability':
         specifier: workspace:*
         version: link:../products/ai_observability
-      '@posthog/products-ai-training':
-        specifier: workspace:*
-        version: link:../products/ai_training
       '@posthog/products-alerts':
         specifier: workspace:*
         version: link:../products/alerts
       '@posthog/products-alerts-platform':
         specifier: workspace:*
         version: link:../products/alerts_platform
-      '@posthog/products-analytics-platform':
-        specifier: workspace:*
-        version: link:../products/analytics_platform
-      '@posthog/products-apm':
-        specifier: workspace:*
-        version: link:../products/apm
-      '@posthog/products-authorization':
-        specifier: workspace:*
-        version: link:../products/authorization
       '@posthog/products-autoresearch':
         specifier: workspace:*
         version: link:../products/autoresearch
-      '@posthog/products-batch-exports':
-        specifier: workspace:*
-        version: link:../products/batch_exports
       '@posthog/products-billing-alerts':
         specifier: workspace:*
         version: link:../products/billing_alerts
@@ -720,9 +729,6 @@ importers:
       '@posthog/products-data-quality':
         specifier: workspace:*
         version: link:../products/data_quality
-      '@posthog/products-data-tools':
-        specifier: workspace:*
-        version: link:../products/data_tools
       '@posthog/products-data-warehouse':
         specifier: workspace:*
         version: link:../products/data_warehouse
@@ -741,15 +747,9 @@ importers:
       '@posthog/products-experiments':
         specifier: workspace:*
         version: link:../products/experiments
-      '@posthog/products-exports':
-        specifier: workspace:*
-        version: link:../products/exports
       '@posthog/products-feature-flags':
         specifier: workspace:*
         version: link:../products/feature_flags
-      '@posthog/products-games':
-        specifier: workspace:*
-        version: link:../products/games
       '@posthog/products-groups':
         specifier: workspace:*
         version: link:../products/groups

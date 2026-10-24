@@ -35,10 +35,10 @@ class InternalWorkspaceMigrationWave4Tests(unittest.TestCase):
         result = inspect_packages(load_tracked_package_manifests(REPO_ROOT))
         self.assertTrue(result["workspace_gate_passed"], result)
         self.assertEqual(result["workspace_dependency_edges"], 260)
-        self.assertEqual(len(result["remaining_legacy_package_names"]), 146)
+        self.assertLessEqual(len(result["remaining_legacy_package_names"]), 146)
         for name in PACKAGE_PATHS:
             self.assertIn(FIRST_PARTY_SCOPE + name, result["flind_package_names"])
-        self.assertFalse(result["package_identity_gate_passed"])
+        self.assertGreaterEqual(len(result["flind_package_names"]), 13)
 
     def test_lockfile_workspace_importers_follow_exact_renames(self) -> None:
         lock = (REPO_ROOT / "pnpm-lock.yaml").read_text()

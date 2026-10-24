@@ -1,5 +1,6 @@
 {
-    "name": "@posthog/products-aeo",
+    "name": "@flind/products-aeo",
+    "private": true,
     "scripts": {
         "backend:test": "pytest -c ../../pytest.ini --rootdir ../.. backend/test -v --tb=short",
         "backend:contract-check": "echo 'Contract files unchanged'"

@@ -1,5 +1,6 @@
 {
-    "name": "@posthog/products-games",
+    "name": "@flind/products-games",
+    "private": true,
     "dependencies": {
         "kea": "catalog:",
         "kea-loaders": "catalog:",

@@ -1,5 +1,6 @@
 {
-    "name": "@posthog/products-demo",
+    "name": "@flind/products-demo",
+    "private": true,
     "scripts": {
         "backend:test": "pytest -c ../../pytest.ini --rootdir ../.. backend/test -v --tb=short",
         "backend:lint": "ruff check --config ../../pyproject.toml backend && ruff format --config ../../pyproject.toml --check backend"

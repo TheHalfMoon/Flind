@@ -1,3 +1,4 @@
 {
-    "name": "@posthog/products-core-events"
+    "name": "@flind/products-core-events",
+    "private": true
 }
