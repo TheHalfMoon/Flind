@@ -41,10 +41,12 @@ export function ConsentScreen({
         <GearSix size={14} />
         Settings
       </Button>
-      <Button variant="link-muted" size="xs" onClick={onOpenSupport}>
-        <Lifebuoy size={14} />
-        Get support
-      </Button>
+      {onOpenSupport && (
+        <Button variant="link-muted" size="xs" onClick={onOpenSupport}>
+          <Lifebuoy size={14} />
+          Get support
+        </Button>
+      )}
       {banner}
     </div>
   );

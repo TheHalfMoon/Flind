@@ -6,13 +6,14 @@ import {
   ItemMedia,
   ItemTitle,
 } from "@flind/quill";
-import { EXTERNAL_LINKS, getLocalDayDiff } from "@flind/shared";
+import { getLocalDayDiff } from "@flind/shared";
 import type { TaskChannel } from "@flind/shared/domain-types";
 import { mentionChipClass } from "@flind/ui/features/canvas/components/MentionText";
 import { useChannelsLayout } from "@flind/ui/features/canvas/hooks/useChannelsLayout";
 import { userDisplayName } from "@flind/ui/features/canvas/utils/userDisplay";
 import { Spinner } from "@flind/ui/primitives/Spinner";
 import { openExternalUrl } from "@flind/ui/shell/openExternal";
+import { flindExternalUrl } from "@flind/ui/shell/flindExternalLinks";
 import { Heading, Text } from "@radix-ui/themes";
 import { FileCheckCorner, FilePlusCorner, Info, X } from "lucide-react";
 
@@ -52,6 +53,7 @@ export function ChannelIntro({
   const creator = channel?.created_by;
   const spacesLayout = useChannelsLayout();
   const noun = spacesLayout ? "space" : "channel";
+  const docsUrl = flindExternalUrl("docs");
 
   return (
     // Width and horizontal padding come from the feed column that renders
@@ -135,28 +137,28 @@ export function ChannelIntro({
             </ItemContent>
           </Item>
         )}
-        <Item
-          className="w-full border-primary/50 hover:bg-fill-hover"
-          variant="pressable"
-          render={
-            <button
-              type="button"
-              onClick={() => openExternalUrl(EXTERNAL_LINKS.docs)}
-            />
-          }
-        >
-          <ItemMedia variant="icon">
-            <Info size={18} />
-          </ItemMedia>
-          <ItemContent className="self-start">
-            <ItemTitle>
-              Learn more about {spacesLayout ? "spaces" : "channels"}
-            </ItemTitle>
-            <ItemDescription className="text-xs">
-              A {noun} is a group of tasks that are related to a specific topic.
-            </ItemDescription>
-          </ItemContent>
-        </Item>
+        {docsUrl && (
+          <Item
+            className="w-full border-primary/50 hover:bg-fill-hover"
+            variant="pressable"
+            render={
+              <button type="button" onClick={() => openExternalUrl(docsUrl)} />
+            }
+          >
+            <ItemMedia variant="icon">
+              <Info size={18} />
+            </ItemMedia>
+            <ItemContent className="self-start">
+              <ItemTitle>
+                Learn more about {spacesLayout ? "spaces" : "channels"}
+              </ItemTitle>
+              <ItemDescription className="text-xs">
+                A {noun} is a group of tasks that are related to a specific
+                topic.
+              </ItemDescription>
+            </ItemContent>
+          </Item>
+        )}
       </div>
     </div>
   );

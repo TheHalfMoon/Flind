@@ -4,14 +4,18 @@ import { useAuthStateValue } from "../store";
 import { AffirmationButton } from "./AffirmationButton";
 
 interface AuthScreenProps {
-  onOpenSupport: () => void;
+  onOpenSupport?: () => void;
 }
 
 export function AuthScreen({ onOpenSupport }: AuthScreenProps) {
   const sessionEndReason = useAuthStateValue((state) => state.sessionEndReason);
   return (
     <FullScreenLayout
-      footerLeft={<AffirmationButton onOpenSupport={onOpenSupport} />}
+      footerLeft={
+        onOpenSupport ? (
+          <AffirmationButton onOpenSupport={onOpenSupport} />
+        ) : null
+      }
     >
       <div className="flex h-full items-center justify-center px-12">
         <div className="flex h-full w-full max-w-[480px] flex-col items-center pt-[24px] pb-[40px]">

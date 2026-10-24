@@ -20,7 +20,7 @@ During native Desktop UI Vitest qualification, pnpm failed with npm 404
 because an earlier rebrand had changed two *published external* packages
 into nonexistent registry names: @flind/quill and @flind/quill-charts.
 The source donor's package.json already proved the original published
-registry package names were @posthog/quill and @posthog/quill-charts,
+registry packages were the source vendor’s published Quill and Quill Charts artifacts,
 both at version 0.3.0-beta.29.
 
 The actual public npm versions and sha512 integrity strings were checked.

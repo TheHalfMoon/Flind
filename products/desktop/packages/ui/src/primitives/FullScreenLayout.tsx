@@ -72,16 +72,18 @@ export function FullScreenLayout({
             >
               {footerLeft ?? (
                 <Flex align="center" gap="3">
-                  <Button
-                    size="1"
-                    variant="ghost"
-                    color="gray"
-                    onClick={onOpenSupport}
-                    className="opacity-50"
-                  >
-                    <Lifebuoy size={14} />
-                    Get support
-                  </Button>
+                  {onOpenSupport && (
+                    <Button
+                      size="1"
+                      variant="ghost"
+                      color="gray"
+                      onClick={onOpenSupport}
+                      className="opacity-50"
+                    >
+                      <Lifebuoy size={14} />
+                      Get support
+                    </Button>
+                  )}
                   {banner}
                 </Flex>
               )}

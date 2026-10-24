@@ -92,7 +92,7 @@ interface DesktopAccessScreenProps {
   onSelectProject: (projectId: number) => void;
   onRetry: () => void;
   onLogout: () => void;
-  onOpenSupport: () => void;
+  onOpenSupport?: () => void;
 }
 
 export function DesktopAccessScreen({

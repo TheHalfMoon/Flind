@@ -30,7 +30,6 @@ import {
   ItemDescription,
   ItemTitle,
 } from "@flind/quill";
-import { EXTERNAL_LINKS } from "@flind/shared";
 import {
   ANALYTICS_EVENTS,
   type ProjectMenuAction,
@@ -64,6 +63,7 @@ import {
 import { navigateToArchived } from "@flind/ui/router/navigationBridge";
 import { track } from "@flind/ui/shell/analytics";
 import { openExternalUrl } from "@flind/ui/shell/openExternal";
+import { flindExternalUrl } from "@flind/ui/shell/flindExternalLinks";
 import { isMac } from "@flind/ui/utils/platform";
 import { getPostHogUrl } from "@flind/ui/utils/urls";
 import { Avatar, Box } from "@radix-ui/themes";
@@ -120,6 +120,9 @@ export function ProjectSwitcher({
   const channelsLayout = useChannelsLayout();
   const archivedTaskIds = useArchivedTaskIds();
   const showArchived = channelsLayout && archivedTaskIds.size > 0;
+  const communityUrl = flindExternalUrl("community");
+  const websiteUrl = flindExternalUrl("website");
+  const privacyUrl = flindExternalUrl("privacy");
 
   const isIcon = appearance === "icon";
   const projectName = currentProject?.name ?? "No project selected";
@@ -232,12 +235,6 @@ export function ProjectSwitcher({
   const handleOpenExternal = (action: ProjectMenuAction, url: string) => {
     trackMenu(action);
     openExternalUrl(url);
-    setPopoverOpen(false);
-  };
-
-  const handleDiscord = () => {
-    trackMenu("discord");
-    openExternalUrl(EXTERNAL_LINKS.discord);
     setPopoverOpen(false);
   };
 
@@ -383,11 +380,15 @@ export function ProjectSwitcher({
 
             <DropdownMenuSeparator />
 
-            <DropdownMenuItem onClick={handleDiscord}>
-              <DiscordLogo size={14} className="text-gray-11" />
-              Join our Discord
-              <ArrowSquareOut size={14} className="ml-auto text-gray-11" />
-            </DropdownMenuItem>
+            {communityUrl && (
+              <DropdownMenuItem
+                onClick={() => handleOpenExternal("discord", communityUrl)}
+              >
+                <DiscordLogo size={14} className="text-gray-11" />
+                Flind community
+                <ArrowSquareOut size={14} className="ml-auto text-gray-11" />
+              </DropdownMenuItem>
+            )}
 
             <DropdownMenuItem onClick={handleViewChangelog}>
               <Gift size={14} className="text-gray-11" />
@@ -408,24 +409,25 @@ export function ProjectSwitcher({
                 Learn more
               </DropdownMenuSubTrigger>
               <DropdownMenuSubContent side="right" sideOffset={4}>
-                <DropdownMenuItem
-                  onClick={() =>
-                    handleOpenExternal("website", EXTERNAL_LINKS.website)
-                  }
-                >
-                  <ArrowSquareOut size={14} className="text-gray-11" />
-                  Website
-                </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem
-                  onClick={() =>
-                    handleOpenExternal("privacy_policy", EXTERNAL_LINKS.privacy)
-                  }
-                >
-                  <ShieldCheck size={14} className="text-gray-11" />
-                  Privacy Policy
-                </DropdownMenuItem>
-                <DropdownMenuSeparator />
+                {websiteUrl && (
+                  <DropdownMenuItem
+                    onClick={() => handleOpenExternal("website", websiteUrl)}
+                  >
+                    <ArrowSquareOut size={14} className="text-gray-11" />
+                    Website
+                  </DropdownMenuItem>
+                )}
+                {privacyUrl && (
+                  <DropdownMenuItem
+                    onClick={() =>
+                      handleOpenExternal("privacy_policy", privacyUrl)
+                    }
+                  >
+                    <ShieldCheck size={14} className="text-gray-11" />
+                    Privacy Policy
+                  </DropdownMenuItem>
+                )}
+                {(websiteUrl || privacyUrl) && <DropdownMenuSeparator />}
                 <DropdownMenuItem onClick={handleKeyboardShortcuts}>
                   <Keyboard size={14} className="text-gray-11" />
                   Keyboard Shortcuts

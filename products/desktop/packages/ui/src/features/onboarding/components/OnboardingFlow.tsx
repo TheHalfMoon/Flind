@@ -86,7 +86,7 @@ function OnboardingAccount({
         </ItemMedia>
         <ItemContent>
           <ItemTitle className="max-w-full truncate font-normal text-xs">
-            Signed in as {email ?? "your PostHog account"}
+            Signed in as {email ?? "your Flind account"}
           </ItemTitle>
         </ItemContent>
         <ItemActions>
@@ -186,15 +186,17 @@ function OnboardingHeader({
         onNext={onNext}
       />
       <div className="no-drag ml-auto flex items-center gap-1">
-        <Button
-          size="xs"
-          variant="link-muted"
-          className="min-h-8 px-2 text-xs opacity-80 hover:opacity-100"
-          onClick={onOpenSupport}
-        >
-          <Lifebuoy size={12} />
-          Get support
-        </Button>
+        {onOpenSupport && (
+          <Button
+            size="xs"
+            variant="link-muted"
+            className="min-h-8 px-2 text-xs opacity-80 hover:opacity-100"
+            onClick={onOpenSupport}
+          >
+            <Lifebuoy size={12} />
+            Get support
+          </Button>
+        )}
         {showSkipSetup && (
           <Button
             size="xs"

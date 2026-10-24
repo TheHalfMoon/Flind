@@ -1,6 +1,6 @@
 import { getAuthIdentity } from "@flind/core/auth/authIdentity";
 import { ToastProvider } from "@flind/quill";
-import { EXTERNAL_LINKS, isNotAuthenticatedError } from "@flind/shared";
+import { isNotAuthenticatedError } from "@flind/shared";
 import { useOptionalAuthenticatedClient } from "@flind/ui/features/auth/authClient";
 import { useAuthStateValue } from "@flind/ui/features/auth/authQueries";
 import { AuthScreen } from "@flind/ui/features/auth/components/AuthScreen";
@@ -39,6 +39,7 @@ import {
   nextLastAllowedProjectId,
 } from "@flind/ui/shell/desktopAccessGate";
 import { ErrorBoundary } from "@flind/ui/shell/ErrorBoundary";
+import { flindExternalUrl } from "@flind/ui/shell/flindExternalLinks";
 import { ensureSession } from "@flind/ui/shell/firstRun";
 import { logger } from "@flind/ui/shell/logger";
 import { openExternalUrl } from "@flind/ui/shell/openExternal";
@@ -255,6 +256,15 @@ function App({ devToolbar }: AppProps) {
             ? "consent"
             : "main";
 
+  const supportUrl = flindExternalUrl("support");
+  const communityUrl = flindExternalUrl("community");
+  const openSupport = supportUrl
+    ? () => openExternalUrl(supportUrl)
+    : undefined;
+  const openCommunity = communityUrl
+    ? () => openExternalUrl(communityUrl)
+    : undefined;
+
   const renderContent = () => {
     if (activeScreen === "onboarding") {
       return (
@@ -263,9 +273,7 @@ function App({ devToolbar }: AppProps) {
           initial={{ opacity: 1 }}
           className="h-full"
         >
-          <OnboardingFlow
-            onOpenSupport={() => openExternalUrl(EXTERNAL_LINKS.discord)}
-          />
+          <OnboardingFlow onOpenSupport={openCommunity} />
         </motion.div>
       );
     }
@@ -273,9 +281,7 @@ function App({ devToolbar }: AppProps) {
     if (activeScreen === "auth") {
       return (
         <motion.div key="auth" initial={{ opacity: 1 }} className="h-full">
-          <AuthScreen
-            onOpenSupport={() => openExternalUrl(EXTERNAL_LINKS.talkToHuman)}
-          />
+          <AuthScreen onOpenSupport={openSupport} />
         </motion.div>
       );
     }
@@ -306,7 +312,7 @@ function App({ devToolbar }: AppProps) {
             }
             onRetry={() => retryDesktopAccessMutation.mutate()}
             onLogout={() => logoutMutation.mutate()}
-            onOpenSupport={() => openExternalUrl(EXTERNAL_LINKS.talkToHuman)}
+            onOpenSupport={openSupport}
           />
         </motion.div>
       );
@@ -317,7 +323,7 @@ function App({ devToolbar }: AppProps) {
         <motion.div key="consent" initial={{ opacity: 1 }} className="h-full">
           <ConsentScreen
             banner={<UpdateBanner variant="compact" />}
-            onOpenSupport={() => openExternalUrl(EXTERNAL_LINKS.discord)}
+            onOpenSupport={openCommunity}
             settingsDialog={<SettingsDialog />}
           />
         </motion.div>
