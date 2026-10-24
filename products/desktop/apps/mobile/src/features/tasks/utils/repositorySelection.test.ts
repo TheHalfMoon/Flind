@@ -63,8 +63,11 @@ describe("repositorySelection", () => {
   });
 
   it.each([
-    [{ installation_id: "42", account: { name: "PostHog" } }, "PostHog"],
-    [{ installation_id: "43" }, "GitHub 43"],
+    [
+      { id: "user-42", kind: "github", installation_id: "42", account: { name: "PostHog" } },
+      "PostHog",
+    ],
+    [{ id: "user-43", kind: "github", installation_id: "43" }, "GitHub 43"],
   ])(
     "builds user integration options with the expected label",
     (integration, integrationLabel) => {

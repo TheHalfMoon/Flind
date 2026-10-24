@@ -228,21 +228,11 @@ describe("TaskSessionView", () => {
       },
     ];
 
-    let renderer: ReturnType<typeof create> | null = null;
-
-    act(() => {
-      renderer = create(
-        createElement(TaskSessionView, {
-          events,
-          isConnecting: false,
-          isThinking: true,
-        }),
-      );
+    const renderer = renderTaskSessionView({
+      events,
+      isConnecting: false,
+      isThinking: true,
     });
-
-    if (!renderer) {
-      throw new Error("Renderer not created");
-    }
 
     act(() => {
       renderer.update(
@@ -254,8 +244,9 @@ describe("TaskSessionView", () => {
       );
     });
 
-    expect(renderer.root.findByType("QuestionCard").props.toolData.status).toBe(
-      "pending",
-    );
+    const question = renderer.root.findAll(
+      (node) => (node.type as unknown as string) === "QuestionCard",
+    )[0];
+    expect(question?.props.toolData.status).toBe("pending");
   });
 });

@@ -2,6 +2,16 @@ import type {
   CloudPermissionOption,
   CloudTaskPermissionRequestUpdate,
 } from "@flind/shared";
+import type {
+  PortableSessionEvent,
+  PortableSessionNotification,
+} from "@flind/core/sessions/portableSessionEvents";
+import type { CloudArtifactRef as CoreCloudArtifactRef } from "@flind/core/sessions/promptContent";
+
+/** Mobile consumes the core's portable event wire format. */
+export type SessionEvent = PortableSessionEvent;
+export type SessionNotification = PortableSessionNotification;
+export type CloudArtifactRef = CoreCloudArtifactRef;
 
 export type TerminalStatus = "completed" | "failed" | "stopped";
 
@@ -10,6 +20,7 @@ export interface SessionNotificationAttachment {
   uri: string;
   fileName: string;
   mimeType?: string;
+  cloudArtifact?: CloudArtifactRef;
 }
 
 export interface PlanEntry {

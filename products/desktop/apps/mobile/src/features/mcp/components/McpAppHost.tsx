@@ -158,7 +158,7 @@ export function McpAppHost(props: McpAppHostProps) {
     return (
       <ErrorCard
         themeColors={themeColors}
-        message={`No installed MCP server named "${parsed.serverName}"`}
+        message={`No installed MCP server named "${parsed.server}"`}
       />
     );
   }
@@ -213,7 +213,7 @@ export function McpAppHost(props: McpAppHostProps) {
         <View
           pointerEvents="none"
           style={[
-            StyleSheet.absoluteFillObject,
+            StyleSheet.absoluteFill,
             { alignItems: "center", justifyContent: "center" },
           ]}
         >
@@ -227,7 +227,7 @@ export function McpAppHost(props: McpAppHostProps) {
     <View className="mb-2">
       <View className="mb-1 flex-row items-center justify-between">
         <Text className="text-[12px] text-gray-10" numberOfLines={1}>
-          {parsed.serverName} · {parsed.toolName}
+          {parsed.server} · {parsed.tool}
         </Text>
         <Pressable
           onPress={() =>
@@ -259,7 +259,7 @@ export function McpAppHost(props: McpAppHostProps) {
           >
             <View className="flex-row items-center justify-between px-4 pb-2">
               <Text className="font-semibold text-[16px] text-gray-12">
-                {parsed.toolName}
+                {parsed.tool}
               </Text>
               <Pressable
                 onPress={() => setDisplayMode("inline")}

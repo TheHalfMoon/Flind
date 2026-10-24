@@ -335,12 +335,12 @@ export function NavDrawer() {
   return (
     <View
       pointerEvents={isOpen ? "auto" : "none"}
-      style={StyleSheet.absoluteFillObject}
+      style={StyleSheet.absoluteFill}
     >
       <Animated.View
         pointerEvents={isOpen ? "auto" : "none"}
         style={[
-          StyleSheet.absoluteFillObject,
+          StyleSheet.absoluteFill,
           { backgroundColor: "rgba(0,0,0,0.4)" },
           backdropStyle,
         ]}
