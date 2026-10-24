@@ -11,7 +11,6 @@ import { Logo } from 'lib/brand'
 import { useResizeObserver } from 'lib/hooks/useResizeObserver'
 import { useThemedHtml } from 'lib/hooks/useThemedHtml'
 import { LemonMarkdown } from 'lib/lemon-ui/LemonMarkdown'
-import { Link } from 'lib/lemon-ui/Link'
 import { WrappingLoadingSkeleton } from 'lib/ui/WrappingLoadingSkeleton/WrappingLoadingSkeleton'
 import { humanFriendlyDuration } from 'lib/utils/durations'
 import { lazyWithRetry } from 'lib/utils/retryImport'
@@ -113,13 +112,13 @@ export function Exporter(props: ExportedData): JSX.Element {
     useEffect(() => {
         if (dashboard && (type === ExportType.Scene || type === ExportType.Embed)) {
             const baseTitle = dashboard.name || 'Dashboard'
-            document.title = whitelabel ? baseTitle : `${baseTitle} • PostHog`
+            document.title = whitelabel ? baseTitle : `${baseTitle} • Flind`
         } else if (insight && (type === ExportType.Scene || type === ExportType.Embed)) {
             const baseTitle = insight.name || insight.derived_name || 'Insight'
-            document.title = whitelabel ? baseTitle : `${baseTitle} • PostHog`
+            document.title = whitelabel ? baseTitle : `${baseTitle} • Flind`
         } else if (notebook && (type === ExportType.Scene || type === ExportType.Embed)) {
             const baseTitle = notebook.title || 'Notebook'
-            document.title = whitelabel ? baseTitle : `${baseTitle} • PostHog`
+            document.title = whitelabel ? baseTitle : `${baseTitle} • Flind`
         }
     }, [dashboard, insight, notebook, type, whitelabel])
 
@@ -146,12 +145,7 @@ export function Exporter(props: ExportedData): JSX.Element {
                     type === ExportType.Scene ? (
                         <div className="SharedDashboard-header">
                             {!whitelabel && (
-                                <Link
-                                    to="https://posthog.com?utm_medium=in-product&utm_campaign=shared-dashboard"
-                                    target="_blank"
-                                >
-                                    <Logo size="xs" />
-                                </Link>
+                                <Logo size="xs" />
                             )}
                             <div className="SharedDashboard-header-title">
                                 <h1 className="mb-2" data-attr="dashboard-item-title">
@@ -167,12 +161,7 @@ export function Exporter(props: ExportedData): JSX.Element {
                             </div>
                         </div>
                     ) : type === ExportType.Embed && !whitelabel ? (
-                        <Link
-                            to="https://posthog.com?utm_medium=in-product&utm_campaign=shared-dashboard"
-                            target="_blank"
-                        >
-                            <Logo size="xs" />
-                        </Link>
+                        <Logo size="xs" />
                     ) : type === ExportType.Image && !whitelabel ? (
                         <>
                             <h1 className="mb-2">{dashboard.name}</h1>
@@ -184,12 +173,7 @@ export function Exporter(props: ExportedData): JSX.Element {
                     <div className="SharedNotebook">
                         {!whitelabel && type === ExportType.Scene && (
                             <div className="SharedDashboard-header">
-                                <Link
-                                    to="https://posthog.com?utm_medium=in-product&utm_campaign=shared-notebook"
-                                    target="_blank"
-                                >
-                                    <Logo size="xs" />
-                                </Link>
+                                <Logo size="xs" />
                                 <div className="SharedDashboard-header-team text-right">
                                     <span className="block">{currentTeam?.name}</span>
                                 </div>
@@ -248,12 +232,7 @@ export function Exporter(props: ExportedData): JSX.Element {
                         {type === ExportType.Image ? <Logo size="xs" /> : null}
                         <div>
                             Made with{' '}
-                            <Link
-                                to="https://posthog.com?utm_medium=in-product&utm_campaign=shared-dashboard"
-                                target="_blank"
-                            >
-                                PostHog — open-source product analytics
-                            </Link>
+                            Flind — open-source product analytics
                         </div>
                     </div>
                 )}
