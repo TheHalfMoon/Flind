@@ -18,7 +18,7 @@ export type SessionActivityEvent =
 export interface SessionActivityState {
   isPromptPending?: boolean;
   awaitingAgentOutput?: boolean;
-  terminalStatus?: "failed" | "completed";
+  terminalStatus?: "failed" | "completed" | "stopped";
   events?: readonly SessionActivityEvent[];
 }
 

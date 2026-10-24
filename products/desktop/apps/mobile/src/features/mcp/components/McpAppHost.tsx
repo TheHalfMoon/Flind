@@ -4,7 +4,14 @@ import type { CallToolResult } from "@modelcontextprotocol/sdk/types.js";
 import { isSafeExternalUrl, parseMcpToolName } from "@flind/shared";
 import * as WebBrowser from "expo-web-browser";
 import { ArrowsIn, ArrowsOut, Warning } from "phosphor-react-native";
-import { useCallback, useMemo, useRef, useState } from "react";
+import {
+  type ComponentType,
+  type RefAttributes,
+  useCallback,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import {
   ActivityIndicator,
   Modal,
@@ -15,6 +22,10 @@ import {
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import WebView, { type WebViewMessageEvent } from "react-native-webview";
+import type {
+  AndroidWebViewProps,
+  IOSWebViewProps,
+} from "react-native-webview/lib/WebViewTypes";
 import { logger } from "@/lib/logger";
 import { useThemeColors } from "@/lib/theme";
 import { useMcpInstallations } from "../hooks";
@@ -34,6 +45,16 @@ interface McpAppHostProps {
 }
 
 const log = logger.scope("McpAppHost");
+
+/**
+ * The dependency's root type intersects mutually exclusive iOS/Android/Windows
+ * props (yielding never); React Native loads the platform-specific WebView.
+ * Keep the runtime WebView untouched but expose its mobile platform union
+ * to this host's JSX. Native-device qualification remains required.
+ */
+const MobilePlatformWebView = WebView as unknown as ComponentType<
+  (IOSWebViewProps | AndroidWebViewProps) & RefAttributes<WebView>
+>;
 
 const INLINE_MIN_HEIGHT = 180;
 const INLINE_MAX_HEIGHT = 520;
@@ -195,7 +216,7 @@ export function McpAppHost(props: McpAppHostProps) {
         height: displayMode === "fullscreen" ? "100%" : inlineHeight,
       }}
     >
-      <WebView
+      <MobilePlatformWebView
         ref={webViewRef}
         originWhitelist={["*"]}
         source={{ html: sandboxProxyHtml }}

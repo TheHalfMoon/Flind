@@ -1,28 +1,4 @@
 {
   "note": "Pre-existing apps/mobile type errors, counted per file and message. Remove entries as you fix them. Goal: empty.",
-  "files": {
-    "src/app/mcp-servers/add-custom.tsx": {
-      "TS2322 Type '\"none\"' is not assignable to type 'MCPAuthTypeEnum'.": 1,
-      "TS2345 Argument of type '\"none\"' is not assignable to parameter of type 'MCPAuthTypeEnum | (() => MCPAuthTypeEnum)'.": 1
-    },
-    "src/app/task/[id].tsx": {
-      "TS2322 Type 'TaskSession | undefined' is not assignable to type 'SessionActivityState | null | undefined'.": 1
-    },
-    "src/features/mcp/components/McpAppHost.tsx": {
-      "TS2769 No overload matches this call.": 1
-    },
-    "src/features/mcp/hooks.ts": {
-      "TS2345 Argument of type 'InstallCustomMcpServerOptions' is not assignable to parameter of type '{ name: string; url: string; auth_type: MCPAuthTypeEnum; api_key?: string | undefined; description?: string | undefined; client_id?: string | undefined; client_secret?: string | undefined; install_source?: \"posthog\" | ... 1 more ... | undefined; posthog_code_callback_url?: string | undefined; } & McpGatewayInstallSh...'.": 1,
-      "TS2345 Argument of type 'InstallMcpTemplateOptions' is not assignable to parameter of type '{ template_id: string; api_key?: string | undefined; install_source?: \"posthog\" | \"posthog-code\" | undefined; posthog_code_callback_url?: string | undefined; } & McpGatewayInstallSharingOptions'.": 1,
-      "TS2345 Argument of type '{ installation_id: string; install_source?: \"posthog\" | \"posthog-code\" | \"posthog-mobile\" | undefined; posthog_code_callback_url?: string | undefined; }' is not assignable to parameter of type '{ installation_id: string; install_source?: \"posthog\" | \"posthog-code\" | undefined; posthog_code_callback_url?: string | undefined; }'.": 1
-    },
-    "src/features/tasks/components/PlanApprovalCard.tsx": {
-      "TS2345 Argument of type 'CloudPermissionOption' is not assignable to parameter of type 'PermissionOption'.": 3
-    },
-    "src/features/tasks/hooks/useIntegrations.ts": {
-      "TS2345 Argument of type '{ [key: string]: unknown; kind: string; id: string | number; }[]' is not assignable to parameter of type 'Integration[]'.": 1,
-      "TS2345 Argument of type '{ data: { integrationId: string | number; repos: any; }; isPending: boolean; isError: false; isRefetching: boolean; }[]' is not assignable to parameter of type 'readonly RepositoryQueryResult<TeamRepositoriesResult>[]'.": 1,
-      "TS7015 Element implicitly has an 'any' type because index expression is not of type 'number'.": 2
-    }
-  }
+  "files": {}
 }

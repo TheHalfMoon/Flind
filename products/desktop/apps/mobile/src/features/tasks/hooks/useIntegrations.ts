@@ -6,6 +6,7 @@ import { getPostHogApiClient } from "@/lib/posthogApiClient";
 import { useRepositoryCacheStore } from "../stores/repositoryCacheStore";
 import {
   buildRepositoryOptions,
+  normalizeLegacyGithubIntegrations,
   repositoryLoadWarning,
   repositoryOptionsEqual,
 } from "../utils/repositorySelection";
@@ -40,7 +41,7 @@ export function useIntegrations(options: UseIntegrationsOptions = {}) {
     queryKey: integrationKeys.github(),
     queryFn: async () => {
       const data = await getPostHogApiClient().getIntegrations();
-      return data.filter((i) => i.kind === "github");
+      return normalizeLegacyGithubIntegrations(data);
     },
     enabled: enabled && !!projectId && !!oauthAccessToken,
   });

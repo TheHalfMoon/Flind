@@ -15,7 +15,7 @@ export type McpInstallationTool = Schemas.MCPServerInstallationTool & {
   decided_by?: "rule" | "scope" | "team" | "preset" | "legacy" | "default";
 };
 export type McpOAuthRedirectResponse = Schemas.OAuthRedirectResponse;
-export type McpInstallSource = "posthog" | "posthog-code" | "posthog-mobile";
+export type McpInstallSource = "posthog" | "posthog-code";
 export type McpInstallResponse =
   | McpServerInstallation
   | McpOAuthRedirectResponse;

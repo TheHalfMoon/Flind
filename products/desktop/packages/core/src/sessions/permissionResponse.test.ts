@@ -42,6 +42,21 @@ describe("permission option presentation", () => {
     });
   });
 
+  it("renders a forward-compatible cloud permission option without widening ACP approval rules", () => {
+    const cloud = {
+      optionId: "reject_custom",
+      name: "Reject and explain",
+      kind: "cloud_future_rejection_kind",
+      _meta: { customInput: true, description: "Why?" },
+    };
+    expect(getPermissionOptionMeta(cloud)).toEqual({
+      customInput: true,
+      description: "Why?",
+    });
+    expect(isPermissionRejection(cloud)).toBe(true);
+    expect(permissionOptionUsesCustomInput(cloud)).toBe(true);
+  });
+
   it("selects plan options and prefers a feedback rejection", () => {
     expect(selectPlanPermissionOptions([approveOnce, reject])).toEqual({
       approvals: [approveOnce],

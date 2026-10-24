@@ -5,6 +5,51 @@ import type {
   UserGithubIntegration,
 } from "../types";
 
+/** Normalize legacy environment-scoped integration IDs for the numeric
+ * repository-picker contract. User-scoped UUID integrations have their own
+ * path (buildUserRepositoryOptions) and must not be coerced to NaN. */
+export function normalizeLegacyGithubIntegrations(
+  items: readonly {
+    kind: string;
+    id: number | string;
+    [key: string]: unknown;
+  }[],
+): Integration[] {
+  return items.flatMap((item) => {
+    if (item.kind !== "github") return [];
+    const id =
+      typeof item.id === "number"
+        ? item.id
+        : /^[1-9][0-9]*$/.test(item.id)
+          ? Number(item.id)
+          : Number.NaN;
+    if (!Number.isSafeInteger(id) || id <= 0) return [];
+    const display_name =
+      typeof item.display_name === "string" ? item.display_name : undefined;
+    const rawConfig = item.config;
+    const account =
+      typeof rawConfig === "object" &&
+      rawConfig !== null &&
+      "account" in rawConfig
+        ? rawConfig.account
+        : undefined;
+    const login =
+      typeof account === "object" && account !== null && "login" in account
+        ? account.login
+        : undefined;
+    return [
+      {
+        id,
+        kind: "github",
+        display_name,
+        ...(typeof login === "string"
+          ? { config: { account: { login } } }
+          : {}),
+      },
+    ];
+  });
+}
+
 function getIntegrationLabel(integration: Integration): string {
   return (
     integration.display_name ??

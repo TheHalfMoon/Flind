@@ -103,6 +103,15 @@ describe("countUserMessages", () => {
 });
 
 describe("getSessionActivityPhase", () => {
+  it("treats a stopped run as terminal and idle, like completed and failed", () => {
+    expect(
+      getSessionActivityPhase({
+        retrying: false,
+        session: { isPromptPending: true, terminalStatus: "stopped" },
+      }),
+    ).toBe("idle");
+  });
+
   it.each([
     ["retrying", true, undefined, "connecting"],
     [

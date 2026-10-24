@@ -6,6 +6,7 @@ uses external services. Build prerequisites in dependency order, then run
 the original Vitest suites and TypeScript gates. Use --skip-build for reruns.
 """
 import argparse
+import json
 import os
 from pathlib import Path
 import shutil
@@ -68,7 +69,15 @@ def main() -> int:
             print(f"\nNO-GO: stopped at {label}; no later gate was marked PASS.")
             return 1
     print("\nPASS: both mobile local TypeScript gates and both original Vitest suites.")
-    print("NOTE: apps/mobile TypeScript gate uses a baseline; it is NOT error-free.")
+    baseline = json.loads((DESKTOP / "scripts/mobile-type-baseline.json").read_text())
+    remaining = sum(
+        count for by_error in baseline.get("files", {}).values()
+        for count in by_error.values()
+    )
+    if remaining:
+        print(f"NOTE: mobile has {remaining} inherited TypeScript error(s) in its baseline.")
+    else:
+        print("PASS: Mobile TypeScript baseline is empty; tsc reports zero errors.")
     print("NO-GO release until device, server, OAuth, SDK and storage tests pass.")
     return 0
 

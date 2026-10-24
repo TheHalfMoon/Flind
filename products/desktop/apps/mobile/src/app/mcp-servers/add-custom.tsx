@@ -21,8 +21,9 @@ import { useThemeColors } from "@/lib/theme";
 
 const log = logger.scope("mcp-add-custom");
 
+// The backend install_custom contract only supports API key or OAuth;
+// do not offer a "None" choice that the server cannot accept.
 const AUTH_OPTIONS: { value: McpAuthType; label: string }[] = [
-  { value: "none", label: "None" },
   { value: "api_key", label: "API key" },
   { value: "oauth", label: "OAuth" },
 ];
@@ -35,7 +36,7 @@ export default function AddCustomMcpServerScreen() {
   const [name, setName] = useState("");
   const [url, setUrl] = useState("");
   const [description, setDescription] = useState("");
-  const [authType, setAuthType] = useState<McpAuthType>("none");
+  const [authType, setAuthType] = useState<McpAuthType>("oauth");
   const [apiKey, setApiKey] = useState("");
   const [clientId, setClientId] = useState("");
   const [clientSecret, setClientSecret] = useState("");

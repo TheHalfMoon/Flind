@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   buildRepositoryOptions,
   buildUserRepositoryOptions,
+  normalizeLegacyGithubIntegrations,
   findRepositoryOption,
   isRepositorySelectionComplete,
   repositoryLoadWarning,
@@ -10,6 +11,29 @@ import {
 } from "./repositorySelection";
 
 describe("repositorySelection", () => {
+  it("normalizes numeric legacy GitHub IDs without accepting UUIDs or malformed IDs", () => {
+    expect(
+      normalizeLegacyGithubIntegrations([
+        { id: "42", kind: "github", display_name: "Flind" },
+        { id: 7, kind: "github", config: { account: { login: "operator" } } },
+        { id: "uuid-1", kind: "github", display_name: "Unknown" },
+        { id: "0042", kind: "github" },
+        { id: "3.5", kind: "github" },
+        { id: 0, kind: "github" },
+        { id: Number.MAX_SAFE_INTEGER + 1, kind: "github" },
+        { id: 4, kind: "google" },
+      ]),
+    ).toEqual([
+      { id: 42, kind: "github", display_name: "Flind" },
+      {
+        id: 7,
+        kind: "github",
+        display_name: undefined,
+        config: { account: { login: "operator" } },
+      },
+    ]);
+  });
+
   const integrations = [
     { id: 7, kind: "github", display_name: "Personal GitHub" },
     {
@@ -64,7 +88,12 @@ describe("repositorySelection", () => {
 
   it.each([
     [
-      { id: "user-42", kind: "github", installation_id: "42", account: { name: "PostHog" } },
+      {
+        id: "user-42",
+        kind: "github",
+        installation_id: "42",
+        account: { name: "PostHog" },
+      },
       "PostHog",
     ],
     [{ id: "user-43", kind: "github", installation_id: "43" }, "GitHub 43"],

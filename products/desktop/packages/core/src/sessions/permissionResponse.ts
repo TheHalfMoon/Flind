@@ -1,9 +1,16 @@
 import type { SessionConfigOption } from "@agentclientprotocol/sdk";
-import { flattenSelectOptions, type PermissionRequest } from "@flind/shared";
+import {
+  type CloudPermissionOption,
+  flattenSelectOptions,
+  type PermissionRequest,
+} from "@flind/shared";
 
 export type PermissionOption = PermissionRequest["options"][number];
 
-export function getPermissionOptionMeta(option: PermissionOption): {
+/** Cloud streams permit forward-compatible option kinds, unlike ACP's enum. */
+export type PermissionOptionDisplay = PermissionOption | CloudPermissionOption;
+
+export function getPermissionOptionMeta(option: PermissionOptionDisplay): {
   customInput: boolean;
   description?: string;
 } {
@@ -21,7 +28,9 @@ export function isPermissionApproval(option: PermissionOption): boolean {
   return option.kind === "allow_once" || option.kind === "allow_always";
 }
 
-export function isPermissionRejection(option: PermissionOption): boolean {
+export function isPermissionRejection(
+  option: PermissionOptionDisplay,
+): boolean {
   return (
     option.kind === "reject_once" ||
     option.kind === "reject_always" ||
@@ -30,7 +39,7 @@ export function isPermissionRejection(option: PermissionOption): boolean {
 }
 
 export function permissionOptionUsesCustomInput(
-  option: PermissionOption,
+  option: PermissionOptionDisplay,
 ): boolean {
   return (
     isOtherPermissionOption(option.optionId) ||

@@ -96,7 +96,7 @@ export function useAuthorizeMcpInstallation() {
   return useMutation({
     mutationFn: (args: {
       installation_id: string;
-      install_source?: "posthog" | "posthog-code" | "posthog-mobile";
+      install_source?: "posthog" | "posthog-code";
       posthog_code_callback_url?: string;
     }) => getPostHogApiClient().authorizeMcpInstallation(args),
   });
