@@ -1,7 +1,4 @@
-use posthog_cli::{
-    cmd, invocation_context::init_posthog_telemetry, safe_eprintln,
-    utils::broken_pipe::BrokenPipeSafeStderr,
-};
+use posthog_cli::{cmd, safe_eprintln, utils::broken_pipe::BrokenPipeSafeStderr};
 
 fn main() {
     let subscriber = tracing_subscriber::fmt()
@@ -14,14 +11,10 @@ fn main() {
         .finish();
 
     tracing::subscriber::set_global_default(subscriber).expect("Failed to set tracing subscriber");
-    init_posthog_telemetry();
 
     let result = cmd::Cli::run();
-    posthog_rs::flush();
-
     match result {
-        // A child process (the `api` proxy) failed: telemetry is flushed above,
-        // so exiting with the child's code here no longer loses events.
+        // A child process (the `api` proxy) failed; preserve its exit code.
         Ok(Some(code)) if code != 0 => std::process::exit(code),
         Ok(_) => {}
         Err(e) => {

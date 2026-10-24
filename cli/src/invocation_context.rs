@@ -1,9 +1,9 @@
-use anyhow::Result;
+use anyhow::{Context, Result};
 use inquire::{
     validator::{ErrorMessage, Validation},
     CustomUserError,
 };
-use posthog_rs::{ErrorTrackingOptionsBuilder, Event};
+use posthog_rs::Event;
 use reqwest::blocking::Client;
 use std::{
     io::{self, IsTerminal},
@@ -115,23 +115,6 @@ fn is_broken_pipe_panic(event: &Event) -> bool {
     })
 }
 
-fn apply_telemetry_properties(event: &mut Event) {
-    let _ = event.insert_prop("cli_version", env!("CARGO_PKG_VERSION"));
-    let _ = event.insert_prop("invocation_id", telemetry_invocation_id());
-    let _ = event.insert_prop("is_ci", std::env::var_os("CI").is_some());
-    let _ = event.insert_prop("is_terminal", telemetry_is_terminal());
-    let _ = event.insert_prop("os", std::env::consts::OS);
-    let _ = event.insert_prop("arch", std::env::consts::ARCH);
-
-    if let Some(command_name) = telemetry_command_name() {
-        let _ = event.insert_prop("command_name", command_name);
-    }
-
-    if let Some(env_id) = telemetry_env_id() {
-        let _ = event.insert_prop("env_id", env_id);
-    }
-}
-
 fn telemetry_invocation_id() -> String {
     telemetry_context()
         .lock()
@@ -184,39 +167,13 @@ pub fn context() -> &'static InvocationContext {
     INVOCATION_CONTEXT.get().expect("Context has been set up")
 }
 
-pub fn init_posthog_telemetry() {
-    let Some(token) = option_env!("POSTHOG_API_TOKEN") else {
-        debug!("Posthog api token not set at build time - is this a debug build?");
-        return;
-    };
-
-    let error_tracking = ErrorTrackingOptionsBuilder::default()
-        .capture_panics(true)
-        .build()
-        .expect("Building error tracking config succeeds");
-    let ph_config = posthog_rs::ClientOptionsBuilder::default()
-        .api_key(token.to_string())
-        .request_timeout_seconds(5) // It's a CLI, 5 seconds is an eternity
-        .error_tracking(error_tracking)
-        .before_send(|mut event| {
-            if is_broken_pipe_panic(&event) {
-                return None;
-            }
-            apply_telemetry_properties(&mut event);
-            Some(event)
-        })
-        .build()
-        .expect("Building PH config succeeds");
-
-    match posthog_rs::init_global(ph_config) {
-        Ok(()) => {}
-        Err(posthog_rs::Error::AlreadyInitialized) => {
-            debug!("PostHog client already initialized");
-        }
-        Err(err) => {
-            debug!("PostHog client unavailable: {err:?}");
-        }
-    }
+fn configured_api_host(
+    override_host: Option<String>,
+    saved_host: Option<String>,
+) -> Result<String> {
+    override_host.or(saved_host).context(
+        "Flind CLI API host is not configured. Specify an approved --host or store a Flind instance host.",
+    )
 }
 
 pub fn init_context(
@@ -228,7 +185,7 @@ pub fn init_context(
     let token = get_token(env_file)?;
     let config = InvocationConfig {
         api_key: token.token.clone(),
-        host: host.unwrap_or(token.host.unwrap_or("https://us.i.posthog.com".into())),
+        host: configured_api_host(host, token.host)?,
         env_id: token.env_id.clone(),
         skip_ssl,
         rate_limit: rate_limit.unwrap_or(480),
@@ -335,7 +292,6 @@ impl InvocationContext {
             .unwrap()
             .drain(..)
             .for_each(|handle| handle.join().unwrap());
-        posthog_rs::flush();
     }
 }
 
@@ -352,6 +308,19 @@ mod tests {
             )
             .unwrap();
         event
+    }
+
+    #[test]
+    fn api_host_never_defaults_to_inherited_ingestion_endpoint() {
+        assert!(configured_api_host(None, None).is_err());
+        assert_eq!(
+            configured_api_host(Some("https://my.flind.example".into()), None).unwrap(),
+            "https://my.flind.example"
+        );
+        assert_eq!(
+            configured_api_host(None, Some("http://localhost:8000".into())).unwrap(),
+            "http://localhost:8000"
+        );
     }
 
     #[test]
