@@ -5,19 +5,8 @@
       "TS2322 Type '\"none\"' is not assignable to type 'MCPAuthTypeEnum'.": 1,
       "TS2345 Argument of type '\"none\"' is not assignable to parameter of type 'MCPAuthTypeEnum | (() => MCPAuthTypeEnum)'.": 1
     },
-    "src/app/mcp-servers/installation/[id].tsx": {
-      "TS2559 Type 'McpServerInstallation' has no properties in common with type '{ transport_type?: string | null | undefined; }'.": 1
-    },
-    "src/app/mcp-servers/template/[id].tsx": {
-      "TS2559 Type 'MCPServerTemplate' has no properties in common with type '{ transport_type?: string | null | undefined; }'.": 1
-    },
     "src/app/task/[id].tsx": {
       "TS2322 Type 'TaskSession | undefined' is not assignable to type 'SessionActivityState | null | undefined'.": 1
-    },
-    "src/features/inbox/components/DiffBlock.tsx": {
-      "TS2305 Module '\"@flind/core/inbox/activityLog\"' has no exported member 'parseDiffLines'.": 1,
-      "TS7006 Parameter 'i' implicitly has an 'any' type.": 1,
-      "TS7006 Parameter 'line' implicitly has an 'any' type.": 1
     },
     "src/features/mcp/components/McpAppHost.tsx": {
       "TS2339 Property 'resource' does not exist on type 'NonNullable<NoInfer<TQueryFnData>>'.": 1,
@@ -26,10 +15,6 @@
       "TS2339 Property 'toolName' does not exist on type '{ server: string; tool: string; }'.": 2,
       "TS2551 Property 'absoluteFillObject' does not exist on type 'typeof StyleSheet'. Did you mean 'absoluteFill'?": 1,
       "TS2769 No overload matches this call.": 1
-    },
-    "src/features/mcp/components/McpServerRow.tsx": {
-      "TS2559 Type 'MCPServerTemplate' has no properties in common with type '{ transport_type?: string | null | undefined; }'.": 1,
-      "TS2559 Type 'McpServerInstallation' has no properties in common with type '{ transport_type?: string | null | undefined; }'.": 1
     },
     "src/features/mcp/hooks.ts": {
       "TS2345 Argument of type 'InstallCustomMcpServerOptions' is not assignable to parameter of type '{ name: string; url: string; auth_type: MCPAuthTypeEnum; api_key?: string | undefined; description?: string | undefined; client_id?: string | undefined; client_secret?: string | undefined; install_source?: \"posthog\" | ... 1 more ... | undefined; posthog_code_callback_url?: string | undefined; } & McpGatewayInstallSh...'.": 1,
