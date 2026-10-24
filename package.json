@@ -1,16 +1,17 @@
 {
-    "name": "@posthog/root",
+    "name": "@flind/root",
+    "private": true,
     "version": "0.0.0",
-    "description": "",
-    "homepage": "https://github.com/posthog/posthog#readme",
+    "description": "Flind product analytics and observability workspace",
+    "homepage": "https://github.com/TheHalfMoon/Flind",
     "bugs": {
-        "url": "https://github.com/posthog/posthog/issues"
+        "url": "https://github.com/TheHalfMoon/Flind/issues"
     },
     "license": "MIT",
-    "author": "PostHog Inc.",
+    "author": "Flind Contributors",
     "repository": {
         "type": "git",
-        "url": "https://github.com/posthog/posthog.git"
+        "url": "https://github.com/TheHalfMoon/Flind.git"
     },
     "browser": {
         "path": "path-browserify"
@@ -22,7 +23,7 @@
         "schema:build:python": "bash bin/build-schema-python.sh",
         "grammar:build": "pnpm grammar:build:cpp",
         "grammar:build:cpp": "cd posthog/hogql/grammar && cat HogQLLexer.cpp.g4 > HogQLLexer.g4 && tail -n +2 HogQLLexer.common.g4 >> HogQLLexer.g4 && antlr -o ../../../common/hogql_parser -Dlanguage=Cpp HogQLLexer.g4 && rm HogQLLexer.g4 && antlr -o ../../../common/hogql_parser -visitor -no-listener -Dlanguage=Cpp HogQLParser.g4",
-        "build:products": "pnpm --filter=@posthog/frontend run build:products",
+        "build:products": "pnpm --filter=@flind/frontend run build:products",
         "generate:source-configs": "DEBUG=1 python manage.py generate_source_configs",
         "// DEPRECATED - use hogli migrations:run instead": "",
         "dev:migrate:postgres": "export DEBUG=1 && source env/bin/activate && python manage.py migrate",
@@ -47,7 +48,7 @@
         "lint": "pnpm lint:js && pnpm lint:css",
         "lint:js": "oxlint --quiet",
         "lint:css": "stylelint \"(frontend|products)/**/*.{css,scss}\" --ignore-pattern \"products/desktop/**\"",
-        "test:unit": "pnpm --filter=@posthog/frontend test"
+        "test:unit": "pnpm --filter=@flind/frontend test"
     },
     "dependencies": {
         "concurrently": "catalog:",

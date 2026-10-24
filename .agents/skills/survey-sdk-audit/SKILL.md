@@ -318,7 +318,7 @@ Before finishing the audit, verify all steps are complete:
 - [ ] **Search for existing issues** - Before creating new ones
 - [ ] **Create GitHub issues** - For any unsupported SDKs (with proper labels)
 - [ ] **Update surveyVersionRequirements.ts** - Fix versions and add issue links to unsupportedSdks
-- [ ] **Regenerate SDK parity docs** - Run `pnpm --filter=@posthog/frontend build:survey-sdk-docs` to update `docs/published/docs/surveys/sdk-feature-support.mdx`
+- [ ] **Regenerate SDK parity docs** - Run `pnpm --filter=@flind/frontend build:survey-sdk-docs` to update `docs/published/docs/surveys/sdk-feature-support.mdx`
 - [ ] **Backfill sibling links** - After all issues are created, update each issue's Related section so every issue links every sibling (see Backfill Sibling Links)
 
 ## Common Pitfalls

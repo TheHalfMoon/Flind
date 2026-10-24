@@ -65,8 +65,8 @@ class TestDetectTestType:
 
     @parameterized.expand(
         [
-            ("frontend/src/scenes/dashboard/Dashboard.test.tsx", "@posthog/frontend"),
-            ("frontend/src/lib/utils.test.ts", "@posthog/frontend"),
+            ("frontend/src/scenes/dashboard/Dashboard.test.tsx", "@flind/frontend"),
+            ("frontend/src/lib/utils.test.ts", "@flind/frontend"),
         ]
     )
     def test_frontend_jest(self, file_path: str, expected_filter: str) -> None:
@@ -83,7 +83,7 @@ class TestDetectTestType:
     def test_product_frontend_jest_routes_to_frontend(self, file_path: str) -> None:
         config = detect_test_type(file_path)
         assert config.test_type == "jest"
-        assert config.command == ["pnpm", "--filter=@posthog/frontend", "exec", "jest", file_path]
+        assert config.command == ["pnpm", "--filter=@flind/frontend", "exec", "jest", file_path]
 
     @parameterized.expand(
         [
@@ -150,7 +150,7 @@ class TestDetectTestType:
         assert config.test_type == "jest"
         assert config.command == [
             "pnpm",
-            "--filter=@posthog/frontend",
+            "--filter=@flind/frontend",
             "exec",
             "jest",
             "frontend/src/lib/utils.test.ts",
@@ -286,7 +286,7 @@ class TestDetectTestType:
     def test_jest_directory(self) -> None:
         config = detect_test_type("frontend/src/scenes/dashboard")
         assert config.test_type == "jest"
-        assert config.command[:4] == ["pnpm", "--filter=@posthog/frontend", "exec", "jest"]
+        assert config.command[:4] == ["pnpm", "--filter=@flind/frontend", "exec", "jest"]
 
     def test_playwright_directory(self) -> None:
         config = detect_test_type("playwright/e2e")
@@ -484,8 +484,8 @@ class TestRunChanged:
 
         assert mock_run.call_count == 2
         commands = [call[0][0] for call in mock_run.call_args_list]
-        # One call for @posthog/frontend, one for @posthog/nodejs
-        frontend_cmd = next(c for c in commands if "--filter=@posthog/frontend" in c)
+        # One call for @flind/frontend, one for @posthog/nodejs
+        frontend_cmd = next(c for c in commands if "--filter=@flind/frontend" in c)
         nodejs_cmd = next(c for c in commands if "--filter=@posthog/nodejs" in c)
         assert "frontend/src/scenes/dashboard/Dashboard.test.tsx" in frontend_cmd
         assert "frontend/src/lib/utils.test.ts" in frontend_cmd
@@ -576,7 +576,7 @@ class TestRunGrouped:
         _run_grouped(detected, [])
         assert mock_run.call_count == 2
         commands = [call[0][0] for call in mock_run.call_args_list]
-        frontend_cmd = next(c for c in commands if "--filter=@posthog/frontend" in c)
+        frontend_cmd = next(c for c in commands if "--filter=@flind/frontend" in c)
         nodejs_cmd = next(c for c in commands if "--filter=@posthog/nodejs" in c)
         assert "frontend/src/scenes/dashboard/Dashboard.test.tsx" in frontend_cmd
         assert "frontend/src/lib/utils.test.ts" in frontend_cmd

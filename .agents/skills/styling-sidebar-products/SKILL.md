@@ -85,7 +85,7 @@ Avoid the gradient families above, so a product does not look like it belongs to
 
 Categories are values of `ProductItemCategory`, and the backend reads them through `products.json`.
 After renaming or adding one, update `CATEGORY_ORDER` in `productsCatalog.ts`, update the old nav's `CATEGORY_ORDER` in `ProjectTree/utils.tsx`, and update `test_get_products_by_category_has_expected_categories` in `posthog/test/test_products.py`.
-Then run `hogli build:schema` and `pnpm --filter=@posthog/frontend build:products`.
+Then run `hogli build:schema` and `pnpm --filter=@flind/frontend build:products`.
 
 Popular is sidebar-only. It lives in `POPULAR_PRODUCT_PATHS` and does not change a product's real category.
 Pages that are tabs of another page, like the definitions tabs, stay in their manifest but are hidden in `navProductsTabLogic.ts`.

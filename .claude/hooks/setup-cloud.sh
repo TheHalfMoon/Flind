@@ -26,11 +26,11 @@ fi
 uv sync --quiet || echo "Warning: uv sync failed, Python tests and linters are unavailable" >&2
 
 # '.' carries the shared JS tooling (oxlint, oxfmt, stylelint, tsgo) and husky.
-# '@posthog/frontend...' adds the frontend and the product packages it depends on,
+# '@flind/frontend...' adds the frontend and the product packages it depends on,
 # which is what jest needs to collect and run the suite.
 # The nodejs/ (plugin-server) workspace stays out on purpose: it pulls uWebSockets.js
 # from codeload.github.com, which the sandbox egress policy blocks.
-pnpm install --frozen-lockfile --prefer-offline --filter=. --filter=@posthog/frontend... || \
+pnpm install --frozen-lockfile --prefer-offline --filter=. --filter=@flind/frontend... || \
     echo "Warning: pnpm install failed, frontend tests and linters are unavailable" >&2
 
 # Put the project venv ahead of the sandbox's unrelated global python tools, so

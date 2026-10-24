@@ -731,7 +731,7 @@ jobs:
             - name: Install package.json dependencies with pnpm
               run: |
                   pnpm --filter=@posthog/playwright... install --frozen-lockfile
-                  bin/turbo --filter=@posthog/frontend prepare
+                  bin/turbo --filter=@flind/frontend prepare
 
             - name: Log in to Docker Hub
               continue-on-error: true
@@ -771,15 +771,15 @@ jobs:
 
             - name: Build frontend
               run: |
-                  pnpm --filter=@posthog/frontend... install --frozen-lockfile
-                  pnpm --filter=@posthog/frontend build:products
-                  pnpm --filter=@posthog/frontend build
+                  pnpm --filter=@flind/frontend... install --frozen-lockfile
+                  pnpm --filter=@flind/frontend build:products
+                  pnpm --filter=@flind/frontend build
 
             - name: Collect static files without compression
               # The image-bitmap-data-url-worker-*.js.map files are already mirrored
               # into frontend/dist/ by copyRRWebWorkerFiles() in frontend/build.mjs
               # (see common/esbuilder/utils.mjs), which runs as part of the
-              # `pnpm --filter=@posthog/frontend build` step above. No extra cp needed.
+              # `pnpm --filter=@flind/frontend build` step above. No extra cp needed.
               env:
                   STATIC_PRECOMPRESS: '0'
               run: python manage.py collectstatic --noinput

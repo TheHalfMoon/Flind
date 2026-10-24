@@ -162,9 +162,9 @@ export const fooLogic = kea<fooLogicType>([...])
 
 Inline type blocks are produced by `kea-typegen` 3.8.3. Commands:
 
-- `pnpm --filter=@posthog/frontend typegen:watch` — watch mode while writing logics
-- `pnpm --filter=@posthog/frontend typegen:write` — one-shot write
-- `pnpm --filter=@posthog/frontend typegen:check` — CI parity check
+- `pnpm --filter=@flind/frontend typegen:watch` — watch mode while writing logics
+- `pnpm --filter=@flind/frontend typegen:write` — one-shot write
+- `pnpm --filter=@flind/frontend typegen:check` — CI parity check
 
 ### Iterating on one logic
 
@@ -173,7 +173,7 @@ logic, scope typegen to that file:
 
 ```sh
 # Regenerate the type for one logic
-pnpm --filter=@posthog/frontend typegen:file frontend/src/scenes/foo/fooLogic.ts
+pnpm --filter=@flind/frontend typegen:file frontend/src/scenes/foo/fooLogic.ts
 ```
 
 Use this loop while writing the logic. The current `tsgo` does not support combining

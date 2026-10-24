@@ -132,4 +132,4 @@ Add `?empty_state=1` to the scene URL to pull up the setup screen on a project t
 - Loading never flashes the real scene or the empty dashboard.
 - Skip → scene renders immediately, persists across reload, "Set up" banner shows, onboarding redirect suppressed.
 - Non-adopting scenes unaffected (the gate is a strict no-op without `emptyState`).
-- `pnpm --filter=@posthog/frontend typescript:check`, storybook snapshots stable.
+- `pnpm --filter=@flind/frontend typescript:check`, storybook snapshots stable.

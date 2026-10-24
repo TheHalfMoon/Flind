@@ -1,16 +1,17 @@
 {
-    "name": "@posthog/frontend",
+    "name": "@flind/frontend",
+    "private": true,
     "version": "0.0.0",
-    "description": "",
-    "homepage": "https://github.com/posthog/posthog#readme",
+    "description": "Flind web application",
+    "homepage": "https://github.com/TheHalfMoon/Flind",
     "bugs": {
-        "url": "https://github.com/posthog/posthog/issues"
+        "url": "https://github.com/TheHalfMoon/Flind/issues"
     },
     "license": "MIT",
-    "author": "PostHog Inc.",
+    "author": "Flind Contributors",
     "repository": {
         "type": "git",
-        "url": "https://github.com/posthog/posthog.git"
+        "url": "https://github.com/TheHalfMoon/Flind.git"
     },
     "browser": {
         "path": "path-browserify"

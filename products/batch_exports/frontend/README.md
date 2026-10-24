@@ -76,7 +76,7 @@ depend on the data logic, not the form logic.
 ### Kea logic tests
 
 ```sh
-pnpm --filter=@posthog/frontend jest batchExportConfigFormLogic --no-coverage
+pnpm --filter=@flind/frontend jest batchExportConfigFormLogic --no-coverage
 ```
 
 Covers: default configuration per service, required field validation, S3 bucket name validation, create/update flows, and API loading.

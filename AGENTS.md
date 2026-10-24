@@ -23,10 +23,10 @@
 - Lint:
   - Python:
     - `ruff check . --fix` and `ruff format .`
-  - Frontend: `pnpm --filter=@posthog/frontend fix` (safe Oxlint fixes + Oxfmt; suggestion fixes are not applied). `format` runs Oxfmt only; `lint` and `format:check` only verify.
-  - TypeScript check: `pnpm --filter=@posthog/frontend typescript:check`
+  - Frontend: `pnpm --filter=@flind/frontend fix` (safe Oxlint fixes + Oxfmt; suggestion fixes are not applied). `format` runs Oxfmt only; `lint` and `format:check` only verify.
+  - TypeScript check: `pnpm --filter=@flind/frontend typescript:check`
 - Build:
-  - Frontend: `pnpm --filter=@posthog/frontend build`
+  - Frontend: `pnpm --filter=@flind/frontend build`
   - Start dev: `./bin/start` or `hogli start` (interactive TUI). Detached mode: `hogli up -d` paired with `hogli wait` / `hogli down`
     - In a PostHog Tasks cloud run (`POSTHOG_TASK_RUN_ID` set), the boot sequence, prewarmed test database and scoped-test rules differ — read [Cloud task sandbox](docs/internal/cloud-task-sandbox.md) before starting the stack or running tests there
 - OpenAPI/types: `hogli build:openapi` (regenerate after changing serializers/viewsets)

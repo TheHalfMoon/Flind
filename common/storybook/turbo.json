@@ -3,13 +3,13 @@
     "extends": ["//"],
     "tasks": {
         "build": {
-            "dependsOn": ["@posthog/frontend#prepare"]
+            "dependsOn": ["@flind/frontend#prepare"]
         },
         "prepare": {
-            "dependsOn": ["@posthog/frontend#prepare"]
+            "dependsOn": ["@flind/frontend#prepare"]
         },
         "start": {
-            "dependsOn": ["@posthog/frontend#prepare"]
+            "dependsOn": ["@flind/frontend#prepare"]
         }
     }
 }

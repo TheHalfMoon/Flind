@@ -273,7 +273,7 @@ jobs:
               if: steps.prepare-release.outputs.new-version != ''
               uses: ./.github/actions/pnpm-install
               with:
-                  install-command: pnpm install --frozen-lockfile --filter=@posthog/root
+                  install-command: pnpm install --frozen-lockfile --filter=@flind/root
 
             # Same two passes as `hogli format:markdown`, called directly because hogli
             # needs a Python venv this job does not set up. The last command re-runs the

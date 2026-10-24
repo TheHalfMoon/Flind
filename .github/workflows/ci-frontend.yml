@@ -397,8 +397,8 @@ jobs:
                   # Filter the diff to source files jest can resolve. Any code under
                   # frontend/, products/, common/, ee/frontend/ — anything else (docs,
                   # workflows, backend) doesn't reach the jest module graph. Convert
-                  # repo-root paths to paths relative to the @posthog/frontend package
-                  # cwd because `pnpm --filter=@posthog/frontend exec` runs from there.
+                  # repo-root paths to paths relative to the @flind/frontend package
+                  # cwd because `pnpm --filter=@flind/frontend exec` runs from there.
                   CHANGED_FILES=$(
                       awk '
                           /\.(ts|tsx|js|jsx|mjs|cjs|json)$/ {
@@ -440,7 +440,7 @@ jobs:
               continue-on-error: true
               uses: ./.github/actions/pnpm-install
               with:
-                  install-command: pnpm --filter=@posthog/frontend... install --frozen-lockfile
+                  install-command: pnpm --filter=@flind/frontend... install --frozen-lockfile
                   token: ${{ steps.setup-gh-token.outputs.token || github.token }}
 
             - name: Build narrowed matrix
@@ -485,7 +485,7 @@ jobs:
                   token: ${{ steps.setup-gh-token.outputs.token || github.token }}
 
             - name: Prepare frontend
-              run: bin/turbo --filter=@posthog/frontend prepare
+              run: bin/turbo --filter=@flind/frontend prepare
 
             - name: Check formatting with oxfmt
               run: pnpm run format:frontend:check
@@ -497,7 +497,7 @@ jobs:
             # empty-state configs, so nothing type-checks them. A reference to a token that no
             # longer exists renders a whole surface colourless without failing anything else.
             - name: Check product colour tokens all resolve
-              run: pnpm --filter=@posthog/frontend check-color-tokens
+              run: pnpm --filter=@flind/frontend check-color-tokens
 
             - name: Lint with Oxlint
               run: pnpm exec oxlint --quiet
@@ -596,10 +596,10 @@ jobs:
               run: pnpm --filter=@posthog/playwright... install --frozen-lockfile
 
             - name: Prepare frontend
-              run: bin/turbo --filter=@posthog/frontend prepare
+              run: bin/turbo --filter=@flind/frontend prepare
 
             - name: Build products
-              run: pnpm --filter=@posthog/frontend build:products
+              run: pnpm --filter=@flind/frontend build:products
 
             # Vendored replacement for preactjs/compressed-size-action: build the PR branch,
             # then git-reset to the base branch and rebuild so the bundle-size and eager-graph
@@ -611,7 +611,7 @@ jobs:
             # build (build:with-report runs the eager-graph check in --report-only) must never
             # abort the job for every open PR, so budgets are enforced warn-only further down.
             - name: Build frontend (bundle-size + eager-graph report)
-              run: pnpm --filter=@posthog/frontend build:with-report
+              run: pnpm --filter=@flind/frontend build:with-report
 
             # Measured before the base build overwrites dist/. Untracked, so it survives the
             # git reset --hard onto the base tree; the dist-size section reads it back.
@@ -620,14 +620,14 @@ jobs:
 
             # Runs against the PR's own build, before the base rebuild below overwrites dist/.
             - name: Check toolbar bundle stays under the CloudFront gzip limit
-              run: pnpm --filter=@posthog/frontend check-toolbar-size
+              run: pnpm --filter=@flind/frontend check-toolbar-size
 
             # Runs against the PR's own metafile, before the base rebuild overwrites it.
             - name: Check toolbar graph stays inside its module boundary
-              run: pnpm --filter=@posthog/frontend check-toolbar-graph
+              run: pnpm --filter=@flind/frontend check-toolbar-graph
 
             - name: Check toolbar for CSP eval violations
-              run: pnpm --filter=@posthog/frontend check-toolbar-csp-eval
+              run: pnpm --filter=@flind/frontend check-toolbar-csp-eval
 
             # Keep the PR-side poster available after the base reset below. This is especially
             # important on the PR that introduces or updates the poster itself.
@@ -654,8 +654,8 @@ jobs:
                   # base measurement by hundreds of MiB and making every PR's dist-size delta
                   # a large spurious negative. The build never cleans dist/ itself.
                   rm -rf frontend/dist
-                  pnpm --filter=@posthog/frontend... install
-                  pnpm --filter=@posthog/frontend build:with-report
+                  pnpm --filter=@flind/frontend... install
+                  pnpm --filter=@flind/frontend build:with-report
                   du -sb frontend/dist | cut -f1 > frontend/dist-size-base.txt
 
             # Each frontend check contributes one section to a single ci-report comment
@@ -827,7 +827,7 @@ jobs:
                   token: ${{ steps.setup-gh-token.outputs.token || github.token }}
 
             - name: Prepare frontend
-              run: bin/turbo --filter=@posthog/frontend prepare
+              run: bin/turbo --filter=@flind/frontend prepare
 
             - name: Restore .typegen cache
               uses: actions/cache/restore@cdf6c1fa76f9f475f3d7449005a359c84ca0f306 # v5.0.3
@@ -837,13 +837,13 @@ jobs:
                   restore-keys: ${{ runner.os }}-typegen-
 
             - name: Build products
-              run: pnpm --filter=@posthog/frontend build:products
+              run: pnpm --filter=@flind/frontend build:products
 
             - name: Check if products.tsx and products.json are up to date
-              run: pnpm --filter=@posthog/frontend build:products && git diff --exit-code
+              run: pnpm --filter=@flind/frontend build:products && git diff --exit-code
 
             - name: Kea typegen
-              run: pnpm --filter=@posthog/frontend typegen:write
+              run: pnpm --filter=@flind/frontend typegen:write
 
             - name: Re-format files after typegen
               run: pnpm exec oxfmt "./{products,frontend/src}/**/*.{ts,tsx}"
@@ -857,13 +857,13 @@ jobs:
 
             - parallel:
                   - name: Run typescript check (tsgo)
-                    run: pnpm --filter=@posthog/frontend typescript:check
+                    run: pnpm --filter=@flind/frontend typescript:check
 
                   - name: Check if schema.json and validators.js are up to date
-                    run: pnpm --filter=@posthog/frontend schema:build:json && git diff --exit-code
+                    run: pnpm --filter=@flind/frontend schema:build:json && git diff --exit-code
 
                   - name: Check if mobile replay "schema.json" is up to date
-                    run: pnpm --filter=@posthog/frontend mobile-replay:schema:build:json && git diff --exit-code
+                    run: pnpm --filter=@flind/frontend mobile-replay:schema:build:json && git diff --exit-code
                     env:
                         NODE_OPTIONS: --max-old-space-size=8192
 
@@ -872,7 +872,7 @@ jobs:
                   # links from. Nothing else reads it, so drift is invisible until an agent
                   # hands a user a 404 — this check is the only thing tying it to its source.
                   - name: Check if app-url-manifest.json is up to date
-                    run: pnpm --filter=@posthog/frontend build:app-urls:check
+                    run: pnpm --filter=@flind/frontend build:app-urls:check
 
                   - name: Validate SetupTaskId completions
                     run: node bin/validate-setup-tasks.mjs
@@ -936,7 +936,7 @@ jobs:
             - name: Install pnpm dependencies
               uses: ./.github/actions/pnpm-install
               with:
-                  install-command: pnpm --filter=@posthog/frontend... install --frozen-lockfile
+                  install-command: pnpm --filter=@flind/frontend... install --frozen-lockfile
                   token: ${{ steps.setup-gh-token.outputs.token || github.token }}
 
             - name: Test with Jest
@@ -969,9 +969,9 @@ jobs:
                       # frontend source files by select-jest-tests. --passWithNoTests
                       # so a changed source file with no related test doesn't fail the
                       # run — the merge queue's trunk-merge/** run is the gate.
-                      pnpm --filter=@posthog/frontend build:products
+                      pnpm --filter=@flind/frontend build:products
                       # shellcheck disable=SC2086
-                      pnpm --filter=@posthog/frontend exec jest \
+                      pnpm --filter=@flind/frontend exec jest \
                           --forceExit \
                           --passWithNoTests \
                           --shard=$SHARD_INDEX/$SHARD_COUNT \
@@ -979,7 +979,7 @@ jobs:
                   else
                       # 100% = one worker per available core. Public-repo ubuntu-24.04
                       # runners have 4 vCPUs; a hardcoded 2 left half the machine idle.
-                      bin/turbo run test --filter=@posthog/frontend -- --maxWorkers=100%
+                      bin/turbo run test --filter=@flind/frontend -- --maxWorkers=100%
                   fi
 
             - name: Upload test results

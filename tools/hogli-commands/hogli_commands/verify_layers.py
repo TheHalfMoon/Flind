@@ -156,7 +156,7 @@ VERIFY_ONLY_CHECKS: tuple[DiffCheck, ...] = (
         label="frontend typecheck (tsgo)",
         triggers=list(FRONTEND_TS),
         verify=None,
-        run=_streamed(["pnpm", "--filter=@posthog/frontend", "typescript:check"]),
+        run=_streamed(["pnpm", "--filter=@flind/frontend", "typescript:check"]),
     ),
     DiffCheck(
         key="skills-lint",

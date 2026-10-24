@@ -215,7 +215,7 @@ const PI_TASK_LOG = [
             title: 'bash',
             kind: 'execute',
             status: 'pending',
-            rawInput: { command: 'pnpm --filter=@posthog/frontend format' },
+            rawInput: { command: 'pnpm --filter=@flind/frontend format' },
         },
     }),
     piLogEntry('8', { type: 'tool_call_updated', timestamp: 8, toolCall: { id: 'pi-tool-bash', status: 'completed' } }),

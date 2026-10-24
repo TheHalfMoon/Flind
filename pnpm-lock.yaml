@@ -479,7 +479,7 @@ importers:
       '@jest/test-sequencer':
         specifier: ^30.0.5
         version: 30.0.5
-      '@posthog/frontend':
+      '@flind/frontend':
         specifier: workspace:*
         version: link:../../frontend
       '@storybook/addon-a11y':
@@ -2336,7 +2336,7 @@ importers:
       '@playwright/test':
         specifier: 'catalog:'
         version: 1.60.0
-      '@posthog/frontend':
+      '@flind/frontend':
         specifier: workspace:*
         version: link:../frontend
       snappyjs:

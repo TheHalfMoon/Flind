@@ -105,6 +105,6 @@ Add or update stories for reusable shared components and product adapters.
 Before finishing:
 
 1. Run targeted Oxfmt and Oxlint on changed files.
-2. Run `pnpm --filter=@posthog/frontend typescript:check` and separate changed-file failures from unrelated repository failures.
+2. Run `pnpm --filter=@flind/frontend typescript:check` and separate changed-file failures from unrelated repository failures.
 3. Run the lowest-level relevant Jest or Storybook tests when behavior changed.
 4. Invoke `/writing-tests` before adding or substantially changing tests and `/writing-kea-logics` before changing product alert logic.

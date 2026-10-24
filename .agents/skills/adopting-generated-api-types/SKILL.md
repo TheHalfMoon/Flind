@@ -149,7 +149,7 @@ After migrating all usages of a handwritten type:
 
 1. Remove the type definition from `~/types` or the local file
 2. Remove unused imports
-3. Run `pnpm --filter=@posthog/frontend typescript:check` to verify no breakage
+3. Run `pnpm --filter=@flind/frontend typescript:check` to verify no breakage
 
 ## Decision guide
 
@@ -208,7 +208,7 @@ Switching to generated functions does not change HTTP behavior — same cookies,
 
 ## Verifying the migration
 
-1. **TypeScript check:** `pnpm --filter=@posthog/frontend typescript:check`
+1. **TypeScript check:** `pnpm --filter=@flind/frontend typescript:check`
 2. **Grep for leftover manual types:** search for the old type name across the codebase
 3. **Run relevant tests:** `hogli test <test_file>`
 

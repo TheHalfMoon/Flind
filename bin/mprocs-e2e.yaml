@@ -1,7 +1,7 @@
 procs:
     # E2E test runner with Playwright UI
     playwright:
-        shell: 'pnpm --filter=@posthog/frontend build:products && pnpm --filter=@posthog/playwright exec playwright test --ui'
+        shell: 'pnpm --filter=@flind/frontend build:products && pnpm --filter=@posthog/playwright exec playwright test --ui'
         env:
             BASE_URL: 'http://localhost:8010'
             EMAIL_HOST: 'email.test.posthog.net'

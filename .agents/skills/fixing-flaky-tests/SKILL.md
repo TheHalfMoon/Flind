@@ -128,7 +128,7 @@ Stop at the first level that reproduces it; that level is your validation enviro
    Example (with the flags as of this writing), running the test alongside its shard neighbors:
 
    ```bash
-   pnpm --filter=@posthog/frontend jest <test_file> <neighbor_file> --maxWorkers=2 --forceExit
+   pnpm --filter=@flind/frontend jest <test_file> <neighbor_file> --maxWorkers=2 --forceExit
    ```
 
    For pytest, run the whole file or class rather than the single test, so module-level fixtures and ordering match CI.
@@ -156,8 +156,8 @@ Two cost notes for the loop:
 
 - While reproducing, `break` after the first failure — one captured failure log is enough.
   Complete all N runs only when measuring the failure rate or validating in step 7.
-- The `pnpm --filter=@posthog/frontend jest` script runs `pnpm build:products` before every invocation.
-  Inside a loop, build once, then iterate with `pnpm --filter=@posthog/frontend exec jest ...`, which skips the rebuild.
+- The `pnpm --filter=@flind/frontend jest` script runs `pnpm build:products` before every invocation.
+  Inside a loop, build once, then iterate with `pnpm --filter=@flind/frontend exec jest ...`, which skips the rebuild.
 
 **If nothing reproduces after the full ladder**, the flake is CI-environment-specific.
 Before settling for that, ask what the runner has that your machine lacks: Linux mtimes from a coarse clock where macOS gives nanoseconds, a case-sensitive filesystem, a different timezone, `/tmp` on a different filesystem.

@@ -54,14 +54,14 @@ describe('codeowners helpers', () => {
                 '# Comment line',
                 '',
                 'products/error_tracking/** @posthog/error-tracking',
-                'frontend/   @posthog/frontend  @alice',
+                'frontend/   @flind/frontend  @alice',
                 '   # indented comment',
                 'no-owners-here',
             ].join('\n')
 
             expect(parseCodeowners(text)).toEqual([
                 { pattern: 'products/error_tracking/**', owners: ['@posthog/error-tracking'] },
-                { pattern: 'frontend/', owners: ['@posthog/frontend', '@alice'] },
+                { pattern: 'frontend/', owners: ['@flind/frontend', '@alice'] },
             ])
         })
 

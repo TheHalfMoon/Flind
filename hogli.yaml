@@ -470,12 +470,12 @@ build:
         click: hogli_commands.build:build
         description: Run code generation pipelines (smart change detection by default)
     build:frontend:
-        cmd: pnpm --filter=@posthog/frontend build
+        cmd: pnpm --filter=@flind/frontend build
         description: Build frontend packages and run TypeScript compilation
         services:
             - frontend
     build:schema-json:
-        cmd: pnpm --filter=@posthog/frontend run schema:build:json
+        cmd: pnpm --filter=@flind/frontend run schema:build:json
         description: Generate schema.json from frontend
     build:schema-python:
         bin_script: build-schema-python.sh
@@ -516,11 +516,11 @@ build:
     build:widget-types:
         steps:
             - cmd: python bin/build-dashboard-widget-types.py
-            - cmd: pnpm --filter=@posthog/frontend exec node
+            - cmd: pnpm --filter=@flind/frontend exec node
                   ../products/dashboards/frontend/bin/generate-widget-config-zod.mjs
         description: Generate dashboard widget config codegen artifacts (enum preflight, Zod)
     build:openapi-types:
-        cmd: pnpm --filter=@posthog/frontend run openapi:types
+        cmd: pnpm --filter=@flind/frontend run openapi:types
         description: Generate TypeScript API types from the backend OpenAPI schema
     build:openapi-mcp-types:
         cmd: pnpm --filter=@posthog/mcp run generate-mcp-types
@@ -599,7 +599,7 @@ build:
         cmd: pnpm grammar:build
         description: Generate HogQL grammar definitions (C++)
     build:products:
-        cmd: pnpm --filter=@posthog/frontend run build:products
+        cmd: pnpm --filter=@flind/frontend run build:products
         description: Build products manifest from TypeScript/JSX files
     build:skills:
         cmd: python -m products.posthog_ai.scripts.build_skills
@@ -807,7 +807,7 @@ tests:
         cmd: pytest
         description: Run Python test suite
     test:js:
-        cmd: pnpm --filter=@posthog/frontend test
+        cmd: pnpm --filter=@flind/frontend test
         description: Run JavaScript test suite
     test:e2e:
         bin_script: e2e-test-runner
@@ -828,7 +828,7 @@ tests:
         needs_secrets: true
 quality:
     lint:
-        cmd: ./bin/ruff.sh check . && pnpm --filter=@posthog/frontend run lint
+        cmd: ./bin/ruff.sh check . && pnpm --filter=@flind/frontend run lint
         description: Run Python and JS/TS linting
     format:
         cmd: pnpm format

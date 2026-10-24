@@ -46,7 +46,7 @@ function fail(message) {
 }
 
 if (!fs.existsSync(metaPath)) {
-    fail(`Metafile not found at ${metaPath} — run \`pnpm --filter=@posthog/frontend build\` first.`)
+    fail(`Metafile not found at ${metaPath} — run \`pnpm --filter=@flind/frontend build\` first.`)
     process.exit(1)
 }
 

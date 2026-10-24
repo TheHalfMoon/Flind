@@ -181,7 +181,7 @@ jobs:
               if: steps.prepare-release.outputs.new-version != ''
               uses: ./.github/actions/pnpm-install
               with:
-                  install-command: pnpm install --frozen-lockfile --ignore-scripts --filter=@posthog/root
+                  install-command: pnpm install --frozen-lockfile --ignore-scripts --filter=@flind/root
 
             - name: Format the changelog
               if: steps.prepare-release.outputs.new-version != ''

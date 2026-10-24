@@ -56,7 +56,7 @@ Mirror your local PostHog checkout to a devbox with `hogli devbox:sync`. Local i
 hogli devbox:start                                   # ensure the box is running
 hogli devbox:sync                                    # create the mirror (idempotent)
 # edit files locally — changes propagate within seconds
-hogli devbox:exec -- bash -lc 'cd ~/posthog && pnpm --filter=@posthog/frontend typescript:check'
+hogli devbox:exec -- bash -lc 'cd ~/posthog && pnpm --filter=@flind/frontend typescript:check'
 hogli devbox:sync --status                           # check sync state
 hogli devbox:sync --terminate                        # tear down when done
 ```

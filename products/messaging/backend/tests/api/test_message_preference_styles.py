@@ -6,7 +6,7 @@ from django.test import SimpleTestCase
 
 TEMPLATE_DIR = Path(settings.BASE_DIR) / "products" / "messaging" / "backend" / "templates" / "message_preferences"
 STYLESHEET = Path(settings.BASE_DIR) / "frontend" / "public" / "message-preferences.css"
-REBUILD = "pnpm --filter=@posthog/frontend build:message-preferences"
+REBUILD = "pnpm --filter=@flind/frontend build:message-preferences"
 
 # Tailwind compiles these templates ahead of time, so a class added to the markup does nothing
 # until someone reruns the build. Nothing else notices: the page still renders, just unstyled.

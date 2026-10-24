@@ -17,7 +17,7 @@ const localKeaTypegenBin = path.resolve(
 const { fileArg, passthroughArgs } = parseArgs(process.argv.slice(2))
 
 if (!fileArg) {
-    console.error('Usage: pnpm --filter=@posthog/frontend typegen:file <logic-file> [kea-typegen options]')
+    console.error('Usage: pnpm --filter=@flind/frontend typegen:file <logic-file> [kea-typegen options]')
     process.exit(1)
 }
 

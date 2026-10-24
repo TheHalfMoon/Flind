@@ -360,7 +360,7 @@ const formatted = renderFormatted(manifest)
 if (process.argv.includes('--check')) {
     const committed = fs.existsSync(OUT_FILE) ? fs.readFileSync(OUT_FILE, 'utf8') : ''
     if (committed !== formatted) {
-        process.stderr.write('app-url-manifest.json is stale. Run `pnpm --filter=@posthog/frontend build:app-urls`.\n')
+        process.stderr.write('app-url-manifest.json is stale. Run `pnpm --filter=@flind/frontend build:app-urls`.\n')
         process.exit(1)
     }
     process.stdout.write(`app-url-manifest.json up to date (${Object.keys(manifest).length} entries).\n`)

@@ -139,7 +139,7 @@ This happens after:
 **Fix:**
 
 ```bash
-pnpm --filter=@posthog/frontend build
+pnpm --filter=@flind/frontend build
 pnpm copy-scripts
 ```
 

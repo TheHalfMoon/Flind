@@ -58,8 +58,8 @@ jobs:
                     uv run python -c "import django; print(f\"Django: {django.__version__}\")"
 
                     echo "--- Node packages ---"
-                    pnpm --filter=@posthog/frontend exec tsc --version
-                    pnpm --filter=@posthog/frontend exec tsgo --version
+                    pnpm --filter=@flind/frontend exec tsc --version
+                    pnpm --filter=@flind/frontend exec tsgo --version
                   '
 
             - name: Check lockfile consistency

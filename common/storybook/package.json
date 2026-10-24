@@ -1,7 +1,7 @@
 {
     "name": "@posthog/storybook",
     "scripts": {
-        "build:products": "pnpm --filter=@posthog/frontend build:products",
+        "build:products": "pnpm --filter=@flind/frontend build:products",
         "build:workers": "cd ../.. && node frontend/bin/watch-workers.mjs --outdir common/storybook/.workers",
         "build": "pnpm build:products && pnpm build:workers && DEBUG=0 NODE_OPTIONS=--max-old-space-size=8192 storybook build -o dist",
         "start": "pnpm build:products && pnpm build:workers && DEBUG=0 NODE_OPTIONS=--max-old-space-size=8192 storybook dev -p 6006 --no-open",
@@ -15,7 +15,7 @@
         "@babel/runtime": "^7.26.10",
         "@jest/globals": "^30.0.5",
         "@jest/test-sequencer": "^30.0.5",
-        "@posthog/frontend": "workspace:*",
+        "@flind/frontend": "workspace:*",
         "@storybook/addon-a11y": "^10.4.3",
         "@storybook/addon-docs": "^10.4.3",
         "@storybook/addon-links": "^10.4.3",

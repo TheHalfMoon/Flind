@@ -158,7 +158,7 @@ def cmd_lint_complexity(files: tuple[str, ...], against: str | None, report_path
             checked += len(python_files)
 
     if ts_files:
-        # typescript is a @posthog/frontend dependency; without an install the
+        # typescript is a @flind/frontend dependency; without an install the
         # script cannot resolve it, so skip like preflight's node-needing checks.
         if not (REPO_ROOT / "frontend" / "node_modules").exists():
             click.echo("complexity: no node_modules — skipping TypeScript files")

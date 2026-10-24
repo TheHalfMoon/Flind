@@ -63,6 +63,6 @@ If that is genuinely the task, read [`products/posthog_ai/frontend/README.md`](.
 
 ## Verify
 
-- `pnpm --filter=@posthog/frontend typescript:check` for the types.
+- `pnpm --filter=@flind/frontend typescript:check` for the types.
 - Run the app and open the side panel on your page. Context is invisible by design, so check it landed: an attached item that is not `hidden` shows as a chip in the composer's context bar, and the agent should be able to answer a question about the thing you attached without being told its id.
 - For a reactivity seam, ask the agent to make the change and confirm the open page updates. Then reload the page — your handler must **not** fire again, because replay events are suppressed by default.

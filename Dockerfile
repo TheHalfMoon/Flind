@@ -59,10 +59,10 @@ COPY packages/agent/packages/agent-contracts/src/ packages/agent/packages/agent-
 COPY products/ products/
 COPY docs/onboarding/ docs/onboarding/
 RUN --mount=type=cache,id=pnpm,target=/tmp/pnpm-store-v24 \
-    CI=1 pnpm --filter=@posthog/frontend... install --frozen-lockfile --store-dir /tmp/pnpm-store-v24
+    CI=1 pnpm --filter=@flind/frontend... install --frozen-lockfile --store-dir /tmp/pnpm-store-v24
 
 COPY frontend/ frontend/
-RUN bin/turbo --filter=@posthog/frontend build
+RUN bin/turbo --filter=@flind/frontend build
 
 
 #

@@ -24,7 +24,7 @@ import { createRequire } from 'module'
 import { dirname, resolve } from 'path'
 import { fileURLToPath } from 'url'
 
-// typescript is a dependency of @posthog/frontend, not the workspace root, so
+// typescript is a dependency of @flind/frontend, not the workspace root, so
 // pnpm's isolated layout only links it under frontend/node_modules.
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const require = createRequire(resolve(repoRoot, 'frontend', 'package.json'))

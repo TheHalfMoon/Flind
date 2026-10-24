@@ -246,4 +246,4 @@ before/after for the rules above. Read it when reviewing UI diffs.
 - [ ] New presentational component has a story; every committed story shows a distinct state,
       and no scratch story is committed
 - [ ] Typecheck/lint cadence per [frontend/src/AGENTS.md](../../../frontend/src/AGENTS.md) —
-      full check once at the end, `pnpm --filter=@posthog/frontend fix` before finishing
+      full check once at the end, `pnpm --filter=@flind/frontend fix` before finishing

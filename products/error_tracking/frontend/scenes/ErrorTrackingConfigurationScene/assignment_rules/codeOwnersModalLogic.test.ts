@@ -47,9 +47,9 @@ describe('codeOwnersModalLogic', () => {
 
     it('derives parsed owners and concise parse errors from raw text', async () => {
         await expectLogic(logic, () => {
-            logic.actions.setRawText(['frontend/** @posthog/frontend', 'backend/**'].join('\n'))
+            logic.actions.setRawText(['frontend/** @flind/frontend', 'backend/**'].join('\n'))
         }).toMatchValues({
-            parsedOwners: [{ owner: '@posthog/frontend', patterns: ['frontend/**'], index: 0 }],
+            parsedOwners: [{ owner: '@flind/frontend', patterns: ['frontend/**'], index: 0 }],
             parseErrors: [{ line: 2, reason: 'Missing owner' }],
             hasParsedOwners: true,
         })
@@ -57,8 +57,8 @@ describe('codeOwnersModalLogic', () => {
 
     it('loads assignable roles and users when opened and resets modal state', async () => {
         await expectLogic(logic, () => {
-            logic.actions.setRawText('frontend/** @posthog/frontend')
-            logic.actions.setOwnerAssignee('@posthog/frontend', { type: 'role', id: 'frontend' })
+            logic.actions.setRawText('frontend/** @flind/frontend')
+            logic.actions.setOwnerAssignee('@flind/frontend', { type: 'role', id: 'frontend' })
             logic.actions.openModal()
         })
             .toFinishAllListeners()

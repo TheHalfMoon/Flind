@@ -480,15 +480,15 @@ def _detect_desktop_vitest(path: str, node_id: str | None = None) -> TestRunConf
 def _detect_jest_test(file_only: str, file_path: str, node_id: str | None = None) -> TestRunConfig:
     """Detect Jest test configuration by finding the nearest package.json.
 
-    Tests under products/ are collected by the root @posthog/frontend jest config (its
+    Tests under products/ are collected by the root @flind/frontend jest config (its
     `roots` include ../products), which carries the path aliases and transforms they
     rely on. The product's own package.json has no jest config, so route them to
-    @posthog/frontend; jest treats the path as a testPathPattern and matches it there.
+    @flind/frontend; jest treats the path as a testPathPattern and matches it there.
     """
     if _nested_vitest_root(file_only):
         return _detect_desktop_vitest(file_only, node_id)
     if file_only.startswith("products/"):
-        pkg_name: str | None = "@posthog/frontend"
+        pkg_name: str | None = "@flind/frontend"
     else:
         package_json = _find_nearest(file_only, "package.json")
         if not package_json:
@@ -712,7 +712,7 @@ def _run_grouped(detected: list[tuple[str, TestRunConfig]], extra_args: list[str
             # Sub-group by package so each pnpm --filter is correct
             by_package: dict[str, tuple[TestRunConfig, list[str]]] = {}
             for f, cfg in entries:
-                pkg = cfg.command[1]  # e.g. "--filter=@posthog/frontend"
+                pkg = cfg.command[1]  # e.g. "--filter=@flind/frontend"
                 if pkg not in by_package:
                     by_package[pkg] = (cfg, [])
                 by_package[pkg][1].append(f)

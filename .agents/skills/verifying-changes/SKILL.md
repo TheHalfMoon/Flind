@@ -17,7 +17,7 @@ Start with the cheapest, and move up only when the current layer cannot see what
 
 | Layer | Check                        | Command                                                                                          |
 | ----- | ---------------------------- | ------------------------------------------------------------------------------------------------ |
-| 1     | Lint, format, typecheck      | `hogli verify --changed`, or `ruff check` and `pnpm --filter=@posthog/frontend typescript:check` |
+| 1     | Lint, format, typecheck      | `hogli verify --changed`, or `ruff check` and `pnpm --filter=@flind/frontend typescript:check` |
 | 2     | The nearest unit test        | `hogli test <file>`, `hogli test --changed`                                                      |
 | 3     | Serializer and OpenAPI regen | `hogli up -d`, `hogli build:openapi`, then commit the generated diff                             |
 | 4     | Storybook render             | `pnpm storybook`, open the affected story, compare before and after                              |

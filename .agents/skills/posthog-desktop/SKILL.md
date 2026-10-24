@@ -54,9 +54,9 @@ Anything else outside the tree: stop and ask.
 | Root monorepo says                                    | In products/desktop use                                       |
 | ----------------------------------------------------- | ------------------------------------------------------------- |
 | `ruff` / `mypy` / pytest                              | nothing — no Python app code here                             |
-| oxlint + Oxfmt, `pnpm --filter=@posthog/frontend fix` | `pnpm lint` (Biome check --write), `pnpm format`              |
+| oxlint + Oxfmt, `pnpm --filter=@flind/frontend fix` | `pnpm lint` (Biome check --write), `pnpm format`              |
 | Jest, `hogli test`                                    | Vitest (`pnpm test`), Playwright (`pnpm test:e2e`)            |
-| `pnpm --filter=@posthog/frontend typescript:check`    | `pnpm typecheck` (turbo, all packages)                        |
+| `pnpm --filter=@flind/frontend typescript:check`    | `pnpm typecheck` (turbo, all packages)                        |
 | Kea logics, `typegen:write`                           | Zustand stores + InversifyJS services; no kea, no typegen     |
 | LemonUI in `frontend/` and `products/*/frontend/`     | `@posthog/quill` + Tailwind + Radix Themes                    |
 | `hogli build:openapi` → generated frontend types      | `packages/api-client/src/generated.ts` (hand-maintained here) |
