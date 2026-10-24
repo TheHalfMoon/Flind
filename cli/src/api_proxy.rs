@@ -6,11 +6,10 @@ use std::{env, fs};
 use thiserror::Error;
 
 use crate::error::CapturedError;
-use crate::invocation_context::{current_invocation_id, InvocationContext};
+use crate::invocation_context::InvocationContext;
 use crate::utils::homedir::posthog_home_dir_if_available;
 
 const API_CLI_BUNDLE: &str = "posthog-api-cli.mjs";
-const ANALYTICS_HOST: &str = "https://us.i.posthog.com";
 
 include!(concat!(env!("OUT_DIR"), "/api_cli_bundle.rs"));
 
@@ -267,15 +266,13 @@ fn inject_credentials(cmd: &mut Command, invocation_context: Option<&InvocationC
     }
 }
 
-fn inject_analytics_env(cmd: &mut Command) {
-    if let Some(token) = option_env!("POSTHOG_API_TOKEN") {
-        if env::var_os("POSTHOG_ANALYTICS_API_KEY").is_none() {
-            cmd.env("POSTHOG_ANALYTICS_API_KEY", token);
-        }
-        if env::var_os("POSTHOG_ANALYTICS_HOST").is_none() {
-            cmd.env("POSTHOG_ANALYTICS_HOST", ANALYTICS_HOST);
-        }
-    }
+/// Never forward inherited analytics credentials or destinations to the
+/// embedded Node CLI. This is not an outbound-network guarantee: the Node
+/// bundle still needs an independent runtime egress audit before release.
+fn isolate_inherited_analytics(cmd: &mut Command) {
+    cmd.env_remove("POSTHOG_ANALYTICS_API_KEY");
+    cmd.env_remove("POSTHOG_ANALYTICS_HOST");
+    cmd.env_remove("POSTHOG_CLI_INVOCATION_ID");
 }
 
 /// Runs the embedded Node API CLI. A non-zero child exit is returned as
@@ -291,12 +288,8 @@ pub fn run(
     cmd.arg(script);
     cmd.args(args);
     cmd.env("POSTHOG_CLI_VERSION", env!("CARGO_PKG_VERSION"));
-    // Lets the Node script tag its analytics with this invocation, joining them
-    // to the Rust-side telemetry for the same run.
-    cmd.env("POSTHOG_CLI_INVOCATION_ID", current_invocation_id());
-
     inject_credentials(&mut cmd, invocation_context);
-    inject_analytics_env(&mut cmd);
+    isolate_inherited_analytics(&mut cmd);
 
     if let Some(host) = host_override {
         cmd.env("POSTHOG_CLI_HOST", host);
@@ -345,6 +338,33 @@ mod tests {
                 None => env::remove_var(self.name),
             }
         }
+    }
+
+    #[test]
+    fn analytics_settings_are_explicitly_removed_from_node_child() {
+        let mut child = Command::new("node");
+        child.env("POSTHOG_ANALYTICS_API_KEY", "inherited-token");
+        child.env("POSTHOG_ANALYTICS_HOST", "https://example.invalid");
+        child.env("POSTHOG_CLI_INVOCATION_ID", "linked-session");
+        child.env("POSTHOG_CLI_API_KEY", "user-api-key");
+        isolate_inherited_analytics(&mut child);
+
+        let entries: Vec<_> = child.get_envs().collect();
+        for key in [
+            "POSTHOG_ANALYTICS_API_KEY",
+            "POSTHOG_ANALYTICS_HOST",
+            "POSTHOG_CLI_INVOCATION_ID",
+        ] {
+            assert!(
+                entries
+                    .iter()
+                    .any(|(name, value)| name == key && value.is_none()),
+                "{key} must be removed from the Node child",
+            );
+        }
+        assert!(entries.iter().any(|(name, value)| {
+            name == "POSTHOG_CLI_API_KEY" && value.is_some_and(|s| s == "user-api-key")
+        }));
     }
 
     #[test]
