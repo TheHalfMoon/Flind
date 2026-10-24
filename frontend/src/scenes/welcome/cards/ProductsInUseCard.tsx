@@ -18,7 +18,7 @@ export function ProductsInUseCard(): JSX.Element | null {
     return (
         <LemonCard hoverEffect={false} className="p-4">
             <h2 className="text-lg font-semibold mb-1">Products your team uses</h2>
-            <p className="text-xs text-muted mb-3 m-0">Click to read the docs.</p>
+            <p className="text-xs text-muted mb-3 m-0">Your team’s active Flind products.</p>
             <div className="flex flex-wrap gap-2">
                 {productsInUse.map((productKey) => {
                     const meta = brandingForProduct(productKey)
@@ -32,16 +32,23 @@ export function ProductsInUseCard(): JSX.Element | null {
                             style={wrapperStyle}
                             className="inline-flex"
                         >
-                            <Link
-                                to={meta.docsHref}
-                                target="_blank"
-                                subtle
-                                onClick={() => trackCardClick('products', meta.docsHref)}
-                                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-sm bg-[rgb(var(--brand-rgb)/0.08)] border-[rgb(var(--brand-rgb)/0.28)] hover:bg-[rgb(var(--brand-rgb)/0.14)] transition-colors"
-                            >
-                                <Icon className="text-base text-[rgb(var(--brand-rgb))]" />
-                                <span className="font-medium">{meta.label}</span>
-                            </Link>
+                            {meta.docsHref ? (
+                                <Link
+                                    to={meta.docsHref}
+                                    target="_blank"
+                                    subtle
+                                    onClick={() => trackCardClick('products', meta.docsHref)}
+                                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-sm bg-[rgb(var(--brand-rgb)/0.08)] border-[rgb(var(--brand-rgb)/0.28)] hover:bg-[rgb(var(--brand-rgb)/0.14)] transition-colors"
+                                >
+                                    <Icon className="text-base text-[rgb(var(--brand-rgb))]" />
+                                    <span className="font-medium">{meta.label}</span>
+                                </Link>
+                            ) : (
+                                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-sm bg-[rgb(var(--brand-rgb)/0.08)] border-[rgb(var(--brand-rgb)/0.28)]">
+                                    <Icon className="text-base text-[rgb(var(--brand-rgb))]" />
+                                    <span className="font-medium">{meta.label}</span>
+                                </span>
+                            )}
                         </div>
                     )
                 })}

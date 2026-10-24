@@ -59,7 +59,7 @@ export interface ProjectNoticeBlueprint {
 const NOTICE_DISMISS_PREFIX = 'project-notice-dismissed.'
 
 // The products we want every provisioned account exploring. Keys resolve in both PRODUCT_BRANDING
-// (label + docs) and PRODUCT_PUSH_DISPLAY (hog illustration), mirroring the welcome dialog's showcase.
+// (label + docs) and PRODUCT_PUSH_DISPLAY (hog illustration), matching the welcome dialog's product summary.
 const FLAGSHIP_PRODUCT_KEYS = [
     'product_analytics',
     'web_analytics',
@@ -78,7 +78,13 @@ function ProvisionedProductStrip(): JSX.Element {
                 if (!Hoggie) {
                     return null
                 }
-                return (
+                const content = (
+                    <>
+                        <Hoggie className="h-6 w-auto" aria-hidden="true" />
+                        <span className="text-xs font-medium">{meta.label}</span>
+                    </>
+                )
+                return meta.docsHref ? (
                     <Link
                         key={productKey}
                         to={meta.docsHref}
@@ -87,9 +93,16 @@ function ProvisionedProductStrip(): JSX.Element {
                         className="inline-flex items-center gap-1"
                         data-attr={`provisioned-welcome-${productKey}`}
                     >
-                        <Hoggie className="h-6 w-auto" aria-hidden="true" />
-                        <span className="text-xs font-medium">{meta.label}</span>
+                        {content}
                     </Link>
+                ) : (
+                    <span
+                        key={productKey}
+                        className="inline-flex items-center gap-1"
+                        data-attr={`provisioned-welcome-${productKey}`}
+                    >
+                        {content}
+                    </span>
                 )
             })}
         </span>
@@ -101,7 +114,7 @@ export function ProvisionedWelcomeMessage(): JSX.Element {
     return (
         <div className="flex flex-col gap-1">
             <span>
-                <b>Welcome to PostHog!</b> We're setting up PostHog in your repo in the background. In the meantime,
+                <b>Welcome to Flind!</b> We're preparing Flind for your workspace. In the meantime,
                 here's what you can do with it:
             </span>
             <ProvisionedProductStrip />

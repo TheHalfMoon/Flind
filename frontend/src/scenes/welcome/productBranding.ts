@@ -13,6 +13,8 @@ import {
     IconWarning,
 } from '@posthog/icons'
 
+import { flindPublicUrl } from 'lib/flindPublicLinks'
+
 export type IconElement = ComponentType<SVGProps<SVGSVGElement> & { className?: string }>
 
 export interface ProductBranding {
@@ -27,55 +29,55 @@ export interface ProductBranding {
 export const PRODUCT_BRANDING: Record<string, ProductBranding> = {
     product_analytics: {
         label: 'Product analytics',
-        docsHref: 'https://posthog.com/docs/product-analytics',
+        docsHref: flindPublicUrl('docs') ?? '',
         Icon: IconGraph,
         rgb: '47 128 250',
     },
     web_analytics: {
         label: 'Web analytics',
-        docsHref: 'https://posthog.com/docs/web-analytics',
+        docsHref: flindPublicUrl('docs') ?? '',
         Icon: IconPieChart,
         rgb: '54 196 111',
     },
     session_replay: {
         label: 'Session replay',
-        docsHref: 'https://posthog.com/docs/session-replay',
+        docsHref: flindPublicUrl('docs') ?? '',
         Icon: IconRewindPlay,
         rgb: '247 165 1',
     },
     feature_flags: {
         label: 'Feature flags',
-        docsHref: 'https://posthog.com/docs/feature-flags',
+        docsHref: flindPublicUrl('docs') ?? '',
         Icon: IconFlag,
         rgb: '48 171 198',
     },
     experiments: {
         label: 'Experiments',
-        docsHref: 'https://posthog.com/docs/experiments',
+        docsHref: flindPublicUrl('docs') ?? '',
         Icon: IconFlask,
         rgb: '182 42 217',
     },
     surveys: {
         label: 'Surveys',
-        docsHref: 'https://posthog.com/docs/surveys',
+        docsHref: flindPublicUrl('docs') ?? '',
         Icon: IconMessage,
         rgb: '243 84 84',
     },
     error_tracking: {
         label: 'Error tracking',
-        docsHref: 'https://posthog.com/docs/error-tracking',
+        docsHref: flindPublicUrl('docs') ?? '',
         Icon: IconWarning,
         rgb: '235 157 42',
     },
     data_warehouse: {
         label: 'Data warehouse',
-        docsHref: 'https://posthog.com/docs/data-warehouse',
+        docsHref: flindPublicUrl('docs') ?? '',
         Icon: IconDatabase,
         rgb: '133 103 255',
     },
     llm_analytics: {
         label: 'AI observability',
-        docsHref: 'https://posthog.com/docs/ai-observability',
+        docsHref: flindPublicUrl('docs') ?? '',
         Icon: IconLlmAnalytics,
         rgb: '182 42 217',
     },
@@ -83,7 +85,7 @@ export const PRODUCT_BRANDING: Record<string, ProductBranding> = {
 
 export const FALLBACK_BRANDING: ProductBranding = {
     label: '',
-    docsHref: 'https://posthog.com/docs',
+    docsHref: flindPublicUrl('docs') ?? '',
     Icon: IconDashboard,
     rgb: '107 114 128', // neutral gray
 }
