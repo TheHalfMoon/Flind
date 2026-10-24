@@ -1,5 +1,5 @@
 import type { Signal } from "@flind/shared/domain-types";
-import { describe, expect, it } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import {
   conversationsTicketRef,
   supportTicketUrl,
@@ -55,21 +55,26 @@ describe("conversationsTicketRef", () => {
 });
 
 describe("supportTicketUrl", () => {
+  beforeEach(() => {
+    vi.stubEnv("EXPO_PUBLIC_FLIND_API_US_URL", "https://us.flind.example");
+  });
+  afterEach(() => vi.unstubAllEnvs());
+
   it.each([
     [
       "a ticket number",
       4821,
-      "https://us.posthog.com/project/123/support/tickets/4821",
+      "https://us.flind.example/project/123/support/tickets/4821",
     ],
     [
       "a ticket uuid",
       "0197-uuid",
-      "https://us.posthog.com/project/123/support/tickets/0197-uuid",
+      "https://us.flind.example/project/123/support/tickets/0197-uuid",
     ],
     [
       "an unsafe ticket ref",
       "a/b?c",
-      "https://us.posthog.com/project/123/support/tickets/a%2Fb%3Fc",
+      "https://us.flind.example/project/123/support/tickets/a%2Fb%3Fc",
     ],
   ])(
     "links the source project's ticket page by %s",
@@ -79,6 +84,18 @@ describe("supportTicketUrl", () => {
       );
     },
   );
+
+  it("does not generate a vendor link or crash when the Flind API host is absent", () => {
+    vi.stubEnv("EXPO_PUBLIC_FLIND_API_US_URL", "");
+    expect(supportTicketUrl(4821, { projectId: 123, cloudRegion: "us" })).toBeNull();
+  });
+
+  it("does not create a link to an inherited or insecure endpoint", () => {
+    for (const host of ["https://us.posthog.com", "http://external.example"]) {
+      vi.stubEnv("EXPO_PUBLIC_FLIND_API_US_URL", host);
+      expect(supportTicketUrl(4821, { projectId: 123, cloudRegion: "us" })).toBeNull();
+    }
+  });
 
   it.each([
     ["project", { projectId: null, cloudRegion: "us" as const }],

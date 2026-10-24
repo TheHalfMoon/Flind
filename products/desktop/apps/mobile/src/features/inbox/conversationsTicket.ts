@@ -32,5 +32,13 @@ export function supportTicketUrl(
 ): string | null {
   const { projectId, cloudRegion } = options;
   if (projectId === null || cloudRegion === null) return null;
-  return `${getCloudUrlFromRegion(cloudRegion)}/project/${projectId}/support/tickets/${encodeURIComponent(String(ticketRef))}`;
+  // A saved session can outlive an operator's Flind API configuration.
+  // A missing or unsafe destination should hide the link, not crash the inbox.
+  let baseUrl: string;
+  try {
+    baseUrl = getCloudUrlFromRegion(cloudRegion);
+  } catch {
+    return null;
+  }
+  return `${baseUrl}/project/${projectId}/support/tickets/${encodeURIComponent(String(ticketRef))}`;
 }

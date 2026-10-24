@@ -73,6 +73,15 @@ class DesktopWorkspaceWave16Tests(unittest.TestCase):
                 source = path.read_text()
             except (OSError, UnicodeError):
                 continue
+            if name == "products/desktop/pnpm-lock.yaml":
+                # This is the published SDK's external registry dependency,
+                # not the first-party @flind/core workspace package. Four
+                # specific edges and owners are verified by Wave 33 tests.
+                source = re.sub(
+                    r"(?m)^      '@posthog/core': 1\.60\.(?:0|1)$",
+                    "",
+                    source,
+                )
             if OLD in source:
                 # Other published source-project dependencies can be legitimate;
                 # flag only the specific internal Desktop package prefixes.

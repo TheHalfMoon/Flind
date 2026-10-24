@@ -21064,7 +21064,7 @@ snapshots:
 
   '@posthog/browser-common@0.9.11':
     dependencies:
-      '@flind/core': 1.60.1
+      '@posthog/core': 1.60.1
       '@posthog/types': 1.416.0
       preact: 10.29.8
     transitivePeerDependencies:
@@ -30749,7 +30749,7 @@ snapshots:
   posthog-js@1.438.21(@types/react@19.2.17)(react@19.2.6):
     dependencies:
       '@posthog/browser-common': 0.9.11
-      '@flind/core': 1.60.1
+      '@posthog/core': 1.60.1
       '@posthog/types': 1.416.0
       core-js: 3.50.0
       dompurify: 3.4.13
@@ -30766,14 +30766,14 @@ snapshots:
 
   posthog-node@5.57.0(@opentelemetry/api@1.9.1)(rxjs@7.8.2):
     dependencies:
-      '@flind/core': 1.60.0
+      '@posthog/core': 1.60.0
     optionalDependencies:
       '@opentelemetry/api': 1.9.1
       rxjs: 7.8.2
 
   posthog-react-native@4.83.0(7f9b9eac940620dd64b56959abca1524):
     dependencies:
-      '@flind/core': 1.60.1
+      '@posthog/core': 1.60.1
       '@posthog/types': 1.416.0
     optionalDependencies:
       '@posthog/react-native-plugin': 2.12.6(react-native@0.86.0(@babel/core@7.29.0(supports-color@8.1.1))(@react-native/metro-config@0.86.0(@babel/core@7.29.0(supports-color@8.1.1))(supports-color@8.1.1))(@types/react@19.2.17)(react@19.2.6)(supports-color@8.1.1))(react@19.2.6)
