@@ -1,24 +1,23 @@
 {
   "expo": {
-    "name": "PostHog",
-    "slug": "posthog",
+    "name": "Flind",
+    "slug": "flind",
     "version": "1.0.0",
     "orientation": "portrait",
     "userInterfaceStyle": "automatic",
-    "scheme": "posthog",
+    "scheme": "flind",
     "icon": "./assets/app-icon.png",
     "ios": {
       "icon": "./assets/app.icon",
       "supportsTablet": true,
-      "bundleIdentifier": "com.posthog.code.mobile",
-      "associatedDomains": ["applinks:code.posthog.com"],
+      "bundleIdentifier": "com.thehalfmoon.flind.mobile",
+      "associatedDomains": [],
       "infoPlist": {
-        "NSMicrophoneUsageDescription": "Allow PostHog to use your microphone for voice-to-text input",
-        "NSSpeechRecognitionUsageDescription": "Allow PostHog to transcribe your voice input on-device",
-        "NSPhotoLibraryUsageDescription": "Allow PostHog to access your photos for attaching images to tasks",
-        "NSCameraUsageDescription": "Allow PostHog to use your camera to scan QR codes for sign-in",
-        "ITSAppUsesNonExemptEncryption": false,
-        "LSApplicationQueriesSchemes": ["posthog-code"]
+        "NSMicrophoneUsageDescription": "Allow Flind to use your microphone for voice-to-text input",
+        "NSSpeechRecognitionUsageDescription": "Allow Flind to transcribe your voice input on-device",
+        "NSPhotoLibraryUsageDescription": "Allow Flind to access your photos for attaching images to tasks",
+        "NSCameraUsageDescription": "Allow Flind to use your camera to scan QR codes for sign-in",
+        "ITSAppUsesNonExemptEncryption": false
       }
     },
     "android": {
@@ -27,25 +26,13 @@
         "backgroundColor": "#FFFFFF"
       },
       "predictiveBackGestureEnabled": false,
-      "package": "com.posthog.code.mobile",
+      "package": "com.thehalfmoon.flind.mobile",
       "permissions": [
         "android.permission.RECORD_AUDIO",
         "android.permission.MODIFY_AUDIO_SETTINGS",
         "android.permission.CAMERA"
       ],
-      "intentFilters": [
-        {
-          "action": "VIEW",
-          "autoVerify": true,
-          "data": [
-            {
-              "scheme": "https",
-              "host": "code.posthog.com"
-            }
-          ],
-          "category": ["BROWSABLE", "DEFAULT"]
-        }
-      ]
+      "intentFilters": []
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -56,7 +43,7 @@
       [
         "expo-camera",
         {
-          "cameraPermission": "Allow PostHog to use your camera to scan QR codes for sign-in"
+          "cameraPermission": "Allow Flind to use your camera to scan QR codes for sign-in"
         }
       ],
       "./plugins/withPodfileResourceBundleFix",
@@ -104,8 +91,8 @@
       [
         "expo-speech-recognition",
         {
-          "microphonePermission": "Allow PostHog to use your microphone for voice-to-text input",
-          "speechRecognitionPermission": "Allow PostHog to transcribe your voice input on-device"
+          "microphonePermission": "Allow Flind to use your microphone for voice-to-text input",
+          "speechRecognitionPermission": "Allow Flind to transcribe your voice input on-device"
         }
       ],
       "expo-secure-store",
@@ -121,11 +108,7 @@
       "expo-web-browser"
     ],
     "extra": {
-      "router": {},
-      "eas": {
-        "projectId": "4eb57b2f-79f6-4ab0-ae2c-bbd82af2cef9"
-      }
-    },
-    "owner": "posthog"
+      "router": {}
+    }
   }
 }

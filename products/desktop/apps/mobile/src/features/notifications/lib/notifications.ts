@@ -11,7 +11,7 @@ const log = logger.scope("notifications");
  * Shape of `content.data` we expect on incoming notifications.
  *
  * Two forms are accepted (in priority order):
- *   1. `{ url: "posthog://task/abc" }` or `{ url: "/task/abc" }` — generic
+ *   1. `{ url: "flind://task/abc" }` or `{ url: "/task/abc" }` — generic
  *      deep link. Preferred for new notification types.
  *   2. `{ taskId, taskRunId? }` — legacy task-specific shape kept for
  *      backwards compatibility with already-queued server notifications.

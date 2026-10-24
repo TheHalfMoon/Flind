@@ -55,7 +55,7 @@ function RootLayoutNav({ isConnected }: RootLayoutNavProps) {
   }, []);
 
   // Auth gate. If a deep link drops an unauthed user on a protected route
-  // (e.g. `posthog://task/abc` from a notification or shared link), bounce
+  // (e.g. `flind://task/abc` from a notification or shared link), bounce
   // them to /auth with a `next` param so the sign-in flow can resume the
   // originally-intended navigation.
   useEffect(() => {
@@ -145,8 +145,8 @@ function RootLayoutNav({ isConnected }: RootLayoutNavProps) {
       {/* Inbox report detail - modal presentation, no native header
           (the in-content title block is the canonical header). Catch-all
           segment so the route also tolerates the cosmetic slug suffix on
-          shared links: `posthog://inbox/<reportId>` and
-          `posthog://inbox/<reportId>/<slug>` both resolve here. */}
+          shared links: `flind://inbox/<reportId>` and
+          `flind://inbox/<reportId>/<slug>` both resolve here. */}
       <Stack.Screen
         name="inbox/[...id]"
         options={{ presentation: "modal", headerShown: false }}

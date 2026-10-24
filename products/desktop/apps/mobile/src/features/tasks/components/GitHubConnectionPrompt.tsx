@@ -32,7 +32,7 @@ export function GitHubConnectionPrompt({
 
     // Per-user flow (like desktop): the backend picks the right GitHub flow
     // and, because we pass `connect_from: "posthog_mobile"`, redirects the
-    // callback to `posthog://github/callback` so this in-app browser closes.
+    // callback to `flind://github/callback` so this in-app browser closes.
     let authorizeUrl: string;
     try {
       const { install_url } =
@@ -45,7 +45,7 @@ export function GitHubConnectionPrompt({
 
     const result = await WebBrowser.openAuthSessionAsync(
       authorizeUrl,
-      "posthog://github/callback",
+      "flind://github/callback",
     );
 
     if (

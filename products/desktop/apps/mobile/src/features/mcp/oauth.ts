@@ -9,10 +9,10 @@ import * as WebBrowser from "expo-web-browser";
 import { getPostHogApiClient } from "@/lib/posthogApiClient";
 import { isMcpOAuthRedirect } from "./presentation";
 
-/** Custom URL scheme registered via app.json (`scheme: "posthog"`). The cloud
+/** Custom URL scheme registered via app.json (`scheme: "flind"`). The cloud
  *  bounces the OAuth redirect back to this URL once the provider completes
  *  auth, and `expo-linking` catches it on both iOS and Android. */
-export const OAUTH_CALLBACK_URL = "posthog://mcp-oauth/callback";
+export const OAUTH_CALLBACK_URL = "flind://mcp-oauth/callback";
 
 const INSTALL_SOURCE = "posthog-code" as const;
 

@@ -2,7 +2,7 @@ import { parseObjectTags } from "@flind/core/inbox/objectTags";
 import { useMemo } from "react";
 import { ScrollView, Text, View } from "react-native";
 import { getCloudUrlFromRegion, useAuthStore } from "@/features/auth";
-import { UNIVERSAL_LINK_PREFIX } from "@/lib/deep-links";
+import { getUniversalLinkOrigin } from "@/lib/deep-links";
 import { parseGithubIssueUrl } from "@/lib/githubIssueUrl";
 import { openExternalUrl } from "@/lib/openExternalUrl";
 import { type ParsePostHogUrlOptions, parsePostHogUrl } from "@/lib/posthogUrl";
@@ -461,7 +461,7 @@ export function MarkdownText({
   const posthogUrlOptions = useMemo<ParsePostHogUrlOptions>(
     () => ({
       appBaseUrl: cloudRegion ? getCloudUrlFromRegion(cloudRegion) : null,
-      codeBaseUrl: UNIVERSAL_LINK_PREFIX,
+      codeBaseUrl: getUniversalLinkOrigin(),
     }),
     [cloudRegion],
   );

@@ -1,7 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 vi.mock("expo-auth-session", () => ({
-  makeRedirectUri: () => "posthog://callback",
+  makeRedirectUri: () => "flind://callback",
   AuthRequest: class {},
 }));
 

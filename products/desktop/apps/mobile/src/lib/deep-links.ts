@@ -4,15 +4,14 @@
  * Path shape mirrors the desktop app (apps/code/src/shared/deeplink.ts and
  * the registered handlers in main/services/*-link/) so a single URL can route
  * to either client:
- *   posthog://task/<taskId>
- *   posthog://task/<taskId>/run/<runId>
- *   posthog://inbox/<reportId>
- *   posthog://inbox/<reportId>/<slug>   (slug is cosmetic, ignored on receive)
+ *   flind://task/<taskId>
+ *   flind://task/<taskId>/run/<runId>
+ *   flind://inbox/<reportId>
+ *   flind://inbox/<reportId>/<slug>   (slug is cosmetic, ignored on receive)
  *
- * Mobile uses the `posthog://` custom scheme (registered in app.json) and
- * https://code.posthog.com as the universal-link host. Both share the same
- * path shape, so a `code.posthog.com/task/X` URL opens the same screen as
- * `posthog://task/X`.
+ * Mobile uses the flind:// custom scheme (registered in app.json).
+ * HTTPS universal-link hosts are disabled until a Flind-owned domain and
+ * its OS association files have been verified and configured.
  *
  * For in-app navigation, prefer the `paths.*` helpers — they return the
  * router-relative path that `router.push()` expects. For external/shareable
@@ -21,9 +20,40 @@
  * link for an inbox report, use `inboxReportShareUrl(reportId, title)`.
  */
 
-export const MOBILE_SCHEME = "posthog";
-export const UNIVERSAL_LINK_HOST = "code.posthog.com";
-export const UNIVERSAL_LINK_PREFIX = `https://${UNIVERSAL_LINK_HOST}`;
+export const MOBILE_SCHEME = "flind";
+
+/**
+ * HTTPS universal links require an explicitly controlled Flind host.
+ * Native OS association files must be provisioned separately before release.
+ */
+export function getUniversalLinkOrigin(): string | null {
+  const raw = process.env.EXPO_PUBLIC_FLIND_UNIVERSAL_LINK_ORIGIN;
+  if (!raw) return null;
+  if (raw.trim() !== raw) {
+    throw new Error("Flind universal-link origin must not have whitespace");
+  }
+  let parsed: URL;
+  try {
+    parsed = new URL(raw);
+  } catch {
+    throw new Error("Flind universal-link origin must be an absolute HTTPS origin");
+  }
+  const hostname = parsed.hostname.toLowerCase().replace(/\.+$/, "");
+  if (
+    parsed.protocol !== "https:" ||
+    !hostname ||
+    hostname === "posthog.com" ||
+    hostname.endsWith(".posthog.com") ||
+    parsed.username ||
+    parsed.password ||
+    parsed.pathname !== "/" ||
+    parsed.search ||
+    parsed.hash
+  ) {
+    throw new Error("Flind universal-link origin must be an approved HTTPS origin");
+  }
+  return parsed.origin;
+}
 
 /**
  * Router-relative paths used inside the app with `router.push()` /
@@ -42,16 +72,18 @@ export const paths = {
 /** A path is the part after the host: starts with `/`, no scheme. */
 type AppPath = string;
 
-/** Build a shareable `posthog://...` URL for an in-app path. */
+/** Build a shareable `flind://...` URL for an in-app path. */
 export function customSchemeUrl(path: AppPath): string {
   const trimmed = path.replace(/^\/+/, "");
   return `${MOBILE_SCHEME}://${trimmed}`;
 }
 
-/** Build a shareable `https://code.posthog.com/...` URL for an in-app path. */
+/** Build a shareable HTTPS URL only when a verified Flind origin is configured. */
 export function universalUrl(path: AppPath): string {
   const normalized = path.startsWith("/") ? path : `/${path}`;
-  return `${UNIVERSAL_LINK_PREFIX}${normalized}`;
+  const origin = getUniversalLinkOrigin();
+  if (!origin) throw new Error("Flind universal links are not configured");
+  return origin + normalized;
 }
 
 /**
@@ -85,7 +117,7 @@ export function slugifyTitle(title: string | null | undefined): string {
 }
 
 /**
- * Build a shareable `posthog://inbox/<reportId>` URL, optionally with a
+ * Build a shareable `flind://inbox/<reportId>` URL, optionally with a
  * cosmetic slug suffix derived from the title. The slug is purely cosmetic;
  * receivers must ignore everything after the UUID. See
  * `externalUrlToAppPath` for the corresponding inbound tolerance.
@@ -104,7 +136,7 @@ export function inboxReportShareUrl(
  * router-relative path expo-router uses. Returns null if the URL doesn't
  * belong to us.
  *
- * A `posthog://inbox/<id>/<slug>` link (or the universal-link equivalent) is
+ * A `flind://inbox/<id>/<slug>` link (or the universal-link equivalent) is
  * normalized to `/inbox/<id>` — the slug is decorative and the route only
  * cares about the UUID. Mirrors the desktop receiver, which also ignores the
  * slug.
@@ -118,17 +150,18 @@ export function externalUrlToAppPath(url: string): AppPath | null {
 
     let path: AppPath | null = null;
     if (parsed.protocol === `${MOBILE_SCHEME}:`) {
-      // posthog://task/abc → /task/abc
+      // flind://task/abc → /task/abc
       const host = parsed.hostname;
       if (!host) return null;
       const rest = parsed.pathname || "";
       const search = parsed.search || "";
       path = `/${host}${rest}${search}`;
     } else if (
-      (parsed.protocol === "https:" || parsed.protocol === "http:") &&
-      parsed.hostname === UNIVERSAL_LINK_HOST
+      parsed.protocol === "https:" &&
+      getUniversalLinkOrigin() !== null &&
+      parsed.origin === getUniversalLinkOrigin()
     ) {
-      // https://code.posthog.com/task/abc → /task/abc
+      // https://configured Flind universal-link host/task/abc → /task/abc
       const pathname = parsed.pathname || "/";
       path = `${pathname}${parsed.search || ""}`;
     }

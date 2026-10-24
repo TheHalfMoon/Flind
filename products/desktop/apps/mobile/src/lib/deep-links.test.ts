@@ -1,8 +1,10 @@
-import { describe, expect, it } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import {
   externalUrlToAppPath,
   inboxReportShareUrl,
   slugifyTitle,
+  universalUrl,
+  getUniversalLinkOrigin,
 } from "./deep-links";
 
 describe("slugifyTitle", () => {
@@ -47,7 +49,7 @@ describe("slugifyTitle", () => {
 
 describe("inboxReportShareUrl", () => {
   it("returns just the UUID when no title argument is passed", () => {
-    expect(inboxReportShareUrl("abc-123")).toBe("posthog://inbox/abc-123");
+    expect(inboxReportShareUrl("abc-123")).toBe("flind://inbox/abc-123");
   });
 
   it.each([
@@ -58,14 +60,14 @@ describe("inboxReportShareUrl", () => {
     "returns just the UUID when the title is %s",
     (_label, input: string | null | undefined) => {
       expect(inboxReportShareUrl("abc-123", input)).toBe(
-        "posthog://inbox/abc-123",
+        "flind://inbox/abc-123",
       );
     },
   );
 
   it("appends a slug derived from the title", () => {
     expect(inboxReportShareUrl("abc-123", "Hello World")).toBe(
-      "posthog://inbox/abc-123/Hello-World",
+      "flind://inbox/abc-123/Hello-World",
     );
   });
 
@@ -74,58 +76,91 @@ describe("inboxReportShareUrl", () => {
     ["whitespace only", "   "],
   ])("omits the slug when the title is %s", (_label, input) => {
     expect(inboxReportShareUrl("abc-123", input)).toBe(
-      "posthog://inbox/abc-123",
+      "flind://inbox/abc-123",
     );
   });
 
   it("preserves the desktop colon-run convention", () => {
     expect(inboxReportShareUrl("abc-123", "fix(inbox): Add foo")).toBe(
-      "posthog://inbox/abc-123/fix-inbox--Add-foo",
+      "flind://inbox/abc-123/fix-inbox--Add-foo",
     );
   });
 });
 
+describe("universalUrl", () => {
+  afterEach(() => vi.unstubAllEnvs());
+
+  it("does not invent a Flind universal link host", () => {
+    vi.stubEnv("EXPO_PUBLIC_FLIND_UNIVERSAL_LINK_ORIGIN", "");
+    expect(getUniversalLinkOrigin()).toBeNull();
+    expect(() => universalUrl("/task/abc")).toThrow("not configured");
+  });
+
+  it("only creates HTTPS links for a configured Flind origin", () => {
+    vi.stubEnv("EXPO_PUBLIC_FLIND_UNIVERSAL_LINK_ORIGIN", "https://links.flind.example");
+    expect(universalUrl("/task/abc")).toBe("https://links.flind.example/task/abc");
+  });
+
+  it.each([
+    "https://code.posthog.com",
+    "https://code.posthog.com.",
+    "http://links.flind.example",
+    "https://user:secret@links.flind.example",
+    "https://links.flind.example/extra",
+    "https://links.flind.example?token=secret",
+  ])("refuses an invalid universal link origin: %s", (host) => {
+    vi.stubEnv("EXPO_PUBLIC_FLIND_UNIVERSAL_LINK_ORIGIN", host);
+    expect(() => universalUrl("/task/abc")).toThrow();
+  });
+});
+
 describe("externalUrlToAppPath", () => {
+  beforeEach(() => {
+    vi.stubEnv("EXPO_PUBLIC_FLIND_UNIVERSAL_LINK_ORIGIN", "https://links.flind.example");
+  });
+  afterEach(() => vi.unstubAllEnvs());
+
+
   it("returns the router path for a custom-scheme URL", () => {
-    expect(externalUrlToAppPath("posthog://task/task-123")).toBe(
+    expect(externalUrlToAppPath("flind://task/task-123")).toBe(
       "/task/task-123",
     );
   });
 
   it("returns the router path for a universal-link URL", () => {
-    expect(externalUrlToAppPath("https://code.posthog.com/task/task-123")).toBe(
+    expect(externalUrlToAppPath("https://links.flind.example/task/task-123")).toBe(
       "/task/task-123",
     );
   });
 
   it("preserves the query string", () => {
-    expect(externalUrlToAppPath("posthog://task/task-123?foo=bar")).toBe(
+    expect(externalUrlToAppPath("flind://task/task-123?foo=bar")).toBe(
       "/task/task-123?foo=bar",
     );
   });
 
   it("strips a trailing slug segment from inbox custom-scheme URLs", () => {
     expect(
-      externalUrlToAppPath("posthog://inbox/report-abc/fix-inbox--Add-foo"),
+      externalUrlToAppPath("flind://inbox/report-abc/fix-inbox--Add-foo"),
     ).toBe("/inbox/report-abc");
   });
 
   it("strips a trailing slug segment from inbox universal links", () => {
     expect(
       externalUrlToAppPath(
-        "https://code.posthog.com/inbox/report-abc/Hello-World",
+        "https://links.flind.example/inbox/report-abc/Hello-World",
       ),
     ).toBe("/inbox/report-abc");
   });
 
   it("preserves the query string when stripping an inbox slug", () => {
     expect(
-      externalUrlToAppPath("posthog://inbox/report-abc/Hello-World?x=1"),
+      externalUrlToAppPath("flind://inbox/report-abc/Hello-World?x=1"),
     ).toBe("/inbox/report-abc?x=1");
   });
 
   it("leaves a bare inbox URL untouched", () => {
-    expect(externalUrlToAppPath("posthog://inbox/report-abc")).toBe(
+    expect(externalUrlToAppPath("flind://inbox/report-abc")).toBe(
       "/inbox/report-abc",
     );
   });
