@@ -1,28 +1,63 @@
 import { getBillingUrl, getPostHogUrl } from "@flind/ui/utils/urls";
 import { afterEach, describe, expect, it, vi } from "vitest";
 
-describe("getPostHogUrl", () => {
-  it("returns null when no region is available and the input is a path", () => {
+describe("getPostHogUrl first-party-only project navigation", () => {
+  afterEach(() => vi.unstubAllEnvs());
+
+  it("refuses region-derived inherited hosts without an independent Flind app", () => {
+    vi.stubEnv("VITE_FLIND_CLOUD_APP_HOST", "");
+    vi.stubEnv("VITE_FLIND_CLOUD_APP_URL", "");
     expect(getPostHogUrl("/foo")).toBeNull();
+    expect(getPostHogUrl("/foo", "us")).toBeNull();
+    expect(getPostHogUrl("/foo", "eu")).toBeNull();
+    expect(getPostHogUrl("https://us.posthog.com/project/1", "us")).toBeNull();
   });
 
   it.each([
-    ["us", "/foo", "https://us.posthog.com/foo"],
-    ["us", "foo", "https://us.posthog.com/foo"],
-    ["eu", "/foo", "https://eu.posthog.com/foo"],
+    [
+      "us",
+      "/project/42/insights",
+      "https://app.flind.example/project/42/insights",
+    ],
+    ["eu", "project/42/replay", "https://app.flind.example/project/42/replay"],
+    [
+      "us",
+      "/uploaded_media/icon%2F1",
+      "https://app.flind.example/uploaded_media/icon%2F1",
+    ],
   ] as const)(
-    "joins base and path for %s region (path=%s)",
+    "uses the first-party host regardless of legacy region %s",
     (region, path, expected) => {
+      vi.stubEnv("VITE_FLIND_CLOUD_APP_HOST", "app.flind.example");
+      vi.stubEnv("VITE_FLIND_CLOUD_APP_URL", "https://app.flind.example/");
       expect(getPostHogUrl(path, region)).toBe(expected);
     },
   );
+
+  it("allows verified absolute Flind app URLs from server payloads", () => {
+    vi.stubEnv("VITE_FLIND_CLOUD_APP_HOST", "app.flind.example");
+    vi.stubEnv("VITE_FLIND_CLOUD_APP_URL", "https://app.flind.example/");
+    expect(getPostHogUrl("https://app.flind.example/project/1", "us")).toBe(
+      "https://app.flind.example/project/1",
+    );
+  });
 
   it.each([
     "https://app.posthog.com/organization/billing",
     "http://localhost:8000/checkout",
     "HTTPS://us.posthog.com/foo",
-  ])("passes absolute URLs through unchanged: %s", (url) => {
-    expect(getPostHogUrl(url, "us")).toBe(url);
+    "https://app.flind.example.evil.test/foo",
+    "http://app.flind.example/foo",
+    "https://user@app.flind.example/foo",
+    "https://app.flind.example:8443/foo",
+    "https://app.flind.example/foo#spoof",
+    "//evil.test/other",
+    "/\\evil.test",
+    "javascript:alert(1)",
+  ])("refuses unverified absolute or confusing URL %s", (url) => {
+    vi.stubEnv("VITE_FLIND_CLOUD_APP_HOST", "app.flind.example");
+    vi.stubEnv("VITE_FLIND_CLOUD_APP_URL", "https://app.flind.example/");
+    expect(getPostHogUrl(url, "us")).toBeNull();
   });
 });
 
