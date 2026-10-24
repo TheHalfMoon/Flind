@@ -26,6 +26,7 @@ class CliLogsIntakeWave21Tests(unittest.TestCase):
         self.assertIn('hostname.ends_with(".localhost")', run)
         self.assertIn('parse::<IpAddr>()', run)
         self.assertIn('base.scheme() == "https"', run)
+        self.assertIn("trim_end_matches('.')", run)
         self.assertIn('base.username().is_empty()', run)
         self.assertIn('base.query().is_some()', run)
         self.assertIn('base.fragment().is_some()', run)

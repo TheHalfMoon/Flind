@@ -282,6 +282,7 @@ pub fn intake_url(host: &str, from: chrono::DateTime<chrono::Utc>) -> Result<Str
         .host_str()
         .context("Flind logs intake URL has no hostname")?;
     let hostname = hostname.to_ascii_lowercase();
+    let hostname = hostname.trim_end_matches('.');
     if hostname == "posthog.com" || hostname.ends_with(".posthog.com") {
         bail!("Flind logs intake must not send a project key to the inherited cloud provider");
     }
@@ -341,6 +342,7 @@ mod tests {
         for host in [
             "https://posthog.com",
             "https://us.i.posthog.com",
+            "https://us.i.posthog.com.",
             "https://flind.example/path",
             "https://flind.example/?token=secret",
             "https://flind.example/#fragment",

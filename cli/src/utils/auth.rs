@@ -3,6 +3,7 @@ use super::homedir::{ensure_homedir_exists, posthog_home_dir};
 use anyhow::{Context, Error};
 use inquire::{validator::Validation, CustomUserError};
 use reqwest::Url;
+use std::net::IpAddr;
 use std::path::PathBuf;
 use tracing::{debug, warn};
 
@@ -122,9 +123,45 @@ impl CredentialProvider for EnvVarProvider {
     }
 }
 
+/// Validate the base URL before using saved credentials or starting CLI login.
+/// A stored host from the imported project must never silently reconnect to the
+/// inherited vendor, or leak tokens over insecure public HTTP.
 pub fn host_validator(host: &str) -> Result<Validation, CustomUserError> {
-    if host.is_empty() || Url::parse(host).is_err() {
-        return Ok(Validation::Invalid("Host must be a valid URL".into()));
+    let Ok(url) = Url::parse(host) else {
+        return Ok(Validation::Invalid(
+            "Host must be an absolute Flind URL".into(),
+        ));
+    };
+    let Some(hostname) = url.host_str() else {
+        return Ok(Validation::Invalid("Host must have a hostname".into()));
+    };
+    let hostname = hostname.to_ascii_lowercase();
+    let hostname = hostname.trim_end_matches('.');
+    if hostname == "posthog.com" || hostname.ends_with(".posthog.com") {
+        return Ok(Validation::Invalid(
+            "Cannot connect Flind CLI to the inherited cloud provider".into(),
+        ));
+    }
+    let unbracketed = hostname.trim_start_matches('[').trim_end_matches(']');
+    let loopback = hostname == "localhost"
+        || hostname.ends_with(".localhost")
+        || unbracketed
+            .parse::<IpAddr>()
+            .is_ok_and(|ip| ip.is_loopback());
+    if !(url.scheme() == "https" || (url.scheme() == "http" && loopback)) {
+        return Ok(Validation::Invalid(
+            "Use HTTPS for remote Flind instances; HTTP is only allowed on loopback".into(),
+        ));
+    }
+    if !url.username().is_empty()
+        || url.password().is_some()
+        || url.path() != "/"
+        || url.query().is_some()
+        || url.fragment().is_some()
+    {
+        return Ok(Validation::Invalid(
+            "Host must be an origin without credentials, path, query, or fragment".into(),
+        ));
     }
 
     Ok(Validation::Valid)
@@ -243,6 +280,44 @@ mod tests {
         assert_eq!(token.token, "phx_legacy");
         assert_eq!(token.env_id, "42");
         assert!(token.host.is_none());
+    }
+
+    #[test]
+    fn validator_refuses_upstream_hosts_and_secret_bearing_urls() {
+        for host in [
+            "https://posthog.com",
+            "https://us.posthog.com",
+            "https://EU.POSTHOG.COM",
+            "https://us.posthog.com.",
+            "https://posthog.com..",
+            "http://flind.example",
+            "ftp://flind.example",
+            "https://flind.example/path",
+            "https://flind.example/?key=secret",
+            "https://flind.example/#secret",
+            "https://user:secret@flind.example",
+        ] {
+            assert!(
+                matches!(host_validator(host), Ok(Validation::Invalid(_))),
+                "{host} must be rejected"
+            );
+        }
+    }
+
+    #[test]
+    fn validator_accepts_explicit_tls_and_local_development_hosts() {
+        for host in [
+            "https://flind.example",
+            "https://selfhost.example:8443/",
+            "http://localhost:8000",
+            "http://127.0.0.1:8000",
+            "http://[::1]:8000",
+        ] {
+            assert!(
+                matches!(host_validator(host), Ok(Validation::Valid)),
+                "{host} must qualify"
+            );
+        }
     }
 
     #[test]

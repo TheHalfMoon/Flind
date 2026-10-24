@@ -65,6 +65,14 @@ pub fn login_with_use_cases(host_override: Option<String>, use_cases: Vec<&str>)
     let Some(host) = approved_login_host(host_override) else {
         return manual_login();
     };
+    // The OAuth device-code request is network-active before init_context can
+    // validate credentials, so reject inherited/unsafe hosts here as well.
+    if !matches!(
+        host_validator(&host),
+        Ok(inquire::validator::Validation::Valid)
+    ) {
+        bail!("Flind login requires an approved HTTPS instance or a local loopback host");
+    }
 
     info!("🔐 Starting OAuth Device Flow authentication...");
     info!("Connecting to: {}", host);
@@ -140,7 +148,9 @@ pub fn login_with_use_cases(host_override: Option<String>, use_cases: Vec<&str>)
 }
 
 fn request_device_code(host: &str) -> Result<DeviceCodeResponse, Error> {
-    let client = reqwest::blocking::Client::new();
+    let client = reqwest::blocking::Client::builder()
+        .redirect(reqwest::redirect::Policy::none())
+        .build()?;
     let url = format!("{host}/api/cli-auth/device-code/");
 
     let response = client
@@ -198,7 +208,9 @@ fn poll_for_authorization(
     interval_seconds: u64,
     expires_in_seconds: u64,
 ) -> Result<PollResponse, Error> {
-    let client = reqwest::blocking::Client::new();
+    let client = reqwest::blocking::Client::builder()
+        .redirect(reqwest::redirect::Policy::none())
+        .build()?;
     let url = format!("{host}/api/cli-auth/poll/");
     let max_attempts = (expires_in_seconds / interval_seconds) + 1;
     let poll_interval = Duration::from_secs(interval_seconds);
@@ -383,6 +395,16 @@ mod tests {
             approved_login_host(Some("http://localhost:8000".into())),
             Some("http://localhost:8000".into())
         );
+    }
+
+    #[test]
+    fn inherited_oauth_host_is_not_eligible_for_login() {
+        let inherited = format!("https://us.{}", "posthog.com");
+        let host = approved_login_host(Some(inherited)).unwrap();
+        assert!(matches!(
+            host_validator(&host),
+            Ok(inquire::validator::Validation::Invalid(_))
+        ));
     }
 
     #[test]
