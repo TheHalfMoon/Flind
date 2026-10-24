@@ -4,7 +4,6 @@ import { useIsOrgAdmin } from "@flind/ui/features/auth/useOrgRole";
 import { StepActions } from "@flind/ui/features/onboarding/components/StepActions";
 import { LoadingState } from "@flind/ui/primitives/LoadingState";
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
 import { ConsentErrorContent } from "./ConsentErrorContent";
 import { ConsentPanel } from "./ConsentPanel";
 import { useConsentAnalytics } from "./consentAnalytics";
@@ -24,11 +23,9 @@ export function ConsentStep({
   onNext,
   onBack,
   requirements,
-  onSubmittingChange,
 }: ConsentStepProps) {
   const consent = useOrgConsent();
   const { isAdmin } = useIsOrgAdmin();
-  const [isSubmitting, setIsSubmitting] = useState(false);
   useConsentAnalytics(consent, isAdmin === true, "onboarding_step");
 
   return (
@@ -53,10 +50,6 @@ export function ConsentStep({
                     consent={consent}
                     requirements={requirements}
                     isAdmin={isAdmin === true}
-                    onSubmittingChange={(submitting) => {
-                      setIsSubmitting(submitting);
-                      onSubmittingChange?.(submitting);
-                    }}
                   />
                 )}
               </motion.div>
@@ -69,11 +62,7 @@ export function ConsentStep({
               variant="primary"
               size="lg"
               className="h-10 px-4 text-sm"
-              disabled={
-                isSubmitting ||
-                consent.status !== "resolved" ||
-                !consent.satisfied
-              }
+              disabled={consent.status !== "resolved" || !consent.satisfied}
               onClick={onNext}
             >
               Next
@@ -86,7 +75,6 @@ export function ConsentStep({
               variant="outline"
               size="lg"
               className="h-10 px-4 text-sm"
-              disabled={isSubmitting}
               onClick={onBack}
             >
               <ArrowLeft size={16} />
