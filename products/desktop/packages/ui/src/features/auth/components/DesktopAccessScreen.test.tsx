@@ -6,9 +6,6 @@ import { DesktopAccessScreen } from "./DesktopAccessScreen";
 
 const { track } = vi.hoisted(() => ({ track: vi.fn() }));
 vi.mock("@flind/ui/shell/analytics", () => ({ track }));
-const { openExternalUrl } = vi.hoisted(() => ({ openExternalUrl: vi.fn() }));
-vi.mock("@flind/ui/shell/openExternal", () => ({ openExternalUrl }));
-
 const orgProjectsMap = {
   "org-1": {
     orgName: "First organization",
@@ -66,9 +63,9 @@ function renderScreen(
 
 describe("DesktopAccessScreen", () => {
   it.each([
-    ["startup_plan", "Organizations in the Startup or YC program"],
-    ["prepaid_credits", "sales@posthog.com"],
-    [null, "Not ideal, we know"],
+    ["startup_plan", "access is restricted by the server policy"],
+    ["prepaid_credits", "access is restricted by the server policy"],
+    [null, "New access is unavailable right now"],
   ] as const)("renders the %s reason", (reason, expectedCopy) => {
     track.mockClear();
     renderScreen({ projectId: 1, status: "blocked", reason });
@@ -97,28 +94,30 @@ describe("DesktopAccessScreen", () => {
     expect(onRetry).toHaveBeenCalledOnce();
   });
 
-  it("opens the games when sign-ups are paused", async () => {
-    const user = userEvent.setup();
-    track.mockClear();
-    renderScreen({ projectId: 1, status: "blocked", reason: null });
-
-    await user.click(screen.getByText("Play a hedgehog game instead"));
-
-    expect(track).toHaveBeenCalledWith(
-      ANALYTICS_EVENTS.DESKTOP_ACCESS_LINK_OPENED,
-      { link: "games" },
-    );
-    expect(openExternalUrl).toHaveBeenCalledWith(
-      "https://posthog.com/sparks-joy",
-    );
+  it("does not show inherited vendor games or sales links when sign-ups are paused", () => {
+    const { container } = renderScreen({
+      projectId: 1,
+      status: "blocked",
+      reason: null,
+    });
+    expect(
+      screen.getByText("Flind Desktop sign-ups are paused"),
+    ).toBeInTheDocument();
+    expect(container.textContent).not.toContain("PostHog");
+    expect(container.textContent).not.toContain("hedgehog");
+    expect(container.querySelector('a[href*="posthog.com"]')).toBeNull();
+    expect(screen.queryByRole("button", { name: /game/i })).toBeNull();
   });
 
-  it("does not offer the games for other blocks", () => {
-    renderScreen({ projectId: 1, status: "blocked", reason: "startup_plan" });
-
-    expect(
-      screen.queryByText("Play a hedgehog game instead"),
-    ).not.toBeInTheDocument();
+  it("does not expose vendor sales or external URLs for prepaid credit restrictions", () => {
+    const { container } = renderScreen({
+      projectId: 1,
+      status: "blocked",
+      reason: "prepaid_credits",
+    });
+    expect(container.textContent).not.toContain("sales@");
+    expect(container.textContent).not.toContain("PostHog");
+    expect(container.querySelector('a[href*="posthog.com"]')).toBeNull();
   });
 
   it("lets the user select another project", async () => {

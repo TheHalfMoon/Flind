@@ -2,7 +2,6 @@ import {
   ArrowClockwise,
   CaretDown,
   Coins,
-  GameController,
   HourglassMedium,
   RocketLaunch,
   SignOut,
@@ -31,7 +30,6 @@ import { ANALYTICS_EVENTS } from "@flind/shared/analytics-events";
 import { FullScreenLayout } from "@flind/ui/primitives/FullScreenLayout";
 import { Spinner } from "@flind/ui/primitives/Spinner";
 import { track } from "@flind/ui/shell/analytics";
-import { openExternalUrl } from "@flind/ui/shell/openExternal";
 import {
   FIELD_CONTENT_CLASS,
   FIELD_TRIGGER_CLASS,
@@ -51,33 +49,25 @@ interface ProjectOption {
 const BLOCKED_CONTENT = {
   startup_plan: {
     icon: <RocketLaunch />,
-    title: "Desktop isn't available for this organization",
+    title: "Flind Desktop access is restricted",
     description:
-      "Organizations in the Startup or YC program can't use PostHog Desktop. Select another organization to continue.",
+      "This organization's access is restricted by the server policy. Select another organization or ask an administrator to review access.",
   },
   prepaid_credits: {
     icon: <Coins />,
-    title: "Desktop isn't available with prepaid credits",
+    title: "Flind Desktop access is restricted",
     description:
-      "Organizations with pending or active prepaid credits can't use PostHog Desktop. Select another organization to continue. To discuss access, contact your PostHog account executive. If you don't have one, email sales@posthog.com.",
+      "This organization's access is restricted by the server policy. Select another organization or ask an administrator to review access.",
   },
 } as const;
 
-// The server blocks with a null reason only while new sign-ups are paused. It sends no
-// dedicated reason, because older Desktop builds and the LLM gateway reject unknown reasons.
+// A null reason is the server's compatibility signal for paused sign-ups.
 const SIGNUPS_PAUSED_CONTENT = {
   icon: <HourglassMedium />,
-  title: "Desktop sign-ups are paused",
+  title: "Flind Desktop sign-ups are paused",
   description:
-    "Sorry, we aren't letting new accounts into PostHog Desktop at the moment. Not ideal, we know.",
+    "New access is unavailable right now. Select another organization or check again later.",
 };
-
-const POSTHOG_GAMES_URL = "https://posthog.com/sparks-joy";
-
-function openGames(): void {
-  track(ANALYTICS_EVENTS.DESKTOP_ACCESS_LINK_OPENED, { link: "games" });
-  openExternalUrl(POSTHOG_GAMES_URL);
-}
 
 interface DesktopAccessScreenProps {
   access: DesktopAccess;
@@ -195,18 +185,6 @@ export function DesktopAccessScreen({
               </EmptyDescription>
             </EmptyHeader>
             <EmptyContent className="w-full max-w-md gap-4">
-              {isSignupsPaused && (
-                <Button
-                  variant="primary"
-                  className="w-full"
-                  onClick={openGames}
-                  data-attr="desktop-access-games"
-                >
-                  <GameController />
-                  Play a hedgehog game instead
-                </Button>
-              )}
-
               <div className="flex w-full flex-col gap-4">
                 <Field className="min-w-0">
                   <FieldLabel htmlFor="desktop-access-organization">
