@@ -12,24 +12,7 @@ export interface ParsePostHogUrlOptions {
   codeBaseUrl?: string | null;
 }
 
-const POSTHOG_HOSTS = new Set([
-  "app.posthog.com",
-  "code.posthog.com",
-  "eu.posthog.com",
-  "localhost",
-  "posthog.com",
-  "us.posthog.com",
-  "www.posthog.com",
-]);
-
-const POSTHOG_APP_HOSTS = new Set([
-  "app.posthog.com",
-  "eu.posthog.com",
-  "localhost",
-  "us.posthog.com",
-]);
-
-const POSTHOG_CODE_PATH_PATTERN = /^\/(?:task|inbox)(?:\/|$)/;
+const FLIND_CODE_PATH_PATTERN = /^\/(?:task|inbox)(?:\/|$)/;
 
 function decodeSegment(segment: string): string {
   try {
@@ -58,10 +41,6 @@ function joinLabel(prefix: string, parts: string[]): string {
 
 function fallbackLabel(prefix: string, segments: string[]): string {
   return joinLabel(prefix, segments.slice(0, 2).map(humanizeSegment));
-}
-
-function labelForDocs(segments: string[]): string {
-  return joinLabel("Docs", segments.slice(1, 3).map(humanizeSegment));
 }
 
 function labelForCode(segments: string[]): string {
@@ -160,15 +139,7 @@ function labelForApp(parsed: URL, segments: string[]): string {
     if (projectLabel) return projectLabel;
   }
 
-  return fallbackLabel("PostHog", segments);
-}
-
-function labelForWebsite(segments: string[]): string {
-  if (segments[0] === "docs") {
-    return labelForDocs(segments);
-  }
-
-  return fallbackLabel("PostHog", segments);
+  return fallbackLabel("Flind", segments);
 }
 
 function refIdForApp(_parsed: URL, segments: string[]): string | null {
@@ -219,7 +190,7 @@ function resolvePostHogUrl(
   const trimmed = text.trim();
 
   if (trimmed.startsWith("/")) {
-    const baseUrl = POSTHOG_CODE_PATH_PATTERN.test(trimmed)
+    const baseUrl = FLIND_CODE_PATH_PATTERN.test(trimmed)
       ? options.codeBaseUrl
       : options.appBaseUrl;
 
@@ -242,21 +213,59 @@ function resolvePostHogUrl(
   return parsed;
 }
 
+/**
+ * The compact reference chip recognizes configured Flind service origins
+ * only. A copied vendor URL is an ordinary external link, never trusted as
+ * a first-party application/task reference.
+ *
+ * Preserve exported type/function names as compatibility surfaces while
+ * migrating downstream consumers separately.
+ */
+function approvedFlindOrigin(base: string | null | undefined): string | null {
+  if (!base) return null;
+  let url: URL;
+  try {
+    url = new URL(base);
+  } catch {
+    return null;
+  }
+  const hostname = url.hostname.toLowerCase().replace(/\.+$/, "");
+  const loopback =
+    hostname === "localhost" ||
+    hostname.endsWith(".localhost") ||
+    hostname === "127.0.0.1" ||
+    hostname === "[::1]";
+  if (
+    !hostname ||
+    hostname === "posthog.com" ||
+    hostname.endsWith(".posthog.com") ||
+    (url.protocol !== "https:" && !(url.protocol === "http:" && loopback)) ||
+    url.username ||
+    url.password ||
+    url.pathname !== "/" ||
+    url.search ||
+    url.hash
+  ) {
+    return null;
+  }
+  return url.origin;
+}
+
 export function parsePostHogUrl(
   text: string,
   options: ParsePostHogUrlOptions = {},
 ): ParsedPostHogUrl | null {
   const parsed = resolvePostHogUrl(text, options);
-  if (!parsed) return null;
-
-  if (parsed.protocol !== "https:" && parsed.protocol !== "http:") return null;
-
-  const hostname = parsed.hostname.toLowerCase();
-  if (!POSTHOG_HOSTS.has(hostname)) return null;
-
+  if (!parsed || parsed.username || parsed.password) return null;
+  const appOrigin = approvedFlindOrigin(options.appBaseUrl);
+  const codeOrigin = approvedFlindOrigin(options.codeBaseUrl);
   const segments = parsed.pathname.split("/").filter(Boolean);
 
-  if (hostname === "code.posthog.com") {
+  if (
+    codeOrigin &&
+    parsed.origin === codeOrigin &&
+    (appOrigin !== codeOrigin || FLIND_CODE_PATH_PATTERN.test(parsed.pathname))
+  ) {
     return {
       kind: "code",
       defaultLabel: labelForCode(segments),
@@ -265,21 +274,12 @@ export function parsePostHogUrl(
     };
   }
 
-  if (POSTHOG_APP_HOSTS.has(hostname)) {
+  if (appOrigin && parsed.origin === appOrigin) {
     return {
       kind: "app",
       defaultLabel: labelForApp(parsed, segments),
       normalizedUrl: parsed.toString(),
       refId: refIdForApp(parsed, segments),
-    };
-  }
-
-  if (hostname === "posthog.com" || hostname === "www.posthog.com") {
-    return {
-      kind: segments[0] === "docs" ? "docs" : "website",
-      defaultLabel: labelForWebsite(segments),
-      normalizedUrl: parsed.toString(),
-      refId: null,
     };
   }
 

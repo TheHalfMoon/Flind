@@ -1,23 +1,35 @@
 import { describe, expect, it } from "vitest";
 import { parsePostHogUrl } from "./posthogUrl";
 
-describe("parsePostHogUrl", () => {
-  it("parses docs links into compact docs labels", () => {
-    expect(parsePostHogUrl("https://posthog.com/docs/session-replay")).toEqual({
-      kind: "docs",
-      defaultLabel: "Docs / Session replay",
-      normalizedUrl: "https://posthog.com/docs/session-replay",
-      refId: null,
-    });
+const hosts = {
+  appBaseUrl: "https://us.flind.example",
+  codeBaseUrl: "https://code.flind.example",
+};
+
+describe("Flind mobile first-party Markdown reference links", () => {
+  it("does not implicitly trust inherited vendor URLs", () => {
+    for (const url of [
+      "https://posthog.com/docs/session-replay",
+      "https://posthog.com/pricing",
+      "https://us.posthog.com/project/1/dashboard/42",
+      "https://code.posthog.com/task/task-123",
+    ]) {
+      expect(parsePostHogUrl(url, hosts)).toBeNull();
+    }
   });
 
-  it("parses PostHog task run links", () => {
+  it("does not treat any URL as first-party without explicit Flind hosts", () => {
+    expect(parsePostHogUrl("https://us.flind.example/insights/42")).toBeNull();
+    expect(parsePostHogUrl("https://code.flind.example/task/abc")).toBeNull();
+  });
+
+  it("labels task and run references on an approved Flind code host", () => {
     expect(
-      parsePostHogUrl("https://code.posthog.com/task/task-123/run/run-456"),
+      parsePostHogUrl("https://code.flind.example/task/task-123/run/run-456", hosts),
     ).toEqual({
       kind: "code",
       defaultLabel: "Code / Task run (run-456)",
-      normalizedUrl: "https://code.posthog.com/task/task-123/run/run-456",
+      normalizedUrl: "https://code.flind.example/task/task-123/run/run-456",
       refId: "run-456",
     });
   });
@@ -27,77 +39,74 @@ describe("parsePostHogUrl", () => {
     "project/7/feature-flags",
     "feature_flags",
     "feature-flags",
-  ])("parses %s links", (section) => {
-    expect(parsePostHogUrl(`https://us.posthog.com/${section}/42`)).toEqual({
-      kind: "app",
-      defaultLabel: "Feature flag (42)",
-      normalizedUrl: `https://us.posthog.com/${section}/42`,
-      refId: "42",
-    });
+  ])("labels the %s Flind feature flag reference", (section) => {
+    expect(
+      parsePostHogUrl("https://us.flind.example/" + section + "/42", hosts)?.defaultLabel,
+    ).toBe("Feature flag (42)");
   });
 
-  it("labels a SQL editor link by its query, not its project path", () => {
+  it("labels SQL queries and feature flag filters on a configured app host", () => {
     expect(
       parsePostHogUrl(
-        "https://us.posthog.com/project/7/sql?open_query=SELECT%201",
+        "https://us.flind.example/project/7/sql?open_query=SELECT%201",
+        hosts,
       )?.defaultLabel,
     ).toBe("SQL query");
-  });
-
-  it("parses relative insight paths using the signed-in app host", () => {
     expect(
-      parsePostHogUrl("/insights/UiFKIsO3", {
-        appBaseUrl: "https://us.posthog.com",
-      }),
-    ).toEqual({
-      kind: "app",
-      defaultLabel: "Insight (UiFKIsO3)",
-      normalizedUrl: "https://us.posthog.com/insights/UiFKIsO3",
-      refId: "UiFKIsO3",
-    });
+      parsePostHogUrl(
+        "https://us.flind.example/project/1/feature-flags?search=checkout",
+        hosts,
+      )?.defaultLabel,
+    ).toBe("Feature flags / checkout");
   });
 
-  it("parses relative PostHog paths using the code host", () => {
+  it("recognizes relative task or app paths using their approved destinations", () => {
+    expect(parsePostHogUrl("/task/abc", hosts)?.kind).toBe("code");
+    expect(parsePostHogUrl("/insights/abc", hosts)?.kind).toBe("app");
+  });
+
+  it("supports one self-hosted Flind origin for code and app without mislabeling", () => {
+    const shared = {
+      appBaseUrl: "https://selfhost.flind.example",
+      codeBaseUrl: "https://selfhost.flind.example",
+    };
+    expect(parsePostHogUrl("/task/abc", shared)?.kind).toBe("code");
+    expect(parsePostHogUrl("/insights/abc", shared)?.kind).toBe("app");
+  });
+
+  it("accepts loopback only for explicit local HTTP development", () => {
     expect(
-      parsePostHogUrl("/task/task-123/run/run-456", {
-        codeBaseUrl: "https://code.posthog.com",
+      parsePostHogUrl("/insights/1", {
+        appBaseUrl: "http://localhost:8010",
+      })?.kind,
+    ).toBe("app");
+    expect(
+      parsePostHogUrl("/insights/1", {
+        appBaseUrl: "http://public.flind.example",
       }),
-    ).toEqual({
-      kind: "code",
-      defaultLabel: "Code / Task run (run-456)",
-      normalizedUrl: "https://code.posthog.com/task/task-123/run/run-456",
-      refId: "run-456",
-    });
+    ).toBeNull();
   });
 
-  it.each(["feature_flags", "feature-flags"])(
-    "uses the %s search query when present",
-    (section) => {
+  it("rejects unsafe, inherited or spoofed configuration", () => {
+    for (const appBaseUrl of [
+      "https://us.posthog.com",
+      "https://eu.posthog.com.",
+      "http://external.example",
+      "https://user:secret@us.flind.example",
+      "https://us.flind.example/extra",
+      "https://us.flind.example?x=secret",
+    ]) {
       expect(
-        parsePostHogUrl(
-          `https://eu.posthog.com/project/1/${section}?search=checkout-redesign`,
-        ),
-      ).toEqual({
-        kind: "app",
-        defaultLabel: "Feature flags / checkout-redesign",
-        normalizedUrl: `https://eu.posthog.com/project/1/${section}?search=checkout-redesign`,
-        refId: null,
-      });
-    },
-  );
-
-  it("falls back to generic website labels for non-docs pages", () => {
-    expect(parsePostHogUrl("https://posthog.com/pricing")).toEqual({
-      kind: "website",
-      defaultLabel: "PostHog / Pricing",
-      normalizedUrl: "https://posthog.com/pricing",
-      refId: null,
-    });
+        parsePostHogUrl("https://us.flind.example/insights/1", { appBaseUrl }),
+      ).toBeNull();
+    }
+    expect(
+      parsePostHogUrl("https://us.flind.example.attacker.test/insights/1", hosts),
+    ).toBeNull();
   });
 
-  it("ignores non-PostHog links", () => {
-    expect(parsePostHogUrl("https://example.com/docs/session-replay")).toBe(
-      null,
-    );
+  it("does not upgrade web/marketing links to first-party chips", () => {
+    expect(parsePostHogUrl("https://flind.example/pricing", hosts)).toBeNull();
+    expect(parsePostHogUrl("https://example.com/docs/session-replay", hosts)).toBeNull();
   });
 });
