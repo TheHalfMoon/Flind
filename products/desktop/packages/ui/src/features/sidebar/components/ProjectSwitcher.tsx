@@ -63,9 +63,11 @@ import {
 import { navigateToArchived } from "@flind/ui/router/navigationBridge";
 import { track } from "@flind/ui/shell/analytics";
 import { openExternalUrl } from "@flind/ui/shell/openExternal";
-import { flindExternalUrl } from "@flind/ui/shell/flindExternalLinks";
+import {
+  flindCloudAppPath,
+  flindExternalUrl,
+} from "@flind/ui/shell/flindExternalLinks";
 import { isMac } from "@flind/ui/utils/platform";
-import { getPostHogUrl } from "@flind/ui/utils/urls";
 import { Avatar, Box } from "@radix-ui/themes";
 import { useMemo, useState } from "react";
 
@@ -123,6 +125,8 @@ export function ProjectSwitcher({
   const communityUrl = flindExternalUrl("community");
   const websiteUrl = flindExternalUrl("website");
   const privacyUrl = flindExternalUrl("privacy");
+  const createProjectUrl = flindCloudAppPath("/organization/create-project");
+  const createOrganizationUrl = flindCloudAppPath("/create-organization");
 
   const isIcon = appearance === "icon";
   const projectName = currentProject?.name ?? "No project selected";
@@ -159,7 +163,9 @@ export function ProjectSwitcher({
           (org) => org.id === group.orgId,
         )?.logo_media_id;
         const logoSrc = logoMediaId
-          ? (getPostHogUrl(`/uploaded_media/${logoMediaId}`) ?? undefined)
+          ? (flindCloudAppPath(
+              `/uploaded_media/${encodeURIComponent(logoMediaId)}`,
+            ) ?? undefined)
           : undefined;
         return {
           id: group.orgId,
@@ -195,15 +201,13 @@ export function ProjectSwitcher({
 
   const handleCreateProject = () => {
     trackMenu("create_project");
-    const url = getPostHogUrl("/organization/create-project");
-    if (url) openExternalUrl(url);
+    if (createProjectUrl) openExternalUrl(createProjectUrl);
     setPopoverOpen(false);
   };
 
   const handleCreateOrg = () => {
     trackMenu("create_organization");
-    const url = getPostHogUrl("/create-organization");
-    if (url) openExternalUrl(url);
+    if (createOrganizationUrl) openExternalUrl(createOrganizationUrl);
     setPopoverOpen(false);
   };
 
@@ -346,11 +350,13 @@ export function ProjectSwitcher({
                 </MenuSubFlyout>
               </DropdownMenuSub>
 
-              <DropdownMenuItem onClick={handleCreateProject}>
-                <Plus size={14} className="text-gray-11" />
-                Create project
-                <ArrowSquareOut size={14} className="ml-auto text-gray-11" />
-              </DropdownMenuItem>
+              {createProjectUrl && (
+                <DropdownMenuItem onClick={handleCreateProject}>
+                  <Plus size={14} className="text-gray-11" />
+                  Create project
+                  <ArrowSquareOut size={14} className="ml-auto text-gray-11" />
+                </DropdownMenuItem>
+              )}
             </DropdownMenuGroup>
 
             <DropdownMenuGroup>
@@ -371,11 +377,13 @@ export function ProjectSwitcher({
                 </MenuSubFlyout>
               </DropdownMenuSub>
 
-              <DropdownMenuItem onClick={handleCreateOrg}>
-                <Plus size={14} className="text-gray-11" />
-                Create organization
-                <ArrowSquareOut size={14} className="ml-auto text-gray-11" />
-              </DropdownMenuItem>
+              {createOrganizationUrl && (
+                <DropdownMenuItem onClick={handleCreateOrg}>
+                  <Plus size={14} className="text-gray-11" />
+                  Create organization
+                  <ArrowSquareOut size={14} className="ml-auto text-gray-11" />
+                </DropdownMenuItem>
+              )}
             </DropdownMenuGroup>
 
             <DropdownMenuSeparator />

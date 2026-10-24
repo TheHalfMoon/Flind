@@ -56,3 +56,41 @@ export function flindExternalUrl(
     },
   );
 }
+
+/** Navigate only to configured first-party cloud-app paths. No vendor fallback.
+ * Reject protocol-relative paths, backslash confusion and arbitrary URLs. */
+export function verifyFlindCloudAppPath(
+  path: string,
+  hostname: string | undefined,
+  appBase: string | undefined,
+): string | null {
+  if (
+    !appBase ||
+    !hostname ||
+    !path.startsWith("/") ||
+    path.startsWith("//") ||
+    path.includes("\\")
+  )
+    return null;
+  const checked = verifyFlindExternalLink("website", hostname, {
+    website: appBase,
+  });
+  if (!checked) return null;
+  try {
+    const root = new URL(checked);
+    if (root.pathname !== "/" || root.search || root.hash) return null;
+    const destination = new URL(path, root);
+    if (destination.origin !== root.origin) return null;
+    return destination.href;
+  } catch {
+    return null;
+  }
+}
+
+export function flindCloudAppPath(path: string): string | null {
+  return verifyFlindCloudAppPath(
+    path,
+    import.meta.env.VITE_FLIND_CLOUD_APP_HOST,
+    import.meta.env.VITE_FLIND_CLOUD_APP_URL,
+  );
+}
