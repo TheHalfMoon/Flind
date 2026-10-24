@@ -1,22 +1,13 @@
 use std::path::{Path, PathBuf};
 
-use anyhow::{Context, Result};
+use anyhow::Result;
 
-use crate::safe_println;
+// No inherited release server is trusted by Flind. Updating is disabled
+// until a first-party, authenticated release channel is implemented and
+// verified; it must never download and run a vendor-owned shell script.
 
-// Written by the "Publish artifacts to the release bucket" step in
-// release-cli.yml on every stable release: the manifest and both installers are
-// republished at these stable keys with a short TTL and a CloudFront
-// invalidation, while the versioned artifacts beside them are immutable.
-const MANIFEST_URL: &str = "https://releases.posthog.com/posthog-cli/stable/dist-manifest.json";
-const INSTALL_SH_URL: &str = "https://releases.posthog.com/posthog-cli/install.sh";
-const INSTALL_PS1_URL: &str = "https://releases.posthog.com/posthog-cli/install.ps1";
-
-/// How this copy of posthog-cli got onto the machine.
-///
-/// Only [`InstallMethod::Script`] owns its own binary. Every other variant is
-/// managed by a package manager that would overwrite or fight an in-place
-/// update, so those print the command that manager expects instead.
+/// Classifies historical install layouts. This remains for migration tests;
+/// it does not authorize an updater or contact a release server.
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub enum InstallMethod {
     /// Installed by install.sh, which leaves an install receipt. Ours to
@@ -45,28 +36,24 @@ pub enum Guidance {
 }
 
 impl InstallMethod {
-    /// How this install updates, or None when we own it and can do it here.
+    /// Explains the historical install method; this never authorizes updates.
     pub fn guidance(&self) -> Option<Guidance> {
         match self {
             InstallMethod::Script => None,
-            // install.ps1 places binaries with `Copy-Item` straight over the
-            // destination, and Windows refuses that while the file is mapped
-            // into a running process. Running it from a shell works, because
-            // posthog-cli is not running then.
-            InstallMethod::ScriptWindows => {
-                Some(Guidance::Command(format!("irm {INSTALL_PS1_URL} | iex")))
-            }
-            InstallMethod::Homebrew => Some(Guidance::Command("brew upgrade posthog-cli".into())),
-            InstallMethod::Cargo => Some(Guidance::Command(
-                "cargo install posthog-cli --force".into(),
+            // Do not suggest executing an inherited installer, on Windows or elsewhere.
+            InstallMethod::ScriptWindows => Some(Guidance::Explain(
+                "Flind CLI updates are not yet available. Do not run inherited installers.".into(),
+            )),
+            InstallMethod::Homebrew | InstallMethod::Cargo => Some(Guidance::Explain(
+                "Flind CLI packages have not been released through this package manager.".into(),
             )),
             InstallMethod::Npm(path) => Some(Guidance::Explain(format!(
                 "this copy is managed by npm, at\n\n    {}\n\n\
-                 Update it through npm rather than here.",
+                 No verified Flind CLI package is published. Do not update from a vendor registry.",
                 path.display()
             ))),
-            InstallMethod::Unknown => Some(Guidance::Command(
-                "curl -LsSf https://releases.posthog.com/posthog-cli/install.sh | sh".into(),
+            InstallMethod::Unknown => Some(Guidance::Explain(
+                "No independently published Flind CLI update channel is configured.".into(),
             )),
         }
     }
@@ -114,7 +101,7 @@ pub fn detect_install_method() -> InstallMethod {
     // The rule guards against trusting current_exe for a security decision.
     // This one is not: it picks which message to print, and whether to run the
     // official installer over the caller's own install. A caller who forges the
-    // path gets their own CLI reinstalled from releases.posthog.com, which is
+    // path gets their own CLI reinstalled from an inherited release host, which is
     // what the command does anyway. No privilege boundary and no other user is
     // involved.
     // nosemgrep: rust.lang.security.current-exe.current-exe
@@ -168,104 +155,23 @@ fn classify_path(resolved: &Path, owned_by_script: bool) -> InstallMethod {
     InstallMethod::Unknown
 }
 
-fn latest_version() -> Result<String> {
-    let manifest: serde_json::Value = reqwest::blocking::Client::new()
-        .get(MANIFEST_URL)
-        .send()
-        .context("Failed to reach releases.posthog.com")?
-        .error_for_status()
-        .context("The release manifest is unavailable")?
-        .json()
-        .context("The release manifest could not be parsed")?;
-
-    manifest["releases"][0]["app_version"]
-        .as_str()
-        .map(str::to_owned)
-        .context("The release manifest carries no version")
-}
-
-fn run_installer(prefix: &Path) -> Result<()> {
-    let body = reqwest::blocking::Client::new()
-        .get(INSTALL_SH_URL)
-        .send()
-        .context("Failed to download the installer")?
-        .error_for_status()
-        .context("The installer is unavailable")?
-        .text()
-        .context("The installer could not be read")?;
-
-    let dir = tempfile::tempdir().context("Failed to create a temporary directory")?;
-    let script = dir.path().join("install.sh");
-    std::fs::write(&script, body).context("Failed to write the installer")?;
-
-    // Without this the installer writes to its own default, so an install in a
-    // custom directory would be left untouched while a second copy appeared in
-    // ~/.posthog and the command reported success.
-    let status = std::process::Command::new("sh")
-        .arg(&script)
-        .env("POSTHOG_CLI_INSTALL_DIR", prefix)
-        .status()
-        .context("Failed to run the installer")?;
-
-    anyhow::ensure!(status.success(), "The installer exited with {status}");
-    Ok(())
-}
-
-/// Delete a `posthog-cli-update` binary sitting next to the CLI.
-///
-/// That binary resolves versions through the GitHub releases API, which cannot
-/// reach a CLI release in this monorepo, so it is non-functional. On PATH it
-/// still looks like the way to update.
-///
-/// Bounded deliberately: one exact filename, only inside the prefix the receipt
-/// says we own, and a failure to remove is not worth failing the update over.
-fn remove_stale_standalone_updater(prefix: &Path) {
-    let name = "posthog-cli-update";
-    let path = prefix.join(name);
-    if path.is_file() && std::fs::remove_file(&path).is_ok() {
-        safe_println!("Removed the old {name}, which no longer works.");
-    }
-}
-
 pub fn update() -> Result<()> {
-    let method = detect_install_method();
-
-    match method.guidance() {
-        Some(Guidance::Command(command)) => {
-            safe_println!(
-                "posthog-cli was not installed by the install script, so it updates with:"
-            );
-            safe_println!();
-            safe_println!("    {command}");
-            return Ok(());
-        }
-        Some(Guidance::Explain(text)) => {
-            safe_println!("posthog-cli was not installed by the install script: {text}");
-            return Ok(());
-        }
-        None => {}
-    }
-
-    let current = env!("CARGO_PKG_VERSION");
-    let latest = latest_version()?;
-    if latest == current {
-        safe_println!("posthog-cli {current} is already the latest version.");
-        return Ok(());
-    }
-
-    let prefix = receipt_install_prefix()
-        .context("The install receipt names no install_prefix, so there is nowhere to install")?;
-
-    safe_println!("Updating posthog-cli {current} to {latest}.");
-    run_installer(&prefix)?;
-    remove_stale_standalone_updater(&prefix);
-    safe_println!("posthog-cli is now {latest}.");
-    Ok(())
+    // Fail before URL resolution, install-method detection, network I/O or
+    // invoking a shell. A future updater must verify Flind-owned releases.
+    anyhow::bail!(
+        "Flind CLI self-update is disabled until a verified Flind release channel is available."
+    )
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn self_update_fails_closed_without_a_release_channel() {
+        let message = update().unwrap_err().to_string();
+        assert!(message.contains("Flind CLI self-update is disabled"));
+    }
 
     #[test]
     fn classifies_install_layouts() {
