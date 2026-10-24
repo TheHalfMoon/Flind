@@ -1,20 +1,10 @@
 import * as AuthSession from "expo-auth-session";
 import * as WebBrowser from "expo-web-browser";
+import { getFlindStudioApiHost, getFlindStudioOAuthClientId } from "@/config";
 
 WebBrowser.maybeCompleteAuthSession();
 
 export type CloudRegion = "us" | "eu";
-
-// v1 mobile's public OAuth clients, registered for the posthog://callback scheme.
-const CLIENT_IDS: Record<CloudRegion, string> = {
-  us: "a5TY7w9IjFYfes6dkPgZe6envclWw3bm2UD8ZTlm",
-  eu: "1A7vO138Fh5sYmJislicN4F5HnttI6urmFttxPDU",
-};
-
-export const CLOUD_HOSTS: Record<CloudRegion, string> = {
-  us: "https://us.posthog.com",
-  eu: "https://eu.posthog.com",
-};
 
 const SCOPES = [
   "user:read",
@@ -47,10 +37,11 @@ async function tokenRequest(
   region: CloudRegion,
   body: Record<string, string>,
 ): Promise<OAuthTokens> {
-  const response = await fetch(`${CLOUD_HOSTS[region]}/oauth/token`, {
+  const response = await fetch(`${getFlindStudioApiHost(region)}/oauth/token`, {
     method: "POST",
+    redirect: "error",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ ...body, client_id: CLIENT_IDS[region] }),
+    body: JSON.stringify({ ...body, client_id: getFlindStudioOAuthClientId(region) }),
   });
   if (!response.ok) {
     throw new Error(
@@ -70,9 +61,9 @@ export async function signInWithOAuth(
   region: CloudRegion,
   { signup = false }: SignInOptions = {},
 ): Promise<OAuthTokens> {
-  const host = CLOUD_HOSTS[region];
+  const host = getFlindStudioApiHost(region);
   const request = new AuthSession.AuthRequest({
-    clientId: CLIENT_IDS[region],
+    clientId: getFlindStudioOAuthClientId(region),
     scopes: SCOPES,
     redirectUri: redirectUri(),
     usePKCE: true,

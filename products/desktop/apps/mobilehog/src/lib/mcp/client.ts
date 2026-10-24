@@ -5,7 +5,7 @@ import type {
   ReadResourceResult,
   Tool,
 } from "@modelcontextprotocol/sdk/types.js";
-import { MCP_HOSTS } from "@/config";
+import { getFlindStudioMcpUrl } from "@/config";
 import { requireSession, sessionIdentity } from "@/lib/auth";
 
 // The sandbox wrapper sends this too; it is what makes exec results carry the
@@ -33,9 +33,10 @@ function getConnection(): Connection {
   const key = `${sessionIdentity()}|${session.apiKey}`;
   if (connection?.key === key) return connection;
   resetMcpClient();
-  const url = new URL(MCP_HOSTS[session.region]);
+  const url = new URL(getFlindStudioMcpUrl(session.region));
   const transport = new StreamableHTTPClientTransport(url, {
     requestInit: {
+      redirect: "error",
       headers: {
         Authorization: `Bearer ${session.apiKey}`,
         "x-posthog-mcp-consumer": CONSUMER,

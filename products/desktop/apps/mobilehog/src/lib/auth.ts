@@ -1,9 +1,8 @@
 import { fetch } from "expo/fetch";
 import * as SecureStore from "expo-secure-store";
 import { create } from "zustand";
-import { POSTHOG_HOST } from "@/config";
+import { FLIND_LOCAL_HOST, getFlindStudioApiHost } from "@/config";
 import {
-  CLOUD_HOSTS,
   type CloudRegion,
   OAUTH_SCOPE_VERSION,
   refreshOAuth,
@@ -68,8 +67,9 @@ async function loginWithPassword(
   email: string,
   password: string,
 ): Promise<Session> {
-  const loginResponse = await fetch(`${POSTHOG_HOST}/api/login/`, {
+  const loginResponse = await fetch(`${FLIND_LOCAL_HOST}/api/login/`, {
     method: "POST",
+    redirect: "error",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, password }),
     credentials: "omit",
@@ -82,7 +82,7 @@ async function loginWithPassword(
     throw new Error("Login succeeded but no session cookie came back.");
   }
 
-  const keysResponse = await fetch(`${POSTHOG_HOST}/api/personal_api_keys/`, {
+  const keysResponse = await fetch(`${FLIND_LOCAL_HOST}/api/personal_api_keys/`, {
     headers: { Cookie: `sessionid=${sessionId}` },
     credentials: "omit",
   });
@@ -97,7 +97,7 @@ async function loginWithPassword(
     );
   }
 
-  return describeSession({ region: "local", host: POSTHOG_HOST, apiKey });
+  return describeSession({ region: "local", host: FLIND_LOCAL_HOST, apiKey });
 }
 
 async function describeSession(base: {
@@ -143,6 +143,19 @@ async function describeSession(base: {
     userName: me.first_name || me.email,
     email: me.email,
   };
+}
+
+/** Do not resume inherited or reconfigured-host bearer tokens. */
+function approvedSessionHost(session: Session): boolean {
+  if (session.region === "local") {
+    return session.host === FLIND_LOCAL_HOST;
+  }
+  try {
+    return session.host === getFlindStudioApiHost(session.region);
+  } catch {
+    // Hosted region not explicitly configured or host no longer qualifies.
+    return false;
+  }
 }
 
 let storageWrite: Promise<void> = Promise.resolve();
@@ -223,8 +236,9 @@ export const useAuth = create<AuthState>((set, get) => {
         const session = raw ? (JSON.parse(raw) as Session) : null;
         if (
           session &&
-          session.region !== "local" &&
-          session.scopeVersion !== OAUTH_SCOPE_VERSION
+          (!approvedSessionHost(session) ||
+            (session.region !== "local" &&
+              session.scopeVersion !== OAUTH_SCOPE_VERSION))
         ) {
           await SecureStore.deleteItemAsync(SESSION_KEY);
           if (get().generation === generation && !get().session) {
@@ -245,7 +259,7 @@ export const useAuth = create<AuthState>((set, get) => {
         const tokens = await signInWithOAuth(region, options);
         const session = await describeSession({
           region,
-          host: CLOUD_HOSTS[region],
+          host: getFlindStudioApiHost(region),
           apiKey: tokens.access_token,
           refreshToken: tokens.refresh_token,
           expiresAt: Date.now() + tokens.expires_in * 1000,
@@ -260,6 +274,9 @@ export const useAuth = create<AuthState>((set, get) => {
 
     refresh: async () => {
       const { session: current, generation } = get();
+      if (current && !approvedSessionHost(current)) {
+        throw new Error("Flind session host changed. Sign in again.");
+      }
       if (!current?.refreshToken || current.region === "local") {
         throw new Error("Session cannot be refreshed");
       }
@@ -298,6 +315,9 @@ export function requireSession(): Session {
   const { session } = useAuth.getState();
   if (!session) {
     throw new Error("Not signed in");
+  }
+  if (!approvedSessionHost(session)) {
+    throw new Error("Flind session destination is not approved. Sign in again.");
   }
   return session;
 }

@@ -34,6 +34,17 @@ describe("mobilehog auth", () => {
     useAuth.setState({ session: null, hydrated: false, generation: 0 });
   });
 
+  it("rejects a legacy cloud host even when the OAuth scope version matches", async () => {
+    secureStore.getItemAsync.mockResolvedValue(
+      JSON.stringify({ ...savedSession, scopeVersion: 1 }),
+    );
+
+    await useAuth.getState().hydrate();
+
+    expect(secureStore.deleteItemAsync).toHaveBeenCalledWith("mobilehog_session");
+    expect(useAuth.getState().session).toBeNull();
+  });
+
   it("forces an existing OAuth session to reauthorize after scopes change", async () => {
     secureStore.getItemAsync.mockResolvedValue(JSON.stringify(savedSession));
 
