@@ -7,11 +7,10 @@ import { SidePanelTab } from '~/types'
 /**
  * Opens support where the person already is, for any "contact support" trigger.
  *
- * In-app support means the side panel, which is the surface that reads the billing plan: it offers a
- * ticket only to plans entitled to one. Self-hosted has no Support tab, and a scene without a panel
- * (onboarding, login) would fall through to the support modal, which asks for a message from every
- * plan. Those cases link out to the support options docs instead, tagged with `utmCampaign` so the
- * docs page still reports which surface sent the person.
+ * In-app support uses the side panel when it is available and supported by this instance.
+ * Login, onboarding, and self-hosted contexts without that panel may only open an
+ * explicitly configured Flind documentation URL; when none exists, no remote
+ * support request is made. The campaign tag is encoded before navigation.
  */
 export function openInAppSupport(utmCampaign?: string): void {
     const isCloudOrDev = preflightLogic.findMounted()?.values.isCloudOrDev
@@ -23,7 +22,6 @@ export function openInAppSupport(utmCampaign?: string): void {
 
     // openSidePanel is the same action every other in-app support entry point calls. It writes the
     // `#panel=support` hash with `replace`, so Back leaves in one press instead of stranding an open
-    // panel. The panel handles the plan itself, so free plans land on PostHog AI and the community
-    // forum rather than a ticket form.
+    // panel. The side panel displays the Flind support options configured for this instance.
     sidePanelStateLogic.actions.openSidePanel(SidePanelTab.Support)
 }

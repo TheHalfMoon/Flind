@@ -1,17 +1,22 @@
+import { flindPublicUrl } from 'lib/flindPublicLinks'
+
 export type GetHelpAction = () => void
 
 /**
- * Where people without in-app support end up: self-hosted instances, the toolbar, the exporter.
- * The docs page lists the channels open to each plan; posthog.com/support sells the support product.
+ * A standalone error-toast fallback when the in-app Flind support panel is unavailable.
+ * Public documentation must be configured for this Flind instance; never route
+ * errors, campaign data, or support requests to an inherited third-party site.
  */
 export function openSupportOptions(utmCampaign: string = 'error-toast'): void {
-    // `noopener` because window.open, unlike an <a target="_blank">, leaves window.opener reachable
-    // by the opened page.
-    window.open(
-        `https://posthog.com/docs/support-options?utm_medium=in-product&utm_campaign=${utmCampaign}`,
-        '_blank',
-        'noopener'
-    )
+    const docsUrl = flindPublicUrl('docs')
+    if (!docsUrl) {
+        return
+    }
+
+    const target = new URL(docsUrl)
+    target.searchParams.set('utm_medium', 'in-product')
+    target.searchParams.set('utm_campaign', utmCampaign)
+    window.open(target.toString(), '_blank', 'noopener,noreferrer')
 }
 
 let getHelpAction: GetHelpAction = openSupportOptions
