@@ -1,17 +1,19 @@
 import { getCustomCloud } from "./custom-cloud";
+import { configuredFlindHostedCloud } from "./flind-hosted-cloud";
 import type { CloudRegion } from "./regions";
 
 export function getCloudUrlFromRegion(region: CloudRegion): string {
   switch (region) {
     case "us":
-      return "https://us.posthog.com";
     case "eu":
-      return "https://eu.posthog.com";
+    case "dev-cloud":
+      return configuredFlindHostedCloud(region).url;
     case "dev":
       return "http://localhost:8010";
-    case "dev-cloud":
-      return "https://app.dev.posthog.dev";
-    case "custom":
-      return getCustomCloud()?.url ?? "";
+    case "custom": {
+      const cloud = getCustomCloud();
+      if (!cloud) throw new Error("Flind custom Cloud is not configured");
+      return cloud.url;
+    }
   }
 }

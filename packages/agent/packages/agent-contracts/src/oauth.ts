@@ -1,4 +1,5 @@
 import { getCustomCloud } from "./custom-cloud";
+import { configuredFlindHostedCloud } from "./flind-hosted-cloud";
 import type { CloudRegion } from "./regions";
 
 export const POSTHOG_US_CLIENT_ID = "HCWoE0aRFMYxIxFNTTwkOORn5LBjOt2GVDzwSw5W";
@@ -250,13 +251,12 @@ export const OAUTH_SCOPE_VERSION = 8;
 export function getOauthClientIdFromRegion(region: CloudRegion): string {
   switch (region) {
     case "us":
-      return POSTHOG_US_CLIENT_ID;
     case "eu":
-      return POSTHOG_EU_CLIENT_ID;
-    case "dev":
-      return POSTHOG_DEV_CLIENT_ID;
     case "dev-cloud":
-      return POSTHOG_DEV_CLOUD_CLIENT_ID;
+      return configuredFlindHostedCloud(region).oauthClientId!;
+    case "dev":
+      // Loopback test provider only, never a hosted vendor region.
+      return POSTHOG_DEV_CLIENT_ID;
     case "custom":
       return getCustomCloud()?.oauthClientId ?? "";
   }

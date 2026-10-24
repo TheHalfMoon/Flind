@@ -19,12 +19,12 @@ export const REGION_LABELS: Record<CloudRegion, RegionLabel> = {
   us: {
     flag: "🇺🇸",
     label: "US Cloud",
-    hint: "us.posthog.com",
+    hint: "Configure Flind US Cloud",
   },
   eu: {
     flag: "🇪🇺",
     label: "EU Cloud",
-    hint: "eu.posthog.com",
+    hint: "Configure Flind EU Cloud",
   },
   dev: {
     flag: "🛠️",
@@ -34,7 +34,7 @@ export const REGION_LABELS: Record<CloudRegion, RegionLabel> = {
   "dev-cloud": {
     flag: "🧪",
     label: "Dev Cloud",
-    hint: "app.dev.posthog.dev",
+    hint: "Configure Flind dev cloud",
   },
   custom: {
     flag: "🏠",

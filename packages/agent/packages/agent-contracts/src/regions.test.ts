@@ -1,12 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { configureCustomCloud } from "./custom-cloud";
-import {
-  getOauthClientIdFromRegion,
-  POSTHOG_DEV_CLIENT_ID,
-  POSTHOG_DEV_CLOUD_CLIENT_ID,
-  POSTHOG_EU_CLIENT_ID,
-  POSTHOG_US_CLIENT_ID,
-} from "./oauth";
+import { getOauthClientIdFromRegion, POSTHOG_DEV_CLIENT_ID } from "./oauth";
 import {
   CLOUD_REGIONS,
   describeRegion,
@@ -16,7 +10,18 @@ import {
 import { getCloudUrlFromRegion } from "./urls";
 
 beforeEach(() => {
-  vi.stubEnv("POSTHOG_CUSTOM_CLOUD_URL", "");
+  for (const key of [
+    "FLIND_US_CLOUD_URL",
+    "FLIND_US_OAUTH_CLIENT_ID",
+    "FLIND_EU_CLOUD_URL",
+    "FLIND_EU_OAUTH_CLIENT_ID",
+    "FLIND_DEV_CLOUD_URL",
+    "FLIND_DEV_CLOUD_OAUTH_CLIENT_ID",
+    "POSTHOG_CUSTOM_CLOUD_URL",
+    "POSTHOG_CUSTOM_CLOUD_OAUTH_CLIENT_ID",
+  ]) {
+    vi.stubEnv(key, "");
+  }
 });
 
 afterEach(() => {
@@ -24,91 +29,91 @@ afterEach(() => {
   vi.unstubAllEnvs();
 });
 
-describe("getCloudUrlFromRegion", () => {
-  it("maps each region to its cloud URL", () => {
-    expect(getCloudUrlFromRegion("us")).toBe("https://us.posthog.com");
-    expect(getCloudUrlFromRegion("eu")).toBe("https://eu.posthog.com");
+describe("hosted Flind cloud and OAuth identity", () => {
+  it("refuses hosted regions when no independently owned cloud is configured", () => {
+    for (const region of ["us", "eu", "dev-cloud"] as const) {
+      expect(() => getCloudUrlFromRegion(region)).toThrow("not configured");
+      expect(() => getOauthClientIdFromRegion(region)).toThrow(
+        "not configured",
+      );
+    }
     expect(getCloudUrlFromRegion("dev")).toBe("http://localhost:8010");
+    expect(getOauthClientIdFromRegion("dev")).toBe(POSTHOG_DEV_CLIENT_ID);
+  });
+
+  it("reads only valid independent endpoints and registered client IDs", () => {
+    vi.stubEnv("FLIND_US_CLOUD_URL", "https://us.flind.example");
+    vi.stubEnv("FLIND_US_OAUTH_CLIENT_ID", "us-flind-client-id");
+    vi.stubEnv("FLIND_EU_CLOUD_URL", "https://eu.flind.example");
+    vi.stubEnv("FLIND_EU_OAUTH_CLIENT_ID", "eu-flind-client-id");
+    vi.stubEnv("FLIND_DEV_CLOUD_URL", "https://dev.flind.example");
+    vi.stubEnv("FLIND_DEV_CLOUD_OAUTH_CLIENT_ID", "dev-flind-client-id");
+    expect(getCloudUrlFromRegion("us")).toBe("https://us.flind.example");
+    expect(getCloudUrlFromRegion("eu")).toBe("https://eu.flind.example");
     expect(getCloudUrlFromRegion("dev-cloud")).toBe(
-      "https://app.dev.posthog.dev",
+      "https://dev.flind.example",
     );
+    expect(getOauthClientIdFromRegion("us")).toBe("us-flind-client-id");
+    expect(getOauthClientIdFromRegion("eu")).toBe("eu-flind-client-id");
+    expect(getOauthClientIdFromRegion("dev-cloud")).toBe("dev-flind-client-id");
+  });
+
+  it("reads Vite-prefixed public Flind endpoints in browser builds", () => {
+    vi.stubEnv("VITE_FLIND_US_CLOUD_URL", "https://web.flind.example");
+    vi.stubEnv("VITE_FLIND_US_OAUTH_CLIENT_ID", "web-flind-client-id");
+    expect(getCloudUrlFromRegion("us")).toBe("https://web.flind.example");
+    expect(getOauthClientIdFromRegion("us")).toBe("web-flind-client-id");
+  });
+
+  it.each([
+    ["https://us.posthog.com", "registered-client"],
+    ["http://evil.example", "registered-client"],
+    ["https://user@us.flind.example", "registered-client"],
+    ["https://us.flind.example/project/1", "registered-client"],
+    ["https://us.flind.example?token=secret", "registered-client"],
+    ["https://us.flind.example", ""],
+  ])("rejects unqualified US cloud pair %s", (url, oauthClientId) => {
+    vi.stubEnv("FLIND_US_CLOUD_URL", url);
+    vi.stubEnv("FLIND_US_OAUTH_CLIENT_ID", oauthClientId);
+    expect(() => getCloudUrlFromRegion("us")).toThrow("not configured");
+    expect(() => getOauthClientIdFromRegion("us")).toThrow("not configured");
   });
 });
 
-describe("getOauthClientIdFromRegion", () => {
-  it("maps each region to its distinct OAuth client id", () => {
-    expect(getOauthClientIdFromRegion("us")).toBe(POSTHOG_US_CLIENT_ID);
-    expect(getOauthClientIdFromRegion("eu")).toBe(POSTHOG_EU_CLIENT_ID);
-    expect(getOauthClientIdFromRegion("dev")).toBe(POSTHOG_DEV_CLIENT_ID);
-    expect(getOauthClientIdFromRegion("dev-cloud")).toBe(
-      POSTHOG_DEV_CLOUD_CLIENT_ID,
-    );
-  });
-
-  it("uses a different client id per built-in region", () => {
-    const ids = new Set([
-      getOauthClientIdFromRegion("us"),
-      getOauthClientIdFromRegion("eu"),
-      getOauthClientIdFromRegion("dev"),
-      getOauthClientIdFromRegion("dev-cloud"),
-    ]);
-    expect(ids.size).toBe(4);
-  });
-
-  it("has no built-in client id for the custom region", () => {
+describe("custom Flind cloud", () => {
+  it("is unavailable when no custom target is configured", () => {
+    expect(() => getCloudUrlFromRegion("custom")).toThrow("not configured");
     expect(getOauthClientIdFromRegion("custom")).toBe("");
   });
-});
 
-describe("a configured custom cloud", () => {
-  beforeEach(() => {
+  it("supports a separately configured custom target, not inherited hosted regions", () => {
     configureCustomCloud({
-      url: "https://posthog.example.com",
-      oauthClientId: "custom-client-id",
+      url: "https://flind.private.example",
+      oauthClientId: "custom-flind-client",
     });
-  });
-
-  it("serves the custom region only", () => {
-    expect(getCloudUrlFromRegion("custom")).toBe("https://posthog.example.com");
-    expect(getOauthClientIdFromRegion("custom")).toBe("custom-client-id");
-    expect(getCloudUrlFromRegion("dev")).toBe("http://localhost:8010");
-    expect(getOauthClientIdFromRegion("dev")).toBe(POSTHOG_DEV_CLIENT_ID);
-    expect(getCloudUrlFromRegion("us")).toBe("https://us.posthog.com");
-    expect(getCloudUrlFromRegion("eu")).toBe("https://eu.posthog.com");
-    expect(getCloudUrlFromRegion("dev-cloud")).toBe(
-      "https://app.dev.posthog.dev",
+    expect(getCloudUrlFromRegion("custom")).toBe(
+      "https://flind.private.example",
     );
-    expect(getOauthClientIdFromRegion("us")).toBe(POSTHOG_US_CLIENT_ID);
-  });
-
-  it("labels the custom region with its host", () => {
+    expect(getOauthClientIdFromRegion("custom")).toBe("custom-flind-client");
+    for (const region of ["us", "eu", "dev-cloud"] as const) {
+      expect(() => getCloudUrlFromRegion(region)).toThrow("not configured");
+    }
     expect(describeRegion("custom")).toMatchObject({
       label: "Custom",
-      hint: "posthog.example.com",
+      hint: "flind.private.example",
     });
-    expect(describeRegion("dev")).toEqual(REGION_LABELS.dev);
   });
 });
 
-describe("formatRegionBadge", () => {
-  it("labels the two development targets with their hosts", () => {
-    expect(REGION_LABELS.dev).toMatchObject({
-      label: "Local development",
-      hint: "localhost:8010",
-    });
-    expect(REGION_LABELS["dev-cloud"]).toMatchObject({
-      label: "Dev Cloud",
-      hint: "app.dev.posthog.dev",
-    });
+describe("Flind region labels", () => {
+  it("uses clear first-party qualification hints, not donor hostnames", () => {
+    expect(REGION_LABELS.us.hint).toBe("Configure Flind US Cloud");
+    expect(REGION_LABELS.eu.hint).toBe("Configure Flind EU Cloud");
+    expect(REGION_LABELS["dev-cloud"].hint).toBe("Configure Flind dev cloud");
+    expect(REGION_LABELS.dev.hint).toBe("localhost:8010");
   });
 
-  it("combines the flag and label for a region", () => {
-    expect(formatRegionBadge("us")).toBe(
-      `${REGION_LABELS.us.flag} ${REGION_LABELS.us.label}`,
-    );
-  });
-
-  it("formats every known region without throwing", () => {
+  it("formats each known region consistently", () => {
     for (const region of CLOUD_REGIONS) {
       expect(formatRegionBadge(region)).toContain(REGION_LABELS[region].label);
     }

@@ -43,6 +43,11 @@ describe("custom cloud", () => {
       { name: "an empty URL", url: "  " },
       { name: "a scheme that is not http", url: "file:///etc/passwd" },
       { name: "a value that is not a URL", url: "posthog.example.com" },
+      { name: "embedded username", url: "https://user@flind.example.com" },
+      {
+        name: "embedded password",
+        url: "https://user:secret@flind.example.com",
+      },
       { name: "a path", url: "https://posthog.example.com/project/1" },
       { name: "a query", url: "https://posthog.example.com/?a=1" },
       { name: "a fragment", url: "https://posthog.example.com/#settings" },

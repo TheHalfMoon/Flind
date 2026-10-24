@@ -23,14 +23,12 @@ import {
 // BroadcastChannel. Token exchange and refresh are the same plain fetches
 // desktop makes.
 //
-// CORS on /oauth/token and /api/* is open (verified against us.posthog.com),
-// so the only external requirement is redirect URI registration on the Code
-// ("Array") OAuth application. The path is /callback to match the portless
-// localhost convention: PostHog's authorize view extends RFC 8252 §7.3 port
-// flexibility to `localhost`, so a registered `http://localhost/callback`
-// matches this app on any dev port. Production needs
-// `https://<web-origin>/callback` registered once a web origin exists. Until
-// registration, the flow fails at the authorize step with a visible error.
+// First-party Flind Cloud and OAuth client IDs must be independently
+// configured for every hosted region; otherwise the token flow fails closed.
+// Real CORS policy, redirect URI registration, consent scopes and a successful
+// round-trip against an operated Flind backend remain release blockers.
+// The callback path must be registered with that independently operated
+// OAuth provider before browser sign-in can succeed.
 
 export const OAUTH_CALLBACK_PATH = "/callback";
 const OAUTH_CALLBACK_CHANNEL = "posthog-code:oauth-callback";

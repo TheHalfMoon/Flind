@@ -41,6 +41,7 @@ function httpUrl(value: string | undefined): string | undefined {
   ) {
     return undefined;
   }
+  if (parsed.username || parsed.password) return undefined;
   if (parsed.search || parsed.hash || parsed.pathname !== "/") return undefined;
   return `${parsed.protocol}//${canonicalHost(parsed)}`;
 }
