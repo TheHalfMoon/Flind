@@ -1,5 +1,5 @@
 {
-    "name": "@posthog/replay-headless",
+    "name": "@flind/replay-headless",
     "version": "0.0.1",
     "private": true,
     "main": "dist/player.html",
@@ -21,7 +21,7 @@
         "test": "jest"
     },
     "dependencies": {
-        "@posthog/replay-shared": "workspace:*",
+        "@flind/replay-shared": "workspace:*",
         "p-limit": "3.1.0",
         "posthog-js": "catalog:"
     },

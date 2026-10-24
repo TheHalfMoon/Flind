@@ -13,7 +13,7 @@
 import * as path from 'path'
 import { fileURLToPath } from 'url'
 
-import { buildInParallel, commonConfig, copySnappyWASMFile } from '@posthog/esbuilder'
+import { buildInParallel, commonConfig, copySnappyWASMFile } from '@flind/esbuilder'
 
 import { zodJitlessEsbuildPlugin } from '../plugins/zodJitless.mjs'
 import { WORKER_ENTRIES } from '../workers.config.mjs'

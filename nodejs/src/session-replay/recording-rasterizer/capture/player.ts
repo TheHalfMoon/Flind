@@ -6,8 +6,8 @@ import {
     PLAYER_FRAME_TIMELINE_KEY,
     PLAYER_NAVIGATION_KEY,
     PLAYER_START_EVENT,
-} from '@posthog/replay-headless/protocol'
-import type { InactivityPeriod, NavigationSample, PlayerConfig, PlayerMessage } from '@posthog/replay-headless/protocol'
+} from '@flind/replay-headless/protocol'
+import type { InactivityPeriod, NavigationSample, PlayerConfig, PlayerMessage } from '@flind/replay-headless/protocol'
 
 import { RasterizationError, toRasterizationErrorCode } from '~/session-replay/recording-rasterizer/errors'
 import { type Logger, createLogger } from '~/session-replay/recording-rasterizer/logger'

@@ -1,4 +1,4 @@
-import { keyForSource, processAllSnapshots } from '@posthog/replay-shared'
+import { keyForSource, processAllSnapshots } from '@flind/replay-shared'
 
 import { parseEncodedSnapshots } from 'scenes/session-recordings/player/snapshot-processing/process-all-snapshots'
 

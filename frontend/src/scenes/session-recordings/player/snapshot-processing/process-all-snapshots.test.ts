@@ -2,7 +2,7 @@ import { readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { IncrementalSource } from 'posthog-js/rrweb-types'
 
-import { hasAnyWireframes, keyForSource, processAllSnapshots } from '@posthog/replay-shared'
+import { hasAnyWireframes, keyForSource, processAllSnapshots } from '@flind/replay-shared'
 
 import { RecordingSnapshot, SessionRecordingSnapshotSource } from '~/types'
 

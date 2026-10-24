@@ -1,4 +1,4 @@
-import type { RecordingSegment } from '@posthog/replay-shared'
+import type { RecordingSegment } from '@flind/replay-shared'
 
 import type { HostBridge } from '../host-bridge'
 import { PlaybackController, type PlaybackWindow } from '../playback-controller'

@@ -1,4 +1,4 @@
-import type { InactivityPeriod as BaseInactivityPeriod, NavigationSample } from '@posthog/replay-headless/protocol'
+import type { InactivityPeriod as BaseInactivityPeriod, NavigationSample } from '@flind/replay-headless/protocol'
 
 export interface RasterizeRecordingInput {
     session_id: string

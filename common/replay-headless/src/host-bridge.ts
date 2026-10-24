@@ -1,4 +1,4 @@
-import type { RecordingSegment } from '@posthog/replay-shared'
+import type { RecordingSegment } from '@flind/replay-shared'
 
 import { PLAYER_CONFIG_KEY, PLAYER_EMIT_FN, PLAYER_START_EVENT } from './protocol'
 import type { PlayerConfig, PlayerError, PlayerMessage } from './protocol'

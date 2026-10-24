@@ -23,7 +23,7 @@ import {
     SnapshotStore,
     SourceKey,
     SourceLoadingState,
-} from '@posthog/replay-shared'
+} from '@flind/replay-shared'
 
 import { Dayjs, dayjs, now } from 'lib/dayjs'
 import { metricCount } from 'lib/operationalMetrics'
@@ -437,7 +437,7 @@ export interface sessionRecordingDataCoordinatorLogicActions {
     registerWindowId: (uuid: string) => {
         uuid: string
     } // metaLogic
-    setSnapshots: (snapshots: import('@posthog/replay-shared').RecordingSnapshot[]) => {
+    setSnapshots: (snapshots: import('@flind/replay-shared').RecordingSnapshot[]) => {
         snapshots: RecordingSnapshot[]
     } // metaLogic
     setTrackedWindow: (windowId: number | null) => {
@@ -478,13 +478,13 @@ export interface sessionRecordingDataCoordinatorLogicMeta {
     key: string
     __keaTypeGenInternalSelectorTypes: {
         recordingTooLargeToPlay: (sessionPlayerMetaData: SessionRecordingType | null) => boolean
-        snapshots: (processedSnapshots: import('@posthog/replay-shared').RecordingSnapshot[]) => RecordingSnapshot[]
+        snapshots: (processedSnapshots: import('@flind/replay-shared').RecordingSnapshot[]) => RecordingSnapshot[]
         start: (
-            snapshots: import('@posthog/replay-shared').RecordingSnapshot[],
+            snapshots: import('@flind/replay-shared').RecordingSnapshot[],
             sessionPlayerMetaData: SessionRecordingType | null
         ) => Dayjs | null
         end: (
-            snapshots: import('@posthog/replay-shared').RecordingSnapshot[],
+            snapshots: import('@flind/replay-shared').RecordingSnapshot[],
             sessionPlayerMetaData: SessionRecordingType | null
         ) => Dayjs | null
         durationMs: (
@@ -494,7 +494,7 @@ export interface sessionRecordingDataCoordinatorLogicMeta {
             fullyLoaded: boolean
         ) => number
         segments: (
-            snapshots: import('@posthog/replay-shared').RecordingSnapshot[],
+            snapshots: import('@flind/replay-shared').RecordingSnapshot[],
             start: Dayjs | null,
             end: Dayjs | null,
             trackedWindow: number | null,
@@ -503,13 +503,13 @@ export interface sessionRecordingDataCoordinatorLogicMeta {
             storeVersion: number
         ) => RecordingSegment[]
         snapshotsByWindowId: (
-            snapshots: import('@posthog/replay-shared').RecordingSnapshot[]
+            snapshots: import('@flind/replay-shared').RecordingSnapshot[]
         ) => Record<number, eventWithTime[]>
-        bufferedToTime: (segments: import('@posthog/replay-shared').RecordingSegment[]) => number | null
+        bufferedToTime: (segments: import('@flind/replay-shared').RecordingSegment[]) => number | null
         windowIdForTimestamp: (
-            segments: import('@posthog/replay-shared').RecordingSegment[]
+            segments: import('@flind/replay-shared').RecordingSegment[]
         ) => (timestamp: number) => number | undefined
-        urls: (snapshots: import('@posthog/replay-shared').RecordingSnapshot[]) => {
+        urls: (snapshots: import('@flind/replay-shared').RecordingSnapshot[]) => {
             timestamp: number
             url: string
         }[]
@@ -526,16 +526,16 @@ export interface sessionRecordingDataCoordinatorLogicMeta {
         windowIds: (snapshotsByWindowId: Record<number, eventWithTime[]>) => number[]
         createExportJSON: (
             sessionPlayerMetaData: SessionRecordingType | null,
-            snapshots: import('@posthog/replay-shared').RecordingSnapshot[]
+            snapshots: import('@flind/replay-shared').RecordingSnapshot[]
         ) => () => ExportedSessionRecordingFileV2
-        customRRWebEvents: (snapshots: import('@posthog/replay-shared').RecordingSnapshot[]) => customEvent[]
+        customRRWebEvents: (snapshots: import('@flind/replay-shared').RecordingSnapshot[]) => customEvent[]
         effectiveSourceLoadingStates: (
             sourceLoadingStates: SourceLoadingState[],
-            segments: import('@posthog/replay-shared').RecordingSegment[]
+            segments: import('@flind/replay-shared').RecordingSegment[]
         ) => SourceLoadingState[]
         fullyLoaded: (
-            snapshots: import('@posthog/replay-shared').RecordingSnapshot[],
-            segments: import('@posthog/replay-shared').RecordingSegment[],
+            snapshots: import('@flind/replay-shared').RecordingSnapshot[],
+            segments: import('@flind/replay-shared').RecordingSegment[],
             sessionPlayerMetaDataLoading: boolean,
             snapshotsLoading: boolean,
             sessionEventsDataLoading: boolean,
@@ -545,7 +545,7 @@ export interface sessionRecordingDataCoordinatorLogicMeta {
         sessionPlayerData: (
             sessionPlayerMetaData: SessionRecordingType | null,
             snapshotsByWindowId: Record<number, eventWithTime[]>,
-            segments: import('@posthog/replay-shared').RecordingSegment[],
+            segments: import('@flind/replay-shared').RecordingSegment[],
             bufferedToTime: number | null,
             start: Dayjs | null,
             end: Dayjs | null,

@@ -38,7 +38,7 @@ COPY patches/ patches/
 # source after, so source edits don't bust the install cache.
 COPY services/mcp/package.json services/mcp/package.json
 COPY tools/openapi-codegen/package.json tools/openapi-codegen/package.json
-# UI apps depend on @posthog/quill, and the parser tools on @posthog/llm-normalizer —
+# UI apps depend on @posthog/quill, and the parser tools on @flind/llm-normalizer —
 # copy all workspace package manifests so pnpm can resolve the full dependency
 # graph during install.
 COPY packages/ packages/

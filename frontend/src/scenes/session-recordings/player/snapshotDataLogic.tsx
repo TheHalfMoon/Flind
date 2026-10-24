@@ -17,8 +17,8 @@ import {
 import { loaders } from 'kea-loaders'
 import posthog from 'posthog-js'
 
-import { keyForSource } from '@posthog/replay-shared'
-import { SnapshotSourceType, SnapshotStore, SourceLoadingState } from '@posthog/replay-shared'
+import { keyForSource } from '@flind/replay-shared'
+import { SnapshotSourceType, SnapshotStore, SourceLoadingState } from '@flind/replay-shared'
 
 import api, { ApiError, RecordingDeletedError } from 'lib/api'
 import 'lib/dayjs'
@@ -206,21 +206,21 @@ export interface snapshotDataLogicMeta {
             storeVersion: number
         ) => boolean
         snapshotsLoaded: (
-            snapshotSources: import('@posthog/replay-shared').SessionRecordingSnapshotSource[] | null
+            snapshotSources: import('@flind/replay-shared').SessionRecordingSnapshotSource[] | null
         ) => boolean
         isLoadingSnapshots: (
             loadingSources: Pick<
-                import('@posthog/replay-shared').SessionRecordingSnapshotSource,
+                import('@flind/replay-shared').SessionRecordingSnapshotSource,
                 'blob_key' | 'end_timestamp' | 'source' | 'start_timestamp'
             >[]
         ) => boolean
         allSourcesLoaded: (
-            snapshotSources: import('@posthog/replay-shared').SessionRecordingSnapshotSource[] | null,
+            snapshotSources: import('@flind/replay-shared').SessionRecordingSnapshotSource[] | null,
             storeVersion: number
         ) => boolean
         storeVersion: (
             storeUpdateCount: number,
-            snapshotSources: import('@posthog/replay-shared').SessionRecordingSnapshotSource[] | null
+            snapshotSources: import('@flind/replay-shared').SessionRecordingSnapshotSource[] | null
         ) => number
         snapshotStore: (storeVersion: number) => SnapshotStore
         sourceLoadingStates: (storeVersion: number) => SourceLoadingState[]

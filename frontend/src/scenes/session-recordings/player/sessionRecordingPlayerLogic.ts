@@ -31,7 +31,7 @@ import {
     createCorsPlugin,
     SnapshotStore,
     createHLSPlayerPlugin,
-} from '@posthog/replay-shared'
+} from '@flind/replay-shared'
 
 import api from 'lib/api'
 import { exportsLogic } from 'lib/components/ExportButton/exportsLogic'
@@ -1355,17 +1355,17 @@ export interface sessionRecordingPlayerLogicMeta {
         currentPlayerTimeSeconds: (currentPlayerTime: number) => number
         toRRWebPlayerTime: (
             sessionPlayerData: SessionPlayerData,
-            currentSegment: null | import('@posthog/replay-shared').RecordingSegment
+            currentSegment: null | import('@flind/replay-shared').RecordingSegment
         ) => (timestamp: number) => number | undefined
         fromRRWebPlayerTime: (
             sessionPlayerData: SessionPlayerData,
-            currentSegment: null | import('@posthog/replay-shared').RecordingSegment
+            currentSegment: null | import('@flind/replay-shared').RecordingSegment
         ) => (time?: number | undefined) => number | undefined
         jumpTimeMs: (speed: number) => number
         playerSpeed: (
             speed: number,
             isSkippingInactivity: boolean,
-            currentSegment: null | import('@posthog/replay-shared').RecordingSegment,
+            currentSegment: null | import('@flind/replay-shared').RecordingSegment,
             currentTimestamp: number | undefined,
             arg: any
         ) => number
@@ -1414,7 +1414,7 @@ export interface sessionRecordingPlayerLogicMeta {
         resolution: (
             sessionPlayerData: SessionPlayerData,
             currentTimestamp: number | undefined,
-            currentSegment: null | import('@posthog/replay-shared').RecordingSegment
+            currentSegment: null | import('@flind/replay-shared').RecordingSegment
         ) => {
             height: number
             width: number

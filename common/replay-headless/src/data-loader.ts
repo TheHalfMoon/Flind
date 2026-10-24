@@ -10,7 +10,7 @@ import {
     type SessionRecordingSnapshotSource,
     type SessionRecordingSnapshotSourceResponse,
     type SourceKey,
-} from '@posthog/replay-shared'
+} from '@flind/replay-shared'
 
 import { BLOCK_REQUEST_PREFIX } from './protocol'
 import type { PlayerConfig } from './types'

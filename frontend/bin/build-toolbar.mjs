@@ -10,7 +10,7 @@
 import * as path from 'path'
 import { fileURLToPath } from 'url'
 
-import { buildInParallel } from '@posthog/esbuilder'
+import { buildInParallel } from '@flind/esbuilder'
 
 import { finalizeToolbarBuild, getToolbarAppBuildConfig } from '../toolbar-config.mjs'
 

@@ -1,6 +1,6 @@
 import { eventWithTime } from 'posthog-js/rrweb-types'
 
-import { createSegments as _createSegments, mapSnapshotsToWindowId } from '@posthog/replay-shared'
+import { createSegments as _createSegments, mapSnapshotsToWindowId } from '@flind/replay-shared'
 
 import { Dayjs } from 'lib/dayjs'
 

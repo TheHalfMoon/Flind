@@ -25,7 +25,7 @@ declare module '*.yaml' {
     export default content
 }
 
-// Vite-style raw suffix used by @posthog/llm-normalizer's recipe registry; esbuild
+// Vite-style raw suffix used by @flind/llm-normalizer's recipe registry; esbuild
 // retries resolution without the query and applies the same text loader.
 declare module '*.yaml?raw' {
     const content: string

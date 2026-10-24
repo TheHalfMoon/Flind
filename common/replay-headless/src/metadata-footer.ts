@@ -1,4 +1,4 @@
-import type { RecordingSegment } from '@posthog/replay-shared'
+import type { RecordingSegment } from '@flind/replay-shared'
 
 import type { PlaybackController } from './playback-controller'
 import { METADATA_FOOTER_HEIGHT_PX } from './protocol'

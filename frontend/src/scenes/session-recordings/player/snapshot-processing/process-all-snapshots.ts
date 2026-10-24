@@ -6,7 +6,7 @@ import {
     ReplayTelemetry,
     SnappyDecompressor,
     RegisterWindowIdCallback,
-} from '@posthog/replay-shared'
+} from '@flind/replay-shared'
 
 import { getDecompressionWorkerManager } from 'scenes/session-recordings/player/snapshot-processing/DecompressionWorkerManager'
 

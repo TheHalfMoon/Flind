@@ -2,7 +2,7 @@ import * as fs from 'fs'
 import * as path from 'path'
 import { parse as parseYaml } from 'yaml'
 
-import { compileRecipe, RecipeNormalizer } from '@posthog/llm-normalizer'
+import { compileRecipe, RecipeNormalizer } from '@flind/llm-normalizer'
 
 // The examples file is the DSL reference embedded in the create_ai_trace_parser tool prompt;
 // running every documented example against the real compiler keeps the prompt from drifting.

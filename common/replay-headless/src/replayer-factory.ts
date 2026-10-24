@@ -17,7 +17,7 @@ import {
     type ProcessingCache,
     type RecordingSegment,
     type ViewportResolution,
-} from '@posthog/replay-shared'
+} from '@flind/replay-shared'
 
 import { loadAllSources } from './data-loader'
 import type { HostBridge } from './host-bridge'

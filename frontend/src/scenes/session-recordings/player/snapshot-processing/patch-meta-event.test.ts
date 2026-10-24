@@ -1,7 +1,7 @@
 import posthog from 'posthog-js'
 import { EventType } from 'posthog-js/rrweb-types'
 
-import { ReplayTelemetry } from '@posthog/replay-shared'
+import { ReplayTelemetry } from '@flind/replay-shared'
 import {
     ProcessingCache,
     SnapshotSourceType,
@@ -9,7 +9,7 @@ import {
     clearThrottle,
     keyForSource,
     processAllSnapshots,
-} from '@posthog/replay-shared'
+} from '@flind/replay-shared'
 
 import { RecordingSnapshot, SessionRecordingSnapshotSource } from '~/types'
 

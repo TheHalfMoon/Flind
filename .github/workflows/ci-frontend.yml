@@ -229,7 +229,7 @@ jobs:
                         - webpack.config.js
                         - stylelint*
                         - '!services/mcp/**'
-                      # The @posthog/replay-shared package's own jest suite (the
+                      # The @flind/replay-shared package's own jest suite (the
                       # jest-replay-shared job). posthog-js bumps land via the catalog +
                       # lockfile and have broken it before (rrweb subpath entries switching
                       # to ESM); its zstd tests need the node:zlib support pinned by .nvmrc.
@@ -1059,7 +1059,7 @@ jobs:
                   # Anchor flake identity to the test file, matching the main jest job.
                   JEST_JUNIT_SUITE_NAME: '{filepath}'
                   JEST_JUNIT_ADD_FILE_ATTRIBUTE: 'true'
-              run: pnpm --filter=@posthog/replay-shared test
+              run: pnpm --filter=@flind/replay-shared test
 
             - name: Upload test results
               if: always()

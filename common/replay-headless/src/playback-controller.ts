@@ -1,7 +1,7 @@
 import type { Replayer } from 'posthog-js/rrweb'
 import type { eventWithTime } from 'posthog-js/rrweb-types'
 
-import type { RecordingSegment } from '@posthog/replay-shared'
+import type { RecordingSegment } from '@flind/replay-shared'
 
 import type { HostBridge } from './host-bridge'
 import { PLAYER_FRAME_TIMELINE_KEY } from './protocol'

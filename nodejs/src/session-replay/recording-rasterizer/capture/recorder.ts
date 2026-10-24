@@ -1,4 +1,4 @@
-import { type InactivityPeriod, METADATA_FOOTER_HEIGHT_PX } from '@posthog/replay-headless/protocol'
+import { type InactivityPeriod, METADATA_FOOTER_HEIGHT_PX } from '@flind/replay-headless/protocol'
 
 import { config as defaultConfig } from '~/session-replay/recording-rasterizer/config'
 import { RasterizationError } from '~/session-replay/recording-rasterizer/errors'

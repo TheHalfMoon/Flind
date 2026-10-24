@@ -1,4 +1,4 @@
-import type { PlayerConfig } from '@posthog/replay-headless/protocol'
+import type { PlayerConfig } from '@flind/replay-headless/protocol'
 
 import { config as workerConfig } from '~/session-replay/recording-rasterizer/config'
 import { RasterizationError } from '~/session-replay/recording-rasterizer/errors'

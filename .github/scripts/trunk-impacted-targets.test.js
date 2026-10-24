@@ -869,14 +869,14 @@ const NODE_CONTEXT = {
             [`${RASTERIZER_DIR}/capture/player.ts`, new Set([RASTERIZER_LANE])],
         ]),
         packageLanes: new Map([
-            ['@posthog/replay-headless', new Set([RASTERIZER_LANE])],
+            ['@flind/replay-headless', new Set([RASTERIZER_LANE])],
             ['@posthog/hogvm', new Set([CDP_LANE, 'node:ingestion'])],
         ]),
     },
     nodeWorkspaceDependencies: new Map([
         ['common/hogvm/typescript', new Set(['@posthog/hogvm'])],
-        ['common/replay-headless', new Set(['@posthog/replay-headless'])],
-        ['common/replay-shared', new Set(['@posthog/replay-headless'])],
+        ['common/replay-headless', new Set(['@flind/replay-headless'])],
+        ['common/replay-shared', new Set(['@flind/replay-headless'])],
     ]),
 }
 
@@ -936,7 +936,7 @@ test('the node lane map follows imports in both directions and fails closed', ()
         'nodejs/src/cdp/executor.test.ts': "import { seed } from '~/tests/helpers/seed'\n",
         'nodejs/tests/helpers/seed.ts': "import { rows } from '~/ingestion/rows'\n",
         'nodejs/src/ingestion/rows.ts': 'export const rows = []\n',
-        [`${RASTERIZER_DIR}/player.ts`]: "import { Player } from '@posthog/replay-headless/protocol'\n",
+        [`${RASTERIZER_DIR}/player.ts`]: "import { Player } from '@flind/replay-headless/protocol'\n",
         [`${RASTERIZER_DIR}/__tests__/guard.test.ts`]: "const script = `require('./missing-in-child-process')`\n",
         'nodejs/src/servers/cdp-server.ts':
             "import { run } from '../cdp/executor'\nimport express from 'ultimate-express'\n",
@@ -956,13 +956,13 @@ test('the node lane map follows imports in both directions and fails closed', ()
     assert.deepEqual(lanesOf('nodejs/src/ingestion/rows.ts'), [CDP_LANE, 'node:ingestion'].sort())
     assert.deepEqual(lanesOf(`${RASTERIZER_DIR}/player.ts`), [RASTERIZER_LANE])
     assert.deepEqual(lanesOf('nodejs/src/servers/cdp-server.ts'), [])
-    assert.deepEqual([...map.packageLanes.get('@posthog/replay-headless')], [RASTERIZER_LANE])
+    assert.deepEqual([...map.packageLanes.get('@flind/replay-headless')], [RASTERIZER_LANE])
     assert.deepEqual([...map.packageLanes.get('@posthog/hogvm')], [CDP_LANE])
     assert.deepEqual([...map.packageLanes.get('kafka-client')].sort(), [CDP_LANE, 'node:ingestion'].sort())
     assert.deepEqual([...map.packageLanes.get('ultimate-express')].sort(), ALL_NODE_LANES)
     assert.deepEqual([...map.packageLanes.keys()].sort(), [
         '@posthog/hogvm',
-        '@posthog/replay-headless',
+        '@flind/replay-headless',
         'kafka-client',
         'ultimate-express',
     ])
@@ -989,7 +989,7 @@ function lockfile({ rootDeps, nodeDeps, headlessDeps, snapshots, packages, overr
         '',
         '  nodejs:',
         '    dependencies:',
-        "      '@posthog/replay-headless':",
+        "      '@flind/replay-headless':",
         '        specifier: workspace:*',
         '        version: link:../common/replay-headless',
         '      tiny-lib:',
@@ -1092,7 +1092,7 @@ test('a JS lockfile change claims the node lanes whose dependencies it moved', (
     const nodeLaneMap = {
         fileLanes: new Map(),
         packageLanes: new Map([
-            ['@posthog/replay-headless', new Set([RASTERIZER_LANE])],
+            ['@flind/replay-headless', new Set([RASTERIZER_LANE])],
             ['kafka-client', new Set([CDP_LANE, 'node:ingestion'])],
             ['left-pad', new Set([CDP_LANE])],
         ]),

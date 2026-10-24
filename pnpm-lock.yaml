@@ -396,7 +396,7 @@ importers:
       '@babel/standalone':
         specifier: ^7.23.2
         version: 7.26.7
-      '@posthog/esbuilder':
+      '@flind/esbuilder':
         specifier: workspace:*
         version: link:../esbuilder
       '@types/babel__standalone':
@@ -411,7 +411,7 @@ importers:
 
   common/replay-headless:
     dependencies:
-      '@posthog/replay-shared':
+      '@flind/replay-shared':
         specifier: workspace:*
         version: link:../replay-shared
       p-limit:
@@ -473,15 +473,15 @@ importers:
       '@babel/runtime':
         specifier: ^7.26.10
         version: 7.29.2
+      '@flind/frontend':
+        specifier: workspace:*
+        version: link:../../frontend
       '@jest/globals':
         specifier: ^30.0.5
         version: 30.0.5(supports-color@10.2.2)
       '@jest/test-sequencer':
         specifier: ^30.0.5
         version: 30.0.5
-      '@flind/frontend':
-        specifier: workspace:*
-        version: link:../../frontend
       '@storybook/addon-a11y':
         specifier: ^10.4.3
         version: 10.4.6(storybook@10.4.6(@testing-library/dom@10.4.0)(@types/react@18.3.27)(prettier@3.8.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
@@ -588,6 +588,21 @@ importers:
       '@dnd-kit/utilities':
         specifier: ^3.2.1
         version: 3.2.1(react@18.3.1)
+      '@flind/esbuilder':
+        specifier: workspace:*
+        version: link:../common/esbuilder
+      '@flind/llm-normalizer':
+        specifier: workspace:*
+        version: link:../packages/llm-normalizer
+      '@flind/products-annotations':
+        specifier: workspace:*
+        version: link:../products/annotations
+      '@flind/products-customer-analytics':
+        specifier: workspace:*
+        version: link:../products/customer_analytics
+      '@flind/replay-shared':
+        specifier: workspace:*
+        version: link:../common/replay-shared
       '@floating-ui/react':
         specifier: ^0.27.19
         version: 0.27.19(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -618,9 +633,6 @@ importers:
       '@posthog/docs-onboarding':
         specifier: workspace:*
         version: link:../docs/onboarding
-      '@posthog/esbuilder':
-        specifier: workspace:*
-        version: link:../common/esbuilder
       '@posthog/hedgehog-mode':
         specifier: ^0.0.63
         version: 0.0.63(prop-types@15.8.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -633,9 +645,6 @@ importers:
       '@posthog/icons':
         specifier: 'catalog:'
         version: 0.38.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@posthog/llm-normalizer':
-        specifier: workspace:*
-        version: link:../packages/llm-normalizer
       '@posthog/products-access-control':
         specifier: workspace:*
         version: link:../products/access_control
@@ -663,9 +672,6 @@ importers:
       '@posthog/products-analytics-platform':
         specifier: workspace:*
         version: link:../products/analytics_platform
-      '@posthog/products-annotations':
-        specifier: workspace:*
-        version: link:../products/annotations
       '@posthog/products-apm':
         specifier: workspace:*
         version: link:../products/apm
@@ -702,9 +708,6 @@ importers:
       '@posthog/products-cross-project-dashboards':
         specifier: workspace:*
         version: link:../products/cross_project_dashboards
-      '@posthog/products-customer-analytics':
-        specifier: workspace:*
-        version: link:../products/customer_analytics
       '@posthog/products-dashboards':
         specifier: workspace:*
         version: link:../products/dashboards
@@ -888,9 +891,6 @@ importers:
       '@posthog/react':
         specifier: 'catalog:'
         version: 1.11.3(@types/react@18.3.27)(posthog-js@1.438.21(@types/react@18.3.27)(react@18.3.1))(react@18.3.1)
-      '@posthog/replay-shared':
-        specifier: workspace:*
-        version: link:../common/replay-shared
       '@posthog/tailwind':
         specifier: workspace:*
         version: link:../common/tailwind
@@ -1577,6 +1577,9 @@ importers:
       '@dsnp/parquetjs':
         specifier: ^1.8.7
         version: 1.8.7
+      '@flind/replay-headless':
+        specifier: workspace:*
+        version: link:../common/replay-headless
       '@google-cloud/pubsub':
         specifier: 4.11.0
         version: 4.11.0(encoding@0.1.13)(supports-color@10.2.2)
@@ -1634,9 +1637,6 @@ importers:
       '@posthog/replay-anonymizer':
         specifier: workspace:*
         version: link:../rust/replay-anonymizer-node
-      '@posthog/replay-headless':
-        specifier: workspace:*
-        version: link:../common/replay-headless
       '@posthog/siphash':
         specifier: 1.1.1
         version: 1.1.1
@@ -2333,12 +2333,12 @@ importers:
 
   playwright:
     dependencies:
-      '@playwright/test':
-        specifier: 'catalog:'
-        version: 1.60.0
       '@flind/frontend':
         specifier: workspace:*
         version: link:../frontend
+      '@playwright/test':
+        specifier: 'catalog:'
+        version: 1.60.0
       snappyjs:
         specifier: ^0.7.0
         version: 0.7.0
@@ -5884,6 +5884,9 @@ importers:
 
   services/mcp:
     dependencies:
+      '@flind/llm-normalizer':
+        specifier: workspace:*
+        version: link:../../packages/llm-normalizer
       '@hono/node-server':
         specifier: ^2.0.2
         version: 2.0.2(hono@4.12.24)
@@ -5893,9 +5896,6 @@ importers:
       '@modelcontextprotocol/sdk':
         specifier: ^1.29.0
         version: 1.29.0(@cfworker/json-schema@4.1.1)(supports-color@10.2.2)(zod@4.3.6)
-      '@posthog/llm-normalizer':
-        specifier: workspace:*
-        version: link:../../packages/llm-normalizer
       '@posthog/mcp-analytics':
         specifier: npm:@posthog/mcp@0.23.0
         version: '@posthog/mcp@0.23.0(@modelcontextprotocol/sdk@1.29.0(@cfworker/json-schema@4.1.1)(supports-color@10.2.2)(zod@4.3.6))(posthog-node@5.57.0(@opentelemetry/api@1.9.0)(rxjs@7.8.1))'

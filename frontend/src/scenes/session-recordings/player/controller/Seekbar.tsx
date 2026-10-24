@@ -4,7 +4,7 @@ import { useActions, useValues } from 'kea'
 import { useEffect, useRef } from 'react'
 import React from 'react'
 
-import { SourceLoadingState } from '@posthog/replay-shared'
+import { SourceLoadingState } from '@flind/replay-shared'
 
 import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'
 import { Tooltip } from 'lib/lemon-ui/Tooltip'

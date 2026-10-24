@@ -2,7 +2,7 @@ import { createHash } from 'node:crypto'
 import fs from 'node:fs'
 import path from 'node:path'
 
-import { CHUNK_IMPORT_GLOBAL } from '@posthog/esbuilder/cssLoader.mjs'
+import { CHUNK_IMPORT_GLOBAL } from '@flind/esbuilder/cssLoader.mjs'
 
 import { moduleKey } from './loggedOutScenes.mjs'
 

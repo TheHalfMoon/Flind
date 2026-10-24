@@ -166,8 +166,8 @@ class TestDetectTestType:
     @parameterized.expand(
         [
             ("common/hogvm/typescript/src/__tests__/execute.test.ts", "@posthog/hogvm"),
-            ("common/replay-shared/src/replay.test.ts", "@posthog/replay-shared"),
-            ("common/replay-headless/src/render.test.ts", "@posthog/replay-headless"),
+            ("common/replay-shared/src/replay.test.ts", "@flind/replay-shared"),
+            ("common/replay-headless/src/render.test.ts", "@flind/replay-headless"),
         ]
     )
     def test_common_jest_packages(self, file_path: str, expected_filter: str) -> None:

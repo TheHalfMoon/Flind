@@ -6,7 +6,7 @@ import {
     RunOutcome,
     setNormalizerTelemetry,
     StoredRecipe,
-} from '@posthog/llm-normalizer'
+} from '@flind/llm-normalizer'
 
 import { CompatMessage } from './types'
 

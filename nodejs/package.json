@@ -97,7 +97,7 @@
         "@posthog/hogvm": "workspace:*",
         "@posthog/hogvm-node": "workspace:*",
         "@posthog/replay-anonymizer": "workspace:*",
-        "@posthog/replay-headless": "workspace:*",
+        "@flind/replay-headless": "workspace:*",
         "@posthog/siphash": "1.1.1",
         "@pyroscope/nodejs": "^0.4.8",
         "@segment/action-destinations": "3.387.0",

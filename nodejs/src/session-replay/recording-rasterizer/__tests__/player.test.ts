@@ -1,5 +1,5 @@
-import type { PlayerConfig, PlayerMessage } from '@posthog/replay-headless/protocol'
-import { PLAYER_CONFIG_KEY, PLAYER_EMIT_FN, PLAYER_START_EVENT } from '@posthog/replay-headless/protocol'
+import type { PlayerConfig, PlayerMessage } from '@flind/replay-headless/protocol'
+import { PLAYER_CONFIG_KEY, PLAYER_EMIT_FN, PLAYER_START_EVENT } from '@flind/replay-headless/protocol'
 
 import { BlockProxy } from '~/session-replay/recording-rasterizer/capture/block-proxy'
 import { CapturePage } from '~/session-replay/recording-rasterizer/capture/capture-page'

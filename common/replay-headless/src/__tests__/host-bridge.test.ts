@@ -1,4 +1,4 @@
-import type { RecordingSegment } from '@posthog/replay-shared'
+import type { RecordingSegment } from '@flind/replay-shared'
 
 import { HostBridge } from '../host-bridge'
 import { PLAYER_CONFIG_KEY, PLAYER_EMIT_FN } from '../protocol'

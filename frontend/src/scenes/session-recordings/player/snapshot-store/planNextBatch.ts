@@ -1,4 +1,4 @@
-import { LoadBatch, SnapshotStore } from '@posthog/replay-shared'
+import { LoadBatch, SnapshotStore } from '@flind/replay-shared'
 
 const DEFAULT_BATCH_SIZE = 10
 const BUFFER_AHEAD_SOURCES = 30

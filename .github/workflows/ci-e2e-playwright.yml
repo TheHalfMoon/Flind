@@ -683,8 +683,8 @@ jobs:
             - name: Install plugin_transpiler
               shell: bash
               run: |
-                  pnpm --filter=@posthog/plugin-transpiler... install --frozen-lockfile
-                  bin/turbo --filter=@posthog/plugin-transpiler build
+                  pnpm --filter=@flind/plugin-transpiler... install --frozen-lockfile
+                  bin/turbo --filter=@flind/plugin-transpiler build
 
             - name: Install Python dependencies
               shell: bash

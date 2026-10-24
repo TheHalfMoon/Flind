@@ -1,5 +1,6 @@
 {
-    "name": "@posthog/esbuilder",
+    "name": "@flind/esbuilder",
+    "private": true,
     "version": "0.0.0",
     "main": "utils.mjs",
     "dependencies": {

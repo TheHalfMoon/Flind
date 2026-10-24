@@ -1506,7 +1506,7 @@ import type {
     RecordingSnapshot as _RecordingSnapshot,
     SessionRecordingSnapshotSource as _SessionRecordingSnapshotSource,
     SessionRecordingSnapshotSourceResponse as _SessionRecordingSnapshotSourceResponse,
-} from '@posthog/replay-shared'
+} from '@flind/replay-shared'
 
 export type RecordingSegment = _RecordingSegment
 export type EncodedRecordingSnapshot = _EncodedRecordingSnapshot

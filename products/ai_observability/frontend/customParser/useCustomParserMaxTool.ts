@@ -2,7 +2,7 @@ import { useActions, useValues } from 'kea'
 import { useCallback, useMemo } from 'react'
 
 import { lemonToast } from '@posthog/lemon-ui'
-import { handleCreateParserRecipeCall, sampleForContext } from '@posthog/llm-normalizer'
+import { handleCreateParserRecipeCall, sampleForContext } from '@flind/llm-normalizer'
 
 import { useMaxTool } from 'scenes/max/useMaxTool'
 import { teamLogic } from 'scenes/teamLogic'

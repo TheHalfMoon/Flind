@@ -2,7 +2,7 @@ import { expectLogic } from 'kea-test-utils'
 import { HttpResponse } from 'msw'
 import posthog from 'posthog-js'
 
-import { RecordingSnapshot } from '@posthog/replay-shared'
+import { RecordingSnapshot } from '@flind/replay-shared'
 
 import { featureFlagLogic } from 'lib/logic/featureFlagLogic'
 import {

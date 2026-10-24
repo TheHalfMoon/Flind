@@ -14,7 +14,7 @@ import {
     isDev,
     reportTopChunks,
     startDevServer,
-} from '@posthog/esbuilder'
+} from '@flind/esbuilder'
 
 import { AUTHENTICATED_SHELL, ENTRY } from './bin/bootEntries.mjs'
 import { LOGGED_OUT_SCENES, moduleKey, sceneModules } from './bin/loggedOutScenes.mjs'

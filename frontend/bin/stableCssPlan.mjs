@@ -1,4 +1,4 @@
-import { CHUNK_CSS_GLOBAL } from '@posthog/esbuilder/cssLoader.mjs'
+import { CHUNK_CSS_GLOBAL } from '@flind/esbuilder/cssLoader.mjs'
 
 import { BOOT_ENTRIES, ENTRY } from './bootEntries.mjs'
 import { alphanumericStem, chunkIdentity, shortHash } from './stableChunkNames.mjs'

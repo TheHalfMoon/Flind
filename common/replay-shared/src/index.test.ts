@@ -10,7 +10,7 @@ import {
     PLACEHOLDER_SVG_DATA_IMAGE_URL,
 } from './index'
 
-describe('@posthog/replay-shared', () => {
+describe('@flind/replay-shared', () => {
     describe('parseJsonSnapshots', () => {
         it('parses a JSON-encoded snapshot line', () => {
             const snapshot = { windowId: 'abc', type: 2, data: {}, timestamp: 1000 }

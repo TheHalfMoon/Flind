@@ -1,6 +1,6 @@
 import { EventType } from 'posthog-js/rrweb-types'
 
-import { SnapshotStore } from '@posthog/replay-shared'
+import { SnapshotStore } from '@flind/replay-shared'
 
 import { RecordingSnapshot, SessionRecordingSnapshotSource } from '~/types'
 

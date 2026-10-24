@@ -4,7 +4,7 @@ import { expectLogic } from 'kea-test-utils'
 import { HttpResponse } from 'msw'
 import posthog from 'posthog-js'
 
-import { processAllSnapshots, SnapshotSourceType, SourceKey, ViewportResolution } from '@posthog/replay-shared'
+import { processAllSnapshots, SnapshotSourceType, SourceKey, ViewportResolution } from '@flind/replay-shared'
 
 import { dayjs } from 'lib/dayjs'
 import { convertSnapshotsByWindowId } from 'scenes/session-recordings/__mocks__/recording_snapshots'

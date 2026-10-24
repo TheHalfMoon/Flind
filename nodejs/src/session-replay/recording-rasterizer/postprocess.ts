@@ -1,4 +1,4 @@
-import { METADATA_FOOTER_HEIGHT_PX, NavigationSample } from '@posthog/replay-headless/protocol'
+import { METADATA_FOOTER_HEIGHT_PX, NavigationSample } from '@flind/replay-headless/protocol'
 
 import {
     InactivityPeriod,

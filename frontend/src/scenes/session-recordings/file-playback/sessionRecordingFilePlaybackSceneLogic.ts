@@ -3,7 +3,7 @@ import { loaders } from 'kea-loaders'
 import { beforeUnload } from 'kea-router'
 
 import { lemonToast } from '@posthog/lemon-ui'
-import { createWindowIdRegistry } from '@posthog/replay-shared'
+import { createWindowIdRegistry } from '@flind/replay-shared'
 
 import { featureFlagLogic } from 'lib/logic/featureFlagLogic'
 import { uuid } from 'lib/utils/dom'

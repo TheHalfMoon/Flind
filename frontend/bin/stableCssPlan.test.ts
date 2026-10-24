@@ -1,4 +1,4 @@
-import { CHUNK_CSS_GLOBAL } from '@posthog/esbuilder/cssLoader.mjs'
+import { CHUNK_CSS_GLOBAL } from '@flind/esbuilder/cssLoader.mjs'
 
 import { cssPrelude, planCssGroups, stableCssBytes } from './stableCssPlan.mjs'
 

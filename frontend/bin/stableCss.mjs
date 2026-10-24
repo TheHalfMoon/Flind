@@ -1,6 +1,6 @@
 import path from 'node:path'
 
-import { commonConfig, esbuildBuild } from '@posthog/esbuilder'
+import { commonConfig, esbuildBuild } from '@flind/esbuilder'
 
 import { cssGroupFileStem } from './stableCssPlan.mjs'
 

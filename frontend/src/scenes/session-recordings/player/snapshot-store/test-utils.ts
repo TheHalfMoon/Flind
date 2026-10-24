@@ -1,4 +1,4 @@
-import { SnapshotStore } from '@posthog/replay-shared'
+import { SnapshotStore } from '@flind/replay-shared'
 
 import { RecordingSnapshot } from '~/types'
 

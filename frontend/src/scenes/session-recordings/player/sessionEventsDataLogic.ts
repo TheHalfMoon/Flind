@@ -17,7 +17,7 @@ import { loaders } from 'kea-loaders'
 import { subscriptions } from 'kea-subscriptions'
 import posthog from 'posthog-js'
 
-import { ViewportResolution } from '@posthog/replay-shared'
+import { ViewportResolution } from '@flind/replay-shared'
 
 import api from 'lib/api'
 import { Dayjs, dayjs } from 'lib/dayjs'

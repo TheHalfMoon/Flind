@@ -1,4 +1,4 @@
-import { RecipeNormalizer } from '@posthog/llm-normalizer'
+import { RecipeNormalizer } from '@flind/llm-normalizer'
 
 import api from 'lib/api'
 

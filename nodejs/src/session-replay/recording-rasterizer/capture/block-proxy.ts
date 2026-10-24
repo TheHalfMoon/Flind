@@ -1,6 +1,6 @@
 import { HTTPRequest } from 'puppeteer'
 
-import { BLOCK_REQUEST_PREFIX } from '@posthog/replay-headless/protocol'
+import { BLOCK_REQUEST_PREFIX } from '@flind/replay-headless/protocol'
 
 import { internalFetch } from '~/common/utils/request'
 import { type RecordingBlock as FullRecordingBlock } from '~/session-replay/recording-api/types'

@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-import { mergeRecipes, RecipeNormalizer, type StoredRecipe, validateRecipeAgainstSample } from '@posthog/llm-normalizer'
+import { mergeRecipes, RecipeNormalizer, type StoredRecipe, validateRecipeAgainstSample } from '@flind/llm-normalizer'
 
 import { PostHogApiError, wrapError } from '@/lib/errors'
 import { getPostHogClient } from '@/lib/posthog'
