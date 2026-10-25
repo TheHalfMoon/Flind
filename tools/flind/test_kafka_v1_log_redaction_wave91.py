@@ -25,7 +25,8 @@ class KafkaV1CredentialsLogWave91(unittest.TestCase):
         begin = source.index("consumer.on('connection.failure'")
         end = source.index("consumer.on('offset.commit'", begin)
         block = source[begin:end]
-        self.assertIn("errorCode: error?.code", block)
+        # Wave94 now validates the numeric code in the shared native error allowlist.
+        self.assertIn("...safeKafkaErrorContext(error)", block)
         self.assertIn("...safeKafkaLogContext(this.config)", block)
         self.assertNotIn("metrics,", block)
         self.assertNotIn("error,", block)

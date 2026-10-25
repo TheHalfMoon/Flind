@@ -19,7 +19,7 @@ class KafkaOffsetStoreWave89(unittest.TestCase):
         self.assertIn("this.rdKafkaConsumer.offsetsStore(topicPartitionOffsetsToCommit)", body)
         catch = body.index("} catch (e) {")
         self.assertLess(catch, body.index("logger.error('📝', 'Failed to store offsets'"))
-        self.assertLess(body.index("captureException(e)"), body.index("throw e"))
+        self.assertLess(body.index("captureException(new Error('Kafka offset store failed'))"), body.index("throw e"))
         self.assertIn("throw e", body)
 
     def test_rethrown_error_reaches_failure_latched_wave88_gate(self):

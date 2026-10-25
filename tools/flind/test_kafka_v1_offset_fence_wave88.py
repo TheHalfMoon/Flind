@@ -18,7 +18,11 @@ class OffsetSafetyWave88(unittest.TestCase):
     def test_failure_is_fatal_to_consumer_loop_and_shutdown_waits_for_stores(self):
         source = CONSUMER.read_text(encoding="utf-8")
         self.assertGreaterEqual(source.count("this.offsetCommitGate.failed"), 3)
-        self.assertEqual(source.count("await this.offsetCommitGate.drain()"), 2)
+        # Wave93 delegates internal-loop drain to drainAndDisconnectConsumer.
+        self.assertEqual(source.count("await this.offsetCommitGate.drain()"), 1)
+        self.assertIn("await drainAndDisconnectConsumer(", source)
+        helper = (ROOT / "nodejs/src/common/kafka/consumer/consumer-loop-cleanup.ts").read_text(encoding="utf-8")
+        self.assertIn("await gate.drain()", helper)
         self.assertIn("refusing to acknowledge subsequent offsets", source)
 
     def test_gate_always_observes_rejections_and_orders_offset_stores(self):

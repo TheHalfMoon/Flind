@@ -39,7 +39,7 @@ import { parseBrokerStatistics, trackBrokerMetrics } from '../kafka-client-metri
 import { drainAndDisconnectConsumer } from './consumer-loop-cleanup'
 import { OffsetCommitGate } from './offset-commit-gate'
 import { awaitRevocationSafety } from './revocation-safety'
-import { safeKafkaLogContext } from './safe-log-context'
+import { safeKafkaErrorContext, safeKafkaLogContext } from './safe-log-context'
 import {
     consumedBatchBackgroundDuration,
     consumedBatchBackpressureDuration,
@@ -326,8 +326,9 @@ export class KafkaConsumer {
                 details.assignments = assignments.map((a) => ({ topic: a.topic, partition: a.partition }))
             }
         } catch (error) {
-            // Consumer might be in an erroneous state during rebalancing
-            details.assignmentError = error.message
+            // Health diagnostics can be externally visible; never include raw native error text.
+            details.assignmentError = 'Kafka partition assignment unavailable'
+            Object.assign(details, safeKafkaErrorContext(error))
         }
 
         // Return degraded if there are warnings, otherwise healthy
@@ -367,8 +368,8 @@ export class KafkaConsumer {
         const offsets = await promisifyCallback<WatermarkOffsets>((cb) =>
             this.rdKafkaConsumer.queryWatermarkOffsets(topic, partition, timeout, cb)
         ).catch((err) => {
-            captureException(err)
-            logger.error('🔥', 'Failed to query kafka watermark offsets', err)
+            captureException(new Error('Kafka watermark lookup failed'))
+            logger.error('🔥', 'Failed to query kafka watermark offsets', safeKafkaErrorContext(err))
             throw err
         })
 
@@ -390,8 +391,8 @@ export class KafkaConsumer {
 
         const meta = await promisifyCallback<Metadata>((cb) => this.rdKafkaConsumer.getMetadata({ topic }, cb)).catch(
             (err) => {
-                captureException(err)
-                logger.error('🔥', 'Failed to get partition metadata', err)
+                captureException(new Error('Kafka partition metadata lookup failed'))
+                logger.error('🔥', 'Failed to get partition metadata', safeKafkaErrorContext(err))
                 throw err
             }
         )
@@ -400,7 +401,7 @@ export class KafkaConsumer {
     }
 
     public rebalanceCallback(err: LibrdKafkaError, assignments: Assignment[]): void {
-        logger.info('🔁', 'kafka_consumer_rebalancing', { err, assignments })
+        logger.info('🔁', 'kafka_consumer_rebalancing', { ...safeKafkaErrorContext(err), assignmentCount: assignments.length })
 
         if (err.code === CODES.ERRORS.ERR__ASSIGN_PARTITIONS) {
             // Mark rebalancing as complete when partitions are assigned
@@ -453,23 +454,21 @@ export class KafkaConsumer {
                     // Still revoke after a local drain error; Kafka manages
                     // partition ownership, while the consumer failure fence
                     // prohibits subsequent offsets from being acknowledged.
-                    logger.error('🔁', 'offset_gate_drain_failed_during_revocation', {
-                        error: String(error),
-                    })
+                    logger.error('🔁', 'offset_gate_drain_failed_during_revocation', safeKafkaErrorContext(error))
                 })
                 .then(() => this.completeRevocation(assignments))
                 .catch((error) => {
-                    captureException(error)
-                    logger.error('🔁', 'partition_revocation_failed', { error: String(error) })
+                    captureException(new Error('Kafka partition revocation failed'))
+                    logger.error('🔁', 'partition_revocation_failed', safeKafkaErrorContext(error))
                     this.resetRebalanceCoordination()
                 })
         } else {
             // Ignore exceptions if we are not connected
             if (this.rdKafkaConsumer.isConnected()) {
-                logger.error('🔥', 'kafka_consumer_rebalancing_error', { err })
-                captureException(err)
+                logger.error('🔥', 'kafka_consumer_rebalancing_error', safeKafkaErrorContext(err))
+                captureException(new Error('Kafka consumer rebalancing failed'))
             } else {
-                logger.warn('🔥', 'kafka_consumer_rebalancing_error_while_not_connected', { err })
+                logger.warn('🔥', 'kafka_consumer_rebalancing_error_while_not_connected', safeKafkaErrorContext(err))
             }
         }
     }
@@ -488,7 +487,7 @@ export class KafkaConsumer {
         Promise.resolve()
             .then(() => this.onPartitionsRevoked?.(assignments))
             .catch((error) => {
-                logger.error('🔁', 'partition_revoked_handler_failed', { error: String(error) })
+                logger.error('🔁', 'partition_revoked_handler_failed', safeKafkaErrorContext(error))
             })
     }
 
@@ -519,18 +518,13 @@ export class KafkaConsumer {
             'auto.offset.reset': autoOffsetReset,
         })
 
-        consumer.on('event.log', (log) => {
-            logger.info('📝', 'librdkafka log', { log: log })
+        consumer.on('event.log', () => {
+            // Native log text may include SASL/TLS material.
+            logger.info('📝', 'librdkafka_log_event')
         })
 
         consumer.on('event.error', (error: LibrdKafkaError) => {
-            logger.error('📝 librdkafka error', {
-                message: error.message,
-                code: error.code,
-                errno: error.errno,
-                origin: 'event.error',
-                stack: error.stack,
-            })
+            logger.error('📝', 'librdkafka_error', safeKafkaErrorContext(error))
         })
 
         consumer.on('event.stats', (stats: any) => {
@@ -570,10 +564,7 @@ export class KafkaConsumer {
 
                 logger[this.consumerLogStatsLevel]('📊', 'Kafka consumer statistics', logData)
             } catch (error) {
-                logger.error('📊', 'Failed to parse consumer statistics', {
-                    error: error instanceof Error ? error.message : String(error),
-                    errorStack: error instanceof Error ? error.stack : undefined,
-                })
+                logger.error('📊', 'Failed to parse consumer statistics', safeKafkaErrorContext(error))
             }
         })
 
@@ -585,14 +576,14 @@ export class KafkaConsumer {
             // Native metrics and error objects may include transport details.
             // Log the documented error code, not their arbitrary fields.
             logger.error('📝', 'librdkafka connection failure', {
-                errorCode: error?.code,
+                ...safeKafkaErrorContext(error),
                 ...safeKafkaLogContext(this.config),
             })
         })
 
         consumer.on('offset.commit', (error: LibrdKafkaError, topicPartitionOffsets: TopicPartitionOffset[]) => {
             if (error) {
-                logger.warn('📝', 'librdkafka_offet_commit_error', { error, topicPartitionOffsets })
+                logger.warn('📝', 'librdkafka_offet_commit_error', { ...safeKafkaErrorContext(error), partitionCount: topicPartitionOffsets.length })
             } else {
                 logger.debug('📝', 'librdkafka_offset_commit', { topicPartitionOffsets })
             }
@@ -609,19 +600,11 @@ export class KafkaConsumer {
             } catch (e) {
                 // NOTE: We don't throw here - this can happen if we were re-assigned partitions
                 // and the offsets are no longer valid whilst processing a batch
-                let assignedPartitions: Assignment[] | string = []
-                try {
-                    assignedPartitions = this.assignments()
-                } catch (assignmentError) {
-                    // Consumer might be in an erroneous state during rebalancing
-                    assignedPartitions = `Error getting assignments: ${String(assignmentError)}`
-                }
                 logger.error('📝', 'Failed to store offsets', {
-                    error: String(e),
-                    assignedPartitions,
-                    topicPartitionOffsetsToCommit,
+                    ...safeKafkaErrorContext(e),
+                    affectedPartitionCount: topicPartitionOffsetsToCommit.length,
                 })
-                captureException(e)
+                captureException(new Error('Kafka offset store failed'))
                 // Kafka offset storage is part of the delivery guarantee.
                 // Swallowing the error makes OffsetCommitGate treat this batch
                 // as acknowledged and allows a newer batch to advance past it.
@@ -643,7 +626,7 @@ export class KafkaConsumer {
             await promisifyCallback<Metadata>((cb) => this.rdKafkaConsumer.connect({}, cb))
             logger.info('📝', 'librdkafka consumer connected')
         } catch (error) {
-            logger.error('⚠️', 'connect_error', { error: error })
+            logger.error('⚠️', 'connect_error', safeKafkaErrorContext(error))
             throw error
         }
 
@@ -814,13 +797,7 @@ export class KafkaConsumer {
                 // one place, including when earlier stages fail.
             } catch (error) {
                 loopFailure = error
-                logger.error('🔁', 'main_loop_error', {
-                    error: String(error),
-                    errorCode: (error as any)?.code,
-                    errorOrigin: (error as any)?.origin,
-                    isFatal: (error as any)?.isFatal,
-                    isRetriable: (error as any)?.isRetriable,
-                })
+                logger.error('🔁', 'main_loop_error', safeKafkaErrorContext(error))
             } finally {
                 logger.info('🔁', 'main_loop_stopping')
                 // Promise.all would abort cleanup at the first rejection and
@@ -838,11 +815,7 @@ export class KafkaConsumer {
 
         this.consumerLoop = startConsuming().catch((error) => {
             logger.error('🔁', 'consumer_loop_error', {
-                error: String(error),
-                errorCode: (error as any)?.code,
-                errorOrigin: (error as any)?.origin,
-                isFatal: (error as any)?.isFatal,
-                isRetriable: (error as any)?.isRetriable,
+                ...safeKafkaErrorContext(error),
                 ...safeKafkaLogContext(this.config),
             })
             // We re-throw the error as that way it will be caught in server.ts and trigger a full shutdown
@@ -885,11 +858,7 @@ export class KafkaConsumer {
         if (this.consumerLoop) {
             await this.consumerLoop.catch((error) => {
                 logger.error('🔁', 'failed to stop consumer loop safely. Continuing shutdown', {
-                    error: String(error),
-                    errorCode: (error as any)?.code,
-                    errorOrigin: (error as any)?.origin,
-                    isFatal: (error as any)?.isFatal,
-                    isRetriable: (error as any)?.isRetriable,
+                    ...safeKafkaErrorContext(error),
                     ...safeKafkaLogContext(this.config),
                 })
             })
