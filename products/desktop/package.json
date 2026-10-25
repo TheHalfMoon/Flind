@@ -1,8 +1,8 @@
 {
-  "name": "posthog-code",
+  "name": "@flind/desktop-workspace",
   "version": "0.0.0",
   "private": true,
-  "description": "Monorepo for the PostHog desktop app and agent framework",
+  "description": "Monorepo for the Flind desktop app and agent framework",
   "engines": {
     "node": ">=22.19.0"
   },
@@ -43,7 +43,7 @@
     "hosthog:build": "pnpm install --frozen-lockfile --ignore-scripts --filter @flind/web... && pnpm build:agent && SKIP_PRODUCT_ENGINEER_SKILLS_DOWNLOAD=1 pnpm exec turbo build --filter=@flind/web && ln -sfn apps/web/dist dist"
   },
   "keywords": [
-    "posthog",
+    "flind",
     "code",
     "tasks",
     "developer-tools",

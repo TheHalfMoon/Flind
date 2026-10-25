@@ -1,7 +1,7 @@
 {
-  "name": "posthog-agent-workspace",
+  "name": "@flind/agent-workspace",
   "version": "0.0.0",
-  "description": "The PostHog agent runtime and the packages it bundles",
+  "description": "The Flind agent runtime and the packages it bundles",
   "private": true,
   "engines": {
     "node": ">=22.19.0"
