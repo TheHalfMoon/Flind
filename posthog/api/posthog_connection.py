@@ -89,7 +89,7 @@ def _connection_access_token(integration: Integration) -> str:
         integration.refresh_from_db()
     token = integration.sensitive_config.get("access_token")
     if not token:
-        raise ValidationError("This PostHog connection has no usable access token — reconnect it.")
+        raise ValidationError("This Flind connection has no usable access token — reconnect it.")
     return token
 
 
@@ -107,7 +107,7 @@ def _enforce_caller_covers_connection_scopes(request: Request, integration: Inte
         # target's token-response `scope`, which is OPTIONAL per RFC 6749 §5.1. If the target omitted
         # it, fail closed: a scoped (or leaked) key must not wield a grant whose reach we can't bound.
         raise PermissionDenied(
-            "This PostHog connection's granted scopes are unknown, so it can only be used with a "
+            "This Flind connection's granted scopes are unknown, so it can only be used with a "
             "full-access API key or a session. Reconnect it to record its scopes."
         )
     missing = granted - set(caller_scopes)
@@ -274,7 +274,7 @@ class PostHogConnectionTargetSerializer(serializers.Serializer):
     project_name = serializers.CharField(help_text="Name of the connected project.")
     organization_id = serializers.CharField(help_text="Id of the organization the connected project belongs to.")
     organization_name = serializers.CharField(help_text="Name of the organization the connected project belongs to.")
-    region = serializers.CharField(help_text="Cloud region the connected project lives in, e.g. `US` or `EU`.")
+    region = serializers.CharField(help_text="Configured region of the connected project, e.g. `US` or `EU`.")
     base_url = serializers.CharField(help_text="Base URL requests through this connection are sent to.")
 
 
@@ -286,7 +286,7 @@ class PostHogConnectionTargetErrorSerializer(serializers.Serializer):
 # to the integrations product rather than the core bucket this module's path would otherwise imply.
 @extend_schema(extensions={"x-product": "integrations"})
 class PostHogConnectionViewSet(TeamAndOrgViewSetMixin, viewsets.GenericViewSet):
-    """Replay requests against another PostHog project via a `posthog` connection you created."""
+    """Replay API requests against a connected project with your own connection."""
 
     authentication_classes = [SessionAuthentication, PersonalAPIKeyAuthentication, OAuthAccessTokenAuthentication]
     scope_object = "integration"
@@ -301,29 +301,29 @@ class PostHogConnectionViewSet(TeamAndOrgViewSetMixin, viewsets.GenericViewSet):
         # Refuse to forward a request that itself arrived through a connection, so a same-region (or
         # cross-region) connection can't be chained into itself and tie up workers one hop at a time.
         if request.headers.get(CONNECTION_MARKER_HEADER):
-            raise ValidationError("A request forwarded through a PostHog connection cannot be forwarded again.")
+            raise ValidationError("A request forwarded through a Flind connection cannot be forwarded again.")
         integration = self._get_connection(pk)
         _enforce_caller_covers_connection_scopes(request, integration)
         return integration
 
     def _get_connection(self, pk: str | None) -> Integration:
         if pk is None:
-            raise NotFound("No PostHog connection with that id in this project.")
+            raise NotFound("No Flind connection with that id in this project.")
         try:
             integration = Integration.objects.get(team_id=self.team_id, id=pk, kind=POSTHOG_CONNECT_KIND)
         except (Integration.DoesNotExist, ValueError, ValidationError):
-            raise NotFound("No PostHog connection with that id in this project.")
+            raise NotFound("No Flind connection with that id in this project.")
         # A connection acts as the user who consented to it. Restrict use to that user so a broad,
         # any-scope grant can't become a team-wide confused deputy in the target project.
         if integration.created_by_id != getattr(self.request.user, "id", None):
-            raise PermissionDenied("You can only use a PostHog connection you created.")
+            raise PermissionDenied("You can only use a Flind connection you created.")
         return integration
 
     @extend_schema(
         request=PostHogConnectionForwardSerializer,
         responses={200: OpenApiResponse(response=PostHogConnectionForwardResponseSerializer)},
-        summary="Forward a request through a PostHog connection",
-        description="Replay an API request against the connected PostHog project. The server injects the connection's token; the response is passed through.",
+        summary="Forward a request through a Flind connection",
+        description="Replay an API request against the connected project. The server injects the connection's token; the response is passed through.",
     )
     @action(detail=True, methods=["post"], url_path="forward", required_scopes=["integration:write"])
     def forward(self, request: Request, pk: str | None = None, **kwargs: Any) -> Response:
@@ -353,7 +353,7 @@ class PostHogConnectionViewSet(TeamAndOrgViewSetMixin, viewsets.GenericViewSet):
             502: OpenApiResponse(response=PostHogConnectionTargetErrorSerializer),
         },
         summary="Read the connected project's identity",
-        description="Resolve which project, organization and region a PostHog connection points at, so callers can build target API paths without reading `api/users/@me/` through the connection first.",
+        description="Resolve which project, organization and region a Flind connection points at, so callers can build target API paths without reading `api/users/@me/` through the connection first.",
     )
     @action(detail=True, methods=["get"], url_path="target", required_scopes=["integration:read"])
     def target(self, request: Request, pk: str | None = None, **kwargs: Any) -> Response:
