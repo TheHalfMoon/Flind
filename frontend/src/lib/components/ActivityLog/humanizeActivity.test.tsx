@@ -7,6 +7,7 @@ import {
     Describer,
     Description,
     defaultDescriber,
+    humanize,
     userNameForLogItem,
 } from 'lib/components/ActivityLog/humanizeActivity'
 import { cohortActivityDescriber } from 'scenes/cohorts/activityDescriptions'
@@ -28,6 +29,23 @@ describe('humanizeActivity', () => {
         scope: ActivityScope.FEATURE_FLAG,
         detail: { merge: null, trigger: null, changes: null, name: 'my-flag' },
         ...overrides,
+    })
+
+    it('names an impersonated audit actor neutrally without implying a vendor', () => {
+        const row = makeLogItem({
+            was_impersonated: true,
+            user: { first_name: 'Ada', last_name: 'Lovelace', email: 'ada@example.com' },
+        })
+        const results = humanize(
+            [row],
+            () => () => ({
+                description: 'changed a flag',
+                summary: { actor: <span>Support</span>, action: 'changed', target: 'a flag' },
+            })
+        )
+        expect(results).toHaveLength(1)
+        expect(results[0].name).toBe('Support (as Ada Lovelace)')
+        expect(results[0].email).toBeNull()
     })
 
     it.each<{
@@ -198,11 +216,11 @@ describe('humanizeActivity', () => {
                 'A user',
             ],
             ['falls back to the placeholder when there is no user', {}, 'A user'],
-            ['renders system activity as PostHog', { is_system: true }, 'PostHog'],
+            ['renders system activity as Flind', { is_system: true }, 'Flind'],
             [
                 'falls back to email for impersonated actors with a blank name',
                 { was_impersonated: true, user: { first_name: '', last_name: '', email: 'ada@posthog.com' } },
-                'PostHog Support (as ada@posthog.com)',
+                'Support (as ada@posthog.com)',
             ],
         ])('%s', (_name, overrides: Partial<ActivityLogItem>, expected: string) => {
             expect(userNameForLogItem(makeLogItem(overrides))).toEqual(expected)

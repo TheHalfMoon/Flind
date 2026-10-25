@@ -497,7 +497,7 @@ function AnnotationCard({ annotation }: { annotation: AnnotationType }): JSX.Ele
             </div>
             <div className="mt-1 flex items-center gap-3">
                 {isSystemAnnotation && (
-                    <LemonBadge status="primary" size="small" className="flex-shrink-0" content="PostHog" />
+                    <LemonBadge status="primary" size="small" className="flex-shrink-0" content="Flind" />
                 )}
                 <TextContent text={annotation.content ?? ''} data-attr="annotation-overlay-rendered-content" />
             </div>

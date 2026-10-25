@@ -3,12 +3,12 @@
  *
  * Two mutually-exclusive states (core defs can't be team-verified — see
  * `DefinitionPopoverContents`'s `allowVerification`):
- *   - `core`     — a built-in PostHog definition (`isCoreFilter`). Badge
- *                  reads "By PostHog" with the logomark.
+ *   - `core`     — a built-in Flind definition (`isCoreFilter`). Badge
+ *                  reads "Flind" with a neutral badge icon.
  *   - `verified` — a custom definition a team explicitly marked verified
  *                  (`item.verified`). Badge reads "Verified".
  */
-import { IconBadge, IconLogomark } from '@posthog/icons'
+import { IconBadge } from '@posthog/icons'
 import { Badge, cn, Tooltip, TooltipContent, TooltipTrigger } from '@flind/quill'
 
 import { isCoreFilter } from '~/taxonomy/helpers'
@@ -18,8 +18,8 @@ import { MenuFilterEntry } from './types'
 type Verification = { kind: 'core' } | { kind: 'verified' }
 
 export function getVerification(entry: MenuFilterEntry): Verification | null {
-    // Core PostHog definitions ($pageview, $browser, …) are inherently
-    // verified — surfaced as "By PostHog" rather than a team flag.
+    // Core Flind definitions ($pageview, $browser, …) are inherently
+    // verified — surfaced as "Flind" rather than a team flag.
     if (isCoreFilter(entry.name)) {
         return { kind: 'core' }
     }
@@ -54,8 +54,8 @@ export function VerificationBadge({
                 render={(triggerProps) => (
                     <span {...triggerProps} className={cn('inline-flex', className)}>
                         <Badge variant={isCore ? 'default' : 'success'} className="gap-1 shrink-0">
-                            {isCore ? <IconLogomark className="size-3" /> : <IconBadge className="size-3" />}
-                            {isCore ? 'PostHog' : 'Verified'}
+                            <IconBadge className="size-3" />
+                            {isCore ? 'Flind' : 'Verified'}
                         </Badge>
                     </span>
                 )}
@@ -63,8 +63,8 @@ export function VerificationBadge({
             <TooltipContent className="max-w-64 flex-col items-start">
                 {isCore ? (
                     <>
-                        <strong>Built into PostHog.</strong> A core definition PostHog ships, maintains, and documents.
-                        Its name, type, and description are managed for you, so you don't need to verify it.
+                        <strong>Built into Flind.</strong> This core definition is included with Flind.
+                        It is managed by the application and does not need team verification.
                     </>
                 ) : (
                     <>

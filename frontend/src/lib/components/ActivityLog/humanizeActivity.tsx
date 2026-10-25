@@ -48,11 +48,11 @@ export type ActivityLogItem = {
     team_id?: number | null
     /** Present if the log is used as a notification. Whether the notification is unread. */
     unread?: boolean
-    /** Whether the activity was initiated by a PostHog staff member impersonating a user. */
+    /** Whether a support agent initiated the activity while impersonating a user. */
     is_staff?: boolean
-    /** Whether the activity was initiated by the PostHog backend. Example: an exported image when sharing an insight. */
+    /** Whether the activity was initiated by the Flind backend. Example: an exported image when sharing an insight. */
     is_system?: boolean
-    /** Whether a PostHog team member was impersonating the user when this activity was logged. */
+    /** Whether a support agent was impersonating the user when this activity was logged. */
     was_impersonated?: boolean
     /** SDK, integration, or scout that triggered this action. Self-reported through the x-posthog-client header, except for a scout, which the server names. */
     client?: string | null
@@ -141,7 +141,7 @@ export function humanize(
                 email: actorEmailForLogItem(logItem),
                 emailToReveal: actorEmailToRevealForLogItem(logItem),
                 name: logItem.was_impersonated
-                    ? `PostHog Support${impersonatedUserName ? ` (as ${impersonatedUserName})` : ''}`
+                    ? `Support${impersonatedUserName ? ` (as ${impersonatedUserName})` : ''}`
                     : impersonatedUserName,
                 isSystem: logItem.is_system,
                 wasImpersonated: logItem.was_impersonated,
@@ -161,10 +161,10 @@ export function humanize(
 
 export function userNameForLogItem(logItem: ActivityLogItem): string {
     if (logItem.is_system) {
-        return 'PostHog'
+        return 'Flind'
     }
     if (logItem.was_impersonated) {
-        return `PostHog Support (as ${nameOrEmailForUser(logItem.user, 'a user')})`
+        return `Support (as ${nameOrEmailForUser(logItem.user, 'a user')})`
     }
     return nameOrEmailForUser(logItem.user, 'A user')
 }
@@ -181,7 +181,7 @@ function nameOrEmailForUser(
     return fullName(user) || user.email || fallback
 }
 
-// An impersonated row names PostHog Support as the actor, so the address on it belongs to the
+// An impersonated row names a support agent as the actor, so the address on it belongs to the
 // member who was impersonated and attributing it to Support would misread the audit trail. Every
 // surface that shows the email must use this, or a row can disclose it in one place and hide it
 // in another.
