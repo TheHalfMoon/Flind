@@ -91,6 +91,36 @@ class MigrationDiagnosticWave63Tests(unittest.TestCase):
         self.assertEqual(result["interrupted_migration"], "posthog.0001_initial")
         self.assertFalse(result["isolated_migrations_completed"])
 
+    def test_stage_marker_survives_thousands_of_log_lines(self):
+        # Real 360s migrations reported 2806 committed rows but no stage
+        # because the old scanner inspected only the final 180 lines.
+        log = io.StringIO(
+            "startup diagnostics: password=synthetic-secret\n"
+            "Operations to perform:\n"
+            "Running migrations:\n"
+            + "".join(
+                f"  Applying posthog.migration_{n:04d}... OK\n"
+                for n in range(2800)
+            )
+        )
+        tail, stage = probe.summarize_migration_log(log)
+        self.assertTrue(stage)
+        self.assertNotIn("synthetic-secret", tail)
+        self.assertNotIn("Running migrations:", tail)
+        self.assertIn("migration_2799", tail)
+        self.assertLessEqual(len(tail), 18_000)
+
+    def test_other_django_messages_do_not_forge_migration_stage(self):
+        for messages in (
+            "Running migrations: but only a string\n",
+            "no Running migrations: here\n",
+            "Running migration:\n",
+        ):
+            with self.subTest(messages=messages):
+                tail, stage = probe.summarize_migration_log(io.StringIO(messages))
+                self.assertFalse(stage)
+                self.assertEqual(tail, messages)
+
     def test_resume_forwards_sanitized_attempted_label(self):
         with patch.object(resume, "attempt_migrations") as migrations:
             migrations.return_value = {

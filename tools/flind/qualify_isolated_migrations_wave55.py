@@ -57,6 +57,24 @@ def migration_console_progress(output: str) -> dict[str, str | None]:
     }
 
 
+def summarize_migration_log(log) -> tuple[str, bool]:
+    """Keep a small safe diagnostic tail but scan *all* lines for stage marker.
+
+    Django prints 'Running migrations:' only once at the beginning. A
+    long-running 360-second command can push it thousands of lines out
+    of the tail even when thousands of real migrations were committed.
+    The stage bit must not accidentally report a startup failure then.
+    """
+    log.seek(0)
+    tail = deque(maxlen=180)
+    django_migration_stage_seen = False
+    for line in log:
+        if line.strip() == "Running migrations:":
+            django_migration_stage_seen = True
+        tail.append(line)
+    return "".join(tail)[-18_000:], django_migration_stage_seen
+
+
 def read_applied_count(port: int, password: str, name: str) -> int:
     env = {
         "PATH": str(DEFAULT_PG_BIN_DIR) + ":/usr/bin:/bin",
@@ -160,9 +178,9 @@ def attempt_migrations(
             time.sleep(1)
         applied = read_applied_count(port, password, name)
         last = read_last_migration(port, password, name) if applied else None
-        log.seek(0)
-        # Use the tail so any final migration error is not hidden by boot logs.
-        output = "".join(deque(log, maxlen=180))[-18_000:]
+        # Scan for the exact one-time stage marker across the entire log.
+        # Still retain ONLY the last 180 lines for sanitized diagnostics.
+        output, stage_seen = summarize_migration_log(log)
         progress = migration_console_progress(output)
         safe_class = diagnostic(output)
         succeeded = process.returncode == 0 and reason is None and applied > 0
@@ -171,7 +189,7 @@ def attempt_migrations(
             "migration_rows_applied_to_disposable_db": applied,
             "last_committed_migration": last,
             "django_console_output_seen": bool(output.strip()),
-            "django_migration_stage_seen": "Running migrations:" in output,
+            "django_migration_stage_seen": stage_seen,
             "django_error_class": (
                 safe_class if safe_class != "No recognized exception class" else None
             ),
