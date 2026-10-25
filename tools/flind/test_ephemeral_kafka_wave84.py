@@ -137,6 +137,59 @@ class IsolatedKafkaWave84(unittest.TestCase):
     @patch.object(k, "kafka_paths")
     @patch.object(k, "_run")
     @patch.object(k.subprocess, "Popen")
+    def test_optional_synthetic_relay_called_only_after_exact_broker_roundtrip(
+        self, popen, run, paths, _conf, _ports, _disk
+    ):
+        binaries, responses = self._mock_ready_fixture()
+        paths.return_value = binaries
+        run.side_effect = responses
+        broker = MagicMock()
+        broker.poll.return_value = None
+        popen.return_value = broker
+        received = []
+
+        def relay(records):
+            received.append(records)
+            return {"synthetic_relay_passed": True, "kafka_records_replayed": len(records)}
+
+        with patch.object(k.os, "killpg"):
+            report = k.qualify_kafka(Path("/synthetic"), on_consumed=relay)
+        self.assertTrue(report["isolated_kafka_passed"])
+        self.assertEqual(received, [tuple(k.EVENTS)])
+        self.assertEqual(report["synthetic_relay"]["kafka_records_replayed"], 3)
+        self.assertFalse(report["release_qualified"])
+        broker.wait.assert_called_once()
+
+    @patch.object(k, "available_disk_gib", return_value=15.0)
+    @patch.object(k, "loopback_ports", return_value=(12001, 12002))
+    @patch.object(k, "isolated_config", return_value=Path("/synthetic-private/config"))
+    @patch.object(k, "kafka_paths")
+    @patch.object(k, "_run")
+    @patch.object(k.subprocess, "Popen")
+    def test_tampered_consumption_never_invokes_synthetic_relay(
+        self, popen, run, paths, _conf, _ports, _disk
+    ):
+        binaries, responses = self._mock_ready_fixture(
+            consumer_result='{"event":"untrusted"}\n'
+        )
+        paths.return_value = binaries
+        run.side_effect = responses
+        broker = MagicMock()
+        broker.poll.return_value = None
+        popen.return_value = broker
+        relay = MagicMock()
+        with patch.object(k.os, "killpg"):
+            report = k.qualify_kafka(Path("/synthetic"), on_consumed=relay)
+        self.assertFalse(report["isolated_kafka_passed"])
+        relay.assert_not_called()
+        broker.wait.assert_called_once()
+
+    @patch.object(k, "available_disk_gib", return_value=15.0)
+    @patch.object(k, "loopback_ports", return_value=(12001, 12002))
+    @patch.object(k, "isolated_config", return_value=Path("/synthetic-private/config"))
+    @patch.object(k, "kafka_paths")
+    @patch.object(k, "_run")
+    @patch.object(k.subprocess, "Popen")
     def test_incorrect_consumer_message_fails_and_kills_private_broker(
         self, popen, run, paths, _conf, _ports, _disk
     ):

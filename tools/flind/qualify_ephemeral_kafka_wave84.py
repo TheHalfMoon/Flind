@@ -8,6 +8,7 @@ persistent machine Kafka configuration is used.
 from __future__ import annotations
 
 import argparse
+from collections.abc import Callable
 import json
 import os
 from pathlib import Path
@@ -105,7 +106,9 @@ def _run(command: list[str], env: dict[str, str], *, timeout: int, text_input: s
     )
 
 
-def qualify_kafka(home: Path) -> dict:
+def qualify_kafka(
+    home: Path, *, on_consumed: Callable[[tuple[dict, ...]], dict] | None = None,
+) -> dict:
     base = {
         "isolated_kafka_passed": False,
         "temporary_kafka_storage": True,
@@ -209,6 +212,12 @@ def qualify_kafka(home: Path) -> dict:
             records = [json.loads(line) for line in received.stdout.splitlines() if line.strip()]
             if records != list(EVENTS):
                 raise ValueError("Kafka messages differ from the exact synthetic event payloads")
+            # Optional synthetic-only relay probe. It can run after exact
+            # message equality and while the private broker is still alive.
+            # A failed relay never promotes the production ingestion gate.
+            relay = on_consumed(tuple(records)) if on_consumed else None
+            if on_consumed and type(relay) is not dict:
+                raise ValueError("Synthetic Kafka relay returned an invalid receipt")
             return {
                 **base,
                 "isolated_kafka_passed": True,
@@ -218,6 +227,7 @@ def qualify_kafka(home: Path) -> dict:
                 "exact_json_message_roundtrip": True,
                 "two_teams_with_colliding_distinct_ids": True,
                 "temporary_topic": True,
+                **({"synthetic_relay": relay} if relay is not None else {}),
             }
         except (OSError, RuntimeError, ValueError, json.JSONDecodeError, subprocess.TimeoutExpired):
             return {**base, "blocker": "Bounded real Kafka publish/consume qualification failed"}
