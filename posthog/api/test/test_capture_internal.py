@@ -940,6 +940,56 @@ class TestCaptureBatchInternal(SimpleTestCase):
         assert uid in getattr(result, expected_bucket)
         assert result.succeeded() == expect_succeeded
 
+    @parameterized.expand(
+        [
+            ("status_missing", {}),
+            ("status_null", {"result": None}),
+            ("status_array", {"result": ["ok"]}),
+            ("status_object", {"result": {"ok": True}}),
+            ("status_number", {"result": 200}),
+            ("status_unknown", {"result": "new_status"}),
+        ]
+    )
+    @patch("posthog.api.capture.internal_requests_session")
+    def test_untrusted_event_response_never_acknowledges_missing_or_invalid_result(
+        self, _name: str, entry: dict[str, Any], mock_session_fn: MagicMock,
+    ) -> None:
+        uid = str(uuid4())
+        # Important: deliberately include even empty dict as a UUID entry.
+        InstallV1Spy(mock_session_fn, [MockResponse(body={"results": {uid: entry}})])
+        result = capture_batch_internal(
+            events=[_make_event(event_uuid=uid)], token="synthetic", event_source="untrusted_ack"
+        )
+        assert result.status_code == 200
+        assert result.results[uid] == {"result": "unaccounted"}
+        assert result.unaccounted == [uid]
+        assert result.ok == []
+        assert not result.succeeded()
+        with self.assertRaises(CaptureInternalError):
+            result.raise_for_status()
+
+    @parameterized.expand([
+        ("array", ["server_error"]),
+        ("null", None),
+        ("scalar", "server_error"),
+    ])
+    @patch("posthog.api.capture.internal_requests_session")
+    def test_nonobject_http_error_body_is_structured_unaccounted_failure(
+        self, _name: str, body: Any, mock_session_fn: MagicMock,
+    ) -> None:
+        uid = str(uuid4())
+        InstallV1Spy(mock_session_fn, [MockResponse(status_code=422, body=body)])
+        result = capture_batch_internal(
+            events=[_make_event(event_uuid=uid)], token="synthetic", event_source="bad_error_body"
+        )
+        assert result.status_code == 422
+        assert result.error is not None
+        assert result.error["error"] == ("unknown" if body is None else "invalid_response")
+        assert result.unaccounted == [uid]
+        assert not result.succeeded()
+        with self.assertRaises(CaptureInternalError):
+            result.raise_for_status()
+
     @patch("posthog.api.capture.internal_requests_session")
     def test_transport_exception_returns_structured_error(self, mock_session_fn: MagicMock) -> None:
         events = [_make_event()]

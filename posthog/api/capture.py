@@ -607,6 +607,13 @@ def _submit_batch_chunk(
                         "error": "unknown",
                         "error_description": resp.text[:500] if resp.text else "",
                     }
+                if not isinstance(error_body, dict):
+                    # A non-2xx response with a JSON array, scalar, or null
+                    # must be a structured failure, never a .get() crash.
+                    error_body = {
+                        "error": "invalid_response",
+                        "error_description": "non-object HTTP error response",
+                    }
                 logger.warning(
                     "capture_internal_request_failed",
                     event_source=event_source,
@@ -642,11 +649,17 @@ def _submit_batch_chunk(
                 entry = results_map.get(uid)
                 if not isinstance(entry, dict):
                     continue
-                clamped = entry.get("result", "ok")
-                if clamped not in _KNOWN_RESULT_STATUSES:
-                    clamped = "unknown"
-                CAPTURE_V1_EVENT_RESULT.labels(event_source=event_source, result=clamped).inc()
-                if entry.get("result") == "retry":
+                raw_status = entry.get("result")
+                # The response is untrusted. Missing or non-string statuses
+                # are NOT acknowledgements; an absent result previously
+                # defaulted to "ok", silently losing events. Lists/dicts also
+                # raised TypeError when checked against the status set.
+                if not isinstance(raw_status, str) or raw_status not in _KNOWN_RESULT_STATUSES:
+                    CAPTURE_V1_EVENT_RESULT.labels(event_source=event_source, result="unknown").inc()
+                    aggregated[uid] = {"result": "unaccounted"}
+                    continue
+                CAPTURE_V1_EVENT_RESULT.labels(event_source=event_source, result=raw_status).inc()
+                if raw_status == "retry":
                     retry_uuids.append(uid)
                 else:
                     aggregated[uid] = entry
