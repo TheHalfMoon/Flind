@@ -51,6 +51,11 @@ def run_resumable(
             "committed_migration_rows": count,
             "newly_committed_rows": count - previous_count,
             "last_committed_migration": result.get("last_committed_migration"),
+            "last_attempted_migration": result.get("last_attempted_migration"),
+            "interrupted_migration": result.get("interrupted_migration"),
+            "django_console_output_seen": result.get("django_console_output_seen"),
+            "django_migration_stage_seen": result.get("django_migration_stage_seen"),
+            "django_error_class": result.get("django_error_class"),
             "command_completed": bool(result.get("isolated_migrations_completed")),
         })
         if result.get("isolated_migrations_completed"):

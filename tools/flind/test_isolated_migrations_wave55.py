@@ -75,8 +75,8 @@ class IsolatedMigrationsWave55Tests(unittest.TestCase):
         self.assertEqual(result["migration_rows_applied_to_disposable_db"], 42)
         cmd = popen.call_args.args[0]
         self.assertEqual(cmd, [
-            sys.executable, "manage.py", "migrate",
-            "--noinput", "--database", "default", "--verbosity", "0",
+            sys.executable, "-u", "manage.py", "migrate",
+            "--noinput", "--database", "default", "--verbosity", "1",
         ])
         env = popen.call_args.kwargs["env"]
         self.assertIn("127.0.0.1:16379/flind_ephemeral", env["DATABASE_URL"])

@@ -34,6 +34,28 @@ else:
 MIN_FREE_GIB = 2.5
 MAX_MIGRATION_SECONDS = 360
 
+# Django's own migration progress lines only. Never include raw application
+# logs, SQL, URLs or exception bodies in any outward diagnostic receipt.
+MIGRATION_LINE = re.compile(
+    r"(?m)^[ \t]*Applying ([A-Za-z_][A-Za-z0-9_]{0,79}\.[A-Za-z0-9_]{1,120})"
+    r"\.\.\.[ \t]*(OK|FAKED)?[ \t]*\r?$"
+)
+
+
+def migration_console_progress(output: str) -> dict[str, str | None]:
+    """Bounded sanitized migration labels; no log text or credentials."""
+    attempted = None
+    completed = None
+    for match in MIGRATION_LINE.finditer(output[-18_000:]):
+        attempted = match.group(1)
+        if match.group(2) in ("OK", "FAKED"):
+            completed = attempted
+    return {
+        "last_attempted_migration": attempted,
+        "last_console_completed_migration": completed,
+        "interrupted_migration": attempted if attempted != completed else None,
+    }
+
 
 def read_applied_count(port: int, password: str, name: str) -> int:
     env = {
@@ -103,10 +125,12 @@ def attempt_migrations(
     })
     if app_label not in (None, "contenttypes", "auth", "posthog_session"):
         raise ValueError("Only explicitly allowlisted Django core-app scoping is supported")
-    cmd = [sys.executable, "manage.py", "migrate"]
+    # Unbuffered Django progress lines make an interrupted migration visible
+    # without exporting raw logs or touching another database.
+    cmd = [sys.executable, "-u", "manage.py", "migrate"]
     if app_label:
         cmd.append(app_label)
-    cmd.extend(["--noinput", "--database", "default", "--verbosity", "0"])
+    cmd.extend(["--noinput", "--database", "default", "--verbosity", "1"])
     with tempfile.TemporaryFile(mode="w+t") as log:
         process = subprocess.Popen(cmd, cwd=ROOT, env=env, stdout=log,
                                    stderr=subprocess.STDOUT, start_new_session=True)
@@ -139,13 +163,21 @@ def attempt_migrations(
         log.seek(0)
         # Use the tail so any final migration error is not hidden by boot logs.
         output = "".join(deque(log, maxlen=180))[-18_000:]
+        progress = migration_console_progress(output)
+        safe_class = diagnostic(output)
         succeeded = process.returncode == 0 and reason is None and applied > 0
         result = {
             "isolated_migrations_completed": succeeded,
             "migration_rows_applied_to_disposable_db": applied,
             "last_committed_migration": last,
+            "django_console_output_seen": bool(output.strip()),
+            "django_migration_stage_seen": "Running migrations:" in output,
+            "django_error_class": (
+                safe_class if safe_class != "No recognized exception class" else None
+            ),
             "live_project_schema_untouched": True,
             "release_qualified": False,
+            **progress,
         }
         if not succeeded:
             result["blocker"] = reason or diagnostic(output)
@@ -176,6 +208,12 @@ def qualify_isolated_migrations(max_seconds: int = MAX_MIGRATION_SECONDS) -> dic
         "migration_rows_applied_to_disposable_db":
             probe.get("migration_rows_applied_to_disposable_db", 0),
         "last_committed_migration": probe.get("last_committed_migration"),
+        "last_attempted_migration": probe.get("last_attempted_migration"),
+        "last_console_completed_migration": probe.get("last_console_completed_migration"),
+        "interrupted_migration": probe.get("interrupted_migration"),
+        "django_console_output_seen": probe.get("django_console_output_seen"),
+        "django_migration_stage_seen": probe.get("django_migration_stage_seen"),
+        "django_error_class": probe.get("django_error_class"),
         "live_project_schema_untouched": True,
         "release_qualified": False,
         **({"blocker": probe["blocker"]} if "blocker" in probe else {}),
