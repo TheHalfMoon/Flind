@@ -85,8 +85,11 @@ def read_last_migration(port: int, password: str, name: str) -> str | None:
         return None
 
 
-def attempt_migrations(port: int, password: str, name: str, *,
-                       max_seconds: int = MAX_MIGRATION_SECONDS) -> dict:
+def attempt_migrations(
+    port: int, password: str, name: str, *,
+    max_seconds: int = MAX_MIGRATION_SECONDS,
+    app_label: str | None = None,
+) -> dict:
     env = isolated_boot_environment()
     env["DATABASE_URL"] = (
         f"postgresql://flind_ephemeral:{quote(password, safe='')}"
@@ -98,8 +101,12 @@ def attempt_migrations(port: int, password: str, name: str, *,
         "CLICKHOUSE_HTTP_PORT": "65436",
         "KAFKA_HOSTS": "127.0.0.1:65437",
     })
-    cmd = [sys.executable, "manage.py", "migrate",
-           "--noinput", "--database", "default", "--verbosity", "0"]
+    if app_label not in (None, "contenttypes"):
+        raise ValueError("Only bounded core-schema scoping is supported")
+    cmd = [sys.executable, "manage.py", "migrate"]
+    if app_label:
+        cmd.append(app_label)
+    cmd.extend(["--noinput", "--database", "default", "--verbosity", "0"])
     with tempfile.TemporaryFile(mode="w+t") as log:
         process = subprocess.Popen(cmd, cwd=ROOT, env=env, stdout=log,
                                    stderr=subprocess.STDOUT, start_new_session=True)
