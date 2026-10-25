@@ -217,36 +217,25 @@ class TestCSPMiddleware(APIBaseTest):
         response = self.client.get("/")
         enforced = response["Content-Security-Policy"]
         # The enforced list has to be the one the reported policy names, or the two drift apart.
-        assert enforced.startswith("frame-ancestors 'self' https://posthog.com")
+        assert enforced == "frame-ancestors 'self'"
         assert "default-src" not in enforced
         assert enforced in response["Content-Security-Policy-Report-Only"]
 
-    @override_settings(CLOUD_DEPLOYMENT="US")  # As PostHog Cloud
-    def test_html_response_declares_default_reporting_endpoint_with_distinct_id(self):
+    @override_settings(CLOUD_DEPLOYMENT="US", CSP_REPORT_ENDPOINT=None)
+    def test_html_response_has_no_inherited_csp_report_collector(self):
         response = self.client.get("/")
         policy = response["Content-Security-Policy"]
-        # A `report-to` directive makes browsers ignore `report-uri` and report through the
-        # Reporting API, which drops violations raised in about:blank and srcdoc frames.
+        assert "report-uri" not in policy
         assert "report-to" not in policy
-        _, report_endpoint = next(part for part in policy.split("; ") if part.startswith("report-uri ")).split()
-        assert report_endpoint.startswith("https://us.i.posthog.com/report/")
-        assert f"distinct_id={self.user.distinct_id}" in report_endpoint
-        # An enforced violation is a page that broke for someone, so dropping reports hides breakages.
-        assert "sample_rate" not in report_endpoint
-        # Browsers only deliver crash reports to the endpoint named `default`, so dropping or
-        # renaming it silently stops crash ingestion.
-        assert response["Reporting-Endpoints"] == f'default="{report_endpoint}"'
+        assert "Reporting-Endpoints" not in response
 
-    @override_settings(CLOUD_DEPLOYMENT="US")  # As PostHog Cloud
-    def test_reporting_endpoints_omit_distinct_id_when_logged_out(self):
+    @override_settings(CLOUD_DEPLOYMENT="US", CSP_REPORT_ENDPOINT=None)
+    def test_logged_out_document_has_no_inherited_report_collector(self):
         self.client.logout()
         response = self.client.get("/login")
         policy = response["Content-Security-Policy"]
-        assert "report-uri https://us.i.posthog.com/report/" in policy
-        assert "distinct_id" not in policy
-        header = response["Reporting-Endpoints"]
-        assert 'default="https://us.i.posthog.com/report/' in header
-        assert "distinct_id" not in header
+        assert "report-uri" not in policy
+        assert "Reporting-Endpoints" not in response
 
     @parameterized.expand(
         [

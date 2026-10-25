@@ -101,16 +101,11 @@ def is_report_only_document(path: str) -> bool:
 
 
 def app_frame_ancestor_sources() -> list[str]:
-    """The origins that may frame the app, as `frame-ancestors` sources.
+    """No extra frame origins beyond the current Flind app origin.
 
-    A frame the app embeds has these origins in its ancestor chain too, so its own policy must
-    admit them.
+    Shared and embedded routes remove this directive separately.
     """
-    sources = ["https://posthog.com", "https://preview.posthog.com"]
-    if not (settings.DEBUG or settings.TEST) and settings.SITE_URL.endswith(".dev.posthog.dev"):
-        # The posthog.com dev server frames the dev app.
-        sources.append("http://localhost:8001")
-    return sources
+    return []
 
 
 def app_csp_header_name(path: str) -> str:
@@ -293,7 +288,7 @@ class CSPMiddleware:
                 "frame-ancestors 'none'",
                 "manifest-src 'none'",
                 # used by the error page
-                "frame-src https://posthog.com",
+                "frame-src 'self'",
                 "base-uri 'self'",
             ]
             if admin_bundle_origin and settings.DEBUG:
@@ -330,7 +325,10 @@ class CSPMiddleware:
             # `'self'` lets the app show one of its own pages in a frame, such as a PostHog object
             # cited in a task's Artifacts tab. It stays out of app_frame_ancestor_sources(), because
             # the canvas sandbox document on the user-content origin shares that list.
-            frame_ancestors = f"frame-ancestors 'self' {' '.join(app_frame_ancestor_sources())}"
+            frame_ancestors = "frame-ancestors 'self'"
+            extra_ancestors = app_frame_ancestor_sources()
+            if extra_ancestors:
+                frame_ancestors += " " + " ".join(extra_ancestors)
             bundle_origin = app_bundle_origin()
             if settings.DEBUG or settings.TEST:
                 # A devbox serves Vite from its Coder host, not localhost, so JS_URL names it.
