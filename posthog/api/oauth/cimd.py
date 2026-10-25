@@ -238,7 +238,7 @@ def fetch_client_json_document(
     *,
     what: str,
     max_size: int = CIMD_MAX_DOCUMENT_SIZE,
-    user_agent: str = "PostHog-CIMD/1.0",
+    user_agent: str = "Flind-CIMD/1.0",
     require_identity_url_shape: bool = True,
 ) -> tuple[dict, requests.Response]:
     """Fetch a client-controlled JSON document over HTTPS with the full hardening set.

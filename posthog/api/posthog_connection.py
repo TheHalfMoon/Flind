@@ -175,14 +175,14 @@ def _forward_through_connection(
     if sandbox_origin:
         headers[SANDBOX_ORIGIN_HEADER] = "1"
     if mcp_origin:
-        headers["User-Agent"] = f"posthog-connection; {MCP_USER_AGENT_MARKER}"
+        headers["User-Agent"] = f"flind-connection; {MCP_USER_AGENT_MARKER}"
 
     raw = bytearray()
     timed_out = False
     try:
         with _inflight_slot(integration.id) as acquired:
             if not acquired:
-                raise Throttled(detail="Too many concurrent requests through this PostHog connection.")
+                raise Throttled(detail="Too many concurrent requests through this Flind connection.")
             res = requests.request(
                 method,
                 f"{base}/{path}",

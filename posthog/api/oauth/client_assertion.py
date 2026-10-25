@@ -208,7 +208,7 @@ def _fetch_jwks_document(jwks_uri: str) -> dict:
             jwks_uri,
             what="JWKS",
             max_size=JWKS_MAX_DOCUMENT_SIZE,
-            user_agent="PostHog-OAuth-JWKS/1.0",
+            user_agent="Flind-OAuth-JWKS/1.0",
             require_identity_url_shape=False,
         )
     except (CIMDFetchError, CIMDValidationError) as e:

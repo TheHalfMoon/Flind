@@ -189,6 +189,7 @@ class TestFetchCimdMetadata(SimpleTestCase):
         assert "client_name" in result
         self.assertEqual(result["client_name"], "Test MCP Client")
         self.assertEqual(ttl, 3600)
+        self.assertEqual(mock_get.call_args.kwargs["headers"]["User-Agent"], "Flind-CIMD/1.0")
 
     @patch("posthog.api.oauth.cimd.requests.Session.get")
     def test_client_id_mismatch(self, mock_get, _url_mock):
