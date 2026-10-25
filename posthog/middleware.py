@@ -34,6 +34,7 @@ from django_prometheus.middleware import Metrics
 from loginas.utils import is_impersonated_session, restore_original_login
 from opentelemetry import trace
 from prometheus_client import Counter, Histogram
+from rest_framework.exceptions import AuthenticationFailed
 from social_core.backends.utils import load_backends
 from social_core.exceptions import AuthCanceled, AuthException, AuthFailed
 from statshog.defaults.django import statsd
@@ -349,10 +350,28 @@ class CsrfOrKeyViewMiddleware(CsrfViewMiddleware):
 
     def process_view(self, request, callback, callback_args, callback_kwargs):
         result = super().process_view(request, callback, callback_args, callback_kwargs)  # None if request accepted
-        # if super().process_view did not find a valid CSRF token, try looking for a personal API key
-        if result is not None and PersonalAPIKeyAuthentication.find_key_with_source(request) is not None:
-            return self._accept(request)
-        return result
+        if result is None:
+            return None
+
+        # Merely *presenting* a personal_api_key is not authentication.
+        # An attacker could previously add ?personal_api_key=anything to a
+        # cookie-authenticated unsafe request and bypass CSRF protection.
+        candidate = PersonalAPIKeyAuthentication.find_key_with_source(request)
+        if candidate is None:
+            return result
+
+        token, _source = candidate
+        if not isinstance(token, str) or not 1 <= len(token) <= 1024:
+            return result
+
+        # Permit the existing personal-key API workflow only when the key
+        # genuinely belongs to an active user and has not expired. The
+        # authentication layer independently verifies permissions afterward.
+        try:
+            PersonalAPIKeyAuthentication.validate_key(candidate)
+        except AuthenticationFailed:
+            return result
+        return self._accept(request)
 
     def _accept(self, request):
         request.csrf_processing_done = True
