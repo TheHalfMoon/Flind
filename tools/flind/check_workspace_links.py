@@ -74,17 +74,32 @@ def inspect_packages(packages: Iterable[tuple[str, dict[str, Any]]]) -> dict[str
 
 
 def load_tracked_package_manifests(root: Path) -> list[tuple[str, dict[str, Any]]]:
-    raw_paths = subprocess.check_output(
-        ["git", "ls-files", "-z", "--", "*package.json"], cwd=root
+    # -t marks skip-worktree entries as S. These are intentionally absent
+    # from a sparse checkout but remain part of the committed package graph.
+    # Do not misread a normally checked-out missing file (H) as an omission.
+    tracked = subprocess.check_output(
+        ["git", "ls-files", "-t", "-z", "--", "*package.json"], cwd=root
     )
     manifests = []
-    for raw_name in raw_paths.decode("utf-8").split("\0"):
-        if not raw_name:
+    for entry in tracked.split(b"\0"):
+        if not entry:
             continue
+        if len(entry) < 3 or entry[1:2] != b" ":
+            raise ValueError("Malformed tracked manifest status")
+        status = entry[:1]
+        raw_name = entry[2:].decode("utf-8")
         file = root / raw_name
-        if not file.is_file():
+        if file.is_file():
+            content = file.read_text(encoding="utf-8")
+        elif status == b"S":
+            # Read exactly the indexed blob. Never fetch a random network URL,
+            # consult other branches, or hide an actual working-tree deletion.
+            content = subprocess.check_output(
+                ["git", "show", ":" + raw_name], cwd=root
+            ).decode("utf-8")
+        else:
             raise FileNotFoundError(f"Missing tracked package manifest: {raw_name}")
-        manifest = json.loads(file.read_text(encoding="utf-8"))
+        manifest = json.loads(content)
         if not isinstance(manifest, dict):
             raise TypeError(f"Invalid package manifest: {raw_name}")
         manifests.append((raw_name, manifest))
