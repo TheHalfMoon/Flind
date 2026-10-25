@@ -7,6 +7,7 @@ Never configures system services, touches an existing database or claims E2E.
 from __future__ import annotations
 
 import argparse
+from collections.abc import Callable
 from http.client import HTTPConnection, HTTPException
 import json
 from pathlib import Path
@@ -108,6 +109,7 @@ def local_service_versions(redis_port: int, clickhouse_port: int) -> dict:
 def isolated_clickhouse(
     binary: str | None = None,
     redis_port: int = 6379,
+    on_ready: Callable[[int], dict] | None = None,
 ) -> dict:
     executable = binary or shutil.which("clickhouse")
     if not executable:
@@ -139,8 +141,13 @@ def isolated_clickhouse(
                         raise RuntimeError("ClickHouse exited before readiness")
                     if clickhouse_ping(port).ready:
                         observed = query_roundtrip(port)
+                        # Follow-on probes share only this private, temporary
+                        # loopback server. Any failure fails qualification;
+                        # never return a successful component receipt.
+                        child_probe = on_ready(port) if on_ready else None
                         return {
                             "isolated_clickhouse_passed": True,
+                            **({"event_readback": child_probe} if child_probe is not None else {}),
                             "release_qualified": False,
                             "http_query_roundtrip": observed,
                             "storage": "temporary Memory engine only",
