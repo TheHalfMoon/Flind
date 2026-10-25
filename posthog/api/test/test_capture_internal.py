@@ -109,8 +109,8 @@ class TestBuildV1Headers(SimpleTestCase):
         headers = _build_v1_headers("phc_test123", attempt=1)
         assert headers["Authorization"] == "Bearer phc_test123"
         assert headers["Content-Type"] == "application/json"
-        assert "posthog-capture-v1-internal" in headers["User-Agent"]
-        assert headers["PostHog-Sdk-Info"] == "posthog-capture-v1-internal/1.0"
+        assert "flind-capture-v1-internal" in headers["User-Agent"]
+        assert headers["PostHog-Sdk-Info"] == "flind-capture-v1-internal/1.0"
         assert headers["PostHog-Attempt"] == "1"
         assert len(headers["PostHog-Request-Id"]) == 36
         assert "T" in headers["PostHog-Request-Timestamp"]
@@ -483,7 +483,7 @@ class TestCaptureBatchInternal(SimpleTestCase):
         headers = spy.calls[0]["headers"]
         assert headers["Authorization"] == "Bearer phc_abc"
         assert headers["Content-Type"] == "application/json"
-        assert headers["PostHog-Sdk-Info"] == "posthog-capture-v1-internal/1.0"
+        assert headers["PostHog-Sdk-Info"] == "flind-capture-v1-internal/1.0"
         assert headers["PostHog-Attempt"] == "1"
         assert len(headers["PostHog-Request-Id"]) == 36
         assert "T" in headers["PostHog-Request-Timestamp"]

@@ -62,7 +62,9 @@ AI_EVENT_NAME_PREFIX = "$ai_"
 # Constants
 # --------------------------------------------------------------------------- #
 
-SDK_INFO = "posthog-capture-v1-internal/1.0"
+# Wire header names remain the capture-rs protocol contract; only the SDK
+# attribution value is first-party Flind.
+SDK_INFO = "flind-capture-v1-internal/1.0"
 
 # The option keys capture-rs v1 expects, and the legacy property each one replaces.
 _OPTIONS_TO_LEGACY_PROPERTY: dict[str, str] = {
