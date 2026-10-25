@@ -1,6 +1,8 @@
 """Wave 72: exact scoped Django + three isolated services, fail-closed receipts."""
 import io
 import json
+from pathlib import Path
+import tempfile
 import unittest
 from contextlib import redirect_stdout
 from unittest.mock import patch
@@ -166,6 +168,86 @@ class PrivateServiceTriadWave72Tests(unittest.TestCase):
         result = triad.qualify_private_triad()
         self.assertFalse(result["three_service_scoped_auth_qualified"])
         self.assertEqual(result["framework_scoped_migration_stages"], [])
+
+    @patch.object(triad, "audit_runtime_lock")
+    @patch.object(triad, "isolated_postgres")
+    def test_nonabsolute_or_unavailable_binary_fails_before_services(self, postgres, lock):
+        for candidate in ("redis-server", "/nonexistent/flind-redis", ""):
+            with self.subTest(candidate=candidate):
+                receipt = triad.qualify_private_triad(redis_binary=candidate)
+                self.assertFalse(receipt["three_service_scoped_auth_qualified"])
+        lock.assert_not_called()
+        postgres.assert_not_called()
+
+    @patch.object(triad, "migrate_auth_and_sessions", return_value={
+        "django_framework_auth_session_qualified": True,
+    })
+    @patch.object(triad, "isolated_redis")
+    @patch.object(triad, "isolated_clickhouse")
+    def test_explicit_binary_paths_pass_only_to_private_service_wrappers(self, clickhouse, redis, _auth):
+        redis.side_effect = lambda *, binary, on_ready: {
+            "isolated_redis_passed": True,
+            "nested_clickhouse": on_ready(16499),
+        }
+        clickhouse.return_value = {
+            "isolated_clickhouse_passed": True,
+            "http_query_roundtrip": {"rows": 3, "sum": 60},
+        }
+        receipt = triad.private_service_probe(
+            16544, "synthetic-private", "flind_ephemeral",
+            redis_binary="/usr/local/bin/redis-server7",
+            clickhouse_binary="/usr/local/bin/clickhouse25",
+        )
+        self.assertTrue(receipt["redis_isolated_passed"])
+        redis.assert_called_once()
+        self.assertEqual(redis.call_args.kwargs["binary"], "/usr/local/bin/redis-server7")
+        clickhouse.assert_called_once_with(
+            redis_port=16499, binary="/usr/local/bin/clickhouse25",
+        )
+        self.assertNotIn("synthetic-private", str(receipt))
+
+    @patch.object(triad, "audit_runtime_lock", return_value={
+        "direct_lock_qualified": True,
+    })
+    @patch.object(triad, "isolated_postgres")
+    @patch.object(triad, "private_service_probe")
+    def test_selection_requires_local_executable_file(self, probe, postgres, _lock):
+        with tempfile.TemporaryDirectory() as directory:
+            redis = Path(directory) / "redis-server7"
+            ch = Path(directory) / "clickhouse25"
+            redis.write_bytes(b"synthetic-not-executed")
+            ch.write_bytes(b"synthetic-not-executed")
+            redis.chmod(0o700)
+            ch.chmod(0o700)
+            self.assertTrue(triad.selected_local_binary_is_valid(str(redis)))
+            self.assertTrue(triad.selected_local_binary_is_valid(str(ch)))
+            postgres.side_effect = lambda *, on_ready: {
+                "postgres_component_passed": True,
+                "django_migration_plan": on_ready(16544, "synthetic-secret", "flind_ephemeral"),
+            }
+            probe.return_value = {}
+            report = triad.qualify_private_triad(str(redis), str(ch))
+            self.assertFalse(report["three_service_scoped_auth_qualified"])
+            probe.assert_called_once_with(
+                16544, "synthetic-secret", "flind_ephemeral",
+                redis_binary=str(redis), clickhouse_binary=str(ch),
+            )
+            redis.chmod(0o600)
+            self.assertFalse(triad.selected_local_binary_is_valid(str(redis)))
+
+    @patch.object(triad, "qualify_private_triad", return_value={
+        **triad.closed_receipt(),
+    })
+    def test_cli_accepts_explicit_local_executable_paths(self, qualify):
+        with redirect_stdout(io.StringIO()):
+            code = triad.main([
+                "--json", "--redis-bin", "/path/to/redis-server7",
+                "--clickhouse-bin", "/path/to/clickhouse25",
+            ])
+        self.assertEqual(code, 2)
+        qualify.assert_called_once_with(
+            "/path/to/redis-server7", "/path/to/clickhouse25",
+        )
 
     @patch.object(triad, "qualify_private_triad", return_value={
         **triad.closed_receipt(),

@@ -8,6 +8,8 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
+from pathlib import Path
 import sys
 
 if __package__:
@@ -46,7 +48,23 @@ def closed_receipt() -> dict:
     }
 
 
-def private_service_probe(port: int, password: str, db_name: str) -> dict:
+def selected_local_binary_is_valid(binary: str | None) -> bool:
+    if binary is None:
+        return True
+    if not isinstance(binary, str) or not 1 <= len(binary) <= 4096:
+        return False
+    try:
+        candidate = Path(binary)
+        return candidate.is_absolute() and candidate.is_file() and os.access(candidate, os.X_OK)
+    except OSError:
+        return False
+
+
+def private_service_probe(
+    port: int, password: str, db_name: str,
+    *, redis_binary: str | None = None,
+    clickhouse_binary: str | None = None,
+) -> dict:
     """Invoked only after the disposable PostgreSQL cluster is ready.
 
     PostgreSQL remains running while the other two nested service callbacks
@@ -54,8 +72,13 @@ def private_service_probe(port: int, password: str, db_name: str) -> dict:
     No secret or raw service output is ever placed into the final receipt.
     """
     auth = migrate_auth_and_sessions(port, password, db_name)
+    redis_args = {"binary": redis_binary} if redis_binary is not None else {}
+    clickhouse_args = {"binary": clickhouse_binary} if clickhouse_binary is not None else {}
     redis = isolated_redis(
-        on_ready=lambda redis_port: isolated_clickhouse(redis_port=redis_port),
+        on_ready=lambda redis_port: isolated_clickhouse(
+            redis_port=redis_port, **clickhouse_args,
+        ),
+        **redis_args,
     )
     clickhouse = redis.get("nested_clickhouse") or {}
     ch_receipt = clickhouse.get("http_query_roundtrip") or {}
@@ -95,7 +118,12 @@ def private_service_probe(port: int, password: str, db_name: str) -> dict:
     }
 
 
-def qualify_private_triad() -> dict:
+def qualify_private_triad(
+    redis_binary: str | None = None,
+    clickhouse_binary: str | None = None,
+) -> dict:
+    if not selected_local_binary_is_valid(redis_binary) or not selected_local_binary_is_valid(clickhouse_binary):
+        return {**closed_receipt(), "blocker": "Selected local server binary is not executable"}
     try:
         locked = bool(audit_runtime_lock().get("direct_lock_qualified"))
     except (OSError, ValueError, KeyError):
@@ -106,7 +134,13 @@ def qualify_private_triad() -> dict:
             "blocker": "Exact Python dependency lock incomplete",
         }
 
-    postgres = isolated_postgres(on_ready=private_service_probe)
+    postgres = isolated_postgres(
+        on_ready=lambda port, password, name: private_service_probe(
+            port, password, name,
+            redis_binary=redis_binary,
+            clickhouse_binary=clickhouse_binary,
+        )
+    )
     scoped = postgres.get("django_migration_plan") or {}
     clean = closed_receipt()
     clean.update({
@@ -178,8 +212,10 @@ def qualify_private_triad() -> dict:
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--json", action="store_true")
+    parser.add_argument("--redis-bin", help="Absolute path to compatible local redis-server executable")
+    parser.add_argument("--clickhouse-bin", help="Absolute path to compatible local clickhouse executable")
     args = parser.parse_args(argv)
-    report = qualify_private_triad()
+    report = qualify_private_triad(args.redis_bin, args.clickhouse_bin)
     if args.json:
         print(json.dumps(report, indent=2))
     else:
