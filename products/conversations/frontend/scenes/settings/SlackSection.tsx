@@ -1,16 +1,7 @@
+import { LemonBanner, LemonButton, LemonCard, LemonCheckbox, LemonDivider, LemonInput, LemonTag } from '@flind/lemon-ui'
 import { useActions, useValues } from 'kea'
 
-import {
-    LemonBanner,
-    LemonButton,
-    LemonCard,
-    LemonCheckbox,
-    LemonDivider,
-    LemonInput,
-    LemonTag,
-    Link,
-} from '@flind/lemon-ui'
-
+import { FlindDocsLink } from 'lib/components/FlindDocsLink/FlindDocsLink'
 import { RestrictionScope, useRestrictedArea } from 'lib/components/RestrictedArea'
 import { FEATURE_FLAGS, OrganizationMembershipLevel } from 'lib/constants'
 import { LemonDialog } from 'lib/lemon-ui/LemonDialog'
@@ -28,10 +19,7 @@ export function SlackSection(): JSX.Element {
             description={
                 <>
                     Add the SupportHog bot to your Slack workspace to create and manage support tickets directly from
-                    Slack messages.{' '}
-                    <Link to="https://posthog.com/docs/support/slack" target="_blank">
-                        Docs
-                    </Link>
+                    Slack messages. <FlindDocsLink path="support/slack">Docs</FlindDocsLink>
                 </>
             }
         >

@@ -1,5 +1,3 @@
-import { useActions, useValues } from 'kea'
-
 import {
     LemonBanner,
     LemonButton,
@@ -9,9 +7,10 @@ import {
     LemonInput,
     LemonSelect,
     LemonSwitch,
-    Link,
 } from '@flind/lemon-ui'
+import { useActions, useValues } from 'kea'
 
+import { FlindDocsLink } from 'lib/components/FlindDocsLink/FlindDocsLink'
 import { teamLogic } from 'scenes/teamLogic'
 
 import { SceneSection } from '~/layout/scenes/components/SceneSection'
@@ -47,17 +46,10 @@ export function WidgetSection(): JSX.Element {
             description={
                 <>
                     Add a chat widget to your website for customers to reach you.{' '}
-                    <Link to="https://posthog.com/docs/support/widget" target="_blank">
-                        Docs
-                    </Link>
-                    . For logged-in users, use{' '}
-                    <Link
-                        to="https://posthog.com/docs/support/javascript-api#user-identification"
-                        target="_blank"
-                        targetBlankIcon
-                    >
+                    <FlindDocsLink path="support/widget">Docs</FlindDocsLink>. For logged-in users, use{' '}
+                    <FlindDocsLink path="support/javascript-api" section="user-identification">
                         identity verification
-                    </Link>{' '}
+                    </FlindDocsLink>{' '}
                     so tickets persist across browsers and devices.
                 </>
             }

@@ -76,3 +76,24 @@ export function flindDocsUrl(
     url.search = ''
     return url.toString()
 }
+
+/** Optional same-owner docs link to a validated heading. A separate
+ * fragment parameter keeps ordinary docs paths unable to smuggle # or ?.
+ */
+export function flindDocsSectionUrl(
+    relativePath: string,
+    section: string,
+    hostname: string = ownedHostname,
+    links: LinkConfig = configuredLinks
+): string | null {
+    if (typeof section !== 'string' || !/^[a-z0-9][a-z0-9-]{0,99}$/.test(section)) {
+        return null
+    }
+    const docsUrl = flindDocsUrl(relativePath, hostname, links)
+    if (!docsUrl) {
+        return null
+    }
+    const url = new URL(docsUrl)
+    url.hash = section
+    return url.toString()
+}

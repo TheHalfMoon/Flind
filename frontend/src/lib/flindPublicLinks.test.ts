@@ -1,4 +1,4 @@
-import { flindDocsUrl, flindPublicUrl } from './flindPublicLinks'
+import { flindDocsSectionUrl, flindDocsUrl, flindPublicUrl } from './flindPublicLinks'
 
 describe('Flind public help links', () => {
     const ownedHost = 'www.flind.example'
@@ -108,5 +108,29 @@ describe('Flind deep documentation URLs', () => {
         expect(flindDocsUrl('support', host, { docs: 'https://www.flind.example/docs?ref=site' })).toBe(
             'https://www.flind.example/docs/support'
         )
+    })
+})
+
+describe('Flind docs section anchors', () => {
+    const host = 'www.flind.example'
+    const docs = { docs: 'https://www.flind.example/docs' }
+
+    it('keeps a verified anchor on the exact Flind docs origin', () => {
+        expect(flindDocsSectionUrl('support/javascript-api', 'user-identification', host, docs)).toBe(
+            'https://www.flind.example/docs/support/javascript-api#user-identification'
+        )
+    })
+
+    it.each(['', 'bad#redirect', '/admin', '../escape', 'x y', 'é', 'x?next=evil'])(
+        'refuses malformed section name %s',
+        (section) => {
+            expect(flindDocsSectionUrl('support/javascript-api', section, host, docs)).toBeNull()
+        }
+    )
+
+    it('has no implicit host, even for a valid section', () => {
+        expect(flindDocsSectionUrl('support/javascript-api', 'user-identification', '', docs)).toBeNull()
+        expect(flindDocsSectionUrl('support/javascript-api', 'user-identification', host, {})).toBeNull()
+        expect(flindDocsSectionUrl('//evil.com', 'title', host, docs)).toBeNull()
     })
 })

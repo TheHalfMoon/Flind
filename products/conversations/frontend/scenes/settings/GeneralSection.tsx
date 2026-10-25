@@ -1,8 +1,9 @@
+import { LemonButton, LemonCard, LemonDivider, LemonSwitch } from '@flind/lemon-ui'
 import { useActions, useValues } from 'kea'
 
 import { IconPlus } from '@posthog/icons'
-import { LemonButton, LemonCard, LemonDivider, LemonSwitch, Link } from '@flind/lemon-ui'
 
+import { FlindDocsLink } from 'lib/components/FlindDocsLink/FlindDocsLink'
 import { FEATURE_FLAGS } from 'lib/constants'
 import { featureFlagLogic } from 'lib/logic/featureFlagLogic'
 import { teamLogic } from 'scenes/teamLogic'
@@ -113,10 +114,7 @@ export function GeneralSection(): JSX.Element {
                             <>
                                 Specify which domains can call the conversations API (widget and direct API). Leave
                                 empty to allow all domains. Wildcards supported (e.g. <code>https://*.example.com</code>
-                                ).{' '}
-                                <Link to="https://posthog.com/docs/support/javascript-api" target="_blank">
-                                    Docs
-                                </Link>
+                                ). <FlindDocsLink path="support/javascript-api">Docs</FlindDocsLink>
                             </>
                         }
                     >
@@ -144,13 +142,9 @@ export function GeneralSection(): JSX.Element {
                                 For logged-in users, sign their distinct_id on your backend with the identity
                                 verification secret so tickets persist across browsers and devices without email
                                 recovery.{' '}
-                                <Link
-                                    to="https://posthog.com/docs/support/javascript-api#user-identification"
-                                    target="_blank"
-                                    targetBlankIcon
-                                >
+                                <FlindDocsLink path="support/javascript-api" section="user-identification">
                                     Read the docs
-                                </Link>
+                                </FlindDocsLink>
                             </>
                         }
                     >

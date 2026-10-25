@@ -1,18 +1,10 @@
+import { LemonBanner, LemonButton, LemonCard, LemonDivider, LemonSelect, LemonTag, Tooltip } from '@flind/lemon-ui'
 import { useActions, useValues } from 'kea'
 import { useState } from 'react'
 
 import { IconTrash } from '@posthog/icons'
-import {
-    LemonBanner,
-    LemonButton,
-    LemonCard,
-    LemonDivider,
-    LemonSelect,
-    LemonTag,
-    Link,
-    Tooltip,
-} from '@flind/lemon-ui'
 
+import { FlindDocsLink } from 'lib/components/FlindDocsLink/FlindDocsLink'
 import { RestrictionScope, useRestrictedArea } from 'lib/components/RestrictedArea'
 import { OrganizationMembershipLevel } from 'lib/constants'
 import { LemonDialog } from 'lib/lemon-ui/LemonDialog'
@@ -34,10 +26,7 @@ export function TeamsSection(): JSX.Element {
             description={
                 <>
                     Connect the SupportHog bot to Microsoft Teams to create and manage support tickets from Teams
-                    channel messages and @mentions.{' '}
-                    <Link to="https://posthog.com/docs/support/teams" target="_blank">
-                        Docs
-                    </Link>
+                    channel messages and @mentions. <FlindDocsLink path="support/teams">Docs</FlindDocsLink>
                 </>
             }
         >
@@ -177,9 +166,9 @@ function AddTeamsChannelRow({ adminRestrictionReason }: AddTeamsChannelRowProps)
                     <div>
                         <strong>SupportHog isn't available in your Microsoft tenant's app catalog.</strong> Your
                         organisation's Teams admin needs to upload the SupportHog app package to your{' '}
-                        <Link to="https://posthog.com/docs/support/teams#org-catalog" target="_blank">
+                        <FlindDocsLink path="support/teams" section="org-catalog">
                             org catalog
-                        </Link>{' '}
+                        </FlindDocsLink>{' '}
                         (one-time). Once uploaded, click Retry.
                     </div>
                     <div>

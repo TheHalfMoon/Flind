@@ -1,7 +1,7 @@
+import { LemonButton, LemonCard, LemonDivider } from '@flind/lemon-ui'
 import { useActions, useValues } from 'kea'
 
-import { LemonButton, LemonCard, LemonDivider, Link } from '@flind/lemon-ui'
-
+import { FlindDocsLink } from 'lib/components/FlindDocsLink/FlindDocsLink'
 import { MemberSelectMultiple } from 'lib/components/MemberSelectMultiple'
 import { urls } from 'scenes/urls'
 
@@ -86,9 +86,7 @@ export function NotificationsSection(): JSX.Element {
                 description={
                     <>
                         Build custom automations on top of support events.{' '}
-                        <Link to="https://posthog.com/docs/support/workflows" target="_blank">
-                            Workflow docs
-                        </Link>
+                        <FlindDocsLink path="support/workflows">Workflow docs</FlindDocsLink>
                     </>
                 }
             >

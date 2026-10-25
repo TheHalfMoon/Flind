@@ -1,4 +1,6 @@
-import { LemonBanner, LemonCard, Link } from '@flind/lemon-ui'
+import { LemonBanner, LemonCard } from '@flind/lemon-ui'
+
+import { FlindDocsLink } from 'lib/components/FlindDocsLink/FlindDocsLink'
 
 import { SceneSection } from '~/layout/scenes/components/SceneSection'
 
@@ -10,9 +12,7 @@ export function ApiSection(): JSX.Element {
                 <>
                     Build a custom support UI on top of the conversations API — send messages, fetch tickets, mark as
                     read, and restore conversations across browsers.{' '}
-                    <Link to="https://posthog.com/docs/support/javascript-api" target="_blank" targetBlankIcon>
-                        JavaScript API reference
-                    </Link>
+                    <FlindDocsLink path="support/javascript-api">JavaScript API reference</FlindDocsLink>
                 </>
             }
         >
