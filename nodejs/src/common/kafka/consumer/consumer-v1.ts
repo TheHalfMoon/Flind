@@ -36,6 +36,7 @@ import { promisifyCallback } from '../../utils/utils'
 import { ensureTopicExists } from '../admin'
 import { getKafkaConfigFromEnv, stripClassicProtocolConfig } from '../config'
 import { parseBrokerStatistics, trackBrokerMetrics } from '../kafka-client-metrics'
+import { drainAndDisconnectConsumer } from './consumer-loop-cleanup'
 import { OffsetCommitGate } from './offset-commit-gate'
 import { awaitRevocationSafety } from './revocation-safety'
 import { safeKafkaLogContext } from './safe-log-context'
@@ -666,6 +667,7 @@ export class KafkaConsumer {
 
         const startConsuming = async (): Promise<void> => {
             let lastConsumeTime = 0
+            let loopFailure: unknown
             try {
                 while (!this.isStopping) {
                     if (this.offsetCommitGate.failed) {
@@ -808,13 +810,10 @@ export class KafkaConsumer {
                     }
                 }
 
-                // Once we are stopping, make sure that we wait for all background work to finish
-                await Promise.all(this.backgroundTask.map((t) => t.promise))
-                await this.offsetCommitGate.drain()
-                if (this.offsetCommitGate.failed) {
-                    throw new Error('Kafka background work failed before offsets were safely acknowledged')
-                }
+                // Event work, ordered offsets and broker teardown are drained in
+                // one place, including when earlier stages fail.
             } catch (error) {
+                loopFailure = error
                 logger.error('🔁', 'main_loop_error', {
                     error: String(error),
                     errorCode: (error as any)?.code,
@@ -822,14 +821,17 @@ export class KafkaConsumer {
                     isFatal: (error as any)?.isFatal,
                     isRetriable: (error as any)?.isRetriable,
                 })
-                throw error
             } finally {
                 logger.info('🔁', 'main_loop_stopping')
-
-                // Finally, disconnect from the broker. If stored offsets have changed via
-                // `storeOffsetsForMessages` above, they will be committed before shutdown (so long
-                // as this consumer is still part of the group).
-                await this.disconnectConsumer()
+                // Promise.all would abort cleanup at the first rejection and
+                // could disconnect while later batches still own in-flight work.
+                // Preserve the original loop error along with teardown failures.
+                await drainAndDisconnectConsumer(
+                    this.backgroundTask.map((task) => task.promise),
+                    this.offsetCommitGate,
+                    () => this.disconnectConsumer(),
+                    loopFailure
+                )
                 logger.info('🔁', 'Disconnected node-rdkafka consumer')
             }
         }
