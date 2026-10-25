@@ -7,6 +7,7 @@ ingestion or product-readiness evidence. All subprocesses and data ephemeral.
 from __future__ import annotations
 
 from contextlib import ExitStack
+from datetime import UTC, datetime
 from http.client import HTTPConnection
 import json
 import os
@@ -17,6 +18,7 @@ import socket
 import subprocess
 import tempfile
 import time
+from uuid import uuid4
 
 ROOT = Path(__file__).resolve().parents[2]
 CAPTURE = Path(os.environ.get("FLIND_CAPTURE_BINARY") or ROOT / "rust/target/debug/capture")
@@ -53,6 +55,49 @@ def http(path: str, port: int, method: str = "GET", body: bytes | None = None):
         res = conn.getresponse()
         data = res.read(2048)
         return res.status, len(data)
+    finally:
+        conn.close()
+
+
+def synthetic_noop_event(port: int) -> dict:
+    """Exercise real Rust parsing/routing only; the output sink is explicitly NOOP."""
+    uid = str(uuid4())
+    timestamp = datetime.now(UTC).isoformat()
+    payload = json.dumps({
+        "created_at": timestamp,
+        "capture_internal": True,
+        "historical_migration": False,
+        "batch": [{
+            "uuid": uid, "distinct_id": "flind-wave112-synthetic",
+            "event": "$pageview", "timestamp": timestamp,
+            "properties": {"$geoip_disable": True, "$pathname": "/synthetic"},
+        }],
+    }).encode()
+    conn = HTTPConnection("127.0.0.1", port, timeout=4)
+    try:
+        conn.request("POST", EXPECTED, body=payload, headers={
+            "Authorization": "Bearer flind_synthetic_internal_token",
+            "Content-Type": "application/json",
+            "User-Agent": "flind-capture-v1-internal/1.0",
+            "PostHog-Sdk-Info": "flind-capture-v1-internal/1.0",
+            "PostHog-Attempt": "1",
+            "PostHog-Request-Id": str(uuid4()),
+            "PostHog-Request-Timestamp": timestamp,
+        })
+        response = conn.getresponse()
+        raw = response.read(4096)
+        result = {"synthetic_noop_http_status": response.status,
+                  "synthetic_noop_response_bounded": len(raw) <= 4096,
+                  "native_synthetic_noop_acknowledged": False}
+        if response.status == 200:
+            try:
+                body = json.loads(raw)
+                result["native_synthetic_noop_acknowledged"] = (
+                    body.get("results", {}).get(uid, {}).get("result") == "ok"
+                )
+            except (ValueError, TypeError, AttributeError):
+                pass
+        return result
     finally:
         conn.close()
 
@@ -146,6 +191,8 @@ def probe() -> dict:
                         break
                     except (OSError, TimeoutError):
                         time.sleep(0.25)
+                if receipt["real_liveness_http"] and receipt["invalid_capture_headers_rejected"]:
+                    receipt.update(synthetic_noop_event(capture_port))
                 return receipt
             except (OSError, ValueError, subprocess.SubprocessError):
                 receipt["blocker"] = "Unable to run local native Capture smoke"
