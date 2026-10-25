@@ -54,6 +54,7 @@ def check():
         "CsrfViewMiddleware": CsrfViewMiddleware,
         "PersonalAPIKeyAuthentication": VerifiedKey,
         "AuthenticationFailed": AuthenticationFailed,
+        "settings": settings,
     }
     unit = ast.fix_missing_locations(ast.Module(body=nodes, type_ignores=[]))
     exec(compile(unit, str(source), "exec"), namespace)
@@ -79,11 +80,24 @@ def check():
     valid_allowed = bool(allowed is None
                          and getattr(valid_request, "csrf_processing_done", False))
 
+    # The existing valid-key path must not waive CSRF for a browser
+    # carrying any session cookie, including an attacker-owned API key.
+    victim_request = request()
+    victim_request.COOKIES[settings.SESSION_COOKIE_NAME] = "synthetic-victim-session"
+    VerifiedKey.current = ("synthetic-attacker-owned-valid-key", "query_string")
+    VerifiedKey.valid = True
+    victim_response = middleware.process_view(victim_request, lambda req: None, (), {})
+    cookie_request_rejected = bool(
+        victim_response and victim_response.status_code == 403
+        and not getattr(victim_request, "csrf_processing_done", False)
+    )
+
     result = {
-        "django_csrf_qualified": no_token_rejected and fake_rejected and valid_allowed,
+        "django_csrf_qualified": no_token_rejected and fake_rejected and valid_allowed and cookie_request_rejected,
         "no_token_rejected": no_token_rejected,
         "fake_key_rejected": fake_rejected,
         "valid_key_accepted": valid_allowed,
+        "valid_key_with_session_cookie_rejected": cookie_request_rejected,
         "full_auth_qualified": False,
         "release_qualified": False,
     }

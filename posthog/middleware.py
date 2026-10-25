@@ -353,9 +353,15 @@ class CsrfOrKeyViewMiddleware(CsrfViewMiddleware):
         if result is None:
             return None
 
-        # Merely *presenting* a personal_api_key is not authentication.
-        # An attacker could previously add ?personal_api_key=anything to a
-        # cookie-authenticated unsafe request and bypass CSRF protection.
+        # A valid *attacker-owned* key must never waive CSRF on a request
+        # carrying a victim's session cookie. AuthenticationMiddleware runs
+        # after this middleware, so request.user is not yet available here.
+        # Only cookie-free machine/API clients may use the key exception.
+        # Browser clients with a session cookie must present a CSRF token.
+        if settings.SESSION_COOKIE_NAME in request.COOKIES:
+            return result
+
+        # Mere presence of an API-key candidate does not prove identity.
         candidate = PersonalAPIKeyAuthentication.find_key_with_source(request)
         if candidate is None:
             return result

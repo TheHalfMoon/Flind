@@ -5,6 +5,7 @@ runnable without the heavyweight Django/PostgreSQL dependency lock.
 """
 import ast
 from pathlib import Path
+from types import SimpleNamespace
 import unittest
 
 SOURCE = Path(__file__).resolve().parents[2] / "posthog/middleware.py"
@@ -58,6 +59,7 @@ def load_actual_class():
         "CsrfViewMiddleware": FakeCsrfViewMiddleware,
         "PersonalAPIKeyAuthentication": FakePersonalAPIKeyAuthentication,
         "AuthenticationFailed": FakeAuthenticationFailed,
+        "settings": SimpleNamespace(SESSION_COOKIE_NAME="sessionid"),
     }
     exec(compile(source, str(SOURCE), "exec"), namespace)
     return namespace["CsrfOrKeyViewMiddleware"]
@@ -66,6 +68,7 @@ def load_actual_class():
 class FakeRequest:
     def __init__(self, valid_csrf=False):
         self.valid_csrf = valid_csrf
+        self.COOKIES = {}
         self.csrf_processing_done = False
 
 
