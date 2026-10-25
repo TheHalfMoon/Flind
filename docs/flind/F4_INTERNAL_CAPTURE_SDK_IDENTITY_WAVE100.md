@@ -17,7 +17,9 @@ No changes were made to Bearer authorization, retry counters, event JSON seriali
 - **5/5** new Python functional tests PASS against the **actual extracted** `_build_v1_headers` function from Flind's source (not a reimplemented mock).
 - Validated new first-party SDK attribution, unchanged native Rust capture-v1 header-key contract, token isolation, unique request IDs, retry attempts, and updated assertions in the donor's original capture API tests.
 - `py_compile` and `git diff --check` PASS.
-- The full `posthog/api/test/test_capture_internal.py` Django suite and real Rust capture HTTP integration were **not** executed in this limited sparse runtime, so end-to-end compatibility is still an open gate.
+- **171/171** original Django capture-internal tests PASS in the isolated Python 3.14.7 environment against the patched production Python module and patched original test file, exit code **0**. The subset `TestBuildV1Headers` independently passed **3/3**. Dev-only prerequisites `django-linear-migrations==2.19.0`, `parameterized==0.9.0` and `fakeredis[lua]==2.23.3` were installed in the **temporary runtime only** using free packages; no dependency files or lockfile were modified.
+- The runtime was supplied with synthetic/unreachable Django service URLs and no inherited credentials. The temporary test checkout files were restored afterward. A negative-test serialization TypeError was printed during the suite but the final Django summary was `Ran 171 tests ... OK`.
+- Real Rust capture HTTP, Kafka consumer and dashboard integration remain **unqualified**; passing the Django suite is not evidence of their functionality.
 
 ## Overall release
 
