@@ -17,6 +17,7 @@ from contextlib import contextmanager
 from dataclasses import dataclass
 from time import monotonic
 from typing import Any
+from urllib.parse import unquote
 
 from django.core.cache import cache
 
@@ -119,13 +120,51 @@ def _enforce_caller_covers_connection_scopes(request: Request, integration: Inte
 
 
 def _validate_target_path(path: str) -> str:
-    raw = path or ""
+    raw = path if isinstance(path, str) else ""
     stripped = raw.lstrip("/")
-    # Reject a leading `//` (protocol-relative-looking) even though the fixed base URL already fixes
-    # the host — it's never a legitimate API path, so refuse it rather than silently normalizing.
-    if not stripped or raw.startswith("//") or "://" in stripped or ".." in stripped or not _SAFE_PATH.match(stripped):
-        raise ValidationError("path must be a relative target API path, e.g. `api/projects/2/insights/`.")
-    return stripped
+    error = "path must be a relative target API path, e.g. `api/projects/2/insights/`."
+    # The supplied path is appended to a fixed, trusted host. Reject invalid
+    # encodings and encoded routing delimiters before forwarding a bearer token:
+    # an intermediary or the destination may decode percent escapes again.
+    if (
+        not stripped
+        or len(stripped) > 4096
+        or raw.startswith("//")
+        or not _SAFE_PATH.fullmatch(stripped)
+        or re.search(r"%(?![0-9A-Fa-f]{2})", stripped)
+    ):
+        raise ValidationError(error)
+
+    decoded = stripped
+    for _ in range(5):
+        # A decoded slash/backslash can change the route seen by the upstream
+        # router, even if the sender originally checked a harmless-looking path.
+        if re.search(r"%(?:2f|5c)", decoded, re.IGNORECASE):
+            raise ValidationError(error)
+        if (
+            not decoded
+            or decoded.startswith("/")
+            or "//" in decoded
+            or ".." in decoded
+            or "://" in decoded
+            or "\\" in decoded
+            or "?" in decoded
+            or "#" in decoded
+            or any(ord(ch) < 32 or ord(ch) == 127 for ch in decoded)
+            or any(segment == "." for segment in decoded.split("/"))
+        ):
+            raise ValidationError(error)
+        try:
+            next_decoded = unquote(decoded, encoding="utf-8", errors="strict")
+        except UnicodeDecodeError as exc:
+            raise ValidationError(error) from exc
+        if next_decoded == decoded:
+            # Return the original, URL-encoded path so the upstream receives
+            # the exact safe path the caller specified.
+            return stripped
+        decoded = next_decoded
+    # Deeply nested encodings must not outlast our inspection budget.
+    raise ValidationError(error)
 
 
 @contextmanager

@@ -193,7 +193,16 @@ class TestPostHogConnectionForward:
         assert response.status_code == status.HTTP_200_OK
         assert response.json() == {"status": 403, "data": {"detail": "nope"}}
 
-    @pytest.mark.parametrize("bad_path", ["../etc", "https://evil.com/x", "api/../../secret", "//evil.com"])
+    @pytest.mark.parametrize(
+        "bad_path",
+        [
+            "../etc", "https://evil.com/x", "api/../../secret", "//evil.com",
+            "api/%2e%2e/admin/", "api/%252e%252e/admin/", "api/%25252e%25252e/admin/",
+            "api/%2F%2Fevil", "api/%255csecret", "api/%00/secret",
+            "api/%3fadmin", "api/%23fragment", "api/%zz/bad", "api/%C0%AE/",
+            "%68%74%74%70%73%3a%2f%2fevil.com",
+        ],
+    )
     def test_forward_rejects_unsafe_path(self, client: HttpClient, bad_path):
         client.force_login(self.user)
         with patch(FORWARD_PATH) as mock_request:
