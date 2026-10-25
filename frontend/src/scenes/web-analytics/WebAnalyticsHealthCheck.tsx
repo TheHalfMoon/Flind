@@ -1,6 +1,7 @@
 import { useValues } from 'kea'
 
 import { LemonBanner } from 'lib/lemon-ui/LemonBanner'
+import { flindPublicUrl } from 'lib/flindPublicLinks'
 import { Link } from 'lib/lemon-ui/Link'
 import { webAnalyticsLogic } from 'scenes/web-analytics/webAnalyticsLogic'
 
@@ -8,6 +9,7 @@ import { ConversionGoalWarning, ProductTab } from './common'
 
 export const WebAnalyticsHealthCheck = (): JSX.Element | null => {
     const { conversionGoalWarning, productTab } = useValues(webAnalyticsLogic)
+    const docsUrl = flindPublicUrl('docs')
 
     if (productTab === ProductTab.MARKETING || productTab === ProductTab.HEALTH) {
         return null
@@ -24,11 +26,13 @@ export const WebAnalyticsHealthCheck = (): JSX.Element | null => {
                             events.
                         </p>
                         <p>
-                            To fix this, please see{' '}
-                            <Link to="https://posthog.com/docs/data/sessions#custom-session-ids">
-                                documentation for custom session IDs
-                            </Link>
-                            .
+                            To fix this, include a valid <code>$session_id</code> on conversion events.
+                            {docsUrl && (
+                                <>
+                                    {' '}See{' '}
+                                    <Link to={docsUrl}>documentation for custom session IDs</Link>.
+                                </>
+                            )}
                         </p>
                     </LemonBanner>
                 )

@@ -6,6 +6,7 @@ import { IconBolt, IconPerson } from '@posthog/icons'
 import { Button, Switch } from '@flind/quill'
 
 import { LiveUserCount } from 'lib/components/LiveUserCount'
+import { flindPublicUrl } from 'lib/flindPublicLinks'
 import { FEATURE_FLAGS } from 'lib/constants'
 import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'
 import { IconLink } from 'lib/lemon-ui/icons'
@@ -26,6 +27,7 @@ export function WebAnalyticsHeaderButtons(): JSX.Element {
     const { setShouldFilterTestAccounts } = useActions(webAnalyticsLogic)
     const [showPopover, setShowPopover] = useState(false)
     const todayRailNav = useFeatureFlag('TODAY_RAIL_NAV')
+    const docsUrl = flindPublicUrl('docs')
 
     const hasFeatureFlag = featureFlags[FEATURE_FLAGS.SETTINGS_WEB_ANALYTICS_PRE_AGGREGATED_TABLES]
     const isUsingNewEngine = currentTeam?.modifiers?.useWebAnalyticsPreAggregatedTables
@@ -52,7 +54,7 @@ export function WebAnalyticsHeaderButtons(): JSX.Element {
         <div className="flex flex-wrap items-center justify-end gap-2">
             {showLiveUserCount && (
                 <LiveUserCount
-                    docLink="https://posthog.com/docs/web-analytics/faq#i-am-online-but-the-online-user-count-is-not-reflecting-my-user"
+                    docLink={docsUrl ?? undefined}
                     dataAttr="web-analytics-live-user-count"
                 />
             )}

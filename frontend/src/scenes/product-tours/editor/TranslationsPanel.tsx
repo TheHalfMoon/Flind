@@ -5,6 +5,7 @@ import { useMemo, useState } from 'react'
 import { IconCopy, IconTrash } from '@posthog/icons'
 import { LemonButton, LemonTag, Link } from '@flind/lemon-ui'
 
+import { flindPublicUrl } from 'lib/flindPublicLinks'
 import { LemonInputSelect, LemonInputSelectOption } from 'lib/lemon-ui/LemonInputSelect/LemonInputSelect'
 import { copyToClipboard } from 'lib/utils/copyToClipboard'
 import { toSentenceCase } from 'lib/utils/strings'
@@ -157,15 +158,21 @@ export function TranslationsPanel({ tourId }: { tourId: string }): JSX.Element {
     const { productTourForm, entityKeyword } = useValues(productTourLogic({ id: tourId }))
 
     const hasTranslations = (productTourForm.content.languages?.length ?? 0) > 0
+    const docsUrl = flindPublicUrl('docs')
 
     if (!hasTranslations) {
         return (
             <div className="flex flex-col gap-2">
                 <p className="text-muted mb-0">
-                    Add translations to this {entityKeyword}.{' '}
-                    <Link to="https://posthog.com/docs/product-tours/localization" target="_blank" targetBlankIcon>
-                        Read the docs
-                    </Link>
+                    Add translations to this {entityKeyword}.
+                    {docsUrl && (
+                        <>
+                            {' '}
+                            <Link to={docsUrl} target="_blank" targetBlankIcon>
+                                Read the docs
+                            </Link>
+                        </>
+                    )}
                 </p>
                 <p className="mb-0 font-medium">{toSentenceCase(entityKeyword)} default language:</p>
                 <LanguageCombobox tourId={tourId} />
@@ -181,9 +188,11 @@ export function TranslationsPanel({ tourId }: { tourId: string }): JSX.Element {
 
             <LanguageCombobox tourId={tourId} />
 
-            <Link to="https://posthog.com/docs/product-tours/localization" target="_blank" targetBlankIcon>
-                Read the docs
-            </Link>
+            {docsUrl && (
+                <Link to={docsUrl} target="_blank" targetBlankIcon>
+                    Read the docs
+                </Link>
+            )}
         </div>
     )
 }
