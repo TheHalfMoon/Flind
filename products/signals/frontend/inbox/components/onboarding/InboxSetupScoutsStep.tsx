@@ -1,9 +1,10 @@
+import { LemonBanner, LemonButton, LemonSkeleton, Link } from '@flind/lemon-ui'
 import { useActions, useValues } from 'kea'
 
 import { IconCheck, IconPlus } from '@posthog/icons'
-import { LemonBanner, LemonButton, LemonSkeleton, Link } from '@flind/lemon-ui'
 
 import { GuidedWizardSection } from 'lib/components/GuidedWizard/GuidedWizardSection'
+import { flindDocsUrl } from 'lib/flindPublicLinks'
 import { urls } from 'scenes/urls'
 
 import { inboxSetupLogic } from '../../logics/inboxSetupLogic'
@@ -17,6 +18,7 @@ export function InboxSetupScoutsStep(): JSX.Element {
     const { toggleSuggestion } = useActions(inboxSetupLogic)
     const { batchStatus } = useValues(scoutSuggestionsLogic)
     const creationDisabledReason = useScoutCreateDisabledReason()
+    const mcpDocs = flindDocsUrl('model-context-protocol')
     const selectedIds = new Set(draft.suggestions.map((item) => item.id))
     const items = scoutChoices
     return (
@@ -87,10 +89,15 @@ export function InboxSetupScoutsStep(): JSX.Element {
             <div className="shrink-0 border-t border-primary pt-4">
                 <AutonomySettingGroup title="Create a scout for your product">
                     <p className="m-0 py-3 text-xs leading-snug text-secondary">
-                        Describe what to watch to PostHog AI, the PostHog Slack Bot, or an agent connected through{' '}
-                        <Link to="https://posthog.com/docs/model-context-protocol" target="_blank">
-                            MCP
-                        </Link>
+                        Describe what to watch to Flind AI, an authorized Slack integration, or an agent connected
+                        through{' '}
+                        {mcpDocs ? (
+                            <Link to={mcpDocs} target="_blank">
+                                MCP
+                            </Link>
+                        ) : (
+                            'MCP'
+                        )}
                         .
                     </p>
                 </AutonomySettingGroup>

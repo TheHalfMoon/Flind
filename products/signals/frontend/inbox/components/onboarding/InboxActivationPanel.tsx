@@ -1,9 +1,10 @@
+import { LemonButton, LemonCard, LemonTag, Link, Spinner } from '@flind/lemon-ui'
 import { useActions, useValues } from 'kea'
 import { useEffect, useState } from 'react'
 
 import { IconCheckCircle } from '@posthog/icons'
-import { LemonButton, LemonCard, LemonTag, Link, Spinner } from '@flind/lemon-ui'
 
+import { flindDocsUrl } from 'lib/flindPublicLinks'
 import { urls } from 'scenes/urls'
 
 import { captureInboxPanelViewed } from '../../inboxAnalytics'
@@ -28,6 +29,8 @@ export function InboxActivationPanel({ hasReports = false }: InboxActivationPane
             reportRecommendationsShown()
         }
     }, [suggestions, reportRecommendationsShown])
+    const selfDrivingDocs = flindDocsUrl('self-driving')
+    const mcpDocs = flindDocsUrl('model-context-protocol')
     const jobs = savedState?.jobs
     return (
         <LemonCard hoverEffect={false} className="@container flex flex-col gap-3" data-attr="inbox-activation-panel">
@@ -92,14 +95,11 @@ export function InboxActivationPanel({ hasReports = false }: InboxActivationPane
                     >
                         Add or manage scouts
                     </LemonButton>
-                    <LemonButton
-                        size="small"
-                        to="https://posthog.com/docs/self-driving"
-                        targetBlank
-                        data-attr="inbox-activation-learn"
-                    >
-                        How it works
-                    </LemonButton>
+                    {selfDrivingDocs && (
+                        <LemonButton size="small" to={selfDrivingDocs} targetBlank data-attr="inbox-activation-learn">
+                            How it works
+                        </LemonButton>
+                    )}
                 </div>
             )}
             {suggestions.length > 0 ? (
@@ -131,10 +131,14 @@ export function InboxActivationPanel({ hasReports = false }: InboxActivationPane
                 </p>
             ) : null}
             <p className="m-0 border-t border-primary pt-3 text-xs text-secondary">
-                Create or configure scouts with PostHog AI, the PostHog Slack Bot, or an agent connected through{' '}
-                <Link to="https://posthog.com/docs/model-context-protocol" target="_blank">
-                    MCP
-                </Link>
+                Create or configure scouts with Flind AI, an authorized Slack integration, or an agent connected through{' '}
+                {mcpDocs ? (
+                    <Link to={mcpDocs} target="_blank">
+                        MCP
+                    </Link>
+                ) : (
+                    'MCP'
+                )}
                 .
             </p>
         </LemonCard>

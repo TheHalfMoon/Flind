@@ -4,6 +4,7 @@ import { IconPeople } from '@posthog/icons'
 import { pngHoggie } from 'lib/brand/hoggies'
 import type { SceneProductEmptyState } from 'lib/components/ProductEmptyState/types'
 import { FEATURE_FLAGS } from 'lib/constants'
+import { flindDocsUrl } from 'lib/flindPublicLinks'
 
 import { ProductKey } from '~/queries/schema/schema-general'
 
@@ -11,6 +12,7 @@ import { CustomerAnalyticsPreview } from './CustomerAnalyticsPreview'
 import { customerAnalyticsSetupLogic } from './customerAnalyticsSetupLogic'
 
 const HedgehogBusiness = pngHoggie(businessEvolutionPng)
+const groupAnalyticsDocs = flindDocsUrl('product-analytics/group-analytics')
 
 export const customerAnalyticsEmptyState: SceneProductEmptyState = {
     statusLogic: customerAnalyticsSetupLogic,
@@ -29,11 +31,8 @@ export const customerAnalyticsEmptyState: SceneProductEmptyState = {
                 lead: "Customer analytics is built on group analytics: group your users into accounts, then follow each account's activity, health, notes, and feature requests in one place. Start by sending group data from your SDK.",
             },
         },
-        primaryAction: {
-            label: 'Set up group analytics',
-            to: 'https://posthog.com/docs/product-analytics/group-analytics',
-        },
-        docsUrl: 'https://posthog.com/docs/customer-analytics',
+        primaryAction: groupAnalyticsDocs ? { label: 'Set up group analytics', to: groupAnalyticsDocs } : undefined,
+        docsUrl: flindDocsUrl('customer-analytics') ?? undefined,
         previewLabel: 'Your accounts, once grouped',
         Preview: CustomerAnalyticsPreview,
     },

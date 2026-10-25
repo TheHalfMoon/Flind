@@ -1,12 +1,13 @@
+import { LemonButton } from '@flind/lemon-ui'
 import { useActions, useValues } from 'kea'
 
 import * as selfDrivingPng from '@posthog/brand/hoggies/png/self-driving'
 import { IconArrowRight } from '@posthog/icons'
-import { LemonButton } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import { ProductEmptyState } from 'lib/components/ProductEmptyState/ProductEmptyState'
 import type { ProductEmptyStateConfig } from 'lib/components/ProductEmptyState/types'
+import { flindDocsUrl } from 'lib/flindPublicLinks'
 import { IconSelfDriving } from 'lib/lemon-ui/icons'
 
 import { ProductKey } from '~/queries/schema/schema-general'
@@ -50,12 +51,12 @@ const INBOX_SETUP_EMPTY_STATE: ProductEmptyStateConfig = {
     hedgehogPlacement: 'beside',
     text: {
         'needs-setup': {
-            headline: 'Let PostHog find what needs your attention',
-            lead: 'AI does the research for you. Get reports with evidence and next steps. Ship fixes with your agent of choice, or let PostHog do it for you.',
+            headline: 'Let Flind find what needs your attention',
+            lead: 'AI does the research for you. Get reports with evidence and next steps. Ship fixes with your agent of choice, or let Flind do it for you.',
         },
     },
     PrimaryAction: SetUpSelfDrivingAction,
-    docsUrl: 'https://posthog.com/docs/self-driving',
+    docsUrl: flindDocsUrl('self-driving') ?? undefined,
     previewLabel: 'Example report',
     previewClassName: 'items-center [&>*]:w-full [&>*]:max-w-120',
     Preview: InboxReportPreview,

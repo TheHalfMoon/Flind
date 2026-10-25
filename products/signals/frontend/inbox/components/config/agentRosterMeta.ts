@@ -1,4 +1,5 @@
 import { FEATURE_FLAGS, FeatureFlagKey } from 'lib/constants'
+import { flindDocsUrl } from 'lib/flindPublicLinks'
 import { urls } from 'scenes/urls'
 
 import { EXTERNAL_SIGNAL_SOURCES, ExternalSignalSource } from '../../externalSignalSources'
@@ -73,7 +74,7 @@ export interface AgentRosterGroup {
 export const AGENT_ROSTER_GROUPS: AgentRosterGroup[] = [
     {
         id: 'posthog',
-        label: 'PostHog data',
+        label: 'Flind data',
         agents: [
             {
                 source: 'error_tracking',
@@ -84,7 +85,7 @@ export const AGENT_ROSTER_GROUPS: AgentRosterGroup[] = [
                 entityNoun: 'signal types',
                 entityNounSingular: 'signal type',
                 steerable: true,
-                docsUrl: 'https://posthog.com/docs/error-tracking',
+                docsUrl: flindDocsUrl('error-tracking') ?? undefined,
                 docsLabel: 'Error tracking',
             },
             {
@@ -94,7 +95,7 @@ export const AGENT_ROSTER_GROUPS: AgentRosterGroup[] = [
                 watches: 'Problems customers raise in support',
                 detail: 'Only open tickets are read.',
                 steerable: true,
-                docsUrl: 'https://posthog.com/docs/support',
+                docsUrl: flindDocsUrl('support') ?? undefined,
                 docsLabel: 'Support',
             },
             {
@@ -106,7 +107,7 @@ export const AGENT_ROSTER_GROUPS: AgentRosterGroup[] = [
                 entityNoun: 'scanners',
                 entityNounSingular: 'scanner',
                 entitiesAreUserCreated: true,
-                docsUrl: 'https://posthog.com/docs/replay-vision',
+                docsUrl: flindDocsUrl('replay-vision') ?? undefined,
                 docsLabel: 'Replay vision',
                 manageUrl: urls.replayVision(),
             },
@@ -116,7 +117,7 @@ export const AGENT_ROSTER_GROUPS: AgentRosterGroup[] = [
                 label: 'AI observability',
                 watches: 'Changes in the quality and behavior of your AI features',
                 detail: 'Completed eval reports can become signals for agent investigation. Configure which reports run and when in AI observability.',
-                docsUrl: 'https://posthog.com/docs/ai-observability/self-driving',
+                docsUrl: flindDocsUrl('ai-observability/self-driving') ?? undefined,
                 docsLabel: 'AI observability Self-driving',
             },
             {
@@ -125,7 +126,7 @@ export const AGENT_ROSTER_GROUPS: AgentRosterGroup[] = [
                 label: 'Product analytics',
                 watches: 'Unexpected shifts in your product metrics',
                 detail: 'Fires when an anomaly alert goes off, and only for the alerts where you turned the investigation agent on.',
-                docsUrl: 'https://posthog.com/docs/product-analytics',
+                docsUrl: flindDocsUrl('product-analytics') ?? undefined,
                 docsLabel: 'Product analytics',
                 alpha: true,
             },

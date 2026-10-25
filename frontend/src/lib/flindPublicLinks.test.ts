@@ -1,4 +1,4 @@
-import { flindPublicUrl } from './flindPublicLinks'
+import { flindDocsUrl, flindPublicUrl } from './flindPublicLinks'
 
 describe('Flind public help links', () => {
     const ownedHost = 'www.flind.example'
@@ -51,7 +51,62 @@ describe('Flind public help links', () => {
         expect(flindPublicUrl('terms', ownedHost, legal)).toBe(legal.terms)
         expect(flindPublicUrl('privacy', ownedHost, legal)).toBe(legal.privacy)
         expect(flindPublicUrl('terms', ownedHost, { terms: 'https://unowned.example/terms' })).toBeNull()
-        expect(flindPublicUrl('privacy', ownedHost, { privacy: 'https://www.flind.example.evil.com/privacy' })).toBeNull()
+        expect(
+            flindPublicUrl('privacy', ownedHost, { privacy: 'https://www.flind.example.evil.com/privacy' })
+        ).toBeNull()
+    })
+})
+
+describe('Flind deep documentation URLs', () => {
+    const host = 'www.flind.example'
+    const ownedDocs = { docs: 'https://www.flind.example/docs' }
+
+    it('appends nested first-party pages under the configured docs root', () => {
+        expect(flindDocsUrl('support/widget', host, ownedDocs)).toBe('https://www.flind.example/docs/support/widget')
+        expect(flindDocsUrl('self-driving/scouts', host, ownedDocs)).toBe(
+            'https://www.flind.example/docs/self-driving/scouts'
+        )
+        expect(flindDocsUrl('support', host, { docs: 'https://www.flind.example/docs/' })).toBe(
+            'https://www.flind.example/docs/support'
+        )
     })
 
+    it('fails closed when docs are not configured or point at another provider', () => {
+        expect(flindDocsUrl('support', '', ownedDocs)).toBeNull()
+        expect(flindDocsUrl('support', host, {})).toBeNull()
+        expect(flindDocsUrl('support', host, { docs: 'https://posthog.com/docs' })).toBeNull()
+        expect(flindDocsUrl('support', host, { docs: 'https://www.flind.example.evil.com/docs' })).toBeNull()
+    })
+
+    it.each([
+        '',
+        '/support',
+        '//attacker.example',
+        '../support',
+        'support/../private',
+        'support//widget',
+        'support/',
+        'support?next=https://attacker.example',
+        'support#identity',
+        'https://posthog.com/docs/support',
+        '%2F%2Fattacker',
+        'support\\widget',
+        'SUPPORT',
+        ' support',
+        'support ',
+    ])('refuses unsafe relative docs path %s', (path) => {
+        expect(flindDocsUrl(path, host, ownedDocs)).toBeNull()
+    })
+
+    it('rejects untyped input without throwing or opening a link', () => {
+        for (const invalid of [null, 42, {}, ['support']]) {
+            expect(flindDocsUrl(invalid as unknown as string, host, ownedDocs)).toBeNull()
+        }
+    })
+
+    it('does not retain a configured query in a generated deep link', () => {
+        expect(flindDocsUrl('support', host, { docs: 'https://www.flind.example/docs?ref=site' })).toBe(
+            'https://www.flind.example/docs/support'
+        )
+    })
 })

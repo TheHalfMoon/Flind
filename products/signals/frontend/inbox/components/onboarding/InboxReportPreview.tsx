@@ -1,5 +1,6 @@
 import './InboxReportPreview.scss'
 
+import { LemonButton, Link } from '@flind/lemon-ui'
 import { useId, useRef } from 'react'
 
 import {
@@ -13,9 +14,9 @@ import {
     IconSupport,
     IconWarning,
 } from '@posthog/icons'
-import { LemonButton, Link } from '@flind/lemon-ui'
 
 import type { ProductEmptyStateMode } from 'lib/components/ProductEmptyState/types'
+import { flindDocsUrl } from 'lib/flindPublicLinks'
 import { LemonTag } from 'lib/lemon-ui/LemonTag'
 import { cn } from 'lib/utils/css-classes'
 import { inStorybook, inStorybookTestRunner } from 'lib/utils/dom'
@@ -37,6 +38,7 @@ const IMPACT_STAGES = [
 
 /** CSS stages keep this example local: playing the preview never starts an implementation. */
 export function InboxReportPreview(_: { mode: ProductEmptyStateMode }): JSX.Element {
+    const docsUrl = flindDocsUrl('self-driving/from-our-inbox')
     const isStatic = inStorybook() || inStorybookTestRunner()
     const implementId = useId()
     const impactId = `${implementId}-impact`
@@ -321,11 +323,13 @@ export function InboxReportPreview(_: { mode: ProductEmptyStateMode }): JSX.Elem
                     </div>
                 </div>
             </div>
-            <p className="mt-3 mb-0 text-xs">
-                <Link to="https://posthog.com/docs/self-driving/from-our-inbox" target="_blank">
-                    See reports generated for PostHog
-                </Link>
-            </p>
+            {docsUrl && (
+                <p className="mt-3 mb-0 text-xs">
+                    <Link to={docsUrl} target="_blank">
+                        See example Flind reports
+                    </Link>
+                </p>
+            )}
         </div>
     )
 }

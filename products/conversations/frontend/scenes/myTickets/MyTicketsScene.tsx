@@ -1,7 +1,7 @@
+import { Link, Spinner } from '@flind/lemon-ui'
 import { useValues } from 'kea'
 
-import { Link, Spinner } from '@flind/lemon-ui'
-
+import { flindPublicUrl } from 'lib/flindPublicLinks'
 import { preflightLogic } from 'scenes/PreflightCheck/preflightLogic'
 import { SceneExport } from 'scenes/sceneTypes'
 
@@ -29,21 +29,30 @@ export function MyTicketsScene(): JSX.Element {
 
     const hasIdentityMode = !!window.JS_POSTHOG_IDENTITY_DISTINCT_ID
     const isCloudOrDev = preflight?.cloud || process.env.NODE_ENV === 'development'
+    const communityUrl = flindPublicUrl('community')
 
     if (!isCloudOrDev) {
         return (
             <SceneContent>
                 <SceneTitleSection
                     name="Your tickets"
-                    description="Support conversations with the PostHog team"
+                    description="Support conversations in your workspace"
                     resourceType={{ type: 'conversation' }}
                 />
                 <p className="text-muted-alt">
-                    Support tickets aren't available on this instance. You can ask the{' '}
-                    <Link to="https://posthog.com/questions" target="_blank">
-                        community forum
-                    </Link>{' '}
-                    instead.
+                    Support tickets aren't available on this instance.
+                    {communityUrl ? (
+                        <>
+                            {' '}
+                            Visit the{' '}
+                            <Link to={communityUrl} target="_blank">
+                                Flind community
+                            </Link>{' '}
+                            for help.
+                        </>
+                    ) : (
+                        ' Ask your instance administrator for help.'
+                    )}
                 </p>
             </SceneContent>
         )
@@ -57,7 +66,7 @@ export function MyTicketsScene(): JSX.Element {
             <SceneContent>
                 <SceneTitleSection
                     name="Your tickets"
-                    description="Support conversations with the PostHog team"
+                    description="Support conversations in your workspace"
                     resourceType={{ type: 'conversation' }}
                 />
                 <div className="flex items-center justify-center h-40">
@@ -95,7 +104,7 @@ export function MyTicketsScene(): JSX.Element {
         <SceneContent className="flex-1 min-h-0 pb-4">
             <SceneTitleSection
                 name="Your tickets"
-                description="Support conversations with the PostHog team"
+                description="Support conversations in your workspace"
                 resourceType={{ type: 'conversation' }}
             />
             {/* Overflow clipping is only safe in the side-by-side row, where the list has a bounded

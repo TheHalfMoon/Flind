@@ -1,10 +1,11 @@
+import { LemonBanner, LemonButton } from '@flind/lemon-ui'
 import posthog from 'posthog-js'
 
 import * as superheroPng from '@posthog/brand/hoggies/png/superhero'
 import { IconOpenSidebar } from '@posthog/icons'
-import { LemonBanner, LemonButton } from '@flind/lemon-ui'
 
 import { pngHoggie } from 'lib/brand/hoggies'
+import { flindDocsUrl } from 'lib/flindPublicLinks'
 import { urls } from 'scenes/urls'
 
 const HedgehogSuperhero = pngHoggie(superheroPng)
@@ -51,6 +52,7 @@ export function SupportActivationButton({
 }
 
 export function ConversationsDisabledBanner(): JSX.Element {
+    const docsUrl = flindDocsUrl('support')
     return (
         <LemonBanner type="info" hideIcon={true}>
             <div className="flex gap-8 p-8 lg:flex-row justify-center flex-wrap">
@@ -60,7 +62,7 @@ export function ConversationsDisabledBanner(): JSX.Element {
                 <div className="flex flex-col gap-2 flex-shrink max-w-180">
                     <h2 className="text-lg font-semibold">Welcome to Support</h2>
                     <p className="font-normal">
-                        Support lets you manage customer conversations directly inside PostHog. Enable the conversations
+                        Support lets you manage customer conversations directly inside Flind. Enable the conversations
                         API to get started.
                     </p>
                     <ul className="list-disc list-inside font-normal space-y-2">
@@ -83,15 +85,17 @@ export function ConversationsDisabledBanner(): JSX.Element {
                     </ul>
                     <div className="flex items-center gap-x-4 gap-y-2 flex-wrap">
                         <SupportActivationButton source="support_empty_state" />
-                        <LemonButton
-                            type="tertiary"
-                            sideIcon={<IconOpenSidebar className="w-4 h-4" />}
-                            to="https://posthog.com/docs/support?utm_medium=in-product&utm_campaign=support-empty-state-docs-link"
-                            data-attr="support-introduction-docs-link"
-                            targetBlank
-                        >
-                            Learn more
-                        </LemonButton>
+                        {docsUrl && (
+                            <LemonButton
+                                type="tertiary"
+                                sideIcon={<IconOpenSidebar className="w-4 h-4" />}
+                                to={docsUrl}
+                                data-attr="support-introduction-docs-link"
+                                targetBlank
+                            >
+                                Learn more
+                            </LemonButton>
+                        )}
                     </div>
                 </div>
             </div>

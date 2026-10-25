@@ -48,3 +48,31 @@ export function flindPublicUrl(
         return null
     }
 }
+
+/** A first-party deep link under the operator's explicitly configured docs root.
+ * An absent owned docs URL or noncanonical path produces no link, never an
+ * inherited upstream/provider destination.
+ */
+export function flindDocsUrl(
+    relativePath: string,
+    hostname: string = ownedHostname,
+    links: LinkConfig = configuredLinks
+): string | null {
+    if (
+        typeof relativePath !== 'string' ||
+        !relativePath ||
+        relativePath.length > 250 ||
+        !/^[a-z0-9][a-z0-9/_-]*$/.test(relativePath) ||
+        relativePath.split('/').some((part) => !part || part === '.' || part === '..')
+    ) {
+        return null
+    }
+    const docsRoot = flindPublicUrl('docs', hostname, links)
+    if (!docsRoot) {
+        return null
+    }
+    const url = new URL(docsRoot)
+    url.pathname = `${url.pathname.replace(/\/$/, '')}/${relativePath}`
+    url.search = ''
+    return url.toString()
+}

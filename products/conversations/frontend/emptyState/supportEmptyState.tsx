@@ -3,6 +3,7 @@ import { IconSupport } from '@posthog/icons'
 
 import { pngHoggie } from 'lib/brand/hoggies'
 import type { SceneProductEmptyState } from 'lib/components/ProductEmptyState/types'
+import { flindDocsUrl } from 'lib/flindPublicLinks'
 import { urls } from 'scenes/urls'
 
 import { ProductKey } from '~/queries/schema/schema-general'
@@ -33,7 +34,7 @@ export const supportEmptyState: SceneProductEmptyState = {
         },
         // Settings are the next step in both modes: switching support on, then finishing a channel.
         primaryAction: { label: 'Open support settings', to: urls.supportSettings() },
-        docsUrl: 'https://posthog.com/docs/support',
+        docsUrl: flindDocsUrl('support') ?? undefined,
         previewLabel: 'Your inbox, once tickets arrive',
         Preview: SupportPreview,
     },
