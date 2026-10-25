@@ -3,6 +3,7 @@ import { useValues } from 'kea'
 import { IconGear } from '@posthog/icons'
 import { LemonButton, LemonSwitch, Link, Tooltip } from '@flind/lemon-ui'
 
+import { flindPublicUrl } from 'lib/flindPublicLinks'
 import { IconBranch } from 'lib/lemon-ui/icons/icons'
 import { urls } from 'scenes/urls'
 import { userLogic } from 'scenes/userLogic'
@@ -18,6 +19,7 @@ export const PathCleaningToggle = ({
 }): JSX.Element | null => {
     const { hasAvailableFeature } = useValues(userLogic)
     const hasAdvancedPaths = hasAvailableFeature(AvailableFeature.PATHS_ADVANCED)
+    const docsUrl = flindPublicUrl('docs')
 
     if (!hasAdvancedPaths) {
         return null
@@ -30,11 +32,11 @@ export const PathCleaningToggle = ({
                     <p className="mb-2">
                         Path cleaning helps standardize URLs by removing unnecessary parameters and fragments.
                     </p>
-                    <div className="mb-2">
-                        <Link to="https://posthog.com/docs/product-analytics/paths#path-cleaning-rules">
-                            Learn more about path cleaning rules
-                        </Link>
-                    </div>
+                    {docsUrl && (
+                        <div className="mb-2">
+                            <Link to={docsUrl}>Learn more about path cleaning rules</Link>
+                        </div>
+                    )}
                     <LemonButton
                         icon={<IconGear />}
                         type="primary"

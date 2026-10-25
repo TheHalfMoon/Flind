@@ -3,6 +3,7 @@ import { useActions, useValues } from 'kea'
 import { IconCursorClick, IconPlus, IconTrash } from '@posthog/icons'
 import { LemonButton, LemonInput, LemonSegmentedButton, LemonSlider, Tooltip } from '@flind/lemon-ui'
 
+import { flindPublicUrl } from 'lib/flindPublicLinks'
 import { PositionSelector } from 'scenes/surveys/survey-appearance/SurveyAppearancePositionSelector'
 
 import { ScreenPosition, SurveyPosition } from '~/types'
@@ -31,6 +32,7 @@ function ElementEmptyState({ onClick }: { onClick: () => void }): JSX.Element {
 function ElementSettings({ tourId }: StepSettingsPanelProps): JSX.Element | null {
     const { selectedStep: step } = useValues(productTourLogic({ id: tourId }))
     const { updateSelectedStep, openToolbarModal } = useActions(productTourLogic({ id: tourId }))
+    const docsUrl = flindPublicUrl('docs')
 
     if (!step) {
         return null
@@ -50,7 +52,7 @@ function ElementSettings({ tourId }: StepSettingsPanelProps): JSX.Element | null
                         <div className="flex flex-col gap-1">
                             <Tooltip
                                 title="Choose to use our automatic targeting to find your element, or provide a CSS selector for manual targeting."
-                                docLink="https://posthog.com/docs/product-tours/element-selection"
+                                docLink={docsUrl ?? undefined}
                             >
                                 <label className="text-[0.6875rem] font-medium text-muted uppercase tracking-wide">
                                     Targeting Mode
@@ -70,7 +72,7 @@ function ElementSettings({ tourId }: StepSettingsPanelProps): JSX.Element | null
                         <div className="flex flex-col gap-1">
                             <Tooltip
                                 title="Choose how your tour goes to the next step - when users click a Next button, or when they click the target element."
-                                docLink="https://posthog.com/docs/product-tours/tour-progression"
+                                docLink={docsUrl ?? undefined}
                             >
                                 <label className="text-[0.6875rem] font-medium text-muted uppercase tracking-wide">
                                     Next step on...
@@ -94,8 +96,8 @@ function ElementSettings({ tourId }: StepSettingsPanelProps): JSX.Element | null
                             {step.inferenceData?.text && (
                                 <div className="flex flex-col gap-1">
                                     <Tooltip
-                                        title="Whether this element's text is static or dynamic (e.g. 'Hello, {name}!'). When set to 'Dynamic', PostHog will not attempt to find your element based on its text content."
-                                        docLink="https://posthog.com/docs/product-tours/element-selection#dynamic-text"
+                                        title="Whether this element's text is static or dynamic (e.g. 'Hello, {name}!'). When set to 'Dynamic', Flind will not attempt to find your element based on its text content."
+                                        docLink={docsUrl ?? undefined}
                                     >
                                         <label className="text-[0.6875rem] font-medium text-muted uppercase tracking-wide">
                                             Text matching
@@ -123,7 +125,7 @@ function ElementSettings({ tourId }: StepSettingsPanelProps): JSX.Element | null
                             <div className="min-w-[200px]">
                                 <Tooltip
                                     title="How strictly we should identify the target element. Reduce if the tour is failing to find your element."
-                                    docLink="https://posthog.com/docs/product-tours/element-selection#targeting-precision"
+                                    docLink={docsUrl ?? undefined}
                                 >
                                     <label className="text-[0.6875rem] font-medium text-muted uppercase tracking-wide block mb-1">
                                         Precision

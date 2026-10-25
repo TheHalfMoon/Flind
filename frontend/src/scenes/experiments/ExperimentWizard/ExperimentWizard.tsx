@@ -3,6 +3,7 @@ import { useActions, useValues } from 'kea'
 import { IconArrowLeft } from '@posthog/icons'
 import { LemonButton, Link } from '@flind/lemon-ui'
 
+import { flindPublicUrl } from 'lib/flindPublicLinks'
 import { cn } from 'lib/utils/css-classes'
 import { urls } from 'scenes/urls'
 
@@ -17,6 +18,7 @@ export function ExperimentWizard(): JSX.Element {
     const { currentStep, isLastStep, isFirstStep, isExperimentSubmitting, stepValidationErrors, hasFormErrors } =
         useValues(experimentWizardLogic)
     const { nextStep, prevStep, setStep, saveExperiment } = useActions(experimentWizardLogic)
+    const docsUrl = flindPublicUrl('docs')
 
     const header = (
         <div className="space-y-1">
@@ -56,12 +58,14 @@ export function ExperimentWizard(): JSX.Element {
                     </LemonButton>
                 )}
             </div>
-            <p className="order-last m-0 w-full text-center text-xs text-muted @2xl:order-none @2xl:w-auto">
-                Looking for no-code? They are created using the toolbar,{' '}
-                <Link target="_blank" targetBlankIcon to="https://posthog.com/docs/experiments/no-code-web-experiments">
-                    see no-code docs
-                </Link>
-            </p>
+            {docsUrl && (
+                <p className="order-last m-0 w-full text-center text-xs text-muted @2xl:order-none @2xl:w-auto">
+                    Looking for no-code? They are created using the toolbar.{' '}
+                    <Link target="_blank" targetBlankIcon to={docsUrl}>
+                        See the documentation
+                    </Link>
+                </p>
+            )}
             <div className="flex flex-1 basis-0 items-center justify-end gap-2">
                 {isLastStep ? (
                     <LemonButton
