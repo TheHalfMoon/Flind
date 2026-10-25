@@ -1,10 +1,10 @@
+import { Link } from '@flind/lemon-ui'
 import { useState } from 'react'
 
 import { IconChevronRight, IconImage } from '@posthog/icons'
-import { Link } from '@flind/lemon-ui'
 
 import { LemonMarkdown } from 'lib/lemon-ui/LemonMarkdown'
-import { isTrustedPostHogUrl } from 'lib/utils/trustedUrl'
+import { isTrustedFlindUrl } from 'lib/utils/trustedUrl'
 
 import type {
     ConversationsTicketImageApi,
@@ -34,7 +34,7 @@ const IMAGE_PREVIEW_COUNT = 4
  */
 function TicketImageThumbnail({ image }: { image: ConversationsTicketImageApi }): JSX.Element | null {
     const [failed, setFailed] = useState(false)
-    const trusted = isTrustedPostHogUrl(image.url)
+    const trusted = isTrustedFlindUrl(image.url)
     const href = trusted ? image.url : safeHttpUrl(image.url)
     if (failed || !href) {
         return null

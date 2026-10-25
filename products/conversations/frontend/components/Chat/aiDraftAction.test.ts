@@ -30,7 +30,8 @@ describe('aiDraftAction', () => {
     it.each([
         ['a customer-chosen host', 'https://tracker.example.com/pixel.png', 'Screenshot', false],
         ['an intranet host', 'http://10.0.0.5/status.png', '', false],
-        ['a PostHog host', 'https://posthog.com/images/docs/sdk.png', 'SDK setup', true],
+        ['inherited provider host', 'https://posthog.com/images/docs/sdk.png', 'SDK setup', false],
+        ['exact Flind origin', `${window.location.origin}/attachments/local.png`, 'Attached', true],
     ])('keeps a draft image only when the host is ours — %s: %s', (_name, source, alt, kept) => {
         const html = aiDraftComposerHtml({ ...base, content: `Here you go:\n\n![${alt}](${source})` })
 

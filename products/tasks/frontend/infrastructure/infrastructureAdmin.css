@@ -1,8 +1,8 @@
 @import 'tailwindcss' source(none);
-@import '../../node_modules/@posthog/quill/dist/tokens.css';
-@import '../../node_modules/@posthog/quill/dist/base.css';
-@import '../../node_modules/@posthog/quill/dist/primitives.css';
-@import '../../node_modules/@posthog/quill/dist/tailwind.css';
+@import '../../node_modules/@flind/quill/dist/tokens.css';
+@import '../../node_modules/@flind/quill/dist/base.css';
+@import '../../node_modules/@flind/quill/dist/primitives.css';
+@import '../../node_modules/@flind/quill/dist/tailwind.css';
 @source '.';
 
 body {

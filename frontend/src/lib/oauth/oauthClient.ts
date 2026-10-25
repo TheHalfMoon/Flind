@@ -47,7 +47,16 @@ export function configuredOAuthRegion(region: Region.US | Region.EU): OAuthRegio
     }
     try {
         const parsed = new URL(config.host)
-        if (parsed.protocol !== 'https:' || parsed.origin !== config.host || parsed.username || parsed.password) {
+        // A custom TLS port is never an approved first-party OAuth issuer.
+        // URL.origin includes the port, so comparing origin alone would let
+        // https://host:8443 pass when the stored config contained that port.
+        if (
+            parsed.protocol !== 'https:' ||
+            parsed.port ||
+            parsed.origin !== config.host ||
+            parsed.username ||
+            parsed.password
+        ) {
             return null
         }
         return config
@@ -131,9 +140,12 @@ export function getStoredSession(): OAuthSession | null {
             typeof data.backendHost !== 'string' ||
             typeof data.clientId !== 'string' ||
             !isApprovedOAuthTarget(data.backendHost, data.clientId) ||
-            typeof data.accessToken !== 'string' || !data.accessToken ||
-            typeof data.refreshToken !== 'string' || !data.refreshToken ||
-            typeof data.expiresAt !== 'number' || !Number.isFinite(data.expiresAt)
+            typeof data.accessToken !== 'string' ||
+            !data.accessToken ||
+            typeof data.refreshToken !== 'string' ||
+            !data.refreshToken ||
+            typeof data.expiresAt !== 'number' ||
+            !Number.isFinite(data.expiresAt)
         ) {
             return null
         }

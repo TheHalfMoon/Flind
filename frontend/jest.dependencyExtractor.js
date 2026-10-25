@@ -1,7 +1,7 @@
 const crypto = require('crypto')
 const fs = require('fs')
 
-const sucraseJest = require('@sucrase/jest-plugin')
+const flindJestTransform = require('./jest.sucraseTransform.cjs')
 const { getVersion } = require('sucrase')
 
 // Jest reads imports from source text, where an import used only as a type looks like one that
@@ -10,7 +10,7 @@ module.exports = {
     extract(code, filePath, defaultExtract) {
         let source = code
         try {
-            source = sucraseJest.process(code, filePath, {}).code
+            source = flindJestTransform.process(code, filePath, {}).code
         } catch {
             // A file the transformer cannot parse keeps every import its source names.
         }

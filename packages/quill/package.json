@@ -4,9 +4,9 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "dev": "pnpm --filter @posthog/quill-web dev",
+        "dev": "pnpm --filter @flind/quill-storybook storybook",
         "storybook": "pnpm --filter @flind/quill-tokens build && pnpm --filter @flind/quill-storybook storybook",
-        "build": "pnpm -r --filter '@posthog/quill-*' --filter '@flind/quill' build",
+        "build": "pnpm -r --filter '@flind/quill-*' --filter '@flind/quill' build",
         "typecheck": "pnpm -r typecheck"
     },
     "devDependencies": {

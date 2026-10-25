@@ -1,3 +1,4 @@
+import { lemonToast } from '@flind/lemon-ui'
 import { JSONContent } from '@tiptap/core'
 import {
     MakeLogicType,
@@ -16,8 +17,6 @@ import {
 import { loaders } from 'kea-loaders'
 import { beforeUnload, router } from 'kea-router'
 import posthog from 'posthog-js'
-
-import { lemonToast } from '@flind/lemon-ui'
 
 import { ApiError } from 'lib/api-error'
 import { commentsLogic } from 'lib/components/Comments/commentsLogic'
@@ -42,7 +41,7 @@ import {
 } from '~/layout/navigation/ImpersonationNotice/impersonationNoticeLogic'
 import api, { ApiConfig } from '~/lib/api'
 import { PERSON_DISPLAY_NAME_COLUMN_NAME } from '~/lib/constants'
-import { CLOUD_HOSTNAMES } from '~/lib/constants'
+import { flindRegionHost } from '~/lib/flindRegionHosts'
 import { tagsModel } from '~/models/tagsModel'
 import { defaultDataTableColumns } from '~/queries/nodes/DataTable/utils'
 import { DataTableNode, NodeKind } from '~/queries/schema/schema-general'
@@ -128,10 +127,14 @@ function classifySendFailure(error: any): UnconfirmedSendReason {
 function regionFromUrl(url?: string): Region | undefined {
     if (url) {
         try {
-            const hostname = new URL(url).hostname
-            for (const [region, domain] of Object.entries(CLOUD_HOSTNAMES)) {
-                if (hostname === domain || hostname.endsWith(`.${domain}`)) {
-                    return region as Region
+            const parsed = new URL(url)
+            if (parsed.protocol !== 'https:' || parsed.port || parsed.username || parsed.password) {
+                return undefined
+            }
+            for (const region of [Region.US, Region.EU] as const) {
+                const host = flindRegionHost(region)
+                if (host && parsed.hostname === host) {
+                    return region
                 }
             }
         } catch {

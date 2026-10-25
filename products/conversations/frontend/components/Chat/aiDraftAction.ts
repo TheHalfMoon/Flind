@@ -1,5 +1,5 @@
 import { markdownToHtml } from 'lib/utils/markdown'
-import { isTrustedPostHogUrl } from 'lib/utils/trustedUrl'
+import { isTrustedFlindUrl } from 'lib/utils/trustedUrl'
 
 import type { ChatMessage } from '../../types'
 
@@ -50,7 +50,7 @@ export function aiDraftComposerHtml(
     const parsed = new DOMParser().parseFromString(markdownToHtml(aiDraftComposerText(message)), 'text/html')
     for (const image of Array.from(parsed.querySelectorAll('img'))) {
         const source = image.getAttribute('src')
-        if (isTrustedPostHogUrl(source ?? undefined)) {
+        if (isTrustedFlindUrl(source ?? undefined)) {
             continue
         }
         image.replaceWith(parsed.createTextNode(image.getAttribute('alt') || source || ''))

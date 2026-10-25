@@ -207,8 +207,9 @@ const config: Config = {
     ],
 
     transform: {
-        // Include .mjs/.cjs so ESM dependencies allowed through transformIgnorePatterns (e.g. MSW's) are transpiled.
-        '\\.[cm]?[jt]sx?$': '@sucrase/jest-plugin',
+        // Use the same syntax-aware Sucrase wrapper as the dependency extractor for first-party Vite config.
+        // Include .mjs/.cjs so permitted ESM dependencies are transpiled.
+        '\\.[cm]?[jt]sx?$': '<rootDir>/jest.sucraseTransform.cjs',
         // The transformer just wraps file text as a string module, so it serves any raw
         // text import, not only YAML.
         '\\.yaml$': '<rootDir>/src/test/yamlRawTransformer.js',
