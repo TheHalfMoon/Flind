@@ -67,7 +67,11 @@ export class FeedOrderSentinel {
                 // synthetic unique key, so there is no per-key order to check.
                 continue
             }
-            const key = `${message.topic}/${message.partition}/${message.key}`
+            // Length-safe tuple encoding: neither a slash inside the Kafka key
+            // nor an unexpected topic value can alias another routing identity.
+            // The Kafka key may embed the capture token and distinct ID: keep
+            // it only in this bounded, process-local map, never in logs.
+            const key = JSON.stringify([message.topic, message.partition, message.key])
 
             const entry = this.entries.get(key)
             if (entry && entry.consumerId === consumerId) {
@@ -76,8 +80,11 @@ export class FeedOrderSentinel {
                         result.replayed++
                     } else {
                         result.outOfOrder++
+                        // Kafka routing keys can contain project capture tokens
+                        // and user distinct IDs. Log only non-secret coordinates.
                         logger.warn('⚠️', 'Out-of-order message fed to ingestion pipeline', {
-                            key,
+                            topic: message.topic,
+                            partition: message.partition,
                             offset: message.offset,
                             lastSeenOffset: entry.offset,
                             consumerId,
