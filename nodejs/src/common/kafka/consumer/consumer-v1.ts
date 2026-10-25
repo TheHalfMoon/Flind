@@ -602,6 +602,12 @@ export class KafkaConsumer {
                     topicPartitionOffsetsToCommit,
                 })
                 captureException(e)
+                // Kafka offset storage is part of the delivery guarantee.
+                // Swallowing the error makes OffsetCommitGate treat this batch
+                // as acknowledged and allows a newer batch to advance past it.
+                // Fail closed even on a rebalance-related error: replay may
+                // duplicate events, but it must never skip unacknowledged work.
+                throw e
             }
         }
     }

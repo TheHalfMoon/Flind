@@ -188,6 +188,54 @@ describe('consumer', () => {
         expect(topicConfig['auto.offset.reset']).toBe(expected)
     })
 
+    describe('offset store failures (Wave 89)', () => {
+        const offsets = [{ topic: 'test-topic', partition: 0, offset: 11 }]
+
+        it('propagates the original offsetsStore error after diagnostics', () => {
+            const storageFailure = new Error('synthetic stale offset store')
+            mockRdKafkaConsumer.offsetsStore.mockImplementationOnce(() => {
+                throw storageFailure
+            })
+
+            expect(() => consumer['storeOffsetsForMessages'](offsets)).toThrow(storageFailure)
+            expect(mockRdKafkaConsumer.offsetsStore).toHaveBeenCalledTimes(1)
+        })
+
+        it('latches a failed offsetsStore inside the v1 gate and refuses all future stores', async () => {
+            const storageFailure = new Error('synthetic broker rebalance rejected offset store')
+            mockRdKafkaConsumer.offsetsStore.mockImplementationOnce(() => {
+                throw storageFailure
+            })
+            const gate = consumer['offsetCommitGate']
+
+            gate.observe(Promise.resolve(), () => consumer['storeOffsetsForMessages'](offsets))
+            await gate.drain()
+            expect(gate.failed).toBe(true)
+            expect(mockRdKafkaConsumer.offsetsStore).toHaveBeenCalledTimes(1)
+
+            gate.observe(Promise.resolve(), () =>
+                consumer['storeOffsetsForMessages']([{ topic: 'test-topic', partition: 0, offset: 12 }])
+            )
+            await gate.drain()
+            expect(gate.failed).toBe(true)
+            expect(mockRdKafkaConsumer.offsetsStore).toHaveBeenCalledTimes(1)
+        })
+
+        it('allows healthy offset stores when the underlying Kafka client accepts them', async () => {
+            const gate = consumer['offsetCommitGate']
+            gate.observe(Promise.resolve(), () => consumer['storeOffsetsForMessages'](offsets))
+            gate.observe(Promise.resolve(), () =>
+                consumer['storeOffsetsForMessages']([{ topic: 'test-topic', partition: 0, offset: 12 }])
+            )
+            await gate.drain()
+            expect(gate.failed).toBe(false)
+            expect(mockRdKafkaConsumer.offsetsStore.mock.calls).toEqual([
+                [offsets],
+                [[{ topic: 'test-topic', partition: 0, offset: 12 }]],
+            ])
+        })
+    })
+
     describe('background work', () => {
         /**
          * NOTE: These tests are pretty verbose but also pretty cool! We are using special wrapped promises
