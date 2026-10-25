@@ -5,6 +5,7 @@ import { toast, type ToastOptions, type UpdateOptions } from 'react-toastify'
 import { IconCheckCircle, IconCopy, IconInfo, IconWarning, IconX } from '@posthog/icons'
 
 import { getIncidentStatus, STATUS_PAGE_BASE } from 'lib/components/HelpMenu/incidentStatus'
+import { flindSupportMailto } from 'lib/flindSupportMailto'
 import { isChristmas } from 'lib/holidays'
 import { renderDetailWithLinks } from 'lib/utils/renderDetailWithLinks'
 import { hashCodeForString } from 'lib/utils/strings'
@@ -50,14 +51,17 @@ export const GET_HELP_BUTTON: ToastButton = {
     action: getHelp,
 }
 
-// Fallback for when submitting a support ticket in-app fails: let the user reach us
-// directly by email instead of being sent back to the form that just failed.
-export const EMAIL_SUPPORT_BUTTON: ToastButton = {
-    label: 'Email us directly',
-    action: () => {
-        window.location.href = 'mailto:supportreply@posthog.com?subject=PostHog support request'
-    },
-}
+// Support contact is operator-owned and explicitly configured. If unset,
+// do not offer a button that would open the inherited vendor's mailbox.
+const supportMailto = flindSupportMailto()
+export const EMAIL_SUPPORT_BUTTON: ToastButton | undefined = supportMailto
+    ? {
+          label: 'Email us directly',
+          action: () => {
+              window.location.href = supportMailto
+          },
+      }
+    : undefined
 
 const successIcon = (): JSX.Element => (isChristmas() ? <IconGift className="text-green-600" /> : <IconCheckCircle />)
 
@@ -181,9 +185,9 @@ function ensureToastId<T>(
 }
 
 /**
- * Backend error details often embed a raw docs URL ("... see our docs: https://posthog.com/docs/..."),
- * which as plain toast text is unclickable. `renderDetailWithLinks` links PostHog-host URLs in place,
- * leaving the prose (and any untrusted URL) untouched, so the copy button still carries the full text.
+ * Backend error details may embed untrusted URLs. Only first-party Flind URLs
+ * are linkified by `renderDetailWithLinks`; vendor and other external URLs
+ * remain plain text so help toasts cannot redirect users to a prior provider.
  */
 export function withClickableUrls(message: string | JSX.Element): string | JSX.Element {
     if (typeof message !== 'string' || !message.includes('http')) {
