@@ -101,8 +101,8 @@ def attempt_migrations(
         "CLICKHOUSE_HTTP_PORT": "65436",
         "KAFKA_HOSTS": "127.0.0.1:65437",
     })
-    if app_label not in (None, "contenttypes"):
-        raise ValueError("Only bounded core-schema scoping is supported")
+    if app_label not in (None, "contenttypes", "auth", "posthog_session"):
+        raise ValueError("Only explicitly allowlisted Django core-app scoping is supported")
     cmd = [sys.executable, "manage.py", "migrate"]
     if app_label:
         cmd.append(app_label)
