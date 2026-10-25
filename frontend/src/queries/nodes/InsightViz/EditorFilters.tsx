@@ -1,10 +1,12 @@
+import { Tooltip } from '@flind/lemon-ui'
 import { useValues } from 'kea'
 import { Suspense, lazy } from 'react'
 
 import { IconInfo } from '@posthog/icons'
-import { Link, Tooltip } from '@flind/lemon-ui'
 
+import { FlindDocsLink } from 'lib/components/FlindDocsLink/FlindDocsLink'
 import { NON_BREAKDOWN_DISPLAY_TYPES } from 'lib/constants'
+import { flindDocsSectionUrl } from 'lib/flindPublicLinks'
 import { retryImport } from 'lib/utils/retryImport'
 import { pluralize } from 'lib/utils/strings'
 import { ChunkLoadErrorBoundary } from 'scenes/ChunkLoadErrorBoundary'
@@ -164,7 +166,7 @@ export function EditorFilters({ query, showing, embedded }: EditorFiltersProps):
             defaultExpanded: true,
             headerExtra:
                 isFunnels && (querySource as FunnelsQuery)?.funnelsFilter?.funnelVizType !== FunnelVizTypeEnum.Flow ? (
-                    <Tooltip docLink="https://posthog.com/docs/product-analytics/funnels#graph-type">
+                    <Tooltip docLink={flindDocsSectionUrl('product-analytics/funnels', 'graph-type') ?? undefined}>
                         {/* span so the tooltip has a ref-able anchor — FunnelVizType is a plain function component */}
                         <span className="inline-flex">
                             <FunnelVizType insightProps={insightProps} />
@@ -361,9 +363,9 @@ export function EditorFilters({ query, showing, embedded }: EditorFiltersProps):
                                         </ul>
                                         <div>
                                             Read more in the{' '}
-                                            <Link to="https://posthog.com/docs/product-analytics/funnels#attribution-types">
+                                            <FlindDocsLink path="product-analytics/funnels" section="attribution-types">
                                                 documentation.
-                                            </Link>
+                                            </FlindDocsLink>
                                         </div>
                                     </div>
                                 }

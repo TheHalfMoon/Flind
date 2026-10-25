@@ -1,9 +1,10 @@
+import { LemonMenu, LemonSwitch } from '@flind/lemon-ui'
 import { useActions, useValues } from 'kea'
 import React from 'react'
 
 import { IconCollapse, IconExpand, IconPlus } from '@posthog/icons'
-import { LemonMenu, LemonSwitch } from '@flind/lemon-ui'
 
+import { FlindDocsLink } from 'lib/components/FlindDocsLink/FlindDocsLink'
 import { supportLogic } from 'lib/components/Support/supportLogic'
 import { IconFeedback } from 'lib/lemon-ui/icons'
 import { LemonBanner } from 'lib/lemon-ui/LemonBanner'
@@ -204,7 +205,7 @@ export function SessionAttributionExplorer(): JSX.Element {
                             attributed. We use the referring domain, <code>utm_source</code>, <code>utm_medium</code>,{' '}
                             <code>utm_campaign</code>, and the presence of advertising ids like <code>gclid</code> and{' '}
                             <code>gad_source</code>, to assign a session a{' '}
-                            <Link to="https://posthog.com/docs/data/channel-type">Channel type</Link>.
+                            <FlindDocsLink path="data/channel-type">Channel type</FlindDocsLink>.
                         </p>
                         <p>
                             If you believe that a session is attributed incorrectly, please let us know! If you'd like

@@ -1,9 +1,9 @@
-import { useActions, useValues } from 'kea'
-
 import { LemonSwitch } from '@flind/lemon-ui'
+import { useActions, useValues } from 'kea'
 
 import { DataWarehousePopoverField, TaxonomicFilterGroupType } from 'lib/components/TaxonomicFilter/types'
 import { DISPLAY_TYPES_TO_CATEGORIES, SINGLE_SERIES_DISPLAY_TYPES } from 'lib/constants'
+import { flindDocsUrl } from 'lib/flindPublicLinks'
 import { getProjectEventExistence } from 'lib/utils/getAppContext'
 import { alphabet } from 'lib/utils/strings'
 import { SeriesActionFilter } from 'scenes/insights/filters/ActionFilter/ActionFilter'
@@ -114,7 +114,7 @@ export function TrendsSeries(): JSX.Element | null {
                 ]}
                 flagCallsFromFlagEvaluations={supportsDataWarehouse}
                 hideDeleteBtn={series?.length === 1}
-                addFilterDocLink="https://posthog.com/docs/product-analytics/trends/filters"
+                addFilterDocLink={flindDocsUrl('product-analytics/trends/filters') ?? undefined}
                 dataWarehousePopoverFields={isLifecycle ? lifecycleDataWarehousePopoverFields : undefined}
                 customFooter={formulaFooter}
             />

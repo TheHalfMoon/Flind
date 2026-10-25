@@ -3,6 +3,7 @@ import { useState } from 'react'
 
 import { reverseProxyCheckerLogic } from 'lib/components/ReverseProxyChecker/reverseProxyCheckerLogic'
 import { FEATURE_FLAGS } from 'lib/constants'
+import { flindDocsUrl } from 'lib/flindPublicLinks'
 import { featureFlagLogic } from 'lib/logic/featureFlagLogic'
 import { useAttachedLogic } from 'lib/logic/scenes/useAttachedLogic'
 import { capitalizeFirstLetter } from 'lib/utils/strings'
@@ -63,7 +64,7 @@ export function WebOverview(props: {
             warning: showWarning
                 ? `${capitalizeFirstLetter(item.key)} counts may be underreported. Set up a reverse proxy so that events are less likely to be intercepted by tracking blockers.`
                 : undefined,
-            warningLink: showWarning ? 'https://posthog.com/docs/advanced/proxy' : undefined,
+            warningLink: showWarning ? (flindDocsUrl('advanced/proxy') ?? undefined) : undefined,
         })) || []
 
     return (

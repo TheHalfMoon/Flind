@@ -1,8 +1,7 @@
 import { BuiltLogic, LogicWrapper, useActions, useValues } from 'kea'
 import { useMemo, useState } from 'react'
 
-import { Link } from '@flind/lemon-ui'
-
+import { FlindDocsLink } from 'lib/components/FlindDocsLink/FlindDocsLink'
 import { IconOpenInNew } from 'lib/lemon-ui/icons'
 import { LemonButton } from 'lib/lemon-ui/LemonButton'
 import { useAttachedLogic } from 'lib/logic/scenes/useAttachedLogic'
@@ -109,9 +108,9 @@ export function WebVitals(props: {
                 </div>
                 <span className="text-xs text-text-tertiary self-center sm:self-end">
                     Metrics above are from the last day in the selected time range.{' '}
-                    <Link to="https://posthog.com/docs/web-analytics/web-vitals#web-vitals-dashboard" target="_blank">
+                    <FlindDocsLink path="web-analytics/web-vitals" section="web-vitals-dashboard">
                         Learn more in the Docs.
-                    </Link>
+                    </FlindDocsLink>
                 </span>
             </div>
 

@@ -8,6 +8,7 @@ import { PropertyKeyInfo } from 'lib/components/PropertyKeyInfo'
 import { TaxonomicFilterGroupType } from 'lib/components/TaxonomicFilter/types'
 import { TZLabel } from 'lib/components/TZLabel'
 import { dayjs } from 'lib/dayjs'
+import { flindDocsSectionUrl } from 'lib/flindPublicLinks'
 import { LemonTableLink } from 'lib/lemon-ui/LemonTable/LemonTableLink'
 import { LemonTag } from 'lib/lemon-ui/LemonTag/LemonTag'
 import { Link } from 'lib/lemon-ui/Link'
@@ -356,7 +357,7 @@ export function renderColumn(
                 return (
                     <Tooltip
                         title="This distinct ID has no person profile."
-                        docLink="https://posthog.com/docs/data/persons#capturing-person-profiles"
+                        docLink={flindDocsSectionUrl('data/persons', 'capturing-person-profiles') ?? undefined}
                         openOnClick
                     >
                         <span>

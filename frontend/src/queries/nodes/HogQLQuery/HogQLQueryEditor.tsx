@@ -1,3 +1,4 @@
+import { LemonInput } from '@flind/lemon-ui'
 import { Monaco } from '@monaco-editor/react'
 import clsx from 'clsx'
 import { useActions, useValues } from 'kea'
@@ -6,8 +7,8 @@ import type { editor as importedEditor } from 'monaco-editor'
 import { useEffect, useRef, useState } from 'react'
 
 import { IconMagicWand } from '@posthog/icons'
-import { LemonInput, Link } from '@flind/lemon-ui'
 
+import { FlindDocsLink } from 'lib/components/FlindDocsLink/FlindDocsLink'
 import { useOnMountEffect } from 'lib/hooks/useOnMountEffect'
 import { LemonBanner } from 'lib/lemon-ui/LemonBanner'
 import { LemonButton } from 'lib/lemon-ui/LemonButton'
@@ -218,7 +219,7 @@ export function HogQLQueryEditor(props: HogQLQueryEditorProps): JSX.Element {
                                         <div>
                                             Save a query as a view that can be referenced in another query. This is
                                             useful for modeling data and organizing large queries into readable chunks.{' '}
-                                            <Link to="https://posthog.com/docs/data-warehouse">More Info</Link>{' '}
+                                            <FlindDocsLink path="data-warehouse">More Info</FlindDocsLink>{' '}
                                         </div>
                                     }
                                 >
