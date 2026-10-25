@@ -6,6 +6,9 @@ artifact, and saving a subscription all ask this one question about the acting p
 
 from typing import Any
 
+from django.core.exceptions import PermissionDenied as DjangoPermissionDenied
+from rest_framework.exceptions import PermissionDenied as DRFPermissionDenied
+
 from posthog.hogql.context import HogQLContext
 from posthog.hogql.errors import TableAccessDeniedError
 from posthog.hogql.modifiers import create_default_modifiers_for_user
@@ -49,7 +52,14 @@ def denied_query_resources(user: User, team: Team, queries: list[dict[str, Any]]
             denied_resources.add(e.resource)
         except TableAccessDeniedError as e:
             denied_resources.add(e.table_name)
+        except (DjangoPermissionDenied, DRFPermissionDenied):
+            # A runner may enforce permissions using the framework's
+            # PermissionDenied rather than a table-specific access error.
+            # Never swallow that denial: shared links execute without the
+            # publisher's table-access restrictions once enabled.
+            raise
         except Exception:
-            # Only access denials gate publishing; anything else is the query's own problem.
+            # Query parse/compile errors still fail when someone executes the
+            # query; they are not authorization decisions at publish time.
             continue
     return sorted(denied_resources)
