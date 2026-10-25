@@ -1,7 +1,7 @@
+import { LemonBanner, LemonButton, LemonModal } from '@flind/lemon-ui'
 import { useActions, useValues } from 'kea'
 
-import { LemonBanner, LemonButton, LemonModal } from '@flind/lemon-ui'
-
+import { flindDocsUrl } from 'lib/flindPublicLinks'
 import { useOnMountEffect } from 'lib/hooks/useOnMountEffect'
 import { IconOpenInNew } from 'lib/lemon-ui/icons'
 import { databaseTableListLogic } from 'scenes/data-management/database/databaseTableListLogic'
@@ -20,7 +20,7 @@ import {
     pagePerformanceLogic,
 } from './pagePerformanceLogic'
 
-const GSC_DOCS_URL = 'https://posthog.com/docs/cdp/sources/google-search-console'
+const GSC_DOCS_URL = flindDocsUrl('cdp/sources/google-search-console')
 const GSC_TABLE_NAME = 'search_analytics_by_query_page'
 
 const MODAL_TITLE: Record<PagePerformanceMetric, string> = {
@@ -72,9 +72,11 @@ const GoogleBreakdown = ({ page, insightProps }: { page: string; insightProps: I
                     Google Search Console shows the search queries and average positions each page ranks for. Connect it
                     as a data warehouse source to unlock this breakdown.
                 </p>
-                <LemonButton type="primary" to={GSC_DOCS_URL} targetBlank sideIcon={<IconOpenInNew />}>
-                    Connect Google Search Console
-                </LemonButton>
+                {GSC_DOCS_URL && (
+                    <LemonButton type="primary" to={GSC_DOCS_URL} targetBlank sideIcon={<IconOpenInNew />}>
+                        Connect Google Search Console
+                    </LemonButton>
+                )}
             </div>
         )
     }

@@ -3,6 +3,7 @@ import { loaders } from 'kea-loaders'
 
 import api, { ApiError } from 'lib/api'
 import { FEATURE_FLAGS } from 'lib/constants'
+import { flindDocsSectionUrl, flindDocsUrl } from 'lib/flindPublicLinks'
 import { lemonToast } from 'lib/lemon-ui/LemonToast/LemonToast'
 import { featureFlagLogic } from 'lib/logic/featureFlagLogic'
 import type { FeatureFlagsSet } from 'lib/logic/featureFlagLogic'
@@ -46,17 +47,18 @@ interface WebHealthCheckConfig {
     urgent?: boolean
 }
 
-const INSTALL_GUIDE_ACTION: HealthCheckAction = {
-    label: 'View installation guide',
-    to: 'https://posthog.com/docs/libraries/js',
-}
+const INSTALL_GUIDE_DOCS = flindDocsUrl('libraries/js')
+const INSTALL_GUIDE_ACTION: HealthCheckAction | undefined = INSTALL_GUIDE_DOCS
+    ? { label: 'View installation guide', to: INSTALL_GUIDE_DOCS }
+    : undefined
 
 // The failing $pageview check reads like a "finish installing" call to action, so its button
 // should say the same thing rather than the generic "View installation guide".
-const COMPLETE_INSTALL_ACTION: HealthCheckAction = {
-    label: 'Complete installation',
-    to: 'https://posthog.com/docs/libraries/js',
-}
+const COMPLETE_INSTALL_ACTION: HealthCheckAction | undefined = INSTALL_GUIDE_DOCS
+    ? { label: 'Complete installation', to: INSTALL_GUIDE_DOCS }
+    : undefined
+
+const SESSION_ID_DOCS = flindDocsSectionUrl('data/sessions', 'custom-session-ids')
 
 const WEB_HEALTH_CHECKS: WebHealthCheckConfig[] = [
     {
@@ -66,9 +68,9 @@ const WEB_HEALTH_CHECKS: WebHealthCheckConfig[] = [
         title: '$pageview',
         passingDescription:
             'Events are flowing in as expected. Head over to the Web Analytics tab to start reviewing your analytics!',
-        failingDescription: 'Complete the PostHog installation to start seeing events in your dashboard.',
+        failingDescription: 'Complete the Flind installation to start seeing events in your dashboard.',
         failingAction: COMPLETE_INSTALL_ACTION,
-        docsUrl: 'https://posthog.com/docs/product-analytics/capture-events',
+        docsUrl: flindDocsUrl('product-analytics/capture-events') ?? undefined,
         urgent: true,
     },
     {
@@ -79,7 +81,7 @@ const WEB_HEALTH_CHECKS: WebHealthCheckConfig[] = [
         passingDescription: 'Bounce rate and session duration are accurate!',
         failingDescription: 'Without $pageleave events, bounce rate and session duration might be inaccurate.',
         failingAction: INSTALL_GUIDE_ACTION,
-        docsUrl: 'https://posthog.com/docs/web-analytics/dashboard#bounce-rate',
+        docsUrl: flindDocsSectionUrl('web-analytics/dashboard', 'bounce-rate') ?? undefined,
     },
     {
         id: HealthCheckId.SCROLL_DEPTH,
@@ -89,7 +91,7 @@ const WEB_HEALTH_CHECKS: WebHealthCheckConfig[] = [
         passingDescription: 'Scroll tracking is enabled! Tracking how far users scroll on each page.',
         failingDescription: 'Enable scroll depth to see how far users read your content before leaving.',
         failingAction: INSTALL_GUIDE_ACTION,
-        docsUrl: 'https://posthog.com/docs/web-analytics/scroll-depth',
+        docsUrl: flindDocsUrl('web-analytics/scroll-depth') ?? undefined,
     },
     {
         id: HealthCheckId.MISSING_SESSION_ID,
@@ -99,11 +101,8 @@ const WEB_HEALTH_CHECKS: WebHealthCheckConfig[] = [
         passingDescription: 'Pageviews carry a session ID that web analytics can use.',
         failingDescription:
             'Some pageviews arrive without a session ID that web analytics can use. Web analytics needs a UUIDv7, and leaves out any pageview without one, so your visitor and session counts come in low. This usually means events are sent server-side or through a pipeline that omits the session ID.',
-        failingAction: {
-            label: 'Set up session IDs',
-            to: 'https://posthog.com/docs/data/sessions#custom-session-ids',
-        },
-        docsUrl: 'https://posthog.com/docs/data/sessions#custom-session-ids',
+        failingAction: SESSION_ID_DOCS ? { label: 'Set up session IDs', to: SESSION_ID_DOCS } : undefined,
+        docsUrl: SESSION_ID_DOCS ?? undefined,
     },
     {
         id: HealthCheckId.AUTHORIZED_URLS,
@@ -124,9 +123,9 @@ const WEB_HEALTH_CHECKS: WebHealthCheckConfig[] = [
         title: 'Reverse proxy',
         passingDescription: 'Reverse proxy is configured! Your tracking requests are routed through your own domain.',
         failingDescription:
-            'A reverse proxy routes PostHog requests through your own domain and helps prevent ad blockers from blocking tracking. Some metrics may not be accurate until this is configured.',
+            'A reverse proxy routes Flind requests through your own domain and helps prevent ad blockers from blocking tracking. Some metrics may not be accurate until this is configured.',
         failingAction: { label: 'Set up reverse proxy', to: urls.settings('organization-proxy') },
-        docsUrl: 'https://posthog.com/docs/advanced/proxy',
+        docsUrl: flindDocsUrl('advanced/proxy') ?? undefined,
         urgent: true,
     },
     {
@@ -143,7 +142,7 @@ const WEB_HEALTH_CHECKS: WebHealthCheckConfig[] = [
             label: 'Review suggestions',
             to: urls.settings('environment-product-analytics', 'path-cleaning'),
         },
-        docsUrl: 'https://posthog.com/docs/product-analytics/paths#path-cleaning-rules',
+        docsUrl: flindDocsSectionUrl('product-analytics/paths', 'path-cleaning-rules') ?? undefined,
     },
     {
         id: HealthCheckId.WEB_VITALS,
@@ -158,7 +157,7 @@ const WEB_HEALTH_CHECKS: WebHealthCheckConfig[] = [
             label: 'Enable Web Vitals',
             to: urls.settings('environment-web-analytics', 'web-vitals-autocapture'),
         },
-        docsUrl: 'https://posthog.com/docs/web-analytics/web-vitals',
+        docsUrl: flindDocsUrl('web-analytics/web-vitals') ?? undefined,
     },
 ]
 

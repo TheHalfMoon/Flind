@@ -5,6 +5,7 @@ import { EmptyMessage } from 'lib/components/EmptyMessage/EmptyMessage'
 import ViewRecordingButton from 'lib/components/ViewRecordingButton/ViewRecordingButton'
 import ViewRecordingsPlaylistButton from 'lib/components/ViewRecordingButton/ViewRecordingsPlaylistButton'
 import { FEATURE_FLAGS } from 'lib/constants'
+import { flindDocsUrl } from 'lib/flindPublicLinks'
 import { LemonSkeleton } from 'lib/lemon-ui/LemonSkeleton'
 import { LemonTable } from 'lib/lemon-ui/LemonTable'
 import { ProfilePicture } from 'lib/lemon-ui/ProfilePicture'
@@ -22,6 +23,8 @@ import { ProductIntentContext, ProductKey } from '~/queries/schema/schema-genera
 import { SessionRecordingType } from '~/types'
 
 import { asDisplay } from 'products/persons/frontend/person-utils'
+
+const RECORDINGS_DOCS_URL = flindDocsUrl('user-guides/recordings')
 
 export function WebAnalyticsRecordingsTile({ tile }: { tile: ReplayTile }): JSX.Element {
     const { layout } = tile
@@ -57,8 +60,8 @@ export function WebAnalyticsRecordingsTile({ tile }: { tile: ReplayTile }): JSX.
           : {
                 title: 'There are no recordings matching this date range',
                 description: 'Make sure you have the javascript snippet setup in your website.',
-                buttonText: 'Learn more',
-                buttonTo: 'https://posthog.com/docs/user-guides/recordings',
+                buttonText: RECORDINGS_DOCS_URL ? 'Learn more' : undefined,
+                buttonTo: RECORDINGS_DOCS_URL ?? undefined,
             }
     const viewAllButton = (
         <div

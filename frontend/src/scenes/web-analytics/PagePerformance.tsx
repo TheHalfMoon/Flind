@@ -1,10 +1,11 @@
+import { LemonBanner, LemonButton } from '@flind/lemon-ui'
 import { useActions, useMountedLogic, useValues } from 'kea'
 import { useMemo } from 'react'
 
-import { LemonBanner, LemonButton, Link } from '@flind/lemon-ui'
-
 import { useChartTheme } from 'lib/charts/hooks'
 import { seriesColor } from 'lib/charts/utils/theme'
+import { FlindDocsLink } from 'lib/components/FlindDocsLink/FlindDocsLink'
+import { flindDocsSectionUrl, flindDocsUrl } from 'lib/flindPublicLinks'
 import { urls } from 'scenes/urls'
 
 import { DataTableNode, InsightVizNode, ProductKey } from '~/queries/schema/schema-general'
@@ -47,9 +48,7 @@ const SectionHeading = ({
     </div>
 )
 
-const SERVER_LOGS_DOCS = 'https://posthog.com/docs/web-analytics/sending-http-logs'
-
-const CHANNEL_TYPE_DOCS = 'https://posthog.com/docs/data/channel-type'
+const SERVER_LOGS_DOCS = flindDocsUrl('web-analytics/sending-http-logs')
 
 const TabEmptyState = ({ state }: { state: PagePerformanceTabState }): JSX.Element =>
     state === 'no-events' ? (
@@ -69,7 +68,7 @@ const TabEmptyState = ({ state }: { state: PagePerformanceTabState }): JSX.Eleme
             }
         >
             <p className="m-0">
-                Install PostHog on your site to see how search engines, AI assistants, and AI crawlers reach your pages.
+                Install Flind on your site to see how search engines, AI assistants, and AI crawlers reach your pages.
             </p>
         </PagePerformanceEmptyState>
     ) : (
@@ -81,13 +80,9 @@ const TabEmptyState = ({ state }: { state: PagePerformanceTabState }): JSX.Eleme
 const AiTrafficEmptyState = (): JSX.Element => (
     <PagePerformanceEmptyState
         title="No AI referrals in this range"
-        action={
-            <Link to={CHANNEL_TYPE_DOCS} target="_blank">
-                How PostHog works out where a visit came from
-            </Link>
-        }
+        action={<FlindDocsLink path="data/channel-type">How Flind works out where a visit came from</FlindDocsLink>}
     >
-        <p className="m-0">Nobody arrived from an AI assistant that PostHog could attribute.</p>
+        <p className="m-0">Nobody arrived from an AI assistant that Flind could attribute.</p>
         <p className="m-0">
             This is a lower bound. Some assistants strip the referrer, and those visits land in Direct instead.
         </p>
@@ -97,16 +92,18 @@ const AiTrafficEmptyState = (): JSX.Element => (
 const CrawlersEmptyState = ({ state }: { state: PagePerformanceCrawlerState }): JSX.Element =>
     state === 'needs-server-logs' ? (
         <PagePerformanceEmptyState
-            title="PostHog can't see your AI crawlers yet"
+            title="Flind can't see your AI crawlers yet"
             action={
-                <LemonButton
-                    type="primary"
-                    to={SERVER_LOGS_DOCS}
-                    targetBlank
-                    data-attr="page-performance-server-logs-docs"
-                >
-                    Read the setup guide
-                </LemonButton>
+                SERVER_LOGS_DOCS ? (
+                    <LemonButton
+                        type="primary"
+                        to={SERVER_LOGS_DOCS}
+                        targetBlank
+                        data-attr="page-performance-server-logs-docs"
+                    >
+                        Read the setup guide
+                    </LemonButton>
+                ) : undefined
             }
         >
             <p className="m-0">
@@ -118,7 +115,7 @@ const CrawlersEmptyState = ({ state }: { state: PagePerformanceCrawlerState }): 
     ) : (
         <PagePerformanceEmptyState title="No AI crawlers in this range">
             <p className="m-0">
-                Your server logs are reaching PostHog, but no AI crawler read these pages. Try a wider date range.
+                Your server logs are reaching Flind, but no AI crawler read these pages. Try a wider date range.
             </p>
         </PagePerformanceEmptyState>
     )

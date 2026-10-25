@@ -1,10 +1,10 @@
+import { LemonBanner, LemonButton, LemonDivider, LemonInput, LemonSelect, Popover, Tooltip } from '@flind/lemon-ui'
 import { useActions, useValues } from 'kea'
 import { Form } from 'kea-forms'
 import posthog from 'posthog-js'
 import { useMemo, useState } from 'react'
 
 import { IconFilter, IconGlobe, IconPhone, IconPlus } from '@posthog/icons'
-import { LemonBanner, LemonButton, LemonDivider, LemonInput, LemonSelect, Popover, Tooltip } from '@flind/lemon-ui'
 
 import { AuthorizedUrlListType, authorizedUrlListLogic } from 'lib/components/AuthorizedUrlList/authorizedUrlListLogic'
 import { COMPARE_ALL_TIME_DISABLED_REASON, CompareFilter } from 'lib/components/CompareFilter/CompareFilter'
@@ -21,6 +21,7 @@ import { baseModifier } from 'lib/components/Shortcuts/shortcuts'
 import { useShortcut } from 'lib/components/Shortcuts/useShortcut'
 import { SuppressTaxonomicMenuToggle } from 'lib/components/TaxonomicPopover/TaxonomicMenuToggle'
 import { FEATURE_FLAGS } from 'lib/constants'
+import { flindDocsSectionUrl } from 'lib/flindPublicLinks'
 import { IconLink, IconMonitor, IconWithCount } from 'lib/lemon-ui/icons/icons'
 import { LemonField } from 'lib/lemon-ui/LemonField'
 import { LemonInputSelect, LemonInputSelectOption } from 'lib/lemon-ui/LemonInputSelect'
@@ -133,7 +134,12 @@ export const WebAnalyticsFilters = ({ tabs }: { tabs: JSX.Element }): JSX.Elemen
                             <WebAnalyticsDomainSelector />
                             <WebAnalyticsDeviceToggle />
                             <LiveUserCount
-                                docLink="https://posthog.com/docs/web-analytics/faq#i-am-online-but-the-online-user-count-is-not-reflecting-my-user"
+                                docLink={
+                                    flindDocsSectionUrl(
+                                        'web-analytics/faq',
+                                        'i-am-online-but-the-online-user-count-is-not-reflecting-my-user'
+                                    ) ?? undefined
+                                }
                                 dataAttr="web-analytics-live-user-count"
                             />
                         </>
