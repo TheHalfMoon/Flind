@@ -9,22 +9,51 @@ from __future__ import annotations
 import argparse
 import json
 import shutil
+import subprocess
 import sys
 
 if __package__:
     from .qualify_isolated_migrations_wave55 import attempt_migrations
     from .qualify_ephemeral_postgres import isolated_postgres
     from .qualify_django_lock import audit_runtime_lock
+    from .qualify_django_boot_wave53 import ROOT, isolated_boot_environment, diagnostic
 else:
     from qualify_isolated_migrations_wave55 import attempt_migrations
     from qualify_ephemeral_postgres import isolated_postgres
     from qualify_django_lock import audit_runtime_lock
+    from qualify_django_boot_wave53 import ROOT, isolated_boot_environment, diagnostic
 
 
 MAX_ROUNDS = 3
 MAX_SECONDS = 360
 MIN_SECONDS = 60
 MIN_FREE_GIB = 10.0
+
+
+def migration_startup_preflight(timeout: int = 60) -> dict:
+    """Import Django/migration command before creating a disposable database.
+
+    Check command discovery under the same sanitized unreachable-service
+    environment as later migrations; no live DB, server or credentials.
+    Unlike --deploy, this does not require release security settings.
+    """
+    try:
+        process = subprocess.run(
+            [sys.executable, "manage.py", "help", "migrate"],
+            cwd=ROOT, env=isolated_boot_environment(),
+            capture_output=True, text=True, timeout=timeout, check=False,
+        )
+    except (OSError, subprocess.TimeoutExpired):
+        return {"passed": False, "blocker": "Django migration command preflight unavailable"}
+    if process.returncode != 0:
+        # Only diagnostic class is retained; never export raw exception text,
+        # URLs, user names or inherited settings from stdout/stderr.
+        safe_class = diagnostic(process.stderr + "\n" + process.stdout)
+        return {
+            "passed": False,
+            "blocker": "Django migration command import failed: " + safe_class,
+        }
+    return {"passed": True}
 
 
 def admitted(rounds: int, seconds: int) -> bool:
@@ -122,6 +151,15 @@ def qualify_sustained(rounds: int = 1, seconds: int = MAX_SECONDS) -> dict:
             "blocker": "Exact Python runtime dependency lock incomplete",
         }
 
+    preflight = migration_startup_preflight()
+    if not preflight["passed"]:
+        return {
+            "full_schema_migrations_completed": False,
+            "django_migration_preflight_passed": False,
+            "release_qualified": False,
+            "blocker": preflight["blocker"],
+        }
+
     cluster = isolated_postgres(
         on_ready=lambda port, password, name: run_sustained(
             port, password, name, rounds=rounds, seconds=seconds,
@@ -134,6 +172,7 @@ def qualify_sustained(rounds: int = 1, seconds: int = MAX_SECONDS) -> dict:
     )
     return {
         "isolated_postgres_passed": postgres_ok,
+        "django_migration_preflight_passed": True,
         "full_schema_migrations_completed": completed,
         "rounds_executed": child.get("rounds_executed", 0),
         "committed_migration_rows": child.get("committed_migration_rows", 0),

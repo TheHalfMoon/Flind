@@ -127,10 +127,11 @@ class SustainedMigrationsWave75(unittest.TestCase):
         self.assertFalse(report["full_schema_migrations_completed"])
         postgres.assert_not_called()
 
+    @patch.object(q, "migration_startup_preflight", return_value={"passed": True})
     @patch.object(q, "isolated_postgres")
     @patch.object(q, "audit_runtime_lock", return_value={"direct_lock_qualified": True})
     @patch.object(q.shutil, "disk_usage")
-    def test_fake_claim_from_failed_cluster_is_rejected(self, disk, _locked, postgres):
+    def test_fake_claim_from_failed_cluster_is_rejected(self, disk, _locked, postgres, _preflight):
         disk.return_value = type("Disk", (), {"free": 15 * 1024 ** 3})()
         postgres.return_value = {
             "postgres_component_passed": False,
@@ -152,10 +153,11 @@ class SustainedMigrationsWave75(unittest.TestCase):
         self.assertEqual(code, 2)
         self.assertFalse(json.loads(output.getvalue())["release_qualified"])
 
+    @patch.object(q, "migration_startup_preflight", return_value={"passed": True})
     @patch.object(q, "isolated_postgres")
     @patch.object(q, "audit_runtime_lock", return_value={"direct_lock_qualified": True})
     @patch.object(q.shutil, "disk_usage")
-    def test_callback_keeps_same_database_for_rounds(self, disk, _locked, postgres):
+    def test_callback_keeps_same_database_for_rounds(self, disk, _locked, postgres, _preflight):
         disk.return_value = type("Disk", (), {"free": 15 * 1024 ** 3})()
         with patch.object(q, "run_sustained", return_value={
             "full_schema_migrations_completed": True,
