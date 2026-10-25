@@ -3,6 +3,7 @@ import { CODES, Message, MessageHeader, KafkaConsumer as RdKafkaConsumer } from 
 import { createTestEventHeaders } from '~/tests/helpers/event-headers'
 
 import { delay } from '../../utils/utils'
+import { logger } from '../../utils/logger'
 import { KafkaConsumer, parseEventHeaders, parseKafkaHeaders } from './consumer-v1'
 
 jest.mock('../admin', () => ({
@@ -186,6 +187,60 @@ describe('consumer', () => {
         new KafkaConsumer({ groupId: 'g', topic: 't' }, overrides)
         const topicConfig = RdKafkaCtor.mock.calls.at(-1)![1] as any
         expect(topicConfig['auto.offset.reset']).toBe(expected)
+    })
+
+    describe('secret-safe Kafka lifecycle diagnostics (Wave 91)', () => {
+        const secret = 'synthetic-private-kafka-sasl-token'
+
+        it('never logs raw SASL configuration on subscribed callbacks', () => {
+            const info = jest.spyOn(logger, 'info').mockImplementation(() => undefined)
+            try {
+                const isolated = new KafkaConsumer(
+                    { topic: 'private-events', groupId: 'private-ingestion' },
+                    { 'sasl.password': secret } as any
+                )
+                const underlying = jest.mocked(isolated['rdKafkaConsumer'])
+                const callback = underlying.on.mock.calls.find(([name]) => name === 'subscribed')?.[1]
+                expect(callback).toBeDefined()
+                ;(callback as (topics: string[]) => void)(['private-events'])
+
+                expect(info).toHaveBeenCalledWith('📝', 'librdkafka consumer subscribed', {
+                    topics: ['private-events'],
+                    topic: 'private-events',
+                    groupId: 'private-ingestion',
+                })
+                expect(JSON.stringify(info.mock.calls)).not.toContain(secret)
+            } finally {
+                info.mockRestore()
+            }
+        })
+
+        it('does not serialize native Kafka credentials or failure metrics on connection errors', () => {
+            const errorLog = jest.spyOn(logger, 'error').mockImplementation(() => undefined)
+            try {
+                const isolated = new KafkaConsumer(
+                    { topic: 'private-events', groupId: 'private-ingestion' },
+                    { 'sasl.password': secret } as any
+                )
+                const underlying = jest.mocked(isolated['rdKafkaConsumer'])
+                const callback = underlying.on.mock.calls.find(([name]) => name === 'connection.failure')?.[1]
+                expect(callback).toBeDefined()
+                ;(callback as (error: { code: number }, metrics: unknown) => void)(
+                    { code: -1 },
+                    { 'ssl.key.password': 'synthetic-secret-in-native-metrics' }
+                )
+
+                expect(errorLog).toHaveBeenCalledWith('📝', 'librdkafka connection failure', {
+                    errorCode: -1,
+                    topic: 'private-events',
+                    groupId: 'private-ingestion',
+                })
+                expect(JSON.stringify(errorLog.mock.calls)).not.toContain(secret)
+                expect(JSON.stringify(errorLog.mock.calls)).not.toContain('synthetic-secret-in-native-metrics')
+            } finally {
+                errorLog.mockRestore()
+            }
+        })
     })
 
     describe('offset store failures (Wave 89)', () => {

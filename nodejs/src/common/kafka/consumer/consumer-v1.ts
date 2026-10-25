@@ -1,7 +1,6 @@
 import {
     Assignment,
     CODES,
-    ClientMetrics,
     ConsumerGlobalConfig,
     LibrdKafkaError,
     Message,
@@ -38,6 +37,7 @@ import { ensureTopicExists } from '../admin'
 import { getKafkaConfigFromEnv, stripClassicProtocolConfig } from '../config'
 import { parseBrokerStatistics, trackBrokerMetrics } from '../kafka-client-metrics'
 import { OffsetCommitGate } from './offset-commit-gate'
+import { safeKafkaLogContext } from './safe-log-context'
 import {
     consumedBatchBackgroundDuration,
     consumedBatchBackpressureDuration,
@@ -563,11 +563,16 @@ export class KafkaConsumer {
         })
 
         consumer.on('subscribed', (topics) => {
-            logger.info('📝', 'librdkafka consumer subscribed', { topics, config: this.consumerConfig })
+            logger.info('📝', 'librdkafka consumer subscribed', { topics, ...safeKafkaLogContext(this.config) })
         })
 
-        consumer.on('connection.failure', (error: LibrdKafkaError, metrics: ClientMetrics) => {
-            logger.error('📝', 'librdkafka connection failure', { error, metrics, config: this.consumerConfig })
+        consumer.on('connection.failure', (error: LibrdKafkaError) => {
+            // Native metrics and error objects may include transport details.
+            // Log the documented error code, not their arbitrary fields.
+            logger.error('📝', 'librdkafka connection failure', {
+                errorCode: error?.code,
+                ...safeKafkaLogContext(this.config),
+            })
         })
 
         consumer.on('offset.commit', (error: LibrdKafkaError, topicPartitionOffsets: TopicPartitionOffset[]) => {
@@ -822,8 +827,7 @@ export class KafkaConsumer {
                 errorOrigin: (error as any)?.origin,
                 isFatal: (error as any)?.isFatal,
                 isRetriable: (error as any)?.isRetriable,
-                config: this.config,
-                consumerConfig: this.consumerConfig,
+                ...safeKafkaLogContext(this.config),
             })
             // We re-throw the error as that way it will be caught in server.ts and trigger a full shutdown
             throw error
@@ -870,8 +874,7 @@ export class KafkaConsumer {
                     errorOrigin: (error as any)?.origin,
                     isFatal: (error as any)?.isFatal,
                     isRetriable: (error as any)?.isRetriable,
-                    config: this.config,
-                    consumerConfig: this.consumerConfig,
+                    ...safeKafkaLogContext(this.config),
                 })
             })
         }
