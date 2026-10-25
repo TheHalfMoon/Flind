@@ -43,6 +43,23 @@ class TestSessionStore(BaseTest):
 
         self.assertIsNone(Session.objects.get(session_key=store.session_key).user_id)
 
+    def test_invalid_session_user_id_never_stamps_database_row(self):
+        for invalid in (True, False, -1, 0, 1.5, " 7", "1e2", "9223372036854775808"):
+            with self.subTest(value=invalid):
+                store = self._store()
+                store[SESSION_KEY] = invalid
+                store.create()
+                self.assertIsNone(Session.objects.get(session_key=store.session_key).user_id)
+
+    def test_invalidated_auth_user_id_clears_existing_attribution(self):
+        store = self._store()
+        store[SESSION_KEY] = "7"
+        store.create()
+        self.assertEqual(Session.objects.get(session_key=store.session_key).user_id, 7)
+        store[SESSION_KEY] = True
+        store.save()
+        self.assertIsNone(Session.objects.get(session_key=store.session_key).user_id)
+
     def test_impersonation_session_is_not_attributed_to_the_user(self):
         user = self._make_user()
         store = self._store()

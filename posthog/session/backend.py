@@ -19,13 +19,23 @@ _SESSION_OWNED_FIELDS = ["session_data", "expire_date", "user_id"]
 
 
 def _auth_user_id(data: dict[str, Any]) -> int | None:
+    """Return only a valid, positive PostgreSQL bigint user ID.
+
+    Session payloads are signed but can contain unexpected values from old
+    sessions or programmatic callers. Never turn booleans, floats, negative
+    values or oversized integers into a session's queryable user_id.
+    """
     if USER_SESSION_FLAG in data:
         # Impersonation (loginas): never attribute the session to the impersonated user.
         return None
-    try:
-        return int(data[SESSION_KEY])
-    except (KeyError, TypeError, ValueError):
+    raw = data.get(SESSION_KEY)
+    if type(raw) is int:
+        user_id = raw
+    elif isinstance(raw, str) and 1 <= len(raw) <= 20 and raw.isascii() and raw.isdecimal():
+        user_id = int(raw)
+    else:
         return None
+    return user_id if 0 < user_id <= (2**63 - 1) else None
 
 
 class SessionStore(DBStore):
