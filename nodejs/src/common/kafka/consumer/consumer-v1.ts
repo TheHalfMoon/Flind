@@ -37,6 +37,7 @@ import { promisifyCallback } from '../../utils/utils'
 import { ensureTopicExists } from '../admin'
 import { getKafkaConfigFromEnv, stripClassicProtocolConfig } from '../config'
 import { parseBrokerStatistics, trackBrokerMetrics } from '../kafka-client-metrics'
+import { OffsetCommitGate } from './offset-commit-gate'
 import {
     consumedBatchBackgroundDuration,
     consumedBatchBackpressureDuration,
@@ -141,6 +142,7 @@ export class KafkaConsumer {
     private maxBackgroundTasks: number
     private consumerLoop: Promise<void> | undefined
     private backgroundTask: { promise: Promise<void>; createdAt: number }[]
+    private readonly offsetCommitGate = new OffsetCommitGate()
     private podName: string
     private lastBackgroundTaskCompletionTime: number
     private consumerId: string
@@ -641,6 +643,9 @@ export class KafkaConsumer {
             let lastConsumeTime = 0
             try {
                 while (!this.isStopping) {
+                    if (this.offsetCommitGate.failed) {
+                        throw new Error('Kafka background task failed; refusing to acknowledge subsequent offsets')
+                    }
                     // Track that the consumer loop is alive
                     this.lastConsumerLoopTime = Date.now()
                     logger.debug('🔁', 'main_loop_consuming')
@@ -674,6 +679,10 @@ export class KafkaConsumer {
                     const messages = await retryIfRetriable(() =>
                         promisifyCallback<Message[]>((cb) => this.rdKafkaConsumer.consume(this.fetchBatchSize, cb))
                     )
+
+                    if (this.offsetCommitGate.failed) {
+                        throw new Error('Kafka background task failed; refusing to acknowledge subsequent offsets')
+                    }
 
                     // After successfully pulling a batch, update heartbeat for backward compatibility
                     this.heartbeat()
@@ -728,33 +737,30 @@ export class KafkaConsumer {
                     // Pull out the offsets to commit from the messages so we can release the messages reference
                     const topicPartitionOffsetsToCommit = findOffsetsToCommit(messages)
 
-                    void backgroundTask.finally(async () => {
-                        // Track that we made progress
-                        this.lastBackgroundTaskCompletionTime = Date.now()
-
-                        stopBackgroundTaskTimer?.()
-
-                        // First of all clear ourselves from the queue
-                        const index = this.backgroundTask.findIndex((t) => t.promise === backgroundTask)
-
-                        // CRITICAL: If task not found, this indicates some bigger problem
-                        if (index < 0) {
-                            captureException(new Error('Background task not found in array during cleanup'))
-                        }
-
-                        // TRICKY: We need to wait for all promises ahead of us in the queue before we store the offsets
-                        // Important: capture the promises BEFORE removing the task, as the array changes after splice
-                        if (index >= 0) {
-                            // Task found - capture promises to wait for, then remove the task
-                            const promisesToWait = this.backgroundTask.slice(0, index).map((t) => t.promise)
-                            this.backgroundTask.splice(index, 1)
-                            await Promise.all(promisesToWait)
-                        }
-
+                    // Offset stores are ordered by batch arrival, not task
+                    // completion. A rejected background task poisons future
+                    // acknowledgements so no later successful batch can skip
+                    // failed events on a restart.
+                    this.offsetCommitGate.observe(backgroundTask, () => {
                         if (this.config.autoCommit && this.config.autoOffsetStore) {
                             this.storeOffsetsForMessages(topicPartitionOffsetsToCommit)
                         }
                     })
+
+                    // Bookkeeping runs for either outcome, with an explicit
+                    // rejection handler: .finally() would preserve rejection
+                    // and create an unhandled observer promise.
+                    const completeBackgroundTask = (): void => {
+                        this.lastBackgroundTaskCompletionTime = Date.now()
+                        stopBackgroundTaskTimer?.()
+                        const index = this.backgroundTask.findIndex((t) => t.promise === backgroundTask)
+                        if (index < 0) {
+                            captureException(new Error('Background task not found in array during cleanup'))
+                        } else {
+                            this.backgroundTask.splice(index, 1)
+                        }
+                    }
+                    void backgroundTask.then(completeBackgroundTask, completeBackgroundTask)
 
                     // At first we just add the background work to the queue with metadata
                     this.backgroundTask.push({
@@ -779,6 +785,10 @@ export class KafkaConsumer {
 
                 // Once we are stopping, make sure that we wait for all background work to finish
                 await Promise.all(this.backgroundTask.map((t) => t.promise))
+                await this.offsetCommitGate.drain()
+                if (this.offsetCommitGate.failed) {
+                    throw new Error('Kafka background work failed before offsets were safely acknowledged')
+                }
             } catch (error) {
                 logger.error('🔁', 'main_loop_error', {
                     error: String(error),
@@ -826,6 +836,7 @@ export class KafkaConsumer {
             backgroundTaskCount: this.backgroundTask.length,
         })
         await Promise.all(this.backgroundTask.map((t) => t.promise))
+        await this.offsetCommitGate.drain()
 
         logger.info('🔁', 'background_tasks_completed_proceeding_with_disconnect')
 
