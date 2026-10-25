@@ -16,6 +16,7 @@ import postcss from 'postcss'
 import postcssPresetEnv from 'postcss-preset-env'
 import ts from 'typescript'
 
+import { productionBuildConcurrency, runBoundedBuilds } from './boundedBuilds.mjs'
 import { chunkLoaderScript, chunkMapFileContents, chunkMapFileName } from './chunkLoader.mjs'
 import { cssLoaderScript, stableCssLoaderScript } from './cssLoader.mjs'
 
@@ -431,14 +432,19 @@ export function reportTopChunks(outputs, { topChunks = 10, topContributors = 5, 
 
 export async function buildInParallel(configs, { onBuildStart, onBuildComplete } = {}) {
     try {
-        await Promise.all(
-            configs.map((config) =>
+        // Dev watchers must all start immediately. Production may opt in to
+        // bounded concurrency to avoid swapping multiple large esbuild graphs
+        // to disk on small local Macs. Unset = original fully parallel mode.
+        const concurrency = isDev ? configs.length : productionBuildConcurrency(configs.length)
+        await runBoundedBuilds(
+            configs,
+            (config) =>
                 buildOrWatch({
                     ...config,
                     onBuildStart,
                     onBuildComplete,
-                })
-            )
+                }),
+            concurrency
         )
     } catch (error) {
         // esbuild already prints its own compile errors, but onBuildStart/onBuildComplete
