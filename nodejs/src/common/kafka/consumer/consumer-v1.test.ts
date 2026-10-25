@@ -243,6 +243,47 @@ describe('consumer', () => {
         })
     })
 
+    describe('rebalance waits for all background work (Wave 92)', () => {
+        const revoked = [{ topic: 'test-topic', partition: 0 }] as any
+
+        it('never unassigns while a later batch is pending after an earlier batch rejects', async () => {
+            const first = triggerablePromise()
+            const second = triggerablePromise()
+            consumer['backgroundTask'] = [
+                { promise: first.promise, createdAt: Date.now() },
+                { promise: second.promise, createdAt: Date.now() },
+            ]
+
+            consumer.rebalanceCallback({ code: CODES.ERRORS.ERR__REVOKE_PARTITIONS } as any, revoked)
+            first.reject(new Error('synthetic earlier batch failed'))
+            await Promise.resolve()
+            expect(mockRdKafkaConsumer.incrementalUnassign).not.toHaveBeenCalled()
+
+            second.resolve()
+            await new Promise<void>((resolve) => setImmediate(resolve))
+            expect(mockRdKafkaConsumer.incrementalUnassign).toHaveBeenCalledTimes(1)
+            expect(mockRdKafkaConsumer.incrementalUnassign).toHaveBeenCalledWith(revoked)
+        })
+
+        it('drains queued offset stores even if completed tasks left no active background entries', async () => {
+            const pending = triggerablePromise()
+            const gate = consumer['offsetCommitGate']
+            const spy = jest.spyOn(gate, 'drain').mockImplementation(() => pending.promise)
+            try {
+                expect(consumer['backgroundTask']).toHaveLength(0)
+                consumer.rebalanceCallback({ code: CODES.ERRORS.ERR__REVOKE_PARTITIONS } as any, revoked)
+                await Promise.resolve()
+                expect(spy).toHaveBeenCalledTimes(1)
+                expect(mockRdKafkaConsumer.incrementalUnassign).not.toHaveBeenCalled()
+                pending.resolve()
+                await new Promise<void>((resolve) => setImmediate(resolve))
+                expect(mockRdKafkaConsumer.incrementalUnassign).toHaveBeenCalledTimes(1)
+            } finally {
+                spy.mockRestore()
+            }
+        })
+    })
+
     describe('offset store failures (Wave 89)', () => {
         const offsets = [{ topic: 'test-topic', partition: 0, offset: 11 }]
 

@@ -37,6 +37,7 @@ import { ensureTopicExists } from '../admin'
 import { getKafkaConfigFromEnv, stripClassicProtocolConfig } from '../config'
 import { parseBrokerStatistics, trackBrokerMetrics } from '../kafka-client-metrics'
 import { OffsetCommitGate } from './offset-commit-gate'
+import { awaitRevocationSafety } from './revocation-safety'
 import { safeKafkaLogContext } from './safe-log-context'
 import {
     consumedBatchBackgroundDuration,
@@ -431,23 +432,36 @@ export class KafkaConsumer {
                 })),
             })
 
-            // Handle background task coordination asynchronously
-            if (this.backgroundTask.length > 0) {
-                // Don't block the rebalance callback, but coordinate in the background
-                Promise.all(this.backgroundTask.map((t) => t.promise))
-                    .then(() => {
+            // Snapshots are local to this revoke. Even if one background batch
+            // fails, wait for all remaining batches, and then wait for queued
+            // ordered offset stores before relinquishing the partitions.
+            // An empty in-flight list can still have a pending offset store.
+            const pendingTasks = this.backgroundTask.map((task) => task.promise)
+            void awaitRevocationSafety(pendingTasks, this.offsetCommitGate)
+                .then(({ failedTasks, offsetGateFailed }) => {
+                    if (failedTasks > 0 || offsetGateFailed) {
+                        logger.error('🔁', 'background_task_error_during_revocation', {
+                            failedTasks,
+                            offsetGateFailed,
+                        })
+                    } else {
                         logger.info('🔁', 'background_tasks_completed_before_partition_revocation')
-                        this.completeRevocation(assignments)
+                    }
+                })
+                .catch((error) => {
+                    // Still revoke after a local drain error; Kafka manages
+                    // partition ownership, while the consumer failure fence
+                    // prohibits subsequent offsets from being acknowledged.
+                    logger.error('🔁', 'offset_gate_drain_failed_during_revocation', {
+                        error: String(error),
                     })
-                    .catch((error) => {
-                        logger.error('🔁', 'background_task_error_during_revocation', { error })
-                        // Still proceed with revocation even if background tasks fail
-                        this.completeRevocation(assignments)
-                    })
-            } else {
-                // No background tasks, proceed immediately
-                this.completeRevocation(assignments)
-            }
+                })
+                .then(() => this.completeRevocation(assignments))
+                .catch((error) => {
+                    captureException(error)
+                    logger.error('🔁', 'partition_revocation_failed', { error: String(error) })
+                    this.resetRebalanceCoordination()
+                })
         } else {
             // Ignore exceptions if we are not connected
             if (this.rdKafkaConsumer.isConnected()) {
