@@ -834,19 +834,34 @@ export class KafkaConsumer {
         if (this.isStopping) {
             return
         }
-        // Mark as stopping - this will also essentially stop the consumer loop
+        // Mark as stopping before waiting, so the consumer loop stops polling.
         this.isStopping = true
 
-        // Wait for background tasks to complete before disconnecting
         logger.info('🔁', 'waiting_for_background_tasks_before_disconnect', {
             backgroundTaskCount: this.backgroundTask.length,
         })
-        await Promise.all(this.backgroundTask.map((t) => t.promise))
-        await this.offsetCommitGate.drain()
+
+        // Promise.all would reject on the first failed task and skip broker
+        // teardown. Wait for all tasks and the Wave 88 offset gate, preserving
+        // failures until after the consumer has been disconnected.
+        const settled = await Promise.allSettled(this.backgroundTask.map((t) => t.promise))
+        const failures: unknown[] = settled
+            .filter((result) => result.status === 'rejected')
+            .map((result) => (result as PromiseRejectedResult).reason)
+
+        try {
+            await this.offsetCommitGate.drain()
+        } catch (error) {
+            failures.push(error)
+        }
+        if (this.offsetCommitGate.failed && failures.length === 0) {
+            failures.push(new Error('Kafka offset commit gate failed during shutdown'))
+        }
 
         logger.info('🔁', 'background_tasks_completed_proceeding_with_disconnect')
 
-        // Allow the in progress consumer loop to finish if possible
+        // Keep the existing consumer-loop error diagnostics, then always attempt
+        // physical broker disconnect even after failed background processing.
         if (this.consumerLoop) {
             await this.consumerLoop.catch((error) => {
                 logger.error('🔁', 'failed to stop consumer loop safely. Continuing shutdown', {
@@ -861,7 +876,17 @@ export class KafkaConsumer {
             })
         }
 
-        await this.disconnectConsumer()
+        try {
+            await this.disconnectConsumer()
+        } catch (error) {
+            failures.push(error)
+        }
+        if (failures.length === 1) {
+            throw failures[0]
+        }
+        if (failures.length > 1) {
+            throw new AggregateError(failures, 'Kafka consumer shutdown failed')
+        }
     }
 
     private async disconnectConsumer(): Promise<void> {

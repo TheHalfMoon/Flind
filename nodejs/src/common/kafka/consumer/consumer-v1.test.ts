@@ -236,6 +236,75 @@ describe('consumer', () => {
         })
     })
 
+    describe('failed background work shutdown (Wave 90)', () => {
+        it('still disconnects the native Kafka client and rethrows the original task error', async () => {
+            const backgroundError = new Error('synthetic failed background task')
+            const task = Promise.reject(backgroundError)
+            consumer['offsetCommitGate'].observe(task, () => {
+                throw new Error('must not store offsets after rejected background task')
+            })
+            consumer['backgroundTask'] = [{ promise: task, createdAt: Date.now() }]
+
+            await expect(consumer.disconnect()).rejects.toBe(backgroundError)
+            expect(mockRdKafkaConsumer.disconnect).toHaveBeenCalledTimes(1)
+        })
+
+        it('waits for every background task before disconnecting after an earlier rejection', async () => {
+            const backgroundError = new Error('synthetic earlier task failed')
+            const failed = Promise.reject(backgroundError)
+            const delayed = triggerablePromise()
+            consumer['offsetCommitGate'].observe(failed, () => undefined)
+            consumer['offsetCommitGate'].observe(delayed.promise, () => undefined)
+            consumer['backgroundTask'] = [
+                { promise: failed, createdAt: Date.now() },
+                { promise: delayed.promise, createdAt: Date.now() },
+            ]
+            const stop = consumer.disconnect()
+            await Promise.resolve()
+            expect(mockRdKafkaConsumer.disconnect).not.toHaveBeenCalled()
+
+            delayed.resolve()
+            await expect(stop).rejects.toBe(backgroundError)
+            expect(mockRdKafkaConsumer.disconnect).toHaveBeenCalledTimes(1)
+        })
+
+        it('closes the client when offsetCommitGate failed but no background tasks remain', async () => {
+            const storageError = new Error('synthetic offsets store rejected')
+            const gate = consumer['offsetCommitGate']
+            gate.observe(Promise.resolve(), () => {
+                throw storageError
+            })
+            await gate.drain()
+
+            await expect(consumer.disconnect()).rejects.toThrow('Kafka offset commit gate failed during shutdown')
+            expect(mockRdKafkaConsumer.disconnect).toHaveBeenCalledTimes(1)
+        })
+
+        it('preserves background and native disconnect failures together', async () => {
+            const backgroundError = new Error('synthetic task failure')
+            const disconnectError = new Error('synthetic broker shutdown failure')
+            const task = Promise.reject(backgroundError)
+            consumer['offsetCommitGate'].observe(task, () => undefined)
+            consumer['backgroundTask'] = [{ promise: task, createdAt: Date.now() }]
+            mockRdKafkaConsumer.disconnect.mockImplementationOnce((cb) => cb(disconnectError))
+
+            let observed: unknown
+            try {
+                await consumer.disconnect()
+            } catch (error) {
+                observed = error
+            }
+            expect(observed).toBeInstanceOf(AggregateError)
+            expect((observed as AggregateError).errors).toEqual([backgroundError, disconnectError])
+            expect(mockRdKafkaConsumer.disconnect).toHaveBeenCalledTimes(1)
+        })
+
+        it('keeps clean shutdown successful with no pending work', async () => {
+            await expect(consumer.disconnect()).resolves.toBeUndefined()
+            expect(mockRdKafkaConsumer.disconnect).toHaveBeenCalledTimes(1)
+        })
+    })
+
     describe('background work', () => {
         /**
          * NOTE: These tests are pretty verbose but also pretty cool! We are using special wrapped promises
