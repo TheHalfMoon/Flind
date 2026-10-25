@@ -1,9 +1,7 @@
+import { LemonMenuItem } from '@flind/lemon-ui'
 import { BreakPointFunction } from 'kea'
 
-import { LemonMenuItem } from '@flind/lemon-ui'
-
 import { FEATURE_FLAGS } from 'lib/constants'
-import { PostHogComDocsURL } from 'lib/lemon-ui/Link/Link'
 import { type FeatureFlagsSet } from 'lib/logic/featureFlagLogic'
 import { getDefaultInterval } from 'lib/utils/dateFilters'
 import { UnexpectedNeverError } from 'lib/utils/guards'
@@ -297,7 +295,7 @@ export interface BaseTile {
 }
 
 export interface Docs {
-    url?: PostHogComDocsURL
+    url?: string
     title: string
     description: string | JSX.Element
 }

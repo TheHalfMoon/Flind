@@ -97,3 +97,37 @@ export function flindDocsSectionUrl(
     url.hash = section
     return url.toString()
 }
+
+/** No arbitrary URL may flow into dashboard "Learn more" links.
+ * Preserve a rendered explanation with no link if Flind docs are absent.
+ */
+export function isOwnedFlindDocsDestination(
+    raw: unknown,
+    hostname: string = ownedHostname,
+    links: LinkConfig = configuredLinks
+): raw is string {
+    if (typeof raw !== 'string' || raw !== raw.trim() || raw.endsWith('#')) {
+        return false
+    }
+    const root = flindPublicUrl('docs', hostname, links)
+    if (!root) {
+        return false
+    }
+    try {
+        const candidate = new URL(raw)
+        const owned = new URL(root)
+        const docsPath = owned.pathname.replace(/\/$/, '')
+        return (
+            candidate.protocol === 'https:' &&
+            candidate.origin === owned.origin &&
+            !candidate.port &&
+            !candidate.username &&
+            !candidate.password &&
+            !candidate.search &&
+            candidate.pathname.startsWith(docsPath + '/') &&
+            (!candidate.hash || /^#[a-z0-9][a-z0-9-]{0,99}$/.test(candidate.hash))
+        )
+    } catch {
+        return false
+    }
+}

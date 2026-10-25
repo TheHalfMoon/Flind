@@ -1,4 +1,4 @@
-import { flindDocsSectionUrl, flindDocsUrl, flindPublicUrl } from './flindPublicLinks'
+import { flindDocsSectionUrl, flindDocsUrl, flindPublicUrl, isOwnedFlindDocsDestination } from './flindPublicLinks'
 
 describe('Flind public help links', () => {
     const ownedHost = 'www.flind.example'
@@ -132,5 +132,40 @@ describe('Flind docs section anchors', () => {
         expect(flindDocsSectionUrl('support/javascript-api', 'user-identification', '', docs)).toBeNull()
         expect(flindDocsSectionUrl('support/javascript-api', 'user-identification', host, {})).toBeNull()
         expect(flindDocsSectionUrl('//evil.com', 'title', host, docs)).toBeNull()
+    })
+})
+
+describe('Web Analytics owned dashboard docs destination admission', () => {
+    const host = 'www.flind.example'
+    const links = { docs: 'https://www.flind.example/docs' }
+
+    it('admits only same-owner docs pages and safe section anchors', () => {
+        expect(
+            isOwnedFlindDocsDestination('https://www.flind.example/docs/web-analytics/dashboard#paths', host, links)
+        ).toBe(true)
+        expect(isOwnedFlindDocsDestination('https://www.flind.example/docs/error-tracking', host, links)).toBe(true)
+    })
+
+    it.each([
+        'https://posthog.com/docs/web-analytics/dashboard',
+        'https://www.flind.example.evil.com/docs/paths',
+        'https://www.flind.example:8443/docs/paths',
+        'http://www.flind.example/docs/paths',
+        'https://www.flind.example/docs-extra/paths',
+        'https://www.flind.example/docs',
+        'https://www.flind.example/docs/paths?redirect=evil',
+        'https://www.flind.example/docs/paths#x?evil',
+        'https://www.flind.example/docs/paths#',
+        'https://user:password@www.flind.example/docs/paths',
+        '',
+    ])('refuses unowned or unsafe docs destination %s', (value) => {
+        expect(isOwnedFlindDocsDestination(value, host, links)).toBe(false)
+    })
+
+    it('rejects missing config and malformed non-string input', () => {
+        expect(isOwnedFlindDocsDestination('https://www.flind.example/docs/paths', host, {})).toBe(false)
+        expect(isOwnedFlindDocsDestination('https://www.flind.example/docs/paths', '', links)).toBe(false)
+        expect(isOwnedFlindDocsDestination(12, host, links)).toBe(false)
+        expect(isOwnedFlindDocsDestination(null, host, links)).toBe(false)
     })
 })

@@ -1,3 +1,5 @@
+import { LemonMenuItem } from '@flind/lemon-ui'
+import { errorTrackingQuery } from '@flind/products-error-tracking/frontend/queries'
 import {
     LogicWrapper,
     key,
@@ -21,13 +23,13 @@ import { windowValues } from 'kea-window-values'
 import posthog from 'posthog-js'
 
 import { IconGear } from '@posthog/icons'
-import { LemonMenuItem } from '@flind/lemon-ui'
-import { errorTrackingQuery } from '@flind/products-error-tracking/frontend/queries'
 
 import api from 'lib/api'
 import { AuthorizedUrlListType, authorizedUrlListLogic } from 'lib/components/AuthorizedUrlList/authorizedUrlListLogic'
+import { FlindDocsLink } from 'lib/components/FlindDocsLink/FlindDocsLink'
 import { SetupTaskId, globalSetupLogic } from 'lib/components/ProductSetup'
 import { FEATURE_FLAGS, RETENTION_FIRST_OCCURRENCE_MATCHING_FILTERS } from 'lib/constants'
+import { flindDocsSectionUrl, flindDocsUrl } from 'lib/flindPublicLinks'
 import { IconOpenInNew } from 'lib/lemon-ui/icons'
 import { LemonButton } from 'lib/lemon-ui/LemonButton'
 import { Link } from 'lib/lemon-ui/Link/Link'
@@ -2253,7 +2255,9 @@ export const webAnalyticsLogic: LogicWrapper<webAnalyticsLogicType> = kea<webAna
                                           {
                                               ...pathTabExtras,
                                               docs: {
-                                                  url: 'https://posthog.com/docs/web-analytics/dashboard#paths',
+                                                  url:
+                                                      flindDocsSectionUrl('web-analytics/dashboard', 'paths') ??
+                                                      undefined,
                                                   title: 'Paths',
                                                   description: (
                                                       <div>
@@ -2270,9 +2274,12 @@ export const webAnalyticsLogic: LogicWrapper<webAnalyticsLogicType> = kea<webAna
                                                           ) : (
                                                               <p>
                                                                   The{' '}
-                                                                  <Link to="https://posthog.com/docs/web-analytics/dashboard#bounce-rate">
+                                                                  <FlindDocsLink
+                                                                      path="web-analytics/dashboard"
+                                                                      section="bounce-rate"
+                                                                  >
                                                                       bounce rate
-                                                                  </Link>{' '}
+                                                                  </FlindDocsLink>{' '}
                                                                   indicates the percentage of users who left your page
                                                                   immediately after visiting without capturing any
                                                                   event.
@@ -2300,7 +2307,9 @@ export const webAnalyticsLogic: LogicWrapper<webAnalyticsLogicType> = kea<webAna
                                           {
                                               ...pathTabExtras,
                                               docs: {
-                                                  url: 'https://posthog.com/docs/web-analytics/dashboard#paths',
+                                                  url:
+                                                      flindDocsSectionUrl('web-analytics/dashboard', 'paths') ??
+                                                      undefined,
                                                   title: 'Entry Path',
                                                   description: (
                                                       <div>
@@ -2335,7 +2344,9 @@ export const webAnalyticsLogic: LogicWrapper<webAnalyticsLogicType> = kea<webAna
                                           {
                                               ...pathTabExtras,
                                               docs: {
-                                                  url: 'https://posthog.com/docs/web-analytics/dashboard#paths',
+                                                  url:
+                                                      flindDocsSectionUrl('web-analytics/dashboard', 'paths') ??
+                                                      undefined,
                                                   title: 'End Path',
                                                   description: (
                                                       <div>
@@ -2436,7 +2447,7 @@ export const webAnalyticsLogic: LogicWrapper<webAnalyticsLogicType> = kea<webAna
                                               ),
                                           }),
                                     docs: {
-                                        url: 'https://posthog.com/docs/data/channel-type',
+                                        url: flindDocsUrl('data/channel-type') ?? undefined,
                                         title: 'Channels',
                                         description: (
                                             <div>
@@ -2473,7 +2484,9 @@ export const webAnalyticsLogic: LogicWrapper<webAnalyticsLogicType> = kea<webAna
                                 {},
                                 {
                                     docs: {
-                                        url: 'https://posthog.com/docs/web-analytics/dashboard#channels-referrers-utms',
+                                        url:
+                                            flindDocsSectionUrl('web-analytics/dashboard', 'channels-referrers-utms') ??
+                                            undefined,
                                         title: 'Referrers',
                                         description: 'Understand where your users are coming from',
                                     },
@@ -2490,7 +2503,11 @@ export const webAnalyticsLogic: LogicWrapper<webAnalyticsLogicType> = kea<webAna
                                           {},
                                           {
                                               docs: {
-                                                  url: 'https://posthog.com/docs/web-analytics/dashboard#channels-referrers-utms',
+                                                  url:
+                                                      flindDocsSectionUrl(
+                                                          'web-analytics/dashboard',
+                                                          'channels-referrers-utms'
+                                                      ) ?? undefined,
                                                   title: 'Referrer URLs',
                                                   description:
                                                       'Full referring URLs (without query parameters) showing where your users came from',
@@ -2508,7 +2525,7 @@ export const webAnalyticsLogic: LogicWrapper<webAnalyticsLogicType> = kea<webAna
                                 {},
                                 {
                                     docs: {
-                                        url: 'https://posthog.com/docs/web-analytics/dashboard#utms',
+                                        url: flindDocsSectionUrl('web-analytics/dashboard', 'utms') ?? undefined,
                                         title: 'UTM source',
                                         description: (
                                             <>
@@ -2528,7 +2545,7 @@ export const webAnalyticsLogic: LogicWrapper<webAnalyticsLogicType> = kea<webAna
                                 {},
                                 {
                                     docs: {
-                                        url: 'https://posthog.com/docs/web-analytics/dashboard#utms',
+                                        url: flindDocsSectionUrl('web-analytics/dashboard', 'utms') ?? undefined,
                                         title: 'UTM medium',
                                         description: (
                                             <>
@@ -2548,7 +2565,7 @@ export const webAnalyticsLogic: LogicWrapper<webAnalyticsLogicType> = kea<webAna
                                 {},
                                 {
                                     docs: {
-                                        url: 'https://posthog.com/docs/web-analytics/dashboard#utms',
+                                        url: flindDocsSectionUrl('web-analytics/dashboard', 'utms') ?? undefined,
                                         title: 'UTM campaign',
                                         description: (
                                             <>
@@ -2568,7 +2585,7 @@ export const webAnalyticsLogic: LogicWrapper<webAnalyticsLogicType> = kea<webAna
                                 {},
                                 {
                                     docs: {
-                                        url: 'https://posthog.com/docs/web-analytics/dashboard#utms',
+                                        url: flindDocsSectionUrl('web-analytics/dashboard', 'utms') ?? undefined,
                                         title: 'UTM content',
                                         description: (
                                             <>
@@ -2588,7 +2605,7 @@ export const webAnalyticsLogic: LogicWrapper<webAnalyticsLogicType> = kea<webAna
                                 {},
                                 {
                                     docs: {
-                                        url: 'https://posthog.com/docs/web-analytics/dashboard#utms',
+                                        url: flindDocsSectionUrl('web-analytics/dashboard', 'utms') ?? undefined,
                                         title: 'UTM term',
                                         description: (
                                             <>
@@ -2608,7 +2625,7 @@ export const webAnalyticsLogic: LogicWrapper<webAnalyticsLogicType> = kea<webAna
                                 {},
                                 {
                                     docs: {
-                                        url: 'https://posthog.com/docs/web-analytics/dashboard#utms',
+                                        url: flindDocsSectionUrl('web-analytics/dashboard', 'utms') ?? undefined,
                                         title: 'UTM parameters',
                                         description: (
                                             <>
@@ -2806,7 +2823,7 @@ export const webAnalyticsLogic: LogicWrapper<webAnalyticsLogicType> = kea<webAna
                               },
                               query: errorTrackingQ,
                               docs: {
-                                  url: 'https://posthog.com/docs/error-tracking',
+                                  url: flindDocsUrl('error-tracking') ?? undefined,
                                   title: 'Error Tracking',
                                   description: (
                                       <>
@@ -2861,7 +2878,7 @@ export const webAnalyticsLogic: LogicWrapper<webAnalyticsLogicType> = kea<webAna
                         canOpenInsight: true,
                         canOpenModal: true,
                         docs: {
-                            url: 'https://posthog.com/docs/web-analytics/dashboard#retention',
+                            url: flindDocsSectionUrl('web-analytics/dashboard', 'retention') ?? undefined,
                             title: 'Retention',
                             description: (
                                 <>
@@ -2925,7 +2942,7 @@ export const webAnalyticsLogic: LogicWrapper<webAnalyticsLogicType> = kea<webAna
                                     },
                                 },
                                 docs: {
-                                    url: 'https://posthog.com/docs/web-analytics/dashboard#active-hours',
+                                    url: flindDocsSectionUrl('web-analytics/dashboard', 'active-hours') ?? undefined,
                                     title: 'Active hours - Unique users',
                                     description: (
                                         <>
@@ -2989,7 +3006,7 @@ export const webAnalyticsLogic: LogicWrapper<webAnalyticsLogicType> = kea<webAna
                                     },
                                 },
                                 docs: {
-                                    url: 'https://posthog.com/docs/web-analytics/dashboard#active-hours',
+                                    url: flindDocsSectionUrl('web-analytics/dashboard', 'active-hours') ?? undefined,
                                     title: 'Active hours - Total pageviews',
                                     description: (
                                         <>
@@ -3075,7 +3092,7 @@ export const webAnalyticsLogic: LogicWrapper<webAnalyticsLogicType> = kea<webAna
                               ]
                             : undefined,
                         docs: {
-                            url: 'https://posthog.com/docs/web-analytics/dashboard#goals',
+                            url: flindDocsSectionUrl('web-analytics/dashboard', 'goals') ?? undefined,
                             title: 'Goals',
                             description: (
                                 <>
@@ -3083,9 +3100,9 @@ export const webAnalyticsLogic: LogicWrapper<webAnalyticsLogicType> = kea<webAna
                                         <p>
                                             Goals shows your pinned or most recently created actions and the number of
                                             conversions they've had. You can set a custom event or action as a{' '}
-                                            <Link to="https://posthog.com/docs/web-analytics/conversion-goals">
+                                            <FlindDocsLink path="web-analytics/conversion-goals">
                                                 conversion goal
-                                            </Link>{' '}
+                                            </FlindDocsLink>{' '}
                                             at the top of the dashboard for more specific metrics.
                                         </p>
                                     </div>
@@ -3103,7 +3120,7 @@ export const webAnalyticsLogic: LogicWrapper<webAnalyticsLogicType> = kea<webAna
                                       : 'md:col-span-2 2xl:col-span-1',
                               },
                               docs: {
-                                  url: 'https://posthog.com/docs/session-replay',
+                                  url: flindDocsUrl('session-replay') ?? undefined,
                                   title: 'Session Replay',
                                   description:
                                       'Play back sessions to diagnose UI issues, improve support, and get context for nuanced user behavior.',

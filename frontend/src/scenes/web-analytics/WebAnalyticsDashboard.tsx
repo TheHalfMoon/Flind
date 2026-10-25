@@ -1,9 +1,9 @@
+import { LemonSegmentedButton, LemonSegmentedDropdown, LemonSelect, LemonSkeleton } from '@flind/lemon-ui'
 import clsx from 'clsx'
 import { BindLogic, useActions, useMountedLogic, useValues } from 'kea'
 import React, { Suspense, useEffect, useState } from 'react'
 
 import { IconExpand45, IconInfo, IconLineGraph, IconOpenSidebar, IconX } from '@posthog/icons'
-import { LemonSegmentedButton, LemonSegmentedDropdown, LemonSelect, LemonSkeleton } from '@flind/lemon-ui'
 
 import { IntervalFilterStandalone } from 'lib/components/IntervalFilter/IntervalFilter'
 import { ProductIntroduction } from 'lib/components/ProductIntroduction/ProductIntroduction'
@@ -11,6 +11,7 @@ import { SetupTaskId, globalSetupLogic } from 'lib/components/ProductSetup'
 import { keyBinds } from 'lib/components/Shortcuts/shortcuts'
 import { useShortcut } from 'lib/components/Shortcuts/useShortcut'
 import { FEATURE_FLAGS } from 'lib/constants'
+import { isOwnedFlindDocsDestination } from 'lib/flindPublicLinks'
 import { useOnMountEffect } from 'lib/hooks/useOnMountEffect'
 import { IconOpenInNew, IconTableChart } from 'lib/lemon-ui/icons'
 import { LemonBanner } from 'lib/lemon-ui/LemonBanner'
@@ -18,7 +19,7 @@ import { LemonButton } from 'lib/lemon-ui/LemonButton'
 import { LemonDivider } from 'lib/lemon-ui/LemonDivider'
 import { LemonTabs } from 'lib/lemon-ui/LemonTabs'
 import { LemonTag } from 'lib/lemon-ui/LemonTag'
-import { Link, PostHogComDocsURL } from 'lib/lemon-ui/Link/Link'
+import { Link } from 'lib/lemon-ui/Link/Link'
 import { Popover } from 'lib/lemon-ui/Popover'
 import { FeatureFlagsSet, featureFlagLogic } from 'lib/logic/featureFlagLogic'
 import { isNotNil } from 'lib/utils/guards'
@@ -602,13 +603,14 @@ export const SectionTileItem = ({ tile, separator }: { tile: SectionTile; separa
 }
 
 export interface LearnMorePopoverProps {
-    url?: PostHogComDocsURL
+    url?: string
     title: string
     description: string | JSX.Element
 }
 
 export const LearnMorePopover = ({ url, title, description }: LearnMorePopoverProps): JSX.Element => {
     const [isOpen, setIsOpen] = useState(false)
+    const ownedDocsUrl = isOwnedFlindDocsDestination(url) ? url : undefined
 
     return (
         <Popover
@@ -627,10 +629,10 @@ export const LearnMorePopover = ({ url, title, description }: LearnMorePopoverPr
                         />
                     </div>
                     <div className="text-sm text-gray-700 dark:text-white">{description}</div>
-                    {url && (
+                    {ownedDocsUrl && (
                         <div className="flex justify-end mt-4">
                             <LemonButton
-                                to={url}
+                                to={ownedDocsUrl}
                                 onClick={() => setIsOpen(false)}
                                 targetBlank={true}
                                 sideIcon={<IconOpenSidebar />}
