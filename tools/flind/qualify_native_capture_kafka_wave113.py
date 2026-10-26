@@ -16,6 +16,7 @@ import subprocess
 import tempfile
 import time
 from uuid import uuid4
+from collections.abc import Callable
 
 from tools.flind.qualify_ephemeral_kafka_wave84 import (
     kafka_paths, qualify_kafka,
@@ -65,7 +66,7 @@ def run_cli(args: list[str], env: dict[str, str], *, timeout: int) -> subprocess
                           timeout=timeout, check=False)
 
 
-def real_native_roundtrip(bootstrap: str, kafka_home: Path) -> dict:
+def real_native_roundtrip(bootstrap: str, kafka_home: Path, *, on_native_consumed: Callable[[str, dict], dict] | None = None) -> dict:
     receipt = refused("Native Rust -> Kafka event unavailable")
     if not CAPTURE.is_file() or not REDIS.is_file():
         receipt["blocker"] = "Native Capture or Redis binary missing"
@@ -193,6 +194,13 @@ def real_native_roundtrip(bootstrap: str, kafka_home: Path) -> dict:
                 )
                 if receipt["actual_native_capture_kafka_roundtrip"]:
                     receipt.pop("blocker", None)
+                    # Keep this callback behind a real UUID-matched Kafka
+                    # consumer receipt; never promote an unverified record.
+                    if on_native_consumed is not None:
+                        downstream = on_native_consumed(bootstrap, event)
+                        if not isinstance(downstream, dict):
+                            raise ValueError("Invalid native-consumed Kafka callback receipt")
+                        receipt["native_downstream_probe"] = downstream
                 return receipt
         except (OSError, ValueError, subprocess.TimeoutExpired, json.JSONDecodeError):
             receipt["blocker"] = "Bounded native Capture Kafka proof unavailable"
