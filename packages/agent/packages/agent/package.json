@@ -4,10 +4,10 @@
   "version": "0.0.0-dev",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/PostHog/posthog.git",
+    "url": "git+https://github.com/TheHalfMoon/Flind.git",
     "directory": "packages/agent/packages/agent"
   },
-  "description": "TypeScript agent framework wrapping Claude Agent SDK with Git-based task execution for PostHog",
+  "description": "Flind TypeScript agent framework for Git-based task execution, powered by the Claude Agent SDK",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -151,7 +151,7 @@
     "git",
     "typescript"
   ],
-  "author": "PostHog",
+  "author": "Flind Contributors",
   "license": "MIT",
   "scripts": {
     "build": "node ../../scripts/rimraf.mjs dist && tsup && pnpm build:types && node build/verify-local-tools-mcp-server.mjs",

@@ -2,8 +2,8 @@
   "name": "@flind/code",
     "private": true,
   "version": "0.0.0-dev",
-  "description": "PostHog - the agentic workspace for product builders",
-  "homepage": "https://posthog.com/desktop",
+  "description": "Flind — agentic workspace for product builders",
+  "homepage": "https://github.com/TheHalfMoon/Flind",
   "main": ".vite/build/bootstrap.js",
   "versionHash": "dynamic",
   "engines": {
@@ -42,7 +42,7 @@
     "tasks",
     "developer-tools"
   ],
-  "author": "PostHog <eng@posthog.com>",
+  "author": "Flind Contributors",
   "license": "MIT",
   "devDependencies": {
     "@playwright/test": "^1.60.0",
