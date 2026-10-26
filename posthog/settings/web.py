@@ -1457,10 +1457,10 @@ DEV_GATEWAY_TOKEN_TTL_SECONDS = get_from_env("DEV_GATEWAY_TOKEN_TTL_SECONDS", 8 
 DEV_GATEWAY_DAILY_CAP_USD = get_from_env("DEV_GATEWAY_DAILY_CAP_USD", "50")
 DEV_GATEWAY_MINTS_PER_HOUR = get_from_env("DEV_GATEWAY_MINTS_PER_HOUR", 20, type_cast=int)
 
-# Users who joined PostHog at or after this ISO 8601 instant cannot use Desktop while the
-# posthog-desktop-signup-gate flag is on for them, unless posthog-desktop-access-override matches
-# them. An empty value turns the signup gate off.
-DESKTOP_SIGNUP_CUTOFF = get_from_env("DESKTOP_SIGNUP_CUTOFF", "" if TEST else "2026-10-01T00:00:00+00:00")
+# No donor rollout cutoff is inherited by a fresh Flind installation.
+# Operators can explicitly configure their own ISO 8601 cutoff to enable the
+# existing feature-flag-gated signup restriction. Empty means no cutoff.
+DESKTOP_SIGNUP_CUTOFF = get_from_env("DESKTOP_SIGNUP_CUTOFF", "")
 
 # Exact MCP endpoints that operators explicitly allow the MCP Store to reach even
 # when normal SSRF validation rejects their private/internal address. This is an
