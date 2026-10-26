@@ -76,6 +76,9 @@ struct WorkerHealth {
     /// When the worker entered Unhealthy. None if the worker is not currently Unhealthy.
     unhealthy_since: Option<Instant>,
     consecutive_probe_failures: u32,
+    /// Startup routing health is optimistic; the API readiness requires a
+    /// successful real HTTP probe before exposing this worker.
+    seen_successful_probe: bool,
     /// Rolling window of passive send outcomes: (timestamp, is_error).
     /// Always appended in chronological order so the head is always the oldest entry.
     passive_window: VecDeque<(Instant, bool)>,
@@ -94,6 +97,7 @@ impl WorkerHealth {
             state_entered_at: Instant::now(),
             unhealthy_since: None,
             consecutive_probe_failures: 0,
+            seen_successful_probe: false,
             passive_window: VecDeque::new(),
             drain_deadline: None,
         }
@@ -330,6 +334,12 @@ impl WorkerRegistry {
 
     /// Current state of a worker. An unknown worker (already removed from the
     /// pool) reports `Unhealthy` so callers never route to it.
+    pub fn has_verified_routable_worker(&self) -> bool {
+        self.workers.iter().any(|entry| {
+            entry.value().seen_successful_probe && entry.value().is_routable()
+        })
+    }
+
     pub fn state(&self, worker: &str) -> WorkerState {
         self.workers
             .get(worker)
@@ -535,6 +545,7 @@ impl WorkerRegistry {
         }
 
         if is_success {
+            health.seen_successful_probe = true;
             health.consecutive_probe_failures = 0;
 
             let new_state = match health.state {
@@ -608,6 +619,32 @@ mod tests {
     }
 
     // --- Passive signal transitions ---
+
+    #[test]
+    fn test_readiness_requires_verified_routable_worker() {
+        let registry = WorkerRegistry::new(&one_worker(), no_cooldown_config());
+        // A new worker is optimistically Healthy for routing, not verified.
+        assert_eq!(registry.state(W1), WorkerState::Healthy);
+        assert!(!registry.has_verified_routable_worker());
+        {
+            let mut worker = registry.workers.get_mut(W1).unwrap();
+            worker.seen_successful_probe = true;
+        }
+        assert!(registry.has_verified_routable_worker());
+        {
+            let mut worker = registry.workers.get_mut(W1).unwrap();
+            worker.state = WorkerState::Unhealthy;
+        }
+        assert!(!registry.has_verified_routable_worker());
+        registry.remove_worker(W1);
+        assert!(!registry.has_verified_routable_worker());
+    }
+
+    #[test]
+    fn test_no_workers_cannot_make_ingestion_ready() {
+        let registry = WorkerRegistry::new(&[], no_cooldown_config());
+        assert!(!registry.has_verified_routable_worker());
+    }
 
     #[test]
     fn test_passive_healthy_to_degraded() {

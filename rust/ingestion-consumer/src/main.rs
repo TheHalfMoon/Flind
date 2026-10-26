@@ -331,9 +331,20 @@ async fn async_main(config: Config) -> Result<()> {
             "/_readiness",
             get({
                 let r = readiness.clone();
+                let worker_registry = Arc::clone(&registry);
                 move || {
                     let r = r.clone();
-                    async move { r.check().await }
+                    let worker_registry = Arc::clone(&worker_registry);
+                    async move {
+                        // The shared lifecycle readiness checks only shutdown.
+                        // A newly configured worker starts optimistically Healthy
+                        // for routing, but has not accepted a real /_ready probe.
+                        // Never advertise readiness before one is verified.
+                        if !worker_registry.has_verified_routable_worker() {
+                            return axum::http::StatusCode::SERVICE_UNAVAILABLE;
+                        }
+                        r.check().await
+                    }
                 }
             }),
         )
