@@ -31,7 +31,9 @@ const SIGNING_ALGORITHM = 'RS256'
 
 type KeySlot = 'active' | 'inactive_1' | 'inactive_2'
 
-const keyCache = new Map<KeySlot, Promise<ProxyKey>>()
+// Cache by both key slot and exact normalized PEM, so key rotation within a
+// long-lived worker isolate never reuses the previous private signing key.
+const keyCache = new Map<KeySlot, { normalizedPem: string; pending: Promise<ProxyKey> }>()
 
 const regionalJwks = new Map<Region, ReturnType<typeof createRemoteJWKSet>>()
 
@@ -41,12 +43,11 @@ function normalizePem(raw: string): string {
 }
 
 async function loadKey(slot: KeySlot, pem: string): Promise<ProxyKey> {
-    const cached = keyCache.get(slot)
-    if (cached) {
-        return cached
-    }
-
     const normalized = normalizePem(pem)
+    const cached = keyCache.get(slot)
+    if (cached?.normalizedPem === normalized) {
+        return cached.pending
+    }
 
     const loading = (async (): Promise<ProxyKey> => {
         // Exportable because the public half of this key has to be derived for the JWKS document.
@@ -57,7 +58,7 @@ async function loadKey(slot: KeySlot, pem: string): Promise<ProxyKey> {
         return { privateKey, publicJwk, kid }
     })()
 
-    keyCache.set(slot, loading)
+    keyCache.set(slot, { normalizedPem: normalized, pending: loading })
     return loading
 }
 
