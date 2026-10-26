@@ -8,7 +8,6 @@ import {
     IngestStreamRequest,
     IngestStreamResponse,
     IngestStreamResponseSchema,
-    KafkaMessage,
     MessageRefSchema,
     StreamHello,
     StreamReadySchema,
@@ -22,6 +21,7 @@ import { FeedResult } from '~/ingestion/framework/batching-pipeline'
 
 import { AcceptedBatch, batchAccepted, batchFailed, batchProcessed, batchReleased } from './batch-metrics'
 import { FeedOrderSentinel } from './feed-order-sentinel'
+import { grpcMessageToSerialized } from './grpc-message-converter'
 import { SerializedKafkaMessage } from './types'
 
 const grpcStreams = new Gauge({
@@ -290,17 +290,8 @@ interface StreamState {
     acks: AckQueue
 }
 
-export function grpcMessageToSerialized(message: KafkaMessage): SerializedKafkaMessage {
-    return {
-        topic: message.topic,
-        partition: message.partition,
-        offset: Number(message.offset),
-        timestamp: Number(message.timestamp),
-        key: message.key ?? null,
-        value: message.value ?? null,
-        headers: message.headers,
-    }
-}
+// Retain the existing public export for callers using the gRPC server module.
+export { grpcMessageToSerialized } from './grpc-message-converter'
 
 function readyFrame(): IngestStreamResponse {
     return create(IngestStreamResponseSchema, {
