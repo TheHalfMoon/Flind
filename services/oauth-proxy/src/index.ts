@@ -126,7 +126,7 @@ export default {
             }
 
             if (normalized === '') {
-                return new Response('PostHog OAuth Proxy - https://posthog.com/docs/api/oauth', {
+                return new Response('Flind OAuth Proxy', {
                     headers: { 'Content-Type': 'text/plain' },
                 })
             }

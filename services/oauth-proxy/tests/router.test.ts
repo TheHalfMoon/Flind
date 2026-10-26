@@ -84,7 +84,7 @@ describe('router', () => {
         const request = new Request('https://oauth.posthog.com/')
         const response = await worker.fetch(request, mockEnv)
         const text = await response.text()
-        expect(text).toContain('PostHog OAuth Proxy')
+        expect(text).toBe('Flind OAuth Proxy')
     })
 
     it('catches async handler rejections and returns 500 instead of crashing', async () => {

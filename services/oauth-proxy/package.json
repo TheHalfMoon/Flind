@@ -2,16 +2,15 @@
     "name": "@flind/auth-proxy",
     "private": true,
     "version": "1.0.0",
-    "description": "Cross-region OAuth proxy for PostHog Cloud (oauth.posthog.com)",
+    "description": "Flind regional OAuth proxy — upstream host migration pending",
     "keywords": [
         "auth",
         "multi-region",
         "oauth",
-        "posthog",
         "proxy"
     ],
     "license": "MIT",
-    "author": "PostHog Inc.",
+    "author": "Flind Contributors",
     "scripts": {
         "dev": "wrangler dev",
         "deploy": "wrangler deploy",
