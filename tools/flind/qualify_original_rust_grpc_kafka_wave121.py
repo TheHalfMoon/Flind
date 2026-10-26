@@ -28,6 +28,14 @@ TESTS = (
     "a_partial_ack_redelivers_only_the_unfinished_messages",
     "consumer_crash_before_commit_redelivers_without_loss",
 )
+# Wave122 expands only the approved original test-name allowlist; the
+# Wave121 default still runs the original three and remains backwards-safe.
+FAILURE_CASES = (
+    "lost_ack_after_processing_replays_without_loss",
+    "poison_batch_fails_safely_without_committing",
+    "partial_acceptance_fails_the_batch_without_commit",
+)
+APPROVED_CASES = (*TESTS, *FAILURE_CASES)
 ORIGINAL_ENDPOINT = 'const KAFKA_BROKERS: &str = "localhost:9092";'
 PRODUCT_SOURCES = (
     "rust/ingestion-consumer/src/consumer.rs",
@@ -67,7 +75,7 @@ def smoke(bootstrap: str, *, tests: tuple[str, ...] = TESTS) -> dict:
     # Fixed original test-name allowlist: no command argument injection or
     # accidental execution of broad/long-running integration suites.
     if not tests or len(tests) > len(TESTS) or len(set(tests)) != len(tests) or any(
-        name not in TESTS for name in tests
+        name not in APPROVED_CASES for name in tests
     ):
         return {**result, "blocker": "Unapproved Rust integration test selection"}
     if shutil.disk_usage("/tmp").free < MIN_DISK:
