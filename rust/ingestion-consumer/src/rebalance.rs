@@ -1,6 +1,7 @@
 //! The consumer's rdkafka context: rebalance callbacks into hooks, plus rebalance counters and client statistics.
 
-use std::sync::OnceLock;
+use std::sync::atomic::{AtomicUsize, Ordering};
+use std::sync::{Arc, OnceLock};
 
 use common_kafka_consumer::TopicPartition;
 use metrics::counter;
@@ -16,6 +17,9 @@ pub type PartitionHook = Box<dyn Fn(&[TopicPartition]) + Send + Sync>;
 pub struct RebalanceContext {
     on_revoke: OnceLock<PartitionHook>,
     on_assign: OnceLock<PartitionHook>,
+    // The lifecycle health route cannot infer Kafka group assignment from
+    // a configured broker address. Publish actual rebalance assignment size.
+    assigned_partitions: Arc<AtomicUsize>,
 }
 
 impl RebalanceContext {
@@ -24,6 +28,10 @@ impl RebalanceContext {
     }
 
     /// Settable after construction because the rdkafka consumer only hands out `&self`.
+    pub fn assignment_count_handle(&self) -> Arc<AtomicUsize> {
+        Arc::clone(&self.assigned_partitions)
+    }
+
     pub fn set_on_revoke(&self, hook: PartitionHook) {
         let _ = self.on_revoke.set(hook);
     }
@@ -70,6 +78,7 @@ impl ConsumerContext for RebalanceContext {
     fn pre_rebalance(&self, _consumer: &BaseConsumer<Self>, rebalance: &Rebalance) {
         match rebalance {
             Rebalance::Revoke(tpl) => {
+                self.assigned_partitions.store(0, Ordering::Release);
                 counter!("ingestion_consumer_rebalances_total", "event" => "revoke").increment(1);
                 let partitions = topic_partitions(tpl);
                 info!(
@@ -83,6 +92,7 @@ impl ConsumerContext for RebalanceContext {
             }
             Rebalance::Assign(_) => {}
             Rebalance::Error(err) => {
+                self.assigned_partitions.store(0, Ordering::Release);
                 counter!("ingestion_consumer_rebalances_total", "event" => "error").increment(1);
                 warn!(error = %err, "Rebalance error");
             }
@@ -106,6 +116,7 @@ impl ConsumerContext for RebalanceContext {
             if let Some(hook) = self.on_assign.get() {
                 hook(&partitions);
             }
+            self.assigned_partitions.store(partitions.len(), Ordering::Release);
         }
     }
 
@@ -159,12 +170,16 @@ mod tests {
         tpl.add_partition("events", 1);
         tpl.add_partition("events", 0);
 
+        let assignments = consumer.context().assignment_count_handle();
+        assert_eq!(assignments.load(Ordering::Acquire), 0);
         consumer
             .context()
             .pre_rebalance(&consumer, &Rebalance::Revoke(&tpl));
+        assert_eq!(assignments.load(Ordering::Acquire), 0);
         consumer
             .context()
             .post_rebalance(&consumer, &Rebalance::Assign(&tpl));
+        assert_eq!(assignments.load(Ordering::Acquire), 2);
 
         let expected = vec![
             TopicPartition::new("events", 0),
@@ -172,6 +187,12 @@ mod tests {
         ];
         assert_eq!(*revoked.lock().unwrap(), expected);
         assert_eq!(*assigned.lock().unwrap(), expected);
+        // Revoke again after inspecting hook call counts: the atomic
+        // readiness signal must drop back to zero on lost assignment.
+        consumer
+            .context()
+            .pre_rebalance(&consumer, &Rebalance::Revoke(&tpl));
+        assert_eq!(assignments.load(Ordering::Acquire), 0);
     }
 
     #[test]

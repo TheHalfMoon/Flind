@@ -49,6 +49,7 @@ def probe_worker(available: bool) -> dict:
         "liveness_always_200": False,
         "unverified_worker_not_ready": False,
         "verified_worker_eventually_ready": False,
+        "verified_worker_without_kafka_stays_not_ready": False,
         "native_consumer_child_stopped": False,
         "fake_worker_server_stopped": False,
         "kafka_connectivity_qualified": False,
@@ -131,6 +132,9 @@ def probe_worker(available: bool) -> dict:
                     result["verified_worker_eventually_ready"] = bool(statuses) and any(
                         x[1] == 200 for x in statuses
                     ) if available else False
+                    result["verified_worker_without_kafka_stays_not_ready"] = (
+                        bool(statuses) and all(x[1] == 503 for x in statuses)
+                    ) if available else False
                     result["sample_count"] = len(statuses)
                     result["observed_readiness_codes"] = sorted(set(x[1] for x in statuses))
             except (OSError, subprocess.SubprocessError):
@@ -157,7 +161,7 @@ def qualify() -> dict:
         and absent["fake_worker_server_stopped"]
         and verified["real_native_health_server_bound"]
         and verified["liveness_always_200"]
-        and verified["verified_worker_eventually_ready"]
+        and verified["verified_worker_without_kafka_stays_not_ready"]
         and verified["native_consumer_child_stopped"]
         and verified["fake_worker_server_stopped"]
     )

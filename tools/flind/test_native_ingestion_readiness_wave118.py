@@ -18,9 +18,11 @@ class NativeConsumerReadinessWave118(unittest.TestCase):
         self.assertTrue(bad["liveness_always_200"])
         self.assertTrue(bad["unverified_worker_not_ready"])
         self.assertEqual(bad["observed_readiness_codes"], [503])
-        self.assertTrue(good["verified_worker_eventually_ready"])
-        self.assertIn(503, good["observed_readiness_codes"])
-        self.assertIn(200, good["observed_readiness_codes"])
+        # Wave120 adds the Kafka partition assignment guard: synthetic HTTP
+        # worker ready alone must never promote native consumer readiness.
+        self.assertFalse(good["verified_worker_eventually_ready"])
+        self.assertTrue(good["verified_worker_without_kafka_stays_not_ready"])
+        self.assertEqual(good["observed_readiness_codes"], [503])
         self.assertTrue(good["liveness_always_200"])
         self.assertGreaterEqual(bad["sample_count"], 3)
         for receipt in (bad, good):

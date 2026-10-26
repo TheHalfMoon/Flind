@@ -1,4 +1,5 @@
-use std::sync::Arc;
+use std::sync::atomic::{AtomicUsize, Ordering};
+use std::sync::{Arc, OnceLock};
 use std::time::Duration;
 
 use anyhow::{Context, Result};
@@ -122,6 +123,9 @@ async fn async_main(config: Config) -> Result<()> {
         manager.register("metrics", ComponentOptions::new().is_observability(true));
 
     let readiness = manager.readiness_handler();
+    // The HTTP server starts before the Kafka consumer is constructed. Keep
+    // readiness at 503 until the consumer exposes a live partition assignment.
+    let kafka_assignment = Arc::new(OnceLock::<Arc<AtomicUsize>>::new());
     let liveness = manager.liveness_handler();
 
     // Install Prometheus recorder with custom histogram buckets matching the
@@ -332,15 +336,20 @@ async fn async_main(config: Config) -> Result<()> {
             get({
                 let r = readiness.clone();
                 let worker_registry = Arc::clone(&registry);
+                let kafka_assignment = Arc::clone(&kafka_assignment);
                 move || {
                     let r = r.clone();
                     let worker_registry = Arc::clone(&worker_registry);
+                    let kafka_assignment = Arc::clone(&kafka_assignment);
                     async move {
                         // The shared lifecycle readiness checks only shutdown.
                         // A newly configured worker starts optimistically Healthy
                         // for routing, but has not accepted a real /_ready probe.
                         // Never advertise readiness before one is verified.
-                        if !worker_registry.has_verified_routable_worker() {
+                        let kafka_ready = kafka_assignment.get().is_some_and(|assigned| {
+                            assigned.load(Ordering::Acquire) > 0
+                        });
+                        if !worker_registry.has_verified_routable_worker() || !kafka_ready {
                             return axum::http::StatusCode::SERVICE_UNAVAILABLE;
                         }
                         r.check().await
@@ -576,6 +585,9 @@ async fn async_main(config: Config) -> Result<()> {
         debug_recorder,
     )
     .context("Failed to create Kafka consumer")?;
+    kafka_assignment
+        .set(consumer.kafka_assignment_handle())
+        .expect("Kafka assignment handle must be set only once");
 
     tokio::spawn(async move {
         consumer.process().await;

@@ -287,6 +287,12 @@ impl IngestionConsumer {
         })
     }
 
+    /// A live group assignment gate for Kubernetes readiness. A configured
+    /// broker or a subscribed topic without assigned partitions is not ready.
+    pub fn kafka_assignment_handle(&self) -> Arc<std::sync::atomic::AtomicUsize> {
+        self.consumer.context().assignment_count_handle()
+    }
+
     pub fn batcher_observer(&self) -> BatcherObserver {
         self.batcher.observer()
     }
