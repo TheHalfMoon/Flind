@@ -32,6 +32,7 @@ import {
 } from '../helpers/ingestion-e2e'
 import { resetTestDatabase } from '../helpers/sql'
 import { assertIsolatedRustNodeE2EAlreadyPrepared } from './rust-node-sandbox-admission'
+import { cleanupAdmittedRustNodeE2E } from './isolated-e2e-teardown'
 
 jest.setTimeout(300_000)
 
@@ -85,10 +86,13 @@ let outputTopicStartWatermarks = new Map<string, TopicWatermarks>()
 
 describe('Rust ingestion consumer with Node ingestion API workers', () => {
     let clickhouse: Clickhouse
+    let sandboxAdmitted = false
     let services: ServiceProcess[] = []
 
     beforeAll(() => {
         configureParentTestEnv()
+        // Only allow teardown to touch databases after exact sandbox admission.
+        sandboxAdmitted = true
         clickhouse = Clickhouse.create()
     })
 
@@ -115,9 +119,8 @@ describe('Rust ingestion consumer with Node ingestion API workers', () => {
     })
 
     afterAll(async () => {
-        await resetTestDatabase()
-        await clickhouse.resetTestDatabase()
-        clickhouse.close()
+        // Jest can run this hook even when beforeAll refuses admission.
+        await cleanupAdmittedRustNodeE2E(sandboxAdmitted, clickhouse, resetTestDatabase)
     })
 
     test('Rust consumer ingests Kafka events through multiple real Node ingestion API workers', async () => {
