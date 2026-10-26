@@ -2,9 +2,9 @@
     "name": "@flind/credentials-service",
     "private": true,
     "version": "1.0.0",
-    "description": "PostHog credentials service — serves platform integration credentials over HTTP",
+    "description": "Flind credentials service — serves platform integration credentials over HTTP",
     "license": "MIT",
-    "author": "PostHog Inc.",
+    "author": "Flind Contributors",
     "type": "module",
     "scripts": {
         "build": "tsx scripts/build.ts",

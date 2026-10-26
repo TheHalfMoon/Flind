@@ -2,7 +2,7 @@
     "name": "@flind/mcp",
     "private": true,
     "version": "1.0.0",
-    "description": "PostHog MCP server",
+    "description": "Flind MCP server",
     "keywords": [
         "agents",
         "ai",
@@ -12,7 +12,7 @@
         "posthog"
     ],
     "license": "MIT",
-    "author": "PostHog Inc.",
+    "author": "Flind Contributors",
     "scripts": {
         "generate:ui-apps": "tsx scripts/generate-ui-apps.ts",
         "build:quill": "pnpm --dir ../../packages/quill -r --filter '@posthog/quill-*' --filter '@flind/quill' --filter '!@flind/quill-workspace' build",

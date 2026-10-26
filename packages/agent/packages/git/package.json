@@ -2,7 +2,7 @@
   "name": "@flind/git",
     "private": true,
   "version": "1.0.0",
-  "description": "Git utilities for PostHog",
+  "description": "Git utilities for Flind",
   "type": "module",
   "exports": {
     "./*": {

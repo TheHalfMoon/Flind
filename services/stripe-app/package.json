@@ -2,7 +2,7 @@
     "name": "@flind/stripe",
     "private": true,
     "version": "1.5.0",
-    "description": "PostHog Stripe app",
+    "description": "Flind Stripe integration app",
     "license": "MIT",
     "scripts": {
         "dev": "stripe apps start --manifest stripe-app.dev.json",

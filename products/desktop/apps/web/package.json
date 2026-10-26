@@ -2,7 +2,7 @@
   "name": "@flind/web",
   "version": "0.0.0-dev",
   "private": true,
-  "description": "PostHog",
+  "description": "Flind desktop web application",
   "type": "module",
   "scripts": {
     "dev": "vite",

@@ -49,7 +49,7 @@
     "developer-tools",
     "agent"
   ],
-  "author": "PostHog",
+  "author": "Flind Contributors",
   "license": "MIT",
   "devDependencies": {
     "@biomejs/biome": "2.2.4",

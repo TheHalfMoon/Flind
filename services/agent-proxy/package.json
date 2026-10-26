@@ -2,9 +2,9 @@
     "name": "@flind/agent-proxy",
     "private": true,
     "version": "1.0.0",
-    "description": "PostHog agent-proxy SSE streaming service",
+    "description": "Flind agent-proxy SSE streaming service",
     "license": "MIT",
-    "author": "PostHog Inc.",
+    "author": "Flind Contributors",
     "type": "module",
     "scripts": {
         "build": "tsx scripts/build-agent-proxy.ts",
