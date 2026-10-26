@@ -838,9 +838,13 @@ export class WorkerIngestServer {
                             continue
                         }
                         stream.inFlight.delete(seq)
-                        stream.acks.push(failedAck(seq, result.reason))
+                        // The pipeline's rejection reason is an internal
+                        // diagnostic. It may contain credentials or data and
+                        // must never cross the WorkerIngest RPC boundary.
+                        const publicReason = safeIngestFailureMessage(result.reason)
+                        stream.acks.push(failedAck(seq, publicReason))
                         grpcSubBatches.inc({ status: 'failed' })
-                        throw new ConnectError(`sub-batch ${seq} rejected: ${result.reason}`, Code.Internal)
+                        throw new ConnectError(`sub-batch ${seq} rejected: ${publicReason}`, Code.Internal)
                     }
                 } finally {
                     // An accepted feed hands its slot to the pump, which

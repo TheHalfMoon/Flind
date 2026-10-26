@@ -465,14 +465,19 @@ describe('WorkerIngestServer', () => {
         const source = new FrameSource()
         const collected = collect(server, source)
 
-        driver.feedResult = { ok: false, kind: 'before_batch_failed', reason: 'hook failed' }
+        driver.feedResult = { ok: false, kind: 'before_batch_failed', reason: 'hook failed: PRIVATE_KAFKA_TOKEN' }
         source.push(hello())
         source.push(subBatch(1, [10]))
         await collected.ended
 
         expect(collected.acks.map((ack) => [Number(ack.seq), ack.status])).toEqual([[1, SubBatchStatus.FAILED]])
-        expect(collected.acks[0].error).toBe('hook failed')
+        // A rejected batch must still NACK, but must not reveal the hook's
+        // internal diagnostic via either the ACK or the stream error.
+        expect(collected.acks[0].error).toBe('ingest pipeline failed')
+        expect(collected.acks[0].error).not.toContain('PRIVATE_KAFKA_TOKEN')
         expect(collected.error!.code).toBe(Code.Internal)
+        expect(collected.error!.message).toContain('sub-batch 1 rejected')
+        expect(collected.error!.message).not.toContain('PRIVATE_KAFKA_TOKEN')
     })
 
     it('grants feed slots in arrival order across streams instead of racing', async () => {
