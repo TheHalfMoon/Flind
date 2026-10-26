@@ -1,5 +1,5 @@
 import { type Region } from '@/lib/constants'
-import { type FlindOAuthRegionEnv, flindOAuthOwnedRegionPair } from '@/lib/flind-oauth-admission'
+import { type FlindOAuthRegionEnv, type OAuthRegionalOrigins, flindOAuthOwnedRegionPair } from '@/lib/flind-oauth-admission'
 import { type SigningKeyEnv, proxyJwks } from '@/lib/idtoken'
 import { getClientMapping, getRegionSelection } from '@/lib/kv'
 import { proxyPostWithClientId, proxyToRegion, tryBothRegions, tryBothRegionsAtOrigins } from '@/lib/proxy'
@@ -17,8 +17,17 @@ let cachedJwks: { body: string; cachedUntil: number } | null = null
 /**
  * Revoke token — route to the correct region based on client_id, fallback to try-both.
  */
-export async function handleRevoke(request: Request, kv: KVNamespace): Promise<Response> {
-    return routeByClientId(request, kv, '/oauth/revoke/')
+export async function handleRevoke(
+    request: Request, kv: KVNamespace, env: FlindOAuthRegionEnv
+): Promise<Response> {
+    const regions = flindOAuthOwnedRegionPair(env)
+    if (!regions) {
+        return new Response(JSON.stringify({ error: 'temporarily_unavailable' }), {
+            status: 503,
+            headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' },
+        })
+    }
+    return routeByClientId(request, kv, '/oauth/revoke/', regions)
 }
 
 /**
@@ -175,7 +184,9 @@ function jwksResponse(body: string, complete = true): Response {
     })
 }
 
-async function routeByClientId(request: Request, kv: KVNamespace, path: string): Promise<Response> {
+async function routeByClientId(
+    request: Request, kv: KVNamespace, path: string, regions: OAuthRegionalOrigins
+): Promise<Response> {
     const body = await request.text()
 
     const contentType = request.headers.get('content-type') || ''
@@ -207,12 +218,12 @@ async function routeByClientId(request: Request, kv: KVNamespace, path: string):
             if (mapping) {
                 const regionalClientId = region === 'eu' ? mapping.eu_client_id : mapping.us_client_id
                 if (regionalClientId) {
-                    return proxyPostWithClientId(rebuild(), region, path, clientId, regionalClientId)
+                    return proxyPostWithClientId(rebuild(), region, path, clientId, regionalClientId, undefined, undefined, regions)
                 }
             }
         }
     }
 
-    const { response } = await tryBothRegions(rebuild(), path)
+    const { response } = await tryBothRegionsAtOrigins(rebuild(), path, regions)
     return response
 }

@@ -29,7 +29,8 @@ export async function proxyPostWithClientId(
     proxyClientId: string,
     regionalClientId: string,
     redirectUriRewrite?: { from: string; to: string },
-    clientSecretRewrite?: { from: string; to: string }
+    clientSecretRewrite?: { from: string; to: string },
+    ownedOrigins?: OAuthRegionalOrigins
 ): Promise<Response> {
     const contentType = request.headers.get('content-type') || ''
     let body: string
@@ -62,7 +63,9 @@ export async function proxyPostWithClientId(
         body = params.toString()
     }
 
-    const baseUrl = baseUrlForRegion(region)
+    // New first-party callers explicitly pass a validated Flind regional pair.
+    // The old compatibility path remains for token exchange behind the Wave151 gate.
+    const baseUrl = ownedOrigins ? ownedOrigins[region] : baseUrlForRegion(region)
     const url = new URL(path, baseUrl)
 
     const headers = new Headers(request.headers)
