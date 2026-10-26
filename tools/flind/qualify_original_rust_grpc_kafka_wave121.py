@@ -35,7 +35,12 @@ FAILURE_CASES = (
     "poison_batch_fails_safely_without_committing",
     "partial_acceptance_fails_the_batch_without_commit",
 )
-APPROVED_CASES = (*TESTS, *FAILURE_CASES)
+RECOVERY_CASES = (
+    "failing_worker_triggers_rerouting",
+    "drainer_crash_mid_drain_replays_to_survivor_in_order",
+    "nacking_worker_fences_worker_stream_and_reroutes_in_order",
+)
+APPROVED_CASES = (*TESTS, *FAILURE_CASES, *RECOVERY_CASES)
 ORIGINAL_ENDPOINT = 'const KAFKA_BROKERS: &str = "localhost:9092";'
 PRODUCT_SOURCES = (
     "rust/ingestion-consumer/src/consumer.rs",
