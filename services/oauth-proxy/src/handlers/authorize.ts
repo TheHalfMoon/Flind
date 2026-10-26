@@ -1,4 +1,5 @@
-import { type Region, baseUrlForRegion } from '@/lib/constants'
+import type { Region } from '@/lib/constants'
+import { type FlindOAuthRegionEnv, type OAuthRegionalOrigins, flindOAuthOwnedRegionPair } from '@/lib/flind-oauth-admission'
 import {
     type ClientMapping,
     getClientMapping,
@@ -44,19 +45,26 @@ function validateRegisteredRedirectUri(
  * 2. Translate the proxy client_id to the regional client_id
  * 3. Redirect the user to the correct regional /oauth/authorize/ with all params
  */
-export async function handleAuthorize(request: Request, kv: KVNamespace): Promise<Response> {
+export async function handleAuthorize(request: Request, kv: KVNamespace, env: FlindOAuthRegionEnv): Promise<Response> {
+    const regions = flindOAuthOwnedRegionPair(env)
+    if (!regions) {
+        return new Response(
+            JSON.stringify({ error: 'temporarily_unavailable', error_description: 'Flind OAuth regions are not configured' }),
+            { status: 503, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' } }
+        )
+    }
     const url = new URL(request.url)
 
     // If region is already selected (via query param from the picker page),
     // redirect to the regional authorize endpoint
     const selectedRegion = url.searchParams.get('_region') as Region | null
     if (selectedRegion === 'us' || selectedRegion === 'eu') {
-        return redirectToRegionalAuthorize(url, selectedRegion, kv)
+        return redirectToRegionalAuthorize(url, selectedRegion, kv, regions)
     }
 
     const liveRegion = soleLiveRegion(request.headers.get('Cookie'))
     if (liveRegion) {
-        return redirectToRegionalAuthorize(url, liveRegion, kv)
+        return redirectToRegionalAuthorize(url, liveRegion, kv, regions)
     }
 
     // Show the region picker page (JS reads query params from window.location.search)
@@ -77,7 +85,7 @@ function soleLiveRegion(cookieHeader: string | null): Region | null {
     return sole && !second ? sole : null
 }
 
-async function redirectToRegionalAuthorize(url: URL, region: Region, kv: KVNamespace): Promise<Response> {
+async function redirectToRegionalAuthorize(url: URL, region: Region, kv: KVNamespace, regions: OAuthRegionalOrigins): Promise<Response> {
     const clientId = url.searchParams.get('client_id')
     const state = url.searchParams.get('state')
     const originalRedirectUri = url.searchParams.get('redirect_uri')
@@ -116,7 +124,7 @@ async function redirectToRegionalAuthorize(url: URL, region: Region, kv: KVNames
     await Promise.all(kvWrites)
 
     // Build the regional authorize URL with all original params
-    const regionalBase = baseUrlForRegion(region)
+    const regionalBase = regions[region]
     const regionalUrl = new URL('/oauth/authorize/', regionalBase)
 
     // Replace redirect_uri with proxy's own callback so the client always

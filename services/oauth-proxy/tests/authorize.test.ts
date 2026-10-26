@@ -6,50 +6,64 @@ import { hashKey } from '@/lib/kv'
 import { createMockKV, mockKVGet } from './helpers'
 
 const mockKV = createMockKV()
+const ownedEnv = { FLIND_OAUTH_US_ORIGIN: 'https://us.flind.example', FLIND_OAUTH_EU_ORIGIN: 'https://eu.flind.example' }
 
 beforeEach(() => {
     vi.clearAllMocks()
 })
 
 describe('handleAuthorize', () => {
+    it.each([
+        ['missing', {}],
+        ['legacy upstream', { FLIND_OAUTH_US_ORIGIN: 'https://us.posthog.com', FLIND_OAUTH_EU_ORIGIN: 'https://eu.posthog.com' }],
+        ['identical regional host', { FLIND_OAUTH_US_ORIGIN: 'https://us.flind.example', FLIND_OAUTH_EU_ORIGIN: 'https://us.flind.example' }],
+    ])('blocks %s configuration before redirect or KV I/O', async (_label, env) => {
+        const request = new Request('https://oauth.flind.example/oauth/authorize/?client_id=test&_region=us')
+        const response = await handleAuthorize(request, mockKV, env)
+        expect(response.status).toBe(503)
+        expect(response.headers.get('cache-control')).toBe('no-store')
+        expect(vi.mocked(mockKV.put)).not.toHaveBeenCalled()
+        expect(vi.mocked(mockKV.get)).not.toHaveBeenCalled()
+    })
+
     it('shows region picker when no _region param', async () => {
         const request = new Request(
-            'https://oauth.posthog.com/oauth/authorize/?client_id=abc&redirect_uri=http://localhost:3000/callback&response_type=code'
+            'https://oauth.flind.example/oauth/authorize/?client_id=abc&redirect_uri=http://localhost:3000/callback&response_type=code'
         )
-        const response = await handleAuthorize(request, mockKV)
+        const response = await handleAuthorize(request, mockKV, ownedEnv)
 
         expect(response.status).toBe(200)
         expect(response.headers.get('content-type')).toContain('text/html')
 
         const html = await response.text()
-        expect(html).toContain('Authenticate with PostHog')
-        expect(html).toContain('US Cloud')
-        expect(html).toContain('EU Cloud')
+        expect(html).toContain('Authenticate with Flind')
+        expect(html).toContain('US region')
+        expect(html).toContain('EU region')
     })
 
     it.each([
         ['neither region cookie', ''],
         ['both region cookies', 'ph_authenticated_us=1; ph_authenticated_eu=1'],
-        ['only the Strict cookie the proxy never receives', 'ph_current_instance="https://eu.posthog.com"'],
+        ['only the Strict cookie the proxy never receives', 'ph_current_instance="https://eu.flind.example"'],
     ])('shows region picker with %s', async (_label, cookie) => {
         const request = new Request(
-            'https://oauth.posthog.com/oauth/authorize/?client_id=abc&redirect_uri=http://localhost:3000/callback&response_type=code',
+            'https://oauth.flind.example/oauth/authorize/?client_id=abc&redirect_uri=http://localhost:3000/callback&response_type=code',
             cookie ? { headers: { Cookie: cookie } } : undefined
         )
-        const response = await handleAuthorize(request, mockKV)
+        const response = await handleAuthorize(request, mockKV, ownedEnv)
 
         expect(response.status).toBe(200)
     })
 
     it.each([
-        ['us', 'ph_authenticated_us=1', 'https://us.posthog.com/oauth/authorize/'],
-        ['eu', 'ph_authenticated_eu=1', 'https://eu.posthog.com/oauth/authorize/'],
+        ['us', 'ph_authenticated_us=1', 'https://us.flind.example/oauth/authorize/'],
+        ['eu', 'ph_authenticated_eu=1', 'https://eu.flind.example/oauth/authorize/'],
     ])('redirects to %s without the picker when only that region has a live session', async (_region, cookie, base) => {
         const request = new Request(
-            'https://oauth.posthog.com/oauth/authorize/?client_id=abc&redirect_uri=http://localhost:3000/callback&response_type=code&state=xyz',
-            { headers: { Cookie: `${cookie}; ph_current_instance="https://us.posthog.com"` } }
+            'https://oauth.flind.example/oauth/authorize/?client_id=abc&redirect_uri=http://localhost:3000/callback&response_type=code&state=xyz',
+            { headers: { Cookie: `${cookie}; ph_current_instance="https://us.flind.example"` } }
         )
-        const response = await handleAuthorize(request, mockKV)
+        const response = await handleAuthorize(request, mockKV, ownedEnv)
 
         expect(response.status).toBe(302)
         const location = new URL(response.headers.get('location') as string)
@@ -73,16 +87,16 @@ describe('handleAuthorize', () => {
         })
 
         const request = new Request(
-            'https://oauth.posthog.com/oauth/authorize/?client_id=us_real_id&redirect_uri=http://localhost:3000/callback&response_type=code&_region=us'
+            'https://oauth.flind.example/oauth/authorize/?client_id=us_real_id&redirect_uri=http://localhost:3000/callback&response_type=code&_region=us'
         )
-        const response = await handleAuthorize(request, mockKV)
+        const response = await handleAuthorize(request, mockKV, ownedEnv)
 
         expect(response.status).toBe(302)
         const location = new URL(response.headers.get('location')!)
-        expect(location.origin).toBe('https://us.posthog.com')
+        expect(location.origin).toBe('https://us.flind.example')
         expect(location.pathname).toBe('/oauth/authorize/')
         expect(location.searchParams.get('client_id')).toBe('us_real_id')
-        expect(location.searchParams.get('redirect_uri')).toBe('https://oauth.posthog.com/oauth/callback/')
+        expect(location.searchParams.get('redirect_uri')).toBe('https://oauth.flind.example/oauth/callback/')
         expect(location.searchParams.has('_region')).toBe(false)
     })
 
@@ -101,16 +115,16 @@ describe('handleAuthorize', () => {
         })
 
         const request = new Request(
-            'https://oauth.posthog.com/oauth/authorize/?client_id=us_real_id&redirect_uri=http://localhost:3000/callback&response_type=code&_region=eu'
+            'https://oauth.flind.example/oauth/authorize/?client_id=us_real_id&redirect_uri=http://localhost:3000/callback&response_type=code&_region=eu'
         )
-        const response = await handleAuthorize(request, mockKV)
+        const response = await handleAuthorize(request, mockKV, ownedEnv)
 
         expect(response.status).toBe(302)
         const location = new URL(response.headers.get('location')!)
-        expect(location.origin).toBe('https://eu.posthog.com')
+        expect(location.origin).toBe('https://eu.flind.example')
         expect(location.pathname).toBe('/oauth/authorize/')
         expect(location.searchParams.get('client_id')).toBe('eu_real_id')
-        expect(location.searchParams.get('redirect_uri')).toBe('https://oauth.posthog.com/oauth/callback/')
+        expect(location.searchParams.get('redirect_uri')).toBe('https://oauth.flind.example/oauth/callback/')
         expect(location.searchParams.has('_region')).toBe(false)
     })
 
@@ -129,9 +143,9 @@ describe('handleAuthorize', () => {
         })
 
         const request = new Request(
-            'https://oauth.posthog.com/oauth/authorize/?client_id=us_id&redirect_uri=https://attacker.com/steal&response_type=code&state=abc&_region=eu'
+            'https://oauth.flind.example/oauth/authorize/?client_id=us_id&redirect_uri=https://attacker.com/steal&response_type=code&state=abc&_region=eu'
         )
-        const response = await handleAuthorize(request, mockKV)
+        const response = await handleAuthorize(request, mockKV, ownedEnv)
 
         expect(response.status).toBe(400)
         const data = (await response.json()) as Record<string, unknown>
@@ -154,9 +168,9 @@ describe('handleAuthorize', () => {
         })
 
         const request = new Request(
-            'https://oauth.posthog.com/oauth/authorize/?client_id=us_id&redirect_uri=http://localhost:3000/callback&response_type=code&state=abc123&_region=eu'
+            'https://oauth.flind.example/oauth/authorize/?client_id=us_id&redirect_uri=http://localhost:3000/callback&response_type=code&state=abc123&_region=eu'
         )
-        const response = await handleAuthorize(request, mockKV)
+        const response = await handleAuthorize(request, mockKV, ownedEnv)
 
         const location = new URL(response.headers.get('location')!)
         const nonce = location.searchParams.get('state')!
@@ -204,9 +218,9 @@ describe('handleAuthorize', () => {
         // A JWT-shaped state well above Cloudflare's 512-byte KV key limit.
         const longState = 'x'.repeat(2000)
         const request = new Request(
-            `https://oauth.posthog.com/oauth/authorize/?client_id=us_id&redirect_uri=http://localhost:3000/callback&response_type=code&state=${longState}&_region=us`
+            `https://oauth.flind.example/oauth/authorize/?client_id=us_id&redirect_uri=http://localhost:3000/callback&response_type=code&state=${longState}&_region=us`
         )
-        const response = await handleAuthorize(request, mockKV)
+        const response = await handleAuthorize(request, mockKV, ownedEnv)
 
         expect(response.status).toBe(302)
 
@@ -237,9 +251,9 @@ describe('handleAuthorize', () => {
         })
 
         const request = new Request(
-            'https://oauth.posthog.com/oauth/authorize/?client_id=us_id&redirect_uri=http://localhost:3000/callback&response_type=code&_region=eu'
+            'https://oauth.flind.example/oauth/authorize/?client_id=us_id&redirect_uri=http://localhost:3000/callback&response_type=code&_region=eu'
         )
-        const response = await handleAuthorize(request, mockKV)
+        const response = await handleAuthorize(request, mockKV, ownedEnv)
 
         expect(response.status).toBe(302)
         const location = new URL(response.headers.get('location')!)
@@ -252,8 +266,8 @@ describe('handleAuthorize', () => {
     })
 
     it('sets security and cache headers on region picker page', async () => {
-        const request = new Request('https://oauth.posthog.com/oauth/authorize/?client_id=abc&response_type=code')
-        const response = await handleAuthorize(request, mockKV)
+        const request = new Request('https://oauth.flind.example/oauth/authorize/?client_id=abc&response_type=code')
+        const response = await handleAuthorize(request, mockKV, ownedEnv)
 
         expect(response.headers.get('x-frame-options')).toBe('DENY')
         expect(response.headers.get('x-content-type-options')).toBe('nosniff')
