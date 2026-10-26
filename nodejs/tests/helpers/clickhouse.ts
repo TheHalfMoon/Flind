@@ -22,6 +22,7 @@ import {
 } from '~/types'
 
 import { clickhouseTestHttpOrigin } from './clickhouse-http-endpoint'
+import { assertIsolatedClickhouseReset } from './clickhouse-reset-guard'
 import { assertTestDatabaseName } from './database-guard'
 
 // Extracts the topic(s) a ClickHouse Kafka engine table consumes from its `engine_full` string.
@@ -104,28 +105,34 @@ export class Clickhouse {
         // Guard before the truncates: Promise.allSettled below would swallow
         // the guard error if it only surfaced inside truncate().
         await this.ensureTestDatabase()
+        // Isolated destructive service E2E requires a complete table reset; ordinary
+        // partial-schema tests retain the historical best-effort behavior.
+        const isolatedE2E = Boolean(process.env.FLIND_E2E_DESTRUCTIVE_ACK)
         // NOTE: Don't do more than 5 at once otherwise we get socket timeout errors
-        await Promise.allSettled([
+        const phase1 = await Promise.allSettled([
             this.truncate('sharded_events'),
             this.truncate('person'),
             this.truncate('person_distinct_id'),
             this.truncate('person_distinct_id2'),
             this.truncate('person_distinct_id_overrides'),
         ])
+        assertIsolatedClickhouseReset(phase1, 1, isolatedE2E)
 
-        await Promise.allSettled([
+        const phase2 = await Promise.allSettled([
             this.truncate('person_static_cohort'),
             this.truncate('sharded_session_replay_events'),
             this.truncate('events_dead_letter_queue'),
             this.truncate('groups'),
             this.truncate('ingestion_warnings'),
         ])
+        assertIsolatedClickhouseReset(phase2, 2, isolatedE2E)
 
-        await Promise.allSettled([
+        const phase3 = await Promise.allSettled([
             this.truncate('sharded_ingestion_warnings'),
             this.truncate('sharded_app_metrics'),
             this.truncate('ingestion_warnings_v2'),
         ])
+        assertIsolatedClickhouseReset(phase3, 3, isolatedE2E)
     }
 
     // Topics that this database's Kafka engine tables consume from. Tests pre-create every
