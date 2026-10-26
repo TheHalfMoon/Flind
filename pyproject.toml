@@ -1,7 +1,7 @@
 
 
 [project]
-name = "posthog"
+name = "flind"
 version = "0.0.0"
 requires-python = "==3.14.7" # Pin full version to control Python upgrades explicitly
 # Prefer ~= (compat) over >= (floor). Only pin exact versions (==) when necessary.
