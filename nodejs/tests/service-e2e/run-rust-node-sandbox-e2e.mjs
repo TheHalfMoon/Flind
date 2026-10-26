@@ -7,6 +7,7 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 import { isolatedRustNodeE2E } from './rust-node-sandbox-admission.ts'
+import { requireNativeServiceE2ERuntime } from './native-runtime-preflight.mjs'
 
 let sandbox
 try {
@@ -73,6 +74,15 @@ function freeDiskBytes() {
 }
 if (freeDiskBytes() < 12 * 1024 ** 3) {
     console.error('REFUSED: at least 12 GiB free disk is required before full E2E')
+    process.exit(2)
+}
+
+// Resolve and load the exact native dependencies with Jest's selected Node
+// runtime BEFORE launching a suite containing destructive fixture resets.
+try {
+    requireNativeServiceE2ERuntime(nodeRoot, processEnv)
+} catch (error) {
+    console.error('REFUSED:', error.message)
     process.exit(2)
 }
 
