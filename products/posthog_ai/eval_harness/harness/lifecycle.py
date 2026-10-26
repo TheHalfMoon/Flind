@@ -581,8 +581,15 @@ class SandboxedEvalHarness:
             skills_sha256=self._skills_snapshot.sha256 if self._skills_snapshot is not None else None,
             skills_source_sha256=self._skills_snapshot.source_sha256 if self._skills_snapshot is not None else None,
             offline_delivery=self._offline_delivery,
-            posthog_trace_host="https://us.posthog.com",
-            posthog_trace_project_id=settings.LLM_ANALYTICS_INTERNAL_TEAM_ID,
+            # Link application traces only against the explicitly configured
+            # Flind instance and an owned internal analytics team, never a
+            # donor-hosted project or an unset team ID.
+            posthog_trace_host=(
+                settings.FLIND_HOST if settings.LLM_ANALYTICS_INTERNAL_TEAM_ID > 0 else None
+            ),
+            posthog_trace_project_id=(
+                settings.LLM_ANALYTICS_INTERNAL_TEAM_ID if settings.LLM_ANALYTICS_INTERNAL_TEAM_ID > 0 else None
+            ),
             infrastructure_retries=self.options.infrastructure_retries,
         )
 

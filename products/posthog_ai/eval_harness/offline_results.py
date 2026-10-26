@@ -138,7 +138,9 @@ class LocalOfflineEvalConfig(BaseModel):
 class OfflineEvalSettings(BaseModel):
     model_config = ConfigDict(frozen=True, hide_input_in_errors=True)
 
-    host: str = "https://us.posthog.com"
+    # Direct/test construction stays local. Uploads from_env require an explicit
+    # owner-controlled destination instead of silently inheriting another cloud.
+    host: str = "http://127.0.0.1:8010"
     project_id: int = Field(gt=0)
     api_key: SecretStr
     scorer_versions: dict[str, UUID]
@@ -187,7 +189,13 @@ class OfflineEvalSettings(BaseModel):
         api_key = os.getenv(prefix + "API_KEY")
         if not api_key:
             return None
-        host = cls.normalize_host(os.getenv(prefix + "HOST", "https://us.posthog.com"))
+        # Never send prompts, evaluation results or traces to an inherited cloud
+        # merely because an API key was configured. New Flind env takes priority,
+        # while the historical env name is accepted only when explicitly supplied.
+        configured_host = os.getenv("FLIND_OFFLINE_EVAL_HOST") or os.getenv(prefix + "HOST")
+        if not configured_host:
+            raise OfflineUploadError("FLIND_OFFLINE_EVAL_HOST must be explicitly configured for uploads")
+        host = cls.normalize_host(configured_host)
         local_config = None
         if local_config_path := os.getenv(prefix + "LOCAL_CONFIG"):
             if urlsplit(host).hostname not in LOOPBACK_HOSTS:

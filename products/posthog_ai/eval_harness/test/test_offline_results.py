@@ -710,8 +710,11 @@ def test_invalid_local_config_never_falls_back_to_catalog(tmp_path: Path, conten
         OfflineEvalSettings.from_env(SUITE)
 
 
-def test_settings_use_each_suite_destination_with_only_an_api_key() -> None:
-    environment = {"POSTHOG_OFFLINE_EVAL_API_KEY": "test-only-token"}
+def test_settings_use_each_suite_destination_with_explicit_flind_host() -> None:
+    environment = {
+        "POSTHOG_OFFLINE_EVAL_API_KEY": "test-only-token",
+        "FLIND_OFFLINE_EVAL_HOST": "https://flind.example",
+    }
     with patch.dict("os.environ", environment, clear=True):
         for project_id, (metric, version) in enumerate(SCORER_VERSIONS.items(), start=123):
             suite = OfflineEvalSuite(
@@ -724,7 +727,31 @@ def test_settings_use_each_suite_destination_with_only_an_api_key() -> None:
             assert settings is not None
             upload = _prepare(OfflineEvalPublisher(settings, suite), [_case()])
             assert upload.project_id == project_id
+            assert upload.host == "https://flind.example"
             assert [result.scorer_version_id for result in upload.results] == [str(version)]
+
+
+def test_settings_refuse_api_key_without_explicit_first_party_host() -> None:
+    with (
+        patch.dict("os.environ", {"POSTHOG_OFFLINE_EVAL_API_KEY": "test-only-token"}, clear=True),
+        pytest.raises(OfflineUploadError, match="FLIND_OFFLINE_EVAL_HOST"),
+    ):
+        OfflineEvalSettings.from_env(SUITE)
+
+
+def test_flind_host_takes_precedence_over_explicit_legacy_host() -> None:
+    with patch.dict(
+        "os.environ",
+        {
+            "POSTHOG_OFFLINE_EVAL_API_KEY": "test-only-token",
+            "POSTHOG_OFFLINE_EVAL_HOST": "https://legacy.example",
+            "FLIND_OFFLINE_EVAL_HOST": "https://flind.example",
+        },
+        clear=True,
+    ):
+        settings = OfflineEvalSettings.from_env(SUITE)
+    assert settings is not None
+    assert settings.host == "https://flind.example"
 
 
 @parameterized.expand(
@@ -742,7 +769,11 @@ def test_settings_use_each_suite_destination_with_only_an_api_key() -> None:
 )
 def test_settings_reject_invalid_suite_configuration(_name: str, suite: OfflineEvalSuite) -> None:
     with (
-        patch.dict("os.environ", {"POSTHOG_OFFLINE_EVAL_API_KEY": "test-only-token"}, clear=True),
+        patch.dict(
+            "os.environ",
+            {"POSTHOG_OFFLINE_EVAL_API_KEY": "test-only-token", "FLIND_OFFLINE_EVAL_HOST": "https://flind.example"},
+            clear=True,
+        ),
         pytest.raises(OfflineUploadError),
     ):
         OfflineEvalSettings.from_env(suite)
@@ -765,6 +796,7 @@ def test_settings_reject_invalid_suite_configuration(_name: str, suite: OfflineE
 def test_settings_reject_invalid_environment(_name: str, overrides: dict[str, str]) -> None:
     environment = {
         "POSTHOG_OFFLINE_EVAL_API_KEY": "test-only-token",
+        "FLIND_OFFLINE_EVAL_HOST": "https://flind.example",
         **overrides,
     }
     with patch.dict("os.environ", environment, clear=True), pytest.raises(OfflineUploadError):
