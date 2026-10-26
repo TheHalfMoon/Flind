@@ -1,6 +1,6 @@
-import { Message, MessageHeader } from 'node-rdkafka'
+import type { Message, MessageHeader } from 'node-rdkafka'
 
-import { SerializedKafkaMessage } from './types'
+import type { SerializedKafkaMessage } from './types'
 
 /**
  * Converts a SerializedKafkaMessage (from the Rust consumer HTTP API)
@@ -11,7 +11,9 @@ export function deserializeKafkaMessage(serialized: SerializedKafkaMessage): Mes
         [key]: Buffer.from(value, 'utf-8'),
     }))
 
-    const valueBuffer = serialized.value ? Buffer.from(serialized.value, 'utf-8') : null
+    // Kafka distinguishes a zero-byte value from a null tombstone. Do not
+    // interpret an empty string as deletion during Rust → Node conversion.
+    const valueBuffer = serialized.value === null ? null : Buffer.from(serialized.value, 'utf-8')
 
     return {
         topic: serialized.topic,
@@ -19,7 +21,7 @@ export function deserializeKafkaMessage(serialized: SerializedKafkaMessage): Mes
         offset: serialized.offset,
         timestamp: serialized.timestamp,
         size: valueBuffer?.byteLength ?? 0,
-        key: serialized.key ? Buffer.from(serialized.key, 'utf-8') : undefined,
+        key: serialized.key === null ? undefined : Buffer.from(serialized.key, 'utf-8'),
         value: valueBuffer,
         headers: headers.length > 0 ? headers : undefined,
     }

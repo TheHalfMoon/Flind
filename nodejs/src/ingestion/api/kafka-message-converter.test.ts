@@ -52,6 +52,41 @@ describe('deserializeKafkaMessage', () => {
         expect(message.headers).toBeUndefined()
     })
 
+    it('keeps zero-byte key and value distinct from Kafka null tombstones', () => {
+        const serialized: SerializedKafkaMessage = {
+            topic: 'test-topic', partition: 1, offset: 4, timestamp: 0,
+            key: '', value: '', headers: { empty: '' },
+        }
+
+        const message = deserializeKafkaMessage(serialized)
+        expect(message.key).toEqual(Buffer.alloc(0))
+        expect(message.value).toEqual(Buffer.alloc(0))
+        expect(message.size).toBe(0)
+        expect(message.headers).toEqual([{ empty: Buffer.alloc(0) }])
+    })
+
+    it('preserves a null Kafka tombstone with a valid empty key', () => {
+        const serialized: SerializedKafkaMessage = {
+            topic: 'test-topic', partition: 0, offset: 5, timestamp: 0,
+            key: '', value: null, headers: {},
+        }
+        const message = deserializeKafkaMessage(serialized)
+        expect(message.key).toEqual(Buffer.alloc(0))
+        expect(message.value).toBeNull()
+        expect(message.size).toBe(0)
+    })
+
+    it('preserves an empty payload with a null key', () => {
+        const serialized: SerializedKafkaMessage = {
+            topic: 'test-topic', partition: 0, offset: 6, timestamp: 0,
+            key: null, value: '', headers: {},
+        }
+        const message = deserializeKafkaMessage(serialized)
+        expect(message.key).toBeUndefined()
+        expect(message.value).toEqual(Buffer.alloc(0))
+        expect(message.size).toBe(0)
+    })
+
     it('handles empty headers', () => {
         const serialized: SerializedKafkaMessage = {
             topic: 'test-topic',
