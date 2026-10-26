@@ -134,7 +134,9 @@ def qualify() -> dict:
             process.returncode == 0
             and limit is None
             and suite_count == len(TESTS)
-            and test_count >= 43
+            # Wave126 extends the actual gRPC suite with 10 protobuf uint64
+            # protocol/budget boundaries; require all 53 real Jest cases.
+            and test_count >= 53
             and all(f"PASS {name}" in text for name in TESTS)
         )
         output["native_jest_process_exit"] = process.returncode

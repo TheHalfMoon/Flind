@@ -352,6 +352,58 @@ describe('WorkerIngestServer', () => {
         expect(server.streamCount).toBe(0)
     })
 
+    it.each([9007199254740992n, 9007199254740993n, 18446744073709551615n])(
+        'rejects unsafe protobuf uint64 sequence %s before any pipeline feed',
+        async (wireSeq) => {
+            const source = new FrameSource()
+            const collected = collect(server, source)
+            const badFrame = subBatch(1, [10])
+            if (badFrame.msg.case !== 'subBatch') {
+                throw new Error('invalid original sub-batch fixture')
+            }
+            badFrame.msg.value.seq = wireSeq
+            source.push(hello())
+            source.push(badFrame)
+            await collected.ended
+
+            expect(collected.error?.code).toBe(Code.FailedPrecondition)
+            expect(driver.feeds).toHaveLength(0)
+            expect(collected.acks).toHaveLength(0)
+        }
+    )
+
+    it.each([
+        [0n, 0],
+        [300n, 300],
+        [2_147_483_647n, 2_147_483_647],
+        [2_147_483_648n, 0],
+        [9_007_199_254_740_993n, 0],
+        [18_446_744_073_709_551_615n, 0],
+    ])('normalizes protobuf uint64 soft budget %s without floating-point rounding', async (wireBudget, expected) => {
+        const source = new FrameSource()
+        const collected = collect(server, source)
+        source.push(hello())
+        source.push(subBatch(1, [10], { softBudgetMs: wireBudget }))
+        await until(() => driver.feeds.length === 1)
+        expect(driver.feeds[0].budget.softBudgetMs).toBe(expected)
+
+        source.end()
+        driver.complete({ streamId: driver.feeds[0].streamId, seq: 1, accepted: 1 })
+        await collected.ended
+        expect(collected.error).toBeNull()
+    })
+
+    it('rejects a malformed negative protobuf uint64 budget before pipeline feed', async () => {
+        const source = new FrameSource()
+        const collected = collect(server, source)
+        source.push(hello())
+        source.push(subBatch(1, [10], { softBudgetMs: -1n }))
+        await collected.ended
+
+        expect(collected.error?.code).toBe(Code.FailedPrecondition)
+        expect(driver.feeds).toHaveLength(0)
+    })
+
     it('acks an empty sub-batch immediately instead of feeding it', async () => {
         // An empty feed() is a no-op that never completes a batch — feeding it
         // would leave the consumer waiting for an ack forever.

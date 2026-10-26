@@ -13,7 +13,7 @@ class NodeOriginalJestWave125(unittest.TestCase):
         receipt = q.qualify()
         self.assertTrue(receipt["original_node_jest_all_four_suites_qualified"], receipt.get("blocker"))
         self.assertEqual(receipt["original_jest_suite_count"], 4)
-        self.assertGreaterEqual(receipt["original_jest_test_count"], 43)
+        self.assertGreaterEqual(receipt["original_jest_test_count"], 53)
         self.assertTrue(receipt["temporary_checkout_sources_restored"])
         self.assertEqual(receipt["native_jest_process_exit"], 0)
         for field in (

@@ -740,19 +740,30 @@ export class WorkerIngestServer {
                 }
 
                 const subBatch = request.msg.value
-                const budget: SubBatchBudget = {
-                    armedAt: Date.now(),
-                    softBudgetMs: Number(subBatch.softBudgetMs),
-                }
-                const seq = Number(subBatch.seq)
-                if (seq !== stream.nextSeq) {
+                // Both fields are protobuf uint64 (bigint). Comparing the wire
+                // sequence as bigint prevents Number() from rounding an invalid
+                // frame into the next admissible sequence, or acknowledging the
+                // wrong position. The internal sequence must stay exactly safe.
+                if (!Number.isSafeInteger(stream.nextSeq) || subBatch.seq !== BigInt(stream.nextSeq)) {
                     throw this.protocolError(
                         stream,
                         'seq_mismatch',
-                        `expected seq ${stream.nextSeq}, got ${seq} — frames were lost or reordered`
+                        `expected seq ${stream.nextSeq}, got ${subBatch.seq} — frames were lost or reordered`
                     )
                 }
-                stream.nextSeq++
+                const seq = stream.nextSeq++
+
+                // Per the WorkerIngest proto, a zero budget OR any value above
+                // 2^31-1 means unlimited. Normalize in bigint space before a
+                // Number conversion, including valid uint64 MAX (2^64-1).
+                // This avoids imprecise rounding of untrusted protobuf input.
+                if (subBatch.softBudgetMs < 0n) {
+                    throw this.protocolError(stream, 'invalid_budget', 'negative soft budget on uint64 field')
+                }
+                const budget: SubBatchBudget = {
+                    armedAt: Date.now(),
+                    softBudgetMs: subBatch.softBudgetMs > 2_147_483_647n ? 0 : Number(subBatch.softBudgetMs),
+                }
 
                 if (subBatch.messages.length === 0) {
                     // An empty feed never completes a batch, so ack it directly.
