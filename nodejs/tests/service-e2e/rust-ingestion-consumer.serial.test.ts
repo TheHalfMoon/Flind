@@ -31,6 +31,7 @@ import {
     waitForKafkaMessages,
 } from '../helpers/ingestion-e2e'
 import { resetTestDatabase } from '../helpers/sql'
+import { assertIsolatedRustNodeE2EAlreadyPrepared } from './rust-node-sandbox-admission'
 
 jest.setTimeout(300_000)
 
@@ -43,7 +44,12 @@ const TEST_TEAM_TOKEN = `THIS IS NOT A TOKEN FOR TEAM ${TEST_TEAM_ID}`
 // Each worker serves its WorkerIngest stream on its HTTP port plus this offset;
 // the Rust consumer derives the stream address the same way.
 const GRPC_PORT_OFFSET = 1
-const POSTGRES_URL = 'postgres://posthog:posthog@localhost:5432'
+// These are populated by run-rust-node-sandbox-e2e.mjs *before Jest imports*
+// the app config. Missing sandbox configuration is always rejected in beforeAll.
+const POSTGRES_URL = (process.env.FLIND_E2E_POSTGRES_BASE_URL ?? '').replace(/\/$/, '')
+const E2E_KAFKA_BOOTSTRAP = process.env.FLIND_E2E_KAFKA_BOOTSTRAP ?? ''
+const E2E_CLICKHOUSE_DATABASE = process.env.FLIND_E2E_CLICKHOUSE_DATABASE ?? ''
+const E2E_REDIS_URL = process.env.FLIND_E2E_REDIS_URL ?? ''
 const NODE_WORKER_COUNT = 2
 const RUST_BATCH_SIZE = 10
 const E2E_EVENT_COUNT = RUST_BATCH_SIZE * 2
@@ -351,15 +357,10 @@ describe('Rust ingestion consumer with Node ingestion API workers', () => {
 })
 
 function configureParentTestEnv(): void {
-    process.env.KAFKA_HOSTS = 'localhost:9092'
-    process.env.KAFKA_PRODUCER_METADATA_BROKER_LIST = 'localhost:9092'
-    process.env.DATABASE_URL = `${POSTGRES_URL}/test_posthog`
-    process.env.PERSONS_DATABASE_URL = `${POSTGRES_URL}/test_persons`
-    process.env.PERSONS_READONLY_DATABASE_URL = `${POSTGRES_URL}/test_persons`
-    process.env.BEHAVIORAL_COHORTS_DATABASE_URL = `${POSTGRES_URL}/test_behavioral_cohorts`
-    process.env.CLICKHOUSE_HOST = 'localhost'
-    process.env.CLICKHOUSE_DATABASE = 'posthog_test'
-    process.env.REDIS_URL = 'redis://127.0.0.1'
+    // resetTestDatabase performs mass DELETE and ClickHouse TRUNCATE. Never
+    // silently reconfigure a Jest process already imported with defaults.
+    const sandbox = assertIsolatedRustNodeE2EAlreadyPrepared(process.env)
+    Object.assign(process.env, sandbox.serviceEnv)
 }
 
 async function startNodeIngestionApiWorkers(count: number): Promise<NodeWorker[]> {
@@ -493,7 +494,7 @@ function startRustIngestionConsumer(
         env: {
             ...serviceProcessEnv(),
             RUST_LOG: 'info',
-            KAFKA_HOSTS: 'localhost:9092',
+            KAFKA_HOSTS: E2E_KAFKA_BOOTSTRAP,
             INGESTION_CONSUMER_CONSUME_TOPIC: currentIngestionTopic,
             INGESTION_CONSUMER_GROUP_ID: groupId,
             // Rust's generic KAFKA_CONSUMER_* parser maps this name to invalid rdkafka key "offset.reset".
@@ -535,15 +536,15 @@ function testDependencyEnv(): NodeJS.ProcessEnv {
         PERSONS_READONLY_DATABASE_URL: `${POSTGRES_URL}/test_persons`,
         BEHAVIORAL_COHORTS_DATABASE_URL: `${POSTGRES_URL}/test_behavioral_cohorts`,
         CYCLOTRON_NODE_DATABASE_URL: `${POSTGRES_URL}/test_cyclotron_node`,
-        KAFKA_HOSTS: 'localhost:9092',
-        KAFKA_PRODUCER_METADATA_BROKER_LIST: 'localhost:9092',
-        KAFKA_WARPSTREAM_PRODUCER_METADATA_BROKER_LIST: 'localhost:9092',
-        KAFKA_INGESTION_PRODUCER_METADATA_BROKER_LIST: 'localhost:9092',
-        CLICKHOUSE_HOST: 'localhost',
-        CLICKHOUSE_DATABASE: 'posthog_test',
+        KAFKA_HOSTS: E2E_KAFKA_BOOTSTRAP,
+        KAFKA_PRODUCER_METADATA_BROKER_LIST: E2E_KAFKA_BOOTSTRAP,
+        KAFKA_WARPSTREAM_PRODUCER_METADATA_BROKER_LIST: E2E_KAFKA_BOOTSTRAP,
+        KAFKA_INGESTION_PRODUCER_METADATA_BROKER_LIST: E2E_KAFKA_BOOTSTRAP,
+        CLICKHOUSE_HOST: '127.0.0.1',
+        CLICKHOUSE_DATABASE: E2E_CLICKHOUSE_DATABASE,
         CLICKHOUSE_SECURE: 'false',
         CLICKHOUSE_VERIFY: 'false',
-        REDIS_URL: 'redis://127.0.0.1',
+        REDIS_URL: E2E_REDIS_URL,
         SITE_URL: 'https://example.com',
     }
 }
@@ -789,7 +790,7 @@ async function withKafkaConsumer<T>(groupId: string, fn: (consumer: KafkaConsume
     const config = {
         'client.id': 'rust-node-e2e-inspector',
         'group.id': groupId,
-        'metadata.broker.list': process.env.KAFKA_HOSTS ?? 'localhost:9092',
+        'metadata.broker.list': E2E_KAFKA_BOOTSTRAP,
         'enable.auto.commit': false,
         'enable.partition.eof': true,
         'auto.offset.reset': 'earliest',
