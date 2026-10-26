@@ -18,7 +18,7 @@ from posthog.logging.timing import timed_log
 from posthog.models.event.new_events_schema import events_read_table, use_new_events_schema
 from posthog.models.property.util import get_property_string_expr
 from posthog.models.team.team import Team
-from posthog.ph_client import PH_US_API_KEY
+from posthog.ph_client import PH_US_API_KEY, PH_US_HOST, flind_capture_host_allowed
 from posthog.schema_enums import AIEventType
 from posthog.tasks.report_utils import capture_event
 from posthog.tasks.utils import CeleryQueue
@@ -35,7 +35,9 @@ def get_ph_client() -> PostHogClient:
     already-reported lookup reads. A separate literal here could drift from that key, and the lookup
     would then resolve no team, report that it cannot verify, and emit without checking.
     """
-    return PostHogClient(PH_US_API_KEY, sync_mode=True)
+    if not PH_US_API_KEY or not PH_US_HOST or not flind_capture_host_allowed(PH_US_HOST):
+        raise RuntimeError("Flind-owned usage-report destination is not configured")
+    return PostHogClient(PH_US_API_KEY, host=PH_US_HOST, sync_mode=True)
 
 
 # Only team discovery reads this list: it must pick up customer-emitted core events, never
@@ -794,6 +796,8 @@ def internal_reporting_team_id() -> int | None:
     that one project and only a worker in the region hosting it can read them back. Everywhere else
     the token matches no team. Callers must read None as "cannot verify", never as "nothing emitted".
     """
+    if not PH_US_API_KEY or not PH_US_HOST or not flind_capture_host_allowed(PH_US_HOST):
+        return None
     return Team.objects.filter(api_token=PH_US_API_KEY).values_list("id", flat=True).first()
 
 

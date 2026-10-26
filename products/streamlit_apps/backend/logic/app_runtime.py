@@ -16,7 +16,7 @@ from django.utils import timezone
 import structlog
 
 from posthog.cloud_utils import is_cloud
-from posthog.ph_client import PH_EU_API_KEY, PH_EU_HOST, PH_US_API_KEY, PH_US_HOST
+from posthog.ph_client import PH_EU_API_KEY, PH_EU_HOST, PH_US_API_KEY, PH_US_HOST, flind_capture_host_allowed
 from posthog.utils import get_instance_region
 
 from products.streamlit_apps.backend.facade.contracts import AppRuntimeConcurrencyError, AppRuntimeError
@@ -102,9 +102,10 @@ def _get_otel_logs_config(callback_url: str) -> tuple[str, str]:
     """
     if is_cloud():
         region = get_instance_region()
-        if region == "EU":
-            return f"{PH_EU_HOST}/i/v1/logs", PH_EU_API_KEY
-        return f"{PH_US_HOST}/i/v1/logs", PH_US_API_KEY
+        host, key = (PH_EU_HOST, PH_EU_API_KEY) if region == "EU" else (PH_US_HOST, PH_US_API_KEY)
+        if not key or not host or not flind_capture_host_allowed(host):
+            raise AppRuntimeError("Flind-owned OTEL capture destination is not configured")
+        return f"{host.rstrip('/')}/i/v1/logs", key
 
     # phc_local is the dev token that maps to team_id=1 in capture-logs.
     return f"{callback_url.rstrip('/')}/i/v1/logs", "phc_local"

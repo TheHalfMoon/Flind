@@ -6,6 +6,7 @@ from contextlib import contextmanager
 from numbers import Number
 from typing import Any, cast
 from uuid import UUID
+from urllib.parse import urlsplit
 
 from django.conf import settings
 
@@ -16,11 +17,33 @@ from posthog.clickhouse.query_tagging import get_query_tags
 from posthog.cloud_utils import is_cloud
 from posthog.utils import get_instance_region
 
-PH_US_API_KEY = "sTMFPsFhdP1Ssg"
-PH_US_HOST = "https://us.i.posthog.com"
+# First-party Flind analytics is opt-in. A public project token embedded in
+# donor source is NOT permission to export Flind customer events to that project.
+PH_US_API_KEY = os.environ.get("FLIND_CAPTURE_US_API_KEY", "")
+PH_US_HOST = os.environ.get("FLIND_CAPTURE_US_HOST", "")
 
-PH_EU_API_KEY = "phc_dZ4GK1LRjhB97XozMSkEwPXx7OVANaJEwLErkY1phUF"
-PH_EU_HOST = "https://eu.i.posthog.com"
+PH_EU_API_KEY = os.environ.get("FLIND_CAPTURE_EU_API_KEY", "")
+PH_EU_HOST = os.environ.get("FLIND_CAPTURE_EU_HOST", "")
+
+
+def flind_capture_host_allowed(host: str) -> bool:
+    """Accept only explicit owner-controlled HTTPS origins or local test URLs."""
+    try:
+        url = urlsplit(host)
+        hostname = url.hostname
+        port = url.port
+        if not hostname or url.username or url.password or url.path not in ("", "/") or url.query or url.fragment:
+            return False
+        lowered = hostname.lower().rstrip(".")
+        # Upstream infrastructure is never an implicit or permitted Flind sink.
+        if lowered in ("posthog.com", "posthog.io") or lowered.endswith((".posthog.com", ".posthog.io")):
+            return False
+        if url.scheme == "https":
+            return True
+        return url.scheme == "http" and lowered in ("localhost", "127.0.0.1", "::1")
+    except (TypeError, ValueError):
+        return False
+
 
 logger = structlog.get_logger(__name__)
 
@@ -179,7 +202,8 @@ def ph_scoped_capture(
     try:
         yield ScopedCapture(ph_client)
     finally:
-        ph_client.shutdown()
+        if ph_client is not None:
+            ph_client.shutdown()
     if errors:
         raise errors[0]
 
@@ -202,18 +226,16 @@ def ph_background_capture() -> ScopedCapture:
         with _background_client_lock:
             if _background_client is None:
                 _background_client = get_client()
-                # The SDK's own atexit hook only joins the consumer mid-batch without
-                # draining the queue. atexit is LIFO, so this flush (registered after
-                # the client's hook) runs first and drains what a graceful shutdown
-                # enqueued last. Bounded (SDK default 10s) so a dead network can't
-                # stall process exit.
-                atexit.register(_background_client.flush)
+                # A fresh Flind checkout without explicitly configured capture
+                # has no client and must not register a nonexistent flush callback.
+                if _background_client is not None:
+                    # The SDK hook joins the consumer; this exit callback first
+                    # drains any buffered events with a bounded flush.
+                    atexit.register(_background_client.flush)
     return ScopedCapture(_background_client)
 
 
 def get_client(region: str = "US", **kwargs: Any):
-    from posthoganalytics import Posthog
-
     api_key = None
     host = None
     if region == "EU":
@@ -223,7 +245,15 @@ def get_client(region: str = "US", **kwargs: Any):
         api_key = PH_US_API_KEY
         host = PH_US_HOST
     else:
-        return
+        return None
+
+    # Never construct an SDK client against unconfigured or upstream donor
+    # destinations: it might still enqueue events before an upstream rejects
+    # the token, leaking event details and customer metadata.
+    if not api_key or not host or not flind_capture_host_allowed(host):
+        return None
+
+    from posthoganalytics import Posthog
 
     # A fresh client does not inherit the module-level `disabled` flag that apps.py sets
     # under TEST, so without this a test that runs in cloud mode captures to the real

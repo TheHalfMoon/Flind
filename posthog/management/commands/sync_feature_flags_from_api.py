@@ -6,7 +6,7 @@ from django.core.management.base import BaseCommand
 import requests
 
 from posthog.models import Project, User
-from posthog.ph_client import PH_US_API_KEY
+from posthog.ph_client import PH_US_API_KEY, PH_US_HOST, flind_capture_host_allowed
 
 from products.feature_flags.backend.models.feature_flag import FeatureFlag
 
@@ -35,17 +35,16 @@ def sync_feature_flags_from_api(
         groups: Optional dict of group types to IDs (customer, instance, organization, project)
         output_fn: Function to call for output (defaults to print, can use self.stdout.write for management commands)
     """
-    if groups is None:
-        groups = {
-            "customer": "cus_IK2DWsWVn2ZM16",
-            "instance": "https://us.posthog.com",
-            "organization": "4dc8564d-bd82-1065-2f40-97f7c50f67cf",
-            "project": "fc445b88-e2c4-488e-bb52-aa80cd7918c9",
-        }
+    if not PH_US_API_KEY or not PH_US_HOST or not flind_capture_host_allowed(PH_US_HOST):
+        raise RuntimeError("Flind-owned US analytics host and project API key must be configured")
 
-    output_fn(f"Fetching feature flags for {distinct_id}...")
+    # Do not silently evaluate the flags of an unrelated customer/project.
+    if groups is None:
+        groups = {}
+
+    output_fn(f"Fetching Flind feature flags for {distinct_id}...")
     response = requests.post(
-        "https://us.i.posthog.com/flags?v=2",
+        f"{PH_US_HOST.rstrip('/')}/flags?v=2",
         headers={"Content-Type": "application/json"},
         data=json.dumps({"api_key": PH_US_API_KEY, "distinct_id": distinct_id, "groups": groups}),
         timeout=30,
@@ -138,7 +137,7 @@ def sync_feature_flags_from_api(
 
 
 class Command(BaseCommand):
-    help = "Sync feature flags by fetching them from the PostHog API"
+    help = "Sync feature flags from the configured Flind analytics API"
 
     def add_arguments(self, parser):
         parser.add_argument(

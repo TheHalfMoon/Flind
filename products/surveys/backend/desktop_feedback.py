@@ -36,10 +36,12 @@ class DesktopFeedbackUnavailable(Exception):
 
 def _feedback_media_team() -> Team:
     media_api_key = PH_EU_API_KEY if get_instance_region() == "EU" else PH_US_API_KEY
+    if not media_api_key:
+        raise DesktopFeedbackUnavailable("Flind feedback attachments require an owned analytics project")
     try:
         return Team.objects.get(api_token=media_api_key)
     except Team.DoesNotExist as error:
-        raise DesktopFeedbackUnavailable("Feedback attachments are unavailable on this PostHog instance") from error
+        raise DesktopFeedbackUnavailable("Feedback attachments are unavailable on this Flind instance") from error
 
 
 def _discard_media(media: UploadedMedia) -> bool:
