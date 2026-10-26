@@ -7,7 +7,6 @@
  */
 import { handleAuthorize } from '@/handlers/authorize'
 import { handleCallback } from '@/handlers/callback'
-import { FONT_PATHS, handleFont } from '@/handlers/fonts'
 import { handleClientManifest, handleMetadata, handleOpenIdConfiguration } from '@/handlers/metadata'
 import { handleIntrospect, handleJwks, handleRevoke, handleUserInfo } from '@/handlers/passthrough'
 import { handleRegister } from '@/handlers/register'
@@ -28,8 +27,6 @@ interface Route {
     method?: string
     validators?: Validator[]
     handler: Handler
-    // Static font assets can be served without contacting any OAuth backend.
-    requiresRegionalBackend?: boolean
 }
 
 function normalizePath(path: string): string {
@@ -100,11 +97,6 @@ const routes: Route[] = [
         paths: ['/oauth/userinfo'],
         handler: handleUserInfo,
     },
-    {
-        paths: FONT_PATHS,
-        handler: handleFont,
-        requiresRegionalBackend: false,
-    },
 ]
 
 export default {
@@ -124,7 +116,7 @@ export default {
                             return errorResponse(validationError)
                         }
                     }
-                    if (route.requiresRegionalBackend !== false && !flindOAuthRuntimeReady(env, REGION_BASE_URLS)) {
+                    if (!flindOAuthRuntimeReady(env, REGION_BASE_URLS)) {
                         return new Response(
                             JSON.stringify({ error: 'temporarily_unavailable', error_description: 'Flind OAuth regions are not configured and qualified' }),
                             {

@@ -65,9 +65,10 @@ export function flindOAuthDiscoveryOrigin(env: FlindOAuthRegionEnv): string | nu
     return safeOwnedOrigin(env.FLIND_OAUTH_US_ORIGIN)
 }
 
-export function flindOAuthOwnedRegionPair(env: FlindOAuthRegionEnv): OAuthRegionalOrigins | null {
-    const us = safeOwnedOrigin(env.FLIND_OAUTH_US_ORIGIN)
-    const eu = safeOwnedOrigin(env.FLIND_OAUTH_EU_ORIGIN)
+export function flindOAuthOwnedRegionPair(env: FlindOAuthRegionEnv | undefined): OAuthRegionalOrigins | null {
+    // A direct handler invocation without Worker env fails closed as well.
+    const us = safeOwnedOrigin(env?.FLIND_OAUTH_US_ORIGIN)
+    const eu = safeOwnedOrigin(env?.FLIND_OAUTH_EU_ORIGIN)
     if (!us || !eu || us === eu) {
         return null
     }

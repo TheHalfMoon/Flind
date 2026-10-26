@@ -9,6 +9,7 @@ import { createInMemoryKV } from './helpers'
 describe('cross-client state collision', () => {
     it("does not let a second client's flow steal the first client's authorization code", async () => {
         const kv = createInMemoryKV()
+        const ownedEnv = { FLIND_OAUTH_US_ORIGIN: 'https://us.flind.example', FLIND_OAUTH_EU_ORIGIN: 'https://eu.flind.example' }
 
         await putClientMapping(kv, 'clientA', {
             us_client_id: 'clientA_us',
@@ -24,19 +25,19 @@ describe('cross-client state collision', () => {
         })
 
         const requestA = new Request(
-            'https://oauth.posthog.com/oauth/authorize/?client_id=clientA&redirect_uri=https://a.example/cb&response_type=code&state=shared&_region=us'
+            'https://oauth.flind.example/oauth/authorize/?client_id=clientA&redirect_uri=https://a.example/cb&response_type=code&state=shared&_region=us'
         )
-        const responseA = await handleAuthorize(requestA, kv)
+        const responseA = await handleAuthorize(requestA, kv, ownedEnv)
         const locationA = new URL(responseA.headers.get('location')!)
         const stateSentForA = locationA.searchParams.get('state')!
 
         const requestB = new Request(
-            'https://oauth.posthog.com/oauth/authorize/?client_id=clientB&redirect_uri=https://b.example/cb&response_type=code&state=shared&_region=us'
+            'https://oauth.flind.example/oauth/authorize/?client_id=clientB&redirect_uri=https://b.example/cb&response_type=code&state=shared&_region=us'
         )
-        await handleAuthorize(requestB, kv)
+        await handleAuthorize(requestB, kv, ownedEnv)
 
         const callbackRequest = new Request(
-            `https://oauth.posthog.com/oauth/callback/?code=victim_auth_code&state=${stateSentForA}`
+            `https://oauth.flind.example/oauth/callback/?code=victim_auth_code&state=${stateSentForA}`
         )
         const callbackResponse = await handleCallback(callbackRequest, kv)
 
