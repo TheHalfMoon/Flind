@@ -194,6 +194,11 @@ def ph_scoped_capture(
         errors.append(error)
 
     ph_client = get_client(region, on_error=on_error) if raise_on_error else get_client(region)
+    if raise_on_error and ph_client is None:
+        # Callers such as BudgetSteer checkpoint a durable "captured" Redis
+        # marker after context exit. An absent client must never count as an
+        # attempted capture; fail before the caller writes that marker.
+        raise RuntimeError("Flind analytics capture is not configured")
     if ph_client and event_region is not None:
         ph_client.super_properties["region"] = event_region
 
