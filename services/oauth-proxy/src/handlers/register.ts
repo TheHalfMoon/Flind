@@ -1,17 +1,24 @@
-import { POSTHOG_EU_BASE_URL, POSTHOG_US_BASE_URL } from '@/lib/constants'
+import { type FlindOAuthRegionEnv, flindOAuthOwnedRegionPair } from '@/lib/flind-oauth-admission'
 import type { ClientMapping } from '@/lib/kv'
 import { putClientMapping } from '@/lib/kv'
 
 /**
  * Dynamic Client Registration (RFC 7591) — dual-register proxy.
  *
- * Registers the client on BOTH US and EU PostHog instances simultaneously,
+ * Registers the client on BOTH explicitly configured Flind regions simultaneously,
  * then stores the mapping and returns a proxy client_id to the caller.
  *
  * The proxy client_id is the US client_id by convention — the mapping in KV
  * lets us translate to the EU client_id when needed.
  */
-export async function handleRegister(request: Request, kv: KVNamespace): Promise<Response> {
+export async function handleRegister(request: Request, kv: KVNamespace, env: FlindOAuthRegionEnv): Promise<Response> {
+    const regions = flindOAuthOwnedRegionPair(env)
+    if (!regions) {
+        return new Response(
+            JSON.stringify({ error: 'temporarily_unavailable', error_description: 'Flind OAuth regions are not configured' }),
+            { status: 503, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' } }
+        )
+    }
     const body = await request.text()
     const headers = new Headers(request.headers)
     headers.delete('host')
@@ -33,12 +40,12 @@ export async function handleRegister(request: Request, kv: KVNamespace): Promise
     }
 
     const [usResponse, euResponse] = await Promise.all([
-        fetch(`${POSTHOG_US_BASE_URL}/oauth/register/`, {
+        fetch(`${regions.us}/oauth/register/`, {
             method: 'POST',
             headers,
             body: registrationBody,
         }),
-        fetch(`${POSTHOG_EU_BASE_URL}/oauth/register/`, {
+        fetch(`${regions.eu}/oauth/register/`, {
             method: 'POST',
             headers: new Headers(headers),
             body: registrationBody,

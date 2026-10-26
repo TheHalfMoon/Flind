@@ -65,18 +65,26 @@ export function flindOAuthDiscoveryOrigin(env: FlindOAuthRegionEnv): string | nu
     return safeOwnedOrigin(env.FLIND_OAUTH_US_ORIGIN)
 }
 
+export function flindOAuthOwnedRegionPair(env: FlindOAuthRegionEnv): OAuthRegionalOrigins | null {
+    const us = safeOwnedOrigin(env.FLIND_OAUTH_US_ORIGIN)
+    const eu = safeOwnedOrigin(env.FLIND_OAUTH_EU_ORIGIN)
+    if (!us || !eu || us === eu) {
+        return null
+    }
+    return { us, eu }
+}
+
 export function flindOAuthRuntimeReady(
     env: FlindOAuthRegionEnv,
     actualHandlerOrigins: OAuthRegionalOrigins
 ): boolean {
-    const us = safeOwnedOrigin(env.FLIND_OAUTH_US_ORIGIN)
-    const eu = safeOwnedOrigin(env.FLIND_OAUTH_EU_ORIGIN)
-    if (!us || !eu || us === eu) {
+    const approved = flindOAuthOwnedRegionPair(env)
+    if (!approved) {
         return false
     }
 
-    // Critically: operator intent is not enough. The handlers themselves
-    // must be routed to the same owner-approved origins. This currently
-    // remains FALSE because legacy URL constants are not yet migrated.
-    return actualHandlerOrigins.us === us && actualHandlerOrigins.eu === eu
+    // Operator intent alone cannot enable the legacy handler code.
+    // Full worker ingress stays unavailable until every active route uses
+    // these exact first-party backends, including token/JWKS/issuer paths.
+    return actualHandlerOrigins.us === approved.us && actualHandlerOrigins.eu === approved.eu
 }
