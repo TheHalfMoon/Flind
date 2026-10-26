@@ -68,15 +68,21 @@ SERVER_GATEWAY_INTERFACE = get_from_env("SERVER_GATEWAY_INTERFACE", "WSGI", type
 # GitHub secret alert relay URL - set in US deployment to forward alerts to EU
 GITHUB_SECRET_ALERT_RELAY_URL: str | None = get_from_env("GITHUB_SECRET_ALERT_RELAY_URL", optional=True)
 
-# PostHog's internal US project is also used by callers running in the EU region.
-POSTHOG_PROJECT_ID: int = get_from_env("POSTHOG_PROJECT_ID", 2, type_cast=int)
+# No project ID from an unrelated cloud is valid on a fresh Flind instance.
+# New first-party deployments use FLIND_PROJECT_ID. The legacy environment
+# variable remains a compatibility fallback for existing service integrations;
+# neither name defaults to a donor-owned project.
+POSTHOG_PROJECT_ID: int = get_from_env(
+    "FLIND_PROJECT_ID", get_from_env("POSTHOG_PROJECT_ID", 0, type_cast=int), type_cast=int
+)
 FLIND_HOST: str = get_from_env("FLIND_HOST", get_from_env("SITE_URL", "http://localhost:8010"))
 
-# Internal team on PostHog Cloud US that receives `$ai_generation` /
-# `$ai_embedding` events emitted by PostHog products (PostHog Desktop,
-# background agents, etc). Used by /api/llm_analytics/personal_spend/.
-# Override in tests via @override_settings to point at a per-test team.
-LLM_ANALYTICS_INTERNAL_TEAM_ID: int = 2
+# Internal Flind analytics must target an explicitly configured team owned
+# by the current instance. Zero is unconfigured, not an upstream team.
+# Tests may still use @override_settings for a temporary test-only team.
+LLM_ANALYTICS_INTERNAL_TEAM_ID: int = get_from_env(
+    "FLIND_LLM_ANALYTICS_INTERNAL_TEAM_ID", 0, type_cast=int
+)
 
 # Shared secret for EU→US personal-spend proxy calls (products/ai_observability).
 # Must hold the same value in both regions; unset disables the proxy.
