@@ -55,6 +55,16 @@ function safeOwnedOrigin(value: unknown): string | null {
     }
 }
 
+/**
+ * Owned US origin for isolated discovery/manifest source qualification.
+ * The Worker ingress gate STILL refuses public discovery until all regional
+ * OAuth routes are migrated together. Direct handler invocation must never
+ * fetch from inherited hosts, even when its entry router is bypassed in tests.
+ */
+export function flindOAuthDiscoveryOrigin(env: FlindOAuthRegionEnv): string | null {
+    return safeOwnedOrigin(env.FLIND_OAUTH_US_ORIGIN)
+}
+
 export function flindOAuthRuntimeReady(
     env: FlindOAuthRegionEnv,
     actualHandlerOrigins: OAuthRegionalOrigins

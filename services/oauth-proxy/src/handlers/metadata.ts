@@ -1,8 +1,9 @@
-import { POSTHOG_US_BASE_URL, proxyOrigin } from '@/lib/constants'
+import { proxyOrigin } from '@/lib/constants'
+import { type FlindOAuthRegionEnv, flindOAuthDiscoveryOrigin } from '@/lib/flind-oauth-admission'
 
 /**
- * Discovery documents, fetched from the authoritative source (us.posthog.com) and rewritten so
- * every endpoint they name points at this proxy. Both are built in posthog/api/oauth/metadata.py.
+ * Discovery documents are fetched only from the operator-configured Flind US
+ * OAuth backend, and public endpoints are rewritten onto this proxy.
  */
 
 const CACHE_TTL_MS = 600 * 1000
@@ -22,8 +23,8 @@ interface CachedDocument {
 
 const cache = new Map<string, CachedDocument>()
 
-async function fetchAuthoritativeMetadata(path: string): Promise<Metadata> {
-    const response = await fetch(`${POSTHOG_US_BASE_URL}${path}`)
+async function fetchAuthoritativeMetadata(path: string, regionalOrigin: string): Promise<Metadata> {
+    const response = await fetch(`${regionalOrigin}${path}`)
     if (!response.ok) {
         throw new Error(`Failed to fetch ${path}: ${response.statusText}`)
     }
@@ -32,26 +33,29 @@ async function fetchAuthoritativeMetadata(path: string): Promise<Metadata> {
 }
 
 /**
- * Walk a document and point every `us.posthog.com` URL in it at this proxy, at whatever depth the
- * field sits (`agent_auth.skill` is nested two levels down).
+ * Walk a document and rewrite regional URL paths to this Flind proxy, including
+ * nested endpoint fields such as `agent_auth.skill`.
  *
  * Matching on the URL rather than on a list of field names means an endpoint added to
  * posthog/api/oauth/metadata.py is rewritten here without a matching change.
  */
-function rewriteEndpoints(value: unknown, origin: string): unknown {
+function rewriteEndpoints(value: unknown, origin: string, regionalOrigin: string): unknown {
     if (typeof value === 'string') {
-        return value.startsWith(POSTHOG_US_BASE_URL) ? `${origin}${value.slice(POSTHOG_US_BASE_URL.length)}` : value
+        // Match an entire origin boundary, not a deceptive lookalike hostname.
+        return value === regionalOrigin || value.startsWith(`${regionalOrigin}/`)
+            ? `${origin}${value.slice(regionalOrigin.length)}`
+            : value
     }
 
     if (Array.isArray(value)) {
-        return value.map((item) => rewriteEndpoints(item, origin))
+        return value.map((item) => rewriteEndpoints(item, origin, regionalOrigin))
     }
 
     if (value && typeof value === 'object') {
         return Object.fromEntries(
             Object.entries(value as Metadata).map(([field, nested]) => [
                 field,
-                REGIONAL_VALUE_FIELDS.includes(field) ? nested : rewriteEndpoints(nested, origin),
+                REGIONAL_VALUE_FIELDS.includes(field) ? nested : rewriteEndpoints(nested, origin, regionalOrigin),
             ])
         )
     }
@@ -59,15 +63,23 @@ function rewriteEndpoints(value: unknown, origin: string): unknown {
     return value
 }
 
-async function serveDocument(request: Request, path: string): Promise<Response> {
+async function serveDocument(request: Request, path: string, env: FlindOAuthRegionEnv): Promise<Response> {
+    const regionalOrigin = flindOAuthDiscoveryOrigin(env)
+    if (!regionalOrigin) {
+        return new Response('Flind OAuth discovery origin is not configured', {
+            status: 503,
+            headers: { 'Cache-Control': 'no-store' },
+        })
+    }
     const origin = proxyOrigin(request)
-    const cacheKey = `${path}|${origin}`
+    // The backend origin belongs in the cache key to avoid cross-owner caching.
+    const cacheKey = `${path}|${origin}|${regionalOrigin}`
     const cached = cache.get(cacheKey)
 
     if (!cached || cached.cachedUntil <= Date.now()) {
         try {
-            const metadata = await fetchAuthoritativeMetadata(path)
-            const body = JSON.stringify(rewriteEndpoints(metadata, origin))
+            const metadata = await fetchAuthoritativeMetadata(path, regionalOrigin)
+            const body = JSON.stringify(rewriteEndpoints(metadata, origin, regionalOrigin))
             cache.set(cacheKey, { body, cachedUntil: Date.now() + CACHE_TTL_MS })
         } catch (error) {
             console.error(
@@ -96,12 +108,12 @@ async function serveDocument(request: Request, path: string): Promise<Response> 
     })
 }
 
-export async function handleMetadata(request: Request): Promise<Response> {
-    return serveDocument(request, '/.well-known/oauth-authorization-server')
+export async function handleMetadata(request: Request, _kv: KVNamespace, env: FlindOAuthRegionEnv): Promise<Response> {
+    return serveDocument(request, '/.well-known/oauth-authorization-server', env)
 }
 
-export async function handleOpenIdConfiguration(request: Request): Promise<Response> {
-    return serveDocument(request, '/.well-known/openid-configuration')
+export async function handleOpenIdConfiguration(request: Request, _kv: KVNamespace, env: FlindOAuthRegionEnv): Promise<Response> {
+    return serveDocument(request, '/.well-known/openid-configuration', env)
 }
 
 /**
@@ -109,19 +121,26 @@ export async function handleOpenIdConfiguration(request: Request): Promise<Respo
  * `agent_auth.skill`. Markdown rather than JSON, so the rewrite is a plain substitution: every URL
  * in the document is built from the serving instance's base URL.
  */
-export async function handleClientManifest(request: Request): Promise<Response> {
+export async function handleClientManifest(request: Request, _kv: KVNamespace, env: FlindOAuthRegionEnv): Promise<Response> {
+    const regionalOrigin = flindOAuthDiscoveryOrigin(env)
+    if (!regionalOrigin) {
+        return new Response('Flind OAuth discovery origin is not configured', {
+            status: 503,
+            headers: { 'Cache-Control': 'no-store' },
+        })
+    }
     const origin = proxyOrigin(request)
-    const cacheKey = `${MANIFEST_PATH}|${origin}`
+    const cacheKey = `${MANIFEST_PATH}|${origin}|${regionalOrigin}`
     const cached = cache.get(cacheKey)
 
     if (!cached || cached.cachedUntil <= Date.now()) {
         try {
-            const response = await fetch(`${POSTHOG_US_BASE_URL}${MANIFEST_PATH}`)
+            const response = await fetch(`${regionalOrigin}${MANIFEST_PATH}`)
             if (!response.ok) {
                 throw new Error(`Failed to fetch ${MANIFEST_PATH}: ${response.statusText}`)
             }
 
-            const body = (await response.text()).split(POSTHOG_US_BASE_URL).join(origin)
+            const body = (await response.text()).split(`${regionalOrigin}/`).join(`${origin}/`)
             cache.set(cacheKey, { body, cachedUntil: Date.now() + CACHE_TTL_MS })
         } catch (error) {
             console.error(

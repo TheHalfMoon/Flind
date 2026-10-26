@@ -1,14 +1,17 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
+const ownedEnv = { FLIND_OAUTH_US_ORIGIN: 'https://us.flind.example' }
+const emptyKv = {} as KVNamespace
+
 const AUTHORITATIVE_METADATA = {
-    issuer: 'https://us.posthog.com',
-    authorization_endpoint: 'https://us.posthog.com/oauth/authorize/',
-    token_endpoint: 'https://us.posthog.com/oauth/token/',
-    revocation_endpoint: 'https://us.posthog.com/oauth/revoke/',
-    introspection_endpoint: 'https://us.posthog.com/oauth/introspect/',
-    userinfo_endpoint: 'https://us.posthog.com/oauth/userinfo/',
-    jwks_uri: 'https://us.posthog.com/.well-known/jwks.json',
-    registration_endpoint: 'https://us.posthog.com/oauth/register/',
+    issuer: 'https://us.flind.example',
+    authorization_endpoint: 'https://us.flind.example/oauth/authorize/',
+    token_endpoint: 'https://us.flind.example/oauth/token/',
+    revocation_endpoint: 'https://us.flind.example/oauth/revoke/',
+    introspection_endpoint: 'https://us.flind.example/oauth/introspect/',
+    userinfo_endpoint: 'https://us.flind.example/oauth/userinfo/',
+    jwks_uri: 'https://us.flind.example/.well-known/jwks.json',
+    registration_endpoint: 'https://us.flind.example/oauth/register/',
     scopes_supported: ['openid', 'profile', 'email'],
     response_types_supported: ['code'],
     response_modes_supported: ['query'],
@@ -16,24 +19,24 @@ const AUTHORITATIVE_METADATA = {
     authorization_grant_profiles_supported: ['urn:ietf:params:oauth:grant-profile:id-jag'],
     token_endpoint_auth_methods_supported: ['none', 'client_secret_post'],
     code_challenge_methods_supported: ['S256'],
-    service_documentation: 'https://posthog.com/docs/model-context-protocol',
+    service_documentation: 'https://docs.flind.example/api/oauth',
     client_id_metadata_document_supported: true,
     agent_auth: {
-        skill: 'https://us.posthog.com/auth.md',
-        identity_endpoint: 'https://us.posthog.com/oauth/token/',
+        skill: 'https://us.flind.example/auth.md',
+        identity_endpoint: 'https://us.flind.example/oauth/token/',
         identity_types_supported: ['identity_assertion'],
     },
     posthog_region: 'us',
-    posthog_base_url: 'https://us.posthog.com',
+    posthog_base_url: 'https://us.flind.example',
 }
 
 const AUTHORITATIVE_OPENID_CONFIGURATION = {
-    issuer: 'https://us.posthog.com',
-    authorization_endpoint: 'https://us.posthog.com/oauth/authorize/',
-    token_endpoint: 'https://us.posthog.com/oauth/token/',
-    userinfo_endpoint: 'https://us.posthog.com/oauth/userinfo/',
-    jwks_uri: 'https://us.posthog.com/.well-known/jwks.json',
-    registration_endpoint: 'https://us.posthog.com/oauth/register/',
+    issuer: 'https://us.flind.example',
+    authorization_endpoint: 'https://us.flind.example/oauth/authorize/',
+    token_endpoint: 'https://us.flind.example/oauth/token/',
+    userinfo_endpoint: 'https://us.flind.example/oauth/userinfo/',
+    jwks_uri: 'https://us.flind.example/.well-known/jwks.json',
+    registration_endpoint: 'https://us.flind.example/oauth/register/',
     scopes_supported: ['openid', 'profile', 'email'],
     claims_supported: ['email', 'email_verified', 'family_name', 'given_name', 'sub'],
     subject_types_supported: ['public'],
@@ -58,25 +61,25 @@ describe('handleMetadata', () => {
 
     it('returns valid OAuth authorization server metadata with endpoints rewritten', async () => {
         const { handleMetadata } = await import('@/handlers/metadata')
-        const request = new Request('https://oauth.posthog.com/.well-known/oauth-authorization-server')
-        const response = await handleMetadata(request)
+        const request = new Request('https://oauth.flind.example/.well-known/oauth-authorization-server')
+        const response = await handleMetadata(request, emptyKv, ownedEnv)
         const data = (await response.json()) as Record<string, unknown>
 
         expect(response.status).toBe(200)
-        expect(data.issuer).toBe('https://oauth.posthog.com')
-        expect(data.authorization_endpoint).toBe('https://oauth.posthog.com/oauth/authorize/')
-        expect(data.token_endpoint).toBe('https://oauth.posthog.com/oauth/token/')
-        expect(data.revocation_endpoint).toBe('https://oauth.posthog.com/oauth/revoke/')
-        expect(data.introspection_endpoint).toBe('https://oauth.posthog.com/oauth/introspect/')
-        expect(data.userinfo_endpoint).toBe('https://oauth.posthog.com/oauth/userinfo/')
-        expect(data.jwks_uri).toBe('https://oauth.posthog.com/.well-known/jwks.json')
-        expect(data.registration_endpoint).toBe('https://oauth.posthog.com/oauth/register/')
+        expect(data.issuer).toBe('https://oauth.flind.example')
+        expect(data.authorization_endpoint).toBe('https://oauth.flind.example/oauth/authorize/')
+        expect(data.token_endpoint).toBe('https://oauth.flind.example/oauth/token/')
+        expect(data.revocation_endpoint).toBe('https://oauth.flind.example/oauth/revoke/')
+        expect(data.introspection_endpoint).toBe('https://oauth.flind.example/oauth/introspect/')
+        expect(data.userinfo_endpoint).toBe('https://oauth.flind.example/oauth/userinfo/')
+        expect(data.jwks_uri).toBe('https://oauth.flind.example/.well-known/jwks.json')
+        expect(data.registration_endpoint).toBe('https://oauth.flind.example/oauth/register/')
     })
 
     it('preserves non-endpoint fields from authoritative metadata', async () => {
         const { handleMetadata } = await import('@/handlers/metadata')
-        const request = new Request('https://oauth.posthog.com/.well-known/oauth-authorization-server')
-        const response = await handleMetadata(request)
+        const request = new Request('https://oauth.flind.example/.well-known/oauth-authorization-server')
+        const response = await handleMetadata(request, emptyKv, ownedEnv)
         const data = (await response.json()) as Record<string, unknown>
 
         expect(data.scopes_supported).toEqual(AUTHORITATIVE_METADATA.scopes_supported)
@@ -93,31 +96,68 @@ describe('handleMetadata', () => {
     it('rewrites the agent_auth endpoints onto the proxy', async () => {
         // Left pointing at US, an EU user's ID-JAG assertion goes to the wrong region.
         const { handleMetadata } = await import('@/handlers/metadata')
-        const request = new Request('https://oauth.posthog.com/.well-known/oauth-authorization-server')
+        const request = new Request('https://oauth.flind.example/.well-known/oauth-authorization-server')
 
-        const response = await handleMetadata(request)
+        const response = await handleMetadata(request, emptyKv, ownedEnv)
         const data = (await response.json()) as { agent_auth: Record<string, unknown> }
 
-        expect(data.agent_auth.skill).toBe('https://oauth.posthog.com/auth.md')
-        expect(data.agent_auth.identity_endpoint).toBe('https://oauth.posthog.com/oauth/token/')
+        expect(data.agent_auth.skill).toBe('https://oauth.flind.example/auth.md')
+        expect(data.agent_auth.identity_endpoint).toBe('https://oauth.flind.example/oauth/token/')
     })
 
     it('keeps posthog_base_url pointing at the region that issues the tokens', async () => {
         const { handleMetadata } = await import('@/handlers/metadata')
-        const request = new Request('https://oauth.posthog.com/.well-known/oauth-authorization-server')
+        const request = new Request('https://oauth.flind.example/.well-known/oauth-authorization-server')
 
-        const response = await handleMetadata(request)
+        const response = await handleMetadata(request, emptyKv, ownedEnv)
         const data = (await response.json()) as Record<string, unknown>
 
-        expect(data.posthog_base_url).toBe('https://us.posthog.com')
+        expect(data.posthog_base_url).toBe('https://us.flind.example')
+    })
+
+    it('fails closed when no owned Flind origin is configured', async () => {
+        const { handleMetadata } = await import('@/handlers/metadata')
+        const request = new Request('https://oauth.flind.example/.well-known/oauth-authorization-server')
+        const response = await handleMetadata(request, emptyKv, {})
+        expect(response.status).toBe(503)
+        expect(fetch).not.toHaveBeenCalled()
+    })
+
+    it('does not rewrite lookalike or unrelated origins', async () => {
+        vi.stubGlobal('fetch', vi.fn().mockResolvedValue({
+            ok: true,
+            json: () => Promise.resolve({
+                issuer: 'https://us.flind.example',
+                legitimate: 'https://us.flind.example/oauth/token/',
+                lookalike: 'https://us.flind.example.evil/oauth/token/',
+                external: 'https://docs.example/oauth/token/',
+            }),
+        }))
+        const { handleMetadata } = await import('@/handlers/metadata')
+        const request = new Request('https://oauth.flind.example/.well-known/oauth-authorization-server')
+        const response = await handleMetadata(request, emptyKv, ownedEnv)
+        const body = (await response.json()) as Record<string, string>
+        expect(body.legitimate).toBe('https://oauth.flind.example/oauth/token/')
+        expect(body.lookalike).toBe('https://us.flind.example.evil/oauth/token/')
+        expect(body.external).toBe('https://docs.example/oauth/token/')
+    })
+
+    it('uses the configured Flind origin, never an inherited metadata host', async () => {
+        const { handleMetadata } = await import('@/handlers/metadata')
+        await handleMetadata(
+            new Request('https://oauth.flind.example/.well-known/oauth-authorization-server'),
+            emptyKv,
+            ownedEnv
+        )
+        expect(fetch).toHaveBeenCalledWith('https://us.flind.example/.well-known/oauth-authorization-server')
     })
 
     it('caches the authoritative metadata', async () => {
         const { handleMetadata } = await import('@/handlers/metadata')
-        const request = new Request('https://oauth.posthog.com/.well-known/oauth-authorization-server')
+        const request = new Request('https://oauth.flind.example/.well-known/oauth-authorization-server')
 
-        await handleMetadata(request)
-        await handleMetadata(request)
+        await handleMetadata(request, emptyKv, ownedEnv)
+        await handleMetadata(request, emptyKv, ownedEnv)
 
         expect(fetch).toHaveBeenCalledTimes(1)
     })
@@ -125,15 +165,15 @@ describe('handleMetadata', () => {
     it('re-fetches after cache expires', async () => {
         vi.useFakeTimers()
         const { handleMetadata } = await import('@/handlers/metadata')
-        const request = new Request('https://oauth.posthog.com/.well-known/oauth-authorization-server')
+        const request = new Request('https://oauth.flind.example/.well-known/oauth-authorization-server')
 
-        await handleMetadata(request)
+        await handleMetadata(request, emptyKv, ownedEnv)
         expect(fetch).toHaveBeenCalledTimes(1)
 
         // Advance past the 10-minute cache TTL
         vi.advanceTimersByTime(601 * 1000)
 
-        await handleMetadata(request)
+        await handleMetadata(request, emptyKv, ownedEnv)
         expect(fetch).toHaveBeenCalledTimes(2)
 
         vi.useRealTimers()
@@ -149,9 +189,9 @@ describe('handleMetadata', () => {
         )
 
         const { handleMetadata } = await import('@/handlers/metadata')
-        const request = new Request('https://oauth.posthog.com/.well-known/oauth-authorization-server')
+        const request = new Request('https://oauth.flind.example/.well-known/oauth-authorization-server')
 
-        const response = await handleMetadata(request)
+        const response = await handleMetadata(request, emptyKv, ownedEnv)
         expect(response.status).toBe(502)
         const data = (await response.json()) as Record<string, unknown>
         expect(data.error).toBe('server_error')
@@ -160,10 +200,10 @@ describe('handleMetadata', () => {
     it('returns 502 when metadata refresh fails after cache expires', async () => {
         vi.useFakeTimers()
         const { handleMetadata } = await import('@/handlers/metadata')
-        const request = new Request('https://oauth.posthog.com/.well-known/oauth-authorization-server')
+        const request = new Request('https://oauth.flind.example/.well-known/oauth-authorization-server')
 
         // Populate cache with a successful fetch
-        const response1 = await handleMetadata(request)
+        const response1 = await handleMetadata(request, emptyKv, ownedEnv)
         expect(response1.status).toBe(200)
 
         // Expire cache
@@ -178,7 +218,7 @@ describe('handleMetadata', () => {
             })
         )
 
-        const response2 = await handleMetadata(request)
+        const response2 = await handleMetadata(request, emptyKv, ownedEnv)
         expect(response2.status).toBe(502)
         const data = (await response2.json()) as Record<string, unknown>
         expect(data.error).toBe('server_error')
@@ -206,23 +246,23 @@ describe('handleOpenIdConfiguration', () => {
     it('serves the OIDC discovery document a relying party needs to sign users in', async () => {
         // Without it the proxy is not a discoverable OpenID provider.
         const { handleOpenIdConfiguration } = await import('@/handlers/metadata')
-        const request = new Request('https://oauth.posthog.com/.well-known/openid-configuration')
+        const request = new Request('https://oauth.flind.example/.well-known/openid-configuration')
 
-        const response = await handleOpenIdConfiguration(request)
+        const response = await handleOpenIdConfiguration(request, emptyKv, ownedEnv)
         const data = (await response.json()) as Record<string, unknown>
 
         expect(response.status).toBe(200)
-        expect(data.issuer).toBe('https://oauth.posthog.com')
-        expect(data.userinfo_endpoint).toBe('https://oauth.posthog.com/oauth/userinfo/')
-        expect(data.jwks_uri).toBe('https://oauth.posthog.com/.well-known/jwks.json')
+        expect(data.issuer).toBe('https://oauth.flind.example')
+        expect(data.userinfo_endpoint).toBe('https://oauth.flind.example/oauth/userinfo/')
+        expect(data.jwks_uri).toBe('https://oauth.flind.example/.well-known/jwks.json')
         expect(data.claims_supported).toEqual(AUTHORITATIVE_OPENID_CONFIGURATION.claims_supported)
     })
 
     it('is readable cross-origin', async () => {
         const { handleOpenIdConfiguration } = await import('@/handlers/metadata')
-        const request = new Request('https://oauth.posthog.com/.well-known/openid-configuration')
+        const request = new Request('https://oauth.flind.example/.well-known/openid-configuration')
 
-        const response = await handleOpenIdConfiguration(request)
+        const response = await handleOpenIdConfiguration(request, emptyKv, ownedEnv)
 
         expect(response.headers.get('access-control-allow-origin')).toBe('*')
     })
@@ -234,7 +274,7 @@ describe('handleClientManifest', () => {
         vi.stubGlobal(
             'fetch',
             vi.fn().mockResolvedValue(
-                new Response('Authorize at https://us.posthog.com/oauth/authorize/ with scope `openid`.', {
+                new Response('Authorize at https://us.flind.example/oauth/authorize/ with scope `openid`.', {
                     status: 200,
                 })
             )
@@ -248,14 +288,14 @@ describe('handleClientManifest', () => {
     it('serves the manifest the metadata advertises, with its URLs on the proxy', async () => {
         // `agent_auth.skill` points agents at this path on the proxy, which had no route for it.
         const { handleClientManifest } = await import('@/handlers/metadata')
-        const request = new Request('https://oauth.posthog.com/auth.md')
+        const request = new Request('https://oauth.flind.example/auth.md')
 
-        const response = await handleClientManifest(request)
+        const response = await handleClientManifest(request, emptyKv, ownedEnv)
 
         expect(response.status).toBe(200)
         expect(response.headers.get('content-type')).toContain('text/markdown')
         expect(await response.text()).toBe(
-            'Authorize at https://oauth.posthog.com/oauth/authorize/ with scope `openid`.'
+            'Authorize at https://oauth.flind.example/oauth/authorize/ with scope `openid`.'
         )
     })
 })
