@@ -4,7 +4,7 @@
     "version": "1.0.0",
     "description": "Transpiles site apps TSX to browser JS via stdin/stdout",
     "license": "MIT",
-    "author": "PostHog Inc.",
+    "author": "Flind Contributors",
     "main": "transpile.mjs",
     "scripts": {
         "build": "tsc -b && node build.mjs",

@@ -2,10 +2,10 @@
     "name": "@flind/nodejs",
     "private": true,
     "version": "1.10.5",
-    "description": "PostHog Node.js services",
+    "description": "Flind Node.js ingestion and processing services",
     "license": "MIT",
-    "author": "PostHog <hey@posthog.com>",
-    "repository": "https://github.com/PostHog/posthog",
+    "author": "Flind Contributors",
+    "repository": "https://github.com/TheHalfMoon/Flind",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "scripts": {
