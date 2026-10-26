@@ -21,6 +21,7 @@ import { FeedResult } from '~/ingestion/framework/batching-pipeline'
 
 import { AcceptedBatch, batchAccepted, batchFailed, batchProcessed, batchReleased } from './batch-metrics'
 import { FeedOrderSentinel } from './feed-order-sentinel'
+import { safeIngestFailureMessage } from './grpc-error-sanitizer'
 import { grpcMessageToSerialized } from './grpc-message-converter'
 import { SerializedKafkaMessage } from './types'
 
@@ -657,7 +658,7 @@ export class WorkerIngestServer {
         this.fatalError = error
         logger.error('💥', 'WorkerIngest pipeline failed — failing all streams', { error: error.message })
         for (const stream of this.streams.values()) {
-            stream.acks.fail(new ConnectError(`ingest pipeline failed: ${error.message}`, Code.Internal))
+            stream.acks.fail(new ConnectError(safeIngestFailureMessage(error), Code.Internal))
         }
         this.deps.onFatal(error)
     }
@@ -854,7 +855,7 @@ export class WorkerIngestServer {
             this.finishReader(stream)
         } catch (error) {
             stream.readerDone = true
-            const connectError = error instanceof ConnectError ? error : new ConnectError(String(error), Code.Internal)
+            const connectError = error instanceof ConnectError ? error : new ConnectError(safeIngestFailureMessage(error), Code.Internal)
             stream.acks.fail(connectError)
             throw connectError
         }

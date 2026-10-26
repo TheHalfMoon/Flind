@@ -448,11 +448,17 @@ describe('WorkerIngestServer', () => {
         source.push(hello())
         source.push(subBatch(1, [10]))
         await until(() => driver.feeds.length === 1)
-        driver.failNext(new Error('pipeline poisoned'))
+        // Internal failures may contain secrets. Preserve them for the
+        // process owner, not the network-facing WorkerIngest client.
+        driver.failNext(new Error('pipeline poisoned: SECRET_INTERNAL_KEY'))
         await collected.ended
 
         expect(collected.error!.code).toBe(Code.Internal)
-        expect(onFatal).toHaveBeenCalledWith(expect.objectContaining({ message: 'pipeline poisoned' }))
+        expect(collected.error!.message).toContain('ingest pipeline failed')
+        expect(collected.error!.message).not.toContain('SECRET_INTERNAL_KEY')
+        expect(onFatal).toHaveBeenCalledWith(
+            expect.objectContaining({ message: 'pipeline poisoned: SECRET_INTERNAL_KEY' })
+        )
     })
 
     it('nacks a rejected sub-batch before closing the stream', async () => {
