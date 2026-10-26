@@ -2,7 +2,7 @@ import { type Region } from '@/lib/constants'
 import { type FlindOAuthRegionEnv, type OAuthRegionalOrigins, flindOAuthOwnedRegionPair } from '@/lib/flind-oauth-admission'
 import { type SigningKeyEnv, proxyJwks } from '@/lib/idtoken'
 import { getClientMapping, getRegionSelection } from '@/lib/kv'
-import { proxyPostWithClientId, proxyToRegion, tryBothRegions, tryBothRegionsAtOrigins } from '@/lib/proxy'
+import { proxyPostWithClientId, proxyToRegionAtOrigins, tryBothRegionsAtOrigins } from '@/lib/proxy'
 import { errorResponse } from '@/lib/validation'
 
 /**
@@ -12,7 +12,7 @@ import { errorResponse } from '@/lib/validation'
 // Every relying party fetches this on its first ID token verification. Signing keys rotate in months.
 const JWKS_CACHE_TTL_MS = 600 * 1000
 
-let cachedJwks: { body: string; cachedUntil: number } | null = null
+let cachedJwks: { body: string; cachedUntil: number; identity: string } | null = null
 
 /**
  * Revoke token — route to the correct region based on client_id, fallback to try-both.
@@ -111,16 +111,30 @@ function privateOAuthResponse(response: Response): Response {
  * tokens (`at+jwt`) clients receive through this proxy. Key ids differ, so a verifier selects
  * the right key on its own.
  */
-export async function handleJwks(request: Request, _kv: KVNamespace, env: SigningKeyEnv): Promise<Response> {
-    const cached = cachedJwks && cachedJwks.cachedUntil > Date.now() ? cachedJwks.body : null
+export async function handleJwks(
+    request: Request, _kv: KVNamespace, env: SigningKeyEnv & FlindOAuthRegionEnv
+): Promise<Response> {
+    const regions = flindOAuthOwnedRegionPair(env)
+    if (!regions) {
+        return new Response(JSON.stringify({ error: 'temporarily_unavailable' }), {
+            status: 503,
+            headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' },
+        })
+    }
+    // Never reuse a cached JWKS after a signing-key rotation or a change of
+    // owner-controlled regional authority. Only public key IDs enter the
+    // identity; PEM signing material never enters the cache identity string.
+    const proxyKeys = await proxyJwks(env)
+    const identity = JSON.stringify({ us: regions.us, eu: regions.eu, kids: proxyKeys.map((key) => key.kid) })
+    const cached = cachedJwks && cachedJwks.identity === identity && cachedJwks.cachedUntil > Date.now()
+        ? cachedJwks.body : null
     if (cached) {
         return jwksResponse(cached)
     }
 
-    const [proxyKeys, ...regional] = await Promise.all([
-        proxyJwks(env),
-        regionalKeys(request, 'us'),
-        regionalKeys(request, 'eu'),
+    const regional = await Promise.all([
+        regionalKeys(request, 'us', regions),
+        regionalKeys(request, 'eu', regions),
     ])
 
     // A relying party verifying an ID token this worker issued needs no regional key, so failing
@@ -138,16 +152,16 @@ export async function handleJwks(request: Request, _kv: KVNamespace, env: Signin
     // served once but never held: the next request retries the region that failed.
     const complete = regional.every((keys) => keys.length > 0)
     if (complete) {
-        cachedJwks = { body, cachedUntil: Date.now() + JWKS_CACHE_TTL_MS }
+        cachedJwks = { body, cachedUntil: Date.now() + JWKS_CACHE_TTL_MS, identity }
     }
 
     return jwksResponse(body, complete)
 }
 
 /** A region that is unreachable contributes nothing rather than failing the whole document. */
-async function regionalKeys(request: Request, region: Region): Promise<unknown[]> {
+async function regionalKeys(request: Request, region: Region, origins: OAuthRegionalOrigins): Promise<unknown[]> {
     try {
-        const response = await proxyToRegion(request, region, '/.well-known/jwks.json')
+        const response = await proxyToRegionAtOrigins(request, region, '/.well-known/jwks.json', origins)
         if (response.ok) {
             const body = (await response.json()) as { keys?: unknown }
             // A non-array `keys` passes the emptiness check in `handleJwks` on its own length,

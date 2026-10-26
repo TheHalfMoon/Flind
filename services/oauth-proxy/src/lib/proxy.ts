@@ -6,7 +6,18 @@ import type { OAuthRegionalOrigins } from './flind-oauth-admission'
  * Rewrites the URL path onto the regional base URL and forwards the request.
  */
 export async function proxyToRegion(request: Request, region: Region, path: string): Promise<Response> {
-    const baseUrl = baseUrlForRegion(region)
+    // Compatibility helper for legacy gated token/proxy routes. Do not use
+    // this implicit-origin entry point from first-party Flind JWKS handlers.
+    return proxyToRegionAtOrigins(request, region, path, {
+        us: POSTHOG_US_BASE_URL,
+        eu: POSTHOG_EU_BASE_URL,
+    })
+}
+
+export async function proxyToRegionAtOrigins(
+    request: Request, region: Region, path: string, ownedOrigins: OAuthRegionalOrigins
+): Promise<Response> {
+    const baseUrl = ownedOrigins[region]
     const url = new URL(path, baseUrl)
 
     const headers = new Headers(request.headers)

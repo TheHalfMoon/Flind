@@ -134,6 +134,8 @@ describe('ID token re-issuance', () => {
             createMockKV(),
             {
                 OIDC_SIGNING_KEY: signingKey,
+                FLIND_OAUTH_US_ORIGIN: 'https://us.flind.example',
+                FLIND_OAUTH_EU_ORIGIN: 'https://eu.flind.example',
             }
         )
         const { keys } = (await response.json()) as { keys: JWK[] }
@@ -150,6 +152,8 @@ describe('ID token re-issuance', () => {
             createMockKV(),
             {
                 OIDC_SIGNING_KEY: signingKey,
+                FLIND_OAUTH_US_ORIGIN: 'https://us.flind.example',
+                FLIND_OAUTH_EU_ORIGIN: 'https://eu.flind.example',
             }
         )
 
@@ -231,7 +235,11 @@ describe('ID token re-issuance', () => {
         const response = await freshHandleJwks(
             new Request('https://oauth.posthog.com/.well-known/jwks.json'),
             createMockKV(),
-            { OIDC_SIGNING_KEY: signingKey }
+            {
+                OIDC_SIGNING_KEY: signingKey,
+                FLIND_OAUTH_US_ORIGIN: 'https://us.flind.example',
+                FLIND_OAUTH_EU_ORIGIN: 'https://eu.flind.example',
+            }
         )
         const { keys } = (await response.json()) as { keys: JWK[] }
 
@@ -247,7 +255,7 @@ describe('ID token re-issuance', () => {
             'fetch',
             vi.fn((url: string) =>
                 Promise.resolve(
-                    url.includes('eu.posthog.com')
+                    url.includes('eu.flind.example')
                         ? new Response('nope', { status: 500 })
                         : new Response(JSON.stringify({ keys: [regionalKey.publicJwk] }), { status: 200 })
                 )
@@ -261,7 +269,11 @@ describe('ID token re-issuance', () => {
         const response = await freshHandleJwks(
             new Request('https://oauth.posthog.com/.well-known/jwks.json'),
             createMockKV(),
-            { OIDC_SIGNING_KEY: signingKey }
+            {
+                OIDC_SIGNING_KEY: signingKey,
+                FLIND_OAUTH_US_ORIGIN: 'https://us.flind.example',
+                FLIND_OAUTH_EU_ORIGIN: 'https://eu.flind.example',
+            }
         )
 
         expect(response.status).toBe(200)
