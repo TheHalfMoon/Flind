@@ -11,14 +11,14 @@ from rest_framework import status
 FIXTURE_IMAGE = Path(__file__).parent / "fixtures" / "a-small-but-valid.gif"
 
 
-@override_settings(INTERNAL_FEEDBACK_SLACK_BOT_TOKEN="xoxb-test", INTERNAL_FEEDBACK_SLACK_CHANNEL="C123")
+@override_settings(\n    INTERNAL_FEEDBACK_SLACK_BOT_TOKEN="xoxb-test",\n    INTERNAL_FEEDBACK_SLACK_CHANNEL="C123",\n    FLIND_INTERNAL_STAFF_EMAIL_SUFFIX="@flind.example",\n)
 class TestInternalFeedbackAPI(APIBaseTest):
     def _post(self, **extra: object):
         return self.client.post(
             "/api/internal_feedback/",
             {
                 "comment": "Button overlaps <!channel>",
-                "page_url": "https://us.posthog.com/project/1/insights",
+                "page_url": "https://flind.example/project/1/insights",
                 "element_identifier": '[data-attr="save-insight"]',
                 **extra,
             },
@@ -28,8 +28,8 @@ class TestInternalFeedbackAPI(APIBaseTest):
     @parameterized.expand(
         [
             ("outside_email", "someone@example.com", True),
-            ("unverified_posthog_email", "someone@posthog.com", False),
-            ("unknown_verification_posthog_email", "someone@posthog.com", None),
+            ("unverified_flind_email", "someone@flind.example", False),
+            ("unknown_verification_flind_email", "someone@flind.example", None),
         ]
     )
     @patch("posthog.api.internal_feedback.SlackWebClient")
@@ -43,6 +43,30 @@ class TestInternalFeedbackAPI(APIBaseTest):
         assert response.status_code == status.HTTP_403_FORBIDDEN
         mock_client.assert_not_called()
 
+    @patch("posthog.api.internal_feedback.SlackWebClient")
+    def test_absent_flind_staff_domain_refuses_before_slack(self, mock_client: MagicMock) -> None:
+        self.user.email = "verified@flind.example"
+        self.user.is_email_verified = True
+        self.user.save()
+
+        with override_settings(FLIND_INTERNAL_STAFF_EMAIL_SUFFIX=""):
+            response = self._post()
+
+        assert response.status_code == status.HTTP_403_FORBIDDEN
+        mock_client.assert_not_called()
+
+    @patch("posthog.api.internal_feedback.SlackWebClient")
+    def test_missing_first_party_channel_refuses_without_egress(self, mock_client: MagicMock) -> None:
+        self.user.email = "verified@flind.example"
+        self.user.is_email_verified = True
+        self.user.save()
+
+        with override_settings(INTERNAL_FEEDBACK_SLACK_CHANNEL=""):
+            response = self._post()
+
+        assert response.status_code == status.HTTP_503_SERVICE_UNAVAILABLE
+        mock_client.assert_not_called()
+
     @parameterized.expand(
         [
             ("element", {}, '*Element:* `[data-attr="save-insight"]`'),
@@ -53,6 +77,7 @@ class TestInternalFeedbackAPI(APIBaseTest):
     def test_uploads_screenshot_with_escaped_message(
         self, _name: str, extra: dict[str, str], element_line: str, mock_client: MagicMock
     ) -> None:
+        self.user.email = "verified@flind.example"
         self.user.is_email_verified = True
         self.user.save()
 
@@ -65,7 +90,7 @@ class TestInternalFeedbackAPI(APIBaseTest):
         assert kwargs["content"] == FIXTURE_IMAGE.read_bytes()
         message = kwargs["initial_comment"]
         assert self.user.email in message
-        assert "https://us.posthog.com/project/1/insights" in message
+        assert "https://flind.example/project/1/insights" in message
         assert "&lt;!channel&gt;" in message
         assert "<!channel>" not in message
         assert element_line in message

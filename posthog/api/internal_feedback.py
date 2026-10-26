@@ -10,7 +10,6 @@ from rest_framework.response import Response
 from slack_sdk.errors import SlackApiError
 
 from posthog.auth import SessionAuthentication
-from posthog.constants import POSTHOG_INTERNAL_EMAIL_SUFFIX
 from posthog.egress.slack.client import SlackWebClient
 from posthog.models import User
 from posthog.permissions import APIScopePermission
@@ -22,21 +21,28 @@ logger = structlog.get_logger(__name__)
 MAX_SCREENSHOT_BYTES = 5 * 1024 * 1024
 
 
-def is_posthog_staff_email(user: User) -> bool:
-    # Only a verified address proves ownership. Older accounts carry None, and an email change can set an
-    # unowned address without verification when email delivery is off, so None is refused too.
+def is_flind_staff_email(user: User) -> bool:
+    # Only a verified address in the explicitly configured first-party domain
+    # can submit internal feedback. Empty or malformed suffixes fail closed.
+    # In particular, there is no inherited upstream company domain.
+    suffix = getattr(settings, "FLIND_INTERNAL_STAFF_EMAIL_SUFFIX", "")
+    if not isinstance(suffix, str):
+        return False
+    suffix = suffix.strip().lower()
+    if not suffix.startswith("@") or suffix.count("@") != 1 or "." not in suffix[1:]:
+        return False
     return (
         bool(user.email)
-        and user.email.lower().endswith(POSTHOG_INTERNAL_EMAIL_SUFFIX)
+        and user.email.lower().endswith(suffix)
         and user.is_email_verified is True
     )
 
 
-class IsPostHogStaffEmail(BasePermission):
-    message = "Internal feedback is only available to PostHog team members."
+class IsFlindStaffEmail(BasePermission):
+    message = "Internal feedback is available only to verified Flind team members."
 
     def has_permission(self, request: Request, view: object) -> bool:
-        return isinstance(request.user, User) and is_posthog_staff_email(request.user)
+        return isinstance(request.user, User) and is_flind_staff_email(request.user)
 
 
 class InternalFeedbackRequestSerializer(serializers.Serializer):
@@ -84,12 +90,12 @@ class InternalFeedbackViewSet(viewsets.ViewSet):
     # Session-only and INTERNAL: this is a staff tool in the web app, never an API for tokens.
     scope_object = "INTERNAL"
     authentication_classes = [SessionAuthentication]
-    permission_classes = [IsAuthenticated, APIScopePermission, IsPostHogStaffEmail]
+    permission_classes = [IsAuthenticated, APIScopePermission, IsFlindStaffEmail]
     throttle_classes = [InternalFeedbackUserThrottle]
     parser_classes = [MultiPartParser, FormParser]
 
     @extend_schema(
-        description="Send feedback about an element or page of the PostHog web app to the team's Slack channel.",
+        description="Send feedback about an element or page of the Flind web app to the team's configured Slack channel.",
         # A raw dict, not the serializer: drf-spectacular types an ImageField as a plain string here,
         # which a generated client cannot fill with a file. Same workaround as `MediaViewSet.create`.
         request={

@@ -9,9 +9,12 @@ CREDENTIALS_SERVICE_URL = get_from_env("CREDENTIALS_SERVICE_URL", "")
 # Comma-separated `new,old`, newest first. Per deployment, not fleet-wide.
 CREDENTIALS_SERVICE_JWT_SECRET = get_from_env("CREDENTIALS_SERVICE_JWT_SECRET", "")
 
-# Bot token and channel for the staff-only UI feedback widget. Empty token disables delivery.
+# The first-party Flind feedback integration is disabled unless *both* an
+# owned Slack destination and an owned verified staff email suffix are configured.
+# Never inherit a donor's Slack channel or staff-email domain.
 INTERNAL_FEEDBACK_SLACK_BOT_TOKEN = get_from_env("INTERNAL_FEEDBACK_SLACK_BOT_TOKEN", "")
-INTERNAL_FEEDBACK_SLACK_CHANNEL = get_from_env("INTERNAL_FEEDBACK_SLACK_CHANNEL", "C09G8Q32R6F")
+INTERNAL_FEEDBACK_SLACK_CHANNEL = get_from_env("INTERNAL_FEEDBACK_SLACK_CHANNEL", "")
+FLIND_INTERNAL_STAFF_EMAIL_SUFFIX = get_from_env("FLIND_INTERNAL_STAFF_EMAIL_SUFFIX", "")
 
 HUBSPOT_APP_CLIENT_ID = get_from_env("HUBSPOT_APP_CLIENT_ID", "")
 HUBSPOT_APP_CLIENT_SECRET = get_from_env("HUBSPOT_APP_CLIENT_SECRET", "")
