@@ -162,12 +162,65 @@ class BackendRuntimeReadinessWave48Tests(unittest.TestCase):
             patch.object(ready, "redis_ping", return_value=ready.Check(names[1], True, "ok")),
             patch.object(ready, "clickhouse_ping", return_value=ready.Check(names[2], True, "ok")),
             patch.object(ready, "django_import", return_value=ready.Check(names[3], True, "ok")),
+            patch.object(ready, "django_dependency_lock", return_value=ready.Check("django_lock", True, "locked")),
             patch.object(ready, "docker_daemon", return_value=ready.Check("docker", False, "off", required=False)),
         ):
             result = ready.qualify()
         self.assertTrue(result["prerequisites_ready"])
         self.assertFalse(result["release_qualified"])
         self.assertEqual(result["blocked_by"], [])
+
+    @patch.object(ready, "audit_runtime_lock")
+    def test_django_import_is_not_sufficient_when_lock_is_incomplete(self, lock):
+        lock.return_value = {
+            "direct_lock_qualified": False,
+            "applicable_direct_dependencies": 201,
+            "installed_locked_direct_dependencies": 1,
+            "missing_count": 198,
+            "version_mismatch_count": 2,
+            "unverified_marker_count": 0,
+            "unlocked_count": 0,
+        }
+        status = ready.django_dependency_lock()
+        self.assertEqual(status.name, "django_lock")
+        self.assertFalse(status.ready)
+        self.assertTrue(status.required)
+        self.assertIn("1/201", status.evidence)
+        self.assertIn("missing 198", status.evidence)
+
+    @patch.object(ready, "audit_runtime_lock")
+    def test_full_direct_lock_allows_backend_lock_check(self, lock):
+        lock.return_value = {
+            "direct_lock_qualified": True,
+            "applicable_direct_dependencies": 201,
+            "installed_locked_direct_dependencies": 201,
+            "missing_count": 0,
+            "version_mismatch_count": 0,
+            "unverified_marker_count": 0,
+            "unlocked_count": 0,
+        }
+        self.assertTrue(ready.django_dependency_lock().ready)
+
+    @patch.object(ready, "audit_runtime_lock", side_effect=ValueError("PRIVATE_TOKEN"))
+    def test_dependency_audit_refuses_and_redacts_internal_error(self, _lock):
+        status = ready.django_dependency_lock()
+        self.assertFalse(status.ready)
+        self.assertNotIn("PRIVATE_TOKEN", status.evidence)
+
+    def test_incomplete_lock_keeps_prerequisites_blocked_even_with_django(self):
+        with (
+            patch.object(ready, "pinned_python_version", return_value=ready.Check("python", True, "ok")),
+            patch.object(ready, "postgres_readonly_sql", return_value=ready.Check("postgres", True, "ok")),
+            patch.object(ready, "redis_ping", return_value=ready.Check("redis", True, "ok")),
+            patch.object(ready, "clickhouse_ping", return_value=ready.Check("clickhouse", True, "ok")),
+            patch.object(ready, "django_import", return_value=ready.Check("django", True, "ok")),
+            patch.object(ready, "django_dependency_lock", return_value=ready.Check("django_lock", False, "missing")),
+            patch.object(ready, "docker_daemon", return_value=ready.Check("docker", False, "off", required=False)),
+        ):
+            result = ready.qualify()
+        self.assertFalse(result["prerequisites_ready"])
+        self.assertEqual(result["blocked_by"], ["django_lock"])
+        self.assertFalse(result["release_qualified"])
 
     @patch.object(ready, "qualify")
     def test_human_output_calls_out_optional_docker(self, qualify):

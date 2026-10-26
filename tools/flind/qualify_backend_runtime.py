@@ -18,6 +18,11 @@ import sys
 import tomllib
 from dataclasses import asdict, dataclass
 
+if __package__:
+    from .qualify_django_lock import audit_runtime_lock
+else:
+    from qualify_django_lock import audit_runtime_lock
+
 
 @dataclass(frozen=True)
 class Check:
@@ -106,6 +111,34 @@ def django_import() -> Check:
                  if ok else "Django missing from current Python environment")
 
 
+def django_dependency_lock() -> Check:
+    """Require all applicable direct Flind dependencies at uv.lock versions.
+
+    Importing Django alone is not evidence that the full application can boot.
+    Expose only aggregate counts, never names, environment paths or secrets.
+    """
+    try:
+        receipt = audit_runtime_lock()
+        ready = receipt["direct_lock_qualified"] is True
+        expected = int(receipt["applicable_direct_dependencies"])
+        installed = int(receipt["installed_locked_direct_dependencies"])
+        missing = int(receipt["missing_count"])
+        mismatch = int(receipt["version_mismatch_count"])
+        unverified = int(receipt["unverified_marker_count"])
+        unlocked = int(receipt["unlocked_count"])
+        if any(n < 0 for n in (expected, installed, missing, mismatch, unverified, unlocked)):
+            raise ValueError("Invalid dependency audit counts")
+        return Check(
+            "django_lock",
+            ready,
+            f"Exact uv.lock direct dependencies {installed}/{expected}; "
+            f"missing {missing}, mismatched {mismatch}, "
+            f"unverified {unverified}, unlocked {unlocked}",
+        )
+    except (OSError, KeyError, TypeError, ValueError, SyntaxError):
+        return Check("django_lock", False, "Exact uv.lock dependency audit unavailable")
+
+
 def docker_daemon() -> Check:
     if not shutil.which("docker"):
         return Check("docker", False, "Docker CLI unavailable", required=False)
@@ -131,7 +164,7 @@ def docker_daemon() -> Check:
 def qualify(redis_port: int = 6379, clickhouse_port: int = 8123) -> dict:
     checks = [
         pinned_python_version(), postgres_readonly_sql(), redis_ping(redis_port),
-        clickhouse_ping(clickhouse_port), django_import(), docker_daemon(),
+        clickhouse_ping(clickhouse_port), django_import(), django_dependency_lock(), docker_daemon(),
     ]
     blockers = [c.name for c in checks if c.required and not c.ready]
     return {
