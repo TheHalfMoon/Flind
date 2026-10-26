@@ -108,6 +108,7 @@ def _run(command: list[str], env: dict[str, str], *, timeout: int, text_input: s
 
 def qualify_kafka(
     home: Path, *, on_consumed: Callable[[tuple[dict, ...]], dict] | None = None,
+    on_broker_ready: Callable[[str], dict] | None = None,
 ) -> dict:
     base = {
         "isolated_kafka_passed": False,
@@ -218,6 +219,12 @@ def qualify_kafka(
             relay = on_consumed(tuple(records)) if on_consumed else None
             if on_consumed and type(relay) is not dict:
                 raise ValueError("Synthetic Kafka relay returned an invalid receipt")
+            # The optional native server probe uses this already running,
+            # temporary Kafka broker, not a mocked Kafka consumer. Keep it
+            # separate from the older CLI synthetic producer/consumer proof.
+            native = on_broker_ready(bootstrap) if on_broker_ready else None
+            if on_broker_ready and type(native) is not dict:
+                raise ValueError("Native Capture probe must return a receipt")
             return {
                 **base,
                 "isolated_kafka_passed": True,
@@ -228,6 +235,7 @@ def qualify_kafka(
                 "two_teams_with_colliding_distinct_ids": True,
                 "temporary_topic": True,
                 **({"synthetic_relay": relay} if relay is not None else {}),
+                **({"native_capture_relay": native} if native is not None else {}),
             }
         except (OSError, RuntimeError, ValueError, json.JSONDecodeError, subprocess.TimeoutExpired):
             return {**base, "blocker": "Bounded real Kafka publish/consume qualification failed"}

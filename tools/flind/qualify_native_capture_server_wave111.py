@@ -86,7 +86,8 @@ def synthetic_noop_event(port: int) -> dict:
         })
         response = conn.getresponse()
         raw = response.read(4096)
-        result = {"synthetic_noop_http_status": response.status,
+        result = {"synthetic_event_uuid": uid,
+                  "synthetic_noop_http_status": response.status,
                   "synthetic_noop_response_bounded": len(raw) <= 4096,
                   "native_synthetic_noop_acknowledged": False}
         if response.status == 200:
