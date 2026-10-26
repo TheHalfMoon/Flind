@@ -1,11 +1,9 @@
 /**
- * oauth.posthog.com — Cross-Region OAuth Proxy
+ * Flind regional OAuth proxy.
  *
- * A Cloudflare Worker that sits in front of both US and EU PostHog instances,
- * providing a single OAuth endpoint that handles region routing transparently.
- *
- * Used by the PostHog MCP server, PostHog Desktop, and any future OAuth integration
- * so they don't need separate US/EU URLs.
+ * Its routes must not forward authorization codes, tokens or account metadata
+ * to inherited third-party regional hosts. Runtime egress stays disabled until
+ * Flind owns and qualifies the configured regional backends.
  */
 import { handleAuthorize } from '@/handlers/authorize'
 import { handleCallback } from '@/handlers/callback'
@@ -14,10 +12,12 @@ import { handleClientManifest, handleMetadata, handleOpenIdConfiguration } from 
 import { handleIntrospect, handleJwks, handleRevoke, handleUserInfo } from '@/handlers/passthrough'
 import { handleRegister } from '@/handlers/register'
 import { handleToken } from '@/handlers/token'
+import { REGION_BASE_URLS } from '@/lib/constants'
 import type { SigningKeyEnv } from '@/lib/idtoken'
+import { type FlindOAuthRegionEnv, flindOAuthRuntimeReady } from '@/lib/flind-oauth-admission'
 import { type Validator, errorResponse, noDuplicateParams, runValidators } from '@/lib/validation'
 
-export interface Env extends SigningKeyEnv {
+export interface Env extends SigningKeyEnv, FlindOAuthRegionEnv {
     AUTH_KV: KVNamespace
 }
 
@@ -28,6 +28,8 @@ interface Route {
     method?: string
     validators?: Validator[]
     handler: Handler
+    // Static font assets can be served without contacting any OAuth backend.
+    requiresRegionalBackend?: boolean
 }
 
 function normalizePath(path: string): string {
@@ -101,6 +103,7 @@ const routes: Route[] = [
     {
         paths: FONT_PATHS,
         handler: handleFont,
+        requiresRegionalBackend: false,
     },
 ]
 
@@ -120,6 +123,18 @@ export default {
                         if (validationError) {
                             return errorResponse(validationError)
                         }
+                    }
+                    if (route.requiresRegionalBackend !== false && !flindOAuthRuntimeReady(env, REGION_BASE_URLS)) {
+                        return new Response(
+                            JSON.stringify({ error: 'temporarily_unavailable', error_description: 'Flind OAuth regions are not configured and qualified' }),
+                            {
+                                status: 503,
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    'Cache-Control': 'no-store',
+                                },
+                            }
+                        )
                     }
                     return await route.handler(request, env.AUTH_KV, env)
                 }

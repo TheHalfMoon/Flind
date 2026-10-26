@@ -37,13 +37,15 @@ beforeEach(() => {
 })
 
 afterEach(() => {
+    vi.doUnmock('@/lib/flind-oauth-admission')
     vi.restoreAllMocks()
+    vi.resetModules()
 })
 
 describe('router', () => {
     it.each([
         ['/', 200, 'text/plain'],
-        ['/.well-known/oauth-authorization-server', 200, 'application/json'],
+        ['/.well-known/oauth-authorization-server', 503, 'application/json'],
     ])('GET %s returns %d', async (path, expectedStatus, expectedContentType) => {
         const request = new Request(`https://oauth.posthog.com${path}`)
         const response = await worker.fetch(request, mockEnv)
@@ -74,6 +76,37 @@ describe('router', () => {
         expect(vi.mocked(kv.put)).not.toHaveBeenCalled()
     })
 
+    it.each([
+        ['/.well-known/oauth-authorization-server', 'GET'],
+        ['/.well-known/openid-configuration', 'GET'],
+        ['/auth.md', 'GET'],
+        ['/oauth/authorize/?client_id=flind-test&_region=us', 'GET'],
+        ['/oauth/token/', 'POST'],
+        ['/oauth/register/', 'POST'],
+        ['/oauth/userinfo/', 'GET'],
+        ['/oauth/introspect/', 'POST'],
+    ])('blocks unowned OAuth route %s before handler fetch or KV', async (path, method) => {
+        const kv = createMockKV()
+        const request = new Request('https://oauth.flind.example' + path, { method })
+        const response = await worker.fetch(request, { AUTH_KV: kv })
+        expect(response.status).toBe(503)
+        expect(response.headers.get('cache-control')).toContain('no-store')
+        expect(vi.mocked(fetch)).not.toHaveBeenCalled()
+        expect(vi.mocked(kv.put)).not.toHaveBeenCalled()
+    })
+
+    it('configured owned env cannot bypass inherited handler targets', async () => {
+        const kv = createMockKV()
+        const request = new Request('https://oauth.flind.example/oauth/token/', { method: 'POST' })
+        const response = await worker.fetch(request, {
+            AUTH_KV: kv,
+            FLIND_OAUTH_US_ORIGIN: 'https://us.flind.example',
+            FLIND_OAUTH_EU_ORIGIN: 'https://eu.flind.example',
+        })
+        expect(response.status).toBe(503)
+        expect(vi.mocked(fetch)).not.toHaveBeenCalled()
+    })
+
     it('returns 404 for unknown paths', async () => {
         const request = new Request('https://oauth.posthog.com/unknown')
         const response = await worker.fetch(request, mockEnv)
@@ -98,6 +131,9 @@ describe('router', () => {
         vi.doMock('@/handlers/authorize', () => ({
             handleAuthorize: () => Promise.reject(new Error('KV transient failure')),
         }))
+        // The production admission gate is independently tested below;
+        // isolate this handler-error test so it still exercises try/catch.
+        vi.doMock('@/lib/flind-oauth-admission', () => ({ flindOAuthRuntimeReady: () => true }))
 
         const { default: freshWorker } = await import('@/index')
         const request = new Request('https://oauth.posthog.com/oauth/authorize/?client_id=abc')
@@ -117,6 +153,7 @@ describe('router', () => {
                 throw new Error('unexpected null')
             },
         }))
+        vi.doMock('@/lib/flind-oauth-admission', () => ({ flindOAuthRuntimeReady: () => true }))
 
         const { default: freshWorker } = await import('@/index')
         const request = new Request('https://oauth.posthog.com/oauth/authorize/?client_id=abc')
