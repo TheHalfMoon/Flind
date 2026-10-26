@@ -51,7 +51,7 @@ class RustNodeSandboxSourceWave127(unittest.TestCase):
         self.assertIn("flind_test_[a-z0-9]{12,}", source)
         for shared_port in ("5432", "9092", "6379"):
             self.assertIn(shared_port, source)
-        self.assertIn("new Set([Number(postgres.port), kafkaPort, Number(redis.port), 8123])", source)
+        self.assertIn("new Set([Number(postgres.port), kafkaPort, Number(redis.port), clickhousePort])", source)
 
 
 if __name__ == "__main__":

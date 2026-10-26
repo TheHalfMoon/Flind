@@ -18,7 +18,15 @@ export type IsolatedRustNodeE2E = {
 
 function localPort(raw: string, service: string, forbiddenPort: number): number {
     const port = Number(raw)
-    if (!Number.isInteger(port) || port < 1025 || port > 65535 || port === forbiddenPort) {
+    // Never claim ANY conventional shared data-service port, even when it
+    // belongs to a different backend. Every Flind E2E socket must be private.
+    if (
+        !Number.isInteger(port) ||
+        port < 1025 ||
+        port > 65535 ||
+        port === forbiddenPort ||
+        [5432, 9092, 6379, 8123].includes(port)
+    ) {
         throw new Error(`Unsafe ${service} port: provide a separate, non-default local test service`)
     }
     return port
@@ -67,17 +75,17 @@ export function isolatedRustNodeE2E(env: Record<string, string | undefined>): Is
         throw new Error('Redis E2E may only select an isolated default database')
     }
 
-    // The original ClickHouse test helper and product ingestion clients use
-    // the fixed HTTP port 8123. Distinct high-entropy *database* name and an
-    // explicit ownership acknowledgement protect other project databases.
+    // Test helper must use a distinct, process-owned loopback HTTP port;
+    // never touch a second project's ClickHouse on default port 8123.
     if (env.FLIND_E2E_CLICKHOUSE_HOST !== '127.0.0.1') {
-        throw new Error('ClickHouse E2E must use 127.0.0.1 (existing helper uses port 8123)')
+        throw new Error('ClickHouse E2E must use 127.0.0.1')
     }
+    const clickhousePort = localPort(env.FLIND_E2E_CLICKHOUSE_HTTP_PORT ?? '', 'ClickHouse', 8123)
     const database = env.FLIND_E2E_CLICKHOUSE_DATABASE ?? ''
     if (!/^flind_test_[a-z0-9]{12,}$/.test(database)) {
         throw new Error('ClickHouse E2E database must use a unique flind_test_<12+chars> identity')
     }
-    if (new Set([Number(postgres.port), kafkaPort, Number(redis.port), 8123]).size !== 4) {
+    if (new Set([Number(postgres.port), kafkaPort, Number(redis.port), clickhousePort]).size !== 4) {
         throw new Error('Isolated service ports must be distinct')
     }
 
@@ -92,6 +100,7 @@ export function isolatedRustNodeE2E(env: Record<string, string | undefined>): Is
         KAFKA_WARPSTREAM_PRODUCER_METADATA_BROKER_LIST: kafka,
         KAFKA_INGESTION_PRODUCER_METADATA_BROKER_LIST: kafka,
         CLICKHOUSE_HOST: '127.0.0.1',
+        CLICKHOUSE_HTTP_PORT: String(clickhousePort),
         CLICKHOUSE_DATABASE: database,
         CLICKHOUSE_SECURE: 'false',
         CLICKHOUSE_VERIFY: 'false',

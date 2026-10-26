@@ -21,6 +21,7 @@ import {
     RawSessionRecordingEvent,
 } from '~/types'
 
+import { clickhouseTestHttpOrigin } from './clickhouse-http-endpoint'
 import { assertTestDatabaseName } from './database-guard'
 
 // Extracts the topic(s) a ClickHouse Kafka engine table consumes from its `engine_full` string.
@@ -44,14 +45,13 @@ export class Clickhouse {
 
     static createClient(): ClickHouseClient {
         // NOTE: We never query CH in production so we just load these from the env directly
-        const CLICKHOUSE_HOST = process.env.CLICKHOUSE_HOST ?? 'localhost'
         const CLICKHOUSE_DATABASE = process.env.CLICKHOUSE_DATABASE ?? (isTestEnv() ? 'posthog_test' : 'default')
         const CLICKHOUSE_USER = process.env.CLICKHOUSE_USER ?? 'default'
         const CLICKHOUSE_PASSWORD = process.env.CLICKHOUSE_PASSWORD ?? null
 
         const clickhouse = createClickhouseClient({
             // We prefer to run queries on the offline cluster.
-            url: `http://${CLICKHOUSE_HOST}:8123`,
+            url: clickhouseTestHttpOrigin(process.env),
             username: CLICKHOUSE_USER,
             password: CLICKHOUSE_PASSWORD || undefined,
             database: CLICKHOUSE_DATABASE,
@@ -153,7 +153,7 @@ export class Clickhouse {
                         Math.round((performance.now() - timer) / 100) / 10
                     }s since start. Error: ${error}`
                 )
-                const res = await fetch('http://localhost:8123/ping').catch((e) => {
+                const res = await fetch(`${clickhouseTestHttpOrigin(process.env)}/ping`).catch((e) => {
                     console.log('ClickHouse ping failed', e)
                     return null
                 })

@@ -15,6 +15,7 @@ const valid = () => ({
     FLIND_E2E_KAFKA_BOOTSTRAP: '127.0.0.1:19092',
     FLIND_E2E_REDIS_URL: 'redis://127.0.0.1:16379',
     FLIND_E2E_CLICKHOUSE_HOST: '127.0.0.1',
+    FLIND_E2E_CLICKHOUSE_HTTP_PORT: '18123',
     FLIND_E2E_CLICKHOUSE_DATABASE: 'flind_test_e2e20261026abcd',
 })
 
@@ -54,12 +55,16 @@ test('ClickHouse must use explicit localhost and unique Flind-only test DB name'
         assert.throws(() => isolatedRustNodeE2E({...valid(),FLIND_E2E_CLICKHOUSE_DATABASE:bad}))
     }
     assert.throws(() => isolatedRustNodeE2E({...valid(),FLIND_E2E_CLICKHOUSE_HOST:'clickhouse.example.com'}))
+    for (const port of [undefined, '', '8123', '65536', '123']) {
+        assert.throws(() => isolatedRustNodeE2E({...valid(),FLIND_E2E_CLICKHOUSE_HTTP_PORT:port}))
+    }
 })
 
 test('service ports must be distinct', () => {
     assert.throws(() => isolatedRustNodeE2E({...valid(),FLIND_E2E_KAFKA_BOOTSTRAP:'127.0.0.1:55432'}))
     assert.throws(() => isolatedRustNodeE2E({...valid(),FLIND_E2E_REDIS_URL:'redis://127.0.0.1:19092'}))
     assert.throws(() => isolatedRustNodeE2E({...valid(),FLIND_E2E_POSTGRES_BASE_URL:'postgres://flind:synthetic@127.0.0.1:8123'}))
+    assert.throws(() => isolatedRustNodeE2E({...valid(),FLIND_E2E_POSTGRES_BASE_URL:'postgres://flind:synthetic@127.0.0.1:18123'}))
 })
 
 test('safe pre-Jest sandbox expands all distinct test database URLs', () => {
@@ -70,6 +75,7 @@ test('safe pre-Jest sandbox expands all distinct test database URLs', () => {
     assert.equal(result.serviceEnv.CYCLOTRON_NODE_DATABASE_URL,'postgres://flind:synthetic@127.0.0.1:55432/test_cyclotron_node')
     assert.equal(result.serviceEnv.KAFKA_HOSTS,'127.0.0.1:19092')
     assert.equal(result.serviceEnv.CLICKHOUSE_DATABASE,'flind_test_e2e20261026abcd')
+    assert.equal(result.serviceEnv.CLICKHOUSE_HTTP_PORT, '18123')
     assert.equal(result.serviceEnv.REDIS_URL,'redis://127.0.0.1:16379')
 })
 
