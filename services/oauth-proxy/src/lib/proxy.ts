@@ -1,4 +1,5 @@
 import { POSTHOG_EU_BASE_URL, POSTHOG_US_BASE_URL, type Region, baseUrlForRegion } from './constants'
+import type { OAuthRegionalOrigins } from './flind-oauth-admission'
 
 /**
  * Proxy a request to a specific region's PostHog server.
@@ -84,11 +85,25 @@ export async function tryBothRegions(
     request: Request,
     path: string
 ): Promise<{ response: Response; region: Region | null }> {
+    // Legacy compatibility path; Worker ingress blocks it until token routing
+    // migrates. New Flind handlers MUST use the owned-origins variant below.
+    return tryBothRegionsAtOrigins(request, path, {
+        us: POSTHOG_US_BASE_URL,
+        eu: POSTHOG_EU_BASE_URL,
+    })
+}
+
+/** Proxy a POST to two validated, explicitly supplied Flind regional origins. */
+export async function tryBothRegionsAtOrigins(
+    request: Request,
+    path: string,
+    origins: OAuthRegionalOrigins
+): Promise<{ response: Response; region: Region | null }> {
     const body = await request.text()
     const headers = new Headers(request.headers)
     headers.delete('host')
 
-    const usUrl = new URL(path, POSTHOG_US_BASE_URL)
+    const usUrl = new URL(path, origins.us)
     const usResponse = await fetch(usUrl.toString(), {
         method: 'POST',
         headers,
@@ -102,7 +117,7 @@ export async function tryBothRegions(
 
     const euHeaders = new Headers(request.headers)
     euHeaders.delete('host')
-    const euUrl = new URL(path, POSTHOG_EU_BASE_URL)
+    const euUrl = new URL(path, origins.eu)
     const euResponse = await fetch(euUrl.toString(), {
         method: 'POST',
         headers: euHeaders,

@@ -1,7 +1,8 @@
-import { POSTHOG_EU_BASE_URL, POSTHOG_US_BASE_URL, type Region } from '@/lib/constants'
+import { type Region } from '@/lib/constants'
+import { type FlindOAuthRegionEnv, flindOAuthOwnedRegionPair } from '@/lib/flind-oauth-admission'
 import { type SigningKeyEnv, proxyJwks } from '@/lib/idtoken'
 import { getClientMapping, getRegionSelection } from '@/lib/kv'
-import { proxyPostWithClientId, proxyToRegion, tryBothRegions } from '@/lib/proxy'
+import { proxyPostWithClientId, proxyToRegion, tryBothRegions, tryBothRegionsAtOrigins } from '@/lib/proxy'
 import { errorResponse } from '@/lib/validation'
 
 /**
@@ -25,13 +26,22 @@ export async function handleRevoke(request: Request, kv: KVNamespace): Promise<R
  * Unlike tryBothRegions, we check the response body: introspect returns
  * 200 {"active": false} for unknown tokens, so HTTP status alone isn't enough.
  */
-export async function handleIntrospect(request: Request): Promise<Response> {
+export async function handleIntrospect(
+    request: Request, _kv: KVNamespace, env: FlindOAuthRegionEnv
+): Promise<Response> {
+    const regions = flindOAuthOwnedRegionPair(env)
+    if (!regions) {
+        return new Response(JSON.stringify({ error: 'temporarily_unavailable' }), {
+            status: 503,
+            headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' },
+        })
+    }
     const body = await request.text()
     const headers = new Headers(request.headers)
     headers.delete('host')
     headers.delete('content-length')
 
-    const usResponse = await fetch(new URL('/oauth/introspect/', POSTHOG_US_BASE_URL).toString(), {
+    const usResponse = await fetch(new URL('/oauth/introspect/', regions.us).toString(), {
         method: 'POST',
         headers,
         body,
@@ -51,21 +61,38 @@ export async function handleIntrospect(request: Request): Promise<Response> {
     euHeaders.delete('host')
     euHeaders.delete('content-length')
 
-    const euResponse = await fetch(new URL('/oauth/introspect/', POSTHOG_EU_BASE_URL).toString(), {
+    const euResponse = await fetch(new URL('/oauth/introspect/', regions.eu).toString(), {
         method: 'POST',
         headers: euHeaders,
         body,
     })
 
-    return euResponse
+    return privateOAuthResponse(euResponse)
 }
 
 /**
  * UserInfo — try both regions with the Bearer token.
  */
-export async function handleUserInfo(request: Request): Promise<Response> {
-    const { response } = await tryBothRegions(request, '/oauth/userinfo/')
-    return response
+export async function handleUserInfo(
+    request: Request, _kv: KVNamespace, env: FlindOAuthRegionEnv
+): Promise<Response> {
+    const regions = flindOAuthOwnedRegionPair(env)
+    if (!regions) {
+        return new Response(JSON.stringify({ error: 'temporarily_unavailable' }), {
+            status: 503,
+            headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' },
+        })
+    }
+    const { response } = await tryBothRegionsAtOrigins(request, '/oauth/userinfo/', regions)
+    return privateOAuthResponse(response)
+}
+
+/** Sensitive UserInfo and introspection results must never inherit a cacheable backend policy. */
+function privateOAuthResponse(response: Response): Response {
+    const headers = new Headers(response.headers)
+    headers.set('Cache-Control', 'no-store')
+    headers.delete('content-length')
+    return new Response(response.body, { status: response.status, statusText: response.statusText, headers })
 }
 
 /**
