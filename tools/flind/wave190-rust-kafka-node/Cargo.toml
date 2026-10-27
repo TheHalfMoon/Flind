@@ -1,0 +1,12 @@
+[package]
+name = "flind-wave190-rust-kafka-to-node"
+version = "0.0.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+ingestion-worker-proto = { path = "../../../rust/ingestion-worker-proto" }
+rdkafka = { version = "0.37.0", features = ["ssl-vendored"] }
+tokio = { version = "1.51.1", features = ["macros", "rt-multi-thread", "time"] }
+tonic = { version = "0.12.3", features = ["gzip"] }
+tokio-stream = "0.1.17"
