@@ -112,6 +112,27 @@ describe('PromiseScheduler', () => {
             await waiting
             expect(allDone).toBe(true)
         })
+
+        it('remembers a rejected side effect after its pending Set entry is cleaned up', async () => {
+            const rejected = Promise.reject(new Error('durable side effect failed'))
+            void scheduler.schedule(rejected)
+            await rejected.catch(() => {})
+            await Promise.resolve()
+            expect(scheduler.promises.size).toBe(0)
+
+            await expect(scheduler.waitForAll()).rejects.toThrow('durable side effect failed')
+        })
+
+        it('keeps ACK barriers failed until the scheduler is recreated', async () => {
+            const rejected = Promise.reject(new Error('earlier side effect failed'))
+            void scheduler.schedule(rejected)
+            await rejected.catch(() => {})
+            await Promise.resolve()
+
+            await expect(scheduler.waitForAll()).rejects.toThrow('earlier side effect failed')
+            await scheduler.schedule(Promise.resolve('later success'))
+            await expect(scheduler.waitForAll()).rejects.toThrow('earlier side effect failed')
+        })
     })
 
     describe('waitForAllSettled', () => {
