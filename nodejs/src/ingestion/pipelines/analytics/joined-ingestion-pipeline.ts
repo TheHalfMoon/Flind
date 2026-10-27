@@ -120,7 +120,9 @@ export interface JoinedIngestionPipelineContext {
 function getTokenAndDistinctId(input: EventSubpipelineInput): string {
     const token = input.headers.token ?? ''
     const distinctId = input.event.distinct_id ?? ''
-    return `${token}:${distinctId}`
+    // Length-prefix the token: an untrusted distinct_id may contain ':',
+    // so plain `${token}:${distinctId}` can group two different identities.
+    return `${token.length}:${token}${distinctId}`
 }
 
 export function createJoinedIngestionPipeline<
