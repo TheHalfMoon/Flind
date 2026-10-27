@@ -8,6 +8,7 @@ No product SDK, worker, ClickHouse MV, authenticated tenant query or release.
 from __future__ import annotations
 
 import argparse
+from collections.abc import Callable
 from datetime import datetime, UTC
 import hashlib
 from http.client import HTTPConnection
@@ -157,7 +158,10 @@ def read_native_event(bootstrap: str, expected_id: str) -> dict:
         consumer.close()
 
 
-def private_capture_probe(bootstrap: str, owned: Path) -> dict[str, object]:
+def private_capture_probe(
+    bootstrap: str, owned: Path,
+    *, on_native_event: Callable[[dict, str], dict[str, object]] | None = None,
+) -> dict[str, object]:
     result: dict[str, object] = {
         "real_cached_rust_capture_http_qualified": False,
         "native_capture_acknowledged": False,
@@ -258,8 +262,31 @@ def private_capture_probe(bootstrap: str, owned: Path) -> dict[str, object]:
                 and result["native_kafka_uuid_readback_qualified"]
             )
             result["cached_capture_binary_sha256"] = EXPECTED_CAPTURE_SHA256
+            # Callback receives only an ACKed, exact-UUID Kafka record after
+            # synthetic fixture validation. It runs while this private broker
+            # still exists, without upgrading product/release qualification.
+            if on_native_event is not None:
+                downstream = on_native_event(native, uid)
+                if not isinstance(downstream, dict):
+                    raise ValueError("invalid_native_clickhouse_callback_receipt")
+                result["optional_native_downstream"] = downstream
     except Exception as exc:
         result["blocker"] = type(exc).__name__
+        # These are closed-set refusal codes from the synthetic-only Wave182
+        # adapter. Do not serialize the Kafka payload or arbitrary exception.
+        allowed_codes = {
+            "invalid_native_event", "invalid_acknowledged_uuid",
+            "native_event_not_exact_synthetic_fixture",
+            "client_supplied_tenant_identifier", "unbounded_native_properties",
+            "bad_native_properties_json", "native_fixture_path_mismatch",
+            "native_properties_not_an_object",
+            "first_party_event_schema_changed", "native_clickhouse_scratch_conflict",
+            "native_clickhouse_execution_blocked", "native_clickhouse_sql_failed",
+            "invalid_native_clickhouse_readback",
+            "native_uuid_not_stored_or_cross_team_leak",
+        }
+        if type(exc).__name__ == "NativeRelayRejected" and str(exc) in allowed_codes:
+            result["synthetic_callback_refusal_code"] = str(exc)
     finally:
         result["owned_capture_stopped"] = stop_owned(capture_proc)
         result["owned_redis7_stopped"] = stop_owned(redis_proc)
