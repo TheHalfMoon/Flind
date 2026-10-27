@@ -25,7 +25,7 @@ import time
 ALLOWED_ROOTS = ("posthog", "products", "ee", "common", "flind")
 MAX_INDEX_BYTES = 16 * 1024 * 1024
 MAX_BLOB_BYTES = 2 * 1024 * 1024
-MAX_IMPORTS = 1200
+MAX_IMPORTS = 3000
 MAX_SECONDS = 180
 _SAFE_NAME = re.compile(r"^[A-Za-z_][A-Za-z0-9_]*(?:\.[A-Za-z_][A-Za-z0-9_]*){0,24}$")
 RECEIPT_PREFIX = "FLIND_REGISTRY_PROBE_RECEIPT="
@@ -296,7 +296,7 @@ def registry_child(root: Path, ref: str, limit: int, deadline: int) -> int:
     return 0 if receipt["django_registry_qualified"] else 2
 
 
-def probe(root: Path, ref: str, *, deadline: int = 150, limit: int = 100) -> dict:
+def probe(root: Path, ref: str, *, deadline: int = 150, limit: int = 2200) -> dict:
     """Run Django in a separate bounded process with only synthetic credentials."""
     root = root.resolve()
     result = {
@@ -313,6 +313,19 @@ def probe(root: Path, ref: str, *, deadline: int = 150, limit: int = 100) -> dic
         return {**result, "blocker": "Invalid bounded limits"}
     if not (root / "pyproject.toml").is_file():
         return {**result, "blocker": "Flind repository root missing"}
+    # Pin evidence to the actual local commit rather than a moving branch ref.
+    try:
+        commit = subprocess.run(
+            ["git", "-C", str(root), "rev-parse", "--verify", ref + "^{commit}"],
+            capture_output=True, check=False, timeout=20, env=git_offline_env(),
+        )
+        resolved = commit.stdout.decode("ascii").strip()
+        if (commit.returncode or len(resolved) not in (40, 64)
+                or not re.fullmatch("[0-9a-f]+", resolved)):
+            return {**result, "blocker": "Git source commit could not be verified"}
+        result["source_commit"] = resolved
+    except (OSError, subprocess.TimeoutExpired, UnicodeDecodeError):
+        return {**result, "blocker": "Git source commit could not be verified"}
     env = {
         "PATH": "/opt/homebrew/bin:/usr/bin:/bin",
         "HOME": "/tmp",
@@ -379,7 +392,7 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--root", default=str(Path(__file__).resolve().parents[2]))
     p.add_argument("--ref", default="HEAD")
     p.add_argument("--timeout", type=int, default=150)
-    p.add_argument("--max-imports", type=int, default=100)
+    p.add_argument("--max-imports", type=int, default=2200)
     p.add_argument("--child", action="store_true")
     p.add_argument("--json", action="store_true")
     args = p.parse_args(argv)

@@ -76,7 +76,12 @@ class Wave147(unittest.TestCase):
 
     def test_batch_admission_enforces_adjusted_bounded_import_cap(self):
         with self.assertRaises(ValueError):
-            GitTrackedPythonFinder(self.root, "HEAD", set(), limit=1201)
+            GitTrackedPythonFinder(self.root, "HEAD", set(), limit=3001)
+
+    def test_actual_registry_boot_requires_more_than_previous_1200_cap(self):
+        self.assertIsInstance(GitTrackedPythonFinder(
+            self.root, "HEAD", set(), limit=2200
+        ), GitTrackedPythonFinder)
 
     def test_invalid_source_ref_or_limit_fails_closed(self):
         with self.assertRaises(ValueError):
