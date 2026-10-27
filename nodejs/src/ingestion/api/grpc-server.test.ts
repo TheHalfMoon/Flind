@@ -699,9 +699,13 @@ describe('WorkerIngestServer', () => {
             source.push(hello())
             source.push(subBatch(1, [10]))
             await until(() => driver.feeds.length === 1)
+            expect(sentinel.size).toBe(1)
             // The one slot is held by sub-batch 1, so sub-batch 2 parks.
             source.push(subBatch(2, [11, 12], { softBudgetMs: 20n }))
             await until(() => collected.acks.length === 1)
+            // Admission expiry never fed offsets 11/12 into the pipeline.
+            // They must not contaminate the accepted-feed order watermark.
+            expect(sentinel.size).toBe(1)
 
             const ack = collected.acks[0]
             expect(ack.seq).toBe(2n)

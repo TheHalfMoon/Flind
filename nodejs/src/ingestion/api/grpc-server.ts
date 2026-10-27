@@ -773,14 +773,6 @@ export class WorkerIngestServer {
                 }
 
                 const serialized = subBatch.messages.map(grpcMessageToSerialized)
-                // The sentinel's sender scope includes both epochs, so
-                // reconnects and rebalances rebaseline instead of counting
-                // legitimate replays as violations.
-                this.deps.feedOrderSentinel?.check(
-                    serialized,
-                    `${stream.hello.consumerId}#${stream.hello.streamEpoch}#${subBatch.assignmentEpoch}`,
-                    subBatch.replay
-                )
 
                 // Await admission before reading the next frame: stream order
                 // becomes feed order, and the stalled read backpressures the
@@ -828,6 +820,15 @@ export class WorkerIngestServer {
                         if (result.ok) {
                             feedAccepted = true
                             this.acceptedBatches.set(this.acceptedKey(stream.id, seq), batchAccepted(serialized.length))
+                            // Measure actual accepted feeds, not received frames:
+                            // a sub-batch may expire in the admission queue or
+                            // be rejected at capacity without entering the pipeline.
+                            // Include epochs so a restart/handoff rebaselines.
+                            this.deps.feedOrderSentinel?.check(
+                                serialized,
+                                `${stream.hello.consumerId}#${stream.hello.streamEpoch}#${subBatch.assignmentEpoch}`,
+                                subBatch.replay
+                            )
                             break
                         }
                         if (result.kind === 'at_capacity') {
