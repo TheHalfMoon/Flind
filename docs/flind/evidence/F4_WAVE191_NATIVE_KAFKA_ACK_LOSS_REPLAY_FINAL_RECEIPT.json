@@ -1,0 +1,35 @@
+{
+  "authenticated_tenant_isolation_qualified": false,
+  "child": {
+    "actual_ack_loss_replay_qualified": true,
+    "node_crash_after_disk_before_ack_exit": 73,
+    "offset_uncommitted_after_node_crash": true,
+    "original_rust_replayed_and_committed_offset": 3,
+    "production_node_pipeline_qualified": false,
+    "production_rust_consumer_qualified": false,
+    "recovery_node_grpc_ack_received": true,
+    "release_qualified": false,
+    "synthetic_persisted_event_count": 3,
+    "test_only_recovery_no_reinsert": true
+  },
+  "elapsed_seconds": 69.8,
+  "exactly_once_product_qualified": false,
+  "original_node_source_sha1": {
+    "nodejs/src/common/generated/ingestion-worker/ingestion/worker/v1/worker_pb.ts": "c9d57314ca63412ff5c15d2c6d3b8e900ce774a7",
+    "nodejs/src/ingestion/api/batch-metrics.ts": "b9f96bb05d5360505575964f8c9520968c72e6df",
+    "nodejs/src/ingestion/api/feed-order-sentinel.ts": "2a48963dec62a60e3bc5e45243e1693f245deb49",
+    "nodejs/src/ingestion/api/grpc-error-sanitizer.ts": "899d7e608dc2915c630c0bf40feaae8aff0c95f0",
+    "nodejs/src/ingestion/api/grpc-message-converter.ts": "c507eb01e27354fa88144c959afa903479288ab5",
+    "nodejs/src/ingestion/api/grpc-server.ts": "5a32b131056bb1e7f10e8bca824c149097d2d563",
+    "nodejs/src/ingestion/api/types.ts": "b9475f0a3803f9e173e9dcd8ac01f40c75fce9a3",
+    "nodejs/src/ingestion/framework/batch-budget.ts": "2b3a1881ebecec2ec5cc07b856e30618a21bd513"
+  },
+  "original_node_test_bundle_restored": true,
+  "owned_kafka_scratch_removed": true,
+  "owned_kafka_stopped": true,
+  "phase": "native_rust_kafka_node_ack_lost_durable_disk_replay_synthetic",
+  "production_node_ingestion_driver_qualified": false,
+  "production_rust_ingestion_consumer_qualified": false,
+  "real_ack_lost_replay_integration_pass": true,
+  "release_qualified": false
+}
