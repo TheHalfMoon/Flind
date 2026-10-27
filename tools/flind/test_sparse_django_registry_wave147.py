@@ -6,9 +6,11 @@ from pathlib import Path
 import subprocess
 import tempfile
 import unittest
+from unittest.mock import patch
 
 from tools.flind.qualify_sparse_django_registry_wave147 import (
     GitTrackedPythonFinder,
+    git_offline_env,
     index_tracked_python,
     probe,
 )
@@ -49,6 +51,7 @@ class Wave147(unittest.TestCase):
         spec.loader.exec_module(module)
         self.assertEqual(module.IDENTITY, "Flind")
         self.assertEqual(finder.loaded, 1)
+        self.assertEqual(finder.last_traced_source, "products/mini/__init__.py")
         self.assertFalse((self.root / "products" / "mini" / "__init__.py").exists())
 
     def test_rejects_unsafe_module_identifiers_and_foreign_sources(self):
@@ -76,6 +79,55 @@ class Wave147(unittest.TestCase):
             GitTrackedPythonFinder(self.root, "HEAD", set(), limit=0)
         with self.assertRaises(ValueError):
             GitTrackedPythonFinder(self.root, "HEAD", set(), deadline=9999)
+
+
+    def test_all_git_reads_disable_partial_clone_lazy_fetch(self):
+        self.assertEqual(git_offline_env()["GIT_NO_LAZY_FETCH"], "1")
+        self.assertEqual(git_offline_env()["GIT_TERMINAL_PROMPT"], "0")
+        run_real = subprocess.run
+        seen = []
+
+        def audit_git_command(*args, **kwargs):
+            if isinstance(args[0], list) and args[0][0] == "git":
+                seen.append(args[0])
+                self.assertEqual(kwargs["env"]["GIT_NO_LAZY_FETCH"], "1")
+                self.assertEqual(kwargs["env"]["GIT_TERMINAL_PROMPT"], "0")
+            return run_real(*args, **kwargs)
+
+        with patch("tools.flind.qualify_sparse_django_registry_wave147.subprocess.run",
+                   side_effect=audit_git_command):
+            paths = index_tracked_python(self.root, "HEAD")
+            finder = GitTrackedPythonFinder(self.root, "HEAD", paths)
+            spec = finder.find_spec("products.mini")
+            assert spec is not None and spec.loader is not None
+            mod = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(mod)
+            self.assertEqual(mod.IDENTITY, "Flind")
+        self.assertEqual(len(seen), 2)
+
+    def test_missing_local_blob_reports_only_relative_tracked_source_path(self):
+        paths = index_tracked_python(self.root, "HEAD")
+        finder = GitTrackedPythonFinder(self.root, "HEAD", paths)
+        spec = finder.find_spec("products.mini.module")
+        assert spec is not None and spec.loader is not None
+        with patch("tools.flind.qualify_sparse_django_registry_wave147.subprocess.run",
+                   return_value=subprocess.CompletedProcess(["git", "show"], 128, b"", b"missing")):
+            with self.assertRaises(ImportError):
+                spec.loader.exec_module(importlib.util.module_from_spec(spec))
+        self.assertEqual(finder.last_unavailable_source, "products/mini/module.py")
+        self.assertEqual(finder.source_failure_kind, "missing_local_git_blob")
+
+    def test_bounded_local_git_timeout_reports_source_without_network_retry(self):
+        paths = index_tracked_python(self.root, "HEAD")
+        finder = GitTrackedPythonFinder(self.root, "HEAD", paths)
+        spec = finder.find_spec("products.mini")
+        assert spec is not None and spec.loader is not None
+        with patch("tools.flind.qualify_sparse_django_registry_wave147.subprocess.run",
+                   side_effect=subprocess.TimeoutExpired(["git", "show"], 18)):
+            with self.assertRaises(ImportError):
+                spec.loader.exec_module(importlib.util.module_from_spec(spec))
+        self.assertEqual(finder.last_unavailable_source, "products/mini/__init__.py")
+        self.assertEqual(finder.source_failure_kind, "bounded_local_git_timeout")
 
     def test_no_app_or_release_without_flind_repo(self):
         result = probe(self.root, "HEAD", deadline=3, limit=3)

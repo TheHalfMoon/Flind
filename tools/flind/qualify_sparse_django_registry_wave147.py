@@ -30,6 +30,12 @@ _SAFE_NAME = re.compile(r"^[A-Za-z_][A-Za-z0-9_]*(?:\.[A-Za-z_][A-Za-z0-9_]*){0,
 RECEIPT_PREFIX = "FLIND_REGISTRY_PROBE_RECEIPT="
 
 
+def git_offline_env() -> dict[str, str]:
+    """Never allow Git's promisor/partial clone to fetch missing source implicitly."""
+    return {**os.environ, "GIT_NO_LAZY_FETCH": "1", "GIT_TERMINAL_PROMPT": "0"}
+
+
+
 def index_tracked_python(root: Path, ref: str) -> set[str]:
     """Enumerate tracked source names once; no repo expansion or checkout writes."""
     if not re.fullmatch(r"[a-zA-Z0-9_./-]{1,128}", ref) or ref.startswith("-"):
@@ -37,7 +43,7 @@ def index_tracked_python(root: Path, ref: str) -> set[str]:
     result = subprocess.run(
         ["git", "-C", str(root), "ls-tree", "-r", "--name-only", ref,
          "--", *ALLOWED_ROOTS],
-        capture_output=True, timeout=45, check=False,
+        capture_output=True, timeout=45, check=False, env=git_offline_env(),
     )
     if result.returncode or len(result.stdout) > MAX_INDEX_BYTES:
         raise RuntimeError("Could not safely index first-party Python sources")
@@ -63,20 +69,32 @@ class GitTrackedPythonLoader(importlib.abc.Loader):
             raise ImportError("Flind tracked-source module admission limit reached")
         if time.monotonic() - finder.started > finder.deadline:
             raise ImportError("Flind tracked-source import deadline exceeded")
-        result = subprocess.run(
-            ["git", "-C", str(finder.root), "show", finder.ref + ":" + self.path],
-            capture_output=True, timeout=18, check=False,
-        )
+        try:
+            result = subprocess.run(
+                ["git", "-C", str(finder.root), "show", finder.ref + ":" + self.path],
+                capture_output=True, timeout=18, check=False, env=git_offline_env(),
+            )
+        except subprocess.TimeoutExpired as exc:
+            finder.last_unavailable_source = self.path
+            finder.source_failure_kind = "bounded_local_git_timeout"
+            raise ImportError("Flind tracked source read exceeded time budget") from exc
         if result.returncode or len(result.stdout) > MAX_BLOB_BYTES:
-            raise ImportError("Flind tracked source unavailable or over size budget")
+            finder.last_unavailable_source = self.path
+            finder.source_failure_kind = (
+                "missing_local_git_blob" if result.returncode else "source_blob_over_size_budget"
+            )
+            raise ImportError("Flind tracked source unavailable locally or over size budget")
         try:
             contents = result.stdout.decode("utf-8")
         except UnicodeDecodeError as exc:
+            finder.last_unavailable_source = self.path
+            finder.source_failure_kind = "non_utf8_source"
             raise ImportError("Non-UTF8 first-party Python source") from exc
         module.__file__ = str(finder.root / self.path)
         if self.package:
             module.__path__ = [str((finder.root / self.path).parent)]
         finder.loaded += 1
+        finder.last_traced_source = self.path
         exec(compile(contents, module.__file__, "exec"), module.__dict__)
 
 
@@ -92,6 +110,9 @@ class GitTrackedPythonFinder(importlib.abc.MetaPathFinder):
         self.deadline = deadline
         self.started = time.monotonic()
         self.loaded = 0
+        self.last_traced_source: str | None = None
+        self.last_unavailable_source: str | None = None
+        self.source_failure_kind: str | None = None
 
     def find_spec(self, fullname: str, path=None, target=None):
         if not _SAFE_NAME.fullmatch(fullname):
@@ -145,10 +166,24 @@ def registry_child(root: Path, ref: str, limit: int, deadline: int) -> int:
             receipt["missing_module"] = e.name
     except (ImportError, OSError, ValueError, RuntimeError, subprocess.TimeoutExpired) as e:
         receipt["blocker"] = type(e).__name__
+        if isinstance(e, ImportError):
+            if isinstance(e.name, str) and _SAFE_NAME.fullmatch(e.name):
+                receipt["import_error_name"] = e.name
+            if str(e) == "Flind tracked-source import deadline exceeded":
+                receipt["source_failure_kind"] = "source_import_deadline"
+            elif str(e) == "Flind tracked-source module admission limit reached":
+                receipt["source_failure_kind"] = "source_import_limit"
     except Exception:
         receipt["blocker"] = "Unhandled first-party registry error"
     finally:
         receipt["traced_source_modules"] = finder.loaded if finder else 0
+        if finder is not None and not receipt["django_registry_qualified"] and finder.last_traced_source is not None:
+            # Diagnostic context, not proof that this was the failed import.
+            receipt["last_traced_source"] = finder.last_traced_source
+        if finder is not None and finder.last_unavailable_source is not None:
+            # Relative Git-tracked source path only; never leak machine/user paths.
+            receipt["blocked_tracked_source"] = finder.last_unavailable_source
+            receipt["source_failure_kind"] = finder.source_failure_kind
         print(RECEIPT_PREFIX + json.dumps(receipt, sort_keys=True), flush=True)
     return 0 if receipt["django_registry_qualified"] else 2
 
@@ -220,7 +255,9 @@ def probe(root: Path, ref: str, *, deadline: int = 150, limit: int = 100) -> dic
         result["blocker"] = "Django registry process returned no valid receipt"
     else:
         for key in ("django_registry_qualified", "traced_source_modules",
-                    "app_count", "blocker", "missing_module"):
+                    "app_count", "blocker", "missing_module",
+                    "blocked_tracked_source", "source_failure_kind",
+                    "last_traced_source", "import_error_name"):
             if key in data:
                 result[key] = data[key]
         if process.returncode != 0:
