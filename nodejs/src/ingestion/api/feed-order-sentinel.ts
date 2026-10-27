@@ -62,9 +62,11 @@ export class FeedOrderSentinel {
         const result: FeedOrderCheckResult = { outOfOrder: 0, replayed: 0 }
 
         for (const message of messages) {
-            if (!message.key) {
-                // Unkeyed: the consumer routes these individually under a
-                // synthetic unique key, so there is no per-key order to check.
+            if (message.key === null) {
+                // Only a null Kafka key is unkeyed. A zero-byte (empty string)
+                // key is valid and must retain the same per-key ordering checks.
+                // The consumer routes null keys individually under a synthetic
+                // unique key, so there is no per-key order to check.
                 continue
             }
             // Length-safe tuple encoding: neither a slash inside the Kafka key
