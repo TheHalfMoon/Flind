@@ -515,9 +515,19 @@ export class WorkerIngestServer {
     }
 
     private totalInFlight(): number {
-        let total = 0
+        // Accepted work belongs to the shared pipeline even if the client
+        // disconnects and its stream is removed. Counting live streams alone
+        // can put the pump to sleep while an orphaned accepted batch still
+        // needs its result collected and its admission slot released.
+        let total = this.acceptedBatches.size
         for (const stream of this.streams.values()) {
-            total += stream.inFlight.size
+            for (const seq of stream.inFlight) {
+                // Include feeds currently awaiting admission/acceptance, but
+                // avoid counting a live accepted batch twice.
+                if (!this.acceptedBatches.has(this.acceptedKey(stream.id, seq))) {
+                    total++
+                }
+            }
         }
         return total
     }

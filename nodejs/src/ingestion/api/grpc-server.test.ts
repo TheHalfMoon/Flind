@@ -520,6 +520,42 @@ describe('WorkerIngestServer', () => {
         }
     })
 
+    it('continues pumping and frees a settled accepted batch after its stream disconnects', async () => {
+        const firstPull = new Deferred<CompletedSubBatch | null>()
+        const originalNext = driver.next.bind(driver)
+        let pullCalls = 0
+        jest.spyOn(driver, 'next').mockImplementation(() => {
+            pullCalls++
+            return pullCalls === 1 ? firstPull.promise : originalNext()
+        })
+        const baseline = await metricValue('ingestion_api_batches_in_flight')
+        const source = new FrameSource()
+        const responses = server.ingestStream(source)[Symbol.asyncIterator]()
+        expect((await responses.next()).value?.msg.case).toBe('ready')
+        source.push(hello())
+        source.push(subBatch(1, [202]))
+        await until(() => driver.feeds.length === 1 && pullCalls === 1)
+        expect((server as unknown as { totalInFlight: () => number }).totalInFlight()).toBe(1)
+
+        // The client disconnects after acceptance but before the pipeline
+        // produces a result; the original server removes the stream.
+        await responses.return?.()
+        source.end()
+        await until(() => server.streamCount === 0)
+        expect((server as unknown as { totalInFlight: () => number }).totalInFlight()).toBe(1)
+
+        // The next() can transiently report drained while work still runs.
+        // The original pump must not go idle merely because the client left.
+        firstPull.resolve(null)
+        await new Promise((resolve) => setTimeout(resolve, 25))
+        expect((server as unknown as { totalInFlight: () => number }).totalInFlight()).toBe(1)
+        const feed = driver.feeds[0]
+        driver.complete({ streamId: feed.streamId, seq: feed.seq, accepted: 1 })
+        await until(async () => (await metricValue('ingestion_api_batches_in_flight')) === baseline)
+        expect((server as unknown as { totalInFlight: () => number }).totalInFlight()).toBe(0)
+        expect(onFatal).not.toHaveBeenCalled()
+    })
+
     it('drops a cancelled stream from the admission queue so its slot skips to a live stream', async () => {
         // Regression: a stream that disconnected while waiting for a slot left
         // its waiter in the FIFO queue. A freed slot was granted to that dead
