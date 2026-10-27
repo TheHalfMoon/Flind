@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import argparse
 import importlib.abc
+import importlib.machinery
 import importlib.util
 import json
 import os
@@ -24,7 +25,7 @@ import time
 ALLOWED_ROOTS = ("posthog", "products", "ee", "common", "flind")
 MAX_INDEX_BYTES = 16 * 1024 * 1024
 MAX_BLOB_BYTES = 2 * 1024 * 1024
-MAX_IMPORTS = 200
+MAX_IMPORTS = 1200
 MAX_SECONDS = 180
 _SAFE_NAME = re.compile(r"^[A-Za-z_][A-Za-z0-9_]*(?:\.[A-Za-z_][A-Za-z0-9_]*){0,24}$")
 RECEIPT_PREFIX = "FLIND_REGISTRY_PROBE_RECEIPT="
@@ -54,6 +55,63 @@ def index_tracked_python(root: Path, ref: str) -> set[str]:
     }
 
 
+class GitBlobBatchReader:
+    """One offline Git process for all source imports; no lazy remote blob fetch."""
+
+    def __init__(self, root: Path, ref: str):
+        self.ref = ref
+        self.process = subprocess.Popen(
+            ["git", "-C", str(root), "cat-file", "--batch"],
+            stdin=subprocess.PIPE, stdout=subprocess.PIPE,
+            stderr=subprocess.DEVNULL, env=git_offline_env(),
+        )
+
+    def read(self, path: str) -> bytes:
+        if ("\n" in path or "\r" in path or path.startswith("/")
+                or ".." in Path(path).parts or not path.endswith(".py")):
+            raise ValueError("Unsafe tracked source path")
+        proc = self.process
+        if proc.poll() is not None or proc.stdin is None or proc.stdout is None:
+            raise ImportError("Offline Git batch reader unavailable")
+        try:
+            proc.stdin.write((self.ref + ":" + path + "\n").encode("utf-8"))
+            proc.stdin.flush()
+            header = proc.stdout.readline().split()
+            if len(header) != 3 or header[1] != b"blob":
+                raise ImportError("Tracked blob unavailable offline")
+            size = int(header[2])
+            if size < 0 or size > MAX_BLOB_BYTES:
+                raise ImportError("Tracked blob exceeds source budget")
+            data = proc.stdout.read(size)
+            if len(data) != size or proc.stdout.read(1) != b"\n":
+                raise ImportError("Malformed offline Git batch response")
+            return data
+        except (OSError, ValueError) as exc:
+            raise ImportError("Offline Git batch source read failed") from exc
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, exc_type, exc, tb):
+        self.close()
+
+    def close(self):
+        try:
+            if self.process.poll() is None:
+                self.process.terminate()
+                try:
+                    self.process.wait(timeout=2)
+                except subprocess.TimeoutExpired:
+                    self.process.kill()
+                    self.process.wait(timeout=2)
+        finally:
+            # A terminated child still leaves Python's pipe descriptors open.
+            # Close both ends so repeated probes do not leak file handles.
+            for pipe in (self.process.stdin, self.process.stdout):
+                if pipe is not None:
+                    pipe.close()
+
+
 class GitTrackedPythonLoader(importlib.abc.Loader):
     def __init__(self, finder: "GitTrackedPythonFinder", path: str, package: bool) -> None:
         self.finder = finder
@@ -69,23 +127,33 @@ class GitTrackedPythonLoader(importlib.abc.Loader):
             raise ImportError("Flind tracked-source module admission limit reached")
         if time.monotonic() - finder.started > finder.deadline:
             raise ImportError("Flind tracked-source import deadline exceeded")
+        if finder.batch_reader is not None:
+            try:
+                source_bytes = finder.batch_reader.read(self.path)
+            except (ImportError, OSError, ValueError) as exc:
+                finder.last_unavailable_source = self.path
+                finder.source_failure_kind = "offline_batch_blob_read_failed"
+                raise ImportError("Flind offline tracked source unavailable") from exc
+        else:
+            # Preserve the fixture-facing legacy code path for existing unit tests.
+            try:
+                result = subprocess.run(
+                    ["git", "-C", str(finder.root), "show", finder.ref + ":" + self.path],
+                    capture_output=True, timeout=18, check=False, env=git_offline_env(),
+                )
+            except subprocess.TimeoutExpired as exc:
+                finder.last_unavailable_source = self.path
+                finder.source_failure_kind = "bounded_local_git_timeout"
+                raise ImportError("Flind tracked source read exceeded time budget") from exc
+            if result.returncode or len(result.stdout) > MAX_BLOB_BYTES:
+                finder.last_unavailable_source = self.path
+                finder.source_failure_kind = (
+                    "missing_local_git_blob" if result.returncode else "source_blob_over_size_budget"
+                )
+                raise ImportError("Flind tracked source unavailable locally or over size budget")
+            source_bytes = result.stdout
         try:
-            result = subprocess.run(
-                ["git", "-C", str(finder.root), "show", finder.ref + ":" + self.path],
-                capture_output=True, timeout=18, check=False, env=git_offline_env(),
-            )
-        except subprocess.TimeoutExpired as exc:
-            finder.last_unavailable_source = self.path
-            finder.source_failure_kind = "bounded_local_git_timeout"
-            raise ImportError("Flind tracked source read exceeded time budget") from exc
-        if result.returncode or len(result.stdout) > MAX_BLOB_BYTES:
-            finder.last_unavailable_source = self.path
-            finder.source_failure_kind = (
-                "missing_local_git_blob" if result.returncode else "source_blob_over_size_budget"
-            )
-            raise ImportError("Flind tracked source unavailable locally or over size budget")
-        try:
-            contents = result.stdout.decode("utf-8")
+            contents = source_bytes.decode("utf-8")
         except UnicodeDecodeError as exc:
             finder.last_unavailable_source = self.path
             finder.source_failure_kind = "non_utf8_source"
@@ -100,12 +168,25 @@ class GitTrackedPythonLoader(importlib.abc.Loader):
 
 class GitTrackedPythonFinder(importlib.abc.MetaPathFinder):
     def __init__(self, root: Path, ref: str, paths: set[str],
-                 *, limit: int = MAX_IMPORTS, deadline: int = MAX_SECONDS) -> None:
+                 *, limit: int = MAX_IMPORTS, deadline: int = MAX_SECONDS,
+                 batch_reader: GitBlobBatchReader | None = None) -> None:
         if not 0 < limit <= MAX_IMPORTS or not 0 < deadline <= MAX_SECONDS:
             raise ValueError("Invalid bounded import limits")
         self.root = root.resolve()
         self.ref = ref
         self.paths = paths
+        # Tracked namespace packages may not have __init__.py *or an on-disk
+        # directory* in sparse checkouts. Restore PEP 420 package discovery
+        # only for paths backed by tracked first-party Python descendants.
+        prefixes: set[str] = set()
+        for source in paths:
+            segments = source.split("/")
+            for depth in range(1, len(segments)):
+                prefix = "/".join(segments[:depth])
+                if prefix + "/__init__.py" not in paths:
+                    prefixes.add(prefix)
+        self.namespace_prefixes = prefixes
+        self.batch_reader = batch_reader
         self.limit = limit
         self.deadline = deadline
         self.started = time.monotonic()
@@ -118,7 +199,7 @@ class GitTrackedPythonFinder(importlib.abc.MetaPathFinder):
         if not _SAFE_NAME.fullmatch(fullname):
             return None
         parts = fullname.split(".")
-        if parts[0] not in ALLOWED_ROOTS or len(parts) < 2:
+        if parts[0] not in ALLOWED_ROOTS:
             return None
         rel = "/".join(parts)
         for candidate, package in ((rel + "/__init__.py", True),
@@ -127,7 +208,25 @@ class GitTrackedPythonFinder(importlib.abc.MetaPathFinder):
                 continue
             loader = GitTrackedPythonLoader(self, candidate, package)
             return importlib.util.spec_from_loader(fullname, loader, is_package=package)
+        if rel in self.namespace_prefixes:
+            spec = importlib.machinery.ModuleSpec(fullname, loader=None, is_package=True)
+            spec.submodule_search_locations = [str(self.root / rel)]
+            return spec
         return None
+
+
+def local_missing_resource(root: Path, error: FileNotFoundError) -> str | None:
+    """Report only bounded, repository-relative missing resource paths."""
+    if not isinstance(error.filename, str):
+        return None
+    try:
+        relative = Path(error.filename).resolve().relative_to(root.resolve())
+    except (ValueError, OSError):
+        return None
+    name = relative.as_posix()
+    if not name or len(name) > 300 or ".." in relative.parts:
+        return None
+    return name
 
 
 def registry_child(root: Path, ref: str, limit: int, deadline: int) -> int:
@@ -149,9 +248,12 @@ def registry_child(root: Path, ref: str, limit: int, deadline: int) -> int:
         "blocker": "Unknown Django registry failure",
     }
     finder = None
+    batch_reader = None
     try:
         tracked = index_tracked_python(root, ref)
-        finder = GitTrackedPythonFinder(root, ref, tracked, limit=limit, deadline=deadline)
+        batch_reader = GitBlobBatchReader(root, ref)
+        finder = GitTrackedPythonFinder(root, ref, tracked, limit=limit,
+                                        deadline=deadline, batch_reader=batch_reader)
         # Existing files and installed third-party wheels are preferred.
         sys.meta_path.append(finder)
         import django
@@ -166,6 +268,10 @@ def registry_child(root: Path, ref: str, limit: int, deadline: int) -> int:
             receipt["missing_module"] = e.name
     except (ImportError, OSError, ValueError, RuntimeError, subprocess.TimeoutExpired) as e:
         receipt["blocker"] = type(e).__name__
+        if isinstance(e, FileNotFoundError):
+            missing = local_missing_resource(root, e)
+            if missing is not None:
+                receipt["missing_local_resource"] = missing
         if isinstance(e, ImportError):
             if isinstance(e.name, str) and _SAFE_NAME.fullmatch(e.name):
                 receipt["import_error_name"] = e.name
@@ -176,6 +282,8 @@ def registry_child(root: Path, ref: str, limit: int, deadline: int) -> int:
     except Exception:
         receipt["blocker"] = "Unhandled first-party registry error"
     finally:
+        if batch_reader is not None:
+            batch_reader.close()
         receipt["traced_source_modules"] = finder.loaded if finder else 0
         if finder is not None and not receipt["django_registry_qualified"] and finder.last_traced_source is not None:
             # Diagnostic context, not proof that this was the failed import.
@@ -257,7 +365,8 @@ def probe(root: Path, ref: str, *, deadline: int = 150, limit: int = 100) -> dic
         for key in ("django_registry_qualified", "traced_source_modules",
                     "app_count", "blocker", "missing_module",
                     "blocked_tracked_source", "source_failure_kind",
-                    "last_traced_source", "import_error_name"):
+                    "last_traced_source", "import_error_name",
+                    "missing_local_resource"):
             if key in data:
                 result[key] = data[key]
         if process.returncode != 0:
