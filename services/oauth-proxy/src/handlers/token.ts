@@ -1,5 +1,6 @@
 import { type Region, proxyOrigin } from '@/lib/constants'
 import { type SigningKeyEnv } from '@/lib/idtoken'
+import { type FlindOAuthRegionEnv, type OAuthRegionalOrigins, flindOAuthOwnedRegionPair } from '@/lib/flind-oauth-admission'
 import {
     getCallbackRedirectUri,
     getClientMapping,
@@ -7,11 +8,11 @@ import {
     putRegionSelection,
     resolveMappingRewrite,
 } from '@/lib/kv'
-import { preferClientError, proxyPostWithClientId, tryBothRegions } from '@/lib/proxy'
+import { preferClientError, proxyPostWithClientId, proxyToRegionAtOrigins, tryBothRegionsAtOrigins } from '@/lib/proxy'
 import { reissueIdTokenInResponse } from '@/lib/token-response'
 import { duplicateParamError, errorResponse, findDuplicateParam } from '@/lib/validation'
 
-/** RFC 7523, which PostHog serves as the ID-JAG identity assertion exchange. */
+/** RFC 7523, which Flind serves as the ID-JAG identity assertion exchange. */
 const JWT_BEARER_GRANT_TYPE = 'urn:ietf:params:oauth:grant-type:jwt-bearer'
 
 // The proxy reads a form body with `.get()`, which returns the first value, while Django's
@@ -29,12 +30,23 @@ const SINGLE_VALUE_TOKEN_PARAMS = [
 /**
  * OAuth Token Exchange — proxy to the correct region.
  *
- * Routes the token exchange to the correct regional PostHog server.
+ * Routes the token exchange to the correct regional Flind regional server.
  * Region is determined by KV lookup on client_id (stored during the authorize step).
  * For refresh_token grants, we fall back to try-both since the client may not
  * have gone through our authorize flow.
  */
-export async function handleToken(request: Request, kv: KVNamespace, env: SigningKeyEnv): Promise<Response> {
+export async function handleToken(
+    request: Request, kv: KVNamespace, env: SigningKeyEnv & FlindOAuthRegionEnv
+): Promise<Response> {
+    const regions = flindOAuthOwnedRegionPair(env)
+    if (!regions) {
+        // Never read or forward grant credentials until regional Flind ownership
+        // is configured. Direct handler calls get the same protection as Worker ingress.
+        return new Response(JSON.stringify({ error: 'temporarily_unavailable' }), {
+            status: 503,
+            headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' },
+        })
+    }
     const body = await request.text()
 
     const contentType = request.headers.get('content-type') || ''
@@ -62,7 +74,7 @@ export async function handleToken(request: Request, kv: KVNamespace, env: Signin
         grantType = formParams.get('grant_type')
     }
 
-    const response = await routeToken(request, kv, body, clientId, grantType)
+    const response = await routeToken(request, kv, body, clientId, grantType, regions)
 
     if (grantType === JWT_BEARER_GRANT_TYPE) {
         // An ID-JAG exchange returns an access token and no ID token, so it has nothing to re-issue.
@@ -92,7 +104,8 @@ async function routeToken(
     kv: KVNamespace,
     body: string,
     clientId: string | null,
-    grantType: string | null
+    grantType: string | null,
+    regions: OAuthRegionalOrigins
 ): Promise<Response> {
     const clientIdPrefix = clientId?.slice(0, 8) ?? 'none'
 
@@ -107,7 +120,7 @@ async function routeToken(
     // (posthog/api/id_jag.py), so rewriting it to the regional id fails on EU. This grant needs
     // no rewrite: the assertion is the credential and no OAuth application is looked up.
     if (grantType === JWT_BEARER_GRANT_TYPE) {
-        const { response, region } = await tryBothRegions(rebuild(), '/oauth/token/')
+        const { response, region } = await tryBothRegionsAtOrigins(rebuild(), '/oauth/token/', regions)
         console.info(
             JSON.stringify({
                 handler: 'token',
@@ -143,7 +156,7 @@ async function routeToken(
                     region,
                 })
             )
-            const response = await proxyWithMapping(rebuild(), kv, clientId, region, redirectUriRewrite)
+            const response = await proxyWithMapping(rebuild(), kv, clientId, region, redirectUriRewrite, regions)
             console.info(
                 JSON.stringify({
                     handler: 'token',
@@ -213,7 +226,8 @@ async function routeToken(
                     clientId,
                     rewrite.regionalClientId,
                     undefined,
-                    rewrite.clientSecretRewrite
+                    rewrite.clientSecretRewrite,
+                    regions
                 )
 
                 if (response.ok) {
@@ -280,7 +294,7 @@ async function routeToken(
             region_source: 'try_both',
         })
     )
-    const { response, region } = await tryBothRegions(rebuild(), '/oauth/token/')
+    const { response, region } = await tryBothRegionsAtOrigins(rebuild(), '/oauth/token/', regions)
     const summary = JSON.stringify({
         handler: 'token',
         grant_type: grantType,
@@ -302,7 +316,8 @@ async function proxyWithMapping(
     kv: KVNamespace,
     proxyClientId: string | null,
     region: Region,
-    redirectUriRewrite?: { from: string; to: string }
+    redirectUriRewrite: { from: string; to: string } | undefined,
+    regions: OAuthRegionalOrigins
 ): Promise<Response> {
     if (proxyClientId) {
         const mapping = await getClientMapping(kv, proxyClientId)
@@ -316,13 +331,14 @@ async function proxyWithMapping(
                     proxyClientId,
                     rewrite.regionalClientId,
                     redirectUriRewrite,
-                    rewrite.clientSecretRewrite
+                    rewrite.clientSecretRewrite,
+                    regions
                 )
             }
         }
     }
 
-    // No mapping found — proxy directly (client_id may already be regional)
-    const { response } = await tryBothRegions(request, '/oauth/token/')
-    return response
+    // A code was issued for the selected region; never retry that code at
+    // the other region when the client mapping was missing from KV.
+    return proxyToRegionAtOrigins(request, region, '/oauth/token/', regions)
 }

@@ -7,12 +7,41 @@ import { hashKey } from '@/lib/kv'
 import { createMockKV, mockKVGet, mockKVGetValue } from './helpers'
 
 const mockKV = createMockKV()
+const ownedFlindRegions = { FLIND_OAUTH_US_ORIGIN: 'https://us.flind.example', FLIND_OAUTH_EU_ORIGIN: 'https://eu.flind.example' }
 
 beforeEach(() => {
     vi.clearAllMocks()
 })
 
 describe('handleToken', () => {
+    it('refuses token exchanges without configured Flind regional owners before KV or HTTP', async () => {
+        const fetchMock = vi.fn()
+        vi.stubGlobal('fetch', fetchMock)
+        const request = new Request('https://oauth.flind.example/oauth/token/', {
+            method: 'POST', body: 'grant_type=refresh_token',
+        })
+        const response = await handleToken(request, mockKV, {})
+        expect(response.status).toBe(503)
+        expect(response.headers.get('cache-control')).toBe('no-store')
+        expect(fetchMock).not.toHaveBeenCalled()
+        expect(vi.mocked(mockKV.get)).not.toHaveBeenCalled()
+    })
+
+    it('does not send a selected-region authorization code to another region if client mapping is gone', async () => {
+        const hash = await hashKey('orphan')
+        mockKVGet(mockKV, (key: string) => Promise.resolve(key === `region:${hash}` ? 'eu' : null))
+        const fetchMock = vi.fn().mockResolvedValue(new Response('{}', { status: 400 }))
+        vi.stubGlobal('fetch', fetchMock)
+        const response = await handleToken(new Request('https://oauth.flind.example/oauth/token/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: 'grant_type=authorization_code&code=synthetic&client_id=orphan',
+        }), mockKV, ownedFlindRegions)
+        expect(response.status).toBe(400)
+        expect(fetchMock).toHaveBeenCalledTimes(1)
+        expect(fetchMock.mock.calls[0]?.[0]).toBe('https://eu.flind.example/oauth/token/')
+    })
+
     it('proxies to the correct region when region is stored in KV by client_id', async () => {
         const clientHash = await hashKey('proxy_client_123')
         mockKVGet(mockKV, (key: string, type?: unknown) => {
@@ -42,20 +71,20 @@ describe('handleToken', () => {
             )
         )
 
-        const request = new Request('https://oauth.posthog.com/oauth/token/', {
+        const request = new Request('https://oauth.flind.example/oauth/token/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: 'grant_type=authorization_code&code=test_code&client_id=proxy_client_123',
         })
 
-        const response = await handleToken(request, mockKV, {})
+        const response = await handleToken(request, mockKV, ownedFlindRegions)
         const data = (await response.json()) as Record<string, unknown>
 
         expect(response.status).toBe(200)
         expect(data.access_token).toBe('pha_test_token')
 
         const fetchCall = vi.mocked(fetch).mock.calls[0]!
-        expect(String(fetchCall[0])).toMatch(/^https:\/\/us\.posthog\.com/)
+        expect(String(fetchCall[0])).toMatch(/^https:\/\/us\.flind\.example/)
     })
 
     it('rewrites redirect_uri when callback was intercepted by the proxy', async () => {
@@ -87,21 +116,21 @@ describe('handleToken', () => {
             )
         )
 
-        const request = new Request('https://oauth.posthog.com/oauth/token/', {
+        const request = new Request('https://oauth.flind.example/oauth/token/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: 'grant_type=authorization_code&code=test_code&client_id=proxy_client_456&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fcallback',
         })
 
-        const response = await handleToken(request, mockKV, {})
+        const response = await handleToken(request, mockKV, ownedFlindRegions)
         expect(response.status).toBe(200)
 
         const fetchCall = vi.mocked(fetch).mock.calls[0]!
-        expect(String(fetchCall[0])).toMatch(/^https:\/\/eu\.posthog\.com/)
+        expect(String(fetchCall[0])).toMatch(/^https:\/\/eu\.flind\.example/)
 
         // Verify redirect_uri was rewritten to proxy callback
         const sentBody = new URLSearchParams(fetchCall[1]!.body as string)
-        expect(sentBody.get('redirect_uri')).toBe('https://oauth.posthog.com/oauth/callback/')
+        expect(sentBody.get('redirect_uri')).toBe('https://oauth.flind.example/oauth/callback/')
         expect(sentBody.get('client_id')).toBe('eu_real_id')
     })
 
@@ -137,32 +166,32 @@ describe('handleToken', () => {
             )
         )
 
-        const request = new Request('https://oauth.posthog.com/oauth/token/', {
+        const request = new Request('https://oauth.flind.example/oauth/token/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: 'grant_type=authorization_code&code=test_code&client_id=proxy_client_789&client_secret=us_secret_abc&redirect_uri=https%3A%2F%2Fclaude.ai%2Fapi%2Fmcp%2Fauth_callback',
         })
 
-        const response = await handleToken(request, mockKV, {})
+        const response = await handleToken(request, mockKV, ownedFlindRegions)
         expect(response.status).toBe(200)
 
         const fetchCall = vi.mocked(fetch).mock.calls[0]!
         const sentBody = new URLSearchParams(fetchCall[1]!.body as string)
         expect(sentBody.get('client_id')).toBe('eu_real_id')
         expect(sentBody.get('client_secret')).toBe('eu_secret_xyz')
-        expect(sentBody.get('redirect_uri')).toBe('https://oauth.posthog.com/oauth/callback/')
+        expect(sentBody.get('redirect_uri')).toBe('https://oauth.flind.example/oauth/callback/')
     })
 
     it('returns error for authorization_code grant when region is unknown', async () => {
         mockKVGetValue(mockKV, null)
 
-        const request = new Request('https://oauth.posthog.com/oauth/token/', {
+        const request = new Request('https://oauth.flind.example/oauth/token/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: 'grant_type=authorization_code&code=test_code&client_id=unknown_client',
         })
 
-        const response = await handleToken(request, mockKV, {})
+        const response = await handleToken(request, mockKV, ownedFlindRegions)
         const data = (await response.json()) as Record<string, unknown>
 
         expect(response.status).toBe(400)
@@ -170,13 +199,13 @@ describe('handleToken', () => {
     })
 
     it('returns 400 for malformed JSON body', async () => {
-        const request = new Request('https://oauth.posthog.com/oauth/token/', {
+        const request = new Request('https://oauth.flind.example/oauth/token/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: '{invalid json',
         })
 
-        const response = await handleToken(request, mockKV, {})
+        const response = await handleToken(request, mockKV, ownedFlindRegions)
         expect(response.status).toBe(400)
         const data = (await response.json()) as Record<string, unknown>
         expect(data.error).toBe('invalid_request')
@@ -186,13 +215,13 @@ describe('handleToken', () => {
     it('rejects a token request that repeats a parameter the regional server reads differently', async () => {
         vi.stubGlobal('fetch', vi.fn())
 
-        const request = new Request('https://oauth.posthog.com/oauth/token/', {
+        const request = new Request('https://oauth.flind.example/oauth/token/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: 'grant_type=authorization_code&code=test_code&client_id=victim_client&client_id=attacker_client',
         })
 
-        const response = await handleToken(request, mockKV, {})
+        const response = await handleToken(request, mockKV, ownedFlindRegions)
         const data = (await response.json()) as Record<string, unknown>
 
         expect(response.status).toBe(400)
@@ -225,13 +254,13 @@ describe('handleToken', () => {
                 )
         )
 
-        const request = new Request('https://oauth.posthog.com/oauth/token/', {
+        const request = new Request('https://oauth.flind.example/oauth/token/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: 'grant_type=refresh_token&refresh_token=rt_test&client_id=unknown_client',
         })
 
-        const response = await handleToken(request, mockKV, {})
+        const response = await handleToken(request, mockKV, ownedFlindRegions)
         const data = (await response.json()) as Record<string, unknown>
 
         expect(data.access_token).toBe('pha_eu_refreshed')
@@ -281,13 +310,13 @@ describe('handleToken', () => {
                 )
         )
 
-        const request = new Request('https://oauth.posthog.com/oauth/token/', {
+        const request = new Request('https://oauth.flind.example/oauth/token/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: 'grant_type=refresh_token&refresh_token=rt_eu_token&client_id=proxy_client_mapped&client_secret=us_secret',
         })
 
-        const response = await handleToken(request, mockKV, {})
+        const response = await handleToken(request, mockKV, ownedFlindRegions)
         const data = (await response.json()) as Record<string, unknown>
 
         expect(response.status).toBe(200)
@@ -296,14 +325,14 @@ describe('handleToken', () => {
         // Verify US attempt used the US client_id (which is the proxy client_id)
         const usCall = vi.mocked(fetch).mock.calls[0]!
         const usBody = new URLSearchParams(usCall[1]!.body as string)
-        expect(String(usCall[0])).toMatch(/^https:\/\/us\.posthog\.com/)
+        expect(String(usCall[0])).toMatch(/^https:\/\/us\.flind\.example/)
         expect(usBody.get('client_id')).toBe('proxy_client_mapped')
         expect(usBody.get('client_secret')).toBe('us_secret')
 
         // Verify EU attempt used the rewritten EU client_id and secret
         const euCall = vi.mocked(fetch).mock.calls[1]!
         const euBody = new URLSearchParams(euCall[1]!.body as string)
-        expect(String(euCall[0])).toMatch(/^https:\/\/eu\.posthog\.com/)
+        expect(String(euCall[0])).toMatch(/^https:\/\/eu\.flind\.example/)
         expect(euBody.get('client_id')).toBe('eu_real_id')
         expect(euBody.get('client_secret')).toBe('eu_secret')
 
@@ -337,13 +366,13 @@ describe('handleToken', () => {
             )
         )
 
-        const request = new Request('https://oauth.posthog.com/oauth/token/', {
+        const request = new Request('https://oauth.flind.example/oauth/token/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: 'grant_type=refresh_token&refresh_token=rt_us_token&client_id=proxy_client_us',
         })
 
-        const response = await handleToken(request, mockKV, {})
+        const response = await handleToken(request, mockKV, ownedFlindRegions)
         const data = (await response.json()) as Record<string, unknown>
 
         expect(response.status).toBe(200)
@@ -354,7 +383,7 @@ describe('handleToken', () => {
         // Verify US attempt used the correct client_id
         const usCall = vi.mocked(fetch).mock.calls[0]!
         const usBody = new URLSearchParams(usCall[1]!.body as string)
-        expect(String(usCall[0])).toMatch(/^https:\/\/us\.posthog\.com/)
+        expect(String(usCall[0])).toMatch(/^https:\/\/us\.flind\.example/)
         expect(usBody.get('client_id')).toBe('proxy_client_us')
 
         // Region re-stored as US
@@ -406,13 +435,13 @@ describe('handleToken', () => {
                     .mockResolvedValueOnce(new Response(euBody, { status: euStatus }))
             )
 
-            const request = new Request('https://oauth.posthog.com/oauth/token/', {
+            const request = new Request('https://oauth.flind.example/oauth/token/', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                 body: 'grant_type=refresh_token&refresh_token=rt_expired&client_id=proxy_client_bad',
             })
 
-            const response = await handleToken(request, mockKV, {})
+            const response = await handleToken(request, mockKV, ownedFlindRegions)
 
             expect(response.status).toBe(expectedStatus)
             expect(await response.text()).toBe(expectedBody)
@@ -473,13 +502,13 @@ describe('handleToken', () => {
                     .mockResolvedValueOnce(new Response(euBody, { status: euStatus }))
             )
 
-            const request = new Request('https://oauth.posthog.com/oauth/token/', {
+            const request = new Request('https://oauth.flind.example/oauth/token/', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                 body: 'grant_type=refresh_token&refresh_token=rt_dead&client_id=unknown_client',
             })
 
-            const response = await handleToken(request, mockKV, {})
+            const response = await handleToken(request, mockKV, ownedFlindRegions)
 
             expect(response.status).toBe(expectedStatus)
             expect(await response.text()).toBe(expectedBody)
@@ -503,13 +532,13 @@ describe('handleToken', () => {
             return Promise.resolve(null)
         })
 
-        const request = new Request('https://oauth.posthog.com/oauth/token/', {
+        const request = new Request('https://oauth.flind.example/oauth/token/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: 'grant_type=authorization_code&code=test_code&client_id=proxy_client_authcode',
         })
 
-        const response = await handleToken(request, mockKV, {})
+        const response = await handleToken(request, mockKV, ownedFlindRegions)
         const data = (await response.json()) as Record<string, unknown>
 
         // Should return error, not attempt mapping-based routing
@@ -552,7 +581,7 @@ describe('handleToken', () => {
                 )
         )
 
-        const request = new Request('https://oauth.posthog.com/oauth/token/', {
+        const request = new Request('https://oauth.flind.example/oauth/token/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -562,7 +591,7 @@ describe('handleToken', () => {
             }),
         })
 
-        const response = await handleToken(request, mockKV, {})
+        const response = await handleToken(request, mockKV, ownedFlindRegions)
         const data = (await response.json()) as Record<string, unknown>
 
         expect(response.status).toBe(200)
@@ -600,13 +629,13 @@ describe('handleToken', () => {
             )
         )
 
-        const request = new Request('https://oauth.posthog.com/oauth/token/', {
+        const request = new Request('https://oauth.flind.example/oauth/token/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: 'grant_type=refresh_token&refresh_token=rt_token&client_id=proxy_client_us_only',
         })
 
-        const response = await handleToken(request, mockKV, {})
+        const response = await handleToken(request, mockKV, ownedFlindRegions)
         const data = (await response.json()) as Record<string, unknown>
 
         expect(response.status).toBe(200)
@@ -614,7 +643,7 @@ describe('handleToken', () => {
         // Only US was tried — EU was skipped because eu_client_id is null
         expect(vi.mocked(fetch)).toHaveBeenCalledTimes(1)
         const usCall = vi.mocked(fetch).mock.calls[0]!
-        expect(String(usCall[0])).toMatch(/^https:\/\/us\.posthog\.com/)
+        expect(String(usCall[0])).toMatch(/^https:\/\/us\.flind\.example/)
         expect(vi.mocked(mockKV.put)).toHaveBeenCalledWith(`region:${clientHash}`, 'us', { expirationTtl: 3600 })
     })
 
@@ -644,13 +673,13 @@ describe('handleToken', () => {
             )
         )
 
-        const request = new Request('https://oauth.posthog.com/oauth/token/', {
+        const request = new Request('https://oauth.flind.example/oauth/token/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: 'grant_type=refresh_token&refresh_token=rt_token&client_id=proxy_client_eu_only',
         })
 
-        const response = await handleToken(request, mockKV, {})
+        const response = await handleToken(request, mockKV, ownedFlindRegions)
         const data = (await response.json()) as Record<string, unknown>
 
         expect(response.status).toBe(200)
@@ -658,7 +687,7 @@ describe('handleToken', () => {
         // Only EU was tried — US was skipped because us_client_id is null
         expect(vi.mocked(fetch)).toHaveBeenCalledTimes(1)
         const euCall = vi.mocked(fetch).mock.calls[0]!
-        expect(String(euCall[0])).toMatch(/^https:\/\/eu\.posthog\.com/)
+        expect(String(euCall[0])).toMatch(/^https:\/\/eu\.flind\.example/)
         const euBody = new URLSearchParams(euCall[1]!.body as string)
         expect(euBody.get('client_id')).toBe('eu_only_id')
         expect(vi.mocked(mockKV.put)).toHaveBeenCalledWith(`region:${clientHash}`, 'eu', { expirationTtl: 3600 })
@@ -691,13 +720,13 @@ describe('handleToken', () => {
             )
         )
 
-        const request = new Request('https://oauth.posthog.com/oauth/token/', {
+        const request = new Request('https://oauth.flind.example/oauth/token/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: 'grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer&assertion=an.id.jag&client_id=proxy_client_id_jag',
         })
 
-        const response = await handleToken(request, mockKV, {})
+        const response = await handleToken(request, mockKV, ownedFlindRegions)
 
         expect(response.status).toBe(200)
         for (const call of vi.mocked(fetch).mock.calls) {
@@ -726,13 +755,13 @@ describe('handleToken', () => {
             )
         )
 
-        const request = new Request('https://oauth.posthog.com/oauth/token/', {
+        const request = new Request('https://oauth.flind.example/oauth/token/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: 'grant_type=authorization_code&code=test_code&client_id=proxy_client_oidc',
         })
 
-        const response = await handleToken(request, mockKV, {})
+        const response = await handleToken(request, mockKV, ownedFlindRegions)
         const data = (await response.json()) as Record<string, unknown>
 
         expect(response.status).toBe(200)
@@ -783,20 +812,21 @@ describe('handleToken', () => {
             )
         )
 
-        const request = new Request('https://oauth.posthog.com/oauth/token/', {
+        const request = new Request('https://oauth.flind.example/oauth/token/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: 'grant_type=authorization_code&code=test_code&client_id=proxy_client_mapped',
         })
 
         const response = await handleToken(request, mockKV, {
+            ...ownedFlindRegions,
             OIDC_SIGNING_KEY: await exportPKCS8(proxyKey.privateKey),
         })
         const data = (await response.json()) as Record<string, unknown>
 
         expect(response.status).toBe(200)
         const claims = decodeJwt(data.id_token as string)
-        expect(claims.iss).toBe('https://oauth.posthog.com')
+        expect(claims.iss).toBe('https://oauth.flind.example')
         expect(claims.aud).toBe('proxy_client_mapped')
         expect(claims.sub).toBe('018f0000-0000-7000-8000-000000000000')
     })
