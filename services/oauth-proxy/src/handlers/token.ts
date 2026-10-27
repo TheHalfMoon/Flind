@@ -15,6 +15,26 @@ import { duplicateParamError, errorResponse, findDuplicateParam } from '@/lib/va
 /** RFC 7523, which Flind serves as the ID-JAG identity assertion exchange. */
 const JWT_BEARER_GRANT_TYPE = 'urn:ietf:params:oauth:grant-type:jwt-bearer'
 
+/**
+ * RFC 6749 §5.1: token-bearing responses must not be stored by browsers,
+ * shared proxies, or CDNs, regardless of the regional server's cache headers.
+ * Apply this to both success and error responses without consuming their body.
+ */
+function privateTokenResponse(response: Response): Response {
+    const headers = new Headers(response.headers)
+    headers.set('Cache-Control', 'no-store')
+    headers.set('Pragma', 'no-cache')
+    headers.set('Expires', '0')
+    for (const header of ['CDN-Cache-Control', 'Cloudflare-CDN-Cache-Control', 'Surrogate-Control', 'ETag', 'Last-Modified']) {
+        headers.delete(header)
+    }
+    return new Response(response.body, {
+        status: response.status,
+        statusText: response.statusText,
+        headers,
+    })
+}
+
 // The proxy reads a form body with `.get()`, which returns the first value, while Django's
 // QueryDict returns the last. A repeat lets the two authenticate different clients.
 const SINGLE_VALUE_TOKEN_PARAMS = [
@@ -42,10 +62,10 @@ export async function handleToken(
     if (!regions) {
         // Never read or forward grant credentials until regional Flind ownership
         // is configured. Direct handler calls get the same protection as Worker ingress.
-        return new Response(JSON.stringify({ error: 'temporarily_unavailable' }), {
+        return privateTokenResponse(new Response(JSON.stringify({ error: 'temporarily_unavailable' }), {
             status: 503,
-            headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' },
-        })
+            headers: { 'Content-Type': 'application/json' },
+        }))
     }
     const body = await request.text()
 
@@ -59,16 +79,15 @@ export async function handleToken(
             clientId = (json.client_id as string) || null
             grantType = (json.grant_type as string) || null
         } catch {
-            return errorResponse(
-                { error: 'invalid_request', error_description: 'Malformed JSON body' },
-                { 'Cache-Control': 'no-store' }
-            )
+            return privateTokenResponse(errorResponse(
+                { error: 'invalid_request', error_description: 'Malformed JSON body' }
+            ))
         }
     } else {
         const formParams = new URLSearchParams(body)
         const duplicate = findDuplicateParam(formParams, SINGLE_VALUE_TOKEN_PARAMS)
         if (duplicate) {
-            return errorResponse(duplicateParamError(duplicate), { 'Cache-Control': 'no-store' })
+            return privateTokenResponse(errorResponse(duplicateParamError(duplicate)))
         }
         clientId = formParams.get('client_id')
         grantType = formParams.get('grant_type')
@@ -78,15 +97,15 @@ export async function handleToken(
 
     if (grantType === JWT_BEARER_GRANT_TYPE) {
         // An ID-JAG exchange returns an access token and no ID token, so it has nothing to re-issue.
-        return response
+        return privateTokenResponse(response)
     }
 
-    return reissueIdTokenInResponse(response, {
+    return privateTokenResponse(await reissueIdTokenInResponse(response, {
         issuer: proxyOrigin(request),
         audience: clientId,
         permittedUpstreamAudiences: response.ok && clientId ? await permittedUpstreamAudiences(kv, clientId) : [],
         env,
-    })
+    }))
 }
 
 /** A client registered through the proxy is known to each region under its own id. */

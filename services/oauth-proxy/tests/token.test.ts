@@ -14,6 +14,61 @@ beforeEach(() => {
 })
 
 describe('handleToken', () => {
+    it.each([
+        ['refresh success', 'grant_type=refresh_token', 200],
+        ['regional rejection', 'grant_type=refresh_token', 400],
+        ['JWT-bearer success', 'grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer', 200],
+    ])('never caches an upstream %s even if the regional server advertises public CDN caching', async (_name, body, status) => {
+        const upstreamHeaders = {
+            'Content-Type': 'application/json',
+            'Cache-Control': 'public, max-age=3600',
+            'CDN-Cache-Control': 'public, max-age=3600',
+            'Cloudflare-CDN-Cache-Control': 'public, max-age=3600',
+            'Surrogate-Control': 'max-age=3600',
+            'ETag': '"sensitive"',
+            'Last-Modified': 'Wed, 21 Oct 2026 07:28:00 GMT',
+            'Expires': 'Wed, 21 Oct 2027 07:28:00 GMT',
+        }
+        const fetchMock = vi.fn().mockResolvedValue(new Response(JSON.stringify(
+            status === 200 ? { access_token: 'synthetic-secret', token_type: 'bearer' } : { error: 'invalid_grant' }
+        ), { status, headers: upstreamHeaders }))
+        vi.stubGlobal('fetch', fetchMock)
+        const response = await handleToken(new Request('https://oauth.flind.example/oauth/token/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body,
+        }), mockKV, ownedFlindRegions)
+        expect(response.status).toBe(status)
+        expect(response.headers.get('cache-control')).toBe('no-store')
+        expect(response.headers.get('pragma')).toBe('no-cache')
+        expect(response.headers.get('expires')).toBe('0')
+        for (const name of ['cdn-cache-control', 'cloudflare-cdn-cache-control', 'surrogate-control', 'etag', 'last-modified']) {
+            expect(response.headers.has(name)).toBe(false)
+        }
+        expect(response.headers.get('content-type')).toBe('application/json')
+        expect(await response.json()).toEqual(
+            status === 200 ? { access_token: 'synthetic-secret', token_type: 'bearer' } : { error: 'invalid_grant' }
+        )
+        expect(fetchMock).toHaveBeenCalled()
+    })
+
+    it('keeps malformed and unconfigured token requests uncacheable', async () => {
+        const noOwners = await handleToken(new Request('https://oauth.flind.example/oauth/token/', {
+            method: 'POST', body: 'grant_type=refresh_token',
+        }), mockKV, {})
+        expect(noOwners.status).toBe(503)
+        expect(noOwners.headers.get('cache-control')).toBe('no-store')
+        expect(noOwners.headers.get('pragma')).toBe('no-cache')
+
+        const malformed = await handleToken(new Request('https://oauth.flind.example/oauth/token/', {
+            method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{bad json',
+        }), mockKV, ownedFlindRegions)
+        expect(malformed.status).toBe(400)
+        expect(malformed.headers.get('cache-control')).toBe('no-store')
+        expect(malformed.headers.get('pragma')).toBe('no-cache')
+    })
+
+
     it('refuses token exchanges without configured Flind regional owners before KV or HTTP', async () => {
         const fetchMock = vi.fn()
         vi.stubGlobal('fetch', fetchMock)
