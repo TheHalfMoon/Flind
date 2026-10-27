@@ -629,6 +629,45 @@ describe('WorkerIngestServer', () => {
         expect(Number(collected.acks[0].seq)).toBe(2)
     })
 
+    it('checks accepted feeds in call order even if asynchronous feed results resolve in reverse order', async () => {
+        const delayed = new Deferred<FeedResult>()
+        const originalFeed = driver.feed.bind(driver)
+        jest.spyOn(driver, 'feed').mockImplementation((streamId, seq, messages, budget) => {
+            const fed = originalFeed(streamId, seq, messages, budget)
+            return messages[0].offset === 300 ? delayed.promise : fed
+        })
+        const checked = jest.spyOn(sentinel, 'check')
+        const sourceA = new FrameSource()
+        const sourceB = new FrameSource()
+        const collectedA = collect(server, sourceA)
+        const collectedB = collect(server, sourceB)
+
+        // Both streams have the same consumer incarnation and Kafka key,
+        // so an incorrect check order would fabricate an offset regression.
+        sourceA.push(hello())
+        sourceA.push(subBatch(1, [300]))
+        await until(() => driver.feeds.length === 1)
+        sourceB.push(hello())
+        sourceB.push(subBatch(1, [301]))
+        await until(() => driver.feeds.length === 2)
+        await new Promise((resolve) => setTimeout(resolve, 15))
+        expect(checked).not.toHaveBeenCalled()
+
+        delayed.resolve({ ok: true })
+        await until(() => checked.mock.calls.length === 2)
+        expect(driver.feeds.map((feed) => feed.offsets[0])).toEqual([300, 301])
+        expect(checked.mock.calls.map(([messages]) => messages[0].offset)).toEqual([300, 301])
+
+        sourceA.end()
+        sourceB.end()
+        for (const feed of driver.feeds) {
+            driver.complete({ streamId: feed.streamId, seq: feed.seq, accepted: 1 })
+        }
+        await Promise.all([collectedA.ended, collectedB.ended])
+        expect(collectedA.error).toBeNull()
+        expect(collectedB.error).toBeNull()
+    })
+
     it('rebaselines the feed-order sentinel on a new assignment epoch instead of counting a violation', async () => {
         // A rebalance replays uncommitted (lower) offsets under the same
         // consumer id; scoping the sentinel by epoch is what keeps that from

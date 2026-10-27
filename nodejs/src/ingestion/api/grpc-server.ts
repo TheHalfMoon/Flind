@@ -378,6 +378,21 @@ export class WorkerIngestServer {
      * died mid-processing is still released when it settles.
      */
     private readonly acceptedBatches = new Map<string, AcceptedBatch>()
+    /**
+     * Track asynchronous feed results in their original invocation order.
+     * The ordering sentinel must observe accepted feeds in that order rather
+     * than the order in which independent streams resolve feed() promises.
+     * Rejected/cancelled attempts only advance the cursor without checking.
+     */
+    private nextFeedOrderTicket = 0
+    private nextFeedOrderToCheck = 0
+    private readonly pendingFeedOrder = new Map<
+        number,
+        {
+            resolved: boolean
+            accepted?: { messages: SerializedKafkaMessage[]; consumerId: string; replay: boolean }
+        }
+    >()
 
     constructor(
         private options: WorkerIngestServerOptions,
@@ -816,36 +831,45 @@ export class WorkerIngestServer {
                             this.finishReader(stream, seq)
                             return
                         }
-                        const result = await this.feedGuarded(stream, seq, serialized, budget)
-                        if (result.ok) {
-                            feedAccepted = true
-                            this.acceptedBatches.set(this.acceptedKey(stream.id, seq), batchAccepted(serialized.length))
-                            // Measure actual accepted feeds, not received frames:
-                            // a sub-batch may expire in the admission queue or
-                            // be rejected at capacity without entering the pipeline.
-                            // Include epochs so a restart/handoff rebaselines.
-                            this.deps.feedOrderSentinel?.check(
-                                serialized,
-                                `${stream.hello.consumerId}#${stream.hello.streamEpoch}#${subBatch.assignmentEpoch}`,
-                                subBatch.replay
+                        const orderTicket = this.reserveFeedOrderTicket()
+                        let acceptedForOrder = false
+                        try {
+                            const result = await this.feedGuarded(stream, seq, serialized, budget)
+                            if (result.ok) {
+                                feedAccepted = true
+                                this.acceptedBatches.set(this.acceptedKey(stream.id, seq), batchAccepted(serialized.length))
+                                acceptedForOrder = true
+                                break
+                            }
+                            if (result.kind === 'at_capacity') {
+                                // The admission queue mirrors pipeline capacity, so
+                                // this means the two drifted — count it and retry.
+                                grpcCapacityRetries.inc()
+                                await sleep(this.capacityRetryMs)
+                                continue
+                            }
+                            stream.inFlight.delete(seq)
+                            // The pipeline's rejection reason is an internal
+                            // diagnostic. It may contain credentials or data and
+                            // must never cross the WorkerIngest RPC boundary.
+                            const publicReason = safeIngestFailureMessage(result.reason)
+                            stream.acks.push(failedAck(seq, publicReason))
+                            grpcSubBatches.inc({ status: 'failed' })
+                            throw new ConnectError(`sub-batch ${seq} rejected: ${publicReason}`, Code.Internal)
+                        } finally {
+                            // Only accepted feeds change the diagnostic, and
+                            // their order follows feed calls, not async results.
+                            this.completeFeedOrderTicket(
+                                orderTicket,
+                                acceptedForOrder
+                                    ? {
+                                          messages: serialized,
+                                          consumerId: `${stream.hello.consumerId}#${stream.hello.streamEpoch}#${subBatch.assignmentEpoch}`,
+                                          replay: subBatch.replay,
+                                      }
+                                    : undefined
                             )
-                            break
                         }
-                        if (result.kind === 'at_capacity') {
-                            // The admission queue mirrors pipeline capacity, so
-                            // this means the two drifted — count it and retry.
-                            grpcCapacityRetries.inc()
-                            await sleep(this.capacityRetryMs)
-                            continue
-                        }
-                        stream.inFlight.delete(seq)
-                        // The pipeline's rejection reason is an internal
-                        // diagnostic. It may contain credentials or data and
-                        // must never cross the WorkerIngest RPC boundary.
-                        const publicReason = safeIngestFailureMessage(result.reason)
-                        stream.acks.push(failedAck(seq, publicReason))
-                        grpcSubBatches.inc({ status: 'failed' })
-                        throw new ConnectError(`sub-batch ${seq} rejected: ${publicReason}`, Code.Internal)
                     }
                 } finally {
                     // An accepted feed hands its slot to the pump, which
@@ -863,6 +887,45 @@ export class WorkerIngestServer {
             const connectError = error instanceof ConnectError ? error : new ConnectError(safeIngestFailureMessage(error), Code.Internal)
             stream.acks.fail(connectError)
             throw connectError
+        }
+    }
+
+    /** Reserve a monitoring position synchronously, before asynchronous driver.feed(). */
+    private reserveFeedOrderTicket(): number | undefined {
+        if (!this.deps.feedOrderSentinel) {
+            return undefined
+        }
+        const ticket = this.nextFeedOrderTicket++
+        this.pendingFeedOrder.set(ticket, { resolved: false })
+        return ticket
+    }
+
+    /** Resolve an attempt, applying only accepted feeds in original call order. */
+    private completeFeedOrderTicket(
+        ticket: number | undefined,
+        accepted?: { messages: SerializedKafkaMessage[]; consumerId: string; replay: boolean }
+    ): void {
+        if (ticket === undefined) {
+            return
+        }
+        const entry = this.pendingFeedOrder.get(ticket)
+        if (!entry) {
+            throw new Error('missing Flind feed-order monitoring ticket')
+        }
+        entry.resolved = true
+        entry.accepted = accepted
+        // A faster later feed can resolve before an earlier one. Hold its
+        // diagnostic until all preceding attempts have resolved or been skipped.
+        while (this.pendingFeedOrder.get(this.nextFeedOrderToCheck)?.resolved) {
+            const next = this.pendingFeedOrder.get(this.nextFeedOrderToCheck)!
+            this.pendingFeedOrder.delete(this.nextFeedOrderToCheck++)
+            if (next.accepted) {
+                this.deps.feedOrderSentinel?.check(
+                    next.accepted.messages,
+                    next.accepted.consumerId,
+                    next.accepted.replay
+                )
+            }
         }
     }
 
