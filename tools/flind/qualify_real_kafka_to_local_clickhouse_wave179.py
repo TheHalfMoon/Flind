@@ -8,6 +8,7 @@ Kafka data and ClickHouse state live only in marked disposable scratch folders.
 from __future__ import annotations
 
 import argparse
+from collections.abc import Callable
 import hashlib
 import json
 import os
@@ -212,7 +213,9 @@ def clickhouse_relay(scratch: Path, records: list[dict], schema: dict[str, str],
 
 
 def qualify(repo: Path, kafka_home: Path, scratch: Path, *,
-            clickhouse: str = "/opt/homebrew/bin/clickhouse") -> dict[str, object]:
+            clickhouse: str = "/opt/homebrew/bin/clickhouse",
+            on_broker_ready: Callable[[str, Path], dict[str, object]] | None = None
+            ) -> dict[str, object]:
     report: dict[str, object] = {
         "phase": "real-local-kafka-to-clickhouse-memory-synthetic-relay",
         "kafka_431_broker_qualified": False,
@@ -292,6 +295,13 @@ def qualify(repo: Path, kafka_home: Path, scratch: Path, *,
         report["local_clickhouse_relay_qualified"] = True
         report["synthetic_kafka_event_count"] = len(records)
         report["kafka_version"] = KAFKA_VERSION
+        # Optional extension may inspect this one owned Kafka instance;
+        # never promote a synthetic callback into product/release status.
+        if on_broker_ready is not None:
+            native = on_broker_ready(bootstrap, private)
+            if not isinstance(native, dict):
+                raise Refusal("invalid_private_kafka_extension_receipt")
+            report["optional_private_kafka_probe"] = native
     except (Refusal, ValueError, OSError, subprocess.TimeoutExpired, json.JSONDecodeError) as exc:
         report["blocker"] = str(exc) if isinstance(exc, Refusal) else type(exc).__name__
     finally:
