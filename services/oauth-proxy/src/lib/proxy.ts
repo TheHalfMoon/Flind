@@ -1,24 +1,29 @@
-import { POSTHOG_EU_BASE_URL, POSTHOG_US_BASE_URL, type Region, baseUrlForRegion } from './constants'
-import type { OAuthRegionalOrigins } from './flind-oauth-admission'
+import { type Region } from './constants'
+import { type OAuthRegionalOrigins, flindOAuthOwnedRegionPair } from './flind-oauth-admission'
 
-/**
- * Proxy a request to a specific region's PostHog server.
- * Rewrites the URL path onto the regional base URL and forwards the request.
- */
-export async function proxyToRegion(request: Request, region: Region, path: string): Promise<Response> {
-    // Compatibility helper for legacy gated token/proxy routes. Do not use
-    // this implicit-origin entry point from first-party Flind JWKS handlers.
-    return proxyToRegionAtOrigins(request, region, path, {
-        us: POSTHOG_US_BASE_URL,
-        eu: POSTHOG_EU_BASE_URL,
+/** Never send credentials to an absent or inherited region, even in direct helper calls. */
+function checkedOrigins(origins: OAuthRegionalOrigins | undefined): OAuthRegionalOrigins | null {
+    return flindOAuthOwnedRegionPair({
+        FLIND_OAUTH_US_ORIGIN: origins?.us,
+        FLIND_OAUTH_EU_ORIGIN: origins?.eu,
+    })
+}
+
+function blockedEgress(): Response {
+    return new Response(JSON.stringify({ error: 'temporarily_unavailable' }), {
+        status: 503,
+        headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' },
     })
 }
 
 export async function proxyToRegionAtOrigins(
     request: Request, region: Region, path: string, ownedOrigins: OAuthRegionalOrigins
 ): Promise<Response> {
-    const baseUrl = ownedOrigins[region]
-    const url = new URL(path, baseUrl)
+    const regions = checkedOrigins(ownedOrigins)
+    if (!regions) {
+        return blockedEgress()
+    }
+    const url = new URL(path, regions[region])
 
     const headers = new Headers(request.headers)
     headers.delete('host')
@@ -43,6 +48,10 @@ export async function proxyPostWithClientId(
     clientSecretRewrite?: { from: string; to: string },
     ownedOrigins?: OAuthRegionalOrigins
 ): Promise<Response> {
+    const regions = checkedOrigins(ownedOrigins)
+    if (!regions) {
+        return blockedEgress()
+    }
     const contentType = request.headers.get('content-type') || ''
     let body: string
 
@@ -74,10 +83,7 @@ export async function proxyPostWithClientId(
         body = params.toString()
     }
 
-    // New first-party callers explicitly pass a validated Flind regional pair.
-    // The old compatibility path remains for token exchange behind the Wave151 gate.
-    const baseUrl = ownedOrigins ? ownedOrigins[region] : baseUrlForRegion(region)
-    const url = new URL(path, baseUrl)
+    const url = new URL(path, regions[region])
 
     const headers = new Headers(request.headers)
     headers.delete('host')
@@ -91,33 +97,22 @@ export async function proxyPostWithClientId(
     })
 }
 
-/**
- * Try a POST request against US first, then EU if US fails.
- * Used for token exchange fallback when region is unknown.
- */
-export async function tryBothRegions(
-    request: Request,
-    path: string
-): Promise<{ response: Response; region: Region | null }> {
-    // Legacy compatibility path; Worker ingress blocks it until token routing
-    // migrates. New Flind handlers MUST use the owned-origins variant below.
-    return tryBothRegionsAtOrigins(request, path, {
-        us: POSTHOG_US_BASE_URL,
-        eu: POSTHOG_EU_BASE_URL,
-    })
-}
-
+/** A POST may use US then EU only after verifying both explicitly owned destinations. */
 /** Proxy a POST to two validated, explicitly supplied Flind regional origins. */
 export async function tryBothRegionsAtOrigins(
     request: Request,
     path: string,
     origins: OAuthRegionalOrigins
 ): Promise<{ response: Response; region: Region | null }> {
+    const checked = checkedOrigins(origins)
+    if (!checked) {
+        return { response: blockedEgress(), region: null }
+    }
     const body = await request.text()
     const headers = new Headers(request.headers)
     headers.delete('host')
 
-    const usUrl = new URL(path, origins.us)
+    const usUrl = new URL(path, checked.us)
     const usResponse = await fetch(usUrl.toString(), {
         method: 'POST',
         headers,
@@ -131,7 +126,7 @@ export async function tryBothRegionsAtOrigins(
 
     const euHeaders = new Headers(request.headers)
     euHeaders.delete('host')
-    const euUrl = new URL(path, origins.eu)
+    const euUrl = new URL(path, checked.eu)
     const euResponse = await fetch(euUrl.toString(), {
         method: 'POST',
         headers: euHeaders,
