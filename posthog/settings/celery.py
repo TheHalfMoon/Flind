@@ -31,9 +31,21 @@ CELERY_IMPORTS: list[str] = [
     "products.aeo.backend.tasks.tasks",
     "products.business_knowledge.backend.tasks.tasks",
 ]
-CELERY_BROKER_URL = REDIS_URL  # celery connects to redis
+def flind_celery_redis_url(redis_url: str) -> str:
+    """Use Kombu's Redis-over-Unix-socket transport for local Flind instances.
+
+    django-redis accepts unix:// paths, but Celery's Kombu transport registry
+    requires redis+socket://. For TCP redis:// or rediss:// keep the URL
+    completely unchanged; only the special Unix form needs translation.
+    """
+    if redis_url.startswith("unix:///"):
+        return "redis+socket://" + redis_url[len("unix://"):]
+    return redis_url
+
+
+CELERY_BROKER_URL = flind_celery_redis_url(REDIS_URL)
 CELERY_BEAT_MAX_LOOP_INTERVAL = 30  # sleep max 30sec before checking for new periodic events
-CELERY_RESULT_BACKEND = REDIS_URL  # stores results for lookup when processing
+CELERY_RESULT_BACKEND = flind_celery_redis_url(REDIS_URL)
 CELERY_IGNORE_RESULT = True  # only applies to delay(), must do @shared_task(ignore_result=True) for apply_async
 CELERY_RESULT_EXPIRES = timedelta(days=4)  # expire tasks after 4 days instead of the default 1
 REDBEAT_LOCK_TIMEOUT = 45  # keep distributed beat lock for 45sec
