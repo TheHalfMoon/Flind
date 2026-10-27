@@ -279,7 +279,7 @@ def private_capture_probe(
             "native_event_not_exact_synthetic_fixture",
             "client_supplied_tenant_identifier", "unbounded_native_properties",
             "bad_native_properties_json", "native_fixture_path_mismatch",
-            "native_properties_not_an_object",
+            "native_properties_not_an_object", "native_node_adapter_not_verified",
             "first_party_event_schema_changed", "native_clickhouse_scratch_conflict",
             "native_clickhouse_execution_blocked", "native_clickhouse_sql_failed",
             "invalid_native_clickhouse_readback",

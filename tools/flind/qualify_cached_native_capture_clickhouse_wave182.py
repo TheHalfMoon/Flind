@@ -6,6 +6,7 @@ this does not run the native ingestion consumer/Node worker or a durable MV.
 """
 from __future__ import annotations
 import argparse
+from collections.abc import Callable
 import json
 import os
 from pathlib import Path
@@ -143,7 +144,9 @@ def store_native_event(repo: Path, scratch: Path, event: dict, ack_uuid: str,
 
 
 def qualify(repo: Path, kafka_home: Path, scratch: Path,
-            clickhouse: Path = SUPPORTED_CH_BINARY) -> dict[str, object]:
+            clickhouse: Path = SUPPORTED_CH_BINARY,
+            on_validated_native_event: Callable[[dict, str], dict[str, object]] | None = None
+            ) -> dict[str, object]:
     receipt: dict[str, object] = {
         "phase": "cached-rust-capture-http-kafka-native-uuid-to-supported-clickhouse-memory",
         "native_capture_http_kafka_clickhouse_uuid_pass": False,
@@ -164,14 +167,26 @@ def qualify(repo: Path, kafka_home: Path, scratch: Path,
             raise NativeRelayRejected("clickhouse_outside_first_party_supported_range")
         if not checked_capture():
             raise NativeRelayRejected("unverified_cached_rust_capture_binary")
+        # An optional first-party Node adapter can inspect the exact Kafka
+        # fixture *before* the ClickHouse bridge, without changing the default.
+        def validate_and_store(event: dict, uid: str) -> dict[str, object]:
+            adapter = None
+            if on_validated_native_event is not None:
+                adapter = on_validated_native_event(event, uid)
+                if (type(adapter) is not dict
+                        or adapter.get("actual_typescript_deserializer_uuid_verified") is not True):
+                    raise NativeRelayRejected("native_node_adapter_not_verified")
+            stored = store_native_event(repo, scratch, event, uid, clickhouse)
+            if adapter is not None:
+                stored["optional_node_adapter"] = adapter
+            return stored
+
         # Reuse one isolated broker. Wave179's synthetic fixture and the Rust
         # generated UUID are deliberately verified separately.
         result = isolated_kafka(
             repo, kafka_home, scratch, clickhouse=str(clickhouse),
             on_broker_ready=lambda bootstrap, owned: private_capture_probe(
-                bootstrap, owned, on_native_event=lambda event, uuid: store_native_event(
-                    repo, scratch, event, uuid, clickhouse,
-                ),
+                bootstrap, owned, on_native_event=validate_and_store,
             ),
         )
         native = result.get("optional_private_kafka_probe") or {}
@@ -192,6 +207,11 @@ def qualify(repo: Path, kafka_home: Path, scratch: Path,
             receipt["owned_redis7_stopped"],
         ))
         receipt["native_event_inserted_rows"] = downstream.get("native_event_inserted_rows", 0)
+        receipt["actual_typescript_deserializer_uuid_verified"] = (
+            (downstream.get("optional_node_adapter") or {}).get(
+                "actual_typescript_deserializer_uuid_verified"
+            ) is True
+        )
         if native.get("synthetic_callback_refusal_code"):
             receipt["synthetic_callback_refusal_code"] = native["synthetic_callback_refusal_code"]
         if not receipt["native_capture_http_kafka_clickhouse_uuid_pass"]:
