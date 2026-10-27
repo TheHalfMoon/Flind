@@ -11,6 +11,7 @@ const ISSUED_AT = Math.floor(Date.now() / 1000)
 const EXPIRES_AT = ISSUED_AT + 3600
 
 const REGIONAL_CLIENT_ID = 'us_regional_client_id'
+const ownedFlindRegions = { FLIND_OAUTH_US_ORIGIN: 'https://us.flind.example', FLIND_OAUTH_EU_ORIGIN: 'https://eu.flind.example' }
 
 interface RegionalKey {
     privateKey: CryptoKey
@@ -30,7 +31,7 @@ async function createProxyKeyPem(): Promise<string> {
 async function signRegionalIdToken(
     key: RegionalKey,
     claims: Record<string, unknown> = {},
-    issuer = 'https://us.posthog.com'
+    issuer = 'https://us.flind.example'
 ): Promise<string> {
     return new SignJWT({
         email: 'someone@example.com',
@@ -82,19 +83,55 @@ describe('ID token re-issuance', () => {
         vi.restoreAllMocks()
     })
 
+    it('denies missing owned issuer configuration before JWKS network access', async () => {
+        const idToken = await signRegionalIdToken(regionalKey)
+        const fetchMock = vi.fn()
+        vi.stubGlobal('fetch', fetchMock)
+        await expect(reissueIdToken(idToken, {
+            region: 'us', issuer: 'https://oauth.flind.example',
+            audience: 'proxy_client_id', permittedUpstreamAudiences: [REGIONAL_CLIENT_ID],
+            env: { OIDC_SIGNING_KEY: signingKey },
+        })).rejects.toThrow('regional issuer trust is not configured')
+        expect(fetchMock).not.toHaveBeenCalled()
+    })
+
+    it('rejects a legitimately signed upstream JWT bearing the wrong issuer', async () => {
+        const idToken = await signRegionalIdToken(regionalKey, {}, 'https://unowned.example')
+        await expect(reissueIdToken(idToken, {
+            region: 'us', issuer: 'https://oauth.flind.example',
+            audience: 'proxy_client_id', permittedUpstreamAudiences: [REGIONAL_CLIENT_ID],
+            env: { ...ownedFlindRegions, OIDC_SIGNING_KEY: signingKey },
+        })).rejects.toBeInstanceOf(IdTokenReissueError)
+    })
+
+    it('does not reuse a regional JWKS cache after its Flind origin changes', async () => {
+        const alternateKey = await createRegionalKey()
+        const alternateOrigin = 'https://us.new-owner.flind.example'
+        stubRegionalJwks(alternateKey)
+        const fetchMock = vi.mocked(fetch)
+        const idToken = await signRegionalIdToken(alternateKey, {}, alternateOrigin)
+        const reissued = await reissueIdToken(idToken, {
+            region: 'us', issuer: 'https://oauth.flind.example',
+            audience: 'proxy_client_id', permittedUpstreamAudiences: [REGIONAL_CLIENT_ID],
+            env: { ...ownedFlindRegions, FLIND_OAUTH_US_ORIGIN: alternateOrigin, OIDC_SIGNING_KEY: signingKey },
+        })
+        expect(decodeJwt(reissued).aud).toBe('proxy_client_id')
+        expect(fetchMock.mock.calls.some((call) => String(call[0]).startsWith(alternateOrigin))).toBe(true)
+    })
+
     it('replaces the regional issuer and audience while preserving the identity claims', async () => {
         const idToken = await signRegionalIdToken(regionalKey)
 
         const reissued = await reissueIdToken(idToken, {
             region: 'us',
-            issuer: 'https://oauth.posthog.com',
+            issuer: 'https://oauth.flind.example',
             audience: 'proxy_client_id',
             permittedUpstreamAudiences: [REGIONAL_CLIENT_ID],
-            env: { OIDC_SIGNING_KEY: signingKey },
+            env: { ...ownedFlindRegions, OIDC_SIGNING_KEY: signingKey },
         })
 
         const claims = decodeJwt(reissued)
-        expect(claims.iss).toBe('https://oauth.posthog.com')
+        expect(claims.iss).toBe('https://oauth.flind.example')
         expect(claims.aud).toBe('proxy_client_id')
         expect(claims.sub).toBe('018f0000-0000-7000-8000-000000000000')
         expect(claims.email).toBe('someone@example.com')
@@ -108,10 +145,10 @@ describe('ID token re-issuance', () => {
 
         const reissued = await reissueIdToken(idToken, {
             region: 'us',
-            issuer: 'https://oauth.posthog.com',
+            issuer: 'https://oauth.flind.example',
             audience: 'proxy_client_id',
             permittedUpstreamAudiences: [REGIONAL_CLIENT_ID],
-            env: { OIDC_SIGNING_KEY: signingKey },
+            env: { ...ownedFlindRegions, OIDC_SIGNING_KEY: signingKey },
         })
 
         const claims = decodeJwt(reissued)
@@ -123,14 +160,14 @@ describe('ID token re-issuance', () => {
         const idToken = await signRegionalIdToken(regionalKey)
         const reissued = await reissueIdToken(idToken, {
             region: 'us',
-            issuer: 'https://oauth.posthog.com',
+            issuer: 'https://oauth.flind.example',
             audience: 'proxy_client_id',
             permittedUpstreamAudiences: [REGIONAL_CLIENT_ID],
-            env: { OIDC_SIGNING_KEY: signingKey },
+            env: { ...ownedFlindRegions, OIDC_SIGNING_KEY: signingKey },
         })
 
         const response = await handleJwks(
-            new Request('https://oauth.posthog.com/.well-known/jwks.json'),
+            new Request('https://oauth.flind.example/.well-known/jwks.json'),
             createMockKV(),
             {
                 OIDC_SIGNING_KEY: signingKey,
@@ -148,7 +185,7 @@ describe('ID token re-issuance', () => {
 
     it('keeps publishing the regional keys, which sign ID-JAG access tokens', async () => {
         const response = await handleJwks(
-            new Request('https://oauth.posthog.com/.well-known/jwks.json'),
+            new Request('https://oauth.flind.example/.well-known/jwks.json'),
             createMockKV(),
             {
                 OIDC_SIGNING_KEY: signingKey,
@@ -167,7 +204,7 @@ describe('ID token re-issuance', () => {
         await expect(
             reissueIdToken(idToken, {
                 region: 'us',
-                issuer: 'https://oauth.posthog.com',
+                issuer: 'https://oauth.flind.example',
                 audience: 'proxy_client_id',
                 permittedUpstreamAudiences: [REGIONAL_CLIENT_ID],
                 env: {},
@@ -182,10 +219,10 @@ describe('ID token re-issuance', () => {
         await expect(
             reissueIdToken(idToken, {
                 region: 'us',
-                issuer: 'https://oauth.posthog.com',
+                issuer: 'https://oauth.flind.example',
                 audience: 'proxy_client_id',
                 permittedUpstreamAudiences: [REGIONAL_CLIENT_ID],
-                env: { OIDC_SIGNING_KEY: signingKey },
+                env: { ...ownedFlindRegions, OIDC_SIGNING_KEY: signingKey },
             })
         ).rejects.toBeInstanceOf(IdTokenReissueError)
     })
@@ -197,10 +234,10 @@ describe('ID token re-issuance', () => {
         await expect(
             reissueIdToken(idToken, {
                 region: 'us',
-                issuer: 'https://oauth.posthog.com',
+                issuer: 'https://oauth.flind.example',
                 audience: 'victim_client_id',
                 permittedUpstreamAudiences: ['victim_client_id'],
-                env: { OIDC_SIGNING_KEY: signingKey },
+                env: { ...ownedFlindRegions, OIDC_SIGNING_KEY: signingKey },
             })
         ).rejects.toBeInstanceOf(IdTokenReissueError)
     })
@@ -212,10 +249,10 @@ describe('ID token re-issuance', () => {
 
         const reissued = await reissueIdToken(idToken, {
             region: 'us',
-            issuer: 'https://oauth.posthog.com',
+            issuer: 'https://oauth.flind.example',
             audience: null,
             permittedUpstreamAudiences: [],
-            env: { OIDC_SIGNING_KEY: signingKey },
+            env: { ...ownedFlindRegions, OIDC_SIGNING_KEY: signingKey },
         })
 
         expect(decodeJwt(reissued).aud).toBe(REGIONAL_CLIENT_ID)
@@ -233,7 +270,7 @@ describe('ID token re-issuance', () => {
         const { handleJwks: freshHandleJwks } = await import('@/handlers/passthrough')
 
         const response = await freshHandleJwks(
-            new Request('https://oauth.posthog.com/.well-known/jwks.json'),
+            new Request('https://oauth.flind.example/.well-known/jwks.json'),
             createMockKV(),
             {
                 OIDC_SIGNING_KEY: signingKey,
@@ -267,7 +304,7 @@ describe('ID token re-issuance', () => {
         const { handleJwks: freshHandleJwks } = await import('@/handlers/passthrough')
 
         const response = await freshHandleJwks(
-            new Request('https://oauth.posthog.com/.well-known/jwks.json'),
+            new Request('https://oauth.flind.example/.well-known/jwks.json'),
             createMockKV(),
             {
                 OIDC_SIGNING_KEY: signingKey,

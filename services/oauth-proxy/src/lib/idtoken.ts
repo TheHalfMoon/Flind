@@ -1,6 +1,7 @@
 import { type JWK, SignJWT, calculateJwkThumbprint, createRemoteJWKSet, exportJWK, importPKCS8, jwtVerify } from 'jose'
 
-import { type Region, baseUrlForRegion } from './constants'
+import { type Region } from './constants'
+import { type FlindOAuthRegionEnv, flindOAuthOwnedRegionPair } from './flind-oauth-admission'
 
 /**
  * ID token re-issuance.
@@ -35,7 +36,8 @@ type KeySlot = 'active' | 'inactive_1' | 'inactive_2'
 // long-lived worker isolate never reuses the previous private signing key.
 const keyCache = new Map<KeySlot, { normalizedPem: string; pending: Promise<ProxyKey> }>()
 
-const regionalJwks = new Map<Region, ReturnType<typeof createRemoteJWKSet>>()
+// Never reuse a remote key set after an operator rotates the owner-controlled origin.
+const regionalJwks = new Map<string, ReturnType<typeof createRemoteJWKSet>>()
 
 /** Cloudflare's secret editor stores a PEM as a single line, so accept the escaped form too. */
 function normalizePem(raw: string): string {
@@ -81,14 +83,15 @@ export async function proxyJwks(env: SigningKeyEnv): Promise<JWK[]> {
     return keys.map((key) => ({ ...key.publicJwk, alg: SIGNING_ALGORITHM, use: 'sig', kid: key.kid }))
 }
 
-function jwksForRegion(region: Region): ReturnType<typeof createRemoteJWKSet> {
-    const cached = regionalJwks.get(region)
+function jwksForRegion(region: Region, ownedOrigin: string): ReturnType<typeof createRemoteJWKSet> {
+    const cacheKey = `${region}:${ownedOrigin}`
+    const cached = regionalJwks.get(cacheKey)
     if (cached) {
         return cached
     }
 
-    const jwks = createRemoteJWKSet(new URL('/.well-known/jwks.json', baseUrlForRegion(region)))
-    regionalJwks.set(region, jwks)
+    const jwks = createRemoteJWKSet(new URL('/.well-known/jwks.json', ownedOrigin))
+    regionalJwks.set(cacheKey, jwks)
     return jwks
 }
 
@@ -121,14 +124,22 @@ export async function reissueIdToken(
         issuer: string
         audience: string | null
         permittedUpstreamAudiences: string[]
-        env: SigningKeyEnv
+        env: SigningKeyEnv & FlindOAuthRegionEnv
     }
 ): Promise<string> {
+    const regions = flindOAuthOwnedRegionPair(options.env)
+    if (!regions) {
+        throw new IdTokenReissueError('Flind regional issuer trust is not configured')
+    }
+    const trustedIssuer = regions[options.region]
     const active = await activeSigningKey(options.env)
 
     let payload: Record<string, unknown>
     try {
-        const verified = await jwtVerify(idToken, jwksForRegion(options.region))
+        const verified = await jwtVerify(idToken, jwksForRegion(options.region, trustedIssuer), {
+            issuer: trustedIssuer,
+            algorithms: [SIGNING_ALGORITHM],
+        })
         payload = verified.payload as Record<string, unknown>
     } catch (error) {
         throw new IdTokenReissueError(

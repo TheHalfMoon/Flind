@@ -735,8 +735,8 @@ describe('handleToken', () => {
         }
     })
 
-    it('serves the upstream id_token unchanged when no signing key is configured', async () => {
-        // The worker can be deployed before the secret exists.
+    it('rejects an unverified upstream id_token when no signing key is configured', async () => {
+        // A missing signing key must never cause upstream identity assertions to pass through.
         const clientHash = await hashKey('proxy_client_oidc')
         mockKVGet(mockKV, (key: string) => {
             if (key === `region:${clientHash}`) {
@@ -764,8 +764,10 @@ describe('handleToken', () => {
         const response = await handleToken(request, mockKV, ownedFlindRegions)
         const data = (await response.json()) as Record<string, unknown>
 
-        expect(response.status).toBe(200)
-        expect(data.id_token).toBe('regional.id.token')
+        expect(response.status).toBe(500)
+        expect(response.headers.get('cache-control')).toBe('no-store')
+        expect(data.error).toBe('server_error')
+        expect(data.id_token).toBeUndefined()
     })
 
     it('addresses the re-issued id_token to the proxy client_id the region knows regionally', async () => {
@@ -791,7 +793,7 @@ describe('handleToken', () => {
         const issuedAt = Math.floor(Date.now() / 1000)
         const regionalIdToken = await new SignJWT({ email: 'someone@example.com' })
             .setProtectedHeader({ alg: 'RS256' })
-            .setIssuer('https://eu.posthog.com')
+            .setIssuer('https://eu.flind.example')
             .setSubject('018f0000-0000-7000-8000-000000000000')
             .setAudience('eu_real_id')
             .setIssuedAt(issuedAt)

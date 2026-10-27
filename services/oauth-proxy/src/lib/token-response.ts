@@ -1,20 +1,15 @@
 import { decodeJwt } from 'jose'
 
-import { type Region, regionForBaseUrl } from './constants'
+import { type Region } from './constants'
+import { type FlindOAuthRegionEnv, type OAuthRegionalOrigins, flindOAuthOwnedRegionPair } from './flind-oauth-admission'
 import { IdTokenReissueError, type SigningKeyEnv, reissueIdToken } from './idtoken'
 
 /** Replace the regional ID token in a token response with one this proxy issued. */
 export async function reissueIdTokenInResponse(
     response: Response,
-    options: { issuer: string; audience: string | null; permittedUpstreamAudiences: string[]; env: SigningKeyEnv }
+    options: { issuer: string; audience: string | null; permittedUpstreamAudiences: string[]; env: SigningKeyEnv & FlindOAuthRegionEnv }
 ): Promise<Response> {
     if (!response.ok) {
-        return response
-    }
-
-    if (!options.env.OIDC_SIGNING_KEY) {
-        // Deploying this worker before the signing key exists must not break token exchanges.
-        console.error(JSON.stringify({ handler: 'token', id_token: 'passthrough_no_signing_key' }))
         return response
     }
 
@@ -31,7 +26,15 @@ export async function reissueIdTokenInResponse(
         return rebuildResponse(response, raw)
     }
 
-    const region = regionOfIssuer(idToken)
+    // Never leak an unverified regional identity assertion when signing is unavailable.
+    if (!options.env.OIDC_SIGNING_KEY) {
+        return serverError('OIDC signing key is not configured')
+    }
+    const regions = flindOAuthOwnedRegionPair(options.env)
+    if (!regions) {
+        return serverError('Flind regional issuer trust is not configured')
+    }
+    const region = regionOfIssuer(idToken, regions)
     if (!region) {
         return serverError('Could not determine which region issued the ID token')
     }
@@ -60,9 +63,12 @@ export async function reissueIdTokenInResponse(
 }
 
 /** The unverified claim only selects a key set; the signature is still verified against it. */
-function regionOfIssuer(idToken: string): Region | null {
+function regionOfIssuer(idToken: string, regions: OAuthRegionalOrigins): Region | null {
     try {
-        return regionForBaseUrl(decodeJwt(idToken).iss ?? '')
+        // This unverified value only selects the allowlisted key authority;
+        // reissueIdToken validates both the signature and exact issuer.
+        const issuer = decodeJwt(idToken).iss
+        return issuer === regions.us ? 'us' : issuer === regions.eu ? 'eu' : null
     } catch {
         return null
     }
