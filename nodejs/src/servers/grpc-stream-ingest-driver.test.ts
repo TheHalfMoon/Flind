@@ -5,7 +5,10 @@ import { PipelineResult, drop, ok, timeout } from '~/ingestion/framework/results
 
 import { GrpcIngestPipeline, GrpcStreamIngestDriver } from './grpc-stream-ingest-driver'
 
-function completedBatch(results: PipelineResult<unknown>[]): GrpcIngestPipeline {
+function completedBatch(
+    results: PipelineResult<unknown>[],
+    sideEffects: Promise<unknown>[] = []
+): GrpcIngestPipeline {
     return {
         next: () =>
             Promise.resolve({
@@ -14,7 +17,7 @@ function completedBatch(results: PipelineResult<unknown>[]): GrpcIngestPipeline 
                     context: { message: { partition: 3, offset: 100 + index } },
                 })),
                 batchContext: { grpcStreamId: 7, grpcSeq: 3 },
-                sideEffects: [],
+                sideEffects,
             }),
     } as unknown as GrpcIngestPipeline
 }
@@ -52,6 +55,47 @@ describe('GrpcStreamIngestDriver', () => {
 
             expect(completed.accepted).toBe(2)
             expect(completed.unfinished).toEqual([])
+        })
+    })
+
+    describe('durable acknowledgement barrier', () => {
+        it('waits for pipeline side effects AND scheduled work before settlement', async () => {
+            let finishSideEffect!: () => void
+            let finishScheduled!: () => void
+            const sideEffect = new Promise<void>((resolve) => {
+                finishSideEffect = resolve
+            })
+            const scheduled = new Promise<void>((resolve) => {
+                finishScheduled = resolve
+            })
+            const promiseScheduler = new PromiseScheduler()
+            void promiseScheduler.schedule(scheduled)
+            const driver = new GrpcStreamIngestDriver(completedBatch([ok({})], [sideEffect]), promiseScheduler)
+            const completed = (await driver.next())!
+
+            let ackSafe = false
+            void completed.settled.then(() => {
+                ackSafe = true
+            })
+            await Promise.resolve()
+            expect(ackSafe).toBe(false)
+            finishSideEffect()
+            await Promise.resolve()
+            await Promise.resolve()
+            expect(ackSafe).toBe(false)
+            finishScheduled()
+            await completed.settled
+            expect(ackSafe).toBe(true)
+        })
+
+        it('rejects the settlement barrier when a durable side effect fails', async () => {
+            const failure = new Error('clickhouse write failed')
+            const driver = new GrpcStreamIngestDriver(
+                completedBatch([ok({})], [Promise.reject(failure)]),
+                new PromiseScheduler()
+            )
+            const completed = (await driver.next())!
+            await expect(completed.settled).rejects.toThrow('clickhouse write failed')
         })
     })
 
