@@ -10,9 +10,13 @@ const CACHE_TTL_MS = 600 * 1000
 
 const MANIFEST_PATH = '/auth.md'
 
-// `posthog_base_url` names the region a token came from rather than an endpoint to call, so it
-// keeps its regional value while every other regional URL is rewritten.
-const REGIONAL_VALUE_FIELDS = ['posthog_base_url']
+// The Flind regional server URL is identity metadata, not a proxy endpoint.
+// Preserve it when translating upstream extensions into Flind-owned names.
+const REGION_VALUE_FIELD = 'flind_base_url'
+const REGIONAL_METADATA_ALIASES: Readonly<Record<string, string>> = {
+    posthog_region: 'flind_region',
+    posthog_base_url: REGION_VALUE_FIELD,
+}
 
 type Metadata = Record<string, unknown>
 
@@ -37,7 +41,7 @@ async function fetchAuthoritativeMetadata(path: string, regionalOrigin: string):
  * nested endpoint fields such as `agent_auth.skill`.
  *
  * Matching on the URL rather than on a list of field names means an endpoint added to
- * posthog/api/oauth/metadata.py is rewritten here without a matching change.
+ * the regional OAuth backend is rewritten here without a matching change.
  */
 function rewriteEndpoints(value: unknown, origin: string, regionalOrigin: string): unknown {
     if (typeof value === 'string') {
@@ -52,11 +56,22 @@ function rewriteEndpoints(value: unknown, origin: string, regionalOrigin: string
     }
 
     if (value && typeof value === 'object') {
+        const data = value as Metadata
+        // Backend compatibility is input-only: discovery clients see Flind
+        // extension names. Native Flind fields take precedence over aliases.
         return Object.fromEntries(
-            Object.entries(value as Metadata).map(([field, nested]) => [
-                field,
-                REGIONAL_VALUE_FIELDS.includes(field) ? nested : rewriteEndpoints(nested, origin, regionalOrigin),
-            ])
+            Object.entries(data).flatMap(([field, nested]) => {
+                const publicField = REGIONAL_METADATA_ALIASES[field] ?? field
+                if (publicField !== field && Object.prototype.hasOwnProperty.call(data, publicField)) {
+                    return []
+                }
+                return [[
+                    publicField,
+                    publicField === REGION_VALUE_FIELD
+                        ? nested
+                        : rewriteEndpoints(nested, origin, regionalOrigin),
+                ]]
+            })
         )
     }
 

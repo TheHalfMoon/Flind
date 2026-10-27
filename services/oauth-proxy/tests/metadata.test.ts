@@ -105,14 +105,70 @@ describe('handleMetadata', () => {
         expect(data.agent_auth.identity_endpoint).toBe('https://oauth.flind.example/oauth/token/')
     })
 
-    it('keeps posthog_base_url pointing at the region that issues the tokens', async () => {
+    it('publishes only Flind-owned region extension keys and preserves the real regional URL', async () => {
         const { handleMetadata } = await import('@/handlers/metadata')
         const request = new Request('https://oauth.flind.example/.well-known/oauth-authorization-server')
 
         const response = await handleMetadata(request, emptyKv, ownedEnv)
         const data = (await response.json()) as Record<string, unknown>
 
-        expect(data.posthog_base_url).toBe('https://us.flind.example')
+        expect(data.flind_base_url).toBe('https://us.flind.example')
+        expect(data.flind_region).toBe('us')
+        expect(data).not.toHaveProperty('posthog_base_url')
+        expect(data).not.toHaveProperty('posthog_region')
+    })
+
+    it('renames inherited extension keys recursively without altering standard OAuth fields', async () => {
+        vi.stubGlobal('fetch', vi.fn().mockResolvedValue({
+            ok: true,
+            json: () => Promise.resolve({
+                issuer: 'https://us.flind.example',
+                agent_auth: {
+                    posthog_region: 'eu',
+                    posthog_base_url: 'https://eu.flind.example',
+                    token_endpoint: 'https://us.flind.example/oauth/token/',
+                },
+                nesting: [{ posthog_region: 'us', posthog_base_url: 'https://us.flind.example' }],
+            }),
+        }))
+        const { handleMetadata } = await import('@/handlers/metadata')
+        const response = await handleMetadata(
+            new Request('https://oauth.flind.example/.well-known/oauth-authorization-server'),
+            emptyKv, ownedEnv
+        )
+        const body = (await response.json()) as Record<string, unknown>
+        expect(body.issuer).toBe('https://oauth.flind.example')
+        const nested = body.agent_auth as Record<string, unknown>
+        expect(nested).toEqual({
+            flind_region: 'eu',
+            flind_base_url: 'https://eu.flind.example',
+            token_endpoint: 'https://oauth.flind.example/oauth/token/',
+        })
+        expect(body.nesting).toEqual([{ flind_region: 'us', flind_base_url: 'https://us.flind.example' }])
+        expect(JSON.stringify(body)).not.toContain('posthog_')
+    })
+
+    it('prefers owner-issued Flind region keys when the backend also supplies aliases', async () => {
+        vi.stubGlobal('fetch', vi.fn().mockResolvedValue({
+            ok: true,
+            json: () => Promise.resolve({
+                issuer: 'https://us.flind.example',
+                posthog_region: 'eu',
+                flind_region: 'us',
+                posthog_base_url: 'https://eu.flind.example',
+                flind_base_url: 'https://us.flind.example',
+            }),
+        }))
+        const { handleMetadata } = await import('@/handlers/metadata')
+        const response = await handleMetadata(
+            new Request('https://oauth.flind.example/.well-known/oauth-authorization-server'),
+            emptyKv, ownedEnv
+        )
+        const data = (await response.json()) as Record<string, unknown>
+        expect(data.flind_region).toBe('us')
+        expect(data.flind_base_url).toBe('https://us.flind.example')
+        expect(data).not.toHaveProperty('posthog_region')
+        expect(data).not.toHaveProperty('posthog_base_url')
     })
 
     it('fails closed when no owned Flind origin is configured', async () => {
