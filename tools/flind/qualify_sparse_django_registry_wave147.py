@@ -229,7 +229,25 @@ def local_missing_resource(root: Path, error: FileNotFoundError) -> str | None:
     return name
 
 
-def registry_child(root: Path, ref: str, limit: int, deadline: int) -> int:
+def graph_source_ready(root: Path, tracked: set[str]) -> tuple[bool, int]:
+    """No graph claims unless canonical Git migrations are physically staged."""
+    marker = root / ".flind-migration-scratch-v1"
+    try:
+        if marker.is_symlink() or marker.read_text(encoding="utf-8") != "FLIND_MIGRATION_SCRATCH_V1\n":
+            return False, 0
+    except OSError:
+        return False, 0
+    names = [
+        name for name in tracked
+        if re.fullmatch(
+            r"(?:posthog|products|ee|common|flind)/(?:.+/)?migrations/[A-Za-z0-9_]+\.py",
+            name,
+        )
+    ]
+    return bool(names) and all((root / name).is_file() for name in names), len(names)
+
+
+def registry_child(root: Path, ref: str, limit: int, deadline: int, graph: bool = False) -> int:
     import socket
 
     def refuse_socket(*args, **kwargs):
@@ -241,6 +259,7 @@ def registry_child(root: Path, ref: str, limit: int, deadline: int) -> int:
 
     receipt = {
         "django_registry_qualified": False,
+        "migration_graph_qualified": False,
         "traced_source_modules": 0,
         "release_qualified": False,
         "migrations_qualified": False,
@@ -262,6 +281,25 @@ def registry_child(root: Path, ref: str, limit: int, deadline: int) -> int:
         receipt["django_registry_qualified"] = True
         receipt["app_count"] = len(apps.get_app_configs())
         receipt.pop("blocker")
+        if graph:
+            prepared, count = graph_source_ready(root, tracked)
+            receipt["migration_files_staged"] = count if prepared else 0
+            if not prepared:
+                receipt["migration_graph_blocker"] = "verified_migration_source_checkout_missing"
+            else:
+                try:
+                    from django.db.migrations.loader import MigrationLoader
+                    loader = MigrationLoader(None)
+                    receipt["migration_graph_nodes"] = len(loader.graph.nodes)
+                    receipt["migration_graph_disk_items"] = len(loader.disk_migrations)
+                    receipt["migration_graph_qualified"] = (
+                        receipt["migration_graph_nodes"] > 0
+                        and receipt["migration_graph_disk_items"] > 0
+                    )
+                    if not receipt["migration_graph_qualified"]:
+                        receipt["migration_graph_blocker"] = "empty_migration_graph"
+                except Exception as error:
+                    receipt["migration_graph_blocker"] = type(error).__name__
     except ModuleNotFoundError as e:
         receipt["blocker"] = "Missing tracked or third-party module"
         if isinstance(e.name, str) and _SAFE_NAME.fullmatch(e.name):
@@ -296,13 +334,15 @@ def registry_child(root: Path, ref: str, limit: int, deadline: int) -> int:
     return 0 if receipt["django_registry_qualified"] else 2
 
 
-def probe(root: Path, ref: str, *, deadline: int = 150, limit: int = 2200) -> dict:
+def probe(root: Path, ref: str, *, deadline: int = 150, limit: int = 2200,
+          graph: bool = False) -> dict:
     """Run Django in a separate bounded process with only synthetic credentials."""
     root = root.resolve()
     result = {
         "phase": "sparse-git-django-app-registry",
         "source_ref": ref,
         "django_registry_qualified": False,
+        "migration_graph_qualified": False,
         "migrations_qualified": False,
         "app_http_qualified": False,
         "real_ingest_qualified": False,
@@ -344,6 +384,8 @@ def probe(root: Path, ref: str, *, deadline: int = 150, limit: int = 2200) -> di
     argv = [sys.executable, str(Path(__file__).resolve()), "--child",
             "--root", str(root), "--ref", ref,
             "--max-imports", str(limit), "--timeout", str(deadline)]
+    if graph:
+        argv.append("--migration-graph")
     with tempfile.TemporaryFile(mode="w+t") as output:
         process = subprocess.Popen(
             argv, cwd=root, env=env, stdin=subprocess.DEVNULL,
@@ -379,7 +421,9 @@ def probe(root: Path, ref: str, *, deadline: int = 150, limit: int = 2200) -> di
                     "app_count", "blocker", "missing_module",
                     "blocked_tracked_source", "source_failure_kind",
                     "last_traced_source", "import_error_name",
-                    "missing_local_resource"):
+                    "missing_local_resource", "migration_graph_qualified",
+                    "migration_graph_nodes", "migration_graph_disk_items",
+                    "migration_graph_blocker", "migration_files_staged"):
             if key in data:
                 result[key] = data[key]
         if process.returncode != 0:
@@ -395,10 +439,13 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--max-imports", type=int, default=2200)
     p.add_argument("--child", action="store_true")
     p.add_argument("--json", action="store_true")
+    p.add_argument("--migration-graph", action="store_true")
     args = p.parse_args(argv)
     if args.child:
-        return registry_child(Path(args.root), args.ref, args.max_imports, args.timeout)
-    report = probe(Path(args.root), args.ref, deadline=args.timeout, limit=args.max_imports)
+        return registry_child(Path(args.root), args.ref, args.max_imports, args.timeout,
+                              graph=args.migration_graph)
+    report = probe(Path(args.root), args.ref, deadline=args.timeout,
+                   limit=args.max_imports, graph=args.migration_graph)
     if args.json:
         print(json.dumps(report, indent=2, sort_keys=True))
     else:

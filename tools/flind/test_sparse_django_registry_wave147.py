@@ -13,6 +13,7 @@ from tools.flind.qualify_sparse_django_registry_wave147 import (
     GitBlobBatchReader,
     git_offline_env,
     local_missing_resource,
+    graph_source_ready,
     index_tracked_python,
     probe,
 )
@@ -240,6 +241,26 @@ class Wave147(unittest.TestCase):
         outside = FileNotFoundError(2, "No such file", "/tmp/other-project/secret.txt")
         self.assertIsNone(local_missing_resource(self.root, outside))
         self.assertIsNone(local_missing_resource(self.root, FileNotFoundError("no file")))
+
+    def test_migration_graph_gate_requires_marker_and_physical_git_sources(self):
+        migrations = self.root / "products" / "mini" / "migrations"
+        migrations.mkdir()
+        module = migrations / "0001_initial.py"
+        module.write_text("# synthetic migration\n")
+        source = {"products/mini/migrations/0001_initial.py"}
+        ready, count = graph_source_ready(self.root, source)
+        self.assertFalse(ready)
+        self.assertEqual(count, 0)
+        (self.root / ".flind-migration-scratch-v1").write_text(
+            "FLIND_MIGRATION_SCRATCH_V1\n"
+        )
+        ready, count = graph_source_ready(self.root, source)
+        self.assertTrue(ready)
+        self.assertEqual(count, 1)
+        module.unlink()
+        ready, count = graph_source_ready(self.root, source)
+        self.assertFalse(ready)
+        self.assertEqual(count, 1)
 
     def test_no_app_or_release_without_flind_repo(self):
         result = probe(self.root, "HEAD", deadline=3, limit=3)
