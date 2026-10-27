@@ -40,6 +40,14 @@ class OfflineScratchStagingTests(unittest.TestCase):
     def test_dry_run_verifies_and_does_not_write(self):
         result = stage(self.repo, self.scratch, list(DEFAULT_ASSETS))
         self.assertEqual(result["files_verified"], 2)
+        commit = subprocess.check_output(
+            ["git", "-C", str(self.repo), "rev-parse", "HEAD"], text=True,
+        ).strip()
+        self.assertEqual(result["source_commit"], commit)
+        receipts = result["file_receipts"]
+        self.assertEqual(len(receipts), 2)
+        self.assertEqual({r["verified_from"] for r in receipts}, {"local_git"})
+        self.assertEqual(sum(r["size_bytes"] for r in receipts), result["total_verified_bytes"])
         self.assertEqual(result["files_written"], 0)
         self.assertFalse(result["resource_staging_qualified"])
         self.assertFalse(result["release_qualified"])
@@ -49,6 +57,11 @@ class OfflineScratchStagingTests(unittest.TestCase):
         result = stage(self.repo, self.scratch, list(DEFAULT_ASSETS), materialize=True)
         self.assertTrue(result["resource_staging_qualified"])
         self.assertEqual(result["files_written"], 2)
+        self.assertEqual(len(result["file_receipts"]), 2)
+        for receipt in result["file_receipts"]:
+            raw = (self.repo / receipt["path"]).read_bytes()
+            self.assertEqual(receipt["sha256"], __import__("hashlib").sha256(raw).hexdigest())
+            self.assertEqual(receipt["size_bytes"], len(raw))
         for name in DEFAULT_ASSETS:
             self.assertEqual((self.scratch / name).read_bytes(), (self.repo / name).read_bytes())
         repeat = stage(self.repo, self.scratch, list(DEFAULT_ASSETS), materialize=True)
@@ -104,6 +117,7 @@ class OfflineScratchStagingTests(unittest.TestCase):
                            seed=self.seed, materialize=True)
         self.assertTrue(result["resource_staging_qualified"])
         self.assertEqual(result["files_written"], 2)
+        self.assertEqual({v["verified_from"] for v in result["file_receipts"]}, {"verified_seed"})
 
     def test_untrusted_seed_hash_mismatch_rejected(self):
         for name in DEFAULT_ASSETS:

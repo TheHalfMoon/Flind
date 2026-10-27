@@ -91,8 +91,9 @@ def hash_blob(data: bytes, oid: str) -> str:
     return algorithm(header + data).hexdigest()
 
 
-def read_verified(repo: Path, oid: str, name: str, seed: Path | None) -> bytes:
+def read_verified(repo: Path, oid: str, name: str, seed: Path | None) -> tuple[bytes, str]:
     # Refuse to read unexpectedly large Git objects into memory.
+    origin = "local_git"
     try:
         size = int(git(repo, ["cat-file", "-s", oid]).decode("ascii").strip())
         if size < 0 or size > MAX_ASSET_BYTES:
@@ -101,6 +102,7 @@ def read_verified(repo: Path, oid: str, name: str, seed: Path | None) -> bytes:
     except (StagingError, ValueError, UnicodeDecodeError):
         if seed is None:
             raise StagingError("local_blob_unavailable") from None
+        origin = "verified_seed"
         candidate = seed / name
         if is_link(candidate) or not candidate.is_file():
             raise StagingError("verified_seed_unavailable")
@@ -115,7 +117,7 @@ def read_verified(repo: Path, oid: str, name: str, seed: Path | None) -> bytes:
         raise StagingError("asset_size_budget_exceeded")
     if hash_blob(data, oid) != oid:
         raise StagingError("asset_digest_mismatch")
-    return data
+    return data, origin
 
 
 def assert_scratch(repo: Path, target: Path) -> None:
@@ -157,13 +159,24 @@ def stage(repo: Path, target: Path, paths: list[str], *, ref: str = "HEAD",
             raise StagingError("duplicate_asset")
         assert_scratch(repo, target)
         oids = tracked_blobs(repo, ref, validated)
+        source_commit = git(repo, ["rev-parse", "--verify", ref + "^{commit}"]).decode("ascii").strip()
+        if len(source_commit) not in (40, 64) or any(c not in "0123456789abcdef" for c in source_commit):
+            raise StagingError("invalid_resolved_source_commit")
         if set(oids) != set(validated):
             raise StagingError("asset_not_tracked_at_ref")
         pending: list[tuple[Path, bytes]] = []
+        receipts: list[dict[str, object]] = []
         total = 0
         for name in validated:
             destination = safely_dest(target, name)
-            data = read_verified(repo, oids[name], name, seed)
+            data, origin = read_verified(repo, oids[name], name, seed)
+            receipts.append({
+                "path": name,
+                "git_blob_oid": oids[name],
+                "sha256": hashlib.sha256(data).hexdigest(),
+                "size_bytes": len(data),
+                "verified_from": origin,
+            })
             total += len(data)
             if total > MAX_TOTAL_BYTES:
                 raise StagingError("total_asset_budget_exceeded")
@@ -186,6 +199,9 @@ def stage(repo: Path, target: Path, paths: list[str], *, ref: str = "HEAD",
                         os.unlink(tmp)
             report["files_written"] = len(pending)
         report["verified_assets"] = validated
+        report["source_commit"] = source_commit
+        report["file_receipts"] = receipts
+        report["total_verified_bytes"] = total
         report["resource_staging_qualified"] = materialize
     except (StagingError, OSError, UnicodeError) as exc:
         report["blocker"] = str(exc) if isinstance(exc, StagingError) else "filesystem_unavailable"
