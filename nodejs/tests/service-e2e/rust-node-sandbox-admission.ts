@@ -89,6 +89,21 @@ export function isolatedRustNodeE2E(env: Record<string, string | undefined>): Is
         throw new Error('Isolated service ports must be distinct')
     }
 
+    const clickhouseUser = env.FLIND_E2E_CLICKHOUSE_USER
+    const clickhousePassword = env.FLIND_E2E_CLICKHOUSE_PASSWORD
+    if (clickhouseUser !== undefined || clickhousePassword !== undefined) {
+        if (
+            !clickhouseUser ||
+            !/^[a-z][a-z0-9_]{0,30}$/.test(clickhouseUser) ||
+            !clickhousePassword ||
+            clickhousePassword.length < 12 ||
+            clickhousePassword.length > 128 ||
+            /[\r\n]/.test(clickhousePassword)
+        ) {
+            throw new Error('Invalid isolated ClickHouse test credentials')
+        }
+    }
+
     const serviceEnv: Record<string, string> = {
         DATABASE_URL: `${postgresBase}/test_posthog`,
         PERSONS_DATABASE_URL: `${postgresBase}/test_persons`,
@@ -108,6 +123,11 @@ export function isolatedRustNodeE2E(env: Record<string, string | undefined>): Is
         SITE_URL: 'https://example.com',
         OTEL_SDK_DISABLED: 'true',
         DISABLE_OPENTELEMETRY_TRACING: 'true',
+    }
+
+    if (clickhouseUser && clickhousePassword) {
+        serviceEnv.CLICKHOUSE_USER = clickhouseUser
+        serviceEnv.CLICKHOUSE_PASSWORD = clickhousePassword
     }
 
     return {

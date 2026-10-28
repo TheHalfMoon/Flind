@@ -1,0 +1,54 @@
+# Synthetic disposable loopback-only Flind test databases.
+# Usage: docker compose -p flindwave216 -f compose.wave216.yaml up -d
+services:
+  postgres:
+    image: postgres:16
+    restart: "no"
+    mem_limit: 640m
+    environment:
+      POSTGRES_USER: flind_test
+      POSTGRES_PASSWORD: flind_local_only
+      POSTGRES_DB: test_posthog
+    ports:
+      - "127.0.0.1:15439:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./postgres-init.wave216.sql:/docker-entrypoint-initdb.d/01-flind-test.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -h 127.0.0.1 -U flind_test -d test_posthog"]
+      interval: 4s
+      timeout: 4s
+      retries: 25
+  redis:
+    image: redis:7-alpine
+    restart: "no"
+    command: ["redis-server", "--save", "", "--appendonly", "no"]
+    mem_limit: 160m
+    ports:
+      - "127.0.0.1:16380:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 4s
+      timeout: 4s
+      retries: 25
+  clickhouse:
+    image: clickhouse/clickhouse-server:25.8
+    restart: "no"
+    mem_limit: 1900m
+    environment:
+      CLICKHOUSE_DB: flind_test_wave216abc123
+      CLICKHOUSE_USER: flind_test
+      CLICKHOUSE_PASSWORD: flind_local_only
+      CLICKHOUSE_DEFAULT_ACCESS_MANAGEMENT: "1"
+    ports:
+      - "127.0.0.1:18124:8123"
+    volumes:
+      - chdata:/var/lib/clickhouse
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q -O - http://127.0.0.1:8123/ping | grep -q Ok"]
+      interval: 5s
+      timeout: 5s
+      retries: 25
+volumes:
+  pgdata:
+  chdata:

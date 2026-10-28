@@ -49,3 +49,29 @@ test('partial Flind service environment is refused, not silently defaulted', () 
         /acknowledgement/
     )
 })
+
+
+test('authenticated isolated ClickHouse credentials reach the Node worker', () => {
+    const env = sandboxEnv()
+    env.FLIND_E2E_CLICKHOUSE_USER = 'flind_test'
+    env.FLIND_E2E_CLICKHOUSE_PASSWORD = 'flind_local_only'
+    const admitted = isolatedRustNodeE2E(env)
+    assert.equal(admitted.serviceEnv.CLICKHOUSE_USER, 'flind_test')
+    assert.equal(admitted.serviceEnv.CLICKHOUSE_PASSWORD, 'flind_local_only')
+    assert.equal(selectTestClickhouseDatabase({ ...env, ...admitted.serviceEnv }),
+        'flind_test_abc123abc123')
+})
+test('partial isolated ClickHouse authentication is refused', () => {
+    const env = sandboxEnv()
+    env.FLIND_E2E_CLICKHOUSE_USER = 'flind_test'
+    assert.throws(() => isolatedRustNodeE2E(env), /test credentials/)
+})
+test('tampered effective ClickHouse auth is refused', () => {
+    const env = sandboxEnv()
+    env.FLIND_E2E_CLICKHOUSE_USER = 'flind_test'
+    env.FLIND_E2E_CLICKHOUSE_PASSWORD = 'flind_local_only'
+    const admitted = isolatedRustNodeE2E(env)
+    assert.throws(() => selectTestClickhouseDatabase({
+        ...env, ...admitted.serviceEnv, CLICKHOUSE_PASSWORD: 'tampered_password'
+    }), /not sandbox-prepared/)
+})
