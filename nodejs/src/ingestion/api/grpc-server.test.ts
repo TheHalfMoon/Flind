@@ -322,6 +322,31 @@ describe('WorkerIngestServer', () => {
         expect(driver.feeds).toHaveLength(1)
     })
 
+    it('releases an unlimited-budget at_capacity slot when the client disconnects', async () => {
+        const cancelled = new AbortController()
+        const source = new FrameSource()
+        const collected = collect(server, source, cancelled.signal)
+        driver.feedResult = { ok: false, kind: 'at_capacity', reason: 'full' }
+        source.push(hello())
+        source.push(subBatch(1, [206]))
+        await until(() => driver.feeds.length >= 3)
+        expect(driver.feeds.every(({ seq }) => seq === 1)).toBe(true)
+
+        cancelled.abort()
+        await until(
+            () =>
+                (server as unknown as { slots: { available: number } }).slots.available === 4
+        )
+        const feedCount = driver.feeds.length
+        await new Promise((resolve) => setTimeout(resolve, 25))
+        expect(driver.feeds).toHaveLength(feedCount)
+        expect((server as unknown as { acceptedBatches: Map<string, unknown> }).acceptedBatches.size).toBe(0)
+        expect(collected.acks).toHaveLength(0)
+        expect(onFatal).not.toHaveBeenCalled()
+        source.end()
+        await collected.ended
+    })
+
     it('feeds sub-batches in stream order, stalling reads while the pipeline is at capacity', async () => {
         const source = new FrameSource()
         collect(server, source)

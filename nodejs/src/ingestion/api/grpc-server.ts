@@ -850,7 +850,11 @@ export class WorkerIngestServer {
                 let feedAccepted = false
                 try {
                     while (true) {
-                        if (this.draining || this.fatalError) {
+                        if (this.draining || this.fatalError || signal?.aborted) {
+                            // A cancelled peer cannot consume the result. Stop
+                            // unfed capacity retries and return the admission
+                            // slot via the outer finally block, even when its
+                            // soft budget is unlimited.
                             this.finishReader(stream, seq)
                             return
                         }
