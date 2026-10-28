@@ -393,6 +393,13 @@ export class WorkerIngestServer {
      */
     private readonly acceptedBatches = new Map<string, AcceptedBatch>()
     /**
+     * A pipeline can publish completion from next() before its async feed()
+     * call resolves to the reader. Hold that result until the admission
+     * verdict is registered, without allowing unknown/duplicate completions
+     * to release another FIFO slot or produce a false ACK.
+     */
+    private readonly pendingFeedAdmissions = new Map<string, Promise<void>>()
+    /**
      * Track asynchronous feed results in their original invocation order.
      * The ordering sentinel must observe accepted feeds in that order rather
      * than the order in which independent streams resolve feed() promises.
@@ -617,6 +624,13 @@ export class WorkerIngestServer {
 
     private settleAndAck(completed: CompletedSubBatch): void {
         void (async () => {
+            // Completion can outrun the async feed() acceptance response.
+            // Wait only for that precise in-flight admission to resolve.
+            // Unknown and duplicate completions still fail closed below.
+            const pending = this.pendingFeedAdmissions.get(this.acceptedKey(completed.streamId, completed.seq))
+            if (pending) {
+                await pending
+            }
             try {
                 await completed.settled
             } catch (error) {
@@ -875,6 +889,15 @@ export class WorkerIngestServer {
                     return
                 }
                 let feedAccepted = false
+                // A different stream can wake the pump while this stream's
+                // asynchronous feed() is still resolving. Publish a
+                // per-batch admission barrier before beginning that call.
+                const admissionKey = this.acceptedKey(stream.id, seq)
+                let resolveAdmission!: () => void
+                const admissionReady = new Promise<void>((resolve) => {
+                    resolveAdmission = resolve
+                })
+                this.pendingFeedAdmissions.set(admissionKey, admissionReady)
                 try {
                     while (true) {
                         if (this.draining || this.fatalError || signal?.aborted) {
@@ -944,6 +967,12 @@ export class WorkerIngestServer {
                         }
                     }
                 } finally {
+                    // Publish the acceptance (or rejection) verdict before
+                    // allowing the pump to settle a completion that arrived
+                    // before feed() returned. Rejected feeds remain unknown
+                    // results and still fail closed.
+                    this.pendingFeedAdmissions.delete(admissionKey)
+                    resolveAdmission()
                     // An accepted feed hands its slot to the pump, which
                     // releases it after the batch settles; every other exit
                     // must give the slot back here.

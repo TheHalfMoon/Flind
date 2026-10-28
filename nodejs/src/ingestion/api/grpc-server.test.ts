@@ -353,6 +353,45 @@ describe('WorkerIngestServer', () => {
         expect(driver.feeds).toHaveLength(1)
     })
 
+    it('waits for async feed acceptance when a different stream wakes an early completion', async () => {
+        const originalFeed = driver.feed.bind(driver)
+        const delayedAcceptance = new Deferred<void>()
+        jest.spyOn(driver, 'feed').mockImplementation((...args) => {
+            const result = originalFeed(...args)
+            return args[2][0]?.offset === 209 ? delayedAcceptance.promise.then(() => result) : result
+        })
+
+        const first = new FrameSource()
+        const firstReplies = collect(server, first)
+        first.push(hello({ consumerId: 'early-209' }))
+        first.push(subBatch(1, [209]))
+        await until(() => driver.feeds.length === 1)
+        const earlyStream = driver.feeds[0].streamId
+        // The original pipeline publishes completion *before* its feed()
+        // acceptance promise resolves. A second stream's admission wakes
+        // the pump and must not turn that valid completion into a fatal.
+        driver.complete({ streamId: earlyStream, seq: 1, accepted: 1 })
+
+        const second = new FrameSource()
+        const secondReplies = collect(server, second)
+        second.push(hello({ consumerId: 'early-210' }))
+        second.push(subBatch(1, [210]))
+        await until(() => driver.feeds.length === 2)
+        driver.complete({ streamId: driver.feeds[1].streamId, seq: 1, accepted: 1 })
+        await until(() => secondReplies.acks.length === 1)
+        delayedAcceptance.resolve()
+        await until(() => firstReplies.acks.length === 1)
+        first.end()
+        second.end()
+        await Promise.all([firstReplies.ended, secondReplies.ended])
+
+        expect(onFatal).not.toHaveBeenCalled()
+        expect(firstReplies.error).toBeNull()
+        expect(secondReplies.error).toBeNull()
+        expect(firstReplies.acks).toMatchObject([{ accepted: 1, status: SubBatchStatus.OK }])
+        expect(secondReplies.acks).toMatchObject([{ accepted: 1, status: SubBatchStatus.OK }])
+    })
+
     it('fails closed on duplicate completion without releasing a second FIFO slot', async () => {
         const source = new FrameSource()
         const collected = collect(server, source)
