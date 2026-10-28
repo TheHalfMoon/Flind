@@ -2,12 +2,13 @@
 // Explicit-entrypoint for the destructive Rust + production Node + Kafka +
 // ClickHouse service E2E. Run only with user-owned ephemeral local services.
 import { spawn } from 'node:child_process'
-import { existsSync, statfsSync } from 'node:fs'
+import { existsSync } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 import { isolatedRustNodeE2E } from './rust-node-sandbox-admission.ts'
 import { requireNativeServiceE2ERuntime } from './native-runtime-preflight.mjs'
+import { createOwnedLocalScratch } from './local-scratch.mjs'
 
 let sandbox
 try {
@@ -66,25 +67,23 @@ const cmd = [
     '--forceExit',
     '--testPathPatterns=service-e2e/rust-ingestion-consumer.serial.test.ts',
 ]
-// Full service tests can compile Rust and start multiple local data engines.
-// Fail closed before launch, then monitor the reserve while the child runs.
-function freeDiskBytes() {
-    const fs = statfsSync('/tmp')
-    return fs.bavail * fs.bsize
-}
-if (freeDiskBytes() < 12 * 1024 ** 3) {
-    console.error('REFUSED: at least 12 GiB free disk is required before full E2E')
-    process.exit(2)
-}
-
-// Resolve and load the exact native dependencies with Jest's selected Node
-// runtime BEFORE launching a suite containing destructive fixture resets.
+// Run temporary files on the checkout volume, not WSL's small /tmp tmpfs.
+// An owned marker, a 12 GiB entry reserve and 10 GiB live reserve are required.
+let scratch
 try {
+    scratch = createOwnedLocalScratch(path.resolve(nodeRoot, '..'))
+    processEnv.TMPDIR = scratch.path
     requireNativeServiceE2ERuntime(nodeRoot, processEnv)
 } catch (error) {
+    try {
+        scratch?.cleanup()
+    } catch {
+        console.error('REFUSED: isolated scratch cleanup failed')
+    }
     console.error('REFUSED:', error.message)
     process.exit(2)
 }
+const freeDiskBytes = () => scratch.freeBytes()
 
 const child = spawn(jest, cmd, {
     cwd: nodeRoot,
@@ -116,5 +115,11 @@ child.on('error', () => stop('Jest child failed to start'))
 child.on('close', (code) => {
     clearInterval(diskWatch)
     clearTimeout(timeout)
+    try {
+        scratch.cleanup()
+    } catch {
+        interrupted = true
+        console.error('REFUSED: isolated scratch cleanup failed')
+    }
     process.exit(interrupted ? 2 : (code ?? 2))
 })
