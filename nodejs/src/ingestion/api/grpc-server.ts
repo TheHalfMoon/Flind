@@ -487,9 +487,18 @@ export class WorkerIngestServer {
             }
         }
         this.wake()
-        // http2's close() waits for every session to end and consumers hold
-        // theirs open, so send a graceful GOAWAY instead of waiting.
+        // GOAWAY is graceful, but an idle HTTP/2 request can stay open
+        // forever even after all accepted pipeline work has drained.
+        // Bound the grace period so shutdown never waits indefinitely
+        // for a peer that did not finish its request body.
         for (const session of this.sessions) {
+            const forceClose = setTimeout(() => {
+                if (!session.destroyed) {
+                    session.destroy()
+                }
+            }, 500)
+            forceClose.unref?.()
+            session.once('close', () => clearTimeout(forceClose))
             session.close()
         }
         if (this.server) {

@@ -286,6 +286,14 @@ describe('WorkerIngestServer', () => {
         expect(server.streamCount).toBe(0)
     })
 
+    it('supports concurrent and repeated shutdown calls without leaving the listener open', async () => {
+        // Owners can request shutdown from both the fatal pipeline callback
+        // and a process termination signal. Repeated shutdown is harmless.
+        await Promise.all([server.stop(), server.stop()])
+        await server.stop()
+        expect(server.streamCount).toBe(0)
+    })
+
     it('stop() drains in-flight sub-batch acks before ending streams', async () => {
         const source = new FrameSource()
         const collected = collect(server, source)
