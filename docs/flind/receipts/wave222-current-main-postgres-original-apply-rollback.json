@@ -1,0 +1,23 @@
+{
+  "app_count": 115,
+  "apply_rollback_requested": true,
+  "disk_migrations": 3335,
+  "django_registry_qualified": true,
+  "elapsed_seconds": 10.4,
+  "full_migrations_qualified": false,
+  "full_rollback_qualified": false,
+  "leaf_targets": 92,
+  "migration_files_staged": 3706,
+  "migration_graph_nodes": 839,
+  "migration_graph_qualified": true,
+  "migration_plan_qualified": true,
+  "one_first_party_apply_qualified": true,
+  "one_first_party_rollback_qualified": true,
+  "phase": "isolated-postgres-flind-migration-plan",
+  "planned_migrations": 839,
+  "postgres_readonly_connection_qualified": true,
+  "release_qualified": false,
+  "remaining_app_migration_records": 0,
+  "remaining_user_tables": 0,
+  "source_commit": "8343e14e539ca43f2853988ba189c2562df49959"
+}
