@@ -59,7 +59,7 @@ const grpcCapacityRetries = new Counter({
 
 const grpcAdmissionExpired = new Counter({
     name: 'ingestion_api_grpc_admission_expired_total',
-    help: 'Sub-batches whose soft deadline passed while they waited for an admission slot',
+    help: 'Sub-batches whose soft deadline passed before pipeline feed acceptance (FIFO queue or capacity retries)',
 })
 
 const grpcConnectionsRejected = new Counter({
@@ -657,7 +657,7 @@ export class WorkerIngestServer {
         this.maybeFinish(stream)
     }
 
-    private expireParked(stream: StreamState, seq: number, messages: SerializedKafkaMessage[]): void {
+    private expireUnfed(stream: StreamState, seq: number, messages: SerializedKafkaMessage[]): void {
         grpcAdmissionExpired.inc()
         stream.inFlight.delete(seq)
         stream.acks.push(partialAck(seq, 0, messages))
@@ -829,7 +829,7 @@ export class WorkerIngestServer {
                 } catch (error) {
                     if (error instanceof SlotAcquisitionAborted) {
                         if (parkedTooLong.signal.aborted && !admissionSignal.aborted) {
-                            this.expireParked(stream, seq, serialized)
+                            this.expireUnfed(stream, seq, serialized)
                             continue
                         }
                         this.finishReader(stream, seq)
@@ -854,6 +854,14 @@ export class WorkerIngestServer {
                             this.finishReader(stream, seq)
                             return
                         }
+                        // A granted FIFO slot does not guarantee pipeline
+                        // capacity. If feed() keeps returning at_capacity,
+                        // enforce the same soft budget as admission waiting;
+                        // an unfed batch must stay replayable, not retry forever.
+                        if (softAt !== null && Date.now() >= softAt) {
+                            this.expireUnfed(stream, seq, serialized)
+                            break
+                        }
                         const orderTicket = this.reserveFeedOrderTicket()
                         let acceptedForOrder = false
                         try {
@@ -866,9 +874,19 @@ export class WorkerIngestServer {
                             }
                             if (result.kind === 'at_capacity') {
                                 // The admission queue mirrors pipeline capacity, so
-                                // this means the two drifted — count it and retry.
+                                // this means the two drifted. Retry only while
+                                // budget remains; never keep an unfed batch
+                                // (or its admission slot) alive indefinitely.
                                 grpcCapacityRetries.inc()
-                                await sleep(this.capacityRetryMs)
+                                if (softAt !== null && Date.now() >= softAt) {
+                                    this.expireUnfed(stream, seq, serialized)
+                                    break
+                                }
+                                await sleep(
+                                    softAt === null
+                                        ? this.capacityRetryMs
+                                        : Math.min(this.capacityRetryMs, Math.max(0, softAt - Date.now()))
+                                )
                                 continue
                             }
                             stream.inFlight.delete(seq)

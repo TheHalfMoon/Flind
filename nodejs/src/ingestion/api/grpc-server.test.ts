@@ -790,6 +790,48 @@ describe('WorkerIngestServer', () => {
         )
     })
 
+    it('expires unfed at_capacity retries and continues reading subsequent batches', async () => {
+        const budgeted = new WorkerIngestServer(
+            { port: 0, maxConcurrentBatches: 2, capacityRetryMs: 1, pumpIdleMs: 1 },
+            { driver, feedOrderSentinel: sentinel, onFatal }
+        )
+        await budgeted.start()
+        try {
+            const source = new FrameSource()
+            const collected = collect(budgeted, source)
+            driver.feedResult = { ok: false, kind: 'at_capacity', reason: 'full' }
+            source.push(hello())
+            source.push(subBatch(1, [205], { softBudgetMs: 30n }))
+            await until(() => collected.acks.length === 1)
+
+            const ack = collected.acks[0]
+            expect(ack.seq).toBe(1n)
+            expect(ack.status).toBe(SubBatchStatus.PARTIAL)
+            expect(ack.accepted).toBe(0)
+            expect(ack.unfinished).toMatchObject([{ partition: 0, offset: 205n }])
+            expect(driver.feeds.every((feed) => feed.seq === 1)).toBe(true)
+            expect(sentinel.size).toBe(0)
+
+            // Release the simulated capacity drift: the reader must proceed
+            // without poisoning the pipeline or duplicating a stalled batch.
+            driver.feedResult = { ok: true }
+            source.push(subBatch(2, [206]))
+            await until(() => driver.feeds.some((feed) => feed.seq === 2))
+            const second = driver.feeds.find((feed) => feed.seq === 2)!
+            driver.complete({ streamId: second.streamId, seq: 2, accepted: 1 })
+            source.end()
+            await collected.ended
+            expect(collected.error).toBeNull()
+            expect(collected.acks.map(({ seq, status }) => [seq, status])).toEqual([
+                [1n, SubBatchStatus.PARTIAL],
+                [2n, SubBatchStatus.OK],
+            ])
+            expect(sentinel.size).toBe(1)
+        } finally {
+            await budgeted.stop()
+        }
+    })
+
     it('acks a parked sub-batch PARTIAL when its soft budget runs out before a slot frees', async () => {
         const budgeted = new WorkerIngestServer(
             { port: 0, maxConcurrentBatches: 1, capacityRetryMs: 1, pumpIdleMs: 1 },
