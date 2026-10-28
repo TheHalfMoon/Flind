@@ -22,7 +22,7 @@ class Wave224ClickHouseSourceAuditTests(unittest.TestCase):
         self.migrations.mkdir(parents=True)
         self.sql = self.migrations / "sql/0238"
         self.sql.mkdir(parents=True)
-        (self.sql / "eu_kafka.sql").write_text("SELECT 1;\n")
+        (self.sql / "eu_kafka.sql").write_bytes(b"SELECT 1;\n")
         (self.root / "pyproject.toml").write_text("[project]\nname='flind-test'\n")
         (self.migrations / "0001_initial.py").write_text("operations = []\n")
         (self.migrations / "0002_events.py").write_text("operations = []\n")
@@ -32,6 +32,18 @@ class Wave224ClickHouseSourceAuditTests(unittest.TestCase):
         subprocess.run(["git", "-C", str(self.root), "add", "-A"], check=True)
         subprocess.run(["git", "-C", str(self.root), "-c", "user.name=Flind Test",
                         "-c", "user.email=flind@example.invalid", "commit", "-qm", "fixture"], check=True)
+
+    def stage_git_symlink(self, relative_path: str, target: str) -> None:
+        """Stage a real mode-120000 Git link without requiring OS symlink privileges."""
+        blob = subprocess.run(
+            ["git", "-C", str(self.root), "hash-object", "-w", "--stdin"],
+            input=target.encode("utf-8"), capture_output=True, check=True,
+        ).stdout.decode("ascii").strip()
+        subprocess.run(
+            ["git", "-C", str(self.root), "update-index", "--add",
+             "--cacheinfo", "120000", blob, relative_path],
+            check=True,
+        )
 
     def tearDown(self):
         self.tmp.cleanup()
@@ -70,7 +82,7 @@ class Wave224ClickHouseSourceAuditTests(unittest.TestCase):
 
     def test_committed_original_sql_change_updates_manifest(self):
         before = audit(self.root)
-        (self.sql / "eu_kafka.sql").write_text("SELECT 2;\n")
+        (self.sql / "eu_kafka.sql").write_bytes(b"SELECT 2;\n")
         subprocess.run(["git", "-C", str(self.root), "add", "-A"], check=True)
         subprocess.run(["git", "-C", str(self.root), "-c", "user.name=Flind Test",
                         "-c", "user.email=flind@example.invalid", "commit", "-qm", "sql-change"], check=True)
@@ -80,8 +92,8 @@ class Wave224ClickHouseSourceAuditTests(unittest.TestCase):
         self.assertNotEqual(before["module_manifest_sha256"], after["module_manifest_sha256"])
 
     def test_sql_symlink_rejected_without_file_reads(self):
-        (self.sql / "us_mv.sql").symlink_to("eu_kafka.sql")
         subprocess.run(["git", "-C", str(self.root), "add", "-A"], check=True)
+        self.stage_git_symlink("posthog/clickhouse/migrations/sql/0238/us_mv.sql", "eu_kafka.sql")
         subprocess.run(["git", "-C", str(self.root), "-c", "user.name=Flind Test",
                         "-c", "user.email=flind@example.invalid", "commit", "-qm", "sql-symlink"], check=True)
         result = audit(self.root)
@@ -93,8 +105,8 @@ class Wave224ClickHouseSourceAuditTests(unittest.TestCase):
         self.assertFalse(audit(self.root, "refs/heads/../../escape")["source_inventory_qualified"])
 
     def test_symlink_migration_rejected_without_file_reads(self):
-        (self.migrations / "0003_link.py").symlink_to("0001_initial.py")
         subprocess.run(["git", "-C", str(self.root), "add", "-A"], check=True)
+        self.stage_git_symlink("posthog/clickhouse/migrations/0003_link.py", "0001_initial.py")
         subprocess.run(["git", "-C", str(self.root), "-c", "user.name=Flind Test",
                         "-c", "user.email=flind@example.invalid", "commit", "-qm", "symlink"], check=True)
         self.assertFalse(audit(self.root)["source_inventory_qualified"])
