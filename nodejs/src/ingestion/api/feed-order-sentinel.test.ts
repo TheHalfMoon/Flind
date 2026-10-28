@@ -52,12 +52,27 @@ describe('FeedOrderSentinel', () => {
         expect(sentinel.check([msg(11, { partition: 1 })], 'c1', false)).toEqual({ outOfOrder: 0, replayed: 0 })
     })
 
-    it.each([null, ''])('skips unkeyed messages even when routing headers are present (key: %j)', (key) => {
+    it('skips null Kafka keys even when routing headers are present', () => {
         const sentinel = new FeedOrderSentinel()
         const headers = { token: 't', distinct_id: 'a' }
-        const result = sentinel.check([msg(5, { key, headers }), msg(1, { key, headers })], 'c1', false)
+        const result = sentinel.check([msg(5, { key: null, headers }), msg(1, { key: null, headers })], 'c1', false)
         expect(result).toEqual({ outOfOrder: 0, replayed: 0 })
         expect(sentinel.size).toBe(0)
+    })
+
+    it('tracks a zero-byte Kafka key as a real key independently from null', () => {
+        const sentinel = new FeedOrderSentinel()
+        const headers = { token: 't', distinct_id: 'a' }
+        expect(sentinel.check([msg(5, { key: '', headers })], 'c1', false)).toEqual({
+            outOfOrder: 0, replayed: 0,
+        })
+        expect(sentinel.check([msg(1, { key: '', headers })], 'c1', false)).toEqual({
+            outOfOrder: 1, replayed: 0,
+        })
+        expect(sentinel.check([msg(0, { key: null, headers })], 'c1', false)).toEqual({
+            outOfOrder: 0, replayed: 0,
+        })
+        expect(sentinel.size).toBe(1)
     })
 
     it('does not alias different topic/partition/key tuples containing slashes', () => {

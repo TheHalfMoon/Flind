@@ -131,3 +131,14 @@ export function assertIsolatedRustNodeE2EAlreadyPrepared(env: Record<string, str
     }
     return config
 }
+
+
+// Preserve the uniquely admitted ClickHouse database in the shared Jest
+// setup phase. A partial or tampered Flind E2E environment must never fall
+// through to a shared test database.
+export function selectTestClickhouseDatabase(env: Record<string, string | undefined>): string {
+    if (Object.keys(env).some((key) => key.startsWith('FLIND_E2E_'))) {
+        return assertIsolatedRustNodeE2EAlreadyPrepared(env).clickhouseDatabase
+    }
+    return 'posthog_test'
+}

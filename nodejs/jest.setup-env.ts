@@ -1,3 +1,4 @@
+import { selectTestClickhouseDatabase } from './tests/service-e2e/rust-node-sandbox-admission'
 import { mkdirSync, readFileSync, writeFileSync } from 'fs'
 import { join } from 'path'
 import { brotliDecompressSync } from 'zlib'
@@ -13,9 +14,10 @@ import { brotliDecompressSync } from 'zlib'
 // those when they point at a non-test database.
 process.env.NODE_ENV = 'test'
 
-// Docker development environments export CLICKHOUSE_DATABASE=posthog. Tests that
-// reset ClickHouse must never inherit it, even when it was explicitly exported.
-process.env.CLICKHOUSE_DATABASE = 'posthog_test'
+// Ordinary suites default to the test ClickHouse database, but the explicitly
+// admitted Rust/Node service E2E must retain its unique flind_test_* identity.
+// Refuse partial or tampered FLIND_E2E_* settings before test modules import DBs.
+process.env.CLICKHOUSE_DATABASE = selectTestClickhouseDatabase(process.env)
 
 // Tests must never read the live GeoLite2 database from share/ — it is re-downloaded
 // unpinned from mmdbcdn.posthog.net and its data changes under us (see the recurring
