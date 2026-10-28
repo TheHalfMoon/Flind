@@ -31,6 +31,11 @@ _SAFE_NAME = re.compile(r"^[A-Za-z_][A-Za-z0-9_]*(?:\.[A-Za-z_][A-Za-z0-9_]*){0,
 RECEIPT_PREFIX = "FLIND_REGISTRY_PROBE_RECEIPT="
 
 
+def registry_pythonpath(root: Path) -> str:
+    """Expose only the Flind root and its tracked generated proto workspace."""
+    return os.pathsep.join((str(root), str(root / "packages/personhog-proto")))
+
+
 def safe_exception_class(error: BaseException) -> str:
     """Expose a bounded exception class, never exception text or credentials."""
     name = type(error).__name__
@@ -389,7 +394,7 @@ def probe(root: Path, ref: str, *, deadline: int = 150, limit: int = 2200,
         "CLICKHOUSE_PORT": "65435",
         "KAFKA_HOSTS": "127.0.0.1:65437",
         "PYTHONDONTWRITEBYTECODE": "1",
-        "PYTHONPATH": str(root),
+        "PYTHONPATH": registry_pythonpath(root),
     }
     argv = [sys.executable, str(Path(__file__).resolve()), "--child",
             "--root", str(root), "--ref", ref,
