@@ -1,0 +1,59 @@
+{
+  "phase": "wave226_first_party_destructive_reset_sha256_source_gate",
+  "source_commit": "cd89e0995cfefb385a7efc88415d62fc02e9a639",
+  "sql_helper_blob_sha": "4ae38ad8cb87ce3f6f2ed5a4cec9456fe6826bf3",
+  "clickhouse_helper_blob_sha": "10e6deab99aac542c9f90415bb02e423ee2dacbb",
+  "segment_lengths": [
+    1467,
+    1327,
+    1572
+  ],
+  "segment_sha256": [
+    "52b6a3c5a25dbe8491a0583ab417d61a7bd3473ab0a455c8f3dbf11cd7b7ff00",
+    "f9edca9ee7a288977059cfee04d0ac3dde81bf5fd621f590c60fad8f0f26c299",
+    "b17ac8253a508b275513af6edf47ef8b8590525755e1f52b0f8665ce32d6c204"
+  ],
+  "independent_hash_methods": [
+    "JavaScript SHA256 with abc known-answer vector",
+    "Python 3.13.5 hashlib.sha256"
+  ],
+  "original_source_digest_matches": 3,
+  "negative_fragment_mutations_rejected": 4,
+  "new_first_party_tests_added": 7,
+  "new_first_party_tests_executed_on_full_checkout": false,
+  "real_docker_or_database_contacted": false,
+  "full_postgres_migrations_qualified": false,
+  "full_clickhouse_migrations_qualified": false,
+  "native_joined_ingestion_qualified": false,
+  "release_qualified": false,
+  "offline_original_excerpt_unittest_python_3_13_5_passed": 7,
+  "offline_original_excerpt_unittest_failed": 0,
+  "offline_original_excerpt_tests_are_not_full_repo_tests": true,
+  "targeted_original_python_tests_executed": 19,
+  "targeted_original_python_tests_passed": 19,
+  "targeted_original_python_tests_failed": 0,
+  "targeted_original_python_test_breakdown": {
+    "wave216_schema_preflight": 4,
+    "wave218_reset_contract": 8,
+    "wave226_reset_digest": 7
+  },
+  "python_runtime": "Python 3.13.5",
+  "original_python_git_blob_match": true,
+  "original_python_git_blobs": {
+    "tools/flind/e2e/schema_preflight_wave216.py": "5016cba1a242ae4fec200f5cccaf956561670040",
+    "tools/flind/e2e/test_reset_digest_wave226.py": "82efd8a60fa22a7f5b36de09f26473b76308657c",
+    "tools/flind/e2e/test_reset_contract_wave218.py": "27ed87b8a6c972eb7aea1d21859399b78e33cd3e",
+    "tools/flind/e2e/test_schema_preflight_wave216.py": "66b4d79817ab082fe6acbafb394a735ae0f80734"
+  },
+  "exact_original_source_section_fixture_hashes_match": true,
+  "full_original_typescript_helper_files_available_in_test_runtime": false,
+  "full_private_flind_checkout_executed": false,
+  "test_database_or_docker_used": false,
+  "python_compilation_pass": true,
+  "proof_scope": "19 real original Python tests against exact GitHub-blob-matching Python files and reconstructed TypeScript helper fixture using three exactly hashed original reset-body excerpts; NOT a complete private Flind checkout or live DB integration.",
+  "targeted_original_python_optimized_tests_executed": 19,
+  "targeted_original_python_optimized_tests_passed": 19,
+  "targeted_original_python_optimized_tests_failed": 0,
+  "optimized_interpreter_mode": "python -O",
+  "targeted_total_passes_normal_plus_optimized": 38
+}

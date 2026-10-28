@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Fail-closed original Flind E2E schema preflight; not release qualification."""
+import hashlib
 import json
 from pathlib import Path
 import re
@@ -27,6 +28,14 @@ PERSONS_REQUIRED = frozenset({
     "posthog_personoverride", "posthog_personoverridemapping",
     "posthog_persondistinctid", "posthog_person",
 })
+# Reviewed against the exact first-party reset sections at main cd89e099.
+# Never silently accept a SQL statement or ClickHouse guard changing while
+# the table-name list remains identical.
+RESET_SEGMENT_SHA256 = (
+    "52b6a3c5a25dbe8491a0583ab417d61a7bd3473ab0a455c8f3dbf11cd7b7ff00",
+    "f9edca9ee7a288977059cfee04d0ac3dde81bf5fd621f590c60fad8f0f26c299",
+    "b17ac8253a508b275513af6edf47ef8b8590525755e1f52b0f8665ce32d6c204",
+)
 CLICKHOUSE_REQUIRED = frozenset({
     "sharded_events", "person", "person_distinct_id", "person_distinct_id2",
     "person_distinct_id_overrides", "person_static_cohort",
@@ -64,6 +73,14 @@ def validate_original_reset_contract():
         CH_HELPER, "    async resetTestDatabase(): Promise<void> {",
         "    // Topics that this database",
     )
+    # A names-only reset contract misses extra dynamic DELETE statements or
+    # removed guards inside existing ClickHouse truncate batches. Reject any
+    # modification to the three original destructively executed source bodies.
+    for section, reviewed_digest in zip(
+        (pg_common, pg_persons, ch_reset), RESET_SEGMENT_SHA256, strict=True
+    ):
+        if hashlib.sha256(section.encode("utf-8")).hexdigest() != reviewed_digest:
+            raise ValueError("reset source digest changed (contract changed)")
     pg_pattern = r"(?m)^\s*DELETE FROM (posthog_[a-z0-9_]+) CASCADE;"
     ch_pattern = r"this\.truncate\('([a-z0-9_]+)'\)"
     for extracted, required in (
