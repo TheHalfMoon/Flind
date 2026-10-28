@@ -31,6 +31,14 @@ _SAFE_NAME = re.compile(r"^[A-Za-z_][A-Za-z0-9_]*(?:\.[A-Za-z_][A-Za-z0-9_]*){0,
 RECEIPT_PREFIX = "FLIND_REGISTRY_PROBE_RECEIPT="
 
 
+def safe_exception_class(error: BaseException) -> str:
+    """Expose a bounded exception class, never exception text or credentials."""
+    name = type(error).__name__
+    if re.fullmatch(r"[A-Za-z_][A-Za-z0-9_]{0,79}", name):
+        return name
+    return "Unhandled first-party registry error"
+
+
 def git_offline_env() -> dict[str, str]:
     """Never allow Git's promisor/partial clone to fetch missing source implicitly."""
     return {**os.environ, "GIT_NO_LAZY_FETCH": "1", "GIT_TERMINAL_PROMPT": "0"}
@@ -317,8 +325,10 @@ def registry_child(root: Path, ref: str, limit: int, deadline: int, graph: bool 
                 receipt["source_failure_kind"] = "source_import_deadline"
             elif str(e) == "Flind tracked-source module admission limit reached":
                 receipt["source_failure_kind"] = "source_import_limit"
-    except Exception:
-        receipt["blocker"] = "Unhandled first-party registry error"
+    except Exception as error:
+        # Unexpected Django startup failures still need an actionable class;
+        # never expose exception messages, tracebacks or absolute paths.
+        receipt["blocker"] = safe_exception_class(error)
     finally:
         if batch_reader is not None:
             batch_reader.close()
