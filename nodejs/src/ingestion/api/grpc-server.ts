@@ -218,7 +218,9 @@ interface WorkerIngestServerDeps {
     onFatal: (error: Error) => void
 }
 
-/** Unbounded FIFO handed from the pump to each stream's response generator. */
+/** Bound per-stream queued response frames so an unreadable peer cannot retain unlimited ACKs. */
+const MAX_BUFFERED_ACKS = 256
+
 class AckQueue {
     private items: IngestStreamResponse[] = []
     private waiter: {
@@ -228,17 +230,29 @@ class AckQueue {
     private done = false
     private error: Error | null = null
 
-    push(item: IngestStreamResponse): void {
+    push(item: IngestStreamResponse): boolean {
         if (this.done) {
-            return
+            return false
         }
         if (this.waiter) {
             const { resolve } = this.waiter
             this.waiter = null
             resolve({ value: item, done: false })
-            return
+            return true
+        }
+        if (this.items.length >= MAX_BUFFERED_ACKS) {
+            // The peer is not keeping up with ACKs. Close this stream
+            // instead of letting an unbounded queue exhaust worker memory;
+            // its unacknowledged tail is replayed by the consumer.
+            this.fail(new ConnectError('stream response backlog exceeded', Code.ResourceExhausted))
+            return false
         }
         this.items.push(item)
+        return true
+    }
+
+    get failed(): boolean {
+        return this.error !== null
     }
 
     /** No more acks will arrive; the generator completes after draining. */
@@ -768,7 +782,7 @@ export class WorkerIngestServer {
                 // request reader can outlive its response iterator. Never feed
                 // another batch to the poisoned shared pipeline, even if its
                 // peer continues sending frames before shutdown completes.
-                if (this.draining || this.fatalError) {
+                if (this.draining || this.fatalError || stream.acks.failed) {
                     this.finishReader(stream)
                     return
                 }
@@ -813,8 +827,13 @@ export class WorkerIngestServer {
                 }
 
                 if (subBatch.messages.length === 0) {
-                    // An empty feed never completes a batch, so ack it directly.
-                    stream.acks.push(okAck(seq, 0))
+                    // Empty batches bypass pipeline admission; bound their ACK
+                    // backlog too so a peer that never reads cannot keep
+                    // allocating response frames indefinitely.
+                    if (!stream.acks.push(okAck(seq, 0))) {
+                        this.finishReader(stream)
+                        return
+                    }
                     continue
                 }
 

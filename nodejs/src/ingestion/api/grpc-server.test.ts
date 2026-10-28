@@ -260,6 +260,37 @@ describe('WorkerIngestServer', () => {
         expect(collected.error).toBeNull()
     })
 
+    it('bounds queued empty-batch ACKs when a peer stops reading responses', async () => {
+        const source = new FrameSource()
+        const responses = server.ingestStream(source)[Symbol.asyncIterator]()
+        const ready = await responses.next()
+        expect(ready.value?.msg.case).toBe('ready')
+        source.push(hello())
+        for (let seq = 1; seq <= 320; seq++) {
+            source.push(subBatch(seq, []))
+        }
+        source.end()
+
+        type AckQueueState = { items: unknown[]; failed: boolean }
+        const queuedAcks = (): AckQueueState | undefined =>
+            [...(server as unknown as { streams: Map<number, { acks: AckQueueState }> }).streams.values()][0]?.acks
+        await until(() => queuedAcks()?.failed === true)
+        expect(queuedAcks()?.items.length).toBeLessThanOrEqual(256)
+        expect(driver.feeds).toHaveLength(0)
+        expect(onFatal).not.toHaveBeenCalled()
+
+        let rejected: ConnectError | null = null
+        try {
+            while (!(await responses.next()).done) {
+                // The buffered successful acks must be bounded before rejection.
+            }
+        } catch (error) {
+            rejected = error as ConnectError
+        }
+        expect(rejected?.code).toBe(Code.ResourceExhausted)
+        expect(server.streamCount).toBe(0)
+    })
+
     it('acks completions out of order by seq and ends the stream after half-close', async () => {
         const source = new FrameSource()
         const collected = collect(server, source)
