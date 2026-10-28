@@ -747,7 +747,11 @@ export class WorkerIngestServer {
         const admissionSignal = signal ? AbortSignal.any([signal, this.drainAbort.signal]) : this.drainAbort.signal
         try {
             for await (const request of requests) {
-                if (this.draining) {
+                // The fatal path fails response queues but the already-running
+                // request reader can outlive its response iterator. Never feed
+                // another batch to the poisoned shared pipeline, even if its
+                // peer continues sending frames before shutdown completes.
+                if (this.draining || this.fatalError) {
                     this.finishReader(stream)
                     return
                 }
@@ -837,7 +841,7 @@ export class WorkerIngestServer {
                 let feedAccepted = false
                 try {
                     while (true) {
-                        if (this.draining) {
+                        if (this.draining || this.fatalError) {
                             this.finishReader(stream, seq)
                             return
                         }
@@ -946,6 +950,11 @@ export class WorkerIngestServer {
         messages: SerializedKafkaMessage[],
         budget: SubBatchBudget
     ): Promise<FeedResult> {
+        // The fatal callback may run while another stream is awaiting
+        // admission/capacity. Never start fresh pipeline work once poisoned.
+        if (this.fatalError) {
+            throw new ConnectError('ingest pipeline is poisoned', Code.Unavailable)
+        }
         try {
             return await this.deps.driver.feed(stream.id, seq, messages, budget)
         } catch (error) {

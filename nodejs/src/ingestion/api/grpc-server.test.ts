@@ -461,6 +461,27 @@ describe('WorkerIngestServer', () => {
         )
     })
 
+    it('does not feed another frame from an existing reader once the shared pipeline is poisoned', async () => {
+        const source = new FrameSource()
+        const collected = collect(server, source)
+        source.push(hello())
+        source.push(subBatch(1, [203]))
+        await until(() => driver.feeds.length === 1)
+
+        // A pipeline failure reaches the shared pump, which poisons the
+        // gRPC response; the independently-running request reader may still
+        // be listening for frames from the same client.
+        driver.failNext(new Error('synthetic fatal write failure'))
+        await collected.ended
+        expect(collected.error?.code).toBe(Code.Internal)
+        expect(onFatal).toHaveBeenCalledTimes(1)
+
+        source.push(subBatch(2, [204]))
+        await new Promise((resolve) => setTimeout(resolve, 25))
+        expect(driver.feeds.map((feed) => feed.offsets[0])).toEqual([203])
+        source.end()
+    })
+
     it('nacks a rejected sub-batch before closing the stream', async () => {
         const source = new FrameSource()
         const collected = collect(server, source)
