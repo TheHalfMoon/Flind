@@ -606,14 +606,21 @@ export class WorkerIngestServer {
             try {
                 await completed.settled
             } catch (error) {
-                this.releaseAccepted(completed, 'failed')
+                if (!this.releaseAccepted(completed, 'failed')) {
+                    this.fatal(new Error('ingest pipeline yielded an unknown or duplicate completion'))
+                    return
+                }
                 this.slots.release()
                 this.fatal(error instanceof Error ? error : new Error(String(error)))
                 return
             }
-            // The batch's admission slot frees only once its side effects are
-            // durably done, matching the HTTP path's response barrier.
-            this.releaseAccepted(completed, 'ok')
+            // One accepted sub-batch owns exactly one admission slot. A duplicate
+            // or unknown pipeline result must never release a second slot or ACK
+            // a replayable offset as though processing succeeded.
+            if (!this.releaseAccepted(completed, 'ok')) {
+                this.fatal(new Error('ingest pipeline yielded an unknown or duplicate completion'))
+                return
+            }
             this.slots.release()
             this.ackCompleted(completed)
         })()
@@ -623,11 +630,11 @@ export class WorkerIngestServer {
         return `${streamId}:${seq}`
     }
 
-    private releaseAccepted(completed: CompletedSubBatch, outcome: 'ok' | 'failed'): void {
+    private releaseAccepted(completed: CompletedSubBatch, outcome: 'ok' | 'failed'): boolean {
         const key = this.acceptedKey(completed.streamId, completed.seq)
         const accepted = this.acceptedBatches.get(key)
         if (!accepted) {
-            return
+            return false
         }
         this.acceptedBatches.delete(key)
         if (outcome === 'ok') {
@@ -636,6 +643,7 @@ export class WorkerIngestServer {
             batchFailed()
         }
         batchReleased(accepted)
+        return true
     }
 
     private ackCompleted(completed: CompletedSubBatch): void {

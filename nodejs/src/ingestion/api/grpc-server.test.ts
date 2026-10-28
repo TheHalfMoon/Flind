@@ -322,6 +322,29 @@ describe('WorkerIngestServer', () => {
         expect(driver.feeds).toHaveLength(1)
     })
 
+    it('fails closed on duplicate completion without releasing a second FIFO slot', async () => {
+        const source = new FrameSource()
+        const collected = collect(server, source)
+        source.push(hello())
+        source.push(subBatch(1, [207]))
+        source.push(subBatch(2, [208]))
+        await until(() => driver.feeds.length === 2)
+        const streamId = driver.feeds[0].streamId
+
+        driver.complete({ streamId, seq: 1, accepted: 1 })
+        driver.complete({ streamId, seq: 1, accepted: 1 })
+        await until(() => onFatal.mock.calls.length === 1)
+        source.end()
+        await collected.ended
+
+        expect(collected.error?.code).toBe(Code.Internal)
+        expect(collected.acks.filter(({ seq }) => seq === 1n)).toHaveLength(1)
+        expect((server as unknown as { slots: { available: number } }).slots.available).toBeLessThanOrEqual(4)
+        expect(onFatal).toHaveBeenCalledWith(
+            expect.objectContaining({ message: 'ingest pipeline yielded an unknown or duplicate completion' })
+        )
+    })
+
     it('releases an unlimited-budget at_capacity slot when the client disconnects', async () => {
         const cancelled = new AbortController()
         const source = new FrameSource()
