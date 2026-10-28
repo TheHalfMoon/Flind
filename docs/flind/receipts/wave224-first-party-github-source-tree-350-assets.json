@@ -1,0 +1,68 @@
+{
+  "phase": "wave224_first_party_github_immutable_clickhouse_migration_source_tree",
+  "evidence_date": "2026-10-28",
+  "repository": "TheHalfMoon/Flind",
+  "repository_visibility": "private",
+  "source_commit": "a5585565391734d7948f7e3a6b816e35eca7db09",
+  "source_tree_sha": "23ea2f226e6be4f2caca554b6ef7cd769d61baa0",
+  "source_tree_truncated": false,
+  "source_path": "posthog/clickhouse/migrations/",
+  "source_method": "Authenticated GitHub REST Git-tree traversal of the immutable first-party main commit, cross-checked with Contents API top-level file SHA and sizes; no checkout or DB.",
+  "canonical_python_migration_modules": 345,
+  "noncanonical_python_migration_modules": 1,
+  "noncanonical_python_paths": [
+    "posthog/clickhouse/migrations/0067_event_kafka_debug_table copy.py"
+  ],
+  "python_migration_modules_total": 346,
+  "python_migration_bytes": 406051,
+  "sql_asset_count": 4,
+  "sql_asset_bytes": 76714,
+  "sql_asset_paths": [
+    "posthog/clickhouse/migrations/sql/0238/eu_kafka.sql",
+    "posthog/clickhouse/migrations/sql/0238/eu_mv.sql",
+    "posthog/clickhouse/migrations/sql/0238/us_kafka.sql",
+    "posthog/clickhouse/migrations/sql/0238/us_mv.sql"
+  ],
+  "source_files_total": 350,
+  "source_file_bytes": 482765,
+  "first_canonical_python": "posthog/clickhouse/migrations/0001_initial.py",
+  "last_canonical_python": "posthog/clickhouse/migrations/0359_logs_ingest_to_apm.py",
+  "module_manifest_sha256": "018b6117524c82a594fb8d5f7ff0cd695fbbff34ca3a9b5c0d2758570ccf8c6f",
+  "manifest_algorithm": "SHA256 over sorted UTF-8 entries path + NUL + 40-hex Git blob SHA + NUL, including 346 Python migration modules and four nested SQL assets, matching Wave224 audit algorithm.",
+  "sha256_implementation_selftest": "SHA256('abc') = ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
+  "contents_api_top_level_crosscheck": true,
+  "git_tree_regular_modes_and_size_limits_pass": true,
+  "sample_blob_reads": [
+    {
+      "path": "posthog/clickhouse/migrations/0001_initial.py",
+      "sha": "9c7bb587ed038654464fcd877527b84110076698",
+      "bytes": 441,
+      "utf8_size_match": true
+    },
+    {
+      "path": "posthog/clickhouse/migrations/0359_logs_ingest_to_apm.py",
+      "sha": "0c075b5a0ef921a9d61f14db23b7b6aa29a4dcca",
+      "bytes": 2451,
+      "utf8_size_match": true
+    },
+    {
+      "path": "posthog/clickhouse/migrations/0067_event_kafka_debug_table copy.py",
+      "sha": "ec3b91cd634ca9bf69cade94d1d74937413ac16f",
+      "bytes": 741,
+      "utf8_size_match": true
+    },
+    {
+      "path": "posthog/clickhouse/migrations/0248_drop_msk_kafka_engines_with_ws_equivalents.py",
+      "sha": "42bb29c1db5692310162c2f70fb39f45672f83a3",
+      "bytes": 8675,
+      "utf8_size_match": true
+    }
+  ],
+  "all_source_blobs_locally_verified": false,
+  "offline_git_audit_executed_on_full_flind_checkout": false,
+  "clickhouse_schema_qualified": false,
+  "migrations_applied_qualified": false,
+  "native_ingestion_e2e_qualified": false,
+  "release_qualified": false,
+  "notes": "Remote GitHub metadata is genuine first-party immutable-source evidence, not an offline local git cat-file pass and not proof all 350 blobs were downloaded or executed. The four SQL files were previously omitted by the Python-only source manifest; Wave224 now includes them. No services, data, migrations, publication or deployment were touched."
+}
