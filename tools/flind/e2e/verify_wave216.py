@@ -10,6 +10,12 @@ import urllib.request
 PROJECT = "flindwave216"
 SERVICES = {"postgres": 15439, "redis": 16380, "clickhouse": 18124}
 
+
+def require(condition, message):
+    """Fail closed even when Python runs with -O (asserts disabled)."""
+    if not condition:
+        raise AssertionError(message)
+
 def inspect(service):
     name = f"{PROJECT}-{service}-1"
     run = subprocess.run(
@@ -19,17 +25,17 @@ def inspect(service):
 
 def assert_owned_service(service, data):
     labels = data["Config"]["Labels"]
-    assert labels.get("com.docker.compose.project") == PROJECT, "wrong Compose project"
-    assert labels.get("com.docker.compose.service") == service, "wrong service label"
-    assert data["State"]["Running"], "isolated Flind service is not running"
-    assert data["State"].get("Health", {}).get("Status") == "healthy", "unhealthy test service"
+    require(labels.get("com.docker.compose.project") == PROJECT, "wrong Compose project")
+    require(labels.get("com.docker.compose.service") == service, "wrong service label")
+    require(data["State"]["Running"], "isolated Flind service is not running")
+    require(data["State"].get("Health", {}).get("Status") == "healthy", "unhealthy test service")
     ports = data["NetworkSettings"]["Ports"]
     target_port = {"postgres": "5432/tcp", "redis": "6379/tcp", "clickhouse": "8123/tcp"}[service]
     publishes = ports.get(target_port) or []
-    assert len(publishes) == 1, "unexpected port mappings"
+    require(len(publishes) == 1, "unexpected port mappings")
     p = publishes[0]
-    assert p["HostIp"] == "127.0.0.1", "service exposed beyond loopback"
-    assert int(p["HostPort"]) == SERVICES[service], "unexpected host port"
+    require(p["HostIp"] == "127.0.0.1", "service exposed beyond loopback")
+    require(int(p["HostPort"]) == SERVICES[service], "unexpected host port")
 
 def clickhouse_sql(query):
     auth = base64.b64encode(b"flind_test:flind_local_only").decode("ascii")
@@ -48,9 +54,15 @@ def check_synthetic_clickhouse_write():
     clickhouse_sql(f"CREATE TABLE {table} (team_id UInt32, event String) ENGINE=MergeTree ORDER BY (team_id,event)")
     try:
         clickhouse_sql(f"INSERT INTO {table} VALUES (101, 'synthetic-a'), (202, 'synthetic-b')")
-        assert clickhouse_sql(f"SELECT count() FROM {table} WHERE team_id=101") == "1"
-        assert clickhouse_sql(f"SELECT count() FROM {table} WHERE team_id=202") == "1"
-        assert clickhouse_sql(f"SELECT count() FROM {table}") == "2"
+        require(
+            clickhouse_sql(f"SELECT count() FROM {table} WHERE team_id=101") == "1",
+            "synthetic tenant 101 not isolated",
+        )
+        require(
+            clickhouse_sql(f"SELECT count() FROM {table} WHERE team_id=202") == "1",
+            "synthetic tenant 202 not isolated",
+        )
+        require(clickhouse_sql(f"SELECT count() FROM {table}") == "2", "synthetic ClickHouse row count mismatch")
         return True
     finally:
         clickhouse_sql(f"DROP TABLE {table}")
@@ -64,7 +76,7 @@ def read_database_names():
     )
     actual = set(r.stdout.splitlines())
     expected = {"test_posthog", "test_persons", "test_behavioral_cohorts", "test_cyclotron_node"}
-    assert expected <= actual, "isolated PG test databases missing"
+    require(expected <= actual, "isolated PG test databases missing")
     return sorted(expected)
 
 def check_redis():
@@ -72,7 +84,7 @@ def check_redis():
         ["docker", "exec", f"{PROJECT}-redis-1", "redis-cli", "PING"],
         text=True, capture_output=True, timeout=15, check=True
     )
-    assert r.stdout.strip() == "PONG", "isolated Redis unavailable"
+    require(r.stdout.strip() == "PONG", "isolated Redis unavailable")
 
 def check_clickhouse():
     database = "flind_test_wave216abc123"
@@ -82,7 +94,7 @@ def check_clickhouse():
         headers={"Authorization": "Basic " + auth}
     )
     with urllib.request.urlopen(request, timeout=15) as r:
-        assert r.read().decode().strip() == database, "wrong ClickHouse database"
+        require(r.read().decode().strip() == database, "wrong ClickHouse database")
     return database
 
 if __name__ == "__main__":
@@ -94,10 +106,10 @@ if __name__ == "__main__":
         clickhouse_db = check_clickhouse()
         write_probe = "--synthetic-clickhouse-write-probe" in sys.argv
         if write_probe:
-            assert len(sys.argv) == 2, "unknown arguments"
+            require(len(sys.argv) == 2, "unknown arguments")
             check_synthetic_clickhouse_write()
         else:
-            assert len(sys.argv) == 1, "unknown arguments"
+            require(len(sys.argv) == 1, "unknown arguments")
         print(json.dumps({
             "status": "PASS",
             "scope": "isolated_databases_only_not_joined_ingestion",

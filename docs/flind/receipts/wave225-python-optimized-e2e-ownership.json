@@ -1,0 +1,21 @@
+{
+  "phase": "wave225_python_optimized_e2e_ownership_guards",
+  "evidence_date": "2026-10-28",
+  "source_commit": "a5585565391734d7948f7e3a6b816e35eca7db09",
+  "original_source_git_blob": "a096fe44848b1067e035cb66d741836e9d76ba0c",
+  "patched_source_git_blob": "45e8814ea80de52870a148311453bea975a1781a",
+  "test_git_blob": "1c102b1c24c53db0e87555a21edac5e79ce0828e",
+  "patched_source_sha256": "be20696c8ca335c884c93e798644d5573c988e2ea0102ec1081b3e09b1b39e4a",
+  "test_sha256": "d0456caba461d61f14a32640bb18afe69dbc671fac04f4d1cac60e2b3660473d",
+  "baseline_python_O_tests": 13,
+  "baseline_python_O_failures": 16,
+  "baseline_python_O_errors": 1,
+  "patched_normal_tests_passed": 13,
+  "patched_optimized_tests_passed": 13,
+  "python_compilation": true,
+  "real_docker_or_databases_used": false,
+  "original_native_service_e2e_qualified": false,
+  "postgres_full_migrations_qualified": false,
+  "clickhouse_full_migrations_qualified": false,
+  "release_qualified": false
+}
