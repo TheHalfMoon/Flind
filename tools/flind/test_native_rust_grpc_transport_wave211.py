@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 from pathlib import Path
+import os
+import subprocess
 import tempfile
 import unittest
 
@@ -51,8 +53,18 @@ class NativeRustGrpcQualifierTests(unittest.TestCase):
             foreign.mkdir()
             (foreign / OWNER).write_text(MARKER, encoding="utf8")
             link = base / "Flind-wave211-rust-target"
-            link.symlink_to(foreign, target_is_directory=True)
+            if os.name == "nt":
+                subprocess.run(
+                    ["cmd", "/c", "mklink", "/J", str(link), str(foreign)],
+                    check=True, capture_output=True,
+                )
+                self.assertTrue(link.is_junction())
+                self.assertFalse(link.is_symlink())
+            else:
+                link.symlink_to(foreign, target_is_directory=True)
             self.assertFalse(target_safely_owned(root, link))
+            if os.name == "nt":
+                link.rmdir()
 
 
 if __name__ == "__main__":

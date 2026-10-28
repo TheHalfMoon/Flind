@@ -1,0 +1,28 @@
+{
+  "phase": "wave229_windows_junction_kafka_cleanup",
+  "date": "2026-10-29",
+  "repo": "TheHalfMoon/Flind",
+  "base_main": "0b9ccdcc32f303a171f456e5dfbf3079f51f3f95",
+  "source_scope": "Wave211/212 ownership validation and first-party tests",
+  "defect": "Windows directory junction is Path.is_junction() true but Path.is_symlink() false; owner-marked reparse targets previously admitted",
+  "fix": "Reject Windows filesystem reparse-point targets before relying on owner markers; preserve Linux/macOS symlink denials",
+  "kafka_cleanup": "Production listener refusal gate unchanged, only errno.ECONNREFUSED qualifies; timeout or in-progress is not proof of cleanup",
+  "tests": {
+    "python": "3.14.7",
+    "first_party_original_modules": [
+      "tools.flind.test_sparse_registry_diagnostics_wave220",
+      "tools.flind.test_workspace_proto_registry_wave221",
+      "tools.flind.test_rust_consumer_offline_wave210",
+      "tools.flind.test_original_rust_kafka_wave212",
+      "tools.flind.test_native_rust_grpc_transport_wave211"
+    ],
+    "normal_passed": 23,
+    "optimized_passed": 23,
+    "total_executions_passed": 46,
+    "actual_windows_junction_in_disposable_fixture": true,
+    "real_broker_or_rust_process_ran": false
+  },
+  "release_qualified": false,
+  "no_publish_deploy": true,
+  "repo_remains_private": true
+}

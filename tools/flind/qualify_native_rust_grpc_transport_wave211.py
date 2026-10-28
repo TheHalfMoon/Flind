@@ -14,6 +14,7 @@ from pathlib import Path
 import re
 import shutil
 import signal
+import stat
 import subprocess
 import sys
 import time
@@ -50,6 +51,13 @@ def target_safely_owned(root: Path, target: Path) -> bool:
     """Never write into user Cargo targets or a non-marker-owned directory."""
     target = target.absolute()
     if target.is_symlink() or target.parent.resolve() != root.parent.resolve():
+        return False
+    # A Windows junction does not satisfy Path.is_symlink(): reject all
+    # preexisting reparse points before reading its owner marker or writing.
+    if target.exists() and (
+        getattr(target.lstat(), "st_file_attributes", 0)
+        & getattr(stat, "FILE_ATTRIBUTE_REPARSE_POINT", 0)
+    ):
         return False
     if target.name != root.name + "-rust-target":
         return False

@@ -16,6 +16,7 @@ from pathlib import Path
 import re
 import shutil
 import socket
+import stat
 import subprocess
 import sys
 import tempfile
@@ -42,6 +43,11 @@ MARKER = "FLIND_WAVE212_LOCAL_RUNTIME_V1\n"
 
 def verify_runtime(runtime: Path) -> bool:
     if runtime.is_symlink() or not runtime.is_dir():
+        return False
+    # Windows directory junctions are reparse points, not symlinks, and can
+    # redirect an apparently owner-marked directory to a foreign location.
+    if (getattr(runtime.lstat(), "st_file_attributes", 0)
+            & getattr(stat, "FILE_ATTRIBUTE_REPARSE_POINT", 0)):
         return False
     owner = runtime / ".flind-wave212-owner"
     if not owner.is_file() or owner.read_text(encoding="utf8") != MARKER:
