@@ -1,0 +1,68 @@
+{
+  "schema": "flind.wave270.real-clickhouse-and-original-command-readonly.v1",
+  "date_utc": "2026-10-29",
+  "repository": "TheHalfMoon/Flind",
+  "visibility": "private",
+  "tested_main_baseline": "b446a6b104eea9cf96427b0068d18027c79dba06",
+  "original_migration_git_tree": "23ea2f226e6be4f2caca554b6ef7cd769d61baa0",
+  "original_command_git_blob": "a3292548f7b3564ea265c232c3f9c43df933c410",
+  "original_full_django_source": "owner-only W269 original source-attested copy",
+  "runner_git_blobs": {
+    "tools/flind/qualify_live_clickhouse_readonly_plan_wave270.py": "9a0187f3c0cb786e6cf594e8e01b8057c13ddbee",
+    "tools/flind/live_clickhouse_readonly_plan_child_wave270.py": "3f88f4f7fa67d6749e00b72bf207c23cbc33f049"
+  },
+  "live_original_clickhouse_version": "25.12.7.21",
+  "keeper_and_one_node_supported": true,
+  "real_cluster_name": "posthog_migrations",
+  "synthetic_db": "flind_wave270_synthetic",
+  "original_tracking_ddl_from_source": true,
+  "real_replicated_and_distributed_tracking_verified": true,
+  "real_infi_synthetic_migration_applied": true,
+  "real_infi_synthetic_repeat_noop": true,
+  "original_Django_Command_migrate_live_read_only_plan_check": true,
+  "original_cmd_live_plan_upto_zero": true,
+  "original_cmd_live_plan_print_sql_upto_one": true,
+  "original_cmd_live_check_upto_one_expected_nonzero": true,
+  "original_Flind_migration_history_before_and_after": {
+    "before": 0,
+    "after": 0
+  },
+  "real_346_product_migration_operations_executed": false,
+  "real_346_product_migration_modules_imported_into_Django": true,
+  "process_exit": 0,
+  "native_signals": [
+    "W270_REAL_INFI_READONLY_PLAN_ZERO_PASS",
+    "W270_REAL_INFI_READONLY_PLAN_SQL_PASS",
+    "W270_REAL_INFI_READONLY_CHECK_PASS",
+    "W270_REAL_CLICKHOUSE_ORIGINAL_COMMAND_READONLY_PASS"
+  ],
+  "owned_services_stopped": true,
+  "owned_aggregate_scratch_cleaned": true,
+  "released_report_fields": {
+    "first_party_tracking_ddl_executed": true,
+    "w270_original_migration_history_unchanged": true,
+    "free_gib_after": 18.535
+  },
+  "rerun_preconditions": [
+    "owner-only macOS with authorized private GitHub checkout and supported official local ClickHouse binary",
+    "original W260-compatible ClickHouse source and infi-ORM pinned environment present",
+    "recreate W269 source directory plus exact authenticated assets in /private/tmp/flind-wave269-native-plan",
+    "copy committed Wave270 runner into /private/tmp/flind-wave269-native-plan/w270-live-synthetic-runner.py",
+    "copy committed Wave270 child into /private/tmp/flind-wave269-native-plan/native_real_clickhouse_plan_wave270.py",
+    "run only with verified local disposable owners scratch and free disk above safety floor"
+  ],
+  "limitations": {
+    "all_real_Flind_product_migrations_applied": false,
+    "multi_node_recovery_or_rollback_proven": false,
+    "live_authenticated_tenant_ingest_Rust_Node_API_SDK_browser_qualified": false,
+    "release_qualified": false
+  },
+  "safety": {
+    "single_node_loopback_only": true,
+    "real_ClickHouse_synthetic_data_only": true,
+    "no_customer_or_shared_data": true,
+    "no_paid_tool": true,
+    "no_deploy_or_publication": true,
+    "Github_Actions_disabled": true
+  }
+}
