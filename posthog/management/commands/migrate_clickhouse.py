@@ -4,7 +4,7 @@ import datetime
 from textwrap import indent
 
 from django.conf import settings
-from django.core.management.base import BaseCommand
+from django.core.management.base import BaseCommand, CommandError
 
 from cachetools import cached
 from infi.clickhouse_orm import Database
@@ -68,6 +68,9 @@ class Command(BaseCommand):
         self.migrate(CLICKHOUSE_HTTP_URL, options)
 
     def migrate(self, host, options):
+        # --print-sql must never fall through to an apply or fake write path.
+        if options["print_sql"] and not options["plan"]:
+            raise CommandError("--print-sql requires --plan")
         creds = get_clickhouse_creds(ClickHouseUser.MIGRATIONS)
 
         # Planning and checking must never create the database or metadata.

@@ -2,6 +2,8 @@ import base64
 from pathlib import Path
 from types import SimpleNamespace
 
+from django.core.management.base import CommandError
+
 import pytest
 from unittest.mock import patch
 
@@ -132,3 +134,55 @@ def test_migration_selection_respects_upto_before_yield(
     ):
         names = [name for name, _ in Command().get_migrations(object(), upto)]
     assert names == expected
+
+
+@pytest.mark.parametrize(
+    "other_options",
+    [
+        pytest.param({}, id="would_apply_real_migrations"),
+        pytest.param({"fake": True}, id="would_fake_applied_migrations"),
+        pytest.param({"check": True}, id="check_without_plan_still_invalid"),
+    ],
+)
+def test_print_sql_requires_plan_before_any_side_effects(
+    other_options: dict[str, bool],
+) -> None:
+    # The flag's documented contract says --print-sql is only valid with --plan.
+    # The original command otherwise silently runs the write-enabled branch.
+    with patch(
+        "posthog.management.commands.migrate_clickhouse.get_clickhouse_creds",
+        side_effect=RuntimeError("unsafe credential lookup attempted"),
+    ) as credential_lookup:
+        with pytest.raises(CommandError, match=r"--print-sql requires --plan"):
+            Command().migrate(
+                CLICKHOUSE_URL, {**APPLY_OPTIONS, **other_options, "print_sql": True}
+            )
+    credential_lookup.assert_not_called()
+
+
+def test_print_sql_with_plan_is_read_only(capsys: pytest.CaptureFixture[str]) -> None:
+    creds = ClickHouseCredentials(user="migrations", password="synthetic-only")
+    sql = SimpleNamespace(_sql="SELECT 123 AS flind_test")
+    with (
+        patch(
+            "posthog.management.commands.migrate_clickhouse.get_clickhouse_creds",
+            return_value=creds,
+        ),
+        patch("posthog.management.commands.migrate_clickhouse.Database") as database,
+        patch.object(Command, "_create_database_if_not_exists") as create_database,
+        patch.object(Command, "_create_migration_tracking_tables_if_not_exist") as create_tracking,
+        patch.object(Command, "get_migrations", return_value=[("0001_test", [sql])]),
+        patch.object(Command, "get_applied_migrations", return_value=set()),
+    ):
+        Command().migrate(
+            CLICKHOUSE_URL, {**APPLY_OPTIONS, "plan": True, "print_sql": True}
+        )
+    output = capsys.readouterr().out
+    assert "0001_test" in output
+    assert "SELECT 123 AS flind_test" in output
+    create_database.assert_not_called()
+    create_tracking.assert_not_called()
+    assert database.call_args.kwargs["readonly"] is True
+    assert database.call_args.kwargs["autocreate"] is False
+    database.return_value.migrate.assert_not_called()
+    database.return_value.insert.assert_not_called()

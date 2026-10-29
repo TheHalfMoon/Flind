@@ -1,0 +1,63 @@
+{
+  "schema": "flind.wave264.print-sql-requires-plan-failclosed.v1",
+  "date_utc": "2026-10-29",
+  "repository": "TheHalfMoon/Flind",
+  "visibility": "private",
+  "base_main_commit": "dbd1cf5286ea2b71cb1e9338f22dd4922efe176b",
+  "source_git_blobs": {
+    "posthog/clickhouse/client/connection.py": "586900ac49ea84eb1315dd7169a824b15cae1b0c",
+    "posthog/management/commands/migrate_clickhouse.py": "a3292548f7b3564ea265c232c3f9c43df933c410",
+    "posthog/management/commands/test/test_migrate_clickhouse.py": "1100c2fe67cc82c72deb0c68b7afd87c7e080560",
+    "tools/flind/qualify_product_migrate_pytest_wave264.py": "4eae85463eb4dfce931566735e0ab1ed8b6b87a7",
+    "tools/flind/test_print_sql_requires_plan_wave264.py": "868843655b04d02a04403bd877daf112ebd7cd4a"
+  },
+  "defect": "Original CLI documented --print-sql as valid only with --plan but Command.migrate silently entered write-enabled migration apply/fake branch when print_sql was used without plan.",
+  "fix": "Validate print_sql requires plan and raise Django CommandError before credentials and any database operation; retain --plan --print-sql as read-only SQL preview.",
+  "red_baseline": {
+    "original_cmd_git_blob": "3be0748551d024cbadea24fc1febae46ca88b6a0",
+    "first_party_pytest_total": 13,
+    "first_party_pytest_pass": 10,
+    "first_party_pytest_fail": 3,
+    "failure_mode": "unexpected credential access before option validation",
+    "real_network_or_db_used": false
+  },
+  "green_evidence": {
+    "original_first_party_product_pytest_isolated": {
+      "total": 14,
+      "passed": 14,
+      "failed": 0,
+      "source_git_blobs_verified": true
+    },
+    "source_ast_stdlib_unittest": {
+      "total": 4,
+      "passed": 4,
+      "failed": 0
+    },
+    "source_ast_stdlib_unittest_optimized": {
+      "total": 4,
+      "passed": 4,
+      "failed": 0
+    },
+    "python_compilation": true,
+    "original_django_bootstrap": false,
+    "full_project_pytest": false,
+    "live_clickhouse_or_postgres": false,
+    "source_locked_python": "3.14.7",
+    "source_locked_pytest": "9.1.1",
+    "source_locked_django": "5.2.18",
+    "source_locked_infi": "2.1.0.post20"
+  },
+  "non_goals": {
+    "all_345_product_clickhouse_migrations_applied": false,
+    "multi_node_and_rollback_proven": false,
+    "production_Rust_Node_authenticated_pipeline_qualified": false,
+    "release_qualified": false
+  },
+  "safety": {
+    "strictly_private": true,
+    "no_customer_data": true,
+    "no_paid_tools": true,
+    "GitHub_Actions_enabled": false,
+    "no_deployment_or_publication": true
+  }
+}
