@@ -1,0 +1,45 @@
+{
+  "schema": "flind.wave255.kafka-engine-gate.unit-prequalification.v1",
+  "date": "2026-10-29",
+  "repository": "TheHalfMoon/Flind",
+  "visibility": "private",
+  "base_main_commit": "e3a01331866510b658b315612a62614c3cf979d9",
+  "tested_candidate_commit": "c9b18a12d1eb57d077053281da659d3014a66581",
+  "test_scope": "source-backed fail-closed unit tests only; synthetic mocks of Kafka/ClickHouse network side effects",
+  "module": "tools/flind/qualify_native_kafka_engine_wave255.py",
+  "original_tests": "tools/flind/test_qualify_native_kafka_engine_wave255.py",
+  "source_verified_blob_sha256_or_git": {
+    "module_git_blob": "7b152baf54c16ea2218bd6c5ba2813d0649d5449",
+    "test_git_blob": "9f3d899f3d6b9d855dd0fefb83114224d8e667ba"
+  },
+  "qualification_unit_tests": {
+    "original_new_tests": 13,
+    "original_new_pass": 13,
+    "combined_first_party_tests_normal": 67,
+    "combined_first_party_tests_optimized": 67,
+    "combined_first_party_skipped_normal": 1,
+    "combined_first_party_skipped_optimized": 1,
+    "combined_fail": 0,
+    "combined_error": 0
+  },
+  "fail_closed_safety_checks": [
+    "owner-only synthetic local Kafka and supported SHA256-attested ClickHouse 25.12",
+    "reject non-loopback brokers, unsafe HTTP payloads and unsupported versions",
+    "enforce >=16.8 GiB free before launch, >=16.45 GiB before official unpacking and >=15.5 GiB while polling",
+    "validate first-party Git-backed service version and events_recent HCL source contract",
+    "require exact three synthetic records and team 101/202/303 count isolation",
+    "qualify on-disk MergeTree part presence and delete disposable Kafka ENGINE source/view/target after probe",
+    "never qualify original Rust or Node production ingest, tenant authorization, distributed ClickHouse migrations, or release from synthetic test"
+  ],
+  "native_live_run": {
+    "attempted": false,
+    "blocked_by": "Owner Mac free disk fluctuated below mandatory 15.5 GiB reserve; test-only scripts abstained before starting Kafka or ClickHouse",
+    "real_clickhouse_kafka_engine_subscription_qualified": false,
+    "real_materialized_view_mergetree_qualified": false,
+    "authenticated_product_api_qualified": false,
+    "release_qualified": false
+  },
+  "hardware_status": "Owner Mac 8 GiB physical RAM; variable available storage; do not run genuine native integration until sufficient free disk reserve",
+  "publication": "NO-GO; PRIVATE, do not deploy/publish or enable GitHub Actions; no paid tools",
+  "next": "Once Mac >=16.8 GiB free at start and >=15.5 GiB free during tests, run this exact first-party tool with owner-marked official CH25.12 asset and original Kafka4.3.1 distribution; independently verify actual native receipt before promoting any Kafka-engine component status. Then native Rust+Node worker path, distributed CH migrations and tenant auth/browser."
+}
