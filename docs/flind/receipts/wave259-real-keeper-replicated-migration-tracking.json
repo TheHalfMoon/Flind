@@ -1,0 +1,73 @@
+{
+  "schema": "flind.wave259.owner-only-keeper-single-replica-tracking-prerequisite.v1",
+  "date_utc": "2026-10-29",
+  "private_repo": "TheHalfMoon/Flind",
+  "main_at_authoring": "405ab7b37e581211523b074dacdb287f85fe4cea",
+  "original_source_commit": "6e5da8f24fb04312ea1dd7778811ca1b21339fd9",
+  "original_migration_runner": "posthog/management/commands/migrate_clickhouse.py",
+  "original_migration_runner_git_blob": "aa993e44eb204f118392a1e0a483fcfa2e201566",
+  "source_attestation": "Migration-tracking DDL substrings anchored to original first-party source; not imported via Django/infi",
+  "source_artifact": "tools/flind/qualify_keeper_migration_tracking_wave259.py",
+  "source_artifact_git_blob": "3b6905787cdcfbbfb7c61359ef5ddf01ba11bd71",
+  "unit_artifact": "tools/flind/test_qualify_keeper_migration_tracking_wave259.py",
+  "unit_artifact_git_blob": "0ab22e4c1b33b016b599fcb1ec84a5dd431019e9",
+  "owner_environment": {
+    "hardware": "Mac Apple Silicon 8 GiB RAM",
+    "test_python_version": "3.14.7",
+    "native_supported_clickhouse_version": "25.12.7.21",
+    "official_compressed_asset_sha256": "e5be46727e773893b5786aaa3d28f5661a30179fe65e19096d8eb7d41a554fd6",
+    "compressed_asset_source_path": "/private/tmp/flind-wave188-ch2512-durable/clickhouse-original-compressed-aarch64",
+    "compressed_asset_bytes": 123762120,
+    "compressed_asset_hardlink_count": 1,
+    "scratch_scope": "owner-only /private/tmp, temporary directories 0700, both processes on 127.0.0.1",
+    "floor_free_gib": 15.5,
+    "post_clean_free_gib_approx": 20.55
+  },
+  "real_native_runs": {
+    "initial_blocker": "ReplicatedMergeTree remained read-only; original source tracking DDL created, but native interserver HTTP was absent",
+    "root_cause": "ClickHouse server needed localhost interserver_http_port/interserver_http_host for ReplicatedMergeTree startup (Code 139)",
+    "private_test_fix": "Unique ephemeral 127.0.0.1 interserver HTTP port, one-node posthog_migrations cluster, local Keeper raft, source-verified original tracking DDL",
+    "optimized_live_original_gate_exit": 0,
+    "keeper_native_local_real_process_pass": true,
+    "clickhouse_25_12_local_real_process_pass": true,
+    "one_node_cluster_on_cluster_database_create_pass": true,
+    "replicated_migration_tracking_table_ddl_pass": true,
+    "distributed_migration_tracking_table_ddl_pass": true,
+    "actual_replica_health_is_readonly_false": true,
+    "actual_replica_keeper_session_healthy": true,
+    "distributed_empty_history_readback_pass": true,
+    "real_synthetic_tracking_row_insert_pass": true,
+    "real_synthetic_distributed_tracking_row_readback_pass": true,
+    "owner_kafka_keeper_clickhouse_processes_stopped": true,
+    "owner_scratch_deleted": true
+  },
+  "unit_safety_tests": {
+    "normal": {
+      "total": 10,
+      "passed": 10,
+      "failed": 0
+    },
+    "python_optimized": {
+      "total": 10,
+      "passed": 10,
+      "failed": 0
+    },
+    "test_scope": "offline/mocked fail-closed safety, exact source blob, loopback-only HTTP, safe resource/owner refusal, no optimized-away assertions",
+    "cross_platform_note": "Source checkout attestation test skips on hosts without the owner-only Flind source. Safety mocks use platform-local TemporaryDirectory and run independent of owner path."
+  },
+  "critical_scope_exclusions": {
+    "original_django_migrate_clickhouse_command_executed": false,
+    "infi_clickhouse_orm_migration_runner_executed": false,
+    "real_original_345_migrations_applied": false,
+    "replicated_multinode_migrations_qualified": false,
+    "replicated_multinode_data_plane_qualified": false,
+    "complete_schema_qualified": false,
+    "native_flind_production_rust_and_node_ingestion_qualified": false,
+    "authenticated_tenant_api_sdk_browser_qualified": false,
+    "release_qualified": false
+  },
+  "important_warning": "Original migrate_clickhouse --plan/--check may CREATE database and tracking tables before displaying plan. Do not invoke against non-owner or shared databases. Offline Wave224 is source inventory only.",
+  "mutable_binary_caution": "Self-extracting ClickHouse binary can mutate a runtime copy. Never hardlink compressed official source to executed runtime; copy only. Historical source asset was independently SHA verified; alternate earlier owner scratch binary had expanded and was rejected.",
+  "privacy": "STRICT PRIVATE; synthetic owner-only data; no production/shared DB; no Github Actions, paid models/services, releases or deployment",
+  "next": "Qualify actual isolated Django/infi original ClickHouse migration runner against single-node keeper topology in small bounded batches, then test full distributed/multinode replication, rollback, original production Rust/Node tenant APIs and SDK/browser."
+}
