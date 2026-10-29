@@ -18,10 +18,8 @@ def record() -> dict:
 
 class NodeConverterWave183(unittest.TestCase):
     def test_original_first_party_converter_is_verified_from_git(self):
-        repo = Path("/private/tmp/flind-wave171-current-boot")
-        if not repo.exists():
-            self.skipTest("Mac scratch source unavailable")
-        self.assertTrue(w.verify_source_converter(repo))
+        # Verify the actual source checkout under test, never a stale Mac scratch repo.
+        self.assertTrue(w.verify_source_converter(w.ROOT))
 
     def test_node_original_typescript_converter_preserves_uuid(self):
         result = w.node_adapter(record(), ACK)
