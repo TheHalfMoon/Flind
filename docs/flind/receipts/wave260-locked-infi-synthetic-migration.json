@@ -1,0 +1,63 @@
+{
+  "schema": "flind.wave260.locked-infi-real-synthetic-one-migration.v1",
+  "date_utc": "2026-10-29",
+  "private_repository": "TheHalfMoon/Flind",
+  "main_at_test_setup": "9a2dc226b3c7b76af78e03705ec4a49992ed366f",
+  "first_party_command_source_commit": "6e5da8f24fb04312ea1dd7778811ca1b21339fd9",
+  "first_party_command_git_blob": "aa993e44eb204f118392a1e0a483fcfa2e201566",
+  "live_gate_source": "tools/flind/qualify_infi_synthetic_migration_wave260.py",
+  "live_gate_git_blob": "9277f78bba445ffb7aba91e95c67c0d17c6ee935",
+  "test_source": "tools/flind/test_qualify_infi_synthetic_migration_wave260.py",
+  "test_git_blob": "aa7ae01b9e08d7c5de5bac8dd122412b321b2c12",
+  "original_dependency": {
+    "python": "3.14.7",
+    "infi_clickhouse_orm_version": "2.1.0.post20",
+    "infi_clickhouse_orm_original_git_commit": "4e3996becf66bf5c26580aff12a80425d9d56fe5",
+    "original_uv_lock_direct_runtime_package_versions_attested": true,
+    "virtual_environment_packages": 19,
+    "uv_pip_check": "all installed packages compatible",
+    "drifted_installed_lock_deps": 0,
+    "only_local_owner_virtual_env_created": true
+  },
+  "real_live_run": {
+    "original_git_pinned_infi_Database_migrate_called": true,
+    "original_Django_Command_migrate_called": false,
+    "original_Flind_production_migrations_executed": false,
+    "synthetic_migration_package": "flind_wave260_synthetic_one_migration",
+    "synthetic_migration_count": 1,
+    "synthetic_migration_operation": "RunSQL CREATE TABLE synthetic schema within owner-only database",
+    "original_infi_git_commit_attested_from_distribution_direct_url": true,
+    "official_clickhouse_mac_version": "25.12.7.21",
+    "official_clickhouse_compressed_asset_sha256": "e5be46727e773893b5786aaa3d28f5661a30179fe65e19096d8eb7d41a554fd6",
+    "real_keeper_single_node": true,
+    "real_CLICKHOUSE_Keeper_tracking_ddl": true,
+    "real_one_node_ReplicatedMergeTree_health": true,
+    "real_Distributed_tracking_readback": true,
+    "real_infi_one_migration_applied_and_recorded": true,
+    "real_infi_repeat_migrate_did_not_duplicate_history": true,
+    "python_optimized_live_exit_code": 0,
+    "real_owner_kafka_clickhouse_processes_stopped": true,
+    "owned_synthetic_scratch_cleaned": true,
+    "free_disk_after_cleanup_gib_approx": 20.514
+  },
+  "original_test_regressions": {
+    "tests": 12,
+    "normal_passed": 12,
+    "normal_failed": 0,
+    "optimized_passed": 12,
+    "optimized_failed": 0,
+    "mock_network_or_resource_safety_tests": true,
+    "source_and_git_blob_attested": true
+  },
+  "scope_exclusions": {
+    "full_original_345_ClickHouse_migrations_executed": false,
+    "original_Django_management_command_executed": false,
+    "production_non_synthetic_data_used": false,
+    "distributed_or_multinode_replication_qualified": false,
+    "original_production_Rust_Node_ingestion_qualified": false,
+    "authenticated_tenant_API_SDK_browser_qualified": false,
+    "release_qualified": false
+  },
+  "risk_note": "The original migrate_clickhouse --plan and --check may CREATE databases and tracking tables before returning a plan. Never run against shared servers. This synthetic test invokes only pinned infi.Database.migrate with a generated isolated single RunSQL migration. Does not import production posthog.clickhouse.migrations.",
+  "safety": "strictly PRIVATE; zero paid compute; no GitHub Actions enabling; no release/deploy/publication; no production/shared/customer data"
+}
