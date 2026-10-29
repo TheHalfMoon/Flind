@@ -1,0 +1,61 @@
+{
+  "schema": "flind.wave262.source-authenticated-original-product-pytest-isolated.v1",
+  "date_utc": "2026-10-29",
+  "repository": "TheHalfMoon/Flind",
+  "visibility": "private",
+  "source_main_commit": "087d84484cf89cf28dda3a83e4e671be06384d16",
+  "original_product_files_git_blobs": {
+    "posthog/clickhouse/client/connection.py": "586900ac49ea84eb1315dd7169a824b15cae1b0c",
+    "posthog/management/commands/migrate_clickhouse.py": "7882dea334d98f7699d54b7f4ee2821eac82318e",
+    "posthog/management/commands/test/test_migrate_clickhouse.py": "dc5fa37ccda7c45757f48f73838099baca5b8dc0"
+  },
+  "qualified_isolated_harness": "tools/flind/qualify_product_migrate_pytest_wave262.py",
+  "qualified_harness_git_blob": "b8d29ff0b0cdcc9f106c02257008ec138a18c55b",
+  "execution": {
+    "python": "3.14.7",
+    "pytest": "9.1.1",
+    "responses": "0.23.1",
+    "django": "5.2.18",
+    "infi_clickhouse_orm_version": "2.1.0.post20",
+    "infi_clickhouse_orm_git_commit": "4e3996becf66bf5c26580aff12a80425d9d56fe5",
+    "source_authenticated_three_main_git_blobs": true,
+    "original_pytest_file_run_with_original_Command_method": true,
+    "original_ClickHouseCredentials_and_get_clickhouse_creds_methods_AST_extracted": true,
+    "isolated_unrelated_posthog_modules": true,
+    "original_custom_frozen_decorator_adapted_to_stdlib_dataclass": true,
+    "actual_Django_settings_synthetic_only": true,
+    "real_network_access_forbidden_except_loopback": true,
+    "pytest_plugins_autoload_disabled": true,
+    "pytest_conftest_disabled": true,
+    "pytest_normal_total": 4,
+    "pytest_normal_passed": 4,
+    "pytest_normal_failed": 0,
+    "pytest_normal_errors": 0,
+    "credential_rotation_cases_passed": 2,
+    "plan_and_check_safety_cases_passed": 2,
+    "python_optimized_pytest_run_not_used_as_assertion_proof": true,
+    "original_full_Django_runtime_executed": false,
+    "live_clickhouse_or_postgres_services_started": false,
+    "owner_only_source_overlay_no_customer_data": true
+  },
+  "negative_mutation_control": {
+    "original_pre_fix_command_sha": "aa993e44eb204f118392a1e0a483fcfa2e201566",
+    "new_original_tests_sha": "dc5fa37ccda7c45757f48f73838099baca5b8dc0",
+    "same_source_authenticated_harness_with_baseline_checksum": true,
+    "expected_nonzero_exit_observed": 1,
+    "auth_tests_passed": 2,
+    "plan_and_check_regressions_failed": 2,
+    "failure_reason": "old command attempted _create_database_if_not_exists in plan/check, detected by new original pytest tests",
+    "controls_prove_tests_detect_original_bug": true
+  },
+  "scope_exclusions": {
+    "full_real_product_Django_app_bootstrap_tested": false,
+    "full_original_product_pytest_suite_passed": false,
+    "original_flind_345_ClickHouse_migrations_executed": false,
+    "multinode_rollback_recovery_tested": false,
+    "original_production_Rust_Node_ingest_tested": false,
+    "authenticated_tenant_api_sdk_browser_tested": false,
+    "release_qualified": false
+  },
+  "safety": "source-only and mock HTTP tests, owner-only temporary source; strictly private, no GitHub Actions/deploy/publication, no paid services, no shared DB"
+}
