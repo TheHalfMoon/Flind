@@ -96,10 +96,11 @@ def run_sql_with_exceptions(
         if sharded and is_alter_on_replicated_table:
             is_local_or_test = collapses_to_all_nodes()
             single_role = node_roles_list[0] if len(node_roles_list) == 1 else None
-            assert is_local_or_test or (single_role is not None and single_role in DATA_NODE_ROLES), (
-                "When running migrations on sharded tables, node_roles must be exactly one of "
-                f"{sorted(r.name for r in DATA_NODE_ROLES)}"
-            )
+            if not (is_local_or_test or (single_role is not None and single_role in DATA_NODE_ROLES)):
+                raise AssertionError(
+                    "When running migrations on sharded tables, node_roles must be exactly one of "
+                    f"{sorted(r.name for r in DATA_NODE_ROLES)}"
+                )
             # Satellite clusters are single-shard and live in __extra_hosts, which
             # map_one_host_per_shard cannot reach; any_host_by_roles can.
             if not is_local_or_test and single_role in SINGLE_SHARD_DATA_NODE_ROLES:
