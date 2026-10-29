@@ -1,0 +1,61 @@
+{
+  "schema": "flind.wave263.migration-upto-failclosed.v1",
+  "date_utc": "2026-10-29",
+  "repository": "TheHalfMoon/Flind",
+  "visibility": "private",
+  "base_commit": "54855b75b2c21898a15c0acd091204a9726f9a39",
+  "source_blobs": {
+    "posthog/clickhouse/client/connection.py": "586900ac49ea84eb1315dd7169a824b15cae1b0c",
+    "posthog/management/commands/migrate_clickhouse.py": "3be0748551d024cbadea24fc1febae46ca88b6a0",
+    "posthog/management/commands/test/test_migrate_clickhouse.py": "d4a770b916d78a74dc6926acd26b0bb36fe227c1",
+    "tools/flind/qualify_product_migrate_pytest_wave263.py": "26fa1ad0e3ef269e81bfa615554a9d05ffb148e4",
+    "tools/flind/test_migration_upto_boundary_wave263.py": "6f89f2c6c6caa4b69da9975ec8b380ec8ac650eb"
+  },
+  "defect": "Command.get_migrations yielded first unapplied migration above --upto before checking inclusive bound; affected planning and fake writes",
+  "fix": "Check int(migration_name[:4]) > upto BEFORE yield; exact boundary inclusive; gaps and no-unapplied-under-bound handled",
+  "test_evidence": {
+    "pre_fix_original_method_unittest": {
+      "total": 7,
+      "passed": 3,
+      "failed": 4,
+      "expected_failure_detected": true
+    },
+    "after_fix_original_method_unittest": {
+      "total": 7,
+      "passed": 7,
+      "failed": 0
+    },
+    "after_fix_optimized_unittest": {
+      "total": 7,
+      "passed": 7,
+      "failed": 0
+    },
+    "after_fix_original_firstparty_pytest_isolated": {
+      "total": 10,
+      "passed": 10,
+      "failed": 0
+    },
+    "source_verified_product_imports": true,
+    "python": "3.14.7",
+    "pytest": "9.1.1",
+    "django": "5.2.18",
+    "infi_clickhouse_orm": "2.1.0.post20",
+    "infi_source_git_commit": "4e3996becf66bf5c26580aff12a80425d9d56fe5",
+    "outbound_nonloopback_forbidden": true,
+    "full_django_runtime": false,
+    "live_clickhouse": false
+  },
+  "non_goals": {
+    "original_345_migrations_applied": false,
+    "production_pipeline_e2e_proven": false,
+    "tenant_auth_sdk_browser_qualified": false,
+    "release_qualified": false
+  },
+  "restrictions": {
+    "private": true,
+    "zero_paid_tools": true,
+    "github_actions_enabled": false,
+    "publication": false,
+    "production_data_used": false
+  }
+}

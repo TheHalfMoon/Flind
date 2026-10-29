@@ -138,10 +138,11 @@ class Command(BaseCommand):
         unapplied_migrations = set(modules.keys()) - applied_migrations
 
         for migration_name in sorted(unapplied_migrations):
-            yield migration_name, modules[migration_name].operations
-
-            if int(migration_name[:4]) >= upto:
+            # --upto is inclusive. Never plan or fake an unapplied migration
+            # beyond the requested bound, including when sequence IDs have gaps.
+            if int(migration_name[:4]) > upto:
                 break
+            yield migration_name, modules[migration_name].operations
 
     @cached(cache={})
     def get_applied_migrations(self, database) -> set[str]:

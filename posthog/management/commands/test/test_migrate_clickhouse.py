@@ -1,5 +1,6 @@
 import base64
 from pathlib import Path
+from types import SimpleNamespace
 
 import pytest
 from unittest.mock import patch
@@ -103,3 +104,31 @@ def test_inspection_never_precreates_database_or_tracking_tables(inspection_opti
     assert database_constructor.call_args.kwargs["trust_env"] is False
     database_constructor.return_value.migrate.assert_not_called()
     database_constructor.return_value.insert.assert_not_called()
+
+
+@pytest.mark.parametrize(
+    "upto, already_applied, expected",
+    [
+        (0, (), []),
+        (3, (), ["0001_initial"]),
+        (4, (), ["0001_initial", "0004_patch"]),
+        (5, (), ["0001_initial", "0004_patch"]),
+        (4, ("0001_initial", "0004_patch"), []),
+        (4, ("0001_initial",), ["0004_patch"]),
+    ],
+)
+def test_migration_selection_respects_upto_before_yield(
+    upto: int, already_applied: tuple[str, ...], expected: list[str]
+) -> None:
+    # Original product Command method; gap between migration 0004 and 0007
+    # previously let --plan and --fake include the out-of-range migration.
+    modules = {
+        name: SimpleNamespace(operations=[])
+        for name in ("0001_initial", "0004_patch", "0007_followup")
+    }
+    with (
+        patch("posthog.management.commands.migrate_clickhouse.import_submodules", return_value=modules),
+        patch.object(Command, "get_applied_migrations", return_value=set(already_applied)),
+    ):
+        names = [name for name, _ in Command().get_migrations(object(), upto)]
+    assert names == expected
