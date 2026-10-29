@@ -19,14 +19,14 @@ class FlindPublicHelpTests(unittest.TestCase):
     def test_all_primary_help_surfaces_no_longer_link_to_unowned_vendor_site(self) -> None:
         for filename in FILES:
             with self.subTest(file=filename):
-                source = (ROOT / filename).read_text()
+                source = (ROOT / filename).read_text(encoding="utf-8")
                 self.assertNotIn("https://" + VENDOR, source)
                 self.assertIn("flindPublicUrl", source)
 
     def test_unconfigured_help_pages_do_not_show_broken_buttons(self) -> None:
         for filename in FILES:
             with self.subTest(file=filename):
-                source = (ROOT / filename).read_text()
+                source = (ROOT / filename).read_text(encoding="utf-8")
                 self.assertTrue(
                     "docsUrl &&" in source
                     or "changelogUrl &&" in source
@@ -36,7 +36,7 @@ class FlindPublicHelpTests(unittest.TestCase):
                 )
 
     def test_only_operator_configured_exact_first_party_site_is_trusted(self) -> None:
-        source = (ROOT / "frontend/src/lib/flindPublicLinks.ts").read_text()
+        source = (ROOT / "frontend/src/lib/flindPublicLinks.ts").read_text(encoding="utf-8")
         self.assertIn("VITE_FLIND_WEBSITE_HOST", source)
         self.assertIn("VITE_FLIND_DOCS_URL", source)
         self.assertIn("VITE_FLIND_CHANGELOG_URL", source)
@@ -47,12 +47,12 @@ class FlindPublicHelpTests(unittest.TestCase):
         self.assertNotIn("https://" + VENDOR, source)
 
     def test_cloud_upgrade_link_is_not_shown_to_flind_local_users(self) -> None:
-        source = (ROOT / "frontend/src/lib/components/HelpMenu/HelpMenu.tsx").read_text()
+        source = (ROOT / "frontend/src/lib/components/HelpMenu/HelpMenu.tsx").read_text(encoding="utf-8")
         self.assertNotIn("Try Post" + "Hog Cloud", source)
         self.assertNotIn("moveToPost" + "HogCloud", source)
 
     def test_help_link_tests_include_hostile_destinations(self) -> None:
-        source = (ROOT / "frontend/src/lib/flindPublicLinks.test.ts").read_text()
+        source = (ROOT / "frontend/src/lib/flindPublicLinks.test.ts").read_text(encoding="utf-8")
         self.assertIn(VENDOR + "/docs", source)
         self.assertIn("www.flind.example.attacker.com", source)
         self.assertIn(":8443/docs", source)
