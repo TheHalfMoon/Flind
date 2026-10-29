@@ -31,6 +31,37 @@ class Denied(Exception):
     pass
 
 
+def isolated_node_environment(*, windows: bool | None = None) -> dict[str, str]:
+    """Give Node only sandbox values plus Windows' required system directory.
+
+    Omitting SystemRoot on Windows can make Node abort during CSPRNG startup.
+    Do not inherit unrelated credentials, Node options, or service endpoints.
+    """
+    env = {
+        "PATH": os.environ.get("PATH", "/usr/bin:/bin"),
+        "HOME": str(ROOT), "LANG": "C", "NODE_OPTIONS": "",
+    }
+    if windows is None:
+        windows = os.name == "nt"
+    if windows:
+        system_root = os.environ.get("SystemRoot")
+        if not system_root:
+            raise Denied("native_node_adapter_windows_system_root_unavailable")
+        directory = Path(system_root)
+        try:
+            valid = (
+                directory.is_absolute() and directory.is_dir()
+                and not directory.is_symlink()
+                and not getattr(directory, "is_junction", lambda: False)()
+            )
+        except (OSError, ValueError):
+            valid = False
+        if not valid:
+            raise Denied("native_node_adapter_windows_system_root_unavailable")
+        env["SystemRoot"] = system_root
+    return env
+
+
 def verify_source_converter(repo: Path) -> bool:
     file = ROOT / CONVERTER_REL
     if not file.is_file() or file.is_symlink():
@@ -67,10 +98,7 @@ def node_adapter(event: dict, uuid: str, *, node_bin: str = "node") -> dict[str,
     }, separators=(",", ":"))
     if len(payload.encode("utf-8")) > 64 * 1024:
         raise Denied("native_node_adapter_oversized_fixture")
-    env = {
-        "PATH": os.environ.get("PATH", "/usr/bin:/bin"),
-        "HOME": str(ROOT), "LANG": "C", "NODE_OPTIONS": "",
-    }
+    env = isolated_node_environment()
     try:
         node = subprocess.run(
             [node_bin, "--no-warnings", "--experimental-strip-types", str(SCRIPT)],
