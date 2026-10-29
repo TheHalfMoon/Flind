@@ -1,0 +1,55 @@
+{
+  "schema": "flind.wave252.owner-only-pg-recovery-catalog.v1",
+  "source_commit": "6e5da8f24fb04312ea1dd7778811ca1b21339fd9",
+  "branch_tested_commit": "8d1cb2b9ca30fbfeff0a3918d6062a911e3fce08",
+  "host": "owner-only Mac / Python 3.14.7 / PostgreSQL 17.9",
+  "date": "2026-10-29",
+  "database_scope": "synthetic private Unix-socket PostgreSQL17 only; no shared, customer, network or production DB",
+  "original_django_migration_records": 3335,
+  "original_full_migration_apply_exit": 0,
+  "original_noop_idempotence_exit": 0,
+  "original_before_after_noop_pg_dump_sha256": "802911e55dd71800017577a25c96ce212173f0f8d81447eeb1d6ba815d0a70c0",
+  "pg_custom_backup_bytes": 3105572,
+  "pg_custom_backup_sha256": "29d247252a987a4a0b57f7a3f42ffce71bdee516a8ff4566b65da6424bb55854",
+  "restore_pg_restore_exit": 0,
+  "restored_django_migration_records": 3335,
+  "restored_original_django_migrate_exit": 0,
+  "restored_no_migrations_to_apply": true,
+  "source_and_restored_catalog": {
+    "read_only_snapshot_query": "tools/flind/pg_restore_catalog_wave252.sql",
+    "comparator": "tools/flind/qualify_pg_restore_catalog_wave252.py",
+    "qualified": true,
+    "rows_each": 23890,
+    "normalized_sha256": "2916cfd1fe6606bba76486ec8d43c2851ffbb8535598a5a4ab1c87343b277e23",
+    "differences": 0,
+    "breakdown": {
+      "relation": 4201,
+      "column": 13348,
+      "index": 3406,
+      "constraint": 2495,
+      "function": 440
+    },
+    "normalization": "map physical PostgreSQL attnums in columns, constraint keys and index keys to first-party column names; reject unknown references and other catalog changes"
+  },
+  "first_party_regressions": {
+    "module": "tools.flind.test_qualify_pg_restore_catalog_wave252",
+    "normal": {
+      "run": 10,
+      "passed": 10
+    },
+    "python_optimized": {
+      "run": 10,
+      "passed": 10
+    }
+  },
+  "remaining_uncertainty": [
+    "78 PostgreSQL pg_dump lines differ in expression text across restore (15 CHECK constraint lines, 63 CREATE INDEX lines); full predicate semantics not established",
+    "full Django reverse migration plan includes 15 irreversible operations across 13 migrations",
+    "no durable Kafka-Rust-Node-ClickHouse joined E2E, native full replicated ClickHouse migrations, tenant/auth/browser E2E",
+    "no release or production recovery qualification"
+  ],
+  "original_checkpoint_status": "source stopped, owner-marked, retained with backup",
+  "restored_clone_status": "stopped, owner-marked; remove after successful review",
+  "release_qualified": false,
+  "publication": "NO-GO"
+}
