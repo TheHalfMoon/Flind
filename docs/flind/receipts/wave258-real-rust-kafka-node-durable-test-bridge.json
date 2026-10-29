@@ -1,0 +1,98 @@
+{
+  "schema": "flind.wave258.owner-only-real-rust-node-durable-test-bridge.v1",
+  "observed_date": "2026-10-29",
+  "repo": "TheHalfMoon/Flind",
+  "private": true,
+  "main_at_evidence": "a71bd0a76df080568a60f7b114f544301742b6b1",
+  "source_authenticated_commit": "6e5da8f24fb04312ea1dd7778811ca1b21339fd9",
+  "original_qualifier": "tools/flind/qualify_native_rust_kafka_node_mergetree_wave190.py",
+  "original_qualifier_git_blob": "d7f7c8797f0f3cbae11e127d983ae9076756e2a0",
+  "original_test_module": "tools/flind/test_native_rust_kafka_node_mergetree_wave190.py",
+  "original_test_module_git_blob": "671c973c44608d4fc253dc2e24f2ea8b62f81745",
+  "provenance": {
+    "original_flind_source_and_cargo_lock_match": true,
+    "original_rust_proto_source_match": true,
+    "original_node_grpc_source_modules_sha_verified": 8,
+    "original_node_test_dependencies_verified": true,
+    "official_supported_clickhouse_mac25_12_sha256": "e5be46727e773893b5786aaa3d28f5661a30179fe65e19096d8eb7d41a554fd6",
+    "real_kafka_broker_version": "4.3.1"
+  },
+  "rust_fixture_build": {
+    "name": "flind-wave190-rust-kafka-to-node",
+    "source": "tools/flind/wave190-rust-kafka-node",
+    "rust_toolchain": "rustc 1.96.0",
+    "cargo_lock_preserved": true,
+    "build_command": "cargo build --locked -j 2 --manifest-path <owner-only source>/Cargo.toml",
+    "apple_sdk_cpp_header_workaround": {
+      "sdkroot": "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+      "cplus_include_path": "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1",
+      "cpp_compiler": "/usr/bin/clang++",
+      "scope": "environment variables for bounded local build only"
+    },
+    "original_offline_attempt": "missing cargo registry package; bounded public exact-locked registry retry",
+    "first_native_compiler_error": "rdkafka-sys C++ standard iostream/string headers unavailable without explicit SDK include path",
+    "original_compile_success_exit": 0,
+    "compiled_binary_bytes": 14397008,
+    "binary_sha256": "56b51edd97285e622302cdeed10f8e45e93fbdc0b4d2c5660d2350773f8690d9",
+    "binary_owner_only_local_not_committed": true,
+    "temp_build_cache_cleaned": true
+  },
+  "real_wave190_live_test": {
+    "executed_on": "owner macOS aarch64 isolated real local synthetic services",
+    "first_party_qualifier_exit": 0,
+    "elapsed_seconds": 62.6,
+    "supervisor_time_budget_seconds": 225,
+    "supervisor_disk_floor_gib": 15.5,
+    "supervisor_abort_reason": null,
+    "original_supported_clickhouse_runtime_verified": true,
+    "real_kafka_broker_pass": true,
+    "synthetic_real_kafka_producer_ack_and_consumer_pass": true,
+    "rust_test_client_exit": 0,
+    "native_rust_committed_offset_verified": 3,
+    "original_node_grpc_http2_wire_ack_verified": true,
+    "original_node_exit_code": 0,
+    "node_one_batch_accepted": true,
+    "node_shutdown_phase": "wave190_stopped",
+    "clickhouse_durable_three_reopened": true,
+    "original_real_kafka_native_rust_node_durable_test_bridge_pass": true,
+    "owned_node_stopped": true,
+    "owned_kafka_stopped": true,
+    "owned_kafka_scratch_removed": true,
+    "free_gib_at_test_exit_approx": 20.576
+  },
+  "original_first_party_units": {
+    "module": "tools.flind.test_native_rust_kafka_node_mergetree_wave190",
+    "normal": {
+      "run": 10,
+      "pass": 10,
+      "fail": 0,
+      "error": 0
+    },
+    "python_optimized": {
+      "run": 10,
+      "pass": 10,
+      "fail": 0,
+      "error": 0
+    },
+    "source_git_blobs_checked": true
+  },
+  "qualification_limits": {
+    "synthetic_test_fixture_only": true,
+    "original_production_rust_ingestion_worker_qualified": false,
+    "original_production_node_batch_ingestion_pipeline_qualified": false,
+    "authenticated_tenant_api_qualified": false,
+    "full_distributed_clickhouse_migrations_qualified": false,
+    "full_application_browser_sdk_e2e_qualified": false,
+    "production_disaster_recovery_qualified": false,
+    "release_qualified": false
+  },
+  "safety": {
+    "no_customer_data": true,
+    "no_shared_database": true,
+    "no_paid_models_or_services": true,
+    "no_deploy": true,
+    "no_publication": true,
+    "no_actions_enabled": true,
+    "release_decision": "NO-GO"
+  }
+}
