@@ -45,8 +45,13 @@ def safe_exception_class(error: BaseException) -> str:
 
 
 def git_offline_env() -> dict[str, str]:
-    """Never allow Git's promisor/partial clone to fetch missing source implicitly."""
-    return {**os.environ, "GIT_NO_LAZY_FETCH": "1", "GIT_TERMINAL_PROMPT": "0"}
+    """Keep offline Git reads pinned to literal objects, never replacement refs."""
+    return {
+        **os.environ,
+        "GIT_NO_LAZY_FETCH": "1",
+        "GIT_NO_REPLACE_OBJECTS": "1",
+        "GIT_TERMINAL_PROMPT": "0",
+    }
 
 
 

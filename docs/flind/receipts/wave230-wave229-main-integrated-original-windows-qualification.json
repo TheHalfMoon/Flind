@@ -1,0 +1,73 @@
+{
+  "phase": "wave230_wave229_main_integrated_wave223_draft_windows_qualification",
+  "date": "2026-10-29",
+  "repository": "TheHalfMoon/Flind",
+  "visibility": "private",
+  "branch": "ps/flind-wave223-postgres-unix-only-server-gate",
+  "tested_git_commit": "82243ddc11ac91be0a03e959d0a14d254d7a551d",
+  "integrated_main_commit": "d41cbe6ccfcbd3c2b6553cef3462643f84aaa5d4",
+  "previous_draft_commit": "2e2d2284e2b5fed064775b9cd54270e7a38dfd8a",
+  "merge_conflicts": 0,
+  "original_test_execution": {
+    "platform": "Windows",
+    "python": "3.14.7",
+    "source": "actual authenticated private Git checkout, all original first-party Python unittest modules listed",
+    "module_counts": {
+      "tools.flind.test_qualify_isolated_postgres_wave173": 26,
+      "tools.flind.test_sparse_registry_diagnostics_wave220,tools.flind.test_workspace_proto_registry_wave221,tools.flind.test_rust_consumer_offline_wave210,tools.flind.test_original_rust_kafka_wave212,tools.flind.test_native_rust_grpc_transport_wave211": 23,
+      "tools.flind.e2e.test_verify_wave216_optimized_wave225": 13,
+      "tools.flind.e2e.test_reset_digest_wave226": 7,
+      "tools.flind.e2e.test_reset_contract_wave218,tools.flind.e2e.test_schema_preflight_wave216": 12,
+      "tools.flind.e2e.test_offline_clickhouse_migration_inventory_wave224": 15
+    },
+    "normal": {
+      "run": 96,
+      "passed": 95,
+      "skipped": 1,
+      "errors": 0,
+      "failures": 0,
+      "exit_code": 0
+    },
+    "optimized": {
+      "run": 96,
+      "passed": 95,
+      "skipped": 1,
+      "errors": 0,
+      "failures": 0,
+      "exit_code": 0
+    },
+    "original_unit_test_executions_passed": 190,
+    "skip_reason": "Mac-only marked scratch-path test not run on Windows",
+    "live_kafka_rust_node_clickhouse_e2e_executed": false,
+    "native_postgres_migration_apply_rollback_executed": false
+  },
+  "clickhouse_migration_git_source_inventory": {
+    "audited_commit": "82243ddc11ac91be0a03e959d0a14d254d7a551d",
+    "original_git_source_audit_executed": true,
+    "source_inventory_qualified": true,
+    "canonical_python": 345,
+    "noncanonical_python": 1,
+    "sql_files": 4,
+    "total_source_assets": 350,
+    "total_source_bytes": 482765,
+    "sql_asset_bytes": 76714,
+    "sha256": "018b6117524c82a594fb8d5f7ff0cd695fbbff34ca3a9b5c0d2758570ccf8c6f",
+    "no_database_connection": true,
+    "migrations_applied_qualified": false,
+    "native_ingestion_e2e_qualified": false
+  },
+  "mac_pg": {
+    "device_online_at_check": false,
+    "previous_owned_pg_service_may_still_be_running": true,
+    "owned_pg_data_dir": "/private/tmp/flind-wave223-live-pg-20261029-001/data",
+    "prior_live_qualification_blocker": "ModuleNotFoundError",
+    "post_patch_live_retest_executed": false,
+    "one_original_migration_apply_qualified": false,
+    "one_original_rollback_qualified": false,
+    "next_safe_action": "When authorized Mac access resumes, inspect and stop only exact owner-marked isolated PG server if idle; identify missing module with safe diagnostic, retry one scoped migration apply and rollback"
+  },
+  "project_release_qualified": false,
+  "repo_actions_disabled": true,
+  "no_release_publish_deploy": true,
+  "no_paid_compute": true
+}

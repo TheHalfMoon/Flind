@@ -1,0 +1,77 @@
+{
+  "phase": "wave228_wave223_windows_full_original_first_party_unittest",
+  "date": "2026-10-29",
+  "repository": "TheHalfMoon/Flind",
+  "visibility": "private",
+  "draft_pr": 258,
+  "branch": "ps/flind-wave223-postgres-unix-only-server-gate",
+  "production_source_git_blob": "6fd9e868784eb04e1fe794915c1eacbeb22b5754",
+  "test_git_blob_before_fix": "0c1214a36ae17f99abecc7f023f44bd7b974dacd",
+  "test_git_blob_after_fix": "8638795529106858548f6fe4f5549fcc8bed9685",
+  "test_fix_commit": "9135183ff3119ea50c1ec1c3ce28d261d6a354a9",
+  "source_checkout_commit": "c72a0b05c642ae61050dc8826def6b066095f0c3",
+  "test_file_contents_match_pr_blob": true,
+  "host": "authorized Windows D: isolated Flind scratch checkout",
+  "python": "3.14.7",
+  "original_full_module": "tools.flind.test_qualify_isolated_postgres_wave173",
+  "original_test_methods": 26,
+  "initial_run": {
+    "normal": {
+      "tests_run": 26,
+      "failures": 1,
+      "errors": 7,
+      "skipped": 1,
+      "exit_code": 1
+    },
+    "optimized": {
+      "tests_run": 26,
+      "failures": 1,
+      "errors": 7,
+      "skipped": 1,
+      "exit_code": 1
+    },
+    "causes": [
+      "signal.alarm missing on Windows for six unittest.mock.patch targets",
+      "WinError1314 on filesystem symlink fixture",
+      "POSIX-specific alias fixture normalized by Windows Path"
+    ]
+  },
+  "after_test_only_fix": {
+    "normal": {
+      "command": "py -3.14 -B -m unittest tools.flind.test_qualify_isolated_postgres_wave173 -q",
+      "tests_run": 26,
+      "passed": 25,
+      "skipped": 1,
+      "failures": 0,
+      "errors": 0,
+      "exit_code": 0
+    },
+    "optimized": {
+      "command": "py -3.14 -O -B -m unittest tools.flind.test_qualify_isolated_postgres_wave173 -q",
+      "tests_run": 26,
+      "passed": 25,
+      "skipped": 1,
+      "failures": 0,
+      "errors": 0,
+      "exit_code": 0
+    },
+    "total_passed_executions": 50,
+    "total_skips": 2,
+    "py_compile_pass": true,
+    "git_diff_check_pass": true,
+    "mac_only_scratch_test_skipped_on_windows": true,
+    "symlink_refusal_simulated_when_windows_denies_real_symlink": true
+  },
+  "no_production_changes": true,
+  "mac_agent_online": false,
+  "mac_owned_pg_cluster_may_still_be_running": true,
+  "mac_owned_pg_cluster": "/private/tmp/flind-wave223-live-pg-20261029-001/data",
+  "live_postgres_migration_apply_qualified": false,
+  "live_postgres_migration_rollback_qualified": false,
+  "full_pg_ch_migrations_qualified": false,
+  "kafka_rust_node_clickhouse_e2e_qualified": false,
+  "release_qualified": false,
+  "no_db_access": true,
+  "no_deploy_publish_paid_services": true,
+  "notes": "Actual complete original unit module was executed with source blob identical to current PR and test file bytes verified via local git hash-object. This is not an original macOS test run, native PostgreSQL test, or service E2E."
+}

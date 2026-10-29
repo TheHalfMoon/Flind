@@ -1,0 +1,98 @@
+{
+  "$schema": "flind-qualification-evidence/v1",
+  "phase": "wave246-owner-isolated-mac-postgres17-one-migration",
+  "date_utc": "2026-10-29",
+  "repository": "TheHalfMoon/Flind",
+  "visibility": "private",
+  "source_commit": "adba738c88c7604c5deca2226e2c876c406fbeb9",
+  "source_parents": [
+    "cc2135285eee190bdaea339d18792f7cce4d5df5",
+    "bb626602d266dcd2da612701ce4a405eeb395fcc"
+  ],
+  "tests": {
+    "execution_platform": "macOS ARM64 Python 3.14.7; approved owner-hosted environment",
+    "original_modules": [
+      "tools.flind.test_qualify_isolated_postgres_wave173",
+      "tools.flind.test_sparse_django_registry_wave147",
+      "tools.flind.test_stage_migration_sources_wave172"
+    ],
+    "normal": {
+      "postgres_unit": {
+        "run": 34,
+        "passed": 34,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "exit_code": 0
+      },
+      "sparse_registry_and_staging": {
+        "run": 25,
+        "passed": 25,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "exit_code": 0
+      }
+    },
+    "optimized": {
+      "postgres_unit": {
+        "run": 34,
+        "passed": 34,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "exit_code": 0
+      },
+      "sparse_registry_and_staging": {
+        "run": 25,
+        "passed": 25,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "exit_code": 0
+      }
+    }
+  },
+  "postgresql": {
+    "mode": "isolated marked private Unix socket; listen_addresses empty; PostgreSQL 17.9 major 17",
+    "synthetic_database": "flind_wave223_synthetic",
+    "isolated_data_dir": "/private/tmp/flind-wave223-live-pg-20261029-001/data",
+    "isolated_socket_dir": "/private/tmp/flind-wave223-live-pg-20261029-001/socket",
+    "port": 65443,
+    "approved_first_party_migration": "ai_training.0001_initial",
+    "pinned_migration_blob": "e74ad4a9036c4118bddb3aff89f9a923b4b964ba",
+    "qualifier_exit_code": 0,
+    "app_count": 115,
+    "migration_files_staged": 3706,
+    "disk_migrations": 3335,
+    "migration_graph_nodes": 839,
+    "planned_migrations": 839,
+    "leaf_targets": 92,
+    "postgres_readonly_connection_qualified": true,
+    "postgres_tcp_disabled_qualified": true,
+    "postgres_socket_directory_qualified": true,
+    "postgres_version_qualified": true,
+    "migration_graph_qualified": true,
+    "migration_plan_qualified": true,
+    "smoke_migration_source_qualified": true,
+    "one_first_party_apply_qualified": true,
+    "one_first_party_rollback_qualified": true,
+    "remaining_app_migration_records": 0,
+    "remaining_user_tables": 0,
+    "independent_psql_observation": {
+      "django_migration_records": 0,
+      "other_user_tables": 0,
+      "other_database_sessions": 0
+    }
+  },
+  "not_qualified": [
+    "full first-party PostgreSQL migrations and rollback",
+    "full original ClickHouse migrations and rollback",
+    "live Kafka-to-Rust-to-Node-to-durable-ClickHouse joined E2E",
+    "live tenant/auth/SDK/browser E2E",
+    "publication or production release"
+  ],
+  "release_qualified": false,
+  "release_decision": "NO-GO",
+  "safety": "No non-Flind database, service, project, customer data, paid tooling, GitHub Actions activation, publishing, deployment, or release used. Unit results are real original modules on owner Mac; 1 genuine migration apply+rollback verified, not full-schema qualification."
+}

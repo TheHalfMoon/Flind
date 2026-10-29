@@ -1,0 +1,89 @@
+{
+  "phase": "wave227_windows_native_source_qualification_after_main_integration",
+  "date": "2026-10-29",
+  "repository": "TheHalfMoon/Flind",
+  "repository_visibility": "private",
+  "branch": "ps/flind-wave223-postgres-unix-only-server-gate",
+  "tested_commit": "c72a0b05c642ae61050dc8826def6b066095f0c3",
+  "protected_main_integrated_commit": "0b9ccdcc32f303a171f456e5dfbf3079f51f3f95",
+  "integration": {
+    "source_head_before_merge": "193c23fc171eedf2a5505bb6bee17a339a980358",
+    "git_merge_commit": "c72a0b05c642ae61050dc8826def6b066095f0c3",
+    "source_head_after_merge": "c72a0b05c642ae61050dc8826def6b066095f0c3",
+    "conflicted_files": 0,
+    "files_imported_from_merged_main": 13,
+    "github_actions_enabled": false
+  },
+  "original_windows_tests": {
+    "python": "3.14.7",
+    "source": "actual original first-party Python tests in an authenticated sparse Git checkout on user's Windows machine, not model-reconstructed excerpts",
+    "normal": [
+      {
+        "module": "tools.flind.e2e.test_offline_clickhouse_migration_inventory_wave224",
+        "passed": 15
+      },
+      {
+        "module": "tools.flind.e2e.test_verify_wave216_optimized_wave225",
+        "passed": 13
+      },
+      {
+        "module": "tools.flind.e2e.test_reset_digest_wave226",
+        "passed": 7
+      },
+      {
+        "module": "tools.flind.e2e.test_reset_contract_wave218",
+        "passed": 8
+      },
+      {
+        "module": "tools.flind.e2e.test_schema_preflight_wave216",
+        "passed": 4
+      },
+      {
+        "module": "tools.flind.test_qualify_isolated_postgres_wave173.IsolationTests.test_missing_dependency_receipt_names_only_safe_python_modules",
+        "passed": 1
+      }
+    ],
+    "normal_passed": 48,
+    "optimized_passed": 48,
+    "total_passed_executions": 96,
+    "original_first_party_full_pg_wave223_tests_executed_on_latest_head": false,
+    "notes": "All 6 listed original module/test selections were executed under python -B and python -B -O from the same exact Git head; Wave224 tests use real disposable Git repos, not a live ClickHouse DB. No real Kafka, PostgreSQL migrations or ClickHouse operations."
+  },
+  "clickhouse_original_git_inventory": {
+    "audit_tool": "tools/flind/e2e/offline_clickhouse_migration_inventory_wave224.py",
+    "audited_source_commit": "c72a0b05c642ae61050dc8826def6b066095f0c3",
+    "run_on_real_original_git_source": true,
+    "authenticated_private_git_source": true,
+    "git_blob_objects_local_and_readable": true,
+    "source_inventory_qualified": true,
+    "canonical_migration_modules": 345,
+    "historical_noncanonical_python_modules": 1,
+    "sql_asset_count": 4,
+    "total_python_and_sql_source_assets": 350,
+    "source_file_bytes": 482765,
+    "sql_asset_bytes": 76714,
+    "module_manifest_sha256": "018b6117524c82a594fb8d5f7ff0cd695fbbff34ca3a9b5c0d2758570ccf8c6f",
+    "clickhouse_schema_qualified": false,
+    "migrations_applied_qualified": false,
+    "native_ingestion_e2e_qualified": false,
+    "release_qualified": false,
+    "notes": "The source audit exclusively uses read-only Git object inspection; no import/SQL/DB/deploy. It is not a ClickHouse service qualification."
+  },
+  "mac_postgresql": {
+    "prior_original_pg_test_source_commit": "81871191e2509c895b3ebaa84080cf1eaa188705",
+    "prior_original_first_party_tests_normal_passed": 25,
+    "prior_original_first_party_tests_optimized_passed": 25,
+    "owner_isolated_postgresql_17_9_source_attempted": true,
+    "actual_live_cli_blocker": "ModuleNotFoundError",
+    "exact_missing_module_not_yet_identified": true,
+    "actual_live_pg_migration_apply_passed": false,
+    "actual_live_pg_migration_rollback_passed": false,
+    "mac_desktop_commander_online_at_receipt": false,
+    "owned_private_pg_service_may_still_be_running": true,
+    "owned_pg_service_to_stop_when_access_restored": "/private/tmp/flind-wave223-live-pg-20261029-001/data",
+    "no_shared_db_access": true
+  },
+  "release_qualified": false,
+  "no_paid_services_used": true,
+  "no_deploy_or_publish": true
+}

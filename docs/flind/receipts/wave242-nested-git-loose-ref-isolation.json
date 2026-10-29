@@ -1,0 +1,57 @@
+{
+  "phase": "wave242_nested_git_loose_ref_redirect_refusal",
+  "date": "2026-10-29",
+  "repository": "TheHalfMoon/Flind",
+  "visibility": "private",
+  "branch": "ps/flind-wave223-postgres-unix-only-server-gate",
+  "source_commit_before": "481d83f6a9d79f6f583c07dc72d88d3a47f3d2b7",
+  "production_change_commit": "41892113eef109e2561ca844fa291a304bf66778",
+  "first_party_test_change_commit": "ca945ee00edfa51e95db938fa61676f635cf6cc6",
+  "production_blob_sha": "5b5c35fccd8afae682ab5f3e48017cc0ea18a177",
+  "first_party_test_blob_sha": "c3615615da6fcc6505aa44c8fa2cd762ac74927e",
+  "finding": "An ordinary .git/refs directory can contain a symlinked loose branch ref; Git rev-parse follows the link to read a foreign commit identifier although the top-level .git/refs path itself is not a symlink.",
+  "reproduction": {
+    "type": "two freshly initialized disposable Git repositories in isolated Linux test runtime",
+    "precondition": "normal local branch ref resolves to own commit",
+    "mutation": "replace a single local .git/refs/heads/main file with a filesystem symlink targeting the foreign checkout branch ref",
+    "observed": "git -C source rev-parse HEAD returned the external repository commit id",
+    "affected_existing_guard": "old Git isolation checker inspected .git/refs root but did not inspect nested ref files"
+  },
+  "change": "Before any Git rev-parse or Django/PG operation, walk the physical loose refs tree without following links and reject all nested symlink/junction aliases (directories and files), including an over-10000-entry traversal fail-closed bound.",
+  "first_party_regression": {
+    "method": "test_nested_git_refs_cannot_redirect_a_commit_to_foreign_checkout",
+    "compiled_on_full_private_checkout": false,
+    "executed_on_full_private_checkout": false,
+    "confirmed_in_private_git_blob": true,
+    "behavior": "Mocks symlink and junction for a nested reference file and directory so Windows does not require symlink privilege; POSIX also uses a physical external-ref symlink."
+  },
+  "independent_test_harness": {
+    "environment": "isolated Linux Python and actual local git",
+    "input": "faithful copied production function plus real synthetic Git repos and mocked symlink/junction cases",
+    "normal": {
+      "tests_run": 2,
+      "passed": 2,
+      "skipped": 0,
+      "failures": 0,
+      "errors": 0
+    },
+    "optimized": {
+      "tests_run": 2,
+      "passed": 2,
+      "skipped": 0,
+      "failures": 0,
+      "errors": 0
+    },
+    "original_first_party_module_ran": false
+  },
+  "live_postgresql_17_9_migration_apply_qualified": false,
+  "live_postgresql_17_9_migration_rollback_qualified": false,
+  "full_pg_ch_migrations_qualified": false,
+  "native_joined_kafka_rust_node_clickhouse_e2e_qualified": false,
+  "mac_desktop_commander_online": false,
+  "windows_desktop_commander_online": false,
+  "github_actions_enabled": false,
+  "release_qualified": false,
+  "release_status": "NO-GO",
+  "notes": "Do not merge Draft #258 on source guard / isolated fixture results. Original full first-party regression suite, genuine owned isolated Unix-socket PG17.9 apply+rollback, subsequent native schema and service E2E remain required. Stop only previously owner-marked Mac PG17.9 instance when authorized Mac connection returns if idle. No customer/shared/other-project DB, no paid services or publication."
+}

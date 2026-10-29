@@ -1,0 +1,142 @@
+{
+  "phase": "wave229_current_draft_combined_original_windows_regressions",
+  "date": "2026-10-29",
+  "repository": "TheHalfMoon/Flind",
+  "visibility": "private",
+  "draft_pr": 258,
+  "tested_commit": "7dfbc6cc462f1c9b97fcad0d8a942dc3a1ee8e33",
+  "host": "authorized Windows Abdulaziz (isolated D: Flind scratch checkout)",
+  "python": "3.14.7",
+  "original_first_party_modules": [
+    "tools.flind.test_qualify_isolated_postgres_wave173",
+    "tools.flind.e2e.test_offline_clickhouse_migration_inventory_wave224",
+    "tools.flind.e2e.test_verify_wave216_optimized_wave225",
+    "tools.flind.e2e.test_reset_digest_wave226",
+    "tools.flind.e2e.test_reset_contract_wave218",
+    "tools.flind.e2e.test_schema_preflight_wave216"
+  ],
+  "normal": {
+    "invocation": "py -3.14 -B -m unittest @mods -q (PowerShell @mods resolves the six modules above)",
+    "tests_run": 73,
+    "passed": 72,
+    "skipped": 1,
+    "failures": 0,
+    "errors": 0,
+    "exit_code": 0,
+    "elapsed_seconds": 16.062
+  },
+  "optimized": {
+    "invocation": "py -3.14 -O -B -m unittest @mods -q (same six-module PowerShell @mods)",
+    "tests_run": 73,
+    "passed": 72,
+    "skipped": 1,
+    "failures": 0,
+    "errors": 0,
+    "exit_code": 0,
+    "elapsed_seconds": 16.729
+  },
+  "total_passed_test_executions": 144,
+  "total_skipped_test_executions": 2,
+  "git_worktree_clean_after_tests": true,
+  "test_method_skip_reason": "Mac-specific original filesystem/symlink fixture skipped on Windows; not counted as passed",
+  "windows_wsl": {
+    "distribution": "Ubuntu (WSL2)",
+    "usable": false,
+    "observed_error": "WSL getpwnam/getpwuid failed with I/O error before user process start",
+    "postgres_unix_socket_qualification": false
+  },
+  "mac_desktop_commander_online": false,
+  "mac_owner_marked_pg_service_may_still_run": true,
+  "mac_pg_data_directory": "/private/tmp/flind-wave223-live-pg-20261029-001/data",
+  "source_and_test_real_original_checkout": true,
+  "full_django_registry_qualified": false,
+  "live_postgresql_migration_apply_qualified": false,
+  "live_postgresql_migration_rollback_qualified": false,
+  "full_pg_and_ch_migrations_qualified": false,
+  "native_joined_ingestion_e2e_qualified": false,
+  "release_qualified": false,
+  "release_status": "NO-GO",
+  "github_actions_enabled": false,
+  "published_or_deployed": false,
+  "paid_services_used": false,
+  "notes": "This is a combined original first-party Python unit regression run on Windows at the specified immutable PR commit; it does not prove a live Unix-only PostgreSQL run, a native ClickHouse schema, Kafka-to-durable-CH service E2E, auth/tenant, or browser readiness. Do not promote Draft PR #258 on this evidence alone. Stop only the previously owner-marked Mac PostgreSQL test service after Mac returns, never any shared database.",
+  "additional_original_first_party_regressions": [
+    {
+      "scope": "Django sparse source import and diagnostics + first-party proto registry",
+      "modules": [
+        "tools.flind.test_sparse_registry_diagnostics_wave220",
+        "tools.flind.test_workspace_proto_registry_wave221",
+        "tools.flind.test_sparse_django_registry_wave147"
+      ],
+      "normal": {
+        "tests_run": 24,
+        "passed": 24,
+        "skipped": 0,
+        "errors": 0,
+        "failures": 0,
+        "exit_code": 0,
+        "elapsed_seconds": 10.019
+      },
+      "optimized": {
+        "tests_run": 24,
+        "passed": 24,
+        "skipped": 0,
+        "errors": 0,
+        "failures": 0,
+        "exit_code": 0,
+        "elapsed_seconds": 9.999
+      }
+    },
+    {
+      "scope": "first-party Django runtime assets and migration-source staging with disposable synthetic Git repos",
+      "modules": [
+        "tools.flind.test_stage_django_runtime_assets_wave169",
+        "tools.flind.test_stage_migration_sources_wave172"
+      ],
+      "normal": {
+        "tests_run": 17,
+        "passed": 16,
+        "skipped": 1,
+        "errors": 0,
+        "failures": 0,
+        "exit_code": 0,
+        "elapsed_seconds": 13.318
+      },
+      "optimized": {
+        "tests_run": 17,
+        "passed": 16,
+        "skipped": 1,
+        "errors": 0,
+        "failures": 0,
+        "exit_code": 0,
+        "elapsed_seconds": 12.675
+      },
+      "note": "One platform-specific staged-source test skipped per mode on Windows; not counted as passed."
+    }
+  ],
+  "entire_wave229_verified_windows_regression_totals": {
+    "modules": 11,
+    "normal": {
+      "tests_run": 114,
+      "passed": 112,
+      "skipped": 2,
+      "errors": 0,
+      "failures": 0,
+      "exit_code": 0
+    },
+    "optimized": {
+      "tests_run": 114,
+      "passed": 112,
+      "skipped": 2,
+      "errors": 0,
+      "failures": 0,
+      "exit_code": 0
+    },
+    "passed_test_executions": 224,
+    "skipped_test_executions": 4,
+    "verified_original_git_commit": "7dfbc6cc462f1c9b97fcad0d8a942dc3a1ee8e33",
+    "working_tree_clean": true,
+    "real_postgresql_or_clickhouse_migrations": false,
+    "release_qualified": false
+  }
+}
