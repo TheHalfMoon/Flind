@@ -1,0 +1,52 @@
+{
+  "schema": "flind.wave269.native-django-plan-check-qualification.v1",
+  "date_utc": "2026-10-29",
+  "repository": "TheHalfMoon/Flind",
+  "visibility": "private",
+  "base_main_sha": "100b270a6f73860b86181a75729165631ce4df60",
+  "original_migration_tree_git_sha": "23ea2f226e6be4f2caca554b6ef7cd769d61baa0",
+  "original_command_git_blob": "a3292548f7b3564ea265c232c3f9c43df933c410",
+  "original_product_pytest_git_blob": "1100c2fe67cc82c72deb0c68b7afd87c7e080560",
+  "original_migration_tools_git_blob": "17a082e56f6c2825279e8337d1572be921b0aeac",
+  "new_runner_git_blobs": {
+    "tools/flind/qualify_native_migration_plan_wave269.py": "ad6ad2629b5cba496bb0beeac1ca94ab3cb06e69",
+    "tools/flind/qualify_native_plan_cases_wave269.py": "c11f66505422a2b3f33e7d97bc46b85ca1ea86cd"
+  },
+  "qualifications": {
+    "python_version": "3.14.7",
+    "django_version": "5.2.18",
+    "pytest_version": "9.1.1",
+    "native_original_migration_count": 346,
+    "native_django_setup_passed": true,
+    "full_django_original_first_party_pytest_passed": 14,
+    "full_django_original_first_party_pytest_failed": 0,
+    "original_Command_migrate_real_module_mocked_DB_plan_check_cases": 7,
+    "original_Command_migrate_real_module_mocked_DB_plan_check_passed": 7,
+    "all_migration_planned_without_writes": true,
+    "check_nonzero_exit_when_pending": true,
+    "check_up_to_date_no_error": true,
+    "plan_and_print_sql_for_migration_0001": true,
+    "preflight_denies_missing_source_root": true,
+    "no_outbound_socket_connections": true,
+    "no_database_or_tracking_table_creation": true,
+    "production_SQL_operations_applied": false,
+    "live_ClickHouse_Postgres_Kafka_Redis_connections": false
+  },
+  "known_bootstrap_warnings": [
+    "GeoIP2 missing local db",
+    "Redis/Celery background boot attempts refused by socket guard"
+  ],
+  "non_goals": {
+    "all_346_production_migrations_applied": false,
+    "real_distributed_clickhouse_rollback_recovery_tested": false,
+    "full_production_ingest_API_SDK_browser_qualified": false,
+    "release_qualified": false
+  },
+  "safety": {
+    "strictly_private": true,
+    "zero_paid_tools": true,
+    "github_actions_disabled": true,
+    "no_deploy_publish": true,
+    "no_shared_or_customer_data": true
+  }
+}
