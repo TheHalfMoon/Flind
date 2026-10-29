@@ -43,5 +43,14 @@ class CliProxyAnalyticsIsolationTests(unittest.TestCase):
         self.assertIn("independent runtime egress audit", source)
 
 
+    def test_build_script_never_embeds_analytics_credentials(self) -> None:
+        source = (ROOT / "cli/build.rs").read_text(encoding="utf-8")
+        self.assertIn("write_api_cli_bundle_include();", source)
+        self.assertNotIn("DEBUG_POSTHOG_API_TOKEN", source)
+        self.assertNotIn("POSTHOG_API_TOKEN", source)
+        self.assertNotIn("cargo:rustc-env=", source)
+        self.assertNotRegex(source, r"(?i)\b(?:phc|phx)_[A-Za-z0-9_-]{16,}\b")
+
+
 if __name__ == "__main__":
     unittest.main()
