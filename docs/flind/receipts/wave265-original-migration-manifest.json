@@ -1,0 +1,58 @@
+{
+  "schema": "flind.wave265.authenticated-original-migration-manifest.v1",
+  "date_utc": "2026-10-29",
+  "repository": "TheHalfMoon/Flind",
+  "visibility": "private",
+  "base_main_commit": "1a24a1cc19563dbdfe06efea58d29cea1dd56c77",
+  "original_migrations_git_tree": "23ea2f226e6be4f2caca554b6ef7cd769d61baa0",
+  "original_management_command_git_blob": "a3292548f7b3564ea265c232c3f9c43df933c410",
+  "test_path": "tools/flind/test_original_migration_manifest_wave265.py",
+  "test_git_blob": "6238d41b143bcfba58e4d62192b507ee00a7d44d",
+  "original_migration_files": 346,
+  "numbered_python_modules_with_operations": 346,
+  "max_migration_txt": "0359_logs_ingest_to_apm",
+  "historical_nonstandard_filename": "0067_event_kafka_debug_table copy.py",
+  "nonstandard_name_discovered_by_pkgutil": true,
+  "nonstandard_name_imported_in_synthetic_fixture": true,
+  "irregular_numeric_sequences_and_duplicates": "Known and preserved; numbering alone is not a unique migration identifier",
+  "source_attestation": "Git tree and all original .py/.sql/.txt file blobs matched committed checkout; docs excluded due checkout text normalization",
+  "tests": {
+    "normal_stdlib_total": 6,
+    "normal_stdlib_passed": 6,
+    "optimized_stdlib_total": 6,
+    "optimized_stdlib_passed": 6,
+    "syntax_parse_all_migration_py": true,
+    "checked_original_get_migrations_AST_with_real_names": true
+  },
+  "boundaries_verified": [
+    0,
+    1,
+    4,
+    5,
+    29,
+    50,
+    55,
+    64,
+    83,
+    88,
+    265,
+    337,
+    359,
+    99999
+  ],
+  "scope_limitations": {
+    "original_migration_SQL_executed": false,
+    "original_migration_operations_imported": false,
+    "full_Django_runtime": false,
+    "original_346_migrations_applied": false,
+    "multi_node_recovery_proven": false,
+    "production_data_used": false,
+    "release_qualified": false
+  },
+  "safety": {
+    "private": true,
+    "zero_paid_tools": true,
+    "GitHub_Actions_enabled": false,
+    "no_deploy_publish": true
+  }
+}
