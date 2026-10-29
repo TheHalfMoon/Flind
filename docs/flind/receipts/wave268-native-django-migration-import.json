@@ -1,0 +1,51 @@
+{
+  "schema": "flind.wave268.native-django-original-migration-import.v1",
+  "date_utc": "2026-10-29",
+  "repository": "TheHalfMoon/Flind",
+  "visibility": "private",
+  "base_main_sha": "b90ea87d92e1ac97a4c7626b0ddd1647375f1619",
+  "original_source_worktree_base": "6e5da8f24fb04312ea1dd7778811ca1b21339fd9",
+  "current_code_overlays_source_attested_to_private_main": true,
+  "original_migrations_git_tree": "23ea2f226e6be4f2caca554b6ef7cd769d61baa0",
+  "original_command_sha": "a3292548f7b3564ea265c232c3f9c43df933c410",
+  "original_product_pytest_sha": "1100c2fe67cc82c72deb0c68b7afd87c7e080560",
+  "original_migration_tools_sha": "17a082e56f6c2825279e8337d1572be921b0aeac",
+  "original_connection_sha": "586900ac49ea84eb1315dd7169a824b15cae1b0c",
+  "missing_checkout_assets_restored_from_original_git_in_disposable_copy_only": {
+    "posthog/models/channel_type/channel_definitions.json": "cf1dde05b31220be591aecc2c197fda5ca4659f1",
+    "posthog/models/exchange_rate/historical.csv": "048be5f3d1b30dd89bbce3ca32d833e148a0fdd1"
+  },
+  "runner_path": "tools/flind/qualify_native_migration_import_wave268.py",
+  "runner_git_blob": "20f554bfb56d70deefdb94e7f6846d9484024dc4",
+  "execution": {
+    "owner_mac_os": "macOS arm64",
+    "source_locked_python": "3.14.7",
+    "django": "5.2.18",
+    "pytest": "9.1.1",
+    "infi_clickhouse_orm": "2.1.0.post20",
+    "infi_source_commit": "4e3996becf66bf5c26580aff12a80425d9d56fe5",
+    "synthetic_service_addresses_only": "127.0.0.1:1",
+    "actual_socket_connections_denied": true,
+    "original_full_django_setup_pass": true,
+    "native_original_346_migration_module_import_pass": true,
+    "operations_definitions_present_for_all": true,
+    "all_346_original_migration_upto_selection_pass": true,
+    "original_first_party_pytest_total": 14,
+    "original_first_party_pytest_pass": 14,
+    "original_first_party_pytest_fail": 0,
+    "missing_source_preflight_fails_closed": true,
+    "bootstrap_warnings": {
+      "geoip_db_missing": true,
+      "redis_task_boot_attempts_denied": true
+    },
+    "production_SQL_migrations_applied": false,
+    "live_clickhouse_or_postgres_connected": false
+  },
+  "limitations": {
+    "full_346_clickhouse_SQL_migrations_applied": false,
+    "multi_node_replication_or_rollback_qualified": false,
+    "production_kafka_rust_node_and_sdk_browser_e2e_qualified": false,
+    "release_qualified": false
+  },
+  "safety": "strictly private, owner-only disposable synthetic checkout, all socket connections denied, zero paid tools, no GitHub Actions/deployment/publication/customer data"
+}
