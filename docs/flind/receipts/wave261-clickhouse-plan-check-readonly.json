@@ -1,0 +1,58 @@
+{
+  "schema": "flind.wave261.clickhouse-management-plan-check-readonly-fix.v1",
+  "date_utc": "2026-10-29",
+  "private_repository": "TheHalfMoon/Flind",
+  "main_at_authoring": "6718985e4868b5829097a810c2d9938a05771cfb",
+  "original_command_git_blob": "aa993e44eb204f118392a1e0a483fcfa2e201566",
+  "patched_command_git_blob": "7882dea334d98f7699d54b7f4ee2821eac82318e",
+  "original_command": "posthog/management/commands/migrate_clickhouse.py",
+  "new_source_only_regressions": "tools/flind/test_clickhouse_inspection_readonly_wave261.py",
+  "new_regression_git_blob": "4d66cdddc4d905b2ae32ea7e7a00a73801b19ac8",
+  "source_problem": "--plan and --check precreated ClickHouse database and migration tracking tables before showing a plan. Database() also autocreated if absent.",
+  "fix": {
+    "inspection_branch": "options['plan'] or options['check']",
+    "inspection_Database_readonly": true,
+    "inspection_Database_autocreate": false,
+    "inspection_precreate_database": false,
+    "inspection_precreate_migration_metadata": false,
+    "normal_migrate_create_behavior_unchanged": true,
+    "fake_migrate_create_behavior_unchanged": true,
+    "missing_inspection_database_fails_closed": true
+  },
+  "verified_tests": {
+    "source_original_method_AST_direct_execution_normal": {
+      "run": 7,
+      "passed": 7,
+      "failed": 0
+    },
+    "source_original_method_AST_direct_execution_python_optimized": {
+      "run": 7,
+      "passed": 7,
+      "failed": 0
+    },
+    "original_product_pytest_syntax_AST_parse": true,
+    "original_product_pytest_runtime_executed": false,
+    "real_pinned_infi_read_only_connection_with_live_keeper_clickhouse": true,
+    "real_infi_read_only_query_original_migration_history": true,
+    "live_original_Django_management_Command_run": false,
+    "full_original_integration_suite_executed": false
+  },
+  "native_precondition": {
+    "original_infi_orm_git_commit": "4e3996becf66bf5c26580aff12a80425d9d56fe5",
+    "original_infi_orm_version": "2.1.0.post20",
+    "native_clickhouse_version": "25.12.7.21",
+    "native_keeper_real_localhost": true,
+    "read_only_connection_flags": "readonly=True;autocreate=False;trust_env=False",
+    "native_read_only_query_exit_code": 0,
+    "native_owner_scratch_cleaned": true
+  },
+  "explicit_scope": {
+    "full_original_345_migrations_applied": false,
+    "full_original_Django_plan_check_against_product_environment_qualified": false,
+    "production_multinode_replication_qualified": false,
+    "production_Rust_Node_ingest_qualified": false,
+    "authenticated_tenant_API_SDK_browser_qualified": false,
+    "release_qualified": false
+  },
+  "safety": "PRIVATE; owner-only isolated synthetic data, no shared/customer DB, no GitHub Actions, no paid tools, no deployment/publication/release."
+}

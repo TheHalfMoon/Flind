@@ -70,9 +70,14 @@ class Command(BaseCommand):
     def migrate(self, host, options):
         creds = get_clickhouse_creds(ClickHouseUser.MIGRATIONS)
 
-        # Infi only creates the DB in one node, but not the rest. Create it before running migrations.
-        self._create_database_if_not_exists(CLICKHOUSE_DATABASE, CLICKHOUSE_MIGRATIONS_CLUSTER, creds)
-        self._create_migration_tracking_tables_if_not_exist(CLICKHOUSE_DATABASE, CLICKHOUSE_MIGRATIONS_CLUSTER, creds)
+        # Planning and checking must never create the database or metadata.
+        # infi.Database normally autocreates its database on initialization.
+        # Keep inspection fail-closed if the database/tracking tables are absent.
+        inspection_only = bool(options["plan"] or options["check"])
+        if not inspection_only:
+            # Infi only creates the DB in one node, but not the rest.
+            self._create_database_if_not_exists(CLICKHOUSE_DATABASE, CLICKHOUSE_MIGRATIONS_CLUSTER, creds)
+            self._create_migration_tracking_tables_if_not_exist(CLICKHOUSE_DATABASE, CLICKHOUSE_MIGRATIONS_CLUSTER, creds)
         database = Database(
             CLICKHOUSE_DATABASE,
             db_url=host,
@@ -80,6 +85,8 @@ class Command(BaseCommand):
             password=creds.read_password(),
             cluster=CLICKHOUSE_MIGRATIONS_CLUSTER,
             verify_ssl_cert=False,
+            readonly=inspection_only,
+            autocreate=not inspection_only,
             randomize_replica_paths=settings.TEST or settings.E2E_TESTING,
             # don't use the egress proxy, clickhouse is internal
             trust_env=False,

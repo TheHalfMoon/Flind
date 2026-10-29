@@ -78,3 +78,28 @@ def test_migrate_authenticates_each_request_with_the_current_password(
 
     assert sent_auth[0] == first_request_auth
     assert sent_auth[-1] == request_after_rotation_auth
+
+@pytest.mark.parametrize("inspection_option", ["plan", "check"])
+def test_inspection_never_precreates_database_or_tracking_tables(inspection_option: str) -> None:
+    """Planning and checking must never mutate even the migration metadata."""
+    synthetic_creds = ClickHouseCredentials(user="migrations", password="owner-fixture")
+    with (
+        patch(
+            "posthog.management.commands.migrate_clickhouse.get_clickhouse_creds",
+            return_value=synthetic_creds,
+        ),
+        patch("posthog.management.commands.migrate_clickhouse.Database") as database_constructor,
+        patch.object(Command, "_create_database_if_not_exists") as create_database,
+        patch.object(Command, "_create_migration_tracking_tables_if_not_exist") as create_tracking,
+        patch.object(Command, "get_migrations", return_value=[]),
+        patch.object(Command, "get_applied_migrations", return_value=set()),
+    ):
+        Command().migrate(CLICKHOUSE_URL, {**APPLY_OPTIONS, inspection_option: True})
+    create_database.assert_not_called()
+    create_tracking.assert_not_called()
+    database_constructor.assert_called_once()
+    assert database_constructor.call_args.kwargs["readonly"] is True
+    assert database_constructor.call_args.kwargs["autocreate"] is False
+    assert database_constructor.call_args.kwargs["trust_env"] is False
+    database_constructor.return_value.migrate.assert_not_called()
+    database_constructor.return_value.insert.assert_not_called()
