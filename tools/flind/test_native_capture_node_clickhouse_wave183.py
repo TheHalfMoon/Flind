@@ -30,6 +30,35 @@ class NodeConverterWave183(unittest.TestCase):
         self.assertFalse(result["real_node_grpc_worker_qualified"])
         self.assertFalse(result["release_qualified"])
 
+    def test_windows_node_env_preserves_only_valid_system_root(self):
+        with tempfile.TemporaryDirectory(prefix="flind-node-systemroot-") as temp:
+            with patch.dict(w.os.environ, {
+                "SystemRoot": temp, "FLIND_SYNTHETIC_SECRET": "must-not-leak",
+            }):
+                env = w.isolated_node_environment(windows=True)
+        self.assertEqual(env["SystemRoot"], temp)
+        self.assertEqual(set(env), {
+            "PATH", "HOME", "LANG", "NODE_OPTIONS", "SystemRoot",
+        })
+        self.assertEqual(env["NODE_OPTIONS"], "")
+        self.assertNotIn("FLIND_SYNTHETIC_SECRET", env)
+
+    def test_windows_node_env_rejects_missing_or_relative_system_root(self):
+        for invalid in ("", "relative-path", "/flind/missing/systemroot"):
+            with self.subTest(invalid=invalid):
+                with patch.dict(w.os.environ, {"SystemRoot": invalid}):
+                    with self.assertRaises(w.Denied):
+                        w.isolated_node_environment(windows=True)
+
+    def test_nonwindows_node_env_does_not_inherit_system_root_or_secrets(self):
+        with patch.dict(w.os.environ, {
+            "SystemRoot": "/untrusted", "FLIND_SYNTHETIC_SECRET": "private",
+        }):
+            env = w.isolated_node_environment(windows=False)
+        self.assertEqual(set(env), {"PATH", "HOME", "LANG", "NODE_OPTIONS"})
+        self.assertNotIn("SystemRoot", env)
+        self.assertNotIn("FLIND_SYNTHETIC_SECRET", env)
+
     def test_mismatched_uuid_rejected_before_node(self):
         with patch.object(w, "shutil") as shutil_mock:
             with self.assertRaises(w.Denied):
