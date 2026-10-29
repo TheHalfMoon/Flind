@@ -1,0 +1,121 @@
+{
+  "schema": "flind.owner-native-component-qualification.v1",
+  "date_utc": "2026-10-29",
+  "repository": "TheHalfMoon/Flind",
+  "visibility": "private",
+  "evidence_tested_git_commit": "6e5da8f24fb04312ea1dd7778811ca1b21339fd9",
+  "main_at_receipt_authoring": "ce853bce902892b9831a14ef6a4c78a6283fbfcb",
+  "original_first_party_inputs_preserved_on_main": {
+    "tools/flind/qualify_supported_mergetree_durable_wave188.py": "c573f1fa0e649d34d2048b47c97b6929db390600",
+    "tools/flind/qualify_supported_clickhouse_kafka_wave181.py": "44f793df01706838b82a692732fdd7baa89b0b42",
+    "tools/flind/qualify_ephemeral_kafka_wave84.py": "ffba3648a2a8c99c91a7ac7dc5e7c7359c5da63a",
+    "tools/flind/qualify_ephemeral_redis.py": "7ce847b79cdd95bcdcb36b72f015d5cbba611ab9",
+    "posthog/clickhouse/hcl/roles/coshared/events_recent/tables.hcl": "7d09fc35df5a388167fa3142d85c83eef8fa274d",
+    "posthog/settings/service_requirements.py": "668305c91b1bc39afd0fded6090c220d343d9fc2"
+  },
+  "owner_mac_environment": {
+    "arch": "Apple Silicon",
+    "physical_ram_gib": 8,
+    "python": "3.14.7",
+    "all_direct_locked_dependencies": "201/201",
+    "local_file_source": "exact-first-party-Git-blobs",
+    "docker_daemon": "offline",
+    "minimum_free_disk_gib_guard": 15,
+    "after_scratch_cleanup_free_disk_gib_approx": 17
+  },
+  "redis": {
+    "version": "7.4.11",
+    "required": ">=7.0.0,<8.0.0",
+    "original_qualifier": "tools.flind.qualify_ephemeral_redis.isolated_redis",
+    "real_loopback_process_passed": true,
+    "tests": [
+      "PING",
+      "SET",
+      "GET",
+      "DEL",
+      "GET-after-delete"
+    ],
+    "persistence": "disabled",
+    "process_and_scratch_stopped": true,
+    "other_shared_backend_checks": "intentionally not executed"
+  },
+  "clickhouse": {
+    "official_version": "25.12.7.21",
+    "required": ">=24.8,<=25.12",
+    "mac_aarch64_compressed_asset_bytes": 123762120,
+    "official_asset_sha256": "e5be46727e773893b5786aaa3d28f5661a30179fe65e19096d8eb7d41a554fd6",
+    "original_first_party_qualifier": "tools.flind.qualify_supported_mergetree_durable_wave188",
+    "real_owner_only_merge_tree_passed": true,
+    "real_process_lifetimes": 4,
+    "synthetic_events_survived_restart": 5,
+    "synthetic_team_filters_checked": [
+      101,
+      202,
+      303
+    ],
+    "disk_part_checksum_verified": true,
+    "source_hcl_git_blob_verified": true,
+    "ephemeral_runtime_removed_after_run": true
+  },
+  "kafka": {
+    "version": "4.3.1",
+    "original_qualifier": "tools.flind.qualify_ephemeral_kafka_wave84",
+    "real_raft_server_loopback": true,
+    "synthetic_events_published": 3,
+    "synthetic_events_consumed": 3,
+    "exact_payload_order_verified": true,
+    "two_teams_same_distinct_id": true,
+    "owned_process_stopped": true,
+    "owned_storage_removed": true
+  },
+  "kafka_to_clickhouse": {
+    "original_qualifier": "tools.flind.qualify_supported_clickhouse_kafka_wave181",
+    "source_version_supported": true,
+    "real_kafka_server": true,
+    "real_producer_delivery_ack": true,
+    "real_consumer": true,
+    "synthetic_record_count": 3,
+    "actual_clickhouse_local_inserted_rows": 3,
+    "readback_and_team_filter_verified": true,
+    "original_qualifier_exit_code": 0,
+    "readback_path": "test-only Python relay between Kafka consumer and ClickHouse local",
+    "clickhouse_kafka_engine_consumer_qualified": false,
+    "production_pipeline_qualified": false,
+    "owner_scratch_removed": true
+  },
+  "original_first_party_regression_modules": {
+    "tools.flind.test_ephemeral_clickhouse_wave50": {
+      "normal": 8,
+      "optimized": 8
+    },
+    "tools.flind.test_supported_mergetree_durable_wave188": {
+      "normal": 9,
+      "optimized": 9
+    },
+    "tools.flind.test_service_versions_wave51": {
+      "normal": 10,
+      "optimized": 10
+    },
+    "tools.flind.test_supported_clickhouse_kafka_wave181": {
+      "normal": 8,
+      "optimized": 8
+    },
+    "tools.flind.test_ephemeral_kafka_wave84": {
+      "normal": 12,
+      "optimized": 12
+    }
+  },
+  "remaining_blockers": [
+    "full original ClickHouse replicated/distributed migrations and rollback not executed or qualified",
+    "genuine ClickHouse Kafka ENGINE subscriber and materialized-view durable ingestion not qualified",
+    "the native Rust Wave190 fixture binary was not present; no native Rust-to-original Node production-pipeline qualification",
+    "authenticated API/SDK, tenant isolation enforced by application, and browser tests not qualified",
+    "full original PostgreSQL rollback has 15 declared irreversible operations over 13 migrations",
+    "predicate/function expression-level restore parity and production disaster recovery not qualified"
+  ],
+  "release_qualified": false,
+  "published": false,
+  "actions_enabled": false,
+  "paid_services_used": false,
+  "safety": "All Kafka/Redis/ClickHouse tests used local synthetic owner-only data and isolated scratch; no customer/shared databases, releases, deployment or publication."
+}
