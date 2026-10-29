@@ -136,11 +136,15 @@ def engine_readback(port: int, broker: str, expected: list[dict]) -> dict:
         sql(port, f"CREATE TABLE {SOURCE} (uuid String,team_id Int64,event String,"
             f"distinct_id String,token String) ENGINE=Kafka SETTINGS kafka_broker_list='{broker}',"
             f"kafka_topic_list='{TOPIC}',kafka_group_name='flind_wave255_source',"
-            "kafka_format='JSONEachRow',kafka_num_consumers=1,kafka_auto_offset_reset='earliest'")
+            "kafka_format='JSONEachRow',kafka_num_consumers=1")
         created.append(("TABLE", SOURCE))
         sql(port, f"CREATE MATERIALIZED VIEW {VIEW} TO {TARGET} AS SELECT "
             f"uuid,team_id,event,distinct_id,token FROM {SOURCE}")
         created.append(("VIEW", VIEW))
+        # 25.12 rejects kafka_auto_offset_reset. Publish only after the
+        # Kafka engine's materialized-view subscriber is ready, so the
+        # broker-default offset policy cannot skip earlier messages.
+        publish(broker, expected)
         deadline = time.monotonic() + 32
         observed: list[dict] = []
         while time.monotonic() < deadline:
@@ -225,7 +229,6 @@ def qualify(repo: Path, kafka_home: Path, asset: Path) -> dict:
             def broker_ready(broker: str) -> dict:
                 if not BROKER_PATTERN.fullmatch(broker):
                     raise Refused("non_loopback_kafka_broker")
-                publish(broker, fixture_rows)
                 require_space(FREE_BOOT_BYTES)
                 boot = subprocess.run([str(runtime), "--version"],
                                       stdin=subprocess.DEVNULL, capture_output=True,

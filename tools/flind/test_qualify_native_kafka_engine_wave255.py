@@ -74,7 +74,7 @@ class RealKafkaEngineWave255Tests(unittest.TestCase):
         ]
 
     def test_real_kafka_engine_sql_plan_and_readback_mock(self):
-        with patch.object(q, "require_space"), patch.object(q, "sql", side_effect=self._engine_results()) as sql:
+        with patch.object(q, "require_space"), patch.object(q, "publish") as published, patch.object(q, "sql", side_effect=self._engine_results()) as sql:
             receipt = q.engine_readback(18000, "127.0.0.1:19092", q.fixture())
         self.assertTrue(receipt["real_clickhouse_kafka_engine_subscription_qualified"])
         self.assertTrue(receipt["real_materialized_view_mergetree_rows_qualified"])
@@ -94,21 +94,66 @@ class RealKafkaEngineWave255Tests(unittest.TestCase):
                           f"DROP TABLE IF EXISTS {q.SOURCE}",
                           f"DROP TABLE IF EXISTS {q.TARGET}"])
 
+    def test_clickhouse25_does_not_use_unsupported_offset_setting_and_publishes_after_view(self):
+        trace = []
+        results = iter(self._engine_results())
+
+        def sql_capture(port, statement):
+            trace.append(("sql", statement))
+            return next(results)
+
+        def publish_capture(broker, rows):
+            trace.append(("publish", broker))
+            self.assertEqual(broker, "127.0.0.1:19092")
+            self.assertEqual(rows, q.fixture())
+
+        with patch.object(q, "require_space"), patch.object(
+            q, "sql", side_effect=sql_capture
+        ), patch.object(q, "publish", side_effect=publish_capture):
+            receipt = q.engine_readback(18000, "127.0.0.1:19092", q.fixture())
+        self.assertTrue(receipt["real_clickhouse_kafka_engine_subscription_qualified"])
+        view_index = next(i for i, (kind, statement) in enumerate(trace)
+                          if kind == "sql" and statement.startswith("CREATE MATERIALIZED VIEW"))
+        published = [i for i, (kind, _) in enumerate(trace) if kind == "publish"]
+        self.assertEqual(len(published), 1)
+        self.assertGreater(published[0], view_index)
+        self.assertFalse(any("kafka_auto_offset_reset" in statement for kind, statement in trace
+                             if kind == "sql"))
+        self.assertTrue(any("ENGINE=Kafka" in statement for kind, statement in trace
+                            if kind == "sql"))
+
+    def test_failed_materialized_view_never_publishes_to_kafka(self):
+        def sql_capture(port, statement):
+            if statement.startswith("CREATE MATERIALIZED VIEW"):
+                raise q.Refused("synthetic_view_failed")
+            if statement.startswith("SELECT version()"):
+                return q.EXPECTED_VERSION
+            if "system.table_engines" in statement:
+                return "Kafka" if "name='Kafka'" in statement else "MergeTree"
+            return ""
+
+        with patch.object(q, "require_space"), patch.object(
+            q, "sql", side_effect=sql_capture
+        ), patch.object(q, "publish") as published:
+            with self.assertRaisesRegex(q.Refused, "synthetic_view_failed"):
+                q.engine_readback(18000, "127.0.0.1:19092", q.fixture())
+        published.assert_not_called()
+
     def test_cross_team_row_drift_never_passes_even_when_count_is_three(self):
         rows = q.fixture()
         rows[0]["team_id"] = 202
-        with patch.object(q, "require_space"), patch.object(q, "sql", side_effect=self._engine_results(records=rows)) as sql:
+        with patch.object(q, "require_space"), patch.object(q, "publish") as published, patch.object(q, "sql", side_effect=self._engine_results(records=rows)) as sql:
             with self.assertRaisesRegex(q.Refused, "readback_mismatch"):
                 q.engine_readback(18000, "127.0.0.1:19092", q.fixture())
         self.assertEqual(sum(x.args[1].startswith("DROP ") for x in sql.call_args_list), 3)
 
     def test_no_disk_parts_never_passes_durable_gate(self):
-        with patch.object(q, "require_space"), patch.object(q, "sql", side_effect=self._engine_results(disk_parts="0\t0")):
+        with patch.object(q, "require_space"), patch.object(q, "publish") as published, patch.object(q, "sql", side_effect=self._engine_results(disk_parts="0\t0")):
             with self.assertRaisesRegex(q.Refused, "disk_parts_missing"):
                 q.engine_readback(18000, "127.0.0.1:19092", q.fixture())
 
     def test_wrong_count_never_passes_cross_team_gate(self):
-        with patch.object(q, "require_space"), patch.object(q, "sql", side_effect=self._engine_results(team_counts="101\t1\n202\t2")):
+        with patch.object(q, "require_space"), patch.object(q, "publish") as published, patch.object(q, "sql", side_effect=self._engine_results(team_counts="101\t1\n202\t2")):
             with self.assertRaisesRegex(q.Refused, "team_filter_mismatch"):
                 q.engine_readback(18000, "127.0.0.1:19092", q.fixture())
 

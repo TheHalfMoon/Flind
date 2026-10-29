@@ -1,0 +1,76 @@
+{
+  "schema": "flind.wave256.synthetic-real-kafka-engine-native-receipt.v1",
+  "date_utc": "2026-10-29",
+  "repository": "TheHalfMoon/Flind",
+  "visibility": "private",
+  "base_main": "dc0b9f5c9e37bf39db78a54b35f38692e6b2a8ad",
+  "exact_tested_branch_head": "e3358cba5f057b5c3d351023f43b0cc03c454570",
+  "source_authentication": {
+    "fixture_source_git_commit": "6e5da8f24fb04312ea1dd7778811ca1b21339fd9",
+    "branch_code_git_blob": "70fada6b73b85a8ceb62e73e90a92715f5cd4d31",
+    "branch_test_git_blob": "8f4ef6eff86b137c2c8f25cfec7101caa56df3ff",
+    "original_source_hcl_verified": true,
+    "official_clickhouse_sha256": "e5be46727e773893b5786aaa3d28f5661a30179fe65e19096d8eb7d41a554fd6",
+    "official_clickhouse_version": "25.12.7.21",
+    "real_kafka_version": "4.3.1",
+    "minimal_python": "3.14.7",
+    "confluent_kafka_locked": "2.13.0",
+    "packaging_locked": "25.0"
+  },
+  "root_cause_and_fix": {
+    "initial_real_failure": "ClickHouse 25.12.7.21 rejects Kafka engine DDL setting kafka_auto_offset_reset as UNKNOWN_SETTING",
+    "fixed_by": [
+      "remove unsupported kafka_auto_offset_reset from Kafka engine SETTINGS",
+      "create Kafka engine and materialized view first, then publish exact synthetic events to private Kafka topic",
+      "add fail-closed unit regression for supported syntax, post-view delivery order, and view-creation failure non-delivery"
+    ],
+    "live_code_diagnostics_removed": true
+  },
+  "exact_unmodified_branch_live_test": {
+    "run_mode": "owner-only macOS localhost broker and ClickHouse temporary service",
+    "source_git_blob_identical": true,
+    "first_party_original_tool": "tools/flind/qualify_native_kafka_engine_wave255.py",
+    "script_exit_code": 0,
+    "supervisor_stop_reason": null,
+    "elapsed_seconds_approx": 40.2,
+    "real_kafka_broker_pass": true,
+    "real_clickhouse_kafka_engine_subscription_pass": true,
+    "actual_materialized_view_mergetree_rows_pass": true,
+    "disk_mergetree_system_parts_pass": true,
+    "synthetic_records": 3,
+    "team_101_events": 2,
+    "team_202_events": 1,
+    "team_303_events": 0,
+    "all_owned_broker_and_clickhouse_processes_exited": true,
+    "free_disk_after_gib_approx": 20.284
+  },
+  "first_party_unit_regressions": {
+    "aggregate_modules": 6,
+    "normal_tests": 62,
+    "normal_failures": 0,
+    "normal_errors": 0,
+    "optimized_tests": 62,
+    "optimized_failures": 0,
+    "optimized_errors": 0,
+    "source_sha_checked": true
+  },
+  "scope_exclusions": {
+    "original_flind_rust_worker": false,
+    "original_flind_node_ingestion_worker": false,
+    "authenticated_tenant_authorization": false,
+    "original_distributed_clickhouse_migrations": false,
+    "durable_production_chain": false,
+    "clickhouse_cluster_replication": false,
+    "release_qualified": false
+  },
+  "notes": "Uses synthetic direct Kafka producer, real Kafka ENGINE + real ClickHouse materialized view + MergeTree. Does not imply original product Rust/Node pipeline, authenticated tenant security or release.",
+  "private_safety": {
+    "customer_data_used": false,
+    "shared_db_touched": false,
+    "paid_compute_used": false,
+    "github_actions_enabled": false,
+    "published": false,
+    "deploy": false,
+    "release_decision": "NO-GO"
+  }
+}
