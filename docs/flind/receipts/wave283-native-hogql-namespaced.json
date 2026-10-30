@@ -1,0 +1,52 @@
+{
+  "schema": "flind.wave283.native-full-django-namespaced-hogql.v1",
+  "date_utc": "2026-10-30",
+  "repository": "TheHalfMoon/Flind",
+  "visibility": "private",
+  "production_fix_merged_pr": 295,
+  "production_source_git_blob": "a6b57b31c971900aceaf277c20628b912f0bbe6e",
+  "real_first_party_test_git_blob": "1dd2e0c15db5931d904fa71129dfcfd195bd3d06",
+  "source_full_checkout_base": "6e5da8f24fb04312ea1dd7778811ca1b21339fd9",
+  "source_method_overlay_github_verified": true,
+  "runner_path": "tools/flind/qualify_native_hogql_namespaced_wave283.py",
+  "runner_git_blob": "a613b2c43df56d04d07ade2510797c712e5cf081",
+  "execution": {
+    "owner_mac_only": true,
+    "python_version": "3.14.7",
+    "django_version": "5.2.18",
+    "parameterized_version": "0.9.0",
+    "real_Django_bootstrap_passed": true,
+    "actual_first_party_test_class_extracted_from_git_source": true,
+    "real_HogQL_parser_and_resolver_used": true,
+    "normal_original_first_party_namespaced_tests_passed": 13,
+    "normal_original_first_party_namespaced_tests_failed": 0,
+    "optimized_original_first_party_namespaced_tests_passed": 13,
+    "optimized_original_first_party_namespaced_tests_failed": 0,
+    "all_outbound_sockets_denied": true,
+    "no_db_service_connected": true
+  },
+  "limitations": {
+    "full_upstream_pytest_file_collected": false,
+    "test_import_dependency_exclusions": "posthog.test.base and its snapshot fixtures were deliberately not imported",
+    "other_HogQL_lazy_join_cases_executed": false,
+    "original_source_base_is_older_than_current_main": true,
+    "full_production_E2E_qualified": false,
+    "release_qualified": false
+  },
+  "replay": {
+    "manual_only": true,
+    "owner_only_dir": "/private/tmp/flind-wave283-hogql-native",
+    "environment": "FLIND_W283_OWNER_ROOT points to marker-protected owner-only source scratch; parameterized==0.9.0 installed in isolated PYTHONPATH, existing prequalified Python3.14.7 Django5.2.18 venv",
+    "modes": [
+      "python qualify_native_hogql_namespaced_wave283.py",
+      "python -O qualify_native_hogql_namespaced_wave283.py"
+    ]
+  },
+  "safety": {
+    "strictly_private": true,
+    "zero_paid_services": true,
+    "GitHub_Actions_disabled": true,
+    "no_deployment": true,
+    "no_customer_data": true
+  }
+}
