@@ -109,7 +109,8 @@ def format_exception_summary(e: Exception, max_length: int = 256) -> str:
 class FuturesMap(dict[K, Future[V]]):
     def as_completed(self, timeout: float | int | None = None) -> Iterator[tuple[K, Future[V]]]:
         reverse_map = {v: k for k, v in self.items()}
-        assert len(reverse_map) == len(self)
+        if len(reverse_map) != len(self):
+            raise AssertionError("duplicate futures in FuturesMap")
 
         for f in as_completed(self.values(), timeout=timeout):
             yield reverse_map[f], f
