@@ -141,7 +141,8 @@ class LazyJoinExpressionReplacer(CloningVisitor):
             finder = LazyJoinFieldFinder(self.lazy_join_type_ids)
             finder.visit(node.args[1])
             for field in finder.found:
-                assert len(field.chain) == 2, f"Expected lazy join field chain of length 2, got {field.chain}"
+                if len(field.chain) != 2:
+                    raise AssertionError(f"Expected lazy join field chain of length 2, got {field.chain}")
                 field_name = str(field.chain[1])
                 return ast.Field(
                     chain=[self.table_alias, field_name],
