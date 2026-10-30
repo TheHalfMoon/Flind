@@ -1138,7 +1138,8 @@ class MutationRunner(abc.ABC):
             for host, mutations in shard_host_mutation_waiters.result().items()
             if host.shard_num is not None
         }
-        assert len(shard_mutations) == len(shard_host_mutation_waiters)
+        if len(shard_mutations) != len(shard_host_mutation_waiters):
+            raise AssertionError("shard mutation lookup cardinality mismatch")
         return shard_mutations
 
     def run_on_shards(self, cluster: ClickhouseCluster, shards: Iterable[int] | None = None) -> None:
