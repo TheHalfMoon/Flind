@@ -132,8 +132,32 @@ class Command(BaseCommand):
                 )
             print("Migrations done")
         else:
-            database.migrate(MIGRATIONS_PACKAGE_NAME, options["upto"], replicated=True)
+            self._apply_migrations_bounded(database, options["upto"])
             print("✅ Migration successful")
+
+    def _apply_migrations_bounded(self, database: Database, upto: int) -> None:
+        # infi.clickhouse_orm.Database.migrate checks up_to AFTER applying an
+        # operation. Preserve its per-migration recording, but check the
+        # inclusive boundary BEFORE every operation, including on resume.
+        # This mirrors the upstream infi migration loop with that safety fix.
+        if upto < 1:
+            return
+        applied = database._get_applied_migrations_and_create_tables(MIGRATIONS_PACKAGE_NAME, replicated=True)
+        modules = import_submodules(MIGRATIONS_PACKAGE_NAME)
+        for migration_name in sorted(set(modules) - applied):
+            if int(migration_name[:4]) > upto:
+                break
+            for operation in modules[migration_name].operations:
+                operation.apply(database)
+            database.insert(
+                [
+                    MigrationHistory(
+                        package_name=MIGRATIONS_PACKAGE_NAME,
+                        module_name=migration_name,
+                        applied=datetime.date.today(),
+                    )
+                ]
+            )
 
     def get_migrations(self, database, upto):
         modules = import_submodules(MIGRATIONS_PACKAGE_NAME)

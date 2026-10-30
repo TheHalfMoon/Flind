@@ -73,7 +73,12 @@ def test_migrate_authenticates_each_request_with_the_current_password(
 
     with (
         responses.RequestsMock() as server,
-        patch.object(Database, "migrate", autospec=True, side_effect=apply_past_a_token_rotation),
+        patch.object(
+            Command,
+            "_apply_migrations_bounded",
+            autospec=True,
+            side_effect=lambda _command, database, _upto: apply_past_a_token_rotation(database),
+        ),
         patch("posthog.management.commands.migrate_clickhouse.default_client"),
     ):
         server.add_callback(responses.POST, CLICKHOUSE_URL, callback=answer)
@@ -186,3 +191,52 @@ def test_print_sql_with_plan_is_read_only(capsys: pytest.CaptureFixture[str]) ->
     assert database.call_args.kwargs["autocreate"] is False
     database.return_value.migrate.assert_not_called()
     database.return_value.insert.assert_not_called()
+
+@pytest.mark.parametrize(
+    "upto, already_applied, expected",
+    [
+        (0, (), ()),
+        (2, (), ("0001_initial",)),
+        (1, ("0001_initial",), ()),
+        (4, (), ("0001_initial", "0004_first", "0004_second")),
+        (4, ("0001_initial",), ("0004_first", "0004_second")),
+        (99_999, (), ("0001_initial", "0004_first", "0004_second", "0007_next")),
+        (99_999, ("0001_initial", "0004_first", "0004_second", "0007_next"), ()),
+    ],
+)
+def test_apply_never_exceeds_inclusive_bound_or_skips_equal_prefixes(
+    upto: int, already_applied: tuple[str, ...], expected: tuple[str, ...]
+) -> None:
+    # Exercise the actual first-party executor; no ClickHouse connection is opened.
+    from unittest.mock import Mock
+
+    executed: list[str] = []
+    names = ("0001_initial", "0004_first", "0004_second", "0007_next")
+    modules = {
+        name: SimpleNamespace(operations=[SimpleNamespace(apply=lambda _db, n=name: executed.append(n))])
+        for name in names
+    }
+    database = Mock()
+    database._get_applied_migrations_and_create_tables.return_value = set(already_applied)
+    with patch("posthog.management.commands.migrate_clickhouse.import_submodules", return_value=modules):
+        Command()._apply_migrations_bounded(database, upto)
+    assert tuple(executed) == expected
+    recorded = tuple(call.args[0][0].module_name for call in database.insert.call_args_list)
+    assert recorded == expected
+    if upto == 0:
+        database._get_applied_migrations_and_create_tables.assert_not_called()
+
+
+def test_failed_operation_does_not_record_its_migration() -> None:
+    from unittest.mock import Mock
+
+    def fail(_database: Database) -> None:
+        raise RuntimeError("synthetic operation failure")
+
+    database = Mock()
+    database._get_applied_migrations_and_create_tables.return_value = set()
+    modules = {"0001_initial": SimpleNamespace(operations=[SimpleNamespace(apply=fail)])}
+    with patch("posthog.management.commands.migrate_clickhouse.import_submodules", return_value=modules):
+        with pytest.raises(RuntimeError, match="synthetic operation failure"):
+            Command()._apply_migrations_bounded(database, 1)
+    database.insert.assert_not_called()
