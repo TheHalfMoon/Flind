@@ -1109,7 +1109,8 @@ class MutationRunner(abc.ABC):
                 **{f"__command_{i}": text for i, text in enumerate(rendered_commands)},
             },
         )
-        assert len(mutations) == len(command_list)
+        if len(mutations) != len(command_list):
+            raise AssertionError("mutation lookup cardinality mismatch")
         return {
             command: mutation_id for command, (mutation_id,) in zip(command_list, mutations) if mutation_id is not None
         }
