@@ -122,7 +122,8 @@ def kafka_engine(
     named_collection: str | None = None,
 ) -> str:
     if use_named_collection:
-        assert kafka_host is None, "Can't set kafka_host when using named collection"
+        if kafka_host is not None:
+            raise AssertionError("Can't set kafka_host when using named collection")
         # Use explicit named_collection if provided, otherwise default to MSK
         collection_name = named_collection or settings.CLICKHOUSE_KAFKA_NAMED_COLLECTION
         return KAFKA_NAMED_COLLECTION_ENGINE.format(
