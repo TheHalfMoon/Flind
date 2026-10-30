@@ -71,6 +71,10 @@ class Command(BaseCommand):
         # --print-sql must never fall through to an apply or fake write path.
         if options["print_sql"] and not options["plan"]:
             raise CommandError("--print-sql requires --plan")
+        # A zero or negative upper bound has no migrations to apply or fake.
+        # Return before credentials, database creation, and infi autocreation.
+        if options["upto"] < 1 and not (options["plan"] or options["check"]):
+            return
         creds = get_clickhouse_creds(ClickHouseUser.MIGRATIONS)
 
         # Planning and checking must never create the database or metadata.
