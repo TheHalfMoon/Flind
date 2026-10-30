@@ -649,7 +649,8 @@ def get_cluster(
     extra_hosts = []
     for host_config in map(copy, CLICKHOUSE_PER_TEAM_SETTINGS.values()):
         extra_hosts.append(ConnectionInfo(host_config.pop("host"), None))
-        assert len(host_config) == 0, f"unexpected values: {host_config!r}"
+        if host_config:
+            raise AssertionError(f"unexpected values: {host_config!r}")
 
     creds = get_clickhouse_creds(ch_user)
     overrides = dict(connection_overrides or {})
