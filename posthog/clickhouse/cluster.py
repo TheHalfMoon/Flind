@@ -839,7 +839,8 @@ class MutationWaiter:
         )
 
         statuses = dict(rows)
-        assert len(rows) == len(statuses)
+        if len(rows) != len(statuses):
+            raise AssertionError("duplicate mutation statuses")
 
         if missing_mutations := (self.mutation_ids - statuses.keys()):
             raise MutationNotFound(f"could not find mutation(s): {missing_mutations!r}")
