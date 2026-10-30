@@ -1,0 +1,79 @@
+{
+  "wave": "274",
+  "date_utc": "2026-10-30",
+  "repository": "TheHalfMoon/Flind",
+  "visibility": "private",
+  "base_main_sha": "41b94cfb54c239ead89db3944e9091201b67c6b3",
+  "qualification": "First original Django call_command migrate_clickhouse --upto=1 actual apply on real owner-only supported ClickHouse25.12+Keeper, repeat no-op, plan/check up to 1",
+  "source_attestation": {
+    "source_checkout_base_git_commit": "6e5da8f24fb04312ea1dd7778811ca1b21339fd9",
+    "note": "Original full source checkout with exact current-main first-party source file contents overlaid; not a clean current-main checkout",
+    "original_command_git_blob": "d8702ac1edfe298682f4f5d2289f150080dc5090",
+    "original_migration_tools_git_blob": "17a082e56f6c2825279e8337d1572be921b0aeac",
+    "original_0001_git_blob": "9c7bb587ed038654464fcd877527b84110076698",
+    "official_supported_clickhouse_compressed_sha256": "e5be46727e773893b5786aaa3d28f5661a30179fe65e19096d8eb7d41a554fd6",
+    "dependency": "infi-clickhouse-orm 2.1.0.post20 source Git pin 4e3996becf66bf5c26580aff12a80425d9d56fe5"
+  },
+  "actual_live_execution": {
+    "python": "3.14.7",
+    "clickhouse": "25.12.7.21",
+    "keeper": "real isolated one-node Keeper Raft",
+    "django_bootstrap": "real django.setup() and actual posthog migrate_clickhouse management command via call_command; full original migration module import",
+    "scope": "First-party Command._apply_migrations_bounded; actual 0001_initial operations; original infi MigrationHistory recorder; NOT upstream infi.Database.migrate()",
+    "setup": "Fresh isolated database with first-party migration tracking DDL templates precreated; native/HTTP endpoint wiring overridden in test process to owner-only loopback random ports",
+    "normal": {
+      "exit_code": 0,
+      "runner_sha256": "93b73e5e8d464ab21148e6d198a06edc825b51cb723d160fcaae7965c7f0f218",
+      "migration_history": [
+        "0001_initial"
+      ],
+      "sharded_events_engine": "ReplicatedReplacingMergeTree",
+      "second_apply": "no additional migration",
+      "plan_upto_1": "up to date",
+      "check_upto_1": "up to date",
+      "owner_processes_stopped": true,
+      "owner_scratch_cleaned": true
+    },
+    "optimized": {
+      "exit_code": 0,
+      "runner_sha256": "61bd3db68d9f2929741e87cd14da380be1d9c61a749d85acc1c968a8072b1380",
+      "migration_history": [
+        "0001_initial"
+      ],
+      "sharded_events_engine": "ReplicatedReplacingMergeTree",
+      "second_apply": "no additional migration",
+      "plan_upto_1": "up to date",
+      "check_upto_1": "up to date",
+      "owner_processes_stopped": true,
+      "owner_scratch_cleaned": true
+    },
+    "independent_fresh_service_instances": 2,
+    "live_synthetic_data_only": true
+  },
+  "safety": {
+    "mac_disk_floor_gib": 15.5,
+    "multiservice_start_floor_gib": 19,
+    "free_gib_after_optimized": 19.214,
+    "free_gib_after_normal": 19.214,
+    "owner_only_loopback": true,
+    "shared_or_customer_database_touched": false,
+    "real_user_data_used": false,
+    "other_project_modified": false,
+    "paid_tools": false,
+    "github_actions_enabled": false,
+    "published": false,
+    "deployed": false,
+    "release_qualified": false
+  },
+  "limitations": {
+    "full_original_345_migrations_applied": false,
+    "original_0004_kafka_applied": false,
+    "multinode_replication_qualified": false,
+    "rollback_qualified": false,
+    "production_rust_node_qualified": false,
+    "authenticated_api_sdk_browser_e2e_qualified": false,
+    "production_environment_qualified": false,
+    "full_pytest_rerun_in_wave274": false
+  },
+  "next": "Qualify bounded 0004 Kafka migration with real isolated broker and supported ClickHouse or fail closed on exact prerequisite; then multinode/rollback and production workers/authenticated E2E."
+}
