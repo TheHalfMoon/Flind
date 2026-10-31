@@ -1,0 +1,136 @@
+{
+  "schema": "flind.wave302.original-django-clickhouse-0026.v1",
+  "date_utc": "2026-10-31",
+  "repository": "TheHalfMoon/Flind",
+  "visibility": "private",
+  "main_before_qualification": "cd843b7dab8886bdb762910cfc8b77d71010a0a5",
+  "original_full_source_snapshot": "6e5da8f24fb04312ea1dd7778811ca1b21339fd9",
+  "original_migration_tree": "23ea2f226e6be4f2caca554b6ef7cd769d61baa0",
+  "original_0026_git_blob": "af0f1c1d59a7074335081b6a85d5080c6b2c9ca3",
+  "current_Django_command_git_blob": "711cb55e01a19b16bc8f95478010574654560db3",
+  "runners_git_blobs": {
+    "tools/flind/qualify_original_cli_real_0001_0026_wave302.py": "afad20cc8788575ea8f53e88b1104a43d331578d",
+    "tools/flind/qualify_original_cli_real_0001_0026_optimized_wave302.py": "dfef8eb6fea8a814c1d90a7bb2effbe1c79af564"
+  },
+  "owner_only_runtime": {
+    "Python": "3.14.7",
+    "Django": "5.2.18",
+    "ClickHouse": "25.12.7.21",
+    "Keeper": "synthetic owner-only one-node"
+  },
+  "real_live_qualification": {
+    "normal": {
+      "exit_code": 0,
+      "original_Django_upto": 26,
+      "migration_count": 25,
+      "original_migration_history_exact": [
+        "0001_initial",
+        "0002_events_materialized",
+        "0003_person",
+        "0004_kafka",
+        "0006_session_recording_events",
+        "0007_static_cohorts_table",
+        "0008_plugin_log_entries",
+        "0009_person_deleted_column",
+        "0010_cohortpeople",
+        "0011_cohortpeople_no_shard",
+        "0012_person_id_deleted_column",
+        "0013_persons_distinct_ids_column",
+        "0014_persons_distinct_ids_column_remove",
+        "0015_materialized_column_comments",
+        "0016_collapsing_person_distinct_id",
+        "0017_events_dead_letter_queue",
+        "0018_group_analytics_schema",
+        "0019_group_analytics_materialized_columns",
+        "0020_session_recording_events_window_id",
+        "0021_session_recording_events_materialize_full_snapshot",
+        "0022_person_distinct_id2",
+        "0023_dead_letter_queue_tags",
+        "0024_materialize_window_and_session_id",
+        "0025_json_events",
+        "0026_fix_materialized_window_and_session_ids"
+      ],
+      "original_0026_session_and_window_columns": [
+        "events\t$session_id",
+        "events\t$window_id",
+        "sharded_events\t$session_id",
+        "sharded_events\t$window_id"
+      ],
+      "idempotent_second_apply": true,
+      "plan_check_no_pending": true,
+      "replica_tracking_write_distributed_readback": true,
+      "owner_services_stopped": true,
+      "scratch_reaped": true,
+      "free_disk_gib_after": 37.332
+    },
+    "optimized": {
+      "exit_code": 0,
+      "original_Django_upto": 26,
+      "migration_count": 25,
+      "original_migration_history_exact": [
+        "0001_initial",
+        "0002_events_materialized",
+        "0003_person",
+        "0004_kafka",
+        "0006_session_recording_events",
+        "0007_static_cohorts_table",
+        "0008_plugin_log_entries",
+        "0009_person_deleted_column",
+        "0010_cohortpeople",
+        "0011_cohortpeople_no_shard",
+        "0012_person_id_deleted_column",
+        "0013_persons_distinct_ids_column",
+        "0014_persons_distinct_ids_column_remove",
+        "0015_materialized_column_comments",
+        "0016_collapsing_person_distinct_id",
+        "0017_events_dead_letter_queue",
+        "0018_group_analytics_schema",
+        "0019_group_analytics_materialized_columns",
+        "0020_session_recording_events_window_id",
+        "0021_session_recording_events_materialize_full_snapshot",
+        "0022_person_distinct_id2",
+        "0023_dead_letter_queue_tags",
+        "0024_materialize_window_and_session_id",
+        "0025_json_events",
+        "0026_fix_materialized_window_and_session_ids"
+      ],
+      "original_0026_session_and_window_columns": [
+        "events\t$session_id",
+        "events\t$window_id",
+        "sharded_events\t$session_id",
+        "sharded_events\t$window_id"
+      ],
+      "idempotent_second_apply": true,
+      "plan_check_no_pending": true,
+      "replica_tracking_write_distributed_readback": true,
+      "owner_services_stopped": true,
+      "scratch_reaped": true,
+      "free_disk_gib_after": 37.337
+    }
+  },
+  "test_only_metadata_wiring": "0026 original RunPython and original EE materialize run against real ClickHouse. Original metadata feature-setting lookup (which otherwise requires absent PostgreSQL app state) redirected to original ee.get_materialized_columns reading actual ClickHouse schema; original 0026 sync_execute and EE sync_execute bound to native localhost server. No production code changed.",
+  "first_failures": {
+    "missing_application_PG_feature_context": true,
+    "incorrect_empty_metadata_fixture": true,
+    "resolved_with_real_ClickHouse_schema_metadata": true
+  },
+  "limitations": {
+    "production_PostgreSQL_feature_setting_integration": false,
+    "all_346_original_migrations_qualified": false,
+    "real_Kafka_broker_produce_consume": false,
+    "multi_node_failover_recovery": false,
+    "authenticated_API_SDK_browser_E2E": false,
+    "release_qualified": false
+  },
+  "safety": {
+    "strict_private": true,
+    "zero_paid_services": true,
+    "synthetic_only": true,
+    "no_customer_data": true,
+    "external_network_denied_in_runner": true,
+    "GitHub_Actions_disabled": true,
+    "no_deployment_or_publication": true,
+    "owned_services_stopped_and_scratch_removed": true
+  },
+  "reproduce": "Owner-only Mac; copy original Git-pinned source and authenticate current helper blob overlays; official ClickHouse25.12.7.21 and Flind Python3.14.7/Django5.2.18. Run both bounded upto26 scripts in separate one-node localhost ClickHouse+Keeper instances with >=19GiB disk preflight. Schema read from real ClickHouse, not fabricated or app production PostgreSQL."
+}
