@@ -1,0 +1,181 @@
+{
+  "schema": "flind.wave314.original-django-real-clickhouse-through-0042.v1",
+  "date_utc": "2026-10-31",
+  "repository": "TheHalfMoon/Flind",
+  "visibility": "private",
+  "main_before_qualification": "c8f8dd4d83698b0e219be50122b15ecdf0dcece5",
+  "original_full_source_snapshot": "6e5da8f24fb04312ea1dd7778811ca1b21339fd9",
+  "original_migration_tree_git_sha": "23ea2f226e6be4f2caca554b6ef7cd769d61baa0",
+  "original_Django_command_git_blob": "711cb55e01a19b16bc8f95478010574654560db3",
+  "new_original_source_blobs": {
+    "0041_kafka_partitions_stats.py": "338d4eb1da0faa0e1dea59175f7f53d30d16ceec",
+    "0042_kafka_partitions_stats.py": "370e3184873510de3167c7f4ff8cf3e37ec45bc0"
+  },
+  "runner_git_blobs": {
+    "tools/flind/qualify_original_cli_real_0001_0042_wave314.py": "88f32c955c30dbd8e72c4ffd1528cf1d33c78ea1",
+    "tools/flind/qualify_original_cli_real_0001_0042_optimized_wave314.py": "d4407a5d20e21e21ee4757cd757edb3845f6db2e"
+  },
+  "runtime": {
+    "Python": "3.14.7",
+    "Django": "5.2.18",
+    "ClickHouse": "25.12.7.21",
+    "Keeper": "owner-only one-node"
+  },
+  "real_live_qualified": {
+    "normal": {
+      "exit_code": 0,
+      "original_Django_command_upto": 42,
+      "exact_original_migration_count": 42,
+      "exact_original_migration_history": [
+        "0001_initial",
+        "0002_events_materialized",
+        "0003_person",
+        "0004_kafka",
+        "0006_session_recording_events",
+        "0007_static_cohorts_table",
+        "0008_plugin_log_entries",
+        "0009_person_deleted_column",
+        "0010_cohortpeople",
+        "0011_cohortpeople_no_shard",
+        "0012_person_id_deleted_column",
+        "0013_persons_distinct_ids_column",
+        "0014_persons_distinct_ids_column_remove",
+        "0015_materialized_column_comments",
+        "0016_collapsing_person_distinct_id",
+        "0017_events_dead_letter_queue",
+        "0018_group_analytics_schema",
+        "0019_group_analytics_materialized_columns",
+        "0020_session_recording_events_window_id",
+        "0021_session_recording_events_materialize_full_snapshot",
+        "0022_person_distinct_id2",
+        "0023_dead_letter_queue_tags",
+        "0024_materialize_window_and_session_id",
+        "0025_json_events",
+        "0026_fix_materialized_window_and_session_ids",
+        "0027_persons_and_groups_on_events",
+        "0028_dead_letter_queue_settings",
+        "0029_cohortpeople_version",
+        "0029_person_version_column",
+        "0030_created_at_persons_and_groups_on_events",
+        "0031_event_properties_zstd",
+        "0032_ingestion_warnings",
+        "0033_app_metrics",
+        "0034_fix_ingestion_warnings_sharding_key",
+        "0035_app_metrics_distributed_table_fix",
+        "0036_session_recording_events_materialized_columns",
+        "0037_performance_events",
+        "0038_person_overrides",
+        "0039_person_overrides_dict",
+        "0040_add_ttl_to_performance_events",
+        "0041_kafka_partitions_stats",
+        "0042_kafka_partitions_stats"
+      ],
+      "real_ClickHouse_Kafka_partition_statistics_tables": [
+        {
+          "engine": "Kafka",
+          "local_broker": true,
+          "name": "kafka_events_plugin_ingestion_overflow_partition_statistics"
+        },
+        {
+          "engine": "Kafka",
+          "local_broker": true,
+          "name": "kafka_events_plugin_ingestion_partition_statistics"
+        }
+      ],
+      "all_brokers_strict_loopback": true,
+      "idempotent_second_apply": true,
+      "plan_check_no_pending": true,
+      "owner_children_stopped": true,
+      "owned_scratch_reaped": true,
+      "free_disk_gib_after": 36.829
+    },
+    "optimized": {
+      "exit_code": 0,
+      "original_Django_command_upto": 42,
+      "exact_original_migration_count": 42,
+      "exact_original_migration_history": [
+        "0001_initial",
+        "0002_events_materialized",
+        "0003_person",
+        "0004_kafka",
+        "0006_session_recording_events",
+        "0007_static_cohorts_table",
+        "0008_plugin_log_entries",
+        "0009_person_deleted_column",
+        "0010_cohortpeople",
+        "0011_cohortpeople_no_shard",
+        "0012_person_id_deleted_column",
+        "0013_persons_distinct_ids_column",
+        "0014_persons_distinct_ids_column_remove",
+        "0015_materialized_column_comments",
+        "0016_collapsing_person_distinct_id",
+        "0017_events_dead_letter_queue",
+        "0018_group_analytics_schema",
+        "0019_group_analytics_materialized_columns",
+        "0020_session_recording_events_window_id",
+        "0021_session_recording_events_materialize_full_snapshot",
+        "0022_person_distinct_id2",
+        "0023_dead_letter_queue_tags",
+        "0024_materialize_window_and_session_id",
+        "0025_json_events",
+        "0026_fix_materialized_window_and_session_ids",
+        "0027_persons_and_groups_on_events",
+        "0028_dead_letter_queue_settings",
+        "0029_cohortpeople_version",
+        "0029_person_version_column",
+        "0030_created_at_persons_and_groups_on_events",
+        "0031_event_properties_zstd",
+        "0032_ingestion_warnings",
+        "0033_app_metrics",
+        "0034_fix_ingestion_warnings_sharding_key",
+        "0035_app_metrics_distributed_table_fix",
+        "0036_session_recording_events_materialized_columns",
+        "0037_performance_events",
+        "0038_person_overrides",
+        "0039_person_overrides_dict",
+        "0040_add_ttl_to_performance_events",
+        "0041_kafka_partitions_stats",
+        "0042_kafka_partitions_stats"
+      ],
+      "real_ClickHouse_Kafka_partition_statistics_tables": [
+        {
+          "engine": "Kafka",
+          "local_broker": true,
+          "name": "kafka_events_plugin_ingestion_overflow_partition_statistics"
+        },
+        {
+          "engine": "Kafka",
+          "local_broker": true,
+          "name": "kafka_events_plugin_ingestion_partition_statistics"
+        }
+      ],
+      "all_brokers_strict_loopback": true,
+      "idempotent_second_apply": true,
+      "plan_check_no_pending": true,
+      "owner_children_stopped": true,
+      "owned_scratch_reaped": true,
+      "free_disk_gib_after": 36.821
+    }
+  },
+  "source_and_isolation": "Authentic original 0041 and 0042 operations create Kafka tables with original topic names. Real system.tables.name, engine, create_table_query are checked. Kafka brokers strictly 127.0.0.1:1, no network access outside localhost. No external Kafka service or messages.",
+  "known_boundary_0039": "Dictionary DDL created in original 0039 but status NOT_LOADED; actual dictGet source functionality not qualified.",
+  "not_qualified": {
+    "original_0043_and_later": true,
+    "all_346_original_migrations": true,
+    "real_Kafka_broker_messages": true,
+    "loaded_0039_dictionary": true,
+    "multi_node_recovery": true,
+    "PostgreSQL_feature_settings": true,
+    "authenticated_API_SDK_browser_E2E": true,
+    "release": true
+  },
+  "safety": {
+    "strict_private_repo": true,
+    "Github_Actions_disabled": true,
+    "zero_paid_services": true,
+    "synthetic_only": true,
+    "no_customer_data": true,
+    "no_deployment_or_publication": true,
+    "owner_services_stopped_and_scratch_cleaned": true
+  }
+}
