@@ -15,7 +15,8 @@ ROOT = Path(__file__).resolve().parents[2]
 MIGRATIONS = ROOT / "posthog/clickhouse/migrations"
 COMMAND = ROOT / "posthog/management/commands/migrate_clickhouse.py"
 TREE_SHA = "23ea2f226e6be4f2caca554b6ef7cd769d61baa0"
-COMMAND_SHA = "a3292548f7b3564ea265c232c3f9c43df933c410"
+# Deliberate source pin: review and update when the original command changes.
+COMMAND_SHA = "711cb55e01a19b16bc8f95478010574654560db3"
 KNOWN_DUPLICATES = {29: 2, 50: 2, 54: 2, 55: 3, 64: 3, 72: 2, 73: 2, 83: 2}
 
 def git(*args):
@@ -50,6 +51,7 @@ def assigns_ops(nodes):
 class OriginalManifestTests(unittest.TestCase):
     def test_committed_sources_match_exact_checkout(self):
         self.assertEqual(git("rev-parse", "HEAD:posthog/clickhouse/migrations"), TREE_SHA)
+        self.assertEqual(git("rev-parse", "HEAD:posthog/management/commands/migrate_clickhouse.py"), COMMAND_SHA)
         self.assertEqual(git("hash-object", str(COMMAND)), COMMAND_SHA)
         entries = git("ls-tree", "-r", "HEAD", "--", "posthog/clickhouse/migrations").splitlines()
         self.assertEqual(len(entries), 355)
