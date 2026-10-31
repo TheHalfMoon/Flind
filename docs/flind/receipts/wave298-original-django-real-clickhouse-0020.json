@@ -1,0 +1,138 @@
+{
+  "schema": "flind.wave298.original-django-clickhouse-group-materialization-0020.v1",
+  "date_utc": "2026-10-31",
+  "repository": "TheHalfMoon/Flind",
+  "visibility": "private",
+  "source_checkout_snapshot": "6e5da8f24fb04312ea1dd7778811ca1b21339fd9",
+  "original_migration_tree_sha": "23ea2f226e6be4f2caca554b6ef7cd769d61baa0",
+  "original_command_git_blob": "711cb55e01a19b16bc8f95478010574654560db3",
+  "main_attested_before_work": "8cf0a38493bdf90cf282a8025b60d4fb2904a78f",
+  "original_migrations_git_blobs": {
+    "0016_collapsing_person_distinct_id.py": "2e5dc2c46b2948ee38bf5f64311fb80b3b271265",
+    "0017_events_dead_letter_queue.py": "bdabeba226fac91a4a41c5c9397b1e56ef8e7561",
+    "0018_group_analytics_schema.py": "c35f8ca2d59c800bad92bb894cf4d256dbc175cd",
+    "0019_group_analytics_materialized_columns.py": "1b02f1cb6f3b70bb88a95630726420e671c31ef8",
+    "0020_session_recording_events_window_id.py": "75fbbf6e61d4feb4aeb783287a052e3b69106128"
+  },
+  "runners_git_blobs": {
+    "tools/flind/qualify_original_cli_real_0001_0020_schema_wave298.py": "b445c9c2093a1e0248cc6bf10e6f5282e0521be0",
+    "tools/flind/qualify_original_cli_real_0001_0020_schema_optimized_wave298.py": "9fe1a6da45bd9fe2f952fdefa7b1654d850da972"
+  },
+  "owner_only_runtime": {
+    "python": "3.14.7",
+    "django": "5.2.18",
+    "ClickHouse": "25.12.7.21",
+    "Keeper": "one-node synthetic owner-only loopback"
+  },
+  "real_qualified_modes": {
+    "normal": {
+      "exit_code": 0,
+      "original_Django_call_command_upto": 20,
+      "original_migration_history_exact": [
+        "0001_initial",
+        "0002_events_materialized",
+        "0003_person",
+        "0004_kafka",
+        "0006_session_recording_events",
+        "0007_static_cohorts_table",
+        "0008_plugin_log_entries",
+        "0009_person_deleted_column",
+        "0010_cohortpeople",
+        "0011_cohortpeople_no_shard",
+        "0012_person_id_deleted_column",
+        "0013_persons_distinct_ids_column",
+        "0014_persons_distinct_ids_column_remove",
+        "0015_materialized_column_comments",
+        "0016_collapsing_person_distinct_id",
+        "0017_events_dead_letter_queue",
+        "0018_group_analytics_schema",
+        "0019_group_analytics_materialized_columns",
+        "0020_session_recording_events_window_id"
+      ],
+      "original_migrations_recorded_once": 19,
+      "materialized_group_columns_in_real_ClickHouse": [
+        "events\t$group_0",
+        "events\t$group_1",
+        "events\t$group_2",
+        "events\t$group_3",
+        "events\t$group_4",
+        "sharded_events\t$group_0",
+        "sharded_events\t$group_1",
+        "sharded_events\t$group_2",
+        "sharded_events\t$group_3",
+        "sharded_events\t$group_4"
+      ],
+      "materialized_group_columns_count": 10,
+      "reapply_idempotent": true,
+      "plan_check_no_pending": true,
+      "replicated_tracking_write_and_distributed_readback": true,
+      "owned_services_stopped": true,
+      "owner_scratch_reaped": true,
+      "free_gib_after": 37.711
+    },
+    "optimized": {
+      "exit_code": 0,
+      "original_Django_call_command_upto": 20,
+      "original_migration_history_exact": [
+        "0001_initial",
+        "0002_events_materialized",
+        "0003_person",
+        "0004_kafka",
+        "0006_session_recording_events",
+        "0007_static_cohorts_table",
+        "0008_plugin_log_entries",
+        "0009_person_deleted_column",
+        "0010_cohortpeople",
+        "0011_cohortpeople_no_shard",
+        "0012_person_id_deleted_column",
+        "0013_persons_distinct_ids_column",
+        "0014_persons_distinct_ids_column_remove",
+        "0015_materialized_column_comments",
+        "0016_collapsing_person_distinct_id",
+        "0017_events_dead_letter_queue",
+        "0018_group_analytics_schema",
+        "0019_group_analytics_materialized_columns",
+        "0020_session_recording_events_window_id"
+      ],
+      "original_migrations_recorded_once": 19,
+      "materialized_group_columns_in_real_ClickHouse": [
+        "events\t$group_0",
+        "events\t$group_1",
+        "events\t$group_2",
+        "events\t$group_3",
+        "events\t$group_4",
+        "sharded_events\t$group_0",
+        "sharded_events\t$group_1",
+        "sharded_events\t$group_2",
+        "sharded_events\t$group_3",
+        "sharded_events\t$group_4"
+      ],
+      "materialized_group_columns_count": 10,
+      "reapply_idempotent": true,
+      "plan_check_no_pending": true,
+      "replicated_tracking_write_and_distributed_readback": true,
+      "owned_services_stopped": true,
+      "owner_scratch_reaped": true,
+      "free_gib_after": 37.69
+    }
+  },
+  "test_only_native_wiring": "ee.clickhouse.materialized_columns.columns.sync_execute rerouted to real native ClickHouse owner-only loopback client for 0019. Real original materialize operation and SQL executed; no application logic mocked.",
+  "initial_upto20_blocker": "Original isolated runner did not route EE sync_execute native connection to owner-only port; first test-only native correction fixed it. Initial schema guard had double-escaped tab and was corrected before final two passes.",
+  "not_qualified": {
+    "all_346_original_migrations_applied": true,
+    "real_Kafka_broker_produce_consume": true,
+    "multi_node_rollback_recovery": true,
+    "authenticated_production_API_SDK_browser_end_to_end": true,
+    "release": true
+  },
+  "safety": {
+    "strict_private": true,
+    "GitHub_Actions_disabled": true,
+    "zero_paid_services": true,
+    "synthetic_only": true,
+    "no_customer_data": true,
+    "no_deployment_or_publication": true,
+    "services_stopped_and_scratch_reaped": true
+  },
+  "replay": "Recreate source-locked owner-only /private/tmp/flind-wave295-original-django-0020/source snapshot and authenticated helpers, Python3.14.7/Django5.2.18, official ClickHouse25.12.7.21 compressed binary, >=19GiB disk. Runners use separate one-node Keeper/ClickHouse loopback scratch and a live native SQL client for EE schema introspection; all other network refused."
+}
