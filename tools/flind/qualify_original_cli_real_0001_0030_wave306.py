@@ -451,7 +451,7 @@ def main():
   stop_all()
   REPORT['owned_children_stopped']=all(p.poll() is not None for _,p in children)
   REPORT['free_gib_after']=round(free_space()/1024**3,3)
-  if SCRATCH.is_dir() and not SCRATCH.is_symlink() and SCRATCH.parent==ROOT and (SCRATCH/'.flind-owner-only').read_text()==MARKER:
+  if SCRATCH.is_dir() and not SCRATCH.is_symlink() and SCRATCH.parent==ROOT and (SCRATCH/'.flind-owner-only').is_file() and not (SCRATCH/'.flind-owner-only').is_symlink() and (SCRATCH/'.flind-owner-only').read_text()==MARKER:
    logs={}
    for name,_p in children:
     f=SCRATCH/(name+'.log')
