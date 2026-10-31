@@ -1,0 +1,92 @@
+{
+  "schema": "flind.wave293.original-django-live-clickhouse-0010.v1",
+  "date_utc": "2026-10-31",
+  "repository": "TheHalfMoon/Flind",
+  "visibility": "private",
+  "base_main": "8b6e865bced22fb93adf06d1b675204be9bcfe33",
+  "full_source_snapshot": "6e5da8f24fb04312ea1dd7778811ca1b21339fd9",
+  "first_party_migration_tree": "23ea2f226e6be4f2caca554b6ef7cd769d61baa0",
+  "original_command_git_blob": "711cb55e01a19b16bc8f95478010574654560db3",
+  "original_0008_0009_0010_blobs": {
+    "0008_plugin_log_entries": "da6eb0bebededad2988f26c36966f4aaf52f038a",
+    "0009_person_deleted_column": "67ec90b46ac3e7fb40f2977390c595b48122ca3f",
+    "0010_cohortpeople": "2ca3c5ab34fb3a7e95d34f5b04f3404c0a91f7f4"
+  },
+  "runner_git_blobs": {
+    "tools/flind/qualify_original_cli_real_0001_0010_wave293.py": "75eea5b1e85dcee56734ea5b27c61579e12425b1",
+    "tools/flind/qualify_original_cli_real_0001_0010_optimized_wave293.py": "e94ece0bdf8b7de422b5c15a1029394cc5867a20"
+  },
+  "owner_mac": {
+    "python": "3.14.7",
+    "Django": "5.2.18",
+    "ClickHouse": "25.12.7.21",
+    "Keeper": "single-node real owner-only"
+  },
+  "real_test_results": {
+    "normal": {
+      "exit_code": 0,
+      "original_Django_command_upto": 10,
+      "history_exact": [
+        "0001_initial",
+        "0002_events_materialized",
+        "0003_person",
+        "0004_kafka",
+        "0006_session_recording_events",
+        "0007_static_cohorts_table",
+        "0008_plugin_log_entries",
+        "0009_person_deleted_column",
+        "0010_cohortpeople"
+      ],
+      "later_created_objects": [
+        "cohortpeople\tReplicatedCollapsingMergeTree",
+        "kafka_plugin_log_entries\tKafka",
+        "plugin_log_entries\tReplicatedReplacingMergeTree",
+        "plugin_log_entries_mv\tMaterializedView"
+      ],
+      "person_is_deleted_column": true,
+      "reapply_noop": true,
+      "plan_and_check_no_pending": true,
+      "real_replica_tracking_write_readback": true,
+      "owned_services_stopped": true,
+      "scratch_reaped": true,
+      "disk_free_gib": 38.129
+    },
+    "optimized": {
+      "exit_code": 0,
+      "original_Django_command_upto": 10,
+      "history_exact": [
+        "0001_initial",
+        "0002_events_materialized",
+        "0003_person",
+        "0004_kafka",
+        "0006_session_recording_events",
+        "0007_static_cohorts_table",
+        "0008_plugin_log_entries",
+        "0009_person_deleted_column",
+        "0010_cohortpeople"
+      ],
+      "later_created_objects": [
+        "cohortpeople\tReplicatedCollapsingMergeTree",
+        "kafka_plugin_log_entries\tKafka",
+        "plugin_log_entries\tReplicatedReplacingMergeTree",
+        "plugin_log_entries_mv\tMaterializedView"
+      ],
+      "person_is_deleted_column": true,
+      "reapply_noop": true,
+      "plan_and_check_no_pending": true,
+      "real_replica_tracking_write_readback": true,
+      "owned_services_stopped": true,
+      "scratch_reaped": true,
+      "disk_free_gib": 38.095
+    }
+  },
+  "actual_kafka_broker_started": false,
+  "actual_kafka_events_produced_consumed": false,
+  "actual_production_data_used": false,
+  "full_original_346_migrations_qualified": false,
+  "multinode_recovery_and_rollback_qualified": false,
+  "authenticated_api_sdk_browser_e2e_qualified": false,
+  "release_qualified": false,
+  "private_actions_disabled_no_publish": true,
+  "reproducibility": "Owner-only scratch /private/tmp/flind-wave293-real-migrations-0010/source from exact original full snapshot plus hash-attested current-main helpers, official ClickHouse25.12.7.21 and Flind Python3.14.7 venv. Each script uses unique loopback database, no real Kafka broker, >=19GiB preflight, deletes service scratch and stops children."
+}
