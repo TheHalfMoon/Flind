@@ -1,0 +1,87 @@
+{
+  "schema": "flind.wave288.original-django-real-clickhouse-0001-0002.v1",
+  "date_utc": "2026-10-31",
+  "repository": "TheHalfMoon/Flind",
+  "visibility": "private",
+  "tested_private_main": "23a641cb2ad5e3c7c3bc5f077099ee7749552af3",
+  "source_base_clone_commit": "6e5da8f24fb04312ea1dd7778811ca1b21339fd9",
+  "original_command_overlay_current_main_git_blob": "711cb55e01a19b16bc8f95478010574654560db3",
+  "source_overlay_git_blobs": {
+    "posthog/clickhouse/cluster.py": "39c19f5da13e7b22cbdf48d4afb375950c930beb",
+    "posthog/clickhouse/kafka_engine.py": "b2b0701cdf63bac81277ad0b130533ab2c8448f0",
+    "posthog/clickhouse/client/migration_tools.py": "17a082e56f6c2825279e8337d1572be921b0aeac"
+  },
+  "original_migration_git_blobs": {
+    "posthog/clickhouse/migrations/0001_initial.py": "9c7bb587ed038654464fcd877527b84110076698",
+    "posthog/clickhouse/migrations/0002_events_materialized.py": "c5928ce6670863ad54c2e4f9dd93b789646a98ac"
+  },
+  "runner_git_blobs": {
+    "tools/flind/qualify_original_cli_real_0001_0002_wave288.py": "f89d6be1f276190497bbb186f5165ce058bb2c6d",
+    "tools/flind/qualify_original_cli_real_0001_0002_optimized_wave288.py": "28f1f03ba4e0682110eea863c5e7fbf5e92e2faf"
+  },
+  "owner_only_mac_python": "3.14.7",
+  "django": "5.2.18",
+  "live_qualified_results": {
+    "normal": {
+      "original_Django_command_executed": true,
+      "original_django_call_command_apply": true,
+      "original_django_second_apply_noop": true,
+      "original_django_plan_check_upto1_empty": true,
+      "original_django_cli_apply_0001_0002_live": true,
+      "real_replica_write_distributed_readback_qualified": true,
+      "owned_children_stopped": true,
+      "owner_scratch_cleaned": true,
+      "exit_code": 0,
+      "original_migration_history_exact": [
+        "0001_initial",
+        "0002_events_materialized"
+      ],
+      "original_sharded_events_engine": "ReplicatedReplacingMergeTree",
+      "observed_clickhouse_version": "25.12.7.21",
+      "python_mode": "normal",
+      "free_gib_after": 38.109
+    },
+    "optimized": {
+      "original_Django_command_executed": true,
+      "original_django_call_command_apply": true,
+      "original_django_second_apply_noop": true,
+      "original_django_plan_check_upto1_empty": true,
+      "original_django_cli_apply_0001_0002_live": true,
+      "real_replica_write_distributed_readback_qualified": true,
+      "owned_children_stopped": true,
+      "owner_scratch_cleaned": true,
+      "exit_code": 0,
+      "original_migration_history_exact": [
+        "0001_initial",
+        "0002_events_materialized"
+      ],
+      "original_sharded_events_engine": "ReplicatedReplacingMergeTree",
+      "observed_clickhouse_version": "25.12.7.21",
+      "python_mode": "optimized",
+      "free_gib_after": 38.145
+    }
+  },
+  "original_django_call_command_upto": 2,
+  "original_sql_operations_0001_and_0002_applied": true,
+  "original_select_1_noop_0002_sql_executed": true,
+  "first_party_tracking_table_ddl_precreated_in_scratch": true,
+  "synthetic_database_per_run": "flind_wave288_synthetic, flind_wave288_optimized_synthetic",
+  "real_clickhouse_and_keeper_owner_loopback": true,
+  "all_owner_service_processes_stopped_and_service_scratch_reaped": true,
+  "no_other_original_migrations_applied": true,
+  "limitations": {
+    "full_346_product_migrations_applied": false,
+    "multi_node_replication_and_rollback_qualified": false,
+    "production_Rust_Node_Kafka_ingest_qualified": false,
+    "authenticated_tenant_API_SDK_browser_E2E_qualified": false,
+    "release_qualified": false
+  },
+  "safety": {
+    "no_customer_shared_or_production_data": true,
+    "no_paid_service": true,
+    "GitHub_Actions_disabled": true,
+    "no_deployment_or_publication": true,
+    "owner_only_synthetic_127_0_0_1_ports": true
+  },
+  "reproduction_notes": "Owner-only macOS /private/tmp scratch. Recreate original source base 6e5da8f with Git-attested current command, cluster, kafka_engine, migration_tools overlays. Preserve official ClickHouse25.12.7.21 compressed binary and Flind-only pinned Python3.14.7/Django5.2.18 venv. Each runner requires >=19GiB free scratch preflight, uses fresh unique scratch DB and stops/removes owned service subprocesses."
+}
