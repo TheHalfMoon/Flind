@@ -1,0 +1,172 @@
+{
+  "schema": "flind.wave305.original-django-real-clickhouse-through-0029.v1",
+  "date_utc": "2026-10-31",
+  "repository": "TheHalfMoon/Flind",
+  "visibility": "private",
+  "tested_main": "5927ec406ac4af14e8710b87993fa12f8b16fdb5",
+  "original_full_source_snapshot": "6e5da8f24fb04312ea1dd7778811ca1b21339fd9",
+  "original_migration_tree_sha": "23ea2f226e6be4f2caca554b6ef7cd769d61baa0",
+  "current_Django_command_git_blob": "711cb55e01a19b16bc8f95478010574654560db3",
+  "original_0028_and_0029_git_blobs": {
+    "0028_dead_letter_queue_settings.py": "8c57e1da8bba259ff88280de9ff60bd595b7b8bd",
+    "0029_cohortpeople_version.py": "4c7cb8b130168e37671707dbd7b99d12485001ff",
+    "0029_person_version_column.py": "ff9e5eb7537993fab55543485ba6c736dbc427f0"
+  },
+  "reproducible_runner_git_blobs": {
+    "tools/flind/qualify_original_cli_real_0001_0029_wave305.py": "118c15167ee93c20394cf5c21fbfe4e3e2685359",
+    "tools/flind/qualify_original_cli_real_0001_0029_optimized_wave305.py": "c57483916fdc71713e0f573149fcd338b0482b4c"
+  },
+  "live_owner_only_runtime": {
+    "Python": "3.14.7",
+    "Django": "5.2.18",
+    "ClickHouse": "25.12.7.21",
+    "Keeper": "one-node owner-only"
+  },
+  "tested_modes": {
+    "normal": {
+      "exit_code": 0,
+      "original_Django_upto_0028": true,
+      "original_Django_upto_0029": true,
+      "exact_0028_migration_count": 27,
+      "exact_0029_migration_count": 29,
+      "migration_history_0029": [
+        "0001_initial",
+        "0002_events_materialized",
+        "0003_person",
+        "0004_kafka",
+        "0006_session_recording_events",
+        "0007_static_cohorts_table",
+        "0008_plugin_log_entries",
+        "0009_person_deleted_column",
+        "0010_cohortpeople",
+        "0011_cohortpeople_no_shard",
+        "0012_person_id_deleted_column",
+        "0013_persons_distinct_ids_column",
+        "0014_persons_distinct_ids_column_remove",
+        "0015_materialized_column_comments",
+        "0016_collapsing_person_distinct_id",
+        "0017_events_dead_letter_queue",
+        "0018_group_analytics_schema",
+        "0019_group_analytics_materialized_columns",
+        "0020_session_recording_events_window_id",
+        "0021_session_recording_events_materialize_full_snapshot",
+        "0022_person_distinct_id2",
+        "0023_dead_letter_queue_tags",
+        "0024_materialize_window_and_session_id",
+        "0025_json_events",
+        "0026_fix_materialized_window_and_session_ids",
+        "0027_persons_and_groups_on_events",
+        "0028_dead_letter_queue_settings",
+        "0029_cohortpeople_version",
+        "0029_person_version_column"
+      ],
+      "original_0028_dead_letter_queue_engines": [
+        {
+          "engine": "MaterializedView",
+          "name": "events_dead_letter_queue_mv"
+        },
+        {
+          "engine": "Kafka",
+          "name": "kafka_events_dead_letter_queue"
+        }
+      ],
+      "original_0029_person_and_cohort_version_columns": [
+        "cohortpeople\tversion\tUInt64",
+        "person\tversion\tUInt64"
+      ],
+      "original_0029_person_kafka_and_mv": [
+        "kafka_person\tKafka",
+        "person_mv\tMaterializedView"
+      ],
+      "second_apply_noop": true,
+      "plan_check_no_pending": true,
+      "real_replication_tracking_write_distributed_readback": true,
+      "owner_children_stopped": true,
+      "owner_scratch_cleaned": true,
+      "free_disk_gib_after": 36.842
+    },
+    "optimized": {
+      "exit_code": 0,
+      "original_Django_upto_0028": true,
+      "original_Django_upto_0029": true,
+      "exact_0028_migration_count": 27,
+      "exact_0029_migration_count": 29,
+      "migration_history_0029": [
+        "0001_initial",
+        "0002_events_materialized",
+        "0003_person",
+        "0004_kafka",
+        "0006_session_recording_events",
+        "0007_static_cohorts_table",
+        "0008_plugin_log_entries",
+        "0009_person_deleted_column",
+        "0010_cohortpeople",
+        "0011_cohortpeople_no_shard",
+        "0012_person_id_deleted_column",
+        "0013_persons_distinct_ids_column",
+        "0014_persons_distinct_ids_column_remove",
+        "0015_materialized_column_comments",
+        "0016_collapsing_person_distinct_id",
+        "0017_events_dead_letter_queue",
+        "0018_group_analytics_schema",
+        "0019_group_analytics_materialized_columns",
+        "0020_session_recording_events_window_id",
+        "0021_session_recording_events_materialize_full_snapshot",
+        "0022_person_distinct_id2",
+        "0023_dead_letter_queue_tags",
+        "0024_materialize_window_and_session_id",
+        "0025_json_events",
+        "0026_fix_materialized_window_and_session_ids",
+        "0027_persons_and_groups_on_events",
+        "0028_dead_letter_queue_settings",
+        "0029_cohortpeople_version",
+        "0029_person_version_column"
+      ],
+      "original_0028_dead_letter_queue_engines": [
+        {
+          "engine": "MaterializedView",
+          "name": "events_dead_letter_queue_mv"
+        },
+        {
+          "engine": "Kafka",
+          "name": "kafka_events_dead_letter_queue"
+        }
+      ],
+      "original_0029_person_and_cohort_version_columns": [
+        "cohortpeople\tversion\tUInt64",
+        "person\tversion\tUInt64"
+      ],
+      "original_0029_person_kafka_and_mv": [
+        "kafka_person\tKafka",
+        "person_mv\tMaterializedView"
+      ],
+      "second_apply_noop": true,
+      "plan_check_no_pending": true,
+      "real_replication_tracking_write_distributed_readback": true,
+      "owner_children_stopped": true,
+      "owner_scratch_cleaned": true,
+      "free_disk_gib_after": 37.796
+    }
+  },
+  "0028_independent_bound_only_tests": true,
+  "0029_original_double_numbered_files_included": true,
+  "test_only_native_endpoint_wiring": "Source-original 0026 materialized-column metadata query reads real local ClickHouse schema, plus native sync_execute in 0026,0027 and 0029_cohortpeople_version targets owner-only real ClickHouse rather than absent external app configuration. No original application production code changed.",
+  "not_yet_qualified": {
+    "full_original_346_migrations": true,
+    "real_Kafka_produce_consume": true,
+    "multi_node_recovery_and_rollback": true,
+    "production_PostgreSQL_configuration": true,
+    "authenticated_API_SDK_browser_end_to_end": true,
+    "release": true
+  },
+  "safety": {
+    "strict_private": true,
+    "GitHub_Actions_disabled": true,
+    "synthetic_only": true,
+    "no_customer_data": true,
+    "no_cloud_paid_services": true,
+    "no_deployment_no_publication": true,
+    "all_owner_services_and_scratch_reaped": true
+  },
+  "reproduction": "Owner-only Mac, source locked via Git blobs; official ClickHouse25.12.7.21 and Keeper one-node localhost, Python3.14.7 Django5.2.18; at least 19GiB scratch preflight. Two fresh unique databases in normal and -O mode with upto29; independently ran upto28 on two fresh DBs. No external Kafka broker or application PostgreSQL."
+}
