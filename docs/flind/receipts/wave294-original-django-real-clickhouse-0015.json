@@ -1,0 +1,101 @@
+{
+  "schema": "flind.wave294.original-django-live-clickhouse-through-0015.v1",
+  "date_utc": "2026-10-31",
+  "repository": "TheHalfMoon/Flind",
+  "visibility": "private",
+  "tested_main": "fb1f454d62ba77dbf39d4e4456d61a1923e1c44c",
+  "full_original_source_snapshot": "6e5da8f24fb04312ea1dd7778811ca1b21339fd9",
+  "original_migration_tree_git_sha": "23ea2f226e6be4f2caca554b6ef7cd769d61baa0",
+  "original_command_git_blob": "711cb55e01a19b16bc8f95478010574654560db3",
+  "original_later_migration_git_blobs": {
+    "0011_cohortpeople_no_shard.py": "8305d46e0b37d428546e312ab5e777ca277cf664",
+    "0012_person_id_deleted_column.py": "a8b5a2ef057859abaf7f0b5add70431ac2258865",
+    "0013_persons_distinct_ids_column.py": "fd62e3cceefbf3894c4ec0a6a19666d88df16b03",
+    "0014_persons_distinct_ids_column_remove.py": "7982034b2ca2a9b2f452cf1dae594de08e69f362",
+    "0015_materialized_column_comments.py": "44aa353daf0ebd0f3dcae888d925b522bc95330b"
+  },
+  "runner_git_blobs": {
+    "qualify_original_cli_real_0001_0015_wave294.py": "97f42c5a0b18b4d9f42d93c5703a32d3c0fb2d71",
+    "qualify_original_cli_real_0001_0015_optimized_wave294.py": "c9b35846d9ddb1262ac5bc5c8704df55bcd7ab6d"
+  },
+  "owner_only_synthetic_clickhouse_version": "25.12.7.21",
+  "python_version": "3.14.7",
+  "django_version": "5.2.18",
+  "live_test_modes": {
+    "normal": {
+      "exit_code": 0,
+      "actual_original_Django_command_upto": 15,
+      "original_history_exact": [
+        "0001_initial",
+        "0002_events_materialized",
+        "0003_person",
+        "0004_kafka",
+        "0006_session_recording_events",
+        "0007_static_cohorts_table",
+        "0008_plugin_log_entries",
+        "0009_person_deleted_column",
+        "0010_cohortpeople",
+        "0011_cohortpeople_no_shard",
+        "0012_person_id_deleted_column",
+        "0013_persons_distinct_ids_column",
+        "0014_persons_distinct_ids_column_remove",
+        "0015_materialized_column_comments"
+      ],
+      "migration_count": 14,
+      "real_replication_tracking_write_readback": true,
+      "final_person_and_person_distinct_id_is_deleted": true,
+      "final_person_distinct_ids_column_removed": true,
+      "repeat_apply_noop": true,
+      "plan_check_up_to_date": true,
+      "owned_children_stopped": true,
+      "owned_scratch_reaped": true,
+      "free_disk_gib_after": 37.941
+    },
+    "optimized": {
+      "exit_code": 0,
+      "actual_original_Django_command_upto": 15,
+      "original_history_exact": [
+        "0001_initial",
+        "0002_events_materialized",
+        "0003_person",
+        "0004_kafka",
+        "0006_session_recording_events",
+        "0007_static_cohorts_table",
+        "0008_plugin_log_entries",
+        "0009_person_deleted_column",
+        "0010_cohortpeople",
+        "0011_cohortpeople_no_shard",
+        "0012_person_id_deleted_column",
+        "0013_persons_distinct_ids_column",
+        "0014_persons_distinct_ids_column_remove",
+        "0015_materialized_column_comments"
+      ],
+      "migration_count": 14,
+      "real_replication_tracking_write_readback": true,
+      "final_person_and_person_distinct_id_is_deleted": true,
+      "final_person_distinct_ids_column_removed": true,
+      "repeat_apply_noop": true,
+      "plan_check_up_to_date": true,
+      "owned_children_stopped": true,
+      "owned_scratch_reaped": true,
+      "free_disk_gib_after": 37.954
+    }
+  },
+  "limitations": {
+    "all_346_migrations_executed": false,
+    "real_Kafka_messages_tested": false,
+    "multinode_recovery_rollback_tested": false,
+    "tenant_authenticated_API_SDK_browser_E2E_tested": false,
+    "release_qualified": false
+  },
+  "safety": {
+    "private_repo": true,
+    "no_paid_services": true,
+    "no_deploy_or_publish": true,
+    "GitHub_Actions_disabled": true,
+    "synthetic_only_own_loopback": true,
+    "no_customer_data": true,
+    "owned_services_stopped_and_scratch_removed": true
+  },
+  "reproduction": "Owner-only Mac with original base full source and source-attested current main file overlays at /private/tmp/flind-wave293-real-migrations-0010/source, official ClickHouse25.12.7.21 and Django5.2.18 Python3.14.7; bounded two unique scratch DB instances and no real Kafka broker."
+}
