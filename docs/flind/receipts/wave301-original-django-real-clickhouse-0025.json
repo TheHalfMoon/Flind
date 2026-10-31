@@ -1,0 +1,140 @@
+{
+  "schema": "flind.wave301.real-original-django-clickhouse-0025.v1",
+  "date_utc": "2026-10-31",
+  "repository": "TheHalfMoon/Flind",
+  "visibility": "private",
+  "main_before_qualification": "697c3d7a12ae7965868220f39033de4a816eae75",
+  "original_full_source_snapshot": "6e5da8f24fb04312ea1dd7778811ca1b21339fd9",
+  "original_migration_tree": "23ea2f226e6be4f2caca554b6ef7cd769d61baa0",
+  "current_command_git_blob": "711cb55e01a19b16bc8f95478010574654560db3",
+  "original_later_migration_blobs": {
+    "0021_session_recording_events_materialize_full_snapshot.py": "75fbbf6e61d4feb4aeb783287a052e3b69106128",
+    "0022_person_distinct_id2.py": "8e17f9c71d9280b85a32d3774b233447d2a103e8",
+    "0023_dead_letter_queue_tags.py": "3058e2deaef2ddfe4b13d16a5522336204340a57",
+    "0024_materialize_window_and_session_id.py": "9af812c130eab0f415edd79717118551e8d9fbe4",
+    "0025_json_events.py": "1dd452dff732e484cccbc0a68160281cf8a6c93b"
+  },
+  "runner_git_blobs": {
+    "tools/flind/qualify_original_cli_real_0001_0025_wave301.py": "50987e287650b923879958a709916cd55324575b",
+    "tools/flind/qualify_original_cli_real_0001_0025_optimized_wave301.py": "03913983ad08ff471bb2d634ef88c213ab836598"
+  },
+  "runtime": {
+    "python": "3.14.7",
+    "Django": "5.2.18",
+    "ClickHouse": "25.12.7.21",
+    "Keeper": "owner-only one-node"
+  },
+  "real_live_qualification": {
+    "normal": {
+      "exit_code": 0,
+      "original_Django_upto": 25,
+      "exact_original_history": [
+        "0001_initial",
+        "0002_events_materialized",
+        "0003_person",
+        "0004_kafka",
+        "0006_session_recording_events",
+        "0007_static_cohorts_table",
+        "0008_plugin_log_entries",
+        "0009_person_deleted_column",
+        "0010_cohortpeople",
+        "0011_cohortpeople_no_shard",
+        "0012_person_id_deleted_column",
+        "0013_persons_distinct_ids_column",
+        "0014_persons_distinct_ids_column_remove",
+        "0015_materialized_column_comments",
+        "0016_collapsing_person_distinct_id",
+        "0017_events_dead_letter_queue",
+        "0018_group_analytics_schema",
+        "0019_group_analytics_materialized_columns",
+        "0020_session_recording_events_window_id",
+        "0021_session_recording_events_materialize_full_snapshot",
+        "0022_person_distinct_id2",
+        "0023_dead_letter_queue_tags",
+        "0024_materialize_window_and_session_id",
+        "0025_json_events"
+      ],
+      "migration_count": 24,
+      "new_0022_to_0025_objects": [
+        "events_json_mv\tMaterializedView",
+        "kafka_events_json\tKafka",
+        "kafka_person_distinct_id2\tKafka",
+        "person_distinct_id2\tReplicatedReplacingMergeTree",
+        "person_distinct_id2_mv\tMaterializedView"
+      ],
+      "dead_letter_queue_tags_column_added": true,
+      "idempotent_second_apply": true,
+      "plan_check_no_pending": true,
+      "owner_services_stopped": true,
+      "owner_scratch_cleaned": true,
+      "free_gib_after": 37.046
+    },
+    "optimized": {
+      "exit_code": 0,
+      "original_Django_upto": 25,
+      "exact_original_history": [
+        "0001_initial",
+        "0002_events_materialized",
+        "0003_person",
+        "0004_kafka",
+        "0006_session_recording_events",
+        "0007_static_cohorts_table",
+        "0008_plugin_log_entries",
+        "0009_person_deleted_column",
+        "0010_cohortpeople",
+        "0011_cohortpeople_no_shard",
+        "0012_person_id_deleted_column",
+        "0013_persons_distinct_ids_column",
+        "0014_persons_distinct_ids_column_remove",
+        "0015_materialized_column_comments",
+        "0016_collapsing_person_distinct_id",
+        "0017_events_dead_letter_queue",
+        "0018_group_analytics_schema",
+        "0019_group_analytics_materialized_columns",
+        "0020_session_recording_events_window_id",
+        "0021_session_recording_events_materialize_full_snapshot",
+        "0022_person_distinct_id2",
+        "0023_dead_letter_queue_tags",
+        "0024_materialize_window_and_session_id",
+        "0025_json_events"
+      ],
+      "migration_count": 24,
+      "new_0022_to_0025_objects": [
+        "events_json_mv\tMaterializedView",
+        "kafka_events_json\tKafka",
+        "kafka_person_distinct_id2\tKafka",
+        "person_distinct_id2\tReplicatedReplacingMergeTree",
+        "person_distinct_id2_mv\tMaterializedView"
+      ],
+      "dead_letter_queue_tags_column_added": true,
+      "idempotent_second_apply": true,
+      "plan_check_no_pending": true,
+      "owner_services_stopped": true,
+      "owner_scratch_cleaned": true,
+      "free_gib_after": 37.045
+    }
+  },
+  "initial_failures": {
+    "tab_string_comparison_guard": true,
+    "cold_compressed_ClickHouse_version_probe_timeout": true,
+    "both_guard_only_adjusted_and_two_replays_qualified": true
+  },
+  "limitations": {
+    "all_346_migrations_qualified": false,
+    "Kafka_real_broker_messages": false,
+    "multinode_replication_and_recovery": false,
+    "real_user_authenticated_API_SDK_browser_e2e": false,
+    "release_qualified": false
+  },
+  "safety": {
+    "strictly_private_repo": true,
+    "GitHub_Actions_disabled": true,
+    "no_paid_services": true,
+    "synthetic_only": true,
+    "owner_only_loopback": true,
+    "no_shared_or_customer_data": true,
+    "no_deployment_or_publication": true,
+    "services_and_ephemeral_scratch_reaped": true
+  },
+  "reproduction": "Mac only; source snapshot base with Git-authenticated current main overlays, original migrations SHA, official compressed ClickHouse25.12.7.21 and Flind Python3.14.7/Django5.2.18. Two unique owner-only live service scratch directories, 15.5GiB reserve, no external Kafka broker; each runner executes genuine full Django command bounded upto25, repeats apply/check, verifies original DDL and stops owned services."
+}
