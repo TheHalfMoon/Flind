@@ -1,0 +1,55 @@
+{
+  "wave": "321",
+  "project": "Flind",
+  "scope": "source-only regression of existing active Django bounded apply; no real ClickHouse or full Django bootstrap",
+  "repository": "TheHalfMoon/Flind",
+  "visibility": "private",
+  "main_at_preflight": "51c4d4e3b6cf16b57913f899f9376048f10da93e",
+  "github_actions_enabled": false,
+  "device": {
+    "name": "macbook",
+    "id": "dafc3e45-15d9-4cba-b730-389fca580abf",
+    "python": "3.14.7",
+    "disk_free_gib_approx": 36
+  },
+  "original_source": {
+    "command_blob": "711cb55e01a19b16bc8f95478010574654560db3",
+    "migration_tree": "23ea2f226e6be4f2caca554b6ef7cd769d61baa0",
+    "migration_0050_add_channel_definitions_blob": "38106c7ce779dd1c18172cf52c6205baa7138b56",
+    "migration_0050_session_replay_source_blob": "ba1ed44fcf8b81f2705266c4430391816b598b08"
+  },
+  "github_test_blob": "ee957d07b2db60d7aafe9b2379f740b725ebb045",
+  "test_path": "tools/flind/test_bounded_clickhouse_execution_wave320.py",
+  "test_execution": "Fetched exact PR branch file through authenticated GitHub API, verified Git blob equals executed file, extracted active Command._apply_migrations_bounded from Git-pinned original command, ran isolated synthetic in-memory fixtures on owner Mac",
+  "normal": {
+    "tests": 7,
+    "passed": 7,
+    "exit_code": 0
+  },
+  "optimized": {
+    "tests": 7,
+    "passed": 7,
+    "exit_code": 0
+  },
+  "negative_controls": [
+    "Command blob mutation rejected",
+    "Synthetic failed operation does not record migration history"
+  ],
+  "findings": [
+    "Original pinned infi Database.migrate can overrun up_to, but current Flind main Command.migrate already invokes its existing _apply_migrations_bounded instead of infi Database.migrate on normal apply",
+    "Original PR #333 introduced a second unused apply_bounded_migrations method; reverted it to preserve existing active production code",
+    "Existing active bounded method correctly excludes 0050 on repeated upto=49, handles both 0050 modules at upto=50, and resumes partial 0050 in source-derived synthetic tests"
+  ],
+  "limitations": [
+    "No live ClickHouse or Keeper started in Wave321",
+    "No full original Django management command bootstrap or live 0050 apply",
+    "Existing stacked PRs #329/#330/#331 remain open and unmerged; safety-blocked #329 merge not bypassed",
+    "Production Kafka ingestion, loaded 0039 dictionary, multinode recovery, full product E2E unqualified",
+    "Release NO-GO"
+  ],
+  "no_customer_data": true,
+  "no_paid_services": true,
+  "no_publication": true,
+  "no_deployment": true,
+  "no_release": true
+}
