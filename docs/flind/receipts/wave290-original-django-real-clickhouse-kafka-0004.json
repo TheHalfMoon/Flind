@@ -1,0 +1,112 @@
+{
+  "schema": "flind.wave290.live-original-django-kafka-0004-ddl.v1",
+  "date_utc": "2026-10-31",
+  "repository": "TheHalfMoon/Flind",
+  "visibility": "private",
+  "original_main_tested": "1fb2eb98389cd57de3ed2442de48ff740c1e4745",
+  "full_source_git_snapshot": "6e5da8f24fb04312ea1dd7778811ca1b21339fd9",
+  "current_main_authenticated_overlays": {
+    "posthog/management/commands/migrate_clickhouse.py": "711cb55e01a19b16bc8f95478010574654560db3",
+    "posthog/clickhouse/cluster.py": "39c19f5da13e7b22cbdf48d4afb375950c930beb",
+    "posthog/clickhouse/kafka_engine.py": "b2b0701cdf63bac81277ad0b130533ab2c8448f0",
+    "posthog/clickhouse/client/migration_tools.py": "17a082e56f6c2825279e8337d1572be921b0aeac",
+    "posthog/models/event/sql.py": "55e7587a8909d0a430548e4d8ea9807388e75266",
+    "posthog/models/person/sql.py": "5d63a7afd5e5a708165e6dbc176c69f4166a936f"
+  },
+  "original_kafka_0004_migration_git_blob": "3280209971bbf07c805cf10a23026b439fcadcbf",
+  "original_346_migration_tree_git_sha": "23ea2f226e6be4f2caca554b6ef7cd769d61baa0",
+  "runner_git_blobs": {
+    "tools/flind/qualify_original_cli_real_0001_0004_wave290.py": "9fc25182668ea621a14f7517578d35369dd10a9b",
+    "tools/flind/qualify_original_cli_real_0001_0004_optimized_wave290.py": "78acbe4eb2c48e1fd878fef5a0e4c0f278b6e2c7"
+  },
+  "python_version": "3.14.7",
+  "django_version": "5.2.18",
+  "engine": "ClickHouse 25.12.7.21 and owner-only Keeper, one-node",
+  "clickhouse_named_collection_test_only": {
+    "name": "msk_cluster",
+    "kafka_broker_list": "127.0.0.1:1",
+    "live_real_kafka_broker_started": false,
+    "real_messages_produced_or_consumed": false,
+    "Kafka_engine_DDL_applied_in_ClickHouse": true
+  },
+  "live_test_modes": {
+    "normal": {
+      "real_original_Django_call_command_upto": 4,
+      "process_exit_code": 0,
+      "migrations_recorded_once": [
+        "0001_initial",
+        "0002_events_materialized",
+        "0003_person",
+        "0004_kafka"
+      ],
+      "six_sql_objects": [
+        "events\tDistributed",
+        "kafka_person\tKafka",
+        "kafka_person_distinct_id\tKafka",
+        "person_distinct_id_mv\tMaterializedView",
+        "person_mv\tMaterializedView",
+        "writable_events\tDistributed"
+      ],
+      "idempotent_second_apply": true,
+      "original_plan_and_check_no_pending_upto4": true,
+      "real_clickhouse_version": "25.12.7.21",
+      "synthetic_database": "flind_wave290_synthetic",
+      "owned_services_stopped": true,
+      "owned_scratch_cleaned": true,
+      "python_mode": "normal",
+      "free_gib_after": 38.099
+    },
+    "optimized": {
+      "real_original_Django_call_command_upto": 4,
+      "process_exit_code": 0,
+      "migrations_recorded_once": [
+        "0001_initial",
+        "0002_events_materialized",
+        "0003_person",
+        "0004_kafka"
+      ],
+      "six_sql_objects": [
+        "events\tDistributed",
+        "kafka_person\tKafka",
+        "kafka_person_distinct_id\tKafka",
+        "person_distinct_id_mv\tMaterializedView",
+        "person_mv\tMaterializedView",
+        "writable_events\tDistributed"
+      ],
+      "idempotent_second_apply": true,
+      "original_plan_and_check_no_pending_upto4": true,
+      "real_clickhouse_version": "25.12.7.21",
+      "synthetic_database": "flind_wave290_optimized_synthetic",
+      "owned_services_stopped": true,
+      "owned_scratch_cleaned": true,
+      "python_mode": "optimized",
+      "free_gib_after": 38.098
+    }
+  },
+  "functional_scope": {
+    "original_Django_migrate_clickhouse_command_applied_upto4": true,
+    "original_migration_0004_six_sql_operations_executed": true,
+    "original_migration_history_exactly_four": true,
+    "real_Kafka_engine_tables_created": true,
+    "real_materialized_views_created": true,
+    "real_distributed_events_tables_created": true,
+    "replay_is_idempotent": true,
+    "all_346_migrations_applied": false,
+    "real_Kafka_broker_ingestion_and_end_to_end": false,
+    "multi_node_recovery_rollback": false,
+    "tenant_authenticated_API_SDK_browser_full_E2E": false,
+    "release_qualified": false
+  },
+  "limitations": "DDL qualification only, no live Kafka broker; original source full checkout base is old and authenticated main component files are overlaid in isolated scratch. Named collection explicitly loopback:1. No production or shared data used.",
+  "safety": {
+    "strict_private": true,
+    "zero_paid_services": true,
+    "owner_only_synthetic_loopback": true,
+    "no_deploy_or_publish": true,
+    "no_GitHub_Actions": true,
+    "no_customer_data": true,
+    "owned_server_children_stopped": true,
+    "owned_service_scratch_deleted": true
+  },
+  "reproducibility": "Recreate owner-only /private/tmp/flind-wave290-kafka-original/source snapshot and exact verified main overlay blobs; ensure official ClickHouse 25.12.7.21 compressed asset and Flind Python3.14.7/Django5.2.18 venv, disk floor >=19GiB. Each committed runner uses a separate unique private scratch and stops/removes the server and keeper. No real Kafka broker required for DDL."
+}
