@@ -245,7 +245,6 @@ def run():
     cwd=SCRATCH,env={**os.environ,'HOME':str(SCRATCH),'TMPDIR':str(SCRATCH),'PYTHONDONTWRITEBYTECODE':'1'},
     capture_output=True,text=True,timeout=125)
  if result.returncode:
-  (ROOT/'flind-wave288-real-cli-0002/child-error.log').write_text(result.stderr[-10000:])
   raise RuntimeError('real_original_django_apply_failed_'+result.stderr[-750:].replace('\n',' '))
  observed=json.loads(result.stdout.strip().splitlines()[-1])
  if not observed.get('original_django_call_command_apply'):raise RuntimeError('original_command_not_executed')
