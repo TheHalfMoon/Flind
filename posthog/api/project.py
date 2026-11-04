@@ -649,6 +649,12 @@ class ProjectBackwardCompatSerializer(
             "everyone else and when none has been generated."
         ),
     )  # Compat with TeamSerializer
+    is_ai_data_processing_approved = serializers.BooleanField(
+        source="organization.is_ai_data_processing_approved",
+        read_only=True,
+        allow_null=True,
+        help_text="Whether the project's organization approved AI data processing. AI features need this approval.",
+    )
     # project_id mirrors TeamSerializer.project_id; for a Project it equals its own id (Project ↔ Team is 1:1)
     project_id = serializers.IntegerField(
         source="id", read_only=True, help_text="ID of the project this environment belongs to."
@@ -728,6 +734,7 @@ class ProjectBackwardCompatSerializer(
         fields: tuple[str, ...] = (
             "id",
             "organization",
+            "is_ai_data_processing_approved",
             "name",
             "logo_media_id",
             "product_description",
