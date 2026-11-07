@@ -34,6 +34,8 @@ jobs:
             REDIS_URL: redis://localhost:6379/
             OTEL_SDK_DISABLED: 'true'
             OTEL_TRACES_EXPORTER: none
+            # A deterministic failure should not burn 25 minutes of backoff.
+            MIGRATE_MAX_RETRIES: '2'
             EVIDENCE: ${{ github.workspace }}/flind-evidence
         steps:
             - uses: actions/checkout@v4
@@ -77,7 +79,8 @@ jobs:
             - name: Install Python dependencies
               run: |
                   pip install uv==0.13.4
-                  UV_PROJECT_ENVIRONMENT=$pythonLocation uv sync --frozen --no-dev 2>&1 | tail -20
+                  # DEBUG=1 settings load dev-only apps (django_linear_migrations), so dev deps are required.
+                  UV_PROJECT_ENVIRONMENT=$pythonLocation uv sync --frozen --dev 2>&1 | tail -20
                   df -h / | tee "$EVIDENCE/disk-after-deps.txt"
 
             - name: First migration run (fresh databases)
@@ -117,13 +120,23 @@ jobs:
                     docker compose -f docker-compose.dev.yml logs --no-color "$s" > "$EVIDENCE/services/$s.log" 2>&1 || true
                   done
 
-            - name: Upload evidence
+            # Artifact storage is not used: evidence is printed here and committed to the repo.
+            - name: Publish evidence to job summary
               if: always()
-              uses: actions/upload-artifact@v4
-              with:
-                  name: flind-migration-evidence-${{ github.run_id }}-${{ github.run_attempt }}
-                  path: flind-evidence
-                  retention-days: 30
+              run: |
+                  {
+                    echo "## Flind migration evidence"
+                    for f in identity.txt services.txt clickhouse-version.txt timing.txt clickhouse-applied.tsv clickhouse-table-count.txt django-summary.txt django-makemigrations-check.txt clickhouse-plan-after.txt; do
+                      [ -f "$EVIDENCE/$f" ] || continue
+                      echo "### $f"; echo '```'; cat "$EVIDENCE/$f"; echo '```'
+                    done
+                    for f in migrate-run1.log migrate-run2.log; do
+                      [ -f "$EVIDENCE/$f" ] || continue
+                      echo "### $f (last 80 lines)"; echo '```'; tail -80 "$EVIDENCE/$f"; echo '```'
+                    done
+                  } >> "$GITHUB_STEP_SUMMARY"
+                  echo "::group::clickhouse-applied-names"; cat "$EVIDENCE/clickhouse-applied-names.txt" 2>/dev/null || true; echo "::endgroup::"
+                  echo "::group::django-showmigrations"; cat "$EVIDENCE/django-showmigrations.txt" 2>/dev/null || true; echo "::endgroup::"
 
             - name: Tear down
               if: always()
