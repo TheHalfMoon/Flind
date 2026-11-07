@@ -1,0 +1,130 @@
+# Flind private runtime qualification: real Postgres, ClickHouse, Redpanda (Kafka),
+# Zookeeper and Redis as throwaway containers, then the real bin/migrate.
+# Private only: read-only token, no secrets, no publishing, nothing leaves the runner
+# except the uploaded log artifact.
+name: Flind runtime migrations
+
+on:
+    push:
+        branches:
+            - 'flind-ci/**'
+    workflow_dispatch:
+
+permissions:
+    contents: read
+
+concurrency:
+    group: flind-runtime-migrations-${{ github.ref }}
+    cancel-in-progress: true
+
+jobs:
+    migrate:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 120
+        env:
+            DEBUG: '1'
+            SKIP_SERVICE_VERSION_REQUIREMENTS: '1'
+            SECRET_KEY: flind-ci-throwaway-secret
+            DATABASE_URL: postgres://posthog:posthog@localhost:5432/posthog
+            CLICKHOUSE_HOST: localhost
+            CLICKHOUSE_DATABASE: posthog
+            CLICKHOUSE_SECURE: 'False'
+            CLICKHOUSE_VERIFY: 'False'
+            KAFKA_HOSTS: localhost:9092
+            REDIS_URL: redis://localhost:6379/
+            OTEL_SDK_DISABLED: 'true'
+            OTEL_TRACES_EXPORTER: none
+            EVIDENCE: ${{ github.workspace }}/flind-evidence
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                  fetch-depth: 1
+
+            - name: Record source identity
+              run: |
+                  mkdir -p "$EVIDENCE"
+                  {
+                    echo "commit=$(git rev-parse HEAD)"
+                    echo "ref=${GITHUB_REF}"
+                    echo "run=${GITHUB_RUN_ID}.${GITHUB_RUN_ATTEMPT}"
+                    echo "runner=$(uname -srm)"
+                    echo "cpus=$(nproc)"
+                    echo "mem=$(free -h | awk '/Mem:/{print $2}')"
+                    echo "clickhouse_migration_files=$(ls posthog/clickhouse/migrations | grep -cE '^[0-9]{4}_.*\.py$')"
+                    echo "clickhouse_last_file=$(ls posthog/clickhouse/migrations | grep -E '^[0-9]{4}_.*\.py$' | sort | tail -1)"
+                  } | tee "$EVIDENCE/identity.txt"
+
+            - name: Free runner disk
+              run: |
+                  sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL
+                  df -h / | tee "$EVIDENCE/disk-before.txt"
+
+            - name: Start real services
+              run: |
+                  # Runner-local only: the 3G Redpanda reservation does not fit a standard runner.
+                  sed -i 's/--memory 3G/--memory 1G/' docker-compose.base.yml
+                  # Containers advertise service hostnames; resolve them on the runner too.
+                  echo "127.0.0.1 kafka clickhouse db redis7 zookeeper" | sudo tee -a /etc/hosts
+                  docker compose -f docker-compose.dev.yml up -d --wait db redis7 zookeeper kafka clickhouse
+                  docker compose -f docker-compose.dev.yml up --exit-code-from kafka-init kafka-init
+                  docker compose -f docker-compose.dev.yml ps | tee "$EVIDENCE/services.txt"
+                  docker exec "$(docker compose -f docker-compose.dev.yml ps -q clickhouse)" clickhouse-client -q 'SELECT version()' | tee "$EVIDENCE/clickhouse-version.txt"
+
+            - uses: actions/setup-python@v5
+              with:
+                  python-version: 3.14.7
+
+            - name: Install Python dependencies
+              run: |
+                  pip install uv==0.13.4
+                  UV_PROJECT_ENVIRONMENT=$pythonLocation uv sync --frozen --no-dev 2>&1 | tail -20
+                  df -h / | tee "$EVIDENCE/disk-after-deps.txt"
+
+            - name: First migration run (fresh databases)
+              run: |
+                  set -o pipefail
+                  start=$(date +%s)
+                  bin/migrate --scope=clickhouse --scope=postgres --scope=persons 2>&1 | tee "$EVIDENCE/migrate-run1.log"
+                  echo "run1_seconds=$(( $(date +%s) - start ))" | tee -a "$EVIDENCE/timing.txt"
+
+            - name: Second migration run (idempotency over existing state)
+              run: |
+                  set -o pipefail
+                  start=$(date +%s)
+                  bin/migrate --scope=clickhouse --scope=postgres --scope=persons 2>&1 | tee "$EVIDENCE/migrate-run2.log"
+                  echo "run2_seconds=$(( $(date +%s) - start ))" | tee -a "$EVIDENCE/timing.txt"
+
+            - name: Verify applied state
+              run: |
+                  set -o pipefail
+                  CH="$(docker compose -f docker-compose.dev.yml ps -q clickhouse)"
+                  docker exec "$CH" clickhouse-client -q "SELECT count(), min(name), max(name) FROM posthog.infi_clickhouse_orm_migrations FORMAT TSV" | tee "$EVIDENCE/clickhouse-applied.tsv"
+                  docker exec "$CH" clickhouse-client -q "SELECT name FROM posthog.infi_clickhouse_orm_migrations ORDER BY name FORMAT TSV" > "$EVIDENCE/clickhouse-applied-names.txt"
+                  docker exec "$CH" clickhouse-client -q "SELECT count() FROM system.tables WHERE database = 'posthog'" | tee "$EVIDENCE/clickhouse-table-count.txt"
+                  python manage.py migrate_clickhouse --plan 2>&1 | tee "$EVIDENCE/clickhouse-plan-after.txt"
+                  python manage.py showmigrations --plan > "$EVIDENCE/django-showmigrations.txt" 2>&1
+                  applied=$(grep -c '^\[X\]' "$EVIDENCE/django-showmigrations.txt" || true)
+                  pending=$(grep -c '^\[ \]' "$EVIDENCE/django-showmigrations.txt" || true)
+                  echo "django_applied=$applied django_pending=$pending" | tee "$EVIDENCE/django-summary.txt"
+                  python manage.py makemigrations --check --dry-run 2>&1 | tail -20 | tee "$EVIDENCE/django-makemigrations-check.txt"
+                  test "$pending" = "0"
+
+            - name: Collect service logs
+              if: always()
+              run: |
+                  mkdir -p "$EVIDENCE/services"
+                  for s in db clickhouse kafka zookeeper redis7; do
+                    docker compose -f docker-compose.dev.yml logs --no-color "$s" > "$EVIDENCE/services/$s.log" 2>&1 || true
+                  done
+
+            - name: Upload evidence
+              if: always()
+              uses: actions/upload-artifact@v4
+              with:
+                  name: flind-migration-evidence-${{ github.run_id }}-${{ github.run_attempt }}
+                  path: flind-evidence
+                  retention-days: 30
+
+            - name: Tear down
+              if: always()
+              run: docker compose -f docker-compose.dev.yml down -v --remove-orphans
