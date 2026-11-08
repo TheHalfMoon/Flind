@@ -63,11 +63,12 @@ jobs:
               with:
                   node-version-file: .nvmrc
 
-            # The workspace root provides oxfmt (used by build:products) and tsgo (type check).
+            # Unfiltered, as upstream installs by default: filtered installs left out the workspace
+            # root, which provides oxfmt (build:products) and tsgo (type check).
             - name: Install dependencies
               run: |
                   corepack enable
-                  pnpm install --frozen-lockfile --filter=@flind/root --filter=@flind/frontend... 2>&1 | tail -15
+                  pnpm install --frozen-lockfile 2>&1 | tail -15
 
             - name: Run Jest suites
               working-directory: frontend
@@ -93,11 +94,12 @@ jobs:
               with:
                   node-version-file: .nvmrc
 
-            # The workspace root provides oxfmt (used by build:products) and tsgo (type check).
+            # Unfiltered, as upstream installs by default: filtered installs left out the workspace
+            # root, which provides oxfmt (build:products) and tsgo (type check).
             - name: Install dependencies
               run: |
                   corepack enable
-                  pnpm install --frozen-lockfile --filter=@flind/root --filter=@flind/frontend... 2>&1 | tail -15
+                  pnpm install --frozen-lockfile 2>&1 | tail -15
 
             - name: Type-check head and base
               run: |
