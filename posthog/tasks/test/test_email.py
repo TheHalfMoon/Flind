@@ -230,7 +230,7 @@ class TestEmail(APIBaseTest, ClickhouseTestMixin):
 
         assert len(mocked_email_messages) == 1
         subject = MockEmailMessage.call_args.kwargs["subject"]
-        assert subject == "Admin asked you to finish setting up PostHog for their organization"
+        assert subject == "Admin asked you to finish setting up Flind for their organization"
         assert MockEmailMessage.call_args.kwargs["template_name"] == "delegation_invite"
         html = mocked_email_messages[0].html_body
         assert "their organization" in html
@@ -277,7 +277,7 @@ class TestEmail(APIBaseTest, ClickhouseTestMixin):
         assert len(mocked_email_messages) == 1
         assert mocked_email_messages[0].send.call_count == 1
         subject = MockEmailMessage.call_args.kwargs["subject"]
-        assert subject == "Admin invited you to join their organization on PostHog"
+        assert subject == "Admin invited you to join their organization on Flind"
         html = mocked_email_messages[0].html_body
         assert "their organization" in html
         assert "https://acme.example.com" not in html
@@ -372,7 +372,7 @@ class TestEmail(APIBaseTest, ClickhouseTestMixin):
 
         assert len(mocked_email_messages) == 1
         subject = MockEmailMessage.call_args.kwargs["subject"]
-        assert subject == "A new teammate joined you on PostHog"
+        assert subject == "A new teammate joined you on Flind"
         html = mocked_email_messages[0].html_body
         assert "evil.example.com" not in html
         assert "A new teammate" in html

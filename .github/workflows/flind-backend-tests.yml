@@ -1,0 +1,74 @@
+# Flind backend tests on real services. Runs targeted Django test files for brand branches.
+# Read-only token, no secrets, nothing published.
+name: Flind backend tests
+
+on:
+    push:
+        branches:
+            - 'flind-ci/brand-audit-**'
+    workflow_dispatch:
+
+permissions:
+    contents: read
+
+concurrency:
+    group: flind-backend-tests-${{ github.ref }}
+    cancel-in-progress: true
+
+jobs:
+    pytest:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 90
+        env:
+            TEST: '1'
+            DEBUG: '1'
+            SKIP_SERVICE_VERSION_REQUIREMENTS: '1'
+            SECRET_KEY: flind-ci-throwaway-secret
+            DATABASE_URL: postgres://posthog:posthog@localhost:5432/posthog
+            CLICKHOUSE_HOST: localhost
+            CLICKHOUSE_SECURE: 'False'
+            CLICKHOUSE_VERIFY: 'False'
+            KAFKA_HOSTS: localhost:9092
+            REDIS_URL: redis://localhost:6379/
+            OTEL_SDK_DISABLED: 'true'
+            OTEL_TRACES_EXPORTER: none
+            # Test files touched by the brand branches; keep this list in step with them.
+            FLIND_TEST_TARGETS: >-
+                posthog/tasks/test/test_email.py
+                posthog/api/test/test_authentication.py
+                posthog/api/test/test_instance_settings.py
+                posthog/api/test/test_signup.py
+                posthog/tasks/alerts/test
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                  fetch-depth: 1
+
+            - name: Free runner disk
+              run: sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL
+
+            - name: Start real services
+              run: |
+                  sed -i 's/--memory 3G/--memory 1G/' docker-compose.base.yml
+                  echo "127.0.0.1 kafka clickhouse db redis7 zookeeper" | sudo tee -a /etc/hosts
+                  docker compose -f docker-compose.dev.yml up -d --wait db redis7 zookeeper kafka clickhouse
+                  docker compose -f docker-compose.dev.yml up --exit-code-from kafka-init kafka-init
+
+            - uses: actions/setup-python@v5
+              with:
+                  python-version: 3.14.7
+
+            - name: Install Python dependencies
+              run: |
+                  pip install uv==0.13.4
+                  UV_PROJECT_ENVIRONMENT=$pythonLocation uv sync --frozen --dev 2>&1 | tail -5
+
+            - name: Run targeted tests
+              run: |
+                  set -o pipefail
+                  python -m pytest $FLIND_TEST_TARGETS -p no:cacheprovider -q --timeout=600 2>&1 | tee pytest.log
+                  { echo '## Flind backend tests'; echo '```'; tail -40 pytest.log; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+
+            - name: Tear down
+              if: always()
+              run: docker compose -f docker-compose.dev.yml down -v --remove-orphans
