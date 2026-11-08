@@ -27,7 +27,7 @@ export interface payGateMiniLogicValues {
     addonTrialModalOpen: boolean
     bypassPaywall: boolean
     ctaDisabledReason: string | null
-    ctaLabel: 'Contact sales' | 'Move to PostHog Cloud' | 'Upgrade now' | 'View plans'
+    ctaLabel: 'Contact sales' | 'Move to Flind Cloud' | 'Upgrade now' | 'View plans'
     ctaLink: string | undefined
     featureAvailableOnOrg: BillingFeatureType | null | undefined
     featureInfo: BillingFeatureType | undefined
@@ -96,7 +96,7 @@ export interface payGateMiniLogicMeta {
         ctaLabel: (
             gateVariant: 'add-card' | 'contact-sales' | 'move-to-cloud' | null,
             isPaymentEntryFlow: boolean
-        ) => 'Contact sales' | 'Move to PostHog Cloud' | 'Upgrade now' | 'View plans'
+        ) => 'Contact sales' | 'Move to Flind Cloud' | 'Upgrade now' | 'View plans'
         isPaymentEntryFlow: (
             gateVariant: 'add-card' | 'contact-sales' | 'move-to-cloud' | null,
             isAddonProduct: boolean | undefined,

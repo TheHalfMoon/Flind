@@ -1,4 +1,5 @@
-# Flind frontend tests for brand branches: runs the Jest suites that pin rebranded UI text.
+# Flind frontend checks for brand branches: the Jest suites that pin rebranded UI text, and a
+# type check that fails on new TypeScript errors in files the branch changed.
 # Read-only token, no secrets, nothing published.
 name: Flind frontend tests
 
@@ -72,3 +73,73 @@ jobs:
                   pnpm build:products 2>&1 | tail -5
                   pnpm exec jest $FLIND_JEST_TARGETS 2>&1 | tee jest.log
                   { echo '## Flind frontend tests'; echo '```'; tail -30 jest.log; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+
+    typecheck:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 60
+        env:
+            # The PR base: new errors are measured against it, not against an absolute zero, because
+            # kea-typegen output is not generated here and its absence errors on both sides equally.
+            FLIND_BASE_BRANCH: flind-ci/brand-audit-api-text-20261108
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                  fetch-depth: 1
+
+            - uses: actions/setup-node@v4
+              with:
+                  node-version-file: .nvmrc
+
+            - name: Install dependencies
+              run: |
+                  corepack enable
+                  pnpm install --frozen-lockfile --filter=@flind/frontend... 2>&1 | tail -15
+
+            - name: Type-check head and base
+              run: |
+                  # Fail loudly if the compiler is missing; otherwise both runs would report zero errors.
+                  pnpm exec tsgo --version
+                  git fetch --depth=1 origin "$FLIND_BASE_BRANCH"
+                  BASE_SHA=$(git rev-parse FETCH_HEAD)
+                  echo "base=$BASE_SHA head=$(git rev-parse HEAD)"
+                  git diff --name-only "$BASE_SHA" HEAD -- 'frontend/src/*.ts' 'frontend/src/*.tsx' > changed-files.txt
+                  echo "changed TypeScript files: $(wc -l < changed-files.txt)"
+                  run_tsgo() {
+                      # tsgo exits non-zero when it reports errors; the comparison below decides the outcome.
+                      NODE_OPTIONS=--max-old-space-size=12288 pnpm exec tsgo --noEmit -p tsconfig.json --pretty false > "$1" 2>&1 || true
+                      echo "$1: $(grep -c 'error TS' "$1") errors"
+                  }
+                  run_tsgo tsgo-head.txt
+                  git checkout "$BASE_SHA" -- frontend/src
+                  run_tsgo tsgo-base.txt
+                  git checkout HEAD -- frontend/src
+
+            - name: Fail on new errors in changed files
+              run: |
+                  python3 - <<'EOF'
+                  import collections, re, sys
+
+                  pattern = re.compile(r"^(?P<path>[^(\s]+)\(\d+,\d+\): error (?P<code>TS\d+): (?P<msg>.*)$")
+
+                  def errors(path):
+                      found = collections.Counter()
+                      for line in open(path, encoding="utf-8", errors="replace"):
+                          m = pattern.match(line.strip())
+                          if m:
+                              found[(m["path"], m["code"], m["msg"])] += 1
+                      return found
+
+                  text = open("tsgo-head.txt", encoding="utf-8", errors="replace").read()
+                  if "panic:" in text or "FATAL ERROR" in text or "heap out of memory" in text:
+                      sys.exit("tsgo did not complete on the head commit; refusing to report a pass")
+
+                  head, base = errors("tsgo-head.txt"), errors("tsgo-base.txt")
+                  changed = {line.strip() for line in open("changed-files.txt") if line.strip()}
+                  new = [(k, n - base.get(k, 0)) for k, n in head.items() if n > base.get(k, 0) and k[0] in changed]
+                  print(f"head errors: {sum(head.values())}, base errors: {sum(base.values())}, changed files: {len(changed)}")
+                  for (path, code, msg), n in new:
+                      print(f"NEW x{n}: {path}: {code}: {msg}")
+                  if new:
+                      sys.exit(f"{len(new)} new TypeScript error(s) in files changed by this branch")
+                  print("no new TypeScript errors in changed files")
+                  EOF
