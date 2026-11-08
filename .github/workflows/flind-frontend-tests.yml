@@ -63,40 +63,44 @@ jobs:
               with:
                   node-version-file: .nvmrc
 
-            # Frontend and its dependencies (as upstream's jest job) plus the workspace root, which
-            # provides oxfmt (build:products) and tsgo (type check). The desktop app is left out.
+            # Two installs, reproduced locally with pnpm 11.28.5: combining --filter=@flind/root with
+            # --filter=@flind/frontend... skips the root's bin links, so the root prepare script cannot
+            # find husky. Installing the root on its own links them, and leaves the frontend's modules
+            # (jest, vite, tsc) intact. The desktop app stays out of both.
             - name: Install dependencies
               env:
                   # The root prepare script runs husky (local git hooks only); skip it in CI as
                   # upstream's browserslist workflow does. Dependency build scripts still run.
                   HUSKY: '0'
-                  # Belt and braces: the desktop app's postinstall rebuilds Electron natives and downloads
-                  # binaries; it is outside the filter, but must never run here.
                   SKIP_ELECTRON_REBUILD: '1'
               run: |
                   # Standalone pnpm at the version pinned in package.json, as upstream's pnpm/action-setup
                   # provides; that third-party action is outside this repo's allowed-actions policy.
                   npm install -g "pnpm@$(node -p "require('./package.json').packageManager.split('@')[1]")"
                   pnpm --version
-                  # pipefail: without it the pipe reports tail's status and a failed install looks green.
                   set -o pipefail
-                  if ! pnpm install --frozen-lockfile --filter=@flind/root --filter=@flind/frontend... > install.log 2>&1; then
-                      grep -n -B 30 -A 5 'ELIFECYCLE\|ERR_PNPM' install.log | tail -120
-                      # Name the failing lifecycle script: the default reporter hides it.
-                      echo "::group::failing lifecycle events (ndjson)"
-                      pnpm install --frozen-lockfile --filter=@flind/root --filter=@flind/frontend... --reporter=ndjson > install.ndjson 2>&1 || true
-                      grep '"pnpm:lifecycle"' install.ndjson | grep -E '"exitCode":[1-9]|"stage":"(pre|post)?install"|"stage":"prepare"' | grep -E '"exitCode"|"line"' | tail -60
-                      echo "::endgroup::"
-                      echo "root .bin: $(ls node_modules/.bin 2>/dev/null | wc -l) entries"; ls node_modules/.bin 2>/dev/null | head -20
-                      echo "::group::root scripts one by one"
-                      ( pnpm run postinstall; echo "root postinstall exit=$?" ) 2>&1 | tail -20
-                      ( pnpm run prepare; echo "root prepare exit=$?" ) 2>&1 | tail -20
-                      echo "::endgroup::"
-                      exit 1
-                  fi
-                  tail -15 install.log
-                  echo "root .bin: $(ls node_modules/.bin 2>/dev/null | wc -l) entries; frontend .bin: $(ls frontend/node_modules/.bin 2>/dev/null | wc -l) entries"
-                  for b in husky oxfmt tsgo jest; do [ -e node_modules/.bin/$b ] && echo "found $b" || echo "MISSING $b"; done
+                  install() {
+                      if ! pnpm install --frozen-lockfile "$@" > install.log 2>&1; then
+                          grep -n -B 30 -A 5 'ELIFECYCLE\|ERR_PNPM' install.log | tail -120
+                          exit 1
+                      fi
+                      tail -3 install.log
+                  }
+                  install --filter=@flind/frontend...
+                  install --filter=@flind/root
+                  # pnpm 11.28.5 installs oxfmt and @typescript/native-preview but does not link their
+                  # bins (reproduced locally; both entry files exist). Call the installed entry points.
+                  mkdir -p "$RUNNER_TEMP/flind-bin"
+                  for tool in oxfmt:node_modules/oxfmt/bin/oxfmt tsgo:node_modules/@typescript/native-preview/bin/tsgo; do
+                      name="${tool%%:*}"; target="$PWD/${tool#*:}"
+                      test -f "$target" || { echo "missing $target"; exit 1; }
+                      printf '#!/bin/sh\nexec node "%s" "$@"\n' "$target" > "$RUNNER_TEMP/flind-bin/$name"
+                      chmod +x "$RUNNER_TEMP/flind-bin/$name"
+                  done
+                  echo "$RUNNER_TEMP/flind-bin" >> "$GITHUB_PATH"
+                  PATH="$RUNNER_TEMP/flind-bin:$PATH" oxfmt --version
+                  PATH="$RUNNER_TEMP/flind-bin:$PATH" tsgo --version
+                  test -x frontend/node_modules/.bin/jest
 
             - name: Run Jest suites
               working-directory: frontend
@@ -122,45 +126,49 @@ jobs:
               with:
                   node-version-file: .nvmrc
 
-            # Frontend and its dependencies (as upstream's jest job) plus the workspace root, which
-            # provides oxfmt (build:products) and tsgo (type check). The desktop app is left out.
+            # Two installs, reproduced locally with pnpm 11.28.5: combining --filter=@flind/root with
+            # --filter=@flind/frontend... skips the root's bin links, so the root prepare script cannot
+            # find husky. Installing the root on its own links them, and leaves the frontend's modules
+            # (jest, vite, tsc) intact. The desktop app stays out of both.
             - name: Install dependencies
               env:
                   # The root prepare script runs husky (local git hooks only); skip it in CI as
                   # upstream's browserslist workflow does. Dependency build scripts still run.
                   HUSKY: '0'
-                  # Belt and braces: the desktop app's postinstall rebuilds Electron natives and downloads
-                  # binaries; it is outside the filter, but must never run here.
                   SKIP_ELECTRON_REBUILD: '1'
               run: |
                   # Standalone pnpm at the version pinned in package.json, as upstream's pnpm/action-setup
                   # provides; that third-party action is outside this repo's allowed-actions policy.
                   npm install -g "pnpm@$(node -p "require('./package.json').packageManager.split('@')[1]")"
                   pnpm --version
-                  # pipefail: without it the pipe reports tail's status and a failed install looks green.
                   set -o pipefail
-                  if ! pnpm install --frozen-lockfile --filter=@flind/root --filter=@flind/frontend... > install.log 2>&1; then
-                      grep -n -B 30 -A 5 'ELIFECYCLE\|ERR_PNPM' install.log | tail -120
-                      # Name the failing lifecycle script: the default reporter hides it.
-                      echo "::group::failing lifecycle events (ndjson)"
-                      pnpm install --frozen-lockfile --filter=@flind/root --filter=@flind/frontend... --reporter=ndjson > install.ndjson 2>&1 || true
-                      grep '"pnpm:lifecycle"' install.ndjson | grep -E '"exitCode":[1-9]|"stage":"(pre|post)?install"|"stage":"prepare"' | grep -E '"exitCode"|"line"' | tail -60
-                      echo "::endgroup::"
-                      echo "root .bin: $(ls node_modules/.bin 2>/dev/null | wc -l) entries"; ls node_modules/.bin 2>/dev/null | head -20
-                      echo "::group::root scripts one by one"
-                      ( pnpm run postinstall; echo "root postinstall exit=$?" ) 2>&1 | tail -20
-                      ( pnpm run prepare; echo "root prepare exit=$?" ) 2>&1 | tail -20
-                      echo "::endgroup::"
-                      exit 1
-                  fi
-                  tail -15 install.log
-                  echo "root .bin: $(ls node_modules/.bin 2>/dev/null | wc -l) entries; frontend .bin: $(ls frontend/node_modules/.bin 2>/dev/null | wc -l) entries"
-                  for b in husky oxfmt tsgo jest; do [ -e node_modules/.bin/$b ] && echo "found $b" || echo "MISSING $b"; done
+                  install() {
+                      if ! pnpm install --frozen-lockfile "$@" > install.log 2>&1; then
+                          grep -n -B 30 -A 5 'ELIFECYCLE\|ERR_PNPM' install.log | tail -120
+                          exit 1
+                      fi
+                      tail -3 install.log
+                  }
+                  install --filter=@flind/frontend...
+                  install --filter=@flind/root
+                  # pnpm 11.28.5 installs oxfmt and @typescript/native-preview but does not link their
+                  # bins (reproduced locally; both entry files exist). Call the installed entry points.
+                  mkdir -p "$RUNNER_TEMP/flind-bin"
+                  for tool in oxfmt:node_modules/oxfmt/bin/oxfmt tsgo:node_modules/@typescript/native-preview/bin/tsgo; do
+                      name="${tool%%:*}"; target="$PWD/${tool#*:}"
+                      test -f "$target" || { echo "missing $target"; exit 1; }
+                      printf '#!/bin/sh\nexec node "%s" "$@"\n' "$target" > "$RUNNER_TEMP/flind-bin/$name"
+                      chmod +x "$RUNNER_TEMP/flind-bin/$name"
+                  done
+                  echo "$RUNNER_TEMP/flind-bin" >> "$GITHUB_PATH"
+                  PATH="$RUNNER_TEMP/flind-bin:$PATH" oxfmt --version
+                  PATH="$RUNNER_TEMP/flind-bin:$PATH" tsgo --version
+                  test -x frontend/node_modules/.bin/jest
 
             - name: Type-check head and base
               run: |
                   # Fail loudly if the compiler is missing; otherwise both runs would report zero errors.
-                  pnpm exec tsgo --version
+                  tsgo --version
                   git fetch --depth=1 origin "$FLIND_BASE_BRANCH"
                   BASE_SHA=$(git rev-parse FETCH_HEAD)
                   echo "base=$BASE_SHA head=$(git rev-parse HEAD)"
@@ -168,7 +176,7 @@ jobs:
                   echo "changed TypeScript files: $(wc -l < changed-files.txt)"
                   run_tsgo() {
                       # tsgo exits non-zero when it reports errors; the comparison below decides the outcome.
-                      NODE_OPTIONS=--max-old-space-size=12288 pnpm exec tsgo --noEmit -p tsconfig.json --pretty false > "$1" 2>&1 || true
+                      NODE_OPTIONS=--max-old-space-size=12288 tsgo --noEmit -p tsconfig.json --pretty false > "$1" 2>&1 || true
                       echo "$1: $(grep -c 'error TS' "$1") errors"
                   }
                   run_tsgo tsgo-head.txt
