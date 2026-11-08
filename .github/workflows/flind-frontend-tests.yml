@@ -66,6 +66,10 @@ jobs:
             # Unfiltered, as upstream installs by default: filtered installs left out the workspace
             # root, which provides oxfmt (build:products) and tsgo (type check).
             - name: Install dependencies
+              env:
+                  # The root prepare script runs husky (local git hooks only); skip it in CI as
+                  # upstream's browserslist workflow does. Dependency build scripts still run.
+                  HUSKY: '0'
               run: |
                   corepack enable
                   # pipefail: without it the pipe reports tail's status and a failed install looks green.
@@ -103,6 +107,10 @@ jobs:
             # Unfiltered, as upstream installs by default: filtered installs left out the workspace
             # root, which provides oxfmt (build:products) and tsgo (type check).
             - name: Install dependencies
+              env:
+                  # The root prepare script runs husky (local git hooks only); skip it in CI as
+                  # upstream's browserslist workflow does. Dependency build scripts still run.
+                  HUSKY: '0'
               run: |
                   corepack enable
                   # pipefail: without it the pipe reports tail's status and a failed install looks green.
