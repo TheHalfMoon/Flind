@@ -68,7 +68,13 @@ jobs:
             - name: Install dependencies
               run: |
                   corepack enable
-                  pnpm install --frozen-lockfile 2>&1 | tail -15
+                  # pipefail: without it the pipe reports tail's status and a failed install looks green.
+                  set -o pipefail
+                  if ! pnpm install --frozen-lockfile > install.log 2>&1; then
+                      grep -n -B 30 -A 5 'ELIFECYCLE\|ERR_PNPM' install.log | tail -120
+                      exit 1
+                  fi
+                  tail -15 install.log
 
             - name: Run Jest suites
               working-directory: frontend
@@ -99,7 +105,13 @@ jobs:
             - name: Install dependencies
               run: |
                   corepack enable
-                  pnpm install --frozen-lockfile 2>&1 | tail -15
+                  # pipefail: without it the pipe reports tail's status and a failed install looks green.
+                  set -o pipefail
+                  if ! pnpm install --frozen-lockfile > install.log 2>&1; then
+                      grep -n -B 30 -A 5 'ELIFECYCLE\|ERR_PNPM' install.log | tail -120
+                      exit 1
+                  fi
+                  tail -15 install.log
 
             - name: Type-check head and base
               run: |
