@@ -151,7 +151,7 @@ class TestEmail(APIBaseTest, ClickhouseTestMixin):
         assert len(mocked_email_messages) == 1
         # Subject is asked-to-set-up phrasing, not the generic invite subject
         subject = MockEmailMessage.call_args.kwargs["subject"]
-        assert "setting up PostHog" in subject
+        assert "setting up Flind" in subject
         assert "Admin" in subject
         assert "invited you to join" not in subject
         # Routed to the delegation template
@@ -2075,6 +2075,27 @@ class TestEmail(APIBaseTest, ClickhouseTestMixin):
         assert "Canada" in html_body
         assert "Google OAuth" in html_body
 
+    @patch("posthog.tasks.email.get_client", return_value=None)
+    @patch("posthog.tasks.email.check_and_cache_login_device")
+    def test_login_from_new_device_notification_without_analytics_client_sends_once(
+        self, mock_check_device: MagicMock, _mock_get_client: MagicMock, MockEmailMessage: MagicMock
+    ) -> None:
+        # Self-hosted Flind has no analytics destination, so get_client() returns None.
+        # The task must finish cleanly instead of raising into a Celery retry that re-sends the email.
+        mocked_email_messages = mock_email_messages(MockEmailMessage)
+        mock_check_device.return_value = True
+
+        login_from_new_device_notification(
+            user_id=self.user.id,
+            login_time=timezone.now(),
+            short_user_agent="Chrome 135.0.0 on Mac OS 15.3",
+            ip_address="24.114.32.12",
+            backend_name="google-oauth2",
+        )
+
+        assert len(mocked_email_messages) == 1
+        assert mocked_email_messages[0].send.call_count == 1
+
     @patch("posthog.tasks.email.get_client")
     @patch("posthog.tasks.email.check_and_cache_login_device")
     def test_login_from_new_device_notification_email_password(
@@ -2757,7 +2778,7 @@ class TestEmail(APIBaseTest, ClickhouseTestMixin):
         assert len(mocked_email_messages) == 1
         message = mocked_email_messages[0]
         assert message.subject == (
-            f"PostHog: 3 materialized views need action, 4 started failing, 1 is still failing in {self.team.name}"
+            f"Flind: 3 materialized views need action, 4 started failing, 1 is still failing in {self.team.name}"
         )
         sections = {s["key"]: [v["name"] for v in s["views"]] for s in message.properties["sections"]}
         assert list(sections) == ["action", "new", "ongoing"]

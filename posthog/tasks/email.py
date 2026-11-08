@@ -2012,8 +2012,12 @@ def login_from_new_device_notification(
     message.add_user_recipient(user)
     message.send()
 
-    # Capture event using ph_client for reliability in Celery tasks
+    # Capture event using ph_client for reliability in Celery tasks. The client is None when
+    # product analytics is not configured; raising here would make Celery retry and re-send
+    # the security email that already went out.
     ph_client = get_client()
+    if ph_client is None:
+        return
     ph_client.capture(
         distinct_id=str(user.distinct_id),
         event="login notification sent",

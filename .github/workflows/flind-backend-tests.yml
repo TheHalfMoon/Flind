@@ -54,6 +54,11 @@ jobs:
                   docker compose -f docker-compose.dev.yml up -d --wait db redis7 zookeeper kafka clickhouse
                   docker compose -f docker-compose.dev.yml up --exit-code-from kafka-init kafka-init
 
+            # Views that render the app shell need the built template. A frontend build is out of
+            # scope for backend tests, so use the source template the build would emit.
+            - name: Provide app shell template
+              run: mkdir -p frontend/dist && cp frontend/src/index.html frontend/dist/index.html
+
             - uses: actions/setup-python@v5
               with:
                   python-version: 3.14.7
