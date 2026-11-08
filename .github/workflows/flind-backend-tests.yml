@@ -18,7 +18,7 @@ concurrency:
 jobs:
     pytest:
         runs-on: ubuntu-24.04
-        timeout-minutes: 90
+        timeout-minutes: 150
         env:
             TEST: '1'
             DEBUG: '1'
@@ -63,10 +63,12 @@ jobs:
                   pip install uv==0.13.4
                   UV_PROJECT_ENVIRONMENT=$pythonLocation uv sync --frozen --dev 2>&1 | tail -5
 
+            # First test-DB setup runs every migration (~35 min on a standard runner), so the
+            # per-test timeout must cover it.
             - name: Run targeted tests
               run: |
                   set -o pipefail
-                  python -m pytest $FLIND_TEST_TARGETS -p no:cacheprovider -q --timeout=600 2>&1 | tee pytest.log
+                  python -m pytest $FLIND_TEST_TARGETS -p no:cacheprovider -q --timeout=3600 2>&1 | tee pytest.log
                   { echo '## Flind backend tests'; echo '```'; tail -40 pytest.log; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
 
             - name: Tear down
