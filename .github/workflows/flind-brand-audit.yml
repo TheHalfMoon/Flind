@@ -22,7 +22,8 @@ jobs:
 
             - name: Inventory donor branding
               run: |
-                  set -euo pipefail
+                  # No -e/pipefail: grep exits 1 on "no matches", which is a valid zero count here.
+                  set -u
                   out=flind-brand-audit
                   mkdir -p "$out"
                   # Visible text only: the literal product name with a capital P, which is what users read.
