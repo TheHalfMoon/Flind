@@ -22,7 +22,7 @@ class LicensedTestMixin:
 
     def license_required_response(
         self,
-        message: str = "This feature is part of the premium PostHog offering. Self-hosted licenses are no longer available for purchase. Please contact sales@posthog.com to discuss options.",
+        message: str = "This feature is part of the premium Flind offering. Self-hosted licenses are no longer available for purchase. Please contact sales@posthog.com to discuss options.",
     ) -> dict[str, Optional[str]]:
         return {
             "type": "server_error",

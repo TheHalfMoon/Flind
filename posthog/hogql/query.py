@@ -441,7 +441,7 @@ class HogQLQueryExecutor:
         if has_non_direct_tables:
             if self.connection_id is None:
                 return None
-            raise ExposedHogQLError("Direct queries cannot be joined with PostHog or warehouse-synced tables.")
+            raise ExposedHogQLError("Direct queries cannot be joined with Flind or warehouse-synced tables.")
 
         if self.connection_id is None:
             raise ExposedHogQLError("Direct queries require selecting a connection.")

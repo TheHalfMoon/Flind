@@ -27,18 +27,18 @@ class ConnectedAppSerializer(serializers.Serializer):
     logo_uri = serializers.URLField(allow_null=True, help_text="URL to the application's logo")
     scopes = serializers.ListField(child=serializers.CharField(), help_text="Scopes granted to this application")
     authorized_at = serializers.DateTimeField(help_text="When the user first authorized this application")
-    is_verified = serializers.BooleanField(help_text="Whether this application has been verified by PostHog")
-    is_first_party = serializers.BooleanField(help_text="Whether this is a first-party PostHog application")
+    is_verified = serializers.BooleanField(help_text="Whether this application has been verified by Flind")
+    is_first_party = serializers.BooleanField(help_text="Whether this is a first-party Flind application")
     requires_access_confirmation = serializers.BooleanField(
         help_text=(
             "Whether the user must choose to keep or disconnect this application, because it set up one of "
-            "the user's organizations and PostHog has not verified it"
+            "the user's organizations and Flind has not verified it"
         )
     )
     is_self_registered = serializers.BooleanField(
         help_text=(
             "Whether the application registered itself, through dynamic client registration or a client ID "
-            "metadata document. MCP clients connect this way; applications PostHog registers do not."
+            "metadata document. MCP clients connect this way; applications Flind registers do not."
         )
     )
 

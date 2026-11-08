@@ -110,7 +110,7 @@ class LinearIntegration:
             variables={"issueId": issue_id, "title": "PostHog issue", "url": url},
         )
         if body.get("errors") or not common.dot_get(body, "data.attachmentCreate.success"):
-            raise ValidationError("Failed to attach the PostHog link to the Linear issue")
+            raise ValidationError("Failed to attach the Flind link to the Linear issue")
 
     def close_issue(self, issue_id: str, *, completed: bool = False) -> None:
         """Move an issue to its team's completed or canceled state. Raises on failure.

@@ -135,7 +135,7 @@ class PaymentAuthorizationRejected(APIException):
 class BillingManagedByProviderError(APIException):
     status_code = status.HTTP_400_BAD_REQUEST
     default_code = "billing_managed_by_provider"
-    default_detail = "Billing for this organization is managed outside PostHog. Contact support to change your plan."
+    default_detail = "Billing for this organization is managed outside Flind. Contact support to change your plan."
     default_type = "invalid_request"
 
 

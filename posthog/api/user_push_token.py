@@ -51,7 +51,7 @@ class UserPushTokenRegisterRequestSerializer(serializers.Serializer):
 
 
 class UserPushTokenItemSerializer(serializers.Serializer):
-    id = serializers.UUIDField(help_text="PostHog UserPushToken row id.")
+    id = serializers.UUIDField(help_text="Flind UserPushToken row id.")
     platform = serializers.ChoiceField(
         choices=UserPushToken.Platform.choices,
         help_text="Device platform the token was issued for.",

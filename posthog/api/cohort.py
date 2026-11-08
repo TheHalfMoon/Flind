@@ -1003,7 +1003,7 @@ class CohortRealtimeReadinessSerializer(serializers.Serializer):
     state = serializers.ChoiceField(
         choices=CohortRealtimeState.choices,
         help_text="Whether feature flags can target this cohort now. `ready`: they can, and they "
-        "see membership changes within about a minute. `building` / `rebuilding`: PostHog is "
+        "see membership changes within about a minute. `building` / `rebuilding`: Flind is "
         "preparing the cohort from past events, and flags cannot target it yet. "
         "`needs_attention`: the cohort qualifies but nothing is preparing it. `daily`: its "
         "criteria are not supported in realtime, so its membership only comes from the once-a-day "

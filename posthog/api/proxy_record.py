@@ -138,7 +138,7 @@ class ProxyRecordSerializer(serializers.ModelSerializer):
             view = self.context.get("view")
             organization_id = getattr(getattr(view, "organization", None), "id", None)
             if organization_id is None or not org_may_register_reserved_domain(organization_id, value):
-                raise serializers.ValidationError("This domain belongs to PostHog. Enter a domain you own instead.")
+                raise serializers.ValidationError("This domain is reserved. Enter a domain you own instead.")
         return value
 
 

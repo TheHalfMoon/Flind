@@ -26,7 +26,7 @@ class RoleExternalReferenceSerializer(serializers.ModelSerializer):
     created_by = UserBasicSerializer(read_only=True)
     role = OrganizationRoleScopedPrimaryKeyRelatedField(
         queryset=Role.objects.all(),
-        help_text="PostHog role UUID this external role maps to.",
+        help_text="Flind role UUID this external role maps to.",
     )
 
     class Meta:

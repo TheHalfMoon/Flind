@@ -465,7 +465,7 @@ class AdvancedActivityLogFiltersSerializer(serializers.Serializer):
         required=False,
         help_text=(
             "Response format. Set to ocsf to return Open Cybersecurity Schema Framework events for "
-            "ingestion into a security tool. Omit for the default PostHog format."
+            "ingestion into a security tool. Omit for the default Flind format."
         ),
     )
     include_values = serializers.BooleanField(
