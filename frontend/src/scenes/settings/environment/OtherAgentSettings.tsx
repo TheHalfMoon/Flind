@@ -14,7 +14,7 @@ export function OtherAgentSettings(): JSX.Element {
             </li>
             <li>
                 Workspaces, worktrees, local environments, the terminal, harness permission rules, keep awake, Discord,
-                and app updates stay in Flind Desktop, because they need your computer.
+                and app updates stay in PostHog Desktop, because they need your computer.
             </li>
         </ul>
     )

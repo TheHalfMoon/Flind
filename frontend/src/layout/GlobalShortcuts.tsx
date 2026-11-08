@@ -74,7 +74,7 @@ export function GlobalShortcuts(): null {
     useShortcut({
         name: 'TogglePostHogTeamCohort',
         keybind: [],
-        intent: 'Toggle Flind Team cohort',
+        intent: 'Toggle PostHog Team cohort',
         interaction: 'function',
         callback: () => setExcludedFromPostHogTeamCohort(!excludedFromPostHogTeamCohort),
         disabled: !user?.is_staff,

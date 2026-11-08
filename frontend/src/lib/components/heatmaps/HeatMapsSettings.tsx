@@ -187,7 +187,7 @@ export const HeatmapsSettings = ({
                     title="Fixed positioning calculation"
                     info={
                         <>
-                            Flind JS will attempt to detect fixed elements such as headers or modals and will
+                            PostHog JS will attempt to detect fixed elements such as headers or modals and will
                             therefore show those heatmap areas, ignoring the scroll value.
                             <br />
                             You can choose to show these areas as fixed, include them with scrolled data or hide them

@@ -236,7 +236,7 @@ export const PRODUCT_PUSH_DISPLAY: Partial<Record<ProductKey, ProductPushDisplay
         accentColor: 'var(--color-accent)',
         tagline:
             'The product editor for builders. Run AI agents that use your product data as context to ship changes.',
-        label: 'Flind Desktop',
+        label: 'PostHog Desktop',
         href: 'https://posthog.com/desktop',
     },
 }

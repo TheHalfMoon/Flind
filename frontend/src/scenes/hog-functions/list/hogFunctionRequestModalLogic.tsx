@@ -58,7 +58,7 @@ export const hogFunctionRequestModalLogic = kea<hogFunctionRequestModalLogicType
                 content: (
                     <div className="deprecated-space-y-2">
                         <LemonField name="name" label={`Name of the ${humanizedType}`}>
-                            <LemonInput placeholder="e.g. Flind" autoFocus />
+                            <LemonInput placeholder="e.g. PostHog" autoFocus />
                         </LemonField>
                         <LemonField name="details" label="Additional information" showOptional>
                             <LemonTextArea

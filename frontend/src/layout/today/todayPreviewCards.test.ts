@@ -60,7 +60,7 @@ describe('todayPreviewCards', () => {
             kind: 'chat',
             chatId: 'chat-1',
             title: 'Untitled chat',
-            source: 'PostHog AI',
+            source: 'Flind AI',
             timestamp: '2026-01-02T00:00:00Z',
         })
     })

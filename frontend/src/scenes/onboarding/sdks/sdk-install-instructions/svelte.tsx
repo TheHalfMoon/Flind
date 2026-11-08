@@ -62,7 +62,7 @@ export function SDKInstallSvelteJSInstructions({ hideWizard }: { hideWizard?: bo
                     layout
                 </Link>{' '}
                 already, create a new file called <code>+layout.js</code> in your <code>src/routes</code> folder. In
-                this file, check the environment is the browser, and initialize Flind if so:
+                this file, check the environment is the browser, and initialize PostHog if so:
             </p>
             <SvelteAppClientCodeSnippet />
         </>

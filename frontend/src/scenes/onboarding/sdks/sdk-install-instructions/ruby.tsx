@@ -13,7 +13,7 @@ function RubySetupSnippet(): JSX.Element {
 
     return (
         <CodeSnippet language={Language.Ruby}>
-            {`posthog = Flind::Client.new({
+            {`posthog = PostHog::Client.new({
     api_key: "${currentTeam?.api_token}",
     host: "${apiHostOrigin()}",
     on_error: Proc.new { |status, msg| print msg }

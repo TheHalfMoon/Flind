@@ -31,9 +31,9 @@ export function NodeSetupSnippet({ enableExceptionAutocapture = false }: PostHog
 
     return (
         <CodeSnippet language={Language.JavaScript}>
-            {`import { Flind } from 'posthog-node'
+            {`import { PostHog } from 'posthog-node'
 
-const client = new Flind(
+const client = new PostHog(
     '${currentTeam?.api_token}',
     {
         ${options.join(',\n        ')}

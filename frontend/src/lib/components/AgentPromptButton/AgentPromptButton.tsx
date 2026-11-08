@@ -213,7 +213,7 @@ const AGENTS: AgentDef[] = [
     },
     {
         key: 'posthog-code',
-        name: 'Flind Desktop',
+        name: 'PostHog Desktop',
         logo: <IconLogomark className="size-4 shrink-0" />,
         verb: 'Open',
         open: openDeepLink(buildPostHogCodeDeepLink),

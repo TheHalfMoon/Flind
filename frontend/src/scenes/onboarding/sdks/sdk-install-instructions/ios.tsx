@@ -11,7 +11,7 @@ export interface iOSSetupProps {
 }
 
 function IOSInstallCocoaPodsSnippet(): JSX.Element {
-    return <CodeSnippet language={Language.Ruby}>{'pod "Flind", "~> 3.56"'}</CodeSnippet>
+    return <CodeSnippet language={Language.Ruby}>{'pod "PostHog", "~> 3.56"'}</CodeSnippet>
 }
 
 function IOSInstallSPMSnippet(): JSX.Element {
@@ -49,7 +49,7 @@ function IOSSetupSnippet(props: iOSSetupProps): JSX.Element {
     return (
         <CodeSnippet language={Language.Swift}>
             {`import Foundation
-${props.includeExperimentalSpi ? '@_spi(Experimental) import Flind' : 'import Flind'}
+${props.includeExperimentalSpi ? '@_spi(Experimental) import PostHog' : 'import PostHog'}
 import UIKit
 
 class AppDelegate: NSObject, UIApplicationDelegate {
@@ -85,7 +85,7 @@ export function SDKInstallIOSTrackScreenInstructions(): JSX.Element {
     return (
         <>
             <p>
-                With <code>configuration.captureScreenViews</code> set as <code>true</code>, Flind will try to record
+                With <code>configuration.captureScreenViews</code> set as <code>true</code>, PostHog will try to record
                 all screen changes automatically.
             </p>
             <p>

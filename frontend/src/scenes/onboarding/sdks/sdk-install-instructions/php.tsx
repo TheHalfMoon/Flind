@@ -13,7 +13,7 @@ function PHPSetupSnippet(): JSX.Element {
 
     return (
         <CodeSnippet language={Language.PHP}>
-            {`Flind\\Flind::init(
+            {`PostHog\\PostHog::init(
     '${currentTeam?.api_token}',
     ['host' => '${apiHostOrigin()}']
 );`}

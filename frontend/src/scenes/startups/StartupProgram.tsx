@@ -61,7 +61,7 @@ function StartupProgramNotice({ title, children }: { title: ReactNode; children:
                 <CardContent className="flex flex-col items-start gap-2">
                     {children}
                     <Button variant="primary" render={<LinkPrimitive to={urls.projectRoot()} />}>
-                        Return to Flind
+                        Return to PostHog
                     </Button>
                 </CardContent>
             </Card>
@@ -174,7 +174,7 @@ export function StartupProgram(): JSX.Element {
                     It looks like your organization is already on our annual plan. If you have any questions, please
                     contact{' '}
                     {accountOwner?.name && accountOwner?.email
-                        ? `your Flind human ${accountOwner.name.split(' ')[0]} at ${accountOwner.email}`
+                        ? `your PostHog human ${accountOwner.name.split(' ')[0]} at ${accountOwner.email}`
                         : 'our support team'}
                 </Text>
             </StartupProgramNotice>
@@ -216,8 +216,8 @@ export function StartupProgram(): JSX.Element {
                                 {isYC
                                     ? "You've found our secret Y Combinator offer!"
                                     : isReferralProgram && referrerDisplayName
-                                      ? `Flind x ${referrerDisplayName}`
-                                      : "Apply for Flind's startup program"}
+                                      ? `PostHog x ${referrerDisplayName}`
+                                      : "Apply for PostHog's startup program"}
                             </Heading>
                             {isYC ? (
                                 <Text variant="muted">
@@ -251,7 +251,7 @@ export function StartupProgram(): JSX.Element {
                                         </ItemMedia>
                                         <ItemContent>
                                             <ItemTitle>
-                                                $50,000 in Flind credit
+                                                $50,000 in PostHog credit
                                                 {isYC && (
                                                     <>
                                                         {' '}
@@ -368,7 +368,7 @@ export function StartupProgram(): JSX.Element {
                                         <Text size="xs" variant="muted" className="flex gap-1">
                                             <span className="text-xxs align-super">2</span>
                                             Boring international customs reasons mean users outside US/Canada get a $150
-                                            Flind merch voucher instead.
+                                            PostHog merch voucher instead.
                                         </Text>
                                     </div>
                                 )}
@@ -401,7 +401,7 @@ export function StartupProgram(): JSX.Element {
                                         )}
                                         <Text>If you have any questions, please contact our support team.</Text>
                                         <Button variant="primary" render={<LinkPrimitive to={urls.projectRoot()} />}>
-                                            Return to Flind
+                                            Return to PostHog
                                         </Button>
                                     </CardContent>
                                 </Card>
@@ -470,7 +470,7 @@ export function StartupProgram(): JSX.Element {
                                                         <EmptyDescription>
                                                             Thank you for your application! We'll review it and get back
                                                             to you as soon as possible. In the meantime, you can
-                                                            continue using Flind.
+                                                            continue using PostHog.
                                                         </EmptyDescription>
                                                     </EmptyHeader>
                                                     <EmptyContent>
@@ -478,7 +478,7 @@ export function StartupProgram(): JSX.Element {
                                                             variant="primary"
                                                             render={<LinkPrimitive to={urls.projectRoot()} />}
                                                         >
-                                                            Return to Flind
+                                                            Return to PostHog
                                                         </Button>
                                                     </EmptyContent>
                                                 </Empty>

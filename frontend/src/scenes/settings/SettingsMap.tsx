@@ -402,7 +402,7 @@ export const SETTINGS_MAP: SettingSection[] = [
                 ),
                 searchTerm: 'Project default model',
                 description:
-                    'The model agent runs launch with when nobody picks one. Everyone on this project inherits it in the new Flind AI view, in Slack, and in Flind Desktop.',
+                    'The model agent runs launch with when nobody picks one. Everyone on this project inherits it in the new PostHog AI view, in Slack, and in PostHog Desktop.',
                 component: <TaskAgentProjectDefaultSettings />,
                 keywords: ['ai', 'model', 'claude', 'codex', 'agent', 'tasks', 'default', 'slack', 'desktop'],
             },
@@ -416,7 +416,7 @@ export const SETTINGS_MAP: SettingSection[] = [
                 ),
                 searchTerm: 'My default model',
                 description:
-                    'The model your own runs launch with, overriding the project default. Applies in the new Flind AI view, in Slack, and in Flind Desktop.',
+                    'The model your own runs launch with, overriding the project default. Applies in the new PostHog AI view, in Slack, and in PostHog Desktop.',
                 component: <TaskAgentMyPreferenceSettings />,
                 keywords: ['ai', 'model', 'claude', 'codex', 'agent', 'tasks', 'preference', 'slack', 'desktop'],
             },
@@ -477,7 +477,7 @@ export const SETTINGS_MAP: SettingSection[] = [
                 id: 'task-agent-project-default',
                 title: 'Project default model',
                 description:
-                    'The model agent runs launch with when nobody picks one. Everyone on this project inherits it in the new Flind AI view, in Slack, and in Flind Desktop.',
+                    'The model agent runs launch with when nobody picks one. Everyone on this project inherits it in the new PostHog AI view, in Slack, and in PostHog Desktop.',
                 component: <TaskAgentProjectDefaultSettings />,
                 keywords: ['ai', 'model', 'claude', 'codex', 'agent', 'tasks', 'default', 'slack', 'desktop'],
             },
@@ -485,7 +485,7 @@ export const SETTINGS_MAP: SettingSection[] = [
                 id: 'task-agent-my-preference',
                 title: 'My default model',
                 description:
-                    'The model your own runs launch with, overriding the project default. Applies in the new Flind AI view, in Slack, and in Flind Desktop.',
+                    'The model your own runs launch with, overriding the project default. Applies in the new PostHog AI view, in Slack, and in PostHog Desktop.',
                 component: <TaskAgentMyPreferenceSettings />,
                 keywords: ['ai', 'model', 'claude', 'codex', 'agent', 'tasks', 'preference', 'slack', 'desktop'],
             },
@@ -564,7 +564,7 @@ export const SETTINGS_MAP: SettingSection[] = [
                 ),
                 searchTerm: 'My instructions',
                 description:
-                    'Instructions that Flind cloud agents read after the project instructions in Tasks runs you start, from Flind AI, Slack, or Flind Desktop. Use them for your personal preferences and for anything you want agents to remember about how you work. Anyone who continues a task you started can see them, so leave out anything private. Self-driving and scheduled runs do not use them.',
+                    'Instructions that PostHog cloud agents read after the project instructions in Tasks runs you start, from PostHog AI, Slack, or PostHog Desktop. Use them for your personal preferences and for anything you want agents to remember about how you work. Anyone who continues a task you started can see them, so leave out anything private. Self-driving and scheduled runs do not use them.',
                 component: <AgentPersonalInstructionsSettings />,
                 keywords: ['ai', 'agent', 'agents.md', 'claude.md', 'instructions', 'tasks', 'cloud', 'personal'],
             },
@@ -589,7 +589,7 @@ export const SETTINGS_MAP: SettingSection[] = [
                 id: 'task-agent-my-instructions',
                 title: 'My instructions',
                 description:
-                    'Instructions that Flind cloud agents read after the project instructions in Tasks runs you start, from Flind AI, Slack, or Flind Desktop. Use them for your personal preferences and for anything you want agents to remember about how you work. Anyone who continues a task you started can see them, so leave out anything private. Self-driving and scheduled runs do not use them.',
+                    'Instructions that PostHog cloud agents read after the project instructions in Tasks runs you start, from PostHog AI, Slack, or PostHog Desktop. Use them for your personal preferences and for anything you want agents to remember about how you work. Anyone who continues a task you started can see them, so leave out anything private. Self-driving and scheduled runs do not use them.',
                 component: <AgentPersonalInstructionsSettings />,
                 keywords: ['ai', 'agent', 'agents.md', 'claude.md', 'instructions', 'tasks', 'cloud', 'personal'],
             },
@@ -612,7 +612,7 @@ export const SETTINGS_MAP: SettingSection[] = [
                     </>
                 ),
                 searchTerm: 'Your agent spend',
-                description: 'What your Flind Desktop and cloud agent runs cost, across all your projects.',
+                description: 'What your PostHog Desktop and cloud agent runs cost, across all your projects.',
                 component: <AgentUsageSettings />,
                 keywords: ['spend', 'cost', 'usage', 'credits', 'billing', 'models', 'desktop'],
                 hideOn: [Realm.SelfHostedClickHouse, Realm.SelfHostedPostgres],
@@ -2070,7 +2070,7 @@ export const SETTINGS_MAP: SettingSection[] = [
                 id: 'integration-ip-allowlist',
                 title: 'Static IP addresses',
                 description:
-                    'Flind Cloud uses static IP addresses for outbound traffic. Add these to your firewall allowlist if needed.',
+                    'PostHog Cloud uses static IP addresses for outbound traffic. Add these to your firewall allowlist if needed.',
                 component: <IPAllowListInfo />,
                 keywords: ['whitelist', 'firewall', 'allowlist', 'cidr', 'ip'],
             },
@@ -2194,13 +2194,13 @@ export const SETTINGS_MAP: SettingSection[] = [
             },
             {
                 id: 'organization-desktop-beta-terms',
-                title: 'Flind Desktop beta terms',
+                title: 'PostHog Desktop beta terms',
                 description: (
                     <>
-                        Accept the additional data-processing terms for the Flind Desktop beta.
+                        Accept the additional data-processing terms for the PostHog Desktop beta.
                         <br />
                         <br />
-                        Flind Desktop uses Baseten and Modal to process customer data, personal data, and PII. They
+                        PostHog Desktop uses Baseten and Modal to process customer data, personal data, and PII. They
                         are not currently listed as Flind subprocessors for this feature.
                         <br />
                         <br />
@@ -2216,7 +2216,7 @@ export const SETTINGS_MAP: SettingSection[] = [
                 ),
                 component: <OrganizationDesktopBetaTerms />,
                 keywords: ['desktop', 'beta', 'terms', 'consent', 'opt-in', 'data processing'],
-                searchDescription: 'Accept the additional data-processing terms for the Flind Desktop beta.',
+                searchDescription: 'Accept the additional data-processing terms for the PostHog Desktop beta.',
             },
             {
                 id: 'organization-ai-training-opt-out',

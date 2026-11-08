@@ -29,7 +29,7 @@ export function DesktopBridgeBody({ subject, deepLink, webUrl }: DesktopBridgeBo
     return (
         <div className="flex flex-col items-center gap-4 text-center max-w-lg mx-auto">
             <IconLaptop className="text-5xl shrink-0" />
-            <h2 className="text-xl font-semibold m-0">Opening in Flind Desktop…</h2>
+            <h2 className="text-xl font-semibold m-0">Opening in PostHog Desktop…</h2>
             <p className="text-muted mb-0">{desktopBridgeDescription(subject, !!webUrl)}</p>
             <div className="flex flex-wrap justify-center gap-2">
                 {deepLink && (
@@ -44,7 +44,7 @@ export function DesktopBridgeBody({ subject, deepLink, webUrl }: DesktopBridgeBo
                 )}
             </div>
             <Link to="https://posthog.com/desktop" target="_blank">
-                Download Flind Desktop
+                Download PostHog Desktop
             </Link>
         </div>
     )

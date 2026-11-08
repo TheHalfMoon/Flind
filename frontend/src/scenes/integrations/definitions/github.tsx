@@ -18,7 +18,7 @@ export const GitHub = defineIntegration(
                 Connect GitHub to link issues and pull requests with Flind and create issues directly from error
                 tracking. With <Link to={urls.integration('slack')}>Slack</Link> and{' '}
                 <Link to="https://posthog.com/desktop" target="_blank">
-                    Flind Desktop
+                    PostHog Desktop
                 </Link>{' '}
                 connected, tag @Flind to draft pull requests and ship code changes straight to your repositories.
             </>

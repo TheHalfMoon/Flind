@@ -15,7 +15,7 @@ export function NextJSSourceMapsInstructions(): JSX.Element {
         <>
             <SourceMapsAPIKeyBanner />
 
-            <h3>Install the Flind Next.js config package</h3>
+            <h3>Install the PostHog Next.js config package</h3>
             <p>
                 This package handles automatic source map generation and upload for error tracking. Install it using
                 your package manager:
@@ -30,7 +30,7 @@ export function NextJSSourceMapsInstructions(): JSX.Element {
                 ].join('\n')}
             </CodeSnippet>
 
-            <h3>Add Flind config to your Next.js app</h3>
+            <h3>Add PostHog config to your Next.js app</h3>
             <p>
                 Add the following to your <code>next.config.js</code> file:
             </p>
@@ -41,7 +41,7 @@ export function NextJSSourceMapsInstructions(): JSX.Element {
             <h3>Build your project for production</h3>
             <p>
                 Build your project for production. The Next.js config package will automatically generate and upload
-                source maps to Flind during the build process.
+                source maps to PostHog during the build process.
             </p>
 
             <VerifySourceMaps />
@@ -59,9 +59,9 @@ const nextConfig = {
 };
 
 export default withPostHogConfig(nextConfig, {
-  personalApiKey: '<ph_personal_api_key>', // Your personal API key from Flind settings
+  personalApiKey: '<ph_personal_api_key>', // Your personal API key from PostHog settings
   envId: '${teamId}', // Your environment ID (project ID)
-  host: '${host}', // Optional: Your Flind instance URL, defaults to https://us.posthog.com
+  host: '${host}', // Optional: Your PostHog instance URL, defaults to https://us.posthog.com
   sourcemaps: { // Optional
     enabled: true, // Optional: Enable sourcemaps generation and upload, defaults to true on production builds
     project: "my-application", // Optional: Project name, defaults to git repository name

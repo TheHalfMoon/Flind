@@ -208,13 +208,13 @@ export function AsyncMigrations(): JSX.Element {
     }
 
     const minVersionColumn: AsyncMigrationColumnType = {
-        title: 'Minimum Flind version',
+        title: 'Minimum PostHog version',
         render: function Render(_, asyncMigration: AsyncMigration): JSX.Element {
             return <div>{asyncMigration.posthog_min_version}</div>
         },
     }
     const maxVersionColumn: AsyncMigrationColumnType = {
-        title: 'Maximum Flind version',
+        title: 'Maximum PostHog version',
         render: function Render(_, asyncMigration: AsyncMigration): JSX.Element {
             return <div>{asyncMigration.posthog_max_version}</div>
         },

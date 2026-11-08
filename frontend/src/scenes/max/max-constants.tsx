@@ -1589,7 +1589,7 @@ export const SPECIAL_MODES: Record<string, ModeDefinition> = {
     },
     sandbox: {
         name: 'Sandbox',
-        description: 'Spawns a cloud coding agent to work on the Flind codebase.',
+        description: 'Spawns a cloud coding agent to work on the PostHog codebase.',
         icon: <IconCloud />,
         flag: 'PHAI_SANDBOX_MODE',
         alpha: true,

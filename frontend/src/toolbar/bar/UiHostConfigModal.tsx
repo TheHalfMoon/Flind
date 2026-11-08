@@ -44,7 +44,7 @@ export function UiHostConfigModal({ visible, onClose }: UiHostConfigModalProps):
                     direct URL of the Flind app to authenticate.
                 </p>
                 <p>
-                    Add <code>ui_host</code> to your Flind JS initialisation to point directly to Flind:
+                    Add <code>ui_host</code> to your PostHog JS initialisation to point directly to PostHog:
                 </p>
                 <pre className="UiHostConfigModal__code">
                     {`posthog.init('<ph_project_api_key>', {

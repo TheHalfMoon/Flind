@@ -14,7 +14,7 @@ describe('CodeTaskLink', () => {
         jest.clearAllMocks()
     })
 
-    it('forwards the comment target from the browser URL to Flind Desktop', () => {
+    it('forwards the comment target from the browser URL to PostHog Desktop', () => {
         expect(
             taskDeepLink('task/1', {
                 comment: 'comment/1',

@@ -22,7 +22,7 @@ export function AndroidSnippet({ flagKey, variant }: SnippetProps): JSX.Element 
     return (
         <>
             <CodeSnippet language={Language.Kotlin} wrap compact>
-                {`if (Flind.getFeatureFlag("${flagKey}") == "${variant}") {
+                {`if (PostHog.getFeatureFlag("${flagKey}") == "${variant}") {
     // do something
 } else {
     // It's a good idea to let control variant always be the default behaviour,
@@ -141,7 +141,7 @@ export function PHPSnippet({ flagKey, variant }: SnippetProps): JSX.Element {
     return (
         <>
             <CodeSnippet language={Language.PHP} wrap compact>
-                {`if (Flind::getFeatureFlag('${flagKey}', 'user distinct id') == '${variant}') {
+                {`if (PostHog::getFeatureFlag('${flagKey}', 'user distinct id') == '${variant}') {
     // Do something differently for this user
 } else {
     // It's a good idea to let control variant always be the default behaviour,
@@ -267,7 +267,7 @@ from posthog.ai.prompts import Prompts
 
 posthog = Posthog(
     os.environ["POSTHOG_API_KEY"],
-    host="https://us.posthog.com",  # Replace with your Flind host (e.g. https://eu.posthog.com for EU Cloud, or your self-hosted URL)
+    host="https://us.posthog.com",  # Replace with your PostHog host (e.g. https://eu.posthog.com for EU Cloud, or your self-hosted URL)
     personal_api_key=os.environ["POSTHOG_PERSONAL_API_KEY"],
 )
 
@@ -318,12 +318,12 @@ export function PromptExperimentJSSnippet({ flagKey }: PromptSnippetProps): JSX.
             compact
             maxLinesWithoutExpansion={PROMPT_SNIPPET_PREVIEW_LINES}
         >
-            {`import { Flind } from 'posthog-node'
+            {`import { PostHog } from 'posthog-node'
 import { OpenAI } from '@posthog/ai/openai'
 import { Prompts } from '@posthog/ai/prompts'
 
-const posthog = new Flind(process.env.POSTHOG_API_KEY!, {
-    host: 'https://us.posthog.com', // Replace with your Flind host (e.g. https://eu.posthog.com for EU Cloud, or your self-hosted URL)
+const posthog = new PostHog(process.env.POSTHOG_API_KEY!, {
+    host: 'https://us.posthog.com', // Replace with your PostHog host (e.g. https://eu.posthog.com for EU Cloud, or your self-hosted URL)
     personalApiKey: process.env.POSTHOG_PERSONAL_API_KEY,
 })
 
@@ -372,7 +372,7 @@ console.log(response.choices[0].message.content)
 export function PromptExperimentAgentPromptSnippet({ flagKey }: PromptSnippetProps): JSX.Element {
     return (
         <CodeSnippet language={Language.Text} wrap compact maxLinesWithoutExpansion={PROMPT_SNIPPET_PREVIEW_LINES}>
-            {`Wire up a Flind prompt experiment in this project.
+            {`Wire up a PostHog prompt experiment in this project.
 
 Context
 - A feature flag with key "${flagKey}" controls variant assignment for this experiment.
@@ -381,7 +381,7 @@ Context
   generation event MUST include $ai_prompt_name for the experiment to attribute it.
 
 What to do
-1. Detect the language and framework from existing project files. Use the Flind SDK
+1. Detect the language and framework from existing project files. Use the PostHog SDK
    that matches (posthog-python, posthog-node, etc.). Check the existing package manifest
    before installing a new SDK.
 2. Make sure POSTHOG_API_KEY, POSTHOG_PERSONAL_API_KEY, and the LLM provider's API key
@@ -398,9 +398,9 @@ What to do
       page stays blank).
    b) Read the variant's payload from the evaluation result. Parse JSON if it returns
       a string. Extract prompt_name and prompt_version.
-   c) Use Flind's prompt management API to fetch the prompt by name + version, then
+   c) Use PostHog's prompt management API to fetch the prompt by name + version, then
       compile it. Pass the compiled prompt as the system message.
-   d) Wrap the LLM client with Flind's AI tracing wrapper (e.g. @posthog/ai for
+   d) Wrap the LLM client with PostHog's AI tracing wrapper (e.g. @posthog/ai for
       Node, posthog.ai for Python) so $ai_generation events are auto-emitted with
       cost, latency, and tokens.
    e) Pass posthog_distinct_id / posthogDistinctId and attach event properties:
@@ -421,7 +421,7 @@ Reference docs
 - Prompt management:             https://posthog.com/docs/prompt-management
 - Feature flag payloads:         https://posthog.com/docs/feature-flags/payloads
 - Experiments:                   https://posthog.com/docs/experiments
-- Flind AI wrappers (OpenAI, Anthropic, Gemini): https://posthog.com/docs/ai-engineering
+- PostHog AI wrappers (OpenAI, Anthropic, Gemini): https://posthog.com/docs/ai-engineering
 `}
         </CodeSnippet>
     )

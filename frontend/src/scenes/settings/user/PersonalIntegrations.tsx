@@ -48,7 +48,7 @@ function GitHubInstallationRow({ integration }: { integration: PersonalGitHubInt
             description: (
                 <>
                     <LemonBanner type="warning" className="my-4 text-balance">
-                        Any Flind Desktop agent runs <em>currently in progress</em> will be unable to push commits or
+                        Any PostHog Desktop agent runs <em>currently in progress</em> will be unable to push commits or
                         open pull requests on GitHub.
                     </LemonBanner>
                     <p>

@@ -3,7 +3,7 @@ import { JSSnippet } from 'lib/components/JSSnippet'
 export function SDKInstallFramerInstructions(): JSX.Element {
     return (
         <>
-            <h3>Install the Flind web snippet</h3>
+            <h3>Install the PostHog web snippet</h3>
             <p>First copy your web snippet:</p>
             <JSSnippet />
             <p>
@@ -23,7 +23,7 @@ export function SDKInstallFramerInstructions(): JSX.Element {
                     <strong>
                         End of <code>&lt;head&gt;</code> tag
                     </strong>
-                    , paste your Flind snippet.
+                    , paste your PostHog snippet.
                 </li>
                 <li> Press save, and then publish your site.</li>
             </ol>

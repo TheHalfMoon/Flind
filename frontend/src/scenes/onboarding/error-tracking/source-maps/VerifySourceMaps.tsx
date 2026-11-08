@@ -9,7 +9,7 @@ export function VerifySourceMaps(): JSX.Element {
                 successful by checking your source map files for <code>//# chunkId=</code> comments.
             </p>
             <p>
-                Make sure to serve these injected files in production. Flind will check for the{' '}
+                Make sure to serve these injected files in production. PostHog will check for the{' '}
                 <code>//# chunkId</code> comments to display the correct stack traces.
             </p>
             <CodeSnippet language={Language.JavaScript}>//# chunkId=0197e6db-9a73-7b91-9e80-4e1b7158db5c</CodeSnippet>

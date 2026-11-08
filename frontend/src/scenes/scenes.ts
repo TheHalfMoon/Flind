@@ -487,7 +487,7 @@ export const sceneConfigurations: Record<Scene | string, SceneConfig> = {
     [Scene.IdentityProviderConfig]: { projectBased: true, name: 'Configure identity provider' },
     [Scene.Signup]: { onlyUnauthenticated: true, name: 'Sign up', layout: 'plain' },
     [Scene.Site]: { projectBased: true, hideProjectNotice: true, layout: 'app-raw' },
-    [Scene.StartupProgram]: { name: 'Flind for Startups', organizationBased: true, layout: 'plain' },
+    [Scene.StartupProgram]: { name: 'PostHog for Startups', organizationBased: true, layout: 'plain' },
     [Scene.SurveyWizard]: {
         projectBased: true,
         name: 'Create survey',

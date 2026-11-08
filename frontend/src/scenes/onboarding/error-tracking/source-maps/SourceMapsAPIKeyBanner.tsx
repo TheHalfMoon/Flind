@@ -24,7 +24,7 @@ export function SourceMapsAPIKeyBanner(): JSX.Element {
     return (
         <LemonBanner type="info" className="mb-4">
             <div className="flex items-center gap-2 justify-between">
-                The project token used to initialize Flind is not the same as the personal API key required to upload
+                The project token used to initialize PostHog is not the same as the personal API key required to upload
                 source maps. If you want to upload source maps, you can create a personal API key here.
                 <LemonButton type="primary" onClick={openAPIKeyModal}>
                     Create personal API key

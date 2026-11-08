@@ -42,11 +42,11 @@ const series = (label: string, usageType: string, data: number[]): BillingUsageR
 describe('convertDesktopUsageSeries', () => {
     it.each([
         [
-            'Flind Desktop token credits',
+            'PostHog Desktop token credits',
             'posthog_code_token_credits_used_in_period',
             1234,
             12.34,
-            'Flind Desktop token spend (USD)',
+            'PostHog Desktop token spend (USD)',
         ],
         ['Sandbox compute credits', 'sandbox_compute_credits_used_in_period', 266, 2.66, 'Cloud compute spend (USD)'],
         [
@@ -77,13 +77,13 @@ describe('convertDesktopUsageSeries', () => {
 
     it('converts a project breakdown and preserves its label', () => {
         const input = {
-            ...series('my-project::Flind Desktop token credits', 'posthog_code_token_credits_used_in_period', [1234]),
+            ...series('my-project::PostHog Desktop token credits', 'posthog_code_token_credits_used_in_period', [1234]),
             breakdown_type: BillingUsageResponseBreakdownType.MULTIPLE,
             breakdown_value: ['posthog_code_token_credits_used_in_period', 'my-project'],
         }
 
         expect(convertDesktopUsageSeries(input)).toMatchObject({
-            label: 'my-project::Flind Desktop token spend (USD)',
+            label: 'my-project::PostHog Desktop token spend (USD)',
             data: [12.34],
         })
     })

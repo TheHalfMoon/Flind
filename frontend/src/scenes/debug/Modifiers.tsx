@@ -68,7 +68,7 @@ function ConnectionIdModifier<Q extends QueryWithModifiers>({
                 disabledReason={dataWarehouseSourcesLoading ? 'Loading connections...' : undefined}
                 fullWidth
                 options={[
-                    { value: POSTHOG_WAREHOUSE, label: 'Flind (ClickHouse)' },
+                    { value: POSTHOG_WAREHOUSE, label: 'PostHog (ClickHouse)' },
                     ...directSources.map((source) => ({
                         value: source.id,
                         label: `${source.prefix ?? source.id} (${source.source_type})`,

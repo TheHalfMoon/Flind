@@ -424,7 +424,7 @@ export const BOT_DEFINITIONS: { pattern: string; definition: BotDefinition }[] =
     {
         pattern: 'PostHog-BusinessKnowledge',
         definition: {
-            name: 'Flind BusinessKnowledge',
+            name: 'PostHog BusinessKnowledge',
             category: 'ai_crawler',
             trafficType: 'AI Agent',
             operator: 'PostHog',
@@ -868,7 +868,7 @@ export const BOT_DEFINITIONS: { pattern: string; definition: BotDefinition }[] =
     {
         pattern: 'PostHogImageFetcherBot',
         definition: {
-            name: 'Flind Image Fetcher',
+            name: 'PostHog Image Fetcher',
             category: 'http_client',
             trafficType: 'Bot',
             operator: 'PostHog',

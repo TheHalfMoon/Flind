@@ -2,12 +2,12 @@ import { CampaignConfig } from './types'
 
 export const productAcademyCampaign: CampaignConfig = {
     name: 'Product Academy giveaway',
-    heroTitle: 'Get $100 in Flind credit',
+    heroTitle: 'Get $100 in PostHog credit',
     heroSubtitle: 'A Product Academy birthday giveaway',
     benefits: [
         {
-            title: '$100 in Flind credit',
-            description: 'Use the credit toward future Flind invoices after you activate billing.',
+            title: '$100 in PostHog credit',
+            description: 'Use the credit toward future PostHog invoices after you activate billing.',
         },
         {
             title: 'No expiration date',
@@ -16,7 +16,7 @@ export const productAcademyCampaign: CampaignConfig = {
     ],
     eligibilityCriteria: [
         'A valid code from the Product Academy giveaway',
-        'Organization admin or owner in Flind',
-        'An active Flind subscription with a payment method',
+        'Organization admin or owner in PostHog',
+        'An active PostHog subscription with a payment method',
     ],
 }

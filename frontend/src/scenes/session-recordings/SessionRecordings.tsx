@@ -91,7 +91,7 @@ function Header(): JSX.Element {
                                     menuItem: true,
                                 }}
                             >
-                                <IconDocument /> Playback from Flind JSON file
+                                <IconDocument /> Playback from PostHog JSON file
                             </Link>
                             <Link
                                 data-attr="replay-open-kiosk"

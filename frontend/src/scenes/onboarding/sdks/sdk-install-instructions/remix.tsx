@@ -112,14 +112,14 @@ export function SDKInstallRemixJSInstructions(): JSX.Element {
         <>
             <h3>Install posthog-js and @posthog/react using your package manager</h3>
             <ReactInstallSnippet />
-            <h3>Add Flind to your app</h3>
+            <h3>Add PostHog to your app</h3>
             <p>
                 Start by setting <code>posthog-js</code> and <code>@posthog/react</code> as external packages in your{' '}
                 <code>vite.config.ts</code> file.
             </p>
             <RemixExternalImportSnippet />
             <p>
-                Next, create a <code>provider.tsx</code> file in the app folder. In it, set up the Flind provider to
+                Next, create a <code>provider.tsx</code> file in the app folder. In it, set up the PostHog provider to
                 initialize after hydration.
             </p>
             <RemixPHProviderSnippet />

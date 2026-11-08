@@ -123,8 +123,8 @@ export const superpowersLogic = kea<superpowersLogicType>([
             posthog.setPersonProperties({ [EXCLUDED_FROM_POSTHOG_TEAM_COHORT_PROPERTY]: excluded })
             lemonToast.success(
                 excluded
-                    ? 'You left the Flind Team cohort. Flags that target it are now off for you.'
-                    : 'You rejoined the Flind Team cohort. Flags that target it are back on for you.'
+                    ? 'You left the PostHog Team cohort. Flags that target it are now off for you.'
+                    : 'You rejoined the PostHog Team cohort. Flags that target it are back on for you.'
             )
         },
     }),

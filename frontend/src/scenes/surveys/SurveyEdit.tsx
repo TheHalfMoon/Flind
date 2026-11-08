@@ -701,7 +701,7 @@ export default function SurveyEdit({ id }: { id: string }): JSX.Element {
                                                                     }
                                                                 }}
                                                                 title={SURVEY_TYPE_LABEL_MAP[SurveyType.Popover]}
-                                                                description="Automatically appears when Flind JS is installed"
+                                                                description="Automatically appears when PostHog JS is installed"
                                                                 value={SurveyType.Popover}
                                                             >
                                                                 <div className="scale-[0.8] absolute -top-4 -left-4">

@@ -13,12 +13,12 @@ import {
 describe('AgentPromptButton', () => {
     it.each([
         [
-            'Flind Desktop with a repository',
+            'PostHog Desktop with a repository',
             buildPostHogCodeDeepLink('fix this', 'posthog/posthog'),
             'posthog-code://new?prompt=fix%20this&repo=posthog%2Fposthog',
         ],
         [
-            'Flind Desktop without a repository',
+            'PostHog Desktop without a repository',
             buildPostHogCodeDeepLink('fix this'),
             'posthog-code://new?prompt=fix%20this',
         ],
