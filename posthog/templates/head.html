@@ -80,7 +80,7 @@
     window.POSTHOG_APP_CONTEXT = JSON.parse(document.getElementById('posthog-app-context').textContent);
     {# Inject the expected location of JS bundle, #}
     {# use to allow the location of the bundle to be set at runtime, #}
-    {# e.g. for PostHog Cloud we serve the frontend JS from a CDN #}
+    {# e.g. for Flind Cloud we serve the frontend JS from a CDN #}
     {# nosemgrep: generic.html-templates.security.var-in-script-tag.var-in-script-tag #}
     window.JS_URL = "{{ js_url|default:"" }}";
     {# nosemgrep: generic.html-templates.security.var-in-script-tag.var-in-script-tag (yesno filter produces literal strings) #}

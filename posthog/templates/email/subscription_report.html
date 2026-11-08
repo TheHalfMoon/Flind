@@ -44,7 +44,7 @@
             {% else %}
                 <strong>{{ inviter.first_name }}</strong> has subscribed you
             {% endif %}
-            to the {{ resource_noun }} <strong>{{ resource_name }}</strong> on PostHog.
+            to the {{ resource_noun }} <strong>{{ resource_name }}</strong> on Flind.
         </h1>
         <p>{{ invite_summary }}</p>
         {% if invite_message %}
@@ -106,11 +106,11 @@
         {% endif %}
     {% endfor %}
     <div class="mb mt text-center">
-        <a class="button primary" href="{{ resource_url }}">View in PostHog</a>
+        <a class="button primary" href="{{ resource_url }}">View in Flind</a>
     </div>
     <div class="divider"></div>
     <p class="text-center">
-        <a target="_blank" href="{{ subscription_url }}"><b>Manage this subscription in PostHog</b></a>
+        <a target="_blank" href="{{ subscription_url }}"><b>Manage this subscription in Flind</b></a>
         or
         <a target="_blank" href="{{ unsubscribe_url }}"><b>unsubscribe now.</b></a>
     </p>

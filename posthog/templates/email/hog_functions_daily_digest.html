@@ -3,7 +3,7 @@
 {% block heading %}Data Pipeline Failures Alert{% endblock %}
 {% block section %}
     <p>
-        Your data pipelines had significant failures (>1% failure rate) in the last 24 hours in project <strong>{{ team.name }}</strong>. Functions are sorted by criticality with highest failure rates at the top. You can <a href="{% absolute_uri '/settings/user-notifications' %}">manage these notifications in PostHog</a>.
+        Your data pipelines had significant failures (>1% failure rate) in the last 24 hours in project <strong>{{ team.name }}</strong>. Functions are sorted by criticality with highest failure rates at the top. You can <a href="{% absolute_uri '/settings/user-notifications' %}">manage these notifications in Flind</a>.
     </p>
     <div class="mb mt">
         {% for function in functions %}
@@ -61,5 +61,5 @@
     <a href="https://posthog.com/docs?{{ utm_tags }}" target="_blank"><b>read our documentation</b></a>.
     <br />
     <br />
-    <a href="{% absolute_uri '/settings/user-notifications' %}">Manage these notifications in PostHog</a>
+    <a href="{% absolute_uri '/settings/user-notifications' %}">Manage these notifications in Flind</a>
 {% endblock %}

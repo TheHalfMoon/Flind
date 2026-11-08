@@ -6,6 +6,7 @@ These tests are cheap, dependency-free and must run before every identity-only P
 
 from __future__ import annotations
 
+import re
 import unittest
 from pathlib import Path
 
@@ -106,6 +107,23 @@ class FlindUserFacingBrandTests(unittest.TestCase):
         self.assertIn("Flind is running in DEVELOPMENT MODE!", settings)
         self.assertNotIn("PostHog is running in DEVELOPMENT MODE!", settings)
 
+
+    def test_server_templates_do_not_name_upstream_product(self) -> None:
+        # Product name only; code identifiers such as the PostHogHostedSurvey CSS class are allowed.
+        # posthog.com links are tracked separately until the docs target is decided.
+        name = re.compile(r"PostHog(?![A-Za-z])")
+        for base in ("posthog/templates", "ee/templates"):
+            root = ROOT / base
+            if not root.exists():
+                continue
+            for path in sorted(root.rglob("*")):
+                if path.suffix not in {".html", ".txt", ".md"}:
+                    continue
+                with self.subTest(file=str(path.relative_to(ROOT))):
+                    self.assertIsNone(name.search(path.read_text(encoding="utf-8")))
+
+    def test_auth_md_does_not_claim_open_source(self) -> None:
+        self.assertNotIn("open-source", read("posthog/templates/auth_md.md"))
 
 if __name__ == "__main__":
     unittest.main()
