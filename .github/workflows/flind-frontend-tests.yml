@@ -74,7 +74,10 @@ jobs:
                   # binaries; it is outside the filter, but must never run here.
                   SKIP_ELECTRON_REBUILD: '1'
               run: |
-                  corepack enable
+                  # Standalone pnpm at the version pinned in package.json, as upstream's pnpm/action-setup
+                  # provides; that third-party action is outside this repo's allowed-actions policy.
+                  npm install -g "pnpm@$(node -p "require('./package.json').packageManager.split('@')[1]")"
+                  pnpm --version
                   # pipefail: without it the pipe reports tail's status and a failed install looks green.
                   set -o pipefail
                   if ! pnpm install --frozen-lockfile --filter=@flind/root --filter=@flind/frontend... > install.log 2>&1; then
@@ -84,6 +87,7 @@ jobs:
                       pnpm install --frozen-lockfile --filter=@flind/root --filter=@flind/frontend... --reporter=ndjson > install.ndjson 2>&1 || true
                       grep '"pnpm:lifecycle"' install.ndjson | grep -E '"exitCode":[1-9]|"stage":"(pre|post)?install"|"stage":"prepare"' | grep -E '"exitCode"|"line"' | tail -60
                       echo "::endgroup::"
+                      echo "root .bin: $(ls node_modules/.bin 2>/dev/null | wc -l) entries"; ls node_modules/.bin 2>/dev/null | head -20
                       echo "::group::root scripts one by one"
                       ( pnpm run postinstall; echo "root postinstall exit=$?" ) 2>&1 | tail -20
                       ( pnpm run prepare; echo "root prepare exit=$?" ) 2>&1 | tail -20
@@ -91,6 +95,8 @@ jobs:
                       exit 1
                   fi
                   tail -15 install.log
+                  echo "root .bin: $(ls node_modules/.bin 2>/dev/null | wc -l) entries; frontend .bin: $(ls frontend/node_modules/.bin 2>/dev/null | wc -l) entries"
+                  for b in husky oxfmt tsgo jest; do [ -e node_modules/.bin/$b ] && echo "found $b" || echo "MISSING $b"; done
 
             - name: Run Jest suites
               working-directory: frontend
@@ -127,7 +133,10 @@ jobs:
                   # binaries; it is outside the filter, but must never run here.
                   SKIP_ELECTRON_REBUILD: '1'
               run: |
-                  corepack enable
+                  # Standalone pnpm at the version pinned in package.json, as upstream's pnpm/action-setup
+                  # provides; that third-party action is outside this repo's allowed-actions policy.
+                  npm install -g "pnpm@$(node -p "require('./package.json').packageManager.split('@')[1]")"
+                  pnpm --version
                   # pipefail: without it the pipe reports tail's status and a failed install looks green.
                   set -o pipefail
                   if ! pnpm install --frozen-lockfile --filter=@flind/root --filter=@flind/frontend... > install.log 2>&1; then
@@ -137,6 +146,7 @@ jobs:
                       pnpm install --frozen-lockfile --filter=@flind/root --filter=@flind/frontend... --reporter=ndjson > install.ndjson 2>&1 || true
                       grep '"pnpm:lifecycle"' install.ndjson | grep -E '"exitCode":[1-9]|"stage":"(pre|post)?install"|"stage":"prepare"' | grep -E '"exitCode"|"line"' | tail -60
                       echo "::endgroup::"
+                      echo "root .bin: $(ls node_modules/.bin 2>/dev/null | wc -l) entries"; ls node_modules/.bin 2>/dev/null | head -20
                       echo "::group::root scripts one by one"
                       ( pnpm run postinstall; echo "root postinstall exit=$?" ) 2>&1 | tail -20
                       ( pnpm run prepare; echo "root prepare exit=$?" ) 2>&1 | tail -20
@@ -144,6 +154,8 @@ jobs:
                       exit 1
                   fi
                   tail -15 install.log
+                  echo "root .bin: $(ls node_modules/.bin 2>/dev/null | wc -l) entries; frontend .bin: $(ls frontend/node_modules/.bin 2>/dev/null | wc -l) entries"
+                  for b in husky oxfmt tsgo jest; do [ -e node_modules/.bin/$b ] && echo "found $b" || echo "MISSING $b"; done
 
             - name: Type-check head and base
               run: |
