@@ -86,8 +86,10 @@ jobs:
                       fi
                       tail -3 install.log
                   }
-                  install --filter=@flind/frontend...
+                  # Root first: pnpm runs the root's prepare (husky) on every install from the repo root,
+                  # so its bins must already be linked when the frontend install runs.
                   install --filter=@flind/root
+                  install --filter=@flind/frontend...
                   # pnpm 11.28.5 installs oxfmt and @typescript/native-preview but does not link their
                   # bins (reproduced locally; both entry files exist). Call the installed entry points.
                   mkdir -p "$RUNNER_TEMP/flind-bin"
@@ -149,8 +151,10 @@ jobs:
                       fi
                       tail -3 install.log
                   }
-                  install --filter=@flind/frontend...
+                  # Root first: pnpm runs the root's prepare (husky) on every install from the repo root,
+                  # so its bins must already be linked when the frontend install runs.
                   install --filter=@flind/root
+                  install --filter=@flind/frontend...
                   # pnpm 11.28.5 installs oxfmt and @typescript/native-preview but does not link their
                   # bins (reproduced locally; both entry files exist). Call the installed entry points.
                   mkdir -p "$RUNNER_TEMP/flind-bin"
