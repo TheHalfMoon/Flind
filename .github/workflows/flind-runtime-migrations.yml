@@ -101,8 +101,8 @@ jobs:
               run: |
                   set -o pipefail
                   CH="$(docker compose -f docker-compose.dev.yml ps -q clickhouse)"
-                  docker exec "$CH" clickhouse-client -q "SELECT count(), min(name), max(name) FROM posthog.infi_clickhouse_orm_migrations FORMAT TSV" | tee "$EVIDENCE/clickhouse-applied.tsv"
-                  docker exec "$CH" clickhouse-client -q "SELECT name FROM posthog.infi_clickhouse_orm_migrations ORDER BY name FORMAT TSV" > "$EVIDENCE/clickhouse-applied-names.txt"
+                  docker exec "$CH" clickhouse-client -q "SELECT count(), min(module_name), max(module_name) FROM posthog.infi_clickhouse_orm_migrations FORMAT TSV" | tee "$EVIDENCE/clickhouse-applied.tsv"
+                  docker exec "$CH" clickhouse-client -q "SELECT module_name FROM posthog.infi_clickhouse_orm_migrations ORDER BY module_name FORMAT TSV" > "$EVIDENCE/clickhouse-applied-names.txt"
                   docker exec "$CH" clickhouse-client -q "SELECT count() FROM system.tables WHERE database = 'posthog'" | tee "$EVIDENCE/clickhouse-table-count.txt"
                   python manage.py migrate_clickhouse --plan 2>&1 | tee "$EVIDENCE/clickhouse-plan-after.txt"
                   python manage.py showmigrations --plan > "$EVIDENCE/django-showmigrations.txt" 2>&1
