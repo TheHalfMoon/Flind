@@ -123,12 +123,12 @@ export function ConnectionSelector({ tabId }: ConnectionSelectorProps): JSX.Elem
                         return [
                             connectionOption,
                             {
-                                label: 'Flind (Trino)',
+                                label: 'PostHog (Trino)',
                                 value: 'managed_trino',
                                 icon: connectionOption.icon,
                                 disabledReason: hostedTrinoEnabled
                                     ? undefined
-                                    : 'Flind (Trino) queries are not enabled for this organization',
+                                    : 'PostHog (Trino) queries are not enabled for this organization',
                             },
                         ]
                     }

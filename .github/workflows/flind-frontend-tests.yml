@@ -53,6 +53,7 @@ jobs:
                 src/scenes/session-recordings/player/sessionRecordingPlayerLogic.test.ts
                 src/scenes/settings/settingsSearch.test.tsx
                 src/scenes/terminal/posthogCommands.test.ts
+                products/ai_observability/frontend/selfDriving/AIObservabilitySelfDriving.test.tsx
         steps:
             - uses: actions/checkout@v4
               with:
