@@ -63,6 +63,25 @@ jobs:
                   pip install uv==0.13.4
                   UV_PROJECT_ENVIRONMENT=$pythonLocation uv sync --frozen --dev 2>&1 | tail -5
 
+            # Test-DB setup applies persons migrations with sqlx. Same pin as upstream
+            # (.github/actions/setup-sqlx-cli), built with the runner's preinstalled cargo because
+            # third-party actions are not allowed in this repository.
+            - name: Restore sqlx-cli
+              id: sqlx-cache
+              uses: actions/cache@v4
+              with:
+                  path: ~/.cache/sqlx-cli
+                  key: sqlx-cli-0.8.0-${{ runner.os }}-${{ runner.arch }}
+
+            - name: Build sqlx-cli
+              if: steps.sqlx-cache.outputs.cache-hit != 'true'
+              run: cargo install sqlx-cli --version 0.8.0 --features postgres --no-default-features --locked --root "$HOME/.cache/sqlx-cli"
+
+            - name: Add sqlx-cli to PATH
+              run: |
+                  echo "$HOME/.cache/sqlx-cli/bin" >> "$GITHUB_PATH"
+                  "$HOME/.cache/sqlx-cli/bin/sqlx" --version
+
             # First test-DB setup runs every migration (~35 min on a standard runner), so the
             # per-test timeout must cover it.
             - name: Run targeted tests
