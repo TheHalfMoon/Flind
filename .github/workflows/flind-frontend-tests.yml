@@ -79,6 +79,15 @@ jobs:
                   set -o pipefail
                   if ! pnpm install --frozen-lockfile --filter=@flind/root --filter=@flind/frontend... > install.log 2>&1; then
                       grep -n -B 30 -A 5 'ELIFECYCLE\|ERR_PNPM' install.log | tail -120
+                      # Name the failing lifecycle script: the default reporter hides it.
+                      echo "::group::failing lifecycle events (ndjson)"
+                      pnpm install --frozen-lockfile --filter=@flind/root --filter=@flind/frontend... --reporter=ndjson > install.ndjson 2>&1 || true
+                      grep '"pnpm:lifecycle"' install.ndjson | grep -E '"exitCode":[1-9]|"stage":"(pre|post)?install"|"stage":"prepare"' | grep -E '"exitCode"|"line"' | tail -60
+                      echo "::endgroup::"
+                      echo "::group::root scripts one by one"
+                      ( pnpm run postinstall; echo "root postinstall exit=$?" ) 2>&1 | tail -20
+                      ( pnpm run prepare; echo "root prepare exit=$?" ) 2>&1 | tail -20
+                      echo "::endgroup::"
                       exit 1
                   fi
                   tail -15 install.log
@@ -123,6 +132,15 @@ jobs:
                   set -o pipefail
                   if ! pnpm install --frozen-lockfile --filter=@flind/root --filter=@flind/frontend... > install.log 2>&1; then
                       grep -n -B 30 -A 5 'ELIFECYCLE\|ERR_PNPM' install.log | tail -120
+                      # Name the failing lifecycle script: the default reporter hides it.
+                      echo "::group::failing lifecycle events (ndjson)"
+                      pnpm install --frozen-lockfile --filter=@flind/root --filter=@flind/frontend... --reporter=ndjson > install.ndjson 2>&1 || true
+                      grep '"pnpm:lifecycle"' install.ndjson | grep -E '"exitCode":[1-9]|"stage":"(pre|post)?install"|"stage":"prepare"' | grep -E '"exitCode"|"line"' | tail -60
+                      echo "::endgroup::"
+                      echo "::group::root scripts one by one"
+                      ( pnpm run postinstall; echo "root postinstall exit=$?" ) 2>&1 | tail -20
+                      ( pnpm run prepare; echo "root prepare exit=$?" ) 2>&1 | tail -20
+                      echo "::endgroup::"
                       exit 1
                   fi
                   tail -15 install.log
