@@ -154,7 +154,7 @@ export function getNotebookVariableErrors(
             return `${reason}${hint}`
         }
         if (RESERVED_NOTEBOOK_VARIABLE_NAMES.has(variable.name)) {
-            return `${variable.name} is reserved by PostHog. Pick another name.`
+            return `${variable.name} is reserved by Flind. Pick another name.`
         }
         if (countsByName[variable.name] > 1 && variables.findIndex((other) => other.name === variable.name) !== index) {
             return `${variable.name} is already declared. Names must be unique.`

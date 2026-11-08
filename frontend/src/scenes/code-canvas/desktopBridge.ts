@@ -6,6 +6,6 @@ export function openInDesktop(deepLink: string): void {
 /** The explanation on a desktop bridge page. Both the Lemon and the quill view show it. */
 export function desktopBridgeDescription(subject: string, hasWebView: boolean): string {
     return hasWebView
-        ? `${subject} should open in the PostHog Desktop app if it's installed. You can also open it in your browser.`
-        : `${subject} lives in the PostHog Desktop app. If it's installed, it should open automatically. If it didn't, use the button below, or download the app.`
+        ? `${subject} should open in the Flind Desktop app if it's installed. You can also open it in your browser.`
+        : `${subject} lives in the Flind Desktop app. If it's installed, it should open automatically. If it didn't, use the button below, or download the app.`
 }

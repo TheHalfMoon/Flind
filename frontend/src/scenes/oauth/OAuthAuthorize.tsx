@@ -322,7 +322,7 @@ export const OAuthAuthorize = (): JSX.Element => {
                                     <IconWarning className="text-warning shrink-0" />
                                     <span>
                                         <strong>Unverified application.</strong> This application has not been verified
-                                        by PostHog. Only continue if you recognize and trust this application.
+                                        by Flind. Only continue if you recognize and trust this application.
                                     </span>
                                 </div>
                             )}
@@ -331,7 +331,7 @@ export const OAuthAuthorize = (): JSX.Element => {
                                 <LemonBanner type="info">
                                     <strong>No permissions requested.</strong>{' '}
                                     {isMcpResource
-                                        ? "This application didn't request specific permissions. Showing all permissions the PostHog MCP server supports."
+                                        ? "This application didn't request specific permissions. Showing all permissions the Flind MCP server supports."
                                         : "This application didn't request specific permissions, so everything it can access is selected below. Change anything you don't want to grant."}
                                 </LemonBanner>
                             )}

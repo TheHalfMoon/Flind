@@ -20,7 +20,7 @@ function VueCreateComposableFileSnippet(): JSX.Element {
         <CodeSnippet language={Language.JavaScript}>
             {`import posthog from 'posthog-js'
 
-export function usePostHog() {
+export function useFlind() {
   posthog.init('${currentTeam?.api_token}', {
     api_host: '${apiHostOrigin()}',
     defaults: '${SDK_DEFAULTS_DATE}',
@@ -42,7 +42,7 @@ function VueComposableCodeSnippet(): JSX.Element {
         <CodeSnippet language={Language.JavaScript}>
             {`import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import { usePostHog } from '@/composables/usePostHog'
+import { useFlind } from '@/composables/useFlind'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -60,7 +60,7 @@ const router = createRouter({
   ],
 })
 
-const { posthog } = usePostHog()
+const { posthog } = useFlind()
 
 export default router`}
         </CodeSnippet>
@@ -71,7 +71,7 @@ export function SDKInstallVueInstructions(): JSX.Element {
     return (
         <>
             <p>
-                The below guide is for integrating using plugins in Vue versions 3 and above. For integrating PostHog
+                The below guide is for integrating using plugins in Vue versions 3 and above. For integrating Flind
                 using Provide/inject, Vue.prototype, or versions 2.7 and below, see our{' '}
                 <Link to="https://posthog.com/docs/libraries/vue-js">Vue docs</Link>
             </p>
@@ -79,11 +79,11 @@ export function SDKInstallVueInstructions(): JSX.Element {
             <JSInstallSnippet />
             <h3>Add Posthog to your app</h3>
             <p>
-                Create a new file <code>src/composables/usePostHog.js</code>:
+                Create a new file <code>src/composables/useFlind.js</code>:
             </p>
             <VueCreateComposableFileSnippet />
             <br />
-            Next, in <code>router/index.js</code>, import the <code>usePostHog</code> composable and call it:
+            Next, in <code>router/index.js</code>, import the <code>useFlind</code> composable and call it:
             <VueComposableCodeSnippet />
         </>
     )

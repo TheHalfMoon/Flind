@@ -14,7 +14,7 @@ function AITrainingDescription({ hasSignedBaa, isLocked }: { hasSignedBaa: boole
     if (hasSignedBaa) {
         return (
             <p className="mb-2 text-sm text-secondary">
-                You are opted out of internal AI training because you have a signed BAA with PostHog.
+                You are opted out of internal AI training because you have a signed BAA with Flind.
             </p>
         )
     }
@@ -31,8 +31,8 @@ function AITrainingDescription({ hasSignedBaa, isLocked }: { hasSignedBaa: boole
     return (
         <div className="mb-2 text-sm text-secondary">
             <p>
-                Enable PostHog to use anonymized aggregated data to train AI features that benefit all PostHog
-                customers. <strong>Your and your customers' data stays with PostHog.</strong>
+                Enable Flind to use anonymized aggregated data to train AI features that benefit all Flind
+                customers. <strong>Your and your customers' data stays with Flind.</strong>
             </p>
             <p className="mt-2">Opting out means that you cannot access certain AI features.</p>
         </div>

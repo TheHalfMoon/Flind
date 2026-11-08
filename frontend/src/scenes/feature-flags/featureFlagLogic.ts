@@ -4723,7 +4723,7 @@ export const featureFlagLogic = kea<featureFlagLogicType>([
                 )
                 if (afterAgentChange) {
                     lemonToast.info(
-                        'PostHog AI changed this flag. The page kept your unsaved edits, so it does not show the saved version.',
+                        'Flind AI changed this flag. The page kept your unsaved edits, so it does not show the saved version.',
                         {
                             // This notice is the only signal that the page and the server disagree,
                             // so it waits to be acted on instead of closing on the container's timer.
@@ -4752,7 +4752,7 @@ export const featureFlagLogic = kea<featureFlagLogicType>([
             // The button retries this refresh rather than running the full loader, because the full
             // loader replaces the working copy and discards any unsaved edits.
             lemonToast.error(
-                'PostHog AI changed this flag, but the page could not load the new values. It still shows the old ones.',
+                'Flind AI changed this flag, but the page could not load the new values. It still shows the old ones.',
                 {
                     autoClose: false,
                     toastId: cache.agentRefreshFailedToastId,
@@ -5030,7 +5030,7 @@ export const featureFlagLogic = kea<featureFlagLogicType>([
             dismissBroadcastProgress(cache)
             // The shared loader error toast needs an HTTP status, which a dropped connection never has.
             if (errorObject?.status === undefined) {
-                lemonToast.error("Couldn't reach PostHog to find the people who have this flag. Try again.")
+                lemonToast.error("Couldn't reach Flind to find the people who have this flag. Try again.")
             }
         },
         createStaticCohortSuccess: ({ newCohort }) => {

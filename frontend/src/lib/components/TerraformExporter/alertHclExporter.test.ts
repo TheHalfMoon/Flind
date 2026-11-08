@@ -168,7 +168,7 @@ describe('alertHclExporter test', () => {
             const result = generateAlertHCL(alert)
 
             expect(result.warnings).toContain(
-                '`subscribed_users` contains internal user IDs. These IDs are specific to this PostHog instance and will need to be updated if deploying to a different environment.'
+                '`subscribed_users` contains internal user IDs. These IDs are specific to this Flind instance and will need to be updated if deploying to a different environment.'
             )
         })
     })

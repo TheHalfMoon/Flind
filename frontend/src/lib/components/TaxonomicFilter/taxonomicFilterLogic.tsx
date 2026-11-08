@@ -419,7 +419,7 @@ export function demoteValueShortcutGroups(groupTypes: TaxonomicFilterGroupType[]
 export const eventTaxonomicGroupProps: Pick<TaxonomicFilterGroup, 'getPopoverHeader' | 'getIcon'> = {
     getPopoverHeader: (eventDefinition: EventDefinition): string => {
         if (CORE_FILTER_DEFINITIONS_BY_GROUP.events[eventDefinition.name]) {
-            return 'PostHog event'
+            return 'Flind event'
         }
         return `${eventDefinition.verified ? 'Verified' : 'Unverified'} event`
     },
@@ -432,7 +432,7 @@ export const propertyTaxonomicGroupProps = (
     getPopoverHeader: (propertyDefinition: PropertyDefinition): string => {
         const coreGroup = coreDefinitionsGroup ?? CORE_FILTER_DEFINITIONS_BY_GROUP.event_properties
         if (coreGroup[propertyDefinition.name]) {
-            return 'PostHog property'
+            return 'Flind property'
         }
         return 'Property'
     },

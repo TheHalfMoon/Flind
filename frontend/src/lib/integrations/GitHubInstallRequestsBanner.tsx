@@ -9,7 +9,7 @@ import { copyToClipboard } from 'lib/utils/copyToClipboard'
 import type { GitHubInstallRequestItemApi } from '~/generated/core/api.schemas'
 
 export function buildOrgOwnerMessage(installUrl: string): string {
-    return `Can you approve the PostHog GitHub app for our organization? Open ${installUrl}, pick the organization, and approve the pending request.`
+    return `Can you approve the Flind GitHub app for our organization? Open ${installUrl}, pick the organization, and approve the pending request.`
 }
 
 /**
@@ -48,7 +48,7 @@ export function GitHubInstallRequestsBanner({
                 <LemonBanner key={request.id} type="success" hideIcon>
                     <div className="flex flex-wrap items-center justify-between gap-2">
                         <span className="text-sm font-normal">
-                            An organization owner approved the PostHog app for{' '}
+                            An organization owner approved the Flind app for{' '}
                             <strong>{request.account_login || request.github_login || 'your organization'}</strong>.
                             Finish connecting to start using it.
                         </span>
@@ -88,7 +88,7 @@ export function GitHubInstallRequestsBanner({
                                     (as <strong>{request.github_login}</strong>)
                                 </>
                             ) : null}{' '}
-                            to your organization owners. Once an owner approves the PostHog app, we'll finish connecting
+                            to your organization owners. Once an owner approves the Flind app, we'll finish connecting
                             here.
                             {variant === 'onboarding' && installUrl ? (
                                 <>

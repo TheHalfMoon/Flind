@@ -12,7 +12,7 @@ export function buildGithubDisconnectDescription(
 ): string {
     if (installationShared) {
         const subject = scope === 'account' ? 'Your account stops using GitHub.' : 'This project stops using GitHub.'
-        return `${subject} The PostHog app stays installed on GitHub because other projects or accounts still use it.`
+        return `${subject} The Flind app stays installed on GitHub because other projects or accounts still use it.`
     }
-    return `This uninstalls the PostHog app from ${accountName} on GitHub and disconnects it from every PostHog project and personal account that uses it.`
+    return `This uninstalls the Flind app from ${accountName} on GitHub and disconnects it from every Flind project and personal account that uses it.`
 }

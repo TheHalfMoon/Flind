@@ -75,7 +75,7 @@ export function SdkHealthScene(): JSX.Element {
         <SceneContent>
             <SceneTitleSection
                 name="SDK Health"
-                description="Monitor and maintain your PostHog SDK integrations by automatically detecting version issues, configuration problems, and implementation patterns across your applications."
+                description="Monitor and maintain your Flind SDK integrations by automatically detecting version issues, configuration problems, and implementation patterns across your applications."
                 resourceType={{
                     to: undefined,
                     type: 'sdk_health',

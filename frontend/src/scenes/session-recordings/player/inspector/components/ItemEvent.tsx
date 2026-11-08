@@ -291,7 +291,7 @@ function SingleEventDetail({ item }: ItemEventProps): JSX.Element {
                     case 'debug_properties':
                         return (
                             <>
-                                <p>PostHog uses some properties to help debug issues with the SDKs.</p>
+                                <p>Flind uses some properties to help debug issues with the SDKs.</p>
                                 <SimpleKeyValueList item={properties} promotedKeys={promotedKeys} />
                             </>
                         )

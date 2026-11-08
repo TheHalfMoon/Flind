@@ -267,12 +267,12 @@ describe('integrationsLogic', () => {
             [
                 'last team reference',
                 false,
-                'This uninstalls the PostHog app from PostHog on GitHub and disconnects it from every PostHog project and personal account that uses it.',
+                'This uninstalls the Flind app from Flind on GitHub and disconnects it from every Flind project and personal account that uses it.',
             ],
             [
                 'shared with another project',
                 true,
-                'This project stops using GitHub. The PostHog app stays installed on GitHub because other projects or accounts still use it.',
+                'This project stops using GitHub. The Flind app stays installed on GitHub because other projects or accounts still use it.',
             ],
         ])('explains what disconnecting GitHub does when %s', async (_name, installationShared, description) => {
             integrationsPayload = [githubIntegration({ installation_shared: installationShared })]

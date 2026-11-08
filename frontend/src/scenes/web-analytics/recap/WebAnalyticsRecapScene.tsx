@@ -477,7 +477,7 @@ export function WebAnalyticsRecapScene(): JSX.Element {
                             <IconSparkles className="text-4xl text-accent mx-auto" />
                             <h3 className="font-title text-2xl font-bold mt-3">Curious what's behind the numbers?</h3>
                             <p className="text-secondary mt-2">
-                                PostHog AI can explain what changed this week and what to look at next.
+                                Flind AI can explain what changed this week and what to look at next.
                             </p>
                             <LemonButton
                                 type="primary"
@@ -488,7 +488,7 @@ export function WebAnalyticsRecapScene(): JSX.Element {
                                     openSidePanel(SidePanelTab.Max, buildRecapMaxPrompt(recap))
                                 }}
                             >
-                                Ask PostHog AI about your week
+                                Ask Flind AI about your week
                             </LemonButton>
                         </div>
                     </Reveal>

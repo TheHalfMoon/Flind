@@ -171,7 +171,7 @@ export function captureRapidUrlChangeWarning(
 
     // Console warning for local debugging
     // eslint-disable-next-line no-console
-    console.warn('[PostHog] Rapid URL changes detected - possible infinite loop', {
+    console.warn('[Flind] Rapid URL changes detected - possible infinite loop', {
         currentUrl,
         logicPath,
         actionName,
@@ -229,7 +229,7 @@ export function trackUrlChange(response: ActionToUrlResponse, logicPath: string,
 
         if (containsSerializationBug(urlString)) {
             // eslint-disable-next-line no-console
-            console.error('[PostHog] Invalid URL detected - contains [object Object]', {
+            console.error('[Flind] Invalid URL detected - contains [object Object]', {
                 url: urlString,
                 action: actionName,
                 logic: logicPath,

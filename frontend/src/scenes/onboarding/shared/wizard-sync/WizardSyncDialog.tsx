@@ -40,7 +40,7 @@ export function WizardSyncDialog({
 }): JSX.Element {
     const isTerminal = progress.phase === 'completed' || progress.phase === 'error'
     return (
-        <LemonModal isOpen={isOpen} onClose={onClose} title="PostHog setup" width={480}>
+        <LemonModal isOpen={isOpen} onClose={onClose} title="Flind setup" width={480}>
             <div className="flex flex-col gap-3">
                 <div className="flex items-center justify-between text-xs">
                     <span className={cn('font-medium', toneTextClass(progress))}>{syncHeadline(progress)}</span>

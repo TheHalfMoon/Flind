@@ -597,7 +597,7 @@ const TAB_DESCRIPTIONS: Record<string, string> = {
     [MarketingAnalyticsTab.RETENTION]:
         "See how well the users each channel brings you stick around, grouped by the channel that first brought them in. Each percentage is the share of a cohort seen again, measured against the cohort's original size.",
     [MarketingAnalyticsTab.INTEGRATION_HEALTH]:
-        'Check that your ad platform campaigns are properly linked to UTM tracking in PostHog.',
+        'Check that your ad platform campaigns are properly linked to UTM tracking in Flind.',
     [MarketingAnalyticsTab.SETUP]:
         'Everything Marketing analytics needs to work: connected ad platforms, conversion goals, UTM mapping and attribution.',
 }

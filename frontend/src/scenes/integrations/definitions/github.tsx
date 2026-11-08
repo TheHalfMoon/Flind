@@ -12,21 +12,21 @@ export const GitHub = defineIntegration(
         kind: 'github',
         name: 'GitHub',
         logo: ICONS.github,
-        subtitle: 'Link code, track issues, and let PostHog ship pull requests',
+        subtitle: 'Link code, track issues, and let Flind ship pull requests',
         description: (
             <>
-                Connect GitHub to link issues and pull requests with PostHog and create issues directly from error
+                Connect GitHub to link issues and pull requests with Flind and create issues directly from error
                 tracking. With <Link to={urls.integration('slack')}>Slack</Link> and{' '}
                 <Link to="https://posthog.com/desktop" target="_blank">
-                    PostHog Desktop
+                    Flind Desktop
                 </Link>{' '}
-                connected, tag @PostHog to draft pull requests and ship code changes straight to your repositories.
+                connected, tag @Flind to draft pull requests and ship code changes straight to your repositories.
             </>
         ),
         capabilities: [
-            'Let @PostHog draft pull requests and ship code changes',
+            'Let @Flind draft pull requests and ship code changes',
             'Create GitHub issues from error tracking',
-            'Link pull requests and issues to PostHog',
+            'Link pull requests and issues to Flind',
             'Attribute code changes across your repositories',
         ],
         docsUrl: 'https://posthog.com/docs/libraries/github',

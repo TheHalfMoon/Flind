@@ -56,7 +56,7 @@ export const RECENT_ENVIRONMENT_OPTIONS: FilterOptions<TodayRecentEnvironmentFil
 
 const SOURCE_LABELS: Record<string, string> = {
     user_created: 'Manual',
-    posthog_ai: 'PostHog AI',
+    posthog_ai: 'Flind AI',
     slack: 'Slack',
     signal_report: 'Signals',
     signals_scout: 'Signals scout',
@@ -67,7 +67,7 @@ const SOURCE_LABELS: Record<string, string> = {
     task_analysis: 'Task analysis',
     hogdesk: 'HogDesk',
     mcp_analytics: 'MCP analytics',
-    review_hog: 'PostHog Review',
+    review_hog: 'Flind Review',
 }
 
 export function recentSourceLabel(source: string): string {

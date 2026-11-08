@@ -389,7 +389,7 @@ export const ContextDisplay = React.memo(function ContextDisplay({
         <div className="px-2 w-full">
             <div className="flex flex-wrap items-start gap-1 w-full">
                 <ModeSelector />
-                <Tooltip title={contextDisabledReason ?? 'Add context to help PostHog AI answer your question'}>
+                <Tooltip title={contextDisabledReason ?? 'Add context to help Flind AI answer your question'}>
                     {/* Wrapper span prevents Base UI's Tooltip.Trigger from merging
                         props into TaxonomicPopover. Without it, mergeProps treats
                         onChange as a DOM event handler and wraps it in a single-arg

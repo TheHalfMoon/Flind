@@ -149,7 +149,7 @@ export function CustomBotRules(): JSX.Element {
         <div className="flex flex-col gap-4">
             <p className="mb-0">
                 A bot you add here counts as a bot everywhere <code>Is bot</code> is available, including insights, web
-                analytics, and SQL. PostHog's built-in list already covers crawlers that identify themselves, like
+                analytics, and SQL. Flind's built-in list already covers crawlers that identify themselves, like
                 GPTBot and Googlebot. Your rules are checked first, so you can give one of those a different name or
                 category.
             </p>
@@ -162,7 +162,7 @@ export function CustomBotRules(): JSX.Element {
 
             {rules.length === 0 ? (
                 <p className="text-muted mb-0">
-                    No bots added yet. PostHog's built-in list still applies. Add one to extend it.
+                    No bots added yet. Flind's built-in list still applies. Add one to extend it.
                 </p>
             ) : null}
 
@@ -332,7 +332,7 @@ export function CustomBotRules(): JSX.Element {
 
             {usedFields.length > 0 ? (
                 <div className="flex flex-col gap-2">
-                    <LemonLabel info="Only your own bots are checked here. A real query also matches PostHog's built-in list, after your rules.">
+                    <LemonLabel info="Only your own bots are checked here. A real query also matches Flind's built-in list, after your rules.">
                         Test a value
                     </LemonLabel>
                     {usedFields.map((field) => (
@@ -359,7 +359,7 @@ export function CustomBotRules(): JSX.Element {
                         </span>
                     ) : hasTestInput ? (
                         <span className="text-muted">
-                            No custom rule matched. PostHog's built-in list still applies.
+                            No custom rule matched. Flind's built-in list still applies.
                         </span>
                     ) : null}
                 </div>

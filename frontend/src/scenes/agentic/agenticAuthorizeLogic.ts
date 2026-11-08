@@ -77,13 +77,13 @@ function describeConfirmFailure(error: unknown, partnerName: string): ConfirmFai
         case 'partner_deactivated':
             return {
                 reason: code,
-                message: `${partnerName} is no longer active, so PostHog cannot finish the authorization.`,
+                message: `${partnerName} is no longer active, so Flind cannot finish the authorization.`,
                 retryable: false,
             }
         case 'missing_callback':
             return {
                 reason: code,
-                message: `${partnerName} has no redirect URL set, so PostHog cannot finish. Contact ${partnerName}.`,
+                message: `${partnerName} has no redirect URL set, so Flind cannot finish. Contact ${partnerName}.`,
                 retryable: false,
             }
         case 'consent_changed':

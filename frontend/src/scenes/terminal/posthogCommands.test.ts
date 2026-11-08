@@ -43,7 +43,7 @@ jest.mock('products/product_analytics/frontend/generated/api', () => ({
     insightsList: jest.fn(),
 }))
 
-describe('PostHog terminal commands', () => {
+describe('Flind terminal commands', () => {
     const confirm = jest.fn(async () => true)
     let commands: PosthogCommands
     let filesystem: PosthogFilesystem
@@ -394,7 +394,7 @@ describe('PostHog terminal commands', () => {
         [['..'], '/files'],
         [['Notes.md'], '/notebooks/shortnote'],
         [['/posthog/api/notebook/shortnote.json'], '/notebooks/shortnote'],
-    ])('opens %j in PostHog', async (args, url) => {
+    ])('opens %j in Flind', async (args, url) => {
         await commands.execute(['open', ...args], cwd)
         expect(navigate).toHaveBeenCalledWith(url)
         expect(notebooksRetrieve).not.toHaveBeenCalled()

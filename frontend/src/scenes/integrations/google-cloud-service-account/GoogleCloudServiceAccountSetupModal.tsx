@@ -56,7 +56,7 @@ export const GoogleCloudServiceAccountSetupModal = (
                         <>
                             <LemonBanner type="warning">
                                 A service account JSON key file contains long-lived credentials. It is preferable to let
-                                PostHog impersonate your service account to avoid creating, exchanging, and storing
+                                Flind impersonate your service account to avoid creating, exchanging, and storing
                                 long-lived credentials.
                             </LemonBanner>
                             <LemonField
@@ -102,7 +102,7 @@ export const GoogleCloudServiceAccountSetupModal = (
                                         2
                                     </span>
                                     <p className="m-0 text-secondary">
-                                        Assign PostHog's service account:{' '}
+                                        Assign Flind's service account:{' '}
                                         <code>posthog-batch-exports@posthog-external.iam.gserviceaccount.com</code> as a
                                         principal with access to your service account with the role{' '}
                                         <code>roles/iam.serviceAccountTokenCreator</code> to allow impersonation, and

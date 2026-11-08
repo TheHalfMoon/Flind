@@ -234,7 +234,7 @@ describe('SlackChannelPicker', () => {
         await userEvent.click(screen.getByText('Check again'))
 
         await waitFor(() => {
-            expect(container).not.toHaveTextContent('The PostHog Slack app is not in this channel')
+            expect(container).not.toHaveTextContent('The Flind Slack app is not in this channel')
         })
         // One live lookup of the picked channel, not a full re-enumeration of the workspace.
         expect(forcedChannelIdLookups).toEqual([NOT_JOINED_CHANNEL.id])

@@ -366,7 +366,7 @@ export function PurePlayer({ noMeta = false, noBorder = false }: PurePlayerProps
                                             <h1>This recording can't be played</h1>
                                             <p className="max-w-120">
                                                 The snapshot of the screen taken when this recording started never
-                                                reached PostHog, so there is nothing to play back. This usually happens
+                                                reached Flind, so there is nothing to play back. This usually happens
                                                 when the browser is closed or goes offline before the recording finishes
                                                 uploading.{' '}
                                                 <Link to="https://posthog.com/docs/session-replay/troubleshooting">

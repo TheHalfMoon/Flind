@@ -244,7 +244,7 @@ describe('DashboardTemplatesTable', () => {
             mountTable({ isStaff: false, templates: [] })
 
             expect(screen.getByText('No templates yet')).toBeInTheDocument()
-            expect(screen.getByText('Browse PostHog templates')).toBeInTheDocument()
+            expect(screen.getByText('Browse Flind templates')).toBeInTheDocument()
         })
 
         it.each([

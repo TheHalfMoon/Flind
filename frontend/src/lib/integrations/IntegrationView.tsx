@@ -158,7 +158,7 @@ export function IntegrationView({
                     <LemonBanner type="error">
                         <div className="flex flex-wrap items-center justify-between gap-2">
                             <span>
-                                The PostHog app was removed from GitHub. Remove this connection or reinstall the app.
+                                The Flind app was removed from GitHub. Remove this connection or reinstall the app.
                             </span>
                             <div className="flex gap-2 shrink-0">
                                 <LemonButton

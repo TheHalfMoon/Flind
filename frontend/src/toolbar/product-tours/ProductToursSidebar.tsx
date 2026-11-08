@@ -235,7 +235,7 @@ export function ProductToursSidebar(): JSX.Element | null {
                             <p className="m-0 text-sm mb-1">No steps yet</p>
                             <p className="m-0 text-xs text-muted-3000">
                                 Add your first step to get started. When you're finished, you can edit step content back
-                                in PostHog.
+                                in Flind.
                             </p>
                         </div>
                     ) : (

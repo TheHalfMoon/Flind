@@ -131,7 +131,7 @@ function EmptyDashboardContent({ canEdit }: { canEdit: boolean }): JSX.Element {
     const { dataProcessingAccepted, dataProcessingApprovalDisabledReason } = useValues(maxGlobalLogic)
     const aiDisabledReason =
         !dataProcessingAccepted &&
-        (dataProcessingApprovalDisabledReason ?? 'Approve AI data processing to use PostHog AI')
+        (dataProcessingApprovalDisabledReason ?? 'Approve AI data processing to use Flind AI')
 
     const onOpenAiWithPrompt = (prompt: string): void => {
         const trimmed = prompt.trim()

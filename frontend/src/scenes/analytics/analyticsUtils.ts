@@ -42,7 +42,7 @@ export const ANALYTICS_TYPES: AnalyticsTypeInfo[] = [
         type: 'insight',
         label: 'Insight',
         pluralLabel: 'Insights',
-        description: 'A chart built on your PostHog data, like a trend or a funnel, for a one-off analysis',
+        description: 'A chart built on your Flind data, like a trend or a funnel, for a one-off analysis',
         color: 'var(--color-product-product-analytics-light)',
     },
     {

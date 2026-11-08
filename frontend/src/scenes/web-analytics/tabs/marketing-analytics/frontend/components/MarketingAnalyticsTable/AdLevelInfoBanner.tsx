@@ -67,7 +67,7 @@ export const AdLevelInfoBanner = ({ drillDownLevel, sourcesHierarchyStatus }: Ad
                 <div className="mt-2">
                     {platformUnsupportedSources.map((s) => nativeSourceDisplayLabel(s.sourceType)).join(', ')}{' '}
                     {platformUnsupportedSources.length === 1 ? "doesn't" : "don't"} yet expose{' '}
-                    {isAdGroup ? 'ad-group' : 'ad'}-level data through PostHog's data warehouse import — coming in a
+                    {isAdGroup ? 'ad-group' : 'ad'}-level data through Flind's data warehouse import — coming in a
                     follow-up.
                 </div>
             )}

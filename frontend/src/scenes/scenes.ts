@@ -71,7 +71,7 @@ export const sceneConfigurations: Record<Scene | string, SceneConfig> = {
     [Scene.WebScripts]: {
         projectBased: true,
         name: 'Web scripts',
-        description: 'Web scripts allow you to add custom tags and functionality to your website using PostHog.',
+        description: 'Web scripts allow you to add custom tags and functionality to your website using Flind.',
         activityScope: ActivityScope.HOG_FUNCTION,
         iconType: 'data_pipeline',
     },
@@ -447,7 +447,7 @@ export const sceneConfigurations: Record<Scene | string, SceneConfig> = {
     [Scene.Health]: {
         projectBased: true,
         name: 'Health',
-        description: 'Monitor the health of your PostHog integrations.',
+        description: 'Monitor the health of your Flind integrations.',
         iconType: 'health',
     },
     [Scene.HealthCategoryDetail]: {
@@ -472,7 +472,7 @@ export const sceneConfigurations: Record<Scene | string, SceneConfig> = {
         name: 'SDK health',
         iconType: 'sdk_health',
         description:
-            'Monitor and maintain your PostHog SDK integrations by automatically detecting version issues, configuration problems, and implementation patterns across your applications.',
+            'Monitor and maintain your Flind SDK integrations by automatically detecting version issues, configuration problems, and implementation patterns across your applications.',
     },
     [Scene.Exports]: {
         projectBased: true,
@@ -487,7 +487,7 @@ export const sceneConfigurations: Record<Scene | string, SceneConfig> = {
     [Scene.IdentityProviderConfig]: { projectBased: true, name: 'Configure identity provider' },
     [Scene.Signup]: { onlyUnauthenticated: true, name: 'Sign up', layout: 'plain' },
     [Scene.Site]: { projectBased: true, hideProjectNotice: true, layout: 'app-raw' },
-    [Scene.StartupProgram]: { name: 'PostHog for Startups', organizationBased: true, layout: 'plain' },
+    [Scene.StartupProgram]: { name: 'Flind for Startups', organizationBased: true, layout: 'plain' },
     [Scene.SurveyWizard]: {
         projectBased: true,
         name: 'Create survey',

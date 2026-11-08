@@ -221,7 +221,7 @@ export const PERSON_EVENT_FIELDS: Record<string, DatabaseSchemaField> = {
 // The export reads these columns from the event as ingested, and later person changes never update them.
 export const EVENT_FIELD_DESCRIPTIONS: Record<string, string> = {
     person_id:
-        'The person ID at the time of the event. PostHog never updates it, regardless of later changes to the person.',
+        'The person ID at the time of the event. Flind never updates it, regardless of later changes to the person.',
     person_properties:
         'The person properties at the time of the event. Later changes to the person do not update them.',
 }

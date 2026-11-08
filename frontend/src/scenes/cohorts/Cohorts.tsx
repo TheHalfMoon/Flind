@@ -102,8 +102,8 @@ export function Cohorts(): JSX.Element {
         {
             title: 'Last calculated',
             tooltip: realtimeTargetingEnabled
-                ? 'When PostHog last worked out who belongs to this cohort. That count is what insights, breakdowns and the people list use, and it is recalculated once a day and whenever the cohort is edited.'
-                : 'PostHog calculates what users belong to each cohort. This is then used when filtering on cohorts in the Trends page etc. Calculating happens every 24 hours, or whenever a cohort is updated',
+                ? 'When Flind last worked out who belongs to this cohort. That count is what insights, breakdowns and the people list use, and it is recalculated once a day and whenever the cohort is edited.'
+                : 'Flind calculates what users belong to each cohort. This is then used when filtering on cohorts in the Trends page etc. Calculating happens every 24 hours, or whenever a cohort is updated',
             render: function RenderCalculation(_: any, cohort: CohortType) {
                 if (cohort.is_static) {
                     return <>N/A</>

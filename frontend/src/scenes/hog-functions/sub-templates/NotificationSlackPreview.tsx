@@ -47,7 +47,7 @@ export function NotificationSlackPreview({
             </div>
             <div className="min-w-0 flex-1">
                 <div className="flex flex-wrap items-center gap-1.5">
-                    <span className="text-sm font-semibold">PostHog</span>
+                    <span className="text-sm font-semibold">Flind</span>
                     <LemonTag type="muted" size="small">
                         APP
                     </LemonTag>

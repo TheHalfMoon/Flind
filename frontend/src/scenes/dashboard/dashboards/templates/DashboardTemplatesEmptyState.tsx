@@ -42,7 +42,7 @@ export function DashboardTemplatesEmptyState({
             <EmptyMessage
                 title="No templates yet"
                 description='Open a dashboard and choose "Save as dashboard template" to add one here.'
-                buttonText="Browse PostHog templates"
+                buttonText="Browse Flind templates"
                 buttonOnClick={openNewDashboardGallery}
                 buttonDataAttr="dashboard-templates-empty-browse-official"
             />
@@ -54,7 +54,7 @@ export function DashboardTemplatesEmptyState({
             description={
                 // A customer's search can't match PostHog's templates here, so point them to where those live.
                 searchText && !isStaff
-                    ? "PostHog's templates are under New dashboard."
+                    ? "Flind's templates are under New dashboard."
                     : 'Clear the filters to see every template.'
             }
             buttonText="Clear filters"

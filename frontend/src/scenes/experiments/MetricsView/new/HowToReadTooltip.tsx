@@ -102,7 +102,7 @@ export function HowToReadTooltip({ visible }: { visible?: boolean } = {}): JSX.E
                                 alt="How to read metrics"
                             />
                             <p className="mb-0">
-                                PostHog uses its own statistical methods. Results may differ from other tools.
+                                Flind uses its own statistical methods. Results may differ from other tools.
                             </p>
                         </BaseTooltip.Popup>
                     </BaseTooltip.Positioner>

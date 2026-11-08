@@ -582,7 +582,7 @@ export function CohortEdit({ id, attachTo }: CohortEditProps): JSX.Element {
                                                     <div className="flex items-center gap-x-2 my-0">
                                                         <strong>Last calculated:</strong>
                                                         {featureFlags[FEATURE_FLAGS.REALTIME_COHORT_FLAG_TARGETING] && (
-                                                            <Tooltip title="When PostHog last worked out who belongs to this cohort. That count is what insights, breakdowns and the people list below use, and it is recalculated once a day and whenever you edit the cohort.">
+                                                            <Tooltip title="When Flind last worked out who belongs to this cohort. That count is what insights, breakdowns and the people list below use, and it is recalculated once a day and whenever you edit the cohort.">
                                                                 <IconInfo className="text-secondary text-base" />
                                                             </Tooltip>
                                                         )}

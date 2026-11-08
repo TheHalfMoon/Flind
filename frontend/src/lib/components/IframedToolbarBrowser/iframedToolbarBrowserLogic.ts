@@ -421,7 +421,7 @@ export const iframedToolbarBrowserLogic = kea<iframedToolbarBrowserLogicType>([
                         // remove leading / from path
                         return actions.setCurrentPath(payload.path.replace(/^\/+/, ''))
                     default:
-                        console.warn(`[PostHog Heatmaps] Received unknown child window message: ${type}`)
+                        console.warn(`[Flind Heatmaps] Received unknown child window message: ${type}`)
                 }
             }
 

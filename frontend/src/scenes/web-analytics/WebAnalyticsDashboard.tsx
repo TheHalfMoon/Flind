@@ -1009,7 +1009,7 @@ const getEmptyOnboardingContent = (
                     thingName="event"
                     isEmpty={true}
                     titleOverride="Nothing to investigate yet!"
-                    description="Install PostHog on your site or app to start capturing events. Head to the installation guide to get set up in just a few minutes."
+                    description="Install Flind on your site or app to start capturing events. Head to the installation guide to get set up in just a few minutes."
                     hogLayout="responsive"
                     useMainContentContainerQueries
                     className="p-4 @min-[48rem]/main-content:p-8"

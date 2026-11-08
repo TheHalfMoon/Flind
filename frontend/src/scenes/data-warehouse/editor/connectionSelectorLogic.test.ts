@@ -131,10 +131,10 @@ describe('connectionSelectorLogic', () => {
 
             const [clickHouseOption, managedWarehouseOption] = logic.values.connectionSelectOptions[0].options
             expect(clickHouseOption).toEqual(
-                expect.objectContaining({ value: POSTHOG_WAREHOUSE, label: 'PostHog (ClickHouse)' })
+                expect.objectContaining({ value: POSTHOG_WAREHOUSE, label: 'Flind (ClickHouse)' })
             )
             expect(managedWarehouseOption).toEqual(
-                expect.objectContaining({ value: 'conn-duck', label: 'PostHog (Managed warehouse)', hidden: enabled })
+                expect.objectContaining({ value: 'conn-duck', label: 'Flind (Managed warehouse)', hidden: enabled })
             )
             expect(managedWarehouseOption.iconSrc).toEqual(clickHouseOption.iconSrc)
             expect(managedWarehouseOption).not.toHaveProperty('managementUrl')
@@ -192,7 +192,7 @@ describe('connectionSelectorLogic', () => {
         const optionGroups = [
             {
                 options: [
-                    { value: POSTHOG_WAREHOUSE, label: 'PostHog (ClickHouse)' },
+                    { value: POSTHOG_WAREHOUSE, label: 'Flind (ClickHouse)' },
                     { value: visibleId, label: 'Visible managed warehouse' },
                 ],
             },

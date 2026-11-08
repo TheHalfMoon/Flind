@@ -32,7 +32,7 @@ export function FeatureFlagConditionWarning({
             <IconInfo className="text-base shrink-0 text-muted mt-0.5" />
             <span>
                 This flag works as normal. Only <strong>local evaluation</strong> in server-side SDKs is affected by
-                these conditions: {warning}. They are still evaluated through the PostHog API, just not from the SDK's
+                these conditions: {warning}. They are still evaluated through the Flind API, just not from the SDK's
                 local cache.
                 {hasStaticCohort
                     ? ' If you need local evaluation, target a dynamic (behavioral) cohort instead of a static one.'

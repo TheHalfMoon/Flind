@@ -30,7 +30,7 @@ export const PostgreSQLSetupModal = (props: PostgreSQLSetupModalLogicProps): JSX
                     <LemonField
                         name="name"
                         label="Name"
-                        info="What this connection is called wherever PostHog lists it. Optional — without one it shows the user and host."
+                        info="What this connection is called wherever Flind lists it. Optional — without one it shows the user and host."
                     >
                         <LemonInput placeholder="Customer database" />
                     </LemonField>
@@ -61,7 +61,7 @@ export const PostgreSQLSetupModal = (props: PostgreSQLSetupModalLogicProps): JSX
                                 This guards against man-in-the-middle attacks.
                                 <br />
                                 <br />
-                                The connection is always encrypted regardless of this setting, because PostHog requires
+                                The connection is always encrypted regardless of this setting, because Flind requires
                                 TLS. These options only add verification of the server certificate.
                             </>
                         }

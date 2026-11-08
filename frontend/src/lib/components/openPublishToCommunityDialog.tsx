@@ -35,10 +35,10 @@ export function openPublishToCommunityDialog({
     let expectedSkill: { id: string; version: number; category: string } | null = null
 
     LemonDialog.openForm({
-        title: 'Publish to the PostHog community?',
+        title: 'Publish to the Flind community?',
         description: isScout
             ? "Publishing commits the scout's instructions, schedule, inbox setting, and tags to a public GitHub repository. It then opens a pull request. The contents are public when you submit them. Do not include credentials or internal details."
-            : 'If approved for the PostHog catalog, all PostHog users can find and use this skill. Its contents will be public on GitHub immediately.',
+            : 'If approved for the Flind catalog, all Flind users can find and use this skill. Its contents will be public on GitHub immediately.',
         initialValues: {
             display_name: skillName.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase()),
             tags: '',

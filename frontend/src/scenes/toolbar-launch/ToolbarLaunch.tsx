@@ -95,7 +95,7 @@ export function ToolbarLaunch(): JSX.Element {
             <SceneContent>
                 <SceneTitleSection
                     name="Toolbar"
-                    description="Open PostHog on your website to inspect elements, review behavior, and test changes in context."
+                    description="Open Flind on your website to inspect elements, review behavior, and test changes in context."
                     resourceType={{ type: 'toolbar' }}
                 />
 

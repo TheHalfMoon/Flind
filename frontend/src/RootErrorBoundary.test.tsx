@@ -53,7 +53,7 @@ describe('RootErrorBoundary', () => {
             </RootErrorBoundary>
         )
 
-        expect(screen.getByRole('alert')).toHaveTextContent('PostHog crashed while starting.')
+        expect(screen.getByRole('alert')).toHaveTextContent('Flind crashed while starting.')
         expect(sendBeacon).toHaveBeenCalledTimes(1)
         const [url, body] = sendBeacon.mock.calls[0]
         expect(url).toBe('https://us.example.com/e/')
@@ -72,7 +72,7 @@ describe('RootErrorBoundary', () => {
             </RootErrorBoundary>
         )
 
-        expect(screen.getByRole('alert')).toHaveTextContent('PostHog failed to load.')
+        expect(screen.getByRole('alert')).toHaveTextContent('Flind failed to load.')
         expect(JSON.parse(sendBeacon.mock.calls[0][1]).properties.chunk_load_error).toBe(true)
     })
 

@@ -37,7 +37,7 @@ export const postgresDefinition: DestinationDefinition = {
                 ) : (
                     <>
                         <LemonBanner type="warning">
-                            PostHog is moving PostgreSQL batch exports to integration-based credentials. This export
+                            Flind is moving PostgreSQL batch exports to integration-based credentials. This export
                             will be migrated automatically — no action required.
                         </LemonBanner>
 

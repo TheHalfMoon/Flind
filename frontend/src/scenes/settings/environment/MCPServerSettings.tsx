@@ -8,11 +8,11 @@ const MCPServerSettings = (): JSX.Element => {
     return (
         <div>
             <p className="pb-2">
-                MCP servers allow AI assistants to connect directly to your PostHog instance, enabling them to retrieve
+                MCP servers allow AI assistants to connect directly to your Flind instance, enabling them to retrieve
                 insights and perform actions on your behalf.
             </p>
             <p>
-                You can install the PostHog MCP server in Cursor, Claude Code, Claude Desktop, VS Code, and Zed by
+                You can install the Flind MCP server in Cursor, Claude Code, Claude Desktop, VS Code, and Zed by
                 running the following command:
             </p>
             <div className="pb-2">

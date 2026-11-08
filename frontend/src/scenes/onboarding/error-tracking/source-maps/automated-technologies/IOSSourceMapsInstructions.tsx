@@ -9,9 +9,9 @@ export function IOSSourceMapsInstructions(): JSX.Element {
         <>
             <SourceMapsAPIKeyBanner />
 
-            <h3>1. Install and authenticate the PostHog CLI</h3>
+            <h3>1. Install and authenticate the Flind CLI</h3>
             <p>
-                The PostHog CLI handles dSYM upload for iOS apps. iOS dSYM support requires{' '}
+                The Flind CLI handles dSYM upload for iOS apps. iOS dSYM support requires{' '}
                 <strong>CLI version 0.7.0 or later</strong>. Install it using one of these methods:
             </p>
             <h4 className="text-sm font-semibold mt-4 mb-2">npm:</h4>
@@ -25,7 +25,7 @@ export function IOSSourceMapsInstructions(): JSX.Element {
             </CodeSnippet>
 
             <p className="mt-4">
-                Run the following command to authenticate with PostHog. This opens your browser where you select your
+                Run the following command to authenticate with Flind. This opens your browser where you select your
                 organization, project, and API scopes to grant:
             </p>
             <CodeSnippet language={Language.Bash}>posthog-cli login</CodeSnippet>
@@ -49,14 +49,14 @@ export function IOSSourceMapsInstructions(): JSX.Element {
                                 <code>POSTHOG_CLI_HOST</code>
                             </td>
                             <td className="py-2 px-2">
-                                The PostHog host to connect to (default: https://us.posthog.com)
+                                The Flind host to connect to (default: https://us.posthog.com)
                             </td>
                         </tr>
                         <tr className="border-b">
                             <td className="py-2 px-2">
                                 <code>POSTHOG_CLI_PROJECT_ID</code>
                             </td>
-                            <td className="py-2 px-2">PostHog project ID</td>
+                            <td className="py-2 px-2">Flind project ID</td>
                         </tr>
                         <tr className="border-b">
                             <td className="py-2 px-2">
@@ -109,7 +109,7 @@ export function IOSSourceMapsInstructions(): JSX.Element {
 
             <h3>3. Add build phase script</h3>
             <p>
-                To symbolicate crash reports, PostHog needs your project's debug symbol (dSYM) files. The following
+                To symbolicate crash reports, Flind needs your project's debug symbol (dSYM) files. The following
                 script automatically processes and uploads dSYMs whenever you build your app.
             </p>
             <p className="mt-2">
@@ -154,18 +154,18 @@ export function IOSSourceMapsInstructions(): JSX.Element {
 
             <h4 className="text-sm font-semibold mt-4 mb-2">CocoaPods:</h4>
             <CodeSnippet language={Language.Bash}>
-                {'POSTHOG_INCLUDE_SOURCE=1 ${PODS_ROOT}/PostHog/build-tools/upload-symbols.sh'}
+                {'POSTHOG_INCLUDE_SOURCE=1 ${PODS_ROOT}/Flind/build-tools/upload-symbols.sh'}
             </CodeSnippet>
 
             <p className="text-sm text-muted mt-2">
-                <strong>Note:</strong> Enabling this flag uploads your source code to PostHog's servers. This is
+                <strong>Note:</strong> Enabling this flag uploads your source code to Flind's servers. This is
                 disabled by default. Only enable it if your organization's security and data-governance policies permit
                 source code to leave your build environment. It also increases upload size and build times.
             </p>
 
             <h3>5. Build and verify</h3>
             <p>
-                Build your app in Xcode. The dSYM upload script will automatically run and upload symbols to PostHog.
+                Build your app in Xcode. The dSYM upload script will automatically run and upload symbols to Flind.
                 Check the build log output for confirmation.
             </p>
         </>

@@ -96,7 +96,7 @@ export default function SignupReferralSource({ disabled }: { disabled: boolean }
                     <AnimatedCollapsible collapsed={!AI_REFERRAL_PATTERN.test(value ?? '')}>
                         <LemonField
                             name="referral_source_ai_prompt"
-                            label="What prompt or search led you to PostHog?"
+                            label="What prompt or search led you to Flind?"
                             help="Paste the prompt or search queries if you remember, even roughly"
                             showOptional
                         >

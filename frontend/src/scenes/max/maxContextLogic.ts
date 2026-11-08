@@ -86,7 +86,7 @@ const reportSceneContextError = (error: unknown): void => {
     reportedSceneContextErrors.add(key)
     // eslint-disable-next-line no-console
     console.error(
-        '[PostHog AI] Failed to build scene context — it will have no auto-collected context for this scene:',
+        '[Flind AI] Failed to build scene context — it will have no auto-collected context for this scene:',
         err
     )
     posthog.captureException(err, { feature: 'max_scene_context' })

@@ -58,14 +58,14 @@ export interface LinkableSlackWorkspace {
 const SLACK_LINK_ERROR_MESSAGES: Record<string, string> = {
     access_denied: 'Slack authorization was canceled.',
     invalid_state: 'The Slack link request expired or could not be verified. Please try again.',
-    workspace_not_found: 'The Slack workspace is no longer connected to PostHog.',
+    workspace_not_found: 'The Slack workspace is no longer connected to Flind.',
     flag_off: "Slack identity linking isn't enabled for this organization.",
     exchange_failed: 'Slack rejected the authorization. Please try again.',
     team_mismatch: 'You signed in to a different Slack workspace than the one that started this flow.',
-    org_mismatch: "You aren't a member of the PostHog organization connected to this Slack workspace.",
+    org_mismatch: "You aren't a member of the Flind organization connected to this Slack workspace.",
     session_mismatch:
-        'This Slack link was started in a different PostHog session. Please start the link again from settings.',
-    not_configured: 'Slack is not configured for this PostHog instance.',
+        'This Slack link was started in a different Flind session. Please start the link again from settings.',
+    not_configured: 'Slack is not configured for this Flind instance.',
 }
 const SLACK_LINK_ERROR_FALLBACK = 'Could not connect Slack. Please try again.'
 

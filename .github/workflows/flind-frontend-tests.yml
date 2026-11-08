@@ -1,0 +1,74 @@
+# Flind frontend tests for brand branches: runs the Jest suites that pin rebranded UI text.
+# Read-only token, no secrets, nothing published.
+name: Flind frontend tests
+
+on:
+    push:
+        branches:
+            - 'flind-ci/brand-audit-**'
+    workflow_dispatch:
+
+permissions:
+    contents: read
+
+concurrency:
+    group: flind-frontend-tests-${{ github.ref }}
+    cancel-in-progress: true
+
+jobs:
+    jest:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 60
+        env:
+            # Suites that assert rebranded copy; keep in step with the brand branches.
+            FLIND_JEST_TARGETS: >-
+                src/RootErrorBoundary.test.tsx
+                src/index.test.tsx
+                src/lib/components/AgentPromptButton/AgentPromptButton.test.ts
+                src/lib/components/Cards/InsightCard/InsightCard.test.tsx
+                src/lib/components/NavPanelAdvertisement/navPanelProductPushAdLogic.test.ts
+                src/lib/components/TaxonomicFilter/taxonomicFilterLogic.test.ts
+                src/lib/components/TerraformExporter/alertHclExporter.test.ts
+                src/lib/integrations/SlackChannelPicker.test.tsx
+                src/lib/integrations/githubDisconnectCopy.test.ts
+                src/lib/integrations/integrationsLogic.test.ts
+                src/lib/integrations/oauthCallbackErrors.test.ts
+                src/scenes/agentic/agenticAuthorizeLogic.test.ts
+                src/scenes/billing/BillingLimit.test.tsx
+                src/scenes/billing/billing-utils.spec.ts
+                src/scenes/billing/billingUsageLogic.test.ts
+                src/scenes/code-canvas/CodeTaskLink.test.ts
+                src/scenes/dashboard/EmptyDashboardComponent.test.tsx
+                src/scenes/dashboard/dashboards/templates/DashboardTemplatesTable.test.tsx
+                src/scenes/data-warehouse/editor/connectionSelectorLogic.test.ts
+                src/scenes/data-warehouse/saved_queries/SyncFrequencySelect.test.ts
+                src/scenes/feature-flags/featureFlagLogic.test.ts
+                src/scenes/insights/EmptyStates/InsightErrorStates.test.tsx
+                src/scenes/integrations/components/GithubIntegration.test.tsx
+                src/scenes/max/maxThreadLogic.test.ts
+                src/scenes/project-homepage/today/todayNextStep.test.ts
+                src/scenes/session-recordings/components/ReplayCaptureDiagnosticsPanel.test.tsx
+                src/scenes/session-recordings/player/sessionRecordingPlayerLogic.test.ts
+                src/scenes/settings/settingsSearch.test.tsx
+                src/scenes/terminal/posthogCommands.test.ts
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                  fetch-depth: 1
+
+            - uses: actions/setup-node@v4
+              with:
+                  node-version-file: .nvmrc
+
+            - name: Install dependencies
+              run: |
+                  corepack enable
+                  pnpm install --frozen-lockfile --filter=@flind/frontend... 2>&1 | tail -15
+
+            - name: Run Jest suites
+              working-directory: frontend
+              run: |
+                  set -o pipefail
+                  pnpm build:products 2>&1 | tail -5
+                  pnpm exec jest $FLIND_JEST_TARGETS 2>&1 | tee jest.log
+                  { echo '## Flind frontend tests'; echo '```'; tail -30 jest.log; echo '```'; } >> "$GITHUB_STEP_SUMMARY"

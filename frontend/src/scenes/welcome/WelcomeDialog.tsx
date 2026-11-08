@@ -118,7 +118,7 @@ export function WelcomeDialog(): JSX.Element | null {
                                 onClick: () => loadWelcomeData(),
                             }}
                         >
-                            We couldn't load your team's activity. You can still explore PostHog from here.
+                            We couldn't load your team's activity. You can still explore Flind from here.
                         </LemonBanner>
                     ) : (
                         <p className="text-muted text-sm m-0">{introCopy}</p>

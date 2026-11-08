@@ -111,7 +111,7 @@ export function diagnoseReplayCapture(eventProperties: Record<string, any> | nul
             verdict: 'captured',
             headline: 'A recording exists for this session',
             reasons: [
-                'PostHog has a stored recording linked to this session.',
+                'Flind has a stored recording linked to this session.',
                 'If the replay still looks missing, refresh the page. It may still be processing.',
             ],
             rawSignals,
@@ -212,7 +212,7 @@ export function diagnoseReplayCapture(eventProperties: Record<string, any> | nul
             verdict: 'captured',
             headline: 'A recording should exist for this session',
             reasons: [
-                'The SDK was recording and sent recording data to PostHog.',
+                'The SDK was recording and sent recording data to Flind.',
                 'If the replay still looks missing, it may still be processing, or retention may have deleted it.',
             ],
             rawSignals,

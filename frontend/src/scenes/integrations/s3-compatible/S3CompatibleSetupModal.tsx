@@ -15,7 +15,7 @@ export const S3CompatibleSetupModal = (props: S3CompatibleSetupModalLogicProps):
         <LemonModal
             isOpen={props.isOpen}
             title="Configure S3-compatible storage connection"
-            description="Connect PostHog to any S3-compatible object storage (e.g. Cloudflare R2, DigitalOcean Spaces, Supabase). Credentials are stored encrypted and can be reused across exports."
+            description="Connect Flind to any S3-compatible object storage (e.g. Cloudflare R2, DigitalOcean Spaces, Supabase). Credentials are stored encrypted and can be reused across exports."
             onClose={props.onComplete}
             footer={
                 <>

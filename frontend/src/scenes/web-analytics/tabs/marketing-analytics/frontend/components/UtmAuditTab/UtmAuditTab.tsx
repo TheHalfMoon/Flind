@@ -530,7 +530,7 @@ export function UtmAuditTab(): JSX.Element {
 
             {/* Explainer */}
             <p className="text-secondary text-sm">
-                PostHog uses UTM parameters (utm_source, utm_campaign) from your pageview events to connect website
+                Flind uses UTM parameters (utm_source, utm_campaign) from your pageview events to connect website
                 traffic back to your ad platform campaigns. This connection powers{' '}
                 <Tooltip title="Conversion goals are events or actions you define in settings (e.g. purchase, sign up) that are tracked and attributed to your marketing campaigns.">
                     <span className="underline decoration-dotted cursor-help">marketing conversion goal</span>

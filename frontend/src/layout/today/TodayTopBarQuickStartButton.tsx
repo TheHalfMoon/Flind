@@ -41,7 +41,7 @@ export function TodayTopBarQuickStartButton(): JSX.Element | null {
                     isOpen ? null : (
                         <div className="flex flex-col gap-0.5">
                             <span className="font-medium">Quick start</span>
-                            <span>A checklist of tasks to set up PostHog.</span>
+                            <span>A checklist of tasks to set up Flind.</span>
                             {hasTasksLeft && <span>{tasksLeft}</span>}
                         </div>
                     )

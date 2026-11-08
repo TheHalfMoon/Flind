@@ -48,7 +48,7 @@ export const OnboardingErrorTrackingSourceMapsStep: OnboardingStepComponentType 
 
                 <SourceMapOptionCard
                     title="Public source maps"
-                    description="If source maps are publicly available PostHog can fetch and provide readable stack traces without any additional setup."
+                    description="If source maps are publicly available Flind can fetch and provide readable stack traces without any additional setup."
                     optionKey="public-source-maps"
                     selectedOption={selectedOption}
                     onSelect={() => setSelectedOption('public-source-maps')}
@@ -78,8 +78,8 @@ export const OnboardingErrorTrackingSourceMapsStep: OnboardingStepComponentType 
                         <div>
                             <p className="text-sm mb-2">
                                 Once you've built your application and have bundled assets that serve your site, inject
-                                the context required by PostHog to associate the maps with the served code. You will
-                                then need to upload the modified assets to PostHog. Both of these operations can be done
+                                the context required by Flind to associate the maps with the served code. You will
+                                then need to upload the modified assets to Flind. Both of these operations can be done
                                 by running the respective sourcemap commands.
                             </p>
                             <CodeSnippet language={Language.Bash}>
@@ -93,7 +93,7 @@ export const OnboardingErrorTrackingSourceMapsStep: OnboardingStepComponentType 
             <div className="mt-6">
                 <h3 className="text-lg font-semibold mb-4">Automatic source maps upload</h3>
                 <p className="mb-4">
-                    For some frameworks and languages, PostHog can automatically upload source maps during your build
+                    For some frameworks and languages, Flind can automatically upload source maps during your build
                     process. Select your framework to see how to configure it.
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">

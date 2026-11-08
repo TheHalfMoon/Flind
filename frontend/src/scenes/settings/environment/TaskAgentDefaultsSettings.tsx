@@ -192,7 +192,7 @@ export function TaskAgentMyPreferenceSettings(): JSX.Element {
             <p className="text-secondary mb-0">
                 {resolvedDefaults?.model ? (
                     <>
-                        {isPiDefault ? 'Runs you start in PostHog Desktop' : 'Runs you start'} without picking a model
+                        {isPiDefault ? 'Runs you start in Flind Desktop' : 'Runs you start'} without picking a model
                         will use{' '}
                         <strong>
                             {isPiDefault ? `${PI_HARNESS_LABEL} · ` : ''}

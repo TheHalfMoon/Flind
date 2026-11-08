@@ -40,12 +40,12 @@ export function SidebarQuestionInputWithSuggestions({
     const selectedTopicData = HOMEPAGE_SUGGESTION_TOPICS.find((topic) => topic.key === selectedTopic) ?? null
 
     const tip = coreMemoryLoadError
-        ? "Could not load PostHog AI's memory. Retry in project settings."
+        ? "Could not load Flind AI's memory. Retry in project settings."
         : !coreMemoryLoading && !coreMemory?.text
-          ? 'Tip: Run /init to initialize PostHog AI in this project'
+          ? 'Tip: Run /init to initialize Flind AI in this project'
           : agentMode === AgentMode.Research
-            ? 'Try PostHog AI Research Mode for…'
-            : 'Try PostHog AI for…'
+            ? 'Try Flind AI Research Mode for…'
+            : 'Try Flind AI for…'
 
     return (
         <DismissableLayer
@@ -97,14 +97,14 @@ export function SidebarQuestionInputWithSuggestions({
                                 size="xsmall"
                                 type="secondary"
                                 icon={<IconGear />}
-                                tooltip="Edit PostHog AI memory"
+                                tooltip="Edit Flind AI memory"
                             />,
                         ]}
                     />
                 )}
             </div>
             <LemonModal
-                title="PostHog AI memory"
+                title="Flind AI memory"
                 isOpen={settingsModalOpen}
                 onClose={() => setSettingsModalOpen(false)}
                 width="40rem"

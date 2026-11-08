@@ -43,7 +43,7 @@ export function NavPanelMcpCard(): JSX.Element | null {
                 text={
                     <span className="flex flex-col items-start gap-2">
                         <span>
-                            Let Claude Code, Cursor, or Codex work with your PostHog data. Run this in your terminal:
+                            Let Claude Code, Cursor, or Codex work with your Flind data. Run this in your terminal:
                         </span>
                         <CommandBlock
                             command={MCP_INSTALL_COMMAND}

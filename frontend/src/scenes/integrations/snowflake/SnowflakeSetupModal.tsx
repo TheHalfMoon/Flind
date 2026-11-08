@@ -16,7 +16,7 @@ export const SnowflakeSetupModal = (props: SnowflakeSetupModalLogicProps): JSX.E
             isOpen={props.isOpen}
             width={680}
             title="Configure Snowflake connection"
-            description="Enter your Snowflake credentials to connect PostHog to your account. They are stored encrypted and can be reused across exports."
+            description="Enter your Snowflake credentials to connect Flind to your account. They are stored encrypted and can be reused across exports."
             onClose={props.onComplete}
             footer={
                 <>

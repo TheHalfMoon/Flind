@@ -18,12 +18,12 @@ export function SampleDataTag(): JSX.Element {
             {setupStatus?.kind === 'installing' &&
                 (setupStatus.mode === 'cloud' ? (
                     <p className="m-0">
-                        The setup wizard is installing PostHog in your codebase. Once it's done, it will open a pull
+                        The setup wizard is installing Flind in your codebase. Once it's done, it will open a pull
                         request for you to merge.
                     </p>
                 ) : (
                     <p className="m-0">
-                        The setup wizard is installing PostHog in your codebase. You'll see real data here soon after
+                        The setup wizard is installing Flind in your codebase. You'll see real data here soon after
                         it's done.
                     </p>
                 ))}

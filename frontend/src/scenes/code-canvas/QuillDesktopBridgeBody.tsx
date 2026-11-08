@@ -13,7 +13,7 @@ export function QuillDesktopBridgeBody({ subject, deepLink, webUrl }: DesktopBri
             <IconLaptop className="text-5xl shrink-0" />
             <div className="flex flex-col gap-2">
                 <Heading size="xl" render={<h2 className="m-0" />}>
-                    Opening in PostHog Desktop…
+                    Opening in Flind Desktop…
                 </Heading>
                 <Text size="xs" variant="muted" render={<p className="m-0" />}>
                     {desktopBridgeDescription(subject, !!webUrl)}
@@ -38,7 +38,7 @@ export function QuillDesktopBridgeBody({ subject, deepLink, webUrl }: DesktopBri
                 )}
             </div>
             <Button variant="link" render={<LinkPrimitive to="https://posthog.com/desktop" target="_blank" />}>
-                Download PostHog Desktop
+                Download Flind Desktop
             </Button>
         </div>
     )

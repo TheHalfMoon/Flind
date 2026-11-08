@@ -125,7 +125,7 @@ describe('app entry boot', () => {
 
         await act(async () => stylesheet.resolve(false))
 
-        expect(document.querySelector('[role="alert"]')).toHaveTextContent('PostHog failed to load its styles.')
+        expect(document.querySelector('[role="alert"]')).toHaveTextContent('Flind failed to load its styles.')
         expect(document.querySelector('[data-attr="boot-test-app"]')).not.toBeInTheDocument()
     })
 
@@ -162,7 +162,7 @@ describe('app entry boot', () => {
 
             await act(async () => stylesheet.resolve(true))
 
-            expect(document.querySelector('[role="alert"]')).toHaveTextContent('PostHog crashed while starting.')
+            expect(document.querySelector('[role="alert"]')).toHaveTextContent('Flind crashed while starting.')
             expect(bootApp).not.toHaveBeenCalled()
         }
     )

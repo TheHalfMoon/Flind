@@ -82,13 +82,13 @@ export const desktopBetaTermsLogic = kea<desktopBetaTermsLogicType>([
     })),
     listeners(() => ({
         loadDesktopBetaTermsAcceptedFailure: () => {
-            lemonToast.error('Could not load the PostHog Desktop beta terms status. Please try again.')
+            lemonToast.error('Could not load the Flind Desktop beta terms status. Please try again.')
         },
         acceptDesktopBetaTermsSuccess: () => {
-            lemonToast.success('PostHog Desktop beta terms accepted')
+            lemonToast.success('Flind Desktop beta terms accepted')
         },
         acceptDesktopBetaTermsFailure: () => {
-            lemonToast.error('Could not accept the PostHog Desktop beta terms. Please try again.')
+            lemonToast.error('Could not accept the Flind Desktop beta terms. Please try again.')
         },
     })),
     afterMount(({ actions }) => {

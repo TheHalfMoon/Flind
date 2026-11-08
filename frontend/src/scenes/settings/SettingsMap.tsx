@@ -338,7 +338,7 @@ export const SETTINGS_MAP: SettingSection[] = [
                 id: 'custom-bot-definitions',
                 title: 'Custom bots',
                 description:
-                    'Add your own crawlers and scripts to the bots PostHog already detects, so you can tell them apart from real visitors.',
+                    'Add your own crawlers and scripts to the bots Flind already detects, so you can tell them apart from real visitors.',
                 component: <CustomBotRules />,
                 keywords: ['bot', 'crawler', 'spider', 'scraper', 'user agent', 'ai'],
             },
@@ -346,7 +346,7 @@ export const SETTINGS_MAP: SettingSection[] = [
                 id: 'business-model',
                 title: 'Business model',
                 description:
-                    'Set whether this project serves B2B or B2C customers so PostHog can tailor the experience and recommendations.',
+                    'Set whether this project serves B2B or B2C customers so Flind can tailor the experience and recommendations.',
                 component: <TeamBusinessModel />,
                 keywords: ['b2b', 'b2c', 'saas', 'ecommerce'],
             },
@@ -362,14 +362,14 @@ export const SETTINGS_MAP: SettingSection[] = [
     {
         level: 'environment',
         id: 'environment-max',
-        title: 'PostHog AI',
+        title: 'Flind AI',
         group: 'AI',
         settings: [
             {
                 id: 'core-memory',
                 title: 'Memory',
                 description:
-                    "PostHog AI automatically remembers details about your company and product. This context helps our AI assistant provide relevant answers and suggestions. If there are any details you don't want PostHog AI to remember, you can edit or remove them below.",
+                    "Flind AI automatically remembers details about your company and product. This context helps our AI assistant provide relevant answers and suggestions. If there are any details you don't want Flind AI to remember, you can edit or remove them below.",
                 component: <MaxMemorySettings />,
                 hideOn: [Realm.SelfHostedClickHouse, Realm.SelfHostedPostgres],
             },
@@ -378,7 +378,7 @@ export const SETTINGS_MAP: SettingSection[] = [
                 id: 'changelog',
                 title: 'Changelog',
                 description:
-                    'See the latest PostHog AI features and control whether the changelog appears in the main UI.',
+                    'See the latest Flind AI features and control whether the changelog appears in the main UI.',
                 component: <MaxChangelogSettings />,
                 hideOn: [Realm.SelfHostedClickHouse, Realm.SelfHostedPostgres],
             },
@@ -402,7 +402,7 @@ export const SETTINGS_MAP: SettingSection[] = [
                 ),
                 searchTerm: 'Project default model',
                 description:
-                    'The model agent runs launch with when nobody picks one. Everyone on this project inherits it in the new PostHog AI view, in Slack, and in PostHog Desktop.',
+                    'The model agent runs launch with when nobody picks one. Everyone on this project inherits it in the new Flind AI view, in Slack, and in Flind Desktop.',
                 component: <TaskAgentProjectDefaultSettings />,
                 keywords: ['ai', 'model', 'claude', 'codex', 'agent', 'tasks', 'default', 'slack', 'desktop'],
             },
@@ -416,7 +416,7 @@ export const SETTINGS_MAP: SettingSection[] = [
                 ),
                 searchTerm: 'My default model',
                 description:
-                    'The model your own runs launch with, overriding the project default. Applies in the new PostHog AI view, in Slack, and in PostHog Desktop.',
+                    'The model your own runs launch with, overriding the project default. Applies in the new Flind AI view, in Slack, and in Flind Desktop.',
                 component: <TaskAgentMyPreferenceSettings />,
                 keywords: ['ai', 'model', 'claude', 'codex', 'agent', 'tasks', 'preference', 'slack', 'desktop'],
             },
@@ -430,7 +430,7 @@ export const SETTINGS_MAP: SettingSection[] = [
                 ),
                 searchTerm: 'New tasks',
                 description:
-                    'How tasks you start from PostHog AI begin. In plan mode, the agent makes a plan and waits for your approval. You can still pick another mode for each task.',
+                    'How tasks you start from Flind AI begin. In plan mode, the agent makes a plan and waits for your approval. You can still pick another mode for each task.',
                 component: <TaskDefaultsSettings />,
                 keywords: [
                     'plan mode',
@@ -477,7 +477,7 @@ export const SETTINGS_MAP: SettingSection[] = [
                 id: 'task-agent-project-default',
                 title: 'Project default model',
                 description:
-                    'The model agent runs launch with when nobody picks one. Everyone on this project inherits it in the new PostHog AI view, in Slack, and in PostHog Desktop.',
+                    'The model agent runs launch with when nobody picks one. Everyone on this project inherits it in the new Flind AI view, in Slack, and in Flind Desktop.',
                 component: <TaskAgentProjectDefaultSettings />,
                 keywords: ['ai', 'model', 'claude', 'codex', 'agent', 'tasks', 'default', 'slack', 'desktop'],
             },
@@ -485,7 +485,7 @@ export const SETTINGS_MAP: SettingSection[] = [
                 id: 'task-agent-my-preference',
                 title: 'My default model',
                 description:
-                    'The model your own runs launch with, overriding the project default. Applies in the new PostHog AI view, in Slack, and in PostHog Desktop.',
+                    'The model your own runs launch with, overriding the project default. Applies in the new Flind AI view, in Slack, and in Flind Desktop.',
                 component: <TaskAgentMyPreferenceSettings />,
                 keywords: ['ai', 'model', 'claude', 'codex', 'agent', 'tasks', 'preference', 'slack', 'desktop'],
             },
@@ -550,7 +550,7 @@ export const SETTINGS_MAP: SettingSection[] = [
                 ),
                 searchTerm: 'Project instructions',
                 description:
-                    'Instructions that PostHog cloud agents read as their AGENTS.md in every Tasks run on this project, including all Self-driving runs (scouts, research, and implementation) and scheduled runs. Use them for project conventions and for guidance that spans repositories, such as which repository owns which part of your product.',
+                    'Instructions that Flind cloud agents read as their AGENTS.md in every Tasks run on this project, including all Self-driving runs (scouts, research, and implementation) and scheduled runs. Use them for project conventions and for guidance that spans repositories, such as which repository owns which part of your product.',
                 component: <AgentProjectInstructionsSettings />,
                 keywords: ['ai', 'agent', 'agents.md', 'claude.md', 'instructions', 'tasks', 'cloud', 'project'],
             },
@@ -564,7 +564,7 @@ export const SETTINGS_MAP: SettingSection[] = [
                 ),
                 searchTerm: 'My instructions',
                 description:
-                    'Instructions that PostHog cloud agents read after the project instructions in Tasks runs you start, from PostHog AI, Slack, or PostHog Desktop. Use them for your personal preferences and for anything you want agents to remember about how you work. Anyone who continues a task you started can see them, so leave out anything private. Self-driving and scheduled runs do not use them.',
+                    'Instructions that Flind cloud agents read after the project instructions in Tasks runs you start, from Flind AI, Slack, or Flind Desktop. Use them for your personal preferences and for anything you want agents to remember about how you work. Anyone who continues a task you started can see them, so leave out anything private. Self-driving and scheduled runs do not use them.',
                 component: <AgentPersonalInstructionsSettings />,
                 keywords: ['ai', 'agent', 'agents.md', 'claude.md', 'instructions', 'tasks', 'cloud', 'personal'],
             },
@@ -581,7 +581,7 @@ export const SETTINGS_MAP: SettingSection[] = [
                 id: 'task-agent-project-instructions',
                 title: 'Project instructions',
                 description:
-                    'Instructions that PostHog cloud agents read as their AGENTS.md in every Tasks run on this project, including all Self-driving runs (scouts, research, and implementation) and scheduled runs. Use them for project conventions and for guidance that spans repositories, such as which repository owns which part of your product.',
+                    'Instructions that Flind cloud agents read as their AGENTS.md in every Tasks run on this project, including all Self-driving runs (scouts, research, and implementation) and scheduled runs. Use them for project conventions and for guidance that spans repositories, such as which repository owns which part of your product.',
                 component: <AgentProjectInstructionsSettings />,
                 keywords: ['ai', 'agent', 'agents.md', 'claude.md', 'instructions', 'tasks', 'cloud', 'project'],
             },
@@ -589,7 +589,7 @@ export const SETTINGS_MAP: SettingSection[] = [
                 id: 'task-agent-my-instructions',
                 title: 'My instructions',
                 description:
-                    'Instructions that PostHog cloud agents read after the project instructions in Tasks runs you start, from PostHog AI, Slack, or PostHog Desktop. Use them for your personal preferences and for anything you want agents to remember about how you work. Anyone who continues a task you started can see them, so leave out anything private. Self-driving and scheduled runs do not use them.',
+                    'Instructions that Flind cloud agents read after the project instructions in Tasks runs you start, from Flind AI, Slack, or Flind Desktop. Use them for your personal preferences and for anything you want agents to remember about how you work. Anyone who continues a task you started can see them, so leave out anything private. Self-driving and scheduled runs do not use them.',
                 component: <AgentPersonalInstructionsSettings />,
                 keywords: ['ai', 'agent', 'agents.md', 'claude.md', 'instructions', 'tasks', 'cloud', 'personal'],
             },
@@ -612,7 +612,7 @@ export const SETTINGS_MAP: SettingSection[] = [
                     </>
                 ),
                 searchTerm: 'Your agent spend',
-                description: 'What your PostHog Desktop and cloud agent runs cost, across all your projects.',
+                description: 'What your Flind Desktop and cloud agent runs cost, across all your projects.',
                 component: <AgentUsageSettings />,
                 keywords: ['spend', 'cost', 'usage', 'credits', 'billing', 'models', 'desktop'],
                 hideOn: [Realm.SelfHostedClickHouse, Realm.SelfHostedPostgres],
@@ -648,14 +648,14 @@ export const SETTINGS_MAP: SettingSection[] = [
     {
         level: 'environment',
         id: 'posthog-mcp',
-        title: 'PostHog MCP',
+        title: 'Flind MCP',
         group: 'AI',
         settings: [
             {
                 id: 'posthog-mcp-configure',
                 title: 'Model Context Protocol (MCP) server',
                 description:
-                    'Connect PostHog to AI tools like Claude, Cursor, and Copilot via the MCP protocol for data-driven AI assistance.',
+                    'Connect Flind to AI tools like Claude, Cursor, and Copilot via the MCP protocol for data-driven AI assistance.',
                 component: <MCPServerSettings />,
                 keywords: ['ai', 'llm', 'claude', 'cursor', 'copilot'],
             },
@@ -1197,14 +1197,14 @@ export const SETTINGS_MAP: SettingSection[] = [
                 title: 'Link to person',
                 description: (
                     <>
-                        The log attributes PostHog reads to identify which person a log belongs to. A log is linked when
+                        The log attributes Flind reads to identify which person a log belongs to. A log is linked when
                         any of these attributes matches one of the person&apos;s distinct IDs. Defaults to{' '}
                         <code>posthogDistinctId</code>, the key the JavaScript and React Native SDKs auto-attach. Add
                         keys only if your backend pipeline emits the person identifier under different attributes.
                     </>
                 ),
                 searchDescription:
-                    "The log attributes PostHog reads to identify which person a log belongs to. A log is linked when any of these attributes matches one of the person's distinct IDs. Defaults to posthogDistinctId, the key the JavaScript and React Native SDKs auto-attach. Add keys only if your backend pipeline emits the person identifier under different attributes.",
+                    "The log attributes Flind reads to identify which person a log belongs to. A log is linked when any of these attributes matches one of the person's distinct IDs. Defaults to posthogDistinctId, the key the JavaScript and React Native SDKs auto-attach. Add keys only if your backend pipeline emits the person identifier under different attributes.",
                 component: <LogsDistinctIdAttributeKeys />,
                 keywords: ['log', 'person', 'distinct', 'attribute', 'pivot', 'profile', 'link'],
             },
@@ -1221,14 +1221,14 @@ export const SETTINGS_MAP: SettingSection[] = [
                 title: 'Link to session',
                 description: (
                     <>
-                        The log attributes PostHog reads to identify which session a log belongs to, checked in order
+                        The log attributes Flind reads to identify which session a log belongs to, checked in order
                         with the first match winning, followed by other common session ID attributes. Defaults to{' '}
                         <code>sessionId</code>, the key the JavaScript and React Native SDKs auto-attach. Add keys only
                         if your pipeline emits the session ID under different attributes.
                     </>
                 ),
                 searchDescription:
-                    'The log attributes PostHog reads to identify which session a log belongs to, checked in order with the first match winning, followed by other common session ID attributes. Defaults to sessionId, the key the JavaScript and React Native SDKs auto-attach. Add keys only if your pipeline emits the session ID under different attributes.',
+                    'The log attributes Flind reads to identify which session a log belongs to, checked in order with the first match winning, followed by other common session ID attributes. Defaults to sessionId, the key the JavaScript and React Native SDKs auto-attach. Add keys only if your pipeline emits the session ID under different attributes.',
                 component: <LogsSessionIdAttributeKeys />,
                 keywords: ['log', 'session', 'replay', 'attribute', 'link'],
             },
@@ -1321,7 +1321,7 @@ export const SETTINGS_MAP: SettingSection[] = [
                 id: 'person-last-seen-at',
                 title: 'Person last seen tracking',
                 description:
-                    'When enabled, PostHog tracks when each person was last active. The value updates hourly and is visible in the People list.',
+                    'When enabled, Flind tracks when each person was last active. The value updates hourly and is visible in the People list.',
                 component: <PersonLastSeenAtEnabled />,
                 keywords: ['person', 'last seen', 'activity', 'tracking'],
             },
@@ -1599,7 +1599,7 @@ export const SETTINGS_MAP: SettingSection[] = [
                 id: 'business-knowledge-learn-from-support',
                 title: 'Self-learning',
                 description:
-                    'When on, PostHog learns reusable answers from public human replies on resolved support tickets.',
+                    'When on, Flind learns reusable answers from public human replies on resolved support tickets.',
                 component: <LearnFromSupportSetting />,
                 keywords: ['business', 'knowledge', 'support', 'learn', 'ticket', 'resolved'],
             },
@@ -1651,14 +1651,14 @@ export const SETTINGS_MAP: SettingSection[] = [
                 title: 'Link to person',
                 description: (
                     <>
-                        The span attributes PostHog reads to identify which person a trace belongs to. A span is linked
+                        The span attributes Flind reads to identify which person a trace belongs to. A span is linked
                         when any of these attributes holds one of the person&apos;s distinct IDs. Defaults to{' '}
                         <code>posthogDistinctId</code>. Add keys only if your pipeline emits the person identifier under
                         different attributes.
                     </>
                 ),
                 searchDescription:
-                    "The span attributes PostHog reads to identify which person a trace belongs to. A span is linked when any of these attributes holds one of the person's distinct IDs. Defaults to posthogDistinctId. Add keys only if your pipeline emits the person identifier under different attributes.",
+                    "The span attributes Flind reads to identify which person a trace belongs to. A span is linked when any of these attributes holds one of the person's distinct IDs. Defaults to posthogDistinctId. Add keys only if your pipeline emits the person identifier under different attributes.",
                 component: <TracingDistinctIdAttributeKeys />,
                 flag: 'TRACING_SESSION_PERSON_LINKS',
                 keywords: ['trace', 'span', 'person', 'distinct', 'attribute', 'pivot', 'profile', 'link'],
@@ -1668,14 +1668,14 @@ export const SETTINGS_MAP: SettingSection[] = [
                 title: 'Link to session',
                 description: (
                     <>
-                        The span attributes PostHog reads to identify which session a trace belongs to, checked in order
+                        The span attributes Flind reads to identify which session a trace belongs to, checked in order
                         with the first match winning, followed by other common session ID attributes. Defaults to{' '}
                         <code>sessionId</code>. Add keys only if your pipeline emits the session ID under different
                         attributes.
                     </>
                 ),
                 searchDescription:
-                    'The span attributes PostHog reads to identify which session a trace belongs to, checked in order with the first match winning, followed by other common session ID attributes. Defaults to sessionId. Add keys only if your pipeline emits the session ID under different attributes.',
+                    'The span attributes Flind reads to identify which session a trace belongs to, checked in order with the first match winning, followed by other common session ID attributes. Defaults to sessionId. Add keys only if your pipeline emits the session ID under different attributes.',
                 component: <TracingSessionIdAttributeKeys />,
                 flag: 'TRACING_SESSION_PERSON_LINKS',
                 keywords: ['trace', 'span', 'session', 'replay', 'attribute', 'link'],
@@ -1778,7 +1778,7 @@ export const SETTINGS_MAP: SettingSection[] = [
                 id: 'workflows-engagement-events',
                 title: 'Engagement events',
                 description:
-                    'When enabled, email engagement activity (sent, delivered, opened, link clicked, bounced, blocked, failed) is captured as standard PostHog events alongside the existing workflow metrics. This lets you build insights, funnels, and dashboards from workflows data. These events count toward your event usage and are billed like any other event. This setting only controls event capture: it does not disable open and click tracking itself. To stop tracking opens and clicks for an email, turn off "Track opens and link clicks" on that email step.',
+                    'When enabled, email engagement activity (sent, delivered, opened, link clicked, bounced, blocked, failed) is captured as standard Flind events alongside the existing workflow metrics. This lets you build insights, funnels, and dashboards from workflows data. These events count toward your event usage and are billed like any other event. This setting only controls event capture: it does not disable open and click tracking itself. To stop tracking opens and clicks for an email, turn off "Track opens and link clicks" on that email step.',
                 component: <WorkflowsEngagementEventsSettings />,
                 keywords: [
                     'workflows',
@@ -2020,7 +2020,7 @@ export const SETTINGS_MAP: SettingSection[] = [
             {
                 id: 'integration-github',
                 title: 'GitHub integration',
-                description: 'Connect GitHub to link issues and pull requests with PostHog insights.',
+                description: 'Connect GitHub to link issues and pull requests with Flind insights.',
                 docsUrl: GitHub.docsUrl,
                 component: <GitHub.SettingsSection connectSurface="settings" />,
                 keywords: ['github', 'git', 'repository', 'issue', 'pr'],
@@ -2028,7 +2028,7 @@ export const SETTINGS_MAP: SettingSection[] = [
             {
                 id: 'integration-linear',
                 title: 'Linear integration',
-                description: 'Connect Linear to create and link issues directly from PostHog.',
+                description: 'Connect Linear to create and link issues directly from Flind.',
                 docsUrl: Linear.docsUrl,
                 component: <Linear.SettingsSection />,
                 keywords: ['linear', 'issue', 'project management', 'task'],
@@ -2070,7 +2070,7 @@ export const SETTINGS_MAP: SettingSection[] = [
                 id: 'integration-ip-allowlist',
                 title: 'Static IP addresses',
                 description:
-                    'PostHog Cloud uses static IP addresses for outbound traffic. Add these to your firewall allowlist if needed.',
+                    'Flind Cloud uses static IP addresses for outbound traffic. Add these to your firewall allowlist if needed.',
                 component: <IPAllowListInfo />,
                 keywords: ['whitelist', 'firewall', 'allowlist', 'cidr', 'ip'],
             },
@@ -2146,14 +2146,14 @@ export const SETTINGS_MAP: SettingSection[] = [
                 id: 'organization-display-name',
                 title: 'Name & logo',
                 description:
-                    "Your organization's name and logo are shown across the PostHog interface. Click the avatar to upload a custom logo.",
+                    "Your organization's name and logo are shown across the Flind interface. Click the avatar to upload a custom logo.",
                 component: <OrganizationDisplayName />,
                 keywords: ['name', 'rename', 'label', 'organization', 'logo', 'image', 'brand', 'icon', 'avatar'],
             },
             {
                 id: 'organization-id',
                 title: 'Organization ID',
-                description: "Your organization's unique identifier, used in the PostHog API.",
+                description: "Your organization's unique identifier, used in the Flind API.",
                 component: <OrganizationVariables />,
                 keywords: ['organization', 'id', 'uuid', 'identifier', 'copy'],
             },
@@ -2162,7 +2162,7 @@ export const SETTINGS_MAP: SettingSection[] = [
                 title: 'AI service providers',
                 description: (
                     <>
-                        PostHog AI features, such as the PostHog AI chat, use{' '}
+                        Flind AI features, such as the Flind AI chat, use{' '}
                         <Tooltip title={getExternalAIProvidersTooltipTitle()}>
                             <dfn>external AI services</dfn>
                         </Tooltip>{' '}
@@ -2190,33 +2190,33 @@ export const SETTINGS_MAP: SettingSection[] = [
                     'data sharing',
                 ],
                 searchDescription:
-                    'PostHog AI features use external AI services for data analysis. This can involve transfer of identifying user data.',
+                    'Flind AI features use external AI services for data analysis. This can involve transfer of identifying user data.',
             },
             {
                 id: 'organization-desktop-beta-terms',
-                title: 'PostHog Desktop beta terms',
+                title: 'Flind Desktop beta terms',
                 description: (
                     <>
-                        Accept the additional data-processing terms for the PostHog Desktop beta.
+                        Accept the additional data-processing terms for the Flind Desktop beta.
                         <br />
                         <br />
-                        PostHog Desktop uses Baseten and Modal to process customer data, personal data, and PII. They
-                        are not currently listed as PostHog subprocessors for this feature.
+                        Flind Desktop uses Baseten and Modal to process customer data, personal data, and PII. They
+                        are not currently listed as Flind subprocessors for this feature.
                         <br />
                         <br />
                         Your organization agrees to proceed notwithstanding that status. If this feature becomes
-                        generally available, PostHog will update the DPA and provide notice. This beta may change or be
+                        generally available, Flind will update the DPA and provide notice. This beta may change or be
                         discontinued.
                         <br />
                         <br />
                         <Link to="https://posthog.com/subprocessors" target="_blank">
-                            View PostHog subprocessors
+                            View Flind subprocessors
                         </Link>
                     </>
                 ),
                 component: <OrganizationDesktopBetaTerms />,
                 keywords: ['desktop', 'beta', 'terms', 'consent', 'opt-in', 'data processing'],
-                searchDescription: 'Accept the additional data-processing terms for the PostHog Desktop beta.',
+                searchDescription: 'Accept the additional data-processing terms for the Flind Desktop beta.',
             },
             {
                 id: 'organization-ai-training-opt-out',
@@ -2225,7 +2225,7 @@ export const SETTINGS_MAP: SettingSection[] = [
                 hideOn: [Realm.SelfHostedClickHouse, Realm.SelfHostedPostgres],
                 keywords: ['ai', 'training', 'opt-out', 'opt-in', 'model', 'max'],
                 searchDescription:
-                    'Control whether PostHog can use your data to train AI models. Turning this off disables AI features for your organization.',
+                    'Control whether Flind can use your data to train AI models. Turning this off disables AI features for your organization.',
             },
             {
                 id: 'organization-ip-anonymization-default',
@@ -2300,7 +2300,7 @@ export const SETTINGS_MAP: SettingSection[] = [
             {
                 id: 'xaa-configuration',
                 title: 'XAA authentication',
-                description: 'Automate API and MCP access to PostHog with Cross App Access (XAA).',
+                description: 'Automate API and MCP access to Flind with Cross App Access (XAA).',
                 component: <IdentityProviderFeatureSection configScope={ConfigScopeEnumApi.Xaa} />,
                 flag: ['SSO_SETTINGS_REDESIGN', 'XAA_AUTHENTICATION'],
                 keywords: ['xaa', 'id-jag', 'identity provider', 'token exchange'],
@@ -2447,7 +2447,7 @@ export const SETTINGS_MAP: SettingSection[] = [
                 id: 'organization-access-resolution-preview',
                 title: 'Access resolution preview',
                 description:
-                    'PostHog is changing how access levels combine: the most specific rule will decide, instead of the highest one. Review what will be different for your organization before the change takes effect.',
+                    'Flind is changing how access levels combine: the most specific rule will decide, instead of the highest one. Review what will be different for your organization before the change takes effect.',
                 component: <AccessResolutionPreview />,
                 keywords: ['access control', 'resolution', 'rbac', 'permission', 'override'],
             },
@@ -2469,7 +2469,7 @@ export const SETTINGS_MAP: SettingSection[] = [
             {
                 id: 'organization-mcp-access',
                 title: 'MCP access',
-                description: 'Control what the PostHog MCP can do in this organization.',
+                description: 'Control what the Flind MCP can do in this organization.',
                 component: <OrganizationMCPAccess />,
                 keywords: ['mcp', 'ai', 'agent', 'read-only', 'model context protocol'],
             },
@@ -2549,7 +2549,7 @@ export const SETTINGS_MAP: SettingSection[] = [
             {
                 id: 'login-sessions',
                 title: 'Web sessions',
-                description: 'Devices and browsers currently signed in to your PostHog account.',
+                description: 'Devices and browsers currently signed in to your Flind account.',
                 component: <LoginSessions />,
                 keywords: ['sessions', 'devices', 'logins', 'sign out', 'log out', 'security', 'revoke'],
             },
@@ -2564,7 +2564,7 @@ export const SETTINGS_MAP: SettingSection[] = [
                 id: 'connected-apps',
                 title: 'Connected applications',
                 description:
-                    'Applications that have been granted access to your PostHog account via OAuth. You can revoke access at any time.',
+                    'Applications that have been granted access to your Flind account via OAuth. You can revoke access at any time.',
                 component: <ConnectedApps />,
                 keywords: ['oauth', 'app', 'connected', 'authorized', 'revoke', 'access', 'token'],
             },
@@ -2578,7 +2578,7 @@ export const SETTINGS_MAP: SettingSection[] = [
             {
                 id: 'ai-gateway-dev-mode',
                 title: 'Developer mode tokens',
-                description: 'AI gateway tokens for PostHog staff.',
+                description: 'AI gateway tokens for Flind staff.',
                 component: <DevModeSetting />,
                 staffOnly: true,
                 keywords: ['ai gateway', 'llm gateway', 'token', 'developer mode', 'phe_'],
@@ -2600,7 +2600,7 @@ export const SETTINGS_MAP: SettingSection[] = [
                 id: 'optout',
                 title: 'Anonymize data collection',
                 description:
-                    'PostHog uses PostHog to capture information about how people use the product. Anonymize your usage data if you prefer not to share it.',
+                    'Flind uses Flind to capture information about how people use the product. Anonymize your usage data if you prefer not to share it.',
                 component: <OptOutCapture />,
                 hideOn: [Realm.Cloud],
                 keywords: ['telemetry', 'opt out', 'privacy', 'tracking'],
@@ -2624,7 +2624,7 @@ export const SETTINGS_MAP: SettingSection[] = [
             {
                 id: 'hedgehog-mode',
                 title: 'Hedgehog mode',
-                description: 'Enable the PostHog hedgehog companion that follows you around the app.',
+                description: 'Enable the Flind hedgehog companion that follows you around the app.',
                 component: <HedgehogModeSettings />,
                 keywords: ['hedgehog', 'mascot', 'fun', 'companion', 'hog'],
             },
@@ -2635,7 +2635,7 @@ export const SETTINGS_MAP: SettingSection[] = [
                     <div>
                         Grab some{' '}
                         <Link to="https://posthog.com/merch" target="_blank">
-                            PostHog merch
+                            Flind merch
                         </Link>{' '}
                         to customize yourself outside of the app
                     </div>
@@ -2652,7 +2652,7 @@ export const SETTINGS_MAP: SettingSection[] = [
                 id: 'feature-previews',
                 title: 'Feature previews',
                 description:
-                    'Try out upcoming PostHog features before they are generally available. Toggling a preview enables it for your account only.',
+                    'Try out upcoming Flind features before they are generally available. Toggling a preview enables it for your account only.',
                 component: <FeaturePreviews />,
                 keywords: ['beta', 'early access', 'preview', 'opt-in'],
             },
@@ -2673,14 +2673,14 @@ export const SETTINGS_MAP: SettingSection[] = [
             {
                 id: 'notifications',
                 title: 'Notifications',
-                description: 'Choose which email notifications you receive from PostHog.',
+                description: 'Choose which email notifications you receive from Flind.',
                 component: <UpdateEmailPreferences />,
                 keywords: ['email', 'notification', 'digest', 'unsubscribe'],
             },
             {
                 id: 'realtime-notifications',
                 title: 'In-app notifications',
-                description: 'Choose which real-time notifications you receive in the PostHog app, per project.',
+                description: 'Choose which real-time notifications you receive in the Flind app, per project.',
                 component: <RealtimeNotificationPreferences />,
                 flag: 'REAL_TIME_NOTIFICATIONS',
                 keywords: ['notification', 'in-app', 'realtime', 'popover', 'mention'],
@@ -2728,15 +2728,15 @@ export const SETTINGS_MAP: SettingSection[] = [
                 id: 'personal-integrations-slack',
                 title: 'Slack',
                 description:
-                    'Bind your Slack identity to this PostHog account so @PostHog mentions route to you even when your Slack email and PostHog email differ.',
+                    'Bind your Slack identity to this Flind account so @Flind mentions route to you even when your Slack email and Flind email differ.',
                 component: <PersonalSlackIntegrations />,
                 keywords: ['slack', 'integration', 'identity', 'link', 'mention', 'personal'],
             },
             {
                 id: 'personal-integrations-posthog',
-                title: 'PostHog project',
+                title: 'Flind project',
                 description:
-                    'Connect another PostHog project (in another region or your own) to act in it through its API, for example to dispatch tasks that must run there.',
+                    'Connect another Flind project (in another region or your own) to act in it through its API, for example to dispatch tasks that must run there.',
                 component: <PersonalPosthogConnections />,
                 keywords: ['posthog', 'integration', 'connect', 'region', 'cross-region', 'task', 'personal'],
                 flag: 'POSTHOG_CONNECT',
@@ -2765,7 +2765,7 @@ export const SETTINGS_MAP: SettingSection[] = [
             {
                 id: 'user-delete',
                 title: 'Delete account',
-                description: 'Permanently delete your PostHog account. This action cannot be undone.',
+                description: 'Permanently delete your Flind account. This action cannot be undone.',
                 component: <UserDangerZone />,
                 keywords: ['delete', 'remove', 'account'],
             },

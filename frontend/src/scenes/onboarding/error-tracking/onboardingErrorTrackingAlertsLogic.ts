@@ -25,7 +25,7 @@ const DEFAULT_HOG_FUNCTION_CONFIGURATION: Partial<HogFunctionConfigurationType> 
 
 const DEFAULT_SLACK_INPUTS: Record<string, any> = {
     icon_emoji: { value: ':hedgehog:' },
-    username: { value: 'PostHog' },
+    username: { value: 'Flind' },
     blocks: {
         value: [
             { type: 'header', text: { type: 'plain_text', text: '🔴 {event.properties.name}' } },
@@ -244,7 +244,7 @@ export const onboardingErrorTrackingAlertsLogic = kea<onboardingErrorTrackingAle
                     configuration.inputs = {
                         webhookUrl: { value: formValues.microsoftTeamsWebhookUrl },
                         text: {
-                            value: `**🔴 {event.properties.name} created:** {event.properties.description} (View in [PostHog](${errorTrackingIssueLinkHogTemplate(
+                            value: `**🔴 {event.properties.name} created:** {event.properties.description} (View in [Flind](${errorTrackingIssueLinkHogTemplate(
                                 'microsoft_teams'
                             )}))`,
                         },
@@ -253,7 +253,7 @@ export const onboardingErrorTrackingAlertsLogic = kea<onboardingErrorTrackingAle
                     configuration.inputs = {
                         webhookUrl: { value: formValues.discordWebhookUrl },
                         content: {
-                            value: `**🔴 {event.properties.name} created:** {event.properties.description}\n\n[View in PostHog](${errorTrackingIssueLinkHogTemplate(
+                            value: `**🔴 {event.properties.name} created:** {event.properties.description}\n\n[View in Flind](${errorTrackingIssueLinkHogTemplate(
                                 'discord'
                             )})`,
                         },

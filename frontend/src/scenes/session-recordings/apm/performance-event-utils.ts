@@ -328,32 +328,32 @@ export function unreadableBodyExplanation(body: unknown): string | null {
     if (body.startsWith(prefix)) {
         const message = body.slice(prefix.length)
         if (message.startsWith('Timeout')) {
-            return 'PostHog stopped reading this body because it took too long.'
+            return 'Flind stopped reading this body because it took too long.'
         }
         if (message.startsWith('Body too large')) {
-            return "PostHog didn't record this body because it was too large."
+            return "Flind didn't record this body because it was too large."
         }
         if (message.startsWith('Cannot read body of type')) {
-            return "PostHog couldn't record this body because its type isn't supported."
+            return "Flind couldn't record this body because its type isn't supported."
         }
         if (message.startsWith('Failed to stringify')) {
-            return "PostHog couldn't record this body because it couldn't be converted to text."
+            return "Flind couldn't record this body because it couldn't be converted to text."
         }
         if (message.startsWith('Failed to read body')) {
-            return "PostHog couldn't read this body."
+            return "Flind couldn't read this body."
         }
-        return "PostHog couldn't record this body."
+        return "Flind couldn't record this body."
     }
 
     // these three are written without the prefix
     if (body === 'Chunked Transfer-Encoding is not supported') {
-        return "PostHog doesn't record bodies sent with chunked transfer encoding."
+        return "Flind doesn't record bodies sent with chunked transfer encoding."
     }
     if (/^Content-Type \S.* is not supported$/.test(body)) {
-        return "PostHog doesn't record bodies of this content type."
+        return "Flind doesn't record bodies of this content type."
     }
     if (/^\S+ is in deny list$/.test(body)) {
-        return "PostHog didn't record this body because its host is on your deny list."
+        return "Flind didn't record this body because its host is on your deny list."
     }
 
     return null

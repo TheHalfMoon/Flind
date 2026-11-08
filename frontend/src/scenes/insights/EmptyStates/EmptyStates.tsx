@@ -666,7 +666,7 @@ export function InsightValidationError({
                                 onClick={debugWithAI}
                                 data-attr="insight-memory-limit-debug-with-ai"
                             >
-                                Debug with PostHog AI
+                                Debug with Flind AI
                             </LemonButton>
                         </AIConsentPopoverWrapper>
                         {defaultCta}
@@ -684,7 +684,7 @@ export function InsightValidationError({
                         target="_blank"
                         targetBlankIcon
                     >
-                        Learn more about funnels in PostHog docs
+                        Learn more about funnels in Flind docs
                     </Link>
                 )
             }
@@ -784,7 +784,7 @@ function getInsightErrorTitle(
         return "This query couldn't run right now"
     }
     if (kind === 'server') {
-        return "PostHog couldn't complete this query"
+        return "Flind couldn't complete this query"
     }
     if (kind === 'unknown') {
         if (titleStatus == null) {
@@ -1013,7 +1013,7 @@ export function FunnelSingleStepState({ actionable = true }: FunnelSingleStepSta
                     className="flex items-center justify-center"
                     targetBlankIcon
                 >
-                    Learn more about funnels in PostHog docs
+                    Learn more about funnels in Flind docs
                 </Link>
             </div>
         </div>
@@ -1088,7 +1088,7 @@ export function FunnelDataWarehouseStepIncompleteState(): JSX.Element {
                     className="flex items-center justify-center"
                     targetBlankIcon
                 >
-                    Learn more about data warehouse funnels in PostHog docs
+                    Learn more about data warehouse funnels in Flind docs
                 </Link>
             </div>
         </div>

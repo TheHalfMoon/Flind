@@ -284,7 +284,7 @@ export const payGateMiniLogic = kea<payGateMiniLogicType>([
                     return 'Contact sales'
                 }
                 if (gateVariant === 'move-to-cloud') {
-                    return 'Move to PostHog Cloud'
+                    return 'Move to Flind Cloud'
                 }
                 if (isPaymentEntryFlow) {
                     return 'Upgrade now'

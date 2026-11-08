@@ -111,7 +111,7 @@ const DataWarehouseEmptyState = ({ isLoading = false }: { isLoading?: boolean })
         <EmptyState
             title="Connect external data"
             groupType={TaxonomicFilterGroupType.DataWarehouse}
-            description="Use data warehouse sources to import data from your external data into PostHog."
+            description="Use data warehouse sources to import data from your external data into Flind."
             action={{
                 to: urls.dataWarehouseSourceNew(),
                 text: 'New source',

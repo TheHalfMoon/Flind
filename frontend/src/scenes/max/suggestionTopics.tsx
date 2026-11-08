@@ -75,7 +75,7 @@ const LEARN_TOPIC: SuggestionTopic = {
         },
         {
             title: 'Understand autocapture',
-            description: 'What events PostHog collects automatically',
+            description: 'What events Flind collects automatically',
             content: 'Explain autocapture',
         },
         {

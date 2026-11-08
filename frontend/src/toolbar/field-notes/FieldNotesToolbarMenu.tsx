@@ -21,7 +21,7 @@ export function FieldNotesToolbarMenu(): JSX.Element {
             <ToolbarMenu.Body>
                 <div className="px-2 pb-2 space-y-3">
                     <p className="text-xs text-muted mt-0 mb-4">
-                        Point at any element and leave a note. Your AI coding agent can read these over PostHog's MCP
+                        Point at any element and leave a note. Your AI coding agent can read these over Flind's MCP
                         and can turn them into changes — then mark them resolved.
                     </p>
                     <p className="text-xs text-muted mt-0 mb-4">

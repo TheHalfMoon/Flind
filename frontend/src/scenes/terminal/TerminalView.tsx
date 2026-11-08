@@ -25,7 +25,7 @@ const examples = [
         ],
     },
     { title: 'Optional tools', commands: ['node --version', 'pi --help', 'nyancat', 'doom'] },
-    { title: 'PostHog tools', commands: ['ph tools', 'ph tools notebook', 'ph help notebooks-retrieve', 'ph refresh'] },
+    { title: 'Flind tools', commands: ['ph tools', 'ph tools notebook', 'ph help notebooks-retrieve', 'ph refresh'] },
     {
         title: 'Edit and organize',
         commands: [
@@ -42,7 +42,7 @@ const examples = [
             'ph notebooks-list --limit 10 | jq .',
             "grep -r -n 'revenue' /posthog/files",
             "find /posthog/files -name '*.md' | wc -l",
-            'jq -n \'{hello: "PostHog"}\'',
+            'jq -n \'{hello: "Flind"}\'',
             'less /posthog/README.txt',
             'ls -la /tmp',
         ],
@@ -88,7 +88,7 @@ export function TerminalView({
                             options: [
                                 {
                                     value: 'posthog-linux-wasm',
-                                    label: 'PostHog Linux WASM (in-browser, experimental)',
+                                    label: 'Flind Linux WASM (in-browser, experimental)',
                                 },
                             ],
                         },
@@ -170,12 +170,12 @@ export function TerminalView({
                         <div className="flex max-w-80 flex-col items-start gap-3 p-1 text-sm">
                             <LemonTag type="warning">Experiment</LemonTag>
                             <p className="mb-0">
-                                Linux in your browser, with your PostHog project mounted at <code>/posthog</code>. The
+                                Linux in your browser, with your Flind project mounted at <code>/posthog</code>. The
                                 first start downloads Linux and bundled tools.
                             </p>
                             <p className="mb-0">
                                 Commands and file edits can change real data. Local files and unsaved edits disappear
-                                when you reload PostHog or stop Linux.
+                                when you reload Flind or stop Linux.
                             </p>
                             <p className="mb-0">
                                 Choose an example to insert it, then press Enter. Tab completes paths and ph commands.

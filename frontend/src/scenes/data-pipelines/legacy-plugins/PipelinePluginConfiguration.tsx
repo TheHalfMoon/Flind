@@ -303,7 +303,7 @@ function PluginField({
         <strong className="text-danger">
             Unknown field type "<code>{fieldConfig.type}</code>".
             <br />
-            You may need to upgrade PostHog!
+            You may need to upgrade Flind!
         </strong>
     )
 }

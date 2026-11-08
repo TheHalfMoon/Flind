@@ -100,7 +100,7 @@ export function CouponRedemption({
                         admin for assistance.
                     </p>
                     <LemonButton type="primary" to={urls.projectHomepage()} className="mt-2">
-                        Return to PostHog
+                        Return to Flind
                     </LemonButton>
                 </LemonBanner>
             </div>
@@ -228,7 +228,7 @@ export function CouponRedemption({
                                             to={urls.projectHomepage()}
                                             disableClientSideRouting
                                         >
-                                            Return to PostHog
+                                            Return to Flind
                                         </LemonButton>
                                     </div>
                                 )}
@@ -266,7 +266,7 @@ export function CouponRedemption({
                             >
                                 <LemonField
                                     name="organization_name"
-                                    label="PostHog organization"
+                                    label="Flind organization"
                                     info="To claim for a different organization, switch to that organization first"
                                 >
                                     <LemonInput disabled />

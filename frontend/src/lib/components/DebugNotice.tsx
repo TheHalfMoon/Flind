@@ -114,7 +114,7 @@ export function DebugNotice({ isCollapsed }: DebugNoticeProps): JSX.Element | nu
                             <br />
                             which only serves the web app, without capture (/e/).
                             <br />
-                            Use port 8010 for full PostHog, proxied via Caddy.
+                            Use port 8010 for full Flind, proxied via Caddy.
                         </>
                     }
                     placement="right"

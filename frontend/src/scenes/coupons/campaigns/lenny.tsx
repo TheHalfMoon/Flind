@@ -64,7 +64,7 @@ export const lennyCampaign: CampaignConfig = {
     eligibilityCriteria: [
         "Active Lenny's Newsletter annual subscriber",
         'No paid invoices before December 1, 2025',
-        'Active paid subscription to PostHog',
+        'Active paid subscription to Flind',
     ],
     footerNote: (
         <>

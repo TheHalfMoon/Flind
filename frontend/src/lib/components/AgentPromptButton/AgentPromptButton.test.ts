@@ -13,12 +13,12 @@ import {
 describe('AgentPromptButton', () => {
     it.each([
         [
-            'PostHog Desktop with a repository',
+            'Flind Desktop with a repository',
             buildPostHogCodeDeepLink('fix this', 'posthog/posthog'),
             'posthog-code://new?prompt=fix%20this&repo=posthog%2Fposthog',
         ],
         [
-            'PostHog Desktop without a repository',
+            'Flind Desktop without a repository',
             buildPostHogCodeDeepLink('fix this'),
             'posthog-code://new?prompt=fix%20this',
         ],
@@ -47,7 +47,7 @@ describe('AgentPromptButton', () => {
         expect(link.length).toBeGreaterThan(maxLength - 30)
     })
 
-    const MCP_LINE = `If working with PostHog data would help with this task, use the PostHog MCP server in PostHog project 42. If the server is not connected, ask me to install it by running \`${MCP_INSTALL_COMMAND}\` in a terminal.`
+    const MCP_LINE = `If working with Flind data would help with this task, use the Flind MCP server in Flind project 42. If the server is not connected, ask me to install it by running \`${MCP_INSTALL_COMMAND}\` in a terminal.`
 
     it.each([
         ['an external agent', 'cursor', false, 42, true, `Fix it\n\n${MCP_LINE}`],
@@ -58,9 +58,9 @@ describe('AgentPromptButton', () => {
             false,
             null,
             true,
-            `Fix it\n\n${MCP_LINE.replace(' in PostHog project 42', '')}`,
+            `Fix it\n\n${MCP_LINE.replace(' in Flind project 42', '')}`,
         ],
-        ['PostHog AI', 'posthog-ai', false, 42, true, 'Fix it\n'],
+        ['Flind AI', 'posthog-ai', false, 42, true, 'Fix it\n'],
         ['raw content', 'cursor', true, 42, true, 'Fix it\n'],
         ['a self-hosted instance', 'cursor', false, 42, false, 'Fix it\n'],
     ] as const)('builds the prompt for %s', (_, agentKey, raw, projectId, isCloudOrDev, expected) => {

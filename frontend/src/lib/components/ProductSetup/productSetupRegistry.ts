@@ -14,8 +14,8 @@ import type { ProductSetupConfig, SetupTask } from './types'
 export const INGEST_FIRST_EVENT = (productKey: ProductKey): SetupTask => ({
     id: SetupTaskId.IngestFirstEvent,
     title: 'Ingest your first event',
-    description: 'Get data flowing into PostHog by installing our SDK or connecting a data source.',
-    skipWarning: "Without events, your dashboards will be empty and you won't be able to explore PostHog.",
+    description: 'Get data flowing into Flind by installing our SDK or connecting a data source.',
+    skipWarning: "Without events, your dashboards will be empty and you won't be able to explore Flind.",
     taskType: 'setup',
     requiresManualCompletion: true,
     getUrl: () => urls.onboarding({ productKey, stepKey: OnboardingStepKey.INSTALL }),
@@ -26,7 +26,7 @@ export const INGEST_FIRST_EVENT = (productKey: ProductKey): SetupTask => ({
 export const SET_UP_REVERSE_PROXY: SetupTask = {
     id: SetupTaskId.SetUpReverseProxy,
     title: 'Set up a reverse proxy',
-    description: 'Improve data accuracy by routing PostHog through your own domain.',
+    description: 'Improve data accuracy by routing Flind through your own domain.',
     skipWarning: 'Without a reverse proxy, you might experience data loss from adblockers.',
     taskType: 'setup',
     getUrl: () => urls.settings('organization-proxy'),
@@ -39,9 +39,9 @@ export const SET_UP_REVERSE_PROXY: SetupTask = {
 export const AI_TASKS: SetupTask[] = [
     {
         id: SetupTaskId.UsePosthogAi,
-        title: 'Try PostHog AI',
+        title: 'Try Flind AI',
         description:
-            "Ask Max, PostHog's AI assistant, to build insights, write SQL, and answer questions about your data.",
+            "Ask Max, Flind's AI assistant, to build insights, write SQL, and answer questions about your data.",
         taskType: 'ai',
         requiresManualCompletion: true,
         getUrl: () => urls.ai(),
@@ -51,9 +51,9 @@ export const AI_TASKS: SetupTask[] = [
 /** MCP and Slack tasks - add only to products where an agent or a Slack thread is a natural way to use them */
 export const USE_POSTHOG_MCP: SetupTask = {
     id: SetupTaskId.UsePosthogMcp,
-    title: 'Try PostHog MCP',
+    title: 'Try Flind MCP',
     description:
-        'Query your PostHog data in plain English from your coding agent — run funnels, check errors, and toggle flags without leaving your editor.',
+        'Query your Flind data in plain English from your coding agent — run funnels, check errors, and toggle flags without leaving your editor.',
     taskType: 'ai',
     requiresManualCompletion: true,
     docsUrl: 'https://posthog.com/mcp',
@@ -61,9 +61,9 @@ export const USE_POSTHOG_MCP: SetupTask = {
 
 export const USE_POSTHOG_IN_SLACK: SetupTask = {
     id: SetupTaskId.UsePosthogInSlack,
-    title: 'Try PostHog in Slack',
+    title: 'Try Flind in Slack',
     description:
-        'Tag @PostHog in any Slack thread to ask data questions, run SQL, and draft pull requests — plus get insights and alerts delivered to your channels.',
+        'Tag @Flind in any Slack thread to ask data questions, run SQL, and draft pull requests — plus get insights and alerts delivered to your channels.',
     taskType: 'ai',
     requiresManualCompletion: true,
     getUrl: () => urls.integration('slack'),
@@ -453,7 +453,7 @@ export const PRODUCT_SETUP_REGISTRY: Partial<Record<ProductKey, ProductSetupConf
             {
                 id: SetupTaskId.JoinExternalData,
                 title: 'Join external data with events',
-                description: 'Combine PostHog events with external data.',
+                description: 'Combine Flind events with external data.',
                 taskType: 'explore',
                 dependsOn: [SetupTaskId.RunFirstQuery],
                 getUrl: () => urls.sqlEditor(),
@@ -527,7 +527,7 @@ export const PRODUCT_SETUP_REGISTRY: Partial<Record<ProductKey, ProductSetupConf
             {
                 id: SetupTaskId.IngestFirstLlmEvent,
                 title: 'Send your first AI event',
-                description: 'Install the PostHog LLM SDK to start tracking AI usage.',
+                description: 'Install the Flind LLM SDK to start tracking AI usage.',
                 skipWarning: "Without AI events, you can't track AI model usage.",
                 taskType: 'setup',
                 getUrl: () =>
@@ -577,7 +577,7 @@ export const PRODUCT_SETUP_REGISTRY: Partial<Record<ProductKey, ProductSetupConf
             {
                 id: SetupTaskId.EnableLogCapture,
                 title: 'Enable log capture',
-                description: 'Start sending logs from your application to PostHog.',
+                description: 'Start sending logs from your application to Flind.',
                 taskType: 'setup',
                 requiresManualCompletion: true,
                 getUrl: () => urls.onboarding({ productKey: ProductKey.LOGS, stepKey: OnboardingStepKey.INSTALL }),
@@ -651,7 +651,7 @@ export const PRODUCT_SETUP_REGISTRY: Partial<Record<ProductKey, ProductSetupConf
             {
                 id: SetupTaskId.CreateFirstEndpoint,
                 title: 'Create your first endpoint',
-                description: 'Build an API endpoint to expose PostHog data.',
+                description: 'Build an API endpoint to expose Flind data.',
                 taskType: 'onboarding',
                 getUrl: () => urls.endpoints(),
                 targetSelector: '[data-attr="new-endpoint-button"]',

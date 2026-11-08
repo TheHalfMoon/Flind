@@ -143,6 +143,15 @@ class FlindUserFacingBrandTests(unittest.TestCase):
     def test_reserved_proxy_domains_are_not_attributed_to_flind(self) -> None:
         # These checks reject the donor's own domains; claiming Flind owns them would be false.
         self.assertIn("This domain is reserved", read("posthog/api/proxy_record.py"))
+    def test_core_ui_messages_use_flind(self) -> None:
+        # Spot checks on high-traffic UI copy rewritten by the core UI pass.
+        for rel, phrase in (
+            ("frontend/src/RootErrorBoundary.tsx", "PostHog crashed"),
+            ("frontend/src/scenes/insights/sharedUtils.ts", "PostHog is busy"),
+            ("frontend/src/scenes/settings/organization/InviteModal.tsx", "|| 'PostHog'"),
+        ):
+            with self.subTest(file=rel):
+                self.assertNotIn(phrase, read(rel))
 
 if __name__ == "__main__":
     unittest.main()

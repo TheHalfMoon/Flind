@@ -55,7 +55,7 @@ const SECTIONS: SettingSection[] = [
                 title: 'AI service providers',
                 component: <div />,
                 keywords: ['ai', 'max', 'llm', 'consent', 'approve', 'enable', 'opt-in', 'data sharing'],
-                searchDescription: 'PostHog AI features use external AI services for data analysis.',
+                searchDescription: 'Flind AI features use external AI services for data analysis.',
             },
             {
                 id: 'organization-ai-training-opt-out',
@@ -148,7 +148,7 @@ describe('settingsSearch', () => {
         ['plan & usage', 'ai-usage-spend'],
         ['worktrees', 'task-agent-other-settings'],
         ['self-driving', 'task-agent-other-settings'],
-    ])('finds a setting by its PostHog Desktop name "%s" with today-rail-nav on', (term, expectedSettingId) => {
+    ])('finds a setting by its Flind Desktop name "%s" with today-rail-nav on', (term, expectedSettingId) => {
         const flags = {
             [FEATURE_FLAGS.TODAY_RAIL_NAV]: true,
             [FEATURE_FLAGS.POSTHOG_CODE_CODEX_OWN_SUBSCRIPTION_CLOUD]: true,

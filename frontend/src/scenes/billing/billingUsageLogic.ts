@@ -74,7 +74,7 @@ export interface BillingUsageResponse {
 }
 
 const DESKTOP_USAGE_SERIES_CONVERSIONS: Record<string, { divisor: number; label: string }> = {
-    posthog_code_token_credits_used_in_period: { divisor: 100, label: 'PostHog Desktop token spend (USD)' },
+    posthog_code_token_credits_used_in_period: { divisor: 100, label: 'Flind Desktop token spend (USD)' },
     sandbox_compute_credits_used_in_period: { divisor: 100, label: 'Cloud compute spend (USD)' },
     sandbox_compute_cpu_millicore_seconds_in_period: {
         divisor: 1_000,
