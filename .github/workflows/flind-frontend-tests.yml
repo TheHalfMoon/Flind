@@ -63,18 +63,21 @@ jobs:
               with:
                   node-version-file: .nvmrc
 
-            # Unfiltered, as upstream installs by default: filtered installs left out the workspace
-            # root, which provides oxfmt (build:products) and tsgo (type check).
+            # Frontend and its dependencies (as upstream's jest job) plus the workspace root, which
+            # provides oxfmt (build:products) and tsgo (type check). The desktop app is left out.
             - name: Install dependencies
               env:
                   # The root prepare script runs husky (local git hooks only); skip it in CI as
                   # upstream's browserslist workflow does. Dependency build scripts still run.
                   HUSKY: '0'
+                  # Belt and braces: the desktop app's postinstall rebuilds Electron natives and downloads
+                  # binaries; it is outside the filter, but must never run here.
+                  SKIP_ELECTRON_REBUILD: '1'
               run: |
                   corepack enable
                   # pipefail: without it the pipe reports tail's status and a failed install looks green.
                   set -o pipefail
-                  if ! pnpm install --frozen-lockfile > install.log 2>&1; then
+                  if ! pnpm install --frozen-lockfile --filter=@flind/root --filter=@flind/frontend... > install.log 2>&1; then
                       grep -n -B 30 -A 5 'ELIFECYCLE\|ERR_PNPM' install.log | tail -120
                       exit 1
                   fi
@@ -104,18 +107,21 @@ jobs:
               with:
                   node-version-file: .nvmrc
 
-            # Unfiltered, as upstream installs by default: filtered installs left out the workspace
-            # root, which provides oxfmt (build:products) and tsgo (type check).
+            # Frontend and its dependencies (as upstream's jest job) plus the workspace root, which
+            # provides oxfmt (build:products) and tsgo (type check). The desktop app is left out.
             - name: Install dependencies
               env:
                   # The root prepare script runs husky (local git hooks only); skip it in CI as
                   # upstream's browserslist workflow does. Dependency build scripts still run.
                   HUSKY: '0'
+                  # Belt and braces: the desktop app's postinstall rebuilds Electron natives and downloads
+                  # binaries; it is outside the filter, but must never run here.
+                  SKIP_ELECTRON_REBUILD: '1'
               run: |
                   corepack enable
                   # pipefail: without it the pipe reports tail's status and a failed install looks green.
                   set -o pipefail
-                  if ! pnpm install --frozen-lockfile > install.log 2>&1; then
+                  if ! pnpm install --frozen-lockfile --filter=@flind/root --filter=@flind/frontend... > install.log 2>&1; then
                       grep -n -B 30 -A 5 'ELIFECYCLE\|ERR_PNPM' install.log | tail -120
                       exit 1
                   fi
