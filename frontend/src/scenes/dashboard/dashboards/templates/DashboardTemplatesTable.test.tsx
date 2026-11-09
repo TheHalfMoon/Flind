@@ -233,7 +233,7 @@ describe('DashboardTemplatesTable', () => {
         mountTable({ isStaff, templates: [makeTemplate('team')] })
         const expectedCount = showsOfficial ? 1 : 0
 
-        expect(screen.queryAllByText(/PostHog's official templates/)).toHaveLength(expectedCount)
+        expect(screen.queryAllByText(/Flind's official templates/)).toHaveLength(expectedCount)
         expect(document.querySelectorAll('[data-attr="dashboard-templates-filter-official"]')).toHaveLength(
             expectedCount
         )

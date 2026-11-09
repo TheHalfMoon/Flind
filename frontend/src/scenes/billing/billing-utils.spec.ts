@@ -484,8 +484,8 @@ describe('getUsageLimitConsequence', () => {
         expect(getUsageLimitConsequence('Feature flags & Experiments')).toEqual('feature flags will not evaluate')
     })
 
-    it('should return specific message for Flind AI', () => {
-        expect(getUsageLimitConsequence('Flind AI')).toEqual('Flind AI will be unavailable')
+    it('should return specific message for PostHog AI', () => {
+        expect(getUsageLimitConsequence('PostHog AI')).toEqual('Flind AI will be unavailable')
     })
 
     it('should return specific message for the self-driving inbox', () => {
@@ -535,11 +535,11 @@ describe('buildUsageLimitReachedMessage', () => {
         )
     })
 
-    it('should build message for Flind AI with specific consequence', () => {
-        const result = buildUsageLimitReachedMessage([{ name: 'Flind AI', subscribed: true }])
+    it('should build message for PostHog AI with specific consequence', () => {
+        const result = buildUsageLimitReachedMessage([{ name: 'PostHog AI', subscribed: true }])
         expect(result.title).toEqual('Usage limit reached')
         expect(result.message).toEqual(
-            'You have reached the usage limit for Flind AI. Please increase your billing limit or Flind AI will be unavailable.'
+            'You have reached the usage limit for PostHog AI. Please increase your billing limit or Flind AI will be unavailable.'
         )
     })
 
@@ -551,14 +551,14 @@ describe('buildUsageLimitReachedMessage', () => {
         )
     })
 
-    it('should build message for Flind AI with other products', () => {
+    it('should build message for PostHog AI with other products', () => {
         const result = buildUsageLimitReachedMessage([
-            { name: 'Flind AI', subscribed: true },
+            { name: 'PostHog AI', subscribed: true },
             { name: 'Session replay', subscribed: true },
         ])
         expect(result.title).toEqual('Usage limits reached')
         expect(result.message).toEqual(
-            'You have reached the usage limit for Flind AI and Session replay. Please increase your billing limit or Flind AI will be unavailable and data loss may occur.'
+            'You have reached the usage limit for PostHog AI and Session replay. Please increase your billing limit or Flind AI will be unavailable and data loss may occur.'
         )
     })
 

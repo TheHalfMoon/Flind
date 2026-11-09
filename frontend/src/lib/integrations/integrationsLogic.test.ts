@@ -267,7 +267,7 @@ describe('integrationsLogic', () => {
             [
                 'last team reference',
                 false,
-                'This uninstalls the Flind app from Flind on GitHub and disconnects it from every Flind project and personal account that uses it.',
+                'This uninstalls the Flind app from PostHog on GitHub and disconnects it from every Flind project and personal account that uses it.',
             ],
             [
                 'shared with another project',

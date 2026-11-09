@@ -75,7 +75,7 @@ const NOT_JOINED_CHANNEL = {
     is_ext_shared: false,
     is_private_without_access: false,
 }
-const MISSING_APP_WARNING = /The PostHog Slack app is not in this channel/
+const MISSING_APP_WARNING = /The Flind Slack app is not in this channel/
 
 // Typing a channel name and then clicking away is the interaction that drops a search. Two cases
 // below start from it and differ only in what they assert next.

@@ -194,7 +194,9 @@ jobs:
                   echo "changed TypeScript files: $(wc -l < changed-files.txt)"
                   run_tsgo() {
                       # tsgo exits non-zero when it reports errors; the comparison below decides the outcome.
-                      NODE_OPTIONS=--max-old-space-size=12288 tsgo --noEmit -p tsconfig.json --pretty false > "$1" 2>&1 || true
+                      # Same settings as frontend/bin/typescript-check.mjs in constrained mode: run from frontend/
+                      # with one checker and a Go memory limit, so the check fits a standard runner.
+                      ( cd frontend && GOMEMLIMIT=6GiB tsgo --noEmit --checkers 1 --pretty false > "../$1" 2>&1 ) || true
                       echo "$1: $(grep -c 'error TS' "$1") errors"
                   }
                   run_tsgo tsgo-head.txt
@@ -209,12 +211,18 @@ jobs:
 
                   pattern = re.compile(r"^(?P<path>[^(\s]+)\(\d+,\d+\): error (?P<code>TS\d+): (?P<msg>.*)$")
 
+                  def repo_path(path):
+                      # tsgo runs from frontend/, so its paths are relative to it.
+                      if path.startswith("../"):
+                          return path[3:]
+                      return path if path.startswith("frontend/") else "frontend/" + path
+
                   def errors(path):
                       found = collections.Counter()
                       for line in open(path, encoding="utf-8", errors="replace"):
                           m = pattern.match(line.strip())
                           if m:
-                              found[(m["path"], m["code"], m["msg"])] += 1
+                              found[(repo_path(m["path"]), m["code"], m["msg"])] += 1
                       return found
 
                   text = open("tsgo-head.txt", encoding="utf-8", errors="replace").read()
