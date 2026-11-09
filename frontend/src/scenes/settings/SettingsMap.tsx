@@ -2201,16 +2201,16 @@ export const SETTINGS_MAP: SettingSection[] = [
                         <br />
                         <br />
                         PostHog Desktop uses Baseten and Modal to process customer data, personal data, and PII. They
-                        are not currently listed as Flind subprocessors for this feature.
+                        are not currently listed as PostHog subprocessors for this feature.
                         <br />
                         <br />
                         Your organization agrees to proceed notwithstanding that status. If this feature becomes
-                        generally available, Flind will update the DPA and provide notice. This beta may change or be
+                        generally available, PostHog will update the DPA and provide notice. This beta may change or be
                         discontinued.
                         <br />
                         <br />
                         <Link to="https://posthog.com/subprocessors" target="_blank">
-                            View Flind subprocessors
+                            View PostHog subprocessors
                         </Link>
                     </>
                 ),
@@ -2578,7 +2578,7 @@ export const SETTINGS_MAP: SettingSection[] = [
             {
                 id: 'ai-gateway-dev-mode',
                 title: 'Developer mode tokens',
-                description: 'AI gateway tokens for Flind staff.',
+                description: 'AI gateway tokens for PostHog staff.',
                 component: <DevModeSetting />,
                 staffOnly: true,
                 keywords: ['ai gateway', 'llm gateway', 'token', 'developer mode', 'phe_'],

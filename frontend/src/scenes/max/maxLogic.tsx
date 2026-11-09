@@ -1238,7 +1238,7 @@ export const QUESTION_SUGGESTIONS_DATA: readonly SuggestionGroup[] = [
                 requiresUserInput: true,
             },
         ],
-        tooltip: 'Flind AI can help you set up Flind SDKs in your stack.',
+        tooltip: 'Flind AI can help you set up PostHog SDKs to send data to Flind.',
     },
     {
         label: 'Feature flags',
@@ -1324,7 +1324,7 @@ export const QUESTION_SUGGESTIONS_DATA: readonly SuggestionGroup[] = [
                 content: 'How can I capture an exception?',
             },
         ],
-        tooltip: 'Flind AI has access to Flind docs and can help you get the most out of Flind.',
+        tooltip: 'Flind AI has access to the PostHog documentation and can help you get the most out of Flind.',
     },
 ]
 

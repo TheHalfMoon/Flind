@@ -153,5 +153,16 @@ class FlindUserFacingBrandTests(unittest.TestCase):
             with self.subTest(file=rel):
                 self.assertNotIn(phrase, read(rel))
 
+    def test_frontend_makes_no_legal_or_custody_claims_for_flind(self) -> None:
+        # Flind is self-hosted software, not a contracting party or data custodian.
+        claim = re.compile(
+            r"(BAA|DPA|agreement|subprocessor)[^.\n]*with Flind|stays with Flind|Flind subprocessors|Flind will update the DPA"
+        )
+        for path in sorted((ROOT / "frontend" / "src").rglob("*.tsx")) + sorted((ROOT / "frontend" / "src").rglob("*.ts")):
+            if ".test." in path.name:
+                continue
+            with self.subTest(file=str(path.relative_to(ROOT))):
+                self.assertIsNone(claim.search(path.read_text(encoding="utf-8")))
+
 if __name__ == "__main__":
     unittest.main()

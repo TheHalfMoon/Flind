@@ -550,7 +550,7 @@ export const searchListsLogic = kea<searchListsLogicType>([
                     name: 'Your tickets',
                     displayName: 'Your tickets',
                     category: 'misc',
-                    productCategory: 'Flind support',
+                    productCategory: 'PostHog support',
                     href: urls.myTickets(),
                     icon: <IconSupport />,
                     itemType: 'my_tickets',
