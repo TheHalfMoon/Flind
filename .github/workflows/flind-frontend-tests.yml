@@ -24,6 +24,7 @@ jobs:
             # Suites that assert rebranded copy; keep in step with the brand branches.
             FLIND_JEST_TARGETS: >-
                 src/RootErrorBoundary.test.tsx
+                src/lib/flindBuildEnv.test.ts
                 src/scenes/settings/organization/flindLegalCopy.test.tsx
                 src/layout/today/todayPreviewCards.test.ts
                 src/index.test.tsx

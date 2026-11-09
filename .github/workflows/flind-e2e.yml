@@ -160,13 +160,18 @@ jobs:
                   set -o pipefail
                   createdb posthog_e2e_test || true
                   createdb posthog_persons_e2e_test || true
-                  # A throwaway signing key for the OIDC provider; generated per run, never stored.
+                  # A throwaway signing key for the OIDC provider, generated once per run and never stored.
+                  # Mask every line before it reaches the job environment so it is not printed in logs.
+                  OIDC_RSA_PRIVATE_KEY="$(openssl genrsa 2048 2>/dev/null)"
+                  while IFS= read -r line; do
+                      [ -n "$line" ] && echo "::add-mask::$line"
+                  done <<< "$OIDC_RSA_PRIVATE_KEY"
                   {
                       echo 'OIDC_RSA_PRIVATE_KEY<<FLIND_KEY_EOF'
-                      openssl genrsa 2048 2>/dev/null
+                      echo "$OIDC_RSA_PRIVATE_KEY"
                       echo 'FLIND_KEY_EOF'
                   } >> "$GITHUB_ENV"
-                  export OIDC_RSA_PRIVATE_KEY="$(openssl genrsa 2048 2>/dev/null)"
+                  export OIDC_RSA_PRIVATE_KEY
                   # Same order as upstream's E2E job: Postgres first (ClickHouse 0026 reads
                   # posthog_instancesetting), then the persons database via sqlx, then ClickHouse.
                   python manage.py migrate --noinput 2>&1 | tail -5
