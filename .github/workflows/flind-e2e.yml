@@ -124,7 +124,8 @@ jobs:
                   turbo run build --filter='@flind/quill...' --output-logs=errors-only
                   # Then every other frontend workspace dependency (for example @flind/logicvm) except the
                   # two whose build output is committed: the vendored query parser and lemon-ui.
-                  turbo run build --filter='@flind/frontend^...' --filter='!@flind/query-parser' --filter='!@flind/lemon-ui' --output-logs=errors-only
+                  # --only stops turbo from rebuilding them anyway as dependencies of selected packages.
+                  turbo run build --filter='@flind/frontend^...' --filter='!@flind/query-parser' --filter='!@flind/lemon-ui' --only --output-logs=errors-only
                   git diff --exit-code -- frontend/flind/lemon-ui/dist common/hogql_parser/dist
                   git diff --exit-code -- common/hogql_parser/dist
 
