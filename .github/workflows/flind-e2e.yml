@@ -118,7 +118,8 @@ jobs:
             - name: Build frontend workspace dependencies
               run: |
                   set -o pipefail
-                  turbo run build --filter='@flind/frontend^...' --filter='!@flind/query-parser' 2>&1 | tail -25
+                  # Full logs of failing tasks only; truncating hid the error of a failing package.
+                  turbo run build --filter='@flind/frontend^...' --filter='!@flind/query-parser' --output-logs=errors-only
                   git diff --exit-code -- common/hogql_parser/dist
 
             - name: Build frontend
