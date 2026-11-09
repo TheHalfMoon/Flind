@@ -198,6 +198,15 @@ jobs:
                   pnpm --filter=@flind/playwright exec playwright test e2e/flind-brand-journeys.spec.ts --workers=1 --retries=0 --reporter=list 2>&1 | tee playwright.log
                   { echo '## Flind E2E'; echo '```'; tail -40 playwright.log; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
 
+            # Playwright writes an accessibility snapshot of the page for each failed test; print the
+            # URL and snapshot so a failure shows what the page actually rendered.
+            - name: Page snapshots on failure
+              if: failure()
+              run: |
+                  find playwright/test-results -name 'error-context.md' | while read -r f; do
+                      echo "::group::$f"; head -120 "$f"; echo "::endgroup::"
+                  done
+
             - name: Server log on failure
               if: failure()
               run: tail -150 /tmp/server.log || true
