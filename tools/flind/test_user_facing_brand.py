@@ -152,6 +152,11 @@ class FlindUserFacingBrandTests(unittest.TestCase):
         ):
             with self.subTest(file=rel):
                 self.assertNotIn(phrase, read(rel))
+    def test_model_help_text_does_not_name_upstream_product(self) -> None:
+        help_text = re.compile(r"help_text\s*=\s*[\"'][^\"']*PostHog(?![A-Za-z])")
+        for rel in ("posthog/models/oauth.py", "posthog/models/organization.py", "posthog/models/user.py"):
+            with self.subTest(file=rel):
+                self.assertIsNone(help_text.search(read(rel)))
 
 if __name__ == "__main__":
     unittest.main()

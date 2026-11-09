@@ -136,13 +136,13 @@ class OAuthApplication(ModelActivityMixin, AbstractApplication):  # type: ignore
 
     # Verification status - manually set by PostHog staff
     is_verified: models.BooleanField = models.BooleanField(
-        default=False, help_text="True if this application has been verified by PostHog"
+        default=False, help_text="True if this application has been verified by Flind"
     )
 
     # First-party flag - manually set by PostHog staff
     # First-party apps skip the OAuth consent screen and can use direct token exchange
     is_first_party: models.BooleanField = models.BooleanField(
-        default=False, help_text="True if this is a first-party PostHog application that skips OAuth consent"
+        default=False, help_text="True if this is a first-party Flind application that skips OAuth consent"
     )
 
     auth_brand: models.CharField = models.CharField(

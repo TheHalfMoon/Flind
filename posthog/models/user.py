@@ -305,7 +305,7 @@ class User(AbstractUser, UUIDTClassicModel, ModelActivityMixin):  # type: ignore
         db_default=False,
         null=False,
         blank=False,
-        help_text="When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions.",
+        help_text="When true, the user has opted out of in-app hints promoting the Flind MCP integration after taking actions.",
     )
     ui_configuration = models.JSONField(
         null=True,
