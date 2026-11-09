@@ -204,7 +204,7 @@ jobs:
               if: failure()
               run: |
                   find playwright/test-results -name 'error-context.md' | while read -r f; do
-                      echo "::group::$f"; head -120 "$f"; echo "::endgroup::"
+                      echo "::group::$f"; head -300 "$f"; echo "::endgroup::"
                   done
 
             - name: Server log on failure

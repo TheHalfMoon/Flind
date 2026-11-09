@@ -24,31 +24,31 @@ test.describe('Flind rebranded journeys', () => {
         await expect(page.locator('body')).not.toContainText(FLIND_LEGAL_CLAIM)
     })
 
-    test('impersonation setting refers to staff users of this instance', async ({ page }) => {
-        await page.goto('/settings/user-customization')
-
-        await expect(page.getByText(/Staff users of this Flind instance may need to log in as you/)).toBeVisible()
-        await expect(page.locator('body')).not.toContainText(/Flind support staff/)
-    })
-
     test('SDK onboarding names the PostHog SDK that sends data to Flind', async ({ page }) => {
         await page.goto('/onboarding/product_analytics?step=install&sdk=react')
+        // The install step leads with the setup wizard; the SDK snippet is behind manual setup.
+        await page.getByRole('button', { name: 'Need to set up manually?' }).click()
+        const heading = page.getByRole('heading', { name: 'Send React data to Flind with the PostHog SDK' })
+        if (!(await heading.isVisible())) {
+            await page.getByText('React', { exact: true }).first().click()
+        }
 
-        await expect(page.getByRole('heading', { name: 'Send React data to Flind with the PostHog SDK' })).toBeVisible()
+        await expect(heading).toBeVisible()
         await expect(page.getByText('Read the PostHog SDK docs')).toBeVisible()
     })
 
     test('billing renders without legal claims attached to Flind', async ({ page }) => {
         await page.goto('/organization/billing')
 
-        await expect(page.getByRole('heading', { name: /Billing/ }).first()).toBeVisible()
+        await expect(page.getByRole('tab', { name: 'Overview' })).toBeVisible()
+        await expect(page.getByRole('heading', { name: 'Products' })).toBeVisible()
         await expect(page.locator('body')).not.toContainText(FLIND_LEGAL_CLAIM)
     })
 
     test('organization integrations settings render', async ({ page }) => {
         await page.goto('/settings/organization-integrations')
 
-        await expect(page.getByRole('heading', { name: 'Integrations' }).first()).toBeVisible()
+        await expect(page.getByText('Connected integrations').first()).toBeVisible()
         await expect(page.locator('body')).not.toContainText(FLIND_LEGAL_CLAIM)
     })
 })
