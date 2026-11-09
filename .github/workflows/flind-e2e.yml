@@ -112,11 +112,14 @@ jobs:
                   echo "$RUNNER_TEMP/flind-bin" >> "$GITHUB_PATH"
 
             # Builds the frontend's workspace dependencies (for example @flind/quill and its CSS
-            # tokens), as upstream's E2E job does with `bin/turbo --filter=@flind/frontend prepare`.
-            - name: Prepare frontend workspace dependencies
+            # tokens). @flind/query-parser is excluded: its compiled WASM is vendored in
+            # common/hogql_parser/dist and pinned by hash (tools/flind/test_local_query_parser_wasm.py);
+            # rebuilding needs Emscripten and would overwrite the verified files.
+            - name: Build frontend workspace dependencies
               run: |
                   set -o pipefail
-                  turbo run prepare --filter=@flind/frontend 2>&1 | tail -25
+                  turbo run build --filter='@flind/frontend^...' --filter='!@flind/query-parser' 2>&1 | tail -25
+                  git diff --exit-code -- common/hogql_parser/dist
 
             - name: Build frontend
               run: |
