@@ -101,12 +101,22 @@ jobs:
                       grep -n -B 20 -A 5 'Failed\|ELIFECYCLE\|ERR_PNPM' rebuild.log | tail -80
                       exit 1
                   fi
+                  # pnpm 11.28.5 installs these native-binary tools without linking their bins.
                   mkdir -p "$RUNNER_TEMP/flind-bin"
-                  target="$PWD/node_modules/oxfmt/bin/oxfmt"
-                  test -f "$target"
-                  printf '#!/bin/sh\nexec node "%s" "$@"\n' "$target" > "$RUNNER_TEMP/flind-bin/oxfmt"
-                  chmod +x "$RUNNER_TEMP/flind-bin/oxfmt"
+                  for tool in oxfmt:node_modules/oxfmt/bin/oxfmt turbo:node_modules/turbo/bin/turbo; do
+                      name="${tool%%:*}"; target="$PWD/${tool#*:}"
+                      test -f "$target" || { echo "missing $target"; exit 1; }
+                      printf '#!/bin/sh\nexec node "%s" "$@"\n' "$target" > "$RUNNER_TEMP/flind-bin/$name"
+                      chmod +x "$RUNNER_TEMP/flind-bin/$name"
+                  done
                   echo "$RUNNER_TEMP/flind-bin" >> "$GITHUB_PATH"
+
+            # Builds the frontend's workspace dependencies (for example @flind/quill and its CSS
+            # tokens), as upstream's E2E job does with `bin/turbo --filter=@flind/frontend prepare`.
+            - name: Prepare frontend workspace dependencies
+              run: |
+                  set -o pipefail
+                  turbo run prepare --filter=@flind/frontend 2>&1 | tail -25
 
             - name: Build frontend
               run: |
