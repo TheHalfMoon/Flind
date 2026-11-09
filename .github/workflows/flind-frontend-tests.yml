@@ -86,10 +86,17 @@ jobs:
                       fi
                       tail -3 install.log
                   }
-                  # Root first: pnpm runs the root's prepare (husky) on every install from the repo root,
-                  # so its bins must already be linked when the frontend install runs.
-                  install --filter=@flind/root
-                  install --filter=@flind/frontend...
+                  # Reproduced locally with pnpm 11.28.5: with scripts enabled, the build scripts of lmdb
+                  # and msgpackr-extract run before the bins they call (node-gyp-build-optional-packages)
+                  # are linked, and the install fails. Link everything first with scripts off, then run
+                  # the allowed build scripts with pnpm rebuild. The root's husky prepare is not needed.
+                  install --ignore-scripts --filter=@flind/root
+                  install --ignore-scripts --filter=@flind/frontend...
+                  if ! pnpm rebuild --filter=@flind/frontend... > rebuild.log 2>&1; then
+                      grep -n -B 20 -A 5 'Failed\|ELIFECYCLE\|ERR_PNPM' rebuild.log | tail -80
+                      exit 1
+                  fi
+                  grep -E 'install: Done|postinstall: Done' rebuild.log | sort -u | tail -12
                   # pnpm 11.28.5 installs oxfmt and @typescript/native-preview but does not link their
                   # bins (reproduced locally; both entry files exist). Call the installed entry points.
                   mkdir -p "$RUNNER_TEMP/flind-bin"
@@ -151,10 +158,17 @@ jobs:
                       fi
                       tail -3 install.log
                   }
-                  # Root first: pnpm runs the root's prepare (husky) on every install from the repo root,
-                  # so its bins must already be linked when the frontend install runs.
-                  install --filter=@flind/root
-                  install --filter=@flind/frontend...
+                  # Reproduced locally with pnpm 11.28.5: with scripts enabled, the build scripts of lmdb
+                  # and msgpackr-extract run before the bins they call (node-gyp-build-optional-packages)
+                  # are linked, and the install fails. Link everything first with scripts off, then run
+                  # the allowed build scripts with pnpm rebuild. The root's husky prepare is not needed.
+                  install --ignore-scripts --filter=@flind/root
+                  install --ignore-scripts --filter=@flind/frontend...
+                  if ! pnpm rebuild --filter=@flind/frontend... > rebuild.log 2>&1; then
+                      grep -n -B 20 -A 5 'Failed\|ELIFECYCLE\|ERR_PNPM' rebuild.log | tail -80
+                      exit 1
+                  fi
+                  grep -E 'install: Done|postinstall: Done' rebuild.log | sort -u | tail -12
                   # pnpm 11.28.5 installs oxfmt and @typescript/native-preview but does not link their
                   # bins (reproduced locally; both entry files exist). Call the installed entry points.
                   mkdir -p "$RUNNER_TEMP/flind-bin"
