@@ -118,11 +118,14 @@ jobs:
             - name: Build frontend workspace dependencies
               run: |
                   set -o pipefail
-                  # Only @flind/quill (and its packages) has no committed build output. @flind/lemon-ui's
-                  # dist is committed, and its type build cannot resolve the frontend's path aliases
-                  # outside the app's own tsconfig, so it is not rebuilt here. Full logs of failing tasks.
+                  # @flind/quill first: @flind/lemon-ui's styles need its CSS tokens. lemon-ui's dist is
+                  # committed, and its type build cannot resolve the frontend's path aliases outside the
+                  # app's own tsconfig, so it is not rebuilt here. Full logs of failing tasks only.
                   turbo run build --filter='@flind/quill...' --output-logs=errors-only
-                  git diff --exit-code -- frontend/flind/lemon-ui/dist
+                  # Then every other frontend workspace dependency (for example @flind/logicvm) except the
+                  # two whose build output is committed: the vendored query parser and lemon-ui.
+                  turbo run build --filter='@flind/frontend^...' --filter='!@flind/query-parser' --filter='!@flind/lemon-ui' --output-logs=errors-only
+                  git diff --exit-code -- frontend/flind/lemon-ui/dist common/hogql_parser/dist
                   git diff --exit-code -- common/hogql_parser/dist
 
             - name: Build frontend
