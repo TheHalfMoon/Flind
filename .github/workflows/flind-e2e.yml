@@ -118,7 +118,10 @@ jobs:
             - name: Build frontend workspace dependencies
               run: |
                   set -o pipefail
-                  # Full logs of failing tasks only; truncating hid the error of a failing package.
+                  # @flind/lemon-ui imports the frontend's global styles, which need @flind/quill's built CSS
+                  # tokens, without declaring that dependency, so build quill first. Full logs of failing
+                  # tasks only; truncating hid the error of a failing package.
+                  turbo run build --filter='@flind/quill...' --output-logs=errors-only
                   turbo run build --filter='@flind/frontend^...' --filter='!@flind/query-parser' --output-logs=errors-only
                   git diff --exit-code -- common/hogql_parser/dist
 
