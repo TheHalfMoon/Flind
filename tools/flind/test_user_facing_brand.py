@@ -134,6 +134,15 @@ class FlindUserFacingBrandTests(unittest.TestCase):
         ):
             with self.subTest(file=rel):
                 self.assertIsNone(subject.search(read(rel)))
+    def test_api_errors_do_not_name_upstream_product(self) -> None:
+        name = re.compile(r"PostHog(?![A-Za-z])")
+        for rel in ("posthog/exceptions.py", "posthog/api/proxy_record.py", "ee/api/billing.py"):
+            with self.subTest(file=rel):
+                self.assertIsNone(name.search(read(rel)))
+
+    def test_reserved_proxy_domains_are_not_attributed_to_flind(self) -> None:
+        # These checks reject the donor's own domains; claiming Flind owns them would be false.
+        self.assertIn("This domain is reserved", read("posthog/api/proxy_record.py"))
 
 if __name__ == "__main__":
     unittest.main()

@@ -262,7 +262,7 @@ class PersonBulkDeleteRequestSerializer(serializers.Serializer):
     ids = serializers.ListField(
         child=serializers.CharField(),
         required=False,
-        help_text="A list of PostHog person UUIDs to delete (max 1000).",
+        help_text="A list of Flind person UUIDs to delete (max 1000).",
     )
     distinct_ids = serializers.ListField(
         child=serializers.CharField(),
@@ -1101,7 +1101,7 @@ class PersonViewSet(TeamAndOrgViewSetMixin, viewsets.ModelViewSet):
     @action(methods=["POST"], detail=False, required_scopes=["person:write"])
     def bulk_delete(self, request: request.Request, pk=None, **kwargs):
         """
-        This endpoint allows you to bulk delete persons, either by the PostHog person IDs or by distinct IDs. You can pass in a maximum of 1000 IDs per call. Only events captured before the request will be deleted.
+        This endpoint allows you to bulk delete persons, either by the Flind person IDs or by distinct IDs. You can pass in a maximum of 1000 IDs per call. Only events captured before the request will be deleted.
 
         Person records are removed in the background shortly after the request returns, so a successful response reports them in `persons_queued_for_deletion` and `persons_deleted` is 0.
         """

@@ -156,7 +156,7 @@ def build_langchain_chat_client(
     """
     if not settings.DEBUG and not is_cloud():
         raise ApplicationError(
-            "AI features are only available in PostHog Cloud",
+            "AI features are only available in Flind Cloud",
             type=AI_FEATURES_CLOUD_ONLY_ERROR_TYPE,
             non_retryable=True,
         )

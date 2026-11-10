@@ -112,11 +112,11 @@ def _detail_text(exc: exceptions.APIException) -> str:
 
 class SetupWizardCloudRunSerializer(serializers.Serializer):
     project_id = serializers.IntegerField(
-        help_text="ID of the PostHog project to integrate PostHog into. The authenticated user must have access to it."
+        help_text="ID of the Flind project to integrate Flind into. The authenticated user must have access to it."
     )
     repository = serializers.CharField(
         help_text=(
-            "GitHub repository to set up PostHog in, as 'owner/repo' (e.g. 'posthog/posthog-js'). The user "
+            "GitHub repository to set up Flind in, as 'owner/repo' (e.g. 'posthog/posthog-js'). The user "
             "must have a connected GitHub integration with access to it."
         )
     )

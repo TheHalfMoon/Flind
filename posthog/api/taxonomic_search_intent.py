@@ -113,7 +113,7 @@ class EventMatchSerializer(serializers.Serializer):
 class EventMatchResponseSerializer(serializers.Serializer):
     matches = serializers.ListField(
         child=EventMatchSerializer(),
-        help_text="PostHog core events the search most likely means, strongest first. Empty when nothing is likely.",
+        help_text="Flind core events the search most likely means, strongest first. Empty when nothing is likely.",
     )
     outcome = serializers.ChoiceField(
         choices=EventMatchOutcome.choices,

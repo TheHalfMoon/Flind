@@ -454,7 +454,7 @@ class SessionRecordingPlaylistSerializer(serializers.ModelSerializer, UserAccess
         choices=["new", "pin", "duplicate"],
         required=False,
         write_only=True,
-        help_text="How the PostHog app created the playlist, for product analytics. Not stored.",
+        help_text="How the Flind app created the playlist, for product analytics. Not stored.",
     )
     is_synthetic = serializers.SerializerMethodField()
     name = serializers.CharField(

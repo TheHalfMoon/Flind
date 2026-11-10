@@ -138,7 +138,7 @@ class GoogleAdsIntegration:
         if response.status_code == 403:
             if "ACCESS_TOKEN_SCOPE_INSUFFICIENT" in response.text:
                 raise GoogleAdsScopeInsufficientError(
-                    "Your Google Ads connection is missing the access PostHog needs. Reconnect your Google Ads "
+                    "Your Google Ads connection is missing the access Flind needs. Reconnect your Google Ads "
                     "account and allow access to your Google Ads data."
                 )
             raise ValidationError(

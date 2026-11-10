@@ -77,4 +77,4 @@ class UsageCommand(SlashCommand):
 
         except Exception as e:
             capture_exception(e)
-            raise Exception("PostHog AI usage information query failed. Please try again later.") from e
+            raise Exception("Flind AI usage information query failed. Please try again later.") from e

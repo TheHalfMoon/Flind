@@ -263,7 +263,7 @@ class TeamWorkflowsConfigSerializer(serializers.ModelSerializer, UserAccessContr
         required=False,
         help_text=(
             "When enabled, workflows engagement activity (email sends, opens, clicks, bounces, "
-            "spam reports, unsubscribes) is captured as standard PostHog events ($workflows_email_*) "
+            "spam reports, unsubscribes) is captured as standard Flind events ($workflows_email_*) "
             "alongside the existing workflow metrics."
         ),
     )

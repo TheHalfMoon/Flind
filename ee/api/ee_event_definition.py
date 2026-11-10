@@ -30,7 +30,7 @@ class EnterpriseEventDefinitionSerializer(TaggedItemSerializerMixin, serializers
         allow_blank=False,
         max_length=400,
         help_text=(
-            "Name of a single property on this event that PostHog UIs should display alongside the event "
+            "Name of a single property on this event that Flind UIs should display alongside the event "
             "(for example `$pathname` on `$pageview`). When set, surfaces like the session replay inspector "
             "show the property's value next to the event name without the user having to open the event."
         ),
