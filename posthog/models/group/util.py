@@ -1,7 +1,8 @@
 import json
 import datetime
+from collections.abc import Collection
 from dataclasses import dataclass
-from typing import Optional, Union
+from typing import TYPE_CHECKING, Optional, Union
 from zoneinfo import ZoneInfo
 
 from django.conf import settings
@@ -15,6 +16,9 @@ from posthog.kafka_client.topics import KAFKA_GROUPS
 from posthog.models.filters.utils import GroupTypeIndex
 from posthog.models.group.group import Group
 from posthog.models.group.sql import INSERT_GROUP_SQL
+
+if TYPE_CHECKING:
+    from posthog.hogql.property_access_types import RestrictedProperty
 
 logger = structlog.get_logger(__name__)
 
@@ -229,6 +233,8 @@ def list_groups(
     *,
     group_key_contains: str = "",
     search: str = "",
+    search_excluded_property_keys: Collection[str] = (),
+    restricted_properties: set["RestrictedProperty"] | None = None,
     cursor_created_at_us: int = 0,
     cursor_group_key: str = "",
     limit: int = 100,
@@ -240,8 +246,13 @@ def list_groups(
     eventually consistent. ``search`` matches a substring of the raw properties JSON or the group
     key exactly (case-insensitive), preserving the previous endpoint's semantics. The keyset cursor
     breaks ``created_at`` ties on ``group_key`` (unique within a team and type).
+    ``search_excluded_property_keys`` are dot paths left out of the properties ``search`` matches against, with any
+    top-level key that holds one.
+    ``restricted_properties`` replaces the team-default property restrictions HogQL applies to the query.
     """
     from posthog.hogql import ast  # noqa: PLC0415 — keep HogQL off this widely-imported module's import path
+    from posthog.hogql.context import HogQLContext  # noqa: PLC0415
+    from posthog.hogql.parser import parse_expr  # noqa: PLC0415
     from posthog.hogql.query import execute_hogql_query  # noqa: PLC0415
 
     from posthog.models.team import Team  # noqa: PLC0415
@@ -266,14 +277,28 @@ def list_groups(
         )
 
     if search:
+        pattern = ast.Constant(value=f"%{_escape_clickhouse_like(search)}%")
+        properties_match: ast.Expr
+        if search_excluded_property_keys:
+            properties_match = parse_expr(
+                "arrayExists(kv -> NOT arrayExists(name -> kv.1 = name OR startsWith(kv.1, concat(name, '.'))"
+                " OR startsWith(name, concat(kv.1, '.')), {excluded}) AND (kv.1 ILIKE {pattern} OR kv.2 ILIKE {pattern}),"
+                " JSONExtractKeysAndValuesRaw(toString(properties)))",
+                placeholders={
+                    "excluded": ast.Array(exprs=[ast.Constant(value=k) for k in sorted(search_excluded_property_keys)]),
+                    "pattern": pattern,
+                },
+            )
+        else:
+            properties_match = ast.CompareOperation(
+                op=ast.CompareOperationOp.ILike,
+                left=ast.Call(name="toString", args=[ast.Field(chain=["properties"])]),
+                right=pattern,
+            )
         where_exprs.append(
             ast.Or(
                 exprs=[
-                    ast.CompareOperation(
-                        op=ast.CompareOperationOp.ILike,
-                        left=ast.Call(name="toString", args=[ast.Field(chain=["properties"])]),
-                        right=ast.Constant(value=f"%{_escape_clickhouse_like(search)}%"),
-                    ),
+                    properties_match,
                     ast.CompareOperation(
                         op=ast.CompareOperationOp.Eq,
                         left=ast.Call(name="lower", args=[ast.Call(name="toString", args=[ast.Field(chain=["key"])])]),
@@ -326,7 +351,12 @@ def list_groups(
         limit=ast.Constant(value=limit + 1),
     )
 
-    response = execute_hogql_query(query, team=team, query_type="groups_list")
+    response = execute_hogql_query(
+        query,
+        team=team,
+        query_type="groups_list",
+        context=HogQLContext(team_id=team.pk, restricted_properties=restricted_properties),
+    )
 
     rows = response.results or []
     has_more = len(rows) > limit

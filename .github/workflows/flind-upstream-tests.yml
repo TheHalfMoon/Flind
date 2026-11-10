@@ -60,6 +60,9 @@ jobs:
                 posthog/tasks/test/test_team_metadata_token_reset.py
                 posthog/tasks/test/test_team_access_cache_tasks.py
                 posthog/tasks/test/test_task_registration.py
+                products/groups/backend/tests/test_clickhouse_groups.py
+                posthog/api/test/test_activity_log.py
+                posthog/api/advanced_activity_logs/test_filters.py
             # Node tests carried by upstream changes that need the test databases (same services).
             FLIND_NODE_DB_TEST_TARGETS: >-
                 src/common/utils/team-manager.test.ts
