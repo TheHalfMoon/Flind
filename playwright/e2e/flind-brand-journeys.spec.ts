@@ -27,13 +27,11 @@ test.describe('Flind rebranded journeys', () => {
     test('SDK onboarding names the PostHog SDK that sends data to Flind', async ({ page }) => {
         await page.goto('/onboarding/product_analytics?step=install&sdk=react')
         // The install step leads with the setup wizard; the SDK snippet is behind manual setup.
+        // Manual setup opens the SDK grid in a dialog; each SDK card is identified by its logo.
         await page.getByRole('button', { name: 'Need to set up manually?' }).click()
-        const heading = page.getByRole('heading', { name: 'Send React data to Flind with the PostHog SDK' })
-        if (!(await heading.isVisible())) {
-            await page.getByText('React', { exact: true }).first().click()
-        }
+        await page.getByRole('dialog').getByAltText('React logo').click()
 
-        await expect(heading).toBeVisible()
+        await expect(page.getByRole('heading', { name: 'Send React data to Flind with the PostHog SDK' })).toBeVisible()
         await expect(page.getByText('Read the PostHog SDK docs')).toBeVisible()
     })
 
@@ -45,10 +43,14 @@ test.describe('Flind rebranded journeys', () => {
         await expect(page.locator('body')).not.toContainText(FLIND_LEGAL_CLAIM)
     })
 
-    test('organization integrations settings render', async ({ page }) => {
-        await page.goto('/settings/organization-integrations')
+    test('connected integrations settings render', async ({ page }) => {
+        // Project-level integrations are where Slack, GitHub and Linear connections are managed; the
+        // organization-level list renders nothing until an organization integration exists.
+        await page.goto('/settings/project-integrations')
 
-        await expect(page.getByText('Connected integrations').first()).toBeVisible()
+        for (const title of ['Slack integration', 'GitHub integration', 'Linear integration']) {
+            await expect(page.getByRole('heading', { name: title })).toBeVisible()
+        }
         await expect(page.locator('body')).not.toContainText(FLIND_LEGAL_CLAIM)
     })
 })
