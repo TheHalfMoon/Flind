@@ -8,7 +8,7 @@ import time
 from typing import Any
 
 from django.conf import settings
-from django.db import transaction
+from django.db import DEFAULT_DB_ALIAS, transaction
 from django.db.models.signals import post_save, pre_delete
 from django.dispatch import receiver
 
@@ -25,6 +25,7 @@ from posthog.storage.team_metadata_cache import (
     clear_team_metadata_cache,
     get_cache_stats,
     refresh_expiring_caches,
+    team_metadata_hypercache,
     update_team_metadata_cache,
 )
 from posthog.tasks.utils import CeleryQueue
@@ -161,6 +162,50 @@ def _enqueue_team_metadata_update_on_commit(team_id: int) -> None:
 
     # Use transaction.on_commit to ensure the database changes are committed
     # before we update the cache
+    transaction.on_commit(enqueue_task)
+
+
+# Adapted from upstream PostHog a3f2a2e71, where this lives in posthog/storage/team_metadata_signal_handlers.py.
+# The task retries because no rebuild repairs an entry whose token no longer belongs to a team.
+@shared_task(
+    ignore_result=True,
+    queue=CeleryQueue.DEFAULT.value,
+    autoretry_for=(Exception,),
+    retry_backoff=True,
+    retry_backoff_max=900,
+    max_retries=10,
+)
+@skip_team_scope_audit
+def clear_team_metadata_cache_for_token_task(api_token: str) -> None:
+    """Clear the metadata cache entry for a token that no longer belongs to a team, from Redis and S3.
+
+    The task takes the token because the Team row may be gone, and then no query can find the token from a team id.
+    """
+    # A retry can run hours later, after a staff token change gave the token back to a team.
+    # The check reads the primary because a lagging replica still shows the old owner.
+    # The task would then skip the delete and never retry it.
+    if Team.objects.using(DEFAULT_DB_ALIAS).filter(api_token=api_token).exists():
+        return
+    # strict_mirror raises on a failed delete of the shared Redis copy too, so the task retries it.
+    team_metadata_hypercache.delete_cache_entry(api_token, strict_mirror=True)
+
+
+def enqueue_retired_token_metadata_clear_on_commit(team_id: int, api_token: str) -> None:
+    """After the commit, clear the metadata cache entry of a token that no longer belongs to the team.
+
+    The flags service trusts a cache hit without a Postgres check.
+    Until the entry is gone, the token keeps resolving to the team there.
+    """
+    if not settings.FLAGS_REDIS_URL:
+        return
+
+    def enqueue_task() -> None:
+        try:
+            clear_team_metadata_cache_for_token_task.delay(api_token)
+        except Exception as e:
+            _record_enqueue_failure()
+            logger.exception("Failed to enqueue retired token metadata clear", team_id=team_id, error=str(e))
+
     transaction.on_commit(enqueue_task)
 
 
