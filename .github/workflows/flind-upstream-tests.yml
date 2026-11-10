@@ -31,7 +31,7 @@ jobs:
             CLICKHOUSE_VERIFY: 'False'
             KAFKA_HOSTS: localhost:9092
             REDIS_URL: redis://localhost:6379/
-            OTEL_SDK_DISABLED: 'true'
+            # Tracing stays on so span-recording tests see spans; nothing is exported.
             OTEL_TRACES_EXPORTER: none
             # Python test files carried by the upstream changes on this branch.
             FLIND_TEST_TARGETS: >-
@@ -71,6 +71,14 @@ jobs:
                 products/tasks/backend/tests/test_facade.py
                 products/tasks/backend/tests/test_models.py
                 posthog/tasks/test/test_team_metadata_signals.py
+                posthog/security/test/test_url_validation.py
+                posthog/security/test/test_oob_domains.py
+                posthog/api/test/test_routing.py
+                posthog/test/repo_invariants/test_oob_denylist_coverage.py
+                posthog/test/repo_invariants/test_oob_detection_log_level.py
+                products/warehouse_sources/backend/temporal/data_imports/sources/common/http/tests/test_transport.py
+                products/warehouse_sources/backend/temporal/data_imports/sources/common/test_mixins.py
+                products/warehouse_sources/backend/temporal/data_imports/sources/mysql/tests/test_mysql.py
             # Node tests carried by upstream changes that need the test databases (same services).
             FLIND_NODE_DB_TEST_TARGETS: >-
                 src/common/utils/team-manager.test.ts
@@ -216,7 +224,7 @@ jobs:
 
             - name: Node tests carried by upstream changes
               working-directory: nodejs
-              run: pnpm exec jest src/common/utils/oob-domains.test.ts
+              run: pnpm exec jest src/common/utils/oob-domains.test.ts src/common/utils/request.test.ts src/cdp/services/messaging/email-validation.service.test.ts
 
     frontend:
         runs-on: ubuntu-24.04
@@ -308,3 +316,31 @@ jobs:
                   set -o pipefail
                   pnpm exec vitest run tests/unit/credential-redaction.test.ts tests/unit/StateManager.test.ts 2>&1 | tee vitest.log
                   { echo '## Upstream MCP tests'; echo '```'; tail -20 vitest.log; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+
+    rust:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 90
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                  fetch-depth: 1
+
+            - name: Free runner disk
+              run: sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL
+
+            # protoc for cymbal-proto; the vendored OpenSSL build uses the runner's perl and make.
+            - name: Install protoc
+              run: sudo apt-get update -q && sudo apt-get install -y -q protobuf-compiler
+
+            - name: common-dns tests
+              working-directory: rust
+              run: cargo test -p common-dns --features test-util
+
+            # Only the tests carried by the out-of-band domain change; the crates' other tests need services.
+            - name: batch-import-worker out-of-band domain tests
+              working-directory: rust
+              run: cargo test -p batch-import-worker -- oob_domain out_of_band_domain
+
+            - name: cymbal out-of-band domain tests
+              working-directory: rust
+              run: cargo test -p cymbal -- out_of_band_domain fullwidth_at_sign
