@@ -69,8 +69,10 @@ jobs:
               run: |
                   set -o pipefail
                   sed -i 's/--memory 3G/--memory 1G/' docker-compose.base.yml
-                  echo "127.0.0.1 kafka clickhouse db redis7 zookeeper" | sudo tee -a /etc/hosts
-                  docker compose -f docker-compose.dev.yml up -d --wait db redis7 zookeeper kafka clickhouse
+                  # Load every funnel UDF version, as upstream's E2E and MCP workflows do before starting ClickHouse.
+                  cp posthog/user_scripts/latest_user_defined_function.xml docker/clickhouse/user_defined_function.xml
+                  echo "127.0.0.1 kafka clickhouse db redis7 zookeeper objectstorage" | sudo tee -a /etc/hosts
+                  docker compose -f docker-compose.dev.yml up -d --wait db redis7 zookeeper kafka clickhouse objectstorage
                   docker compose -f docker-compose.dev.yml up --exit-code-from kafka-init kafka-init
 
             - name: Provide app shell template
