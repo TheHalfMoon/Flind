@@ -1,0 +1,150 @@
+# Flind upstream integration tests: runs the tests that come with cherry-picked upstream changes, in
+# their own language (pytest on real services, Go, Node/Jest). Triggered by upstream integration branches.
+# Read-only token, no secrets, nothing published.
+name: Flind upstream tests
+
+on:
+    push:
+        branches:
+            - 'flind-ci/upstream-**'
+    workflow_dispatch:
+
+permissions:
+    contents: read
+
+concurrency:
+    group: flind-upstream-tests-${{ github.ref }}
+    cancel-in-progress: true
+
+jobs:
+    pytest:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 150
+        env:
+            TEST: '1'
+            DEBUG: '1'
+            SKIP_SERVICE_VERSION_REQUIREMENTS: '1'
+            SECRET_KEY: flind-ci-throwaway-secret
+            DATABASE_URL: postgres://posthog:posthog@localhost:5432/posthog
+            CLICKHOUSE_HOST: localhost
+            CLICKHOUSE_SECURE: 'False'
+            CLICKHOUSE_VERIFY: 'False'
+            KAFKA_HOSTS: localhost:9092
+            REDIS_URL: redis://localhost:6379/
+            OTEL_SDK_DISABLED: 'true'
+            OTEL_TRACES_EXPORTER: none
+            # Python test files carried by the upstream changes on this branch.
+            FLIND_TEST_TARGETS: >-
+                ee/api/test/test_authentication.py
+                products/access_control/backend/tests/test_property_access_control.py
+                products/feature_flags/backend/api/test/test_feature_flag.py
+                products/security/backend/tests/test_accounts.py
+                products/security/backend/tests/test_decisions.py
+                products/warehouse_sources/backend/temporal/data_imports/pipelines/core/test_repartition.py
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                  fetch-depth: 1
+
+            - name: Free runner disk
+              run: sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL
+
+            - name: Start real services
+              run: |
+                  set -o pipefail
+                  sed -i 's/--memory 3G/--memory 1G/' docker-compose.base.yml
+                  echo "127.0.0.1 kafka clickhouse db redis7 zookeeper" | sudo tee -a /etc/hosts
+                  docker compose -f docker-compose.dev.yml up -d --wait db redis7 zookeeper kafka clickhouse
+                  docker compose -f docker-compose.dev.yml up --exit-code-from kafka-init kafka-init
+
+            - name: Provide app shell template
+              run: mkdir -p frontend/dist && cp frontend/src/index.html frontend/dist/index.html
+
+            - uses: actions/setup-python@v5
+              with:
+                  python-version: 3.14.7
+
+            - name: Install Python dependencies
+              run: |
+                  set -o pipefail
+                  pip install uv==0.13.4
+                  UV_PROJECT_ENVIRONMENT=$pythonLocation uv sync --frozen --dev 2>&1 | tail -5
+
+            # Pinned sqlx-cli for the persons test database; same pin as flind-backend-tests.yml.
+            - name: Restore sqlx-cli
+              id: sqlx-cache
+              uses: actions/cache@v4
+              with:
+                  path: ~/.cache/sqlx-cli
+                  key: sqlx-cli-0.8.0-${{ runner.os }}-${{ runner.arch }}
+
+            - name: Build sqlx-cli
+              if: steps.sqlx-cache.outputs.cache-hit != 'true'
+              run: cargo install sqlx-cli --version 0.8.0 --features postgres --no-default-features --locked --root "$HOME/.cache/sqlx-cli"
+
+            - name: Add sqlx-cli to PATH
+              run: echo "$HOME/.cache/sqlx-cli/bin" >> "$GITHUB_PATH"
+
+            - name: Check migrations match models
+              run: python manage.py makemigrations --check --dry-run
+
+            # The first test-DB setup runs every migration, so the per-test timeout must cover it.
+            - name: Run upstream Python tests
+              run: |
+                  set -o pipefail
+                  python -m pytest $FLIND_TEST_TARGETS -p no:cacheprovider -q --timeout=3600 2>&1 | tee pytest.log
+                  { echo '## Upstream Python tests'; echo '```'; tail -40 pytest.log; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+
+            - name: Tear down
+              if: always()
+              run: docker compose -f docker-compose.dev.yml down -v --remove-orphans
+
+    go:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 30
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                  fetch-depth: 1
+
+            - uses: actions/setup-go@v5
+              with:
+                  go-version-file: livestream/go.mod
+
+            - name: Livestream tests
+              working-directory: livestream
+              run: go test ./...
+
+    node:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 45
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                  fetch-depth: 1
+
+            - uses: actions/setup-node@v4
+              with:
+                  node-version-file: .nvmrc
+
+            # Same install pattern as flind-frontend-tests.yml: scripts off, then rebuild.
+            - name: Install Node dependencies
+              env:
+                  HUSKY: '0'
+                  SKIP_ELECTRON_REBUILD: '1'
+              run: |
+                  set -o pipefail
+                  npm install -g "pnpm@$(node -p "require('./package.json').packageManager.split('@')[1]")"
+                  if ! pnpm install --frozen-lockfile --ignore-scripts --filter=@flind/root --filter=@flind/nodejs... > install.log 2>&1; then
+                      grep -n -B 30 -A 5 'ELIFECYCLE\|ERR_PNPM' install.log | tail -120
+                      exit 1
+                  fi
+                  tail -3 install.log
+                  if ! pnpm rebuild --filter=@flind/nodejs... > rebuild.log 2>&1; then
+                      grep -n -B 20 -A 5 'Failed\|ELIFECYCLE\|ERR_PNPM' rebuild.log | tail -80
+                      exit 1
+                  fi
+
+            - name: Node tests carried by upstream changes
+              working-directory: nodejs
+              run: pnpm exec jest src/common/utils/oob-domains.test.ts
