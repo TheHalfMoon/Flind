@@ -57,6 +57,9 @@ jobs:
                 posthog/hogql/test/test_restricted_properties.py
                 posthog/hogql/transforms/test/test_property_types.py
                 posthog/hogql_queries/test/test_events_query_runner.py
+                posthog/tasks/test/test_team_metadata_token_reset.py
+                posthog/tasks/test/test_team_access_cache_tasks.py
+                posthog/tasks/test/test_task_registration.py
             # Node tests carried by upstream changes that need the test databases (same services).
             FLIND_NODE_DB_TEST_TARGETS: >-
                 src/common/utils/team-manager.test.ts
@@ -213,6 +216,7 @@ jobs:
                 src/lib/utils/destinationSecretRedaction.test.ts
                 src/lib/components/AuthorizedUrlList/AuthorizedUrlList.test.tsx
                 src/lib/components/ProductEmptyState/ProductEmptyState.test.tsx
+                src/scenes/hog-functions/configuration/hogFunctionConfigurationLogic.test.ts
         steps:
             - uses: actions/checkout@v4
               with:
