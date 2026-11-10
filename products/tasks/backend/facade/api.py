@@ -3012,6 +3012,7 @@ _PROTECTED_RUN_STATE_KEYS = frozenset(
         # runner); a PATCHable key would let any task controller mint a GitHub token onto a
         # queued repo-less run.
         "github_read_access",
+        "github_token_scope",
         # Historical loop runs use this server stamp to keep owner credential revocation fail-closed.
         "loop_id",
         # Stamped at creation by workflow tasks: a PATCHable value would widen the run's connector allowlist.
@@ -9499,7 +9500,13 @@ def warm_task_resume_sandbox(
         "custom_image_id": custom_image_id,
     }
     extra_state.update(_github_credential_source_extra_state(resolved_pr_authorship_mode, None))
-    for protected_key in ("wizard_head_branch", "self_driving_head_branch", "stack_base_branch", "github_read_access"):
+    for protected_key in (
+        "wizard_head_branch",
+        "self_driving_head_branch",
+        "stack_base_branch",
+        "github_read_access",
+        "github_token_scope",
+    ):
         if protected_key in (previous_run.state or {}):
             extra_state[protected_key] = (previous_run.state or {})[protected_key]
     if "imported_from" in (previous_run.state or {}):
@@ -9912,6 +9919,8 @@ def run_task(
         # so this server-side copy is the only way it reaches a successor run.)
         if (previous_run.state or {}).get("github_read_access") is True:
             extra_state["github_read_access"] = True
+        if github_token_scope := (previous_run.state or {}).get("github_token_scope"):
+            extra_state["github_token_scope"] = github_token_scope
 
         # A resumed child run stays a child, so its sandbox still cannot start more runs. The keys
         # are PATCH-protected, so this server-side copy is the only way they reach a successor run.

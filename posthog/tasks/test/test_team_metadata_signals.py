@@ -141,6 +141,22 @@ class TestOrgProjectDeleteCascadesToTeamClear(BaseTest):
 
         self.assertIn(team_id, cleared_team_ids)
 
+    def test_deleting_project_enqueues_the_retrying_token_clear_via_cascade(self) -> None:
+        # Adapted from upstream PostHog a2605f740: the cascaded Team pre_delete must also enqueue the
+        # after-commit clear, or a refresh between the immediate clear and the commit leaves the token cached.
+        project, team = Project.objects.create_with_team(
+            organization=self.organization, initiating_user=self.user, name="Doomed project"
+        )
+        api_token = team.api_token
+
+        with (
+            patch("posthog.tasks.team_metadata.clear_team_metadata_cache_for_token_task.delay") as mock_clear,
+            self.captureOnCommitCallbacks(execute=True),
+        ):
+            project.delete()
+
+        mock_clear.assert_called_once_with(api_token)
+
 
 @override_settings(FLAGS_REDIS_URL="redis://localhost:6379")
 class TestFlagPolicyBlocklistCacheRefresh(BaseTest):
