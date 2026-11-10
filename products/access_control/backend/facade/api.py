@@ -2,7 +2,6 @@
 Facade API for access_control.
 
 This is the module that other apps / the presentation layer should
-from collections import defaultdict
 import from. It accepts plain inputs and returns contract DTOs, never
 ORM instances or QuerySets.
 
@@ -16,6 +15,8 @@ Do NOT:
 - Import DRF / serializers / HTTP concerns here
 - Return ORM instances or QuerySets
 """
+
+from collections import defaultdict
 
 from __future__ import annotations
 
