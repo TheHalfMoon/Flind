@@ -559,7 +559,7 @@ class TestIssueSummaryGeneration(BaseTest):
 
     def test_stored_unsafe_summary_is_hidden(self) -> None:
         get_or_generate_issue_summary(self.team.id, self.issue.id)
-        stored = ErrorTrackingIssueSummary.objects.get(team=self.team, issue=self.issue)
+        stored = ErrorTrackingIssueSummary.objects.for_team(self.team.id).get(issue=self.issue)
         stored.content = {**stored.content, "likely_cause": "See www.evil.example for the fix."}
         stored.save(update_fields=["content"])
 
