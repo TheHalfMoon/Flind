@@ -1,4 +1,4 @@
-import { CLOUD_HOSTNAMES } from 'lib/constants'
+import { FlindRegionHosts, flindRegionHost } from 'lib/flindRegionHosts'
 
 import { Region } from '~/types'
 
@@ -7,6 +7,8 @@ export function otherRegionOf(region: Region): Region {
 }
 
 // Preserve the query string (e.g. `next`) but always land on the login page of the other region.
-export function otherRegionLoginUrl(region: Region, search: string): string {
-    return `https://${CLOUD_HOSTNAMES[otherRegionOf(region)]}/login${search}`
+// Flind only links to a region host its operator configured; without one there is no other region to offer.
+export function otherRegionLoginUrl(region: Region, search: string, config?: FlindRegionHosts): string | null {
+    const host = flindRegionHost(otherRegionOf(region), config)
+    return host ? `https://${host}/login${search}` : null
 }

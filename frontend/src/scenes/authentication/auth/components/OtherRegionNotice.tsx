@@ -43,6 +43,9 @@ export function OtherRegionNotice({
     const search = new URLSearchParams(location.search)
     search.set('email', email)
     const switchUrl = otherRegionLoginUrl(preflight.region, `?${search.toString()}`)
+    if (!switchUrl) {
+        return null
+    }
 
     if (reason === 'no_account') {
         return (

@@ -37,6 +37,10 @@ chose one merge over area-by-area integration.
   `products/desktop/pnpm-lock.yaml` (`pnpm@11.28.5 install --lockfile-only`). `bin/hobby-installer/go.sum` keeps Flind's
   removal of `posthog-go`.
 - Domain Connect stays off by default in Flind; upstream's email-setup tests now enable it explicitly.
+- The 10 workflows upstream added since the import are not taken (`ci-hoglang`, `ci-toolbar-extension`,
+  `hogbox-preview-cleanup`, `hogbox-preview-env`, `mobile-build`, `mobile-ci`, `mobile-release`,
+  `release-toolbar-extension`, `update-ai-costs-stale-alert`, `weekly-mcp-tool-health-report`). Flind runs only its own
+  `flind-*` workflows; two of these publish releases, which stays on hold until the owner's GREEN LIGHT FLIND.
 
 ## Known follow-ups
 
