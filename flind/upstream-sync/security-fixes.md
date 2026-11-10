@@ -13,6 +13,7 @@ upstream test, add one if upstream had none, and run the relevant suites. `statu
 | [`ace059329`](https://github.com/PostHog/posthog/commit/ace059329) | groups | access control | Apply property access control to group properties | pending |
 | [`c1acb07d4`](https://github.com/PostHog/posthog/commit/c1acb07d4) | activity-log | access control | Apply property access control to logged group property values | pending |
 | [`5666872eb`](https://github.com/PostHog/posthog/commit/5666872eb) | persons | access control | Apply property access control to properties_at_time | cherry-picked (batch 3) |
+| [`736a4e51a`](https://github.com/PostHog/posthog/commit/736a4e51a) | hogql | access control | Mask restricted person properties inside `$set` and `$set_once` (found as a dependency of `5666872eb`) | cherry-picked (batch 3) |
 | [`b17ccdae5`](https://github.com/PostHog/posthog/commit/b17ccdae5) | flags | access control | Apply property access control to test-evaluation person properties | merged (#11) |
 | [`4d7475936`](https://github.com/PostHog/posthog/commit/4d7475936) | data-warehouse | information disclosure | Sanitize repartition permission denials | merged (#11) |
 | [`b169def24`](https://github.com/PostHog/posthog/commit/b169def24) | permissions | access control (UI) | Disable admin-only setup controls for non-admins | merged (#12), adapted |
@@ -33,5 +34,5 @@ upstream test, add one if upstream had none, and run the relevant suites. `statu
 | [`c69dd9abe`](https://github.com/PostHog/posthog/commit/c69dd9abe) | error-tracking | prompt injection | Harden issue summaries against prompt injection | merged (#12), re-implemented |
 | [`11742b8e0`](https://github.com/PostHog/posthog/commit/11742b8e0) | livestream | CVE | Disable multipath TCP on listeners (CVE-2026-98432) | merged (#11) |
 
-23 fixes. Commit subjects only were scanned; fixes whose subject does not name the issue can be missed,
+24 fixes (23 from the subject scan, plus `736a4e51a`, found as a dependency). Commit subjects only were scanned; fixes whose subject does not name the issue can be missed,
 so the area integrations in later steps still review every security-relevant module they touch.
