@@ -63,6 +63,14 @@ jobs:
                 products/groups/backend/tests/test_clickhouse_groups.py
                 posthog/api/test/test_activity_log.py
                 posthog/api/advanced_activity_logs/test_filters.py
+                products/review_hog/backend/reviewer/tests/test_executor.py
+                products/tasks/backend/temporal/process_task/tests/test_sandbox_credentials.py
+                products/tasks/backend/temporal/process_task/tests/test_send_followup_to_sandbox.py
+                products/tasks/backend/temporal/process_task/tests/test_utils.py
+                products/tasks/backend/tests/test_sandbox_utils.py
+                products/tasks/backend/tests/test_facade.py
+                products/tasks/backend/tests/test_models.py
+                posthog/tasks/test/test_team_metadata_signals.py
             # Node tests carried by upstream changes that need the test databases (same services).
             FLIND_NODE_DB_TEST_TARGETS: >-
                 src/common/utils/team-manager.test.ts
