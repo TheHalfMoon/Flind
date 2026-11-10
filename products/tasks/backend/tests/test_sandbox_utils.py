@@ -55,6 +55,8 @@ def test_get_sandbox_api_url(sandbox_api_url: str | None, expected: str) -> None
 
 def _team_integration(*, unavailable: bool = False, mint_raises: bool = False) -> MagicMock:
     github = MagicMock(spec=GitHubIntegration)
+    github.github_installation_id = "INSTALL"
+    github.mint_scoped_installation_token.return_value = "ghs_readonly"
     github.installation_unavailable.return_value = unavailable
     github.account_name_needs_heal.return_value = False
     github.organization.return_value = "Acme"
