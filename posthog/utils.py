@@ -108,6 +108,10 @@ logger = structlog.get_logger(__name__)
 __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
 
 
+# C0 controls anywhere, and a leading space: characters URL parsers strip or drop before reading the authority.
+_URL_CONTROL_CHARS = re.compile(r"^[\x00-\x20]|[\x00-\x1f]")
+
+
 class PotentialSecurityProblemException(Exception):
     """
     When providing an absolutely-formatted URL
@@ -131,18 +135,29 @@ def absolute_uri(url: Optional[str] = None) -> str:
     if has_ambiguous_authority(url):
         raise PotentialSecurityProblemException(f"It is forbidden to provide an absolute URI using {url}")
 
+    # urlparse and urljoin drop tabs and newlines and strip leading control characters and
+    # spaces, so the value they resolve can differ from the one checked below.
+    if _URL_CONTROL_CHARS.search(url):
+        raise PotentialSecurityProblemException(f"It is forbidden to provide an absolute URI using {url}")
+
     provided_url = urlparse(url)
     if provided_url.hostname and provided_url.scheme:
         site_url = urlparse(settings.SITE_URL)
-        provided_url = provided_url
         if (
             site_url.hostname != provided_url.hostname
             or site_url.port != provided_url.port
             or site_url.scheme != provided_url.scheme
         ):
             raise PotentialSecurityProblemException(f"It is forbidden to provide an absolute URI using {url}")
+        return urljoin(settings.SITE_URL.rstrip("/") + "/", url.lstrip("/"))
 
-    return urljoin(settings.SITE_URL.rstrip("/") + "/", url.lstrip("/"))
+    relative_url = url.lstrip("/")
+    # A relative value must stay on SITE_URL: anything still carrying an authority after the
+    # slashes are stripped would be read by urljoin as a protocol-relative URL.
+    if urlparse(relative_url).netloc:
+        raise PotentialSecurityProblemException(f"It is forbidden to provide an absolute URI using {url}")
+
+    return urljoin(settings.SITE_URL.rstrip("/") + "/", relative_url)
 
 
 @dataclasses.dataclass(frozen=True, kw_only=True, slots=True)
@@ -1191,7 +1206,7 @@ def invalidate_has_person_email_cache(project_id: int) -> None:
 
 @tracer.start_as_current_span("template.frontend_apps")
 def get_frontend_apps(team_id: int) -> dict[int, dict[str, Any]]:
-    from products.cdp.backend.models.plugin import Plugin, PluginSourceFile
+    from products.cdp.backend.models.plugin import Plugin, PluginSourceFile, get_secret_fields
 
     plugin_configs = (
         Plugin.objects.filter(pluginconfig__team_id=team_id, pluginconfig__enabled=True)
@@ -1213,9 +1228,7 @@ def get_frontend_apps(team_id: int) -> dict[int, dict[str, Any]]:
     frontend_apps = {}
     for p in plugin_configs:
         config = p["pluginconfig__config"] or {}
-        config_schema = p["config_schema"] or {}
-        secret_fields = {field["key"] for field in config_schema if field.get("secret")}
-        for key in secret_fields:
+        for key in get_secret_fields(p["config_schema"] or {}):
             if key in config:
                 config[key] = "** SECRET FIELD **"
         frontend_apps[p["pluginconfig__id"]] = {

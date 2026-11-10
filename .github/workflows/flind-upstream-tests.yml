@@ -42,6 +42,21 @@ jobs:
                 products/security/backend/tests/test_decisions.py
                 products/warehouse_sources/backend/temporal/data_imports/pipelines/core/test_repartition.py
                 products/error_tracking/backend/tests/test_issue_summaries.py
+                posthog/api/test/test_person.py
+                posthog/api/test/test_project.py
+                posthog/api/test/test_team.py
+                posthog/api/test/test_team_project_parity.py
+                posthog/models/person/test/test_point_in_time_properties_integration.py
+                posthog/test/test_utils.py
+                products/cdp/backend/api/test/test_plugin.py
+                products/exports/backend/tasks/test/test_csv_exporter.py
+                products/exports/backend/tasks/test/test_csv_exporter_renders.py
+                products/exports/backend/tasks/test/test_csv_exporter_url_sanitising.py
+                products/tasks/backend/temporal/process_task/activities/tests/test_provision_sandbox.py
+                products/tasks/backend/temporal/process_task/tests/test_workflow.py
+                posthog/hogql/test/test_restricted_properties.py
+                posthog/hogql/transforms/test/test_property_types.py
+                posthog/hogql_queries/test/test_events_query_runner.py
             # Node tests carried by upstream changes that need the test databases (same services).
             FLIND_NODE_DB_TEST_TARGETS: >-
                 src/common/utils/team-manager.test.ts
@@ -57,8 +72,10 @@ jobs:
               run: |
                   set -o pipefail
                   sed -i 's/--memory 3G/--memory 1G/' docker-compose.base.yml
-                  echo "127.0.0.1 kafka clickhouse db redis7 zookeeper" | sudo tee -a /etc/hosts
-                  docker compose -f docker-compose.dev.yml up -d --wait db redis7 zookeeper kafka clickhouse
+                  # Load every funnel UDF version, as upstream's E2E and MCP workflows do before starting ClickHouse.
+                  cp posthog/user_scripts/latest_user_defined_function.xml docker/clickhouse/user_defined_function.xml
+                  echo "127.0.0.1 kafka clickhouse db redis7 zookeeper objectstorage" | sudo tee -a /etc/hosts
+                  docker compose -f docker-compose.dev.yml up -d --wait db redis7 zookeeper kafka clickhouse objectstorage
                   docker compose -f docker-compose.dev.yml up --exit-code-from kafka-init kafka-init
 
             - name: Provide app shell template
@@ -236,3 +253,43 @@ jobs:
                   pnpm build:products 2>&1 | tail -40
                   pnpm exec jest $FLIND_JEST_TARGETS 2>&1 | tee jest.log
                   { echo '## Upstream frontend tests'; echo '```'; tail -30 jest.log; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+
+    mcp:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 30
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                  fetch-depth: 1
+
+            - uses: actions/setup-node@v4
+              with:
+                  node-version-file: .nvmrc
+
+            - name: Install dependencies
+              env:
+                  HUSKY: '0'
+                  SKIP_ELECTRON_REBUILD: '1'
+              run: |
+                  set -o pipefail
+                  npm install -g "pnpm@$(node -p "require('./package.json').packageManager.split('@')[1]")"
+                  install() {
+                      if ! pnpm install --frozen-lockfile "$@" > install.log 2>&1; then
+                          grep -n -B 30 -A 5 'ELIFECYCLE\|ERR_PNPM' install.log | tail -120
+                          exit 1
+                      fi
+                      tail -3 install.log
+                  }
+                  install --ignore-scripts --filter=@flind/root
+                  install --ignore-scripts --filter=@flind/mcp...
+                  if ! pnpm rebuild --filter=@flind/mcp... > rebuild.log 2>&1; then
+                      grep -n -B 20 -A 5 'Failed\|ELIFECYCLE\|ERR_PNPM' rebuild.log | tail -80
+                      exit 1
+                  fi
+
+            - name: MCP unit tests carried by upstream changes
+              working-directory: services/mcp
+              run: |
+                  set -o pipefail
+                  pnpm exec vitest run tests/unit/credential-redaction.test.ts tests/unit/StateManager.test.ts 2>&1 | tee vitest.log
+                  { echo '## Upstream MCP tests'; echo '```'; tail -20 vitest.log; echo '```'; } >> "$GITHUB_STEP_SUMMARY"

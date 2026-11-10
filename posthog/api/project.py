@@ -51,6 +51,7 @@ from posthog.api.team.marketing_config import TeamMarketingAnalyticsConfigSerial
 from posthog.api.team.settings_validation import (
     _format_serializer_errors,
     heatmaps_screenshot_secret_for_reader,
+    hide_secret_api_tokens_from_unscoped_caller,
     validate_team_attrs,
     validate_team_workflows_config,
 )
@@ -648,6 +649,12 @@ class ProjectBackwardCompatSerializer(
             "everyone else and when none has been generated."
         ),
     )  # Compat with TeamSerializer
+    is_ai_data_processing_approved = serializers.BooleanField(
+        source="organization.is_ai_data_processing_approved",
+        read_only=True,
+        allow_null=True,
+        help_text="Whether the project's organization approved AI data processing. AI features need this approval.",
+    )
     # project_id mirrors TeamSerializer.project_id; for a Project it equals its own id (Project ↔ Team is 1:1)
     project_id = serializers.IntegerField(
         source="id", read_only=True, help_text="ID of the project this environment belongs to."
@@ -727,6 +734,7 @@ class ProjectBackwardCompatSerializer(
         fields: tuple[str, ...] = (
             "id",
             "organization",
+            "is_ai_data_processing_approved",
             "name",
             "logo_media_id",
             "product_description",
@@ -1007,6 +1015,7 @@ class ProjectBackwardCompatSerializer(
         # Mirror TeamSerializer: fall back to the global default data theme when the color feature isn't available
         if not instance.organization.is_feature_available(AvailableFeature.DATA_COLOR_THEMES):
             representation["default_data_theme"] = _default_data_color_theme_id()
+        hide_secret_api_tokens_from_unscoped_caller(representation, self.context.get("request"))
         return representation
 
     def get_user_access_level(self, obj: Model | ObjectAccessRef) -> Optional[str]:
