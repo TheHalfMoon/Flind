@@ -29,7 +29,7 @@ export function AppLoadError({ error }: AppLoadErrorProps): JSX.Element {
 
     return (
         <div className="p-4">
-            <h1 className="mb-1 text-2xl font-bold">PostHog could not load</h1>
+            <h1 className="mb-1 text-2xl font-bold">Flind could not load</h1>
             <p>
                 Your browser could not download part of the app. This can happen for a few minutes after we release an
                 update, or because of a network problem. Wait a minute, then reload the page. If it keeps happening, try

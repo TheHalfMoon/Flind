@@ -83,7 +83,7 @@ describe('EmptyDashboardComponent', () => {
         expect(document.querySelector('[data-attr="dashboard-loading-controls"]')).toBeInTheDocument()
     })
 
-    it('shows clear paths to add a chart or create one with PostHog AI', () => {
+    it('shows clear paths to add a chart or create one with Flind AI', () => {
         const { logic } = renderEmptyState()
 
         expect(screen.getByText('Build your dashboard')).toBeInTheDocument()

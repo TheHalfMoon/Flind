@@ -1976,14 +1976,14 @@ describe('isSkeletonItem', () => {
 describe('propertyTaxonomicGroupProps', () => {
     const makePropDef = (name: string): PropertyDefinition => ({ name }) as PropertyDefinition
 
-    describe('person properties group labels only core person properties as PostHog properties', () => {
+    describe('person properties group labels only core person properties as Flind properties', () => {
         const { getPopoverHeader } = propertyTaxonomicGroupProps(CORE_FILTER_DEFINITIONS_BY_GROUP.person_properties)
 
         it.each([
             {
                 property: 'email',
-                expected: 'PostHog property',
-                description: 'email is a core PostHog person property',
+                expected: 'Flind property',
+                description: 'email is a core Flind person property',
             },
             {
                 property: '$email',
@@ -2006,13 +2006,13 @@ describe('propertyTaxonomicGroupProps', () => {
         it.each([
             {
                 property: '$browser',
-                expected: 'PostHog property',
-                description: '$browser is a core PostHog event property',
+                expected: 'Flind property',
+                description: '$browser is a core Flind event property',
             },
             {
                 property: 'my_custom_prop',
                 expected: 'Property',
-                description: 'custom event properties are not labeled as PostHog properties',
+                description: 'custom event properties are not labeled as Flind properties',
             },
         ])('$description', ({ property, expected }) => {
             expect(getPopoverHeader!(makePropDef(property))).toBe(expected)

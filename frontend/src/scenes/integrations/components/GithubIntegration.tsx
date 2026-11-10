@@ -150,12 +150,12 @@ export function GithubIntegration({
                         <div className="flex flex-wrap items-center gap-3">
                             <span className="min-w-0 text-sm font-normal">
                                 {multipleInstallations ? (
-                                    <>PostHog is already installed on more than one GitHub account.</>
+                                    <>Flind is already installed on more than one GitHub account.</>
                                 ) : (
                                     <>
                                         {installations[0].source_team_id !== null ? (
                                             <span>
-                                                PostHog is installed on{' '}
+                                                Flind is installed on{' '}
                                                 <strong>{accountLabel(installations[0])}</strong> and connected to{' '}
                                                 <strong>
                                                     {installations[0].source_team_name ??
@@ -165,7 +165,7 @@ export function GithubIntegration({
                                             </span>
                                         ) : (
                                             <span>
-                                                PostHog is installed on the GitHub account{' '}
+                                                Flind is installed on the GitHub account{' '}
                                                 <strong>{accountLabel(installations[0])}</strong>.{' '}
                                                 <span>
                                                     {sourceLabel(
@@ -257,7 +257,7 @@ export function GithubIntegration({
                         <p className="m-0 max-w-[520px] text-center text-[13px] text-tertiary">
                             {connectDescription ?? (
                                 <>
-                                    PostHog uses GitHub to create reports and pull requests based on your code. After
+                                    Flind uses GitHub to create reports and pull requests based on your code. After
                                     connecting GitHub, you can run Wizard in the background to complete setup.
                                 </>
                             )}
@@ -285,7 +285,7 @@ export function GithubIntegration({
                 )}
                 {isConnected && showManageButton && (
                     <p className={cn('text-secondary text-xs mb-0', centered && 'text-center')}>
-                        Add the PostHog app to another GitHub account, or change which repositories it can see.
+                        Add the Flind app to another GitHub account, or change which repositories it can see.
                     </p>
                 )}
                 {showPersonalConnectionHelp &&
@@ -293,9 +293,9 @@ export function GithubIntegration({
                     installations.length === 0 &&
                     githubPersonalConnected === false && (
                         <p className={cn('text-secondary text-xs mb-0', centered && 'text-center')}>
-                            Already installed the PostHog GitHub App but don't see it here? Connect your GitHub account
+                            Already installed the Flind GitHub App but don't see it here? Connect your GitHub account
                             under <Link to={urls.settings('user-personal-integrations')}>Personal integrations</Link> so
-                            PostHog can find it.
+                            Flind can find it.
                         </p>
                     )}
             </div>

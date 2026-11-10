@@ -3249,7 +3249,7 @@ export const sessionRecordingPlayerLogic = kea<sessionRecordingPlayerLogicType>(
         },
         loadSnapshotsForSourceFailure: () => {
             if (Object.keys(values.sessionPlayerData.snapshotsByWindowId).length === 0) {
-                console.error('PostHog Recording Playback Error: No snapshots loaded')
+                console.error('Flind Recording Playback Error: No snapshots loaded')
                 actions.setPlayerError(
                     values.isSnapshotUnauthorized ? 'snapshotUnauthorized' : 'loadSnapshotsForSourceFailure'
                 )
@@ -3257,7 +3257,7 @@ export const sessionRecordingPlayerLogic = kea<sessionRecordingPlayerLogicType>(
         },
         loadSnapshotSourcesFailure: () => {
             if (Object.keys(values.sessionPlayerData.snapshotsByWindowId).length === 0) {
-                console.error('PostHog Recording Playback Error: No snapshots loaded')
+                console.error('Flind Recording Playback Error: No snapshots loaded')
                 actions.setPlayerError(
                     values.isSnapshotUnauthorized ? 'snapshotUnauthorized' : 'loadSnapshotSourcesFailure'
                 )
@@ -3266,13 +3266,13 @@ export const sessionRecordingPlayerLogic = kea<sessionRecordingPlayerLogicType>(
         // Both are terminal give-ups: unlike the per-attempt failures above they fire even when other
         // data already loaded, because the missing range would otherwise buffer forever with no error.
         snapshotSourceLoadExhausted: () => {
-            console.error('PostHog Recording Playback Error: A snapshot source repeatedly failed to load')
+            console.error('Flind Recording Playback Error: A snapshot source repeatedly failed to load')
             actions.setPlayerError(
                 values.isSnapshotUnauthorized ? 'snapshotUnauthorized' : 'snapshotSourceLoadExhausted'
             )
         },
         snapshotProcessingFailed: () => {
-            console.error('PostHog Recording Playback Error: Snapshot processing repeatedly failed')
+            console.error('Flind Recording Playback Error: Snapshot processing repeatedly failed')
             actions.setPlayerError('snapshotProcessingFailed')
         },
         retryLoadingSnapshots: () => {
@@ -3705,7 +3705,7 @@ export const sessionRecordingPlayerLogic = kea<sessionRecordingPlayerLogicType>(
                 await loadAllSnapshots(values, actions)
             } catch {
                 lemonToast.error(
-                    "Couldn't load the recording data for PostHog AI. Wait for the recording to finish loading, then try again."
+                    "Couldn't load the recording data for Flind AI. Wait for the recording to finish loading, then try again."
                 )
                 return
             } finally {
@@ -3727,13 +3727,13 @@ export const sessionRecordingPlayerLogic = kea<sessionRecordingPlayerLogicType>(
             )
             if (values.effectivePhaiView !== 'new') {
                 lemonToast.warning(
-                    'This version of PostHog AI chat cannot take file attachments. It gets a summary of the recording instead.'
+                    'This version of Flind AI chat cannot take file attachments. It gets a summary of the recording instead.'
                 )
             } else if (recordingFile.size <= ATTACHMENT_MAX_SIZE_BYTES) {
                 actions.addFiles([recordingFile])
             } else {
                 lemonToast.warning(
-                    'This recording is too large to attach as a file. PostHog AI gets a summary of it instead.'
+                    'This recording is too large to attach as a file. Flind AI gets a summary of it instead.'
                 )
             }
             if (values.effectivePhaiView === 'new') {
@@ -3755,7 +3755,7 @@ export const sessionRecordingPlayerLogic = kea<sessionRecordingPlayerLogicType>(
                 openBillingPopupModal({
                     title: 'Unlock recording exports',
                     description:
-                        'Export recordings to a file that can be stored wherever you like and loaded back into PostHog for playback at any time.',
+                        'Export recordings to a file that can be stored wherever you like and loaded back into Flind for playback at any time.',
                 })
                 return
             }

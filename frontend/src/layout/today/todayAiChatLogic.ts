@@ -249,7 +249,7 @@ export const todayAiChatLogic = kea<todayAiChatLogicType>([
                 legacyChatTitle: string | null
             ): string => {
                 if (effectivePhaiView === 'legacy') {
-                    return legacyChatTitle || 'PostHog AI'
+                    return legacyChatTitle || 'Flind AI'
                 }
                 if (!activeItemId) {
                     return 'New chat'

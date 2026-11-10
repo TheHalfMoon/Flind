@@ -38,7 +38,7 @@ const eventTypeOptions: LemonSelectOptions<EventDefinitionType> = [
     },
     {
         value: EventDefinitionType.EventPostHog,
-        label: 'PostHog events',
+        label: 'Flind events',
         'data-attr': 'event-type-option-event-posthog',
     },
 ]
@@ -138,7 +138,7 @@ export function EventDefinitionsTable(): JSX.Element {
                 {filters.event_type === 'event_custom'
                     ? 'custom '
                     : filters.event_type === 'event_posthog'
-                      ? 'PostHog '
+                      ? 'Flind '
                       : ''}
                 event usage statistics?{' '}
                 <Link

@@ -25,7 +25,7 @@ export function BaseCurrency({ hideTitle = false, disabledReason }: BaseCurrency
     return (
         <SceneSection
             title={!hideTitle ? 'Base currency' : undefined}
-            description="PostHog will convert all currency values for the entire team to this currency before displaying them to you. If we can't properly detect your currency, we'll assume it's in this currency as well."
+            description="Flind will convert all currency values for the entire team to this currency before displaying them to you. If we can't properly detect your currency, we'll assume it's in this currency as well."
         >
             <div>
                 <CurrencyDropdown

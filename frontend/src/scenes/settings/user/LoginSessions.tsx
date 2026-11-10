@@ -22,7 +22,7 @@ export function LoginSessions(): JSX.Element {
     const handleRevoke = (session: UserAuthSessionApi): void => {
         LemonDialog.open({
             title: 'Log out of this device?',
-            description: 'This device will be signed out of your PostHog account immediately.',
+            description: 'This device will be signed out of your Flind account immediately.',
             primaryButton: {
                 children: 'Log out',
                 status: 'danger',
@@ -35,7 +35,7 @@ export function LoginSessions(): JSX.Element {
     const handleRevokeOthers = (): void => {
         LemonDialog.open({
             title: 'Log out everywhere else?',
-            description: 'Every device except this one will be signed out of your PostHog account immediately.',
+            description: 'Every device except this one will be signed out of your Flind account immediately.',
             primaryButton: {
                 children: 'Log out everywhere else',
                 status: 'danger',

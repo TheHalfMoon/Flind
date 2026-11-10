@@ -16,10 +16,10 @@ export function OnboardingMcpStep(): JSX.Element {
     return (
         <OnboardingStep
             title="Connect your AI agent"
-            subtitle="The PostHog MCP server lets agents like Claude Code, Cursor, and Codex read your PostHog data and set up features for you."
+            subtitle="The Flind MCP server lets agents like Claude Code, Cursor, and Codex read your Flind data and set up features for you."
             stepKey={OnboardingStepKey.MCP}
             continueDisabledReason={
-                hasConnectedAgent === false ? 'Connect your agent to PostHog to continue' : undefined
+                hasConnectedAgent === false ? 'Connect your agent to Flind to continue' : undefined
             }
             showSkip
         >
@@ -27,7 +27,7 @@ export function OnboardingMcpStep(): JSX.Element {
                 <WizardCommandBlock
                     hog={PurpleWizardHog}
                     subcommand="mcp add"
-                    description="Run this in your terminal. It asks which agents to connect, then signs your agent in to PostHog."
+                    description="Run this in your terminal. It asks which agents to connect, then signs your agent in to Flind."
                 />
                 <div className="flex items-center justify-center gap-2" aria-live="polite">
                     {hasConnectedAgent ? (

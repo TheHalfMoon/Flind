@@ -18,7 +18,7 @@ export function SidebarSuggestionsSetting(): JSX.Element {
                     posthog.capture('sidebar suggestions toggled', { enabled: checked })
                     updateUser({ allow_sidebar_suggestions: checked })
                 }}
-                label="Suggest products as I use PostHog"
+                label="Suggest products as I use Flind"
                 bordered
                 fullWidth
                 data-attr="customize-sidebar-suggestions-toggle"

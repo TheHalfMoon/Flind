@@ -50,7 +50,7 @@ export const SAMPLE_GLOBALS_CONTEXTS: Partial<Record<HogFunctionConfigurationCon
         const issue = await errorTrackingIssuesRetrieve(projectId, fingerprintRecord.issue_id)
         const properties: Record<string, any> = {
             name: issue.name ?? 'Unnamed issue',
-            description: 'PostHog test alert',
+            description: 'Flind test alert',
             status: issue.status,
             severity: issue.severity,
             fingerprint: fingerprintRecord.fingerprint,
@@ -81,7 +81,7 @@ export const SAMPLE_GLOBALS_CONTEXTS: Partial<Record<HogFunctionConfigurationCon
                 severity: 'warning',
                 issue_id: 'test-issue-id',
                 title: 'Test health check',
-                summary: 'This is a test alert from PostHog',
+                summary: 'This is a test alert from Flind',
                 link: '/health',
                 remediation: null,
                 payload: {},

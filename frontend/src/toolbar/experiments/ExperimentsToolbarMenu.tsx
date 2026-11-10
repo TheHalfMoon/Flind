@@ -49,7 +49,7 @@ const ExperimentsListToolbarMenu = (): JSX.Element => {
                     {isWebExperimentsDisabled && (
                         <div className="pb-2">
                             <LemonBanner type="warning">
-                                Web experiments are disabled in your PostHog web snippet configuration. To run
+                                Web experiments are disabled in your Flind web snippet configuration. To run
                                 experiments, add <code>disable_web_experiments: false</code> to your configuration.{' '}
                                 <Link
                                     target="_blank"

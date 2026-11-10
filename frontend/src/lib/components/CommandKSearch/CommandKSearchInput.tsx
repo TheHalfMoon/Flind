@@ -115,7 +115,7 @@ export function CommandKSearchInput(): JSX.Element {
                     aria-label="Search"
                     autoComplete="off"
                     spellCheck={false}
-                    placeholder={chips.length === 0 ? 'Search or ask PostHog AI… try is:dashboard' : undefined}
+                    placeholder={chips.length === 0 ? 'Search or ask Flind AI… try is:dashboard' : undefined}
                     className="min-w-24 flex-1"
                     value={text}
                     onPaste={() => {

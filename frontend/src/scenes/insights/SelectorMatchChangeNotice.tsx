@@ -55,7 +55,7 @@ function SelectorMatchChangeNoticeContent({
     return (
         <LemonBanner type="warning" dismissKey={FEATURE_FLAGS.SELECTOR_MATCH_CHANGE_NOTICE} className="mb-4">
             <p>
-                This insight uses an action that PostHog matched incorrectly. We've fixed how action selectors are
+                This insight uses an action that Flind matched incorrectly. We've fixed how action selectors are
                 matched, but we couldn't rewrite this selector to keep its old counts. Counts in this insight are lower
                 than they were, including for past dates.
             </p>

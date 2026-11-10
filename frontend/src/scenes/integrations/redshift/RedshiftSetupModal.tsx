@@ -30,7 +30,7 @@ export const RedshiftSetupModal = (props: RedshiftSetupModalLogicProps): JSX.Ele
             isOpen={props.isOpen}
             width={680}
             title="Configure Redshift connection"
-            description="Connect PostHog to your Redshift cluster. Connections can be reused across exports."
+            description="Connect Flind to your Redshift cluster. Connections can be reused across exports."
             onClose={() => props.onComplete()}
             footer={
                 <>
@@ -92,7 +92,7 @@ export const RedshiftSetupModal = (props: RedshiftSetupModalLogicProps): JSX.Ele
                                     entered. This guards against man-in-the-middle attacks.
                                     <br />
                                     <br />
-                                    The connection is always encrypted regardless of this setting, because PostHog
+                                    The connection is always encrypted regardless of this setting, because Flind
                                     requires TLS. These options only add verification of the server certificate.
                                 </>
                             }
@@ -158,7 +158,7 @@ export const RedshiftSetupModal = (props: RedshiftSetupModalLogicProps): JSX.Ele
                                 <LemonField
                                     name="awsRoleArn"
                                     label="IAM role ARN"
-                                    info="The ARN of an IAM role in your AWS account that PostHog assumes to get temporary Redshift credentials."
+                                    info="The ARN of an IAM role in your AWS account that Flind assumes to get temporary Redshift credentials."
                                 >
                                     <LemonInput
                                         placeholder="e.g. arn:aws:iam::123456789012:role/posthog-batch-exports"
@@ -178,8 +178,8 @@ export const RedshiftSetupModal = (props: RedshiftSetupModalLogicProps): JSX.Ele
                         ) : (
                             <>
                                 <LemonBanner type="warning">
-                                    Access keys are long-lived credentials stored by PostHog (encrypted). Prefer letting
-                                    PostHog assume an IAM role to avoid creating and storing long-lived credentials.
+                                    Access keys are long-lived credentials stored by Flind (encrypted). Prefer letting
+                                    Flind assume an IAM role to avoid creating and storing long-lived credentials.
                                 </LemonBanner>
                                 <LemonField name="awsAccessKeyId" label="AWS Access Key ID">
                                     <LemonInput placeholder="e.g. AKIAIOSFODNN7EXAMPLE" autoComplete="off" />
@@ -197,7 +197,7 @@ export const RedshiftSetupModal = (props: RedshiftSetupModalLogicProps): JSX.Ele
                         <LemonField
                             name="user"
                             label="User"
-                            info="The Redshift user to connect as. PostHog requests temporary credentials for this user on every run, so there is no database password to store."
+                            info="The Redshift user to connect as. Flind requests temporary credentials for this user on every run, so there is no database password to store."
                         >
                             <LemonInput placeholder="e.g. posthog" autoComplete="off" />
                         </LemonField>

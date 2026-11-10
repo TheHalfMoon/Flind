@@ -19,7 +19,7 @@ export function HogFunctionSourceWebhookInfo(): JSX.Element {
             </CodeSnippet>
 
             <p className="text-sm">
-                Use this URL in your external system to send events to PostHog. The webhook can be called with a POST
+                Use this URL in your external system to send events to Flind. The webhook can be called with a POST
                 request and any JSON payload, or a GET request. You can also use extensions such as <code>.gif</code>{' '}
                 for embedding the webhook as an image for example in an email.
             </p>

@@ -59,7 +59,7 @@ function EventRowActionsDropdown({ event }: { event: EventType }): JSX.Element {
                     }
                     disabledReason={
                         hiddenEventNames(currentTeam?.flag_evaluations_mode).includes(event.event)
-                            ? 'PostHog still collects this event, but its data is moving, so a new action on it would stop working.'
+                            ? 'Flind still collects this event, but its data is moving, so a new action on it would stop working.'
                             : undefined
                     }
                     fullWidth

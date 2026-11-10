@@ -50,10 +50,10 @@ export function QuillHealthSceneActions({
             {askAiEnabled && (
                 <DropdownMenu>
                     <DropdownMenuTrigger
-                        render={<Button variant="outline" tooltip="Ask PostHog AI about your health issues" />}
+                        render={<Button variant="outline" tooltip="Ask Flind AI about your health issues" />}
                     >
                         <IconSparkles />
-                        Ask PostHog AI
+                        Ask Flind AI
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end" className="min-w-56">
                         {HEALTH_OVERVIEW_QUESTIONS.map((question) => (

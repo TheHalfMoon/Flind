@@ -144,7 +144,7 @@ export function TodayContextPanelLauncher(): JSX.Element {
                                     <Button
                                         variant="outline"
                                         size="default"
-                                        aria-label="Ask PostHog AI"
+                                        aria-label="Ask Flind AI"
                                         className="w-24 justify-center rounded-full"
                                         data-attr="today-ai-chat-button"
                                     />
@@ -154,7 +154,7 @@ export function TodayContextPanelLauncher(): JSX.Element {
                     >
                         <IconSparkles />
                     </TooltipTrigger>
-                    {!drag && <TooltipContent side="top">Ask PostHog AI</TooltipContent>}
+                    {!drag && <TooltipContent side="top">Ask Flind AI</TooltipContent>}
                 </Tooltip>
                 {/* Hiding the button while its card is open would leave the card without an anchor. */}
                 {!floatingOpen && (

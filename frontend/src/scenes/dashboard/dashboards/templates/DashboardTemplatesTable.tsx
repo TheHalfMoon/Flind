@@ -35,7 +35,7 @@ function isBuiltInOfficialTemplate(record: Pick<DashboardTemplateType, 'scope' |
 
 function createdBySortKey(record: DashboardTemplateType): string {
     if (record.scope === 'global') {
-        return 'PostHog'
+        return 'Flind'
     }
     return record.created_by?.first_name || record.created_by?.email || ''
 }
@@ -278,7 +278,7 @@ export const DashboardTemplatesTable = (): JSX.Element | null => {
                             <span aria-hidden className="text-base leading-none">
                                 🦔
                             </span>
-                            <span>PostHog</span>
+                            <span>Flind</span>
                         </div>
                     )
                 }
@@ -418,7 +418,7 @@ export const DashboardTemplatesTable = (): JSX.Element | null => {
         <>
             <p className="mt-0 mb-4 text-secondary">
                 {isStaffViewer
-                    ? "Templates saved for this project and shared across your organization, plus PostHog's official templates."
+                    ? "Templates saved for this project and shared across your organization, plus Flind's official templates."
                     : 'Templates saved for this project and shared across your organization.'}
             </p>
             <div className="flex justify-between gap-2 flex-wrap mb-4">

@@ -93,7 +93,7 @@ export interface ToolbarApiOptions {
 /** Pull a human-readable message out of a (possibly DRF) error body. */
 export function extractErrorDetail(body: unknown, status: number, fallback: string): string {
     if (status === 401 || status === 403) {
-        return 'Your toolbar session lacks permission. Please re-authenticate the toolbar from PostHog.'
+        return 'Your toolbar session lacks permission. Please re-authenticate the toolbar from Flind.'
     }
     if (body && typeof body === 'object') {
         const obj = body as Record<string, unknown>

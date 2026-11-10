@@ -29,7 +29,7 @@ export function getRetryCooldown(retryAt: number | null | undefined): {
         return { secondsLeft, disabledReason: undefined, remediation: 'You can try this query again now.' }
     }
     const unit = secondsLeft === 1 ? 'second' : 'seconds'
-    const message = `PostHog is busy. You can retry in ${secondsLeft} ${unit}.`
+    const message = `Flind is busy. You can retry in ${secondsLeft} ${unit}.`
     return { secondsLeft, disabledReason: message, remediation: message }
 }
 

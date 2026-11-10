@@ -552,7 +552,7 @@ export function PropertiesTable({
                                 <>
                                     <LemonCheckbox
                                         checked={hidePostHogPropertiesInTable}
-                                        label="Hide PostHog properties"
+                                        label="Hide Flind properties"
                                         bordered
                                         onChange={setHidePostHogPropertiesInTable}
                                     />

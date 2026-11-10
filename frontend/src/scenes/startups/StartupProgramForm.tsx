@@ -59,10 +59,10 @@ export function StartupProgramForm(): JSX.Element {
 
                 <LemonField
                     name="organization_name"
-                    label="PostHog organization"
+                    label="Flind organization"
                     info="To apply for a different organization, switch to that organization first"
                 >
-                    <LemonInput placeholder="Your PostHog organization" disabled />
+                    <LemonInput placeholder="Your Flind organization" disabled />
                 </LemonField>
 
                 <LemonField name="organization_id" className="hidden">

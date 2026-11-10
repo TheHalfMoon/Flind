@@ -61,7 +61,7 @@ function RowContent({ row }: { row: CommandKRow }): JSX.Element | null {
             return (
                 <>
                     <IconSparkles className="size-4 shrink-0 text-primary" />
-                    <span className="shrink-0">Ask PostHog AI:</span>
+                    <span className="shrink-0">Ask Flind AI:</span>
                     <span className="truncate text-muted-foreground">{row.question}</span>
                 </>
             )

@@ -62,7 +62,7 @@ export function MaxChangelog(): JSX.Element | null {
                 <div className="p-3 min-w-[280px] max-w-[320px]">
                     <div className="flex items-center justify-between mb-3">
                         <h3 className="font-semibold text-sm m-0">
-                            {hasAlerts ? 'PostHog AI status' : "What's new in PostHog AI"}
+                            {hasAlerts ? 'Flind AI status' : "What's new in Flind AI"}
                         </h3>
                         <LemonButton size="xsmall" icon={<IconX />} onClick={closeChangelog} />
                     </div>

@@ -30,10 +30,10 @@ export function TodayAiPanel(): JSX.Element {
                     <EmptyMedia variant="icon">
                         <IconLock />
                     </EmptyMedia>
-                    <EmptyTitle>PostHog AI isn't set up yet</EmptyTitle>
+                    <EmptyTitle>Flind AI isn't set up yet</EmptyTitle>
                     <EmptyDescription>
-                        PostHog AI runs on your own LLM provider key. Set <code>ANTHROPIC_API_KEY</code> for this
-                        instance and restart PostHog to start chatting.
+                        Flind AI runs on your own LLM provider key. Set <code>ANTHROPIC_API_KEY</code> for this
+                        instance and restart Flind to start chatting.
                     </EmptyDescription>
                 </EmptyHeader>
                 <EmptyContent>

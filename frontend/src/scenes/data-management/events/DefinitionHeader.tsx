@@ -58,7 +58,7 @@ export function getPropertyDefinitionIcon(definition: PropertyDefinition): JSX.E
         return (
             <IconWithBadge
                 icon={<IconLogomark />}
-                tooltipTitle="PostHog event property"
+                tooltipTitle="Flind event property"
                 className="taxonomy-icon taxonomy-icon-muted"
                 verified={definition.verified}
                 hidden={definition.hidden}
@@ -89,7 +89,7 @@ export function getAccountCustomPropertyDefinitionIcon(
         return (
             <IconWithBadge
                 icon={<IconLogomark />}
-                tooltipTitle="PostHog sets this property automatically"
+                tooltipTitle="Flind sets this property automatically"
                 className="taxonomy-icon taxonomy-icon-muted"
             />
         )
@@ -102,7 +102,7 @@ export function getPersonPropertyDefinitionIcon(definition: PropertyDefinition):
         return (
             <IconWithBadge
                 icon={<IconLogomark />}
-                tooltipTitle="PostHog person property"
+                tooltipTitle="Flind person property"
                 className="taxonomy-icon taxonomy-icon-muted"
                 verified={definition.verified}
                 hidden={definition.hidden}
@@ -139,7 +139,7 @@ export function getEventDefinitionIcon(definition: EventDefinition & { value?: s
                 icon={<IconLeave />}
                 verified={definition.verified}
                 hidden={definition.hidden}
-                tooltipTitle="PostHog event"
+                tooltipTitle="Flind event"
                 className="taxonomy-icon taxonomy-icon-ph taxonomy-icon-muted"
             />
         )
@@ -161,7 +161,7 @@ export function getEventDefinitionIcon(definition: EventDefinition & { value?: s
                 icon={<IconLogomark />}
                 verified={definition.verified}
                 hidden={definition.hidden}
-                tooltipTitle="PostHog event"
+                tooltipTitle="Flind event"
                 className="taxonomy-icon taxonomy-icon-muted"
             />
         )

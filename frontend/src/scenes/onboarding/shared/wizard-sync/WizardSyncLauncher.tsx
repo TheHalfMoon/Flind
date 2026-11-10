@@ -20,7 +20,7 @@ export function WizardSyncLauncher({
         <button
             type="button"
             onClick={onRestore}
-            aria-label="Show PostHog setup progress"
+            aria-label="Show Flind setup progress"
             data-attr="wizard-sync-launcher"
             className={cn(
                 'flex items-center gap-2 rounded-full bg-surface-primary border shadow-lg shadow-black/10 pl-2 pr-3 py-1.5 hover:bg-fill-highlight-50 transition-colors cursor-pointer',
@@ -34,7 +34,7 @@ export function WizardSyncLauncher({
             )}
         >
             <StatusGlyph progress={progress} />
-            <span className="text-sm font-medium">PostHog setup</span>
+            <span className="text-sm font-medium">Flind setup</span>
             <span className="text-xs text-muted tabular-nums">{elapsedLabel(elapsedSeconds, stale)}</span>
         </button>
     )

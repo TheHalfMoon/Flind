@@ -1,7 +1,9 @@
+import { flindBuildEnv } from 'lib/flindBuildEnv'
+
 /** Optional Flind-owned support mailbox. No inherited vendor fallback. */
 export function flindSupportMailto(
-    configuredEmail: string | undefined = import.meta.env?.VITE_FLIND_SUPPORT_EMAIL,
-    configuredDomain: string | undefined = import.meta.env?.VITE_FLIND_SUPPORT_EMAIL_DOMAIN
+    configuredEmail: string | undefined = flindBuildEnv.VITE_FLIND_SUPPORT_EMAIL,
+    configuredDomain: string | undefined = flindBuildEnv.VITE_FLIND_SUPPORT_EMAIL_DOMAIN
 ): string | null {
     if (
         typeof configuredEmail !== 'string' ||

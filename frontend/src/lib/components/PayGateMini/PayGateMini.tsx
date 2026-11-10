@@ -314,7 +314,7 @@ const DocsLink = ({ url }: { url: string }): JSX.Element => {
     return (
         <div className="mb-4">
             <Link to={url} target="_blank">
-                Learn more in PostHog Docs.
+                Learn more in Flind Docs.
             </Link>
         </div>
     )

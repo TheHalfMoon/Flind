@@ -135,7 +135,7 @@ function sendLog(level: LogLevel, context: string, message: string, properties?:
 }
 
 function log(level: LogLevel, context: string, message: string, properties?: Record<string, unknown>): void {
-    const prefix = `[PostHog Toolbar][${context}]`
+    const prefix = `[Flind Toolbar][${context}]`
     const args: unknown[] = [`${prefix} ${message}`]
 
     if (properties && Object.keys(properties).length > 0) {

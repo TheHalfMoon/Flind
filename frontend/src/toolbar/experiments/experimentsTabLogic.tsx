@@ -381,7 +381,7 @@ export const experimentsTabLogic = kea<experimentsTabLogicType>([
 
                 lemonToast.success('Experiment saved', {
                     button: {
-                        label: 'Open in PostHog',
+                        label: 'Open in Flind',
                         action: () => window.open(joinWithUiHost(uiHost, urls.experiment(response.id)), '_blank'),
                     },
                 })

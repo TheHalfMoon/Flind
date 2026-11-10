@@ -32,7 +32,7 @@ const OAUTH_CALLBACK_ERROR_MESSAGES: Record<string, string> = {
 const OAUTH_CALLBACK_ERROR_MESSAGES_BY_KIND: Record<string, Record<string, string>> = {
     slack: {
         access_denied:
-            'PostHog was not added to your Slack workspace. Either the install was declined, or your workspace requires an admin to approve new apps and the request is now waiting for one. Once an admin approves it, come back to this page and click "Add to Slack" again.',
+            'Flind was not added to your Slack workspace. Either the install was declined, or your workspace requires an admin to approve new apps and the request is now waiting for one. Once an admin approves it, come back to this page and click "Add to Slack" again.',
     },
 }
 

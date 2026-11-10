@@ -480,7 +480,7 @@ describe('sessionRecordingPlayerLogic', () => {
                 },
                 playerError: 'loadSnapshotSourcesFailure',
             })
-            expect(consoleErrorSpy).toHaveBeenCalledWith('PostHog Recording Playback Error: No snapshots loaded')
+            expect(consoleErrorSpy).toHaveBeenCalledWith('Flind Recording Playback Error: No snapshots loaded')
 
             consoleErrorSpy.mockRestore()
             resumeKeaLoadersErrors()

@@ -106,7 +106,7 @@ export class TerminalAI {
             generation.status = response.status
             const reader = response.body?.getReader()
             if (!reader) {
-                throw new Error('PostHog AI returned no response. Try again.')
+                throw new Error('Flind AI returned no response. Try again.')
             }
             const decoder = new TextDecoder()
             let size = 0
@@ -133,7 +133,7 @@ export class TerminalAI {
                 }
             }
         } catch (error) {
-            generation.error = error instanceof Error ? error.message : 'PostHog AI failed. Try again.'
+            generation.error = error instanceof Error ? error.message : 'Flind AI failed. Try again.'
         } finally {
             clearTimeout(idleTimer)
             generation.done = true

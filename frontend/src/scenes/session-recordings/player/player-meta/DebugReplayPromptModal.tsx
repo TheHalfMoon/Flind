@@ -30,8 +30,8 @@ export function DebugReplayPromptModal({ onClose }: { onClose: () => void }): JS
         <LemonModal
             isOpen
             onClose={onClose}
-            title="Debug this replay with PostHog AI"
-            description="Edit the prompt if you want to. PostHog AI gets the recording data along with it."
+            title="Debug this replay with Flind AI"
+            description="Edit the prompt if you want to. Flind AI gets the recording data along with it."
             width={640}
             footer={
                 <>
@@ -45,7 +45,7 @@ export function DebugReplayPromptModal({ onClose }: { onClose: () => void }): JS
                         disabledReason={trimmedPrompt ? undefined : 'Write a prompt first'}
                         data-attr="replay-debug-prompt-submit"
                     >
-                        Send to PostHog AI
+                        Send to Flind AI
                     </LemonButton>
                 </>
             }

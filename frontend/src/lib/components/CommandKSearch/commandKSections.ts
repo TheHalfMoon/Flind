@@ -98,7 +98,7 @@ const SECTION_LABELS: Record<Exclude<CommandKSectionKey, `group-${string}`>, str
     tickets: 'Support tickets',
     persons: 'Persons',
     groups: 'Groups',
-    'ask-ai': 'PostHog AI',
+    'ask-ai': 'Flind AI',
     'best-matches': 'Best matches',
     notice: '',
     'loading-more': '',

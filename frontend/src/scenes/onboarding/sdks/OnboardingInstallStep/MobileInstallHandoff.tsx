@@ -79,8 +79,8 @@ export function MobileInstallHandoff({
 
         try {
             await navigator.share({
-                title: 'Finish setting up PostHog',
-                text: "Here's where I left off setting up PostHog. Open this on your computer to continue.",
+                title: 'Finish setting up Flind',
+                text: "Here's where I left off setting up Flind. Open this on your computer to continue.",
                 url: buildHandoffUrl(),
             })
             posthog.capture('mobile install handoff share completed', {}, { send_instantly: true })
@@ -153,7 +153,7 @@ export function MobileInstallHandoff({
                     <>
                         <h2 className="text-xl font-bold">You&apos;re all set</h2>
                         <p className="text-muted">
-                            PostHog is receiving events from your project. You&apos;re ready to continue.
+                            Flind is receiving events from your project. You&apos;re ready to continue.
                         </p>
                         <div className="pt-2">
                             <LemonButton
@@ -171,7 +171,7 @@ export function MobileInstallHandoff({
                     <>
                         <h2 className="text-xl font-bold">Finish setting up on your computer?</h2>
                         <p className="text-muted">
-                            PostHog&apos;s install command needs to run on a computer with your code. We can share the
+                            Flind&apos;s install command needs to run on a computer with your code. We can share the
                             link so you can continue there.
                         </p>
 

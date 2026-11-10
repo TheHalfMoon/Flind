@@ -53,7 +53,7 @@ export const HealthIssueCard = ({
                             size="xsmall"
                             type="tertiary"
                             icon={<IconSparkles />}
-                            tooltip="Ask PostHog AI about this issue"
+                            tooltip="Ask Flind AI about this issue"
                             onClick={askMax}
                         />
                     )}

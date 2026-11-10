@@ -82,8 +82,8 @@ export function ConversationHistory({ sidePanel = false, compact = false }: Conv
                     <ProductIntroduction
                         isEmpty
                         thingName="chat"
-                        titleOverride="Start getting things done with PostHog AI"
-                        description="PostHog AI is an agent that answers data questions, gets things done in UI, and provides insights from PostHog's documentation."
+                        titleOverride="Start getting things done with Flind AI"
+                        description="Flind AI is an agent that answers data questions, gets things done in UI, and provides insights from Flind's documentation."
                         docsURL="https://posthog.com/docs/data/max-ai"
                         actionElementOverride={
                             <LemonButton

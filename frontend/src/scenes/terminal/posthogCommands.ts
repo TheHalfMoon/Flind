@@ -45,7 +45,7 @@ const aliases: Record<string, string> = {
     'notebook-delete': 'notebooks-destroy',
 }
 
-const help = `ph: PostHog commands
+const help = `ph: Flind commands
 
 ph tools [search]                 List project commands and connected MCP tools
 ph help <command>                Show arguments and whether a command writes data
@@ -59,7 +59,7 @@ run <file.sql>                    Run SQL and print a Markdown table
 run --help                       Show SQL export formats and examples
 hogql [options] ["SQL"]           Run SQL from an argument, stdin, or an interactive prompt
 hogql --help                      Show query options and output formats
-ph open [path]                   Open a project file or folder in PostHog (defaults to .)
+ph open [path]                   Open a project file or folder in Flind (defaults to .)
 
 Examples:
   ph notebooks-list --limit 10 | jq .results
@@ -194,7 +194,7 @@ export class PosthogCommands {
             ),
             command(
                 'notebooks-destroy',
-                'Delete a notebook from PostHog.',
+                'Delete a notebook from Flind.',
                 shortId,
                 async ({ short_id }) => {
                     await notebooksPartialUpdate(projectId, short_id, { deleted: true }, options)
@@ -509,7 +509,7 @@ export class PosthogCommands {
         }
         if (name === 'terminal-remove') {
             if (rest.length !== 2 || rest[0] !== '--json') {
-                throw new Error('Use rm to delete PostHog files.')
+                throw new Error('Use rm to delete Flind files.')
             }
             const request = z
                 .object({ argv: z.array(z.string()).max(1000) })
@@ -528,7 +528,7 @@ export class PosthogCommands {
                 throw new Error('The terminal stopped. Start it again before opening a file.')
             }
             this.navigate(url)
-            return `Opened ${rest[0] ?? '.'} in PostHog.`
+            return `Opened ${rest[0] ?? '.'} in Flind.`
         }
         if (name === 'help' || name === '--help') {
             if (!rest.length) {
@@ -571,7 +571,7 @@ export class PosthogCommands {
         const args = await this.parseArguments(tool, rest, cwd)
         if (tool.name.includes('/') || tool.name === 'notebooks-destroy' || args.deleted) {
             await this.filesystem.confirmOperation({
-                title: tool.name.includes('/') ? 'Run a connected tool?' : 'Delete a PostHog object?',
+                title: tool.name.includes('/') ? 'Run a connected tool?' : 'Delete a Flind object?',
                 description: tool.name.includes('/')
                     ? `Run ${tool.name} from project ${this.projectId}. Connected tools can change or delete data in external services. Review the tool and its arguments before continuing.`
                     : `Run ${tool.name} in project ${this.projectId}. This deletes the specified notebook for everyone in the project.`,
@@ -579,7 +579,7 @@ export class PosthogCommands {
             })
         } else if (!tool.readOnly) {
             await this.filesystem.confirmWrite({
-                title: 'Change PostHog data?',
+                title: 'Change Flind data?',
                 description: `Run ${tool.name} in project ${this.projectId}. This affects everyone in the project.`,
                 items: [tool.description, JSON.stringify(args, null, 2)],
             })

@@ -18,11 +18,11 @@ export function MaxNotConfigured(): JSX.Element {
             <div>
                 <h2 className="text-xl font-bold mb-2 flex items-center justify-center gap-2">
                     <IconLock />
-                    PostHog AI isn't set up yet
+                    Flind AI isn't set up yet
                 </h2>
                 <p className="text-sm text-tertiary text-pretty mb-0">
-                    PostHog AI runs on your own LLM provider key. Set <code>ANTHROPIC_API_KEY</code> for this instance
-                    and restart PostHog to start chatting.
+                    Flind AI runs on your own LLM provider key. Set <code>ANTHROPIC_API_KEY</code> for this instance
+                    and restart Flind to start chatting.
                 </p>
             </div>
             <CodeSnippet language={Language.Bash} className="w-full text-left">

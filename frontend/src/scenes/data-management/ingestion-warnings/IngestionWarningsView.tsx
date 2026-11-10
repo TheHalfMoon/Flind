@@ -220,7 +220,7 @@ export const WARNING_TYPE_RENDERER = {
                     {details.timestamp ? <li>Client provided timestamp: {details.timestamp}</li> : ''}
                     {details.sentAt ? <li>Client provided sent_at: {details.sentAt}</li> : ''}
                     {details.offset ? <li>Client provided time offset: {details.offset}</li> : ''}
-                    <li>PostHog server capture time: {details.now}</li>
+                    <li>Flind server capture time: {details.now}</li>
                 </ul>
             </>
         )

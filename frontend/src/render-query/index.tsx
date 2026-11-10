@@ -19,7 +19,7 @@ initKea({ replaceInitialPathInWindow: false })
 function renderApp(): void {
     const root = document.getElementById('root')
     if (!root) {
-        console.error('Attempted to render PostHog render_query app but #root was not found.')
+        console.error('Attempted to render Flind render_query app but #root was not found.')
         return
     }
 

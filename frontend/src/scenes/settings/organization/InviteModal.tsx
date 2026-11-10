@@ -33,7 +33,7 @@ export function EmailUnavailableForInvitesBanner(): JSX.Element {
     return (
         <LemonBanner type="info" className="my-2">
             <>
-                This PostHog instance isn't{' '}
+                This Flind instance isn't{' '}
                 <Link to="https://posthog.com/docs/self-host/configure/email" target="_blank" targetBlankIcon>
                     configured&nbsp;to&nbsp;send&nbsp;emails&nbsp;
                 </Link>
@@ -334,7 +334,7 @@ export function InviteTeamMatesComponent({
         <>
             {preflight?.licensed_users_available === 0 && (
                 <LemonBanner type="warning">
-                    You've hit the limit of team members you can invite to your PostHog instance given your license.
+                    You've hit the limit of team members you can invite to your Flind instance given your license.
                     Please contact <Link to="mailto:sales@posthog.com">sales@posthog.com</Link> to upgrade your license.
                 </LemonBanner>
             )}
@@ -376,7 +376,7 @@ export function InviteTeamMatesComponent({
                     </div>
                     <LemonTextArea
                         data-attr="invite-optional-message"
-                        placeholder="Tell your teammates why you're inviting them to PostHog"
+                        placeholder="Tell your teammates why you're inviting them to Flind"
                         onChange={(e) => updateMessage(e)}
                     />
                     {messageError && (
@@ -433,11 +433,11 @@ export function InviteModal({ isOpen, onClose }: { isOpen: boolean; onClose: () 
                     onClose()
                 }}
                 width={800}
-                title={<>Invite others to {user?.organization?.name || 'PostHog'}</>}
+                title={<>Invite others to {user?.organization?.name || 'Flind'}</>}
                 description={
                     preflight?.email_service_available ? (
                         <p>
-                            Invite others to your organization to collaborate together in PostHog. An invite is specific
+                            Invite others to your organization to collaborate together in Flind. An invite is specific
                             to an email address and expires after 3 days. Name can be provided for the team member's
                             convenience.{' '}
                             <Link
@@ -450,7 +450,7 @@ export function InviteModal({ isOpen, onClose }: { isOpen: boolean; onClose: () 
                         </p>
                     ) : (
                         <p>
-                            This PostHog instance isn't configured to send emails. In the meantime, you can generate a
+                            This Flind instance isn't configured to send emails. In the meantime, you can generate a
                             link for each team member you want to invite. You can always invite others at a later time.{' '}
                             <strong>Make sure you share links with the organization members you want to invite.</strong>
                         </p>

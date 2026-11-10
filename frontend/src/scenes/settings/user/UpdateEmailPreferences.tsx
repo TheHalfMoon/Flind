@@ -416,7 +416,7 @@ export function UpdateEmailPreferences(): JSX.Element {
                 <SimpleSwitch
                     setting="all_weekly_digest_disabled"
                     label="Weekly digest"
-                    description="The weekly digest keeps you up to date with everything that's happening in your PostHog organizations"
+                    description="The weekly digest keeps you up to date with everything that's happening in your Flind organizations"
                     dataAttr="weekly_digest_enabled"
                     inverse={true}
                 />
@@ -630,7 +630,7 @@ export function UpdateEmailPreferences(): JSX.Element {
                 <SimpleSwitch
                     setting="workflow_suggestions"
                     label="Workflow suggestions"
-                    description="Get an email when PostHog suggests a change to a workflow you set up"
+                    description="Get an email when Flind suggests a change to a workflow you set up"
                     dataAttr="workflow_suggestions_enabled"
                 />
             </div>

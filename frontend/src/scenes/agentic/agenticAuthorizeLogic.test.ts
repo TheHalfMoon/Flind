@@ -69,7 +69,7 @@ describe('agenticAuthorizeLogic', () => {
         [
             'partner_deactivated',
             403,
-            'the requesting app is no longer active, so PostHog cannot finish the authorization.',
+            'the requesting app is no longer active, so Flind cannot finish the authorization.',
         ],
         [
             'consent_changed',

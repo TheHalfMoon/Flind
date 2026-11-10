@@ -30,7 +30,7 @@ export type SurfacePrompts = {
 }
 
 const AI_OBSERVABILITY_EVALUATION_PROMPT =
-    "Use the connected PostHog MCP server and this project's AI observability data to inspect recent traces. Identify and rank real failure modes, with an example trace for each. Recommend one evaluation per failure mode, and say whether it should return pass/fail, a score, or categories. Ask which ones I want before creating anything. Create them disabled, test each on a few recent generations, and show me the results before enabling."
+    "Use the connected Flind MCP server and this project's AI observability data to inspect recent traces. Identify and rank real failure modes, with an example trace for each. Recommend one evaluation per failure mode, and say whether it should return pass/fail, a score, or categories. Ask which ones I want before creating anything. Create them disabled, test each on a few recent generations, and show me the results before enabling."
 
 export const FALLBACK_PROMPTS: Record<SurfaceKey, SurfacePrompts> = {
     'feature_flags.create': {
@@ -229,7 +229,7 @@ const PROMPT_OVERRIDES: Record<TailoredRole, Partial<Record<SurfaceKey, SurfaceP
             toast: '"Connect Stripe and sync invoices and subscriptions daily"',
             examples: [
                 '"Connect Stripe and sync invoices and subscriptions daily"',
-                '"Import Stripe charges so I can track MRR in PostHog"',
+                '"Import Stripe charges so I can track MRR in Flind"',
                 '"Set up Stripe to see revenue next to product usage"',
             ],
         },

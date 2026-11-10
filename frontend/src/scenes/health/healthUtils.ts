@@ -121,7 +121,7 @@ const MAX_OVERVIEW_ISSUES = 25
 export const buildHealthIssuePrompt = (issue: HealthIssue): string => {
     const category = categoryLabel(issue.kind)
     const lines = [
-        'I need help with a health issue in my PostHog project.',
+        'I need help with a health issue in my Flind project.',
         '',
         `Issue: ${kindToLabel(issue.kind)}`,
         `Severity: ${severityLabel(issue.severity)}`,
@@ -144,7 +144,7 @@ export const buildHealthOverviewPrompt = (
         return [
             question,
             '',
-            'The Health overview for my PostHog project currently shows no active health issues. ' +
+            'The Health overview for my Flind project currently shows no active health issues. ' +
                 'What should I monitor to keep my project healthy, and how can I confirm my data is being ingested correctly?',
         ].join('\n')
     }
@@ -157,7 +157,7 @@ export const buildHealthOverviewPrompt = (
     const lines = [
         question,
         '',
-        `Here ${issuesClause} on my PostHog Health overview (${summarizeSeverityCounts(issues)})${
+        `Here ${issuesClause} on my Flind Health overview (${summarizeSeverityCounts(issues)})${
             remaining > 0 ? `, showing the ${listed.length} most severe` : ''
         }:`,
         ...listed.map(issueSummaryLine),

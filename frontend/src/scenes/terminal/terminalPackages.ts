@@ -76,7 +76,7 @@ export class TerminalPackages {
             new Blob([compressed]).stream().pipeThrough(new DecompressionStream('gzip'))
         ).arrayBuffer()
         if (archive.byteLength !== pkg.archiveSize) {
-            throw new Error(`Could not unpack ${pkg.name}. Reload PostHog and try again.`)
+            throw new Error(`Could not unpack ${pkg.name}. Reload Flind and try again.`)
         }
         if (this.signal.aborted) {
             throw new DOMException('Terminal closed', 'AbortError')
@@ -135,7 +135,7 @@ set -eu
 id="$1"
 case "$id" in
 ${cases.join('\n')}
-*) echo 'Unknown terminal tool. Reload PostHog and try again.' >&2; exit 1;;
+*) echo 'Unknown terminal tool. Reload Flind and try again.' >&2; exit 1;;
 esac
 root=/opt/posthog-packages
 target="$root/$id-$version"

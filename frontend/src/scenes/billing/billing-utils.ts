@@ -709,7 +709,7 @@ export function getUsageLimitConsequence(productName: string): string {
         return 'feature flags will not evaluate'
     }
     if (productName === 'PostHog AI') {
-        return 'PostHog AI will be unavailable'
+        return 'Flind AI will be unavailable'
     }
     if (productName === 'Self-driving inbox') {
         return 'self-driving agents will be paused'

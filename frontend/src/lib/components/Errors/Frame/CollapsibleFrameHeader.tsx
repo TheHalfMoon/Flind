@@ -177,7 +177,7 @@ function UnsymbolicatedIcon({
             {instructionAddress ? (
                 <>
                     <p>The SDK sent only a memory address for this frame.</p>
-                    <p>PostHog couldn't resolve that address to a function or file name.</p>
+                    <p>Flind couldn't resolve that address to a function or file name.</p>
                 </>
             ) : (
                 <p>

@@ -118,7 +118,7 @@ export function chatPreview(item: TodayWorkItem): TodayChatPreview {
         kind: 'chat',
         chatId: item.id,
         title: item.title || 'Untitled chat',
-        source: 'PostHog AI',
+        source: 'Flind AI',
         timestamp: item.timestamp,
     }
 }

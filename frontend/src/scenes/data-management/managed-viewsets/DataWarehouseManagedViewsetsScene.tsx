@@ -21,7 +21,7 @@ import {
 
 const PRODUCT_TITLE = 'Managed viewsets'
 const PRODUCT_DESCRIPTION =
-    'Configure automatically managed database views for analytics features. These views are created and maintained by PostHog to provide optimized data access.'
+    'Configure automatically managed database views for analytics features. These views are created and maintained by Flind to provide optimized data access.'
 
 const RESOURCE_TYPES_MAP: Record<DataWarehouseManagedViewsetKind, AccessControlResourceType> = {
     revenue_analytics: AccessControlResourceType.RevenueAnalytics,

@@ -130,7 +130,7 @@ export const getCategoryDisplayName = (category: string): string => {
         tickets: 'Support tickets',
         eventDefinitions: 'Events',
         propertyDefinitions: 'Properties',
-        ai: 'PostHog AI',
+        ai: 'Flind AI',
         askAI: 'Posthog AI',
         insight: 'Insights',
         dashboard: 'Dashboards',

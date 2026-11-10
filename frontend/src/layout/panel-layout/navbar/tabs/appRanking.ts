@@ -21,7 +21,7 @@ export function buildAppRankingQuestions(items: FileSystemImport[]): DecideReque
                     `app_${offset + index}`,
                     {
                         type: 'noul',
-                        instructions: `Would this PostHog app help with the user's goal? Interpret partial words and unfinished descriptions as intent. App: ${productsItemName(item)}. Category: ${item.category ?? ''}. ${sidebarProductMeta(item).description ?? ''} Example: ${sidebarProductMeta(item).example ?? ''}`,
+                        instructions: `Would this Flind app help with the user's goal? Interpret partial words and unfinished descriptions as intent. App: ${productsItemName(item)}. Category: ${item.category ?? ''}. ${sidebarProductMeta(item).description ?? ''} Example: ${sidebarProductMeta(item).example ?? ''}`,
                     },
                 ])
             )

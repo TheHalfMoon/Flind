@@ -30,7 +30,7 @@ export function getSourceDisplayStatus(unreleased: boolean, featureFlag: boolean
     const unreleasedDescriptionEl = 'Get notified when this source is available to connect'
     const releasedDescriptionEl = (
         <>
-            Data will be synced to PostHog and regularly refreshed.{' '}
+            Data will be synced to Flind and regularly refreshed.{' '}
             <Link to="https://posthog.com/docs/cdp/sources">Learn more</Link>
         </>
     )

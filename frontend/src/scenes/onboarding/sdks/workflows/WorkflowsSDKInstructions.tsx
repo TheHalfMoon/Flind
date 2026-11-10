@@ -59,7 +59,7 @@ const WorkflowsFinalStepContent = (): JSX.Element => {
     return (
         <Markdown>
             {dedent`
-                Now that PostHog is installed, any captured or custom event can be used as a [workflow trigger](https://posthog.com/docs/workflows/workflow-builder#triggers) to send **emails**, **Slack messages**, **SMS via Twilio**, or call **webhooks**.
+                Now that Flind is installed, any captured or custom event can be used as a [workflow trigger](https://posthog.com/docs/workflows/workflow-builder#triggers) to send **emails**, **Slack messages**, **SMS via Twilio**, or call **webhooks**.
 
                 To get started, [configure a channel](/workflows/channels) then head to the [workflow builder](/workflows) to create your first automation.
             `}

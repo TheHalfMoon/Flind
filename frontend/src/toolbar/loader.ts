@@ -34,7 +34,7 @@ const scriptSrc = (document.currentScript as HTMLScriptElement | null)?.src
 function resolveAppUrl(fileName: string): string {
     const base = scriptSrc || __POSTHOG_TOOLBAR_PUBLIC_PATH__
     if (!base) {
-        throw new Error('PostHog toolbar loader could not determine its own URL')
+        throw new Error('Flind toolbar loader could not determine its own URL')
     }
     return new URL(`toolbar/${fileName}`, base).href
 }
@@ -120,7 +120,7 @@ win['ph_load_toolbar'] = async function (toolbarParams: ToolbarParams, posthog?:
         module = await loadApp()
     } catch (error) {
         // Graceful degradation is "no toolbar", never a broken host page.
-        console.warn('[PostHog Toolbar] Failed to load the toolbar bundle', error)
+        console.warn('[Flind Toolbar] Failed to load the toolbar bundle', error)
         return
     }
     await module.loadToolbar(toolbarParams, posthog)

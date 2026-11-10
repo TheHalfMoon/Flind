@@ -32,7 +32,7 @@ export function AuthenticatedShellFallback({ showSpinner }: { showSpinner: boole
             {showRetryPrompt && (
                 <>
                     <p className="max-w-100 text-secondary">
-                        PostHog is taking longer than usual to load. This can happen right after a new version ships.
+                        Flind is taking longer than usual to load. This can happen right after a new version ships.
                     </p>
                     <LemonButton
                         type="primary"

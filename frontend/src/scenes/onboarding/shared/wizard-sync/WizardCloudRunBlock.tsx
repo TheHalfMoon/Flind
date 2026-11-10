@@ -137,7 +137,7 @@ export function WizardCloudRunBlock({
                             disabledReason={selectedRepository ? undefined : 'Pick a repository first'}
                             data-attr="wizard-cloud-run-open-pr"
                         >
-                            Install PostHog here
+                            Install Flind here
                         </LemonButton>
                     </div>
                     <div className="flex items-center gap-1.5 text-xs text-muted">

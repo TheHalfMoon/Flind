@@ -1391,7 +1391,7 @@ export const integrationsLogic = kea<integrationsLogicType>([
                               integration.config?.account?.name || integrationName,
                               !!integration.installation_shared
                           )
-                        : 'This cannot be undone. PostHog resources configured to use this integration will remain but will stop working.',
+                        : 'This cannot be undone. Flind resources configured to use this integration will remain but will stop working.',
                 primaryButton: {
                     children: 'Disconnect',
                     status: 'danger',

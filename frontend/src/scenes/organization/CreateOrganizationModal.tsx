@@ -53,7 +53,7 @@ export function CreateOrganizationModal({
                     Organizations gather people building together.
                     <br />
                     <Link to="https://posthog.com/docs/user-guides/organizations-and-projects" target="_blank">
-                        Learn more in PostHog docs.
+                        Learn more in Flind docs.
                     </Link>
                 </p>
             }
@@ -82,7 +82,7 @@ export function CreateOrganizationModal({
             {showNoInviteHelp && (
                 <LemonBanner type="info" className="mb-4">
                     <p className="mb-2">
-                        You're not part of any organization yet. If your team already uses PostHog, ask an admin there
+                        You're not part of any organization yet. If your team already uses Flind, ask an admin there
                         to send you an invite.
                     </p>
                     <p className="mb-0">

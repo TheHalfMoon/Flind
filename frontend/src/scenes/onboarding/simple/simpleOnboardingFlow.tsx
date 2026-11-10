@@ -44,7 +44,7 @@ export function buildSimpleOnboardingFlow(
     return [
         simpleStep(
             OnboardingStepKey.INSTALL,
-            'Install PostHog',
+            'Install Flind',
             () => (
                 <OnboardingInstallStep
                     sdkInstructionMap={ProductAnalyticsSDKInstructions}

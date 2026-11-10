@@ -66,7 +66,7 @@ function OpenNotebookShareModal({ shortId }: NotebookShareModalProps): JSX.Eleme
                     <>
                         <p>
                             <b>Click the button below</b> to copy a direct link to this notebook. Make sure the person
-                            you share it with has access to this PostHog project.
+                            you share it with has access to this Flind project.
                         </p>
                         <LemonButton
                             type="secondary"
