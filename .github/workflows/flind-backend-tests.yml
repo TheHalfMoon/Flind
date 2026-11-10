@@ -92,6 +92,11 @@ jobs:
 
             # First test-DB setup runs every migration (~35 min on a standard runner), so the
             # per-test timeout must cover it.
+            # Fails when models and migrations disagree (for example a help_text change without its
+            # migration), and checks the linear-migrations max_migration.txt files.
+            - name: Check migrations match models
+              run: python manage.py makemigrations --check --dry-run
+
             - name: Run targeted tests
               run: |
                   set -o pipefail
