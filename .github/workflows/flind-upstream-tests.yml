@@ -54,6 +54,9 @@ jobs:
                 products/exports/backend/tasks/test/test_csv_exporter_url_sanitising.py
                 products/tasks/backend/temporal/process_task/activities/tests/test_provision_sandbox.py
                 products/tasks/backend/temporal/process_task/tests/test_workflow.py
+                posthog/hogql/test/test_restricted_properties.py
+                posthog/hogql/transforms/test/test_property_types.py
+                posthog/hogql_queries/test/test_events_query_runner.py
             # Node tests carried by upstream changes that need the test databases (same services).
             FLIND_NODE_DB_TEST_TARGETS: >-
                 src/common/utils/team-manager.test.ts
