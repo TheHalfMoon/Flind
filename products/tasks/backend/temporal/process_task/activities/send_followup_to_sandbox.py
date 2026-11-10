@@ -938,6 +938,11 @@ def _refresh_sandbox_github(
     if actor_user is None:
         return None
 
+    # Token-scoped runs use a team installation grant pinned to read or push, not the message
+    # actor's identity. The periodic credential refresh rotates that grant without widening it.
+    if (state or {}).get("github_token_scope"):
+        return None
+
     run_id = str(task_run.id)
     task = task_run.task
     # A run that started before its actor connected GitHub is bot-authored, and the agent may

@@ -20,13 +20,24 @@ from products.tasks.backend.exceptions import (
     GitHubRateLimitedError,
     ProcessTaskTransientError,
 )
+from products.tasks.backend.redis import get_tasks_cache
 from products.tasks.backend.temporal.process_task.activities.get_task_processing_context import TaskProcessingContext
 from products.tasks.backend.temporal.process_task.utils import (
+    PUSH_SANDBOX_GITHUB_PERMISSIONS,
     READONLY_SANDBOX_GITHUB_PERMISSIONS,
     can_mint_readonly_github_token,
     get_readonly_github_token,
     get_sandbox_api_url,
+    get_scoped_github_token,
 )
+
+
+@pytest.fixture
+def _isolated_tasks_cache(settings):
+    # Scoped mints cache their token, so pin these tests to a fresh in-memory cache.
+    settings.TASKS_REDIS_URL = ""
+    settings.CACHES = {"default": {"BACKEND": "django.core.cache.backends.locmem.LocMemCache"}}
+    get_tasks_cache().clear()
 
 
 @pytest.mark.parametrize(
@@ -106,12 +117,13 @@ def test_can_mint_readonly_github_token_matches_mint_eligibility(resolved, expec
 
 @parameterized.expand(
     [
-        ("full_credential_run_reuses", False, 5),
-        ("read_only_run_clones_fresh", True, None),
+        ("full_credential_run_reuses", {}, 5),
+        ("read_only_run_clones_fresh", {"github_read_access": True}, None),
+        ("scoped_token_run_clones_fresh", {"github_token_scope": "push"}, None),
     ]
 )
 def test_repository_snapshot_reuse_is_refused_for_read_only_runs(
-    _name: str, read_access: bool, expected: int | None
+    _name: str, state: dict[str, bool], expected: int | None
 ) -> None:
     # A repository snapshot keeps its creator's write-capable token in every `.git/config` and is
     # never fetched again, so restoring one for a read-only run hands the agent a write token and
@@ -129,7 +141,7 @@ def test_repository_snapshot_reuse_is_refused_for_read_only_runs(
         github_integration_id=5,
         repository="acme/app",
         distinct_id="d",
-        state={"github_read_access": read_access},
+        state=state,
     )
 
     assert _repository_snapshot_integration_id(ctx, has_repo=True) == expected
@@ -346,3 +358,42 @@ def test_readonly_token_scopes_repositories_without_widening_permissions(reposit
     else:
         assert token is None
         integration.mint_scoped_installation_token.assert_not_called()
+
+
+@pytest.mark.parametrize(
+    "repositories, expected",
+    [
+        ([], None),
+        (["Acme/API", "acme/web"], ["api", "web"]),
+        (["PostHog/.github"], None),
+    ],
+    ids=["repo_less", "pinned_repositories", "public_bootstrap_only"],
+)
+@pytest.mark.usefixtures("_isolated_tasks_cache")
+def test_scoped_token_is_always_pinned_to_run_repositories(repositories, expected):
+    integration = _team_integration()
+    with (
+        patch("products.tasks.backend.temporal.process_task.utils.Integration.objects.get"),
+        patch("products.tasks.backend.temporal.process_task.utils.GitHubIntegration", return_value=integration),
+    ):
+        token = get_scoped_github_token(5, repositories, PUSH_SANDBOX_GITHUB_PERMISSIONS)
+    if expected:
+        assert token == integration.mint_scoped_installation_token.return_value
+        integration.mint_scoped_installation_token.assert_called_once_with(
+            PUSH_SANDBOX_GITHUB_PERMISSIONS, repositories=expected
+        )
+    else:
+        assert token is None
+        integration.mint_scoped_installation_token.assert_not_called()
+
+
+@pytest.mark.usefixtures("_isolated_tasks_cache")
+def test_scoped_token_mint_failure_reaches_the_caller():
+    integration = _team_integration()
+    integration.mint_scoped_installation_token.side_effect = GitHubRateLimitError("rate limited", retry_after=30)
+    with (
+        patch("products.tasks.backend.temporal.process_task.utils.Integration.objects.get"),
+        patch("products.tasks.backend.temporal.process_task.utils.GitHubIntegration", return_value=integration),
+        pytest.raises(GitHubRateLimitError),
+    ):
+        get_scoped_github_token(5, ["acme/api"], READONLY_SANDBOX_GITHUB_PERMISSIONS)
