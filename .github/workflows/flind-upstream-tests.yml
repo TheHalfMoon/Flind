@@ -41,6 +41,10 @@ jobs:
                 products/security/backend/tests/test_accounts.py
                 products/security/backend/tests/test_decisions.py
                 products/warehouse_sources/backend/temporal/data_imports/pipelines/core/test_repartition.py
+                products/error_tracking/backend/tests/test_issue_summaries.py
+            # Node tests carried by upstream changes that need the test databases (same services).
+            FLIND_NODE_DB_TEST_TARGETS: >-
+                src/common/utils/team-manager.test.ts
         steps:
             - uses: actions/checkout@v4
               with:
@@ -95,6 +99,36 @@ jobs:
                   python -m pytest $FLIND_TEST_TARGETS -p no:cacheprovider -q --timeout=3600 2>&1 | tee pytest.log
                   { echo '## Upstream Python tests'; echo '```'; tail -40 pytest.log; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
 
+            - uses: actions/setup-node@v4
+              with:
+                  node-version-file: .nvmrc
+
+            # Same install pattern as the node job below: scripts off, then rebuild.
+            - name: Install Node dependencies
+              env:
+                  HUSKY: '0'
+                  SKIP_ELECTRON_REBUILD: '1'
+              run: |
+                  set -o pipefail
+                  npm install -g "pnpm@$(node -p "require('./package.json').packageManager.split('@')[1]")"
+                  if ! pnpm install --frozen-lockfile --ignore-scripts --filter=@flind/root --filter=@flind/nodejs... > install.log 2>&1; then
+                      grep -n -B 30 -A 5 'ELIFECYCLE\|ERR_PNPM' install.log | tail -120
+                      exit 1
+                  fi
+                  if ! pnpm rebuild --filter=@flind/nodejs... > rebuild.log 2>&1; then
+                      grep -n -B 20 -A 5 'Failed\|ELIFECYCLE\|ERR_PNPM' rebuild.log | tail -80
+                      exit 1
+                  fi
+
+            # setup:test builds the Django test database and the Rust-owned test databases (sqlx-cli above).
+            - name: Node tests that need the test databases
+              working-directory: nodejs
+              run: |
+                  set -o pipefail
+                  pnpm setup:test 2>&1 | tail -20
+                  pnpm exec jest --runInBand --forceExit $FLIND_NODE_DB_TEST_TARGETS 2>&1 | tee jest-db.log
+                  { echo '## Upstream Node DB tests'; echo '```'; tail -30 jest-db.log; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+
             - name: Tear down
               if: always()
               run: docker compose -f docker-compose.dev.yml down -v --remove-orphans
@@ -148,3 +182,53 @@ jobs:
             - name: Node tests carried by upstream changes
               working-directory: nodejs
               run: pnpm exec jest src/common/utils/oob-domains.test.ts
+
+    frontend:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 60
+        env:
+            # Frontend test files carried by the upstream changes on this branch.
+            FLIND_JEST_TARGETS: >-
+                src/lib/utils/destinationSecretRedaction.test.ts
+                src/lib/components/AuthorizedUrlList/AuthorizedUrlList.test.tsx
+                src/lib/components/ProductEmptyState/ProductEmptyState.test.tsx
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                  fetch-depth: 1
+
+            - uses: actions/setup-node@v4
+              with:
+                  node-version-file: .nvmrc
+
+            # Same install pattern as flind-frontend-tests.yml: root first, then the frontend, scripts
+            # off, then rebuild.
+            - name: Install dependencies
+              env:
+                  HUSKY: '0'
+                  SKIP_ELECTRON_REBUILD: '1'
+              run: |
+                  set -o pipefail
+                  npm install -g "pnpm@$(node -p "require('./package.json').packageManager.split('@')[1]")"
+                  install() {
+                      if ! pnpm install --frozen-lockfile "$@" > install.log 2>&1; then
+                          grep -n -B 30 -A 5 'ELIFECYCLE\|ERR_PNPM' install.log | tail -120
+                          exit 1
+                      fi
+                      tail -3 install.log
+                  }
+                  install --ignore-scripts --filter=@flind/root
+                  install --ignore-scripts --filter=@flind/frontend...
+                  if ! pnpm rebuild --filter=@flind/frontend... > rebuild.log 2>&1; then
+                      grep -n -B 20 -A 5 'Failed\|ELIFECYCLE\|ERR_PNPM' rebuild.log | tail -80
+                      exit 1
+                  fi
+                  test -x frontend/node_modules/.bin/jest
+
+            - name: Frontend tests carried by upstream changes
+              working-directory: frontend
+              run: |
+                  set -o pipefail
+                  pnpm build:products 2>&1 | tail -40
+                  pnpm exec jest $FLIND_JEST_TARGETS 2>&1 | tee jest.log
+                  { echo '## Upstream frontend tests'; echo '```'; tail -30 jest.log; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
