@@ -720,7 +720,7 @@ export default function SurveyEdit({ id }: { id: string }): JSX.Element {
                                                                     }
                                                                 }}
                                                                 title={SURVEY_TYPE_LABEL_MAP[SurveyType.API]}
-                                                                description="Use the PostHog API to show/hide your survey programmatically"
+                                                                description="Use the Flind API to show/hide your survey programmatically"
                                                                 value={SurveyType.API}
                                                             >
                                                                 <div className="absolute left-4 w-[350px]">
@@ -745,7 +745,7 @@ export default function SurveyEdit({ id }: { id: string }): JSX.Element {
                                                                 active={value === SurveyType.ExternalSurvey}
                                                                 onClick={() => onChange(SurveyType.ExternalSurvey)}
                                                                 title={SURVEY_TYPE_LABEL_MAP[SurveyType.ExternalSurvey]}
-                                                                description="Collect responses via an external link, hosted on PostHog. If you are already using surveys, make sure to upgrade posthog-js to at least v1.258.1."
+                                                                description="Collect responses via an external link, hosted on Flind. If you are already using surveys, make sure to upgrade posthog-js to at least v1.258.1."
                                                                 value={SurveyType.ExternalSurvey}
                                                             >
                                                                 <LemonTag type="warning">BETA</LemonTag>
@@ -774,7 +774,7 @@ export default function SurveyEdit({ id }: { id: string }): JSX.Element {
                                                                 </div>
                                                                 <ul className="space-y-2 text-sm">
                                                                     <li>
-                                                                        • The survey will be hosted by PostHog and you
+                                                                        • The survey will be hosted by Flind and you
                                                                         can share the URL with your customers
                                                                     </li>
                                                                     <li>

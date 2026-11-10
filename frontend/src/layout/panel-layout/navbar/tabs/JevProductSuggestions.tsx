@@ -18,7 +18,7 @@ export function JevProductSuggestions(): JSX.Element {
                 onChange={setAppRecommendationQuery}
                 aria-label="Filter by jev"
                 data-attr="configure-starred-jev-query"
-                placeholder="Filter by jev. Tell us what you want to use PostHog for, and we'll suggest apps to use."
+                placeholder="Filter by jev. Tell us what you want to use Flind for, and we'll suggest apps to use."
                 minRows={2}
                 maxRows={8}
                 maxLength={2000}

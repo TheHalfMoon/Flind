@@ -269,7 +269,7 @@ export const QUERY_TYPES_METADATA: Record<NodeKind, InsightTypeMetadata> = {
     },
     [NodeKind.DatabaseSchemaQuery]: {
         name: 'Database Schema',
-        description: 'Introspect the PostHog database schema.',
+        description: 'Introspect the Flind database schema.',
         icon: IconSQL,
         inMenu: true,
     },

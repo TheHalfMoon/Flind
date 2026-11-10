@@ -55,8 +55,8 @@ export const AgenticAuthorize = (): JSX.Element => {
                     </h2>
                     <p className="text-muted mt-2 text-sm sm:text-base">
                         {paysForCustomers
-                            ? `${partnerName} is requesting access to PostHog.`
-                            : `${partnerName} is requesting access to your PostHog project.`}
+                            ? `${partnerName} is requesting access to Flind.`
+                            : `${partnerName} is requesting access to your Flind project.`}
                     </p>
                 </div>
 
@@ -72,7 +72,7 @@ export const AgenticAuthorize = (): JSX.Element => {
                                             organization you own that {partnerName} pays for.
                                         </>
                                     ) : (
-                                        `PostHog creates a new organization for you. ${partnerName} pays for it.`
+                                        `Flind creates a new organization for you. ${partnerName} pays for it.`
                                     )}
                                 </p>
                             </div>

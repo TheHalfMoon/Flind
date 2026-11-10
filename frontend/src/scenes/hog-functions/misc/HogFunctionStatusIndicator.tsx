@@ -34,7 +34,7 @@ const displayMap: Record<HogWatcherState, DisplayOptions> = {
         display: 'Degraded',
         description: (
             <>
-                The function has been forcefully marked as degraded by a PostHog admin. This means it is moved to a
+                The function has been forcefully marked as degraded by a Flind admin. This means it is moved to a
                 separate processing queue and may experience delays or increased failures.
             </>
         ),
@@ -42,7 +42,7 @@ const displayMap: Record<HogWatcherState, DisplayOptions> = {
     [HogWatcherState.forcefully_disabled]: {
         tagType: 'danger',
         display: 'Disabled',
-        description: <>The function has been forcefully disabled by a PostHog admin. Please contact support.</>,
+        description: <>The function has been forcefully disabled by a Flind admin. Please contact support.</>,
     },
 }
 

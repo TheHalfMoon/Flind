@@ -44,7 +44,7 @@ export function BuiltInCollections({
 }): JSX.Element {
     return (
         <div className="border rounded overflow-hidden bg-surface-primary">
-            <CollectionSectionHeading title="Built-in" description="Kept up to date by PostHog." />
+            <CollectionSectionHeading title="Built-in" description="Kept up to date by Flind." />
             <LemonTable
                 embedded
                 tableLayout="fixed"

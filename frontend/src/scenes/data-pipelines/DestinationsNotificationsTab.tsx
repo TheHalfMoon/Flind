@@ -9,7 +9,7 @@ export function DestinationsNotificationsTab(): JSX.Element {
             <SceneSection
                 description={
                     <>
-                        These destinations deliver the alerts and other events that PostHog itself sends, such as an
+                        These destinations deliver the alerts and other events that Flind itself sends, such as an
                         insight alert that fires or a new error tracking issue. Create them from the product they belong
                         to, for example from an alert or from the error tracking settings.
                     </>

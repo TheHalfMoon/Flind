@@ -79,7 +79,7 @@ export function ExperimentWizardGuide(): JSX.Element {
 
             {openMax && (
                 <div className="flex flex-col gap-2 pt-3 border-t border-dashed border-primary">
-                    <div className="text-sm text-default">Rather describe it? PostHog AI can set it up for you.</div>
+                    <div className="text-sm text-default">Rather describe it? Flind AI can set it up for you.</div>
                     <div>
                         <LemonButton
                             type="secondary"

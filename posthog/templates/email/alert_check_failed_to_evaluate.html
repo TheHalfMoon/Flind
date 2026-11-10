@@ -1,11 +1,11 @@
 {% extends "email/base.html" %}
 {% block heading %}{{ alert_name }}{% endblock %} {% block section %}
 {% if detector_unavailable %}
-    <p>PostHog could not run the AI detector for this alert, so this check did not run.</p>
+    <p>Flind could not run the AI detector for this alert, so this check did not run.</p>
 {% else %}
     <p>
-        PostHog could not evaluate this alert. This can happen when the insight or alert settings need attention, or
-        when PostHog has a temporary problem.
+        Flind could not evaluate this alert. This can happen when the insight or alert settings need attention, or
+        when Flind has a temporary problem.
     </p>
 {% endif %}
 <p>
@@ -21,9 +21,9 @@
 <p>
     {% if not detector_unavailable %}Review the alert settings.{% endif %}
     {% if next_check_at %}
-        PostHog will try again on {{ next_check_at|date:"F j, Y, g:i A T" }}.
+        Flind will try again on {{ next_check_at|date:"F j, Y, g:i A T" }}.
     {% else %}
-        PostHog will try again at the next scheduled check.
+        Flind will try again at the next scheduled check.
     {% endif %}
     If it fails again, contact support.
 </p>

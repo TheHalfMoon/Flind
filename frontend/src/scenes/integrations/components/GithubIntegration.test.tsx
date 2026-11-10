@@ -277,7 +277,7 @@ describe('GithubIntegration', () => {
 
     it.each([
         ['pending', 'GitHub sent your request', 'Copy message for your org owner'],
-        ['approved', 'An organization owner approved the PostHog app for', 'Finish connecting'],
+        ['approved', 'An organization owner approved the Flind app for', 'Finish connecting'],
     ])('shows the %s install request with its action', async (status, text, action) => {
         installRequests = [
             {

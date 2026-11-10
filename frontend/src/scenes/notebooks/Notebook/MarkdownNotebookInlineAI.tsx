@@ -162,7 +162,7 @@ export function getInlineAICompletion(threadRaw: ThreadMessage[]): InlineAICompl
                 'content' in lastErrorMessage && typeof lastErrorMessage.content === 'string'
                     ? lastErrorMessage.content
                     : undefined,
-                'PostHog AI could not finish this request.'
+                'Flind AI could not finish this request.'
             ),
         }
     }
@@ -185,7 +185,7 @@ export function getInlineAICompletion(threadRaw: ThreadMessage[]): InlineAICompl
             status: 'done',
             kind: 'assistant',
             hasArtifact,
-            message: getInlineAIStatusText(lastAssistantMessage.content, 'PostHog AI finished.'),
+            message: getInlineAIStatusText(lastAssistantMessage.content, 'Flind AI finished.'),
         }
     }
 
@@ -205,7 +205,7 @@ export function getInlineAICompletion(threadRaw: ThreadMessage[]): InlineAICompl
         status: 'done',
         kind: 'generic',
         hasArtifact,
-        message: 'PostHog AI finished.',
+        message: 'Flind AI finished.',
     }
 }
 

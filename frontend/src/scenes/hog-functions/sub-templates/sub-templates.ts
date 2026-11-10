@@ -95,7 +95,7 @@ const errorTrackingPagerDutyInputs = (
         },
     },
     links: {
-        value: [{ href: errorTrackingIssueLinkHogTemplate('pagerduty'), text: 'View issue in PostHog' }],
+        value: [{ href: errorTrackingIssueLinkHogTemplate('pagerduty'), text: 'View issue in Flind' }],
     },
 })
 
@@ -341,7 +341,7 @@ export const HOG_FUNCTION_SUB_TEMPLATE_COMMON_PROPERTIES: Record<
     },
 }
 
-const FLAG_ACTOR_NAME = "{event.properties.user.first_name ? event.properties.user.first_name : 'PostHog'}"
+const FLAG_ACTOR_NAME = "{event.properties.user.first_name ? event.properties.user.first_name : 'Flind'}"
 
 function buildFlagChangeVerbPhrase(): string {
     const activity = 'event.properties.activity'
@@ -852,7 +852,7 @@ export const HOG_FUNCTION_SUB_TEMPLATES: Record<HogFunctionSubTemplateIdType, Ho
                             elements: [
                                 {
                                     url: '{person.url}',
-                                    text: { text: 'View Person in PostHog', type: 'plain_text' },
+                                    text: { text: 'View Person in Flind', type: 'plain_text' },
                                     type: 'button',
                                 },
                             ],
@@ -873,7 +873,7 @@ export const HOG_FUNCTION_SUB_TEMPLATES: Record<HogFunctionSubTemplateIdType, Ho
             description: 'Send a webhook when a team activity occurs',
             inputs: {
                 content: {
-                    value: "**{event.properties.user.first_name ? event.properties.user.first_name : 'PostHog'}** {event.properties.activity} {event.properties.scope} `{event.properties.item_id}`",
+                    value: "**{event.properties.user.first_name ? event.properties.user.first_name : 'Flind'}** {event.properties.activity} {event.properties.scope} `{event.properties.item_id}`",
                 },
             },
         },
@@ -884,7 +884,7 @@ export const HOG_FUNCTION_SUB_TEMPLATES: Record<HogFunctionSubTemplateIdType, Ho
             description: 'Posts a message to Discord when a team activity occurs',
             inputs: {
                 content: {
-                    value: "**{event.properties.user.first_name ? event.properties.user.first_name : 'PostHog'}** {event.properties.activity} {event.properties.scope} `{event.properties.item_id}`",
+                    value: "**{event.properties.user.first_name ? event.properties.user.first_name : 'Flind'}** {event.properties.activity} {event.properties.scope} `{event.properties.item_id}`",
                 },
             },
         },
@@ -895,7 +895,7 @@ export const HOG_FUNCTION_SUB_TEMPLATES: Record<HogFunctionSubTemplateIdType, Ho
             description: 'Posts a message to Microsoft Teams when a team activity occurs',
             inputs: {
                 content: {
-                    value: "**{event.properties.user.first_name ? event.properties.user.first_name : 'PostHog'}** {event.properties.activity} {event.properties.scope} `{event.properties.item_id}`",
+                    value: "**{event.properties.user.first_name ? event.properties.user.first_name : 'Flind'}** {event.properties.activity} {event.properties.scope} `{event.properties.item_id}`",
                 },
             },
         },
@@ -909,7 +909,7 @@ export const HOG_FUNCTION_SUB_TEMPLATES: Record<HogFunctionSubTemplateIdType, Ho
                     value: [
                         {
                             text: {
-                                text: "*{event.properties.user.first_name ? event.properties.user.first_name : 'PostHog'}* {event.properties.activity} {event.properties.scope} {event.properties.item_id}",
+                                text: "*{event.properties.user.first_name ? event.properties.user.first_name : 'Flind'}* {event.properties.activity} {event.properties.scope} {event.properties.item_id}",
                                 type: 'mrkdwn',
                             },
                             type: 'section',
@@ -917,7 +917,7 @@ export const HOG_FUNCTION_SUB_TEMPLATES: Record<HogFunctionSubTemplateIdType, Ho
                     ],
                 },
                 text: {
-                    value: "*{event.properties.user.first_name ? event.properties.user.first_name : 'PostHog'}* {event.properties.activity} {event.properties.scope} {event.properties.item_id}",
+                    value: "*{event.properties.user.first_name ? event.properties.user.first_name : 'Flind'}* {event.properties.activity} {event.properties.scope} {event.properties.item_id}",
                 },
             },
         },
@@ -1068,7 +1068,7 @@ export const HOG_FUNCTION_SUB_TEMPLATES: Record<HogFunctionSubTemplateIdType, Ho
             description: 'Posts a message to Discord when an issue is created',
             inputs: {
                 content: {
-                    value: `**🔴 {event.properties.name} created:** {event.properties.description}\n\n[View in PostHog](${errorTrackingIssueLinkHogTemplate('discord')})`,
+                    value: `**🔴 {event.properties.name} created:** {event.properties.description}\n\n[View in Flind](${errorTrackingIssueLinkHogTemplate('discord')})`,
                 },
             },
         },
@@ -1079,7 +1079,7 @@ export const HOG_FUNCTION_SUB_TEMPLATES: Record<HogFunctionSubTemplateIdType, Ho
             description: 'Posts a message to Microsoft Teams when an issue is created',
             inputs: {
                 text: {
-                    value: `**🔴 {event.properties.name} created:** {event.properties.description} (View in [PostHog](${errorTrackingIssueLinkHogTemplate('microsoft_teams')}))`,
+                    value: `**🔴 {event.properties.name} created:** {event.properties.description} (View in [Flind](${errorTrackingIssueLinkHogTemplate('microsoft_teams')}))`,
                 },
             },
         },
@@ -1207,7 +1207,7 @@ export const HOG_FUNCTION_SUB_TEMPLATES: Record<HogFunctionSubTemplateIdType, Ho
             description: 'Posts a message to Discord when an issue is reopened',
             inputs: {
                 content: {
-                    value: `**🔄 {event.properties.name} reopened:** {event.properties.description}\n\n[View in PostHog](${errorTrackingIssueLinkHogTemplate('discord')})`,
+                    value: `**🔄 {event.properties.name} reopened:** {event.properties.description}\n\n[View in Flind](${errorTrackingIssueLinkHogTemplate('discord')})`,
                 },
             },
         },
@@ -1218,7 +1218,7 @@ export const HOG_FUNCTION_SUB_TEMPLATES: Record<HogFunctionSubTemplateIdType, Ho
             description: 'Posts a message to Microsoft Teams when an issue is reopened',
             inputs: {
                 text: {
-                    value: `**🔄 {event.properties.name} reopened:** {event.properties.description} (View in [PostHog](${errorTrackingIssueLinkHogTemplate('microsoft_teams')}))`,
+                    value: `**🔄 {event.properties.name} reopened:** {event.properties.description} (View in [Flind](${errorTrackingIssueLinkHogTemplate('microsoft_teams')}))`,
                 },
             },
         },
@@ -1306,7 +1306,7 @@ export const HOG_FUNCTION_SUB_TEMPLATES: Record<HogFunctionSubTemplateIdType, Ho
             description: 'Posts a message to Microsoft Teams when an issue is spiking',
             inputs: {
                 text: {
-                    value: `**📈 Issue spiking: {event.properties.name}:** {event.properties.description}\n**Exceptions in last 5 minutes:** {event.properties.current_bucket_value} ({event.properties.computed_baseline > 0 ? concat(round(event.properties.current_bucket_value / event.properties.computed_baseline), 'x over baseline') : 'no baseline yet'}) (View in [PostHog](${errorTrackingIssueLinkHogTemplate('microsoft_teams')}))`,
+                    value: `**📈 Issue spiking: {event.properties.name}:** {event.properties.description}\n**Exceptions in last 5 minutes:** {event.properties.current_bucket_value} ({event.properties.computed_baseline > 0 ? concat(round(event.properties.current_bucket_value / event.properties.computed_baseline), 'x over baseline') : 'no baseline yet'}) (View in [Flind](${errorTrackingIssueLinkHogTemplate('microsoft_teams')}))`,
                 },
             },
         },
@@ -1702,10 +1702,10 @@ export const HOG_FUNCTION_SUB_TEMPLATES: Record<HogFunctionSubTemplateIdType, Ho
         slackBody: '{event.properties.summary}',
         webhookSummary: '{event.properties.title}: {event.properties.summary}',
         discordContent:
-            '**🩺 PostHog health check**\n\n*{event.properties.title}*\n{event.properties.summary}\n\n[View in PostHog]({project.url}{event.properties.link})',
+            '**🩺 Flind health check**\n\n*{event.properties.title}*\n{event.properties.summary}\n\n[View in Flind]({project.url}{event.properties.link})',
         teamsText:
-            '**🩺 PostHog health check:** *{event.properties.title}* — {event.properties.summary} (View in [PostHog]({project.url}{event.properties.link}))',
-        actionButtonText: 'View in PostHog',
+            '**🩺 Flind health check:** *{event.properties.title}* — {event.properties.summary} (View in [Flind]({project.url}{event.properties.link}))',
+        actionButtonText: 'View in Flind',
         namePrefix: 'health check fires',
         descriptionVerb: 'fires',
     }),
@@ -1714,10 +1714,10 @@ export const HOG_FUNCTION_SUB_TEMPLATES: Record<HogFunctionSubTemplateIdType, Ho
         slackBody: '{event.properties.summary}',
         webhookSummary: 'Resolved: {event.properties.title} — {event.properties.summary}',
         discordContent:
-            '**✅ PostHog health check resolved**\n\n*{event.properties.title}*\n{event.properties.summary}\n\n[View in PostHog]({project.url}{event.properties.link})',
+            '**✅ Flind health check resolved**\n\n*{event.properties.title}*\n{event.properties.summary}\n\n[View in Flind]({project.url}{event.properties.link})',
         teamsText:
-            '**✅ Resolved:** *{event.properties.title}* — {event.properties.summary} (View in [PostHog]({project.url}{event.properties.link}))',
-        actionButtonText: 'View in PostHog',
+            '**✅ Resolved:** *{event.properties.title}* — {event.properties.summary} (View in [Flind]({project.url}{event.properties.link}))',
+        actionButtonText: 'View in Flind',
         namePrefix: 'health check resolves',
         descriptionVerb: 'resolves',
     }),

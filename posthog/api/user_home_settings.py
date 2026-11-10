@@ -86,7 +86,7 @@ class PinnedSceneTabsSerializer(serializers.Serializer):
         required=False,
         allow_null=True,
         help_text=(
-            "Tab descriptor for the user's chosen home page — the destination opened when they click the PostHog "
+            "Tab descriptor for the user's chosen home page — the destination opened when they click the Flind "
             "logo or hit `/`. Set to a tab descriptor to pick a homepage, send `null` or `{}` to clear it and fall "
             "back to the project default."
         ),

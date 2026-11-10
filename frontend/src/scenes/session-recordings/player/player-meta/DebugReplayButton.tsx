@@ -23,9 +23,9 @@ function debugChatTooltip(debugChatSummary: DebugChatSummary | undefined): JSX.E
         )
     }
     if (debugChatSummary && !isTerminalRunStatus(debugChatSummary.runStatus)) {
-        return 'PostHog AI is still debugging this recording. Click to open the chat.'
+        return 'Flind AI is still debugging this recording. Click to open the chat.'
     }
-    return 'Opens the PostHog AI chat that debugged this recording.'
+    return 'Opens the Flind AI chat that debugged this recording.'
 }
 
 export function DebugReplayButton(): JSX.Element {
@@ -41,7 +41,7 @@ export function DebugReplayButton(): JSX.Element {
     const hasDebugChat = !!taskIdBySessionRecordingId[sessionRecordingId]
     const openingDebugChat = openingSessionRecordingId === sessionRecordingId
     const debugChatSummary = debugChatSummaryBySessionRecordingId[sessionRecordingId]
-    const preparingTooltip = 'Loading the recording data for PostHog AI'
+    const preparingTooltip = 'Loading the recording data for Flind AI'
 
     useEffect(() => {
         if (hasDebugChat && !debugChatSummary) {
@@ -104,7 +104,7 @@ export function DebugReplayButton(): JSX.Element {
                 tooltip={
                     debugRecordingPreparing
                         ? preparingTooltip
-                        : 'Asks PostHog AI what went wrong in this recording. You can edit the prompt first.'
+                        : 'Asks Flind AI what went wrong in this recording. You can edit the prompt first.'
                 }
                 data-attr="replay-debug-with-ai"
             >

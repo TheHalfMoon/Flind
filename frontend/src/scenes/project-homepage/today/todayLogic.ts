@@ -126,7 +126,7 @@ async function currentReportContext(
         current = null
     }
     if (current && isActionCapableReport(report) && !isActionCapableReport(current)) {
-        lemonToast.info('This report can no longer take actions, so PostHog AI will answer instead.')
+        lemonToast.info('This report can no longer take actions, so Flind AI will answer instead.')
     }
     return { report: current ?? report, canAct: !!current && isActionCapableReport(current) }
 }

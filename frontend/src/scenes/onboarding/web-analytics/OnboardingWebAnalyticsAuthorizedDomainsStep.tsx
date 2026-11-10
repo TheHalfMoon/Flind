@@ -28,7 +28,7 @@ export const OnboardingWebAnalyticsAuthorizedDomainsStep: OnboardingStepComponen
         >
             <p>
                 These are the domains we'll use as breakdown when looking at <b>Web Analytics</b>. Make sure you add all
-                the domains you'll install PostHog at. These are also the URLs where our toolbar will be enabled.
+                the domains you'll install Flind at. These are also the URLs where our toolbar will be enabled.
             </p>
             <p>
                 <b>Wildcards are not allowed</b> (example: <code>https://*.posthog.com</code>). The domain needs to be

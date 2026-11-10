@@ -1024,7 +1024,7 @@ describe('maxThreadLogic', () => {
             const clientExecution = jest.fn().mockResolvedValue({ ok: true })
             maxGlobalLogic().actions.registerTool({
                 identifier: 'search',
-                name: 'Search PostHog data',
+                name: 'Search Flind data',
                 clientExecution,
             } as any)
             // The round trip must fire even though conversationLoading is still true at this point
@@ -1080,7 +1080,7 @@ describe('maxThreadLogic', () => {
             const clientExecution = jest.fn().mockResolvedValue({ ok: true })
             maxGlobalLogic().actions.registerTool({
                 identifier: 'search',
-                name: 'Search PostHog data',
+                name: 'Search Flind data',
                 clientExecution,
             } as any)
             logic.actions.setThread(pendingClientToolThread())
@@ -1105,7 +1105,7 @@ describe('maxThreadLogic', () => {
                 .mockImplementation(() => new Promise<Record<string, unknown>>((resolve) => (resolveHandler = resolve)))
             maxGlobalLogic().actions.registerTool({
                 identifier: 'search',
-                name: 'Search PostHog data',
+                name: 'Search Flind data',
                 clientExecution,
             } as any)
             logic.actions.setThread(pendingClientToolThread())
@@ -1133,7 +1133,7 @@ describe('maxThreadLogic', () => {
             const clientExecution = jest.fn()
             maxGlobalLogic().actions.registerTool({
                 identifier: 'search',
-                name: 'Search PostHog data',
+                name: 'Search Flind data',
                 clientExecution,
             } as any)
             logic.actions.setThread([

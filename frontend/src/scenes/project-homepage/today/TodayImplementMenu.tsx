@@ -78,7 +78,7 @@ export function TodayImplementMenu({
             >
                 <span className="grid grid-cols-[auto_1fr] items-center gap-x-2 text-left">
                     <IconLogomark className="size-4" />
-                    <span>PostHog</span>
+                    <span>Flind</span>
                     {postHogDisabledReason && (
                         <Text size="xs" variant="muted" render={<span />} className="col-start-2">
                             {postHogDisabledReason}

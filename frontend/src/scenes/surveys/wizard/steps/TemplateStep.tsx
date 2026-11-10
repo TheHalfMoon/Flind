@@ -191,7 +191,7 @@ export function TemplateStep({ handleCustomizeMore }: { handleCustomizeMore: () 
             <div className="flex items-center gap-4">
                 <div className="flex-1 border-t border-border" />
                 <span className="text-xs text-tertiary uppercase tracking-wide">
-                    or tell PostHog AI what you want to learn
+                    or tell Flind AI what you want to learn
                 </span>
                 <div className="flex-1 border-t border-border" />
             </div>
@@ -218,7 +218,7 @@ export function TemplateStep({ handleCustomizeMore }: { handleCustomizeMore: () 
                     <div className="flex items-center justify-between px-4 pb-3">
                         <div className="flex items-center gap-1.5 text-xs text-tertiary">
                             <IconSparkles className="text-ai size-3.5" />
-                            <span>PostHog AI</span>
+                            <span>Flind AI</span>
                         </div>
                         <LemonButton
                             type="primary"

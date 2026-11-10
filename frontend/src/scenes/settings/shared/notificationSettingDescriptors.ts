@@ -18,7 +18,7 @@ export type NotificationConcept = {
     requiredFeature?: AvailableFeature
 }
 
-const NO_PROJECT_NOTE = 'PostHog stores this one as a single value per person, so it cannot be set per project.'
+const NO_PROJECT_NOTE = 'Flind stores this one as a single value per person, so it cannot be set per project.'
 
 /**
  * Kept in step with `LOCKABLE_NOTIFICATION_SETTINGS` in

@@ -96,7 +96,7 @@ export function EventIngestionRestrictionDetails({
     return (
         <div className="deprecated-space-y-4">
             <p>
-                PostHog has applied one or more restrictions to events sent with this project's token. Restrictions are
+                Flind has applied one or more restrictions to events sent with this project's token. Restrictions are
                 usually put in place to protect the ingestion pipeline. Contact support if you need one removed.
             </p>
             <ul className="deprecated-space-y-3">

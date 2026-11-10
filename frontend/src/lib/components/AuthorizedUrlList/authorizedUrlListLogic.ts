@@ -686,7 +686,7 @@ export const authorizedUrlListLogic = kea<authorizedUrlListLogicType>([
             }
             const templateScript = `
                 if (!window?.posthog) {
-                    console.warn('PostHog must be added to the window object on this page, for this to work. This is normally done in the loaded callback of your posthog init code.')
+                    console.warn('Flind must be added to the window object on this page, for this to work. This is normally done in the loaded callback of your posthog init code.')
                 } else {
                     window.posthog.loadToolbar(${JSON.stringify(params)})
                 }

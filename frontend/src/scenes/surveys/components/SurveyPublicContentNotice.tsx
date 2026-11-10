@@ -17,6 +17,6 @@ export function SurveyPublicContentNotice(): JSX.Element {
             : "Everything you write here is sent to every visitor's browser so your app can show the survey. Anyone can read it, so keep private details out of names and question text."
 
     return (
-        <LemonBanner type="info">{exposure} The survey description is the exception and stays in PostHog.</LemonBanner>
+        <LemonBanner type="info">{exposure} The survey description is the exception and stays in Flind.</LemonBanner>
     )
 }

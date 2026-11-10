@@ -1,3 +1,5 @@
+import { flindBuildEnv } from 'lib/flindBuildEnv'
+
 // Leaf module for the incident status shared between incidentStatusLogic (which polls the
 // status page and writes here) and LemonToast (which reads it to decorate error toasts).
 // Deliberately logic-free: LemonToast is imported by virtually every bundle, and importing
@@ -7,7 +9,7 @@
 export type NormalizedStatus = 'operational' | 'degraded_performance' | 'partial_outage' | 'major_outage'
 
 /** Optional status provider. No inherited SaaS status feeds are accepted. */
-export function configuredStatusPageHost(value: string = import.meta.env?.VITE_FLIND_STATUS_HOST || ''): string | null {
+export function configuredStatusPageHost(value: string = flindBuildEnv.VITE_FLIND_STATUS_HOST || ''): string | null {
     if (!value || value.length > 253 || !/^[a-z0-9][a-z0-9.-]*[a-z0-9]$/.test(value) || value.includes('..')) {
         return null
     }

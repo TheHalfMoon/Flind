@@ -349,7 +349,7 @@ class OrganizationInviteDelegateSerializer(serializers.Serializer):
         required=True,
         help_text=(
             "Email of the teammate who should complete setup on the inviter's behalf. Receives a "
-            "PostHog-branded delegation invite granting admin-level membership on accept."
+            "Flind-branded delegation invite granting admin-level membership on accept."
         ),
     )
     message = serializers.CharField(

@@ -4,7 +4,7 @@ export const HOGQL_HELP = `Usage: hogql [options] ["SQL"]
        echo "SQL" | hogql [options]
        hogql [options]
 
-Run SQL in the current PostHog project. Without SQL or piped input, start
+Run SQL in the current Flind project. Without SQL or piped input, start
 an interactive prompt. Enter one query per line; no semicolon is required.
 Use exit, quit, \\q, or Ctrl+D to leave. Query errors keep the prompt open.
 
@@ -15,7 +15,7 @@ Output (choose one):
   --tsv               Tab-separated headers and rows
 
 Query options:
-  --connection-id ID  Query an external connection instead of PostHog data
+  --connection-id ID  Query an external connection instead of Flind data
   --raw               Send SQL to that connection without HogQL translation
   --name NAME         Set the query name
   --values JSON       Placeholder values, for example '{"value":42}'

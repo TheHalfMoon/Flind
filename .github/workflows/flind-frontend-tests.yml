@@ -1,0 +1,243 @@
+# Flind frontend checks for brand branches: the Jest suites that pin rebranded UI text, and a
+# type check that fails on new TypeScript errors in files the branch changed.
+# Read-only token, no secrets, nothing published.
+name: Flind frontend tests
+
+on:
+    push:
+        branches:
+            - 'flind-ci/brand-audit-**'
+    workflow_dispatch:
+
+permissions:
+    contents: read
+
+concurrency:
+    group: flind-frontend-tests-${{ github.ref }}
+    cancel-in-progress: true
+
+jobs:
+    jest:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 60
+        env:
+            # Suites that assert rebranded copy; keep in step with the brand branches.
+            FLIND_JEST_TARGETS: >-
+                src/RootErrorBoundary.test.tsx
+                src/lib/flindBuildEnv.test.ts
+                src/scenes/settings/organization/flindLegalCopy.test.tsx
+                src/layout/today/todayPreviewCards.test.ts
+                src/index.test.tsx
+                src/lib/components/AgentPromptButton/AgentPromptButton.test.ts
+                src/lib/components/Cards/InsightCard/InsightCard.test.tsx
+                src/lib/components/NavPanelAdvertisement/navPanelProductPushAdLogic.test.ts
+                src/lib/components/TaxonomicFilter/taxonomicFilterLogic.test.ts
+                src/lib/components/TerraformExporter/alertHclExporter.test.ts
+                src/lib/integrations/SlackChannelPicker.test.tsx
+                src/lib/integrations/githubDisconnectCopy.test.ts
+                src/lib/integrations/integrationsLogic.test.ts
+                src/lib/integrations/oauthCallbackErrors.test.ts
+                src/scenes/agentic/agenticAuthorizeLogic.test.ts
+                src/scenes/billing/BillingLimit.test.tsx
+                src/scenes/billing/billing-utils.spec.ts
+                src/scenes/billing/billingUsageLogic.test.ts
+                src/scenes/code-canvas/CodeTaskLink.test.ts
+                src/scenes/dashboard/EmptyDashboardComponent.test.tsx
+                src/scenes/dashboard/dashboards/templates/DashboardTemplatesTable.test.tsx
+                src/scenes/data-warehouse/editor/connectionSelectorLogic.test.ts
+                src/scenes/data-warehouse/saved_queries/SyncFrequencySelect.test.ts
+                src/scenes/feature-flags/featureFlagLogic.test.ts
+                src/scenes/insights/EmptyStates/InsightErrorStates.test.tsx
+                src/scenes/integrations/components/GithubIntegration.test.tsx
+                src/scenes/max/maxThreadLogic.test.ts
+                src/scenes/project-homepage/today/todayNextStep.test.ts
+                src/scenes/session-recordings/components/ReplayCaptureDiagnosticsPanel.test.tsx
+                src/scenes/session-recordings/player/sessionRecordingPlayerLogic.test.ts
+                src/scenes/settings/settingsSearch.test.tsx
+                src/scenes/terminal/posthogCommands.test.ts
+                products/ai_observability/frontend/selfDriving/AIObservabilitySelfDriving.test.tsx
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                  fetch-depth: 1
+
+            - uses: actions/setup-node@v4
+              with:
+                  node-version-file: .nvmrc
+
+            # Two installs, reproduced locally with pnpm 11.28.5: combining --filter=@flind/root with
+            # --filter=@flind/frontend... skips the root's bin links, so the root prepare script cannot
+            # find husky. Installing the root on its own links them, and leaves the frontend's modules
+            # (jest, vite, tsc) intact. The desktop app stays out of both.
+            - name: Install dependencies
+              env:
+                  # The root prepare script runs husky (local git hooks only); skip it in CI as
+                  # upstream's browserslist workflow does. Dependency build scripts still run.
+                  HUSKY: '0'
+                  SKIP_ELECTRON_REBUILD: '1'
+              run: |
+                  # Standalone pnpm at the version pinned in package.json, as upstream's pnpm/action-setup
+                  # provides; that third-party action is outside this repo's allowed-actions policy.
+                  npm install -g "pnpm@$(node -p "require('./package.json').packageManager.split('@')[1]")"
+                  pnpm --version
+                  set -o pipefail
+                  install() {
+                      if ! pnpm install --frozen-lockfile "$@" > install.log 2>&1; then
+                          grep -n -B 30 -A 5 'ELIFECYCLE\|ERR_PNPM' install.log | tail -120
+                          exit 1
+                      fi
+                      tail -3 install.log
+                  }
+                  # Reproduced locally with pnpm 11.28.5: with scripts enabled, the build scripts of lmdb
+                  # and msgpackr-extract run before the bins they call (node-gyp-build-optional-packages)
+                  # are linked, and the install fails. Link everything first with scripts off, then run
+                  # the allowed build scripts with pnpm rebuild. The root's husky prepare is not needed.
+                  install --ignore-scripts --filter=@flind/root
+                  install --ignore-scripts --filter=@flind/frontend...
+                  if ! pnpm rebuild --filter=@flind/frontend... > rebuild.log 2>&1; then
+                      grep -n -B 20 -A 5 'Failed\|ELIFECYCLE\|ERR_PNPM' rebuild.log | tail -80
+                      exit 1
+                  fi
+                  grep -E 'install: Done|postinstall: Done' rebuild.log | sort -u | tail -12
+                  # pnpm 11.28.5 installs oxfmt and @typescript/native-preview but does not link their
+                  # bins (reproduced locally; both entry files exist). Call the installed entry points.
+                  mkdir -p "$RUNNER_TEMP/flind-bin"
+                  for tool in oxfmt:node_modules/oxfmt/bin/oxfmt tsgo:node_modules/@typescript/native-preview/bin/tsgo; do
+                      name="${tool%%:*}"; target="$PWD/${tool#*:}"
+                      test -f "$target" || { echo "missing $target"; exit 1; }
+                      printf '#!/bin/sh\nexec node "%s" "$@"\n' "$target" > "$RUNNER_TEMP/flind-bin/$name"
+                      chmod +x "$RUNNER_TEMP/flind-bin/$name"
+                  done
+                  echo "$RUNNER_TEMP/flind-bin" >> "$GITHUB_PATH"
+                  PATH="$RUNNER_TEMP/flind-bin:$PATH" oxfmt --version
+                  PATH="$RUNNER_TEMP/flind-bin:$PATH" tsgo --version
+                  test -x frontend/node_modules/.bin/jest
+
+            - name: Run Jest suites
+              working-directory: frontend
+              run: |
+                  set -o pipefail
+                  pnpm build:products 2>&1 | tail -40
+                  pnpm exec jest $FLIND_JEST_TARGETS 2>&1 | tee jest.log
+                  { echo '## Flind frontend tests'; echo '```'; tail -30 jest.log; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+
+    typecheck:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 60
+        env:
+            # The PR base: new errors are measured against it, not against an absolute zero, because
+            # kea-typegen output is not generated here and its absence errors on both sides equally.
+            FLIND_BASE_BRANCH: flind-ci/brand-audit-api-text-20261108
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                  fetch-depth: 1
+
+            - uses: actions/setup-node@v4
+              with:
+                  node-version-file: .nvmrc
+
+            # Two installs, reproduced locally with pnpm 11.28.5: combining --filter=@flind/root with
+            # --filter=@flind/frontend... skips the root's bin links, so the root prepare script cannot
+            # find husky. Installing the root on its own links them, and leaves the frontend's modules
+            # (jest, vite, tsc) intact. The desktop app stays out of both.
+            - name: Install dependencies
+              env:
+                  # The root prepare script runs husky (local git hooks only); skip it in CI as
+                  # upstream's browserslist workflow does. Dependency build scripts still run.
+                  HUSKY: '0'
+                  SKIP_ELECTRON_REBUILD: '1'
+              run: |
+                  # Standalone pnpm at the version pinned in package.json, as upstream's pnpm/action-setup
+                  # provides; that third-party action is outside this repo's allowed-actions policy.
+                  npm install -g "pnpm@$(node -p "require('./package.json').packageManager.split('@')[1]")"
+                  pnpm --version
+                  set -o pipefail
+                  install() {
+                      if ! pnpm install --frozen-lockfile "$@" > install.log 2>&1; then
+                          grep -n -B 30 -A 5 'ELIFECYCLE\|ERR_PNPM' install.log | tail -120
+                          exit 1
+                      fi
+                      tail -3 install.log
+                  }
+                  # Reproduced locally with pnpm 11.28.5: with scripts enabled, the build scripts of lmdb
+                  # and msgpackr-extract run before the bins they call (node-gyp-build-optional-packages)
+                  # are linked, and the install fails. Link everything first with scripts off, then run
+                  # the allowed build scripts with pnpm rebuild. The root's husky prepare is not needed.
+                  install --ignore-scripts --filter=@flind/root
+                  install --ignore-scripts --filter=@flind/frontend...
+                  if ! pnpm rebuild --filter=@flind/frontend... > rebuild.log 2>&1; then
+                      grep -n -B 20 -A 5 'Failed\|ELIFECYCLE\|ERR_PNPM' rebuild.log | tail -80
+                      exit 1
+                  fi
+                  grep -E 'install: Done|postinstall: Done' rebuild.log | sort -u | tail -12
+                  # pnpm 11.28.5 installs oxfmt and @typescript/native-preview but does not link their
+                  # bins (reproduced locally; both entry files exist). Call the installed entry points.
+                  mkdir -p "$RUNNER_TEMP/flind-bin"
+                  for tool in oxfmt:node_modules/oxfmt/bin/oxfmt tsgo:node_modules/@typescript/native-preview/bin/tsgo; do
+                      name="${tool%%:*}"; target="$PWD/${tool#*:}"
+                      test -f "$target" || { echo "missing $target"; exit 1; }
+                      printf '#!/bin/sh\nexec node "%s" "$@"\n' "$target" > "$RUNNER_TEMP/flind-bin/$name"
+                      chmod +x "$RUNNER_TEMP/flind-bin/$name"
+                  done
+                  echo "$RUNNER_TEMP/flind-bin" >> "$GITHUB_PATH"
+                  PATH="$RUNNER_TEMP/flind-bin:$PATH" oxfmt --version
+                  PATH="$RUNNER_TEMP/flind-bin:$PATH" tsgo --version
+                  test -x frontend/node_modules/.bin/jest
+
+            - name: Type-check head and base
+              run: |
+                  # Fail loudly if the compiler is missing; otherwise both runs would report zero errors.
+                  tsgo --version
+                  git fetch --depth=1 origin "$FLIND_BASE_BRANCH"
+                  BASE_SHA=$(git rev-parse FETCH_HEAD)
+                  echo "base=$BASE_SHA head=$(git rev-parse HEAD)"
+                  git diff --name-only "$BASE_SHA" HEAD -- 'frontend/src/*.ts' 'frontend/src/*.tsx' > changed-files.txt
+                  echo "changed TypeScript files: $(wc -l < changed-files.txt)"
+                  run_tsgo() {
+                      # tsgo exits non-zero when it reports errors; the comparison below decides the outcome.
+                      # Same settings as frontend/bin/typescript-check.mjs in constrained mode: run from frontend/
+                      # with one checker and a Go memory limit, so the check fits a standard runner.
+                      ( cd frontend && GOMEMLIMIT=6GiB tsgo --noEmit --checkers 1 --pretty false > "../$1" 2>&1 ) || true
+                      echo "$1: $(grep -c 'error TS' "$1") errors"
+                  }
+                  run_tsgo tsgo-head.txt
+                  git checkout "$BASE_SHA" -- frontend/src
+                  run_tsgo tsgo-base.txt
+                  git checkout HEAD -- frontend/src
+
+            - name: Fail on new errors in changed files
+              run: |
+                  python3 - <<'EOF'
+                  import collections, re, sys
+
+                  pattern = re.compile(r"^(?P<path>[^(\s]+)\(\d+,\d+\): error (?P<code>TS\d+): (?P<msg>.*)$")
+
+                  def repo_path(path):
+                      # tsgo runs from frontend/, so its paths are relative to it.
+                      if path.startswith("../"):
+                          return path[3:]
+                      return path if path.startswith("frontend/") else "frontend/" + path
+
+                  def errors(path):
+                      found = collections.Counter()
+                      for line in open(path, encoding="utf-8", errors="replace"):
+                          m = pattern.match(line.strip())
+                          if m:
+                              found[(repo_path(m["path"]), m["code"], m["msg"])] += 1
+                      return found
+
+                  text = open("tsgo-head.txt", encoding="utf-8", errors="replace").read()
+                  if "panic:" in text or "FATAL ERROR" in text or "heap out of memory" in text:
+                      sys.exit("tsgo did not complete on the head commit; refusing to report a pass")
+
+                  head, base = errors("tsgo-head.txt"), errors("tsgo-base.txt")
+                  changed = {line.strip() for line in open("changed-files.txt") if line.strip()}
+                  new = [(k, n - base.get(k, 0)) for k, n in head.items() if n > base.get(k, 0) and k[0] in changed]
+                  print(f"head errors: {sum(head.values())}, base errors: {sum(base.values())}, changed files: {len(changed)}")
+                  for (path, code, msg), n in new:
+                      print(f"NEW x{n}: {path}: {code}: {msg}")
+                  if new:
+                      sys.exit(f"{len(new)} new TypeScript error(s) in files changed by this branch")
+                  print("no new TypeScript errors in changed files")
+                  EOF

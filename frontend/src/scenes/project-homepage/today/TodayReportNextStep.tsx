@@ -151,7 +151,7 @@ export function TodayReportNextStep({
                 >
                     <Composer.Frame>
                         <Composer.Field>
-                            <Composer.Placeholder>Ask PostHog AI about this report</Composer.Placeholder>
+                            <Composer.Placeholder>Ask Flind AI about this report</Composer.Placeholder>
                             <Composer.Textarea
                                 maxRows={6}
                                 className="[mask-image:linear-gradient(to_bottom,black_calc(100%-1rem),transparent)]"

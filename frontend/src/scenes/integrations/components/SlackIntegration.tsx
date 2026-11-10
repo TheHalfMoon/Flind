@@ -91,8 +91,8 @@ export function SlackIntegration({ next, centered }: { next?: string; centered?:
                                         : 'text-sm text-secondary mt-2 mb-0'
                                 }
                             >
-                                Adding PostHog creates a public #posthog-inbox channel in your Slack workspace, where
-                                PostHog posts what it finds.
+                                Adding Flind creates a public #posthog-inbox channel in your Slack workspace, where
+                                Flind posts what it finds.
                             </p>
                         </div>
                     ) : user?.is_staff ? (
@@ -130,7 +130,7 @@ export function SlackIntegration({ next, centered }: { next?: string; centered?:
                         )
                     ) : (
                         <p className="text-secondary">
-                            This PostHog instance is not configured for Slack. Please contact the instance owner to
+                            This Flind instance is not configured for Slack. Please contact the instance owner to
                             configure it.
                         </p>
                     )}

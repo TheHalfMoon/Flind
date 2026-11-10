@@ -30,7 +30,7 @@ export function PhaiViewToggle({
     }
 
     const switchingToLegacy = effectivePhaiView === 'new'
-    const tooltip = switchingToLegacy ? 'Switch to legacy PostHog AI' : 'Switch to new PostHog AI'
+    const tooltip = switchingToLegacy ? 'Switch to legacy Flind AI' : 'Switch to new Flind AI'
     const Icon = switchingToLegacy ? IconRevert : IconSparkles
     const onClick = (): void => {
         const mode: PhaiViewMode = switchingToLegacy ? 'legacy' : 'new'

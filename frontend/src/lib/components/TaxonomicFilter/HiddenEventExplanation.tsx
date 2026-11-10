@@ -12,7 +12,7 @@ export function HiddenEventExplanation(): JSX.Element {
 
     return (
         <>
-            PostHog still collects this event, but you can't build a saved query on it. Its data is moving, so a saved
+            Flind still collects this event, but you can't build a saved query on it. Its data is moving, so a saved
             query would stop returning results. To see how a flag is used, open the flag and check its Usage tab.
             {announcementUrl && (
                 <>

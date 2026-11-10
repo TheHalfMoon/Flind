@@ -8,7 +8,7 @@ export function SessionLogsUnavailableNotice({ sessionId }: { sessionId: string 
         <div className="flex flex-col gap-1.5 p-2 max-w-100" data-attr="player-inspector-logs-unavailable-notice">
             <span className="font-semibold">No logs in this session</span>
             <p className="m-0">
-                PostHog has no logs linked to this session. Your backend may not send logs to PostHog, or its logs may
+                Flind has no logs linked to this session. Your backend may not send logs to Flind, or its logs may
                 not include the session ID. New logs can take a few minutes to appear.
             </p>
             <div className="flex items-center gap-x-3 gap-y-1 flex-wrap text-xs text-muted">

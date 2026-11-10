@@ -91,7 +91,7 @@ export function DashboardHeader({ loading = false }: { loading?: boolean }): JSX
                 isLoading={isLoading}
                 saveOnBlur
                 renameDebounceMs={0}
-                maxButtonLabel="PostHog AI"
+                maxButtonLabel="Flind AI"
                 maxToolProps={
                     dashboard && canEditDashboard
                         ? {

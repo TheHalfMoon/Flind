@@ -208,7 +208,7 @@ export function InstallationProgressContent({
                                     key: 'finish-setup',
                                     label: 'setup prompt',
                                     buildPrompt: () =>
-                                        `Set up PostHog in this project. Follow the instructions at ${docsUrl}`,
+                                        `Set up Flind in this project. Follow the instructions at ${docsUrl}`,
                                 },
                             ]}
                             pinnedAgentKey="clipboard"

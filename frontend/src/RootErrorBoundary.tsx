@@ -73,7 +73,7 @@ export class RootErrorBoundary extends React.Component<{ children: React.ReactNo
     }
 
     override componentDidCatch(error: unknown, errorInfo: React.ErrorInfo): void {
-        console.error('[PostHog] App failed to start:', error, errorInfo.componentStack)
+        console.error('[Flind] App failed to start:', error, errorInfo.componentStack)
         reportBootFailure(error)
     }
 
@@ -83,8 +83,8 @@ export class RootErrorBoundary extends React.Component<{ children: React.ReactNo
                 <div className="Preloader" role="alert">
                     <div>
                         {isChunkLoadError(this.state.error)
-                            ? 'PostHog failed to load. '
-                            : 'PostHog crashed while starting. '}
+                            ? 'Flind failed to load. '
+                            : 'Flind crashed while starting. '}
                         <button onClick={() => window.location.reload()}>Reload the page</button> to try again.
                     </div>
                 </div>

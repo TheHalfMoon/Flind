@@ -23,7 +23,7 @@ describe('describeOAuthCallbackError', () => {
     it.each([
         [
             'slack',
-            'PostHog was not added to your Slack workspace. Either the install was declined, or your workspace requires an admin to approve new apps and the request is now waiting for one. Once an admin approves it, come back to this page and click "Add to Slack" again.',
+            'Flind was not added to your Slack workspace. Either the install was declined, or your workspace requires an admin to approve new apps and the request is now waiting for one. Once an admin approves it, come back to this page and click "Add to Slack" again.',
         ],
         ['linkedin-ads', 'Authorization was canceled. Please try connecting again and approve access to continue.'],
     ])('describes access_denied for %s', (kind, expected) => {

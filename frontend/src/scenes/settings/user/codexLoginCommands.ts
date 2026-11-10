@@ -7,7 +7,7 @@ export const CODEX_LOGIN_PLATFORM_OPTIONS: { value: CodexLoginPlatform; label: s
 ]
 
 const CODEX_LOGIN = 'codex login --device-auth -c cli_auth_credentials_store=file'
-const COPIED_MESSAGE = 'Copied. Paste it in PostHog.'
+const COPIED_MESSAGE = 'Copied. Paste it in Flind.'
 
 const LINUX_COPY =
     'if [ -n "$WAYLAND_DISPLAY" ] && command -v wl-copy >/dev/null; then wl-copy < "$d/auth.json"; ' +

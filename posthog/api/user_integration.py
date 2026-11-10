@@ -94,7 +94,7 @@ class UserGitHubAccountSerializer(serializers.Serializer):
 
 
 class UserGitHubIntegrationItemSerializer(serializers.Serializer):
-    id = serializers.UUIDField(help_text="PostHog UserIntegration row id.")
+    id = serializers.UUIDField(help_text="Flind UserIntegration row id.")
     kind = serializers.CharField(help_text="Integration kind; always `github` for this API.")
     installation_id = serializers.CharField(help_text="GitHub App installation id.")
     repository_selection = serializers.CharField(
@@ -117,7 +117,7 @@ class UserGitHubIntegrationItemSerializer(serializers.Serializer):
     )
     installation_shared = serializers.BooleanField(
         help_text=(
-            "Whether any other PostHog project or personal connection references the same App installation. "
+            "Whether any other Flind project or personal connection references the same App installation. "
             "When false, disconnecting this integration also uninstalls the GitHub App from the connected "
             "account or organization."
         ),
@@ -125,14 +125,14 @@ class UserGitHubIntegrationItemSerializer(serializers.Serializer):
     installation_status = serializers.ChoiceField(
         choices=GITHUB_INSTALLATION_STATUS_CHOICES,
         help_text=(
-            "`unavailable` means the App was uninstalled or suspended on GitHub and PostHog can no longer "
+            "`unavailable` means the App was uninstalled or suspended on GitHub and Flind can no longer "
             "mint tokens for it; `connected` otherwise."
         ),
     )
     needs_reauthorization = serializers.BooleanField(
         help_text=(
-            "True when GitHub rejected the stored credentials and PostHog dropped them. The installation is "
-            "still on GitHub, but PostHog cannot act as the user until they authorize it again."
+            "True when GitHub rejected the stored credentials and Flind dropped them. The installation is "
+            "still on GitHub, but Flind cannot act as the user until they authorize it again."
         ),
     )
     needs_reauthorization_at = serializers.DateTimeField(
@@ -157,7 +157,7 @@ class UserGitHubLinkStartRequestSerializer(serializers.Serializer):
     team_id = serializers.IntegerField(
         required=False,
         allow_null=True,
-        help_text="Optional team/project id (e.g. PostHog Desktop); web UI uses the session's current team.",
+        help_text="Optional team/project id (e.g. Flind Desktop); web UI uses the session's current team.",
     )
     connect_from = serializers.CharField(
         required=False,
@@ -176,7 +176,7 @@ class UserGitHubLinkStartResponseSerializer(serializers.Serializer):
 
 
 class GitHubInstallRequestItemSerializer(serializers.Serializer):
-    id = serializers.UUIDField(help_text="PostHog GitHubInstallRequest row id.")
+    id = serializers.UUIDField(help_text="Flind GitHubInstallRequest row id.")
     github_login = serializers.CharField(
         allow_blank=True,
         help_text="GitHub login the install was requested under. Blank if it could not be resolved.",
@@ -223,16 +223,16 @@ class GitHubInstallRequestListResponseSerializer(serializers.Serializer):
         required=False,
         allow_null=True,
         help_text=(
-            "Shareable GitHub App install URL with no PostHog session state, for an org owner who needs to "
+            "Shareable GitHub App install URL with no Flind session state, for an org owner who needs to "
             "approve the install. Null when the GitHub App is not configured on this instance."
         ),
     )
 
 
 class UserSlackIntegrationItemSerializer(serializers.Serializer):
-    id = serializers.UUIDField(help_text="PostHog UserIntegration row id.")
+    id = serializers.UUIDField(help_text="Flind UserIntegration row id.")
     kind = serializers.CharField(help_text="Integration kind; always `slack` for this API.")
-    slack_user_id = serializers.CharField(help_text="Slack user id this PostHog account is linked to.")
+    slack_user_id = serializers.CharField(help_text="Slack user id this Flind account is linked to.")
     slack_team_id = serializers.CharField(help_text="Slack workspace (team) id the link belongs to.")
     slack_team_name = serializers.CharField(
         required=False,
@@ -282,16 +282,16 @@ class UserSlackLinkStartResponseSerializer(serializers.Serializer):
 
 
 class UserSlackLinkableWorkspaceItemSerializer(serializers.Serializer):
-    posthog_team_id = serializers.IntegerField(help_text="PostHog team/project id owning the Slack workspace install.")
-    posthog_team_name = serializers.CharField(help_text="PostHog team/project name, for display in a picker.")
+    posthog_team_id = serializers.IntegerField(help_text="Flind team/project id owning the Slack workspace install.")
+    posthog_team_name = serializers.CharField(help_text="Flind team/project name, for display in a picker.")
     posthog_organization_name = serializers.CharField(
-        help_text="PostHog organization name owning the team, for picker disambiguation.",
+        help_text="Flind organization name owning the team, for picker disambiguation.",
     )
     slack_team_id = serializers.CharField(help_text="Slack workspace (team) id.")
     slack_team_name = serializers.CharField(
         required=False,
         allow_null=True,
-        help_text="Slack workspace display name as known by PostHog.",
+        help_text="Slack workspace display name as known by Flind.",
     )
 
 
@@ -801,7 +801,7 @@ class UserIntegrationViewSet(viewsets.GenericViewSet):
     @action(methods=["POST"], detail=False, url_path="slack/start", throttle_classes=[UserAuthenticationThrottle])
     def slack_start(self, request: Request, **_kwargs) -> Response:
         """Mint a Sign-in-with-Slack invite URL initiated from settings, without
-        Slack-DM context. The returned URL takes the user through PostHog login
+        Slack-DM context. The returned URL takes the user through Flind login
         (already satisfied here), then to Slack OAuth, then back to our callback
         which writes the ``UserIntegration`` row.
 

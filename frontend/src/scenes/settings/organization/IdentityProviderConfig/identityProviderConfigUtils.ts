@@ -56,7 +56,7 @@ export const IDENTITY_PROVIDER_FEATURES: Record<ConfigScopeEnumApi, IdentityProv
     [ConfigScopeEnumApi.Xaa]: {
         name: 'XAA',
         title: 'XAA authentication',
-        description: 'Automate API and MCP access to PostHog with Cross App Access (XAA).',
+        description: 'Automate API and MCP access to Flind with Cross App Access (XAA).',
         availableFeature: AvailableFeature.XAA_AUTHENTICATION,
     },
 }

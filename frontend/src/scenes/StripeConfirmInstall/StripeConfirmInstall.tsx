@@ -21,7 +21,7 @@ export function StripeConfirmInstall(): JSX.Element {
     return (
         <div className="flex justify-center mt-8 px-4">
             <LemonCard className="max-w-xl w-full" hoverEffect={false}>
-                <h2 className="mb-2">Connect Stripe to PostHog?</h2>
+                <h2 className="mb-2">Connect Stripe to Flind?</h2>
                 {hasRequiredParams ? (
                     <>
                         <p>
@@ -30,7 +30,7 @@ export function StripeConfirmInstall(): JSX.Element {
                             <strong>{currentTeam?.name ?? 'this project'}</strong>.
                         </p>
                         <p className="text-secondary text-sm">
-                            If this isn't your Stripe account, click cancel and report this link to your PostHog admin.
+                            If this isn't your Stripe account, click cancel and report this link to your Flind admin.
                         </p>
                         <div className="flex gap-2 mt-4">
                             <LemonButton

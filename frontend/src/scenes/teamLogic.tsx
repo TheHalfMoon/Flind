@@ -455,7 +455,7 @@ export const teamLogic = kea<teamLogicType>([
                         updatedAttribute === 'completed_snippet_onboarding' ||
                         updatedAttribute === 'has_completed_onboarding_for'
                     ) {
-                        message = "Congrats! You're now ready to use PostHog."
+                        message = "Congrats! You're now ready to use Flind."
                     } else {
                         message = `${parseUpdatedAttributeName(updatedAttribute)} updated successfully!`
                     }

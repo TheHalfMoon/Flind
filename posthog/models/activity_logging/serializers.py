@@ -55,7 +55,7 @@ class ActivityLogSerializer(serializers.Serializer):
         read_only=True, help_text="Whether the activity was performed by the system rather than a user."
     )
     was_impersonated = serializers.BooleanField(
-        read_only=True, help_text="Whether the acting user was being impersonated by PostHog staff."
+        read_only=True, help_text="Whether the acting user was being impersonated by Flind staff."
     )
     client = serializers.CharField(
         read_only=True,

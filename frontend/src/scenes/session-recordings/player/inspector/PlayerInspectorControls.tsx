@@ -368,7 +368,7 @@ export function PlayerInspectorControls(): JSX.Element {
                     mode !== SessionRecordingPlayerMode.Sharing && (
                         <SettingsToggle
                             data-attr="player-inspector-doctor-toggle"
-                            title="Doctor events help diagnose the health of a recording, and are used by PostHog support"
+                            title="Doctor events help diagnose the health of a recording, and are used when troubleshooting with support"
                             icon={<IconStethoscope />}
                             label="Doctor"
                             active={!!miniFiltersByKey['doctor']?.enabled}

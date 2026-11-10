@@ -49,7 +49,7 @@ export const SPEND_TYPES = [
     { label: 'Data pipelines (deprecated)', value: 'data_pipelines' },
     { label: 'Destinations trigger events', value: 'cdp_billable_invocations_in_period' },
     { label: 'Rows exported', value: 'rows_exported_in_period' },
-    { label: 'PostHog AI', value: 'ai_credits_used_in_period' },
+    { label: 'Flind AI', value: 'ai_credits_used_in_period' },
     { label: 'Self-driving inbox credits', value: 'signals_credits_used_in_period' },
     { label: 'PostHog Desktop credits', value: 'posthog_code_credits_used_in_period' },
     { label: 'Replay vision credits', value: 'replay_vision_credits_used_in_period' },

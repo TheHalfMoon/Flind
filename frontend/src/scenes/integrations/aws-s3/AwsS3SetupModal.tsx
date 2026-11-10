@@ -17,7 +17,7 @@ export const AwsS3SetupModal = (props: AwsS3SetupModalLogicProps): JSX.Element =
         <LemonModal
             isOpen={props.isOpen}
             title="Configure AWS S3 connection"
-            description="Connect PostHog to your S3 buckets. Connections can be reused across exports."
+            description="Connect Flind to your S3 buckets. Connections can be reused across exports."
             onClose={props.onComplete}
             footer={
                 <>
@@ -53,7 +53,7 @@ export const AwsS3SetupModal = (props: AwsS3SetupModalLogicProps): JSX.Element =
                         <LemonField
                             name="awsRoleArn"
                             label="IAM role ARN"
-                            info="The ARN of an IAM role in your AWS account that PostHog will assume to write export data."
+                            info="The ARN of an IAM role in your AWS account that Flind will assume to write export data."
                         >
                             <LemonInput
                                 placeholder="e.g. arn:aws:iam::123456789012:role/posthog-batch-exports"
@@ -73,7 +73,7 @@ export const AwsS3SetupModal = (props: AwsS3SetupModalLogicProps): JSX.Element =
                 ) : (
                     <>
                         <LemonBanner type="warning">
-                            Access keys are long-lived credentials stored by PostHog (encrypted). Prefer letting PostHog
+                            Access keys are long-lived credentials stored by Flind (encrypted). Prefer letting Flind
                             assume an IAM role to avoid creating and storing long-lived credentials.
                         </LemonBanner>
                         <LemonField name="awsAccessKeyId" label="AWS Access Key ID">

@@ -496,7 +496,7 @@ export const QuestionInput = React.forwardRef<HTMLDivElement, QuestionInputProps
                                                         type="tertiary"
                                                         className="border"
                                                         icon={<IconUpload />}
-                                                        tooltip="Attach files in new PostHog AI. Your draft moves with you."
+                                                        tooltip="Attach files in new Flind AI. Your draft moves with you."
                                                         onClick={() => attachmentInputRef.current?.click()}
                                                         data-attr="max-new-chat-attach-file"
                                                     >

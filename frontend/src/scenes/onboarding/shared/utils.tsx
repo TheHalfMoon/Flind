@@ -204,11 +204,11 @@ export const availableOnboardingProducts: AvailableOnboardingProducts = {
     },
     [ProductKey.DATA_WAREHOUSE]: {
         name: 'Data Warehouse',
-        description: 'Query external data alongside your PostHog data',
+        description: 'Query external data alongside your Flind data',
         userCentricDescription: 'Bring in data from Stripe, Salesforce, and more',
         capabilities: ['Sync Stripe, Salesforce & more', 'SQL queries on all your data', 'Scheduled data imports'],
         valueProps: [
-            { title: 'External data joins', problem: 'Combine Stripe, Hubspot, or Postgres data with PostHog' },
+            { title: 'External data joins', problem: 'Combine Stripe, Hubspot, or Postgres data with Flind' },
             { title: 'SQL queries', problem: 'Ask questions no pre-built dashboard can answer' },
         ],
         hedgehog: HedgehogConstruction,
@@ -365,7 +365,7 @@ export const availableOnboardingProducts: AvailableOnboardingProducts = {
     [ProductKey.CONVERSATIONS]: {
         name: 'Support',
         description: 'Receive customer questions over web, email, Slack, and Microsoft Teams',
-        userCentricDescription: 'Triage, assign, and automate customer support in PostHog',
+        userCentricDescription: 'Triage, assign, and automate customer support in Flind',
         capabilities: ['In-app chat widget', 'Email, Slack & Teams channels', 'Direct conversations API'],
         valueProps: [
             { title: 'In-app widget', problem: 'Let customers reach you without leaving your product' },

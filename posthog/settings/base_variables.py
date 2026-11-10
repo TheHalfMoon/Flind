@@ -114,7 +114,7 @@ DISABLE_BULK_DELETES: bool = get_from_env("DISABLE_BULK_DELETES", False, type_ca
 if DEBUG and not TEST and not IS_INTERACTIVE_SHELL:
     logger.warning(
         [
-            "Environment variable DEBUG is set - PostHog is running in DEVELOPMENT MODE!",
+            "Environment variable DEBUG is set - Flind is running in DEVELOPMENT MODE!",
             "Be sure to unset DEBUG if this is supposed to be a PRODUCTION ENVIRONMENT!",
         ]
     )

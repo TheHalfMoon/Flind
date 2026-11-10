@@ -26,7 +26,7 @@ export function AiRegexHelper({ onApply }: AiRegexHelperProps): JSX.Element {
     const aiAvailable = preflight?.openai_available
 
     const disabledReason = !aiAvailable
-        ? 'To use AI features, set environment variable OPENAI_API_KEY for this instance of PostHog'
+        ? 'To use AI features, set environment variable OPENAI_API_KEY for this instance of Flind'
         : !dataProcessingAccepted
           ? dataProcessingApprovalDisabledReason || 'You must accept the data processing agreement to use AI features'
           : isLoading

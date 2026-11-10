@@ -39,7 +39,7 @@ async function verifiedImage(url: string, sha256: string, signal: AbortSignal): 
     const digest = await crypto.subtle.digest('SHA-256', buffer)
     const actual = Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, '0')).join('')
     if (actual !== sha256) {
-        throw new Error('Terminal download verification failed. Reload PostHog before trying again.')
+        throw new Error('Terminal download verification failed. Reload Flind before trying again.')
     }
     return buffer
 }
@@ -242,7 +242,7 @@ export class TerminalRuntime {
                         "export PS1='\\[\\033[32m\\]posthog\\[\\033[0m\\]:\\[\\033[34m\\]\\w\\[\\033[0m\\] $ \\[\\e]133;B\\a\\]'",
                         `cd -- '${folder.replaceAll("'", "'\\''")}' || cd /posthog/files`,
                         'clear',
-                        "printf 'PostHog terminal\\n\\nTry:\\n  mc\\n  tree -C -L 3\\n  nano Unfiled/Notebooks/Foobar.md\\n  vi Unfiled/Notebooks/Foobar.md\\n  ncdu -r /posthog/files\\n  mkdir Research\\n  ph tools\\n  ph notebooks-list --limit 10 | jq .\\n  cat /posthog/README.txt\\n\\nUse your own notebook path. In nano, Ctrl+S saves and Ctrl+X exits.\\nIn vi, save with :wq; quit with :q!. Selecting text copies it.\\nFolder creation and moves update PostHog.\\n\\n'",
+                        "printf 'Flind terminal\\n\\nTry:\\n  mc\\n  tree -C -L 3\\n  nano Unfiled/Notebooks/Foobar.md\\n  vi Unfiled/Notebooks/Foobar.md\\n  ncdu -r /posthog/files\\n  mkdir Research\\n  ph tools\\n  ph notebooks-list --limit 10 | jq .\\n  cat /posthog/README.txt\\n\\nUse your own notebook path. In nano, Ctrl+S saves and Ctrl+X exits.\\nIn vi, save with :wq; quit with :q!. Selecting text copies it.\\nFolder creation and moves update Flind.\\n\\n'",
                         'stty echo',
                         "printf '\\036' > /dev/ttyS1",
                         'exec /usr/bin/bash --rcfile /posthog/bin/shellrc -i',

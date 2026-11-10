@@ -21,7 +21,7 @@ const NAVIGATE_EXPLANATIONS: Record<string, (op: ApplyOp) => string> = {
     open_sources_section: () =>
         'Takes you to Ad platforms & sources, where each platform has its own row. These need fixing one at a time — they share a symptom, not a single fix.',
     open_oauth: () =>
-        'Opens the ad platform in a new tab to re-authorise PostHog. Spend stops updating until this is done, and nothing changes here until you finish there.',
+        'Opens the ad platform in a new tab to re-authorise Flind. Spend stops updating until this is done, and nothing changes here until you finish there.',
     open_source_wizard: () =>
         'Opens the data warehouse source wizard in a new tab, with this platform preselected. Connecting it is what makes its spend available.',
     open_schemas: (op) =>

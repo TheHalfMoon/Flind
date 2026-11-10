@@ -66,7 +66,7 @@ function useSurveyAnalysisMaxTool(): ReturnType<typeof useMaxTool> {
 
             if (toolOutput?.error) {
                 posthog.captureException(
-                    toolOutput?.error || 'Undefined error when analyzing survey responses with PostHog AI',
+                    toolOutput?.error || 'Undefined error when analyzing survey responses with Flind AI',
                     {
                         action: 'max-ai-survey-analysis-failed',
                         survey_id: survey.id,

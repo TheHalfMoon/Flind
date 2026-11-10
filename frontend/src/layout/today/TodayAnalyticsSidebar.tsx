@@ -139,7 +139,7 @@ export function TodayAnalyticsSidebar(): JSX.Element {
                 )}
                 {fromPostHog.length > 0 && (
                     <TodayPaneSection
-                        label="By PostHog"
+                        label="By Flind"
                         icon={<Logomark className="h-auto w-3.5" />}
                         open={isOpen('by-posthog')}
                         count={fromPostHog.length}

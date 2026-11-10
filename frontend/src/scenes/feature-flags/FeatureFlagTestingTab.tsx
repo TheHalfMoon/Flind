@@ -166,7 +166,7 @@ export function FeatureFlagTestingTab({ featureFlag }: { featureFlag: FeatureFla
                             />
                         </div>
                         <p className="text-xs text-muted">
-                            Search and select a person from your PostHog instance. You can search by name, email, or
+                            Search and select a person from your Flind instance. You can search by name, email, or
                             distinct ID.
                         </p>
 
@@ -178,7 +178,7 @@ export function FeatureFlagTestingTab({ featureFlag }: { featureFlag: FeatureFla
                                         variant assignment are computed by hashing the distinct ID, so the result can
                                         differ depending on which one is used. Testing evaluates all{' '}
                                         {personDistinctIds.length} at once so you can compare them side by side. At
-                                        runtime PostHog buckets using the distinct ID from the incoming request.
+                                        runtime Flind buckets using the distinct ID from the incoming request.
                                     </div>
                                 </LemonBanner>
                             ) : (
@@ -307,7 +307,7 @@ export function FeatureFlagTestingTab({ featureFlag }: { featureFlag: FeatureFla
                                         <LemonBanner type="warning">
                                             <div className="text-sm">
                                                 These merged distinct IDs bucket to <strong>different results</strong>.
-                                                At runtime PostHog buckets using the distinct ID from the incoming
+                                                At runtime Flind buckets using the distinct ID from the incoming
                                                 request, so which one is used determines the outcome — front-end and
                                                 back-end calls can land on different variants for the same person.
                                             </div>

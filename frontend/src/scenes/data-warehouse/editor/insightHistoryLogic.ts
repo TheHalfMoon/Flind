@@ -168,7 +168,7 @@ export const insightHistoryLogic = kea<insightHistoryLogicType>([
                         return {
                             id: logItem.id,
                             createdAt: logItem.created_at,
-                            authorName: logItem.is_system ? 'PostHog' : fullName(logItem.user),
+                            authorName: logItem.is_system ? 'Flind' : fullName(logItem.user),
                             email: logItem.user?.email,
                             isSystem: !!logItem.is_system,
                             beforeSql: getChangeSql(queryChange.before) ?? '',

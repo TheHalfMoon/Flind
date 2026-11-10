@@ -45,7 +45,7 @@ describe('todayNextStep', () => {
             'a task that claimed the report and has no run yet',
             CLAIMED_BY_TASK,
             null,
-            { primary: { kind: 'start' }, note: 'A PostHog task picked this up on 11 Aug.' },
+            { primary: { kind: 'start' }, note: 'A Flind task picked this up on 11 Aug.' },
         ],
         [
             'a task that claimed the report and runs',
@@ -76,7 +76,7 @@ describe('todayNextStep', () => {
     test.each([
         ['a task claim', CLAIMED_BY_TASK, 'A task already picked this up.'],
         [
-            'a person claim, which leaves PostHog free to start',
+            'a person claim, which leaves Flind free to start',
             makeReport({
                 actionability: 'immediately_actionable',
                 assignee: {
@@ -90,7 +90,7 @@ describe('todayNextStep', () => {
             }),
             null,
         ],
-    ])('blocks starting with PostHog only for %s', (_, input, expected) => {
+    ])('blocks starting with Flind only for %s', (_, input, expected) => {
         const { taskPickedUp } = todayNextStep(input, {
             namedPullRequest: null,
             solutionNamesPullRequest: false,

@@ -184,7 +184,7 @@ describe('SyncFrequencySelect', () => {
     })
     describe('modeDisabledReason', () => {
         it.each([
-            ['managed_viewset', 'PostHog manages this view, including how often it refreshes.'],
+            ['managed_viewset', 'Flind manages this view, including how often it refreshes.'],
             ['no_node', 'This view is not set up for scheduled refreshes yet. Save it again, then pick a cadence.'],
         ])('locks %s, where the backend refuses the write', (mode, reason) => {
             const locked = bounds({ frequency_mode: mode as SyncFrequencyBoundsApi['frequency_mode'] })

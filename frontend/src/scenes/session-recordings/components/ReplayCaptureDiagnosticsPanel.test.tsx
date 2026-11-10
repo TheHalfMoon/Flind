@@ -121,7 +121,7 @@ describe('ReplayCaptureDiagnosticsPanel', () => {
             const text = Array.from(listItems)
                 .map((li) => li.textContent)
                 .join(' ')
-            expect(text).toContain('PostHog has a stored recording linked to this session')
+            expect(text).toContain('Flind has a stored recording linked to this session')
         })
 
         it('renders buffering_empty headline', () => {

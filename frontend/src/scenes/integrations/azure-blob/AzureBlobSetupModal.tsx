@@ -15,7 +15,7 @@ export const AzureBlobSetupModal = (props: AzureBlobSetupModalLogicProps): JSX.E
         <LemonModal
             isOpen={props.isOpen}
             title="Configure Azure Blob Storage"
-            description="Enter your Azure Storage connection string to connect PostHog to your Azure Blob Storage account."
+            description="Enter your Azure Storage connection string to connect Flind to your Azure Blob Storage account."
             onClose={props.onComplete}
             footer={
                 <>

@@ -256,7 +256,7 @@ function extractFromFrameDataset(): ParsedPayload {
 
         return Object.keys(raw).length ? parsePayload(raw, 'iframe dataset') : EMPTY_PAYLOAD
     } catch (error) {
-        console.warn('PostHog render query: Unable to read iframe dataset.', error)
+        console.warn('Flind render query: Unable to read iframe dataset.', error)
         return EMPTY_PAYLOAD
     }
 }

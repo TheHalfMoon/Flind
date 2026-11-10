@@ -24,7 +24,7 @@ logger = structlog.get_logger(__name__)
 
 class PostHogConfig(AppConfig):
     name = "posthog"
-    verbose_name = "PostHog"
+    verbose_name = "Flind"
 
     def ready(self):
         # Route all JSONField (jsonb) decode through orjson before any query runs.

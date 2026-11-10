@@ -2,7 +2,7 @@ import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
 import { dirname, resolve } from 'node:path'
 import { URL, fileURLToPath } from 'node:url'
-import { defineConfig } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
@@ -167,6 +167,9 @@ export default defineConfig(({ mode }) => {
         define: {
             global: 'globalThis',
             'process.env.NODE_ENV': isDev ? '"development"' : '"production"',
+            // Flind deployment settings (VITE_FLIND_*), read by src/lib/flindBuildEnv.ts. Same sources
+            // as import.meta.env (.env files in the Vite root and the process environment).
+            __FLIND_BUILD_ENV__: JSON.stringify(loadEnv(mode, process.cwd(), 'VITE_FLIND_')),
         },
         css: {
             devSourcemap: true,

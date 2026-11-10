@@ -73,7 +73,7 @@ export function AdblockWarning({ adblockResult }: { adblockResult: AdblockDetect
         <div className="flex items-start gap-2 px-3 py-2 rounded border border-warning bg-warning-highlight text-sm">
             <IconWarning className="text-warning mt-0.5 shrink-0" />
             <span>
-                Your install might be working fine, but it looks like this browser may be blocking PostHog requests. Try
+                Your install might be working fine, but it looks like this browser may be blocking Flind requests. Try
                 disabling your adblocker and refreshing the page to verify. You can set up a reverse proxy later to
                 ensure events aren't blocked for your users.
             </span>

@@ -161,7 +161,7 @@ class SlackIntegrationMissingScopeError(SlackIntegrationInactiveError):
     # Reuses the inactive error's code so the pickers' existing reconnect banner renders; only the
     # copy differs, because what the admin has to do — reinstall the app — is the same either way.
     default_detail = (
-        "Your Slack connection is missing the permission PostHog needs to list workspace members. "
+        "Your Slack connection is missing the permission Flind needs to list workspace members. "
         "Reconnect Slack to grant it."
     )
 
@@ -339,7 +339,7 @@ class GitHubRepoSerializer(serializers.Serializer):
     archived = serializers.BooleanField(required=False, help_text="Whether the repository is archived.")
     can_push = serializers.BooleanField(
         required=False,
-        help_text="Whether the PostHog GitHub App has write access — required to open pull requests.",
+        help_text="Whether the Flind GitHub App has write access — required to open pull requests.",
     )
 
 
@@ -552,11 +552,11 @@ class SlackChannelSerializer(serializers.Serializer):
     name = serializers.CharField(help_text="Slack channel name without the leading '#'.")
     is_private = serializers.BooleanField(help_text="True if the channel is private.")
     is_member = serializers.BooleanField(
-        help_text="True if the PostHog Slack app is a member of the channel and can post to it."
+        help_text="True if the Flind Slack app is a member of the channel and can post to it."
     )
     is_ext_shared = serializers.BooleanField(help_text="True if the channel is shared with another Slack workspace.")
     is_private_without_access = serializers.BooleanField(
-        help_text="True if the channel is private and the PostHog Slack app cannot access it."
+        help_text="True if the channel is private and the Flind Slack app cannot access it."
     )
 
 
@@ -603,7 +603,7 @@ class SlackChannelsQuerySerializer(serializers.Serializer):
 
 
 class SlackChannelsResponseSerializer(serializers.Serializer):
-    channels = SlackChannelSerializer(many=True, help_text="Slack channels visible to the PostHog Slack app.")
+    channels = SlackChannelSerializer(many=True, help_text="Slack channels visible to the Flind Slack app.")
     lastRefreshedAt = serializers.CharField(
         required=False,
         allow_null=True,
@@ -687,7 +687,7 @@ class SlackUsersQuerySerializer(serializers.Serializer):
 
 
 class SlackUsersResponseSerializer(serializers.Serializer):
-    users = SlackUserSerializer(many=True, help_text="Human Slack workspace members the PostHog Slack app can DM.")
+    users = SlackUserSerializer(many=True, help_text="Human Slack workspace members the Flind Slack app can DM.")
     lastRefreshedAt = serializers.CharField(
         required=False,
         allow_null=True,
@@ -736,7 +736,7 @@ class IntegrationSerializer(serializers.ModelSerializer, UserAccessControlSerial
     installation_status = serializers.SerializerMethodField(
         help_text=(
             "GitHub only, null otherwise. `unavailable` means the App was uninstalled or suspended on GitHub "
-            "and PostHog can no longer mint tokens for it; `connected` otherwise."
+            "and Flind can no longer mint tokens for it; `connected` otherwise."
         )
     )
 
@@ -1308,7 +1308,7 @@ class GitHubPrepareCallbackRequestSerializer(serializers.Serializer):
     next = serializers.CharField(
         required=False,
         allow_blank=True,
-        help_text="Relative URL to redirect to after GitHub setup completes (e.g. account-connected for PostHog Desktop).",
+        help_text="Relative URL to redirect to after GitHub setup completes (e.g. account-connected for Flind Desktop).",
     )
     installation_id = serializers.CharField(
         required=False,

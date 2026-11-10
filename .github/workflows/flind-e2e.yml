@@ -1,0 +1,216 @@
+# Flind browser E2E: real Postgres, ClickHouse, Redpanda (Kafka API), Zookeeper and Redis, a real
+# Django/ASGI web server with the built frontend, and Playwright in Chromium. Covers the rebranded
+# journeys (onboarding, billing, settings and AI consent, integrations). Ingestion services are not
+# started; specs that need event ingestion are out of scope for this job.
+# Read-only token, no secrets, nothing published.
+name: Flind E2E
+
+on:
+    push:
+        branches:
+            - 'flind-ci/brand-audit-ui-**'
+            - 'flind-ci/e2e-**'
+    workflow_dispatch:
+
+permissions:
+    contents: read
+
+concurrency:
+    group: flind-e2e-${{ github.ref }}
+    cancel-in-progress: true
+
+env:
+    SECRET_KEY: flind-e2e-throwaway-secret-not-for-production
+    REDIS_URL: redis://localhost
+    DATABASE_URL: postgres://posthog:posthog@localhost:5432/posthog_e2e_test
+    PERSONS_DB_WRITER_URL: postgres://posthog:posthog@localhost:5432/posthog_persons_e2e_test
+    KAFKA_HOSTS: localhost:9092
+    DISABLE_SECURE_SSL_REDIRECT: '1'
+    SECURE_COOKIES: '0'
+    E2E_TESTING: '1'
+    SKIP_SERVICE_VERSION_REQUIREMENTS: '1'
+    SITE_URL: http://localhost:8000
+    NO_RESTART_LOOP: '1'
+    CLOUD_DEPLOYMENT: E2E
+    CLICKHOUSE_HOST: localhost
+    CLICKHOUSE_SECURE: 'False'
+    CLICKHOUSE_VERIFY: 'False'
+    CLICKHOUSE_DATABASE: posthog_test
+    PGHOST: localhost
+    PGUSER: posthog
+    PGPASSWORD: posthog
+    PGPORT: '5432'
+    INTERNAL_API_SECRET: flind-e2e-internal
+    OTEL_SDK_DISABLED: 'true'
+    NPM_CONFIG_AUDIT: 'false'
+    NPM_CONFIG_FUND: 'false'
+
+jobs:
+    playwright:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 150
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                  fetch-depth: 1
+
+            - name: Free runner disk
+              run: sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL
+
+            - name: Start real services
+              run: |
+                  set -o pipefail
+                  sed -i 's/--memory 3G/--memory 1G/' docker-compose.base.yml
+                  echo "127.0.0.1 kafka clickhouse db redis7 zookeeper objectstorage" | sudo tee -a /etc/hosts
+                  docker compose -f docker-compose.dev.yml up -d --wait db redis7 zookeeper kafka clickhouse
+                  docker compose -f docker-compose.dev.yml up --exit-code-from kafka-init kafka-init
+
+            - uses: actions/setup-python@v5
+              with:
+                  python-version: 3.14.7
+
+            - name: Install Python dependencies
+              run: |
+                  set -o pipefail
+                  pip install uv==0.13.4
+                  UV_PROJECT_ENVIRONMENT=$pythonLocation uv sync --frozen --dev 2>&1 | tail -5
+
+            - uses: actions/setup-node@v4
+              with:
+                  node-version-file: .nvmrc
+
+            # Same install as flind-frontend-tests.yml (see the reasons there): scripts off, then rebuild,
+            # with wrappers for oxfmt. The playwright workspace package is included.
+            - name: Install Node dependencies
+              env:
+                  HUSKY: '0'
+                  SKIP_ELECTRON_REBUILD: '1'
+              run: |
+                  set -o pipefail
+                  npm install -g "pnpm@$(node -p "require('./package.json').packageManager.split('@')[1]")"
+                  install() {
+                      if ! pnpm install --frozen-lockfile "$@" > install.log 2>&1; then
+                          grep -n -B 30 -A 5 'ELIFECYCLE\|ERR_PNPM' install.log | tail -120
+                          exit 1
+                      fi
+                      tail -3 install.log
+                  }
+                  install --ignore-scripts --filter=@flind/root
+                  install --ignore-scripts --filter=@flind/frontend... --filter=@flind/playwright...
+                  if ! pnpm rebuild --filter=@flind/frontend... --filter=@flind/playwright... > rebuild.log 2>&1; then
+                      grep -n -B 20 -A 5 'Failed\|ELIFECYCLE\|ERR_PNPM' rebuild.log | tail -80
+                      exit 1
+                  fi
+                  # pnpm 11.28.5 installs these native-binary tools without linking their bins.
+                  mkdir -p "$RUNNER_TEMP/flind-bin"
+                  for tool in oxfmt:node_modules/oxfmt/bin/oxfmt turbo:node_modules/turbo/bin/turbo; do
+                      name="${tool%%:*}"; target="$PWD/${tool#*:}"
+                      test -f "$target" || { echo "missing $target"; exit 1; }
+                      printf '#!/bin/sh\nexec node "%s" "$@"\n' "$target" > "$RUNNER_TEMP/flind-bin/$name"
+                      chmod +x "$RUNNER_TEMP/flind-bin/$name"
+                  done
+                  echo "$RUNNER_TEMP/flind-bin" >> "$GITHUB_PATH"
+
+            # Builds the frontend's workspace dependencies (for example @flind/quill and its CSS
+            # tokens). @flind/query-parser is excluded: its compiled WASM is vendored in
+            # common/hogql_parser/dist and pinned by hash (tools/flind/test_local_query_parser_wasm.py);
+            # rebuilding needs Emscripten and would overwrite the verified files.
+            - name: Build frontend workspace dependencies
+              run: |
+                  set -o pipefail
+                  # @flind/quill first: @flind/lemon-ui's styles need its CSS tokens. lemon-ui's dist is
+                  # committed, and its type build cannot resolve the frontend's path aliases outside the
+                  # app's own tsconfig, so it is not rebuilt here. Full logs of failing tasks only.
+                  turbo run build --filter='@flind/quill...' --output-logs=errors-only
+                  # Then every other frontend workspace dependency (for example @flind/logicvm) except the
+                  # two whose build output is committed: the vendored query parser and lemon-ui.
+                  # --only stops turbo from rebuilding them anyway as dependencies of selected packages.
+                  turbo run build --filter='@flind/frontend^...' --filter='!@flind/query-parser' --filter='!@flind/lemon-ui' --only --output-logs=errors-only
+                  git diff --exit-code -- frontend/flind/lemon-ui/dist common/hogql_parser/dist
+                  git diff --exit-code -- common/hogql_parser/dist
+
+            - name: Build frontend
+              run: |
+                  set -o pipefail
+                  pnpm --filter=@flind/frontend build:products 2>&1 | tail -20
+                  NODE_OPTIONS=--max-old-space-size=8192 pnpm --filter=@flind/frontend build 2>&1 | tail -30
+                  test -f frontend/dist/index.html
+
+            - name: Collect static files
+              run: python manage.py collectstatic --noinput 2>&1 | tail -3
+
+            # Pinned sqlx-cli for the persons migrations, built with the runner's cargo (third-party
+            # actions are not allowed here); same pin as flind-backend-tests.yml.
+            - name: Restore sqlx-cli
+              id: sqlx-cache
+              uses: actions/cache@v4
+              with:
+                  path: ~/.cache/sqlx-cli
+                  key: sqlx-cli-0.8.0-${{ runner.os }}-${{ runner.arch }}
+
+            - name: Build sqlx-cli
+              if: steps.sqlx-cache.outputs.cache-hit != 'true'
+              run: cargo install sqlx-cli --version 0.8.0 --features postgres --no-default-features --locked --root "$HOME/.cache/sqlx-cli"
+
+            - name: Add sqlx-cli to PATH
+              run: echo "$HOME/.cache/sqlx-cli/bin" >> "$GITHUB_PATH"
+
+            - name: Create databases and run migrations
+              run: |
+                  set -o pipefail
+                  createdb posthog_e2e_test || true
+                  createdb posthog_persons_e2e_test || true
+                  # A throwaway signing key for the OIDC provider, generated once per run and never stored.
+                  # Mask every line before it reaches the job environment so it is not printed in logs.
+                  OIDC_RSA_PRIVATE_KEY="$(openssl genrsa 2048 2>/dev/null)"
+                  while IFS= read -r line; do
+                      [ -n "$line" ] && echo "::add-mask::$line"
+                  done <<< "$OIDC_RSA_PRIVATE_KEY"
+                  {
+                      echo 'OIDC_RSA_PRIVATE_KEY<<FLIND_KEY_EOF'
+                      echo "$OIDC_RSA_PRIVATE_KEY"
+                      echo 'FLIND_KEY_EOF'
+                  } >> "$GITHUB_ENV"
+                  export OIDC_RSA_PRIVATE_KEY
+                  # Same order as upstream's E2E job: Postgres first (ClickHouse 0026 reads
+                  # posthog_instancesetting), then the persons database via sqlx, then ClickHouse.
+                  python manage.py migrate --noinput 2>&1 | tail -5
+                  sqlx migrate run -D "$PERSONS_DB_WRITER_URL" --source rust/persons_migrations/ 2>&1 | tail -3
+                  python manage.py migrate_clickhouse 2>&1 | tail -5
+
+            - name: Start web server
+              run: |
+                  python -m granian --interface asgi posthog.asgi:application --host 0.0.0.0 --port 8000 --workers 2 &> /tmp/server.log &
+                  for i in $(seq 1 120); do
+                      if curl -fsS http://localhost:8000/_health > /dev/null 2>&1; then echo "web ready after ${i}s"; exit 0; fi
+                      sleep 1
+                  done
+                  echo "web server did not become healthy"; tail -80 /tmp/server.log; exit 1
+
+            - name: Install Chromium
+              run: pnpm --filter=@flind/playwright exec playwright install chromium --with-deps 2>&1 | tail -3
+
+            - name: Run Flind journeys
+              env:
+                  CI: 'true'
+              run: |
+                  set -o pipefail
+                  pnpm --filter=@flind/playwright exec playwright test e2e/flind-brand-journeys.spec.ts --workers=1 --retries=0 --reporter=list 2>&1 | tee playwright.log
+                  { echo '## Flind E2E'; echo '```'; tail -40 playwright.log; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+
+            # Playwright writes an accessibility snapshot of the page for each failed test; print the
+            # URL and snapshot so a failure shows what the page actually rendered.
+            - name: Page snapshots on failure
+              if: failure()
+              run: |
+                  find playwright/test-results -name 'error-context.md' | while read -r f; do
+                      echo "::group::$f"; head -300 "$f"; echo "::endgroup::"
+                  done
+
+            - name: Server log on failure
+              if: failure()
+              run: tail -150 /tmp/server.log || true
+
+            - name: Tear down
+              if: always()
+              run: docker compose -f docker-compose.dev.yml down -v --remove-orphans

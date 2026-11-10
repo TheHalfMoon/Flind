@@ -60,7 +60,7 @@ const oauthDisabledReasons = (
     ...(maxLevel !== 'write' ? { write: `Not requested by ${appName}` } : {}),
 })
 
-const WILDCARD_LABEL = 'All PostHog data'
+const WILDCARD_LABEL = 'All Flind data'
 
 // A request with this many adjustable rows or fewer shows a flat alphabetical list. Group
 // headers only help when the list is long.
@@ -184,7 +184,7 @@ const oauthAuthorize = async (
             error?.detail ||
             describeOAuthError(error?.data) ||
             error?.message ||
-            'PostHog could not authorize the application.'
+            'Flind could not authorize the application.'
         lemonToast.error(detail)
         throw error
     }

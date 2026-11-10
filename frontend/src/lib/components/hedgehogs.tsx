@@ -18,7 +18,7 @@ type HedgehogProps = Omit<ImgHTMLAttributes<HTMLImageElement>, 'src'>
 // any width x h400
 const RectangularHedgehog = React.forwardRef<HTMLImageElement, ImgHTMLAttributes<HTMLImageElement>>(
     function RectangularHedgehog(props, ref): JSX.Element {
-        return <img src={props.src} height={400} alt="PostHog hedgehog" {...props} ref={ref} />
+        return <img src={props.src} height={400} alt="Flind hedgehog" {...props} ref={ref} />
     }
 )
 

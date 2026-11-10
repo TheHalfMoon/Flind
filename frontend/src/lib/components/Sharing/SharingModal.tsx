@@ -531,7 +531,7 @@ export function SharingModalContent({
                                 defaultExpanded={false}
                                 templateLink={renderQuerySnippet}
                                 heading="Static iframe embed with pre-computed data"
-                                piiWarning="Add this iframe to any site to embed a static PostHog chart. It will look identical to the chart you see here, but nothing will be editable. If any data is sensitive, consider that before sharing."
+                                piiWarning="Add this iframe to any site to embed a static Flind chart. It will look identical to the chart you see here, but nothing will be editable. If any data is sensitive, consider that before sharing."
                             />
                             {apiQuerySnippet && (
                                 <TemplateLinkSection
@@ -572,7 +572,7 @@ function createRenderQuerySnippet({
     const escapedResults = escapeScriptJson(serializedResults)
     const escapedQuery = escapeScriptJson(serializedQuery)
 
-    return `<iframe id="${iframeId}" title="PostHog embedded query" src="${renderQueryUrl}" style="width: 100%; height: 600px; border: 0;" loading="lazy"></iframe>
+    return `<iframe id="${iframeId}" title="Flind embedded query" src="${renderQueryUrl}" style="width: 100%; height: 600px; border: 0;" loading="lazy"></iframe>
 <script>
   (function () {
     const iframe = document.getElementById('${iframeId}')

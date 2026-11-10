@@ -64,7 +64,7 @@ export function EmptyState({
             return (
                 <p className="mb-0">
                     There are no authorized {domainOrUrl}s. <br />
-                    We've found some URLs you've used PostHog from in the last 3 days. Consider authorizing them. It'll
+                    We've found some URLs you've used Flind from in the last 3 days. Consider authorizing them. It'll
                     allow you to use these in{' '}
                     {type === AuthorizedUrlListType.RECORDING_DOMAINS ? (
                         <span>recordings.</span>

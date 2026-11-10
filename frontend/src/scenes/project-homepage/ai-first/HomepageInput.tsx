@@ -196,8 +196,8 @@ export function HomepageAiInput(): JSX.Element {
             <div className="border border-primary rounded-lg bg-surface-primary p-4 flex flex-col gap-2">
                 <p className="font-medium text-pretty m-0">
                     {isAdmin
-                        ? 'PostHog AI needs your approval to potentially process identifying user data with external AI providers.'
-                        : 'PostHog AI needs an organization admin to approve processing identifying user data with external AI providers.'}
+                        ? 'Flind AI needs your approval to potentially process identifying user data with external AI providers.'
+                        : 'Flind AI needs an organization admin to approve processing identifying user data with external AI providers.'}
                 </p>
                 <p className="text-muted text-xs m-0">Your data won't be used for training third-party models.</p>
                 {isAdmin ? (
@@ -595,7 +595,7 @@ function IdleGrid(): JSX.Element {
             >
                 <Label className="px-2 mb-1 flex items-center gap-1" intent="menu">
                     <IconSparkles className="size-3" />
-                    Ask PostHog AI
+                    Ask Flind AI
                 </Label>
                 {/* The static fill means the list is never empty, so gate on the sources
                     having resolved; a selected topic is static data and never loads */}

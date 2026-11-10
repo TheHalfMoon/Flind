@@ -38,7 +38,7 @@ class UserCodexAuthTokensSerializer(serializers.Serializer):
 class UserCodexConnectRequestSerializer(serializers.Serializer):
     tokens = UserCodexAuthTokensSerializer(
         help_text=(
-            "The `tokens` object of the `auth.json` that `codex login` wrote. PostHog refreshes the chain once, "
+            "The `tokens` object of the `auth.json` that `codex login` wrote. Flind refreshes the chain once, "
             "stores the rotated tokens, and refreshes them for cloud runs from then on."
         )
     )

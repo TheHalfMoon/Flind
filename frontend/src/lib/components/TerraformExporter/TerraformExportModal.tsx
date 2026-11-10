@@ -49,7 +49,7 @@ function getDescription(resource: TerraformExportResource, result: TerraformExpo
                 objects, such as one dashboard, are not included yet. The import blocks let Terraform take over the
                 existing rules without recreating them. See the{' '}
                 <Link to={providerDocsUrl} target="_blank">
-                    PostHog Terraform provider
+                    Flind Terraform provider
                 </Link>{' '}
                 docs for every option.
             </>
@@ -78,7 +78,7 @@ function getDescription(resource: TerraformExportResource, result: TerraformExpo
         <>
             {prefix} Use this configuration with the{' '}
             <Link to={providerDocsUrl} target="_blank">
-                PostHog Terraform provider
+                Flind Terraform provider
             </Link>{' '}
             to manage this {resource.type} as code. See{' '}
             <Link to={exampleRepoUrl} target="_blank">

@@ -272,7 +272,7 @@ def send_notifications_for_breaches(
     deliveries: list[AlertDelivery] = []
     email_targets = alert.get_subscribed_users_emails()
     if email_targets:
-        subject = f"PostHog alert {alert.name} is firing for {alert.team.name}"
+        subject = f"Flind alert {alert.name} is firing for {alert.team.name}"
         campaign_key = f"alert-firing-notification-{idempotency_key}"
         insight_url = f"/project/{alert.team.pk}/insights/{alert.insight.short_id}"
         alert_url = f"{insight_url}?alert_id={alert.id}"
@@ -339,7 +339,7 @@ def send_notifications_for_errors(alert: AlertConfiguration, error: dict, idempo
     send_alert_email(
         recipients=email_targets,
         campaign_key=f"alert-evaluation-failed-notification-{idempotency_key}",
-        subject=f"PostHog could not evaluate {subject_alert_name}",
+        subject=f"Flind could not evaluate {subject_alert_name}",
         template_name="alert_check_failed_to_evaluate",
         template_context={
             "alert_error": error_message,
@@ -784,7 +784,7 @@ def send_notifications_for_disabled(
 ) -> list[AlertDelivery]:
     logger.info("Sending alert disabled notification", alert_id=alert.id, reason=reason)
 
-    subject = f"PostHog alert {alert.name} for {alert.team.name} has been disabled"
+    subject = f"Flind alert {alert.name} for {alert.team.name} has been disabled"
     campaign_key = f"alert-disabled-notification-{alert.id}-{idempotency_key or timezone.now().timestamp()}"
     insight_url = f"/project/{alert.team.pk}/insights/{alert.insight.short_id}"
     alert_url = f"{insight_url}?alert_id={alert.id}"

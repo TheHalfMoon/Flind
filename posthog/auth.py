@@ -745,7 +745,7 @@ class IDJagAccessTokenAuthentication(ActivityCredentialMixin, authentication.Bas
         )
         if not membership:
             raise AuthenticationFailed(
-                detail="No active PostHog user matches the ID-JAG access token subject for this organization."
+                detail="No active Flind user matches the ID-JAG access token subject for this organization."
             )
 
         user = membership.user

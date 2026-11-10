@@ -389,7 +389,7 @@ describe('featureFlagLogic', () => {
         })
     })
 
-    describe('refresh after a PostHog AI change', () => {
+    describe('refresh after a Flind AI change', () => {
         function serverFlagMock(flag: Record<string, any>): Parameters<typeof useMocks>[0] {
             return { get: { [FLAG_URL]: () => [200, { ...MOCK_FEATURE_FLAG, ...flag }] } }
         }
@@ -1699,7 +1699,7 @@ describe('featureFlagLogic', () => {
                         },
                         '/api/projects/:projectId/cohorts/7/activity/': () =>
                             activityFails
-                                ? [402, { detail: 'This feature is part of the premium PostHog offering.' }]
+                                ? [402, { detail: 'This feature is part of the premium Flind offering.' }]
                                 : [
                                       200,
                                       {
@@ -3831,7 +3831,7 @@ describe('featureFlagLogic', () => {
                 () => logic.actions.updateFeatureFlagActiveSuccess({ ...MOCK_FEATURE_FLAG, active: false }),
             ],
             ['an edit is saved', () => logic.actions.saveFeatureFlagSuccess(MOCK_FEATURE_FLAG)],
-            ['PostHog AI changes the flag', () => logic.actions.refreshFeatureFlagAfterAgentChange()],
+            ['Flind AI changes the flag', () => logic.actions.refreshFeatureFlagAfterAgentChange()],
         ])('clears the stale banner when %s', async (_name, mutate) => {
             useMocks(statusMock('stale', 'Flag has not been called in 45 days'))
             await expectLogic(logic, () => logic.actions.loadFeatureFlagStatus()).toFinishAllListeners()

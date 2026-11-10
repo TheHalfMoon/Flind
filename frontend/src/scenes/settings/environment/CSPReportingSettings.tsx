@@ -35,11 +35,11 @@ export function CSPReportingSettings(): JSX.Element {
                 configure.
             </p>
             <p>
-                CSP Reporting lets you track your CSP by sending reports to PostHog when a CSP violation occurs. This
+                CSP Reporting lets you track your CSP by sending reports to Flind when a CSP violation occurs. This
                 helps you see when CSP misconfiguration, web site changes, or security flaws are causing problems.
             </p>
             <p>
-                PostHog supports both the{' '}
+                Flind supports both the{' '}
                 <Link
                     to="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy/report-uri"
                     target="_blank"
@@ -75,7 +75,7 @@ export function CSPReportingSettings(): JSX.Element {
                         disabledReason={restrictedReason}
                     />
                     <LemonCheckbox
-                        label="session_id: the PostHog UUIDv7 session id. Helps you link CSP violations to session replay."
+                        label="session_id: the Flind UUIDv7 session id. Helps you link CSP violations to session replay."
                         checked={includeSessionId}
                         onChange={setIncludeSessionId}
                         disabledReason={restrictedReason}
