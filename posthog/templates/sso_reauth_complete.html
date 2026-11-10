@@ -25,7 +25,7 @@
         </style>
     </head>
     <body>
-        <p>You can close this window and go back to PostHog.</p>
+        <p>You can close this window and go back to Flind.</p>
         {{ result|json_script:"sso-reauth-result" }}
         <script nonce="{{ request.csp_nonce }}">
             const result = JSON.parse(document.getElementById('sso-reauth-result').textContent)

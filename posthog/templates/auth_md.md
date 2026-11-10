@@ -1,6 +1,6 @@
-{% autoescape off %}# PostHog
+{% autoescape off %}# Flind
 
-PostHog is an open-source platform for product analytics, session replay, feature flags, experiments, surveys, and data warehousing.
+Flind is a platform for product analytics, session replay, feature flags, experiments, surveys, and data warehousing.
 
 ## Creating an account
 
@@ -35,7 +35,7 @@ Scopes do not change on refresh. Refreshing a token returns the same or narrower
 
 If your app needs additional scopes, for example a newly required scope, or a request that returns `403` because the token is missing a required scope, start a new authorization at `{{ base_url }}/oauth/authorize/`.
 The user re-consents and the new token carries the updated scopes.
-PostHog does not push new scopes to existing tokens; the client must re-authorize.
+Flind does not push new scopes to existing tokens; the client must re-authorize.
 
 ## Links
 
