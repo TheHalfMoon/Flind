@@ -31,7 +31,7 @@ jobs:
             CLICKHOUSE_VERIFY: 'False'
             KAFKA_HOSTS: localhost:9092
             REDIS_URL: redis://localhost:6379/
-            OTEL_SDK_DISABLED: 'true'
+            # Tracing stays on so span-recording tests see spans; nothing is exported.
             OTEL_TRACES_EXPORTER: none
             # Python test files carried by the upstream changes on this branch.
             FLIND_TEST_TARGETS: >-
