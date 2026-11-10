@@ -1,7 +1,6 @@
 import { useActions, useMountedLogic, useValues } from 'kea'
 import { useEffect } from 'react'
 
-import { preflightLogic } from 'lib/logic/preflightLogic'
 import { AUTH_NOTES, type AuthNotes } from 'scenes/authentication/shared/authScene/authNotes'
 import { AuthScene } from 'scenes/authentication/shared/authScene/AuthScene'
 import { AuthEntry } from 'scenes/authentication/shared/authStepViewed'
@@ -9,7 +8,6 @@ import { useLastLoginMethod } from 'scenes/authentication/shared/lastLoginMethod
 import { loginTelemetryLogic } from 'scenes/authentication/shared/loginTelemetryLogic'
 import { passkeyLogic } from 'scenes/authentication/shared/passkeyLogic'
 import { pendingOAuthConnectionLogic } from 'scenes/authentication/shared/pendingOAuthConnectionLogic'
-import { RedirectIfLoggedInOtherInstance } from 'scenes/authentication/shared/RedirectToLoggedInInstance'
 import { SceneExport } from 'scenes/sceneTypes'
 import { userLogic } from 'scenes/userLogic'
 
@@ -58,10 +56,9 @@ export function Auth(): JSX.Element | null {
     useMountedLogic(loginTelemetryLogic)
     useMountedLogic(authTelemetryLogic)
     // Mounted at the scene root so the cookie is read once, not on every step change
-    const { pendingConnection } = useValues(pendingOAuthConnectionLogic)
+    useMountedLogic(pendingOAuthConnectionLogic)
     const { step, entry } = useValues(authLogic)
     const { user } = useValues(userLogic)
-    const { preflight } = useValues(preflightLogic)
     const { startConditionalPasskeyLogin } = useActions(passkeyLogic)
     const isReturning = useLastLoginMethod() !== null
 
@@ -80,8 +77,6 @@ export function Auth(): JSX.Element | null {
 
     return (
         <AuthScene notes={authNotes(step, entry, isReturning)}>
-            {/* Signup never had this redirect, and a pending OAuth connection belongs to this region */}
-            {preflight?.cloud && entry === 'login' && !pendingConnection && <RedirectIfLoggedInOtherInstance />}
             <StepComponent />
         </AuthScene>
     )

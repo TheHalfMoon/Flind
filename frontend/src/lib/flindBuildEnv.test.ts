@@ -9,9 +9,8 @@ const FLIND_CONFIG_MODULES = [
     'lib/flindPublicLinks.ts',
     'lib/flindSupportMailto.ts',
     'lib/flindRegionHosts.ts',
-    'lib/oauth/oauthClient.ts',
-    'lib/components/HelpMenu/incidentStatus.ts',
-    'scenes/authentication/shared/arrivedFromWebsiteLogic.ts',
+    'lib/utils/oauthClient.ts',
+    'lib/lemon-ui/LemonToast/incidentStatus.ts',
 ]
 
 describe('flindBuildEnv', () => {

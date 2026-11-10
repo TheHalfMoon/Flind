@@ -147,7 +147,7 @@ class FlindUserFacingBrandTests(unittest.TestCase):
         # Spot checks on high-traffic UI copy rewritten by the core UI pass.
         for rel, phrase in (
             ("frontend/src/RootErrorBoundary.tsx", "PostHog crashed"),
-            ("frontend/src/scenes/insights/sharedUtils.ts", "PostHog is busy"),
+            ("frontend/src/lib/insights/sharedUtils.ts", "PostHog is busy"),
             ("frontend/src/scenes/settings/organization/InviteModal.tsx", "|| 'PostHog'"),
         ):
             with self.subTest(file=rel):

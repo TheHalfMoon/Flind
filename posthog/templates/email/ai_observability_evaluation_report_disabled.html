@@ -3,7 +3,7 @@
 {% block heading %}Your evaluation report has been disabled{% endblock %}
 {% block section %}
     <p>
-        PostHog automatically disabled the report for <strong>{{ evaluation_name }}</strong> because none of its destinations could receive it:
+        Flind automatically disabled the report for <strong>{{ evaluation_name }}</strong> because none of its destinations could receive it:
     </p>
     <div style="padding: 12px;
                 background-color: #f8f8f8;
@@ -25,11 +25,4 @@
             <a href="{% absolute_uri evaluation_url %}">{% absolute_uri evaluation_url %}</a>
         </p>
     </div>
-{% endblock %}
-{% block footer %}
-    Need help?
-    <a href="https://posthog.com/questions?{{ utm_tags }}" target="_blank"><b>Visit support</b></a>
-    or
-    <a href="https://posthog.com/docs/ai-engineering?{{ utm_tags }}"
-       target="_blank"><b>read our documentation</b></a>.
 {% endblock %}

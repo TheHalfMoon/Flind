@@ -14,7 +14,7 @@
                 prefersDark.addEventListener('change', applyTheme)
             }
         </script>
-        <title>{% block title %}PostHog Admin{% endblock %}</title>
+        <title>{% block title %}Flind Admin{% endblock %}</title>
         {# Not the static tag: production hashes its URLs, and the CDN only serves unhashed names. #}
         <link rel="stylesheet"
               href="/static/admin-console/console.css?v={{ console_asset_version }}" />
@@ -33,7 +33,7 @@
                 <img src="/static/admin-console/posthog-icon-mono.svg"
                      class="h-[18px] hidden dark:block"
                      alt="" />
-                PostHog Admin
+                Flind Admin
             </a>
             <span class="console-env-pill inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wide whitespace-nowrap">
                 <span class="console-env-dot size-[7px] rounded-full"></span>{{ console_env_label }}

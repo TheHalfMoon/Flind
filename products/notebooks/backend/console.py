@@ -172,7 +172,7 @@ class NotebookMarkdownMigrationTool(ConsoleTool):
                 form_class=ConvertNotebooksForm,
                 form_initial={"team_id": team_id} if team_id is not None else None,
                 undo_hint=(
-                    "PostHog Admin cannot convert a notebook back. Each notebook's history keeps its content from "
+                    "Flind Admin cannot convert a notebook back. Each notebook's history keeps its content from "
                     "before the conversion."
                 ),
             )

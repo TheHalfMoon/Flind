@@ -46,3 +46,8 @@ chose one merge over area-by-area integration.
   its own series of PRs. The `LICENSE` copyright notices stay, as the license requires.
 - Upstream rebuilt the mobile app as `products/mobile`; Flind's mobile analytics change in the old
   `products/desktop/apps/mobile` did not carry over and needs re-porting.
+  The new app also links PostHog's terms, privacy and support pages (`products/mobile/src/lib/legalLinks.ts`, used by
+  the sign-in and settings screens); they must become configured Flind policy links before the app is built.
+  `tools/flind/test_mobile_legal_consent_wave39.py` fails until then. The mobile app is not built or shipped.
+- Several `tools/flind` guards not run in CI point at files upstream moved or deleted (status feed, website
+  referrer, cloud boundaries, wordmark, old mobile app); they are updated or retired in the rename series.

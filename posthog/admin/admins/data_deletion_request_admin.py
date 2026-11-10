@@ -23,7 +23,7 @@ def dagster_run_url(run_id: str) -> str | None:
 
 @admin.register(DataDeletionRequest)
 class DataDeletionRequestAdmin(admin.ModelAdmin):
-    """Read-only browsing. Staff create, edit, duplicate and run requests in PostHog Admin."""
+    """Read-only browsing. Staff create, edit, duplicate and run requests in Flind Admin."""
 
     list_display = (
         "id",
@@ -139,10 +139,10 @@ class DataDeletionRequestAdmin(admin.ModelAdmin):
     def has_change_permission(self, request, obj=None):
         return False
 
-    @admin.display(description="PostHog Admin")
+    @admin.display(description="Flind Admin")
     def console_page(self, obj: DataDeletionRequest) -> str:
         return format_html(
-            '<a href="{}">Open this request in PostHog Admin &#8599;</a>',
+            '<a href="{}">Open this request in Flind Admin &#8599;</a>',
             reverse("admin_console_deletion-request", kwargs={"pk": obj.pk}),
         )
 

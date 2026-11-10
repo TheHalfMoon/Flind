@@ -14,6 +14,7 @@ import { AuthCardTitle } from 'scenes/authentication/shared/authScene/AuthCardTi
 import { AuthSceneCard } from 'scenes/authentication/shared/authScene/AuthScene'
 import { TurnstileChallenge } from 'scenes/authentication/shared/TurnstileChallenge'
 
+import { CreateAccountTerms } from '../components/CreateAccountTerms'
 import { signupLogic } from '../signupLogic'
 
 export function SignupProfileStep(): JSX.Element {
@@ -37,19 +38,7 @@ export function SignupProfileStep(): JSX.Element {
 
     const footer = (
         <>
-            <p className="AuthScene__terms mt-5 mb-0 text-xs leading-relaxed text-tertiary text-center">
-                <span>
-                    By {preflight?.demo ? 'entering the demo environment' : 'creating an account'}, you agree to our
-                </span>{' '}
-                <Link to="https://posthog.com/terms" target="_blank">
-                    Terms of Service ↗
-                </Link>{' '}
-                <span>and</span>{' '}
-                <Link to="https://posthog.com/privacy" target="_blank">
-                    Privacy Policy ↗
-                </Link>
-                <span>.</span>
-            </p>
+            <CreateAccountTerms action={preflight?.demo ? 'entering the demo environment' : 'creating an account'} />
             {!preflight?.demo && (
                 <p className="mt-5 mb-0 text-sm text-secondary text-center">
                     <Link

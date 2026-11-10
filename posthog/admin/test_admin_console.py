@@ -668,7 +668,7 @@ class TestAdminConsoleViews(BaseTest):
 
         assert response.redirect_chain == [("/admin/console/tools/events-retention/", 302)]
         content = response.content.decode()
-        assert "Events retention moved to PostHog Admin" in content
+        assert "Events retention moved to Flind Admin" in content
         assert f"/admin/console/teams/{self.team.pk}/" in content
         assert "Organization default" in content
         assert "September 2025" in content
@@ -696,7 +696,7 @@ class TestAdminConsoleViews(BaseTest):
         assert response.redirect_chain == [("/admin/console/tools/tophog/?preset=1h&pipeline=analytics", 302)]
         assert query_metrics.call_args.kwargs == {"pipeline": "analytics", "lane": None}
         content = response.content.decode()
-        assert "TopHog moved to PostHog Admin" in content
+        assert "TopHog moved to Flind Admin" in content
         assert "emitted_events (sum)" in content
         entry_url = (
             f"/admin/console/tools/tophog/?token={self.team.api_token}"
@@ -850,7 +850,7 @@ class TestAdminConsoleViews(BaseTest):
 
         assert response.redirect_chain == [(f"/admin/console/tools/remote-config-cache/?team={self.team.pk}", 302)]
         content = response.content.decode()
-        assert "The cached config view moved to PostHog Admin" in content
+        assert "The cached config view moved to Flind Admin" in content
         assert "cache/team_tokens/config.json" in content
         assert expected in content
 

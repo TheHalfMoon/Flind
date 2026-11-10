@@ -370,7 +370,7 @@ class TestAgentDiscoveryFiles(SimpleTestCase):
         if expected_status == 200:
             body = response.content.decode()
             assert body.startswith("# ")
-            assert "](https://mcp.posthog.com/mcp)" in body
+            assert "](https://us.example.com/auth.md)" in body
             assert "](https://us.example.com/settings/user-api-keys)" in body
 
 

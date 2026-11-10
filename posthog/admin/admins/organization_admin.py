@@ -229,7 +229,7 @@ class OrganizationAdmin(admin.ModelAdmin):
         if not organization.pk:
             return "-"
         return format_html(
-            '<a href="{}">Child model counts: now in PostHog Admin &#8599;</a>', data_tool_url(organization)
+            '<a href="{}">Child model counts: now in Flind Admin &#8599;</a>', data_tool_url(organization)
         )
 
     @admin.display(description="AI training opt-in history")

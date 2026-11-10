@@ -185,6 +185,15 @@ jobs:
                   PATH="$RUNNER_TEMP/flind-bin:$PATH" tsgo --version
                   test -x frontend/node_modules/.bin/jest
 
+            # Workspace packages such as @flind/quill export their types from a built dist, so build them
+            # first, as flind-e2e.yml does. The committed query-parser and lemon-ui outputs are not rebuilt.
+            - name: Build frontend workspace dependencies
+              run: |
+                  set -o pipefail
+                  pnpm exec turbo run build --filter='@flind/quill...' --output-logs=errors-only
+                  pnpm exec turbo run build --filter='@flind/frontend^...' --filter='!@flind/query-parser' --filter='!@flind/lemon-ui' --only --output-logs=errors-only
+                  git diff --exit-code -- frontend/flind/lemon-ui/dist common/hogql_parser/dist
+
             - name: Type-check head and base
               run: |
                   # Fail loudly if the compiler is missing; otherwise both runs would report zero errors.

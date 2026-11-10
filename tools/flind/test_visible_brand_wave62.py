@@ -21,14 +21,6 @@ class VisibleFlindBrandWave62Tests(unittest.TestCase):
         self.assertIn('content="Flind"', text)
         self.assertNotIn('content="PostHog"', text)
 
-    def test_core_filter_badge_has_neutral_icon_and_flind_copy(self):
-        text = read("components/TaxonomicFilter/menu/VerificationBadge.tsx")
-        self.assertIn("{isCore ? 'Flind' : 'Verified'}", text)
-        self.assertIn("Built into Flind.", text)
-        self.assertIn("<IconBadge className=", text)
-        self.assertNotIn("<IconLogomark", text)
-        self.assertNotIn("PostHog", text)
-
     def test_captured_exception_fallback_is_first_party(self):
         text = read("components/Errors/ErrorDisplay.tsx")
         self.assertIn("'Flind'", text)
@@ -39,7 +31,7 @@ class VisibleFlindBrandWave62Tests(unittest.TestCase):
         tests = read("components/ActivityLog/humanizeActivity.test.tsx")
         self.assertIn("return 'Flind'", text)
         self.assertIn("return `Support (as", text)
-        self.assertIn("name: logItem.was_impersonated", text)
+        self.assertRegex(text, r": logItem\.was_impersonated\s+\? `Support\$\{")
         self.assertNotIn("PostHog Support", text)
         self.assertIn("Support (as Ada Lovelace)", tests)
         self.assertIn("results[0].email", tests)
@@ -59,7 +51,6 @@ class VisibleFlindBrandWave62Tests(unittest.TestCase):
         # migrations must not be swept up in indiscriminate replacements.
         for path in [
             "components/AnnotationsOverlay/AnnotationsOverlay.tsx",
-            "components/TaxonomicFilter/menu/VerificationBadge.tsx",
             "components/Errors/ErrorDisplay.tsx",
             "introductions/GroupsIntroductionOption.tsx",
         ]:

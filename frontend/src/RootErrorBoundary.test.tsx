@@ -76,7 +76,7 @@ describe('RootErrorBoundary', () => {
             </RootErrorBoundary>
         )
 
-        expect(screen.getByRole('alert')).toHaveTextContent('PostHog crashed while starting.')
+        expect(screen.getByRole('alert')).toHaveTextContent('Flind crashed while starting.')
         expect(JSON.parse(sendBeacon.mock.calls[0][1]).properties.$exception_list[0].value).toBe('null')
     })
 
