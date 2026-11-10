@@ -18,6 +18,8 @@ Do NOT:
 
 from __future__ import annotations
 
+from collections import defaultdict
+
 from typing import cast
 from uuid import UUID
 
@@ -126,7 +128,11 @@ def get_restricted_properties_with_group_type_index_for_team(
 
 
 def split_restricted_property_names(restrictions: set[RestrictedProperty]) -> contracts.RestrictedPropertyNames:
-    """Return restricted event and person property names."""
+    """Return restricted event, person, and group property names."""
+    group: defaultdict[int | None, set[str]] = defaultdict(set)
+    for restriction in restrictions:
+        if restriction.property_type == PropertyDefinition.Type.GROUP:
+            group[restriction.group_type_index].add(restriction.name)
     return contracts.RestrictedPropertyNames(
         event=frozenset(
             restriction.name
@@ -138,6 +144,7 @@ def split_restricted_property_names(restrictions: set[RestrictedProperty]) -> co
             for restriction in restrictions
             if restriction.property_type == PropertyDefinition.Type.PERSON
         ),
+        group={group_type_index: frozenset(names) for group_type_index, names in group.items()},
     )
 
 

@@ -7,6 +7,7 @@ them here instead of importing the models.
 from uuid import UUID
 
 from products.access_control.backend.models.access_control import AccessControl
+from products.access_control.backend.models.property_access_control import PropertyAccessControl
 from products.access_control.backend.models.role import Role, RoleMembership
 
 
@@ -42,6 +43,26 @@ def create_access_control(
         team_id=team_id,
         resource=resource,
         resource_id=resource_id,
+        access_level=access_level,
+        organization_member_id=organization_member_id,
+        role_id=role_id,
+    ).id
+
+
+# Adapted from upstream PostHog (products/access_control/backend/facade/testing.py at b17ccdae5): the
+# helper the cherry-picked feature-flag access-control test uses. The rest of that upstream change
+# belongs to an unrelated feature and is not integrated here.
+def create_property_access_control(
+    *,
+    team_id: int,
+    property_definition_id: UUID,
+    access_level: str,
+    organization_member_id: UUID | None = None,
+    role_id: UUID | None = None,
+) -> UUID:
+    return PropertyAccessControl.objects.create(
+        team_id=team_id,
+        property_definition_id=property_definition_id,
         access_level=access_level,
         organization_member_id=organization_member_id,
         role_id=role_id,
