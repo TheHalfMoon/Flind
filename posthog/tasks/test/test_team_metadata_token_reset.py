@@ -100,3 +100,61 @@ class TestClearTeamMetadataCacheForTokenTask(BaseTest):
             clear_team_metadata_cache_for_token_task("phc_retired_token")
 
         mock_delete.assert_called_once_with("phc_retired_token", strict_mirror=True)
+
+    # Adapted from upstream PostHog a2605f740. Flind's task skips a token that still belongs to a team,
+    # so this uses a retired token where upstream passes the live team token.
+    def test_failed_mirror_delete_raises_so_the_task_retries(self) -> None:
+        mirror = Mock()
+        mirror.delete.side_effect = ConnectionError("mirror down")
+
+        with (
+            patch.object(team_metadata_hypercache, "secondary_cache_client", mirror),
+            patch.object(object_storage, "delete"),
+            self.assertRaises(ConnectionError),
+        ):
+            clear_team_metadata_cache_for_token_task("phc_retired_token")
+
+
+# Adapted from upstream PostHog a2605f740 (posthog/storage/test/test_team_metadata_signal_handlers.py).
+@override_settings(FLAGS_REDIS_URL="redis://localhost:6379")
+class TestDeletedTeamTeamMetadataClear(BaseTest):
+    def test_team_delete_clears_team_metadata_cache_in_redis_and_s3(self) -> None:
+        update_team_metadata_cache(self.team)
+        api_token = self.team.api_token
+        cache_key = team_metadata_hypercache.get_cache_key(api_token)
+        assert team_metadata_hypercache.cache_client.get(cache_key) is not None
+        assert object_storage.read(cache_key, missing_ok=True) is not None
+
+        with self.captureOnCommitCallbacks(execute=True):
+            self.team.delete()
+            # This write stands in for a refresh that runs after the pre_delete clear and before the commit.
+            team_metadata_hypercache.set_cache_value(api_token, {"api_token": api_token})
+
+        assert team_metadata_hypercache.cache_client.get(cache_key) is None
+        assert object_storage.read(cache_key, missing_ok=True) is None
+
+    @patch("posthog.tasks.team_metadata.clear_team_metadata_cache_for_token_task.delay")
+    def test_team_delete_enqueues_the_retrying_clear_for_its_token(self, mock_clear: Mock) -> None:
+        api_token = self.team.api_token
+
+        with self.captureOnCommitCallbacks(execute=True):
+            self.team.delete()
+
+        mock_clear.assert_called_once_with(api_token)
+
+    @patch("posthog.tasks.team_metadata.clear_team_metadata_cache_for_token_task.delay")
+    def test_rolled_back_team_delete_does_not_enqueue_the_clear(self, mock_clear: Mock) -> None:
+        with self.captureOnCommitCallbacks(execute=True), self.assertRaises(RuntimeError):
+            with transaction.atomic():
+                self.team.delete()
+                raise RuntimeError("roll back the delete")
+
+        mock_clear.assert_not_called()
+
+    @override_settings(FLAGS_REDIS_URL="")
+    @patch("posthog.tasks.team_metadata.clear_team_metadata_cache_for_token_task.delay")
+    def test_team_delete_without_flags_redis_does_not_enqueue_the_clear(self, mock_clear: Mock) -> None:
+        with self.captureOnCommitCallbacks(execute=True):
+            self.team.delete()
+
+        mock_clear.assert_not_called()

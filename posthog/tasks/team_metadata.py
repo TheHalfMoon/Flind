@@ -252,6 +252,9 @@ def clear_team_metadata_cache_on_delete(sender: type[Team], instance: Team, **kw
     # NB: For unit tests, only clear Redis to avoid S3 timestamp issues with frozen time
     kinds = ["redis"] if settings.TEST else None
     clear_team_metadata_cache(instance, kinds=kinds)
+    # This clear runs before the commit and does not retry. A refresh in that gap can write the entry back.
+    # The S3 copy has no TTL, so a retrying task clears the entry again after the commit.
+    enqueue_retired_token_metadata_clear_on_commit(instance.id, instance.api_token)
 
 
 def _record_enqueue_failure() -> None:
