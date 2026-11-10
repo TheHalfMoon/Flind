@@ -16,9 +16,9 @@ Do NOT:
 - Return ORM instances or QuerySets
 """
 
-from collections import defaultdict
-
 from __future__ import annotations
+
+from collections import defaultdict
 
 from typing import cast
 from uuid import UUID
