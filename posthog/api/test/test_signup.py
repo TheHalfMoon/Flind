@@ -2684,7 +2684,7 @@ class TestInviteSignupAPI(APIBaseTest):
 
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
-        member_join_emails = [m for m in mail.outbox if "joined you on PostHog" in m.subject]
+        member_join_emails = [m for m in mail.outbox if "joined you on Flind" in m.subject]
         self.assertEqual(len(member_join_emails), 0)
         # Verify invite signup still sends verification email to the new user.
         self.assertEqual(len(mail.outbox), 1)
@@ -2741,7 +2741,7 @@ class TestInviteSignupAPI(APIBaseTest):
 
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
-        member_join_emails = [m for m in mail.outbox if "joined you on PostHog" in m.subject]
+        member_join_emails = [m for m in mail.outbox if "joined you on Flind" in m.subject]
         self.assertEqual(len(member_join_emails), 0)
 
     @patch("posthoganalytics.capture")

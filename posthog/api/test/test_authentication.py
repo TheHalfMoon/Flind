@@ -1678,7 +1678,7 @@ class TestPasswordResetAPI(APIBaseTest):
 
         self.assertSetEqual({",".join(outmail.to) for outmail in mail.outbox}, {self.CONFIG_EMAIL})
 
-        self.assertEqual(mail.outbox[0].subject, "Reset your PostHog password")
+        self.assertEqual(mail.outbox[0].subject, "Reset your Flind password")
         self.assertEqual(mail.outbox[0].body, "")  # no plain-text version support yet
 
         html_message = mail.outbox[0].alternatives[0][0]  # type: ignore

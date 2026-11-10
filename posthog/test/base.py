@@ -753,8 +753,10 @@ class PostHogTestCase(SimpleTestCase):
         super().tearDown()
 
     def validate_basic_html(self, html_message, site_url, preheader=None):
-        # absolute URLs are used
-        self.assertIn(f"{site_url}/static/posthog-logo.png", html_message)
+        # absolute URLs are used, and the header shows the Flind wordmark
+        self.assertIn(f'href="{site_url}', html_message)
+        # CSS inlining adds a style attribute to the wordmark, so match the element loosely.
+        self.assertRegex(html_message, r'<span class="logo"[^>]*>Flind</span>')
 
         # CSS is inlined
         self.assertIn('style="display: none;', html_message)

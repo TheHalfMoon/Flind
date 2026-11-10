@@ -125,5 +125,15 @@ class FlindUserFacingBrandTests(unittest.TestCase):
     def test_auth_md_does_not_claim_open_source(self) -> None:
         self.assertNotIn("open-source", read("posthog/templates/auth_md.md"))
 
+    def test_email_subjects_do_not_name_upstream_product(self) -> None:
+        subject = re.compile(r'subject\s*=\s*f?"[^"]*PostHog(?![A-Za-z])')
+        for rel in (
+            "posthog/tasks/email.py",
+            "posthog/tasks/alerts/utils.py",
+            "posthog/temporal/proxy_service/common.py",
+        ):
+            with self.subTest(file=rel):
+                self.assertIsNone(subject.search(read(rel)))
+
 if __name__ == "__main__":
     unittest.main()

@@ -469,9 +469,9 @@ def send_invite(invite_id: str) -> None:
     is_delegation = bool(invite.is_setup_delegation)
     template_name = "delegation_invite" if is_delegation else "invite"
     if is_delegation:
-        subject = f"{inviter_name} asked you to finish setting up PostHog for {org_name}"
+        subject = f"{inviter_name} asked you to finish setting up Flind for {org_name}"
     else:
-        subject = f"{inviter_name} invited you to join {org_name} on PostHog"
+        subject = f"{inviter_name} invited you to join {org_name} on Flind"
     message = EmailMessage(
         use_http=True,
         campaign_key=campaign_key,
@@ -575,7 +575,7 @@ def send_member_join(invitee_uuid: str, organization_id: str) -> None:
     message = EmailMessage(
         use_http=True,
         campaign_key=campaign_key,
-        subject=f"{invitee_first_name} joined you on PostHog",
+        subject=f"{invitee_first_name} joined you on Flind",
         template_name="member_join",
         template_context={
             "invitee": invitee,
@@ -597,7 +597,7 @@ def send_provisioning_welcome(user_id: int, token: str, partner_name: str = "") 
     message = EmailMessage(
         use_http=True,
         campaign_key=f"provisioning-welcome-{user.uuid}-{timezone.now().timestamp()}",
-        subject="Welcome to PostHog - set your password",
+        subject="Welcome to Flind - set your password",
         template_name="provisioning_welcome",
         template_context={
             "preheader": "Your PostHog account is ready. Set your password to log in.",
@@ -618,7 +618,7 @@ def send_password_reset(user_id: int, token: str) -> None:
     message = EmailMessage(
         use_http=True,
         campaign_key=f"password-reset-{user.uuid}-{timezone.now().timestamp()}",
-        subject=f"Reset your PostHog password",
+        subject=f"Reset your Flind password",
         template_name="password_reset",
         template_context={
             "preheader": "Please follow the link inside to reset your password.",
@@ -695,7 +695,7 @@ def send_code_based_verification(user_id: int, code: str) -> None:
     message = EmailMessage(
         use_http=True,
         campaign_key=f"code_based_verification_{user.uuid}-{timezone.now().timestamp()}",
-        subject="Your PostHog login code",
+        subject="Your Flind login code",
         template_name="code_based_verification",
         template_context={
             "preheader": "Enter this code to verify your login.",
@@ -1124,7 +1124,7 @@ def send_batch_export_run_failure(
         f"batch_export_run_email_batch_export_{run_failure.export_id}_last_updated_at_{last_updated_at_date}"
     )
 
-    subject = f"PostHog: {run_failure.export_name} batch export run failure"
+    subject = f"Flind: {run_failure.export_name} batch export run failure"
     message = EmailMessage(
         campaign_key=campaign_key,
         subject=subject,
@@ -1577,7 +1577,7 @@ def send_team_matview_failure_digest(team_id: int, failed_query_ids: list[str], 
         ]
         message = EmailMessage(
             campaign_key=campaign_key,
-            subject=f"PostHog: {summary} in {team.name}",
+            subject=f"Flind: {summary} in {team.name}",
             template_name="matview_failure_digest",
             template_context={
                 "team": team,
@@ -1656,10 +1656,10 @@ def send_matview_failure_immediate_email(
 
     if suspended:
         campaign_key = f"matview_suspended_{saved_query_id}_{job_id}"
-        subject = f"PostHog: Materialized view '{saved_query.name}' was suspended in {team.name}"
+        subject = f"Flind: Materialized view '{saved_query.name}' was suspended in {team.name}"
     else:
         campaign_key = f"matview_failure_immediate_{saved_query_id}_{job_id}"
-        subject = f"PostHog: Materialized view '{saved_query.name}' failed in {team.name}"
+        subject = f"Flind: Materialized view '{saved_query.name}' failed in {team.name}"
     message = EmailMessage(
         campaign_key=campaign_key,
         subject=subject,
@@ -1688,7 +1688,7 @@ def send_matview_failure_immediate_email(
 def send_canary_email(user_email: str) -> None:
     message = EmailMessage(
         campaign_key=f"canary_email_{uuid.uuid4()}",
-        subject="This is a test email of your PostHog instance",
+        subject="This is a test email of your Flind instance",
         template_name="canary_email",
         template_context={"site_url": settings.SITE_URL},
     )
@@ -1788,7 +1788,7 @@ def send_email_change_emails(now_iso: str, user_name: str, old_address: str, new
     message_old_address = EmailMessage(
         use_http=True,
         campaign_key=f"email_change_old_address_{now_iso}",
-        subject="This is no longer your PostHog account email",
+        subject="This is no longer your Flind account email",
         template_name="email_change_old_address",
         template_context={
             "user_name": user_name,
@@ -1799,7 +1799,7 @@ def send_email_change_emails(now_iso: str, user_name: str, old_address: str, new
     message_new_address = EmailMessage(
         use_http=True,
         campaign_key=f"email_change_new_address_{now_iso}",
-        subject="This is your new PostHog account email",
+        subject="This is your new Flind account email",
         template_name="email_change_new_address",
         template_context={
             "user_name": user_name,
@@ -2012,8 +2012,12 @@ def login_from_new_device_notification(
     message.add_user_recipient(user)
     message.send()
 
-    # Capture event using ph_client for reliability in Celery tasks
+    # Capture event using ph_client for reliability in Celery tasks. The client is None when
+    # product analytics is not configured; raising here would make Celery retry and re-send
+    # the security email that already went out.
     ph_client = get_client()
+    if ph_client is None:
+        return
     ph_client.capture(
         distinct_id=str(user.distinct_id),
         event="login notification sent",
@@ -3018,7 +3022,7 @@ def send_integration_access_request(team_id: int, requesting_user_id: int, kind:
 
     # Deterministic per requester + integration so re-clicking doesn't spam admins (MessagingRecord dedups).
     campaign_key = f"integration_access_request_{team_id}_{kind}_{requesting_user_id}"
-    subject = f"{requester_name} requested the {integration_name} integration on PostHog"
+    subject = f"{requester_name} requested the {integration_name} integration on Flind"
 
     # Org admins/owners always have access to every project, so the org-level filter is the access check.
     memberships = (
@@ -3097,7 +3101,7 @@ def send_posthog_ai_access_request(organization_id: str, requesting_user_id: int
     message = EmailMessage(
         use_http=True,
         campaign_key=campaign_key,
-        subject=f"{requester_name} requested access to PostHog AI",
+        subject=f"{requester_name} requested access to Flind AI",
         template_name="posthog_ai_access_requested",
         template_context={
             "requester_name": requester_name,

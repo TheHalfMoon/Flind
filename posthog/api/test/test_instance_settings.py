@@ -242,7 +242,7 @@ class TestInstanceSettings(APIBaseTest):
         self.assertEqual(response.json()["value"], "hellohello@posthog.com")
 
         self.assertEqual(mail.outbox[0].from_email, "hellohello@posthog.com")
-        self.assertEqual(mail.outbox[0].subject, "This is a test email of your PostHog instance")
+        self.assertEqual(mail.outbox[0].subject, "This is a test email of your Flind instance")
         html_message = mail.outbox[0].alternatives[0][0]  # type: ignore
         self.validate_basic_html(
             html_message,
