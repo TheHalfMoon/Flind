@@ -441,7 +441,7 @@ export const supportLogic = kea<supportLogicType>([
             (sendSupportRequest: SupportFormFields) =>
                 sendSupportRequest.kind
                     ? SUPPORT_TICKET_KIND_TO_TITLE[sendSupportRequest.kind]
-                    : 'Leave a message with Flind',
+                    : 'Leave a message with PostHog',
         ],
         isBillingIssue: [
             (s) => [s.sendSupportRequest],

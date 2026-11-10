@@ -158,5 +158,22 @@ class FlindUserFacingBrandTests(unittest.TestCase):
             with self.subTest(file=rel):
                 self.assertIsNone(help_text.search(read(rel)))
 
+    def test_frontend_makes_no_legal_or_custody_claims_for_flind(self) -> None:
+        # Flind is self-hosted software, not a contracting party or data custodian.
+        claim = re.compile(
+            r"(BAA|DPA|agreement|subprocessor)[^.\n]*with Flind|stays with Flind|Flind subprocessors|Flind will update the DPA"
+        )
+        for path in sorted((ROOT / "frontend" / "src").rglob("*.tsx")) + sorted((ROOT / "frontend" / "src").rglob("*.ts")):
+            if ".test." in path.name:
+                continue
+            with self.subTest(file=str(path.relative_to(ROOT))):
+                self.assertIsNone(claim.search(path.read_text(encoding="utf-8")))
+
+    def test_support_access_setting_refers_to_instance_staff(self) -> None:
+        # Behind the CONTROL_SUPPORT_LOGIN flag, so browser E2E cannot reach it; check the copy here.
+        text = read("frontend/src/scenes/settings/user/AllowImpersonation.tsx")
+        self.assertIn("Staff users of this Flind instance may need to log in as you", text)
+        self.assertNotIn("Flind support staff", text)
+
 if __name__ == "__main__":
     unittest.main()

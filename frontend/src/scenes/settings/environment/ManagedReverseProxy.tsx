@@ -323,8 +323,8 @@ function CloudflareOptInBanner({
                 <div className="font-semibold">HIPAA Disclaimer</div>
                 <p className="text-sm">
                     This feature is not HIPAA-compliant and is not intended for the processing of Protected Health
-                    Information ("<strong>PHI</strong>"). Any Business Associate Agreement ("<strong>BAA</strong>") you
-                    may have entered into with Flind does not apply to this functionality. You agree not to use this
+                    Information ("<strong>PHI</strong>"). Any Business Associate Agreement ("<strong>BAA</strong>") that
+                    covers your deployment does not apply to this functionality. You agree not to use this
                     feature with PHI.
                 </p>
             </div>
