@@ -52,7 +52,7 @@ declare global {
 function getAppRoot(): Root | null {
     const rootElement = document.getElementById('root')
     if (!rootElement) {
-        console.error('Attempted, but could not render PostHog app because <div id="root" /> is not found.')
+        console.error('Attempted, but could not render Flind app because <div id="root" /> is not found.')
         return null
     }
     // Vite 8 can serve this entry module twice after an HMR invalidation reaches it (the script
@@ -69,7 +69,7 @@ function renderApp(): void {
             <ChunkLoadErrorBoundary>
                 <Suspense
                     fallback={
-                        <div className="Preloader" role="status" aria-label="Loading PostHog">
+                        <div className="Preloader" role="status" aria-label="Loading Flind">
                             <div className="Preloader__inner" />
                         </div>
                     }
@@ -85,7 +85,7 @@ function renderStylesheetFailure(): void {
     getAppRoot()?.render(
         <div className="Preloader" role="alert">
             <div>
-                PostHog failed to load its styles.{' '}
+                Flind failed to load its styles.{' '}
                 <button onClick={() => window.location.reload()}>Reload the page</button> to try again.
             </div>
         </div>

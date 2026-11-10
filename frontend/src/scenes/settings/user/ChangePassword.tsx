@@ -72,7 +72,7 @@ export function ChangePassword(): JSX.Element {
                         {passwordResetEmailSent && (
                             <LemonBanner type="info">
                                 We emailed a reset link to <span translate="no">{user?.email}</span>. Open it to set a
-                                new password without your current one. Resetting signs you out of PostHog on every
+                                new password without your current one. Resetting signs you out of Flind on every
                                 device.
                             </LemonBanner>
                         )}

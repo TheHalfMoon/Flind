@@ -24,7 +24,7 @@ export function CLILive(): JSX.Element {
                 <div className="text-center space-y-4">
                     <h2>Missing port parameter</h2>
                     <LemonBanner type="error">
-                        This page should be opened from the PostHog Live TUI. Please run <code>posthog-live</code> in
+                        This page should be opened from the Flind Live TUI. Please run <code>posthog-live</code> in
                         your terminal.
                     </LemonBanner>
                 </div>
@@ -62,7 +62,7 @@ export function CLILive(): JSX.Element {
         return (
             <BridgePage view="login">
                 <div className="text-center space-y-4">
-                    <h2>Authorizing PostHog Live...</h2>
+                    <h2>Authorizing Flind Live...</h2>
                     <SpinnerOverlay />
                 </div>
             </BridgePage>

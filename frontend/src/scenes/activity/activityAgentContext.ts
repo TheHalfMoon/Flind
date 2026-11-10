@@ -25,7 +25,7 @@ const EXPLORE_CONTEXT_ITEM: AttachedContextItem = {
     hidden: true,
     dismissGroup: EXPLORE_DISMISS_GROUP,
     value:
-        'The user has the PostHog activity explorer open, which lists raw events and sessions. The ' +
+        'The user has the Flind activity explorer open, which lists raw events and sessions. The ' +
         'events_explorer_query or sessions_explorer_query item is the live, possibly unsaved query behind the ' +
         'table on their screen. Read it to resolve what "this", "these rows", or "the current filters" refer ' +
         'to. Answer questions about it by running HogQL over the events or sessions table with the execute-sql ' +
@@ -40,7 +40,7 @@ const LIVE_CONTEXT_ITEM: AttachedContextItem = {
     hidden: true,
     dismissGroup: LIVE_DISMISS_GROUP,
     value:
-        'The user is watching the PostHog live event stream, which shows events as they arrive. The ' +
+        'The user is watching the Flind live event stream, which shows events as they arrive. The ' +
         'live_events_filters item holds the event name and property filters applied to that stream. The ' +
         'stream itself is not queryable, so answer questions about what the user sees by running HogQL over ' +
         'the events table with the execute-sql tool, applying the same filters over a recent time range. ' +

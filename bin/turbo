@@ -2,9 +2,14 @@
 
 TURBO_PATH=./node_modules/.bin/turbo
 
-# if turbo is not installed, install it from npm globally
+# if turbo is not installed, install the workspace root, which provides it
+if [ ! -f $TURBO_PATH ] && [ ! -f ./node_modules/turbo/bin/turbo ]; then
+  pnpm -w --filter=@flind/root install
+fi
+
+# pnpm 11 can install turbo without linking its bin; call the installed entry point instead
 if [ ! -f $TURBO_PATH ]; then
-  pnpm -w --filter=@posthog/root install
+  TURBO_PATH="node ./node_modules/turbo/bin/turbo"
 fi
 
 # run turbo with the cli arguments

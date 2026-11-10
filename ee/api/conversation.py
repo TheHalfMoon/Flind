@@ -235,7 +235,7 @@ def _validate_sandbox_task(task_id: uuid.UUID, team_id: int, user_id: int | None
     if runtime is None:
         raise serializers.ValidationError("Task not found or not accessible.")
     if runtime == tasks_facade.TaskRuntime.PI:
-        raise serializers.ValidationError("Pi tasks cannot be opened in PostHog AI.")
+        raise serializers.ValidationError("Pi tasks cannot be opened in Flind AI.")
 
 
 class SandboxOpenSerializer(serializers.Serializer):
@@ -256,7 +256,7 @@ class SandboxOpenSerializer(serializers.Serializer):
     attached_context = serializers.ListField(
         required=False,
         child=SandboxAttachedContextItemSerializer(),
-        help_text="Typed PostHog entities (and free text) attached to this message.",
+        help_text="Typed Flind entities (and free text) attached to this message.",
     )
     initial_permission_mode = serializers.ChoiceField(
         choices=INITIAL_PERMISSION_MODE_CHOICES,
@@ -427,7 +427,7 @@ class ConversationViewSet(
                 if is_research:
                     detail = RESEARCH_RATE_LIMIT_MESSAGE.format(retry_after=retry_after)
                 else:
-                    detail = f"You've reached PostHog AI's usage limit for the moment. Please try again {retry_after}."
+                    detail = f"You've reached Flind AI's usage limit for the moment. Please try again {retry_after}."
 
                 raise Throttled(wait=wait, detail=detail)
 

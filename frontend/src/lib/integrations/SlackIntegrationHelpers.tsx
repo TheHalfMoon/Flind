@@ -55,7 +55,7 @@ export function SlackNotConfiguredBanner({
                 <div className="flex flex-wrap justify-between gap-2 items-center">
                     <span>
                         {description ??
-                            'Slack is not yet configured for this project. Add PostHog to your Slack workspace to continue.'}
+                            'Slack is not yet configured for this project. Add Flind to your Slack workspace to continue.'}
                     </span>
                     {/* A click before the first load has no workspace list to compare the new one against. */}
                     {slackIntegrations === undefined ? (
@@ -102,8 +102,8 @@ export function SlackNotConfiguredBanner({
                     </span>
                 ) : null}
                 <span className="text-sm text-secondary">
-                    Slack opens in a new tab. Adding PostHog creates a public #posthog-inbox channel in your Slack
-                    workspace, where PostHog posts what it finds.
+                    Slack opens in a new tab. Adding Flind creates a public #posthog-inbox channel in your Slack
+                    workspace, where Flind posts what it finds.
                 </span>
             </div>
         </LemonBanner>
@@ -403,9 +403,9 @@ function SlackChannelPickerNotices({
                     <div className="flex gap-2 items-center">
                         <span>
                             {values.length > 1
-                                ? 'The PostHog Slack app is not in every selected channel. '
-                                : 'The PostHog Slack app is not in this channel. '}
-                            Invite it with <code>/invite @PostHog</code> in Slack, then check again.{' '}
+                                ? 'The Flind Slack app is not in every selected channel. '
+                                : 'The Flind Slack app is not in this channel. '}
+                            Invite it with <code>/invite @Flind</code> in Slack, then check again.{' '}
                             <Link to="https://posthog.com/docs/webhooks/slack" target="_blank">
                                 See the docs for more information
                             </Link>
@@ -649,7 +649,7 @@ export function SlackChannelPicker(props: SlackChannelPickerProps): JSX.Element 
                     // not max-width — without a cap the popover can grow to fit a long single line
                     // and spill past the modal edge.
                     <p className="text-secondary italic p-1 max-w-sm">
-                        No channels found. Make sure the PostHog Slack App is installed in the channel.{' '}
+                        No channels found. Make sure the Flind Slack App is installed in the channel.{' '}
                         <Link to="https://posthog.com/docs/cdp/destinations/slack" target="_blank">
                             See the docs for more information.
                         </Link>

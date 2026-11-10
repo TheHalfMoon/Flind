@@ -37,7 +37,7 @@ function ChoosePathStep(): JSX.Element {
 
     return (
         <div className="max-w-6xl w-full">
-            <h1 className="text-4xl font-bold text-center mb-2">What do you want to do with PostHog?</h1>
+            <h1 className="text-4xl font-bold text-center mb-2">What do you want to do with Flind?</h1>
             <p className="text-center text-muted mb-8">Pick a goal to get started with the right products</p>
 
             {/* Use cases grid - 2 rows x 3 columns */}

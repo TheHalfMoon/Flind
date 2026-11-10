@@ -1,7 +1,7 @@
 {% extends "email/base.html" %}
 {% block section %}
-    <p>Welcome to PostHog! Your account was created{% if partner_name %} via {{ partner_name }}{% endif %}.</p>
-    <p>Set a password to log in to PostHog directly.</p>
+    <p>Welcome to Flind! Your account was created{% if partner_name %} via {{ partner_name }}{% endif %}.</p>
+    <p>Set a password to log in to Flind directly.</p>
     <div class="mb mt text-center">
         <a class="button" href="{% absolute_uri link %}">Set your password</a>
     </div>
@@ -12,4 +12,4 @@
             <a href="{% absolute_uri link %}">{% absolute_uri link %}</a>
         </p>
     </div>
-{% endblock %} {% block preheader %}{{ preheader }}{% endblock %}{% block heading %}Welcome to PostHog{% endblock %}
+{% endblock %} {% block preheader %}{{ preheader }}{% endblock %}{% block heading %}Welcome to Flind{% endblock %}

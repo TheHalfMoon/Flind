@@ -270,7 +270,7 @@ export const redshiftDefinition: DestinationDefinition = {
                 ) : (
                     <>
                         <LemonBanner type="warning">
-                            PostHog is moving Redshift batch exports to saved connections. This export will be migrated
+                            Flind is moving Redshift batch exports to saved connections. This export will be migrated
                             automatically.
                         </LemonBanner>
 
@@ -313,7 +313,7 @@ export const redshiftDefinition: DestinationDefinition = {
                     label="Semi-structured data type"
                     info={
                         <>
-                            Different PostHog models have semi-structured data fields in them, like "events.properties".
+                            Different Flind models have semi-structured data fields in them, like "events.properties".
                             We can export these fields to Redshift as a "SUPER" type column, or a "VARCHAR" column. We
                             recommend "SUPER" over "VARCHAR" as "VARCHAR" has a strict length limit that applies on the
                             entire document, whereas with "SUPER" the limit applies on each value in the document.
@@ -351,7 +351,7 @@ export const redshiftDefinition: DestinationDefinition = {
                 {formValues.mode === 'COPY' && (
                     <>
                         <p className="text-xs text-muted mt-1">
-                            COPY loads data through an S3 bucket. PostHog stages the export files there, then tells
+                            COPY loads data through an S3 bucket. Flind stages the export files there, then tells
                             Redshift to copy them into your table.
                         </p>
 
@@ -376,7 +376,7 @@ export const redshiftDefinition: DestinationDefinition = {
                             <LemonField
                                 name="redshift_s3_integration_id"
                                 label="S3 connection"
-                                info="The credentials PostHog uses to stage export files in the bucket."
+                                info="The credentials Flind uses to stage export files in the bucket."
                             >
                                 {({ value, onChange }) => (
                                     <IntegrationChoice integration="aws-s3" value={value} onChange={onChange} />
@@ -385,7 +385,7 @@ export const redshiftDefinition: DestinationDefinition = {
                         ) : (
                             <>
                                 <LemonBanner type="warning">
-                                    PostHog is moving the S3 staging credentials to saved connections. This export will
+                                    Flind is moving the S3 staging credentials to saved connections. This export will
                                     be migrated automatically.
                                 </LemonBanner>
 
@@ -417,7 +417,7 @@ export const redshiftDefinition: DestinationDefinition = {
                             name="authorization_mode"
                             label="How Redshift reads staged files"
                             className="flex-1"
-                            info="PostHog writes the staged files. Redshift then needs its own access to read them back."
+                            info="Flind writes the staged files. Redshift then needs its own access to read them back."
                         >
                             <LemonSelect options={authorizationOptions} />
                         </LemonField>

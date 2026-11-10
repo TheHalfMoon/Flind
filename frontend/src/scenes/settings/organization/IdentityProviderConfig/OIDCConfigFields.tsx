@@ -57,11 +57,11 @@ export function OIDCConfigFields({
             <LemonBanner type="info">
                 <p>
                     In your identity provider, allow this OIDC application to request the <code>openid</code>,{' '}
-                    <code>profile</code>, and <code>email</code> scopes. PostHog requests these scopes when a user signs
+                    <code>profile</code>, and <code>email</code> scopes. Flind requests these scopes when a user signs
                     in.
                 </p>
                 <p>
-                    PostHog reads the user's identity from the <code>userinfo</code> endpoint of your identity provider.
+                    Flind reads the user's identity from the <code>userinfo</code> endpoint of your identity provider.
                     The response must include these claims:
                 </p>
                 <ul className="list-disc pl-4">

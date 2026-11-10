@@ -54,7 +54,7 @@ export function useJsSnippetConfig(): JsSnippetConfig {
             },
             ui_host: {
                 content: preflight?.site_url || window.location.origin,
-                comment: "necessary because you're using a proxy, this way links will point back to PostHog properly",
+                comment: "necessary because you're using a proxy, this way links will point back to Flind properly",
                 enabled: !!proxyRecord,
             },
             defaults: {

@@ -1,5 +1,5 @@
 {% extends "email/base.html" %}
-{% block heading %}A PostHog app has experienced a fatal error{% endblock %}
+{% block heading %}A Flind app has experienced a fatal error{% endblock %}
 {% block section %}
     <!-- prettier-ignore -->
     <p>
@@ -9,7 +9,7 @@
     <div class="mb mt text-center">
         <a class="button" href="{{ hog_function.url }}">Go to destination</a>
     </div>
-    <p>If the issue persists, please contact the PostHog team for help.</p>
+    <p>If the issue persists, please contact the Flind team for help.</p>
     <div class="mt">
         <p>
             If the button above doesn't work, paste this link into your browser:
@@ -25,5 +25,5 @@
     <a href="https://posthog.com/docs?{{ utm_tags }}" target="_blank"><b>read our documentation</b></a>.
     <br />
     <br />
-    <a href="{% absolute_uri '/settings/user-notifications' %}">Manage these notifications in PostHog</a>
+    <a href="{% absolute_uri '/settings/user-notifications' %}">Manage these notifications in Flind</a>
 {% endblock %}

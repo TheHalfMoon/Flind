@@ -173,13 +173,13 @@ export function SampleDataState({
                                 <div className="font-semibold">Setup wizard is running</div>
                                 {setupStatus.mode === 'cloud' ? (
                                     <p className="m-0">
-                                        The AI setup wizard is installing PostHog in the cloud, on a copy of your
+                                        The AI setup wizard is installing Flind in the cloud, on a copy of your
                                         codebase. Once it's done, it will open a pull request for you to review and
                                         merge.
                                     </p>
                                 ) : (
                                     <p className="m-0">
-                                        The AI setup wizard is installing PostHog in your codebase from your terminal.
+                                        The AI setup wizard is installing Flind in your codebase from your terminal.
                                         You'll see real data here soon after it's done.
                                     </p>
                                 )}
@@ -190,7 +190,7 @@ export function SampleDataState({
                     >
                         <LemonTag type="muted" className="gap-1 cursor-help">
                             <Spinner className="text-xs" frozen={isStatic} />
-                            Installing PostHog...
+                            Installing Flind...
                         </LemonTag>
                     </Tooltip>
                 )}
@@ -201,7 +201,7 @@ export function SampleDataState({
                                 <div className="font-semibold">AI setup wizard</div>
                                 <p className="m-0">
                                     Run this command from the root of your project - the wizard detects your framework,
-                                    installs the PostHog SDK, and starts sending events. Click to copy.
+                                    installs the Flind SDK, and starts sending events. Click to copy.
                                 </p>
                             </div>
                         }

@@ -576,8 +576,8 @@ export function Toolbar(): JSX.Element | null {
             >
                 <ToolbarButton
                     onClick={isAuthenticated ? toggleMinimized : authenticate}
-                    title={isAuthenticated ? 'Minimize' : 'Authenticate the PostHog Toolbar'}
-                    titleMinimized={isAuthenticated ? 'Expand the toolbar' : 'Authenticate the PostHog Toolbar'}
+                    title={isAuthenticated ? 'Minimize' : 'Authenticate the Flind Toolbar'}
+                    titleMinimized={isAuthenticated ? 'Expand the toolbar' : 'Authenticate the Flind Toolbar'}
                 >
                     <AnimatedLogomark
                         animate={isLoading || authStatus === 'checking' || authStatus === 'authenticating'}
@@ -648,7 +648,7 @@ export function Toolbar(): JSX.Element | null {
                     <ToolbarButton
                         flex
                         onClick={openUiHostConfigModal}
-                        title="PostHog app unreachable — click for help"
+                        title="Flind app unreachable — click for help"
                     >
                         <span className="flex items-center gap-1">
                             Authenticate <IconWarning className="text-warning" />

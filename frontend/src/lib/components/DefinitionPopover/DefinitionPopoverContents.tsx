@@ -70,7 +70,7 @@ export function PropertyStatusControl({
         hidden: `Hide this ${definitionType} from filters and other selection components by default. Use this for deprecated or irrelevant ${definitionType}s.`,
     }
 
-    const verifiedDisabledCorePropCopy = `Core PostHog ${definitionType}s are inherently treated as if verified, but they can still be hidden.`
+    const verifiedDisabledCorePropCopy = `Core Flind ${definitionType}s are inherently treated as if verified, but they can still be hidden.`
 
     const currentStatus: PropertyDefinitionVerificationStatus = hidden ? 'hidden' : verified ? 'verified' : 'visible'
 

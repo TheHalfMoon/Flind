@@ -104,7 +104,7 @@ describe('InsightCard', () => {
 
             act(() => jest.advanceTimersByTime(30_000))
             if (cardStatus !== null) {
-                expect(screen.getByText('PostHog is busy. You can retry in 15 seconds.')).toBeVisible()
+                expect(screen.getByText('Flind is busy. You can retry in 15 seconds.')).toBeVisible()
                 expect(screen.getByTestId('insight-retry-button')).toHaveAttribute('aria-disabled', 'true')
             }
             expect(headerRefresh).toHaveAttribute('aria-disabled', 'true')

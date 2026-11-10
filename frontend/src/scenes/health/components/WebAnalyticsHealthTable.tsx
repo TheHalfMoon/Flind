@@ -16,7 +16,7 @@ interface CheckMeta {
 const CHECK_META: Record<string, CheckMeta> = {
     no_live_events: {
         title: '$pageview',
-        description: 'No pageview events detected recently. Complete the PostHog installation to start seeing events.',
+        description: 'No pageview events detected recently. Complete the Flind installation to start seeing events.',
         docsUrl: 'https://posthog.com/docs/product-analytics/capture-events',
     },
     no_pageleave_events: {

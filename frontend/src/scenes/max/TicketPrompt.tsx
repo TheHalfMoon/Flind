@@ -140,7 +140,7 @@ export function TicketPrompt({ conversationId, traceId, summary, initialText }: 
         >
             {summary && (
                 <div className="flex flex-col gap-1 mb-3">
-                    <p className="m-0 font-medium">PostHog AI's analysis</p>
+                    <p className="m-0 font-medium">Flind AI's analysis</p>
                     <p className="m-0 text-xs text-secondary">This is attached to your ticket for our support team.</p>
                     <div className="max-h-40 overflow-y-auto p-2 border border-border rounded bg-bg-light text-sm whitespace-pre-wrap">
                         {summary}

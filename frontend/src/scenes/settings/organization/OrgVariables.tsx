@@ -20,7 +20,7 @@ export function OrganizationVariables(): JSX.Element {
             )}
             <p className="text-muted text-xs mb-0">
                 Use this ID to identify your organization in the{' '}
-                <Link to="https://posthog.com/docs/api">PostHog API</Link>.
+                <Link to="https://posthog.com/docs/api">Flind API</Link>.
             </p>
         </div>
     )

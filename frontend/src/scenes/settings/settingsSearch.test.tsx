@@ -55,7 +55,7 @@ const SECTIONS: SettingSection[] = [
                 title: 'AI service providers',
                 component: <div />,
                 keywords: ['ai', 'max', 'llm', 'consent', 'approve', 'enable', 'opt-in', 'data sharing'],
-                searchDescription: 'PostHog AI features use external AI services for data analysis.',
+                searchDescription: 'Flind AI features use external AI services for data analysis.',
             },
             {
                 id: 'organization-ai-training-opt-out',

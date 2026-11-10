@@ -49,7 +49,7 @@ export function LogsJsonParseAttributeSettings(): JSX.Element {
             </AccessControlAction>
             <p className="text-secondary text-sm max-w-200">
                 Parse JSON in this log attribute on new logs. Nested fields become dotted attributes, such as{' '}
-                <code>attributes.sessionId</code>. PostHog adds up to 50 fields per log. Use those keys in Link to
+                <code>attributes.sessionId</code>. Flind adds up to 50 fields per log. Use those keys in Link to
                 person or Link to session. The original attribute and existing values are kept. Invalid JSON is left
                 unchanged. Clear the key and save to disable.
             </p>

@@ -29,7 +29,7 @@ function HideProperties(): JSX.Element {
             data-attr="inspector-hide-properties-menu"
             items={[
                 {
-                    label: <>{hidePostHogPropertiesInTable ? <IconCheck /> : <BaseIcon />} Hide PostHog properties</>,
+                    label: <>{hidePostHogPropertiesInTable ? <IconCheck /> : <BaseIcon />} Hide Flind properties</>,
                     onClick: () => setHidePostHogPropertiesInTable(!hidePostHogPropertiesInTable),
                     'data-attr': 'inspector-hide-posthog-properties',
                     active: hidePostHogPropertiesInTable,

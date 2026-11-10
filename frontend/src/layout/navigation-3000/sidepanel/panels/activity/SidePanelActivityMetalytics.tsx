@@ -13,7 +13,7 @@ export function SidePanelActivityMetalytics(): JSX.Element {
     if (!instanceId) {
         return (
             <p className="border-dashed ">
-                You can see internal analytics of how your Organization members are using PostHog for things such as
+                You can see internal analytics of how your Organization members are using Flind for things such as
                 Dashboards, Insights, Playlists etc. Open an app to see the viewership data here.
             </p>
         )

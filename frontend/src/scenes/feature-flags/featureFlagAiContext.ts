@@ -97,7 +97,7 @@ const FEATURE_FLAG_CLEANUP_INSTRUCTIONS_CONTEXT_ITEM: AttachedContextItem = {
         'that started this request was loaded. Check linked systems (dependent flags, experiments, holdouts, ' +
         'schedules) and recent activity before concluding. This request is assessment only: return the evidence ' +
         'you gathered, any blockers, and a recommended next step. Do not edit any files, open a pull request, or ' +
-        'change this flag in PostHog - do not enable, disable, archive, unarchive, or delete it.',
+        'change this flag in Flind - do not enable, disable, archive, unarchive, or delete it.',
 }
 
 function cleanupTargetValue(featureFlag: Pick<FeatureFlagType, 'id' | 'key'>, projectId: number | null): string {

@@ -138,7 +138,7 @@ class ProxyRecordSerializer(serializers.ModelSerializer):
             view = self.context.get("view")
             organization_id = getattr(getattr(view, "organization", None), "id", None)
             if organization_id is None or not org_may_register_reserved_domain(organization_id, value):
-                raise serializers.ValidationError("This domain belongs to PostHog. Enter a domain you own instead.")
+                raise serializers.ValidationError("This domain is reserved. Enter a domain you own instead.")
         return value
 
 
@@ -456,7 +456,7 @@ class ProxyRecordViewset(TeamAndOrgViewSetMixin, ModelViewSet):
                 {
                     "detail": (
                         "Couldn't run diagnostics for this proxy. Please try again in a few minutes; "
-                        "if this keeps happening, contact PostHog support."
+                        "if this keeps happening, contact Flind support."
                     )
                 },
                 status=status.HTTP_500_INTERNAL_SERVER_ERROR,
@@ -494,7 +494,7 @@ class ProxyRecordViewset(TeamAndOrgViewSetMixin, ModelViewSet):
             record.organization_id, record.domain
         ):
             return Response(
-                {"detail": "This domain belongs to PostHog and cannot be provisioned as a proxy domain."},
+                {"detail": "This domain is reserved and cannot be provisioned as a proxy domain."},
                 status=status.HTTP_400_BAD_REQUEST,
             )
 

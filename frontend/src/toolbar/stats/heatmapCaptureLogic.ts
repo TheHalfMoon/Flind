@@ -172,7 +172,7 @@ export const heatmapCaptureLogic = kea<heatmapCaptureLogicType>([
                 return
             }
             const button = {
-                label: 'Open in PostHog',
+                label: 'Open in Flind',
                 action: () =>
                     window.open(joinWithUiHost(values.uiHost, urls.heatmap(captureResult.short_id)), '_blank'),
             }

@@ -506,7 +506,7 @@ describe('AIObservabilitySelfDriving', () => {
         expect(await screen.findByText("You don't have any evals yet")).toBeInTheDocument()
         const createEvalButton = screen.getByText('Create an eval')
         expect(createEvalButton.closest('a')).toHaveAttribute('href', '/project/997/ai-evals/evaluations')
-        expect(screen.getByText(/Use the connected PostHog MCP server/)).toBeInTheDocument()
+        expect(screen.getByText(/Use the connected Flind MCP server/)).toBeInTheDocument()
         expect(document.querySelector('[data-attr="ai-observability-evaluations-table"]')).not.toBeInTheDocument()
     })
 

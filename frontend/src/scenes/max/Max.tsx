@@ -225,7 +225,7 @@ export const MaxInstance = React.memo(function MaxInstance({
     const isEntityChat = isReportChat || isScoutChat
     const isTaskView = isNewView || isEntityChat
     const headerBackDisabled = isTaskView ? !panelCanGoBack : backButtonDisabled
-    const headerTitle = isEntityChat ? 'PostHog AI' : chatTitle || 'PostHog AI'
+    const headerTitle = isEntityChat ? 'Flind AI' : chatTitle || 'Flind AI'
 
     const openAsMainFocusUrl = mainFocusUrl({
         isNewView: isTaskView,

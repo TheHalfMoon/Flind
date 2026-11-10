@@ -102,7 +102,7 @@ export function NotebooksTable(): JSX.Element {
                 dismissKey="notebooks-preview-banner"
             >
                 <b>Welcome to Notebooks</b> - a great way to bring Insights, Replays, Feature Flags and many more
-                PostHog products together into one place.
+                Flind products together into one place.
             </LemonBanner>
             <div className="flex justify-between gap-2 flex-wrap">
                 <LemonInput

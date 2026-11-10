@@ -367,7 +367,7 @@ export function initKea({
 
     if ((window as any).__REDUX_DEVTOOLS_EXTENSION__) {
         // oxlint-disable-next-line no-console
-        console.log('NB Redux Dev Tools are disabled on PostHog. See: https://github.com/PostHog/posthog/issues/17482')
+        console.log('NB Redux Dev Tools are disabled on Flind. See: https://github.com/PostHog/posthog/issues/17482')
     }
 
     resetContext({

@@ -48,10 +48,10 @@ function PosthogConnectionRow({ integration }: { integration: IntegrationType })
 
     const handleDisconnect = (): void => {
         LemonDialog.open({
-            title: 'Disconnect this PostHog connection?',
+            title: 'Disconnect this Flind connection?',
             description: (
                 <p>
-                    PostHog will no longer be able to act in that project on your behalf. Anything using this connection
+                    Flind will no longer be able to act in that project on your behalf. Anything using this connection
                     (for example dispatched tasks) will stop working.
                 </p>
             ),
@@ -128,8 +128,8 @@ function ConnectModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => voi
         <LemonModal
             isOpen={isOpen}
             onClose={onClose}
-            title="Connect a PostHog project"
-            description="You'll be sent to the target PostHog to sign in and approve the access below."
+            title="Connect a Flind project"
+            description="You'll be sent to the target Flind to sign in and approve the access below."
             width={560}
             footer={
                 <LemonButton
@@ -148,7 +148,7 @@ function ConnectModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => voi
         >
             <div className="flex flex-col gap-2 h-[60vh]">
                 <div className="flex flex-col gap-1">
-                    <label className="font-semibold">PostHog region</label>
+                    <label className="font-semibold">Flind region</label>
                     <LemonSelect<PosthogConnectRegion>
                         value={region}
                         onChange={(value) => setRegion(value ?? 'EU')}
@@ -234,9 +234,9 @@ export function PersonalPosthogConnections(): JSX.Element {
             <div className="divide-y rounded border bg-surface-primary">
                 {connections.length === 0 ? (
                     <div className="px-4 py-6 text-center">
-                        <p className="mb-1">No PostHog projects connected yet</p>
+                        <p className="mb-1">No Flind projects connected yet</p>
                         <p className="text-muted text-sm mb-0">
-                            Connect another PostHog project to act in it through its API, for example to dispatch tasks
+                            Connect another Flind project to act in it through its API, for example to dispatch tasks
                             that must run there.
                         </p>
                     </div>
@@ -247,7 +247,7 @@ export function PersonalPosthogConnections(): JSX.Element {
                 )}
                 <div className="p-2">
                     <LemonButton type="secondary" icon={<IconPlus />} onClick={() => setModalOpen(true)}>
-                        {connections.length === 0 ? 'Connect a PostHog project' : 'Connect another project'}
+                        {connections.length === 0 ? 'Connect a Flind project' : 'Connect another project'}
                     </LemonButton>
                 </div>
             </div>

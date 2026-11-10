@@ -757,7 +757,7 @@ export const productConfiguration: Record<string, any> = {
         activityScope: 'KnowledgeSource',
         iconType: 'business_knowledge',
         description:
-            'Upload text, public URLs, or files so PostHog AI can understand your business context, vision, and policies.',
+            'Upload text, public URLs, or files so Flind AI can understand your business context, vision, and policies.',
     },
     BusinessKnowledgePlayground: {
         name: 'Business knowledge playground',
@@ -869,7 +869,7 @@ export const productConfiguration: Record<string, any> = {
         projectBased: true,
         name: 'Sources',
         description:
-            'Import data into PostHog from external sources including webhooks, application connectors, and self-managed databases.',
+            'Import data into Flind from external sources including webhooks, application connectors, and self-managed databases.',
         activityScope: ActivityScope.HOG_FUNCTION,
         iconType: 'data_pipeline',
     },
@@ -1030,7 +1030,7 @@ export const productConfiguration: Record<string, any> = {
     },
     ManagedMigration: {
         name: 'Managed migrations',
-        description: 'Managed migrations provide an automated way to migrate your historical data into PostHog.',
+        description: 'Managed migrations provide an automated way to migrate your historical data into Flind.',
         projectBased: true,
     },
     ManagedMigrationNew: { name: 'Managed migrations', projectBased: true },
@@ -1158,7 +1158,7 @@ export const productConfiguration: Record<string, any> = {
     CommunitySkills: {
         projectBased: true,
         name: 'Community skills',
-        description: 'Discover and install agent skills shared by the PostHog community.',
+        description: 'Discover and install agent skills shared by the Flind community.',
         layout: 'app-container',
         iconType: 'llm_prompts',
     },
@@ -1167,7 +1167,7 @@ export const productConfiguration: Record<string, any> = {
     StamphogDigests: { projectBased: true, name: 'Stamphog digests', iconType: 'stamphog' },
     StreamlitApps: {
         name: 'Streamlit apps',
-        description: 'Build and share custom Python apps that run on your PostHog data.',
+        description: 'Build and share custom Python apps that run on your Flind data.',
         projectBased: true,
     },
     StreamlitApp: { name: 'Streamlit app', projectBased: true },
@@ -1191,7 +1191,7 @@ export const productConfiguration: Record<string, any> = {
     Toolbar: {
         name: 'Toolbar',
         projectBased: true,
-        description: 'PostHog toolbar launches PostHog right in your app or website.',
+        description: 'Flind toolbar launches Flind right in your app or website.',
         iconType: 'toolbar',
     },
     Tracing: {

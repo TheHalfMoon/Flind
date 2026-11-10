@@ -206,7 +206,7 @@ export function buildCodexDeepLink(prompt: string, repository?: string): string 
 const AGENTS: AgentDef[] = [
     {
         key: 'posthog-ai',
-        name: 'PostHog AI',
+        name: 'Flind AI',
         logo: <IconSparkles className="size-4 shrink-0 text-ai" />,
         verb: 'Open',
         open: (prompt, { askSidePanelMax }) => askSidePanelMax(prompt),
@@ -286,8 +286,8 @@ export function buildAgentPrompt(
     if (action.raw || agentKey === 'posthog-ai' || !isCloudOrDev) {
         return prompt
     }
-    const project = projectId ? ` in PostHog project ${projectId}` : ''
-    return `${prompt.trimEnd()}\n\nIf working with PostHog data would help with this task, use the PostHog MCP server${project}. If the server is not connected, ask me to install it by running \`${MCP_INSTALL_COMMAND}\` in a terminal.`
+    const project = projectId ? ` in Flind project ${projectId}` : ''
+    return `${prompt.trimEnd()}\n\nIf working with Flind data would help with this task, use the Flind MCP server${project}. If the server is not connected, ask me to install it by running \`${MCP_INSTALL_COMMAND}\` in a terminal.`
 }
 
 export function AgentPromptButton({

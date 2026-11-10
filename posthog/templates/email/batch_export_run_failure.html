@@ -1,6 +1,6 @@
 {% extends "email/base.html" %}
 {% block preheader %}Failing batch exports are automatically paused{% endblock %}
-{% block heading %}PostHog batch export {{ name }} has failed{% endblock %}
+{% block heading %}Flind batch export {{ name }} has failed{% endblock %}
 {% block section %}
     <p>
         Your batch export {{ name }} failed with a fatal error at {{ time }}. We really tried to handle this by ourselves but, due to the nature of the error, we could not automatically recover from it and it requires your manual intervention.
@@ -15,7 +15,7 @@
         If you can't diagnose the issue or if you think this issue could have been automatically resolved, please contact us.
     </p>
     <p class="mt">
-        Failing batch exports are <b>automatically paused</b> by PostHog
+        Failing batch exports are <b>automatically paused</b> by Flind
     </p>
 {% endblock %}
 {% block footer %}
@@ -25,5 +25,5 @@
     <a href="https://posthog.com/docs?{{ utm_tags }}" target="_blank"><b>read our documentation</b></a>.
     <br />
     <br />
-    <a href="{% absolute_uri '/settings/user-notifications' %}">Manage these notifications in PostHog</a>
+    <a href="{% absolute_uri '/settings/user-notifications' %}">Manage these notifications in Flind</a>
 {% endblock %}

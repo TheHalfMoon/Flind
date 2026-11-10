@@ -215,7 +215,7 @@ export function DashboardInsightColorsModal(): JSX.Element {
                 </>
             }
         >
-            <LemonLabel info="Pick a theme to set the colors every insight on this dashboard uses. Anyone who views or shares the dashboard sees the same colors, so series stay recognizable outside PostHog.">
+            <LemonLabel info="Pick a theme to set the colors every insight on this dashboard uses. Anyone who views or shares the dashboard sees the same colors, so series stay recognizable outside Flind.">
                 Color theme
             </LemonLabel>
             <div className="mt-2 flex flex-col gap-1">

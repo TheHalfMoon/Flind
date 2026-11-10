@@ -86,7 +86,7 @@ function jsonFile(value: unknown): TerminalFile {
     return { bytes: bytes(`${JSON.stringify(value, null, 2)}\n`) }
 }
 
-export const TERMINAL_README = `PostHog terminal
+export const TERMINAL_README = `Flind terminal
 
 This is a Linux virtual machine running in your browser.
 
@@ -94,7 +94,7 @@ This is a Linux virtual machine running in your browser.
 /posthog/api         JSON representations, grouped by object type and ID.
 /posthog/tools       Command descriptions and argument schemas. Run ph tools to discover MCP tools.
 /posthog/recovery    Edits that could not be saved. Copy them before leaving this page.
-/root and /tmp       Local Linux files. These disappear when you stop Linux or reload PostHog.
+/root and /tmp       Local Linux files. These disappear when you stop Linux or reload Flind.
 
 Try:
   mc
@@ -113,8 +113,8 @@ Try:
   open .
   open '/posthog/files/Unfiled/Notebooks/My notebook.md'
 
-open [path] opens a project file or folder in PostHog. With no path, it opens the
-current folder. JSON files open their PostHog item, including files in /posthog/api.
+open [path] opens a project file or folder in Flind. With no path, it opens the
+current folder. JSON files open their Flind item, including files in /posthog/api.
 Folders open in the Files tab when the simple side panel is enabled.
 
 Optional tools download on first use: nvim, node, pi, nyancat, and doom.
@@ -129,7 +129,7 @@ Use hogql "select 1" for a query, echo "select 1" | hogql for piped SQL, or hogq
 for an interactive prompt. Run hogql --help for formats, connections, and query options.
 The terminal follows the current resource's folder while its prompt is empty. Active commands and typed input stay intact.
 
-Saving an existing .md notebook updates PostHog using your current permissions.
+Saving an existing .md notebook updates Flind using your current permissions.
 JSON files for notebooks, dashboards, insights, feature flags, cohorts, actions,
 surveys, and experiments are editable in both mounts when you have edit access.
 Saving sends changed JSON fields to the existing API endpoint with PATCH. The mounted
@@ -144,10 +144,10 @@ Moves preserve object IDs and folder contents. Existing destinations cannot be
 replaced. Folders inferred from file paths cannot be moved; move their files instead.
 Use rm to remove files, rmdir for empty folders, and rm -r for folder trees.
 Project writes and connected tools require a blocking confirmation. Click a button
-to approve or cancel; keyboard input cannot approve changes. rm groups its PostHog targets into
+to approve or cancel; keyboard input cannot approve changes. rm groups its Flind targets into
 one confirmation. Other programs confirm each removal. Local Linux files do not
-require confirmation. Delete local and PostHog files in separate commands.
-Removing the last file reference deletes the PostHog object, using your permissions.
+require confirmation. Delete local and Flind files in separate commands.
+Removing the last file reference deletes the Flind object, using your permissions.
 Files open for writing must be closed before removal. Use touch Notes.md or save a
 new .md file in an editor to create a blank markdown notebook in the current folder.
 Other new file types and editor backup files are not supported under /posthog/files.
@@ -167,10 +167,10 @@ Run ph refresh to discover new or renamed objects. Unsupported object types
 expose their filesystem record as JSON. Legacy rich-text notebooks stay JSON.
 Characters that cannot appear in Unix filenames are percent-encoded. Duplicate
 names receive an ID suffix. Long names get a shortened prefix and stable hash.
-Extensions do not change the names stored in PostHog.
+Extensions do not change the names stored in Flind.
 
 The VM has no network connection and receives no API tokens or session cookies.
-The browser makes authenticated requests through the existing PostHog APIs.
+The browser makes authenticated requests through the existing Flind APIs.
 Files are limited to 4 MiB. Use Ctrl+C to interrupt, Tab to complete, and the
 mouse wheel for scrollback. Run busybox to see the installed Unix utilities.
 jq 1.8.2 is installed for JSON queries and formatting.
@@ -186,17 +186,17 @@ and Node.js on first use. Try node --version or pi --help.
 For a break, try these commands. Each downloads on first use:
   sl                 Run a steam train across the terminal
   cmatrix            Watch Matrix-style falling text (q quits)
-  figlet PostHog     Print an ASCII banner; also accepts piped text
+  figlet Flind     Print an ASCII banner; also accepts piped text
   nyancat            Watch an animated rainbow cat (Ctrl+C quits)
 Ctrl+C also stops the train and Matrix animation.
 The browser downloads verified packages from GitHub and caches them when storage
 is available. Stopping the terminal discards the installed files and local sessions.
-pi uses PostHog AI through your signed-in session and defaults to Claude Opus 5.
+pi uses Flind AI through your signed-in session and defaults to Claude Opus 5.
 Use /model in pi to choose Opus 5, Sonnet 5, Sonnet 4.6, or Haiku 4.5.
 Try pi -p 'What can ph tools do?'
 Run one pi session at a time. AI credit limits apply. Gateway setup is required.
 The VM has no general network access, so external login and package downloads are unavailable.
-Use /tmp for local scripts and pi sessions; mounted PostHog files keep their API rules.
+Use /tmp for local scripts and pi sessions; mounted Flind files keep their API rules.
 Project file sizes stay zero until opened; ncdu does not download their contents.
 Bundled tool licenses and source links are in /opt/posthog-tools/licenses.
 ph runs project commands and tools from connected MCP servers with your permissions.
@@ -291,7 +291,7 @@ export class PosthogFilesystem extends TerminalFilesystem {
                 : undefined
         const href = entry?.href || (entry?.ref && definition?.href(entry.ref))
         if (!href || !href.startsWith('/') || href.startsWith('//') || /[\\\x00-\x20]/.test(href)) {
-            throw new Error('This path has no PostHog page. Use cat to read the file in the terminal.')
+            throw new Error('This path has no Flind page. Use cat to read the file in the terminal.')
         }
         return href
     }
@@ -371,7 +371,7 @@ export class PosthogFilesystem extends TerminalFilesystem {
             }
             const parts = [...directory.parts, this.storedName(name)]
             await this.confirmWrite({
-                title: 'Create a PostHog folder?',
+                title: 'Create a Flind folder?',
                 description: `Create a folder in project ${this.projectId}. This affects everyone in the project.`,
                 items: [joinPath(parts)],
             })
@@ -407,7 +407,7 @@ export class PosthogFilesystem extends TerminalFilesystem {
             throw new FilesystemError(22)
         }
         await this.confirmWrite({
-            title: 'Create a PostHog notebook?',
+            title: 'Create a Flind notebook?',
             description: `Create a blank markdown notebook in project ${this.projectId}. This affects everyone in the project.`,
             items: [joinPath([...directory.parts, title])],
         })
@@ -483,8 +483,8 @@ export class PosthogFilesystem extends TerminalFilesystem {
 
     private removalConfirmation(nodes: TerminalNode[]): TerminalConfirmation {
         return {
-            title: 'Delete PostHog files and folders?',
-            description: `Remove ${nodes.length === 1 ? '1 file or folder' : `${nodes.length} files and folders`} from project ${this.projectId}. Removing the last file reference also deletes the PostHog object. This affects everyone in the project.`,
+            title: 'Delete Flind files and folders?',
+            description: `Remove ${nodes.length === 1 ? '1 file or folder' : `${nodes.length} files and folders`} from project ${this.projectId}. Removing the last file reference also deletes the Flind object. This affects everyone in the project.`,
             items: nodes.map((node) => {
                 const entry = this.projectNodes.get(node)?.entry
                 return `${this.mountedPath(node)}${entry && entry.type !== 'folder' ? ` (${entry.type}: ${entry.ref})` : ''}`
@@ -521,7 +521,7 @@ export class PosthogFilesystem extends TerminalFilesystem {
         for (const path of paths) {
             if (!path.startsWith('/posthog/files/')) {
                 throw new Error(
-                    'Delete local files and PostHog files in separate commands. Use a path inside /posthog/files.'
+                    'Delete local files and Flind files in separate commands. Use a path inside /posthog/files.'
                 )
             }
             let node: TerminalNode | undefined = this.files
@@ -626,7 +626,7 @@ export class PosthogFilesystem extends TerminalFilesystem {
             throw new FilesystemError(95)
         }
         await this.confirmWrite({
-            title: 'Move a PostHog file or folder?',
+            title: 'Move a Flind file or folder?',
             description: `Move or rename an item in project ${this.projectId}. This affects everyone in the project.`,
             items: [`${this.mountedPath(node)} → /posthog/files/${joinPath(parts)}`],
         })
@@ -793,13 +793,13 @@ export class PosthogFilesystem extends TerminalFilesystem {
                           }
                           if (payload.deleted) {
                               await this.confirmOperation({
-                                  title: 'Delete a PostHog object?',
+                                  title: 'Delete a Flind object?',
                                   description: `Save a deletion to ${entry.type} ${entry.ref} in project ${this.projectId}. This affects everyone in the project.`,
                                   items: [JSON.stringify(payload, null, 2)],
                               })
                           } else {
                               await this.confirmWrite({
-                                  title: 'Save changes to a PostHog object?',
+                                  title: 'Save changes to a Flind object?',
                                   description: `Update ${entry.type} ${entry.ref} in project ${this.projectId}. This affects everyone in the project.`,
                                   items: [JSON.stringify(payload, null, 2)],
                               })
@@ -851,7 +851,7 @@ export class PosthogFilesystem extends TerminalFilesystem {
                     return
                 }
                 await this.confirmWrite({
-                    title: 'Save changes to a PostHog notebook?',
+                    title: 'Save changes to a Flind notebook?',
                     description: `Update notebook ${entry.ref} in project ${this.projectId}. This affects everyone in the project.`,
                     items: [markdown],
                 })

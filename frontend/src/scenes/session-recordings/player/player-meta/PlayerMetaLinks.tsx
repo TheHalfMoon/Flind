@@ -185,12 +185,12 @@ export const MenuActions = ({
                 icon: <IconBlank />,
             },
             isStandardMode && {
-                label: 'PostHog .json',
+                label: 'Flind .json',
                 status: 'default',
                 icon: <IconDownload />,
                 onClick: () => exportRecordingToFile(),
                 tooltip:
-                    'Export PostHog recording data to a JSON file. This can be loaded later into PostHog for playback.',
+                    'Export Flind recording data to a JSON file. This can be loaded later into Flind for playback.',
                 disabledReason: exportAccessControlDisabledReason ?? undefined,
                 'data-attr': 'replay-export-posthog-json',
             },
@@ -201,7 +201,7 @@ export const MenuActions = ({
                 onClick: () => exportRecordingToVideoFile(),
                 tooltip: hasReachedExportFullVideoLimit
                     ? 'You have reached your export limit.'
-                    : 'Export PostHog recording data to MP4 video file.',
+                    : 'Export Flind recording data to MP4 video file.',
                 disabledReason:
                     (hasReachedExportFullVideoLimit ? 'You have reached your export limit.' : undefined) ??
                     tooLongToExportReason ??

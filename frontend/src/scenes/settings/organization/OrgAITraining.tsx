@@ -10,11 +10,11 @@ import { organizationLogic } from 'scenes/organizationLogic'
 import { AI_TRAINING_URL } from './aiTrainingConstants'
 import { ORG_ADMIN_REQUIRED_TOOLTIP } from './organizationSettingsConstants'
 
-function AITrainingDescription({ hasSignedBaa, isLocked }: { hasSignedBaa: boolean; isLocked: boolean }): JSX.Element {
+export function AITrainingDescription({ hasSignedBaa, isLocked }: { hasSignedBaa: boolean; isLocked: boolean }): JSX.Element {
     if (hasSignedBaa) {
         return (
             <p className="mb-2 text-sm text-secondary">
-                You are opted out of internal AI training because you have a signed BAA with PostHog.
+                You are opted out of internal AI training because your organization has a signed BAA.
             </p>
         )
     }
@@ -23,7 +23,7 @@ function AITrainingDescription({ hasSignedBaa, isLocked }: { hasSignedBaa: boole
         return (
             <p className="mb-2 text-sm text-secondary">
                 Your organization's internal AI training preference is fixed by your contract and cannot be changed.
-                Please contact us if you need to discuss this.
+                Contact your Flind administrator if you need to discuss this.
             </p>
         )
     }
@@ -31,8 +31,8 @@ function AITrainingDescription({ hasSignedBaa, isLocked }: { hasSignedBaa: boole
     return (
         <div className="mb-2 text-sm text-secondary">
             <p>
-                Enable PostHog to use anonymized aggregated data to train AI features that benefit all PostHog
-                customers. <strong>Your and your customers' data stays with PostHog.</strong>
+                Allow anonymized, aggregated data from this organization to be used to train AI features. How
+                that data is handled depends on how this Flind instance is operated.
             </p>
             <p className="mt-2">Opting out means that you cannot access certain AI features.</p>
         </div>
@@ -48,9 +48,9 @@ export function OrganizationAITrainingOptOut(): JSX.Element {
     const isLocked = !!currentOrganization?.is_ai_training_locked
 
     const disabledReason = hasSignedBaa
-        ? 'Organizations with a signed BAA stay opted out of AI training. Contact us if this needs to change.'
+        ? 'Organizations with a signed BAA stay opted out of AI training. Contact your Flind administrator if this needs to change.'
         : isLocked
-          ? 'Please contact us to change this setting.'
+          ? 'Contact your Flind administrator to change this setting.'
           : restrictionReason
             ? ORG_ADMIN_REQUIRED_TOOLTIP
             : undefined

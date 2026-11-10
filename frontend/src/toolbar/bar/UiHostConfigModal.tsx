@@ -36,12 +36,12 @@ export function UiHostConfigModal({ visible, onClose }: UiHostConfigModalProps):
                     <Logomark variant="mono" />
                 </div>
                 <div className="UiHostConfigModal__header">
-                    <strong>PostHog could not be reached</strong>
+                    <strong>Flind could not be reached</strong>
                 </div>
                 <p>
-                    The toolbar tried to connect to the PostHog app at <code>{uiHost}</code> but could not reach it.
+                    The toolbar tried to connect to the Flind app at <code>{uiHost}</code> but could not reach it.
                     This happens when you use a reverse proxy for <code>api_host</code> — the toolbar needs to know the
-                    direct URL of the PostHog app to authenticate.
+                    direct URL of the Flind app to authenticate.
                 </p>
                 <p>
                     Add <code>ui_host</code> to your PostHog JS initialisation to point directly to PostHog:
@@ -53,7 +53,7 @@ export function UiHostConfigModal({ visible, onClose }: UiHostConfigModalProps):
 })`}
                 </pre>
                 <p className="UiHostConfigModal__hint">
-                    Replace <code>{'<ph_app_host>'}</code> with the PostHog app URL for your region:{' '}
+                    Replace <code>{'<ph_app_host>'}</code> with the Flind app URL for your region:{' '}
                     <code>https://us.posthog.com</code> (US) or <code>https://eu.posthog.com</code> (EU).
                 </p>
             </div>

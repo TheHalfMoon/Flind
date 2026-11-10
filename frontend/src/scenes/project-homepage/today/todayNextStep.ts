@@ -96,7 +96,7 @@ function pickedUpStep(report: SignalReport, context: TodayNextStepContext): Toda
     if (taskPickedUp) {
         return {
             primary: namedPullRequestReview(context) ?? START,
-            note: `A PostHog task picked this up${pickedUpOn(assignee?.claimed_at)}.`,
+            note: `A Flind task picked this up${pickedUpOn(assignee?.claimed_at)}.`,
             taskPickedUp: true,
         }
     }
@@ -130,9 +130,9 @@ export function reportWorkKind(report: Pick<SignalReport, 'actionability' | 'sta
 }
 
 function buildReportInvestigationPrompt(report: Pick<SignalReport, 'id'>, reportUrl: string): string {
-    return `Investigate the PostHog Inbox report at ${reportUrl} (report ID: ${report.id}).
+    return `Investigate the Flind Inbox report at ${reportUrl} (report ID: ${report.id}).
 
-Use the PostHog MCP tools to read the report and its full work log with inbox-report-artefacts-list. Confirm the problem it describes against the current code and data, and find the root cause.
+Use the Flind MCP tools to read the report and its full work log with inbox-report-artefacts-list. Confirm the problem it describes against the current code and data, and find the root cause.
 
 Reply with what you found: whether the problem is real, what causes it, how many people it affects, and the smallest fix you would make. Do not change code, open a pull request, or change the report's state.`
 }

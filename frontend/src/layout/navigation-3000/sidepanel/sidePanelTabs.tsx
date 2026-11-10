@@ -41,7 +41,7 @@ const SidePanelActivity = lazyWithRetry(() =>
 
 export const SIDE_PANEL_TABS: Record<SidePanelTab, { label: string; Icon: any; Content: any }> = {
     [SidePanelTab.Max]: {
-        label: 'PostHog AI',
+        label: 'Flind AI',
         Icon: IconLogomark,
         Content: SidePanelMax,
     },

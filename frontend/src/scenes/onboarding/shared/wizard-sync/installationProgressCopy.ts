@@ -20,7 +20,7 @@ export function syncCopy({
     const { phase, error, prUrl, prMerged } = progress
 
     if (phase === 'completed') {
-        const headline = selfDriving ? 'Self-driving is on' : 'PostHog is wired up'
+        const headline = selfDriving ? 'Self-driving is on' : 'Flind is wired up'
         if (prUrl) {
             return {
                 headline,
@@ -57,7 +57,7 @@ export function syncCopy({
               }
     }
 
-    const headline = selfDriving ? 'Setting up self-driving' : 'Setting up PostHog'
+    const headline = selfDriving ? 'Setting up self-driving' : 'Setting up Flind'
     if (phase === 'connecting') {
         return { headline, subtitle: (mode && CONNECTING_SUBTITLE[mode]) ?? 'Getting things ready…' }
     }
@@ -77,7 +77,7 @@ const CONNECTING_SUBTITLE: Record<InstallationMode, string> = {
 // reads as the plan lighting up rather than the card rewriting itself.
 export const UPCOMING_STEPS: Record<InstallationMode, string[]> = {
     cloud: ['Setting up sandbox', 'Cloning repository', 'Running setup wizard', 'Opening a pull request'],
-    local: ['Detecting your framework', 'Installing the PostHog SDK', 'Wiring up event capture'],
+    local: ['Detecting your framework', 'Installing the Flind SDK', 'Wiring up event capture'],
 }
 
 // The self-driving program does different work, so previewing the SDK-install steps would promise

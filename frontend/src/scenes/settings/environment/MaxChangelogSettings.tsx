@@ -20,7 +20,7 @@ export function MaxChangelogSettings(): JSX.Element {
     if (!hasEntries) {
         return (
             <div className="text-muted text-sm">
-                No changelog entries available. Check back later for updates on new PostHog AI features.
+                No changelog entries available. Check back later for updates on new Flind AI features.
             </div>
         )
     }
@@ -30,7 +30,7 @@ export function MaxChangelogSettings(): JSX.Element {
             <LemonSwitch
                 checked={!isDismissed}
                 onChange={handleToggle}
-                label="Show 'What's new' button in PostHog AI"
+                label="Show 'What's new' button in Flind AI"
                 bordered
             />
 
@@ -54,7 +54,7 @@ export function MaxChangelogSettings(): JSX.Element {
                     <Link to="https://posthog.com/changelog?team=PostHog+AI" target="_blank">
                         complete changelog
                     </Link>{' '}
-                    for all PostHog AI updates.
+                    for all Flind AI updates.
                 </p>
             </div>
         </div>

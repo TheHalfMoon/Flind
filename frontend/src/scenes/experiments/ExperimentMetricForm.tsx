@@ -121,7 +121,7 @@ const dataWarehousePopoverFields: DataWarehousePopoverField[] = [
     {
         key: 'events_join_key',
         label: 'Events Join Key',
-        description: 'The field on PostHog events to match against the data warehouse join key (usually distinct_id)',
+        description: 'The field on Flind events to match against the data warehouse join key (usually distinct_id)',
         allowHogQL: true,
         hogQLOnly: true,
         tableName: 'events',

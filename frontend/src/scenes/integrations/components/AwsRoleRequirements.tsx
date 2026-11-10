@@ -26,18 +26,18 @@ export function AwsRoleRequirements({ permissions }: { permissions: JSX.Element 
     const steps: JSX.Element[] = [
         posthogRoleArn ? (
             <>
-                Create an IAM role with a trust policy that allows PostHog's role <code>{posthogRoleArn}</code> to
+                Create an IAM role with a trust policy that allows Flind's role <code>{posthogRoleArn}</code> to
                 assume it.
             </>
         ) : (
             <>
-                Create an IAM role with a trust policy that allows PostHog's role to assume it. Check with your instance
+                Create an IAM role with a trust policy that allows Flind's role to assume it. Check with your instance
                 administrator to obtain the role to trust.
             </>
         ),
         <>
             The trust policy must require an <code>sts:ExternalId</code> condition equal to{' '}
-            <code>posthog-{currentOrganization?.id}</code>. PostHog verifies this condition is enforced and exports will
+            <code>posthog-{currentOrganization?.id}</code>. Flind verifies this condition is enforced and exports will
             fail without it.
         </>,
         permissions,

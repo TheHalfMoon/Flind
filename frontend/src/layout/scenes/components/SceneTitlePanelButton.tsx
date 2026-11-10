@@ -72,7 +72,7 @@ export function SceneTitlePanelButton({
                     tooltip={
                         definition ? (
                             <>
-                                Open PostHog AI
+                                Open Flind AI
                                 <br />
                                 <div className="flex items-center">
                                     {definition.icon || <IconWrench />}
@@ -80,7 +80,7 @@ export function SceneTitlePanelButton({
                                 </div>
                             </>
                         ) : (
-                            'Open PostHog AI'
+                            'Open Flind AI'
                         )
                     }
                     tooltipPlacement="bottom-end"

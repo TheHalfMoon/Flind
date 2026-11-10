@@ -71,7 +71,7 @@ export const REALTIME_NOTIFICATION_TYPE_META: Record<string, { label: string; de
     },
     subscription_nudge: {
         label: 'Subscription suggestions',
-        description: 'When PostHog suggests subscribing to a dashboard you keep coming back to',
+        description: 'When Flind suggests subscribing to a dashboard you keep coming back to',
     },
     data_quality_check_failure: {
         label: 'Data quality check failures',
@@ -79,7 +79,7 @@ export const REALTIME_NOTIFICATION_TYPE_META: Record<string, { label: string; de
     },
     workflow_suggestion: {
         label: 'Workflow suggestions',
-        description: 'When PostHog suggests a change to a workflow you set up',
+        description: 'When Flind suggests a change to a workflow you set up',
     },
     feature_flag_failure: {
         label: 'Feature flag failures',

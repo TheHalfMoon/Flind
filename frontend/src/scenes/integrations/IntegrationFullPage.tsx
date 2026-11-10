@@ -59,7 +59,7 @@ export function IntegrationFullPage({
 
             <Link to={urls.projectHomepage()} className="flex items-center gap-1 mt-6 text-secondary">
                 <IconArrowLeft />
-                Back to PostHog
+                Back to Flind
             </Link>
         </div>
     )
@@ -223,7 +223,7 @@ function ConnectedNextStep(): JSX.Element {
                     Head back to your terminal. The setup agent picks up from here.
                 </p>
                 <LemonButton type="tertiary" size="small" to={urls.projectHomepage()}>
-                    Go to PostHog
+                    Go to Flind
                 </LemonButton>
             </div>
         )
@@ -231,7 +231,7 @@ function ConnectedNextStep(): JSX.Element {
 
     return (
         <LemonButton type="primary" to={urls.projectHomepage()}>
-            Go to PostHog
+            Go to Flind
         </LemonButton>
     )
 }

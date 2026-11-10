@@ -79,7 +79,7 @@ class SdkReleaseAssessmentSerializer(serializers.Serializer):
         help_text=(
             "Relative URL path (starting with /project/{id}/) for the Activity > Explore page "
             "pre-filtered to events captured with this lib and lib_version over the last 7 days. "
-            "Combine with the user's PostHog host (e.g. us.posthog.com) for a clickable link."
+            "Combine with the user's Flind host (e.g. us.posthog.com) for a clickable link."
         ),
     )
 
@@ -145,7 +145,7 @@ class SdkHealthReportSerializer(serializers.Serializer):
     )
     needs_updating_count = serializers.IntegerField(help_text="Number of SDKs that need updating.")
     team_sdk_count = serializers.IntegerField(
-        help_text="Number of distinct PostHog SDKs the project is actively using."
+        help_text="Number of distinct Flind SDKs the project is actively using."
     )
     sdks = SdkAssessmentSerializer(many=True, help_text="Per-SDK health assessments.")
 

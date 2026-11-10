@@ -680,7 +680,7 @@ export const projectNoticeLogic = kea<projectNoticeLogicType>([
                         }
                     case 'invite_teammates':
                         return {
-                            message: 'Get more out of PostHog by inviting your team for free',
+                            message: 'Get more out of Flind by inviting your team for free',
                             action: {
                                 'data-attr': 'invite-warning-cta',
                                 onClick: () => inviteLogic.actions.showInviteModal(),
@@ -711,7 +711,7 @@ export const projectNoticeLogic = kea<projectNoticeLogicType>([
                     case 'internet_connection_issue':
                         return {
                             message:
-                                'PostHog is having trouble connecting to the server. Please check your connection.',
+                                'Flind is having trouble connecting to the server. Please check your connection.',
                             type: 'warning',
                             action: {
                                 'data-attr': 'reload-page',

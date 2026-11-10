@@ -323,8 +323,8 @@ function CloudflareOptInBanner({
                 <div className="font-semibold">HIPAA Disclaimer</div>
                 <p className="text-sm">
                     This feature is not HIPAA-compliant and is not intended for the processing of Protected Health
-                    Information ("<strong>PHI</strong>"). Any Business Associate Agreement ("<strong>BAA</strong>") you
-                    may have entered into with PostHog does not apply to this functionality. You agree not to use this
+                    Information ("<strong>PHI</strong>"). Any Business Associate Agreement ("<strong>BAA</strong>") that
+                    covers your deployment does not apply to this functionality. You agree not to use this
                     feature with PHI.
                 </p>
             </div>
@@ -457,7 +457,7 @@ function CreateRecordForm(): JSX.Element {
                         <ul className="list-disc pl-5 space-y-0.5 mb-1">
                             <li>
                                 <strong>Do not use</strong> subdomains containing words related to tracking, analytics,
-                                advertising, or PostHog (e.g. <code>analytics.mydomain.com</code>,{' '}
+                                advertising, or Flind (e.g. <code>analytics.mydomain.com</code>,{' '}
                                 <code>posthog.mydomain.com</code>, or <code>ph.mydomain.com</code>). These are commonly
                                 blocked by ad-blockers and will cause data loss. The proxy will <strong>NOT</strong>{' '}
                                 achieve the intended effect if ad-blockers are blocking the domain.

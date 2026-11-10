@@ -28,13 +28,13 @@ class LeakedKeyReportSerializer(serializers.Serializer):
         # The longest key we issue is 51 characters. The cap rejects an oversized body
         # before any hashing or lookup work happens.
         max_length=200,
-        help_text="The leaked PostHog personal API key, project secret API key, legacy feature flags secure API key, or OAuth access/refresh token to revoke.",
+        help_text="The leaked Flind personal API key, project secret API key, legacy feature flags secure API key, or OAuth access/refresh token to revoke.",
     )
 
 
 class LeakedKeyReportResponseSerializer(serializers.Serializer):
     found = serializers.BooleanField(
-        help_text="Whether a matching PostHog key or token was found. It was revoked, or, for team_secret_token, its project admins were told to rotate it.",
+        help_text="Whether a matching Flind key or token was found. It was revoked, or, for team_secret_token, its project admins were told to rotate it.",
     )
     type = serializers.ChoiceField(
         choices=[

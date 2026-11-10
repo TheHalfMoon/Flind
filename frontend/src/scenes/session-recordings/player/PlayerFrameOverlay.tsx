@@ -149,9 +149,9 @@ const PlayerFrameOverlayContent = (): JSX.Element | null => {
                 </div>
                 <div className="text-secondary text-sm text-center">
                     {playerFrameDocumentFailed
-                        ? "Your browser couldn't load the player. Check your internet connection and retry. If it keeps happening, a browser extension or security setting may be blocking it. Try turning off extensions for PostHog or using another browser."
+                        ? "Your browser couldn't load the player. Check your internet connection and retry. If it keeps happening, a browser extension or security setting may be blocking it. Try turning off extensions for Flind or using another browser."
                         : isMissingFullSnapshot
-                          ? 'This part of the recording is missing the snapshot data needed to render it. The data never reached PostHog, usually because the browser was closed or went offline before the recording finished uploading.'
+                          ? 'This part of the recording is missing the snapshot data needed to render it. The data never reached Flind, usually because the browser was closed or went offline before the recording finished uploading.'
                           : isUnauthorized
                             ? 'Your session has expired. Sign in again to keep watching this recording.'
                             : isRecoverable

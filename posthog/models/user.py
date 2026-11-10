@@ -163,7 +163,7 @@ class UserManager(BaseUserManager):
         # `AttributeError`. (We can't override the command itself: `django.contrib.auth` is listed
         # before `posthog` in INSTALLED_APPS, so its `createsuperuser` always wins resolution.)
         raise CommandError(
-            "PostHog doesn't support `createsuperuser`. There's no superuser concept here — "
+            "Flind doesn't support `createsuperuser`. There's no superuser concept here — "
             "`is_superuser` is a read-only alias for `is_staff`.\n\n"
             "To set up a local admin instead:\n\n"
             "  • Demo environment:  python manage.py generate_demo_data\n"
@@ -305,7 +305,7 @@ class User(AbstractUser, UUIDTClassicModel, ModelActivityMixin):  # type: ignore
         db_default=False,
         null=False,
         blank=False,
-        help_text="When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions.",
+        help_text="When true, the user has opted out of in-app hints promoting the Flind MCP integration after taking actions.",
     )
     ui_configuration = models.JSONField(
         null=True,

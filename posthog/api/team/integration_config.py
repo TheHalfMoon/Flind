@@ -68,7 +68,7 @@ class TeamLogsConfigSerializer(serializers.ModelSerializer):
         allow_empty=False,
         max_length=10,
         help_text=(
-            "Ordered list of log attribute keys whose values hold the PostHog session ID. "
+            "Ordered list of log attribute keys whose values hold the Flind session ID. "
             "Detection checks keys in order, then falls back to common session ID attribute "
             "conventions; the first key with a value wins. Defaults to ['sessionId'] — the "
             "convention documented at https://posthog.com/docs/logs/link-session-replay and "
@@ -148,7 +148,7 @@ class TeamTracingConfigSerializer(serializers.ModelSerializer):
         allow_empty=False,
         max_length=10,
         help_text=(
-            "Ordered list of span or resource attribute keys whose values hold the PostHog "
+            "Ordered list of span or resource attribute keys whose values hold the Flind "
             "session ID. Detection checks keys in order, then falls back to common session ID "
             "attribute conventions; the first key with a value wins. Defaults to ['sessionId'], "
             "the key the posthog-js / posthog-react-native SDKs attach to the OTel signals they "

@@ -135,7 +135,7 @@ class PaymentAuthorizationRejected(APIException):
 class BillingManagedByProviderError(APIException):
     status_code = status.HTTP_400_BAD_REQUEST
     default_code = "billing_managed_by_provider"
-    default_detail = "Billing for this organization is managed outside PostHog. Contact support to change your plan."
+    default_detail = "Billing for this organization is managed outside Flind. Contact support to change your plan."
     default_type = "invalid_request"
 
 
@@ -189,15 +189,15 @@ USAGE_BREAKDOWNS_MESSAGE = (
 
 
 BILLING_ACCESS_DENIED_MESSAGE = (
-    "Your PostHog user does not have billing access for this organization. "
+    "Your Flind user does not have billing access for this organization. "
     "Ask someone with billing access to run this or update your role."
 )
 BILLING_USAGE_SPEND_ACCESS_DENIED_MESSAGE = (
-    "Your PostHog user does not have access to billing usage and spend for this organization. "
+    "Your Flind user does not have access to billing usage and spend for this organization. "
     "Ask someone with billing access to run this or update your role."
 )
 BILLING_PROJECT_ACCESS_DENIED_MESSAGE = (
-    "The requested projects are not available to this PostHog user or token. "
+    "The requested projects are not available to this Flind user or token. "
     "Adjust the project filter or ask someone with billing access to run this."
 )
 
@@ -1474,7 +1474,7 @@ class BillingViewset(TeamAndOrgViewSetMixin, viewsets.GenericViewSet):
             return
 
         # Billing lists every project that has reported usage for the organization, so a request
-        # can name a project PostHog has since deleted. Billing scopes the read to the organization
+        # can name a project Flind has since deleted. Billing scopes the read to the organization
         # in the token, so such an id only reads that organization's own history. What must not
         # pass is a project that belongs to another organization.
         foreign_team_ids = (

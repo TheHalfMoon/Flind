@@ -491,12 +491,12 @@ class OrganizationSerializer(
         if self.instance and self.instance.is_ai_training_opted_in != value:
             if has_signed_baa(self.instance.id):
                 raise serializers.ValidationError(
-                    "Organizations with a signed BAA stay opted out of AI training. Contact PostHog support if you need to change this.",
+                    "Organizations with a signed BAA stay opted out of AI training. Contact Flind support if you need to change this.",
                     code="locked",
                 )
             if self.instance.is_ai_training_locked:
                 raise serializers.ValidationError(
-                    "AI training opt-in is locked for this organization and cannot be changed. Contact PostHog support if you need to update this setting.",
+                    "AI training opt-in is locked for this organization and cannot be changed. Contact Flind support if you need to update this setting.",
                     code="locked",
                 )
         return value
@@ -813,7 +813,7 @@ class OrganizationViewSet(TeamAndOrgViewSetMixin, viewsets.ModelViewSet):
 
         # Nothing to request if PostHog AI is already enabled for the org.
         if organization.is_ai_data_processing_approved:
-            raise exceptions.ValidationError("PostHog AI is already enabled for this organization.")
+            raise exceptions.ValidationError("Flind AI is already enabled for this organization.")
 
         # Members only — admins can enable PostHog AI themselves, so there's nobody to ask.
         membership = OrganizationMembership.objects.filter(user=user, organization=organization).first()

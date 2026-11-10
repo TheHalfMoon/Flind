@@ -51,7 +51,7 @@ const TABS: LemonTab<DestinationsSceneTab>[] = [
     {
         key: 'notifications',
         label: 'Notifications',
-        tooltip: 'Destinations for the alerts and other events that PostHog itself sends.',
+        tooltip: 'Destinations for the alerts and other events that Flind itself sends.',
         'data-attr': 'destinations-tab-notifications',
         content: <DestinationsNotificationsTab />,
     },

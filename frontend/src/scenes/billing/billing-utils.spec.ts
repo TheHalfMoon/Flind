@@ -485,7 +485,7 @@ describe('getUsageLimitConsequence', () => {
     })
 
     it('should return specific message for PostHog AI', () => {
-        expect(getUsageLimitConsequence('PostHog AI')).toEqual('PostHog AI will be unavailable')
+        expect(getUsageLimitConsequence('PostHog AI')).toEqual('Flind AI will be unavailable')
     })
 
     it('should return specific message for the self-driving inbox', () => {
@@ -539,7 +539,7 @@ describe('buildUsageLimitReachedMessage', () => {
         const result = buildUsageLimitReachedMessage([{ name: 'PostHog AI', subscribed: true }])
         expect(result.title).toEqual('Usage limit reached')
         expect(result.message).toEqual(
-            'You have reached the usage limit for PostHog AI. Please increase your billing limit or PostHog AI will be unavailable.'
+            'You have reached the usage limit for PostHog AI. Please increase your billing limit or Flind AI will be unavailable.'
         )
     })
 
@@ -558,7 +558,7 @@ describe('buildUsageLimitReachedMessage', () => {
         ])
         expect(result.title).toEqual('Usage limits reached')
         expect(result.message).toEqual(
-            'You have reached the usage limit for PostHog AI and Session replay. Please increase your billing limit or PostHog AI will be unavailable and data loss may occur.'
+            'You have reached the usage limit for PostHog AI and Session replay. Please increase your billing limit or Flind AI will be unavailable and data loss may occur.'
         )
     })
 

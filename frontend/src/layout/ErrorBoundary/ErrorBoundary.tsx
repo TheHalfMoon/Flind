@@ -139,7 +139,7 @@ export function ErrorBoundary({ children, exceptionProps = {}, className }: Erro
                         <h2>An error has occurred</h2>
                         {isPageRewrittenError && (
                             <LemonBanner type="warning" className="mb-2">
-                                Page translation stopped PostHog from updating this view, and it kept happening after we
+                                Page translation stopped Flind from updating this view, and it kept happening after we
                                 reloaded the view for you. This is usually your browser's built-in translation, or an
                                 extension that translates the page. Turn translation off for this site, then try again.
                             </LemonBanner>

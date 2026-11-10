@@ -782,7 +782,7 @@ export const alertWizardLogic = kea<alertWizardLogicType>([
                     url: '',
                     properties: {
                         name: 'Test issue',
-                        description: 'This is a test alert from PostHog',
+                        description: 'This is a test alert from Flind',
                     },
                 },
                 project: {

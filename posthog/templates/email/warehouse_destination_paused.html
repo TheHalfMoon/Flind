@@ -3,7 +3,7 @@
 {% block section %}
     <!-- prettier-ignore -->
     <p>
-        PostHog paused the destination <b>{{ destination_name }}</b> in project <b>{{ team.name }}</b>. The last few syncs could not connect to it because of its settings.
+        Flind paused the destination <b>{{ destination_name }}</b> in project <b>{{ team.name }}</b>. The last few syncs could not connect to it because of its settings.
     </p>
     <p>The last error was:</p>
     <p><i>{{ latest_error }}</i></p>
@@ -27,5 +27,5 @@
     <a href="https://posthog.com/docs?{{ utm_tags }}" target="_blank"><b>read our documentation</b></a>.
     <br />
     <br />
-    <a href="{% absolute_uri '/settings/user-notifications' %}">Manage these notifications in PostHog</a>
+    <a href="{% absolute_uri '/settings/user-notifications' %}">Manage these notifications in Flind</a>
 {% endblock %}

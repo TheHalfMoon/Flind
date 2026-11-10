@@ -74,7 +74,7 @@ fi
 
 export const RUN_HELP = `Usage: run [format] <file[.sql]>
 
-Run a SQL file in the current PostHog project.
+Run a SQL file in the current Flind project.
 If the file is missing, run also looks for <file>.sql.
 
 Formats (choose one, before or after the filename):

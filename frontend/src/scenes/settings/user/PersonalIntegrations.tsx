@@ -113,7 +113,7 @@ function GitHubInstallationRow({ integration }: { integration: PersonalGitHubInt
                 </div>
                 {installationUnavailable ? (
                     <LemonBanner type="error" className="mt-2">
-                        The PostHog app was removed from GitHub. Disconnect this installation, then connect again if you
+                        The Flind app was removed from GitHub. Disconnect this installation, then connect again if you
                         still need it.
                     </LemonBanner>
                 ) : null}
@@ -140,7 +140,7 @@ function GitHubInstallationRow({ integration }: { integration: PersonalGitHubInt
                                 <TZLabel time={integration.needs_reauthorization_at} className="align-baseline" />
                             </>
                         ) : null}
-                        . Reconnect to let PostHog read your repos and open pull requests as you again.
+                        . Reconnect to let Flind read your repos and open pull requests as you again.
                     </LemonBanner>
                 ) : null}
             </div>
@@ -166,7 +166,7 @@ function SlackLinkRow({ integration }: { integration: PersonalSlackIntegration }
             title: `Unlink ${integration.slack_team_name || 'this Slack workspace'}?`,
             description: (
                 <p>
-                    PostHog will go back to matching you by email. If your Slack email doesn't match any PostHog account
+                    Flind will go back to matching you by email. If your Slack email doesn't match any Flind account
                     in the organization, mentions won't route to you until you link again.
                 </p>
             ),
@@ -252,7 +252,7 @@ export function PersonalGitHubIntegrations(): JSX.Element {
                         <IconGithub className="text-3xl mb-2 opacity-40" />
                         <p className="mb-1">No GitHub installations connected yet</p>
                         <p className="text-xs text-muted text-balance">
-                            Connect to let PostHog access your repos, attribute commits, open pull requests, and assign
+                            Connect to let Flind access your repos, attribute commits, open pull requests, and assign
                             issues as you. You can add multiple installations for different accounts or organizations.
                         </p>
                     </div>
@@ -296,7 +296,7 @@ function openSlackWorkspacePicker(
             <div className="deprecated-space-y-2">
                 <p className="text-sm text-secondary">
                     Your organizations are connected to multiple Slack workspaces. Pick the one you want to bind your
-                    PostHog identity to.
+                    Flind identity to.
                 </p>
                 <div className="divide-y rounded border">
                     {workspaces.map((workspace) => (
@@ -354,8 +354,8 @@ export function PersonalSlackIntegrations(): JSX.Element {
                     <IconSlack className="text-3xl mb-2 opacity-40" />
                     <p className="mb-1">No Slack account linked</p>
                     <p className="text-xs text-muted text-balance">
-                        Link your Slack identity so @PostHog mentions route to you even when your Slack email and
-                        PostHog email don't match.
+                        Link your Slack identity so @Flind mentions route to you even when your Slack email and
+                        Flind email don't match.
                     </p>
                 </div>
             ) : (
@@ -379,8 +379,8 @@ export function PersonalSlackIntegrations(): JSX.Element {
                         {slackIntegrations.length === 0 ? 'Link my Slack account' : 'Link another workspace'}
                     </LemonButton>
                     <span className="text-xs text-secondary text-balance">
-                        You'll be redirected to Slack to authorize this PostHog account. The link binds your Slack user
-                        id to your PostHog account — no Slack token is kept after the redirect.
+                        You'll be redirected to Slack to authorize this Flind account. The link binds your Slack user
+                        id to your Flind account — no Slack token is kept after the redirect.
                     </span>
                 </div>
             )}

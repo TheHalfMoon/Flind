@@ -316,7 +316,7 @@ class UserSerializer(serializers.ModelSerializer):
         ),
     )
     anonymize_data = ClassicBehaviorBooleanFieldSerializer(
-        help_text="Whether PostHog should anonymize events captured for this user when identified."
+        help_text="Whether Flind should anonymize events captured for this user when identified."
     )
     role_at_organization = serializers.ChoiceField(choices=ROLE_CHOICES, required=False)
     # Intentionally NOT declared explicitly — Meta.read_only_fields below is silently ignored

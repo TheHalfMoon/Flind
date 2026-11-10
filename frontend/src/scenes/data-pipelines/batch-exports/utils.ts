@@ -10,7 +10,7 @@ import type { BatchExportApi } from 'products/batch_exports/frontend/generated/a
 export const humanizeBatchExportName = (service: BatchExportService['type']): string => {
     switch (service) {
         case 'HTTP':
-            return 'PostHog HTTP'
+            return 'Flind HTTP'
         case 'AzureBlob':
             return 'Azure Blob Storage'
         case 'AwsS3':

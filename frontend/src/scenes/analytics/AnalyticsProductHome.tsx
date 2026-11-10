@@ -24,7 +24,7 @@ export function AnalyticsProductHome(): JSX.Element {
         <SceneContent>
             <SceneTitleSection
                 name="Product analytics"
-                description="How people use your product, ready-made by PostHog."
+                description="How people use your product, ready-made by Flind."
                 resourceType={{ type: 'analytics', forceIcon: <AnalyticsTypeIcon type="insight" /> }}
             />
             <HomeTab />

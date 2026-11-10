@@ -17,7 +17,7 @@ export function OrganizationAI(): JSX.Element {
     return (
         <div className="max-w-160">
             <LemonSwitch
-                label="Enable PostHog features that use third-party AI services"
+                label="Enable Flind features that use third-party AI services"
                 data-attr="organization-ai-enabled"
                 onChange={(checked) => {
                     updateOrganization({ is_ai_data_processing_approved: checked })

@@ -1,0 +1,95 @@
+# Flind private brand audit: inventories user-facing donor branding so the rebrand can be
+# planned from facts. Read-only token, no secrets, nothing published.
+name: Flind brand audit
+
+on:
+    push:
+        branches:
+            - 'flind-ci/brand-audit-**'
+    workflow_dispatch:
+
+permissions:
+    contents: read
+
+jobs:
+    audit:
+        runs-on: ubuntu-24.04
+        timeout-minutes: 20
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                  fetch-depth: 1
+
+            - name: Inventory donor branding
+              run: |
+                  # No -e/pipefail: grep exits 1 on "no matches", which is a valid zero count here.
+                  set -u
+                  out=flind-brand-audit
+                  mkdir -p "$out"
+                  # Visible text only: the literal product name with a capital P, which is what users read.
+                  # Code identifiers (posthog.*, posthog-js, POSTHOG_*) are counted separately.
+                  areas=(
+                    "frontend/src:UI"
+                    "frontend/public:static assets"
+                    "frontend/index.html:HTML shell"
+                    "posthog/templates:server templates and emails"
+                    "ee/templates:ee templates"
+                    "posthog/settings:runtime messages"
+                    "posthog/api:API errors and docs"
+                    "products:product modules"
+                    "docker:deployment templates"
+                    ".env.example:env example"
+                    "README.md:readme"
+                    "docs:docs"
+                    "bin:CLI and scripts"
+                  )
+                  ex='--exclude-dir=node_modules --exclude-dir=__snapshots__ --exclude-dir=test --exclude-dir=tests --exclude-dir=__tests__ --exclude=*.test.* --exclude=*.spec.* --exclude=test_*.py'
+                  {
+                    echo "## Flind brand audit"
+                    echo "commit: \`$(git rev-parse HEAD)\`"
+                    echo
+                    echo "| Area | Files with 'PostHog' | Occurrences | Files with lowercase identifiers |"
+                    echo "| --- | ---: | ---: | ---: |"
+                    for a in "${areas[@]}"; do
+                      p="${a%%:*}"; label="${a#*:}"
+                      [ -e "$p" ] || continue
+                      files=$(grep -rIl $ex 'PostHog' "$p" 2>/dev/null | wc -l)
+                      occ=$(grep -rIo $ex 'PostHog' "$p" 2>/dev/null | wc -l)
+                      ident=$(grep -rIl $ex 'posthog' "$p" 2>/dev/null | wc -l)
+                      echo "| $label (\`$p\`) | $files | $occ | $ident |"
+                    done
+                    echo
+                    echo "### Donor-named asset files"
+                    echo '```'
+                    find frontend/public frontend/src -type f \( -iname '*posthog*' -o -iname '*hog*.png' -o -iname '*hog*.svg' -o -iname '*hedgehog*' \) | sort | head -200
+                    echo "total: $(find frontend/public frontend/src -type f \( -iname '*posthog*' -o -iname '*hog*.png' -o -iname '*hog*.svg' -o -iname '*hedgehog*' \) | wc -l)"
+                    echo '```'
+                    echo
+                    echo "### Browser title / meta"
+                    echo '```'
+                    grep -rIn -E '<title>|og:site_name|application-name|apple-mobile-web-app-title' frontend/index.html frontend/src/index.html posthog/templates 2>/dev/null | head -40 || true
+                    echo '```'
+                    echo
+                    echo "### Top 60 UI files by occurrences"
+                    echo '```'
+                    grep -rIc $ex 'PostHog' frontend/src products 2>/dev/null | grep -v ':0$' | sort -t: -k2 -nr | head -60
+                    echo '```'
+                    echo
+                    echo "### Email / notification templates mentioning PostHog"
+                    echo '```'
+                    grep -rIl 'PostHog' posthog/templates ee/templates 2>/dev/null | sort | head -100
+                    echo '```'
+                  } > "$out/summary.md"
+                  cat "$out/summary.md" >> "$GITHUB_STEP_SUMMARY"
+                  # Full line-level inventory goes to the log for later slicing.
+                  echo "::group::full UI inventory (file:line)"
+                  grep -rIn $ex 'PostHog' frontend/src products posthog/templates ee/templates posthog/settings 2>/dev/null | cut -c1-220 || true
+                  echo "::endgroup::"
+
+            - uses: actions/setup-python@v5
+              with:
+                  python-version: 3.14.7
+
+            # Dependency-free guard: fails if rebranded surfaces regress to donor text or links.
+            - name: User-facing brand regression tests
+              run: python tools/flind/test_user_facing_brand.py -v

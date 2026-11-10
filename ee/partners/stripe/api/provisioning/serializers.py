@@ -88,7 +88,7 @@ class AccountRequestSerializer(serializers.Serializer):
         default=None,
         help_text=(
             'Stripe\'s verification status for the account request fields: {"verified_fields": [...]}, any of '
-            '"name", "email", "phone" and "country". When sent, linking an existing PostHog account requires '
+            '"name", "email", "phone" and "country". When sent, linking an existing Flind account requires '
             '"email" in verified_fields.'
         ),
     )

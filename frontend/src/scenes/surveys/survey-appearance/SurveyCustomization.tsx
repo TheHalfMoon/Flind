@@ -113,7 +113,7 @@ export function Customization({
             <CustomizationSection title="Behavior">
                 <div className="flex flex-col gap-3">
                     <LemonCheckbox
-                        label="Hide PostHog branding"
+                        label="Hide Flind branding"
                         onChange={(checked) => {
                             if (checked) {
                                 guardAvailableFeature(AvailableFeature.WHITE_LABELLING, () =>

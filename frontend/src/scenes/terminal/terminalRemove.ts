@@ -28,7 +28,7 @@ for argument in "$@"; do
             exit 1
             ;;
         /posthog)
-            printf 'Refusing to remove the PostHog mount. Choose a file or folder inside /posthog/files.\n' >&2
+            printf 'Refusing to remove the Flind mount. Choose a file or folder inside /posthog/files.\n' >&2
             exit 1
             ;;
         /posthog/*) mounted=true ;;
@@ -75,7 +75,7 @@ export function parseRemovalArguments(argv: string[]): { paths: string[]; recurs
                 force ||= argument.includes('f')
             } else {
                 throw new Error(
-                    'For PostHog files, rm supports -r, -R, -f, --recursive, --force, and --. Confirmation is always required.'
+                    'For Flind files, rm supports -r, -R, -f, --recursive, --force, and --. Confirmation is always required.'
                 )
             }
         } else {

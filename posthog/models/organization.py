@@ -259,7 +259,7 @@ class Organization(ModelActivityMixin, UUIDTModel):
         default=True,
         null=True,
         blank=True,
-        help_text="When True, this organization allows its data to be used to train PostHog AI models.",
+        help_text="When True, this organization allows its data to be used to train Flind AI models.",
     )
     is_ai_training_locked = models.BooleanField(
         default=False,
@@ -308,7 +308,7 @@ class Organization(ModelActivityMixin, UUIDTModel):
         default=False,
         null=True,
         blank=True,
-        help_text="When True, requests through the PostHog MCP server can read but not change this organization's data.",
+        help_text="When True, requests through the Flind MCP server can read but not change this organization's data.",
     )
     default_role = models.ForeignKey(
         "ee.Role",

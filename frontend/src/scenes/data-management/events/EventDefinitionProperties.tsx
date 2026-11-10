@@ -66,7 +66,7 @@ export function EventDefinitionProperties({ definition }: { definition: EventDef
     return (
         <SceneSection
             title="Top properties"
-            description="Please note that description and tags are shared across events. PostHog properties are excluded from this list."
+            description="Please note that description and tags are shared across events. Flind properties are excluded from this list."
         >
             <LemonTable
                 id={`event-properties-definition-table-${definition.id}`}

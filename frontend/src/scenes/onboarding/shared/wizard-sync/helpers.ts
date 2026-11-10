@@ -91,7 +91,7 @@ export function elapsedLabel(elapsedSeconds: number, stale: boolean = false): st
 // The short status line shown in the collapsed card header.
 export function syncHeadline(progress: InstallationProgress): string {
     if (progress.phase === 'completed') {
-        return 'PostHog is set up'
+        return 'Flind is set up'
     }
     if (progress.phase === 'error') {
         return progress.error?.title ?? 'Setup hit a snag'
@@ -108,7 +108,7 @@ export function syncHeadline(progress: InstallationProgress): string {
     if (progress.phase === 'connecting') {
         return 'Getting ready'
     }
-    return 'Setting up PostHog'
+    return 'Setting up Flind'
 }
 
 export function activeStep(steps: InstallationStep[]): InstallationStep | null {

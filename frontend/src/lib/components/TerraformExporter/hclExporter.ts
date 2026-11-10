@@ -57,7 +57,7 @@ export function generateHCL<T, O extends HclExportOptions = HclExportOptions>(
     const lines: string[] = []
 
     // Header comment with metadata
-    lines.push(`# Terraform configuration for PostHog ${exporter.resourceLabel}`)
+    lines.push(`# Terraform configuration for Flind ${exporter.resourceLabel}`)
     lines.push(`# Compatible with posthog provider v${POSTHOG_PROVIDER_VERSION}`)
     if (resourceId !== undefined) {
         lines.push(`# Source ${exporter.resourceLabel} ID: ${resourceId}`)

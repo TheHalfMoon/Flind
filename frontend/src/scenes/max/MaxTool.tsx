@@ -59,11 +59,11 @@ export function MaxTool({
                         !isMaxOpen ? (
                             <>
                                 <IconSparkles className="mr-1.5" />
-                                {definition.name} with PostHog AI
+                                {definition.name} with Flind AI
                             </>
                         ) : (
                             <>
-                                PostHog AI can use this tool
+                                Flind AI can use this tool
                                 <br />
                                 <div className="flex items-center">
                                     {definition.icon || <IconWrench />}

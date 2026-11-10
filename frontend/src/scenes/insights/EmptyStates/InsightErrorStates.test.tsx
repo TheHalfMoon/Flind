@@ -94,7 +94,7 @@ describe('insight error states', () => {
             expect(screen.getByText(expectedNextStep)).toBeTruthy()
             expect(screen.queryByText("We couldn't run this query")).toBeNull()
             expect(screen.queryByText('Open the query debugger and correct the query.')).toBeNull()
-            expect(screen.queryByText('Debug with PostHog AI') !== null).toBe(aiDebug)
+            expect(screen.queryByText('Debug with Flind AI') !== null).toBe(aiDebug)
             expect(screen.queryByText('Open in query debugger') !== null).toBe(queryDebugger)
         }
     )
@@ -228,14 +228,14 @@ describe('insight error states', () => {
         )
         const { unmount } = render(view)
 
-        expect(screen.getByText('PostHog is busy. You can retry in 45 seconds.')).toBeTruthy()
+        expect(screen.getByText('Flind is busy. You can retry in 45 seconds.')).toBeTruthy()
         fireEvent.click(screen.getByTestId('insight-retry-button'))
         expect(onRetry).not.toHaveBeenCalled()
 
         act(() => jest.advanceTimersByTime(15_000))
         unmount()
         render(view)
-        expect(screen.getByText('PostHog is busy. You can retry in 30 seconds.')).toBeTruthy()
+        expect(screen.getByText('Flind is busy. You can retry in 30 seconds.')).toBeTruthy()
 
         act(() => jest.advanceTimersByTime(29_000))
         fireEvent.click(screen.getByTestId('insight-retry-button'))
@@ -275,7 +275,7 @@ describe('insight error states', () => {
         jest.useFakeTimers()
         const onRetry = jest.fn()
         render(<InsightErrorState titleStatus={503} retryAfterTimestamp={Date.now() + 2000} onRetry={onRetry} />)
-        const message = screen.getByText('PostHog is busy. You can retry in 2 seconds.')
+        const message = screen.getByText('Flind is busy. You can retry in 2 seconds.')
         const translateMessage = (): void => {
             const translated = document.createElement('font')
             translated.textContent = 'Translated countdown'
@@ -284,7 +284,7 @@ describe('insight error states', () => {
 
         translateMessage()
         act(() => jest.advanceTimersByTime(1000))
-        expect(message.textContent).toBe('PostHog is busy. You can retry in 1 second.')
+        expect(message.textContent).toBe('Flind is busy. You can retry in 1 second.')
         fireEvent.click(screen.getByTestId('insight-retry-button'))
         expect(onRetry).not.toHaveBeenCalled()
 
@@ -306,7 +306,7 @@ describe('insight error states', () => {
         expect(onRetry).toHaveBeenCalledTimes(1)
 
         rerender(<InsightErrorState titleStatus={503} retryAfterTimestamp={Date.now() + 60_000} onRetry={onRetry} />)
-        expect(screen.getByText('PostHog is busy. You can retry in 60 seconds.')).toBeTruthy()
+        expect(screen.getByText('Flind is busy. You can retry in 60 seconds.')).toBeTruthy()
         fireEvent.click(screen.getByTestId('insight-retry-button'))
         expect(onRetry).toHaveBeenCalledTimes(1)
     })
@@ -320,7 +320,7 @@ describe('insight error states', () => {
 
     it.each([
         { status: 503, expectedTitle: "This query couldn't run right now" },
-        { status: 500, expectedTitle: "PostHog couldn't complete this query" },
+        { status: 500, expectedTitle: "Flind couldn't complete this query" },
         { status: 418, expectedTitle: "We couldn't complete this query" },
     ])('uses clear copy for server error $status', ({ status, expectedTitle }) => {
         render(<InsightErrorState title="Internal server error" titleStatus={status} />)

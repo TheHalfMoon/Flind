@@ -7,6 +7,7 @@ import { flindRegionHost } from 'lib/flindRegionHosts'
 import { OrganizationType, Region, TeamType, UserType } from '~/types'
 
 import { generateCodeChallenge } from './pkce'
+import { flindBuildEnv } from 'lib/flindBuildEnv'
 
 export interface OAuthRegionConfig {
     key: Region.US | Region.EU
@@ -29,14 +30,14 @@ export const OAUTH_REGIONS: Record<Region.US | Region.EU, OAuthRegionConfig> = {
         label: 'Flind US',
         flag: '🇺🇸',
         host: flindOAuthHost(Region.US),
-        clientId: import.meta.env?.VITE_FLIND_OAUTH_US_CLIENT_ID || '',
+        clientId: flindBuildEnv.VITE_FLIND_OAUTH_US_CLIENT_ID || '',
     },
     [Region.EU]: {
         key: Region.EU,
         label: 'Flind EU',
         flag: '🇪🇺',
         host: flindOAuthHost(Region.EU),
-        clientId: import.meta.env?.VITE_FLIND_OAUTH_EU_CLIENT_ID || '',
+        clientId: flindBuildEnv.VITE_FLIND_OAUTH_EU_CLIENT_ID || '',
     },
 }
 

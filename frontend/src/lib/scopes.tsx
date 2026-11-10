@@ -155,7 +155,7 @@ export const API_SCOPES: APIScope[] = [
         key: 'conversation',
         objectName: 'AI conversation',
         objectPlural: 'AI conversations',
-        info: 'Programmatic access to the PostHog AI (Max) chat via the conversations API.',
+        info: 'Programmatic access to the Flind AI (Max) chat via the conversations API.',
     },
     { key: 'customer_analytics', objectName: 'Customer analytics', objectPlural: 'customer analytics' },
     { key: 'customer_task', objectName: 'Customer task', objectPlural: 'customer tasks' },
@@ -329,7 +329,7 @@ export const API_SCOPES: APIScope[] = [
         },
     },
     { key: 'signal_scout', objectName: 'Signals agent', objectPlural: 'signals agents' },
-    { key: 'review_hog', objectName: 'PostHog Review', objectPlural: 'PostHog Review reviews' },
+    { key: 'review_hog', objectName: 'Flind Review', objectPlural: 'Flind Review reviews' },
     { key: 'stamphog', objectName: 'Stamphog', objectPlural: 'stamphog' },
     { key: 'streamlit_app', objectName: 'Streamlit app', objectPlural: 'Streamlit apps' },
     { key: 'task', objectName: 'Task', objectPlural: 'tasks' },
@@ -692,7 +692,7 @@ export const DEFAULT_OAUTH_SCOPES = ['openid', 'email', 'profile']
 
 export const getScopeDescription = (scope: string): string | undefined => {
     if (scope === '*') {
-        return 'Read and write access to all PostHog data'
+        return 'Read and write access to all Flind data'
     }
 
     if (scope === 'openid') {

@@ -114,7 +114,7 @@ export function HogFunctionCode(): JSX.Element {
                             {type === 'source_webhook' && (
                                 <LemonBanner type="info" className="mt-2">
                                     <b>HTTP requests:</b> Webhook sources can call <code>postHogCapture</code> to ingest
-                                    events to PostHog. You can also do HTTP calls with <code>fetch</code>. In this case
+                                    events to Flind. You can also do HTTP calls with <code>fetch</code>. In this case
                                     however, the request will be queued to a background task, a <code>201 Created</code>{' '}
                                     response will be returned and the event will be ingested asynchronously.
                                 </LemonBanner>

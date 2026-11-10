@@ -24,7 +24,7 @@ export function OrganizationMCPAccess(): JSX.Element {
                 label={
                     <span>
                         Restrict MCP access to read-only{' '}
-                        <Tooltip title="When enabled, anyone connecting to this organization through the PostHog MCP can read data but can't change it. This applies to every member, including admins. Each member's permissions still apply separately via access control. Using PostHog in the app or calling the API directly is not affected.">
+                        <Tooltip title="When enabled, anyone connecting to this organization through the Flind MCP can read data but can't change it. This applies to every member, including admins. Each member's permissions still apply separately via access control. Using Flind in the app or calling the API directly is not affected.">
                             <IconInfo className="mr-1" />
                         </Tooltip>
                     </span>

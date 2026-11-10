@@ -210,7 +210,7 @@ export function HostedSurveyCanvas({
                         ) : null}
                     </div>
                 </div>
-                {!appearance.whiteLabel ? <div className="footer-branding">Survey by PostHog</div> : null}
+                {!appearance.whiteLabel ? <div className="footer-branding">Survey by Flind</div> : null}
             </div>
         </div>
     )

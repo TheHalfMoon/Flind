@@ -222,7 +222,7 @@ def activity_send_proxy_created_email(inputs: SendProxyCreatedEmailInputs):
         user = record.created_by
         message = EmailMessage(
             campaign_key=f"proxy_provisioned_{inputs.proxy_record_id}",
-            subject="Your PostHog reverse proxy is ready",
+            subject="Your Flind reverse proxy is ready",
             template_name="proxy_provisioned",
             template_context={
                 "user_name": user.first_name,

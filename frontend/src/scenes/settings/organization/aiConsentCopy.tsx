@@ -11,8 +11,8 @@ export function AIHipaaDisclaimer(): JSX.Element {
     return (
         <span className="block">
             This feature is not HIPAA-compliant and is not intended for the processing of Protected Health Information
-            ("PHI"). Any Business Associate Agreement ("BAA") you may have entered into with PostHog does not apply to
-            this functionality. You are responsible for ensuring your use complies with applicable laws and regulations.
+            ("PHI"). Any Business Associate Agreement ("BAA") that covers your deployment does not apply to this
+            functionality. You are responsible for ensuring your use complies with applicable laws and regulations.
         </span>
     )
 }

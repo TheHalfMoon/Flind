@@ -128,7 +128,7 @@ export function CodexConnectModal({ opener }: CodexConnectModalProps): JSX.Eleme
                 </div>
                 {connectError ? <LemonBanner type="error">{connectError}</LemonBanner> : null}
                 <LemonBanner type="info">
-                    PostHog never shows your sign-in and tries to clear your clipboard after you paste. It stores the
+                    Flind never shows your sign-in and tries to clear your clipboard after you paste. It stores the
                     sign-in encrypted and uses it only for your Codex cloud tasks. You can disconnect at any time.
                 </LemonBanner>
             </div>

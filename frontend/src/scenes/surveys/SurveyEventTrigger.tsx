@@ -255,7 +255,7 @@ export function SurveyEventTrigger(): JSX.Element {
         <SurveyEventSelector
             conditionField="events"
             label="User sends events"
-            info="Triggers fire when the event is captured in the current user session via a PostHog SDK. Property filtering requires posthog-js 1.268+ or posthog-react-native 4.15+."
+            info="Triggers fire when the event is captured in the current user session via a Flind SDK. Property filtering requires posthog-js 1.268+ or posthog-react-native 4.15+."
             emptyTitle="No events selected"
             emptyDescription="Pick events that should trigger this survey."
             showRepeatedActivation
@@ -271,7 +271,7 @@ export function SurveyCancelEventTrigger(): JSX.Element {
         <SurveyEventSelector
             conditionField="cancelEvents"
             label="Cancel survey on events"
-            info="Triggers fire when the event is captured in the current user session via a PostHog SDK. Requires posthog-js 1.299+. Web surveys only."
+            info="Triggers fire when the event is captured in the current user session via a Flind SDK. Requires posthog-js 1.299+. Web surveys only."
             emptyTitle={`During your ${delaySeconds} second delay...`}
             emptyDescription="If any of these events fire, the survey is cancelled — useful when the user has already completed the action."
             addButtonText="Add cancel event"

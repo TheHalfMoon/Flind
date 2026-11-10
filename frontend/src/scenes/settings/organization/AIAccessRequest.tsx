@@ -19,7 +19,7 @@ export function AIAccessRequest({ size = 'xsmall' }: { size?: 'xsmall' | 'small'
         return (
             <p className="flex items-start gap-1.5 m-0 text-xs text-muted">
                 <IconCheck className="shrink-0 mt-0.5 text-success" />
-                <span>Request sent. Your organization admins have been notified and can enable PostHog AI.</span>
+                <span>Request sent. Your organization admins have been notified and can enable Flind AI.</span>
             </p>
         )
     }

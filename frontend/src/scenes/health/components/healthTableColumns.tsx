@@ -53,7 +53,7 @@ export function issueActionsColumn(
                             size="xsmall"
                             type="tertiary"
                             icon={<IconSparkles />}
-                            tooltip="Ask PostHog AI about this issue"
+                            tooltip="Ask Flind AI about this issue"
                             onClick={() =>
                                 sidePanelStateLogic.actions.openSidePanel(
                                     SidePanelTab.Max,

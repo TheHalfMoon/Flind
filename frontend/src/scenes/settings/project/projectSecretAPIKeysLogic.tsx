@@ -482,12 +482,12 @@ export const projectSecretAPIKeysLogic = kea<projectSecretAPIKeysLogicType>([
 
         showGatewayScopeDialog: () => {
             LemonDialog.open({
-                title: 'This key is for PostHog products only',
+                title: 'This key is for Flind products only',
                 width: 536,
                 content: (
                     <>
                         <p>
-                            Use AI gateway keys for PostHog services that call the gateway in production. These keys
+                            Use AI gateway keys for Flind services that call the gateway in production. These keys
                             don't expire and their requests aren't attributed to a person.
                         </p>
                         <p className="mb-0">
@@ -504,7 +504,7 @@ export const projectSecretAPIKeysLogic = kea<projectSecretAPIKeysLogicType>([
                     },
                 },
                 secondaryButton: {
-                    children: 'Create key for a PostHog product',
+                    children: 'Create key for a Flind product',
                     onClick: () => {
                         actions.confirmGatewayScope()
                         actions.submitEditingKey()

@@ -72,7 +72,7 @@ class TeamSerializer(serializers.ModelSerializer, UserPermissionsSerializerMixin
     managed_viewsets = serializers.SerializerMethodField()
     flag_evaluations_mode = serializers.SerializerMethodField(
         help_text=(
-            "Which table this project's feature flag usage data is read from. PostHog sets it for the "
+            "Which table this project's feature flag usage data is read from. Flind sets it for the "
             "whole organization. 0 reads the events table. 1 and 2 read the flag_evaluations table."
         )
     )
