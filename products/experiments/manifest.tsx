@@ -6,6 +6,12 @@ import { ActivityScope, ExperimentsTabs, FileSystemIconColor, ProductManifest } 
 
 export const manifest: ProductManifest = {
     name: 'Experiments',
+    activityDescribers: {
+        [ActivityScope.EXPERIMENT]: () =>
+            import('scenes/experiments/experimentActivityDescriber').then(
+                (module) => module.experimentActivityDescriber
+            ),
+    },
     scenes: {
         Experiments: {
             import: () => import('./frontend/scenes/ExperimentsScene'),
@@ -52,6 +58,7 @@ export const manifest: ProductManifest = {
             iconType: 'experiment',
             href: (ref: string) => urls.experiment(ref),
             listHref: () => urls.experiments(),
+            listSearchParam: 'search',
             iconColor: ['var(--color-product-experiments-light)'],
             filterKey: 'experiment',
         },

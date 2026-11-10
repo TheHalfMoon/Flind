@@ -9,7 +9,8 @@
             "dependsOn": ["@flind/frontend#prepare"]
         },
         "start": {
-            "dependsOn": ["@flind/frontend#prepare"]
+            "dependsOn": ["@flind/frontend#prepare"],
+            "passThroughEnv": ["$TURBO_EXTENDS$", "STORYBOOK_STORIES"]
         }
     }
 }

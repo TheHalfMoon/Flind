@@ -4,9 +4,9 @@ import { toast, type ToastOptions, type UpdateOptions } from 'react-toastify'
 
 import { IconCheckCircle, IconCopy, IconInfo, IconWarning, IconX } from '@posthog/icons'
 
-import { getIncidentStatus, STATUS_PAGE_BASE } from 'lib/components/HelpMenu/incidentStatus'
+import { getIncidentStatus, STATUS_PAGE_BASE } from 'lib/lemon-ui/LemonToast/incidentStatus'
 import { flindSupportMailto } from 'lib/flindSupportMailto'
-import { isChristmas } from 'lib/holidays'
+import { isChristmas } from 'lib/utils/holidays'
 import { renderDetailWithLinks } from 'lib/utils/renderDetailWithLinks'
 import { hashCodeForString } from 'lib/utils/strings'
 import { writeToClipboard } from 'lib/utils/writeToClipboard'

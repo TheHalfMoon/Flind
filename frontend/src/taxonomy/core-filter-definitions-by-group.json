@@ -797,10 +797,21 @@
             "label": "Anomaly interval",
             "type": "String"
         },
+        "$anomaly_model_id": {
+            "description": "ID of the stored model that scored the bucket. Buckets with the same ID were scored with the same fit. Empty when scoring fits the detector again on every run.",
+            "label": "Anomaly model ID",
+            "type": "String"
+        },
         "$anomaly_profile": {
             "description": "Name of the scoring profile that produced the score.",
             "examples": ["default-v1"],
             "label": "Anomaly scoring profile",
+            "type": "String"
+        },
+        "$anomaly_run": {
+            "description": "How the bucket was scored. `train` fit a new model on the history of the series, and `score` scored the bucket with a stored model. Empty when scoring fits the detector again on every run.",
+            "examples": ["train", "score"],
+            "label": "Anomaly scoring run",
             "type": "String"
         },
         "$anomaly_score": {
@@ -843,6 +854,11 @@
         "$app_build": {
             "description": "The build number for the app.",
             "label": "App build"
+        },
+        "$app_language": {
+            "description": "The language the app displays, which can differ from the device's locale.",
+            "examples": ["en", "pt-BR"],
+            "label": "App language"
         },
         "$app_name": {
             "description": "The name of the app.",
@@ -1745,12 +1761,12 @@
             "label": "MCP exec verb"
         },
         "$mcp_input_aliases_used": {
-            "description": "Declared parameter aliases the call relied on, as `alias:canonical` (for example `experimentId:id`). Present only when the call did not send the canonical name and used one of its aliases instead. Both names come from the tool's own alias map. Recorded by the @posthog/mcp SDK helper. Measures how much traffic the alias layer rescues, and which spellings agents reach for.",
+            "description": "Declared parameter aliases the call relied on, as `alias:canonical` (for example `experimentId:id`). Present only when the call did not send the canonical name and used one of its aliases instead. Both names come from the tool's own alias map. Recorded by the @flind/mcp SDK helper. Measures how much traffic the alias layer rescues, and which spellings agents reach for.",
             "examples": ["experimentId:id", "flagKey:key"],
             "label": "MCP input aliases used"
         },
         "$mcp_input_keys": {
-            "description": "Top-level argument names the caller sent on a tool call, success or failure: every direct-mode call, `render-ui`, and an exec `call` (parsed from the command string). Exec discovery verbs (tools, search, info, schema) carry none, so rate against rows where it is set rather than every $mcp_tool_call. Recorded by the @posthog/mcp SDK helper: names the tool declares, including its aliases, capped at 20. Undeclared names become one `[redacted]` entry. Names only, never values. Group by it with $mcp_input_aliases_used to see how agents spell a parameter.",
+            "description": "Top-level argument names the caller sent on a tool call, success or failure: every direct-mode call, `render-ui`, and an exec `call` (parsed from the command string). Exec discovery verbs (tools, search, info, schema) carry none, so rate against rows where it is set rather than every $mcp_tool_call. Recorded by the @flind/mcp SDK helper: names the tool declares, including its aliases, capped at 20. Undeclared names become one `[redacted]` entry. Names only, never values. Group by it with $mcp_input_aliases_used to see how agents spell a parameter.",
             "examples": ["id", "experimentId", "filters, key, name"],
             "label": "MCP input keys"
         },
@@ -1768,7 +1784,7 @@
             "label": "MCP intent source"
         },
         "$mcp_interface": {
-            "description": "How the agent reached the tool. 'mcp' means an MCP server instrumented with the @posthog/mcp SDK. 'webmcp' means a tool a web page registered through WebMCP, captured by posthog-js in the browser. WebMCP events carry no transport or client properties, and their $mcp_server_name is the page's hostname. Older events omit this property.",
+            "description": "How the agent reached the tool. 'mcp' means an MCP server instrumented with the @flind/mcp SDK. 'webmcp' means a tool a web page registered through WebMCP, captured by posthog-js in the browser. WebMCP events carry no transport or client properties, and their $mcp_server_name is the page's hostname. Older events omit this property.",
             "examples": ["mcp", "webmcp"],
             "label": "MCP interface"
         },
@@ -3451,7 +3467,7 @@
             "label": "MCP resources listed"
         },
         "$mcp_tool_call": {
-            "description": "Fires every time an MCP server tool is invoked via @posthog/mcp. Includes the tool name, wall-clock duration, error state, and (when the client supplied a context argument) the agent's stated intent. Canonical replacement for the legacy `mcp_tool_call`.",
+            "description": "Fires every time an MCP server tool is invoked via @flind/mcp. Includes the tool name, wall-clock duration, error state, and (when the client supplied a context argument) the agent's stated intent. Canonical replacement for the legacy `mcp_tool_call`.",
             "label": "MCP tool call",
             "primary_property": "$mcp_tool_name"
         },
@@ -3615,12 +3631,12 @@
             "label": "MCP initialize (legacy)"
         },
         "mcp_mcpcat:identify": {
-            "description": "LEGACY \u2014 do not use. Identify event from the retired mcpcat library. Superseded by the canonical `$identify` emitted by @posthog/mcp. Query this only for historical data before 2026-06-16.",
+            "description": "LEGACY \u2014 do not use. Identify event from the retired mcpcat library. Superseded by the canonical `$identify` emitted by @flind/mcp. Query this only for historical data before 2026-06-16.",
             "ignored_in_assistant": true,
             "label": "MCP identify \u2014 mcpcat (legacy)"
         },
         "mcp_posthog:identify": {
-            "description": "LEGACY \u2014 do not use. Identify event from PostHog's retired in-tree MCP analytics path. Superseded by the canonical `$identify` emitted by @posthog/mcp. Query this only for historical data before 2026-06-16.",
+            "description": "LEGACY \u2014 do not use. Identify event from PostHog's retired in-tree MCP analytics path. Superseded by the canonical `$identify` emitted by @flind/mcp. Query this only for historical data before 2026-06-16.",
             "ignored_in_assistant": true,
             "label": "MCP identify \u2014 in-tree (legacy)"
         },
@@ -3660,7 +3676,7 @@
             "label": "MCP tools listed (legacy)"
         },
         "posthog_identify": {
-            "description": "LEGACY \u2014 do not use. Superseded by the canonical `$identify` emitted by @posthog/mcp, which covers all MCP traffic from 2026-06-16 on. Query this only for historical data before that date.",
+            "description": "LEGACY \u2014 do not use. Superseded by the canonical `$identify` emitted by @flind/mcp, which covers all MCP traffic from 2026-06-16 on. Query this only for historical data before that date.",
             "ignored_in_assistant": true,
             "label": "MCP identify (legacy)"
         }
@@ -3793,12 +3809,12 @@
             "label": "MCP exec verb"
         },
         "$mcp_input_aliases_used": {
-            "description": "Declared parameter aliases the call relied on, as `alias:canonical` (for example `experimentId:id`). Present only when the call did not send the canonical name and used one of its aliases instead. Both names come from the tool's own alias map. Recorded by the @posthog/mcp SDK helper. Measures how much traffic the alias layer rescues, and which spellings agents reach for.",
+            "description": "Declared parameter aliases the call relied on, as `alias:canonical` (for example `experimentId:id`). Present only when the call did not send the canonical name and used one of its aliases instead. Both names come from the tool's own alias map. Recorded by the @flind/mcp SDK helper. Measures how much traffic the alias layer rescues, and which spellings agents reach for.",
             "examples": ["experimentId:id", "flagKey:key"],
             "label": "MCP input aliases used"
         },
         "$mcp_input_keys": {
-            "description": "Top-level argument names the caller sent on a tool call, success or failure: every direct-mode call, `render-ui`, and an exec `call` (parsed from the command string). Exec discovery verbs (tools, search, info, schema) carry none, so rate against rows where it is set rather than every $mcp_tool_call. Recorded by the @posthog/mcp SDK helper: names the tool declares, including its aliases, capped at 20. Undeclared names become one `[redacted]` entry. Names only, never values. Group by it with $mcp_input_aliases_used to see how agents spell a parameter.",
+            "description": "Top-level argument names the caller sent on a tool call, success or failure: every direct-mode call, `render-ui`, and an exec `call` (parsed from the command string). Exec discovery verbs (tools, search, info, schema) carry none, so rate against rows where it is set rather than every $mcp_tool_call. Recorded by the @flind/mcp SDK helper: names the tool declares, including its aliases, capped at 20. Undeclared names become one `[redacted]` entry. Names only, never values. Group by it with $mcp_input_aliases_used to see how agents spell a parameter.",
             "examples": ["id", "experimentId", "filters, key, name"],
             "label": "MCP input keys"
         },
@@ -3816,7 +3832,7 @@
             "label": "MCP intent source"
         },
         "$mcp_interface": {
-            "description": "How the agent reached the tool. 'mcp' means an MCP server instrumented with the @posthog/mcp SDK. 'webmcp' means a tool a web page registered through WebMCP, captured by posthog-js in the browser. WebMCP events carry no transport or client properties, and their $mcp_server_name is the page's hostname. Older events omit this property.",
+            "description": "How the agent reached the tool. 'mcp' means an MCP server instrumented with the @flind/mcp SDK. 'webmcp' means a tool a web page registered through WebMCP, captured by posthog-js in the browser. WebMCP events carry no transport or client properties, and their $mcp_server_name is the page's hostname. Older events omit this property.",
             "examples": ["mcp", "webmcp"],
             "label": "MCP interface"
         },
@@ -4739,10 +4755,21 @@
             "label": "Anomaly interval",
             "type": "String"
         },
+        "$anomaly_model_id": {
+            "description": "ID of the stored model that scored the bucket. Buckets with the same ID were scored with the same fit. Empty when scoring fits the detector again on every run.",
+            "label": "Anomaly model ID",
+            "type": "String"
+        },
         "$anomaly_profile": {
             "description": "Name of the scoring profile that produced the score.",
             "examples": ["default-v1"],
             "label": "Anomaly scoring profile",
+            "type": "String"
+        },
+        "$anomaly_run": {
+            "description": "How the bucket was scored. `train` fit a new model on the history of the series, and `score` scored the bucket with a stored model. Empty when scoring fits the detector again on every run.",
+            "examples": ["train", "score"],
+            "label": "Anomaly scoring run",
             "type": "String"
         },
         "$anomaly_score": {
@@ -4785,6 +4812,11 @@
         "$app_build": {
             "description": "The build number for the app. Data from the last time this user was seen.",
             "label": "Latest app build"
+        },
+        "$app_language": {
+            "description": "The language the app displays, which can differ from the device's locale.",
+            "examples": ["en", "pt-BR"],
+            "label": "App language"
         },
         "$app_name": {
             "description": "The name of the app. Data from the last time this user was seen.",
@@ -6019,12 +6051,12 @@
             "label": "MCP exec verb"
         },
         "$mcp_input_aliases_used": {
-            "description": "Declared parameter aliases the call relied on, as `alias:canonical` (for example `experimentId:id`). Present only when the call did not send the canonical name and used one of its aliases instead. Both names come from the tool's own alias map. Recorded by the @posthog/mcp SDK helper. Measures how much traffic the alias layer rescues, and which spellings agents reach for.",
+            "description": "Declared parameter aliases the call relied on, as `alias:canonical` (for example `experimentId:id`). Present only when the call did not send the canonical name and used one of its aliases instead. Both names come from the tool's own alias map. Recorded by the @flind/mcp SDK helper. Measures how much traffic the alias layer rescues, and which spellings agents reach for.",
             "examples": ["experimentId:id", "flagKey:key"],
             "label": "MCP input aliases used"
         },
         "$mcp_input_keys": {
-            "description": "Top-level argument names the caller sent on a tool call, success or failure: every direct-mode call, `render-ui`, and an exec `call` (parsed from the command string). Exec discovery verbs (tools, search, info, schema) carry none, so rate against rows where it is set rather than every $mcp_tool_call. Recorded by the @posthog/mcp SDK helper: names the tool declares, including its aliases, capped at 20. Undeclared names become one `[redacted]` entry. Names only, never values. Group by it with $mcp_input_aliases_used to see how agents spell a parameter.",
+            "description": "Top-level argument names the caller sent on a tool call, success or failure: every direct-mode call, `render-ui`, and an exec `call` (parsed from the command string). Exec discovery verbs (tools, search, info, schema) carry none, so rate against rows where it is set rather than every $mcp_tool_call. Recorded by the @flind/mcp SDK helper: names the tool declares, including its aliases, capped at 20. Undeclared names become one `[redacted]` entry. Names only, never values. Group by it with $mcp_input_aliases_used to see how agents spell a parameter.",
             "examples": ["id", "experimentId", "filters, key, name"],
             "label": "MCP input keys"
         },
@@ -6042,7 +6074,7 @@
             "label": "MCP intent source"
         },
         "$mcp_interface": {
-            "description": "How the agent reached the tool. 'mcp' means an MCP server instrumented with the @posthog/mcp SDK. 'webmcp' means a tool a web page registered through WebMCP, captured by posthog-js in the browser. WebMCP events carry no transport or client properties, and their $mcp_server_name is the page's hostname. Older events omit this property.",
+            "description": "How the agent reached the tool. 'mcp' means an MCP server instrumented with the @flind/mcp SDK. 'webmcp' means a tool a web page registered through WebMCP, captured by posthog-js in the browser. WebMCP events carry no transport or client properties, and their $mcp_server_name is the page's hostname. Older events omit this property.",
             "examples": ["mcp", "webmcp"],
             "label": "MCP interface"
         },

@@ -9,6 +9,7 @@
         "@posthog/icons": "catalog:",
         "@flind/quill": "workspace:*",
         "@flind/quill-charts": "workspace:*",
+        "@flind/quill-components": "workspace:*",
         "kea": "catalog:",
         "kea-loaders": "catalog:",
         "kea-router": "catalog:",

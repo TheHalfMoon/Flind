@@ -7,7 +7,7 @@ import { pngHoggie } from 'lib/brand/hoggies'
 import { RestrictionScope } from 'lib/components/RestrictedArea'
 import { FEATURE_FLAGS, OrganizationMembershipLevel, TeamMembershipLevel } from 'lib/constants'
 import { featureFlagLogic } from 'lib/logic/featureFlagLogic'
-import { preflightLogic } from 'scenes/PreflightCheck/preflightLogic'
+import { preflightLogic } from 'lib/logic/preflightLogic'
 
 import { useMocks } from '~/mocks/jest'
 import { ProductKey } from '~/queries/schema/schema-general'

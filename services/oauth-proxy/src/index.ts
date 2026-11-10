@@ -7,7 +7,7 @@
  */
 import { handleAuthorize } from '@/handlers/authorize'
 import { handleCallback } from '@/handlers/callback'
-import { handleClientManifest, handleMetadata, handleOpenIdConfiguration } from '@/handlers/metadata'
+import { handleClientManifest, handleMetadata, handleOpenIdConfiguration, handleScopes } from '@/handlers/metadata'
 import { handleIntrospect, handleJwks, handleRevoke, handleUserInfo } from '@/handlers/passthrough'
 import { handleRegister } from '@/handlers/register'
 import { handleToken } from '@/handlers/token'
@@ -96,6 +96,11 @@ const routes: Route[] = [
     {
         paths: ['/oauth/userinfo'],
         handler: handleUserInfo,
+    },
+    {
+        paths: ['/oauth/scopes'],
+        method: 'GET',
+        handler: handleScopes,
     },
 ]
 

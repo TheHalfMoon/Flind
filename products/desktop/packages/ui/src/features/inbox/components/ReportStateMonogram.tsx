@@ -1,9 +1,9 @@
 import { FileTextIcon } from "@phosphor-icons/react";
 import { isAgentRunReport } from "@flind/core/inbox/reportMembership";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@flind/quill";
+import { resolveReportRunVariant } from "@flind/shared";
 import type { SignalReport } from "@flind/shared/types";
 import {
-  resolveRunVariant,
   VARIANT_META,
   type VariantMeta,
 } from "@flind/ui/features/inbox/components/AgentRunCard";
@@ -16,7 +16,7 @@ import {
  */
 export function reportRunState(report: SignalReport): VariantMeta | null {
   if (!isAgentRunReport(report) && report.status !== "failed") return null;
-  return VARIANT_META[resolveRunVariant(report)];
+  return VARIANT_META[resolveReportRunVariant(report.status)];
 }
 
 /**

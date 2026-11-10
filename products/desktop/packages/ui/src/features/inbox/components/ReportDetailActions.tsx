@@ -6,7 +6,6 @@ import {
   LinkIcon,
   ReceiptIcon,
 } from "@phosphor-icons/react";
-import { canResolveReport } from "@flind/core/inbox/reportActions";
 import { parsePrUrl } from "@flind/core/inbox/reportPresentation";
 import {
   Button,
@@ -21,6 +20,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@flind/quill";
+import { canResolveReport } from "@flind/shared";
 import type { SignalReport } from "@flind/shared/types";
 import { RefundReportDialog } from "@flind/ui/features/inbox/components/RefundReportDialog";
 import { ReportChatToggle } from "@flind/ui/features/inbox/components/ReportChatToggle";

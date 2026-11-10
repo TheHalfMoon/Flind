@@ -85,6 +85,9 @@ vi.mock("@flind/ui/features/feature-flags/useFeatureFlag", () => ({
 vi.mock("@flind/ui/features/canvas/hooks/useFileTaskToChannel", () => ({
   useFileTaskToChannel: () => ({ fileTask: vi.fn() }),
 }));
+vi.mock("@flind/ui/features/sidebar/useToggleTaskRead", () => ({
+  useTaskReadItem: () => ({ isUnread: false, toggle: vi.fn() }),
+}));
 vi.mock("@flind/ui/features/browser-tabs/useOpenBrowserTab", () => ({
   useOpenBrowserTab: () => vi.fn(),
 }));

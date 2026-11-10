@@ -11,10 +11,7 @@ import {
   resolveInboxReportDetailCache,
   updateInboxReportCaches,
 } from "@flind/core/inbox/inboxQuery";
-import {
-  canCreateImplementationPr,
-  canResolveReport,
-} from "@flind/core/inbox/reportActions";
+import { canCreateImplementationPr } from "@flind/core/inbox/reportActions";
 import {
   deriveReportImplementationState,
   needsImplementationDecision,
@@ -32,6 +29,7 @@ import {
   PopoverTrigger,
   Textarea,
 } from "@flind/quill";
+import { canResolveReport, isTerminalReport } from "@flind/shared";
 import type { InboxReportActionSurface } from "@flind/shared/analytics-events";
 import type { SignalReport, Task } from "@flind/shared/types";
 import { useTaskChannels } from "@flind/ui/features/canvas/hooks/useTaskChannels";
@@ -373,11 +371,7 @@ export function ReportVerdictBanner({
   // already restricts that to ready-actionable and pending-input reports) or
   // already holds live implementation work.
   // Terminal reports (merged/archived) get no action; their verdict says so.
-  const isTerminalReport =
-    report.status === "resolved" ||
-    report.status === "suppressed" ||
-    report.status === "deleted";
-  const showActions = !isTerminalReport;
+  const showActions = !isTerminalReport(report);
   const shouldComposeImplementation =
     variant === "full" && !hasExistingPr && canCreatePr;
 

@@ -5,10 +5,9 @@ import { useEffect, useMemo, useState } from 'react'
 import { ScatterChart } from '@flind/quill-charts'
 import type { ScatterAreaSelection, ScatterChartConfig, ScatterPointDatum } from '@flind/quill-charts'
 
+import { makeChartErrorHandler } from 'lib/charts/chartErrorHandler'
 import { useChartTheme } from 'lib/charts/hooks'
 import { urls } from 'scenes/urls'
-
-import { makeChartErrorHandler } from 'products/product_analytics/frontend/insights/trends/shared/chartErrorHandler'
 
 import { navigateToClusterItem } from './clusterScatter'
 import type { ClusterScatterMeta } from './clusterScatter'

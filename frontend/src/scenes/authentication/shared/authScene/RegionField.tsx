@@ -6,9 +6,9 @@ import { IconCheckCircle } from '@posthog/icons'
 import { LemonLabel, LemonModal, LemonSelect, LemonSelectOptions } from '@flind/lemon-ui'
 
 import { flindRegionHost, flindRegionUrl } from 'lib/flindRegionHosts'
+import { preflightLogic } from 'lib/logic/preflightLogic'
 import { countryCodeToFlag } from 'lib/utils/country'
 import { pendingOAuthConnectionLogic } from 'scenes/authentication/shared/pendingOAuthConnectionLogic'
-import { preflightLogic } from 'scenes/PreflightCheck/preflightLogic'
 
 import { Region } from '~/types'
 

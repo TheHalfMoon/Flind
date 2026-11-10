@@ -19,7 +19,7 @@ import type { ProductEmptyStateMode } from 'lib/components/ProductEmptyState/typ
 import { flindDocsUrl } from 'lib/flindPublicLinks'
 import { LemonTag } from 'lib/lemon-ui/LemonTag'
 import { cn } from 'lib/utils/css-classes'
-import { inStorybook, inStorybookTestRunner } from 'lib/utils/dom'
+import { inStorybook } from 'lib/utils/dom'
 
 import { SignalReportPriorityBadge } from '../badges/SignalReportPriorityBadge'
 
@@ -39,7 +39,7 @@ const IMPACT_STAGES = [
 /** CSS stages keep this example local: playing the preview never starts an implementation. */
 export function InboxReportPreview(_: { mode: ProductEmptyStateMode }): JSX.Element {
     const docsUrl = flindDocsUrl('self-driving/from-our-inbox')
-    const isStatic = inStorybook() || inStorybookTestRunner()
+    const isStatic = inStorybook()
     const implementId = useId()
     const impactId = `${implementId}-impact`
     const inputRef = useRef<HTMLInputElement>(null)

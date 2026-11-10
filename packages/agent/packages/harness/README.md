@@ -7,12 +7,12 @@ It adds the PostHog LLM provider and the extensions in `src/extensions/` while k
 ## CLI
 
 ```bash
-hog
-hog /login
-hog -p "Fix the tests" --model posthog/claude-opus-4-8
+hogness
+hogness /login
+hogness -p "Fix the tests" --model posthog/claude-opus-4-8
 ```
 
-`harness` is an alias for `hog`.
+`harness` is an alias for `hogness`.
 
 ## Runtime
 
@@ -39,7 +39,7 @@ RPC is Pi's JSONL protocol over stdin/stdout. Harness does not define another pr
 
 ## Authentication
 
-Run `hog /login`, or pass a PostHog personal API key:
+Run `hogness /login`, or pass a PostHog personal API key:
 
 ```ts
 const runtime = await createHarnessRuntime({ apiKey: "pha_…" });
@@ -58,7 +58,7 @@ Set `POSTHOG_REGION` to `us`, `eu`, or `dev` when needed.
 | `@flind/harness/extensions/enrichment` | File enrichment behavior |
 | `@flind/harness/extensions/task-system-prompt` | Task prompt builders and Pi task-prompt extension |
 | `@flind/harness/extensions/posthog-mcp-policy` | PostHog MCP permission policy and product-id classification |
-| `@flind/harness/extensions/local-tools` | Injected local tools (signed git, artifacts, peer messaging) and their PostHog task/run API client |
+| `@flind/harness/extensions/local-tools` | Injected local tools (signed git, artifacts) and their PostHog task/run API client |
 | `@flind/harness/extensions/rtk` | RTK command-compression: Pi's native rewrite, the pure matching rules Claude's hook uses, and the Codex guidance text |
 | `@flind/harness/extensions/benjamin` | Vendored Benjamin-Plus and Simplified Technical English (ASD-STE100) system-prompt instructions, gated by `POSTHOG_BENJAMIN` |
 | `@flind/harness/extensions/agent-instructions` | Base appended system-prompt content (branch naming, PR links, plan mode, shell efficiency, spoken narration, …) |

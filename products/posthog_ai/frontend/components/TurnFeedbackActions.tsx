@@ -92,7 +92,7 @@ function LemonTurnFeedbackActions({
                     {feedbackInputStatus === 'pending' && (
                         <div className="flex w-full gap-1.5 items-center mt-1.5">
                             <LemonInput
-                                placeholder="Help us improve PostHog AI…"
+                                placeholder="Help us improve Flind AI…"
                                 fullWidth
                                 value={feedback}
                                 onChange={(newValue) => setFeedback(newValue)}

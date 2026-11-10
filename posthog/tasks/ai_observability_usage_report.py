@@ -16,6 +16,7 @@ from posthog.constants import AI_EVENT_NAME_PREFIX
 from posthog.exceptions_capture import capture_exception
 from posthog.logging.timing import timed_log
 from posthog.models.event.new_events_schema import events_read_table, use_new_events_schema
+from posthog.models.organization import Organization
 from posthog.models.property.util import get_property_string_expr
 from posthog.models.team.team import Team
 from posthog.ph_client import PH_US_API_KEY, PH_US_HOST, flind_capture_host_allowed
@@ -23,6 +24,8 @@ from posthog.schema_enums import AIEventType
 from posthog.tasks.report_utils import capture_event
 from posthog.tasks.utils import CeleryQueue
 from posthog.utils import DayRange, get_instance_region, get_previous_day
+
+from products.ai_observability.backend.offline_evaluation_billing import get_offline_evaluation_usage
 
 logger = structlog.get_logger(__name__)
 
@@ -921,6 +924,7 @@ def _get_all_ai_observability_reports(
         dict mapping organization_id to usage data
     """
     logger.info("Querying AI observability usage data")
+    offline_usage = get_offline_evaluation_usage(period.start, period.start + timedelta(days=1))
 
     # Phase 1: Get all team_ids with report trigger events (fast query)
     try:
@@ -937,7 +941,7 @@ def _get_all_ai_observability_reports(
         # Re-raise so Celery's autoretry_for=(Exception,) kicks in. Do not swallow.
         raise
 
-    if not team_ids:
+    if not team_ids and not offline_usage:
         logger.info("No teams with AI observability trigger events found")
         return {}
 
@@ -946,7 +950,7 @@ def _get_all_ai_observability_reports(
     # Phase 2: Get all metrics in a single combined query
     logger.info("Querying all AI metrics")
     try:
-        all_metrics = get_all_ai_metrics(period.start, period.end, team_ids)
+        all_metrics = get_all_ai_metrics(period.start, period.end, team_ids) if team_ids else {}
     except Exception:
         logger.warning(
             "[AIO Usage Error] metrics query failed",
@@ -961,7 +965,7 @@ def _get_all_ai_observability_reports(
     # Phase 3: Get distinct trace counts
     logger.info("Querying AI trace counts")
     try:
-        ai_trace_counts = get_ai_trace_counts(period.start, period.end, team_ids)
+        ai_trace_counts = get_ai_trace_counts(period.start, period.end, team_ids) if team_ids else {}
     except Exception:
         logger.warning(
             "[AIO Usage Error] trace counts query failed",
@@ -977,7 +981,9 @@ def _get_all_ai_observability_reports(
     llm_prompt_fetched_counts: dict[int, int] = {}
     try:
         logger.info("Querying LLM prompt fetched counts")
-        llm_prompt_fetched_counts = get_llm_prompt_fetched_counts(period.start, period.end, team_ids)
+        llm_prompt_fetched_counts = (
+            get_llm_prompt_fetched_counts(period.start, period.end, team_ids) if team_ids else {}
+        )
         logger.info(f"Retrieved prompt fetched counts for {len(llm_prompt_fetched_counts)} teams")
     except Exception as err:
         logger.warning(
@@ -988,7 +994,7 @@ def _get_all_ai_observability_reports(
     # Phase 5: Get all dimension breakdowns in a single combined query
     logger.info("Querying all AI dimension breakdowns")
     try:
-        all_breakdowns = get_all_ai_dimension_breakdowns(period.start, period.end, team_ids)
+        all_breakdowns = get_all_ai_dimension_breakdowns(period.start, period.end, team_ids) if team_ids else {}
     except Exception:
         logger.warning(
             "[AIO Usage Error] breakdowns query failed",
@@ -1003,7 +1009,7 @@ def _get_all_ai_observability_reports(
     # Phase 6: Get LLM feedback survey metrics
     logger.info("Querying LLM feedback survey metrics")
     try:
-        survey_metrics = get_llm_feedback_survey_metrics(period.start, period.end, team_ids)
+        survey_metrics = get_llm_feedback_survey_metrics(period.start, period.end, team_ids) if team_ids else {}
     except Exception:
         logger.warning(
             "[AIO Usage Error] surveys query failed",
@@ -1019,17 +1025,21 @@ def _get_all_ai_observability_reports(
     teams = Team.objects.filter(id__in=team_ids).select_related("organization")
     team_to_org: dict[int, str] = {team.id: str(team.organization_id) for team in teams}
     org_id_to_name: dict[str, str] = {str(team.organization_id): team.organization.name for team in teams}
+    org_id_to_name.update(
+        (str(org.id), org.name) for org in Organization.objects.filter(id__in=offline_usage).only("id", "name")
+    )
 
     # Aggregate by organization
     org_reports: dict[str, dict[str, Any]] = {}
 
-    for team_id, org_id in team_to_org.items():
+    for org_id in org_id_to_name:
         if org_id not in org_reports:
             org_reports[org_id] = {
                 "organization_id": org_id,
                 "organization_name": org_id_to_name.get(org_id, ""),
                 "period_start": period.start.isoformat(),
                 "period_end": period.end.isoformat(),
+                "ai_offline_eval_metric_count_in_period": sum(offline_usage.get(org_id, {}).values()),
                 "ai_generation_count": 0,
                 "ai_embedding_count": 0,
                 "ai_span_count": 0,
@@ -1073,6 +1083,7 @@ def _get_all_ai_observability_reports(
                 "cost_model_provider_breakdown": {},
             }
 
+    for team_id, org_id in team_to_org.items():
         report = org_reports[org_id]
 
         # Add metrics from TeamMetrics dataclass

@@ -5,6 +5,7 @@ import posthog from 'posthog-js'
 import { useMemo, useState } from 'react'
 
 import { IconFilter, IconGlobe, IconPhone, IconPlus } from '@posthog/icons'
+import { Button, SelectTriggerIcon } from '@flind/quill'
 
 import { AuthorizedUrlListType, authorizedUrlListLogic } from 'lib/components/AuthorizedUrlList/authorizedUrlListLogic'
 import { COMPARE_ALL_TIME_DISABLED_REASON, CompareFilter } from 'lib/components/CompareFilter/CompareFilter'
@@ -19,9 +20,9 @@ import {
 } from 'lib/components/PropertyFilters/utils'
 import { baseModifier } from 'lib/components/Shortcuts/shortcuts'
 import { useShortcut } from 'lib/components/Shortcuts/useShortcut'
-import { SuppressTaxonomicMenuToggle } from 'lib/components/TaxonomicPopover/TaxonomicMenuToggle'
 import { FEATURE_FLAGS } from 'lib/constants'
 import { flindDocsSectionUrl } from 'lib/flindPublicLinks'
+import { useFeatureFlag } from 'lib/hooks/useFeatureFlag'
 import { IconLink, IconMonitor, IconWithCount } from 'lib/lemon-ui/icons/icons'
 import { LemonField } from 'lib/lemon-ui/LemonField'
 import { LemonInputSelect, LemonInputSelectOption } from 'lib/lemon-ui/LemonInputSelect'
@@ -32,11 +33,15 @@ import { COUNTRY_CODE_TO_LONG_NAME, countryCodeToFlag } from 'lib/utils/country'
 import { useMaxTool } from 'scenes/max/useMaxTool'
 import { Scene } from 'scenes/sceneTypes'
 
+import type { AttachedContextItem } from '~/layout/ai/attachedContext'
 import { ReloadAll } from '~/queries/nodes/DataNode/Reload'
 import { AnyPropertyFilter, PropertyFilterType, PropertyMathType, PropertyOperator } from '~/types'
 
 import { useAttachedContext, useMcpToolApplyBack } from 'products/posthog_ai/frontend/api/logics'
-import type { AttachedContextItem } from 'products/posthog_ai/frontend/api/types'
+import {
+    type DomainSelectorOption,
+    QuillWebAnalyticsDomainSelector,
+} from 'products/web_analytics/frontend/filters/QuillWebAnalyticsDomainSelector'
 
 import { INITIAL_DATE_FROM, INITIAL_DATE_TO, ProductTab, faviconUrl } from './common'
 import { webAnalyticsDateMapping } from './constants'
@@ -106,15 +111,11 @@ export const WebAnalyticsFilters = ({ tabs }: { tabs: JSX.Element }): JSX.Elemen
     const { featureFlags } = useValues(featureFlagLogic)
 
     if (featureFlags[FEATURE_FLAGS.WEB_ANALYTICS_FILTERS_V2] || featureFlags[FEATURE_FLAGS.CONDENSED_FILTER_BAR]) {
-        return (
-            <SuppressTaxonomicMenuToggle>
-                <CondensedWebAnalyticsFilterBar tabs={tabs} />
-            </SuppressTaxonomicMenuToggle>
-        )
+        return <CondensedWebAnalyticsFilterBar tabs={tabs} />
     }
 
     return (
-        <SuppressTaxonomicMenuToggle>
+        <>
             <IncompatibleFiltersWarning />
 
             <div data-attr="web-analytics-filters">
@@ -161,7 +162,7 @@ export const WebAnalyticsFilters = ({ tabs }: { tabs: JSX.Element }): JSX.Elemen
                     }
                 />
             </div>
-        </SuppressTaxonomicMenuToggle>
+        </>
     )
 }
 
@@ -290,59 +291,70 @@ export const WebAnalyticsDomainSelector = (): JSX.Element => {
         useValues(webAnalyticsLogic)
     const { setDomainFilter } = useActions(webAnalyticsLogic)
     const { featureFlags } = useValues(featureFlagLogic)
+    const todayRailNav = useFeatureFlag('TODAY_RAIL_NAV')
+
+    const value = hasHostFilter ? 'host' : (validatedDomainFilter ?? 'all')
+    const options: DomainSelectorOption[] = [
+        {
+            label: 'All domains',
+            value: 'all',
+        },
+        ...(hasHostFilter
+            ? [
+                  {
+                      label: 'All domains (host filter active)',
+                      value: 'host',
+                  },
+              ]
+            : []),
+        ...authorizedDomains.map((domain) => {
+            let hostname: string | null = null
+            try {
+                hostname = new URL(domain).hostname
+            } catch {
+                // skip favicon for malformed URLs
+            }
+            return {
+                label: domain,
+                value: domain,
+                ...(hostname && featureFlags[FEATURE_FLAGS.SHOW_REFERRER_FAVICON]
+                    ? {
+                          icon: (
+                              <img
+                                  src={faviconUrl(hostname)}
+                                  width={16}
+                                  height={16}
+                                  alt={`${domain} favicon`}
+                                  onError={(e) => (e.currentTarget.style.display = 'none')}
+                              />
+                          ),
+                      }
+                    : {}),
+            }
+        }),
+    ]
+    const footer = showProposedURLForm ? <AddAuthorizedUrlForm /> : <AddSuggestedAuthorizedUrlList />
+
+    if (todayRailNav) {
+        return (
+            <QuillWebAnalyticsDomainSelector
+                value={value}
+                options={options}
+                onChange={(value) => setDomainFilter(value)}
+                footer={footer}
+            />
+        )
+    }
 
     return (
         <LemonSelect
             className="grow md:grow-0"
             size="small"
-            value={hasHostFilter ? 'host' : (validatedDomainFilter ?? 'all')}
+            value={value}
             icon={<IconGlobe />}
             onChange={(value) => setDomainFilter(value)}
             menu={{ closeParentPopoverOnClickInside: !showProposedURLForm }}
-            options={[
-                {
-                    options: [
-                        {
-                            label: 'All domains',
-                            value: 'all',
-                        },
-                        ...(hasHostFilter
-                            ? [
-                                  {
-                                      label: 'All domains (host filter active)',
-                                      value: 'host',
-                                  },
-                              ]
-                            : []),
-                        ...authorizedDomains.map((domain) => {
-                            let hostname: string | null = null
-                            try {
-                                hostname = new URL(domain).hostname
-                            } catch {
-                                // skip favicon for malformed URLs
-                            }
-                            return {
-                                label: domain,
-                                value: domain,
-                                ...(hostname && featureFlags[FEATURE_FLAGS.SHOW_REFERRER_FAVICON]
-                                    ? {
-                                          icon: (
-                                              <img
-                                                  src={faviconUrl(hostname)}
-                                                  width={16}
-                                                  height={16}
-                                                  alt={`${domain} favicon`}
-                                                  onError={(e) => (e.currentTarget.style.display = 'none')}
-                                              />
-                                          ),
-                                      }
-                                    : {}),
-                            }
-                        }),
-                    ],
-                    footer: showProposedURLForm ? <AddAuthorizedUrlForm /> : <AddSuggestedAuthorizedUrlList />,
-                },
-            ]}
+            options={[{ options, footer }]}
         />
     )
 }
@@ -555,6 +567,7 @@ export const WebAnalyticsCompareFilter = (): JSX.Element | null => {
 
 const ShareButton = (): JSX.Element => {
     const { activePreset } = useValues(webAnalyticsFilterPresetsLogic)
+    const todayRailNav = useFeatureFlag('TODAY_RAIL_NAV')
 
     const handleShare = (): void => {
         const url = new URL(window.location.href)
@@ -566,6 +579,21 @@ const ShareButton = (): JSX.Element => {
 
         void copyToClipboard(url.toString(), 'link')
         posthog.capture('web analytics share link copied', { source: 'filters_button' })
+    }
+
+    if (todayRailNav) {
+        return (
+            <Button
+                variant="outline"
+                size="icon"
+                aria-label="Share"
+                tooltip="Share"
+                onClick={handleShare}
+                data-attr="web-analytics-share-button"
+            >
+                <IconLink />
+            </Button>
+        )
     }
 
     return (
@@ -587,6 +615,7 @@ function FiltersPopover(): JSX.Element {
 
     const { setWebAnalyticsFilters, setConversionGoal } = useActions(webAnalyticsLogic)
     const { featureFlags } = useValues(featureFlagLogic)
+    const todayRailNav = useFeatureFlag('TODAY_RAIL_NAV')
 
     // Toggle filters shortcut
     useShortcut({
@@ -607,6 +636,11 @@ function FiltersPopover(): JSX.Element {
     const propertyAllowList = restrictedUiEnabled ? WEB_ANALYTICS_PROPERTY_ALLOW_LIST : undefined
 
     const activeFilterCount = rawWebAnalyticsFilters.length + (conversionGoal ? 1 : 0)
+    const filtersIcon = (
+        <IconWithCount count={activeFilterCount} showZero={false}>
+            <IconFilter />
+        </IconWithCount>
+    )
 
     const filtersContent = (
         <div className="p-3 w-96 max-w-[90vw]">
@@ -648,19 +682,27 @@ function FiltersPopover(): JSX.Element {
             placement="bottom-end"
             overlay={filtersContent}
         >
-            <LemonButton
-                icon={
-                    <IconWithCount count={activeFilterCount} showZero={false}>
-                        <IconFilter />
-                    </IconWithCount>
-                }
-                type="secondary"
-                size="small"
-                data-attr="web-analytics-unified-filters"
-                onClick={() => setDisplayFilters(!displayFilters)}
-            >
-                Filters
-            </LemonButton>
+            {todayRailNav ? (
+                <Button
+                    variant="outline"
+                    data-attr="web-analytics-unified-filters"
+                    onClick={() => setDisplayFilters(!displayFilters)}
+                >
+                    {filtersIcon}
+                    Filters
+                    <SelectTriggerIcon />
+                </Button>
+            ) : (
+                <LemonButton
+                    icon={filtersIcon}
+                    type="secondary"
+                    size="small"
+                    data-attr="web-analytics-unified-filters"
+                    onClick={() => setDisplayFilters(!displayFilters)}
+                >
+                    Filters
+                </LemonButton>
+            )}
         </Popover>
     )
 

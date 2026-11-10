@@ -20,15 +20,13 @@ import {
   DropdownMenuTrigger,
   Text,
 } from "@flind/quill";
+import { resolveReportRunVariant } from "@flind/shared";
 import {
   isTerminalStatus,
   type SignalReport,
   type TaskRunStatus,
 } from "@flind/shared/types";
-import {
-  RUN_VARIANT_TIMESTAMP_LABEL,
-  resolveRunVariant,
-} from "@flind/ui/features/inbox/components/AgentRunCard";
+import { RUN_VARIANT_TIMESTAMP_LABEL } from "@flind/ui/features/inbox/components/AgentRunCard";
 import { DetailSection } from "@flind/ui/features/inbox/components/DetailSection";
 import { ReportActivitySection } from "@flind/ui/features/inbox/components/detail/ReportActivitySection";
 import { InboxDetailPageHeader } from "@flind/ui/features/inbox/components/InboxDetailPageHeader";
@@ -230,7 +228,7 @@ function AgentRunDetailContent({ report }: { report: SignalReport }) {
   const signals = signalsResp?.signals ?? [];
   const hasSource = hasKnownSourceProduct(report.source_products);
   const isLive = report.status === "in_progress";
-  const headerVariant = resolveRunVariant(report);
+  const headerVariant = resolveReportRunVariant(report.status);
   const headerTimestamp =
     headerVariant === "live"
       ? report.created_at

@@ -1,6 +1,7 @@
 """Test-support facade for access_control.
 
-Test suites outside the product plant roles, role members and access control rows. They get
+Test suites outside the product plant roles, role members, access control rows and property
+access control rows. They get
 them here instead of importing the models.
 """
 
@@ -49,9 +50,15 @@ def create_access_control(
     ).id
 
 
-# Adapted from upstream PostHog (products/access_control/backend/facade/testing.py at b17ccdae5): the
-# helper the cherry-picked feature-flag access-control test uses. The rest of that upstream change
-# belongs to an unrelated feature and is not integrated here.
+def delete_access_control(*, team_id: int, access_control_id: UUID) -> None:
+    """Delete one access control row, signals and all, as the production delete does."""
+    AccessControl.objects.get(id=access_control_id, team_id=team_id).delete()
+
+
+def remove_role_member(*, organization_id: UUID, role_membership_id: UUID) -> None:
+    RoleMembership.objects.get(id=role_membership_id, role__organization_id=organization_id).delete()
+
+
 def create_property_access_control(
     *,
     team_id: int,
@@ -67,3 +74,7 @@ def create_property_access_control(
         organization_member_id=organization_member_id,
         role_id=role_id,
     ).id
+
+
+def delete_property_access_control_rule(*, team_id: int, property_access_control_id: UUID) -> None:
+    PropertyAccessControl.objects.get(id=property_access_control_id, team_id=team_id).delete()

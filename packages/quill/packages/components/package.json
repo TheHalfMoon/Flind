@@ -39,7 +39,7 @@
         "@flind/quill-charts": "workspace:^",
         "@flind/quill-primitives": "workspace:^",
         "@flind/quill-tokens": "workspace:^",
-        "date-fns": "^4.0.0",
+        "date-fns": "^4.4.0",
         "lucide-react": "^0.577.0"
     },
     "devDependencies": {

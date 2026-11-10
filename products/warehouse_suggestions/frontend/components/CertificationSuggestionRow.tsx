@@ -1,23 +1,19 @@
 import { useActions, useValues } from 'kea'
 
 import { IconCheckCircle, IconWarning } from '@posthog/icons'
-import { LemonButton, Link, Tooltip } from '@flind/lemon-ui'
-
-import { userHasAccess } from 'lib/utils/accessControlUtils'
+import { LemonButton, Tooltip } from '@flind/lemon-ui'
 
 import { iconForType } from '~/layout/panel-layout/ProjectTree/defaultTree'
-import { AccessControlLevel, AccessControlResourceType } from '~/types'
 
 import type { WarehouseSuggestionApi } from '../generated/api.schemas'
-import { subjectUrl } from '../subjectUrl'
 import { daysReadLabel, isDeprecatePayload, noReadsLabel, readSummary, refreshCostLabel } from '../suggestionCopy'
-import { warehouseSuggestionsLogic } from '../warehouseSuggestionsLogic'
-import { DismissSuggestionMenu } from './DismissSuggestionMenu'
+import { catalogEditBlockedReason, warehouseSuggestionsLogic } from '../warehouseSuggestionsLogic'
+import { DismissSuggestionButtons } from './DismissSuggestionButtons'
 import { SuggestionRow } from './SuggestionRow'
+import { SuggestionSubjectLink } from './SuggestionSubjectLink'
 import { WhyThisSuggestion } from './WhyThisSuggestion'
 
 const EDIT_ACCESS_REASON = 'You need edit access to this view or table'
-const CATALOG_EDIT_ACCESS_REASON = 'You need edit access to the data catalog'
 
 export interface CertificationSuggestionRowProps {
     suggestion: WarehouseSuggestionApi
@@ -32,17 +28,16 @@ export function CertificationSuggestionRow({ suggestion, windowDays }: Certifica
     const leaving = leavingSuggestionIds.includes(suggestion.id)
     const inFlight = !!actionsInFlight[suggestion.id]
     const blockedReason = !suggestion.can_act ? EDIT_ACCESS_REASON : leaving ? 'Working' : undefined
-    const acceptBlockedReason =
-        blockedReason ??
-        (userHasAccess(AccessControlResourceType.DataCatalog, AccessControlLevel.Editor)
-            ? undefined
-            : CATALOG_EDIT_ACCESS_REASON)
     const deprecating = isDeprecatePayload(payload)
+    const refreshes = deprecating && payload.materialized !== false
     const confirmsFirst = deprecating && !isTable
+    const acceptBlockedReason = blockedReason ?? (confirmsFirst ? undefined : catalogEditBlockedReason())
 
     return (
         <SuggestionRow
             suggestionId={suggestion.id}
+            assignee={suggestion.assignee}
+            canAct={suggestion.can_act}
             leaving={leaving}
             icon={
                 <Tooltip title={isTable ? 'Table' : 'View'}>
@@ -51,11 +46,7 @@ export function CertificationSuggestionRow({ suggestion, windowDays }: Certifica
                     </span>
                 </Tooltip>
             }
-            title={
-                <Link to={subjectUrl(suggestion)} subtle className="block min-w-0 truncate text-sm font-semibold">
-                    {payload.subject_name}
-                </Link>
-            }
+            title={<SuggestionSubjectLink suggestion={suggestion} />}
             meta={
                 deprecating
                     ? [
@@ -65,8 +56,8 @@ export function CertificationSuggestionRow({ suggestion, windowDays }: Certifica
                               windowDays={windowDays}
                               label={noReadsLabel(windowDays)}
                           />,
-                          <span key="cost">{refreshCostLabel(payload)}</span>,
-                      ]
+                          refreshes && <span key="cost">{refreshCostLabel(payload)}</span>,
+                      ].filter(Boolean)
                     : [
                           <WhyThisSuggestion
                               key="reads"
@@ -92,7 +83,7 @@ export function CertificationSuggestionRow({ suggestion, windowDays }: Certifica
                     >
                         {deprecating ? 'Mark deprecated' : 'Certify'}
                     </LemonButton>
-                    <DismissSuggestionMenu
+                    <DismissSuggestionButtons
                         suggestionId={suggestion.id}
                         kind={suggestion.kind}
                         disabledReason={blockedReason ?? (inFlight ? 'Working' : undefined)}

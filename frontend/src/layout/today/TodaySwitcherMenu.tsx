@@ -19,7 +19,7 @@ import {
     TooltipTrigger,
 } from '@flind/quill'
 
-import { ResizerLogicProps, resizerLogic } from 'lib/components/Resizer/resizerLogic'
+import { ResizerLogicProps, resizerLogic } from 'lib/lemon-ui/Resizer/resizerLogic'
 
 import { TodayPopupResizeHandle } from './TodayPopupResizeHandle'
 

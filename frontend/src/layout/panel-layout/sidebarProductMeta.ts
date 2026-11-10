@@ -1,3 +1,4 @@
+import { flindDocsUrl } from 'lib/flindPublicLinks'
 import { sceneConfigurations } from 'scenes/scenes'
 
 import { FileSystemImport } from '~/queries/schema/schema-general'
@@ -31,7 +32,7 @@ const descriptions: Record<string, string> = {
     'LLM analytics':
         'Follow your AI application from prompts to responses. Inspect traces, latency, token usage, and cost to understand quality and performance.',
     Persons:
-        'Explore the people behind your events, including their properties and activity. Connect an individual experience with the patterns in your analytics.',
+        'Explore the people and groups behind your events, including their properties and activity. Connect an individual experience with the patterns in your analytics.',
     Cohorts:
         'Group people by what they do and who they are. Reuse those audiences in analysis, feature targeting, and experiments.',
     'SQL variables':
@@ -79,6 +80,7 @@ const examples: Record<string, string> = {
     Cohorts: 'Compare people who tried a feature with those who have not.',
     Apps: 'Build an internal Python dashboard using your project data.',
     Broadcasts: 'Send an announcement to a cohort of beta testers.',
+    Transactional: 'Send a password reset email from your backend.',
     'Business knowledge': 'Give your AI assistant context about how your business works.',
     Clusters: 'Discover common themes in conversations with your AI assistant.',
     'Code review': 'Review automated findings on a pull request before it merges.',
@@ -110,6 +112,7 @@ const examples: Record<string, string> = {
     Tracing: 'Follow a slow request across services to find the bottleneck.',
     'Visual review': 'Review visual changes before they reach users.',
     'Web scripts': 'Add a website tag without changing your application code.',
+    Wizard: 'Review the code changes an agent prepares to set up PostHog.',
     Workflows: 'Send a follow-up when someone completes an onboarding step.',
     Actions: 'Combine related clicks into a single event for analysis.',
     Annotations: 'Mark a release date to help explain a change in a chart.',
@@ -131,10 +134,29 @@ const examples: Record<string, string> = {
     'Warehouse properties': 'Add account attributes from a warehouse table to your groups.',
 }
 
+// Pinned pages that have no scene config of their own to carry a docs link.
+// Routed through the operator's own docs root; unconfigured deployments show no inherited links.
+const docsHrefs: Record<string, string | undefined> = {
+    Activity: flindDocsUrl('data/events') ?? undefined,
+    Persons: flindDocsUrl('data/persons') ?? undefined,
+}
+
 export interface SidebarProductMeta {
     example?: string
     description?: string
     docsHref?: string
+}
+
+/** Group paths come from configurable group type names, so groups share this copy. */
+export const SIDEBAR_GROUP_META = {
+    description:
+        'Explore the organizations, accounts, or other groups behind your events. Understand usage at the group level.',
+    example: 'Compare activity across customer accounts.',
+}
+
+/** The copy of one sidebar name, for a row that is not a tree item. */
+export function sidebarProductCopy(name: string): SidebarProductMeta {
+    return { description: descriptions[name], example: examples[name], docsHref: docsHrefs[name] }
 }
 
 /** Description and docs link for a sidebar product, both read from the product's scene config. */
@@ -147,9 +169,9 @@ export function sidebarProductMeta(product: FileSystemImport): SidebarProductMet
     return {
         // Group paths come from configurable group type names, which can match a built-in app name.
         description: isGroup
-            ? 'Explore the organizations, accounts, or other groups behind your events. Understand usage at the group level.'
+            ? SIDEBAR_GROUP_META.description
             : (descriptions[product.path] ?? sceneConfig?.description),
-        example: isGroup ? 'Compare activity across customer accounts.' : examples[product.path],
-        docsHref: sceneConfig?.docsHref,
+        example: isGroup ? SIDEBAR_GROUP_META.example : examples[product.path],
+        docsHref: sceneConfig?.docsHref ?? docsHrefs[product.path],
     }
 }
