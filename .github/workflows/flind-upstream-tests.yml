@@ -123,6 +123,10 @@ jobs:
             # setup:test builds the Django test database and the Rust-owned test databases (sqlx-cli above).
             - name: Node tests that need the test databases
               working-directory: nodejs
+              env:
+                  # The job-level DATABASE_URL names the dev database; Node tests use test_posthog, which
+                  # setup:test builds (the same URL Node's config defaults to under test).
+                  DATABASE_URL: postgres://posthog:posthog@localhost:5432/test_posthog
               run: |
                   set -o pipefail
                   pnpm setup:test 2>&1 | tail -20
