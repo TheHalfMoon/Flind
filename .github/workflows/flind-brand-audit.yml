@@ -85,3 +85,11 @@ jobs:
                   echo "::group::full UI inventory (file:line)"
                   grep -rIn $ex 'PostHog' frontend/src products posthog/templates ee/templates posthog/settings 2>/dev/null | cut -c1-220 || true
                   echo "::endgroup::"
+
+            - uses: actions/setup-python@v5
+              with:
+                  python-version: 3.14.7
+
+            # Dependency-free guard: fails if rebranded surfaces regress to donor text or links.
+            - name: User-facing brand regression tests
+              run: python tools/flind/test_user_facing_brand.py -v

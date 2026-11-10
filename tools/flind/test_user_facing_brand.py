@@ -24,6 +24,9 @@ BRANDED_FILES = [
     "posthog/templates/email/base.html",
     "posthog/templates/email/invite.html",
     "posthog/templates/email/delegation_invite.html",
+    "frontend/src/index.html",
+    "posthog/templates/overlays.html",
+    "posthog/templates/500.html",
 ]
 
 EMAIL_FILES = [
@@ -86,6 +89,22 @@ class FlindUserFacingBrandTests(unittest.TestCase):
             "import { IconArrowRight } from '@posthog/icons'",
             read("frontend/src/scenes/onboarding/exit/OnboardingExitModal.tsx"),
         )
+
+    def test_error_page_is_self_contained(self) -> None:
+        page = read("posthog/templates/500.html")
+        self.assertNotIn("<iframe", page)
+        self.assertNotIn("posthog.com", page)
+        self.assertIn("Flind is temporarily unavailable", page)
+
+    def test_app_shell_console_has_no_upstream_links(self) -> None:
+        shell = read("frontend/src/index.html")
+        self.assertNotIn("posthog.com", shell)
+        self.assertNotIn("In data we trust", shell)
+
+    def test_debug_warning_uses_flind_name(self) -> None:
+        settings = read("posthog/settings/base_variables.py")
+        self.assertIn("Flind is running in DEVELOPMENT MODE!", settings)
+        self.assertNotIn("PostHog is running in DEVELOPMENT MODE!", settings)
 
 
 if __name__ == "__main__":
