@@ -6,6 +6,15 @@ run or test result on that commit; anything else is marked as planned or unverif
 
 Last updated: 2026-11-11.
 
+## Live qualification checkpoint (2026-11-11, later run)
+
+- **Main:** `66cc22360e50ce5835f834dbbaf091e8339cac5c` at the start of this checkpoint; no release or deployment authorized.
+- **PR #23, icons:** draft head `ff40a2ea5929fe0330077de000acaac5fa2017a5`. Earlier lockfile repair was followed by a Playwright alias fix: `@flind/icons` now resolves to executable workspace code rather than `packages/icons/index.d.ts`. At inspection, 9/17 checks succeeded, 8 were still running; no failures reported yet. The separate Playwright real-service run `43087399986` remained in progress during database setup. **Not qualified and not merged.**
+- **PR #24, toolbar origin isolation:** draft branch adds default-deny external messaging, explicit origin validation, tests for actual manifest-builder wiring, and rejection of trailing-dot DNS hostnames (including inherited donor domains). Local Windows `node --check` and `node --test`: **6 passed, 0 failed**, on the updated files. GitHub CI on the final PR head was still queued/running at inspection; packaging and browser runtime are **not yet verified**. **Not qualified and not merged.**
+- **Next gate:** require all exact-head checks and real-service E2E to finish successfully before merging; then verify main. SDK ownership transfer and SDK-to-Flind ingestion E2E remain outstanding.
+- **Legal:** founder reports permission to rebrand donor artwork and code; retain applicable copyright, licensing and provenance. Do not rewrite signed fixture data.
+- **Release:** prohibited until explicit **GREEN LIGHT FLIND**.
+
 ## Release gates
 
 | Gate | State |
