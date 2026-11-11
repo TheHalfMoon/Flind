@@ -35,6 +35,12 @@ export function getTrustedFlindAppMatches(value = process.env.FLIND_TOOLBAR_TRUS
             throw new Error('Flind toolbar origins must be exact URLs without wildcards')
         }
         const hostname = url.hostname.toLowerCase()
+        // DNS treats a terminal dot as an absolute name. Chrome match patterns
+        // and URL normalization may not preserve it consistently, so reject it
+        // rather than letting posthog.com. bypass the inherited-host denylist.
+        if (hostname.endsWith('.')) {
+            throw new Error('Flind toolbar origins must not contain trailing-dot hostnames')
+        }
         if (hostname === 'posthog.com' || hostname.endsWith('.posthog.com')) {
             throw new Error('Inherited PostHog hosts must not be trusted by Flind')
         }
