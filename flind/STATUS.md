@@ -6,6 +6,14 @@ run or test result on that commit; anything else is marked as planned or unverif
 
 Last updated: 2026-11-11.
 
+
+## Extension packaging qualification checkpoint (2026-11-12)
+
+- Main remains `66cc22360e50ce5835f834dbbaf091e8339cac5c` at the start of this checkpoint; PR #23 (`ff40a2ea5929`) and security PR #24 (`002e558944e5`) remain open, with no deployment authorized.
+- PR #25 Chrome extension package qualification run [43106498600](https://github.com/TheHalfMoon/Flind/actions/runs/43106498600) **FAILED** on `2fef2f23` at the actual extension build, despite the focused icon tests passing. The fresh CI runner did not contain `@flind/quill/dist/tokens.scoped.css` and `@flind/quill-primitives`, `@flind/quill-components`, `@flind/quill-blocks` dist JS outputs. This is a real build dependency failure, not an icon-test failure.
+- Narrow CI repair `6be3c80d` adds the existing Quill workspace build before extension packaging and asserts expected generated files. GitHub run [43115192575](https://github.com/TheHalfMoon/Flind/actions/runs/43115192575) and manual run [43115204760](https://github.com/TheHalfMoon/Flind/actions/runs/43115204760) were **not completed at checkpoint**. Do not claim a package pass until the actual Chrome manifest, icon, archive and all applicable exact-head checks succeed.
+- No merge, release, distribution, or deployment. PR #25 is stacked on #24; #23 remains an independent merge prerequisite for subsequent package/SDK work. Independent review and branch protection still apply.
+
 ## Live qualification checkpoint (2026-11-11, later run)
 
 - **Main:** `66cc22360e50ce5835f834dbbaf091e8339cac5c` at the start of this checkpoint; no release or deployment authorized.
