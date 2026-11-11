@@ -21,7 +21,8 @@ test('rejects insecure or overly broad host patterns and inherited upstream host
     for (const origin of [
         'http://example.com', 'https://*.example.com', 'https://example.com:8443',
         'https://example.com/path', 'https://example.com/?token=x', 'https://user@example.com',
-        'https://app.posthog.com', 'https://posthog.com', 'https://evil.example.com,',
+        'https://app.posthog.com', 'https://posthog.com', 'https://posthog.com.',
+        'https://app.posthog.com.', 'https://example.com.', 'https://evil.example.com,',
         'https://example.com#fragment', 'https://example.com, ,https://other.example.com'
     ]) {
         assert.throws(() => getTrustedFlindAppMatches(origin), undefined, origin)
