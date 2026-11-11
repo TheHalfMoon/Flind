@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
 
-import { getTrustedFlindAppMatches } from './flind-toolbar-trusted-hosts.mjs'
+import { getFlindExternalConnectable, getTrustedFlindAppMatches } from './flind-toolbar-trusted-hosts.mjs'
 
 test('no inherited host permissions by default', () => {
     assert.deepEqual(getTrustedFlindAppMatches(''), [])
@@ -25,4 +25,13 @@ test('rejects insecure or overly broad host patterns and inherited upstream host
     ]) {
         assert.throws(() => getTrustedFlindAppMatches(origin), undefined, origin)
     }
+})
+
+test('manifest fragment is absent by default and only contains approved origins', () => {
+    assert.deepEqual(getFlindExternalConnectable(''), {})
+    assert.deepEqual(
+        getFlindExternalConnectable('https://flind.example.org'),
+        { externally_connectable: { matches: ['https://flind.example.org/*'] } }
+    )
+    assert.throws(() => getFlindExternalConnectable('https://app.posthog.com'))
 })
