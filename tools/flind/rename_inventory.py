@@ -20,7 +20,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 BASELINE = ROOT / "flind" / "rename" / "baseline.json"
-# Legally required notices and this tooling's own description of what it counts.
+# Legally required notices, provenance records (any NOTICE.md) and this tooling's own description of what it counts.
 EXEMPT = {
     "LICENSE",
     "ee/LICENSE",
@@ -61,12 +61,12 @@ def inventory() -> dict[str, int]:
     counts["paths"] = sum(1 for f in git("ls-files").splitlines() if re.search("posthog", f, re.I) and f not in EXEMPT)
     for line in git("grep", "-I", "-c", "-i", "posthog").splitlines():
         path, n = line.rsplit(":", 1)
-        if path in EXEMPT:
+        if path in EXEMPT or path.endswith("/NOTICE.md"):
             continue
         counts[f"occurrences_{category(path)}"] += int(n)
     for line in git("grep", "-I", "-c", "PostHog").splitlines():
         path, n = line.rsplit(":", 1)
-        if path not in EXEMPT:
+        if path not in EXEMPT and not path.endswith("/NOTICE.md"):
             counts["capitalised_PostHog"] += int(n)
     return dict(sorted(counts.items()))
 

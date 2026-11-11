@@ -8,7 +8,7 @@ import { Message } from 'node-rdkafka'
 import { Counter } from 'prom-client'
 import { getDomain } from 'tldts'
 
-import * as siphashDouble from '@posthog/siphash/lib/siphash-double'
+import * as siphashDouble from '@flind/siphash/lib/siphash-double'
 
 import { cookielessRedisErrorCounter } from '~/common/metrics'
 import { COOKIELESS_SENTINEL_VALUE } from '~/common/persons/person-utils'
