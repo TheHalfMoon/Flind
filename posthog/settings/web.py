@@ -1022,6 +1022,11 @@ DOMAIN_CONNECT_KEY_ID: str = os.getenv("DOMAIN_CONNECT_KEY_ID", "_dcpubkeyv1")
 FLIND_DOMAIN_CONNECT_ENABLED: bool = get_from_env("FLIND_DOMAIN_CONNECT_ENABLED", False, type_cast=str_to_bool)
 FLIND_DOMAIN_CONNECT_PROVIDER_ID: str = get_from_env("FLIND_DOMAIN_CONNECT_PROVIDER_ID", "")
 
+# The inherited legal-documents feature generates BAAs and DPAs as contracts with PostHog Inc. Flind must not offer
+# them as Flind contracts, so the API, the signature webhook and the settings entry stay off until Flind has legal
+# documents of its own.
+FLIND_LEGAL_DOCUMENTS_ENABLED: bool = get_from_env("FLIND_LEGAL_DOCUMENTS_ENABLED", False, type_cast=str_to_bool)
+
 
 ####
 # CDP

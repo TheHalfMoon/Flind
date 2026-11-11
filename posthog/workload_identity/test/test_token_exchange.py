@@ -476,7 +476,7 @@ class TestWorkloadTokenExchange(APIBaseTest):
         organization_level = self._call("get", f"/api/organizations/{self.organization.id}/members/", token)
         self.user.is_staff = True
         self.user.save()
-        with override_settings(CLOUD_DEPLOYMENT="US"):
+        with override_settings(CLOUD_DEPLOYMENT="US", FLIND_LEGAL_DOCUMENTS_ENABLED=True):
             staff_bypass = self._call(
                 "get",
                 f"/api/organizations/{other_org.id}/legal_documents/00000000-0000-0000-0000-000000000000/download/",

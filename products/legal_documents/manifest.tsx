@@ -24,10 +24,8 @@ export const manifest: ProductManifest = {
         },
     },
     routes: {
-        '/legal': ['LegalDocuments', 'legalDocuments'],
-        '/legal/new/:type': ['LegalDocumentNew', 'legalDocumentNew'],
-        // The settings navigation's home for the list, next to billing. The /legal routes stay until links move over.
-        '/organization/legal': ['LegalDocuments', 'organizationLegalDocuments'],
+        // No routes in Flind: the inherited BAA/DPA agreements are with PostHog Inc. and stay off
+        // (FLIND_LEGAL_DOCUMENTS_ENABLED on the server).
     },
     redirects: {},
     urls: {

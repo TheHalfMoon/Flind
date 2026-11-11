@@ -26,6 +26,7 @@ EXEMPT = {
     "ee/LICENSE",
     "flind/rename/baseline.json",
     "flind/rename/PLAN.md",
+    "flind/STATUS.md",
     "tools/flind/rename_inventory.py",
     "tools/flind/rename_text.py",
     "tools/flind/rename_text_ts.cjs",
